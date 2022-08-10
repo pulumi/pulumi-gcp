@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
 // * How-to Guides
-//   - [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
+//     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 //
 // ## Example Usage
 // ### Service Directory Endpoint Basic
@@ -26,45 +26,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
-//				NamespaceId: pulumi.String("example-namespace"),
-//				Location:    pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
-//				ServiceId: pulumi.String("example-service"),
-//				Namespace: exampleNamespace.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
-//				EndpointId: pulumi.String("example-endpoint"),
-//				Service:    exampleService.ID(),
-//				Metadata: pulumi.StringMap{
-//					"stage":  pulumi.String("prod"),
-//					"region": pulumi.String("us-central1"),
-//				},
-//				Address: pulumi.String("1.2.3.4"),
-//				Port:    pulumi.Int(5353),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+// 			NamespaceId: pulumi.String("example-namespace"),
+// 			Location:    pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Namespace: exampleNamespace.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
+// 			EndpointId: pulumi.String("example-endpoint"),
+// 			Service:    exampleService.ID(),
+// 			Metadata: pulumi.StringMap{
+// 				"stage":  pulumi.String("prod"),
+// 				"region": pulumi.String("us-central1"),
+// 			},
+// 			Address: pulumi.String("1.2.3.4"),
+// 			Port:    pulumi.Int(5353),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Service Directory Endpoint With Network
 //
@@ -72,82 +69,73 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := compute.NewNetwork(ctx, "exampleNetwork", nil, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
-//				NamespaceId: pulumi.String("example-namespace"),
-//				Location:    pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
-//				ServiceId: pulumi.String("example-service"),
-//				Namespace: exampleNamespace.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
-//				EndpointId: pulumi.String("example-endpoint"),
-//				Service:    exampleService.ID(),
-//				Metadata: pulumi.StringMap{
-//					"stage":  pulumi.String("prod"),
-//					"region": pulumi.String("us-central1"),
-//				},
-//				Network: exampleNetwork.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/locations/global/networks/%v", project.Number, name), nil
-//				}).(pulumi.StringOutput),
-//				Address: pulumi.String("1.2.3.4"),
-//				Port:    pulumi.Int(5353),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleNetwork, err := compute.NewNetwork(ctx, "exampleNetwork", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+// 			NamespaceId: pulumi.String("example-namespace"),
+// 			Location:    pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Namespace: exampleNamespace.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
+// 			EndpointId: pulumi.String("example-endpoint"),
+// 			Service:    exampleService.ID(),
+// 			Metadata: pulumi.StringMap{
+// 				"stage":  pulumi.String("prod"),
+// 				"region": pulumi.String("us-central1"),
+// 			},
+// 			Network: exampleNetwork.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("projects/%v/locations/global/networks/%v", project.Number, name), nil
+// 			}).(pulumi.StringOutput),
+// 			Address: pulumi.String("1.2.3.4"),
+// 			Port:    pulumi.Int(5353),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Endpoint can be imported using any of these accepted formats
+// Endpoint can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
-//
+//  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
-//
+//  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
-//
+//  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
 // ```
 type Endpoint struct {
 	pulumi.CustomResourceState
@@ -322,7 +310,7 @@ func (i *Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutp
 // EndpointArrayInput is an input type that accepts EndpointArray and EndpointArrayOutput values.
 // You can construct a concrete instance of `EndpointArrayInput` via:
 //
-//	EndpointArray{ EndpointArgs{...} }
+//          EndpointArray{ EndpointArgs{...} }
 type EndpointArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +335,7 @@ func (i EndpointArray) ToEndpointArrayOutputWithContext(ctx context.Context) End
 // EndpointMapInput is an input type that accepts EndpointMap and EndpointMapOutput values.
 // You can construct a concrete instance of `EndpointMapInput` via:
 //
-//	EndpointMap{ "key": EndpointArgs{...} }
+//          EndpointMap{ "key": EndpointArgs{...} }
 type EndpointMapInput interface {
 	pulumi.Input
 

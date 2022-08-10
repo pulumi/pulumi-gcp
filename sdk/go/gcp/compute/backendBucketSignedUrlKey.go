@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
 // * How-to Guides
-//   - [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+//     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 //
 // > **Warning:** All arguments including `keyValue` will be stored in the raw
 // state as plain-text.
@@ -29,47 +29,44 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			urlSignature, err := random.NewRandomId(ctx, "urlSignature", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(16),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location: pulumi.String("EU"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			testBackend, err := compute.NewBackendBucket(ctx, "testBackend", &compute.BackendBucketArgs{
-//				Description: pulumi.String("Contains beautiful images"),
-//				BucketName:  bucket.Name,
-//				EnableCdn:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewBackendBucketSignedUrlKey(ctx, "backendKey", &compute.BackendBucketSignedUrlKeyArgs{
-//				KeyValue:      urlSignature.B64Url,
-//				BackendBucket: testBackend.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		urlSignature, err := random.NewRandomId(ctx, "urlSignature", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(16),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testBackend, err := compute.NewBackendBucket(ctx, "testBackend", &compute.BackendBucketArgs{
+// 			Description: pulumi.String("Contains beautiful images"),
+// 			BucketName:  bucket.Name,
+// 			EnableCdn:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendBucketSignedUrlKey(ctx, "backendKey", &compute.BackendBucketSignedUrlKeyArgs{
+// 			KeyValue:      urlSignature.B64Url,
+// 			BackendBucket: testBackend.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -212,7 +209,7 @@ func (i *BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutputWithContext
 // BackendBucketSignedUrlKeyArrayInput is an input type that accepts BackendBucketSignedUrlKeyArray and BackendBucketSignedUrlKeyArrayOutput values.
 // You can construct a concrete instance of `BackendBucketSignedUrlKeyArrayInput` via:
 //
-//	BackendBucketSignedUrlKeyArray{ BackendBucketSignedUrlKeyArgs{...} }
+//          BackendBucketSignedUrlKeyArray{ BackendBucketSignedUrlKeyArgs{...} }
 type BackendBucketSignedUrlKeyArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +234,7 @@ func (i BackendBucketSignedUrlKeyArray) ToBackendBucketSignedUrlKeyArrayOutputWi
 // BackendBucketSignedUrlKeyMapInput is an input type that accepts BackendBucketSignedUrlKeyMap and BackendBucketSignedUrlKeyMapOutput values.
 // You can construct a concrete instance of `BackendBucketSignedUrlKeyMapInput` via:
 //
-//	BackendBucketSignedUrlKeyMap{ "key": BackendBucketSignedUrlKeyArgs{...} }
+//          BackendBucketSignedUrlKeyMap{ "key": BackendBucketSignedUrlKeyArgs{...} }
 type BackendBucketSignedUrlKeyMapInput interface {
 	pulumi.Input
 

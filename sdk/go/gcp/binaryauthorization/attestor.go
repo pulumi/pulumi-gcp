@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/binary-authorization/)
+//     * [Official Documentation](https://cloud.google.com/binary-authorization/)
 //
 // ## Example Usage
 // ### Binary Authorization Attestor Basic
@@ -26,34 +26,31 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/binaryauthorization"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
-//				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
-//					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
-//						HumanReadableName: pulumi.String("Attestor Note"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
-//				AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
-//					NoteReference: note.Name,
-//					PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
-//						&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
-//							AsciiArmoredPgpPublicKey: pulumi.String(fmt.Sprintf(`mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+// 			AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
+// 				NoteReference: note.Name,
+// 				PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
+// 					&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
+// 						AsciiArmoredPgpPublicKey: pulumi.String(fmt.Sprintf(`mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
 // bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
 // oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
 // V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
@@ -69,18 +66,16 @@ import (
 // qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
 // =6Bvm
 // `)),
-//
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Binary Authorization Attestor Kms
 //
@@ -88,94 +83,85 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/binaryauthorization"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
-//				KeyRing: keyring.ID(),
-//				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
-//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
-//					Algorithm: pulumi.String("RSA_SIGN_PKCS1_4096_SHA512"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			version := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: crypto_key.ID(),
-//			}, nil)
-//			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
-//				AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
-//					Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
-//						HumanReadableName: pulumi.String("Attestor Note"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
-//				AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
-//					NoteReference: note.Name,
-//					PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
-//						&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
-//							Id: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//								return version.Id, nil
-//							}).(pulumi.StringOutput),
-//							PkixPublicKey: &binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{
-//								PublicKeyPem: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//									return version.PublicKeys[0].Pem, nil
-//								}).(pulumi.StringOutput),
-//								SignatureAlgorithm: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//									return version.PublicKeys[0].Algorithm, nil
-//								}).(pulumi.StringOutput),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
+// 			KeyRing: keyring.ID(),
+// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+// 				Algorithm: pulumi.String("RSA_SIGN_PKCS1_4096_SHA512"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		version := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+// 			CryptoKey: crypto_key.ID(),
+// 		}, nil)
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+// 			AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
+// 				NoteReference: note.Name,
+// 				PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
+// 					&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
+// 						Id: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (string, error) {
+// 							return version.Id, nil
+// 						}).(pulumi.StringOutput),
+// 						PkixPublicKey: &binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{
+// 							PublicKeyPem: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (string, error) {
+// 								return version.PublicKeys[0].Pem, nil
+// 							}).(pulumi.StringOutput),
+// 							SignatureAlgorithm: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (string, error) {
+// 								return version.PublicKeys[0].Algorithm, nil
+// 							}).(pulumi.StringOutput),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Attestor can be imported using any of these accepted formats
+// Attestor can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}
-//
+//  $ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:binaryauthorization/attestor:Attestor default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
-//
+//  $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
 // ```
 type Attestor struct {
 	pulumi.CustomResourceState
@@ -311,7 +297,7 @@ func (i *Attestor) ToAttestorOutputWithContext(ctx context.Context) AttestorOutp
 // AttestorArrayInput is an input type that accepts AttestorArray and AttestorArrayOutput values.
 // You can construct a concrete instance of `AttestorArrayInput` via:
 //
-//	AttestorArray{ AttestorArgs{...} }
+//          AttestorArray{ AttestorArgs{...} }
 type AttestorArrayInput interface {
 	pulumi.Input
 
@@ -336,7 +322,7 @@ func (i AttestorArray) ToAttestorArrayOutputWithContext(ctx context.Context) Att
 // AttestorMapInput is an input type that accepts AttestorMap and AttestorMapOutput values.
 // You can construct a concrete instance of `AttestorMapInput` via:
 //
-//	AttestorMap{ "key": AttestorArgs{...} }
+//          AttestorMap{ "key": AttestorArgs{...} }
 type AttestorMapInput interface {
 	pulumi.Input
 

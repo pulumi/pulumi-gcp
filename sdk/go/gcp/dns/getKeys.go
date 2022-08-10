@@ -20,34 +20,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := dns.NewManagedZone(ctx, "foo", &dns.ManagedZoneArgs{
-//				DnsName: pulumi.String("foo.bar."),
-//				DnssecConfig: &dns.ManagedZoneDnssecConfigArgs{
-//					State:        pulumi.String("on"),
-//					NonExistence: pulumi.String("nsec3"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			fooDnsKeys := dns.GetKeysOutput(ctx, dns.GetKeysOutputArgs{
-//				ManagedZone: foo.ID(),
-//			}, nil)
-//			ctx.Export("fooDnsDsRecord", fooDnsKeys.ApplyT(func(fooDnsKeys dns.GetKeysResult) (string, error) {
-//				return fooDnsKeys.KeySigningKeys[0].DsRecord, nil
-//			}).(pulumi.StringOutput))
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := dns.NewManagedZone(ctx, "foo", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("foo.bar."),
+// 			DnssecConfig: &dns.ManagedZoneDnssecConfigArgs{
+// 				State:        pulumi.String("on"),
+// 				NonExistence: pulumi.String("nsec3"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooDnsKeys := dns.GetKeysOutput(ctx, dns.GetKeysOutputArgs{
+// 			ManagedZone: foo.ID(),
+// 		}, nil)
+// 		ctx.Export("fooDnsDsRecord", fooDnsKeys.ApplyT(func(fooDnsKeys dns.GetKeysResult) (string, error) {
+// 			return fooDnsKeys.KeySigningKeys[0].DsRecord, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
 // ```
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {
 	var rv GetKeysResult

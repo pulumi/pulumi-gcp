@@ -23,44 +23,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-//				BillingAccount: pulumi.StringRef("00AA00-000AAA-00AA0A"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewBillingAccountBucketConfig(ctx, "basic", &logging.BillingAccountBucketConfigArgs{
-//				BillingAccount: pulumi.String(_default.BillingAccount),
-//				Location:       pulumi.String("global"),
-//				RetentionDays:  pulumi.Int(30),
-//				BucketId:       pulumi.String("_Default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			BillingAccount: pulumi.StringRef("00AA00-000AAA-00AA0A"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewBillingAccountBucketConfig(ctx, "basic", &logging.BillingAccountBucketConfigArgs{
+// 			BillingAccount: pulumi.String(_default.BillingAccount),
+// 			Location:       pulumi.String("global"),
+// 			RetentionDays:  pulumi.Int(30),
+// 			BucketId:       pulumi.String("_Default"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # This resource can be imported using the following format
+// This resource can be imported using the following format
 //
 // ```sh
-//
-//	$ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
-//
+//  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
 // ```
 type BillingAccountBucketConfig struct {
 	pulumi.CustomResourceState
@@ -209,7 +204,7 @@ func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithConte
 // BillingAccountBucketConfigArrayInput is an input type that accepts BillingAccountBucketConfigArray and BillingAccountBucketConfigArrayOutput values.
 // You can construct a concrete instance of `BillingAccountBucketConfigArrayInput` via:
 //
-//	BillingAccountBucketConfigArray{ BillingAccountBucketConfigArgs{...} }
+//          BillingAccountBucketConfigArray{ BillingAccountBucketConfigArgs{...} }
 type BillingAccountBucketConfigArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +229,7 @@ func (i BillingAccountBucketConfigArray) ToBillingAccountBucketConfigArrayOutput
 // BillingAccountBucketConfigMapInput is an input type that accepts BillingAccountBucketConfigMap and BillingAccountBucketConfigMapOutput values.
 // You can construct a concrete instance of `BillingAccountBucketConfigMapInput` via:
 //
-//	BillingAccountBucketConfigMap{ "key": BillingAccountBucketConfigArgs{...} }
+//          BillingAccountBucketConfigMap{ "key": BillingAccountBucketConfigArgs{...} }
 type BillingAccountBucketConfigMapInput interface {
 	pulumi.Input
 

@@ -21,26 +21,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
-//				Description: pulumi.String("Test instance group"),
-//				Zone:        pulumi.String("us-central1-a"),
-//				Network:     pulumi.Any(google_compute_network.Default.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
+// 			Description: pulumi.String("Test instance group"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			Network:     pulumi.Any(google_compute_network.Default.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Example Usage - With instances and named ports
 //
@@ -48,39 +45,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
-//				Description: pulumi.String("Test instance group"),
-//				Instances: pulumi.StringArray{
-//					pulumi.Any(google_compute_instance.Test.Id),
-//					pulumi.Any(google_compute_instance.Test2.Id),
-//				},
-//				NamedPorts: compute.InstanceGroupNamedPortTypeArray{
-//					&compute.InstanceGroupNamedPortTypeArgs{
-//						Name: pulumi.String("http"),
-//						Port: pulumi.Int(8080),
-//					},
-//					&compute.InstanceGroupNamedPortTypeArgs{
-//						Name: pulumi.String("https"),
-//						Port: pulumi.Int(8443),
-//					},
-//				},
-//				Zone: pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
+// 			Description: pulumi.String("Test instance group"),
+// 			Instances: pulumi.StringArray{
+// 				pulumi.Any(google_compute_instance.Test.Id),
+// 				pulumi.Any(google_compute_instance.Test2.Id),
+// 			},
+// 			NamedPorts: compute.InstanceGroupNamedPortTypeArray{
+// 				&compute.InstanceGroupNamedPortTypeArgs{
+// 					Name: pulumi.String("http"),
+// 					Port: pulumi.Int(8080),
+// 				},
+// 				&compute.InstanceGroupNamedPortTypeArgs{
+// 					Name: pulumi.String("https"),
+// 					Port: pulumi.Int(8443),
+// 				},
+// 			},
+// 			Zone: pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -88,21 +82,15 @@ import (
 // Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
-//
+//  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
-//
+//  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
-//
+//  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
 // ```
 type InstanceGroup struct {
 	pulumi.CustomResourceState
@@ -297,7 +285,7 @@ func (i *InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) In
 // InstanceGroupArrayInput is an input type that accepts InstanceGroupArray and InstanceGroupArrayOutput values.
 // You can construct a concrete instance of `InstanceGroupArrayInput` via:
 //
-//	InstanceGroupArray{ InstanceGroupArgs{...} }
+//          InstanceGroupArray{ InstanceGroupArgs{...} }
 type InstanceGroupArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +310,7 @@ func (i InstanceGroupArray) ToInstanceGroupArrayOutputWithContext(ctx context.Co
 // InstanceGroupMapInput is an input type that accepts InstanceGroupMap and InstanceGroupMapOutput values.
 // You can construct a concrete instance of `InstanceGroupMapInput` via:
 //
-//	InstanceGroupMap{ "key": InstanceGroupArgs{...} }
+//          InstanceGroupMap{ "key": InstanceGroupArgs{...} }
 type InstanceGroupMapInput interface {
 	pulumi.Input
 

@@ -20,26 +20,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			policy, err := folder.LookupOrganizationPolicy(ctx, &folder.LookupOrganizationPolicyArgs{
-//				Folder:     "folders/folderid",
-//				Constraint: "constraints/compute.trustedImageProjects",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("version", policy.Version)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		policy, err := folder.LookupOrganizationPolicy(ctx, &folder.LookupOrganizationPolicyArgs{
+// 			Folder:     "folders/folderid",
+// 			Constraint: "constraints/compute.trustedImageProjects",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("version", policy.Version)
+// 		return nil
+// 	})
+// }
 // ```
 func LookupOrganizationPolicy(ctx *pulumi.Context, args *LookupOrganizationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationPolicyResult, error) {
 	var rv LookupOrganizationPolicyResult

@@ -27,41 +27,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/bigtable.user",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigtable.NewTableIamPolicy(ctx, "editor", &bigtable.TableIamPolicyArgs{
-//				Project:    pulumi.String("your-project"),
-//				Instance:   pulumi.String("your-bigtable-instance"),
-//				Table:      pulumi.String("your-bigtable-table"),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/bigtable.user",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigtable.NewTableIamPolicy(ctx, "editor", &bigtable.TableIamPolicyArgs{
+// 			Project:    pulumi.String("your-project"),
+// 			Instance:   pulumi.String("your-bigtable-instance"),
+// 			Table:      pulumi.String("your-bigtable-table"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_bigtable\_table\_iam\_binding
@@ -70,29 +67,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigtable.NewTableIamBinding(ctx, "editor", &bigtable.TableIamBindingArgs{
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Role:  pulumi.String("roles/bigtable.user"),
-//				Table: pulumi.String("your-bigtable-table"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigtable.NewTableIamBinding(ctx, "editor", &bigtable.TableIamBindingArgs{
+// 			Instance: pulumi.String("your-bigtable-instance"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role:  pulumi.String("roles/bigtable.user"),
+// 			Table: pulumi.String("your-bigtable-table"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_bigtable\_table\_iam\_member
@@ -101,27 +95,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigtable.NewTableIamMember(ctx, "editor", &bigtable.TableIamMemberArgs{
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Member:   pulumi.String("user:jane@example.com"),
-//				Role:     pulumi.String("roles/bigtable.user"),
-//				Table:    pulumi.String("your-bigtable-table"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigtable.NewTableIamMember(ctx, "editor", &bigtable.TableIamMemberArgs{
+// 			Instance: pulumi.String("your-bigtable-instance"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 			Role:     pulumi.String("roles/bigtable.user"),
+// 			Table:    pulumi.String("your-bigtable-table"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -129,24 +120,18 @@ import (
 // Table IAM resources can be imported using the project, table name, role and/or member.
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table}"
-//
+//  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table}"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table} roles/editor"
-//
+//  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table} roles/editor"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table} roles/editor user:jane@example.com"
-//
+//  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table} roles/editor user:jane@example.com"
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TableIamPolicy struct {
@@ -285,7 +270,7 @@ func (i *TableIamPolicy) ToTableIamPolicyOutputWithContext(ctx context.Context) 
 // TableIamPolicyArrayInput is an input type that accepts TableIamPolicyArray and TableIamPolicyArrayOutput values.
 // You can construct a concrete instance of `TableIamPolicyArrayInput` via:
 //
-//	TableIamPolicyArray{ TableIamPolicyArgs{...} }
+//          TableIamPolicyArray{ TableIamPolicyArgs{...} }
 type TableIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -310,7 +295,7 @@ func (i TableIamPolicyArray) ToTableIamPolicyArrayOutputWithContext(ctx context.
 // TableIamPolicyMapInput is an input type that accepts TableIamPolicyMap and TableIamPolicyMapOutput values.
 // You can construct a concrete instance of `TableIamPolicyMapInput` via:
 //
-//	TableIamPolicyMap{ "key": TableIamPolicyArgs{...} }
+//          TableIamPolicyMap{ "key": TableIamPolicyArgs{...} }
 type TableIamPolicyMapInput interface {
 	pulumi.Input
 

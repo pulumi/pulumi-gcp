@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
 // * How-to Guides
-//   - [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+//     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
 //
 // ## Example Usage
 // ### Kms Key Ring Basic
@@ -30,46 +30,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRing(ctx, "example-keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := kms.NewKeyRing(ctx, "example-keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # KeyRing can be imported using any of these accepted formats
+// KeyRing can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
-//
+//  $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:kms/keyRing:KeyRing default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
 // ```
 type KeyRing struct {
 	pulumi.CustomResourceState
@@ -190,7 +181,7 @@ func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput 
 // KeyRingArrayInput is an input type that accepts KeyRingArray and KeyRingArrayOutput values.
 // You can construct a concrete instance of `KeyRingArrayInput` via:
 //
-//	KeyRingArray{ KeyRingArgs{...} }
+//          KeyRingArray{ KeyRingArgs{...} }
 type KeyRingArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +206,7 @@ func (i KeyRingArray) ToKeyRingArrayOutputWithContext(ctx context.Context) KeyRi
 // KeyRingMapInput is an input type that accepts KeyRingMap and KeyRingMapOutput values.
 // You can construct a concrete instance of `KeyRingMapInput` via:
 //
-//	KeyRingMap{ "key": KeyRingArgs{...} }
+//          KeyRingMap{ "key": KeyRingArgs{...} }
 type KeyRingMapInput interface {
 	pulumi.Input
 

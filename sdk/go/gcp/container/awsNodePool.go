@@ -22,177 +22,168 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			versions, err := container.GetAwsVersions(ctx, &container.GetAwsVersionsArgs{
-//				Project:  pulumi.StringRef("my-project-name"),
-//				Location: pulumi.StringRef("us-west1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			primaryAwsCluster, err := container.NewAwsCluster(ctx, "primaryAwsCluster", &container.AwsClusterArgs{
-//				Authorization: &container.AwsClusterAuthorizationArgs{
-//					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
-//						&container.AwsClusterAuthorizationAdminUserArgs{
-//							Username: pulumi.String("emailAddress:my@service-account.com"),
-//						},
-//					},
-//				},
-//				AwsRegion: pulumi.String("my-aws-region"),
-//				ControlPlane: &container.AwsClusterControlPlaneArgs{
-//					AwsServicesAuthentication: &container.AwsClusterControlPlaneAwsServicesAuthenticationArgs{
-//						RoleArn:         pulumi.String("arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"),
-//						RoleSessionName: pulumi.String("my--1p-dev-session"),
-//					},
-//					ConfigEncryption: &container.AwsClusterControlPlaneConfigEncryptionArgs{
-//						KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
-//					},
-//					DatabaseEncryption: &container.AwsClusterControlPlaneDatabaseEncryptionArgs{
-//						KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
-//					},
-//					IamInstanceProfile: pulumi.String("my--1p-dev-controlplane"),
-//					SubnetIds: pulumi.StringArray{
-//						pulumi.String("subnet-00000000000000000"),
-//					},
-//					Version:      pulumi.String(versions.ValidVersions[0]),
-//					InstanceType: pulumi.String("t3.medium"),
-//					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
-//						Iops:       pulumi.Int(3000),
-//						KmsKeyArn:  pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
-//						SizeGib:    pulumi.Int(10),
-//						VolumeType: pulumi.String("GP3"),
-//					},
-//					ProxyConfig: &container.AwsClusterControlPlaneProxyConfigArgs{
-//						SecretArn:     pulumi.String("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"),
-//						SecretVersion: pulumi.String("12345678-ABCD-EFGH-IJKL-987654321098"),
-//					},
-//					RootVolume: &container.AwsClusterControlPlaneRootVolumeArgs{
-//						Iops:       pulumi.Int(3000),
-//						KmsKeyArn:  pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
-//						SizeGib:    pulumi.Int(10),
-//						VolumeType: pulumi.String("GP3"),
-//					},
-//					SecurityGroupIds: pulumi.StringArray{
-//						pulumi.String("sg-00000000000000000"),
-//					},
-//					SshConfig: &container.AwsClusterControlPlaneSshConfigArgs{
-//						Ec2KeyPair: pulumi.String("my--1p-dev-ssh"),
-//					},
-//					Tags: pulumi.StringMap{
-//						"owner": pulumi.String("emailAddress:my@service-account.com"),
-//					},
-//				},
-//				Fleet: &container.AwsClusterFleetArgs{
-//					Project: pulumi.String("my-project-number"),
-//				},
-//				Location: pulumi.String("us-west1"),
-//				Networking: &container.AwsClusterNetworkingArgs{
-//					PodAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.2.0.0/16"),
-//					},
-//					ServiceAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("10.1.0.0/16"),
-//					},
-//					VpcId: pulumi.String("vpc-00000000000000000"),
-//				},
-//				Annotations: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Description: pulumi.String("A sample aws cluster"),
-//				Project:     pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = container.NewAwsNodePool(ctx, "primaryAwsNodePool", &container.AwsNodePoolArgs{
-//				Autoscaling: &container.AwsNodePoolAutoscalingArgs{
-//					MaxNodeCount: pulumi.Int(5),
-//					MinNodeCount: pulumi.Int(1),
-//				},
-//				Cluster: primaryAwsCluster.Name,
-//				Config: &container.AwsNodePoolConfigArgs{
-//					ConfigEncryption: &container.AwsNodePoolConfigConfigEncryptionArgs{
-//						KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
-//					},
-//					IamInstanceProfile: pulumi.String("my--1p-dev-nodepool"),
-//					InstanceType:       pulumi.String("t3.medium"),
-//					Labels: pulumi.StringMap{
-//						"label-one": pulumi.String("value-one"),
-//					},
-//					RootVolume: &container.AwsNodePoolConfigRootVolumeArgs{
-//						Iops:       pulumi.Int(3000),
-//						KmsKeyArn:  pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
-//						SizeGib:    pulumi.Int(10),
-//						VolumeType: pulumi.String("GP3"),
-//					},
-//					SecurityGroupIds: pulumi.StringArray{
-//						pulumi.String("sg-00000000000000000"),
-//					},
-//					ProxyConfig: &container.AwsNodePoolConfigProxyConfigArgs{
-//						SecretArn:     pulumi.String("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"),
-//						SecretVersion: pulumi.String("12345678-ABCD-EFGH-IJKL-987654321098"),
-//					},
-//					SshConfig: &container.AwsNodePoolConfigSshConfigArgs{
-//						Ec2KeyPair: pulumi.String("my--1p-dev-ssh"),
-//					},
-//					Tags: pulumi.StringMap{
-//						"tag-one": pulumi.String("value-one"),
-//					},
-//					Taints: container.AwsNodePoolConfigTaintArray{
-//						&container.AwsNodePoolConfigTaintArgs{
-//							Effect: pulumi.String("PREFER_NO_SCHEDULE"),
-//							Key:    pulumi.String("taint-key"),
-//							Value:  pulumi.String("taint-value"),
-//						},
-//					},
-//				},
-//				Location: pulumi.String("us-west1"),
-//				MaxPodsConstraint: &container.AwsNodePoolMaxPodsConstraintArgs{
-//					MaxPodsPerNode: pulumi.Int(110),
-//				},
-//				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  pulumi.String(versions.ValidVersions[0]),
-//				Annotations: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Project: pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		versions, err := container.GetAwsVersions(ctx, &container.GetAwsVersionsArgs{
+// 			Project:  pulumi.StringRef("my-project-name"),
+// 			Location: pulumi.StringRef("us-west1"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		primaryAwsCluster, err := container.NewAwsCluster(ctx, "primaryAwsCluster", &container.AwsClusterArgs{
+// 			Authorization: &container.AwsClusterAuthorizationArgs{
+// 				AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
+// 					&container.AwsClusterAuthorizationAdminUserArgs{
+// 						Username: pulumi.String("emailAddress:my@service-account.com"),
+// 					},
+// 				},
+// 			},
+// 			AwsRegion: pulumi.String("my-aws-region"),
+// 			ControlPlane: &container.AwsClusterControlPlaneArgs{
+// 				AwsServicesAuthentication: &container.AwsClusterControlPlaneAwsServicesAuthenticationArgs{
+// 					RoleArn:         pulumi.String("arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"),
+// 					RoleSessionName: pulumi.String("my--1p-dev-session"),
+// 				},
+// 				ConfigEncryption: &container.AwsClusterControlPlaneConfigEncryptionArgs{
+// 					KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
+// 				},
+// 				DatabaseEncryption: &container.AwsClusterControlPlaneDatabaseEncryptionArgs{
+// 					KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
+// 				},
+// 				IamInstanceProfile: pulumi.String("my--1p-dev-controlplane"),
+// 				SubnetIds: pulumi.StringArray{
+// 					pulumi.String("subnet-00000000000000000"),
+// 				},
+// 				Version:      pulumi.String(versions.ValidVersions[0]),
+// 				InstanceType: pulumi.String("t3.medium"),
+// 				MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
+// 					Iops:       pulumi.Int(3000),
+// 					KmsKeyArn:  pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
+// 					SizeGib:    pulumi.Int(10),
+// 					VolumeType: pulumi.String("GP3"),
+// 				},
+// 				ProxyConfig: &container.AwsClusterControlPlaneProxyConfigArgs{
+// 					SecretArn:     pulumi.String("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"),
+// 					SecretVersion: pulumi.String("12345678-ABCD-EFGH-IJKL-987654321098"),
+// 				},
+// 				RootVolume: &container.AwsClusterControlPlaneRootVolumeArgs{
+// 					Iops:       pulumi.Int(3000),
+// 					KmsKeyArn:  pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
+// 					SizeGib:    pulumi.Int(10),
+// 					VolumeType: pulumi.String("GP3"),
+// 				},
+// 				SecurityGroupIds: pulumi.StringArray{
+// 					pulumi.String("sg-00000000000000000"),
+// 				},
+// 				SshConfig: &container.AwsClusterControlPlaneSshConfigArgs{
+// 					Ec2KeyPair: pulumi.String("my--1p-dev-ssh"),
+// 				},
+// 				Tags: pulumi.StringMap{
+// 					"owner": pulumi.String("emailAddress:my@service-account.com"),
+// 				},
+// 			},
+// 			Fleet: &container.AwsClusterFleetArgs{
+// 				Project: pulumi.String("my-project-number"),
+// 			},
+// 			Location: pulumi.String("us-west1"),
+// 			Networking: &container.AwsClusterNetworkingArgs{
+// 				PodAddressCidrBlocks: pulumi.StringArray{
+// 					pulumi.String("10.2.0.0/16"),
+// 				},
+// 				ServiceAddressCidrBlocks: pulumi.StringArray{
+// 					pulumi.String("10.1.0.0/16"),
+// 				},
+// 				VpcId: pulumi.String("vpc-00000000000000000"),
+// 			},
+// 			Annotations: pulumi.StringMap{
+// 				"label-one": pulumi.String("value-one"),
+// 			},
+// 			Description: pulumi.String("A sample aws cluster"),
+// 			Project:     pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = container.NewAwsNodePool(ctx, "primaryAwsNodePool", &container.AwsNodePoolArgs{
+// 			Autoscaling: &container.AwsNodePoolAutoscalingArgs{
+// 				MaxNodeCount: pulumi.Int(5),
+// 				MinNodeCount: pulumi.Int(1),
+// 			},
+// 			Cluster: primaryAwsCluster.Name,
+// 			Config: &container.AwsNodePoolConfigArgs{
+// 				ConfigEncryption: &container.AwsNodePoolConfigConfigEncryptionArgs{
+// 					KmsKeyArn: pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
+// 				},
+// 				IamInstanceProfile: pulumi.String("my--1p-dev-nodepool"),
+// 				InstanceType:       pulumi.String("t3.medium"),
+// 				Labels: pulumi.StringMap{
+// 					"label-one": pulumi.String("value-one"),
+// 				},
+// 				RootVolume: &container.AwsNodePoolConfigRootVolumeArgs{
+// 					Iops:       pulumi.Int(3000),
+// 					KmsKeyArn:  pulumi.String("arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"),
+// 					SizeGib:    pulumi.Int(10),
+// 					VolumeType: pulumi.String("GP3"),
+// 				},
+// 				SecurityGroupIds: pulumi.StringArray{
+// 					pulumi.String("sg-00000000000000000"),
+// 				},
+// 				ProxyConfig: &container.AwsNodePoolConfigProxyConfigArgs{
+// 					SecretArn:     pulumi.String("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"),
+// 					SecretVersion: pulumi.String("12345678-ABCD-EFGH-IJKL-987654321098"),
+// 				},
+// 				SshConfig: &container.AwsNodePoolConfigSshConfigArgs{
+// 					Ec2KeyPair: pulumi.String("my--1p-dev-ssh"),
+// 				},
+// 				Tags: pulumi.StringMap{
+// 					"tag-one": pulumi.String("value-one"),
+// 				},
+// 				Taints: container.AwsNodePoolConfigTaintArray{
+// 					&container.AwsNodePoolConfigTaintArgs{
+// 						Effect: pulumi.String("PREFER_NO_SCHEDULE"),
+// 						Key:    pulumi.String("taint-key"),
+// 						Value:  pulumi.String("taint-value"),
+// 					},
+// 				},
+// 			},
+// 			Location: pulumi.String("us-west1"),
+// 			MaxPodsConstraint: &container.AwsNodePoolMaxPodsConstraintArgs{
+// 				MaxPodsPerNode: pulumi.Int(110),
+// 			},
+// 			SubnetId: pulumi.String("subnet-00000000000000000"),
+// 			Version:  pulumi.String(versions.ValidVersions[0]),
+// 			Annotations: pulumi.StringMap{
+// 				"label-one": pulumi.String("value-one"),
+// 			},
+// 			Project: pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # NodePool can be imported using any of these accepted formats
+// NodePool can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:container/awsNodePool:AwsNodePool default projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}
-//
+//  $ pulumi import gcp:container/awsNodePool:AwsNodePool default projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:container/awsNodePool:AwsNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
-//
+//  $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:container/awsNodePool:AwsNodePool default {{location}}/{{cluster}}/{{name}}
-//
+//  $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{location}}/{{cluster}}/{{name}}
 // ```
 type AwsNodePool struct {
 	pulumi.CustomResourceState
@@ -433,7 +424,7 @@ func (i *AwsNodePool) ToAwsNodePoolOutputWithContext(ctx context.Context) AwsNod
 // AwsNodePoolArrayInput is an input type that accepts AwsNodePoolArray and AwsNodePoolArrayOutput values.
 // You can construct a concrete instance of `AwsNodePoolArrayInput` via:
 //
-//	AwsNodePoolArray{ AwsNodePoolArgs{...} }
+//          AwsNodePoolArray{ AwsNodePoolArgs{...} }
 type AwsNodePoolArrayInput interface {
 	pulumi.Input
 
@@ -458,7 +449,7 @@ func (i AwsNodePoolArray) ToAwsNodePoolArrayOutputWithContext(ctx context.Contex
 // AwsNodePoolMapInput is an input type that accepts AwsNodePoolMap and AwsNodePoolMapOutput values.
 // You can construct a concrete instance of `AwsNodePoolMapInput` via:
 //
-//	AwsNodePoolMap{ "key": AwsNodePoolArgs{...} }
+//          AwsNodePoolMap{ "key": AwsNodePoolArgs{...} }
 type AwsNodePoolMapInput interface {
 	pulumi.Input
 

@@ -14,7 +14,7 @@ import (
 // Manages a organization-level logging sink. For more information see:
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
 // * How-to Guides
-//   - [Exporting Logs](https://cloud.google.com/logging/docs/export)
+//     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 //
 // ## Example Usage
 //
@@ -22,57 +22,52 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewOrganizationSink(ctx, "my-sink", &logging.OrganizationSinkArgs{
-//				Description: pulumi.String("some explanation on what this is"),
-//				OrgId:       pulumi.String("123456789"),
-//				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("storage.googleapis.com/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Filter: pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "log-writer", &projects.IAMMemberArgs{
-//				Project: pulumi.String("your-project-id"),
-//				Role:    pulumi.String("roles/storage.objectCreator"),
-//				Member:  my_sink.WriterIdentity,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewOrganizationSink(ctx, "my-sink", &logging.OrganizationSinkArgs{
+// 			Description: pulumi.String("some explanation on what this is"),
+// 			OrgId:       pulumi.String("123456789"),
+// 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("storage.googleapis.com/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Filter: pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMMember(ctx, "log-writer", &projects.IAMMemberArgs{
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/storage.objectCreator"),
+// 			Member:  my_sink.WriterIdentity,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Organization-level logging sinks can be imported using this format
+// Organization-level logging sinks can be imported using this format
 //
 // ```sh
-//
-//	$ pulumi import gcp:logging/organizationSink:OrganizationSink my_sink organizations/{{organization_id}}/sinks/{{sink_id}}
-//
+//  $ pulumi import gcp:logging/organizationSink:OrganizationSink my_sink organizations/{{organization_id}}/sinks/{{sink_id}}
 // ```
 type OrganizationSink struct {
 	pulumi.CustomResourceState
@@ -340,7 +335,7 @@ func (i *OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Conte
 // OrganizationSinkArrayInput is an input type that accepts OrganizationSinkArray and OrganizationSinkArrayOutput values.
 // You can construct a concrete instance of `OrganizationSinkArrayInput` via:
 //
-//	OrganizationSinkArray{ OrganizationSinkArgs{...} }
+//          OrganizationSinkArray{ OrganizationSinkArgs{...} }
 type OrganizationSinkArrayInput interface {
 	pulumi.Input
 
@@ -365,7 +360,7 @@ func (i OrganizationSinkArray) ToOrganizationSinkArrayOutputWithContext(ctx cont
 // OrganizationSinkMapInput is an input type that accepts OrganizationSinkMap and OrganizationSinkMapOutput values.
 // You can construct a concrete instance of `OrganizationSinkMapInput` via:
 //
-//	OrganizationSinkMap{ "key": OrganizationSinkArgs{...} }
+//          OrganizationSinkMap{ "key": OrganizationSinkArgs{...} }
 type OrganizationSinkMapInput interface {
 	pulumi.Input
 
@@ -417,17 +412,14 @@ func (o OrganizationSinkOutput) Description() pulumi.StringPtrOutput {
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
 // ```
 // The writer associated with the sink must have access to write to the above resource.
 func (o OrganizationSinkOutput) Destination() pulumi.StringOutput {

@@ -24,49 +24,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
-//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
-//				Host:            pulumi.String("10.20.30.40"),
-//				Port:            pulumi.Int(3306),
-//				Region:          pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
+// 			DatabaseVersion: pulumi.String("MYSQL_8_0"),
+// 			Host:            pulumi.String("10.20.30.40"),
+// 			Port:            pulumi.Int(3306),
+// 			Region:          pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # SourceRepresentationInstance can be imported using any of these accepted formats
+// SourceRepresentationInstance can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
-//
+//  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
-//
+//  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
 // ```
 type SourceRepresentationInstance struct {
 	pulumi.CustomResourceState
@@ -230,7 +221,7 @@ func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithC
 // SourceRepresentationInstanceArrayInput is an input type that accepts SourceRepresentationInstanceArray and SourceRepresentationInstanceArrayOutput values.
 // You can construct a concrete instance of `SourceRepresentationInstanceArrayInput` via:
 //
-//	SourceRepresentationInstanceArray{ SourceRepresentationInstanceArgs{...} }
+//          SourceRepresentationInstanceArray{ SourceRepresentationInstanceArgs{...} }
 type SourceRepresentationInstanceArrayInput interface {
 	pulumi.Input
 
@@ -255,7 +246,7 @@ func (i SourceRepresentationInstanceArray) ToSourceRepresentationInstanceArrayOu
 // SourceRepresentationInstanceMapInput is an input type that accepts SourceRepresentationInstanceMap and SourceRepresentationInstanceMapOutput values.
 // You can construct a concrete instance of `SourceRepresentationInstanceMapInput` via:
 //
-//	SourceRepresentationInstanceMap{ "key": SourceRepresentationInstanceArgs{...} }
+//          SourceRepresentationInstanceMap{ "key": SourceRepresentationInstanceArgs{...} }
 type SourceRepresentationInstanceMapInput interface {
 	pulumi.Input
 

@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
 // * How-to Guides
-//   - [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+//     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 //
 // ## Example Usage
 // ### Apigee Endpoint Attachment Basic
@@ -26,83 +26,76 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					apigeeRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
-//				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigee.NewEndpointAttachment(ctx, "apigeeEndpointAttachment", &apigee.EndpointAttachmentArgs{
-//				OrgId:                apigeeOrg.ID(),
-//				EndpointAttachmentId: pulumi.String("test1"),
-//				Location:             pulumi.String("{google_compute_service_attachment location}"),
-//				ServiceAttachment:    pulumi.String("{google_compute_service_attachment id}"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := organizations.GetClientConfig(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      apigeeNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+// 			Network: apigeeNetwork.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				apigeeRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+// 			AnalyticsRegion:   pulumi.String("us-central1"),
+// 			ProjectId:         pulumi.String(current.Project),
+// 			AuthorizedNetwork: apigeeNetwork.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			apigeeVpcConnection,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigee.NewEndpointAttachment(ctx, "apigeeEndpointAttachment", &apigee.EndpointAttachmentArgs{
+// 			OrgId:                apigeeOrg.ID(),
+// 			EndpointAttachmentId: pulumi.String("test1"),
+// 			Location:             pulumi.String("{google_compute_service_attachment location}"),
+// 			ServiceAttachment:    pulumi.String("{google_compute_service_attachment id}"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # EndpointAttachment can be imported using any of these accepted formats
+// EndpointAttachment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/endpointAttachments/{{endpoint_attachment_id}}
-//
+//  $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/endpointAttachments/{{endpoint_attachment_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/{{endpoint_attachment_id}}
-//
+//  $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/{{endpoint_attachment_id}}
 // ```
 type EndpointAttachment struct {
 	pulumi.CustomResourceState
@@ -252,7 +245,7 @@ func (i *EndpointAttachment) ToEndpointAttachmentOutputWithContext(ctx context.C
 // EndpointAttachmentArrayInput is an input type that accepts EndpointAttachmentArray and EndpointAttachmentArrayOutput values.
 // You can construct a concrete instance of `EndpointAttachmentArrayInput` via:
 //
-//	EndpointAttachmentArray{ EndpointAttachmentArgs{...} }
+//          EndpointAttachmentArray{ EndpointAttachmentArgs{...} }
 type EndpointAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +270,7 @@ func (i EndpointAttachmentArray) ToEndpointAttachmentArrayOutputWithContext(ctx 
 // EndpointAttachmentMapInput is an input type that accepts EndpointAttachmentMap and EndpointAttachmentMapOutput values.
 // You can construct a concrete instance of `EndpointAttachmentMapInput` via:
 //
-//	EndpointAttachmentMap{ "key": EndpointAttachmentArgs{...} }
+//          EndpointAttachmentMap{ "key": EndpointAttachmentArgs{...} }
 type EndpointAttachmentMapInput interface {
 	pulumi.Input
 

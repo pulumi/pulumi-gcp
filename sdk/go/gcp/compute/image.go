@@ -31,7 +31,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/images)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/images)
 //
 // ## Example Usage
 // ### Image Basic
@@ -40,26 +40,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
-//				RawDisk: &compute.ImageRawDiskArgs{
-//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+// 			RawDisk: &compute.ImageRawDiskArgs{
+// 				Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Image Guest Os
 //
@@ -67,56 +64,47 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
-//				GuestOsFeatures: compute.ImageGuestOsFeatureArray{
-//					&compute.ImageGuestOsFeatureArgs{
-//						Type: pulumi.String("SECURE_BOOT"),
-//					},
-//					&compute.ImageGuestOsFeatureArgs{
-//						Type: pulumi.String("MULTI_IP_SUBNET"),
-//					},
-//				},
-//				RawDisk: &compute.ImageRawDiskArgs{
-//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+// 			GuestOsFeatures: compute.ImageGuestOsFeatureArray{
+// 				&compute.ImageGuestOsFeatureArgs{
+// 					Type: pulumi.String("SECURE_BOOT"),
+// 				},
+// 				&compute.ImageGuestOsFeatureArgs{
+// 					Type: pulumi.String("MULTI_IP_SUBNET"),
+// 				},
+// 			},
+// 			RawDisk: &compute.ImageRawDiskArgs{
+// 				Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Image can be imported using any of these accepted formats
+// Image can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
-//
+//  $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/image:Image default {{name}}
-//
+//  $ pulumi import gcp:compute/image:Image default {{name}}
 // ```
 type Image struct {
 	pulumi.CustomResourceState
@@ -478,7 +466,7 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
-//	ImageArray{ ImageArgs{...} }
+//          ImageArray{ ImageArgs{...} }
 type ImageArrayInput interface {
 	pulumi.Input
 
@@ -503,7 +491,7 @@ func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArra
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
 // You can construct a concrete instance of `ImageMapInput` via:
 //
-//	ImageMap{ "key": ImageArgs{...} }
+//          ImageMap{ "key": ImageArgs{...} }
 type ImageMapInput interface {
 	pulumi.Input
 

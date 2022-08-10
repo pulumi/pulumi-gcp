@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
 // * How-to Guides
-//   - [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+//     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 //
 // ## Example Usage
 // ### Apigee Organization Cloud Basic
@@ -26,58 +26,55 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					apigeeRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
-//				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := organizations.GetClientConfig(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      apigeeNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+// 			Network: apigeeNetwork.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				apigeeRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+// 			AnalyticsRegion:   pulumi.String("us-central1"),
+// 			ProjectId:         pulumi.String(current.Project),
+// 			AuthorizedNetwork: apigeeNetwork.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			apigeeVpcConnection,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Apigee Organization Cloud Full
 //
@@ -85,113 +82,106 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					apigeeRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
-//				KeyRing: apigeeKeyring.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
-//				Project: pulumi.Any(google_project.Project.Project_id),
-//				Service: pulumi.Any(google_project_service.Apigee.Service),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: apigeeKey.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					apigeeSa.Email.ApplyT(func(email string) (string, error) {
-//						return fmt.Sprintf("serviceAccount:%v", email), nil
-//					}).(pulumi.StringOutput),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
-//				AnalyticsRegion:                  pulumi.String("us-central1"),
-//				DisplayName:                      pulumi.String("apigee-org"),
-//				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
-//				ProjectId:                        pulumi.String(current.Project),
-//				AuthorizedNetwork:                apigeeNetwork.ID(),
-//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//				apigeeSaKeyuser,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := organizations.GetClientConfig(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      apigeeNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+// 			Network: apigeeNetwork.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				apigeeRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+// 			KeyRing: apigeeKeyring.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
+// 			Project: pulumi.Any(google_project.Project.Project_id),
+// 			Service: pulumi.Any(google_project_service.Apigee.Service),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+// 			CryptoKeyId: apigeeKey.ID(),
+// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+// 			Members: pulumi.StringArray{
+// 				apigeeSa.Email.ApplyT(func(email string) (string, error) {
+// 					return fmt.Sprintf("serviceAccount:%v", email), nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+// 			AnalyticsRegion:                  pulumi.String("us-central1"),
+// 			DisplayName:                      pulumi.String("apigee-org"),
+// 			Description:                      pulumi.String("Auto-provisioned Apigee Org."),
+// 			ProjectId:                        pulumi.String(current.Project),
+// 			AuthorizedNetwork:                apigeeNetwork.ID(),
+// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			apigeeVpcConnection,
+// 			apigeeSaKeyuser,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Organization can be imported using any of these accepted formats
+// Organization can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
-//
+//  $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/organization:Organization default {{name}}
-//
+//  $ pulumi import gcp:apigee/organization:Organization default {{name}}
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
@@ -411,7 +401,7 @@ func (i *Organization) ToOrganizationOutputWithContext(ctx context.Context) Orga
 // OrganizationArrayInput is an input type that accepts OrganizationArray and OrganizationArrayOutput values.
 // You can construct a concrete instance of `OrganizationArrayInput` via:
 //
-//	OrganizationArray{ OrganizationArgs{...} }
+//          OrganizationArray{ OrganizationArgs{...} }
 type OrganizationArrayInput interface {
 	pulumi.Input
 
@@ -436,7 +426,7 @@ func (i OrganizationArray) ToOrganizationArrayOutputWithContext(ctx context.Cont
 // OrganizationMapInput is an input type that accepts OrganizationMap and OrganizationMapOutput values.
 // You can construct a concrete instance of `OrganizationMapInput` via:
 //
-//	OrganizationMap{ "key": OrganizationArgs{...} }
+//          OrganizationMap{ "key": OrganizationArgs{...} }
 type OrganizationMapInput interface {
 	pulumi.Input
 

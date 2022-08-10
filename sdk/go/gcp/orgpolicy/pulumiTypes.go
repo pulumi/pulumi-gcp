@@ -28,7 +28,7 @@ type PolicySpec struct {
 // PolicySpecInput is an input type that accepts PolicySpecArgs and PolicySpecOutput values.
 // You can construct a concrete instance of `PolicySpecInput` via:
 //
-//	PolicySpecArgs{...}
+//          PolicySpecArgs{...}
 type PolicySpecInput interface {
 	pulumi.Input
 
@@ -74,11 +74,11 @@ func (i PolicySpecArgs) ToPolicySpecPtrOutputWithContext(ctx context.Context) Po
 // PolicySpecPtrInput is an input type that accepts PolicySpecArgs, PolicySpecPtr and PolicySpecPtrOutput values.
 // You can construct a concrete instance of `PolicySpecPtrInput` via:
 //
-//	        PolicySpecArgs{...}
+//          PolicySpecArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PolicySpecPtrInput interface {
 	pulumi.Input
 
@@ -247,7 +247,7 @@ type PolicySpecRule struct {
 // PolicySpecRuleInput is an input type that accepts PolicySpecRuleArgs and PolicySpecRuleOutput values.
 // You can construct a concrete instance of `PolicySpecRuleInput` via:
 //
-//	PolicySpecRuleArgs{...}
+//          PolicySpecRuleArgs{...}
 type PolicySpecRuleInput interface {
 	pulumi.Input
 
@@ -283,7 +283,7 @@ func (i PolicySpecRuleArgs) ToPolicySpecRuleOutputWithContext(ctx context.Contex
 // PolicySpecRuleArrayInput is an input type that accepts PolicySpecRuleArray and PolicySpecRuleArrayOutput values.
 // You can construct a concrete instance of `PolicySpecRuleArrayInput` via:
 //
-//	PolicySpecRuleArray{ PolicySpecRuleArgs{...} }
+//          PolicySpecRuleArray{ PolicySpecRuleArgs{...} }
 type PolicySpecRuleArrayInput interface {
 	pulumi.Input
 
@@ -378,7 +378,7 @@ type PolicySpecRuleCondition struct {
 // PolicySpecRuleConditionInput is an input type that accepts PolicySpecRuleConditionArgs and PolicySpecRuleConditionOutput values.
 // You can construct a concrete instance of `PolicySpecRuleConditionInput` via:
 //
-//	PolicySpecRuleConditionArgs{...}
+//          PolicySpecRuleConditionArgs{...}
 type PolicySpecRuleConditionInput interface {
 	pulumi.Input
 
@@ -420,11 +420,11 @@ func (i PolicySpecRuleConditionArgs) ToPolicySpecRuleConditionPtrOutputWithConte
 // PolicySpecRuleConditionPtrInput is an input type that accepts PolicySpecRuleConditionArgs, PolicySpecRuleConditionPtr and PolicySpecRuleConditionPtrOutput values.
 // You can construct a concrete instance of `PolicySpecRuleConditionPtrInput` via:
 //
-//	        PolicySpecRuleConditionArgs{...}
+//          PolicySpecRuleConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PolicySpecRuleConditionPtrInput interface {
 	pulumi.Input
 
@@ -568,7 +568,7 @@ type PolicySpecRuleValues struct {
 // PolicySpecRuleValuesInput is an input type that accepts PolicySpecRuleValuesArgs and PolicySpecRuleValuesOutput values.
 // You can construct a concrete instance of `PolicySpecRuleValuesInput` via:
 //
-//	PolicySpecRuleValuesArgs{...}
+//          PolicySpecRuleValuesArgs{...}
 type PolicySpecRuleValuesInput interface {
 	pulumi.Input
 
@@ -606,11 +606,11 @@ func (i PolicySpecRuleValuesArgs) ToPolicySpecRuleValuesPtrOutputWithContext(ctx
 // PolicySpecRuleValuesPtrInput is an input type that accepts PolicySpecRuleValuesArgs, PolicySpecRuleValuesPtr and PolicySpecRuleValuesPtrOutput values.
 // You can construct a concrete instance of `PolicySpecRuleValuesPtrInput` via:
 //
-//	        PolicySpecRuleValuesArgs{...}
+//          PolicySpecRuleValuesArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PolicySpecRuleValuesPtrInput interface {
 	pulumi.Input
 

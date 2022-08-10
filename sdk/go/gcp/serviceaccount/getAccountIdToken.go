@@ -18,15 +18,13 @@ import (
 // ## Example Usage
 //
 // ### ServiceAccount JSON Credential File.
-//
-//	`serviceAccount.getAccountIdToken` will use the configured provider credentials
+//   `serviceAccount.getAccountIdToken` will use the configured provider credentials
 //
 // ### Service Account Impersonation.
+//   `serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceAccount.getAccountAccessToken`.
 //
-//	`serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceAccount.getAccountAccessToken`.
-//
-//	Note: to use the following, you must grant `targetServiceAccount` the
-//	`roles/iam.serviceAccountTokenCreator` role on itself.
+//   Note: to use the following, you must grant `targetServiceAccount` the
+//   `roles/iam.serviceAccountTokenCreator` role on itself.
 func GetAccountIdToken(ctx *pulumi.Context, args *GetAccountIdTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountIdTokenResult, error) {
 	var rv GetAccountIdTokenResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", args, &rv, opts...)

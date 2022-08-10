@@ -21,7 +21,7 @@ type ConnectorSubnet struct {
 // ConnectorSubnetInput is an input type that accepts ConnectorSubnetArgs and ConnectorSubnetOutput values.
 // You can construct a concrete instance of `ConnectorSubnetInput` via:
 //
-//	ConnectorSubnetArgs{...}
+//          ConnectorSubnetArgs{...}
 type ConnectorSubnetInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i ConnectorSubnetArgs) ToConnectorSubnetPtrOutputWithContext(ctx context.C
 // ConnectorSubnetPtrInput is an input type that accepts ConnectorSubnetArgs, ConnectorSubnetPtr and ConnectorSubnetPtrOutput values.
 // You can construct a concrete instance of `ConnectorSubnetPtrInput` via:
 //
-//	        ConnectorSubnetArgs{...}
+//          ConnectorSubnetArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type ConnectorSubnetPtrInput interface {
 	pulumi.Input
 

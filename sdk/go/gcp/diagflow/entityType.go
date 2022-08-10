@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+//     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
 // ### Dialogflow Entity Type Basic
@@ -26,61 +26,56 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
-//				DisplayName:         pulumi.String("example_agent"),
-//				DefaultLanguageCode: pulumi.String("en"),
-//				TimeZone:            pulumi.String("America/New_York"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = diagflow.NewEntityType(ctx, "basicEntityType", &diagflow.EntityTypeArgs{
-//				DisplayName: pulumi.String(""),
-//				Kind:        pulumi.String("KIND_MAP"),
-//				Entities: diagflow.EntityTypeEntityArray{
-//					&diagflow.EntityTypeEntityArgs{
-//						Value: pulumi.String("value1"),
-//						Synonyms: pulumi.StringArray{
-//							pulumi.String("synonym1"),
-//							pulumi.String("synonym2"),
-//						},
-//					},
-//					&diagflow.EntityTypeEntityArgs{
-//						Value: pulumi.String("value2"),
-//						Synonyms: pulumi.StringArray{
-//							pulumi.String("synonym3"),
-//							pulumi.String("synonym4"),
-//						},
-//					},
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				basicAgent,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+// 			DisplayName:         pulumi.String("example_agent"),
+// 			DefaultLanguageCode: pulumi.String("en"),
+// 			TimeZone:            pulumi.String("America/New_York"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = diagflow.NewEntityType(ctx, "basicEntityType", &diagflow.EntityTypeArgs{
+// 			DisplayName: pulumi.String(""),
+// 			Kind:        pulumi.String("KIND_MAP"),
+// 			Entities: diagflow.EntityTypeEntityArray{
+// 				&diagflow.EntityTypeEntityArgs{
+// 					Value: pulumi.String("value1"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym1"),
+// 						pulumi.String("synonym2"),
+// 					},
+// 				},
+// 				&diagflow.EntityTypeEntityArgs{
+// 					Value: pulumi.String("value2"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym3"),
+// 						pulumi.String("synonym4"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			basicAgent,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # EntityType can be imported using any of these accepted formats
+// EntityType can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
-//
+//  $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
 // ```
 type EntityType struct {
 	pulumi.CustomResourceState
@@ -255,7 +250,7 @@ func (i *EntityType) ToEntityTypeOutputWithContext(ctx context.Context) EntityTy
 // EntityTypeArrayInput is an input type that accepts EntityTypeArray and EntityTypeArrayOutput values.
 // You can construct a concrete instance of `EntityTypeArrayInput` via:
 //
-//	EntityTypeArray{ EntityTypeArgs{...} }
+//          EntityTypeArray{ EntityTypeArgs{...} }
 type EntityTypeArrayInput interface {
 	pulumi.Input
 
@@ -280,7 +275,7 @@ func (i EntityTypeArray) ToEntityTypeArrayOutputWithContext(ctx context.Context)
 // EntityTypeMapInput is an input type that accepts EntityTypeMap and EntityTypeMapOutput values.
 // You can construct a concrete instance of `EntityTypeMapInput` via:
 //
-//	EntityTypeMap{ "key": EntityTypeArgs{...} }
+//          EntityTypeMap{ "key": EntityTypeArgs{...} }
 type EntityTypeMapInput interface {
 	pulumi.Input
 
@@ -333,11 +328,11 @@ func (o EntityTypeOutput) Entities() EntityTypeEntityArrayOutput {
 }
 
 // Indicates the kind of entity type.
-//   - KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
-//   - KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-//     types can contain references to other entity types (with or without aliases).
-//   - KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-//     Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
+// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
+//   types can contain references to other entity types (with or without aliases).
+// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 func (o EntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

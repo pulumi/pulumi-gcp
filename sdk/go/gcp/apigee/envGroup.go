@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.envgroups/create)
 // * How-to Guides
-//   - [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+//     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 //
 // ## Example Usage
 // ### Apigee Environment Group Basic
@@ -26,83 +26,76 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					apigeeRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
-//				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigee.NewEnvGroup(ctx, "envGrp", &apigee.EnvGroupArgs{
-//				Hostnames: pulumi.StringArray{
-//					pulumi.String("abc.foo.com"),
-//				},
-//				OrgId: apigeeOrg.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := organizations.GetClientConfig(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      apigeeNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+// 			Network: apigeeNetwork.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				apigeeRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+// 			AnalyticsRegion:   pulumi.String("us-central1"),
+// 			ProjectId:         pulumi.String(current.Project),
+// 			AuthorizedNetwork: apigeeNetwork.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			apigeeVpcConnection,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigee.NewEnvGroup(ctx, "envGrp", &apigee.EnvGroupArgs{
+// 			Hostnames: pulumi.StringArray{
+// 				pulumi.String("abc.foo.com"),
+// 			},
+// 			OrgId: apigeeOrg.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Envgroup can be imported using any of these accepted formats
+// Envgroup can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/envgroups/{{name}}
-//
+//  $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/envgroups/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/{{name}}
-//
+//  $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/{{name}}
 // ```
 type EnvGroup struct {
 	pulumi.CustomResourceState
@@ -218,7 +211,7 @@ func (i *EnvGroup) ToEnvGroupOutputWithContext(ctx context.Context) EnvGroupOutp
 // EnvGroupArrayInput is an input type that accepts EnvGroupArray and EnvGroupArrayOutput values.
 // You can construct a concrete instance of `EnvGroupArrayInput` via:
 //
-//	EnvGroupArray{ EnvGroupArgs{...} }
+//          EnvGroupArray{ EnvGroupArgs{...} }
 type EnvGroupArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +236,7 @@ func (i EnvGroupArray) ToEnvGroupArrayOutputWithContext(ctx context.Context) Env
 // EnvGroupMapInput is an input type that accepts EnvGroupMap and EnvGroupMapOutput values.
 // You can construct a concrete instance of `EnvGroupMapInput` via:
 //
-//	EnvGroupMap{ "key": EnvGroupArgs{...} }
+//          EnvGroupMap{ "key": EnvGroupArgs{...} }
 type EnvGroupMapInput interface {
 	pulumi.Input
 

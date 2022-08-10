@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations.processors)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
+//     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 //
 // ## Example Usage
 // ### Documentai Processor
@@ -26,48 +26,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processor", &essentialcontacts.DocumentAiProcessorArgs{
-//				DisplayName: pulumi.String("test-processor"),
-//				Location:    pulumi.String("us"),
-//				Type:        pulumi.String("OCR_PROCESSOR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processor", &essentialcontacts.DocumentAiProcessorArgs{
+// 			DisplayName: pulumi.String("test-processor"),
+// 			Location:    pulumi.String("us"),
+// 			Type:        pulumi.String("OCR_PROCESSOR"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Processor can be imported using any of these accepted formats
+// Processor can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default projects/{{project}}/locations/{{location}}/processors/{{name}}
-//
+//  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default projects/{{project}}/locations/{{location}}/processors/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
 // ```
 type DocumentAiProcessor struct {
 	pulumi.CustomResourceState
@@ -215,7 +206,7 @@ func (i *DocumentAiProcessor) ToDocumentAiProcessorOutputWithContext(ctx context
 // DocumentAiProcessorArrayInput is an input type that accepts DocumentAiProcessorArray and DocumentAiProcessorArrayOutput values.
 // You can construct a concrete instance of `DocumentAiProcessorArrayInput` via:
 //
-//	DocumentAiProcessorArray{ DocumentAiProcessorArgs{...} }
+//          DocumentAiProcessorArray{ DocumentAiProcessorArgs{...} }
 type DocumentAiProcessorArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +231,7 @@ func (i DocumentAiProcessorArray) ToDocumentAiProcessorArrayOutputWithContext(ct
 // DocumentAiProcessorMapInput is an input type that accepts DocumentAiProcessorMap and DocumentAiProcessorMapOutput values.
 // You can construct a concrete instance of `DocumentAiProcessorMapInput` via:
 //
-//	DocumentAiProcessorMap{ "key": DocumentAiProcessorArgs{...} }
+//          DocumentAiProcessorMap{ "key": DocumentAiProcessorArgs{...} }
 type DocumentAiProcessorMapInput interface {
 	pulumi.Input
 

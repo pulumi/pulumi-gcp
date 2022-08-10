@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+//     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
 // ### Notebook Environment Basic
@@ -26,49 +26,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewEnvironment(ctx, "environment", &notebooks.EnvironmentArgs{
-//				ContainerImage: &notebooks.EnvironmentContainerImageArgs{
-//					Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
-//				},
-//				Location: pulumi.String("us-west1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewEnvironment(ctx, "environment", &notebooks.EnvironmentArgs{
+// 			ContainerImage: &notebooks.EnvironmentContainerImageArgs{
+// 				Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+// 			},
+// 			Location: pulumi.String("us-west1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Environment can be imported using any of these accepted formats
+// Environment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
-//
+//  $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
 // ```
 type Environment struct {
 	pulumi.CustomResourceState
@@ -260,7 +251,7 @@ func (i *Environment) ToEnvironmentOutputWithContext(ctx context.Context) Enviro
 // EnvironmentArrayInput is an input type that accepts EnvironmentArray and EnvironmentArrayOutput values.
 // You can construct a concrete instance of `EnvironmentArrayInput` via:
 //
-//	EnvironmentArray{ EnvironmentArgs{...} }
+//          EnvironmentArray{ EnvironmentArgs{...} }
 type EnvironmentArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +276,7 @@ func (i EnvironmentArray) ToEnvironmentArrayOutputWithContext(ctx context.Contex
 // EnvironmentMapInput is an input type that accepts EnvironmentMap and EnvironmentMapOutput values.
 // You can construct a concrete instance of `EnvironmentMapInput` via:
 //
-//	EnvironmentMap{ "key": EnvironmentArgs{...} }
+//          EnvironmentMap{ "key": EnvironmentArgs{...} }
 type EnvironmentMapInput interface {
 	pulumi.Input
 

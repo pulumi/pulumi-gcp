@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/monitoring/dashboards)
+//     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 //
 // ## Example Usage
 // ### Monitoring Dashboard Basic
@@ -26,38 +26,35 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
-//				DashboardJson: pulumi.String(fmt.Sprintf(`{
-//	  "displayName": "Demo Dashboard",
-//	  "gridLayout": {
-//	    "widgets": [
-//	      {
-//	        "blank": {}
-//	      }
-//	    ]
-//	  }
-//	}
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
+// 			DashboardJson: pulumi.String(fmt.Sprintf(`{
+//   "displayName": "Demo Dashboard",
+//   "gridLayout": {
+//     "widgets": [
+//       {
+//         "blank": {}
+//       }
+//     ]
+//   }
+// }
+//
 //
 // `)),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Monitoring Dashboard GridLayout
 //
@@ -65,102 +62,95 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
-//				DashboardJson: pulumi.String(fmt.Sprintf(`{
-//	  "displayName": "Grid Layout Example",
-//	  "gridLayout": {
-//	    "columns": "2",
-//	    "widgets": [
-//	      {
-//	        "title": "Widget 1",
-//	        "xyChart": {
-//	          "dataSets": [{
-//	            "timeSeriesQuery": {
-//	              "timeSeriesFilter": {
-//	                "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
-//	                "aggregation": {
-//	                  "perSeriesAligner": "ALIGN_RATE"
-//	                }
-//	              },
-//	              "unitOverride": "1"
-//	            },
-//	            "plotType": "LINE"
-//	          }],
-//	          "timeshiftDuration": "0s",
-//	          "yAxis": {
-//	            "label": "y1Axis",
-//	            "scale": "LINEAR"
-//	          }
-//	        }
-//	      },
-//	      {
-//	        "text": {
-//	          "content": "Widget 2",
-//	          "format": "MARKDOWN"
-//	        }
-//	      },
-//	      {
-//	        "title": "Widget 3",
-//	        "xyChart": {
-//	          "dataSets": [{
-//	            "timeSeriesQuery": {
-//	              "timeSeriesFilter": {
-//	                "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
-//	                "aggregation": {
-//	                  "perSeriesAligner": "ALIGN_RATE"
-//	                }
-//	              },
-//	              "unitOverride": "1"
-//	            },
-//	            "plotType": "STACKED_BAR"
-//	          }],
-//	          "timeshiftDuration": "0s",
-//	          "yAxis": {
-//	            "label": "y1Axis",
-//	            "scale": "LINEAR"
-//	          }
-//	        }
-//	      }
-//	    ]
-//	  }
-//	}
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
+// 			DashboardJson: pulumi.String(fmt.Sprintf(`{
+//   "displayName": "Grid Layout Example",
+//   "gridLayout": {
+//     "columns": "2",
+//     "widgets": [
+//       {
+//         "title": "Widget 1",
+//         "xyChart": {
+//           "dataSets": [{
+//             "timeSeriesQuery": {
+//               "timeSeriesFilter": {
+//                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+//                 "aggregation": {
+//                   "perSeriesAligner": "ALIGN_RATE"
+//                 }
+//               },
+//               "unitOverride": "1"
+//             },
+//             "plotType": "LINE"
+//           }],
+//           "timeshiftDuration": "0s",
+//           "yAxis": {
+//             "label": "y1Axis",
+//             "scale": "LINEAR"
+//           }
+//         }
+//       },
+//       {
+//         "text": {
+//           "content": "Widget 2",
+//           "format": "MARKDOWN"
+//         }
+//       },
+//       {
+//         "title": "Widget 3",
+//         "xyChart": {
+//           "dataSets": [{
+//             "timeSeriesQuery": {
+//               "timeSeriesFilter": {
+//                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+//                 "aggregation": {
+//                   "perSeriesAligner": "ALIGN_RATE"
+//                 }
+//               },
+//               "unitOverride": "1"
+//             },
+//             "plotType": "STACKED_BAR"
+//           }],
+//           "timeshiftDuration": "0s",
+//           "yAxis": {
+//             "label": "y1Axis",
+//             "scale": "LINEAR"
+//           }
+//         }
+//       }
+//     ]
+//   }
+// }
+//
 //
 // `)),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Dashboard can be imported using any of these accepted formats
+// Dashboard can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}
-//
+//  $ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
-//
+//  $ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
 // ```
 type Dashboard struct {
 	pulumi.CustomResourceState
@@ -271,7 +261,7 @@ func (i *Dashboard) ToDashboardOutputWithContext(ctx context.Context) DashboardO
 // DashboardArrayInput is an input type that accepts DashboardArray and DashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardArrayInput` via:
 //
-//	DashboardArray{ DashboardArgs{...} }
+//          DashboardArray{ DashboardArgs{...} }
 type DashboardArrayInput interface {
 	pulumi.Input
 
@@ -296,7 +286,7 @@ func (i DashboardArray) ToDashboardArrayOutputWithContext(ctx context.Context) D
 // DashboardMapInput is an input type that accepts DashboardMap and DashboardMapOutput values.
 // You can construct a concrete instance of `DashboardMapInput` via:
 //
-//	DashboardMap{ "key": DashboardArgs{...} }
+//          DashboardMap{ "key": DashboardArgs{...} }
 type DashboardMapInput interface {
 	pulumi.Input
 

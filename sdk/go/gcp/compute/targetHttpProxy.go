@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
 // ### Target Http Proxy Https Redirect
@@ -27,55 +27,46 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
-//				DefaultUrlRedirect: &compute.URLMapDefaultUrlRedirectArgs{
-//					HttpsRedirect: pulumi.Bool(true),
-//					StripQuery:    pulumi.Bool(false),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
-//				UrlMap: defaultURLMap.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			DefaultUrlRedirect: &compute.URLMapDefaultUrlRedirectArgs{
+// 				HttpsRedirect: pulumi.Bool(true),
+// 				StripQuery:    pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			UrlMap: defaultURLMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # TargetHttpProxy can be imported using any of these accepted formats
+// TargetHttpProxy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
-//
+//  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
-//
+//  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
 // ```
 type TargetHttpProxy struct {
 	pulumi.CustomResourceState
@@ -269,7 +260,7 @@ func (i *TargetHttpProxy) ToTargetHttpProxyOutputWithContext(ctx context.Context
 // TargetHttpProxyArrayInput is an input type that accepts TargetHttpProxyArray and TargetHttpProxyArrayOutput values.
 // You can construct a concrete instance of `TargetHttpProxyArrayInput` via:
 //
-//	TargetHttpProxyArray{ TargetHttpProxyArgs{...} }
+//          TargetHttpProxyArray{ TargetHttpProxyArgs{...} }
 type TargetHttpProxyArrayInput interface {
 	pulumi.Input
 
@@ -294,7 +285,7 @@ func (i TargetHttpProxyArray) ToTargetHttpProxyArrayOutputWithContext(ctx contex
 // TargetHttpProxyMapInput is an input type that accepts TargetHttpProxyMap and TargetHttpProxyMapOutput values.
 // You can construct a concrete instance of `TargetHttpProxyMapInput` via:
 //
-//	TargetHttpProxyMap{ "key": TargetHttpProxyArgs{...} }
+//          TargetHttpProxyMap{ "key": TargetHttpProxyArgs{...} }
 type TargetHttpProxyMapInput interface {
 	pulumi.Input
 

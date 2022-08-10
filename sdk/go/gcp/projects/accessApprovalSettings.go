@@ -24,34 +24,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
-//				EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
-//					&projects.AccessApprovalSettingsEnrolledServiceArgs{
-//						CloudProduct:    pulumi.String("all"),
-//						EnrollmentLevel: pulumi.String("BLOCK_ALL"),
-//					},
-//				},
-//				NotificationEmails: pulumi.StringArray{
-//					pulumi.String("testuser@example.com"),
-//					pulumi.String("example.user@example.com"),
-//				},
-//				ProjectId: pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
+// 			EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
+// 				&projects.AccessApprovalSettingsEnrolledServiceArgs{
+// 					CloudProduct:    pulumi.String("all"),
+// 					EnrollmentLevel: pulumi.String("BLOCK_ALL"),
+// 				},
+// 			},
+// 			NotificationEmails: pulumi.StringArray{
+// 				pulumi.String("testuser@example.com"),
+// 				pulumi.String("example.user@example.com"),
+// 			},
+// 			ProjectId: pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Project Access Approval Active Key Version
 //
@@ -59,88 +56,81 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//				Project:  pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
-//				KeyRing: keyRing.ID(),
-//				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
-//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
-//					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			serviceAccount, err := accessapproval.GetProjectServiceAccount(ctx, &accessapproval.GetProjectServiceAccountArgs{
-//				ProjectId: "my-project-name",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
-//				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: cryptoKey.ID(),
-//			}, nil)
-//			_, err = projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
-//				ProjectId: pulumi.String("my-project-name"),
-//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//					return cryptoKeyVersion.Name, nil
-//				}).(pulumi.StringOutput),
-//				EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
-//					&projects.AccessApprovalSettingsEnrolledServiceArgs{
-//						CloudProduct: pulumi.String("all"),
-//					},
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				iam,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 			Project:  pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceAccount, err := accessapproval.GetProjectServiceAccount(ctx, &accessapproval.GetProjectServiceAccountArgs{
+// 			ProjectId: "my-project-name",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+// 			CryptoKeyId: cryptoKey.ID(),
+// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
+// 			Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+// 			CryptoKey: cryptoKey.ID(),
+// 		}, nil)
+// 		_, err = projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
+// 			ProjectId: pulumi.String("my-project-name"),
+// 			ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
+// 				return cryptoKeyVersion.Name, nil
+// 			}).(pulumi.StringOutput),
+// 			EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
+// 				&projects.AccessApprovalSettingsEnrolledServiceArgs{
+// 					CloudProduct: pulumi.String("all"),
+// 				},
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			iam,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ProjectSettings can be imported using any of these accepted formats
+// ProjectSettings can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
-//
+//  $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
-//
+//  $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
 // ```
 type AccessApprovalSettings struct {
 	pulumi.CustomResourceState
@@ -370,7 +360,7 @@ func (i *AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx c
 // AccessApprovalSettingsArrayInput is an input type that accepts AccessApprovalSettingsArray and AccessApprovalSettingsArrayOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsArrayInput` via:
 //
-//	AccessApprovalSettingsArray{ AccessApprovalSettingsArgs{...} }
+//          AccessApprovalSettingsArray{ AccessApprovalSettingsArgs{...} }
 type AccessApprovalSettingsArrayInput interface {
 	pulumi.Input
 
@@ -395,7 +385,7 @@ func (i AccessApprovalSettingsArray) ToAccessApprovalSettingsArrayOutputWithCont
 // AccessApprovalSettingsMapInput is an input type that accepts AccessApprovalSettingsMap and AccessApprovalSettingsMapOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsMapInput` via:
 //
-//	AccessApprovalSettingsMap{ "key": AccessApprovalSettingsArgs{...} }
+//          AccessApprovalSettingsMap{ "key": AccessApprovalSettingsArgs{...} }
 type AccessApprovalSettingsMapInput interface {
 	pulumi.Input
 

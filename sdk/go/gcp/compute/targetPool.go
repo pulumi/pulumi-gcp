@@ -18,30 +18,22 @@ import (
 //
 // ## Import
 //
-// # Target pools can be imported using any of the following formats
+// Target pools can be imported using any of the following formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
-//
+//  $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
-//
+//  $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
 // ```
 type TargetPool struct {
 	pulumi.CustomResourceState
@@ -275,7 +267,7 @@ func (i *TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPo
 // TargetPoolArrayInput is an input type that accepts TargetPoolArray and TargetPoolArrayOutput values.
 // You can construct a concrete instance of `TargetPoolArrayInput` via:
 //
-//	TargetPoolArray{ TargetPoolArgs{...} }
+//          TargetPoolArray{ TargetPoolArgs{...} }
 type TargetPoolArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +292,7 @@ func (i TargetPoolArray) ToTargetPoolArrayOutputWithContext(ctx context.Context)
 // TargetPoolMapInput is an input type that accepts TargetPoolMap and TargetPoolMapOutput values.
 // You can construct a concrete instance of `TargetPoolMapInput` via:
 //
-//	TargetPoolMap{ "key": TargetPoolArgs{...} }
+//          TargetPoolMap{ "key": TargetPoolArgs{...} }
 type TargetPoolMapInput interface {
 	pulumi.Input
 

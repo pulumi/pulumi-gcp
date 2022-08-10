@@ -15,7 +15,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
 //
 // > **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
 //
@@ -31,25 +31,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service-account-id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -57,9 +54,7 @@ import (
 // Service accounts can be imported using their URI, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
-//
+//  $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
 // ```
 type Account struct {
 	pulumi.CustomResourceState
@@ -249,7 +244,7 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 // AccountArrayInput is an input type that accepts AccountArray and AccountArrayOutput values.
 // You can construct a concrete instance of `AccountArrayInput` via:
 //
-//	AccountArray{ AccountArgs{...} }
+//          AccountArray{ AccountArgs{...} }
 type AccountArrayInput interface {
 	pulumi.Input
 
@@ -274,7 +269,7 @@ func (i AccountArray) ToAccountArrayOutputWithContext(ctx context.Context) Accou
 // AccountMapInput is an input type that accepts AccountMap and AccountMapOutput values.
 // You can construct a concrete instance of `AccountMapInput` via:
 //
-//	AccountMap{ "key": AccountArgs{...} }
+//          AccountMap{ "key": AccountArgs{...} }
 type AccountMapInput interface {
 	pulumi.Input
 

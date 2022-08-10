@@ -24,7 +24,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
 // * How-to Guides
-//   - [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+//     * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
 //
 // ## Example Usage
 // ### Iap Brand
@@ -33,52 +33,47 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test"),
-//				OrgId:     pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("iap.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
-//				SupportEmail:     pulumi.String("support@example.com"),
-//				ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
-//				Project:          projectService.Project,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("tf-test"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
+// 			Project: project.ProjectId,
+// 			Service: pulumi.String("iap.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
+// 			SupportEmail:     pulumi.String("support@example.com"),
+// 			ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
+// 			Project:          projectService.Project,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Brand can be imported using any of these accepted formats
+// Brand can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:iap/brand:Brand default {{name}}
-//
+//  $ pulumi import gcp:iap/brand:Brand default {{name}}
 // ```
 type Brand struct {
 	pulumi.CustomResourceState
@@ -232,7 +227,7 @@ func (i *Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 // BrandArrayInput is an input type that accepts BrandArray and BrandArrayOutput values.
 // You can construct a concrete instance of `BrandArrayInput` via:
 //
-//	BrandArray{ BrandArgs{...} }
+//          BrandArray{ BrandArgs{...} }
 type BrandArrayInput interface {
 	pulumi.Input
 
@@ -257,7 +252,7 @@ func (i BrandArray) ToBrandArrayOutputWithContext(ctx context.Context) BrandArra
 // BrandMapInput is an input type that accepts BrandMap and BrandMapOutput values.
 // You can construct a concrete instance of `BrandMapInput` via:
 //
-//	BrandMap{ "key": BrandArgs{...} }
+//          BrandMap{ "key": BrandArgs{...} }
 type BrandMapInput interface {
 	pulumi.Input
 

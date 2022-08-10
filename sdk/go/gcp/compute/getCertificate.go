@@ -18,27 +18,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myCert, err := compute.GetCertificate(ctx, &compute.GetCertificateArgs{
-//				Name: "my-cert",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("certificate", myCert.Certificate)
-//			ctx.Export("certificateId", myCert.CertificateId)
-//			ctx.Export("selfLink", myCert.SelfLink)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myCert, err := compute.GetCertificate(ctx, &compute.GetCertificateArgs{
+// 			Name: "my-cert",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("certificate", myCert.Certificate)
+// 		ctx.Export("certificateId", myCert.CertificateId)
+// 		ctx.Export("selfLink", myCert.SelfLink)
+// 		return nil
+// 	})
+// }
 // ```
 func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulumi.InvokeOption) (*GetCertificateResult, error) {
 	var rv GetCertificateResult

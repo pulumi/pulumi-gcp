@@ -22,7 +22,7 @@ type AppEngineServiceIamBindingCondition struct {
 // AppEngineServiceIamBindingConditionInput is an input type that accepts AppEngineServiceIamBindingConditionArgs and AppEngineServiceIamBindingConditionOutput values.
 // You can construct a concrete instance of `AppEngineServiceIamBindingConditionInput` via:
 //
-//	AppEngineServiceIamBindingConditionArgs{...}
+//          AppEngineServiceIamBindingConditionArgs{...}
 type AppEngineServiceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -62,11 +62,11 @@ func (i AppEngineServiceIamBindingConditionArgs) ToAppEngineServiceIamBindingCon
 // AppEngineServiceIamBindingConditionPtrInput is an input type that accepts AppEngineServiceIamBindingConditionArgs, AppEngineServiceIamBindingConditionPtr and AppEngineServiceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `AppEngineServiceIamBindingConditionPtrInput` via:
 //
-//	        AppEngineServiceIamBindingConditionArgs{...}
+//          AppEngineServiceIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AppEngineServiceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -197,7 +197,7 @@ type AppEngineServiceIamMemberCondition struct {
 // AppEngineServiceIamMemberConditionInput is an input type that accepts AppEngineServiceIamMemberConditionArgs and AppEngineServiceIamMemberConditionOutput values.
 // You can construct a concrete instance of `AppEngineServiceIamMemberConditionInput` via:
 //
-//	AppEngineServiceIamMemberConditionArgs{...}
+//          AppEngineServiceIamMemberConditionArgs{...}
 type AppEngineServiceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -237,11 +237,11 @@ func (i AppEngineServiceIamMemberConditionArgs) ToAppEngineServiceIamMemberCondi
 // AppEngineServiceIamMemberConditionPtrInput is an input type that accepts AppEngineServiceIamMemberConditionArgs, AppEngineServiceIamMemberConditionPtr and AppEngineServiceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `AppEngineServiceIamMemberConditionPtrInput` via:
 //
-//	        AppEngineServiceIamMemberConditionArgs{...}
+//          AppEngineServiceIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AppEngineServiceIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -372,7 +372,7 @@ type AppEngineVersionIamBindingCondition struct {
 // AppEngineVersionIamBindingConditionInput is an input type that accepts AppEngineVersionIamBindingConditionArgs and AppEngineVersionIamBindingConditionOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamBindingConditionInput` via:
 //
-//	AppEngineVersionIamBindingConditionArgs{...}
+//          AppEngineVersionIamBindingConditionArgs{...}
 type AppEngineVersionIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -412,11 +412,11 @@ func (i AppEngineVersionIamBindingConditionArgs) ToAppEngineVersionIamBindingCon
 // AppEngineVersionIamBindingConditionPtrInput is an input type that accepts AppEngineVersionIamBindingConditionArgs, AppEngineVersionIamBindingConditionPtr and AppEngineVersionIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamBindingConditionPtrInput` via:
 //
-//	        AppEngineVersionIamBindingConditionArgs{...}
+//          AppEngineVersionIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AppEngineVersionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -547,7 +547,7 @@ type AppEngineVersionIamMemberCondition struct {
 // AppEngineVersionIamMemberConditionInput is an input type that accepts AppEngineVersionIamMemberConditionArgs and AppEngineVersionIamMemberConditionOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamMemberConditionInput` via:
 //
-//	AppEngineVersionIamMemberConditionArgs{...}
+//          AppEngineVersionIamMemberConditionArgs{...}
 type AppEngineVersionIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -587,11 +587,11 @@ func (i AppEngineVersionIamMemberConditionArgs) ToAppEngineVersionIamMemberCondi
 // AppEngineVersionIamMemberConditionPtrInput is an input type that accepts AppEngineVersionIamMemberConditionArgs, AppEngineVersionIamMemberConditionPtr and AppEngineVersionIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamMemberConditionPtrInput` via:
 //
-//	        AppEngineVersionIamMemberConditionArgs{...}
+//          AppEngineVersionIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AppEngineVersionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -722,7 +722,7 @@ type TunnelIamBindingCondition struct {
 // TunnelIamBindingConditionInput is an input type that accepts TunnelIamBindingConditionArgs and TunnelIamBindingConditionOutput values.
 // You can construct a concrete instance of `TunnelIamBindingConditionInput` via:
 //
-//	TunnelIamBindingConditionArgs{...}
+//          TunnelIamBindingConditionArgs{...}
 type TunnelIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -762,11 +762,11 @@ func (i TunnelIamBindingConditionArgs) ToTunnelIamBindingConditionPtrOutputWithC
 // TunnelIamBindingConditionPtrInput is an input type that accepts TunnelIamBindingConditionArgs, TunnelIamBindingConditionPtr and TunnelIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `TunnelIamBindingConditionPtrInput` via:
 //
-//	        TunnelIamBindingConditionArgs{...}
+//          TunnelIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type TunnelIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -897,7 +897,7 @@ type TunnelIamMemberCondition struct {
 // TunnelIamMemberConditionInput is an input type that accepts TunnelIamMemberConditionArgs and TunnelIamMemberConditionOutput values.
 // You can construct a concrete instance of `TunnelIamMemberConditionInput` via:
 //
-//	TunnelIamMemberConditionArgs{...}
+//          TunnelIamMemberConditionArgs{...}
 type TunnelIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -937,11 +937,11 @@ func (i TunnelIamMemberConditionArgs) ToTunnelIamMemberConditionPtrOutputWithCon
 // TunnelIamMemberConditionPtrInput is an input type that accepts TunnelIamMemberConditionArgs, TunnelIamMemberConditionPtr and TunnelIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `TunnelIamMemberConditionPtrInput` via:
 //
-//	        TunnelIamMemberConditionArgs{...}
+//          TunnelIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type TunnelIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1072,7 +1072,7 @@ type TunnelInstanceIAMBindingCondition struct {
 // TunnelInstanceIAMBindingConditionInput is an input type that accepts TunnelInstanceIAMBindingConditionArgs and TunnelInstanceIAMBindingConditionOutput values.
 // You can construct a concrete instance of `TunnelInstanceIAMBindingConditionInput` via:
 //
-//	TunnelInstanceIAMBindingConditionArgs{...}
+//          TunnelInstanceIAMBindingConditionArgs{...}
 type TunnelInstanceIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -1112,11 +1112,11 @@ func (i TunnelInstanceIAMBindingConditionArgs) ToTunnelInstanceIAMBindingConditi
 // TunnelInstanceIAMBindingConditionPtrInput is an input type that accepts TunnelInstanceIAMBindingConditionArgs, TunnelInstanceIAMBindingConditionPtr and TunnelInstanceIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `TunnelInstanceIAMBindingConditionPtrInput` via:
 //
-//	        TunnelInstanceIAMBindingConditionArgs{...}
+//          TunnelInstanceIAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type TunnelInstanceIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1247,7 +1247,7 @@ type TunnelInstanceIAMMemberCondition struct {
 // TunnelInstanceIAMMemberConditionInput is an input type that accepts TunnelInstanceIAMMemberConditionArgs and TunnelInstanceIAMMemberConditionOutput values.
 // You can construct a concrete instance of `TunnelInstanceIAMMemberConditionInput` via:
 //
-//	TunnelInstanceIAMMemberConditionArgs{...}
+//          TunnelInstanceIAMMemberConditionArgs{...}
 type TunnelInstanceIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -1287,11 +1287,11 @@ func (i TunnelInstanceIAMMemberConditionArgs) ToTunnelInstanceIAMMemberCondition
 // TunnelInstanceIAMMemberConditionPtrInput is an input type that accepts TunnelInstanceIAMMemberConditionArgs, TunnelInstanceIAMMemberConditionPtr and TunnelInstanceIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `TunnelInstanceIAMMemberConditionPtrInput` via:
 //
-//	        TunnelInstanceIAMMemberConditionArgs{...}
+//          TunnelInstanceIAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type TunnelInstanceIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1422,7 +1422,7 @@ type WebBackendServiceIamBindingCondition struct {
 // WebBackendServiceIamBindingConditionInput is an input type that accepts WebBackendServiceIamBindingConditionArgs and WebBackendServiceIamBindingConditionOutput values.
 // You can construct a concrete instance of `WebBackendServiceIamBindingConditionInput` via:
 //
-//	WebBackendServiceIamBindingConditionArgs{...}
+//          WebBackendServiceIamBindingConditionArgs{...}
 type WebBackendServiceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1462,11 +1462,11 @@ func (i WebBackendServiceIamBindingConditionArgs) ToWebBackendServiceIamBindingC
 // WebBackendServiceIamBindingConditionPtrInput is an input type that accepts WebBackendServiceIamBindingConditionArgs, WebBackendServiceIamBindingConditionPtr and WebBackendServiceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `WebBackendServiceIamBindingConditionPtrInput` via:
 //
-//	        WebBackendServiceIamBindingConditionArgs{...}
+//          WebBackendServiceIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebBackendServiceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1597,7 +1597,7 @@ type WebBackendServiceIamMemberCondition struct {
 // WebBackendServiceIamMemberConditionInput is an input type that accepts WebBackendServiceIamMemberConditionArgs and WebBackendServiceIamMemberConditionOutput values.
 // You can construct a concrete instance of `WebBackendServiceIamMemberConditionInput` via:
 //
-//	WebBackendServiceIamMemberConditionArgs{...}
+//          WebBackendServiceIamMemberConditionArgs{...}
 type WebBackendServiceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1637,11 +1637,11 @@ func (i WebBackendServiceIamMemberConditionArgs) ToWebBackendServiceIamMemberCon
 // WebBackendServiceIamMemberConditionPtrInput is an input type that accepts WebBackendServiceIamMemberConditionArgs, WebBackendServiceIamMemberConditionPtr and WebBackendServiceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `WebBackendServiceIamMemberConditionPtrInput` via:
 //
-//	        WebBackendServiceIamMemberConditionArgs{...}
+//          WebBackendServiceIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebBackendServiceIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1772,7 +1772,7 @@ type WebIamBindingCondition struct {
 // WebIamBindingConditionInput is an input type that accepts WebIamBindingConditionArgs and WebIamBindingConditionOutput values.
 // You can construct a concrete instance of `WebIamBindingConditionInput` via:
 //
-//	WebIamBindingConditionArgs{...}
+//          WebIamBindingConditionArgs{...}
 type WebIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1812,11 +1812,11 @@ func (i WebIamBindingConditionArgs) ToWebIamBindingConditionPtrOutputWithContext
 // WebIamBindingConditionPtrInput is an input type that accepts WebIamBindingConditionArgs, WebIamBindingConditionPtr and WebIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `WebIamBindingConditionPtrInput` via:
 //
-//	        WebIamBindingConditionArgs{...}
+//          WebIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1947,7 +1947,7 @@ type WebIamMemberCondition struct {
 // WebIamMemberConditionInput is an input type that accepts WebIamMemberConditionArgs and WebIamMemberConditionOutput values.
 // You can construct a concrete instance of `WebIamMemberConditionInput` via:
 //
-//	WebIamMemberConditionArgs{...}
+//          WebIamMemberConditionArgs{...}
 type WebIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1987,11 +1987,11 @@ func (i WebIamMemberConditionArgs) ToWebIamMemberConditionPtrOutputWithContext(c
 // WebIamMemberConditionPtrInput is an input type that accepts WebIamMemberConditionArgs, WebIamMemberConditionPtr and WebIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `WebIamMemberConditionPtrInput` via:
 //
-//	        WebIamMemberConditionArgs{...}
+//          WebIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -2122,7 +2122,7 @@ type WebTypeAppEngingIamBindingCondition struct {
 // WebTypeAppEngingIamBindingConditionInput is an input type that accepts WebTypeAppEngingIamBindingConditionArgs and WebTypeAppEngingIamBindingConditionOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamBindingConditionInput` via:
 //
-//	WebTypeAppEngingIamBindingConditionArgs{...}
+//          WebTypeAppEngingIamBindingConditionArgs{...}
 type WebTypeAppEngingIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -2162,11 +2162,11 @@ func (i WebTypeAppEngingIamBindingConditionArgs) ToWebTypeAppEngingIamBindingCon
 // WebTypeAppEngingIamBindingConditionPtrInput is an input type that accepts WebTypeAppEngingIamBindingConditionArgs, WebTypeAppEngingIamBindingConditionPtr and WebTypeAppEngingIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamBindingConditionPtrInput` via:
 //
-//	        WebTypeAppEngingIamBindingConditionArgs{...}
+//          WebTypeAppEngingIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebTypeAppEngingIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -2297,7 +2297,7 @@ type WebTypeAppEngingIamMemberCondition struct {
 // WebTypeAppEngingIamMemberConditionInput is an input type that accepts WebTypeAppEngingIamMemberConditionArgs and WebTypeAppEngingIamMemberConditionOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamMemberConditionInput` via:
 //
-//	WebTypeAppEngingIamMemberConditionArgs{...}
+//          WebTypeAppEngingIamMemberConditionArgs{...}
 type WebTypeAppEngingIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -2337,11 +2337,11 @@ func (i WebTypeAppEngingIamMemberConditionArgs) ToWebTypeAppEngingIamMemberCondi
 // WebTypeAppEngingIamMemberConditionPtrInput is an input type that accepts WebTypeAppEngingIamMemberConditionArgs, WebTypeAppEngingIamMemberConditionPtr and WebTypeAppEngingIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamMemberConditionPtrInput` via:
 //
-//	        WebTypeAppEngingIamMemberConditionArgs{...}
+//          WebTypeAppEngingIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebTypeAppEngingIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -2472,7 +2472,7 @@ type WebTypeComputeIamBindingCondition struct {
 // WebTypeComputeIamBindingConditionInput is an input type that accepts WebTypeComputeIamBindingConditionArgs and WebTypeComputeIamBindingConditionOutput values.
 // You can construct a concrete instance of `WebTypeComputeIamBindingConditionInput` via:
 //
-//	WebTypeComputeIamBindingConditionArgs{...}
+//          WebTypeComputeIamBindingConditionArgs{...}
 type WebTypeComputeIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -2512,11 +2512,11 @@ func (i WebTypeComputeIamBindingConditionArgs) ToWebTypeComputeIamBindingConditi
 // WebTypeComputeIamBindingConditionPtrInput is an input type that accepts WebTypeComputeIamBindingConditionArgs, WebTypeComputeIamBindingConditionPtr and WebTypeComputeIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `WebTypeComputeIamBindingConditionPtrInput` via:
 //
-//	        WebTypeComputeIamBindingConditionArgs{...}
+//          WebTypeComputeIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebTypeComputeIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -2647,7 +2647,7 @@ type WebTypeComputeIamMemberCondition struct {
 // WebTypeComputeIamMemberConditionInput is an input type that accepts WebTypeComputeIamMemberConditionArgs and WebTypeComputeIamMemberConditionOutput values.
 // You can construct a concrete instance of `WebTypeComputeIamMemberConditionInput` via:
 //
-//	WebTypeComputeIamMemberConditionArgs{...}
+//          WebTypeComputeIamMemberConditionArgs{...}
 type WebTypeComputeIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -2687,11 +2687,11 @@ func (i WebTypeComputeIamMemberConditionArgs) ToWebTypeComputeIamMemberCondition
 // WebTypeComputeIamMemberConditionPtrInput is an input type that accepts WebTypeComputeIamMemberConditionArgs, WebTypeComputeIamMemberConditionPtr and WebTypeComputeIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `WebTypeComputeIamMemberConditionPtrInput` via:
 //
-//	        WebTypeComputeIamMemberConditionArgs{...}
+//          WebTypeComputeIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WebTypeComputeIamMemberConditionPtrInput interface {
 	pulumi.Input
 

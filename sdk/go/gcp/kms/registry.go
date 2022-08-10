@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/iot/docs/)
+//     * [Official Documentation](https://cloud.google.com/iot/docs/)
 //
 // ## Example Usage
 // ### Cloudiot Device Registry Basic
@@ -25,22 +25,19 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iot.NewRegistry(ctx, "test-registry", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iot.NewRegistry(ctx, "test-registry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Cloudiot Device Registry Single Event Notification Configs
 //
@@ -48,34 +45,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopic(ctx, "default-telemetry", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iot.NewRegistry(ctx, "test-registry", &iot.RegistryArgs{
-//				EventNotificationConfigs: iot.RegistryEventNotificationConfigItemArray{
-//					&iot.RegistryEventNotificationConfigItemArgs{
-//						PubsubTopicName:  default_telemetry.ID(),
-//						SubfolderMatches: pulumi.String(""),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := pubsub.NewTopic(ctx, "default-telemetry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iot.NewRegistry(ctx, "test-registry", &iot.RegistryArgs{
+// 			EventNotificationConfigs: iot.RegistryEventNotificationConfigItemArray{
+// 				&iot.RegistryEventNotificationConfigItemArgs{
+// 					PubsubTopicName:  default_telemetry.ID(),
+// 					SubfolderMatches: pulumi.String(""),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Cloudiot Device Registry Full
 //
@@ -83,102 +77,91 @@ import (
 // package main
 //
 // import (
+// 	"io/ioutil"
 //
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopic(ctx, "default-devicestatus", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pubsub.NewTopic(ctx, "default-telemetry", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pubsub.NewTopic(ctx, "additional-telemetry", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iot.NewRegistry(ctx, "test-registry", &iot.RegistryArgs{
-//				EventNotificationConfigs: iot.RegistryEventNotificationConfigItemArray{
-//					&iot.RegistryEventNotificationConfigItemArgs{
-//						PubsubTopicName:  additional_telemetry.ID(),
-//						SubfolderMatches: pulumi.String("test/path"),
-//					},
-//					&iot.RegistryEventNotificationConfigItemArgs{
-//						PubsubTopicName:  default_telemetry.ID(),
-//						SubfolderMatches: pulumi.String(""),
-//					},
-//				},
-//				StateNotificationConfig: pulumi.AnyMap{
-//					"pubsub_topic_name": default_devicestatus.ID(),
-//				},
-//				MqttConfig: pulumi.AnyMap{
-//					"mqtt_enabled_state": pulumi.Any("MQTT_ENABLED"),
-//				},
-//				HttpConfig: pulumi.AnyMap{
-//					"http_enabled_state": pulumi.Any("HTTP_ENABLED"),
-//				},
-//				LogLevel: pulumi.String("INFO"),
-//				Credentials: iot.RegistryCredentialArray{
-//					&iot.RegistryCredentialArgs{
-//						PublicKeyCertificate: pulumi.AnyMap{
-//							"format":      pulumi.Any("X509_CERTIFICATE_PEM"),
-//							"certificate": readFileOrPanic("test-fixtures/rsa_cert.pem"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := pubsub.NewTopic(ctx, "default-devicestatus", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "default-telemetry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "additional-telemetry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iot.NewRegistry(ctx, "test-registry", &iot.RegistryArgs{
+// 			EventNotificationConfigs: iot.RegistryEventNotificationConfigItemArray{
+// 				&iot.RegistryEventNotificationConfigItemArgs{
+// 					PubsubTopicName:  additional_telemetry.ID(),
+// 					SubfolderMatches: pulumi.String("test/path"),
+// 				},
+// 				&iot.RegistryEventNotificationConfigItemArgs{
+// 					PubsubTopicName:  default_telemetry.ID(),
+// 					SubfolderMatches: pulumi.String(""),
+// 				},
+// 			},
+// 			StateNotificationConfig: pulumi.AnyMap{
+// 				"pubsub_topic_name": default_devicestatus.ID(),
+// 			},
+// 			MqttConfig: pulumi.AnyMap{
+// 				"mqtt_enabled_state": pulumi.Any("MQTT_ENABLED"),
+// 			},
+// 			HttpConfig: pulumi.AnyMap{
+// 				"http_enabled_state": pulumi.Any("HTTP_ENABLED"),
+// 			},
+// 			LogLevel: pulumi.String("INFO"),
+// 			Credentials: iot.RegistryCredentialArray{
+// 				&iot.RegistryCredentialArgs{
+// 					PublicKeyCertificate: pulumi.AnyMap{
+// 						"format":      pulumi.Any("X509_CERTIFICATE_PEM"),
+// 						"certificate": readFileOrPanic("test-fixtures/rsa_cert.pem"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # DeviceRegistry can be imported using any of these accepted formats
+// DeviceRegistry can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/registry:Registry default {{project}}/locations/{{region}}/registries/{{name}}
-//
+//  $ pulumi import gcp:kms/registry:Registry default {{project}}/locations/{{region}}/registries/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/registry:Registry default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:kms/registry:Registry default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/registry:Registry default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:kms/registry:Registry default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/registry:Registry default {{name}}
-//
+//  $ pulumi import gcp:kms/registry:Registry default {{name}}
 // ```
 //
 // Deprecated: gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry
@@ -418,7 +401,7 @@ func (i *Registry) ToRegistryOutputWithContext(ctx context.Context) RegistryOutp
 // RegistryArrayInput is an input type that accepts RegistryArray and RegistryArrayOutput values.
 // You can construct a concrete instance of `RegistryArrayInput` via:
 //
-//	RegistryArray{ RegistryArgs{...} }
+//          RegistryArray{ RegistryArgs{...} }
 type RegistryArrayInput interface {
 	pulumi.Input
 
@@ -443,7 +426,7 @@ func (i RegistryArray) ToRegistryArrayOutputWithContext(ctx context.Context) Reg
 // RegistryMapInput is an input type that accepts RegistryMap and RegistryMapOutput values.
 // You can construct a concrete instance of `RegistryMapInput` via:
 //
-//	RegistryMap{ "key": RegistryArgs{...} }
+//          RegistryMap{ "key": RegistryArgs{...} }
 type RegistryMapInput interface {
 	pulumi.Input
 

@@ -24,34 +24,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			central1b, err := container.GetEngineVersions(ctx, &container.GetEngineVersionsArgs{
-//				Location:      pulumi.StringRef("us-central1-b"),
-//				VersionPrefix: pulumi.StringRef("1.12."),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = container.NewCluster(ctx, "foo", &container.ClusterArgs{
-//				Location:         pulumi.String("us-central1-b"),
-//				NodeVersion:      pulumi.String(central1b.LatestNodeVersion),
-//				InitialNodeCount: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("stableChannelVersion", central1b.ReleaseChannelDefaultVersion.STABLE)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		central1b, err := container.GetEngineVersions(ctx, &container.GetEngineVersionsArgs{
+// 			Location:      pulumi.StringRef("us-central1-b"),
+// 			VersionPrefix: pulumi.StringRef("1.12."),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = container.NewCluster(ctx, "foo", &container.ClusterArgs{
+// 			Location:         pulumi.String("us-central1-b"),
+// 			NodeVersion:      pulumi.String(central1b.LatestNodeVersion),
+// 			InitialNodeCount: pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("stableChannelVersion", central1b.ReleaseChannelDefaultVersion.STABLE)
+// 		return nil
+// 	})
+// }
 // ```
 func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionsResult, error) {
 	var rv GetEngineVersionsResult

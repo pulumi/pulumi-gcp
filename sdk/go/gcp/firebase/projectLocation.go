@@ -26,7 +26,7 @@ import (
 //
 // * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.defaultLocation/finalize)
 // * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
+//     * [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
 // ### Firebase Project Location Basic
@@ -35,55 +35,48 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test"),
-//				OrgId:     pulumi.String("123456789"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
-//				Project: defaultProject.ProjectId,
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewProjectLocation(ctx, "basic", &firebase.ProjectLocationArgs{
-//				Project:    defaultFirebase / projectProject.Project,
-//				LocationId: pulumi.String("us-central"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("tf-test"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
+// 			Project: defaultProject.ProjectId,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = firebase.NewProjectLocation(ctx, "basic", &firebase.ProjectLocationArgs{
+// 			Project:    defaultFirebase / projectProject.Project,
+// 			LocationId: pulumi.String("us-central"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ProjectLocation can be imported using any of these accepted formats
+// ProjectLocation can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/projectLocation:ProjectLocation default projects/{{project}}
-//
+//  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default projects/{{project}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
-//
+//  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
 // ```
 type ProjectLocation struct {
 	pulumi.CustomResourceState
@@ -194,7 +187,7 @@ func (i *ProjectLocation) ToProjectLocationOutputWithContext(ctx context.Context
 // ProjectLocationArrayInput is an input type that accepts ProjectLocationArray and ProjectLocationArrayOutput values.
 // You can construct a concrete instance of `ProjectLocationArrayInput` via:
 //
-//	ProjectLocationArray{ ProjectLocationArgs{...} }
+//          ProjectLocationArray{ ProjectLocationArgs{...} }
 type ProjectLocationArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +212,7 @@ func (i ProjectLocationArray) ToProjectLocationArrayOutputWithContext(ctx contex
 // ProjectLocationMapInput is an input type that accepts ProjectLocationMap and ProjectLocationMapOutput values.
 // You can construct a concrete instance of `ProjectLocationMapInput` via:
 //
-//	ProjectLocationMap{ "key": ProjectLocationArgs{...} }
+//          ProjectLocationMap{ "key": ProjectLocationArgs{...} }
 type ProjectLocationMapInput interface {
 	pulumi.Input
 

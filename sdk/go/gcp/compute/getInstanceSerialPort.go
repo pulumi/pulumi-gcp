@@ -19,27 +19,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serial, err := compute.GetInstanceSerialPort(ctx, &compute.GetInstanceSerialPortArgs{
-//				Instance: "my-instance",
-//				Zone:     pulumi.StringRef("us-central1-a"),
-//				Port:     1,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("serialOut", serial.Contents)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		serial, err := compute.GetInstanceSerialPort(ctx, &compute.GetInstanceSerialPortArgs{
+// 			Instance: "my-instance",
+// 			Zone:     pulumi.StringRef("us-central1-a"),
+// 			Port:     1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("serialOut", serial.Contents)
+// 		return nil
+// 	})
+// }
 // ```
 //
 // Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
@@ -48,65 +45,62 @@ import (
 // package main
 //
 // import (
+// 	"encoding/json"
 //
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"email":    "example.user@example.com",
-//				"expireOn": "2020-04-14T01:37:19Z",
-//				"exponent": "AQAB",
-//				"modulus":  "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
-//				"userName": "example-user",
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			windows, err := compute.NewInstance(ctx, "windows", &compute.InstanceArgs{
-//				MachineType: pulumi.String("e2-medium"),
-//				Zone:        pulumi.String("us-central1-a"),
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("windows-cloud/windows-2019"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//					},
-//				},
-//				Metadata: pulumi.StringMap{
-//					"serial-port-logging-enable": pulumi.String("TRUE"),
-//					"windows-keys":               pulumi.String(json0),
-//				},
-//				ServiceAccount: &compute.InstanceServiceAccountArgs{
-//					Scopes: pulumi.StringArray{
-//						pulumi.String("userinfo-email"),
-//						pulumi.String("compute-ro"),
-//						pulumi.String("storage-ro"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (string, error) {
-//				return serial.Contents, nil
-//			}).(pulumi.StringOutput))
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"email":    "example.user@example.com",
+// 			"expireOn": "2020-04-14T01:37:19Z",
+// 			"exponent": "AQAB",
+// 			"modulus":  "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+// 			"userName": "example-user",
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		windows, err := compute.NewInstance(ctx, "windows", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("windows-cloud/windows-2019"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"serial-port-logging-enable": pulumi.String("TRUE"),
+// 				"windows-keys":               pulumi.String(json0),
+// 			},
+// 			ServiceAccount: &compute.InstanceServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("userinfo-email"),
+// 					pulumi.String("compute-ro"),
+// 					pulumi.String("storage-ro"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (string, error) {
+// 			return serial.Contents, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
 // ```
 func GetInstanceSerialPort(ctx *pulumi.Context, args *GetInstanceSerialPortArgs, opts ...pulumi.InvokeOption) (*GetInstanceSerialPortResult, error) {
 	var rv GetInstanceSerialPortResult

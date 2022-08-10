@@ -35,45 +35,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/bigquery.dataOwner",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			datasetDataset, err := bigquery.NewDataset(ctx, "datasetDataset", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("example_dataset"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDatasetIamPolicy(ctx, "datasetDatasetIamPolicy", &bigquery.DatasetIamPolicyArgs{
-//				DatasetId:  datasetDataset.DatasetId,
-//				PolicyData: pulumi.String(owner.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/bigquery.dataOwner",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		datasetDataset, err := bigquery.NewDataset(ctx, "datasetDataset", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("example_dataset"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamPolicy(ctx, "datasetDatasetIamPolicy", &bigquery.DatasetIamPolicyArgs{
+// 			DatasetId:  datasetDataset.DatasetId,
+// 			PolicyData: pulumi.String(owner.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_bigquery\_dataset\_iam\_binding
@@ -82,34 +79,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("example_dataset"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
-//				DatasetId: dataset.DatasetId,
-//				Role:      pulumi.String("roles/bigquery.dataViewer"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("example_dataset"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+// 			DatasetId: dataset.DatasetId,
+// 			Role:      pulumi.String("roles/bigquery.dataViewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_bigquery\_dataset\_iam\_member
@@ -118,32 +112,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("example_dataset"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
-//				DatasetId: dataset.DatasetId,
-//				Role:      pulumi.String("roles/bigquery.dataEditor"),
-//				Member:    pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("example_dataset"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+// 			DatasetId: dataset.DatasetId,
+// 			Role:      pulumi.String("roles/bigquery.dataEditor"),
+// 			Member:    pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -153,32 +144,26 @@ import (
 // This member resource can be imported using the `dataset_id`, role, and account e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer user:foo@example.com"
-//
+//  $ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer user:foo@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
 //
 // This binding resource can be imported using the `dataset_id` and role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer"
-//
+//  $ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question.
+//  IAM policy imports use the identifier of the resource in question.
 //
 // This policy resource can be imported using the `dataset_id`, role, and account e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy dataset_iam projects/your-project-id/datasets/dataset-id
-//
+//  $ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy dataset_iam projects/your-project-id/datasets/dataset-id
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type DatasetIamPolicy struct {
@@ -309,7 +294,7 @@ func (i *DatasetIamPolicy) ToDatasetIamPolicyOutputWithContext(ctx context.Conte
 // DatasetIamPolicyArrayInput is an input type that accepts DatasetIamPolicyArray and DatasetIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DatasetIamPolicyArrayInput` via:
 //
-//	DatasetIamPolicyArray{ DatasetIamPolicyArgs{...} }
+//          DatasetIamPolicyArray{ DatasetIamPolicyArgs{...} }
 type DatasetIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -334,7 +319,7 @@ func (i DatasetIamPolicyArray) ToDatasetIamPolicyArrayOutputWithContext(ctx cont
 // DatasetIamPolicyMapInput is an input type that accepts DatasetIamPolicyMap and DatasetIamPolicyMapOutput values.
 // You can construct a concrete instance of `DatasetIamPolicyMapInput` via:
 //
-//	DatasetIamPolicyMap{ "key": DatasetIamPolicyArgs{...} }
+//          DatasetIamPolicyMap{ "key": DatasetIamPolicyArgs{...} }
 type DatasetIamPolicyMapInput interface {
 	pulumi.Input
 

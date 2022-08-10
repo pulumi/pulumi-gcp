@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
+//     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProject` and set `userProjectOverride` to true
@@ -32,42 +32,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudidentity.NewGroup(ctx, "cloudIdentityGroupBasic", &cloudidentity.GroupArgs{
-//				DisplayName: pulumi.String("my-identity-group"),
-//				GroupKey: &cloudidentity.GroupGroupKeyArgs{
-//					Id: pulumi.String("my-identity-group@example.com"),
-//				},
-//				InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
-//				Labels: pulumi.StringMap{
-//					"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
-//				},
-//				Parent: pulumi.String("customers/A01b123xz"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudidentity.NewGroup(ctx, "cloudIdentityGroupBasic", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group@example.com"),
+// 			},
+// 			InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 			Parent: pulumi.String("customers/A01b123xz"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Group can be imported using any of these accepted formats
+// Group can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudidentity/group:Group default {{name}}
-//
+//  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
 // ```
 type Group struct {
 	pulumi.CustomResourceState
@@ -297,7 +292,7 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
-//	GroupArray{ GroupArgs{...} }
+//          GroupArray{ GroupArgs{...} }
 type GroupArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +317,7 @@ func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArra
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
 // You can construct a concrete instance of `GroupMapInput` via:
 //
-//	GroupMap{ "key": GroupArgs{...} }
+//          GroupMap{ "key": GroupArgs{...} }
 type GroupMapInput interface {
 	pulumi.Input
 
@@ -392,8 +387,8 @@ func (o GroupOutput) InitialGroupConfig() pulumi.StringPtrOutput {
 
 // The labels that apply to the Group.
 // Must not contain more than one entry. Must contain the entry
-// 'cloudidentity.googleapis.com/groups.discussion_forum': ” if the Group is a Google Group or
-// 'system/groups/external': ” if the Group is an external-identity-mapped group.
+// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+// 'system/groups/external': '' if the Group is an external-identity-mapped group.
 func (o GroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

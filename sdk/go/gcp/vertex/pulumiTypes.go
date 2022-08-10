@@ -19,7 +19,7 @@ type AiDatasetEncryptionSpec struct {
 // AiDatasetEncryptionSpecInput is an input type that accepts AiDatasetEncryptionSpecArgs and AiDatasetEncryptionSpecOutput values.
 // You can construct a concrete instance of `AiDatasetEncryptionSpecInput` via:
 //
-//	AiDatasetEncryptionSpecArgs{...}
+//          AiDatasetEncryptionSpecArgs{...}
 type AiDatasetEncryptionSpecInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i AiDatasetEncryptionSpecArgs) ToAiDatasetEncryptionSpecPtrOutputWithConte
 // AiDatasetEncryptionSpecPtrInput is an input type that accepts AiDatasetEncryptionSpecArgs, AiDatasetEncryptionSpecPtr and AiDatasetEncryptionSpecPtrOutput values.
 // You can construct a concrete instance of `AiDatasetEncryptionSpecPtrInput` via:
 //
-//	        AiDatasetEncryptionSpecArgs{...}
+//          AiDatasetEncryptionSpecArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AiDatasetEncryptionSpecPtrInput interface {
 	pulumi.Input
 
@@ -160,7 +160,7 @@ type AiFeatureStoreEntityTypeMonitoringConfig struct {
 // AiFeatureStoreEntityTypeMonitoringConfigInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigArgs and AiFeatureStoreEntityTypeMonitoringConfigOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigInput` via:
 //
-//	AiFeatureStoreEntityTypeMonitoringConfigArgs{...}
+//          AiFeatureStoreEntityTypeMonitoringConfigArgs{...}
 type AiFeatureStoreEntityTypeMonitoringConfigInput interface {
 	pulumi.Input
 
@@ -197,11 +197,11 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityType
 // AiFeatureStoreEntityTypeMonitoringConfigPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigArgs, AiFeatureStoreEntityTypeMonitoringConfigPtr and AiFeatureStoreEntityTypeMonitoringConfigPtrOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigPtrInput` via:
 //
-//	        AiFeatureStoreEntityTypeMonitoringConfigArgs{...}
+//          AiFeatureStoreEntityTypeMonitoringConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AiFeatureStoreEntityTypeMonitoringConfigPtrInput interface {
 	pulumi.Input
 
@@ -305,7 +305,7 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 // AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs and AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput` via:
 //
-//	AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{...}
+//          AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{...}
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput interface {
 	pulumi.Input
 
@@ -344,11 +344,11 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatur
 // AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs, AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtr and AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput` via:
 //
-//	        AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{...}
+//          AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput interface {
 	pulumi.Input
 
@@ -462,7 +462,7 @@ type AiFeatureStoreOnlineServingConfig struct {
 // AiFeatureStoreOnlineServingConfigInput is an input type that accepts AiFeatureStoreOnlineServingConfigArgs and AiFeatureStoreOnlineServingConfigOutput values.
 // You can construct a concrete instance of `AiFeatureStoreOnlineServingConfigInput` via:
 //
-//	AiFeatureStoreOnlineServingConfigArgs{...}
+//          AiFeatureStoreOnlineServingConfigArgs{...}
 type AiFeatureStoreOnlineServingConfigInput interface {
 	pulumi.Input
 
@@ -498,11 +498,11 @@ func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConf
 // AiFeatureStoreOnlineServingConfigPtrInput is an input type that accepts AiFeatureStoreOnlineServingConfigArgs, AiFeatureStoreOnlineServingConfigPtr and AiFeatureStoreOnlineServingConfigPtrOutput values.
 // You can construct a concrete instance of `AiFeatureStoreOnlineServingConfigPtrInput` via:
 //
-//	        AiFeatureStoreOnlineServingConfigArgs{...}
+//          AiFeatureStoreOnlineServingConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AiFeatureStoreOnlineServingConfigPtrInput interface {
 	pulumi.Input
 
@@ -600,7 +600,7 @@ type AiMetadataStoreEncryptionSpec struct {
 // AiMetadataStoreEncryptionSpecInput is an input type that accepts AiMetadataStoreEncryptionSpecArgs and AiMetadataStoreEncryptionSpecOutput values.
 // You can construct a concrete instance of `AiMetadataStoreEncryptionSpecInput` via:
 //
-//	AiMetadataStoreEncryptionSpecArgs{...}
+//          AiMetadataStoreEncryptionSpecArgs{...}
 type AiMetadataStoreEncryptionSpecInput interface {
 	pulumi.Input
 
@@ -637,11 +637,11 @@ func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecPtrOut
 // AiMetadataStoreEncryptionSpecPtrInput is an input type that accepts AiMetadataStoreEncryptionSpecArgs, AiMetadataStoreEncryptionSpecPtr and AiMetadataStoreEncryptionSpecPtrOutput values.
 // You can construct a concrete instance of `AiMetadataStoreEncryptionSpecPtrInput` via:
 //
-//	        AiMetadataStoreEncryptionSpecArgs{...}
+//          AiMetadataStoreEncryptionSpecArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type AiMetadataStoreEncryptionSpecPtrInput interface {
 	pulumi.Input
 
@@ -739,7 +739,7 @@ type AiMetadataStoreStateType struct {
 // AiMetadataStoreStateTypeInput is an input type that accepts AiMetadataStoreStateTypeArgs and AiMetadataStoreStateTypeOutput values.
 // You can construct a concrete instance of `AiMetadataStoreStateTypeInput` via:
 //
-//	AiMetadataStoreStateTypeArgs{...}
+//          AiMetadataStoreStateTypeArgs{...}
 type AiMetadataStoreStateTypeInput interface {
 	pulumi.Input
 
@@ -766,7 +766,7 @@ func (i AiMetadataStoreStateTypeArgs) ToAiMetadataStoreStateTypeOutputWithContex
 // AiMetadataStoreStateTypeArrayInput is an input type that accepts AiMetadataStoreStateTypeArray and AiMetadataStoreStateTypeArrayOutput values.
 // You can construct a concrete instance of `AiMetadataStoreStateTypeArrayInput` via:
 //
-//	AiMetadataStoreStateTypeArray{ AiMetadataStoreStateTypeArgs{...} }
+//          AiMetadataStoreStateTypeArray{ AiMetadataStoreStateTypeArgs{...} }
 type AiMetadataStoreStateTypeArrayInput interface {
 	pulumi.Input
 

@@ -19,7 +19,7 @@ type EnvironmentIamBindingCondition struct {
 // EnvironmentIamBindingConditionInput is an input type that accepts EnvironmentIamBindingConditionArgs and EnvironmentIamBindingConditionOutput values.
 // You can construct a concrete instance of `EnvironmentIamBindingConditionInput` via:
 //
-//	EnvironmentIamBindingConditionArgs{...}
+//          EnvironmentIamBindingConditionArgs{...}
 type EnvironmentIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i EnvironmentIamBindingConditionArgs) ToEnvironmentIamBindingConditionPtrO
 // EnvironmentIamBindingConditionPtrInput is an input type that accepts EnvironmentIamBindingConditionArgs, EnvironmentIamBindingConditionPtr and EnvironmentIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `EnvironmentIamBindingConditionPtrInput` via:
 //
-//	        EnvironmentIamBindingConditionArgs{...}
+//          EnvironmentIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EnvironmentIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type EnvironmentIamMemberCondition struct {
 // EnvironmentIamMemberConditionInput is an input type that accepts EnvironmentIamMemberConditionArgs and EnvironmentIamMemberConditionOutput values.
 // You can construct a concrete instance of `EnvironmentIamMemberConditionInput` via:
 //
-//	EnvironmentIamMemberConditionArgs{...}
+//          EnvironmentIamMemberConditionArgs{...}
 type EnvironmentIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -219,11 +219,11 @@ func (i EnvironmentIamMemberConditionArgs) ToEnvironmentIamMemberConditionPtrOut
 // EnvironmentIamMemberConditionPtrInput is an input type that accepts EnvironmentIamMemberConditionArgs, EnvironmentIamMemberConditionPtr and EnvironmentIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `EnvironmentIamMemberConditionPtrInput` via:
 //
-//	        EnvironmentIamMemberConditionArgs{...}
+//          EnvironmentIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EnvironmentIamMemberConditionPtrInput interface {
 	pulumi.Input
 

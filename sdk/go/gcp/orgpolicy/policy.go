@@ -24,43 +24,40 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId:     pulumi.String("123456789"),
-//				ProjectId: pulumi.String("id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				Parent: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Spec: &orgpolicy.PolicySpecArgs{
-//					Rules: orgpolicy.PolicySpecRuleArray{
-//						&orgpolicy.PolicySpecRuleArgs{
-//							Enforce: pulumi.String("FALSE"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+// 			OrgId:     pulumi.String("123456789"),
+// 			ProjectId: pulumi.String("id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+// 			Parent: basic.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("projects/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Spec: &orgpolicy.PolicySpecArgs{
+// 				Rules: orgpolicy.PolicySpecRuleArray{
+// 					&orgpolicy.PolicySpecRuleArgs{
+// 						Enforce: pulumi.String("FALSE"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Folder_policy
 // A test of an orgpolicy policy for a folder
@@ -68,40 +65,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basic, err := organizations.NewFolder(ctx, "basic", &organizations.FolderArgs{
-//				Parent:      pulumi.String("organizations/123456789"),
-//				DisplayName: pulumi.String("folder"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				Parent: basic.Name,
-//				Spec: &orgpolicy.PolicySpecArgs{
-//					InheritFromParent: pulumi.Bool(true),
-//					Rules: orgpolicy.PolicySpecRuleArray{
-//						&orgpolicy.PolicySpecRuleArgs{
-//							DenyAll: pulumi.String("TRUE"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basic, err := organizations.NewFolder(ctx, "basic", &organizations.FolderArgs{
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 			DisplayName: pulumi.String("folder"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+// 			Parent: basic.Name,
+// 			Spec: &orgpolicy.PolicySpecArgs{
+// 				InheritFromParent: pulumi.Bool(true),
+// 				Rules: orgpolicy.PolicySpecRuleArray{
+// 					&orgpolicy.PolicySpecRuleArgs{
+// 						DenyAll: pulumi.String("TRUE"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Organization_policy
 // A test of an orgpolicy policy for an organization
@@ -109,27 +103,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				Parent: pulumi.String("organizations/123456789"),
-//				Spec: &orgpolicy.PolicySpecArgs{
-//					Reset: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Spec: &orgpolicy.PolicySpecArgs{
+// 				Reset: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Project_policy
 // A test of an orgpolicy policy for a project
@@ -137,69 +128,64 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				OrgId:     pulumi.String("123456789"),
-//				ProjectId: pulumi.String("id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				Parent: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Spec: &orgpolicy.PolicySpecArgs{
-//					Rules: orgpolicy.PolicySpecRuleArray{
-//						&orgpolicy.PolicySpecRuleArgs{
-//							Condition: &orgpolicy.PolicySpecRuleConditionArgs{
-//								Description: pulumi.String("A sample condition for the policy"),
-//								Expression:  pulumi.String("resource.matchLabels('labelKeys/123', 'labelValues/345')"),
-//								Location:    pulumi.String("sample-location.log"),
-//								Title:       pulumi.String("sample-condition"),
-//							},
-//							Values: &orgpolicy.PolicySpecRuleValuesArgs{
-//								AllowedValues: pulumi.StringArray{
-//									pulumi.String("projects/allowed-project"),
-//								},
-//								DeniedValues: pulumi.StringArray{
-//									pulumi.String("projects/denied-project"),
-//								},
-//							},
-//						},
-//						&orgpolicy.PolicySpecRuleArgs{
-//							AllowAll: pulumi.String("TRUE"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+// 			OrgId:     pulumi.String("123456789"),
+// 			ProjectId: pulumi.String("id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+// 			Parent: basic.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("projects/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Spec: &orgpolicy.PolicySpecArgs{
+// 				Rules: orgpolicy.PolicySpecRuleArray{
+// 					&orgpolicy.PolicySpecRuleArgs{
+// 						Condition: &orgpolicy.PolicySpecRuleConditionArgs{
+// 							Description: pulumi.String("A sample condition for the policy"),
+// 							Expression:  pulumi.String("resource.matchLabels('labelKeys/123', 'labelValues/345')"),
+// 							Location:    pulumi.String("sample-location.log"),
+// 							Title:       pulumi.String("sample-condition"),
+// 						},
+// 						Values: &orgpolicy.PolicySpecRuleValuesArgs{
+// 							AllowedValues: pulumi.StringArray{
+// 								pulumi.String("projects/allowed-project"),
+// 							},
+// 							DeniedValues: pulumi.StringArray{
+// 								pulumi.String("projects/denied-project"),
+// 							},
+// 						},
+// 					},
+// 					&orgpolicy.PolicySpecRuleArgs{
+// 						AllowAll: pulumi.String("TRUE"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Policy can be imported using any of these accepted formats
+// Policy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
-//
+//  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
 // ```
 type Policy struct {
 	pulumi.CustomResourceState
@@ -310,7 +296,7 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 // PolicyArrayInput is an input type that accepts PolicyArray and PolicyArrayOutput values.
 // You can construct a concrete instance of `PolicyArrayInput` via:
 //
-//	PolicyArray{ PolicyArgs{...} }
+//          PolicyArray{ PolicyArgs{...} }
 type PolicyArrayInput interface {
 	pulumi.Input
 
@@ -335,7 +321,7 @@ func (i PolicyArray) ToPolicyArrayOutputWithContext(ctx context.Context) PolicyA
 // PolicyMapInput is an input type that accepts PolicyMap and PolicyMapOutput values.
 // You can construct a concrete instance of `PolicyMapInput` via:
 //
-//	PolicyMap{ "key": PolicyArgs{...} }
+//          PolicyMap{ "key": PolicyArgs{...} }
 type PolicyMapInput interface {
 	pulumi.Input
 

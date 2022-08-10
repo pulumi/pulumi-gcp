@@ -20,34 +20,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
-//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
-//					Version: pulumi.String("2.3.6"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
-//					DayOfWeek: pulumi.String("SUNDAY"),
-//					HourOfDay: pulumi.Int(2),
-//				},
-//				Port:      pulumi.Int(9080),
-//				ServiceId: pulumi.String("metastore-srv"),
-//				Tier:      pulumi.String("DEVELOPER"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+// 				Version: pulumi.String("2.3.6"),
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
+// 				DayOfWeek: pulumi.String("SUNDAY"),
+// 				HourOfDay: pulumi.Int(2),
+// 			},
+// 			Port:      pulumi.Int(9080),
+// 			ServiceId: pulumi.String("metastore-srv"),
+// 			Tier:      pulumi.String("DEVELOPER"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Dataproc Metastore Service Cmek Example
 //
@@ -55,67 +52,58 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
-//				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
-//				KeyRing: keyRing.ID(),
-//				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
-//				ServiceId: pulumi.String("example-service"),
-//				Location:  pulumi.String("us-central1"),
-//				EncryptionConfig: &dataproc.MetastoreServiceEncryptionConfigArgs{
-//					KmsKey: cryptoKey.ID(),
-//				},
-//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
-//					Version: pulumi.String("3.1.2"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Location:  pulumi.String("us-central1"),
+// 			EncryptionConfig: &dataproc.MetastoreServiceEncryptionConfigArgs{
+// 				KmsKey: cryptoKey.ID(),
+// 			},
+// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+// 				Version: pulumi.String("3.1.2"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Service can be imported using any of these accepted formats
+// Service can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-//
+//  $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-//
+//  $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
-//
+//  $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
 // ```
 type MetastoreService struct {
 	pulumi.CustomResourceState
@@ -432,7 +420,7 @@ func (i *MetastoreService) ToMetastoreServiceOutputWithContext(ctx context.Conte
 // MetastoreServiceArrayInput is an input type that accepts MetastoreServiceArray and MetastoreServiceArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceArrayInput` via:
 //
-//	MetastoreServiceArray{ MetastoreServiceArgs{...} }
+//          MetastoreServiceArray{ MetastoreServiceArgs{...} }
 type MetastoreServiceArrayInput interface {
 	pulumi.Input
 
@@ -457,7 +445,7 @@ func (i MetastoreServiceArray) ToMetastoreServiceArrayOutputWithContext(ctx cont
 // MetastoreServiceMapInput is an input type that accepts MetastoreServiceMap and MetastoreServiceMapOutput values.
 // You can construct a concrete instance of `MetastoreServiceMapInput` via:
 //
-//	MetastoreServiceMap{ "key": MetastoreServiceArgs{...} }
+//          MetastoreServiceMap{ "key": MetastoreServiceArgs{...} }
 type MetastoreServiceMapInput interface {
 	pulumi.Input
 

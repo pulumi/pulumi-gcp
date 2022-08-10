@@ -19,30 +19,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetGrpcProxies)
 // * How-to Guides
-//   - [Using Target gRPC Proxies](https://cloud.google.com/traffic-director/docs/proxyless-overview)
+//     * [Using Target gRPC Proxies](https://cloud.google.com/traffic-director/docs/proxyless-overview)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # TargetGrpcProxy can be imported using any of these accepted formats
+// TargetGrpcProxy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
-//
+//  $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
-//
+//  $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
 // ```
 type TargetGrpcProxy struct {
 	pulumi.CustomResourceState
@@ -293,7 +287,7 @@ func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context
 // TargetGrpcProxyArrayInput is an input type that accepts TargetGrpcProxyArray and TargetGrpcProxyArrayOutput values.
 // You can construct a concrete instance of `TargetGrpcProxyArrayInput` via:
 //
-//	TargetGrpcProxyArray{ TargetGrpcProxyArgs{...} }
+//          TargetGrpcProxyArray{ TargetGrpcProxyArgs{...} }
 type TargetGrpcProxyArrayInput interface {
 	pulumi.Input
 
@@ -318,7 +312,7 @@ func (i TargetGrpcProxyArray) ToTargetGrpcProxyArrayOutputWithContext(ctx contex
 // TargetGrpcProxyMapInput is an input type that accepts TargetGrpcProxyMap and TargetGrpcProxyMapOutput values.
 // You can construct a concrete instance of `TargetGrpcProxyMapInput` via:
 //
-//	TargetGrpcProxyMap{ "key": TargetGrpcProxyArgs{...} }
+//          TargetGrpcProxyMap{ "key": TargetGrpcProxyArgs{...} }
 type TargetGrpcProxyMapInput interface {
 	pulumi.Input
 

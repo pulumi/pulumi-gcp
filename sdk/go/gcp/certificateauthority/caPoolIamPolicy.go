@@ -16,28 +16,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/caPools/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service capool IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager user:jane@example.com"
-//
+//  $ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager"
-//
+//  $ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}}
-//
+//  $ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type CaPoolIamPolicy struct {
@@ -188,7 +182,7 @@ func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutputWithContext(ctx context.Context
 // CaPoolIamPolicyArrayInput is an input type that accepts CaPoolIamPolicyArray and CaPoolIamPolicyArrayOutput values.
 // You can construct a concrete instance of `CaPoolIamPolicyArrayInput` via:
 //
-//	CaPoolIamPolicyArray{ CaPoolIamPolicyArgs{...} }
+//          CaPoolIamPolicyArray{ CaPoolIamPolicyArgs{...} }
 type CaPoolIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +207,7 @@ func (i CaPoolIamPolicyArray) ToCaPoolIamPolicyArrayOutputWithContext(ctx contex
 // CaPoolIamPolicyMapInput is an input type that accepts CaPoolIamPolicyMap and CaPoolIamPolicyMapOutput values.
 // You can construct a concrete instance of `CaPoolIamPolicyMapInput` via:
 //
-//	CaPoolIamPolicyMap{ "key": CaPoolIamPolicyArgs{...} }
+//          CaPoolIamPolicyMap{ "key": CaPoolIamPolicyArgs{...} }
 type CaPoolIamPolicyMapInput interface {
 	pulumi.Input
 

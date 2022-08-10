@@ -19,32 +19,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewResourcePolicy(ctx, "foo", &compute.ResourcePolicyArgs{
-//				Region: pulumi.String("us-central1"),
-//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
-//						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
-//							DaysInCycle: pulumi.Int(1),
-//							StartTime:   pulumi.String("04:00"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewResourcePolicy(ctx, "foo", &compute.ResourcePolicyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+// 						DaysInCycle: pulumi.Int(1),
+// 						StartTime:   pulumi.String("04:00"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Resource Policy Full
 //
@@ -52,43 +49,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
-//				Region: pulumi.String("us-central1"),
-//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-//					RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
-//						MaxRetentionDays:   pulumi.Int(10),
-//						OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
-//					},
-//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
-//						HourlySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{
-//							HoursInCycle: pulumi.Int(20),
-//							StartTime:    pulumi.String("23:00"),
-//						},
-//					},
-//					SnapshotProperties: &compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{
-//						GuestFlush: pulumi.Bool(true),
-//						Labels: pulumi.StringMap{
-//							"myLabel": pulumi.String("value"),
-//						},
-//						StorageLocations: pulumi.String("us"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+// 				RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
+// 					MaxRetentionDays:   pulumi.Int(10),
+// 					OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
+// 				},
+// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+// 					HourlySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{
+// 						HoursInCycle: pulumi.Int(20),
+// 						StartTime:    pulumi.String("23:00"),
+// 					},
+// 				},
+// 				SnapshotProperties: &compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{
+// 					GuestFlush: pulumi.Bool(true),
+// 					Labels: pulumi.StringMap{
+// 						"myLabel": pulumi.String("value"),
+// 					},
+// 					StorageLocations: pulumi.String("us"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Resource Policy Placement Policy
 //
@@ -96,28 +90,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
-//				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
-//					Collocation: pulumi.String("COLLOCATED"),
-//					VmCount:     pulumi.Int(2),
-//				},
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
+// 			GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
+// 				Collocation: pulumi.String("COLLOCATED"),
+// 				VmCount:     pulumi.Int(2),
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Resource Policy Instance Schedule Policy
 //
@@ -125,62 +116,51 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewResourcePolicy(ctx, "hourly", &compute.ResourcePolicyArgs{
-//				Description: pulumi.String("Start and stop instances"),
-//				InstanceSchedulePolicy: &compute.ResourcePolicyInstanceSchedulePolicyArgs{
-//					TimeZone: pulumi.String("US/Central"),
-//					VmStartSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{
-//						Schedule: pulumi.String("0 * * * *"),
-//					},
-//					VmStopSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{
-//						Schedule: pulumi.String("15 * * * *"),
-//					},
-//				},
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewResourcePolicy(ctx, "hourly", &compute.ResourcePolicyArgs{
+// 			Description: pulumi.String("Start and stop instances"),
+// 			InstanceSchedulePolicy: &compute.ResourcePolicyInstanceSchedulePolicyArgs{
+// 				TimeZone: pulumi.String("US/Central"),
+// 				VmStartSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{
+// 					Schedule: pulumi.String("0 * * * *"),
+// 				},
+// 				VmStopSchedule: &compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{
+// 					Schedule: pulumi.String("15 * * * *"),
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ResourcePolicy can be imported using any of these accepted formats
+// ResourcePolicy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
-//
+//  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
-//
+//  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
 // ```
 type ResourcePolicy struct {
 	pulumi.CustomResourceState
@@ -384,7 +364,7 @@ func (i *ResourcePolicy) ToResourcePolicyOutputWithContext(ctx context.Context) 
 // ResourcePolicyArrayInput is an input type that accepts ResourcePolicyArray and ResourcePolicyArrayOutput values.
 // You can construct a concrete instance of `ResourcePolicyArrayInput` via:
 //
-//	ResourcePolicyArray{ ResourcePolicyArgs{...} }
+//          ResourcePolicyArray{ ResourcePolicyArgs{...} }
 type ResourcePolicyArrayInput interface {
 	pulumi.Input
 
@@ -409,7 +389,7 @@ func (i ResourcePolicyArray) ToResourcePolicyArrayOutputWithContext(ctx context.
 // ResourcePolicyMapInput is an input type that accepts ResourcePolicyMap and ResourcePolicyMapOutput values.
 // You can construct a concrete instance of `ResourcePolicyMapInput` via:
 //
-//	ResourcePolicyMap{ "key": ResourcePolicyArgs{...} }
+//          ResourcePolicyMap{ "key": ResourcePolicyArgs{...} }
 type ResourcePolicyMapInput interface {
 	pulumi.Input
 

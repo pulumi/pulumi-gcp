@@ -19,7 +19,7 @@ type DatabaseEncryptionConfig struct {
 // DatabaseEncryptionConfigInput is an input type that accepts DatabaseEncryptionConfigArgs and DatabaseEncryptionConfigOutput values.
 // You can construct a concrete instance of `DatabaseEncryptionConfigInput` via:
 //
-//	DatabaseEncryptionConfigArgs{...}
+//          DatabaseEncryptionConfigArgs{...}
 type DatabaseEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigPtrOutputWithCon
 // DatabaseEncryptionConfigPtrInput is an input type that accepts DatabaseEncryptionConfigArgs, DatabaseEncryptionConfigPtr and DatabaseEncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `DatabaseEncryptionConfigPtrInput` via:
 //
-//	        DatabaseEncryptionConfigArgs{...}
+//          DatabaseEncryptionConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DatabaseEncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -160,7 +160,7 @@ type DatabaseIAMBindingCondition struct {
 // DatabaseIAMBindingConditionInput is an input type that accepts DatabaseIAMBindingConditionArgs and DatabaseIAMBindingConditionOutput values.
 // You can construct a concrete instance of `DatabaseIAMBindingConditionInput` via:
 //
-//	DatabaseIAMBindingConditionArgs{...}
+//          DatabaseIAMBindingConditionArgs{...}
 type DatabaseIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -197,11 +197,11 @@ func (i DatabaseIAMBindingConditionArgs) ToDatabaseIAMBindingConditionPtrOutputW
 // DatabaseIAMBindingConditionPtrInput is an input type that accepts DatabaseIAMBindingConditionArgs, DatabaseIAMBindingConditionPtr and DatabaseIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `DatabaseIAMBindingConditionPtrInput` via:
 //
-//	        DatabaseIAMBindingConditionArgs{...}
+//          DatabaseIAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DatabaseIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -323,7 +323,7 @@ type DatabaseIAMMemberCondition struct {
 // DatabaseIAMMemberConditionInput is an input type that accepts DatabaseIAMMemberConditionArgs and DatabaseIAMMemberConditionOutput values.
 // You can construct a concrete instance of `DatabaseIAMMemberConditionInput` via:
 //
-//	DatabaseIAMMemberConditionArgs{...}
+//          DatabaseIAMMemberConditionArgs{...}
 type DatabaseIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -360,11 +360,11 @@ func (i DatabaseIAMMemberConditionArgs) ToDatabaseIAMMemberConditionPtrOutputWit
 // DatabaseIAMMemberConditionPtrInput is an input type that accepts DatabaseIAMMemberConditionArgs, DatabaseIAMMemberConditionPtr and DatabaseIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `DatabaseIAMMemberConditionPtrInput` via:
 //
-//	        DatabaseIAMMemberConditionArgs{...}
+//          DatabaseIAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DatabaseIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -486,7 +486,7 @@ type InstanceIAMBindingCondition struct {
 // InstanceIAMBindingConditionInput is an input type that accepts InstanceIAMBindingConditionArgs and InstanceIAMBindingConditionOutput values.
 // You can construct a concrete instance of `InstanceIAMBindingConditionInput` via:
 //
-//	InstanceIAMBindingConditionArgs{...}
+//          InstanceIAMBindingConditionArgs{...}
 type InstanceIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -523,11 +523,11 @@ func (i InstanceIAMBindingConditionArgs) ToInstanceIAMBindingConditionPtrOutputW
 // InstanceIAMBindingConditionPtrInput is an input type that accepts InstanceIAMBindingConditionArgs, InstanceIAMBindingConditionPtr and InstanceIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `InstanceIAMBindingConditionPtrInput` via:
 //
-//	        InstanceIAMBindingConditionArgs{...}
+//          InstanceIAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type InstanceIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -649,7 +649,7 @@ type InstanceIAMMemberCondition struct {
 // InstanceIAMMemberConditionInput is an input type that accepts InstanceIAMMemberConditionArgs and InstanceIAMMemberConditionOutput values.
 // You can construct a concrete instance of `InstanceIAMMemberConditionInput` via:
 //
-//	InstanceIAMMemberConditionArgs{...}
+//          InstanceIAMMemberConditionArgs{...}
 type InstanceIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -686,11 +686,11 @@ func (i InstanceIAMMemberConditionArgs) ToInstanceIAMMemberConditionPtrOutputWit
 // InstanceIAMMemberConditionPtrInput is an input type that accepts InstanceIAMMemberConditionArgs, InstanceIAMMemberConditionPtr and InstanceIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `InstanceIAMMemberConditionPtrInput` via:
 //
-//	        InstanceIAMMemberConditionArgs{...}
+//          InstanceIAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type InstanceIAMMemberConditionPtrInput interface {
 	pulumi.Input
 

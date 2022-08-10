@@ -27,41 +27,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/viewer",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataproc.NewAutoscalingPolicyIamPolicy(ctx, "policy", &dataproc.AutoscalingPolicyIamPolicyArgs{
-//				Project:    pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location:   pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId:   pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewAutoscalingPolicyIamPolicy(ctx, "policy", &dataproc.AutoscalingPolicyIamPolicyArgs{
+// 			Project:    pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
+// 			Location:   pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
+// 			PolicyId:   pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_dataproc\_autoscaling\_policy\_iam\_binding
@@ -70,30 +67,27 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewAutoscalingPolicyIamBinding(ctx, "binding", &dataproc.AutoscalingPolicyIamBindingArgs{
-//				Project:  pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
-//				Role:     pulumi.String("roles/viewer"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewAutoscalingPolicyIamBinding(ctx, "binding", &dataproc.AutoscalingPolicyIamBindingArgs{
+// 			Project:  pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
+// 			Location: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
+// 			PolicyId: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_dataproc\_autoscaling\_policy\_iam\_member
@@ -102,28 +96,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewAutoscalingPolicyIamMember(ctx, "member", &dataproc.AutoscalingPolicyIamMemberArgs{
-//				Project:  pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
-//				Location: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
-//				PolicyId: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
-//				Role:     pulumi.String("roles/viewer"),
-//				Member:   pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewAutoscalingPolicyIamMember(ctx, "member", &dataproc.AutoscalingPolicyIamMemberArgs{
+// 			Project:  pulumi.Any(google_dataproc_autoscaling_policy.Basic.Project),
+// 			Location: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Location),
+// 			PolicyId: pulumi.Any(google_dataproc_autoscaling_policy.Basic.Policy_id),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -131,28 +122,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} * {{project}}/{{location}}/{{policy_id}} * {{location}}/{{policy_id}} * {{policy_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc autoscalingpolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy editor "projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} roles/viewer user:jane@example.com"
-//
+//  $ pulumi import gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy editor "projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} roles/viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy editor "projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} roles/viewer"
-//
+//  $ pulumi import gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy editor "projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy editor projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
-//
+//  $ pulumi import gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy editor projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AutoscalingPolicyIamPolicy struct {
@@ -318,7 +303,7 @@ func (i *AutoscalingPolicyIamPolicy) ToAutoscalingPolicyIamPolicyOutputWithConte
 // AutoscalingPolicyIamPolicyArrayInput is an input type that accepts AutoscalingPolicyIamPolicyArray and AutoscalingPolicyIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyIamPolicyArrayInput` via:
 //
-//	AutoscalingPolicyIamPolicyArray{ AutoscalingPolicyIamPolicyArgs{...} }
+//          AutoscalingPolicyIamPolicyArray{ AutoscalingPolicyIamPolicyArgs{...} }
 type AutoscalingPolicyIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +328,7 @@ func (i AutoscalingPolicyIamPolicyArray) ToAutoscalingPolicyIamPolicyArrayOutput
 // AutoscalingPolicyIamPolicyMapInput is an input type that accepts AutoscalingPolicyIamPolicyMap and AutoscalingPolicyIamPolicyMapOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyIamPolicyMapInput` via:
 //
-//	AutoscalingPolicyIamPolicyMap{ "key": AutoscalingPolicyIamPolicyArgs{...} }
+//          AutoscalingPolicyIamPolicyMap{ "key": AutoscalingPolicyIamPolicyArgs{...} }
 type AutoscalingPolicyIamPolicyMapInput interface {
 	pulumi.Input
 

@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
 // * How-to Guides
-//   - [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+//     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 //
 // ## Example Usage
 // ### Region Autoscaler Basic
@@ -30,121 +30,110 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
-//				MachineType: pulumi.String("e2-standard-4"),
-//				Disks: compute.InstanceTemplateDiskArray{
-//					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("debian-cloud/debian-9"),
-//						DiskSizeGb:  pulumi.Int(250),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-//					&compute.InstanceTemplateNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
-//							&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{
-//								NetworkTier: pulumi.String("PREMIUM"),
-//							},
-//						},
-//					},
-//				},
-//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
-//					Scopes: pulumi.StringArray{
-//						pulumi.String("https://www.googleapis.com/auth/devstorage.read_only"),
-//						pulumi.String("https://www.googleapis.com/auth/logging.write"),
-//						pulumi.String("https://www.googleapis.com/auth/monitoring.write"),
-//						pulumi.String("https://www.googleapis.com/auth/pubsub"),
-//						pulumi.String("https://www.googleapis.com/auth/service.management.readonly"),
-//						pulumi.String("https://www.googleapis.com/auth/servicecontrol"),
-//						pulumi.String("https://www.googleapis.com/auth/trace.append"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			foobarTargetPool, err := compute.NewTargetPool(ctx, "foobarTargetPool", nil)
-//			if err != nil {
-//				return err
-//			}
-//			foobarRegionInstanceGroupManager, err := compute.NewRegionInstanceGroupManager(ctx, "foobarRegionInstanceGroupManager", &compute.RegionInstanceGroupManagerArgs{
-//				Region: pulumi.String("us-central1"),
-//				Versions: compute.RegionInstanceGroupManagerVersionArray{
-//					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: foobarInstanceTemplate.ID(),
-//						Name:             pulumi.String("primary"),
-//					},
-//				},
-//				TargetPools: pulumi.StringArray{
-//					foobarTargetPool.ID(),
-//				},
-//				BaseInstanceName: pulumi.String("foobar"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionAutoscaler(ctx, "foobarRegionAutoscaler", &compute.RegionAutoscalerArgs{
-//				Region: pulumi.String("us-central1"),
-//				Target: foobarRegionInstanceGroupManager.ID(),
-//				AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{
-//					MaxReplicas:    pulumi.Int(5),
-//					MinReplicas:    pulumi.Int(1),
-//					CooldownPeriod: pulumi.Int(60),
-//					CpuUtilization: &compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs{
-//						Target: pulumi.Float64(0.5),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-9"),
-//				Project: pulumi.StringRef("debian-cloud"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-standard-4"),
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
+// 					DiskSizeGb:  pulumi.Int(250),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+// 						&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{
+// 							NetworkTier: pulumi.String("PREMIUM"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("https://www.googleapis.com/auth/devstorage.read_only"),
+// 					pulumi.String("https://www.googleapis.com/auth/logging.write"),
+// 					pulumi.String("https://www.googleapis.com/auth/monitoring.write"),
+// 					pulumi.String("https://www.googleapis.com/auth/pubsub"),
+// 					pulumi.String("https://www.googleapis.com/auth/service.management.readonly"),
+// 					pulumi.String("https://www.googleapis.com/auth/servicecontrol"),
+// 					pulumi.String("https://www.googleapis.com/auth/trace.append"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarTargetPool, err := compute.NewTargetPool(ctx, "foobarTargetPool", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarRegionInstanceGroupManager, err := compute.NewRegionInstanceGroupManager(ctx, "foobarRegionInstanceGroupManager", &compute.RegionInstanceGroupManagerArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: foobarInstanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			TargetPools: pulumi.StringArray{
+// 				foobarTargetPool.ID(),
+// 			},
+// 			BaseInstanceName: pulumi.String("foobar"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionAutoscaler(ctx, "foobarRegionAutoscaler", &compute.RegionAutoscalerArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Target: foobarRegionInstanceGroupManager.ID(),
+// 			AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{
+// 				MaxReplicas:    pulumi.Int(5),
+// 				MinReplicas:    pulumi.Int(1),
+// 				CooldownPeriod: pulumi.Int(60),
+// 				CpuUtilization: &compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs{
+// 					Target: pulumi.Float64(0.5),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  pulumi.StringRef("debian-9"),
+// 			Project: pulumi.StringRef("debian-cloud"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # RegionAutoscaler can be imported using any of these accepted formats
+// RegionAutoscaler can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
-//
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
-//
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
 // ```
 type RegionAutoscaler struct {
 	pulumi.CustomResourceState
@@ -340,7 +329,7 @@ func (i *RegionAutoscaler) ToRegionAutoscalerOutputWithContext(ctx context.Conte
 // RegionAutoscalerArrayInput is an input type that accepts RegionAutoscalerArray and RegionAutoscalerArrayOutput values.
 // You can construct a concrete instance of `RegionAutoscalerArrayInput` via:
 //
-//	RegionAutoscalerArray{ RegionAutoscalerArgs{...} }
+//          RegionAutoscalerArray{ RegionAutoscalerArgs{...} }
 type RegionAutoscalerArrayInput interface {
 	pulumi.Input
 
@@ -365,7 +354,7 @@ func (i RegionAutoscalerArray) ToRegionAutoscalerArrayOutputWithContext(ctx cont
 // RegionAutoscalerMapInput is an input type that accepts RegionAutoscalerMap and RegionAutoscalerMapOutput values.
 // You can construct a concrete instance of `RegionAutoscalerMapInput` via:
 //
-//	RegionAutoscalerMap{ "key": RegionAutoscalerArgs{...} }
+//          RegionAutoscalerMap{ "key": RegionAutoscalerArgs{...} }
 type RegionAutoscalerMapInput interface {
 	pulumi.Input
 

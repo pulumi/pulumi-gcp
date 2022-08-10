@@ -21,7 +21,7 @@ type DataStoreIndexProperty struct {
 // DataStoreIndexPropertyInput is an input type that accepts DataStoreIndexPropertyArgs and DataStoreIndexPropertyOutput values.
 // You can construct a concrete instance of `DataStoreIndexPropertyInput` via:
 //
-//	DataStoreIndexPropertyArgs{...}
+//          DataStoreIndexPropertyArgs{...}
 type DataStoreIndexPropertyInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i DataStoreIndexPropertyArgs) ToDataStoreIndexPropertyOutputWithContext(ct
 // DataStoreIndexPropertyArrayInput is an input type that accepts DataStoreIndexPropertyArray and DataStoreIndexPropertyArrayOutput values.
 // You can construct a concrete instance of `DataStoreIndexPropertyArrayInput` via:
 //
-//	DataStoreIndexPropertyArray{ DataStoreIndexPropertyArgs{...} }
+//          DataStoreIndexPropertyArray{ DataStoreIndexPropertyArgs{...} }
 type DataStoreIndexPropertyArrayInput interface {
 	pulumi.Input
 

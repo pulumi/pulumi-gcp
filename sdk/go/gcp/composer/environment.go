@@ -12,24 +12,18 @@ import (
 
 // ## Import
 //
-// # Environment can be imported using any of these accepted formats
+// Environment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
-//
+//  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:composer/environment:Environment default {{name}}
-//
+//  $ pulumi import gcp:composer/environment:Environment default {{name}}
 // ```
 type Environment struct {
 	pulumi.CustomResourceState
@@ -177,7 +171,7 @@ func (i *Environment) ToEnvironmentOutputWithContext(ctx context.Context) Enviro
 // EnvironmentArrayInput is an input type that accepts EnvironmentArray and EnvironmentArrayOutput values.
 // You can construct a concrete instance of `EnvironmentArrayInput` via:
 //
-//	EnvironmentArray{ EnvironmentArgs{...} }
+//          EnvironmentArray{ EnvironmentArgs{...} }
 type EnvironmentArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +196,7 @@ func (i EnvironmentArray) ToEnvironmentArrayOutputWithContext(ctx context.Contex
 // EnvironmentMapInput is an input type that accepts EnvironmentMap and EnvironmentMapOutput values.
 // You can construct a concrete instance of `EnvironmentMapInput` via:
 //
-//	EnvironmentMap{ "key": EnvironmentArgs{...} }
+//          EnvironmentMap{ "key": EnvironmentArgs{...} }
 type EnvironmentMapInput interface {
 	pulumi.Input
 

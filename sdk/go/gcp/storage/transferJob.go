@@ -18,7 +18,7 @@ import (
 // * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
 // * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs)
 // * How-to Guides
-//   - [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+//     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
 //
 // ## Example Usage
 //
@@ -28,94 +28,91 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := storage.GetTransferProjectServieAccount(ctx, &storage.GetTransferProjectServieAccountArgs{
-//				Project: pulumi.StringRef(_var.Project),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucket(ctx, "s3-backup-bucketBucket", &storage.BucketArgs{
-//				StorageClass: pulumi.String("NEARLINE"),
-//				Project:      pulumi.Any(_var.Project),
-//				Location:     pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
-//				Bucket: s3_backup_bucketBucket.Name,
-//				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				s3_backup_bucketBucket,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewTransferJob(ctx, "s3-bucket-nightly-backup", &storage.TransferJobArgs{
-//				Description: pulumi.String("Nightly backup of S3 bucket"),
-//				Project:     pulumi.Any(_var.Project),
-//				TransferSpec: &storage.TransferJobTransferSpecArgs{
-//					ObjectConditions: &storage.TransferJobTransferSpecObjectConditionsArgs{
-//						MaxTimeElapsedSinceLastModification: pulumi.String("600s"),
-//						ExcludePrefixes: pulumi.StringArray{
-//							pulumi.String("requests.gz"),
-//						},
-//					},
-//					TransferOptions: &storage.TransferJobTransferSpecTransferOptionsArgs{
-//						DeleteObjectsUniqueInSink: pulumi.Bool(false),
-//					},
-//					AwsS3DataSource: &storage.TransferJobTransferSpecAwsS3DataSourceArgs{
-//						BucketName: pulumi.Any(_var.Aws_s3_bucket),
-//						AwsAccessKey: &storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{
-//							AccessKeyId:     pulumi.Any(_var.Aws_access_key),
-//							SecretAccessKey: pulumi.Any(_var.Aws_secret_key),
-//						},
-//					},
-//					GcsDataSink: &storage.TransferJobTransferSpecGcsDataSinkArgs{
-//						BucketName: s3_backup_bucketBucket.Name,
-//						Path:       pulumi.String("foo/bar/"),
-//					},
-//				},
-//				Schedule: &storage.TransferJobScheduleArgs{
-//					ScheduleStartDate: &storage.TransferJobScheduleScheduleStartDateArgs{
-//						Year:  pulumi.Int(2018),
-//						Month: pulumi.Int(10),
-//						Day:   pulumi.Int(1),
-//					},
-//					ScheduleEndDate: &storage.TransferJobScheduleScheduleEndDateArgs{
-//						Year:  pulumi.Int(2019),
-//						Month: pulumi.Int(1),
-//						Day:   pulumi.Int(15),
-//					},
-//					StartTimeOfDay: &storage.TransferJobScheduleStartTimeOfDayArgs{
-//						Hours:   pulumi.Int(23),
-//						Minutes: pulumi.Int(30),
-//						Seconds: pulumi.Int(0),
-//						Nanos:   pulumi.Int(0),
-//					},
-//					RepeatInterval: pulumi.String("604800s"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				s3_backup_bucketBucketIAMMember,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := storage.GetTransferProjectServieAccount(ctx, &storage.GetTransferProjectServieAccountArgs{
+// 			Project: pulumi.StringRef(_var.Project),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewBucket(ctx, "s3-backup-bucketBucket", &storage.BucketArgs{
+// 			StorageClass: pulumi.String("NEARLINE"),
+// 			Project:      pulumi.Any(_var.Project),
+// 			Location:     pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
+// 			Bucket: s3_backup_bucketBucket.Name,
+// 			Role:   pulumi.String("roles/storage.admin"),
+// 			Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			s3_backup_bucketBucket,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewTransferJob(ctx, "s3-bucket-nightly-backup", &storage.TransferJobArgs{
+// 			Description: pulumi.String("Nightly backup of S3 bucket"),
+// 			Project:     pulumi.Any(_var.Project),
+// 			TransferSpec: &storage.TransferJobTransferSpecArgs{
+// 				ObjectConditions: &storage.TransferJobTransferSpecObjectConditionsArgs{
+// 					MaxTimeElapsedSinceLastModification: pulumi.String("600s"),
+// 					ExcludePrefixes: pulumi.StringArray{
+// 						pulumi.String("requests.gz"),
+// 					},
+// 				},
+// 				TransferOptions: &storage.TransferJobTransferSpecTransferOptionsArgs{
+// 					DeleteObjectsUniqueInSink: pulumi.Bool(false),
+// 				},
+// 				AwsS3DataSource: &storage.TransferJobTransferSpecAwsS3DataSourceArgs{
+// 					BucketName: pulumi.Any(_var.Aws_s3_bucket),
+// 					AwsAccessKey: &storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{
+// 						AccessKeyId:     pulumi.Any(_var.Aws_access_key),
+// 						SecretAccessKey: pulumi.Any(_var.Aws_secret_key),
+// 					},
+// 				},
+// 				GcsDataSink: &storage.TransferJobTransferSpecGcsDataSinkArgs{
+// 					BucketName: s3_backup_bucketBucket.Name,
+// 					Path:       pulumi.String("foo/bar/"),
+// 				},
+// 			},
+// 			Schedule: &storage.TransferJobScheduleArgs{
+// 				ScheduleStartDate: &storage.TransferJobScheduleScheduleStartDateArgs{
+// 					Year:  pulumi.Int(2018),
+// 					Month: pulumi.Int(10),
+// 					Day:   pulumi.Int(1),
+// 				},
+// 				ScheduleEndDate: &storage.TransferJobScheduleScheduleEndDateArgs{
+// 					Year:  pulumi.Int(2019),
+// 					Month: pulumi.Int(1),
+// 					Day:   pulumi.Int(15),
+// 				},
+// 				StartTimeOfDay: &storage.TransferJobScheduleStartTimeOfDayArgs{
+// 					Hours:   pulumi.Int(23),
+// 					Minutes: pulumi.Int(30),
+// 					Seconds: pulumi.Int(0),
+// 					Nanos:   pulumi.Int(0),
+// 				},
+// 				RepeatInterval: pulumi.String("604800s"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			s3_backup_bucketBucketIAMMember,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -123,9 +120,7 @@ import (
 // Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
-//
+//  $ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
 // ```
 type TransferJob struct {
 	pulumi.CustomResourceState
@@ -288,7 +283,7 @@ func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) Transf
 // TransferJobArrayInput is an input type that accepts TransferJobArray and TransferJobArrayOutput values.
 // You can construct a concrete instance of `TransferJobArrayInput` via:
 //
-//	TransferJobArray{ TransferJobArgs{...} }
+//          TransferJobArray{ TransferJobArgs{...} }
 type TransferJobArrayInput interface {
 	pulumi.Input
 
@@ -313,7 +308,7 @@ func (i TransferJobArray) ToTransferJobArrayOutputWithContext(ctx context.Contex
 // TransferJobMapInput is an input type that accepts TransferJobMap and TransferJobMapOutput values.
 // You can construct a concrete instance of `TransferJobMapInput` via:
 //
-//	TransferJobMap{ "key": TransferJobArgs{...} }
+//          TransferJobMap{ "key": TransferJobArgs{...} }
 type TransferJobMapInput interface {
 	pulumi.Input
 

@@ -23,7 +23,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
 // * How-to Guides
-//   - [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+//     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
 //
 // ## Example Usage
 //
@@ -31,26 +31,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewService(ctx, "project", &projects.ServiceArgs{
-//				DisableDependentServices: pulumi.Bool(true),
-//				Project:                  pulumi.String("your-project-id"),
-//				Service:                  pulumi.String("iam.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewService(ctx, "project", &projects.ServiceArgs{
+// 			DisableDependentServices: pulumi.Bool(true),
+// 			Project:                  pulumi.String("your-project-id"),
+// 			Service:                  pulumi.String("iam.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -58,12 +55,10 @@ import (
 // Project services can be imported using the `project_id` and `service`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
-//
+//  $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
 // ```
 //
-//	Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
+//  Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -203,7 +198,7 @@ func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput 
 // ServiceArrayInput is an input type that accepts ServiceArray and ServiceArrayOutput values.
 // You can construct a concrete instance of `ServiceArrayInput` via:
 //
-//	ServiceArray{ ServiceArgs{...} }
+//          ServiceArray{ ServiceArgs{...} }
 type ServiceArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +223,7 @@ func (i ServiceArray) ToServiceArrayOutputWithContext(ctx context.Context) Servi
 // ServiceMapInput is an input type that accepts ServiceMap and ServiceMapOutput values.
 // You can construct a concrete instance of `ServiceMapInput` via:
 //
-//	ServiceMap{ "key": ServiceArgs{...} }
+//          ServiceMap{ "key": ServiceArgs{...} }
 type ServiceMapInput interface {
 	pulumi.Input
 

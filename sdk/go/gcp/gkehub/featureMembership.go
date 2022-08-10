@@ -18,66 +18,63 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
-//				Location:         pulumi.String("us-central1-a"),
-//				InitialNodeCount: pulumi.Int(1),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("my-membership"),
-//				Endpoint: &gkehub.MembershipEndpointArgs{
-//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
-//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Location: pulumi.String("global"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
-//				Location:   pulumi.String("global"),
-//				Feature:    feature.Name,
-//				Membership: membership.MembershipId,
-//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-//					Version: pulumi.String("1.6.2"),
-//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
-//						Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
-//							SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
-//						},
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+// 			Location:         pulumi.String("us-central1-a"),
+// 			InitialNodeCount: pulumi.Int(1),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+// 			MembershipId: pulumi.String("my-membership"),
+// 			Endpoint: &gkehub.MembershipEndpointArgs{
+// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+// 			Location:   pulumi.String("global"),
+// 			Feature:    feature.Name,
+// 			Membership: membership.MembershipId,
+// 			Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
+// 				Version: pulumi.String("1.6.2"),
+// 				ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+// 					Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
+// 						SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Multi Cluster Service Discovery
 //
@@ -85,49 +82,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Location: pulumi.String("global"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # FeatureMembership can be imported using any of these accepted formats
+// FeatureMembership can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}
-//
+//  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{project}}/{{location}}/{{feature}}/{{membership}}
-//
+//  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{project}}/{{location}}/{{feature}}/{{membership}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
-//
+//  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
 // ```
 type FeatureMembership struct {
 	pulumi.CustomResourceState
@@ -267,7 +255,7 @@ func (i *FeatureMembership) ToFeatureMembershipOutputWithContext(ctx context.Con
 // FeatureMembershipArrayInput is an input type that accepts FeatureMembershipArray and FeatureMembershipArrayOutput values.
 // You can construct a concrete instance of `FeatureMembershipArrayInput` via:
 //
-//	FeatureMembershipArray{ FeatureMembershipArgs{...} }
+//          FeatureMembershipArray{ FeatureMembershipArgs{...} }
 type FeatureMembershipArrayInput interface {
 	pulumi.Input
 
@@ -292,7 +280,7 @@ func (i FeatureMembershipArray) ToFeatureMembershipArrayOutputWithContext(ctx co
 // FeatureMembershipMapInput is an input type that accepts FeatureMembershipMap and FeatureMembershipMapOutput values.
 // You can construct a concrete instance of `FeatureMembershipMapInput` via:
 //
-//	FeatureMembershipMap{ "key": FeatureMembershipArgs{...} }
+//          FeatureMembershipMap{ "key": FeatureMembershipArgs{...} }
 type FeatureMembershipMapInput interface {
 	pulumi.Input
 

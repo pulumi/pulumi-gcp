@@ -29,7 +29,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+//     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 //
 // ## Example Usage
 // ### Storage Default Object Access Control Public
@@ -38,42 +38,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewDefaultObjectAccessControl(ctx, "publicRule", &storage.DefaultObjectAccessControlArgs{
-//				Bucket: bucket.Name,
-//				Role:   pulumi.String("READER"),
-//				Entity: pulumi.String("allUsers"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewDefaultObjectAccessControl(ctx, "publicRule", &storage.DefaultObjectAccessControlArgs{
+// 			Bucket: bucket.Name,
+// 			Role:   pulumi.String("READER"),
+// 			Entity: pulumi.String("allUsers"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # DefaultObjectAccessControl can be imported using any of these accepted formats
+// DefaultObjectAccessControl can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
-//
+//  $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
 // ```
 type DefaultObjectAccessControl struct {
 	pulumi.CustomResourceState
@@ -275,7 +270,7 @@ func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlOutputWithConte
 // DefaultObjectAccessControlArrayInput is an input type that accepts DefaultObjectAccessControlArray and DefaultObjectAccessControlArrayOutput values.
 // You can construct a concrete instance of `DefaultObjectAccessControlArrayInput` via:
 //
-//	DefaultObjectAccessControlArray{ DefaultObjectAccessControlArgs{...} }
+//          DefaultObjectAccessControlArray{ DefaultObjectAccessControlArgs{...} }
 type DefaultObjectAccessControlArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +295,7 @@ func (i DefaultObjectAccessControlArray) ToDefaultObjectAccessControlArrayOutput
 // DefaultObjectAccessControlMapInput is an input type that accepts DefaultObjectAccessControlMap and DefaultObjectAccessControlMapOutput values.
 // You can construct a concrete instance of `DefaultObjectAccessControlMapInput` via:
 //
-//	DefaultObjectAccessControlMap{ "key": DefaultObjectAccessControlArgs{...} }
+//          DefaultObjectAccessControlMap{ "key": DefaultObjectAccessControlArgs{...} }
 type DefaultObjectAccessControlMapInput interface {
 	pulumi.Input
 

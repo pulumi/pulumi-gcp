@@ -27,28 +27,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewProjectMetadata(ctx, "default", &compute.ProjectMetadataArgs{
-//				Metadata: pulumi.StringMap{
-//					"13":   pulumi.String("42"),
-//					"fizz": pulumi.String("buzz"),
-//					"foo":  pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewProjectMetadata(ctx, "default", &compute.ProjectMetadataArgs{
+// 			Metadata: pulumi.StringMap{
+// 				"13":   pulumi.String("42"),
+// 				"fizz": pulumi.String("buzz"),
+// 				"foo":  pulumi.String("bar"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Adding An SSH Key
 //
@@ -56,38 +53,33 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewProjectMetadata(ctx, "mySshKey", &compute.ProjectMetadataArgs{
-//				Metadata: pulumi.StringMap{
-//					"ssh-keys": pulumi.String(fmt.Sprintf("      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev\n      foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar\n    \n")),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewProjectMetadata(ctx, "mySshKey", &compute.ProjectMetadataArgs{
+// 			Metadata: pulumi.StringMap{
+// 				"ssh-keys": pulumi.String(fmt.Sprintf("      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev\n      foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar\n    \n")),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # This resource can be imported using the project ID
+// This resource can be imported using the project ID
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/projectMetadata:ProjectMetadata foo my-project-id`
-//
+//  $ pulumi import gcp:compute/projectMetadata:ProjectMetadata foo my-project-id`
 // ```
 type ProjectMetadata struct {
 	pulumi.CustomResourceState
@@ -193,7 +185,7 @@ func (i *ProjectMetadata) ToProjectMetadataOutputWithContext(ctx context.Context
 // ProjectMetadataArrayInput is an input type that accepts ProjectMetadataArray and ProjectMetadataArrayOutput values.
 // You can construct a concrete instance of `ProjectMetadataArrayInput` via:
 //
-//	ProjectMetadataArray{ ProjectMetadataArgs{...} }
+//          ProjectMetadataArray{ ProjectMetadataArgs{...} }
 type ProjectMetadataArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +210,7 @@ func (i ProjectMetadataArray) ToProjectMetadataArrayOutputWithContext(ctx contex
 // ProjectMetadataMapInput is an input type that accepts ProjectMetadataMap and ProjectMetadataMapOutput values.
 // You can construct a concrete instance of `ProjectMetadataMapInput` via:
 //
-//	ProjectMetadataMap{ "key": ProjectMetadataArgs{...} }
+//          ProjectMetadataMap{ "key": ProjectMetadataArgs{...} }
 type ProjectMetadataMapInput interface {
 	pulumi.Input
 

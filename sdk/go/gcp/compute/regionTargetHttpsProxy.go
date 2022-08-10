@@ -18,36 +18,28 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # RegionTargetHttpsProxy can be imported using any of these accepted formats
+// RegionTargetHttpsProxy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}
-//
+//  $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{name}}
-//
+//  $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{name}}
 // ```
 type RegionTargetHttpsProxy struct {
 	pulumi.CustomResourceState
@@ -279,7 +271,7 @@ func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutputWithContext(ctx c
 // RegionTargetHttpsProxyArrayInput is an input type that accepts RegionTargetHttpsProxyArray and RegionTargetHttpsProxyArrayOutput values.
 // You can construct a concrete instance of `RegionTargetHttpsProxyArrayInput` via:
 //
-//	RegionTargetHttpsProxyArray{ RegionTargetHttpsProxyArgs{...} }
+//          RegionTargetHttpsProxyArray{ RegionTargetHttpsProxyArgs{...} }
 type RegionTargetHttpsProxyArrayInput interface {
 	pulumi.Input
 
@@ -304,7 +296,7 @@ func (i RegionTargetHttpsProxyArray) ToRegionTargetHttpsProxyArrayOutputWithCont
 // RegionTargetHttpsProxyMapInput is an input type that accepts RegionTargetHttpsProxyMap and RegionTargetHttpsProxyMapOutput values.
 // You can construct a concrete instance of `RegionTargetHttpsProxyMapInput` via:
 //
-//	RegionTargetHttpsProxyMap{ "key": RegionTargetHttpsProxyArgs{...} }
+//          RegionTargetHttpsProxyMap{ "key": RegionTargetHttpsProxyArgs{...} }
 type RegionTargetHttpsProxyMapInput interface {
 	pulumi.Input
 

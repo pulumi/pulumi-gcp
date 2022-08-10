@@ -20,7 +20,7 @@ import (
 //
 // * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects)
 // * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
+//     * [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
 // ### Firebase Project Basic
@@ -29,48 +29,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test"),
-//				OrgId:     pulumi.String("123456789"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
-//				Project: defaultProject.ProjectId,
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("tf-test"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
+// 			Project: defaultProject.ProjectId,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Project can be imported using any of these accepted formats
+// Project can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/project:Project default projects/{{project}}
-//
+//  $ pulumi import gcp:firebase/project:Project default projects/{{project}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/project:Project default {{project}}
-//
+//  $ pulumi import gcp:firebase/project:Project default {{project}}
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -175,7 +168,7 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
-//	ProjectArray{ ProjectArgs{...} }
+//          ProjectArray{ ProjectArgs{...} }
 type ProjectArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +193,7 @@ func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) Proje
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
 // You can construct a concrete instance of `ProjectMapInput` via:
 //
-//	ProjectMap{ "key": ProjectArgs{...} }
+//          ProjectMap{ "key": ProjectArgs{...} }
 type ProjectMapInput interface {
 	pulumi.Input
 

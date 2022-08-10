@@ -29,46 +29,43 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/iam.serviceAccountUser",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
-//				DisplayName: pulumi.String("A service account that only Jane can interact with"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceAccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceAccount.IAMPolicyArgs{
-//				ServiceAccountId: sa.Name,
-//				PolicyData:       pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/iam.serviceAccountUser",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-service-account"),
+// 			DisplayName: pulumi.String("A service account that only Jane can interact with"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceAccount.IAMPolicyArgs{
+// 			ServiceAccountId: sa.Name,
+// 			PolicyData:       pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_service\_account\_iam\_binding
@@ -77,35 +74,32 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
-//				DisplayName: pulumi.String("A service account that only Jane can use"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
-//				ServiceAccountId: sa.Name,
-//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-service-account"),
+// 			DisplayName: pulumi.String("A service account that only Jane can use"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
+// 			ServiceAccountId: sa.Name,
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -114,40 +108,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
-//				DisplayName: pulumi.String("A service account that only Jane can use"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
-//				ServiceAccountId: sa.Name,
-//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Condition: &serviceaccount.IAMBindingConditionArgs{
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-service-account"),
+// 			DisplayName: pulumi.String("A service account that only Jane can use"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
+// 			ServiceAccountId: sa.Name,
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Condition: &serviceaccount.IAMBindingConditionArgs{
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_service\_account\_iam\_member
@@ -156,50 +147,47 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
-//				DisplayName: pulumi.String("A service account that Jane can use"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
-//				ServiceAccountId: sa.Name,
-//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
-//				Member:           pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceAccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceAccount.IAMMemberArgs{
-//				ServiceAccountId: pulumi.String(_default.Name),
-//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
-//				Member: sa.Email.ApplyT(func(email string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", email), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-service-account"),
+// 			DisplayName: pulumi.String("A service account that Jane can use"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
+// 			ServiceAccountId: sa.Name,
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
+// 			Member:           pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceAccount.IAMMemberArgs{
+// 			ServiceAccountId: pulumi.String(_default.Name),
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
+// 			Member: sa.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -208,38 +196,35 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
-//				DisplayName: pulumi.String("A service account that Jane can use"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
-//				ServiceAccountId: sa.Name,
-//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
-//				Member:           pulumi.String("user:jane@example.com"),
-//				Condition: &serviceaccount.IAMMemberConditionArgs{
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-service-account"),
+// 			DisplayName: pulumi.String("A service account that Jane can use"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
+// 			ServiceAccountId: sa.Name,
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
+// 			Member:           pulumi.String("user:jane@example.com"),
+// 			Condition: &serviceaccount.IAMMemberConditionArgs{
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -247,35 +232,25 @@ import (
 // Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
 //
 // ```sh
-//
-//	$ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
-//
+//  $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
-//
+//  $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
-//
+//  $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
 //
 // ```sh
-//
-//	$ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
-//
+//  $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
-//
+//  $ pulumi import gcp:serviceAccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
 // ```
 type IAMBinding struct {
 	pulumi.CustomResourceState
@@ -418,7 +393,7 @@ func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindi
 // IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
 // You can construct a concrete instance of `IAMBindingArrayInput` via:
 //
-//	IAMBindingArray{ IAMBindingArgs{...} }
+//          IAMBindingArray{ IAMBindingArgs{...} }
 type IAMBindingArrayInput interface {
 	pulumi.Input
 
@@ -443,7 +418,7 @@ func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context)
 // IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
 // You can construct a concrete instance of `IAMBindingMapInput` via:
 //
-//	IAMBindingMap{ "key": IAMBindingArgs{...} }
+//          IAMBindingMap{ "key": IAMBindingArgs{...} }
 type IAMBindingMapInput interface {
 	pulumi.Input
 

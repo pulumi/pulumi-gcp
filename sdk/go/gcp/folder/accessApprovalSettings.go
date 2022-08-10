@@ -24,41 +24,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("my-folder"),
-//				Parent:      pulumi.String("organizations/123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
-//				FolderId: myFolder.FolderId,
-//				NotificationEmails: pulumi.StringArray{
-//					pulumi.String("testuser@example.com"),
-//					pulumi.String("example.user@example.com"),
-//				},
-//				EnrolledServices: folder.AccessApprovalSettingsEnrolledServiceArray{
-//					&folder.AccessApprovalSettingsEnrolledServiceArgs{
-//						CloudProduct: pulumi.String("all"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("my-folder"),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
+// 			FolderId: myFolder.FolderId,
+// 			NotificationEmails: pulumi.StringArray{
+// 				pulumi.String("testuser@example.com"),
+// 				pulumi.String("example.user@example.com"),
+// 			},
+// 			EnrolledServices: folder.AccessApprovalSettingsEnrolledServiceArray{
+// 				&folder.AccessApprovalSettingsEnrolledServiceArgs{
+// 					CloudProduct: pulumi.String("all"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Folder Access Approval Active Key Version
 //
@@ -66,102 +63,95 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("my-folder"),
-//				Parent:      pulumi.String("organizations/123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  myFolder.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//				Project:  myProject.ProjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
-//				KeyRing: keyRing.ID(),
-//				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
-//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
-//					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			serviceAccount := accessapproval.GetFolderServiceAccountOutput(ctx, accessapproval.GetFolderServiceAccountOutputArgs{
-//				FolderId: myFolder.FolderId,
-//			}, nil)
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
-//				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
-//				Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
-//					return fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: cryptoKey.ID(),
-//			}, nil)
-//			_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
-//				FolderId: myFolder.FolderId,
-//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//					return cryptoKeyVersion.Name, nil
-//				}).(pulumi.StringOutput),
-//				EnrolledServices: folder.AccessApprovalSettingsEnrolledServiceArray{
-//					&folder.AccessApprovalSettingsEnrolledServiceArgs{
-//						CloudProduct: pulumi.String("all"),
-//					},
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				iam,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myFolder, err := organizations.NewFolder(ctx, "myFolder", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("my-folder"),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("your-project-id"),
+// 			FolderId:  myFolder.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 			Project:  myProject.ProjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceAccount := accessapproval.GetFolderServiceAccountOutput(ctx, accessapproval.GetFolderServiceAccountOutputArgs{
+// 			FolderId: myFolder.FolderId,
+// 		}, nil)
+// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+// 			CryptoKeyId: cryptoKey.ID(),
+// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
+// 			Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
+// 				return fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+// 			CryptoKey: cryptoKey.ID(),
+// 		}, nil)
+// 		_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
+// 			FolderId: myFolder.FolderId,
+// 			ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
+// 				return cryptoKeyVersion.Name, nil
+// 			}).(pulumi.StringOutput),
+// 			EnrolledServices: folder.AccessApprovalSettingsEnrolledServiceArray{
+// 				&folder.AccessApprovalSettingsEnrolledServiceArgs{
+// 					CloudProduct: pulumi.String("all"),
+// 				},
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			iam,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # FolderSettings can be imported using any of these accepted formats
+// FolderSettings can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
-//
+//  $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
-//
+//  $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
 // ```
 type AccessApprovalSettings struct {
 	pulumi.CustomResourceState
@@ -361,7 +351,7 @@ func (i *AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx c
 // AccessApprovalSettingsArrayInput is an input type that accepts AccessApprovalSettingsArray and AccessApprovalSettingsArrayOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsArrayInput` via:
 //
-//	AccessApprovalSettingsArray{ AccessApprovalSettingsArgs{...} }
+//          AccessApprovalSettingsArray{ AccessApprovalSettingsArgs{...} }
 type AccessApprovalSettingsArrayInput interface {
 	pulumi.Input
 
@@ -386,7 +376,7 @@ func (i AccessApprovalSettingsArray) ToAccessApprovalSettingsArrayOutputWithCont
 // AccessApprovalSettingsMapInput is an input type that accepts AccessApprovalSettingsMap and AccessApprovalSettingsMapOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsMapInput` via:
 //
-//	AccessApprovalSettingsMap{ "key": AccessApprovalSettingsArgs{...} }
+//          AccessApprovalSettingsMap{ "key": AccessApprovalSettingsArgs{...} }
 type AccessApprovalSettingsMapInput interface {
 	pulumi.Input
 

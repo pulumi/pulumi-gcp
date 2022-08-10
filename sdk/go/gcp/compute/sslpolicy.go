@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
 // * How-to Guides
-//   - [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+//     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 //
 // ## Example Usage
 // ### Ssl Policy Basic
@@ -26,64 +26,55 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSSLPolicy(ctx, "prod-ssl-policy", &compute.SSLPolicyArgs{
-//				Profile: pulumi.String("MODERN"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSSLPolicy(ctx, "nonprod-ssl-policy", &compute.SSLPolicyArgs{
-//				MinTlsVersion: pulumi.String("TLS_1_2"),
-//				Profile:       pulumi.String("MODERN"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSSLPolicy(ctx, "custom-ssl-policy", &compute.SSLPolicyArgs{
-//				CustomFeatures: pulumi.StringArray{
-//					pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"),
-//					pulumi.String("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"),
-//				},
-//				MinTlsVersion: pulumi.String("TLS_1_2"),
-//				Profile:       pulumi.String("CUSTOM"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewSSLPolicy(ctx, "prod-ssl-policy", &compute.SSLPolicyArgs{
+// 			Profile: pulumi.String("MODERN"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSSLPolicy(ctx, "nonprod-ssl-policy", &compute.SSLPolicyArgs{
+// 			MinTlsVersion: pulumi.String("TLS_1_2"),
+// 			Profile:       pulumi.String("MODERN"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSSLPolicy(ctx, "custom-ssl-policy", &compute.SSLPolicyArgs{
+// 			CustomFeatures: pulumi.StringArray{
+// 				pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"),
+// 				pulumi.String("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"),
+// 			},
+// 			MinTlsVersion: pulumi.String("TLS_1_2"),
+// 			Profile:       pulumi.String("CUSTOM"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # SslPolicy can be imported using any of these accepted formats
+// SslPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
-//
+//  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
-//
+//  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
 // ```
 type SSLPolicy struct {
 	pulumi.CustomResourceState
@@ -375,7 +366,7 @@ func (i *SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyO
 // SSLPolicyArrayInput is an input type that accepts SSLPolicyArray and SSLPolicyArrayOutput values.
 // You can construct a concrete instance of `SSLPolicyArrayInput` via:
 //
-//	SSLPolicyArray{ SSLPolicyArgs{...} }
+//          SSLPolicyArray{ SSLPolicyArgs{...} }
 type SSLPolicyArrayInput interface {
 	pulumi.Input
 
@@ -400,7 +391,7 @@ func (i SSLPolicyArray) ToSSLPolicyArrayOutputWithContext(ctx context.Context) S
 // SSLPolicyMapInput is an input type that accepts SSLPolicyMap and SSLPolicyMapOutput values.
 // You can construct a concrete instance of `SSLPolicyMapInput` via:
 //
-//	SSLPolicyMap{ "key": SSLPolicyArgs{...} }
+//          SSLPolicyMap{ "key": SSLPolicyArgs{...} }
 type SSLPolicyMapInput interface {
 	pulumi.Input
 

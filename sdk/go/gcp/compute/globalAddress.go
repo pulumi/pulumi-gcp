@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
 // * How-to Guides
-//   - [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+//     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 //
 // ## Example Usage
 // ### Global Address Basic
@@ -26,22 +26,19 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewGlobalAddress(ctx, "default", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewGlobalAddress(ctx, "default", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Global Address Private Services Connect
 //
@@ -49,55 +46,46 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
-//				AddressType: pulumi.String("INTERNAL"),
-//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-//				Network:     network.ID(),
-//				Address:     pulumi.String("100.100.100.105"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
+// 			AddressType: pulumi.String("INTERNAL"),
+// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+// 			Network:     network.ID(),
+// 			Address:     pulumi.String("100.100.100.105"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # GlobalAddress can be imported using any of these accepted formats
+// GlobalAddress can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
-//
+//  $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
-//
+//  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
 // ```
 type GlobalAddress struct {
 	pulumi.CustomResourceState
@@ -403,7 +391,7 @@ func (i *GlobalAddress) ToGlobalAddressOutputWithContext(ctx context.Context) Gl
 // GlobalAddressArrayInput is an input type that accepts GlobalAddressArray and GlobalAddressArrayOutput values.
 // You can construct a concrete instance of `GlobalAddressArrayInput` via:
 //
-//	GlobalAddressArray{ GlobalAddressArgs{...} }
+//          GlobalAddressArray{ GlobalAddressArgs{...} }
 type GlobalAddressArrayInput interface {
 	pulumi.Input
 
@@ -428,7 +416,7 @@ func (i GlobalAddressArray) ToGlobalAddressArrayOutputWithContext(ctx context.Co
 // GlobalAddressMapInput is an input type that accepts GlobalAddressMap and GlobalAddressMapOutput values.
 // You can construct a concrete instance of `GlobalAddressMapInput` via:
 //
-//	GlobalAddressMap{ "key": GlobalAddressArgs{...} }
+//          GlobalAddressMap{ "key": GlobalAddressArgs{...} }
 type GlobalAddressMapInput interface {
 	pulumi.Input
 
@@ -472,10 +460,10 @@ func (o GlobalAddressOutput) Address() pulumi.StringOutput {
 }
 
 // The type of the address to reserve.
-//   - EXTERNAL indicates public/external single IP address.
-//   - INTERNAL indicates internal IP ranges belonging to some network.
-//     Default value is `EXTERNAL`.
-//     Possible values are `EXTERNAL` and `INTERNAL`.
+// * EXTERNAL indicates public/external single IP address.
+// * INTERNAL indicates internal IP ranges belonging to some network.
+//   Default value is `EXTERNAL`.
+//   Possible values are `EXTERNAL` and `INTERNAL`.
 func (o GlobalAddressOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.AddressType }).(pulumi.StringPtrOutput)
 }

@@ -19,99 +19,90 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewWorkflowTemplate(ctx, "template", &dataproc.WorkflowTemplateArgs{
-//				Jobs: dataproc.WorkflowTemplateJobArray{
-//					&dataproc.WorkflowTemplateJobArgs{
-//						SparkJob: &dataproc.WorkflowTemplateJobSparkJobArgs{
-//							MainClass: pulumi.String("SomeClass"),
-//						},
-//						StepId: pulumi.String("someJob"),
-//					},
-//					&dataproc.WorkflowTemplateJobArgs{
-//						PrerequisiteStepIds: pulumi.StringArray{
-//							pulumi.String("someJob"),
-//						},
-//						PrestoJob: &dataproc.WorkflowTemplateJobPrestoJobArgs{
-//							QueryFileUri: pulumi.String("someuri"),
-//						},
-//						StepId: pulumi.String("otherJob"),
-//					},
-//				},
-//				Location: pulumi.String("us-central1"),
-//				Placement: &dataproc.WorkflowTemplatePlacementArgs{
-//					ManagedCluster: &dataproc.WorkflowTemplatePlacementManagedClusterArgs{
-//						ClusterName: pulumi.String("my-cluster"),
-//						Config: &dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs{
-//							GceClusterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{
-//								Tags: pulumi.StringArray{
-//									pulumi.String("foo"),
-//									pulumi.String("bar"),
-//								},
-//								Zone: pulumi.String("us-central1-a"),
-//							},
-//							MasterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{
-//								DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{
-//									BootDiskSizeGb: pulumi.Int(15),
-//									BootDiskType:   pulumi.String("pd-ssd"),
-//								},
-//								MachineType:  pulumi.String("n1-standard-1"),
-//								NumInstances: pulumi.Int(1),
-//							},
-//							SecondaryWorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{
-//								NumInstances: pulumi.Int(2),
-//							},
-//							SoftwareConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{
-//								ImageVersion: pulumi.String("2.0.35-debian10"),
-//							},
-//							WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
-//								DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{
-//									BootDiskSizeGb: pulumi.Int(10),
-//									NumLocalSsds:   pulumi.Int(2),
-//								},
-//								MachineType:  pulumi.String("n1-standard-2"),
-//								NumInstances: pulumi.Int(3),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewWorkflowTemplate(ctx, "template", &dataproc.WorkflowTemplateArgs{
+// 			Jobs: dataproc.WorkflowTemplateJobArray{
+// 				&dataproc.WorkflowTemplateJobArgs{
+// 					SparkJob: &dataproc.WorkflowTemplateJobSparkJobArgs{
+// 						MainClass: pulumi.String("SomeClass"),
+// 					},
+// 					StepId: pulumi.String("someJob"),
+// 				},
+// 				&dataproc.WorkflowTemplateJobArgs{
+// 					PrerequisiteStepIds: pulumi.StringArray{
+// 						pulumi.String("someJob"),
+// 					},
+// 					PrestoJob: &dataproc.WorkflowTemplateJobPrestoJobArgs{
+// 						QueryFileUri: pulumi.String("someuri"),
+// 					},
+// 					StepId: pulumi.String("otherJob"),
+// 				},
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			Placement: &dataproc.WorkflowTemplatePlacementArgs{
+// 				ManagedCluster: &dataproc.WorkflowTemplatePlacementManagedClusterArgs{
+// 					ClusterName: pulumi.String("my-cluster"),
+// 					Config: &dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs{
+// 						GceClusterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs{
+// 							Tags: pulumi.StringArray{
+// 								pulumi.String("foo"),
+// 								pulumi.String("bar"),
+// 							},
+// 							Zone: pulumi.String("us-central1-a"),
+// 						},
+// 						MasterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{
+// 							DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{
+// 								BootDiskSizeGb: pulumi.Int(15),
+// 								BootDiskType:   pulumi.String("pd-ssd"),
+// 							},
+// 							MachineType:  pulumi.String("n1-standard-1"),
+// 							NumInstances: pulumi.Int(1),
+// 						},
+// 						SecondaryWorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{
+// 							NumInstances: pulumi.Int(2),
+// 						},
+// 						SoftwareConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{
+// 							ImageVersion: pulumi.String("2.0.35-debian10"),
+// 						},
+// 						WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
+// 							DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{
+// 								BootDiskSizeGb: pulumi.Int(10),
+// 								NumLocalSsds:   pulumi.Int(2),
+// 							},
+// 							MachineType:  pulumi.String("n1-standard-2"),
+// 							NumInstances: pulumi.Int(3),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # WorkflowTemplate can be imported using any of these accepted formats
+// WorkflowTemplate can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
-//
+//  $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
 // ```
 type WorkflowTemplate struct {
 	pulumi.CustomResourceState
@@ -310,7 +301,7 @@ func (i *WorkflowTemplate) ToWorkflowTemplateOutputWithContext(ctx context.Conte
 // WorkflowTemplateArrayInput is an input type that accepts WorkflowTemplateArray and WorkflowTemplateArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplateArrayInput` via:
 //
-//	WorkflowTemplateArray{ WorkflowTemplateArgs{...} }
+//          WorkflowTemplateArray{ WorkflowTemplateArgs{...} }
 type WorkflowTemplateArrayInput interface {
 	pulumi.Input
 
@@ -335,7 +326,7 @@ func (i WorkflowTemplateArray) ToWorkflowTemplateArrayOutputWithContext(ctx cont
 // WorkflowTemplateMapInput is an input type that accepts WorkflowTemplateMap and WorkflowTemplateMapOutput values.
 // You can construct a concrete instance of `WorkflowTemplateMapInput` via:
 //
-//	WorkflowTemplateMap{ "key": WorkflowTemplateArgs{...} }
+//          WorkflowTemplateMap{ "key": WorkflowTemplateArgs{...} }
 type WorkflowTemplateMapInput interface {
 	pulumi.Input
 

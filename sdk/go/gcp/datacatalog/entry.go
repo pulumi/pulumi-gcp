@@ -22,7 +22,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
 // ### Data Catalog Entry Basic
@@ -31,33 +31,30 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
-//				EntryGroupId: pulumi.String("my_group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
-//				EntryId:             pulumi.String("my_entry"),
-//				UserSpecifiedType:   pulumi.String("my_custom_type"),
-//				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+// 			EntryGroupId: pulumi.String("my_group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+// 			EntryGroup:          entryGroup.ID(),
+// 			EntryId:             pulumi.String("my_entry"),
+// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
+// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Data Catalog Entry Fileset
 //
@@ -65,37 +62,34 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
-//				EntryGroupId: pulumi.String("my_group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
-//				EntryGroup: entryGroup.ID(),
-//				EntryId:    pulumi.String("my_entry"),
-//				Type:       pulumi.String("FILESET"),
-//				GcsFilesetSpec: &datacatalog.EntryGcsFilesetSpecArgs{
-//					FilePatterns: pulumi.StringArray{
-//						pulumi.String("gs://fake_bucket/dir/*"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+// 			EntryGroupId: pulumi.String("my_group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+// 			EntryGroup: entryGroup.ID(),
+// 			EntryId:    pulumi.String("my_entry"),
+// 			Type:       pulumi.String("FILESET"),
+// 			GcsFilesetSpec: &datacatalog.EntryGcsFilesetSpecArgs{
+// 				FilePatterns: pulumi.StringArray{
+// 					pulumi.String("gs://fake_bucket/dir/*"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Data Catalog Entry Full
 //
@@ -103,87 +97,80 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
-//				EntryGroupId: pulumi.String("my_group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
-//				EntryId:             pulumi.String("my_entry"),
-//				UserSpecifiedType:   pulumi.String("my_user_specified_type"),
-//				UserSpecifiedSystem: pulumi.String("Something_custom"),
-//				LinkedResource:      pulumi.String("my/linked/resource"),
-//				DisplayName:         pulumi.String("my custom type entry"),
-//				Description:         pulumi.String("a custom type entry for a user specified system"),
-//				Schema: pulumi.String(fmt.Sprintf(`{
-//	  "columns": [
-//	    {
-//	      "column": "first_name",
-//	      "description": "First name",
-//	      "mode": "REQUIRED",
-//	      "type": "STRING"
-//	    },
-//	    {
-//	      "column": "last_name",
-//	      "description": "Last name",
-//	      "mode": "REQUIRED",
-//	      "type": "STRING"
-//	    },
-//	    {
-//	      "column": "address",
-//	      "description": "Address",
-//	      "mode": "REPEATED",
-//	      "subcolumns": [
-//	        {
-//	          "column": "city",
-//	          "description": "City",
-//	          "mode": "NULLABLE",
-//	          "type": "STRING"
-//	        },
-//	        {
-//	          "column": "state",
-//	          "description": "State",
-//	          "mode": "NULLABLE",
-//	          "type": "STRING"
-//	        }
-//	      ],
-//	      "type": "RECORD"
-//	    }
-//	  ]
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+// 			EntryGroupId: pulumi.String("my_group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = datacatalog.NewEntry(ctx, "basicEntry", &datacatalog.EntryArgs{
+// 			EntryGroup:          entryGroup.ID(),
+// 			EntryId:             pulumi.String("my_entry"),
+// 			UserSpecifiedType:   pulumi.String("my_user_specified_type"),
+// 			UserSpecifiedSystem: pulumi.String("Something_custom"),
+// 			LinkedResource:      pulumi.String("my/linked/resource"),
+// 			DisplayName:         pulumi.String("my custom type entry"),
+// 			Description:         pulumi.String("a custom type entry for a user specified system"),
+// 			Schema: pulumi.String(fmt.Sprintf(`{
+//   "columns": [
+//     {
+//       "column": "first_name",
+//       "description": "First name",
+//       "mode": "REQUIRED",
+//       "type": "STRING"
+//     },
+//     {
+//       "column": "last_name",
+//       "description": "Last name",
+//       "mode": "REQUIRED",
+//       "type": "STRING"
+//     },
+//     {
+//       "column": "address",
+//       "description": "Address",
+//       "mode": "REPEATED",
+//       "subcolumns": [
+//         {
+//           "column": "city",
+//           "description": "City",
+//           "mode": "NULLABLE",
+//           "type": "STRING"
+//         },
+//         {
+//           "column": "state",
+//           "description": "State",
+//           "mode": "NULLABLE",
+//           "type": "STRING"
+//         }
+//       ],
+//       "type": "RECORD"
+//     }
+//   ]
+// }
 // `)),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Entry can be imported using any of these accepted formats
+// Entry can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:datacatalog/entry:Entry default {{name}}
-//
+//  $ pulumi import gcp:datacatalog/entry:Entry default {{name}}
 // ```
 type Entry struct {
 	pulumi.CustomResourceState
@@ -490,7 +477,7 @@ func (i *Entry) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 // EntryArrayInput is an input type that accepts EntryArray and EntryArrayOutput values.
 // You can construct a concrete instance of `EntryArrayInput` via:
 //
-//	EntryArray{ EntryArgs{...} }
+//          EntryArray{ EntryArgs{...} }
 type EntryArrayInput interface {
 	pulumi.Input
 
@@ -515,7 +502,7 @@ func (i EntryArray) ToEntryArrayOutputWithContext(ctx context.Context) EntryArra
 // EntryMapInput is an input type that accepts EntryMap and EntryMapOutput values.
 // You can construct a concrete instance of `EntryMapInput` via:
 //
-//	EntryMap{ "key": EntryArgs{...} }
+//          EntryMap{ "key": EntryArgs{...} }
 type EntryMapInput interface {
 	pulumi.Input
 

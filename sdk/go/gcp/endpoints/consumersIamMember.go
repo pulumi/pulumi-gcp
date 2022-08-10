@@ -26,28 +26,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* services/{{service_name}}/consumers/{{consumer_project}} * {{service_name}}/{{consumer_project}} * {{consumer_project}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints serviceconsumers IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController user:jane@example.com"
-//
+//  $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController"
-//
+//  $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor "services/{{service_name}}/consumers/{{consumer_project}} roles/servicemanagement.serviceController"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor services/{{service_name}}/consumers/{{consumer_project}}
-//
+//  $ pulumi import gcp:endpoints/consumersIamMember:ConsumersIamMember editor services/{{service_name}}/consumers/{{consumer_project}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ConsumersIamMember struct {
@@ -184,7 +178,7 @@ func (i *ConsumersIamMember) ToConsumersIamMemberOutputWithContext(ctx context.C
 // ConsumersIamMemberArrayInput is an input type that accepts ConsumersIamMemberArray and ConsumersIamMemberArrayOutput values.
 // You can construct a concrete instance of `ConsumersIamMemberArrayInput` via:
 //
-//	ConsumersIamMemberArray{ ConsumersIamMemberArgs{...} }
+//          ConsumersIamMemberArray{ ConsumersIamMemberArgs{...} }
 type ConsumersIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +203,7 @@ func (i ConsumersIamMemberArray) ToConsumersIamMemberArrayOutputWithContext(ctx 
 // ConsumersIamMemberMapInput is an input type that accepts ConsumersIamMemberMap and ConsumersIamMemberMapOutput values.
 // You can construct a concrete instance of `ConsumersIamMemberMapInput` via:
 //
-//	ConsumersIamMemberMap{ "key": ConsumersIamMemberArgs{...} }
+//          ConsumersIamMemberMap{ "key": ConsumersIamMemberArgs{...} }
 type ConsumersIamMemberMapInput interface {
 	pulumi.Input
 

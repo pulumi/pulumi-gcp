@@ -19,108 +19,99 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				IpCidrRange: pulumi.String("10.0.0.0/28"),
-//				Region:      pulumi.String("us-west1"),
-//				Network:     network.SelfLink,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				MachineType:  pulumi.String("e2-medium"),
-//				CanIpForward: pulumi.Bool(true),
-//				Zone:         pulumi.String("us-west1-a"),
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("projects/debian-cloud/global/images/debian-10-buster-v20210817"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Subnetwork: subnetwork.Name,
-//						NetworkIp:  pulumi.String("10.0.0.2"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							&compute.InstanceNetworkInterfaceAccessConfigArgs{
-//								NetworkTier: pulumi.String("PREMIUM"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basicHub, err := networkconnectivity.NewHub(ctx, "basicHub", &networkconnectivity.HubArgs{
-//				Description: pulumi.String("A sample hub"),
-//				Labels: pulumi.StringMap{
-//					"label-two": pulumi.String("value-one"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Location:    pulumi.String("us-west1"),
-//				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
-//				Labels: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//				Hub: basicHub.ID(),
-//				LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
-//					Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
-//						&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
-//							VirtualMachine: instance.SelfLink,
-//							IpAddress:      pulumi.String("10.0.0.2"),
-//						},
-//					},
-//					SiteToSiteDataTransfer: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
+// 			Region:      pulumi.String("us-west1"),
+// 			Network:     network.SelfLink,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+// 			MachineType:  pulumi.String("e2-medium"),
+// 			CanIpForward: pulumi.Bool(true),
+// 			Zone:         pulumi.String("us-west1-a"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("projects/debian-cloud/global/images/debian-10-buster-v20210817"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Subnetwork: subnetwork.Name,
+// 					NetworkIp:  pulumi.String("10.0.0.2"),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{
+// 							NetworkTier: pulumi.String("PREMIUM"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		basicHub, err := networkconnectivity.NewHub(ctx, "basicHub", &networkconnectivity.HubArgs{
+// 			Description: pulumi.String("A sample hub"),
+// 			Labels: pulumi.StringMap{
+// 				"label-two": pulumi.String("value-one"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
+// 			Location:    pulumi.String("us-west1"),
+// 			Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
+// 			Labels: pulumi.StringMap{
+// 				"label-one": pulumi.String("value-one"),
+// 			},
+// 			Hub: basicHub.ID(),
+// 			LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
+// 				Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
+// 					&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
+// 						VirtualMachine: instance.SelfLink,
+// 						IpAddress:      pulumi.String("10.0.0.2"),
+// 					},
+// 				},
+// 				SiteToSiteDataTransfer: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Spoke can be imported using any of these accepted formats
+// Spoke can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}
-//
+//  $ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
 // ```
 type Spoke struct {
 	pulumi.CustomResourceState
@@ -321,7 +312,7 @@ func (i *Spoke) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 // SpokeArrayInput is an input type that accepts SpokeArray and SpokeArrayOutput values.
 // You can construct a concrete instance of `SpokeArrayInput` via:
 //
-//	SpokeArray{ SpokeArgs{...} }
+//          SpokeArray{ SpokeArgs{...} }
 type SpokeArrayInput interface {
 	pulumi.Input
 
@@ -346,7 +337,7 @@ func (i SpokeArray) ToSpokeArrayOutputWithContext(ctx context.Context) SpokeArra
 // SpokeMapInput is an input type that accepts SpokeMap and SpokeMapOutput values.
 // You can construct a concrete instance of `SpokeMapInput` via:
 //
-//	SpokeMap{ "key": SpokeArgs{...} }
+//          SpokeMap{ "key": SpokeArgs{...} }
 type SpokeMapInput interface {
 	pulumi.Input
 

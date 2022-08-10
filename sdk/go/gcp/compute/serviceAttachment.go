@@ -17,36 +17,28 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/beta/serviceAttachments)
 // * How-to Guides
-//   - [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+//     * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # ServiceAttachment can be imported using any of these accepted formats
+// ServiceAttachment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
-//
+//  $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
-//
+//  $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
 // ```
 type ServiceAttachment struct {
 	pulumi.CustomResourceState
@@ -344,7 +336,7 @@ func (i *ServiceAttachment) ToServiceAttachmentOutputWithContext(ctx context.Con
 // ServiceAttachmentArrayInput is an input type that accepts ServiceAttachmentArray and ServiceAttachmentArrayOutput values.
 // You can construct a concrete instance of `ServiceAttachmentArrayInput` via:
 //
-//	ServiceAttachmentArray{ ServiceAttachmentArgs{...} }
+//          ServiceAttachmentArray{ ServiceAttachmentArgs{...} }
 type ServiceAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -369,7 +361,7 @@ func (i ServiceAttachmentArray) ToServiceAttachmentArrayOutputWithContext(ctx co
 // ServiceAttachmentMapInput is an input type that accepts ServiceAttachmentMap and ServiceAttachmentMapOutput values.
 // You can construct a concrete instance of `ServiceAttachmentMapInput` via:
 //
-//	ServiceAttachmentMap{ "key": ServiceAttachmentArgs{...} }
+//          ServiceAttachmentMap{ "key": ServiceAttachmentArgs{...} }
 type ServiceAttachmentMapInput interface {
 	pulumi.Input
 

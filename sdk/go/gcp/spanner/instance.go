@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/spanner/)
+//     * [Official Documentation](https://cloud.google.com/spanner/)
 //
 // ## Example Usage
 // ### Spanner Instance Basic
@@ -27,29 +27,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
-//				Config:      pulumi.String("regional-us-central1"),
-//				DisplayName: pulumi.String("Test Spanner Instance"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				NumNodes: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("regional-us-central1"),
+// 			DisplayName: pulumi.String("Test Spanner Instance"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			NumNodes: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Spanner Instance Processing Units
 //
@@ -57,29 +54,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
-//				Config:      pulumi.String("regional-us-central1"),
-//				DisplayName: pulumi.String("Test Spanner Instance"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				ProcessingUnits: pulumi.Int(200),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("regional-us-central1"),
+// 			DisplayName: pulumi.String("Test Spanner Instance"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ProcessingUnits: pulumi.Int(200),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Spanner Instance Multi Regional
 //
@@ -87,51 +81,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
-//				Config:      pulumi.String("nam-eur-asia1"),
-//				DisplayName: pulumi.String("Multi Regional Instance"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				NumNodes: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("nam-eur-asia1"),
+// 			DisplayName: pulumi.String("Multi Regional Instance"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			NumNodes: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
-//
+//  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/instance:Instance default {{name}}
-//
+//  $ pulumi import gcp:spanner/instance:Instance default {{name}}
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -366,7 +351,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//	InstanceArray{ InstanceArgs{...} }
+//          InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -391,7 +376,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//	InstanceMap{ "key": InstanceArgs{...} }
+//          InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

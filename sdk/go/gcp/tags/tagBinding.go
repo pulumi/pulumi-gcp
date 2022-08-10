@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+//     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
 // ### Tag Binding Basic
@@ -26,73 +26,66 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				OrgId:     pulumi.String("123456789"),
-//				ProjectId: pulumi.String("project_id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-//				Description: pulumi.String("For keyname resources."),
-//				Parent:      pulumi.String("organizations/123456789"),
-//				ShortName:   pulumi.String("keyname"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Description: pulumi.String("For valuename resources."),
-//				Parent: key.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("valuename"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tags.NewTagBinding(ctx, "binding", &tags.TagBindingArgs{
-//				Parent: project.Number.ApplyT(func(number string) (string, error) {
-//					return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", number), nil
-//				}).(pulumi.StringOutput),
-//				TagValue: value.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagValues/%v", name), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+// 			OrgId:     pulumi.String("123456789"),
+// 			ProjectId: pulumi.String("project_id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+// 			Description: pulumi.String("For keyname resources."),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 			ShortName:   pulumi.String("keyname"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
+// 			Description: pulumi.String("For valuename resources."),
+// 			Parent: key.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("tagKeys/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 			ShortName: pulumi.String("valuename"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = tags.NewTagBinding(ctx, "binding", &tags.TagBindingArgs{
+// 			Parent: project.Number.ApplyT(func(number string) (string, error) {
+// 				return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", number), nil
+// 			}).(pulumi.StringOutput),
+// 			TagValue: value.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("tagValues/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # TagBinding can be imported using any of these accepted formats
+// TagBinding can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:tags/tagBinding:TagBinding default tagBindings/{{name}}
-//
+//  $ pulumi import gcp:tags/tagBinding:TagBinding default tagBindings/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:tags/tagBinding:TagBinding default {{name}}
-//
+//  $ pulumi import gcp:tags/tagBinding:TagBinding default {{name}}
 // ```
 type TagBinding struct {
 	pulumi.CustomResourceState
@@ -202,7 +195,7 @@ func (i *TagBinding) ToTagBindingOutputWithContext(ctx context.Context) TagBindi
 // TagBindingArrayInput is an input type that accepts TagBindingArray and TagBindingArrayOutput values.
 // You can construct a concrete instance of `TagBindingArrayInput` via:
 //
-//	TagBindingArray{ TagBindingArgs{...} }
+//          TagBindingArray{ TagBindingArgs{...} }
 type TagBindingArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +220,7 @@ func (i TagBindingArray) ToTagBindingArrayOutputWithContext(ctx context.Context)
 // TagBindingMapInput is an input type that accepts TagBindingMap and TagBindingMapOutput values.
 // You can construct a concrete instance of `TagBindingMapInput` via:
 //
-//	TagBindingMap{ "key": TagBindingArgs{...} }
+//          TagBindingMap{ "key": TagBindingArgs{...} }
 type TagBindingMapInput interface {
 	pulumi.Input
 

@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
 // * How-to Guides
-//   - [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+//     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 //
 // ## Example Usage
 // ### Healthcare Dataset Basic
@@ -26,47 +26,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewDataset(ctx, "default", &healthcare.DatasetArgs{
-//				Location: pulumi.String("us-central1"),
-//				TimeZone: pulumi.String("UTC"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := healthcare.NewDataset(ctx, "default", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			TimeZone: pulumi.String("UTC"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Dataset can be imported using any of these accepted formats
+// Dataset can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
-//
+//  $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/dataset:Dataset default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:healthcare/dataset:Dataset default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
 // ```
 type Dataset struct {
 	pulumi.CustomResourceState
@@ -208,7 +199,7 @@ func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput 
 // DatasetArrayInput is an input type that accepts DatasetArray and DatasetArrayOutput values.
 // You can construct a concrete instance of `DatasetArrayInput` via:
 //
-//	DatasetArray{ DatasetArgs{...} }
+//          DatasetArray{ DatasetArgs{...} }
 type DatasetArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +224,7 @@ func (i DatasetArray) ToDatasetArrayOutputWithContext(ctx context.Context) Datas
 // DatasetMapInput is an input type that accepts DatasetMap and DatasetMapOutput values.
 // You can construct a concrete instance of `DatasetMapInput` via:
 //
-//	DatasetMap{ "key": DatasetArgs{...} }
+//          DatasetMap{ "key": DatasetArgs{...} }
 type DatasetMapInput interface {
 	pulumi.Input
 

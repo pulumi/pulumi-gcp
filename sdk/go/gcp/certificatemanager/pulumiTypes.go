@@ -24,7 +24,7 @@ type CertificateManaged struct {
 // CertificateManagedInput is an input type that accepts CertificateManagedArgs and CertificateManagedOutput values.
 // You can construct a concrete instance of `CertificateManagedInput` via:
 //
-//	CertificateManagedArgs{...}
+//          CertificateManagedArgs{...}
 type CertificateManagedInput interface {
 	pulumi.Input
 
@@ -66,11 +66,11 @@ func (i CertificateManagedArgs) ToCertificateManagedPtrOutputWithContext(ctx con
 // CertificateManagedPtrInput is an input type that accepts CertificateManagedArgs, CertificateManagedPtr and CertificateManagedPtrOutput values.
 // You can construct a concrete instance of `CertificateManagedPtrInput` via:
 //
-//	        CertificateManagedArgs{...}
+//          CertificateManagedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type CertificateManagedPtrInput interface {
 	pulumi.Input
 
@@ -202,7 +202,7 @@ type CertificateMapGclbTarget struct {
 // CertificateMapGclbTargetInput is an input type that accepts CertificateMapGclbTargetArgs and CertificateMapGclbTargetOutput values.
 // You can construct a concrete instance of `CertificateMapGclbTargetInput` via:
 //
-//	CertificateMapGclbTargetArgs{...}
+//          CertificateMapGclbTargetArgs{...}
 type CertificateMapGclbTargetInput interface {
 	pulumi.Input
 
@@ -231,7 +231,7 @@ func (i CertificateMapGclbTargetArgs) ToCertificateMapGclbTargetOutputWithContex
 // CertificateMapGclbTargetArrayInput is an input type that accepts CertificateMapGclbTargetArray and CertificateMapGclbTargetArrayOutput values.
 // You can construct a concrete instance of `CertificateMapGclbTargetArrayInput` via:
 //
-//	CertificateMapGclbTargetArray{ CertificateMapGclbTargetArgs{...} }
+//          CertificateMapGclbTargetArray{ CertificateMapGclbTargetArgs{...} }
 type CertificateMapGclbTargetArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +307,7 @@ type CertificateMapGclbTargetIpConfig struct {
 // CertificateMapGclbTargetIpConfigInput is an input type that accepts CertificateMapGclbTargetIpConfigArgs and CertificateMapGclbTargetIpConfigOutput values.
 // You can construct a concrete instance of `CertificateMapGclbTargetIpConfigInput` via:
 //
-//	CertificateMapGclbTargetIpConfigArgs{...}
+//          CertificateMapGclbTargetIpConfigArgs{...}
 type CertificateMapGclbTargetIpConfigInput interface {
 	pulumi.Input
 
@@ -335,7 +335,7 @@ func (i CertificateMapGclbTargetIpConfigArgs) ToCertificateMapGclbTargetIpConfig
 // CertificateMapGclbTargetIpConfigArrayInput is an input type that accepts CertificateMapGclbTargetIpConfigArray and CertificateMapGclbTargetIpConfigArrayOutput values.
 // You can construct a concrete instance of `CertificateMapGclbTargetIpConfigArrayInput` via:
 //
-//	CertificateMapGclbTargetIpConfigArray{ CertificateMapGclbTargetIpConfigArgs{...} }
+//          CertificateMapGclbTargetIpConfigArray{ CertificateMapGclbTargetIpConfigArgs{...} }
 type CertificateMapGclbTargetIpConfigArrayInput interface {
 	pulumi.Input
 
@@ -412,7 +412,7 @@ type CertificateSelfManaged struct {
 // CertificateSelfManagedInput is an input type that accepts CertificateSelfManagedArgs and CertificateSelfManagedOutput values.
 // You can construct a concrete instance of `CertificateSelfManagedInput` via:
 //
-//	CertificateSelfManagedArgs{...}
+//          CertificateSelfManagedArgs{...}
 type CertificateSelfManagedInput interface {
 	pulumi.Input
 
@@ -453,11 +453,11 @@ func (i CertificateSelfManagedArgs) ToCertificateSelfManagedPtrOutputWithContext
 // CertificateSelfManagedPtrInput is an input type that accepts CertificateSelfManagedArgs, CertificateSelfManagedPtr and CertificateSelfManagedPtrOutput values.
 // You can construct a concrete instance of `CertificateSelfManagedPtrInput` via:
 //
-//	        CertificateSelfManagedArgs{...}
+//          CertificateSelfManagedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type CertificateSelfManagedPtrInput interface {
 	pulumi.Input
 
@@ -579,7 +579,7 @@ type DnsAuthorizationDnsResourceRecord struct {
 // DnsAuthorizationDnsResourceRecordInput is an input type that accepts DnsAuthorizationDnsResourceRecordArgs and DnsAuthorizationDnsResourceRecordOutput values.
 // You can construct a concrete instance of `DnsAuthorizationDnsResourceRecordInput` via:
 //
-//	DnsAuthorizationDnsResourceRecordArgs{...}
+//          DnsAuthorizationDnsResourceRecordArgs{...}
 type DnsAuthorizationDnsResourceRecordInput interface {
 	pulumi.Input
 
@@ -611,7 +611,7 @@ func (i DnsAuthorizationDnsResourceRecordArgs) ToDnsAuthorizationDnsResourceReco
 // DnsAuthorizationDnsResourceRecordArrayInput is an input type that accepts DnsAuthorizationDnsResourceRecordArray and DnsAuthorizationDnsResourceRecordArrayOutput values.
 // You can construct a concrete instance of `DnsAuthorizationDnsResourceRecordArrayInput` via:
 //
-//	DnsAuthorizationDnsResourceRecordArray{ DnsAuthorizationDnsResourceRecordArgs{...} }
+//          DnsAuthorizationDnsResourceRecordArray{ DnsAuthorizationDnsResourceRecordArgs{...} }
 type DnsAuthorizationDnsResourceRecordArrayInput interface {
 	pulumi.Input
 

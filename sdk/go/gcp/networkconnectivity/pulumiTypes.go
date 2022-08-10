@@ -17,7 +17,7 @@ type HubRoutingVpc struct {
 // HubRoutingVpcInput is an input type that accepts HubRoutingVpcArgs and HubRoutingVpcOutput values.
 // You can construct a concrete instance of `HubRoutingVpcInput` via:
 //
-//	HubRoutingVpcArgs{...}
+//          HubRoutingVpcArgs{...}
 type HubRoutingVpcInput interface {
 	pulumi.Input
 
@@ -44,7 +44,7 @@ func (i HubRoutingVpcArgs) ToHubRoutingVpcOutputWithContext(ctx context.Context)
 // HubRoutingVpcArrayInput is an input type that accepts HubRoutingVpcArray and HubRoutingVpcArrayOutput values.
 // You can construct a concrete instance of `HubRoutingVpcArrayInput` via:
 //
-//	HubRoutingVpcArray{ HubRoutingVpcArgs{...} }
+//          HubRoutingVpcArray{ HubRoutingVpcArgs{...} }
 type HubRoutingVpcArrayInput interface {
 	pulumi.Input
 
@@ -114,7 +114,7 @@ type SpokeLinkedInterconnectAttachments struct {
 // SpokeLinkedInterconnectAttachmentsInput is an input type that accepts SpokeLinkedInterconnectAttachmentsArgs and SpokeLinkedInterconnectAttachmentsOutput values.
 // You can construct a concrete instance of `SpokeLinkedInterconnectAttachmentsInput` via:
 //
-//	SpokeLinkedInterconnectAttachmentsArgs{...}
+//          SpokeLinkedInterconnectAttachmentsArgs{...}
 type SpokeLinkedInterconnectAttachmentsInput interface {
 	pulumi.Input
 
@@ -152,11 +152,11 @@ func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachm
 // SpokeLinkedInterconnectAttachmentsPtrInput is an input type that accepts SpokeLinkedInterconnectAttachmentsArgs, SpokeLinkedInterconnectAttachmentsPtr and SpokeLinkedInterconnectAttachmentsPtrOutput values.
 // You can construct a concrete instance of `SpokeLinkedInterconnectAttachmentsPtrInput` via:
 //
-//	        SpokeLinkedInterconnectAttachmentsArgs{...}
+//          SpokeLinkedInterconnectAttachmentsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SpokeLinkedInterconnectAttachmentsPtrInput interface {
 	pulumi.Input
 
@@ -270,7 +270,7 @@ type SpokeLinkedRouterApplianceInstances struct {
 // SpokeLinkedRouterApplianceInstancesInput is an input type that accepts SpokeLinkedRouterApplianceInstancesArgs and SpokeLinkedRouterApplianceInstancesOutput values.
 // You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInput` via:
 //
-//	SpokeLinkedRouterApplianceInstancesArgs{...}
+//          SpokeLinkedRouterApplianceInstancesArgs{...}
 type SpokeLinkedRouterApplianceInstancesInput interface {
 	pulumi.Input
 
@@ -308,11 +308,11 @@ func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceIns
 // SpokeLinkedRouterApplianceInstancesPtrInput is an input type that accepts SpokeLinkedRouterApplianceInstancesArgs, SpokeLinkedRouterApplianceInstancesPtr and SpokeLinkedRouterApplianceInstancesPtrOutput values.
 // You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesPtrInput` via:
 //
-//	        SpokeLinkedRouterApplianceInstancesArgs{...}
+//          SpokeLinkedRouterApplianceInstancesArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SpokeLinkedRouterApplianceInstancesPtrInput interface {
 	pulumi.Input
 
@@ -428,7 +428,7 @@ type SpokeLinkedRouterApplianceInstancesInstance struct {
 // SpokeLinkedRouterApplianceInstancesInstanceInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArgs and SpokeLinkedRouterApplianceInstancesInstanceOutput values.
 // You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInstanceInput` via:
 //
-//	SpokeLinkedRouterApplianceInstancesInstanceArgs{...}
+//          SpokeLinkedRouterApplianceInstancesInstanceArgs{...}
 type SpokeLinkedRouterApplianceInstancesInstanceInput interface {
 	pulumi.Input
 
@@ -458,7 +458,7 @@ func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToSpokeLinkedRouterAppl
 // SpokeLinkedRouterApplianceInstancesInstanceArrayInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArray and SpokeLinkedRouterApplianceInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInstanceArrayInput` via:
 //
-//	SpokeLinkedRouterApplianceInstancesInstanceArray{ SpokeLinkedRouterApplianceInstancesInstanceArgs{...} }
+//          SpokeLinkedRouterApplianceInstancesInstanceArray{ SpokeLinkedRouterApplianceInstancesInstanceArgs{...} }
 type SpokeLinkedRouterApplianceInstancesInstanceArrayInput interface {
 	pulumi.Input
 
@@ -534,7 +534,7 @@ type SpokeLinkedVpnTunnels struct {
 // SpokeLinkedVpnTunnelsInput is an input type that accepts SpokeLinkedVpnTunnelsArgs and SpokeLinkedVpnTunnelsOutput values.
 // You can construct a concrete instance of `SpokeLinkedVpnTunnelsInput` via:
 //
-//	SpokeLinkedVpnTunnelsArgs{...}
+//          SpokeLinkedVpnTunnelsArgs{...}
 type SpokeLinkedVpnTunnelsInput interface {
 	pulumi.Input
 
@@ -572,11 +572,11 @@ func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(c
 // SpokeLinkedVpnTunnelsPtrInput is an input type that accepts SpokeLinkedVpnTunnelsArgs, SpokeLinkedVpnTunnelsPtr and SpokeLinkedVpnTunnelsPtrOutput values.
 // You can construct a concrete instance of `SpokeLinkedVpnTunnelsPtrInput` via:
 //
-//	        SpokeLinkedVpnTunnelsArgs{...}
+//          SpokeLinkedVpnTunnelsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SpokeLinkedVpnTunnelsPtrInput interface {
 	pulumi.Input
 

@@ -27,39 +27,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/viewer",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSnapshotIamPolicy(ctx, "policy", &compute.SnapshotIamPolicyArgs{
-//				Project:    pulumi.Any(google_compute_snapshot.Snapshot.Project),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSnapshotIamPolicy(ctx, "policy", &compute.SnapshotIamPolicyArgs{
+// 			Project:    pulumi.Any(google_compute_snapshot.Snapshot.Project),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_compute\_snapshot\_iam\_binding
@@ -68,28 +65,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSnapshotIamBinding(ctx, "binding", &compute.SnapshotIamBindingArgs{
-//				Project: pulumi.Any(google_compute_snapshot.Snapshot.Project),
-//				Role:    pulumi.String("roles/viewer"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewSnapshotIamBinding(ctx, "binding", &compute.SnapshotIamBindingArgs{
+// 			Project: pulumi.Any(google_compute_snapshot.Snapshot.Project),
+// 			Role:    pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_compute\_snapshot\_iam\_member
@@ -98,26 +92,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSnapshotIamMember(ctx, "member", &compute.SnapshotIamMemberArgs{
-//				Project: pulumi.Any(google_compute_snapshot.Snapshot.Project),
-//				Role:    pulumi.String("roles/viewer"),
-//				Member:  pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewSnapshotIamMember(ctx, "member", &compute.SnapshotIamMemberArgs{
+// 			Project: pulumi.Any(google_compute_snapshot.Snapshot.Project),
+// 			Role:    pulumi.String("roles/viewer"),
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -125,28 +116,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/snapshots/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine snapshot IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/snapshotIamPolicy:SnapshotIamPolicy editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer user:jane@example.com"
-//
+//  $ pulumi import gcp:compute/snapshotIamPolicy:SnapshotIamPolicy editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/snapshotIamPolicy:SnapshotIamPolicy editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer"
-//
+//  $ pulumi import gcp:compute/snapshotIamPolicy:SnapshotIamPolicy editor "projects/{{project}}/global/snapshots/{{snapshot}} roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/snapshotIamPolicy:SnapshotIamPolicy editor projects/{{project}}/global/snapshots/{{snapshot}}
-//
+//  $ pulumi import gcp:compute/snapshotIamPolicy:SnapshotIamPolicy editor projects/{{project}}/global/snapshots/{{snapshot}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type SnapshotIamPolicy struct {
@@ -274,7 +259,7 @@ func (i *SnapshotIamPolicy) ToSnapshotIamPolicyOutputWithContext(ctx context.Con
 // SnapshotIamPolicyArrayInput is an input type that accepts SnapshotIamPolicyArray and SnapshotIamPolicyArrayOutput values.
 // You can construct a concrete instance of `SnapshotIamPolicyArrayInput` via:
 //
-//	SnapshotIamPolicyArray{ SnapshotIamPolicyArgs{...} }
+//          SnapshotIamPolicyArray{ SnapshotIamPolicyArgs{...} }
 type SnapshotIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -299,7 +284,7 @@ func (i SnapshotIamPolicyArray) ToSnapshotIamPolicyArrayOutputWithContext(ctx co
 // SnapshotIamPolicyMapInput is an input type that accepts SnapshotIamPolicyMap and SnapshotIamPolicyMapOutput values.
 // You can construct a concrete instance of `SnapshotIamPolicyMapInput` via:
 //
-//	SnapshotIamPolicyMap{ "key": SnapshotIamPolicyArgs{...} }
+//          SnapshotIamPolicyMap{ "key": SnapshotIamPolicyArgs{...} }
 type SnapshotIamPolicyMapInput interface {
 	pulumi.Input
 

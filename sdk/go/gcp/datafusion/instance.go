@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+//   * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 //
 // ## Example Usage
 // ### Data Fusion Instance Basic
@@ -26,25 +26,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
-//				Region: pulumi.String("us-central1"),
-//				Type:   pulumi.String("BASIC"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Type:   pulumi.String("BASIC"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Data Fusion Instance Full
 //
@@ -52,71 +49,60 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := appengine.GetDefaultServiceAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
-//				Description:                 pulumi.String("My Data Fusion instance"),
-//				Region:                      pulumi.String("us-central1"),
-//				Type:                        pulumi.String("BASIC"),
-//				EnableStackdriverLogging:    pulumi.Bool(true),
-//				EnableStackdriverMonitoring: pulumi.Bool(true),
-//				Labels: pulumi.StringMap{
-//					"example_key": pulumi.String("example_value"),
-//				},
-//				PrivateInstance: pulumi.Bool(true),
-//				NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
-//					Network:      pulumi.String("default"),
-//					IpAllocation: pulumi.String("10.89.48.0/22"),
-//				},
-//				Version:                pulumi.String("6.3.0"),
-//				DataprocServiceAccount: pulumi.String(_default.Email),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := appengine.GetDefaultServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
+// 			Description:                 pulumi.String("My Data Fusion instance"),
+// 			Region:                      pulumi.String("us-central1"),
+// 			Type:                        pulumi.String("BASIC"),
+// 			EnableStackdriverLogging:    pulumi.Bool(true),
+// 			EnableStackdriverMonitoring: pulumi.Bool(true),
+// 			Labels: pulumi.StringMap{
+// 				"example_key": pulumi.String("example_value"),
+// 			},
+// 			PrivateInstance: pulumi.Bool(true),
+// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+// 				Network:      pulumi.String("default"),
+// 				IpAllocation: pulumi.String("10.89.48.0/22"),
+// 			},
+// 			Version:                pulumi.String("6.3.0"),
+// 			DataprocServiceAccount: pulumi.String(_default.Email),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-//
+//  $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:datafusion/instance:Instance default {{name}}
-//
+//  $ pulumi import gcp:datafusion/instance:Instance default {{name}}
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -462,7 +448,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//	InstanceArray{ InstanceArgs{...} }
+//          InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -487,7 +473,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//	InstanceMap{ "key": InstanceArgs{...} }
+//          InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -624,15 +610,15 @@ func (o InstanceOutput) TenantProjectId() pulumi.StringOutput {
 
 // Represents the type of Data Fusion instance. Each type is configured with
 // the default settings for processing and memory.
-//   - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-//     using point and click UI. However, there are certain limitations, such as fewer number
-//     of concurrent pipelines, no support for streaming pipelines, etc.
-//   - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-//     available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-//   - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
-//     with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
-//     pipelines at low cost.
-//     Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+// * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+//   using point and click UI. However, there are certain limitations, such as fewer number
+//   of concurrent pipelines, no support for streaming pipelines, etc.
+// * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+// * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+//   pipelines at low cost.
+//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
 func (o InstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

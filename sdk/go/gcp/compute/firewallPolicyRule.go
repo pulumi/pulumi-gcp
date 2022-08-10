@@ -21,68 +21,61 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
-//				Parent:      pulumi.String("organizations/12345"),
-//				ShortName:   pulumi.String("my-policy"),
-//				Description: pulumi.String("Example Resource"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewallPolicyRule(ctx, "defaultFirewallPolicyRule", &compute.FirewallPolicyRuleArgs{
-//				FirewallPolicy: defaultFirewallPolicy.ID(),
-//				Description:    pulumi.String("Example Resource"),
-//				Priority:       pulumi.Int(9000),
-//				EnableLogging:  pulumi.Bool(true),
-//				Action:         pulumi.String("allow"),
-//				Direction:      pulumi.String("EGRESS"),
-//				Disabled:       pulumi.Bool(false),
-//				Match: &compute.FirewallPolicyRuleMatchArgs{
-//					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
-//						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
-//							IpProtocol: pulumi.String("tcp"),
-//							Ports: pulumi.StringArray{
-//								pulumi.String("80"),
-//								pulumi.String("8080"),
-//							},
-//						},
-//					},
-//					DestIpRanges: pulumi.StringArray{
-//						pulumi.String("11.100.0.1/32"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
+// 			Parent:      pulumi.String("organizations/12345"),
+// 			ShortName:   pulumi.String("my-policy"),
+// 			Description: pulumi.String("Example Resource"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewallPolicyRule(ctx, "defaultFirewallPolicyRule", &compute.FirewallPolicyRuleArgs{
+// 			FirewallPolicy: defaultFirewallPolicy.ID(),
+// 			Description:    pulumi.String("Example Resource"),
+// 			Priority:       pulumi.Int(9000),
+// 			EnableLogging:  pulumi.Bool(true),
+// 			Action:         pulumi.String("allow"),
+// 			Direction:      pulumi.String("EGRESS"),
+// 			Disabled:       pulumi.Bool(false),
+// 			Match: &compute.FirewallPolicyRuleMatchArgs{
+// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
+// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+// 						IpProtocol: pulumi.String("tcp"),
+// 						Ports: pulumi.StringArray{
+// 							pulumi.String("80"),
+// 							pulumi.String("8080"),
+// 						},
+// 					},
+// 				},
+// 				DestIpRanges: pulumi.StringArray{
+// 					pulumi.String("11.100.0.1/32"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # FirewallPolicyRule can be imported using any of these accepted formats
+// FirewallPolicyRule can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
-//
+//  $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default {{firewall_policy}}/{{priority}}
-//
+//  $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default {{firewall_policy}}/{{priority}}
 // ```
 type FirewallPolicyRule struct {
 	pulumi.CustomResourceState
@@ -287,7 +280,7 @@ func (i *FirewallPolicyRule) ToFirewallPolicyRuleOutputWithContext(ctx context.C
 // FirewallPolicyRuleArrayInput is an input type that accepts FirewallPolicyRuleArray and FirewallPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyRuleArrayInput` via:
 //
-//	FirewallPolicyRuleArray{ FirewallPolicyRuleArgs{...} }
+//          FirewallPolicyRuleArray{ FirewallPolicyRuleArgs{...} }
 type FirewallPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -312,7 +305,7 @@ func (i FirewallPolicyRuleArray) ToFirewallPolicyRuleArrayOutputWithContext(ctx 
 // FirewallPolicyRuleMapInput is an input type that accepts FirewallPolicyRuleMap and FirewallPolicyRuleMapOutput values.
 // You can construct a concrete instance of `FirewallPolicyRuleMapInput` via:
 //
-//	FirewallPolicyRuleMap{ "key": FirewallPolicyRuleArgs{...} }
+//          FirewallPolicyRuleMap{ "key": FirewallPolicyRuleArgs{...} }
 type FirewallPolicyRuleMapInput interface {
 	pulumi.Input
 

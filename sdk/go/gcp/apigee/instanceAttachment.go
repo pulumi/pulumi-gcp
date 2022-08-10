@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.attachments/create)
 // * How-to Guides
-//   - [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+//     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 //
 // ## Example Usage
 // ### Apigee Instance Attachment Basic
@@ -26,130 +26,123 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test"),
-//				OrgId:          pulumi.String(""),
-//				BillingAccount: pulumi.String(""),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("apigee.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("compute.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", &compute.NetworkArgs{
-//				Project: project.ProjectId,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
-//				Project:      project.ProjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					apigeeRange.Name,
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
-//				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         project.ProjectId,
-//				AuthorizedNetwork: apigeeNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigeeVpcConnection,
-//				apigee,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigee.NewInstance(ctx, "apigeeIns", &apigee.InstanceArgs{
-//				Location: pulumi.String("us-central1"),
-//				OrgId:    apigeeOrg.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			apigeeEnv, err := apigee.NewEnvironment(ctx, "apigeeEnv", &apigee.EnvironmentArgs{
-//				OrgId:       apigeeOrg.ID(),
-//				Description: pulumi.String("Apigee Environment"),
-//				DisplayName: pulumi.String("environment-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigee.NewInstanceAttachment(ctx, "instanceAttachment", &apigee.InstanceAttachmentArgs{
-//				InstanceId:  pulumi.Any(google_apigee_instance.Apigee_instance.Id),
-//				Environment: apigeeEnv.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+// 			ProjectId:      pulumi.String("tf-test"),
+// 			OrgId:          pulumi.String(""),
+// 			BillingAccount: pulumi.String(""),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+// 			Project: project.ProjectId,
+// 			Service: pulumi.String("apigee.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+// 			Project: project.ProjectId,
+// 			Service: pulumi.String("compute.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+// 			Project: project.ProjectId,
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", &compute.NetworkArgs{
+// 			Project: project.ProjectId,
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			compute,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      apigeeNetwork.ID(),
+// 			Project:      project.ProjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+// 			Network: apigeeNetwork.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				apigeeRange.Name,
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			servicenetworking,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+// 			AnalyticsRegion:   pulumi.String("us-central1"),
+// 			ProjectId:         project.ProjectId,
+// 			AuthorizedNetwork: apigeeNetwork.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			apigeeVpcConnection,
+// 			apigee,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigee.NewInstance(ctx, "apigeeIns", &apigee.InstanceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			OrgId:    apigeeOrg.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apigeeEnv, err := apigee.NewEnvironment(ctx, "apigeeEnv", &apigee.EnvironmentArgs{
+// 			OrgId:       apigeeOrg.ID(),
+// 			Description: pulumi.String("Apigee Environment"),
+// 			DisplayName: pulumi.String("environment-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigee.NewInstanceAttachment(ctx, "instanceAttachment", &apigee.InstanceAttachmentArgs{
+// 			InstanceId:  pulumi.Any(google_apigee_instance.Apigee_instance.Id),
+// 			Environment: apigeeEnv.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # InstanceAttachment can be imported using any of these accepted formats
+// InstanceAttachment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}
-//
+//  $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
-//
+//  $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
 // ```
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
@@ -264,7 +257,7 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 // InstanceAttachmentArrayInput is an input type that accepts InstanceAttachmentArray and InstanceAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAttachmentArrayInput` via:
 //
-//	InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
+//          InstanceAttachmentArray{ InstanceAttachmentArgs{...} }
 type InstanceAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +282,7 @@ func (i InstanceAttachmentArray) ToInstanceAttachmentArrayOutputWithContext(ctx 
 // InstanceAttachmentMapInput is an input type that accepts InstanceAttachmentMap and InstanceAttachmentMapOutput values.
 // You can construct a concrete instance of `InstanceAttachmentMapInput` via:
 //
-//	InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
+//          InstanceAttachmentMap{ "key": InstanceAttachmentArgs{...} }
 type InstanceAttachmentMapInput interface {
 	pulumi.Input
 

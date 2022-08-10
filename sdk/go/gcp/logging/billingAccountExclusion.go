@@ -17,26 +17,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewBillingAccountExclusion(ctx, "my-exclusion", &logging.BillingAccountExclusionArgs{
-//				BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
-//				Description:    pulumi.String("Exclude GCE instance debug logs"),
-//				Filter:         pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewBillingAccountExclusion(ctx, "my-exclusion", &logging.BillingAccountExclusionArgs{
+// 			BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
+// 			Description:    pulumi.String("Exclude GCE instance debug logs"),
+// 			Filter:         pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -44,9 +41,7 @@ import (
 // Billing account logging exclusions can be imported using their URI, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion my_exclusion billingAccounts/my-billing_account/exclusions/my-exclusion
-//
+//  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion my_exclusion billingAccounts/my-billing_account/exclusions/my-exclusion
 // ```
 type BillingAccountExclusion struct {
 	pulumi.CustomResourceState
@@ -195,7 +190,7 @@ func (i *BillingAccountExclusion) ToBillingAccountExclusionOutputWithContext(ctx
 // BillingAccountExclusionArrayInput is an input type that accepts BillingAccountExclusionArray and BillingAccountExclusionArrayOutput values.
 // You can construct a concrete instance of `BillingAccountExclusionArrayInput` via:
 //
-//	BillingAccountExclusionArray{ BillingAccountExclusionArgs{...} }
+//          BillingAccountExclusionArray{ BillingAccountExclusionArgs{...} }
 type BillingAccountExclusionArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +215,7 @@ func (i BillingAccountExclusionArray) ToBillingAccountExclusionArrayOutputWithCo
 // BillingAccountExclusionMapInput is an input type that accepts BillingAccountExclusionMap and BillingAccountExclusionMapOutput values.
 // You can construct a concrete instance of `BillingAccountExclusionMapInput` via:
 //
-//	BillingAccountExclusionMap{ "key": BillingAccountExclusionArgs{...} }
+//          BillingAccountExclusionMap{ "key": BillingAccountExclusionArgs{...} }
 type BillingAccountExclusionMapInput interface {
 	pulumi.Input
 

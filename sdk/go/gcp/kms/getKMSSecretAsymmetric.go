@@ -12,24 +12,24 @@ import (
 
 // ## get the public key to encrypt the secret with
 //
-//	$ gcloud kms keys versions get-public-key 1\
-//	  --project my-project\
-//	  --location us-central1\
-//	  --keyring my-key-ring\
-//	  --key my-crypto-key\
-//	  --output-file public-key.pem
+// $ gcloud kms keys versions get-public-key 1\
+//   --project my-project\
+//   --location us-central1\
+//   --keyring my-key-ring\
+//   --key my-crypto-key\
+//   --output-file public-key.pem
 //
 // ## encrypt secret with the public key
 //
-//	$ echo -n my-secret-password |\
-//	  openssl pkeyutl -in -\
-//	    -encrypt\
-//	    -pubin\
-//	    -inkey public-key.pem\
-//	    -pkeyopt rsa_padding_mode:oaep\
-//	    -pkeyopt rsa_oaep_md:sha256\
-//	    -pkeyopt rsa_mgf1_md:sha256 >\
-//	  my-secret-password.enc
+// $ echo -n my-secret-password |\
+//   openssl pkeyutl -in -\
+//     -encrypt\
+//     -pubin\
+//     -inkey public-key.pem\
+//     -pkeyopt rsa_padding_mode:oaep\
+//     -pkeyopt rsa_oaep_md:sha256\
+//     -pkeyopt rsa_mgf1_md:sha256 >\
+//   my-secret-password.enc
 //
 // ## base64 encode the ciphertext
 //

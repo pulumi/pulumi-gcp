@@ -27,40 +27,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/viewer",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iot.NewRegistryIamPolicy(ctx, "policy", &iot.RegistryIamPolicyArgs{
-//				Project:    pulumi.Any(google_cloudiot_registry.Test - registry.Project),
-//				Region:     pulumi.Any(google_cloudiot_registry.Test - registry.Region),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iot.NewRegistryIamPolicy(ctx, "policy", &iot.RegistryIamPolicyArgs{
+// 			Project:    pulumi.Any(google_cloudiot_registry.Test - registry.Project),
+// 			Region:     pulumi.Any(google_cloudiot_registry.Test - registry.Region),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_cloudiot\_registry\_iam\_binding
@@ -69,29 +66,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iot.NewRegistryIamBinding(ctx, "binding", &iot.RegistryIamBindingArgs{
-//				Project: pulumi.Any(google_cloudiot_registry.Test - registry.Project),
-//				Region:  pulumi.Any(google_cloudiot_registry.Test - registry.Region),
-//				Role:    pulumi.String("roles/viewer"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iot.NewRegistryIamBinding(ctx, "binding", &iot.RegistryIamBindingArgs{
+// 			Project: pulumi.Any(google_cloudiot_registry.Test - registry.Project),
+// 			Region:  pulumi.Any(google_cloudiot_registry.Test - registry.Region),
+// 			Role:    pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_cloudiot\_registry\_iam\_member
@@ -100,27 +94,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iot.NewRegistryIamMember(ctx, "member", &iot.RegistryIamMemberArgs{
-//				Project: pulumi.Any(google_cloudiot_registry.Test - registry.Project),
-//				Region:  pulumi.Any(google_cloudiot_registry.Test - registry.Region),
-//				Role:    pulumi.String("roles/viewer"),
-//				Member:  pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iot.NewRegistryIamMember(ctx, "member", &iot.RegistryIamMemberArgs{
+// 			Project: pulumi.Any(google_cloudiot_registry.Test - registry.Project),
+// 			Region:  pulumi.Any(google_cloudiot_registry.Test - registry.Region),
+// 			Role:    pulumi.String("roles/viewer"),
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -128,28 +119,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/registries/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud IoT Core deviceregistry IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:iot/registryIamMember:RegistryIamMember editor "projects/{{project}}/locations/{{location}}/registries/{{device_registry}} roles/viewer user:jane@example.com"
-//
+//  $ pulumi import gcp:iot/registryIamMember:RegistryIamMember editor "projects/{{project}}/locations/{{location}}/registries/{{device_registry}} roles/viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:iot/registryIamMember:RegistryIamMember editor "projects/{{project}}/locations/{{location}}/registries/{{device_registry}} roles/viewer"
-//
+//  $ pulumi import gcp:iot/registryIamMember:RegistryIamMember editor "projects/{{project}}/locations/{{location}}/registries/{{device_registry}} roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:iot/registryIamMember:RegistryIamMember editor projects/{{project}}/locations/{{location}}/registries/{{device_registry}}
-//
+//  $ pulumi import gcp:iot/registryIamMember:RegistryIamMember editor projects/{{project}}/locations/{{location}}/registries/{{device_registry}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type RegistryIamMember struct {
@@ -325,7 +310,7 @@ func (i *RegistryIamMember) ToRegistryIamMemberOutputWithContext(ctx context.Con
 // RegistryIamMemberArrayInput is an input type that accepts RegistryIamMemberArray and RegistryIamMemberArrayOutput values.
 // You can construct a concrete instance of `RegistryIamMemberArrayInput` via:
 //
-//	RegistryIamMemberArray{ RegistryIamMemberArgs{...} }
+//          RegistryIamMemberArray{ RegistryIamMemberArgs{...} }
 type RegistryIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -350,7 +335,7 @@ func (i RegistryIamMemberArray) ToRegistryIamMemberArrayOutputWithContext(ctx co
 // RegistryIamMemberMapInput is an input type that accepts RegistryIamMemberMap and RegistryIamMemberMapOutput values.
 // You can construct a concrete instance of `RegistryIamMemberMapInput` via:
 //
-//	RegistryIamMemberMap{ "key": RegistryIamMemberArgs{...} }
+//          RegistryIamMemberMap{ "key": RegistryIamMemberArgs{...} }
 type RegistryIamMemberMapInput interface {
 	pulumi.Input
 

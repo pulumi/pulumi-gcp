@@ -23,96 +23,87 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificateMap", &certificatemanager.CertificateMapArgs{
-//				Description: pulumi.String("My acceptance test certificate map"),
-//				Labels: pulumi.StringMap{
-//					"terraform": pulumi.String("true"),
-//					"acc-test":  pulumi.String("true"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
-//				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
-//				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			certificate, err := certificatemanager.NewCertificate(ctx, "certificate", &certificatemanager.CertificateArgs{
-//				Description: pulumi.String("The default cert"),
-//				Scope:       pulumi.String("DEFAULT"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						instance.Domain,
-//						instance2.Domain,
-//					},
-//					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID(),
-//						instance2.ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificateMapEntry(ctx, "default", &certificatemanager.CertificateMapEntryArgs{
-//				Description: pulumi.String("My acceptance test certificate map entry"),
-//				Map:         certificateMap.Name,
-//				Labels: pulumi.StringMap{
-//					"terraform": pulumi.String("true"),
-//					"acc-test":  pulumi.String("true"),
-//				},
-//				Certificates: pulumi.StringArray{
-//					certificate.ID(),
-//				},
-//				Matcher: pulumi.String("PRIMARY"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificateMap", &certificatemanager.CertificateMapArgs{
+// 			Description: pulumi.String("My acceptance test certificate map"),
+// 			Labels: pulumi.StringMap{
+// 				"terraform": pulumi.String("true"),
+// 				"acc-test":  pulumi.String("true"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+// 			Description: pulumi.String("The default dnss"),
+// 			Domain:      pulumi.String("subdomain.hashicorptest.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+// 			Description: pulumi.String("The default dnss"),
+// 			Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		certificate, err := certificatemanager.NewCertificate(ctx, "certificate", &certificatemanager.CertificateArgs{
+// 			Description: pulumi.String("The default cert"),
+// 			Scope:       pulumi.String("DEFAULT"),
+// 			Managed: &certificatemanager.CertificateManagedArgs{
+// 				Domains: pulumi.StringArray{
+// 					instance.Domain,
+// 					instance2.Domain,
+// 				},
+// 				DnsAuthorizations: pulumi.StringArray{
+// 					instance.ID(),
+// 					instance2.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificatemanager.NewCertificateMapEntry(ctx, "default", &certificatemanager.CertificateMapEntryArgs{
+// 			Description: pulumi.String("My acceptance test certificate map entry"),
+// 			Map:         certificateMap.Name,
+// 			Labels: pulumi.StringMap{
+// 				"terraform": pulumi.String("true"),
+// 				"acc-test":  pulumi.String("true"),
+// 			},
+// 			Certificates: pulumi.StringArray{
+// 				certificate.ID(),
+// 			},
+// 			Matcher: pulumi.String("PRIMARY"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # CertificateMapEntry can be imported using any of these accepted formats
+// CertificateMapEntry can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
 // ```
 type CertificateMapEntry struct {
 	pulumi.CustomResourceState
@@ -358,7 +349,7 @@ func (i *CertificateMapEntry) ToCertificateMapEntryOutputWithContext(ctx context
 // CertificateMapEntryArrayInput is an input type that accepts CertificateMapEntryArray and CertificateMapEntryArrayOutput values.
 // You can construct a concrete instance of `CertificateMapEntryArrayInput` via:
 //
-//	CertificateMapEntryArray{ CertificateMapEntryArgs{...} }
+//          CertificateMapEntryArray{ CertificateMapEntryArgs{...} }
 type CertificateMapEntryArrayInput interface {
 	pulumi.Input
 
@@ -383,7 +374,7 @@ func (i CertificateMapEntryArray) ToCertificateMapEntryArrayOutputWithContext(ct
 // CertificateMapEntryMapInput is an input type that accepts CertificateMapEntryMap and CertificateMapEntryMapOutput values.
 // You can construct a concrete instance of `CertificateMapEntryMapInput` via:
 //
-//	CertificateMapEntryMap{ "key": CertificateMapEntryArgs{...} }
+//          CertificateMapEntryMap{ "key": CertificateMapEntryArgs{...} }
 type CertificateMapEntryMapInput interface {
 	pulumi.Input
 

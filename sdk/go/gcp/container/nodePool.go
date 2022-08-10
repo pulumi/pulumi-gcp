@@ -22,49 +22,46 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Location:              pulumi.String("us-central1"),
-//				RemoveDefaultNodePool: pulumi.Bool(true),
-//				InitialNodeCount:      pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
-//				Cluster:   primary.ID(),
-//				NodeCount: pulumi.Int(1),
-//				NodeConfig: &container.NodePoolNodeConfigArgs{
-//					Preemptible:    pulumi.Bool(true),
-//					MachineType:    pulumi.String("e2-medium"),
-//					ServiceAccount: _default.Email,
-//					OauthScopes: pulumi.StringArray{
-//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service-account-id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+// 			Location:              pulumi.String("us-central1"),
+// 			RemoveDefaultNodePool: pulumi.Bool(true),
+// 			InitialNodeCount:      pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+// 			Cluster:   primary.ID(),
+// 			NodeCount: pulumi.Int(1),
+// 			NodeConfig: &container.NodePoolNodeConfigArgs{
+// 				Preemptible:    pulumi.Bool(true),
+// 				MachineType:    pulumi.String("e2-medium"),
+// 				ServiceAccount: _default.Email,
+// 				OauthScopes: pulumi.StringArray{
+// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -72,15 +69,11 @@ import (
 // Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
 //
 // ```sh
-//
-//	$ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
-//
+//  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
-//
+//  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
 // ```
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -481,7 +474,7 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 // NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
 // You can construct a concrete instance of `NodePoolArrayInput` via:
 //
-//	NodePoolArray{ NodePoolArgs{...} }
+//          NodePoolArray{ NodePoolArgs{...} }
 type NodePoolArrayInput interface {
 	pulumi.Input
 
@@ -506,7 +499,7 @@ func (i NodePoolArray) ToNodePoolArrayOutputWithContext(ctx context.Context) Nod
 // NodePoolMapInput is an input type that accepts NodePoolMap and NodePoolMapOutput values.
 // You can construct a concrete instance of `NodePoolMapInput` via:
 //
-//	NodePoolMap{ "key": NodePoolArgs{...} }
+//          NodePoolMap{ "key": NodePoolArgs{...} }
 type NodePoolMapInput interface {
 	pulumi.Input
 

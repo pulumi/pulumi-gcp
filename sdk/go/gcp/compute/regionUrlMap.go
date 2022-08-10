@@ -17,30 +17,22 @@ import (
 //
 // ## Import
 //
-// # RegionUrlMap can be imported using any of these accepted formats
+// RegionUrlMap can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
-//
+//  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
-//
+//  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
 // ```
 type RegionUrlMap struct {
 	pulumi.CustomResourceState
@@ -292,7 +284,7 @@ func (i *RegionUrlMap) ToRegionUrlMapOutputWithContext(ctx context.Context) Regi
 // RegionUrlMapArrayInput is an input type that accepts RegionUrlMapArray and RegionUrlMapArrayOutput values.
 // You can construct a concrete instance of `RegionUrlMapArrayInput` via:
 //
-//	RegionUrlMapArray{ RegionUrlMapArgs{...} }
+//          RegionUrlMapArray{ RegionUrlMapArgs{...} }
 type RegionUrlMapArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +309,7 @@ func (i RegionUrlMapArray) ToRegionUrlMapArrayOutputWithContext(ctx context.Cont
 // RegionUrlMapMapInput is an input type that accepts RegionUrlMapMap and RegionUrlMapMapOutput values.
 // You can construct a concrete instance of `RegionUrlMapMapInput` via:
 //
-//	RegionUrlMapMap{ "key": RegionUrlMapArgs{...} }
+//          RegionUrlMapMap{ "key": RegionUrlMapArgs{...} }
 type RegionUrlMapMapInput interface {
 	pulumi.Input
 

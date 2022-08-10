@@ -18,67 +18,58 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
-//				ServiceId: pulumi.String("fed"),
-//				Location:  pulumi.String("us-central1"),
-//				Tier:      pulumi.String("DEVELOPER"),
-//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
-//					Version:          pulumi.String("3.1.2"),
-//					EndpointProtocol: pulumi.String("GRPC"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
-//				Location:     pulumi.String("us-central1"),
-//				FederationId: pulumi.String("fed"),
-//				Version:      pulumi.String("3.1.2"),
-//				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
-//					&dataproc.MetastoreFederationBackendMetastoreArgs{
-//						Rank:          pulumi.String("1"),
-//						Name:          defaultMetastoreService.ID(),
-//						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
+// 			ServiceId: pulumi.String("fed"),
+// 			Location:  pulumi.String("us-central1"),
+// 			Tier:      pulumi.String("DEVELOPER"),
+// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+// 				Version:          pulumi.String("3.1.2"),
+// 				EndpointProtocol: pulumi.String("GRPC"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
+// 			Location:     pulumi.String("us-central1"),
+// 			FederationId: pulumi.String("fed"),
+// 			Version:      pulumi.String("3.1.2"),
+// 			BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
+// 				&dataproc.MetastoreFederationBackendMetastoreArgs{
+// 					Rank:          pulumi.String("1"),
+// 					Name:          defaultMetastoreService.ID(),
+// 					MetastoreType: pulumi.String("DATAPROC_METASTORE"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Federation can be imported using any of these accepted formats
+// Federation can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
-//
+//  $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
-//
+//  $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
-//
+//  $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
 // ```
 type MetastoreFederation struct {
 	pulumi.CustomResourceState
@@ -275,7 +266,7 @@ func (i *MetastoreFederation) ToMetastoreFederationOutputWithContext(ctx context
 // MetastoreFederationArrayInput is an input type that accepts MetastoreFederationArray and MetastoreFederationArrayOutput values.
 // You can construct a concrete instance of `MetastoreFederationArrayInput` via:
 //
-//	MetastoreFederationArray{ MetastoreFederationArgs{...} }
+//          MetastoreFederationArray{ MetastoreFederationArgs{...} }
 type MetastoreFederationArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +291,7 @@ func (i MetastoreFederationArray) ToMetastoreFederationArrayOutputWithContext(ct
 // MetastoreFederationMapInput is an input type that accepts MetastoreFederationMap and MetastoreFederationMapOutput values.
 // You can construct a concrete instance of `MetastoreFederationMapInput` via:
 //
-//	MetastoreFederationMap{ "key": MetastoreFederationArgs{...} }
+//          MetastoreFederationMap{ "key": MetastoreFederationArgs{...} }
 type MetastoreFederationMapInput interface {
 	pulumi.Input
 

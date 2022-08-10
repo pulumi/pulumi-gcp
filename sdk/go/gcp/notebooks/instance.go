@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+//     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
 // ### Notebook Instance Basic
@@ -30,29 +30,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				Location:    pulumi.String("us-west1-a"),
-//				MachineType: pulumi.String("e2-medium"),
-//				VmImage: &notebooks.InstanceVmImageArgs{
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+// 			Location:    pulumi.String("us-west1-a"),
+// 			MachineType: pulumi.String("e2-medium"),
+// 			VmImage: &notebooks.InstanceVmImageArgs{
+// 				ImageFamily: pulumi.String("tf-latest-cpu"),
+// 				Project:     pulumi.String("deeplearning-platform-release"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Notebook Instance Basic Container
 //
@@ -60,32 +57,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				ContainerImage: &notebooks.InstanceContainerImageArgs{
-//					Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
-//					Tag:        pulumi.String("latest"),
-//				},
-//				Location:    pulumi.String("us-west1-a"),
-//				MachineType: pulumi.String("e2-medium"),
-//				Metadata: pulumi.StringMap{
-//					"proxy-mode": pulumi.String("service_account"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+// 			ContainerImage: &notebooks.InstanceContainerImageArgs{
+// 				Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+// 				Tag:        pulumi.String("latest"),
+// 			},
+// 			Location:    pulumi.String("us-west1-a"),
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Metadata: pulumi.StringMap{
+// 				"proxy-mode": pulumi.String("service_account"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Notebook Instance Basic Gpu
 //
@@ -93,34 +87,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				AcceleratorConfig: &notebooks.InstanceAcceleratorConfigArgs{
-//					CoreCount: pulumi.Int(1),
-//					Type:      pulumi.String("NVIDIA_TESLA_T4"),
-//				},
-//				InstallGpuDriver: pulumi.Bool(true),
-//				Location:         pulumi.String("us-west1-a"),
-//				MachineType:      pulumi.String("n1-standard-1"),
-//				VmImage: &notebooks.InstanceVmImageArgs{
-//					ImageFamily: pulumi.String("tf-latest-gpu"),
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+// 			AcceleratorConfig: &notebooks.InstanceAcceleratorConfigArgs{
+// 				CoreCount: pulumi.Int(1),
+// 				Type:      pulumi.String("NVIDIA_TESLA_T4"),
+// 			},
+// 			InstallGpuDriver: pulumi.Bool(true),
+// 			Location:         pulumi.String("us-west1-a"),
+// 			MachineType:      pulumi.String("n1-standard-1"),
+// 			VmImage: &notebooks.InstanceVmImageArgs{
+// 				ImageFamily: pulumi.String("tf-latest-gpu"),
+// 				Project:     pulumi.String("deeplearning-platform-release"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Notebook Instance Full
 //
@@ -128,79 +119,70 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "default",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			mySubnetwork, err := compute.LookupSubnetwork(ctx, &compute.LookupSubnetworkArgs{
-//				Name:   pulumi.StringRef("default"),
-//				Region: pulumi.StringRef("us-central1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
-//				Location:    pulumi.String("us-central1-a"),
-//				MachineType: pulumi.String("e2-medium"),
-//				VmImage: &notebooks.InstanceVmImageArgs{
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("tf-latest-cpu"),
-//				},
-//				InstanceOwners: pulumi.StringArray{
-//					pulumi.String("admin@hashicorptest.com"),
-//				},
-//				ServiceAccount:   pulumi.String("emailAddress:my@service-account.com"),
-//				InstallGpuDriver: pulumi.Bool(true),
-//				BootDiskType:     pulumi.String("PD_SSD"),
-//				BootDiskSizeGb:   pulumi.Int(110),
-//				NoPublicIp:       pulumi.Bool(true),
-//				NoProxyAccess:    pulumi.Bool(true),
-//				Network:          pulumi.String(myNetwork.Id),
-//				Subnet:           pulumi.String(mySubnetwork.Id),
-//				Labels: pulumi.StringMap{
-//					"k": pulumi.String("val"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "default",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mySubnetwork, err := compute.LookupSubnetwork(ctx, &compute.LookupSubnetworkArgs{
+// 			Name:   pulumi.StringRef("default"),
+// 			Region: pulumi.StringRef("us-central1"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+// 			Location:    pulumi.String("us-central1-a"),
+// 			MachineType: pulumi.String("e2-medium"),
+// 			VmImage: &notebooks.InstanceVmImageArgs{
+// 				Project:     pulumi.String("deeplearning-platform-release"),
+// 				ImageFamily: pulumi.String("tf-latest-cpu"),
+// 			},
+// 			InstanceOwners: pulumi.StringArray{
+// 				pulumi.String("admin@hashicorptest.com"),
+// 			},
+// 			ServiceAccount:   pulumi.String("emailAddress:my@service-account.com"),
+// 			InstallGpuDriver: pulumi.Bool(true),
+// 			BootDiskType:     pulumi.String("PD_SSD"),
+// 			BootDiskSizeGb:   pulumi.Int(110),
+// 			NoPublicIp:       pulumi.Bool(true),
+// 			NoProxyAccess:    pulumi.Bool(true),
+// 			Network:          pulumi.String(myNetwork.Id),
+// 			Subnet:           pulumi.String(mySubnetwork.Id),
+// 			Labels: pulumi.StringMap{
+// 				"k": pulumi.String("val"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-//
+//  $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -811,7 +793,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//	InstanceArray{ InstanceArgs{...} }
+//          InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -836,7 +818,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//	InstanceMap{ "key": InstanceArgs{...} }
+//          InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

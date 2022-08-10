@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1/projects.locations.instances)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
+//     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 //
 // ## Example Usage
 // ### Memcache Instance Basic
@@ -26,99 +26,88 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/memcache"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/memcache"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			memcacheNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "test-network",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(memcacheNetwork.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(memcacheNetwork.Id),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					serviceRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = memcache.NewInstance(ctx, "instance", &memcache.InstanceArgs{
-//				AuthorizedNetwork: privateServiceConnection.Network,
-//				NodeConfig: &memcache.InstanceNodeConfigArgs{
-//					CpuCount:     pulumi.Int(1),
-//					MemorySizeMb: pulumi.Int(1024),
-//				},
-//				NodeCount:       pulumi.Int(1),
-//				MemcacheVersion: pulumi.String("MEMCACHE_1_5"),
-//				MaintenancePolicy: &memcache.InstanceMaintenancePolicyArgs{
-//					WeeklyMaintenanceWindows: memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
-//						&memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
-//							Day:      pulumi.String("SATURDAY"),
-//							Duration: pulumi.String("14400s"),
-//							StartTime: &memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
-//								Hours:   pulumi.Int(0),
-//								Minutes: pulumi.Int(30),
-//								Seconds: pulumi.Int(0),
-//								Nanos:   pulumi.Int(0),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		memcacheNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "test-network",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      pulumi.String(memcacheNetwork.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+// 			Network: pulumi.String(memcacheNetwork.Id),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				serviceRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = memcache.NewInstance(ctx, "instance", &memcache.InstanceArgs{
+// 			AuthorizedNetwork: privateServiceConnection.Network,
+// 			NodeConfig: &memcache.InstanceNodeConfigArgs{
+// 				CpuCount:     pulumi.Int(1),
+// 				MemorySizeMb: pulumi.Int(1024),
+// 			},
+// 			NodeCount:       pulumi.Int(1),
+// 			MemcacheVersion: pulumi.String("MEMCACHE_1_5"),
+// 			MaintenancePolicy: &memcache.InstanceMaintenancePolicyArgs{
+// 				WeeklyMaintenanceWindows: memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
+// 					&memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
+// 						Day:      pulumi.String("SATURDAY"),
+// 						Duration: pulumi.String("14400s"),
+// 						StartTime: &memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+// 							Hours:   pulumi.Int(0),
+// 							Minutes: pulumi.Int(30),
+// 							Seconds: pulumi.Int(0),
+// 							Nanos:   pulumi.Int(0),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-//
+//  $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:memcache/instance:Instance default {{name}}
-//
+//  $ pulumi import gcp:memcache/instance:Instance default {{name}}
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -411,7 +400,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//	InstanceArray{ InstanceArgs{...} }
+//          InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -436,7 +425,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//	InstanceMap{ "key": InstanceArgs{...} }
+//          InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

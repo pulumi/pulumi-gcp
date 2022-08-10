@@ -19,7 +19,7 @@ type LakeAssetStatus struct {
 // LakeAssetStatusInput is an input type that accepts LakeAssetStatusArgs and LakeAssetStatusOutput values.
 // You can construct a concrete instance of `LakeAssetStatusInput` via:
 //
-//	LakeAssetStatusArgs{...}
+//          LakeAssetStatusArgs{...}
 type LakeAssetStatusInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i LakeAssetStatusArgs) ToLakeAssetStatusOutputWithContext(ctx context.Cont
 // LakeAssetStatusArrayInput is an input type that accepts LakeAssetStatusArray and LakeAssetStatusArrayOutput values.
 // You can construct a concrete instance of `LakeAssetStatusArrayInput` via:
 //
-//	LakeAssetStatusArray{ LakeAssetStatusArgs{...} }
+//          LakeAssetStatusArray{ LakeAssetStatusArgs{...} }
 type LakeAssetStatusArrayInput interface {
 	pulumi.Input
 
@@ -124,7 +124,7 @@ type LakeMetastore struct {
 // LakeMetastoreInput is an input type that accepts LakeMetastoreArgs and LakeMetastoreOutput values.
 // You can construct a concrete instance of `LakeMetastoreInput` via:
 //
-//	LakeMetastoreArgs{...}
+//          LakeMetastoreArgs{...}
 type LakeMetastoreInput interface {
 	pulumi.Input
 
@@ -160,11 +160,11 @@ func (i LakeMetastoreArgs) ToLakeMetastorePtrOutputWithContext(ctx context.Conte
 // LakeMetastorePtrInput is an input type that accepts LakeMetastoreArgs, LakeMetastorePtr and LakeMetastorePtrOutput values.
 // You can construct a concrete instance of `LakeMetastorePtrInput` via:
 //
-//	        LakeMetastoreArgs{...}
+//          LakeMetastoreArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type LakeMetastorePtrInput interface {
 	pulumi.Input
 
@@ -263,7 +263,7 @@ type LakeMetastoreStatus struct {
 // LakeMetastoreStatusInput is an input type that accepts LakeMetastoreStatusArgs and LakeMetastoreStatusOutput values.
 // You can construct a concrete instance of `LakeMetastoreStatusInput` via:
 //
-//	LakeMetastoreStatusArgs{...}
+//          LakeMetastoreStatusArgs{...}
 type LakeMetastoreStatusInput interface {
 	pulumi.Input
 
@@ -293,7 +293,7 @@ func (i LakeMetastoreStatusArgs) ToLakeMetastoreStatusOutputWithContext(ctx cont
 // LakeMetastoreStatusArrayInput is an input type that accepts LakeMetastoreStatusArray and LakeMetastoreStatusArrayOutput values.
 // You can construct a concrete instance of `LakeMetastoreStatusArrayInput` via:
 //
-//	LakeMetastoreStatusArray{ LakeMetastoreStatusArgs{...} }
+//          LakeMetastoreStatusArray{ LakeMetastoreStatusArgs{...} }
 type LakeMetastoreStatusArrayInput interface {
 	pulumi.Input
 

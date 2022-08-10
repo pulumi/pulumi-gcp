@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+//     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 //
 // > **Warning:** This resource creates a Datastore Index on a project that has already
 // enabled a Datastore-compatible database. If you haven't already enabled
@@ -32,56 +32,47 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastore"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datastore.NewDataStoreIndex(ctx, "default", &datastore.DataStoreIndexArgs{
-//				Kind: pulumi.String("foo"),
-//				Properties: datastore.DataStoreIndexPropertyArray{
-//					&datastore.DataStoreIndexPropertyArgs{
-//						Direction: pulumi.String("ASCENDING"),
-//						Name:      pulumi.String("property_a"),
-//					},
-//					&datastore.DataStoreIndexPropertyArgs{
-//						Direction: pulumi.String("ASCENDING"),
-//						Name:      pulumi.String("property_b"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datastore.NewDataStoreIndex(ctx, "default", &datastore.DataStoreIndexArgs{
+// 			Kind: pulumi.String("foo"),
+// 			Properties: datastore.DataStoreIndexPropertyArray{
+// 				&datastore.DataStoreIndexPropertyArgs{
+// 					Direction: pulumi.String("ASCENDING"),
+// 					Name:      pulumi.String("property_a"),
+// 				},
+// 				&datastore.DataStoreIndexPropertyArgs{
+// 					Direction: pulumi.String("ASCENDING"),
+// 					Name:      pulumi.String("property_b"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Index can be imported using any of these accepted formats
+// Index can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
-//
+//  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
-//
+//  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
-//
+//  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
 // ```
 type DataStoreIndex struct {
 	pulumi.CustomResourceState
@@ -228,7 +219,7 @@ func (i *DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) 
 // DataStoreIndexArrayInput is an input type that accepts DataStoreIndexArray and DataStoreIndexArrayOutput values.
 // You can construct a concrete instance of `DataStoreIndexArrayInput` via:
 //
-//	DataStoreIndexArray{ DataStoreIndexArgs{...} }
+//          DataStoreIndexArray{ DataStoreIndexArgs{...} }
 type DataStoreIndexArrayInput interface {
 	pulumi.Input
 
@@ -253,7 +244,7 @@ func (i DataStoreIndexArray) ToDataStoreIndexArrayOutputWithContext(ctx context.
 // DataStoreIndexMapInput is an input type that accepts DataStoreIndexMap and DataStoreIndexMapOutput values.
 // You can construct a concrete instance of `DataStoreIndexMapInput` via:
 //
-//	DataStoreIndexMap{ "key": DataStoreIndexArgs{...} }
+//          DataStoreIndexMap{ "key": DataStoreIndexArgs{...} }
 type DataStoreIndexMapInput interface {
 	pulumi.Input
 

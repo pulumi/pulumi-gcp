@@ -24,7 +24,7 @@ type EdgeCacheKeysetPublicKey struct {
 // EdgeCacheKeysetPublicKeyInput is an input type that accepts EdgeCacheKeysetPublicKeyArgs and EdgeCacheKeysetPublicKeyOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetPublicKeyInput` via:
 //
-//	EdgeCacheKeysetPublicKeyArgs{...}
+//          EdgeCacheKeysetPublicKeyArgs{...}
 type EdgeCacheKeysetPublicKeyInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i EdgeCacheKeysetPublicKeyArgs) ToEdgeCacheKeysetPublicKeyOutputWithContex
 // EdgeCacheKeysetPublicKeyArrayInput is an input type that accepts EdgeCacheKeysetPublicKeyArray and EdgeCacheKeysetPublicKeyArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetPublicKeyArrayInput` via:
 //
-//	EdgeCacheKeysetPublicKeyArray{ EdgeCacheKeysetPublicKeyArgs{...} }
+//          EdgeCacheKeysetPublicKeyArray{ EdgeCacheKeysetPublicKeyArgs{...} }
 type EdgeCacheKeysetPublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -153,7 +153,7 @@ type EdgeCacheOriginTimeout struct {
 // EdgeCacheOriginTimeoutInput is an input type that accepts EdgeCacheOriginTimeoutArgs and EdgeCacheOriginTimeoutOutput values.
 // You can construct a concrete instance of `EdgeCacheOriginTimeoutInput` via:
 //
-//	EdgeCacheOriginTimeoutArgs{...}
+//          EdgeCacheOriginTimeoutArgs{...}
 type EdgeCacheOriginTimeoutInput interface {
 	pulumi.Input
 
@@ -206,11 +206,11 @@ func (i EdgeCacheOriginTimeoutArgs) ToEdgeCacheOriginTimeoutPtrOutputWithContext
 // EdgeCacheOriginTimeoutPtrInput is an input type that accepts EdgeCacheOriginTimeoutArgs, EdgeCacheOriginTimeoutPtr and EdgeCacheOriginTimeoutPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheOriginTimeoutPtrInput` via:
 //
-//	        EdgeCacheOriginTimeoutArgs{...}
+//          EdgeCacheOriginTimeoutArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheOriginTimeoutPtrInput interface {
 	pulumi.Input
 
@@ -377,7 +377,7 @@ type EdgeCacheServiceLogConfig struct {
 // EdgeCacheServiceLogConfigInput is an input type that accepts EdgeCacheServiceLogConfigArgs and EdgeCacheServiceLogConfigOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceLogConfigInput` via:
 //
-//	EdgeCacheServiceLogConfigArgs{...}
+//          EdgeCacheServiceLogConfigArgs{...}
 type EdgeCacheServiceLogConfigInput interface {
 	pulumi.Input
 
@@ -416,11 +416,11 @@ func (i EdgeCacheServiceLogConfigArgs) ToEdgeCacheServiceLogConfigPtrOutputWithC
 // EdgeCacheServiceLogConfigPtrInput is an input type that accepts EdgeCacheServiceLogConfigArgs, EdgeCacheServiceLogConfigPtr and EdgeCacheServiceLogConfigPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceLogConfigPtrInput` via:
 //
-//	        EdgeCacheServiceLogConfigArgs{...}
+//          EdgeCacheServiceLogConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceLogConfigPtrInput interface {
 	pulumi.Input
 
@@ -537,7 +537,7 @@ type EdgeCacheServiceRouting struct {
 // EdgeCacheServiceRoutingInput is an input type that accepts EdgeCacheServiceRoutingArgs and EdgeCacheServiceRoutingOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingInput` via:
 //
-//	EdgeCacheServiceRoutingArgs{...}
+//          EdgeCacheServiceRoutingArgs{...}
 type EdgeCacheServiceRoutingInput interface {
 	pulumi.Input
 
@@ -576,11 +576,11 @@ func (i EdgeCacheServiceRoutingArgs) ToEdgeCacheServiceRoutingPtrOutputWithConte
 // EdgeCacheServiceRoutingPtrInput is an input type that accepts EdgeCacheServiceRoutingArgs, EdgeCacheServiceRoutingPtr and EdgeCacheServiceRoutingPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingArgs{...}
+//          EdgeCacheServiceRoutingArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPtrInput interface {
 	pulumi.Input
 
@@ -708,7 +708,7 @@ type EdgeCacheServiceRoutingHostRule struct {
 // EdgeCacheServiceRoutingHostRuleInput is an input type that accepts EdgeCacheServiceRoutingHostRuleArgs and EdgeCacheServiceRoutingHostRuleOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingHostRuleInput` via:
 //
-//	EdgeCacheServiceRoutingHostRuleArgs{...}
+//          EdgeCacheServiceRoutingHostRuleArgs{...}
 type EdgeCacheServiceRoutingHostRuleInput interface {
 	pulumi.Input
 
@@ -750,7 +750,7 @@ func (i EdgeCacheServiceRoutingHostRuleArgs) ToEdgeCacheServiceRoutingHostRuleOu
 // EdgeCacheServiceRoutingHostRuleArrayInput is an input type that accepts EdgeCacheServiceRoutingHostRuleArray and EdgeCacheServiceRoutingHostRuleArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingHostRuleArrayInput` via:
 //
-//	EdgeCacheServiceRoutingHostRuleArray{ EdgeCacheServiceRoutingHostRuleArgs{...} }
+//          EdgeCacheServiceRoutingHostRuleArray{ EdgeCacheServiceRoutingHostRuleArgs{...} }
 type EdgeCacheServiceRoutingHostRuleArrayInput interface {
 	pulumi.Input
 
@@ -794,14 +794,14 @@ func (o EdgeCacheServiceRoutingHostRuleOutput) Description() pulumi.StringPtrOut
 // The list of host patterns to match.
 // Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
 // When multiple hosts are specified, hosts are matched in the following priority:
-//  1. Exact domain names: “www.foo.com“.
-//  2. Suffix domain wildcards: “*.foo.com“ or “*-bar.foo.com“.
-//  3. Prefix domain wildcards: “foo.*“ or “foo-*“.
-//  4. Special wildcard “*“ matching any domain.
-//     Notes:
-//     The wildcard will not match the empty string. e.g. “*-bar.foo.com“ will match “baz-bar.foo.com“ but not “-bar.foo.com“. The longest wildcards match first. Only a single host in the entire service can match on “*“. A domain must be unique across all configured hosts within a service.
-//     Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
-//     You may specify up to 10 hosts.
+// 1. Exact domain names: ``www.foo.com``.
+// 2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+// 3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+// 4. Special wildcard ``*`` matching any domain.
+//    Notes:
+//    The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+//    Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+//    You may specify up to 10 hosts.
 func (o EdgeCacheServiceRoutingHostRuleOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingHostRule) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -844,7 +844,7 @@ type EdgeCacheServiceRoutingPathMatcher struct {
 // EdgeCacheServiceRoutingPathMatcherInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherArgs and EdgeCacheServiceRoutingPathMatcherOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherArgs{...}
 type EdgeCacheServiceRoutingPathMatcherInput interface {
 	pulumi.Input
 
@@ -877,7 +877,7 @@ func (i EdgeCacheServiceRoutingPathMatcherArgs) ToEdgeCacheServiceRoutingPathMat
 // EdgeCacheServiceRoutingPathMatcherArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherArray and EdgeCacheServiceRoutingPathMatcherArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherArray{ EdgeCacheServiceRoutingPathMatcherArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherArray{ EdgeCacheServiceRoutingPathMatcherArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherArrayInput interface {
 	pulumi.Input
 
@@ -980,7 +980,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRule struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleInput interface {
 	pulumi.Input
 
@@ -1029,7 +1029,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleArgs) ToEdgeCacheServiceRouti
 // EdgeCacheServiceRoutingPathMatcherRouteRuleArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleArray and EdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleArrayInput interface {
 	pulumi.Input
 
@@ -1156,7 +1156,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionInput interface {
 	pulumi.Input
 
@@ -1203,11 +1203,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs) ToEdgeCache
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrInput interface {
 	pulumi.Input
 
@@ -1372,7 +1372,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd s
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddInput interface {
 	pulumi.Input
 
@@ -1405,7 +1405,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayInput interface {
 	pulumi.Input
 
@@ -1492,7 +1492,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemov
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveInput interface {
 	pulumi.Input
 
@@ -1521,7 +1521,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayInput interface {
 	pulumi.Input
 
@@ -1598,7 +1598,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd 
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddInput interface {
 	pulumi.Input
 
@@ -1631,7 +1631,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToA
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayInput interface {
 	pulumi.Input
 
@@ -1718,7 +1718,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemo
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveInput interface {
 	pulumi.Input
 
@@ -1747,7 +1747,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToR
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayInput interface {
 	pulumi.Input
 
@@ -1838,7 +1838,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleInput interface {
 	pulumi.Input
 
@@ -1885,7 +1885,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs) ToEdgeCacheSer
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayInput interface {
 	pulumi.Input
 
@@ -2004,7 +2004,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchInput interface {
 	pulumi.Input
 
@@ -2044,7 +2044,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs) ToE
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArray and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput interface {
 	pulumi.Input
 
@@ -2144,7 +2144,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch str
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchInput interface {
 	pulumi.Input
 
@@ -2176,7 +2176,7 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchA
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArray and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{...} }
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArray{ EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs{...} }
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput interface {
 	pulumi.Input
 
@@ -2266,7 +2266,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionInput interface {
 	pulumi.Input
 
@@ -2309,11 +2309,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs) ToEdgeCacheS
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrInput interface {
 	pulumi.Input
 
@@ -2505,7 +2505,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyInput interface {
 	pulumi.Input
 
@@ -2594,11 +2594,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs) ToE
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrInput interface {
 	pulumi.Input
 
@@ -2664,26 +2664,26 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) C
 }
 
 // Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
-//   - The TTL must be > 0 and <= 86400s (1 day)
-//   - The clientTtl cannot be larger than the defaultTtl (if set)
-//   - Fractions of a second are not allowed.
-//     Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
-//     When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-//     A duration in seconds terminated by 's'. Example: "3s".
+// - The TTL must be > 0 and <= 86400s (1 day)
+// - The clientTtl cannot be larger than the defaultTtl (if set)
+// - Fractions of a second are not allowed.
+//   Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+//   When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+//   A duration in seconds terminated by 's'. Example: "3s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) ClientTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string { return v.ClientTtl }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
 // Defaults to 3600s (1 hour).
-//   - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
-//   - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
-//   - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
-//   - Fractions of a second are not allowed.
-//   - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-//     Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
-//     When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-//     A duration in seconds terminated by 's'. Example: "3s".
+// - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+// - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
+// - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
+// - Fractions of a second are not allowed.
+// - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
+//   Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+//   When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+//   A duration in seconds terminated by 's'. Example: "3s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) DefaultTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string { return v.DefaultTtl }).(pulumi.StringPtrOutput)
 }
@@ -2691,22 +2691,22 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) D
 // Specifies the maximum allowed TTL for cached content served by this origin.
 // Defaults to 86400s (1 day).
 // Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-//   - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
-//   - Setting a TTL of "0" means "always revalidate"
-//   - The value of maxTtl must be equal to or greater than defaultTtl.
-//   - Fractions of a second are not allowed.
-//     When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-//     A duration in seconds terminated by 's'. Example: "3s".
+// - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+// - Setting a TTL of "0" means "always revalidate"
+// - The value of maxTtl must be equal to or greater than defaultTtl.
+// - Fractions of a second are not allowed.
+//   When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+//   A duration in seconds terminated by 's'. Example: "3s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) MaxTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string { return v.MaxTtl }).(pulumi.StringPtrOutput)
 }
 
 // Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
 // By default, the CDNPolicy will apply the following default TTLs to these status codes:
-//   - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
-//   - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
-//   - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
-//     These defaults can be overridden in negativeCachingPolicy
+// - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+// - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
+// - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
+//   These defaults can be overridden in negativeCachingPolicy
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *bool {
 		return v.NegativeCaching
@@ -2714,9 +2714,9 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) N
 }
 
 // Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
-//   - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
-//   - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
-//     Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+// - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
+// - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
+//   Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) NegativeCachingPolicy() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) map[string]string {
 		return v.NegativeCachingPolicy
@@ -2788,12 +2788,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 }
 
 // Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
-//   - The TTL must be > 0 and <= 86400s (1 day)
-//   - The clientTtl cannot be larger than the defaultTtl (if set)
-//   - Fractions of a second are not allowed.
-//     Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
-//     When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-//     A duration in seconds terminated by 's'. Example: "3s".
+// - The TTL must be > 0 and <= 86400s (1 day)
+// - The clientTtl cannot be larger than the defaultTtl (if set)
+// - Fractions of a second are not allowed.
+//   Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+//   When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+//   A duration in seconds terminated by 's'. Example: "3s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) ClientTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		if v == nil {
@@ -2805,14 +2805,14 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 
 // Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
 // Defaults to 3600s (1 hour).
-//   - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
-//   - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
-//   - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
-//   - Fractions of a second are not allowed.
-//   - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-//     Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
-//     When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-//     A duration in seconds terminated by 's'. Example: "3s".
+// - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+// - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
+// - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
+// - Fractions of a second are not allowed.
+// - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
+//   Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+//   When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+//   A duration in seconds terminated by 's'. Example: "3s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) DefaultTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		if v == nil {
@@ -2825,12 +2825,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 // Specifies the maximum allowed TTL for cached content served by this origin.
 // Defaults to 86400s (1 day).
 // Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-//   - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
-//   - Setting a TTL of "0" means "always revalidate"
-//   - The value of maxTtl must be equal to or greater than defaultTtl.
-//   - Fractions of a second are not allowed.
-//     When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-//     A duration in seconds terminated by 's'. Example: "3s".
+// - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+// - Setting a TTL of "0" means "always revalidate"
+// - The value of maxTtl must be equal to or greater than defaultTtl.
+// - Fractions of a second are not allowed.
+//   When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+//   A duration in seconds terminated by 's'. Example: "3s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) MaxTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		if v == nil {
@@ -2842,10 +2842,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 
 // Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
 // By default, the CDNPolicy will apply the following default TTLs to these status codes:
-//   - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
-//   - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
-//   - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
-//     These defaults can be overridden in negativeCachingPolicy
+// - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+// - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
+// - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
+//   These defaults can be overridden in negativeCachingPolicy
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *bool {
 		if v == nil {
@@ -2856,9 +2856,9 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 }
 
 // Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
-//   - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
-//   - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
-//     Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+// - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
+// - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
+//   Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) NegativeCachingPolicy() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) map[string]string {
 		if v == nil {
@@ -2929,7 +2929,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPoli
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyInput interface {
 	pulumi.Input
 
@@ -2995,11 +2995,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrInput interface {
 	pulumi.Input
 
@@ -3086,11 +3086,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 
 // Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
 // Cookie names:
-//   - must be valid RFC 6265 "cookie-name" tokens
-//   - are case sensitive
-//   - cannot start with "Edge-Cache-" (case insensitive)
-//     Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-//     You may specify up to three cookie names.
+// - must be valid RFC 6265 "cookie-name" tokens
+// - are case sensitive
+// - cannot start with "Edge-Cache-" (case insensitive)
+//   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+//   You may specify up to three cookie names.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput) IncludedCookieNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) []string {
 		return v.IncludedCookieNames
@@ -3098,10 +3098,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 }
 
 // Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
-//   - Header names must be valid HTTP RFC 7230 header field values.
-//   - Header field names are case insensitive
-//   - To include the HTTP method, use ":method"
-//     Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+// - Header names must be valid HTTP RFC 7230 header field values.
+// - Header field names are case insensitive
+// - To include the HTTP method, use ":method"
+//   Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput) IncludedHeaderNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) []string {
 		return v.IncludedHeaderNames
@@ -3189,11 +3189,11 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 
 // Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
 // Cookie names:
-//   - must be valid RFC 6265 "cookie-name" tokens
-//   - are case sensitive
-//   - cannot start with "Edge-Cache-" (case insensitive)
-//     Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-//     You may specify up to three cookie names.
+// - must be valid RFC 6265 "cookie-name" tokens
+// - are case sensitive
+// - cannot start with "Edge-Cache-" (case insensitive)
+//   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+//   You may specify up to three cookie names.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) IncludedCookieNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) []string {
 		if v == nil {
@@ -3204,10 +3204,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 }
 
 // Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
-//   - Header names must be valid HTTP RFC 7230 header field values.
-//   - Header field names are case insensitive
-//   - To include the HTTP method, use ":method"
-//     Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+// - Header names must be valid HTTP RFC 7230 header field values.
+// - Header field names are case insensitive
+// - To include the HTTP method, use ":method"
+//   Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) IncludedHeaderNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) []string {
 		if v == nil {
@@ -3254,7 +3254,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyInput interface {
 	pulumi.Input
 
@@ -3308,11 +3308,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs) To
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrInput interface {
 	pulumi.Input
 
@@ -3405,10 +3405,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) 
 }
 
 // Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
-//   - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
-//   - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
-//   - This translates to the Access-Control-Max-Age header.
-//     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+// - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
+// - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
+// - This translates to the Access-Control-Max-Age header.
+//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) MaxAge() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy) string { return v.MaxAge }).(pulumi.StringOutput)
 }
@@ -3500,10 +3500,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutpu
 }
 
 // Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
-//   - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
-//   - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
-//   - This translates to the Access-Control-Max-Age header.
-//     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+// - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
+// - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
+// - This translates to the Access-Control-Max-Age header.
+//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy) *string {
 		if v == nil {
@@ -3535,7 +3535,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteInput interface {
 	pulumi.Input
 
@@ -3585,11 +3585,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs) To
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrInput interface {
 	pulumi.Input
 
@@ -3757,7 +3757,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect struct {
 // EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectInput` via:
 //
-//	EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{...}
 type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectInput interface {
 	pulumi.Input
 
@@ -3810,11 +3810,11 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs) ToEdgeCacheS
 // EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput` via:
 //
-//	        EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{...}
+//          EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput interface {
 	pulumi.Input
 

@@ -24,18 +24,16 @@ import (
 //
 // * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.importJobs)
 // * How-to Guides
-//   - [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
+//     * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # KeyRingImportJob can be imported using any of these accepted formats
+// KeyRingImportJob can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
-//
+//  $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
 // ```
 type KeyRingImportJob struct {
 	pulumi.CustomResourceState
@@ -221,7 +219,7 @@ func (i *KeyRingImportJob) ToKeyRingImportJobOutputWithContext(ctx context.Conte
 // KeyRingImportJobArrayInput is an input type that accepts KeyRingImportJobArray and KeyRingImportJobArrayOutput values.
 // You can construct a concrete instance of `KeyRingImportJobArrayInput` via:
 //
-//	KeyRingImportJobArray{ KeyRingImportJobArgs{...} }
+//          KeyRingImportJobArray{ KeyRingImportJobArgs{...} }
 type KeyRingImportJobArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +244,7 @@ func (i KeyRingImportJobArray) ToKeyRingImportJobArrayOutputWithContext(ctx cont
 // KeyRingImportJobMapInput is an input type that accepts KeyRingImportJobMap and KeyRingImportJobMapOutput values.
 // You can construct a concrete instance of `KeyRingImportJobMapInput` via:
 //
-//	KeyRingImportJobMap{ "key": KeyRingImportJobArgs{...} }
+//          KeyRingImportJobMap{ "key": KeyRingImportJobArgs{...} }
 type KeyRingImportJobMapInput interface {
 	pulumi.Input
 

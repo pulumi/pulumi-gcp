@@ -17,71 +17,62 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
-//				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
-//				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Description: pulumi.String("The default cert"),
-//				Scope:       pulumi.String("EDGE_CACHE"),
-//				Managed: &certificatemanager.CertificateManagedArgs{
-//					Domains: pulumi.StringArray{
-//						instance.Domain,
-//						instance2.Domain,
-//					},
-//					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID(),
-//						instance2.ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+// 			Description: pulumi.String("The default dnss"),
+// 			Domain:      pulumi.String("subdomain.hashicorptest.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+// 			Description: pulumi.String("The default dnss"),
+// 			Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+// 			Description: pulumi.String("The default cert"),
+// 			Scope:       pulumi.String("EDGE_CACHE"),
+// 			Managed: &certificatemanager.CertificateManagedArgs{
+// 				Domains: pulumi.StringArray{
+// 					instance.Domain,
+// 					instance2.Domain,
+// 				},
+// 				DnsAuthorizations: pulumi.StringArray{
+// 					instance.ID(),
+// 					instance2.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Certificate can be imported using any of these accepted formats
+// Certificate can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState
@@ -309,7 +300,7 @@ func (i *Certificate) ToCertificateOutputWithContext(ctx context.Context) Certif
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
-//	CertificateArray{ CertificateArgs{...} }
+//          CertificateArray{ CertificateArgs{...} }
 type CertificateArrayInput interface {
 	pulumi.Input
 
@@ -334,7 +325,7 @@ func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Contex
 // CertificateMapInput is an input type that accepts CertificateMap and CertificateMapOutput values.
 // You can construct a concrete instance of `CertificateMapInput` via:
 //
-//	CertificateMap{ "key": CertificateArgs{...} }
+//          CertificateMap{ "key": CertificateArgs{...} }
 type CertificateMapInput interface {
 	pulumi.Input
 

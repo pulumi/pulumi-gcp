@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
 // * How-to Guides
-//   - [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+//     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
 //
 // > **Warning:** All arguments including `secret` will be stored in the raw
 // state as plain-text.
@@ -33,65 +33,58 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test"),
-//				OrgId:     pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("iap.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			projectBrand, err := iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
-//				SupportEmail:     pulumi.String("support@example.com"),
-//				ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
-//				Project:          projectService.Project,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.NewClient(ctx, "projectClient", &iap.ClientArgs{
-//				DisplayName: pulumi.String("Test Client"),
-//				Brand:       projectBrand.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("tf-test"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
+// 			Project: project.ProjectId,
+// 			Service: pulumi.String("iap.googleapis.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		projectBrand, err := iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
+// 			SupportEmail:     pulumi.String("support@example.com"),
+// 			ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
+// 			Project:          projectService.Project,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.NewClient(ctx, "projectClient", &iap.ClientArgs{
+// 			DisplayName: pulumi.String("Test Client"),
+// 			Brand:       projectBrand.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Client can be imported using any of these accepted formats
+// Client can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
-//
+//  $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
-//
+//  $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
 // ```
 type Client struct {
 	pulumi.CustomResourceState
@@ -217,7 +210,7 @@ func (i *Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 // ClientArrayInput is an input type that accepts ClientArray and ClientArrayOutput values.
 // You can construct a concrete instance of `ClientArrayInput` via:
 //
-//	ClientArray{ ClientArgs{...} }
+//          ClientArray{ ClientArgs{...} }
 type ClientArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +235,7 @@ func (i ClientArray) ToClientArrayOutputWithContext(ctx context.Context) ClientA
 // ClientMapInput is an input type that accepts ClientMap and ClientMapOutput values.
 // You can construct a concrete instance of `ClientMapInput` via:
 //
-//	ClientMap{ "key": ClientArgs{...} }
+//          ClientMap{ "key": ClientArgs{...} }
 type ClientMapInput interface {
 	pulumi.Input
 

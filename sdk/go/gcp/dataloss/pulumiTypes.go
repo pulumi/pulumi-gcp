@@ -19,7 +19,7 @@ type PreventionDeidentifyTemplateDeidentifyConfig struct {
 // PreventionDeidentifyTemplateDeidentifyConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigArgs) ToPreventionDeidentify
 // PreventionDeidentifyTemplateDeidentifyConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigPtrInput interface {
 	pulumi.Input
 
@@ -162,7 +162,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations struct 
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput interface {
 	pulumi.Input
 
@@ -199,11 +199,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs)
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInput interface {
 	pulumi.Input
 
@@ -342,7 +342,7 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{...} }
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{...} }
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrayInput interface {
 	pulumi.Input
 
@@ -423,7 +423,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeInput interface {
 	pulumi.Input
 
@@ -451,7 +451,7 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{...} }
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{...} }
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -536,7 +536,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput interface {
 	pulumi.Input
 
@@ -648,7 +648,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigInput interface {
 	pulumi.Input
 
@@ -694,11 +694,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput interface {
 	pulumi.Input
 
@@ -859,7 +859,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput interface {
 	pulumi.Input
 
@@ -890,7 +890,7 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...} }
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray{ PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...} }
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput interface {
 	pulumi.Input
 
@@ -987,7 +987,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigInput interface {
 	pulumi.Input
 
@@ -1041,11 +1041,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrInput interface {
 	pulumi.Input
 
@@ -1097,13 +1097,13 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 // The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 // If the context is set but:
-//  1. there is no record present when transforming a given value or
-//  2. the field is not present when transforming a given value,
+// 1.  there is no record present when transforming a given value or
+// 2.  the field is not present when transforming a given value,
 //     a default tweak will be used.
 //     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
 //     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-//     *   a 64 bit integer is encoded followed by a single byte of value 1
-//     *   a string is encoded in UTF-8 format followed by a single byte of value 2
+// *   a 64 bit integer is encoded followed by a single byte of value 1
+// *   a string is encoded in UTF-8 format followed by a single byte of value 2
 //     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigOutput) Context() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
@@ -1156,13 +1156,13 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 // The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 // If the context is set but:
-//  1. there is no record present when transforming a given value or
-//  2. the field is not present when transforming a given value,
+// 1.  there is no record present when transforming a given value or
+// 2.  the field is not present when transforming a given value,
 //     a default tweak will be used.
 //     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
 //     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-//     *   a 64 bit integer is encoded followed by a single byte of value 1
-//     *   a string is encoded in UTF-8 format followed by a single byte of value 2
+// *   a 64 bit integer is encoded followed by a single byte of value 1
+// *   a string is encoded in UTF-8 format followed by a single byte of value 2
 //     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrOutput) Context() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
@@ -1206,7 +1206,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextInput interface {
 	pulumi.Input
 
@@ -1242,11 +1242,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrInput interface {
 	pulumi.Input
 
@@ -1352,7 +1352,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyInput interface {
 	pulumi.Input
 
@@ -1395,11 +1395,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -1541,7 +1541,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedInput interface {
 	pulumi.Input
 
@@ -1580,11 +1580,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedPtrInput interface {
 	pulumi.Input
 
@@ -1702,7 +1702,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientInput interface {
 	pulumi.Input
 
@@ -1738,11 +1738,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrInput interface {
 	pulumi.Input
 
@@ -1842,7 +1842,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedInput interface {
 	pulumi.Input
 
@@ -1879,11 +1879,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedPtrInput interface {
 	pulumi.Input
 
@@ -1984,7 +1984,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeInput interface {
 	pulumi.Input
 
@@ -2020,11 +2020,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrInput interface {
 	pulumi.Input
 
@@ -2149,7 +2149,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigInput interface {
 	pulumi.Input
 
@@ -2211,11 +2211,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrInput interface {
 	pulumi.Input
 
@@ -2275,13 +2275,13 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 // The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 // If the context is set but:
-//  1. there is no record present when transforming a given value or
-//  2. the field is not present when transforming a given value,
+// 1.  there is no record present when transforming a given value or
+// 2.  the field is not present when transforming a given value,
 //     a default tweak will be used.
 //     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
 //     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-//     *   a 64 bit integer is encoded followed by a single byte of value 1
-//     *   a string is encoded in UTF-8 format followed by a single byte of value 2
+// *   a 64 bit integer is encoded followed by a single byte of value 1
+// *   a string is encoded in UTF-8 format followed by a single byte of value 2
 //     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigOutput) Context() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext {
@@ -2298,7 +2298,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-// “0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/“
+// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigOutput) CustomAlphabet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *string {
 		return v.CustomAlphabet
@@ -2360,13 +2360,13 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 // The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 // If the context is set but:
-//  1. there is no record present when transforming a given value or
-//  2. the field is not present when transforming a given value,
+// 1.  there is no record present when transforming a given value or
+// 2.  the field is not present when transforming a given value,
 //     a default tweak will be used.
 //     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
 //     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-//     *   a 64 bit integer is encoded followed by a single byte of value 1
-//     *   a string is encoded in UTF-8 format followed by a single byte of value 2
+// *   a 64 bit integer is encoded followed by a single byte of value 1
+// *   a string is encoded in UTF-8 format followed by a single byte of value 2
 //     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrOutput) Context() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext {
@@ -2389,7 +2389,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-// “0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/“
+// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrOutput) CustomAlphabet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *string {
 		if v == nil {
@@ -2431,7 +2431,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextInput interface {
 	pulumi.Input
 
@@ -2467,11 +2467,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrInput interface {
 	pulumi.Input
 
@@ -2577,7 +2577,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyInput interface {
 	pulumi.Input
 
@@ -2620,11 +2620,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -2766,7 +2766,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedInput interface {
 	pulumi.Input
 
@@ -2805,11 +2805,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedPtrInput interface {
 	pulumi.Input
 
@@ -2927,7 +2927,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientInput interface {
 	pulumi.Input
 
@@ -2963,11 +2963,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrInput interface {
 	pulumi.Input
 
@@ -3067,7 +3067,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedInput interface {
 	pulumi.Input
 
@@ -3104,11 +3104,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedPtrInput interface {
 	pulumi.Input
 
@@ -3209,7 +3209,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeInput interface {
 	pulumi.Input
 
@@ -3245,11 +3245,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrInput interface {
 	pulumi.Input
 
@@ -3349,7 +3349,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigInput interface {
 	pulumi.Input
 
@@ -3386,11 +3386,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput interface {
 	pulumi.Input
 
@@ -3509,7 +3509,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput interface {
 	pulumi.Input
 
@@ -3563,11 +3563,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput interface {
 	pulumi.Input
 
@@ -3798,7 +3798,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput interface {
 	pulumi.Input
 
@@ -3839,11 +3839,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput interface {
 	pulumi.Input
 
@@ -3984,7 +3984,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput` via:
 //
-//	PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput interface {
 	pulumi.Input
 
@@ -4026,11 +4026,11 @@ func (i PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 // PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs, PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtr and PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput` via:
 //
-//	        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
+//          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput interface {
 	pulumi.Input
 
@@ -4203,7 +4203,7 @@ type PreventionInspectTemplateInspectConfig struct {
 // PreventionInspectTemplateInspectConfigInput is an input type that accepts PreventionInspectTemplateInspectConfigArgs and PreventionInspectTemplateInspectConfigOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigInput` via:
 //
-//	PreventionInspectTemplateInspectConfigArgs{...}
+//          PreventionInspectTemplateInspectConfigArgs{...}
 type PreventionInspectTemplateInspectConfigInput interface {
 	pulumi.Input
 
@@ -4262,11 +4262,11 @@ func (i PreventionInspectTemplateInspectConfigArgs) ToPreventionInspectTemplateI
 // PreventionInspectTemplateInspectConfigPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigArgs, PreventionInspectTemplateInspectConfigPtr and PreventionInspectTemplateInspectConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigArgs{...}
+//          PreventionInspectTemplateInspectConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigPtrInput interface {
 	pulumi.Input
 
@@ -4515,7 +4515,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoType struct {
 // PreventionInspectTemplateInspectConfigCustomInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeInput interface {
 	pulumi.Input
 
@@ -4564,7 +4564,7 @@ func (i PreventionInspectTemplateInspectConfigCustomInfoTypeArgs) ToPreventionIn
 // PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeArray and PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeArray{ PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{...} }
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeArray{ PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{...} }
 type PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -4681,7 +4681,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary struct {
 // PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryInput interface {
 	pulumi.Input
 
@@ -4721,11 +4721,11 @@ func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs) ToPr
 // PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput interface {
 	pulumi.Input
 
@@ -4845,7 +4845,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorageP
 // PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathInput interface {
 	pulumi.Input
 
@@ -4881,11 +4881,11 @@ func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStora
 // PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathPtrInput interface {
 	pulumi.Input
 
@@ -4985,7 +4985,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList stru
 // PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListInput interface {
 	pulumi.Input
 
@@ -5022,11 +5022,11 @@ func (i PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListAr
 // PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPtrInput interface {
 	pulumi.Input
 
@@ -5128,7 +5128,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType struct {
 // PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput interface {
 	pulumi.Input
 
@@ -5185,7 +5185,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeRegex struct {
 // PreventionInspectTemplateInspectConfigCustomInfoTypeRegexInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeRegexOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeRegexInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexInput interface {
 	pulumi.Input
 
@@ -5224,11 +5224,11 @@ func (i PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs) ToPrevent
 // PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtr and PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigCustomInfoTypeRegexPtrInput interface {
 	pulumi.Input
 
@@ -5343,7 +5343,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType struct {
 // PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs and PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs{...}
 type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeInput interface {
 	pulumi.Input
 
@@ -5380,11 +5380,11 @@ func (i PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs) ToPr
 // PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput is an input type that accepts PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs, PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtr and PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrInput interface {
 	pulumi.Input
 
@@ -5484,7 +5484,7 @@ type PreventionInspectTemplateInspectConfigInfoType struct {
 // PreventionInspectTemplateInspectConfigInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigInfoTypeArgs and PreventionInspectTemplateInspectConfigInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigInfoTypeInput interface {
 	pulumi.Input
 
@@ -5513,7 +5513,7 @@ func (i PreventionInspectTemplateInspectConfigInfoTypeArgs) ToPreventionInspectT
 // PreventionInspectTemplateInspectConfigInfoTypeArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigInfoTypeArray and PreventionInspectTemplateInspectConfigInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigInfoTypeArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigInfoTypeArray{ PreventionInspectTemplateInspectConfigInfoTypeArgs{...} }
+//          PreventionInspectTemplateInspectConfigInfoTypeArray{ PreventionInspectTemplateInspectConfigInfoTypeArgs{...} }
 type PreventionInspectTemplateInspectConfigInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -5588,7 +5588,7 @@ type PreventionInspectTemplateInspectConfigLimits struct {
 // PreventionInspectTemplateInspectConfigLimitsInput is an input type that accepts PreventionInspectTemplateInspectConfigLimitsArgs and PreventionInspectTemplateInspectConfigLimitsOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigLimitsInput` via:
 //
-//	PreventionInspectTemplateInspectConfigLimitsArgs{...}
+//          PreventionInspectTemplateInspectConfigLimitsArgs{...}
 type PreventionInspectTemplateInspectConfigLimitsInput interface {
 	pulumi.Input
 
@@ -5629,11 +5629,11 @@ func (i PreventionInspectTemplateInspectConfigLimitsArgs) ToPreventionInspectTem
 // PreventionInspectTemplateInspectConfigLimitsPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigLimitsArgs, PreventionInspectTemplateInspectConfigLimitsPtr and PreventionInspectTemplateInspectConfigLimitsPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigLimitsPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigLimitsArgs{...}
+//          PreventionInspectTemplateInspectConfigLimitsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigLimitsPtrInput interface {
 	pulumi.Input
 
@@ -5770,7 +5770,7 @@ type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType struct {
 // PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs and PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInput interface {
 	pulumi.Input
 
@@ -5804,7 +5804,7 @@ func (i PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs) 
 // PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArray and PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArray{ PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{...} }
+//          PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArray{ PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs{...} }
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -5885,7 +5885,7 @@ type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType 
 // PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs and PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput interface {
 	pulumi.Input
 
@@ -5945,7 +5945,7 @@ type PreventionInspectTemplateInspectConfigRuleSet struct {
 // PreventionInspectTemplateInspectConfigRuleSetInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetArgs and PreventionInspectTemplateInspectConfigRuleSetOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetInput interface {
 	pulumi.Input
 
@@ -5977,7 +5977,7 @@ func (i PreventionInspectTemplateInspectConfigRuleSetArgs) ToPreventionInspectTe
 // PreventionInspectTemplateInspectConfigRuleSetArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetArray and PreventionInspectTemplateInspectConfigRuleSetArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetArray{ PreventionInspectTemplateInspectConfigRuleSetArgs{...} }
+//          PreventionInspectTemplateInspectConfigRuleSetArray{ PreventionInspectTemplateInspectConfigRuleSetArgs{...} }
 type PreventionInspectTemplateInspectConfigRuleSetArrayInput interface {
 	pulumi.Input
 
@@ -6058,7 +6058,7 @@ type PreventionInspectTemplateInspectConfigRuleSetInfoType struct {
 // PreventionInspectTemplateInspectConfigRuleSetInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs and PreventionInspectTemplateInspectConfigRuleSetInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetInfoTypeInput interface {
 	pulumi.Input
 
@@ -6087,7 +6087,7 @@ func (i PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs) ToPreventionI
 // PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray and PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{ PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{...} }
+//          PreventionInspectTemplateInspectConfigRuleSetInfoTypeArray{ PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs{...} }
 type PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -6161,7 +6161,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRule struct {
 // PreventionInspectTemplateInspectConfigRuleSetRuleInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleArgs and PreventionInspectTemplateInspectConfigRuleSetRuleOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleInput interface {
 	pulumi.Input
 
@@ -6193,7 +6193,7 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleArgs) ToPreventionInspe
 // PreventionInspectTemplateInspectConfigRuleSetRuleArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleArray and PreventionInspectTemplateInspectConfigRuleSetRuleArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleArray{ PreventionInspectTemplateInspectConfigRuleSetRuleArgs{...} }
+//          PreventionInspectTemplateInspectConfigRuleSetRuleArray{ PreventionInspectTemplateInspectConfigRuleSetRuleArgs{...} }
 type PreventionInspectTemplateInspectConfigRuleSetRuleArrayInput interface {
 	pulumi.Input
 
@@ -6283,7 +6283,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule struct {
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleInput interface {
 	pulumi.Input
 
@@ -6329,11 +6329,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs) ToPr
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs, PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtr and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtrInput interface {
 	pulumi.Input
 
@@ -6493,7 +6493,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary st
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryInput interface {
 	pulumi.Input
 
@@ -6533,11 +6533,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs, PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryPtr and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryPtrInput interface {
 	pulumi.Input
 
@@ -6657,7 +6657,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryClo
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathInput interface {
 	pulumi.Input
 
@@ -6693,11 +6693,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs, PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtr and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathPtrInput interface {
 	pulumi.Input
 
@@ -6797,7 +6797,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWor
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListInput interface {
 	pulumi.Input
 
@@ -6834,11 +6834,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs, PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtr and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListPtrInput interface {
 	pulumi.Input
 
@@ -6940,7 +6940,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTy
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInput interface {
 	pulumi.Input
 
@@ -6977,11 +6977,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInf
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs, PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtr and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput interface {
 	pulumi.Input
 
@@ -7083,7 +7083,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTy
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeInput interface {
 	pulumi.Input
 
@@ -7112,7 +7112,7 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInf
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray{ PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{...} }
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArray{ PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs{...} }
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -7187,7 +7187,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex struct 
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexInput interface {
 	pulumi.Input
 
@@ -7226,11 +7226,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs)
 // PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs, PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexPtr and PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexPtrInput interface {
 	pulumi.Input
 
@@ -7357,7 +7357,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule struct {
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleInput interface {
 	pulumi.Input
 
@@ -7404,11 +7404,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs) ToPrev
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRulePtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs, PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRulePtr and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRulePtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRulePtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRulePtrInput interface {
 	pulumi.Input
 
@@ -7558,7 +7558,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex st
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexInput interface {
 	pulumi.Input
 
@@ -7597,11 +7597,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs, PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtr and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrInput interface {
 	pulumi.Input
 
@@ -7727,7 +7727,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjus
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentInput interface {
 	pulumi.Input
 
@@ -7771,11 +7771,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAd
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs, PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtr and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrInput interface {
 	pulumi.Input
 
@@ -7905,7 +7905,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity struc
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityInput` via:
 //
-//	PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{...}
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityInput interface {
 	pulumi.Input
 
@@ -7943,11 +7943,11 @@ func (i PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArg
 // PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityPtrInput is an input type that accepts PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs, PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityPtr and PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityPtrOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityPtrInput` via:
 //
-//	        PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{...}
+//          PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityPtrInput interface {
 	pulumi.Input
 
@@ -8069,7 +8069,7 @@ type PreventionJobTriggerInspectJob struct {
 // PreventionJobTriggerInspectJobInput is an input type that accepts PreventionJobTriggerInspectJobArgs and PreventionJobTriggerInspectJobOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobInput` via:
 //
-//	PreventionJobTriggerInspectJobArgs{...}
+//          PreventionJobTriggerInspectJobArgs{...}
 type PreventionJobTriggerInspectJobInput interface {
 	pulumi.Input
 
@@ -8111,11 +8111,11 @@ func (i PreventionJobTriggerInspectJobArgs) ToPreventionJobTriggerInspectJobPtrO
 // PreventionJobTriggerInspectJobPtrInput is an input type that accepts PreventionJobTriggerInspectJobArgs, PreventionJobTriggerInspectJobPtr and PreventionJobTriggerInspectJobPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobArgs{...}
+//          PreventionJobTriggerInspectJobArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobPtrInput interface {
 	pulumi.Input
 
@@ -8249,7 +8249,7 @@ type PreventionJobTriggerInspectJobAction struct {
 // PreventionJobTriggerInspectJobActionInput is an input type that accepts PreventionJobTriggerInspectJobActionArgs and PreventionJobTriggerInspectJobActionOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobActionInput` via:
 //
-//	PreventionJobTriggerInspectJobActionArgs{...}
+//          PreventionJobTriggerInspectJobActionArgs{...}
 type PreventionJobTriggerInspectJobActionInput interface {
 	pulumi.Input
 
@@ -8278,7 +8278,7 @@ func (i PreventionJobTriggerInspectJobActionArgs) ToPreventionJobTriggerInspectJ
 // PreventionJobTriggerInspectJobActionArrayInput is an input type that accepts PreventionJobTriggerInspectJobActionArray and PreventionJobTriggerInspectJobActionArrayOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobActionArrayInput` via:
 //
-//	PreventionJobTriggerInspectJobActionArray{ PreventionJobTriggerInspectJobActionArgs{...} }
+//          PreventionJobTriggerInspectJobActionArray{ PreventionJobTriggerInspectJobActionArgs{...} }
 type PreventionJobTriggerInspectJobActionArrayInput interface {
 	pulumi.Input
 
@@ -8351,7 +8351,7 @@ type PreventionJobTriggerInspectJobActionSaveFindings struct {
 // PreventionJobTriggerInspectJobActionSaveFindingsInput is an input type that accepts PreventionJobTriggerInspectJobActionSaveFindingsArgs and PreventionJobTriggerInspectJobActionSaveFindingsOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobActionSaveFindingsInput` via:
 //
-//	PreventionJobTriggerInspectJobActionSaveFindingsArgs{...}
+//          PreventionJobTriggerInspectJobActionSaveFindingsArgs{...}
 type PreventionJobTriggerInspectJobActionSaveFindingsInput interface {
 	pulumi.Input
 
@@ -8417,7 +8417,7 @@ type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig struct {
 // PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigInput is an input type that accepts PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs and PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigInput` via:
 //
-//	PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{...}
+//          PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{...}
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigInput interface {
 	pulumi.Input
 
@@ -8499,7 +8499,7 @@ type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable struct {
 // PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableInput is an input type that accepts PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs and PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableInput` via:
 //
-//	PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{...}
+//          PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{...}
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableInput interface {
 	pulumi.Input
 
@@ -8577,7 +8577,7 @@ type PreventionJobTriggerInspectJobStorageConfig struct {
 // PreventionJobTriggerInspectJobStorageConfigInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigArgs and PreventionJobTriggerInspectJobStorageConfigOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigInput interface {
 	pulumi.Input
 
@@ -8623,11 +8623,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigArgs) ToPreventionJobTriggerI
 // PreventionJobTriggerInspectJobStorageConfigPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigArgs, PreventionJobTriggerInspectJobStorageConfigPtr and PreventionJobTriggerInspectJobStorageConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigPtrInput interface {
 	pulumi.Input
 
@@ -8786,7 +8786,7 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptions struct {
 // PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput interface {
 	pulumi.Input
 
@@ -8823,11 +8823,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs) ToPreven
 // PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs, PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtr and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -8933,7 +8933,7 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference st
 // PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInput interface {
 	pulumi.Input
 
@@ -8974,11 +8974,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference
 // PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs, PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtr and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrInput interface {
 	pulumi.Input
 
@@ -9132,7 +9132,7 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions struct {
 // PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs and PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsInput interface {
 	pulumi.Input
 
@@ -9187,11 +9187,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs) ToPr
 // PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs, PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtr and PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrInput interface {
 	pulumi.Input
 
@@ -9396,7 +9396,7 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet struc
 // PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs and PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetInput interface {
 	pulumi.Input
 
@@ -9439,11 +9439,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArg
 // PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs, PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetPtr and PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetPtrInput interface {
 	pulumi.Input
 
@@ -9575,7 +9575,7 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexF
 // PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs and PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetInput interface {
 	pulumi.Input
 
@@ -9619,11 +9619,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetReg
 // PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs, PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetPtr and PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetPtrInput interface {
 	pulumi.Input
 
@@ -9769,7 +9769,7 @@ type PreventionJobTriggerInspectJobStorageConfigDatastoreOptions struct {
 // PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs and PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsInput interface {
 	pulumi.Input
 
@@ -9810,11 +9810,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs) ToPreve
 // PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs, PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtr and PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrInput interface {
 	pulumi.Input
 
@@ -9936,7 +9936,7 @@ type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind struct {
 // PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs and PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindInput interface {
 	pulumi.Input
 
@@ -9972,11 +9972,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs) ToP
 // PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs, PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtr and PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrInput interface {
 	pulumi.Input
 
@@ -10075,7 +10075,7 @@ type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId stru
 // PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs and PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdInput interface {
 	pulumi.Input
 
@@ -10113,11 +10113,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdAr
 // PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs, PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtr and PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrInput interface {
 	pulumi.Input
 
@@ -10242,7 +10242,7 @@ type PreventionJobTriggerInspectJobStorageConfigTimespanConfig struct {
 // PreventionJobTriggerInspectJobStorageConfigTimespanConfigInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs and PreventionJobTriggerInspectJobStorageConfigTimespanConfigOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigTimespanConfigInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigInput interface {
 	pulumi.Input
 
@@ -10287,11 +10287,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs) ToPrevent
 // PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs, PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtr and PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrInput interface {
 	pulumi.Input
 
@@ -10443,7 +10443,7 @@ type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField str
 // PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs and PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldInput` via:
 //
-//	PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{...}
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldInput interface {
 	pulumi.Input
 
@@ -10479,11 +10479,11 @@ func (i PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldA
 // PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs, PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtr and PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrInput` via:
 //
-//	        PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{...}
+//          PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrInput interface {
 	pulumi.Input
 
@@ -10581,7 +10581,7 @@ type PreventionJobTriggerTrigger struct {
 // PreventionJobTriggerTriggerInput is an input type that accepts PreventionJobTriggerTriggerArgs and PreventionJobTriggerTriggerOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerTriggerInput` via:
 //
-//	PreventionJobTriggerTriggerArgs{...}
+//          PreventionJobTriggerTriggerArgs{...}
 type PreventionJobTriggerTriggerInput interface {
 	pulumi.Input
 
@@ -10610,7 +10610,7 @@ func (i PreventionJobTriggerTriggerArgs) ToPreventionJobTriggerTriggerOutputWith
 // PreventionJobTriggerTriggerArrayInput is an input type that accepts PreventionJobTriggerTriggerArray and PreventionJobTriggerTriggerArrayOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerTriggerArrayInput` via:
 //
-//	PreventionJobTriggerTriggerArray{ PreventionJobTriggerTriggerArgs{...} }
+//          PreventionJobTriggerTriggerArray{ PreventionJobTriggerTriggerArgs{...} }
 type PreventionJobTriggerTriggerArrayInput interface {
 	pulumi.Input
 
@@ -10683,7 +10683,7 @@ type PreventionJobTriggerTriggerSchedule struct {
 // PreventionJobTriggerTriggerScheduleInput is an input type that accepts PreventionJobTriggerTriggerScheduleArgs and PreventionJobTriggerTriggerScheduleOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerTriggerScheduleInput` via:
 //
-//	PreventionJobTriggerTriggerScheduleArgs{...}
+//          PreventionJobTriggerTriggerScheduleArgs{...}
 type PreventionJobTriggerTriggerScheduleInput interface {
 	pulumi.Input
 
@@ -10722,11 +10722,11 @@ func (i PreventionJobTriggerTriggerScheduleArgs) ToPreventionJobTriggerTriggerSc
 // PreventionJobTriggerTriggerSchedulePtrInput is an input type that accepts PreventionJobTriggerTriggerScheduleArgs, PreventionJobTriggerTriggerSchedulePtr and PreventionJobTriggerTriggerSchedulePtrOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerTriggerSchedulePtrInput` via:
 //
-//	        PreventionJobTriggerTriggerScheduleArgs{...}
+//          PreventionJobTriggerTriggerScheduleArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionJobTriggerTriggerSchedulePtrInput interface {
 	pulumi.Input
 
@@ -10833,7 +10833,7 @@ type PreventionStoredInfoTypeDictionary struct {
 // PreventionStoredInfoTypeDictionaryInput is an input type that accepts PreventionStoredInfoTypeDictionaryArgs and PreventionStoredInfoTypeDictionaryOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeDictionaryInput` via:
 //
-//	PreventionStoredInfoTypeDictionaryArgs{...}
+//          PreventionStoredInfoTypeDictionaryArgs{...}
 type PreventionStoredInfoTypeDictionaryInput interface {
 	pulumi.Input
 
@@ -10873,11 +10873,11 @@ func (i PreventionStoredInfoTypeDictionaryArgs) ToPreventionStoredInfoTypeDictio
 // PreventionStoredInfoTypeDictionaryPtrInput is an input type that accepts PreventionStoredInfoTypeDictionaryArgs, PreventionStoredInfoTypeDictionaryPtr and PreventionStoredInfoTypeDictionaryPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeDictionaryPtrInput` via:
 //
-//	        PreventionStoredInfoTypeDictionaryArgs{...}
+//          PreventionStoredInfoTypeDictionaryArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeDictionaryPtrInput interface {
 	pulumi.Input
 
@@ -10997,7 +10997,7 @@ type PreventionStoredInfoTypeDictionaryCloudStoragePath struct {
 // PreventionStoredInfoTypeDictionaryCloudStoragePathInput is an input type that accepts PreventionStoredInfoTypeDictionaryCloudStoragePathArgs and PreventionStoredInfoTypeDictionaryCloudStoragePathOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeDictionaryCloudStoragePathInput` via:
 //
-//	PreventionStoredInfoTypeDictionaryCloudStoragePathArgs{...}
+//          PreventionStoredInfoTypeDictionaryCloudStoragePathArgs{...}
 type PreventionStoredInfoTypeDictionaryCloudStoragePathInput interface {
 	pulumi.Input
 
@@ -11033,11 +11033,11 @@ func (i PreventionStoredInfoTypeDictionaryCloudStoragePathArgs) ToPreventionStor
 // PreventionStoredInfoTypeDictionaryCloudStoragePathPtrInput is an input type that accepts PreventionStoredInfoTypeDictionaryCloudStoragePathArgs, PreventionStoredInfoTypeDictionaryCloudStoragePathPtr and PreventionStoredInfoTypeDictionaryCloudStoragePathPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeDictionaryCloudStoragePathPtrInput` via:
 //
-//	        PreventionStoredInfoTypeDictionaryCloudStoragePathArgs{...}
+//          PreventionStoredInfoTypeDictionaryCloudStoragePathArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeDictionaryCloudStoragePathPtrInput interface {
 	pulumi.Input
 
@@ -11135,7 +11135,7 @@ type PreventionStoredInfoTypeDictionaryWordList struct {
 // PreventionStoredInfoTypeDictionaryWordListInput is an input type that accepts PreventionStoredInfoTypeDictionaryWordListArgs and PreventionStoredInfoTypeDictionaryWordListOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeDictionaryWordListInput` via:
 //
-//	PreventionStoredInfoTypeDictionaryWordListArgs{...}
+//          PreventionStoredInfoTypeDictionaryWordListArgs{...}
 type PreventionStoredInfoTypeDictionaryWordListInput interface {
 	pulumi.Input
 
@@ -11172,11 +11172,11 @@ func (i PreventionStoredInfoTypeDictionaryWordListArgs) ToPreventionStoredInfoTy
 // PreventionStoredInfoTypeDictionaryWordListPtrInput is an input type that accepts PreventionStoredInfoTypeDictionaryWordListArgs, PreventionStoredInfoTypeDictionaryWordListPtr and PreventionStoredInfoTypeDictionaryWordListPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeDictionaryWordListPtrInput` via:
 //
-//	        PreventionStoredInfoTypeDictionaryWordListArgs{...}
+//          PreventionStoredInfoTypeDictionaryWordListArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeDictionaryWordListPtrInput interface {
 	pulumi.Input
 
@@ -11283,7 +11283,7 @@ type PreventionStoredInfoTypeLargeCustomDictionary struct {
 // PreventionStoredInfoTypeLargeCustomDictionaryInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryArgs and PreventionStoredInfoTypeLargeCustomDictionaryOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryInput` via:
 //
-//	PreventionStoredInfoTypeLargeCustomDictionaryArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryArgs{...}
 type PreventionStoredInfoTypeLargeCustomDictionaryInput interface {
 	pulumi.Input
 
@@ -11327,11 +11327,11 @@ func (i PreventionStoredInfoTypeLargeCustomDictionaryArgs) ToPreventionStoredInf
 // PreventionStoredInfoTypeLargeCustomDictionaryPtrInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryArgs, PreventionStoredInfoTypeLargeCustomDictionaryPtr and PreventionStoredInfoTypeLargeCustomDictionaryPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryPtrInput` via:
 //
-//	        PreventionStoredInfoTypeLargeCustomDictionaryArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeLargeCustomDictionaryPtrInput interface {
 	pulumi.Input
 
@@ -11476,7 +11476,7 @@ type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField struct {
 // PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs and PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldInput` via:
 //
-//	PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs{...}
 type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldInput interface {
 	pulumi.Input
 
@@ -11516,11 +11516,11 @@ func (i PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs) ToPreven
 // PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldPtrInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs, PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldPtr and PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldPtrInput` via:
 //
-//	        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldPtrInput interface {
 	pulumi.Input
 
@@ -11640,7 +11640,7 @@ type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField struct {
 // PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs and PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldInput` via:
 //
-//	PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs{...}
 type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldInput interface {
 	pulumi.Input
 
@@ -11676,11 +11676,11 @@ func (i PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs) ToP
 // PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldPtrInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs, PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldPtr and PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldPtrInput` via:
 //
-//	        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldPtrInput interface {
 	pulumi.Input
 
@@ -11781,7 +11781,7 @@ type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable struct {
 // PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs and PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableInput` via:
 //
-//	PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs{...}
 type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableInput interface {
 	pulumi.Input
 
@@ -11821,11 +11821,11 @@ func (i PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs) ToP
 // PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTablePtrInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs, PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTablePtr and PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTablePtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTablePtrInput` via:
 //
-//	        PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTablePtrInput interface {
 	pulumi.Input
 
@@ -11952,7 +11952,7 @@ type PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet struct {
 // PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs and PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetInput` via:
 //
-//	PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{...}
 type PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetInput interface {
 	pulumi.Input
 
@@ -11988,11 +11988,11 @@ func (i PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs) To
 // PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetPtrInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs, PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetPtr and PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetPtrInput` via:
 //
-//	        PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetPtrInput interface {
 	pulumi.Input
 
@@ -12089,7 +12089,7 @@ type PreventionStoredInfoTypeLargeCustomDictionaryOutputPath struct {
 // PreventionStoredInfoTypeLargeCustomDictionaryOutputPathInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs and PreventionStoredInfoTypeLargeCustomDictionaryOutputPathOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryOutputPathInput` via:
 //
-//	PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{...}
 type PreventionStoredInfoTypeLargeCustomDictionaryOutputPathInput interface {
 	pulumi.Input
 
@@ -12125,11 +12125,11 @@ func (i PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs) ToPreventio
 // PreventionStoredInfoTypeLargeCustomDictionaryOutputPathPtrInput is an input type that accepts PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs, PreventionStoredInfoTypeLargeCustomDictionaryOutputPathPtr and PreventionStoredInfoTypeLargeCustomDictionaryOutputPathPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeLargeCustomDictionaryOutputPathPtrInput` via:
 //
-//	        PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{...}
+//          PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeLargeCustomDictionaryOutputPathPtrInput interface {
 	pulumi.Input
 
@@ -12229,7 +12229,7 @@ type PreventionStoredInfoTypeRegex struct {
 // PreventionStoredInfoTypeRegexInput is an input type that accepts PreventionStoredInfoTypeRegexArgs and PreventionStoredInfoTypeRegexOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeRegexInput` via:
 //
-//	PreventionStoredInfoTypeRegexArgs{...}
+//          PreventionStoredInfoTypeRegexArgs{...}
 type PreventionStoredInfoTypeRegexInput interface {
 	pulumi.Input
 
@@ -12268,11 +12268,11 @@ func (i PreventionStoredInfoTypeRegexArgs) ToPreventionStoredInfoTypeRegexPtrOut
 // PreventionStoredInfoTypeRegexPtrInput is an input type that accepts PreventionStoredInfoTypeRegexArgs, PreventionStoredInfoTypeRegexPtr and PreventionStoredInfoTypeRegexPtrOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeRegexPtrInput` via:
 //
-//	        PreventionStoredInfoTypeRegexArgs{...}
+//          PreventionStoredInfoTypeRegexArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type PreventionStoredInfoTypeRegexPtrInput interface {
 	pulumi.Input
 

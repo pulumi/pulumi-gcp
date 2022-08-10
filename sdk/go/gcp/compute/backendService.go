@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
 // > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
 // state as plain-text.
@@ -33,39 +33,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
-//					CacheKeyPolicy: &compute.BackendServiceCdnPolicyCacheKeyPolicyArgs{
-//						IncludeHost: pulumi.Bool(true),
-//						IncludeNamedCookies: pulumi.StringArray{
-//							pulumi.String("__next_preview_data"),
-//							pulumi.String("__prerender_bypass"),
-//						},
-//						IncludeProtocol:    pulumi.Bool(true),
-//						IncludeQueryString: pulumi.Bool(true),
-//					},
-//					CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
-//					ClientTtl:  pulumi.Int(7200),
-//					DefaultTtl: pulumi.Int(3600),
-//					MaxTtl:     pulumi.Int(10800),
-//				},
-//				EnableCdn: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+// 				CacheKeyPolicy: &compute.BackendServiceCdnPolicyCacheKeyPolicyArgs{
+// 					IncludeHost: pulumi.Bool(true),
+// 					IncludeNamedCookies: pulumi.StringArray{
+// 						pulumi.String("__next_preview_data"),
+// 						pulumi.String("__prerender_bypass"),
+// 					},
+// 					IncludeProtocol:    pulumi.Bool(true),
+// 					IncludeQueryString: pulumi.Bool(true),
+// 				},
+// 				CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
+// 				ClientTtl:  pulumi.Int(7200),
+// 				DefaultTtl: pulumi.Int(3600),
+// 				MaxTtl:     pulumi.Int(10800),
+// 			},
+// 			EnableCdn: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Backend Service Network Endpoint
 //
@@ -73,78 +70,69 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			externalProxy, err := compute.NewGlobalNetworkEndpointGroup(ctx, "externalProxy", &compute.GlobalNetworkEndpointGroupArgs{
-//				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
-//				DefaultPort:         pulumi.Int(443),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			proxy, err := compute.NewGlobalNetworkEndpoint(ctx, "proxy", &compute.GlobalNetworkEndpointArgs{
-//				GlobalNetworkEndpointGroup: externalProxy.ID(),
-//				Fqdn:                       pulumi.String("test.example.com"),
-//				Port:                       externalProxy.DefaultPort,
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				EnableCdn:                    pulumi.Bool(true),
-//				TimeoutSec:                   pulumi.Int(10),
-//				ConnectionDrainingTimeoutSec: pulumi.Int(10),
-//				CustomRequestHeaders: pulumi.StringArray{
-//					proxy.Fqdn.ApplyT(func(fqdn string) (string, error) {
-//						return fmt.Sprintf("host: %v", fqdn), nil
-//					}).(pulumi.StringOutput),
-//				},
-//				CustomResponseHeaders: pulumi.StringArray{
-//					pulumi.String("X-Cache-Hit: {cdn_cache_status}"),
-//				},
-//				Backends: compute.BackendServiceBackendArray{
-//					&compute.BackendServiceBackendArgs{
-//						Group: externalProxy.ID(),
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		externalProxy, err := compute.NewGlobalNetworkEndpointGroup(ctx, "externalProxy", &compute.GlobalNetworkEndpointGroupArgs{
+// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
+// 			DefaultPort:         pulumi.Int(443),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		proxy, err := compute.NewGlobalNetworkEndpoint(ctx, "proxy", &compute.GlobalNetworkEndpointArgs{
+// 			GlobalNetworkEndpointGroup: externalProxy.ID(),
+// 			Fqdn:                       pulumi.String("test.example.com"),
+// 			Port:                       externalProxy.DefaultPort,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+// 			EnableCdn:                    pulumi.Bool(true),
+// 			TimeoutSec:                   pulumi.Int(10),
+// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
+// 			CustomRequestHeaders: pulumi.StringArray{
+// 				proxy.Fqdn.ApplyT(func(fqdn string) (string, error) {
+// 					return fmt.Sprintf("host: %v", fqdn), nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 			CustomResponseHeaders: pulumi.StringArray{
+// 				pulumi.String("X-Cache-Hit: {cdn_cache_status}"),
+// 			},
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group: externalProxy.ID(),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # BackendService can be imported using any of these accepted formats
+// BackendService can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
-//
+//  $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/backendService:BackendService default {{name}}
-//
+//  $ pulumi import gcp:compute/backendService:BackendService default {{name}}
 // ```
 type BackendService struct {
 	pulumi.CustomResourceState
@@ -820,7 +808,7 @@ func (i *BackendService) ToBackendServiceOutputWithContext(ctx context.Context) 
 // BackendServiceArrayInput is an input type that accepts BackendServiceArray and BackendServiceArrayOutput values.
 // You can construct a concrete instance of `BackendServiceArrayInput` via:
 //
-//	BackendServiceArray{ BackendServiceArgs{...} }
+//          BackendServiceArray{ BackendServiceArgs{...} }
 type BackendServiceArrayInput interface {
 	pulumi.Input
 
@@ -845,7 +833,7 @@ func (i BackendServiceArray) ToBackendServiceArrayOutputWithContext(ctx context.
 // BackendServiceMapInput is an input type that accepts BackendServiceMap and BackendServiceMapOutput values.
 // You can construct a concrete instance of `BackendServiceMapInput` via:
 //
-//	BackendServiceMap{ "key": BackendServiceArgs{...} }
+//          BackendServiceMap{ "key": BackendServiceArgs{...} }
 type BackendServiceMapInput interface {
 	pulumi.Input
 
@@ -989,24 +977,24 @@ func (o BackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 
 // The load balancing algorithm used within the scope of the locality.
 // The possible values are:
-//   - `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-//     is selected in round robin order.
-//   - `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-//     hosts and picks the host which has fewer active requests.
-//   - `RING_HASH`: The ring/modulo hash load balancer implements consistent
-//     hashing to backends. The algorithm has the property that the
-//     addition/removal of a host from a set of N hosts only affects
-//     1/N of the requests.
-//   - `RANDOM`: The load balancer selects a random healthy host.
-//   - `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-//     connection metadata, i.e., connections are opened
-//     to the same address as the destination address of
-//     the incoming connection before the connection
-//     was redirected to the load balancer.
-//   - `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-//     Maglev is not as stable as ring hash but has faster table lookup
-//     build times and host selection times. For more information about
-//     Maglev, refer to https://ai.google/research/pubs/pub44824
+// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+//   is selected in round robin order.
+// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+//   hosts and picks the host which has fewer active requests.
+// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+//   hashing to backends. The algorithm has the property that the
+//   addition/removal of a host from a set of N hosts only affects
+//   1/N of the requests.
+// * `RANDOM`: The load balancer selects a random healthy host.
+// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+//   connection metadata, i.e., connections are opened
+//   to the same address as the destination address of
+//   the incoming connection before the connection
+//   was redirected to the load balancer.
+// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+//   Maglev is not as stable as ring hash but has faster table lookup
+//   build times and host selection times. For more information about
+//   Maglev, refer to https://ai.google/research/pubs/pub44824
 func (o BackendServiceOutput) LocalityLbPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.LocalityLbPolicy }).(pulumi.StringPtrOutput)
 }

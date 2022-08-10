@@ -18,27 +18,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myInstance, err := redis.LookupInstance(ctx, &redis.LookupInstanceArgs{
-//				Name: "my-redis-instance",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("instanceMemorySizeGb", myInstance.MemorySizeGb)
-//			ctx.Export("instanceConnectMode", myInstance.ConnectMode)
-//			ctx.Export("instanceAuthorizedNetwork", myInstance.AuthorizedNetwork)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myInstance, err := redis.LookupInstance(ctx, &redis.LookupInstanceArgs{
+// 			Name: "my-redis-instance",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("instanceMemorySizeGb", myInstance.MemorySizeGb)
+// 		ctx.Export("instanceConnectMode", myInstance.ConnectMode)
+// 		ctx.Export("instanceAuthorizedNetwork", myInstance.AuthorizedNetwork)
+// 		return nil
+// 	})
+// }
 // ```
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult

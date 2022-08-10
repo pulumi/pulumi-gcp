@@ -24,7 +24,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
 // * How-to Guides
-//   - [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+//     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
 //
 // ## Example Usage
 // ### Reservation Basic
@@ -33,59 +33,48 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewReservation(ctx, "gceReservation", &compute.ReservationArgs{
-//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
-//					Count: pulumi.Int(1),
-//					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-//						MachineType:    pulumi.String("n2-standard-2"),
-//						MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
-//					},
-//				},
-//				Zone: pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewReservation(ctx, "gceReservation", &compute.ReservationArgs{
+// 			SpecificReservation: &compute.ReservationSpecificReservationArgs{
+// 				Count: pulumi.Int(1),
+// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+// 					MachineType:    pulumi.String("n2-standard-2"),
+// 					MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
+// 				},
+// 			},
+// 			Zone: pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Reservation can be imported using any of these accepted formats
+// Reservation can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
-//
+//  $ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
-//
+//  $ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
-//
+//  $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/reservation:Reservation default {{name}}
-//
+//  $ pulumi import gcp:compute/reservation:Reservation default {{name}}
 // ```
 type Reservation struct {
 	pulumi.CustomResourceState
@@ -318,7 +307,7 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 // ReservationArrayInput is an input type that accepts ReservationArray and ReservationArrayOutput values.
 // You can construct a concrete instance of `ReservationArrayInput` via:
 //
-//	ReservationArray{ ReservationArgs{...} }
+//          ReservationArray{ ReservationArgs{...} }
 type ReservationArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +332,7 @@ func (i ReservationArray) ToReservationArrayOutputWithContext(ctx context.Contex
 // ReservationMapInput is an input type that accepts ReservationMap and ReservationMapOutput values.
 // You can construct a concrete instance of `ReservationMapInput` via:
 //
-//	ReservationMap{ "key": ReservationArgs{...} }
+//          ReservationMap{ "key": ReservationArgs{...} }
 type ReservationMapInput interface {
 	pulumi.Input
 

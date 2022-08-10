@@ -13,7 +13,7 @@ import (
 
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
 // * How-to Guides
-//   - [Exporting Logs](https://cloud.google.com/logging/docs/export)
+//     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 //
 // > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
@@ -26,58 +26,53 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewBillingAccountSink(ctx, "my-sink", &logging.BillingAccountSinkArgs{
-//				Description:    pulumi.String("some explanation on what this is"),
-//				BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
-//				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("storage.googleapis.com/%v", name), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
-//				Project: pulumi.String("your-project-id"),
-//				Role:    pulumi.String("roles/storage.objectCreator"),
-//				Members: pulumi.StringArray{
-//					my_sink.WriterIdentity,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewBillingAccountSink(ctx, "my-sink", &logging.BillingAccountSinkArgs{
+// 			Description:    pulumi.String("some explanation on what this is"),
+// 			BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
+// 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("storage.googleapis.com/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/storage.objectCreator"),
+// 			Members: pulumi.StringArray{
+// 				my_sink.WriterIdentity,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Billing account logging sinks can be imported using this format
+// Billing account logging sinks can be imported using this format
 //
 // ```sh
-//
-//	$ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
-//
+//  $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
 // ```
 type BillingAccountSink struct {
 	pulumi.CustomResourceState
@@ -330,7 +325,7 @@ func (i *BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.C
 // BillingAccountSinkArrayInput is an input type that accepts BillingAccountSinkArray and BillingAccountSinkArrayOutput values.
 // You can construct a concrete instance of `BillingAccountSinkArrayInput` via:
 //
-//	BillingAccountSinkArray{ BillingAccountSinkArgs{...} }
+//          BillingAccountSinkArray{ BillingAccountSinkArgs{...} }
 type BillingAccountSinkArrayInput interface {
 	pulumi.Input
 
@@ -355,7 +350,7 @@ func (i BillingAccountSinkArray) ToBillingAccountSinkArrayOutputWithContext(ctx 
 // BillingAccountSinkMapInput is an input type that accepts BillingAccountSinkMap and BillingAccountSinkMapOutput values.
 // You can construct a concrete instance of `BillingAccountSinkMapInput` via:
 //
-//	BillingAccountSinkMap{ "key": BillingAccountSinkArgs{...} }
+//          BillingAccountSinkMap{ "key": BillingAccountSinkArgs{...} }
 type BillingAccountSinkMapInput interface {
 	pulumi.Input
 
@@ -412,17 +407,14 @@ func (o BillingAccountSinkOutput) Description() pulumi.StringPtrOutput {
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
 // ```
 // The writer associated with the sink must have access to write to the above resource.
 func (o BillingAccountSinkOutput) Destination() pulumi.StringOutput {

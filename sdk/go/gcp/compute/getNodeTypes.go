@@ -19,31 +19,28 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
-//				Zone: pulumi.StringRef("us-central1-b"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNodeTemplate(ctx, "tmpl", &compute.NodeTemplateArgs{
-//				Region:   pulumi.String("us-central1"),
-//				NodeType: pulumi.Any(data.Google_compute_node_types.Types.Names[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
+// 			Zone: pulumi.StringRef("us-central1-b"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNodeTemplate(ctx, "tmpl", &compute.NodeTemplateArgs{
+// 			Region:   pulumi.String("us-central1"),
+// 			NodeType: pulumi.Any(data.Google_compute_node_types.Types.Names[0]),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func GetNodeTypes(ctx *pulumi.Context, args *GetNodeTypesArgs, opts ...pulumi.InvokeOption) (*GetNodeTypesResult, error) {
 	var rv GetNodeTypesResult

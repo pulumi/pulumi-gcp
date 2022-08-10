@@ -26,7 +26,7 @@ type FeatureMembershipConfigmanagement struct {
 // FeatureMembershipConfigmanagementInput is an input type that accepts FeatureMembershipConfigmanagementArgs and FeatureMembershipConfigmanagementOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementInput` via:
 //
-//	FeatureMembershipConfigmanagementArgs{...}
+//          FeatureMembershipConfigmanagementArgs{...}
 type FeatureMembershipConfigmanagementInput interface {
 	pulumi.Input
 
@@ -70,11 +70,11 @@ func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanageme
 // FeatureMembershipConfigmanagementPtrInput is an input type that accepts FeatureMembershipConfigmanagementArgs, FeatureMembershipConfigmanagementPtr and FeatureMembershipConfigmanagementPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementArgs{...}
+//          FeatureMembershipConfigmanagementArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementPtrInput interface {
 	pulumi.Input
 
@@ -239,7 +239,7 @@ type FeatureMembershipConfigmanagementBinauthz struct {
 // FeatureMembershipConfigmanagementBinauthzInput is an input type that accepts FeatureMembershipConfigmanagementBinauthzArgs and FeatureMembershipConfigmanagementBinauthzOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementBinauthzInput` via:
 //
-//	FeatureMembershipConfigmanagementBinauthzArgs{...}
+//          FeatureMembershipConfigmanagementBinauthzArgs{...}
 type FeatureMembershipConfigmanagementBinauthzInput interface {
 	pulumi.Input
 
@@ -275,11 +275,11 @@ func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfig
 // FeatureMembershipConfigmanagementBinauthzPtrInput is an input type that accepts FeatureMembershipConfigmanagementBinauthzArgs, FeatureMembershipConfigmanagementBinauthzPtr and FeatureMembershipConfigmanagementBinauthzPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementBinauthzPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementBinauthzArgs{...}
+//          FeatureMembershipConfigmanagementBinauthzArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementBinauthzPtrInput interface {
 	pulumi.Input
 
@@ -381,7 +381,7 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 // FeatureMembershipConfigmanagementConfigSyncInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs and FeatureMembershipConfigmanagementConfigSyncOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncInput` via:
 //
-//	FeatureMembershipConfigmanagementConfigSyncArgs{...}
+//          FeatureMembershipConfigmanagementConfigSyncArgs{...}
 type FeatureMembershipConfigmanagementConfigSyncInput interface {
 	pulumi.Input
 
@@ -422,11 +422,11 @@ func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConf
 // FeatureMembershipConfigmanagementConfigSyncPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs, FeatureMembershipConfigmanagementConfigSyncPtr and FeatureMembershipConfigmanagementConfigSyncPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementConfigSyncArgs{...}
+//          FeatureMembershipConfigmanagementConfigSyncArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementConfigSyncPtrInput interface {
 	pulumi.Input
 
@@ -571,7 +571,7 @@ type FeatureMembershipConfigmanagementConfigSyncGit struct {
 // FeatureMembershipConfigmanagementConfigSyncGitInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncGitArgs and FeatureMembershipConfigmanagementConfigSyncGitOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncGitInput` via:
 //
-//	FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
+//          FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
 type FeatureMembershipConfigmanagementConfigSyncGitInput interface {
 	pulumi.Input
 
@@ -621,11 +621,11 @@ func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipC
 // FeatureMembershipConfigmanagementConfigSyncGitPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncGitArgs, FeatureMembershipConfigmanagementConfigSyncGitPtr and FeatureMembershipConfigmanagementConfigSyncGitPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncGitPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
+//          FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementConfigSyncGitPtrInput interface {
 	pulumi.Input
 
@@ -831,7 +831,7 @@ type FeatureMembershipConfigmanagementHierarchyController struct {
 // FeatureMembershipConfigmanagementHierarchyControllerInput is an input type that accepts FeatureMembershipConfigmanagementHierarchyControllerArgs and FeatureMembershipConfigmanagementHierarchyControllerOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementHierarchyControllerInput` via:
 //
-//	FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
+//          FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
 type FeatureMembershipConfigmanagementHierarchyControllerInput interface {
 	pulumi.Input
 
@@ -871,11 +871,11 @@ func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembe
 // FeatureMembershipConfigmanagementHierarchyControllerPtrInput is an input type that accepts FeatureMembershipConfigmanagementHierarchyControllerArgs, FeatureMembershipConfigmanagementHierarchyControllerPtr and FeatureMembershipConfigmanagementHierarchyControllerPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementHierarchyControllerPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
+//          FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementHierarchyControllerPtrInput interface {
 	pulumi.Input
 
@@ -1016,7 +1016,7 @@ type FeatureMembershipConfigmanagementPolicyController struct {
 // FeatureMembershipConfigmanagementPolicyControllerInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerArgs and FeatureMembershipConfigmanagementPolicyControllerOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerInput` via:
 //
-//	FeatureMembershipConfigmanagementPolicyControllerArgs{...}
+//          FeatureMembershipConfigmanagementPolicyControllerArgs{...}
 type FeatureMembershipConfigmanagementPolicyControllerInput interface {
 	pulumi.Input
 
@@ -1064,11 +1064,11 @@ func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembersh
 // FeatureMembershipConfigmanagementPolicyControllerPtrInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerArgs, FeatureMembershipConfigmanagementPolicyControllerPtr and FeatureMembershipConfigmanagementPolicyControllerPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementPolicyControllerArgs{...}
+//          FeatureMembershipConfigmanagementPolicyControllerArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementPolicyControllerPtrInput interface {
 	pulumi.Input
 
@@ -1267,7 +1267,7 @@ type FeatureMembershipConfigmanagementPolicyControllerMonitoring struct {
 // FeatureMembershipConfigmanagementPolicyControllerMonitoringInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs and FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerMonitoringInput` via:
 //
-//	FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
+//          FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringInput interface {
 	pulumi.Input
 
@@ -1302,11 +1302,11 @@ func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatu
 // FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs, FeatureMembershipConfigmanagementPolicyControllerMonitoringPtr and FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput` via:
 //
-//	        FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
+//          FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput interface {
 	pulumi.Input
 
@@ -1401,7 +1401,7 @@ type FeatureResourceState struct {
 // FeatureResourceStateInput is an input type that accepts FeatureResourceStateArgs and FeatureResourceStateOutput values.
 // You can construct a concrete instance of `FeatureResourceStateInput` via:
 //
-//	FeatureResourceStateArgs{...}
+//          FeatureResourceStateArgs{...}
 type FeatureResourceStateInput interface {
 	pulumi.Input
 
@@ -1429,7 +1429,7 @@ func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx co
 // FeatureResourceStateArrayInput is an input type that accepts FeatureResourceStateArray and FeatureResourceStateArrayOutput values.
 // You can construct a concrete instance of `FeatureResourceStateArrayInput` via:
 //
-//	FeatureResourceStateArray{ FeatureResourceStateArgs{...} }
+//          FeatureResourceStateArray{ FeatureResourceStateArgs{...} }
 type FeatureResourceStateArrayInput interface {
 	pulumi.Input
 
@@ -1502,7 +1502,7 @@ type FeatureSpec struct {
 // FeatureSpecInput is an input type that accepts FeatureSpecArgs and FeatureSpecOutput values.
 // You can construct a concrete instance of `FeatureSpecInput` via:
 //
-//	FeatureSpecArgs{...}
+//          FeatureSpecArgs{...}
 type FeatureSpecInput interface {
 	pulumi.Input
 
@@ -1539,11 +1539,11 @@ func (i FeatureSpecArgs) ToFeatureSpecPtrOutputWithContext(ctx context.Context) 
 // FeatureSpecPtrInput is an input type that accepts FeatureSpecArgs, FeatureSpecPtr and FeatureSpecPtrOutput values.
 // You can construct a concrete instance of `FeatureSpecPtrInput` via:
 //
-//	        FeatureSpecArgs{...}
+//          FeatureSpecArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureSpecPtrInput interface {
 	pulumi.Input
 
@@ -1642,7 +1642,7 @@ type FeatureSpecMulticlusteringress struct {
 // FeatureSpecMulticlusteringressInput is an input type that accepts FeatureSpecMulticlusteringressArgs and FeatureSpecMulticlusteringressOutput values.
 // You can construct a concrete instance of `FeatureSpecMulticlusteringressInput` via:
 //
-//	FeatureSpecMulticlusteringressArgs{...}
+//          FeatureSpecMulticlusteringressArgs{...}
 type FeatureSpecMulticlusteringressInput interface {
 	pulumi.Input
 
@@ -1678,11 +1678,11 @@ func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressPtrO
 // FeatureSpecMulticlusteringressPtrInput is an input type that accepts FeatureSpecMulticlusteringressArgs, FeatureSpecMulticlusteringressPtr and FeatureSpecMulticlusteringressPtrOutput values.
 // You can construct a concrete instance of `FeatureSpecMulticlusteringressPtrInput` via:
 //
-//	        FeatureSpecMulticlusteringressArgs{...}
+//          FeatureSpecMulticlusteringressArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FeatureSpecMulticlusteringressPtrInput interface {
 	pulumi.Input
 
@@ -1778,7 +1778,7 @@ type FeatureStateType struct {
 // FeatureStateTypeInput is an input type that accepts FeatureStateTypeArgs and FeatureStateTypeOutput values.
 // You can construct a concrete instance of `FeatureStateTypeInput` via:
 //
-//	FeatureStateTypeArgs{...}
+//          FeatureStateTypeArgs{...}
 type FeatureStateTypeInput interface {
 	pulumi.Input
 
@@ -1805,7 +1805,7 @@ func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Co
 // FeatureStateTypeArrayInput is an input type that accepts FeatureStateTypeArray and FeatureStateTypeArrayOutput values.
 // You can construct a concrete instance of `FeatureStateTypeArrayInput` via:
 //
-//	FeatureStateTypeArray{ FeatureStateTypeArgs{...} }
+//          FeatureStateTypeArray{ FeatureStateTypeArgs{...} }
 type FeatureStateTypeArrayInput interface {
 	pulumi.Input
 
@@ -1874,7 +1874,7 @@ type FeatureStateState struct {
 // FeatureStateStateInput is an input type that accepts FeatureStateStateArgs and FeatureStateStateOutput values.
 // You can construct a concrete instance of `FeatureStateStateInput` via:
 //
-//	FeatureStateStateArgs{...}
+//          FeatureStateStateArgs{...}
 type FeatureStateStateInput interface {
 	pulumi.Input
 
@@ -1903,7 +1903,7 @@ func (i FeatureStateStateArgs) ToFeatureStateStateOutputWithContext(ctx context.
 // FeatureStateStateArrayInput is an input type that accepts FeatureStateStateArray and FeatureStateStateArrayOutput values.
 // You can construct a concrete instance of `FeatureStateStateArrayInput` via:
 //
-//	FeatureStateStateArray{ FeatureStateStateArgs{...} }
+//          FeatureStateStateArray{ FeatureStateStateArgs{...} }
 type FeatureStateStateArrayInput interface {
 	pulumi.Input
 
@@ -1978,7 +1978,7 @@ type MembershipAuthority struct {
 // MembershipAuthorityInput is an input type that accepts MembershipAuthorityArgs and MembershipAuthorityOutput values.
 // You can construct a concrete instance of `MembershipAuthorityInput` via:
 //
-//	MembershipAuthorityArgs{...}
+//          MembershipAuthorityArgs{...}
 type MembershipAuthorityInput interface {
 	pulumi.Input
 
@@ -2013,11 +2013,11 @@ func (i MembershipAuthorityArgs) ToMembershipAuthorityPtrOutputWithContext(ctx c
 // MembershipAuthorityPtrInput is an input type that accepts MembershipAuthorityArgs, MembershipAuthorityPtr and MembershipAuthorityPtrOutput values.
 // You can construct a concrete instance of `MembershipAuthorityPtrInput` via:
 //
-//	        MembershipAuthorityArgs{...}
+//          MembershipAuthorityArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type MembershipAuthorityPtrInput interface {
 	pulumi.Input
 
@@ -2113,7 +2113,7 @@ type MembershipEndpoint struct {
 // MembershipEndpointInput is an input type that accepts MembershipEndpointArgs and MembershipEndpointOutput values.
 // You can construct a concrete instance of `MembershipEndpointInput` via:
 //
-//	MembershipEndpointArgs{...}
+//          MembershipEndpointArgs{...}
 type MembershipEndpointInput interface {
 	pulumi.Input
 
@@ -2150,11 +2150,11 @@ func (i MembershipEndpointArgs) ToMembershipEndpointPtrOutputWithContext(ctx con
 // MembershipEndpointPtrInput is an input type that accepts MembershipEndpointArgs, MembershipEndpointPtr and MembershipEndpointPtrOutput values.
 // You can construct a concrete instance of `MembershipEndpointPtrInput` via:
 //
-//	        MembershipEndpointArgs{...}
+//          MembershipEndpointArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type MembershipEndpointPtrInput interface {
 	pulumi.Input
 
@@ -2252,7 +2252,7 @@ type MembershipEndpointGkeCluster struct {
 // MembershipEndpointGkeClusterInput is an input type that accepts MembershipEndpointGkeClusterArgs and MembershipEndpointGkeClusterOutput values.
 // You can construct a concrete instance of `MembershipEndpointGkeClusterInput` via:
 //
-//	MembershipEndpointGkeClusterArgs{...}
+//          MembershipEndpointGkeClusterArgs{...}
 type MembershipEndpointGkeClusterInput interface {
 	pulumi.Input
 
@@ -2287,11 +2287,11 @@ func (i MembershipEndpointGkeClusterArgs) ToMembershipEndpointGkeClusterPtrOutpu
 // MembershipEndpointGkeClusterPtrInput is an input type that accepts MembershipEndpointGkeClusterArgs, MembershipEndpointGkeClusterPtr and MembershipEndpointGkeClusterPtrOutput values.
 // You can construct a concrete instance of `MembershipEndpointGkeClusterPtrInput` via:
 //
-//	        MembershipEndpointGkeClusterArgs{...}
+//          MembershipEndpointGkeClusterArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type MembershipEndpointGkeClusterPtrInput interface {
 	pulumi.Input
 

@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
 // * How-to Guides
-//   - [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+//     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 //
 // ## Example Usage
 // ### Dns Policy Basic
@@ -26,79 +26,70 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewPolicy(ctx, "example-policy", &dns.PolicyArgs{
-//				EnableInboundForwarding: pulumi.Bool(true),
-//				EnableLogging:           pulumi.Bool(true),
-//				AlternativeNameServerConfig: &dns.PolicyAlternativeNameServerConfigArgs{
-//					TargetNameServers: dns.PolicyAlternativeNameServerConfigTargetNameServerArray{
-//						&dns.PolicyAlternativeNameServerConfigTargetNameServerArgs{
-//							Ipv4Address:    pulumi.String("172.16.1.10"),
-//							ForwardingPath: pulumi.String("private"),
-//						},
-//						&dns.PolicyAlternativeNameServerConfigTargetNameServerArgs{
-//							Ipv4Address: pulumi.String("172.16.1.20"),
-//						},
-//					},
-//				},
-//				Networks: dns.PolicyNetworkArray{
-//					&dns.PolicyNetworkArgs{
-//						NetworkUrl: network_1.ID(),
-//					},
-//					&dns.PolicyNetworkArgs{
-//						NetworkUrl: network_2.ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewPolicy(ctx, "example-policy", &dns.PolicyArgs{
+// 			EnableInboundForwarding: pulumi.Bool(true),
+// 			EnableLogging:           pulumi.Bool(true),
+// 			AlternativeNameServerConfig: &dns.PolicyAlternativeNameServerConfigArgs{
+// 				TargetNameServers: dns.PolicyAlternativeNameServerConfigTargetNameServerArray{
+// 					&dns.PolicyAlternativeNameServerConfigTargetNameServerArgs{
+// 						Ipv4Address:    pulumi.String("172.16.1.10"),
+// 						ForwardingPath: pulumi.String("private"),
+// 					},
+// 					&dns.PolicyAlternativeNameServerConfigTargetNameServerArgs{
+// 						Ipv4Address: pulumi.String("172.16.1.20"),
+// 					},
+// 				},
+// 			},
+// 			Networks: dns.PolicyNetworkArray{
+// 				&dns.PolicyNetworkArgs{
+// 					NetworkUrl: network_1.ID(),
+// 				},
+// 				&dns.PolicyNetworkArgs{
+// 					NetworkUrl: network_2.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Policy can be imported using any of these accepted formats
+// Policy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
-//
+//  $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/policy:Policy default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:dns/policy:Policy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/policy:Policy default {{name}}
-//
+//  $ pulumi import gcp:dns/policy:Policy default {{name}}
 // ```
 type Policy struct {
 	pulumi.CustomResourceState
@@ -291,7 +282,7 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 // PolicyArrayInput is an input type that accepts PolicyArray and PolicyArrayOutput values.
 // You can construct a concrete instance of `PolicyArrayInput` via:
 //
-//	PolicyArray{ PolicyArgs{...} }
+//          PolicyArray{ PolicyArgs{...} }
 type PolicyArrayInput interface {
 	pulumi.Input
 
@@ -316,7 +307,7 @@ func (i PolicyArray) ToPolicyArrayOutputWithContext(ctx context.Context) PolicyA
 // PolicyMapInput is an input type that accepts PolicyMap and PolicyMapOutput values.
 // You can construct a concrete instance of `PolicyMapInput` via:
 //
-//	PolicyMap{ "key": PolicyArgs{...} }
+//          PolicyMap{ "key": PolicyArgs{...} }
 type PolicyMapInput interface {
 	pulumi.Input
 

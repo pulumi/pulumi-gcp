@@ -18,33 +18,30 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/composer"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/composer"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := composer.GetImageVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
-//				Region: pulumi.String("us-central1"),
-//				Config: &composer.EnvironmentConfigArgs{
-//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-//						ImageVersion: pulumi.String(all.ImageVersions[0].ImageVersionId),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		all, err := composer.GetImageVersions(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Config: &composer.EnvironmentConfigArgs{
+// 				SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+// 					ImageVersion: pulumi.String(all.ImageVersions[0].ImageVersionId),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func GetImageVersions(ctx *pulumi.Context, args *GetImageVersionsArgs, opts ...pulumi.InvokeOption) (*GetImageVersionsResult, error) {
 	var rv GetImageVersionsResult

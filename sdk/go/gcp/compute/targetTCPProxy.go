@@ -19,30 +19,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
 // * How-to Guides
-//   - [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+//     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # TargetTcpProxy can be imported using any of these accepted formats
+// TargetTcpProxy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default projects/{{project}}/global/targetTcpProxies/{{name}}
-//
+//  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default projects/{{project}}/global/targetTcpProxies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{name}}
-//
+//  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{name}}
 // ```
 type TargetTCPProxy struct {
 	pulumi.CustomResourceState
@@ -256,7 +250,7 @@ func (i *TargetTCPProxy) ToTargetTCPProxyOutputWithContext(ctx context.Context) 
 // TargetTCPProxyArrayInput is an input type that accepts TargetTCPProxyArray and TargetTCPProxyArrayOutput values.
 // You can construct a concrete instance of `TargetTCPProxyArrayInput` via:
 //
-//	TargetTCPProxyArray{ TargetTCPProxyArgs{...} }
+//          TargetTCPProxyArray{ TargetTCPProxyArgs{...} }
 type TargetTCPProxyArrayInput interface {
 	pulumi.Input
 
@@ -281,7 +275,7 @@ func (i TargetTCPProxyArray) ToTargetTCPProxyArrayOutputWithContext(ctx context.
 // TargetTCPProxyMapInput is an input type that accepts TargetTCPProxyMap and TargetTCPProxyMapOutput values.
 // You can construct a concrete instance of `TargetTCPProxyMapInput` via:
 //
-//	TargetTCPProxyMap{ "key": TargetTCPProxyArgs{...} }
+//          TargetTCPProxyMap{ "key": TargetTCPProxyArgs{...} }
 type TargetTCPProxyMapInput interface {
 	pulumi.Input
 

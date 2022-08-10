@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/iot/docs/)
+//     * [Official Documentation](https://cloud.google.com/iot/docs/)
 //
 // ## Example Usage
 // ### Cloudiot Device Basic
@@ -26,28 +26,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			registry, err := iot.NewRegistry(ctx, "registry", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iot.NewDevice(ctx, "test-device", &iot.DeviceArgs{
-//				Registry: registry.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		registry, err := iot.NewRegistry(ctx, "registry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iot.NewDevice(ctx, "test-device", &iot.DeviceArgs{
+// 			Registry: registry.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Cloudiot Device Full
 //
@@ -55,64 +52,59 @@ import (
 // package main
 //
 // import (
+// 	"io/ioutil"
 //
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			registry, err := iot.NewRegistry(ctx, "registry", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iot.NewDevice(ctx, "test-device", &iot.DeviceArgs{
-//				Registry: registry.ID(),
-//				Credentials: iot.DeviceCredentialArray{
-//					&iot.DeviceCredentialArgs{
-//						PublicKey: &iot.DeviceCredentialPublicKeyArgs{
-//							Format: pulumi.String("RSA_PEM"),
-//							Key:    readFileOrPanic("test-fixtures/rsa_public.pem"),
-//						},
-//					},
-//				},
-//				Blocked:  pulumi.Bool(false),
-//				LogLevel: pulumi.String("INFO"),
-//				Metadata: pulumi.StringMap{
-//					"test_key_1": pulumi.String("test_value_1"),
-//				},
-//				GatewayConfig: &iot.DeviceGatewayConfigArgs{
-//					GatewayType: pulumi.String("NON_GATEWAY"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		registry, err := iot.NewRegistry(ctx, "registry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iot.NewDevice(ctx, "test-device", &iot.DeviceArgs{
+// 			Registry: registry.ID(),
+// 			Credentials: iot.DeviceCredentialArray{
+// 				&iot.DeviceCredentialArgs{
+// 					PublicKey: &iot.DeviceCredentialPublicKeyArgs{
+// 						Format: pulumi.String("RSA_PEM"),
+// 						Key:    readFileOrPanic("test-fixtures/rsa_public.pem"),
+// 					},
+// 				},
+// 			},
+// 			Blocked:  pulumi.Bool(false),
+// 			LogLevel: pulumi.String("INFO"),
+// 			Metadata: pulumi.StringMap{
+// 				"test_key_1": pulumi.String("test_value_1"),
+// 			},
+// 			GatewayConfig: &iot.DeviceGatewayConfigArgs{
+// 				GatewayType: pulumi.String("NON_GATEWAY"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Device can be imported using any of these accepted formats
+// Device can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}
-//
+//  $ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}
 // ```
 type Device struct {
 	pulumi.CustomResourceState
@@ -341,7 +333,7 @@ func (i *Device) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
 // DeviceArrayInput is an input type that accepts DeviceArray and DeviceArrayOutput values.
 // You can construct a concrete instance of `DeviceArrayInput` via:
 //
-//	DeviceArray{ DeviceArgs{...} }
+//          DeviceArray{ DeviceArgs{...} }
 type DeviceArrayInput interface {
 	pulumi.Input
 
@@ -366,7 +358,7 @@ func (i DeviceArray) ToDeviceArrayOutputWithContext(ctx context.Context) DeviceA
 // DeviceMapInput is an input type that accepts DeviceMap and DeviceMapOutput values.
 // You can construct a concrete instance of `DeviceMapInput` via:
 //
-//	DeviceMap{ "key": DeviceArgs{...} }
+//          DeviceMap{ "key": DeviceArgs{...} }
 type DeviceMapInput interface {
 	pulumi.Input
 

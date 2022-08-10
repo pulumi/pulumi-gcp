@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
+//     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 //
 // ## Example Usage
 // ### App Engine Firewall Rule Basic
@@ -27,64 +27,55 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("ae-project"),
-//				OrgId:     pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			app, err := appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
-//				Project:    myProject.ProjectId,
-//				LocationId: pulumi.String("us-central"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = appengine.NewFirewallRule(ctx, "rule", &appengine.FirewallRuleArgs{
-//				Project:     app.Project,
-//				Priority:    pulumi.Int(1000),
-//				Action:      pulumi.String("ALLOW"),
-//				SourceRange: pulumi.String("*"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("ae-project"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		app, err := appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
+// 			Project:    myProject.ProjectId,
+// 			LocationId: pulumi.String("us-central"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewFirewallRule(ctx, "rule", &appengine.FirewallRuleArgs{
+// 			Project:     app.Project,
+// 			Priority:    pulumi.Int(1000),
+// 			Action:      pulumi.String("ALLOW"),
+// 			SourceRange: pulumi.String("*"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # FirewallRule can be imported using any of these accepted formats
+// FirewallRule can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
-//
+//  $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
-//
+//  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
-//
+//  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
 // ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
@@ -248,7 +239,7 @@ func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) Fire
 // FirewallRuleArrayInput is an input type that accepts FirewallRuleArray and FirewallRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallRuleArrayInput` via:
 //
-//	FirewallRuleArray{ FirewallRuleArgs{...} }
+//          FirewallRuleArray{ FirewallRuleArgs{...} }
 type FirewallRuleArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +264,7 @@ func (i FirewallRuleArray) ToFirewallRuleArrayOutputWithContext(ctx context.Cont
 // FirewallRuleMapInput is an input type that accepts FirewallRuleMap and FirewallRuleMapOutput values.
 // You can construct a concrete instance of `FirewallRuleMapInput` via:
 //
-//	FirewallRuleMap{ "key": FirewallRuleArgs{...} }
+//          FirewallRuleMap{ "key": FirewallRuleArgs{...} }
 type FirewallRuleMapInput interface {
 	pulumi.Input
 

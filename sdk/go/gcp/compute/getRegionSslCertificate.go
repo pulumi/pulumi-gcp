@@ -18,27 +18,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myCert, err := compute.LookupRegionSslCertificate(ctx, &compute.LookupRegionSslCertificateArgs{
-//				Name: "my-cert",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("certificate", myCert.Certificate)
-//			ctx.Export("certificateId", myCert.CertificateId)
-//			ctx.Export("selfLink", myCert.SelfLink)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myCert, err := compute.LookupRegionSslCertificate(ctx, &compute.LookupRegionSslCertificateArgs{
+// 			Name: "my-cert",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("certificate", myCert.Certificate)
+// 		ctx.Export("certificateId", myCert.CertificateId)
+// 		ctx.Export("selfLink", myCert.SelfLink)
+// 		return nil
+// 	})
+// }
 // ```
 func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertificateArgs, opts ...pulumi.InvokeOption) (*LookupRegionSslCertificateResult, error) {
 	var rv LookupRegionSslCertificateResult

@@ -32,8 +32,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
 // * How-to Guides
-//   - [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
-//   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+//     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // > **Warning:** All arguments including `sensitive_labels.auth_token`, `sensitive_labels.password`, and `sensitive_labels.service_key` will be stored in the raw
 // state as plain-text.
@@ -45,28 +45,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
-//				DisplayName: pulumi.String("Test Notification Channel"),
-//				Labels: pulumi.StringMap{
-//					"email_address": pulumi.String("fake_email@blahblah.com"),
-//				},
-//				Type: pulumi.String("email"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Test Notification Channel"),
+// 			Labels: pulumi.StringMap{
+// 				"email_address": pulumi.String("fake_email@blahblah.com"),
+// 			},
+// 			Type: pulumi.String("email"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Notification Channel Sensitive
 //
@@ -74,41 +71,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewNotificationChannel(ctx, "default", &monitoring.NotificationChannelArgs{
-//				DisplayName: pulumi.String("Test Slack Channel"),
-//				Labels: pulumi.StringMap{
-//					"channel_name": pulumi.String("#foobar"),
-//				},
-//				SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
-//					AuthToken: pulumi.String("one"),
-//				},
-//				Type: pulumi.String("slack"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewNotificationChannel(ctx, "default", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Test Slack Channel"),
+// 			Labels: pulumi.StringMap{
+// 				"channel_name": pulumi.String("#foobar"),
+// 			},
+// 			SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
+// 				AuthToken: pulumi.String("one"),
+// 			},
+// 			Type: pulumi.String("slack"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # NotificationChannel can be imported using any of these accepted formats
+// NotificationChannel can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
-//
+//  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
 // ```
 type NotificationChannel struct {
 	pulumi.CustomResourceState
@@ -362,7 +354,7 @@ func (i *NotificationChannel) ToNotificationChannelOutputWithContext(ctx context
 // NotificationChannelArrayInput is an input type that accepts NotificationChannelArray and NotificationChannelArrayOutput values.
 // You can construct a concrete instance of `NotificationChannelArrayInput` via:
 //
-//	NotificationChannelArray{ NotificationChannelArgs{...} }
+//          NotificationChannelArray{ NotificationChannelArgs{...} }
 type NotificationChannelArrayInput interface {
 	pulumi.Input
 
@@ -387,7 +379,7 @@ func (i NotificationChannelArray) ToNotificationChannelArrayOutputWithContext(ct
 // NotificationChannelMapInput is an input type that accepts NotificationChannelMap and NotificationChannelMapOutput values.
 // You can construct a concrete instance of `NotificationChannelMapInput` via:
 //
-//	NotificationChannelMap{ "key": NotificationChannelArgs{...} }
+//          NotificationChannelMap{ "key": NotificationChannelArgs{...} }
 type NotificationChannelMapInput interface {
 	pulumi.Input
 

@@ -15,12 +15,10 @@ import (
 //
 // ## Import
 //
-// # DenyPolicy can be imported using any of these accepted formats
+// DenyPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
-//
+//  $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
 // ```
 type DenyPolicy struct {
 	pulumi.CustomResourceState
@@ -155,7 +153,7 @@ func (i *DenyPolicy) ToDenyPolicyOutputWithContext(ctx context.Context) DenyPoli
 // DenyPolicyArrayInput is an input type that accepts DenyPolicyArray and DenyPolicyArrayOutput values.
 // You can construct a concrete instance of `DenyPolicyArrayInput` via:
 //
-//	DenyPolicyArray{ DenyPolicyArgs{...} }
+//          DenyPolicyArray{ DenyPolicyArgs{...} }
 type DenyPolicyArrayInput interface {
 	pulumi.Input
 
@@ -180,7 +178,7 @@ func (i DenyPolicyArray) ToDenyPolicyArrayOutputWithContext(ctx context.Context)
 // DenyPolicyMapInput is an input type that accepts DenyPolicyMap and DenyPolicyMapOutput values.
 // You can construct a concrete instance of `DenyPolicyMapInput` via:
 //
-//	DenyPolicyMap{ "key": DenyPolicyArgs{...} }
+//          DenyPolicyMap{ "key": DenyPolicyArgs{...} }
 type DenyPolicyMapInput interface {
 	pulumi.Input
 

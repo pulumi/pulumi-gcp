@@ -27,47 +27,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
-//				AllowPasswordSignup: pulumi.Bool(true),
-//				DisplayName:         pulumi.String("tenant"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+// 			AllowPasswordSignup: pulumi.Bool(true),
+// 			DisplayName:         pulumi.String("tenant"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Tenant can be imported using any of these accepted formats
+// Tenant can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
-//
+//  $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
-//
+//  $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
 // ```
 type Tenant struct {
 	pulumi.CustomResourceState
@@ -219,7 +210,7 @@ func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 // TenantArrayInput is an input type that accepts TenantArray and TenantArrayOutput values.
 // You can construct a concrete instance of `TenantArrayInput` via:
 //
-//	TenantArray{ TenantArgs{...} }
+//          TenantArray{ TenantArgs{...} }
 type TenantArrayInput interface {
 	pulumi.Input
 
@@ -244,7 +235,7 @@ func (i TenantArray) ToTenantArrayOutputWithContext(ctx context.Context) TenantA
 // TenantMapInput is an input type that accepts TenantMap and TenantMapOutput values.
 // You can construct a concrete instance of `TenantMapInput` via:
 //
-//	TenantMap{ "key": TenantArgs{...} }
+//          TenantMap{ "key": TenantArgs{...} }
 type TenantMapInput interface {
 	pulumi.Input
 

@@ -23,42 +23,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				DatabaseVersion: pulumi.String("MYSQL_5_7"),
-//				Settings: &sql.DatabaseInstanceSettingsArgs{
-//					Tier: pulumi.String("db-f1-micro"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
-//				Instance: main.Name,
-//				Host:     pulumi.String("me.com"),
-//				Password: pulumi.String("changeme"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(4),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+// 			Instance: main.Name,
+// 			Host:     pulumi.String("me.com"),
+// 			Password: pulumi.String("changeme"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // Example creating a Cloud IAM User. (For MySQL, specify `cloudsqlIamAuthentication`)
@@ -67,47 +64,44 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				DatabaseVersion: pulumi.String("POSTGRES_9_6"),
-//				Settings: &sql.DatabaseInstanceSettingsArgs{
-//					Tier: pulumi.String("db-f1-micro"),
-//					DatabaseFlags: sql.DatabaseInstanceSettingsDatabaseFlagArray{
-//						&sql.DatabaseInstanceSettingsDatabaseFlagArgs{
-//							Name:  pulumi.String("cloudsql.iam_authentication"),
-//							Value: pulumi.String("on"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
-//				Instance: main.Name,
-//				Type:     pulumi.String("CLOUD_IAM_USER"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(4),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("POSTGRES_9_6"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 				DatabaseFlags: sql.DatabaseInstanceSettingsDatabaseFlagArray{
+// 					&sql.DatabaseInstanceSettingsDatabaseFlagArgs{
+// 						Name:  pulumi.String("cloudsql.iam_authentication"),
+// 						Value: pulumi.String("on"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+// 			Instance: main.Name,
+// 			Type:     pulumi.String("CLOUD_IAM_USER"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -115,17 +109,13 @@ import (
 // SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
-//
+//  $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
 // ```
 //
-//	SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
+//  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:sql/user:User users my-project/main-instance/me
-//
+//  $ pulumi import gcp:sql/user:User users my-project/main-instance/me
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -336,7 +326,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//	UserArray{ UserArgs{...} }
+//          UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -361,7 +351,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//	UserMap{ "key": UserArgs{...} }
+//          UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

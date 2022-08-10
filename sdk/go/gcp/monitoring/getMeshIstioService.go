@@ -21,8 +21,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
 // * How-to Guides
-//   - [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-//   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+//     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
 // ### Monitoring Mesh Istio Service
@@ -31,26 +31,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.GetMeshIstioService(ctx, &monitoring.GetMeshIstioServiceArgs{
-//				MeshUid:          "proj-573164786102",
-//				ServiceName:      "prometheus",
-//				ServiceNamespace: "istio-system",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.GetMeshIstioService(ctx, &monitoring.GetMeshIstioServiceArgs{
+// 			MeshUid:          "proj-573164786102",
+// 			ServiceName:      "prometheus",
+// 			ServiceNamespace: "istio-system",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func GetMeshIstioService(ctx *pulumi.Context, args *GetMeshIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetMeshIstioServiceResult, error) {
 	var rv GetMeshIstioServiceResult

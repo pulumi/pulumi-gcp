@@ -25,7 +25,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
 // * How-to Guides
-//   - [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+//     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 //
 // ## Example Usage
 // ### Kms Crypto Key Basic
@@ -34,31 +34,28 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
-//				KeyRing:        keyring.ID(),
-//				RotationPeriod: pulumi.String("100000s"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
+// 			KeyRing:        keyring.ID(),
+// 			RotationPeriod: pulumi.String("100000s"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Kms Crypto Key Asymmetric Sign
 //
@@ -66,50 +63,43 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
-//				KeyRing: keyring.ID(),
-//				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
-//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
-//					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
+// 			KeyRing: keyring.ID(),
+// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # CryptoKey can be imported using any of these accepted formats
+// CryptoKey can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
-//
+//  $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
-//
+//  $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
 // ```
 type CryptoKey struct {
 	pulumi.CustomResourceState
@@ -335,7 +325,7 @@ func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyO
 // CryptoKeyArrayInput is an input type that accepts CryptoKeyArray and CryptoKeyArrayOutput values.
 // You can construct a concrete instance of `CryptoKeyArrayInput` via:
 //
-//	CryptoKeyArray{ CryptoKeyArgs{...} }
+//          CryptoKeyArray{ CryptoKeyArgs{...} }
 type CryptoKeyArrayInput interface {
 	pulumi.Input
 
@@ -360,7 +350,7 @@ func (i CryptoKeyArray) ToCryptoKeyArrayOutputWithContext(ctx context.Context) C
 // CryptoKeyMapInput is an input type that accepts CryptoKeyMap and CryptoKeyMapOutput values.
 // You can construct a concrete instance of `CryptoKeyMapInput` via:
 //
-//	CryptoKeyMap{ "key": CryptoKeyArgs{...} }
+//          CryptoKeyMap{ "key": CryptoKeyArgs{...} }
 type CryptoKeyMapInput interface {
 	pulumi.Input
 

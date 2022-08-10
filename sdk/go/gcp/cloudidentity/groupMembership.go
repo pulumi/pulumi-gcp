@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+//     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProject` and set `userProjectOverride` to true
@@ -32,60 +32,57 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			group, err := cloudidentity.NewGroup(ctx, "group", &cloudidentity.GroupArgs{
-//				DisplayName: pulumi.String("my-identity-group"),
-//				Parent:      pulumi.String("customers/A01b123xz"),
-//				GroupKey: &cloudidentity.GroupGroupKeyArgs{
-//					Id: pulumi.String("my-identity-group@example.com"),
-//				},
-//				Labels: pulumi.StringMap{
-//					"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudidentity.NewGroup(ctx, "child-group", &cloudidentity.GroupArgs{
-//				DisplayName: pulumi.String("my-identity-group-child"),
-//				Parent:      pulumi.String("customers/A01b123xz"),
-//				GroupKey: &cloudidentity.GroupGroupKeyArgs{
-//					Id: pulumi.String("my-identity-group-child@example.com"),
-//				},
-//				Labels: pulumi.StringMap{
-//					"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
-//				Group: group.ID(),
-//				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
-//					Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (string, error) {
-//						return groupKey.Id, nil
-//					}).(pulumi.StringOutput),
-//				},
-//				Roles: cloudidentity.GroupMembershipRoleArray{
-//					&cloudidentity.GroupMembershipRoleArgs{
-//						Name: pulumi.String("MEMBER"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		group, err := cloudidentity.NewGroup(ctx, "group", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group"),
+// 			Parent:      pulumi.String("customers/A01b123xz"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group@example.com"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudidentity.NewGroup(ctx, "child-group", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group-child"),
+// 			Parent:      pulumi.String("customers/A01b123xz"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group-child@example.com"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
+// 			Group: group.ID(),
+// 			PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
+// 				Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (string, error) {
+// 					return groupKey.Id, nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 			Roles: cloudidentity.GroupMembershipRoleArray{
+// 				&cloudidentity.GroupMembershipRoleArgs{
+// 					Name: pulumi.String("MEMBER"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Cloud Identity Group Membership User
 //
@@ -93,58 +90,53 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			group, err := cloudidentity.NewGroup(ctx, "group", &cloudidentity.GroupArgs{
-//				DisplayName: pulumi.String("my-identity-group"),
-//				Parent:      pulumi.String("customers/A01b123xz"),
-//				GroupKey: &cloudidentity.GroupGroupKeyArgs{
-//					Id: pulumi.String("my-identity-group@example.com"),
-//				},
-//				Labels: pulumi.StringMap{
-//					"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
-//				Group: group.ID(),
-//				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
-//					Id: pulumi.String("cloud_identity_user@example.com"),
-//				},
-//				Roles: cloudidentity.GroupMembershipRoleArray{
-//					&cloudidentity.GroupMembershipRoleArgs{
-//						Name: pulumi.String("MEMBER"),
-//					},
-//					&cloudidentity.GroupMembershipRoleArgs{
-//						Name: pulumi.String("MANAGER"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		group, err := cloudidentity.NewGroup(ctx, "group", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group"),
+// 			Parent:      pulumi.String("customers/A01b123xz"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group@example.com"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
+// 			Group: group.ID(),
+// 			PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
+// 				Id: pulumi.String("cloud_identity_user@example.com"),
+// 			},
+// 			Roles: cloudidentity.GroupMembershipRoleArray{
+// 				&cloudidentity.GroupMembershipRoleArgs{
+// 					Name: pulumi.String("MEMBER"),
+// 				},
+// 				&cloudidentity.GroupMembershipRoleArgs{
+// 					Name: pulumi.String("MANAGER"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # GroupMembership can be imported using any of these accepted formats
+// GroupMembership can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
-//
+//  $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
 // ```
 type GroupMembership struct {
 	pulumi.CustomResourceState
@@ -315,7 +307,7 @@ func (i *GroupMembership) ToGroupMembershipOutputWithContext(ctx context.Context
 // GroupMembershipArrayInput is an input type that accepts GroupMembershipArray and GroupMembershipArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipArrayInput` via:
 //
-//	GroupMembershipArray{ GroupMembershipArgs{...} }
+//          GroupMembershipArray{ GroupMembershipArgs{...} }
 type GroupMembershipArrayInput interface {
 	pulumi.Input
 
@@ -340,7 +332,7 @@ func (i GroupMembershipArray) ToGroupMembershipArrayOutputWithContext(ctx contex
 // GroupMembershipMapInput is an input type that accepts GroupMembershipMap and GroupMembershipMapOutput values.
 // You can construct a concrete instance of `GroupMembershipMapInput` via:
 //
-//	GroupMembershipMap{ "key": GroupMembershipArgs{...} }
+//          GroupMembershipMap{ "key": GroupMembershipArgs{...} }
 type GroupMembershipMapInput interface {
 	pulumi.Input
 

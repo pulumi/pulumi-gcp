@@ -18,30 +18,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # TargetHttpsProxy can be imported using any of these accepted formats
+// TargetHttpsProxy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
-//
+//  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{name}}
-//
+//  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{name}}
 // ```
 type TargetHttpsProxy struct {
 	pulumi.CustomResourceState
@@ -318,7 +312,7 @@ func (i *TargetHttpsProxy) ToTargetHttpsProxyOutputWithContext(ctx context.Conte
 // TargetHttpsProxyArrayInput is an input type that accepts TargetHttpsProxyArray and TargetHttpsProxyArrayOutput values.
 // You can construct a concrete instance of `TargetHttpsProxyArrayInput` via:
 //
-//	TargetHttpsProxyArray{ TargetHttpsProxyArgs{...} }
+//          TargetHttpsProxyArray{ TargetHttpsProxyArgs{...} }
 type TargetHttpsProxyArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +337,7 @@ func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutputWithContext(ctx cont
 // TargetHttpsProxyMapInput is an input type that accepts TargetHttpsProxyMap and TargetHttpsProxyMapOutput values.
 // You can construct a concrete instance of `TargetHttpsProxyMapInput` via:
 //
-//	TargetHttpsProxyMap{ "key": TargetHttpsProxyArgs{...} }
+//          TargetHttpsProxyMap{ "key": TargetHttpsProxyArgs{...} }
 type TargetHttpsProxyMapInput interface {
 	pulumi.Input
 

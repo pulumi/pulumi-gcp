@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
+//     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 //
 // ## Example Usage
 // ### Monitoring Metric Descriptor Basic
@@ -26,41 +26,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewMetricDescriptor(ctx, "basic", &monitoring.MetricDescriptorArgs{
-//				Description: pulumi.String("Daily sales records from all branch stores."),
-//				DisplayName: pulumi.String("metric-descriptor"),
-//				Labels: monitoring.MetricDescriptorLabelArray{
-//					&monitoring.MetricDescriptorLabelArgs{
-//						Description: pulumi.String("The ID of the store."),
-//						Key:         pulumi.String("store_id"),
-//						ValueType:   pulumi.String("STRING"),
-//					},
-//				},
-//				LaunchStage: pulumi.String("BETA"),
-//				Metadata: &monitoring.MetricDescriptorMetadataArgs{
-//					IngestDelay:  pulumi.String("30s"),
-//					SamplePeriod: pulumi.String("60s"),
-//				},
-//				MetricKind: pulumi.String("GAUGE"),
-//				Type:       pulumi.String("custom.googleapis.com/stores/daily_sales"),
-//				Unit:       pulumi.String("{USD}"),
-//				ValueType:  pulumi.String("DOUBLE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewMetricDescriptor(ctx, "basic", &monitoring.MetricDescriptorArgs{
+// 			Description: pulumi.String("Daily sales records from all branch stores."),
+// 			DisplayName: pulumi.String("metric-descriptor"),
+// 			Labels: monitoring.MetricDescriptorLabelArray{
+// 				&monitoring.MetricDescriptorLabelArgs{
+// 					Description: pulumi.String("The ID of the store."),
+// 					Key:         pulumi.String("store_id"),
+// 					ValueType:   pulumi.String("STRING"),
+// 				},
+// 			},
+// 			LaunchStage: pulumi.String("BETA"),
+// 			Metadata: &monitoring.MetricDescriptorMetadataArgs{
+// 				IngestDelay:  pulumi.String("30s"),
+// 				SamplePeriod: pulumi.String("60s"),
+// 			},
+// 			MetricKind: pulumi.String("GAUGE"),
+// 			Type:       pulumi.String("custom.googleapis.com/stores/daily_sales"),
+// 			Unit:       pulumi.String("{USD}"),
+// 			ValueType:  pulumi.String("DOUBLE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Monitoring Metric Descriptor Alert
 //
@@ -68,60 +65,55 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			withAlert, err := monitoring.NewMetricDescriptor(ctx, "withAlert", &monitoring.MetricDescriptorArgs{
-//				Description: pulumi.String("Daily sales records from all branch stores."),
-//				DisplayName: pulumi.String("metric-descriptor"),
-//				MetricKind:  pulumi.String("GAUGE"),
-//				Type:        pulumi.String("custom.googleapis.com/stores/daily_sales"),
-//				Unit:        pulumi.String("{USD}"),
-//				ValueType:   pulumi.String("DOUBLE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
-//				Combiner: pulumi.String("OR"),
-//				Conditions: monitoring.AlertPolicyConditionArray{
-//					&monitoring.AlertPolicyConditionArgs{
-//						ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
-//							Comparison: pulumi.String("COMPARISON_GT"),
-//							Duration:   pulumi.String("60s"),
-//							Filter: withAlert.Type.ApplyT(func(_type string) (string, error) {
-//								return fmt.Sprintf("metric.type=\"%v\" AND resource.type=\"gce_instance\"", _type), nil
-//							}).(pulumi.StringOutput),
-//						},
-//						DisplayName: pulumi.String("test condition"),
-//					},
-//				},
-//				DisplayName: pulumi.String("metric-descriptor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		withAlert, err := monitoring.NewMetricDescriptor(ctx, "withAlert", &monitoring.MetricDescriptorArgs{
+// 			Description: pulumi.String("Daily sales records from all branch stores."),
+// 			DisplayName: pulumi.String("metric-descriptor"),
+// 			MetricKind:  pulumi.String("GAUGE"),
+// 			Type:        pulumi.String("custom.googleapis.com/stores/daily_sales"),
+// 			Unit:        pulumi.String("{USD}"),
+// 			ValueType:   pulumi.String("DOUBLE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+// 			Combiner: pulumi.String("OR"),
+// 			Conditions: monitoring.AlertPolicyConditionArray{
+// 				&monitoring.AlertPolicyConditionArgs{
+// 					ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+// 						Comparison: pulumi.String("COMPARISON_GT"),
+// 						Duration:   pulumi.String("60s"),
+// 						Filter: withAlert.Type.ApplyT(func(_type string) (string, error) {
+// 							return fmt.Sprintf("metric.type=\"%v\" AND resource.type=\"gce_instance\"", _type), nil
+// 						}).(pulumi.StringOutput),
+// 					},
+// 					DisplayName: pulumi.String("test condition"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("metric-descriptor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # MetricDescriptor can be imported using any of these accepted formats
+// MetricDescriptor can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
-//
+//  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
 // ```
 type MetricDescriptor struct {
 	pulumi.CustomResourceState
@@ -450,7 +442,7 @@ func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Conte
 // MetricDescriptorArrayInput is an input type that accepts MetricDescriptorArray and MetricDescriptorArrayOutput values.
 // You can construct a concrete instance of `MetricDescriptorArrayInput` via:
 //
-//	MetricDescriptorArray{ MetricDescriptorArgs{...} }
+//          MetricDescriptorArray{ MetricDescriptorArgs{...} }
 type MetricDescriptorArrayInput interface {
 	pulumi.Input
 
@@ -475,7 +467,7 @@ func (i MetricDescriptorArray) ToMetricDescriptorArrayOutputWithContext(ctx cont
 // MetricDescriptorMapInput is an input type that accepts MetricDescriptorMap and MetricDescriptorMapOutput values.
 // You can construct a concrete instance of `MetricDescriptorMapInput` via:
 //
-//	MetricDescriptorMap{ "key": MetricDescriptorArgs{...} }
+//          MetricDescriptorMap{ "key": MetricDescriptorArgs{...} }
 type MetricDescriptorMapInput interface {
 	pulumi.Input
 

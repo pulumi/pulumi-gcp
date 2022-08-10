@@ -20,52 +20,43 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.NewLake(ctx, "primary", &dataplex.LakeArgs{
-//				Description: pulumi.String("Lake for DCL"),
-//				DisplayName: pulumi.String("Lake for DCL"),
-//				Labels: pulumi.StringMap{
-//					"my-lake": pulumi.String("exists"),
-//				},
-//				Location: pulumi.String("us-west1"),
-//				Project:  pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataplex.NewLake(ctx, "primary", &dataplex.LakeArgs{
+// 			Description: pulumi.String("Lake for DCL"),
+// 			DisplayName: pulumi.String("Lake for DCL"),
+// 			Labels: pulumi.StringMap{
+// 				"my-lake": pulumi.String("exists"),
+// 			},
+// 			Location: pulumi.String("us-west1"),
+// 			Project:  pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Lake can be imported using any of these accepted formats
+// Lake can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}
-//
+//  $ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataplex/lake:Lake default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:dataplex/lake:Lake default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataplex/lake:Lake default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:dataplex/lake:Lake default {{location}}/{{name}}
 // ```
 type Lake struct {
 	pulumi.CustomResourceState
@@ -264,7 +255,7 @@ func (i *Lake) ToLakeOutputWithContext(ctx context.Context) LakeOutput {
 // LakeArrayInput is an input type that accepts LakeArray and LakeArrayOutput values.
 // You can construct a concrete instance of `LakeArrayInput` via:
 //
-//	LakeArray{ LakeArgs{...} }
+//          LakeArray{ LakeArgs{...} }
 type LakeArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +280,7 @@ func (i LakeArray) ToLakeArrayOutputWithContext(ctx context.Context) LakeArrayOu
 // LakeMapInput is an input type that accepts LakeMap and LakeMapOutput values.
 // You can construct a concrete instance of `LakeMapInput` via:
 //
-//	LakeMap{ "key": LakeArgs{...} }
+//          LakeMap{ "key": LakeArgs{...} }
 type LakeMapInput interface {
 	pulumi.Input
 

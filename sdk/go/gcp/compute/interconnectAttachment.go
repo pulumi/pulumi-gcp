@@ -21,42 +21,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			foobarRouter, err := compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
-//				Network: foobarNetwork.Name,
-//				Bgp: &compute.RouterBgpArgs{
-//					Asn: pulumi.Int(16550),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
-//				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
-//				Type:                   pulumi.String("PARTNER"),
-//				Router:                 foobarRouter.ID(),
-//				Mtu:                    pulumi.String("1500"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarRouter, err := compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+// 			Network: foobarNetwork.Name,
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(16550),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
+// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+// 			Type:                   pulumi.String("PARTNER"),
+// 			Router:                 foobarRouter.ID(),
+// 			Mtu:                    pulumi.String("1500"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Compute Interconnect Attachment Ipsec Encryption
 //
@@ -64,84 +61,73 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			address, err := compute.NewAddress(ctx, "address", &compute.AddressArgs{
-//				AddressType:  pulumi.String("INTERNAL"),
-//				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
-//				Address:      pulumi.String("192.168.1.0"),
-//				PrefixLength: pulumi.Int(29),
-//				Network:      network.SelfLink,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
-//				Network:                     network.Name,
-//				EncryptedInterconnectRouter: pulumi.Bool(true),
-//				Bgp: &compute.RouterBgpArgs{
-//					Asn: pulumi.Int(16550),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewInterconnectAttachment(ctx, "ipsec-encrypted-interconnect-attachment", &compute.InterconnectAttachmentArgs{
-//				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
-//				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID(),
-//				Encryption:             pulumi.String("IPSEC"),
-//				IpsecInternalAddresses: pulumi.StringArray{
-//					address.SelfLink,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		address, err := compute.NewAddress(ctx, "address", &compute.AddressArgs{
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
+// 			Address:      pulumi.String("192.168.1.0"),
+// 			PrefixLength: pulumi.Int(29),
+// 			Network:      network.SelfLink,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// 			Network:                     network.Name,
+// 			EncryptedInterconnectRouter: pulumi.Bool(true),
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(16550),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInterconnectAttachment(ctx, "ipsec-encrypted-interconnect-attachment", &compute.InterconnectAttachmentArgs{
+// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+// 			Type:                   pulumi.String("PARTNER"),
+// 			Router:                 router.ID(),
+// 			Encryption:             pulumi.String("IPSEC"),
+// 			IpsecInternalAddresses: pulumi.StringArray{
+// 				address.SelfLink,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # InterconnectAttachment can be imported using any of these accepted formats
+// InterconnectAttachment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
-//
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
-//
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
 // ```
 type InterconnectAttachment struct {
 	pulumi.CustomResourceState
@@ -733,7 +719,7 @@ func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx c
 // InterconnectAttachmentArrayInput is an input type that accepts InterconnectAttachmentArray and InterconnectAttachmentArrayOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentArrayInput` via:
 //
-//	InterconnectAttachmentArray{ InterconnectAttachmentArgs{...} }
+//          InterconnectAttachmentArray{ InterconnectAttachmentArgs{...} }
 type InterconnectAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -758,7 +744,7 @@ func (i InterconnectAttachmentArray) ToInterconnectAttachmentArrayOutputWithCont
 // InterconnectAttachmentMapInput is an input type that accepts InterconnectAttachmentMap and InterconnectAttachmentMapOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentMapInput` via:
 //
-//	InterconnectAttachmentMap{ "key": InterconnectAttachmentArgs{...} }
+//          InterconnectAttachmentMap{ "key": InterconnectAttachmentArgs{...} }
 type InterconnectAttachmentMapInput interface {
 	pulumi.Input
 

@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+//     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 //
 // ## Example Usage
 // ### Apigateway Gateway Basic
@@ -26,85 +26,74 @@ import (
 // package main
 //
 // import (
+// 	"encoding/base64"
+// 	"io/ioutil"
 //
-//	"encoding/base64"
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
-//		if fileData, err := ioutil.ReadFile(path); err == nil {
-//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			apiGwApi, err := apigateway.NewApi(ctx, "apiGwApi", &apigateway.ApiArgs{
-//				ApiId: pulumi.String("api-gw"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			apiGwApiConfig, err := apigateway.NewApiConfig(ctx, "apiGwApiConfig", &apigateway.ApiConfigArgs{
-//				Api:         apiGwApi.ApiId,
-//				ApiConfigId: pulumi.String("config"),
-//				OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
-//					&apigateway.ApiConfigOpenapiDocumentArgs{
-//						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
-//							Path:     pulumi.String("spec.yaml"),
-//							Contents: filebase64OrPanic("test-fixtures/apigateway/openapi.yaml"),
-//						},
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigateway.NewGateway(ctx, "apiGwGateway", &apigateway.GatewayArgs{
-//				ApiConfig: apiGwApiConfig.ID(),
-//				GatewayId: pulumi.String("api-gw"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		apiGwApi, err := apigateway.NewApi(ctx, "apiGwApi", &apigateway.ApiArgs{
+// 			ApiId: pulumi.String("api-gw"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		apiGwApiConfig, err := apigateway.NewApiConfig(ctx, "apiGwApiConfig", &apigateway.ApiConfigArgs{
+// 			Api:         apiGwApi.ApiId,
+// 			ApiConfigId: pulumi.String("config"),
+// 			OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
+// 				&apigateway.ApiConfigOpenapiDocumentArgs{
+// 					Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
+// 						Path:     pulumi.String("spec.yaml"),
+// 						Contents: filebase64OrPanic("test-fixtures/apigateway/openapi.yaml"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigateway.NewGateway(ctx, "apiGwGateway", &apigateway.GatewayArgs{
+// 			ApiConfig: apiGwApiConfig.ID(),
+// 			GatewayId: pulumi.String("api-gw"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Gateway can be imported using any of these accepted formats
+// Gateway can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
-//
+//  $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
-//
+//  $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
-//
+//  $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
-//
+//  $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState
@@ -270,7 +259,7 @@ func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput 
 // GatewayArrayInput is an input type that accepts GatewayArray and GatewayArrayOutput values.
 // You can construct a concrete instance of `GatewayArrayInput` via:
 //
-//	GatewayArray{ GatewayArgs{...} }
+//          GatewayArray{ GatewayArgs{...} }
 type GatewayArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +284,7 @@ func (i GatewayArray) ToGatewayArrayOutputWithContext(ctx context.Context) Gatew
 // GatewayMapInput is an input type that accepts GatewayMap and GatewayMapOutput values.
 // You can construct a concrete instance of `GatewayMapInput` via:
 //
-//	GatewayMap{ "key": GatewayArgs{...} }
+//          GatewayMap{ "key": GatewayArgs{...} }
 type GatewayMapInput interface {
 	pulumi.Input
 

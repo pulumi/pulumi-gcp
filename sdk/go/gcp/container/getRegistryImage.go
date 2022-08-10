@@ -20,25 +20,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			debian, err := container.GetRegistryImage(ctx, &container.GetRegistryImageArgs{
-//				Name: "debian",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gcrLocation", debian.ImageUrl)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		debian, err := container.GetRegistryImage(ctx, &container.GetRegistryImageArgs{
+// 			Name: "debian",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("gcrLocation", debian.ImageUrl)
+// 		return nil
+// 	})
+// }
 // ```
 func GetRegistryImage(ctx *pulumi.Context, args *GetRegistryImageArgs, opts ...pulumi.InvokeOption) (*GetRegistryImageResult, error) {
 	var rv GetRegistryImageResult

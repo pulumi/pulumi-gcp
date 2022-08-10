@@ -27,42 +27,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/iap.httpsResourceAccessor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.NewAppEngineVersionIamPolicy(ctx, "policy", &iap.AppEngineVersionIamPolicyArgs{
-//				Project:    pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				AppId:      pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Service:    pulumi.Any(google_app_engine_standard_app_version.Version.Service),
-//				VersionId:  pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/iap.httpsResourceAccessor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.NewAppEngineVersionIamPolicy(ctx, "policy", &iap.AppEngineVersionIamPolicyArgs{
+// 			Project:    pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			AppId:      pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Service:    pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			VersionId:  pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -71,47 +68,44 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/iap.httpsResourceAccessor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//						Condition: organizations.GetIAMPolicyBindingCondition{
-//							Title:       "expires_after_2019_12_31",
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.NewAppEngineVersionIamPolicy(ctx, "policy", &iap.AppEngineVersionIamPolicyArgs{
-//				Project:    pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				AppId:      pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Service:    pulumi.Any(google_app_engine_standard_app_version.Version.Service),
-//				VersionId:  pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/iap.httpsResourceAccessor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 					Condition: organizations.GetIAMPolicyBindingCondition{
+// 						Title:       "expires_after_2019_12_31",
+// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.NewAppEngineVersionIamPolicy(ctx, "policy", &iap.AppEngineVersionIamPolicyArgs{
+// 			Project:    pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			AppId:      pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Service:    pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			VersionId:  pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ## google\_iap\_app\_engine\_version\_iam\_binding
 //
@@ -119,31 +113,28 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewAppEngineVersionIamBinding(ctx, "binding", &iap.AppEngineVersionIamBindingArgs{
-//				AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
-//				Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
-//				VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineVersionIamBinding(ctx, "binding", &iap.AppEngineVersionIamBindingArgs{
+// 			AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -152,36 +143,33 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewAppEngineVersionIamBinding(ctx, "binding", &iap.AppEngineVersionIamBindingArgs{
-//				AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Condition: &iap.AppEngineVersionIamBindingConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
-//				Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
-//				VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineVersionIamBinding(ctx, "binding", &iap.AppEngineVersionIamBindingArgs{
+// 			AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Condition: &iap.AppEngineVersionIamBindingConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ## google\_iap\_app\_engine\_version\_iam\_member
 //
@@ -189,29 +177,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewAppEngineVersionIamMember(ctx, "member", &iap.AppEngineVersionIamMemberArgs{
-//				AppId:     pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Member:    pulumi.String("user:jane@example.com"),
-//				Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
-//				Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
-//				VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineVersionIamMember(ctx, "member", &iap.AppEngineVersionIamMemberArgs{
+// 			AppId:     pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Member:    pulumi.String("user:jane@example.com"),
+// 			Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -220,34 +205,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewAppEngineVersionIamMember(ctx, "member", &iap.AppEngineVersionIamMemberArgs{
-//				AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Condition: &iap.AppEngineVersionIamMemberConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
-//				Member:    pulumi.String("user:jane@example.com"),
-//				Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
-//				Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
-//				Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
-//				VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineVersionIamMember(ctx, "member", &iap.AppEngineVersionIamMemberArgs{
+// 			AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Condition: &iap.AppEngineVersionIamMemberConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Member:    pulumi.String("user:jane@example.com"),
+// 			Project:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:      pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service:   pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			VersionId: pulumi.Any(google_app_engine_standard_app_version.Version.Version_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -255,28 +237,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} * {{project}}/{{appId}}/{{service}}/{{versionId}} * {{appId}}/{{service}}/{{versionId}} * {{version}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy appengineversion IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor user:jane@example.com"
-//
+//  $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor"
-//
+//  $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} roles/iap.httpsResourceAccessor"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}}
-//
+//  $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AppEngineVersionIamBinding struct {
@@ -461,7 +437,7 @@ func (i *AppEngineVersionIamBinding) ToAppEngineVersionIamBindingOutputWithConte
 // AppEngineVersionIamBindingArrayInput is an input type that accepts AppEngineVersionIamBindingArray and AppEngineVersionIamBindingArrayOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamBindingArrayInput` via:
 //
-//	AppEngineVersionIamBindingArray{ AppEngineVersionIamBindingArgs{...} }
+//          AppEngineVersionIamBindingArray{ AppEngineVersionIamBindingArgs{...} }
 type AppEngineVersionIamBindingArrayInput interface {
 	pulumi.Input
 
@@ -486,7 +462,7 @@ func (i AppEngineVersionIamBindingArray) ToAppEngineVersionIamBindingArrayOutput
 // AppEngineVersionIamBindingMapInput is an input type that accepts AppEngineVersionIamBindingMap and AppEngineVersionIamBindingMapOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamBindingMapInput` via:
 //
-//	AppEngineVersionIamBindingMap{ "key": AppEngineVersionIamBindingArgs{...} }
+//          AppEngineVersionIamBindingMap{ "key": AppEngineVersionIamBindingArgs{...} }
 type AppEngineVersionIamBindingMapInput interface {
 	pulumi.Input
 

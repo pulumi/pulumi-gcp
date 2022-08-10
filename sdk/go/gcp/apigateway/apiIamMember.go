@@ -27,40 +27,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/apigateway.viewer",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigateway.NewApiIamPolicy(ctx, "policy", &apigateway.ApiIamPolicyArgs{
-//				Project:    pulumi.Any(google_api_gateway_api.Api.Project),
-//				Api:        pulumi.Any(google_api_gateway_api.Api.Api_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/apigateway.viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigateway.NewApiIamPolicy(ctx, "policy", &apigateway.ApiIamPolicyArgs{
+// 			Project:    pulumi.Any(google_api_gateway_api.Api.Project),
+// 			Api:        pulumi.Any(google_api_gateway_api.Api.Api_id),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_api\_gateway\_api\_iam\_binding
@@ -69,29 +66,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewApiIamBinding(ctx, "binding", &apigateway.ApiIamBindingArgs{
-//				Project: pulumi.Any(google_api_gateway_api.Api.Project),
-//				Api:     pulumi.Any(google_api_gateway_api.Api.Api_id),
-//				Role:    pulumi.String("roles/apigateway.viewer"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := apigateway.NewApiIamBinding(ctx, "binding", &apigateway.ApiIamBindingArgs{
+// 			Project: pulumi.Any(google_api_gateway_api.Api.Project),
+// 			Api:     pulumi.Any(google_api_gateway_api.Api.Api_id),
+// 			Role:    pulumi.String("roles/apigateway.viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_api\_gateway\_api\_iam\_member
@@ -100,27 +94,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewApiIamMember(ctx, "member", &apigateway.ApiIamMemberArgs{
-//				Project: pulumi.Any(google_api_gateway_api.Api.Project),
-//				Api:     pulumi.Any(google_api_gateway_api.Api.Api_id),
-//				Role:    pulumi.String("roles/apigateway.viewer"),
-//				Member:  pulumi.String("user:jane@example.com"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := apigateway.NewApiIamMember(ctx, "member", &apigateway.ApiIamMemberArgs{
+// 			Project: pulumi.Any(google_api_gateway_api.Api.Project),
+// 			Api:     pulumi.Any(google_api_gateway_api.Api.Api_id),
+// 			Role:    pulumi.String("roles/apigateway.viewer"),
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -128,28 +119,22 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}} * {{project}}/{{api}} * {{api}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway api IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/apiIamMember:ApiIamMember editor "projects/{{project}}/locations/global/apis/{{api}} roles/apigateway.viewer user:jane@example.com"
-//
+//  $ pulumi import gcp:apigateway/apiIamMember:ApiIamMember editor "projects/{{project}}/locations/global/apis/{{api}} roles/apigateway.viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/apiIamMember:ApiIamMember editor "projects/{{project}}/locations/global/apis/{{api}} roles/apigateway.viewer"
-//
+//  $ pulumi import gcp:apigateway/apiIamMember:ApiIamMember editor "projects/{{project}}/locations/global/apis/{{api}} roles/apigateway.viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+//  IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/apiIamMember:ApiIamMember editor projects/{{project}}/locations/global/apis/{{api}}
-//
+//  $ pulumi import gcp:apigateway/apiIamMember:ApiIamMember editor projects/{{project}}/locations/global/apis/{{api}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ApiIamMember struct {
@@ -293,7 +278,7 @@ func (i *ApiIamMember) ToApiIamMemberOutputWithContext(ctx context.Context) ApiI
 // ApiIamMemberArrayInput is an input type that accepts ApiIamMemberArray and ApiIamMemberArrayOutput values.
 // You can construct a concrete instance of `ApiIamMemberArrayInput` via:
 //
-//	ApiIamMemberArray{ ApiIamMemberArgs{...} }
+//          ApiIamMemberArray{ ApiIamMemberArgs{...} }
 type ApiIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -318,7 +303,7 @@ func (i ApiIamMemberArray) ToApiIamMemberArrayOutputWithContext(ctx context.Cont
 // ApiIamMemberMapInput is an input type that accepts ApiIamMemberMap and ApiIamMemberMapOutput values.
 // You can construct a concrete instance of `ApiIamMemberMapInput` via:
 //
-//	ApiIamMemberMap{ "key": ApiIamMemberArgs{...} }
+//          ApiIamMemberMap{ "key": ApiIamMemberArgs{...} }
 type ApiIamMemberMapInput interface {
 	pulumi.Input
 

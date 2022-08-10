@@ -17,53 +17,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiMetadataStore(ctx, "store", &vertex.AiMetadataStoreArgs{
-//				Description: pulumi.String("Store to test the terraform module"),
-//				Region:      pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vertex.NewAiMetadataStore(ctx, "store", &vertex.AiMetadataStoreArgs{
+// 			Description: pulumi.String("Store to test the terraform module"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # MetadataStore can be imported using any of these accepted formats
+// MetadataStore can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
-//
+//  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
-//
+//  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
 // ```
 type AiMetadataStore struct {
 	pulumi.CustomResourceState
@@ -225,7 +214,7 @@ func (i *AiMetadataStore) ToAiMetadataStoreOutputWithContext(ctx context.Context
 // AiMetadataStoreArrayInput is an input type that accepts AiMetadataStoreArray and AiMetadataStoreArrayOutput values.
 // You can construct a concrete instance of `AiMetadataStoreArrayInput` via:
 //
-//	AiMetadataStoreArray{ AiMetadataStoreArgs{...} }
+//          AiMetadataStoreArray{ AiMetadataStoreArgs{...} }
 type AiMetadataStoreArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +239,7 @@ func (i AiMetadataStoreArray) ToAiMetadataStoreArrayOutputWithContext(ctx contex
 // AiMetadataStoreMapInput is an input type that accepts AiMetadataStoreMap and AiMetadataStoreMapOutput values.
 // You can construct a concrete instance of `AiMetadataStoreMapInput` via:
 //
-//	AiMetadataStoreMap{ "key": AiMetadataStoreArgs{...} }
+//          AiMetadataStoreMap{ "key": AiMetadataStoreArgs{...} }
 type AiMetadataStoreMapInput interface {
 	pulumi.Input
 

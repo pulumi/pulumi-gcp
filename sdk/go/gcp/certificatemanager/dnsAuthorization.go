@@ -19,24 +19,18 @@ import (
 //
 // ## Import
 //
-// # DnsAuthorization can be imported using any of these accepted formats
+// DnsAuthorization can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
-//
+//  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
 // ```
 type DnsAuthorization struct {
 	pulumi.CustomResourceState
@@ -201,7 +195,7 @@ func (i *DnsAuthorization) ToDnsAuthorizationOutputWithContext(ctx context.Conte
 // DnsAuthorizationArrayInput is an input type that accepts DnsAuthorizationArray and DnsAuthorizationArrayOutput values.
 // You can construct a concrete instance of `DnsAuthorizationArrayInput` via:
 //
-//	DnsAuthorizationArray{ DnsAuthorizationArgs{...} }
+//          DnsAuthorizationArray{ DnsAuthorizationArgs{...} }
 type DnsAuthorizationArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +220,7 @@ func (i DnsAuthorizationArray) ToDnsAuthorizationArrayOutputWithContext(ctx cont
 // DnsAuthorizationMapInput is an input type that accepts DnsAuthorizationMap and DnsAuthorizationMapOutput values.
 // You can construct a concrete instance of `DnsAuthorizationMapInput` via:
 //
-//	DnsAuthorizationMap{ "key": DnsAuthorizationArgs{...} }
+//          DnsAuthorizationMap{ "key": DnsAuthorizationArgs{...} }
 type DnsAuthorizationMapInput interface {
 	pulumi.Input
 

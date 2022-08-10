@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
+//     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 //
 // ## Example Usage
 // ### Apigateway Api Config Basic
@@ -26,72 +26,63 @@ import (
 // package main
 //
 // import (
+// 	"encoding/base64"
+// 	"io/ioutil"
 //
-//	"encoding/base64"
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
-//		if fileData, err := ioutil.ReadFile(path); err == nil {
-//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			apiCfgApi, err := apigateway.NewApi(ctx, "apiCfgApi", &apigateway.ApiArgs{
-//				ApiId: pulumi.String("api-cfg"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigateway.NewApiConfig(ctx, "apiCfgApiConfig", &apigateway.ApiConfigArgs{
-//				Api:         apiCfgApi.ApiId,
-//				ApiConfigId: pulumi.String("cfg"),
-//				OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
-//					&apigateway.ApiConfigOpenapiDocumentArgs{
-//						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
-//							Path:     pulumi.String("spec.yaml"),
-//							Contents: filebase64OrPanic("test-fixtures/apigateway/openapi.yaml"),
-//						},
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		apiCfgApi, err := apigateway.NewApi(ctx, "apiCfgApi", &apigateway.ApiArgs{
+// 			ApiId: pulumi.String("api-cfg"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = apigateway.NewApiConfig(ctx, "apiCfgApiConfig", &apigateway.ApiConfigArgs{
+// 			Api:         apiCfgApi.ApiId,
+// 			ApiConfigId: pulumi.String("cfg"),
+// 			OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
+// 				&apigateway.ApiConfigOpenapiDocumentArgs{
+// 					Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
+// 						Path:     pulumi.String("spec.yaml"),
+// 						Contents: filebase64OrPanic("test-fixtures/apigateway/openapi.yaml"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ApiConfig can be imported using any of these accepted formats
+// ApiConfig can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
-//
+//  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
-//
+//  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
-//
+//  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
 // ```
 type ApiConfig struct {
 	pulumi.CustomResourceState
@@ -324,7 +315,7 @@ func (i *ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigO
 // ApiConfigArrayInput is an input type that accepts ApiConfigArray and ApiConfigArrayOutput values.
 // You can construct a concrete instance of `ApiConfigArrayInput` via:
 //
-//	ApiConfigArray{ ApiConfigArgs{...} }
+//          ApiConfigArray{ ApiConfigArgs{...} }
 type ApiConfigArrayInput interface {
 	pulumi.Input
 
@@ -349,7 +340,7 @@ func (i ApiConfigArray) ToApiConfigArrayOutputWithContext(ctx context.Context) A
 // ApiConfigMapInput is an input type that accepts ApiConfigMap and ApiConfigMapOutput values.
 // You can construct a concrete instance of `ApiConfigMapInput` via:
 //
-//	ApiConfigMap{ "key": ApiConfigArgs{...} }
+//          ApiConfigMap{ "key": ApiConfigArgs{...} }
 type ApiConfigMapInput interface {
 	pulumi.Input
 

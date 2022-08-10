@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.schemas)
 // * How-to Guides
-//   - [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
+//     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
 //
 // ## Example Usage
 // ### Pubsub Schema Basic
@@ -26,43 +26,39 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
-//				Definition: pulumi.String(fmt.Sprintf(`{
-//	  "type" : "record",
-//	  "name" : "Avro",
-//	  "fields" : [
-//	    {
-//	      "name" : "StringField",
-//	      "type" : "string"
-//	    },
-//	    {
-//	      "name" : "IntField",
-//	      "type" : "int"
-//	    }
-//	  ]
-//	}
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
+// 			Definition: pulumi.String(fmt.Sprintf(`{
+//   "type" : "record",
+//   "name" : "Avro",
+//   "fields" : [
+//     {
+//       "name" : "StringField",
+//       "type" : "string"
+//     },
+//     {
+//       "name" : "IntField",
+//       "type" : "int"
+//     }
+//   ]
+// }
 //
 // `)),
-//
-//				Type: pulumi.String("AVRO"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// 			Type: pulumi.String("AVRO"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Pubsub Schema Protobuf
 //
@@ -70,58 +66,49 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
-//				Type:       pulumi.String("PROTOCOL_BUFFER"),
-//				Definition: pulumi.String("syntax = \"proto3\";\nmessage Results {\nstring message_request = 1;\nstring message_response = 2;\nstring timestamp_request = 3;\nstring timestamp_response = 4;\n}"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
-//				SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
-//					Schema:   pulumi.String("projects/my-project-name/schemas/example"),
-//					Encoding: pulumi.String("JSON"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleSchema,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
+// 			Type:       pulumi.String("PROTOCOL_BUFFER"),
+// 			Definition: pulumi.String("syntax = \"proto3\";\nmessage Results {\nstring message_request = 1;\nstring message_response = 2;\nstring timestamp_request = 3;\nstring timestamp_response = 4;\n}"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+// 			SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
+// 				Schema:   pulumi.String("projects/my-project-name/schemas/example"),
+// 				Encoding: pulumi.String("JSON"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			exampleSchema,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Schema can be imported using any of these accepted formats
+// Schema can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
-//
+//  $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:pubsub/schema:Schema default {{name}}
-//
+//  $ pulumi import gcp:pubsub/schema:Schema default {{name}}
 // ```
 type Schema struct {
 	pulumi.CustomResourceState
@@ -264,7 +251,7 @@ func (i *Schema) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 // SchemaArrayInput is an input type that accepts SchemaArray and SchemaArrayOutput values.
 // You can construct a concrete instance of `SchemaArrayInput` via:
 //
-//	SchemaArray{ SchemaArgs{...} }
+//          SchemaArray{ SchemaArgs{...} }
 type SchemaArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +276,7 @@ func (i SchemaArray) ToSchemaArrayOutputWithContext(ctx context.Context) SchemaA
 // SchemaMapInput is an input type that accepts SchemaMap and SchemaMapOutput values.
 // You can construct a concrete instance of `SchemaMapInput` via:
 //
-//	SchemaMap{ "key": SchemaArgs{...} }
+//          SchemaMap{ "key": SchemaArgs{...} }
 type SchemaMapInput interface {
 	pulumi.Input
 

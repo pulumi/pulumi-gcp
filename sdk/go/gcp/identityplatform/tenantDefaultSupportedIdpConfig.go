@@ -24,56 +24,47 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
-//				DisplayName: pulumi.String("tenant"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = identityplatform.NewTenantDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.TenantDefaultSupportedIdpConfigArgs{
-//				Enabled:      pulumi.Bool(true),
-//				Tenant:       tenant.Name,
-//				IdpId:        pulumi.String("playgames.google.com"),
-//				ClientId:     pulumi.String("my-client-id"),
-//				ClientSecret: pulumi.String("secret"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+// 			DisplayName: pulumi.String("tenant"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = identityplatform.NewTenantDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.TenantDefaultSupportedIdpConfigArgs{
+// 			Enabled:      pulumi.Bool(true),
+// 			Tenant:       tenant.Name,
+// 			IdpId:        pulumi.String("playgames.google.com"),
+// 			ClientId:     pulumi.String("my-client-id"),
+// 			ClientSecret: pulumi.String("secret"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats
+// TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
-//
+//  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
-//
+//  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
-//
+//  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
 // ```
 type TenantDefaultSupportedIdpConfig struct {
 	pulumi.CustomResourceState
@@ -284,7 +275,7 @@ func (i *TenantDefaultSupportedIdpConfig) ToTenantDefaultSupportedIdpConfigOutpu
 // TenantDefaultSupportedIdpConfigArrayInput is an input type that accepts TenantDefaultSupportedIdpConfigArray and TenantDefaultSupportedIdpConfigArrayOutput values.
 // You can construct a concrete instance of `TenantDefaultSupportedIdpConfigArrayInput` via:
 //
-//	TenantDefaultSupportedIdpConfigArray{ TenantDefaultSupportedIdpConfigArgs{...} }
+//          TenantDefaultSupportedIdpConfigArray{ TenantDefaultSupportedIdpConfigArgs{...} }
 type TenantDefaultSupportedIdpConfigArrayInput interface {
 	pulumi.Input
 
@@ -309,7 +300,7 @@ func (i TenantDefaultSupportedIdpConfigArray) ToTenantDefaultSupportedIdpConfigA
 // TenantDefaultSupportedIdpConfigMapInput is an input type that accepts TenantDefaultSupportedIdpConfigMap and TenantDefaultSupportedIdpConfigMapOutput values.
 // You can construct a concrete instance of `TenantDefaultSupportedIdpConfigMapInput` via:
 //
-//	TenantDefaultSupportedIdpConfigMap{ "key": TenantDefaultSupportedIdpConfigArgs{...} }
+//          TenantDefaultSupportedIdpConfigMap{ "key": TenantDefaultSupportedIdpConfigArgs{...} }
 type TenantDefaultSupportedIdpConfigMapInput interface {
 	pulumi.Input
 

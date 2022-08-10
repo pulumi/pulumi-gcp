@@ -19,7 +19,7 @@ type SecretIamBindingCondition struct {
 // SecretIamBindingConditionInput is an input type that accepts SecretIamBindingConditionArgs and SecretIamBindingConditionOutput values.
 // You can construct a concrete instance of `SecretIamBindingConditionInput` via:
 //
-//	SecretIamBindingConditionArgs{...}
+//          SecretIamBindingConditionArgs{...}
 type SecretIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i SecretIamBindingConditionArgs) ToSecretIamBindingConditionPtrOutputWithC
 // SecretIamBindingConditionPtrInput is an input type that accepts SecretIamBindingConditionArgs, SecretIamBindingConditionPtr and SecretIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `SecretIamBindingConditionPtrInput` via:
 //
-//	        SecretIamBindingConditionArgs{...}
+//          SecretIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SecretIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type SecretIamMemberCondition struct {
 // SecretIamMemberConditionInput is an input type that accepts SecretIamMemberConditionArgs and SecretIamMemberConditionOutput values.
 // You can construct a concrete instance of `SecretIamMemberConditionInput` via:
 //
-//	SecretIamMemberConditionArgs{...}
+//          SecretIamMemberConditionArgs{...}
 type SecretIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -219,11 +219,11 @@ func (i SecretIamMemberConditionArgs) ToSecretIamMemberConditionPtrOutputWithCon
 // SecretIamMemberConditionPtrInput is an input type that accepts SecretIamMemberConditionArgs, SecretIamMemberConditionPtr and SecretIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `SecretIamMemberConditionPtrInput` via:
 //
-//	        SecretIamMemberConditionArgs{...}
+//          SecretIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SecretIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type SecretReplication struct {
 // SecretReplicationInput is an input type that accepts SecretReplicationArgs and SecretReplicationOutput values.
 // You can construct a concrete instance of `SecretReplicationInput` via:
 //
-//	SecretReplicationArgs{...}
+//          SecretReplicationArgs{...}
 type SecretReplicationInput interface {
 	pulumi.Input
 
@@ -386,11 +386,11 @@ func (i SecretReplicationArgs) ToSecretReplicationPtrOutputWithContext(ctx conte
 // SecretReplicationPtrInput is an input type that accepts SecretReplicationArgs, SecretReplicationPtr and SecretReplicationPtrOutput values.
 // You can construct a concrete instance of `SecretReplicationPtrInput` via:
 //
-//	        SecretReplicationArgs{...}
+//          SecretReplicationArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SecretReplicationPtrInput interface {
 	pulumi.Input
 
@@ -505,7 +505,7 @@ type SecretReplicationUserManaged struct {
 // SecretReplicationUserManagedInput is an input type that accepts SecretReplicationUserManagedArgs and SecretReplicationUserManagedOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedInput` via:
 //
-//	SecretReplicationUserManagedArgs{...}
+//          SecretReplicationUserManagedArgs{...}
 type SecretReplicationUserManagedInput interface {
 	pulumi.Input
 
@@ -542,11 +542,11 @@ func (i SecretReplicationUserManagedArgs) ToSecretReplicationUserManagedPtrOutpu
 // SecretReplicationUserManagedPtrInput is an input type that accepts SecretReplicationUserManagedArgs, SecretReplicationUserManagedPtr and SecretReplicationUserManagedPtrOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedPtrInput` via:
 //
-//	        SecretReplicationUserManagedArgs{...}
+//          SecretReplicationUserManagedArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SecretReplicationUserManagedPtrInput interface {
 	pulumi.Input
 
@@ -648,7 +648,7 @@ type SecretReplicationUserManagedReplica struct {
 // SecretReplicationUserManagedReplicaInput is an input type that accepts SecretReplicationUserManagedReplicaArgs and SecretReplicationUserManagedReplicaOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaInput` via:
 //
-//	SecretReplicationUserManagedReplicaArgs{...}
+//          SecretReplicationUserManagedReplicaArgs{...}
 type SecretReplicationUserManagedReplicaInput interface {
 	pulumi.Input
 
@@ -679,7 +679,7 @@ func (i SecretReplicationUserManagedReplicaArgs) ToSecretReplicationUserManagedR
 // SecretReplicationUserManagedReplicaArrayInput is an input type that accepts SecretReplicationUserManagedReplicaArray and SecretReplicationUserManagedReplicaArrayOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaArrayInput` via:
 //
-//	SecretReplicationUserManagedReplicaArray{ SecretReplicationUserManagedReplicaArgs{...} }
+//          SecretReplicationUserManagedReplicaArray{ SecretReplicationUserManagedReplicaArgs{...} }
 type SecretReplicationUserManagedReplicaArrayInput interface {
 	pulumi.Input
 
@@ -756,7 +756,7 @@ type SecretReplicationUserManagedReplicaCustomerManagedEncryption struct {
 // SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput is an input type that accepts SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs and SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput` via:
 //
-//	SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
+//          SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
 type SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput interface {
 	pulumi.Input
 
@@ -792,11 +792,11 @@ func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecr
 // SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput is an input type that accepts SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs, SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtr and SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput` via:
 //
-//	        SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
+//          SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrInput interface {
 	pulumi.Input
 
@@ -897,7 +897,7 @@ type SecretRotation struct {
 // SecretRotationInput is an input type that accepts SecretRotationArgs and SecretRotationOutput values.
 // You can construct a concrete instance of `SecretRotationInput` via:
 //
-//	SecretRotationArgs{...}
+//          SecretRotationArgs{...}
 type SecretRotationInput interface {
 	pulumi.Input
 
@@ -937,11 +937,11 @@ func (i SecretRotationArgs) ToSecretRotationPtrOutputWithContext(ctx context.Con
 // SecretRotationPtrInput is an input type that accepts SecretRotationArgs, SecretRotationPtr and SecretRotationPtrOutput values.
 // You can construct a concrete instance of `SecretRotationPtrInput` via:
 //
-//	        SecretRotationArgs{...}
+//          SecretRotationArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type SecretRotationPtrInput interface {
 	pulumi.Input
 
@@ -1058,7 +1058,7 @@ type SecretTopic struct {
 // SecretTopicInput is an input type that accepts SecretTopicArgs and SecretTopicOutput values.
 // You can construct a concrete instance of `SecretTopicInput` via:
 //
-//	SecretTopicArgs{...}
+//          SecretTopicArgs{...}
 type SecretTopicInput interface {
 	pulumi.Input
 
@@ -1087,7 +1087,7 @@ func (i SecretTopicArgs) ToSecretTopicOutputWithContext(ctx context.Context) Sec
 // SecretTopicArrayInput is an input type that accepts SecretTopicArray and SecretTopicArrayOutput values.
 // You can construct a concrete instance of `SecretTopicArrayInput` via:
 //
-//	SecretTopicArray{ SecretTopicArgs{...} }
+//          SecretTopicArray{ SecretTopicArgs{...} }
 type SecretTopicArrayInput interface {
 	pulumi.Input
 
@@ -1157,7 +1157,7 @@ type GetSecretReplication struct {
 // GetSecretReplicationInput is an input type that accepts GetSecretReplicationArgs and GetSecretReplicationOutput values.
 // You can construct a concrete instance of `GetSecretReplicationInput` via:
 //
-//	GetSecretReplicationArgs{...}
+//          GetSecretReplicationArgs{...}
 type GetSecretReplicationInput interface {
 	pulumi.Input
 
@@ -1185,7 +1185,7 @@ func (i GetSecretReplicationArgs) ToGetSecretReplicationOutputWithContext(ctx co
 // GetSecretReplicationArrayInput is an input type that accepts GetSecretReplicationArray and GetSecretReplicationArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationArrayInput` via:
 //
-//	GetSecretReplicationArray{ GetSecretReplicationArgs{...} }
+//          GetSecretReplicationArray{ GetSecretReplicationArgs{...} }
 type GetSecretReplicationArrayInput interface {
 	pulumi.Input
 
@@ -1256,7 +1256,7 @@ type GetSecretReplicationUserManaged struct {
 // GetSecretReplicationUserManagedInput is an input type that accepts GetSecretReplicationUserManagedArgs and GetSecretReplicationUserManagedOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedInput` via:
 //
-//	GetSecretReplicationUserManagedArgs{...}
+//          GetSecretReplicationUserManagedArgs{...}
 type GetSecretReplicationUserManagedInput interface {
 	pulumi.Input
 
@@ -1283,7 +1283,7 @@ func (i GetSecretReplicationUserManagedArgs) ToGetSecretReplicationUserManagedOu
 // GetSecretReplicationUserManagedArrayInput is an input type that accepts GetSecretReplicationUserManagedArray and GetSecretReplicationUserManagedArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedArrayInput` via:
 //
-//	GetSecretReplicationUserManagedArray{ GetSecretReplicationUserManagedArgs{...} }
+//          GetSecretReplicationUserManagedArray{ GetSecretReplicationUserManagedArgs{...} }
 type GetSecretReplicationUserManagedArrayInput interface {
 	pulumi.Input
 
@@ -1351,7 +1351,7 @@ type GetSecretReplicationUserManagedReplica struct {
 // GetSecretReplicationUserManagedReplicaInput is an input type that accepts GetSecretReplicationUserManagedReplicaArgs and GetSecretReplicationUserManagedReplicaOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaInput` via:
 //
-//	GetSecretReplicationUserManagedReplicaArgs{...}
+//          GetSecretReplicationUserManagedReplicaArgs{...}
 type GetSecretReplicationUserManagedReplicaInput interface {
 	pulumi.Input
 
@@ -1379,7 +1379,7 @@ func (i GetSecretReplicationUserManagedReplicaArgs) ToGetSecretReplicationUserMa
 // GetSecretReplicationUserManagedReplicaArrayInput is an input type that accepts GetSecretReplicationUserManagedReplicaArray and GetSecretReplicationUserManagedReplicaArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaArrayInput` via:
 //
-//	GetSecretReplicationUserManagedReplicaArray{ GetSecretReplicationUserManagedReplicaArgs{...} }
+//          GetSecretReplicationUserManagedReplicaArray{ GetSecretReplicationUserManagedReplicaArgs{...} }
 type GetSecretReplicationUserManagedReplicaArrayInput interface {
 	pulumi.Input
 
@@ -1452,7 +1452,7 @@ type GetSecretReplicationUserManagedReplicaCustomerManagedEncryption struct {
 // GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput is an input type that accepts GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs and GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput` via:
 //
-//	GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
+//          GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...}
 type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput interface {
 	pulumi.Input
 
@@ -1479,7 +1479,7 @@ func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToG
 // GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput is an input type that accepts GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray and GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput` via:
 //
-//	GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray{ GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...} }
+//          GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray{ GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs{...} }
 type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput interface {
 	pulumi.Input
 
@@ -1547,7 +1547,7 @@ type GetSecretRotation struct {
 // GetSecretRotationInput is an input type that accepts GetSecretRotationArgs and GetSecretRotationOutput values.
 // You can construct a concrete instance of `GetSecretRotationInput` via:
 //
-//	GetSecretRotationArgs{...}
+//          GetSecretRotationArgs{...}
 type GetSecretRotationInput interface {
 	pulumi.Input
 
@@ -1575,7 +1575,7 @@ func (i GetSecretRotationArgs) ToGetSecretRotationOutputWithContext(ctx context.
 // GetSecretRotationArrayInput is an input type that accepts GetSecretRotationArray and GetSecretRotationArrayOutput values.
 // You can construct a concrete instance of `GetSecretRotationArrayInput` via:
 //
-//	GetSecretRotationArray{ GetSecretRotationArgs{...} }
+//          GetSecretRotationArray{ GetSecretRotationArgs{...} }
 type GetSecretRotationArrayInput interface {
 	pulumi.Input
 
@@ -1646,7 +1646,7 @@ type GetSecretTopic struct {
 // GetSecretTopicInput is an input type that accepts GetSecretTopicArgs and GetSecretTopicOutput values.
 // You can construct a concrete instance of `GetSecretTopicInput` via:
 //
-//	GetSecretTopicArgs{...}
+//          GetSecretTopicArgs{...}
 type GetSecretTopicInput interface {
 	pulumi.Input
 
@@ -1673,7 +1673,7 @@ func (i GetSecretTopicArgs) ToGetSecretTopicOutputWithContext(ctx context.Contex
 // GetSecretTopicArrayInput is an input type that accepts GetSecretTopicArray and GetSecretTopicArrayOutput values.
 // You can construct a concrete instance of `GetSecretTopicArrayInput` via:
 //
-//	GetSecretTopicArray{ GetSecretTopicArgs{...} }
+//          GetSecretTopicArray{ GetSecretTopicArgs{...} }
 type GetSecretTopicArrayInput interface {
 	pulumi.Input
 

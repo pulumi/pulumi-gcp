@@ -20,25 +20,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
-//				Description:   pulumi.String("The default bucket for media edge test"),
-//				OriginAddress: pulumi.String("gs://media-edge-default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
+// 			Description:   pulumi.String("The default bucket for media edge test"),
+// 			OriginAddress: pulumi.String("gs://media-edge-default"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Network Services Edge Cache Origin Advanced
 //
@@ -46,77 +43,68 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fallback, err := networkservices.NewEdgeCacheOrigin(ctx, "fallback", &networkservices.EdgeCacheOriginArgs{
-//				OriginAddress: pulumi.String("gs://media-edge-fallback"),
-//				Description:   pulumi.String("The default bucket for media edge test"),
-//				MaxAttempts:   pulumi.Int(3),
-//				Protocol:      pulumi.String("HTTP"),
-//				Port:          pulumi.Int(80),
-//				RetryConditions: pulumi.StringArray{
-//					pulumi.String("CONNECT_FAILURE"),
-//					pulumi.String("NOT_FOUND"),
-//					pulumi.String("HTTP_5XX"),
-//					pulumi.String("FORBIDDEN"),
-//				},
-//				Timeout: &networkservices.EdgeCacheOriginTimeoutArgs{
-//					ConnectTimeout:     pulumi.String("10s"),
-//					MaxAttemptsTimeout: pulumi.String("20s"),
-//					ResponseTimeout:    pulumi.String("60s"),
-//					ReadTimeout:        pulumi.String("5s"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
-//				OriginAddress:  pulumi.String("gs://media-edge-default"),
-//				FailoverOrigin: fallback.ID(),
-//				Description:    pulumi.String("The default bucket for media edge test"),
-//				MaxAttempts:    pulumi.Int(2),
-//				Labels: pulumi.StringMap{
-//					"a": pulumi.String("b"),
-//				},
-//				Timeout: &networkservices.EdgeCacheOriginTimeoutArgs{
-//					ConnectTimeout: pulumi.String("10s"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fallback, err := networkservices.NewEdgeCacheOrigin(ctx, "fallback", &networkservices.EdgeCacheOriginArgs{
+// 			OriginAddress: pulumi.String("gs://media-edge-fallback"),
+// 			Description:   pulumi.String("The default bucket for media edge test"),
+// 			MaxAttempts:   pulumi.Int(3),
+// 			Protocol:      pulumi.String("HTTP"),
+// 			Port:          pulumi.Int(80),
+// 			RetryConditions: pulumi.StringArray{
+// 				pulumi.String("CONNECT_FAILURE"),
+// 				pulumi.String("NOT_FOUND"),
+// 				pulumi.String("HTTP_5XX"),
+// 				pulumi.String("FORBIDDEN"),
+// 			},
+// 			Timeout: &networkservices.EdgeCacheOriginTimeoutArgs{
+// 				ConnectTimeout:     pulumi.String("10s"),
+// 				MaxAttemptsTimeout: pulumi.String("20s"),
+// 				ResponseTimeout:    pulumi.String("60s"),
+// 				ReadTimeout:        pulumi.String("5s"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
+// 			OriginAddress:  pulumi.String("gs://media-edge-default"),
+// 			FailoverOrigin: fallback.ID(),
+// 			Description:    pulumi.String("The default bucket for media edge test"),
+// 			MaxAttempts:    pulumi.Int(2),
+// 			Labels: pulumi.StringMap{
+// 				"a": pulumi.String("b"),
+// 			},
+// 			Timeout: &networkservices.EdgeCacheOriginTimeoutArgs{
+// 				ConnectTimeout: pulumi.String("10s"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # EdgeCacheOrigin can be imported using any of these accepted formats
+// EdgeCacheOrigin can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
-//
+//  $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
-//
+//  $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default {{name}}
 // ```
 type EdgeCacheOrigin struct {
 	pulumi.CustomResourceState
@@ -472,7 +460,7 @@ func (i *EdgeCacheOrigin) ToEdgeCacheOriginOutputWithContext(ctx context.Context
 // EdgeCacheOriginArrayInput is an input type that accepts EdgeCacheOriginArray and EdgeCacheOriginArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheOriginArrayInput` via:
 //
-//	EdgeCacheOriginArray{ EdgeCacheOriginArgs{...} }
+//          EdgeCacheOriginArray{ EdgeCacheOriginArgs{...} }
 type EdgeCacheOriginArrayInput interface {
 	pulumi.Input
 
@@ -497,7 +485,7 @@ func (i EdgeCacheOriginArray) ToEdgeCacheOriginArrayOutputWithContext(ctx contex
 // EdgeCacheOriginMapInput is an input type that accepts EdgeCacheOriginMap and EdgeCacheOriginMapOutput values.
 // You can construct a concrete instance of `EdgeCacheOriginMapInput` via:
 //
-//	EdgeCacheOriginMap{ "key": EdgeCacheOriginArgs{...} }
+//          EdgeCacheOriginMap{ "key": EdgeCacheOriginArgs{...} }
 type EdgeCacheOriginMapInput interface {
 	pulumi.Input
 
@@ -604,13 +592,13 @@ func (o EdgeCacheOriginOutput) Protocol() pulumi.StringOutput {
 // retryConditions apply to this origin, and not subsequent failoverOrigin(s),
 // which may specify their own retryConditions and maxAttempts.
 // Valid values are:
-//   - CONNECT_FAILURE: Retry on failures connecting to origins, for example due to connection timeouts.
-//   - HTTP_5XX: Retry if the origin responds with any 5xx response code, or if the origin does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams.
-//   - GATEWAY_ERROR: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-//   - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
-//   - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
-//   - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-//     Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+// - CONNECT_FAILURE: Retry on failures connecting to origins, for example due to connection timeouts.
+// - HTTP_5XX: Retry if the origin responds with any 5xx response code, or if the origin does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams.
+// - GATEWAY_ERROR: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+// - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
+// - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
+// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
+//   Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
 func (o EdgeCacheOriginOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringArrayOutput { return v.RetryConditions }).(pulumi.StringArrayOutput)
 }

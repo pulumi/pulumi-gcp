@@ -16,33 +16,30 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFolder1, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
-//				Folder:             "folders/12345",
-//				LookupOrganization: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myFolder2, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
-//				Folder: "folders/23456",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("myFolder1Organization", myFolder1.Organization)
-//			ctx.Export("myFolder2Parent", myFolder2.Parent)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myFolder1, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
+// 			Folder:             "folders/12345",
+// 			LookupOrganization: pulumi.BoolRef(true),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myFolder2, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
+// 			Folder: "folders/23456",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("myFolder1Organization", myFolder1.Organization)
+// 		ctx.Export("myFolder2Parent", myFolder2.Parent)
+// 		return nil
+// 	})
+// }
 // ```
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	var rv LookupFolderResult

@@ -20,7 +20,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/security-command-center/docs)
+//     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 //
 // ## Example Usage
 // ### Scc Source Basic
@@ -29,42 +29,35 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := securitycenter.NewSource(ctx, "customSource", &securitycenter.SourceArgs{
-//				Description:  pulumi.String("My custom Cloud Security Command Center Finding Source"),
-//				DisplayName:  pulumi.String("My Source"),
-//				Organization: pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := securitycenter.NewSource(ctx, "customSource", &securitycenter.SourceArgs{
+// 			Description:  pulumi.String("My custom Cloud Security Command Center Finding Source"),
+// 			DisplayName:  pulumi.String("My Source"),
+// 			Organization: pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Source can be imported using any of these accepted formats
+// Source can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}
-//
+//  $ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
-//
+//  $ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
 // ```
 type Source struct {
 	pulumi.CustomResourceState
@@ -209,7 +202,7 @@ func (i *Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 // SourceArrayInput is an input type that accepts SourceArray and SourceArrayOutput values.
 // You can construct a concrete instance of `SourceArrayInput` via:
 //
-//	SourceArray{ SourceArgs{...} }
+//          SourceArray{ SourceArgs{...} }
 type SourceArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +227,7 @@ func (i SourceArray) ToSourceArrayOutputWithContext(ctx context.Context) SourceA
 // SourceMapInput is an input type that accepts SourceMap and SourceMapOutput values.
 // You can construct a concrete instance of `SourceMapInput` via:
 //
-//	SourceMap{ "key": SourceArgs{...} }
+//          SourceMap{ "key": SourceArgs{...} }
 type SourceMapInput interface {
 	pulumi.Input
 

@@ -21,31 +21,28 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-//				Name: pulumi.StringRef("generic-tpl-20200107"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-//				Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
-//				MostRecent: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
+// 			Name: pulumi.StringRef("generic-tpl-20200107"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
+// 			Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
+// 			MostRecent: pulumi.BoolRef(true),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupInstanceTemplateResult, error) {
 	var rv LookupInstanceTemplateResult

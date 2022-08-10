@@ -30,7 +30,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+//     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
 // ### Network Endpoint Group
@@ -39,41 +39,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
-//				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
-//				Network:     defaultNetwork.ID(),
-//				Subnetwork:  defaultSubnetwork.ID(),
-//				DefaultPort: pulumi.Int(90),
-//				Zone:        pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+// 			Network:     defaultNetwork.ID(),
+// 			Subnetwork:  defaultSubnetwork.ID(),
+// 			DefaultPort: pulumi.Int(90),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Network Endpoint Group Non Gcp
 //
@@ -81,67 +78,56 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
-//			if err != nil {
-//				return err
-//			}
-//			neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
-//				Network:             _default.ID(),
-//				DefaultPort:         pulumi.Int(90),
-//				Zone:                pulumi.String("us-central1-a"),
-//				NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
-//				NetworkEndpointGroup: neg.Name,
-//				Port:                 neg.DefaultPort,
-//				IpAddress:            pulumi.String("127.0.0.1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewNetwork(ctx, "default", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+// 			Network:             _default.ID(),
+// 			DefaultPort:         pulumi.Int(90),
+// 			Zone:                pulumi.String("us-central1-a"),
+// 			NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
+// 			NetworkEndpointGroup: neg.Name,
+// 			Port:                 neg.DefaultPort,
+// 			IpAddress:            pulumi.String("127.0.0.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # NetworkEndpointGroup can be imported using any of these accepted formats
+// NetworkEndpointGroup can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
-//
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{project}}/{{zone}}/{{name}}
-//
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{project}}/{{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{zone}}/{{name}}
-//
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
-//
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
 // ```
 type NetworkEndpointGroup struct {
 	pulumi.CustomResourceState
@@ -409,7 +395,7 @@ func (i *NetworkEndpointGroup) ToNetworkEndpointGroupOutputWithContext(ctx conte
 // NetworkEndpointGroupArrayInput is an input type that accepts NetworkEndpointGroupArray and NetworkEndpointGroupArrayOutput values.
 // You can construct a concrete instance of `NetworkEndpointGroupArrayInput` via:
 //
-//	NetworkEndpointGroupArray{ NetworkEndpointGroupArgs{...} }
+//          NetworkEndpointGroupArray{ NetworkEndpointGroupArgs{...} }
 type NetworkEndpointGroupArrayInput interface {
 	pulumi.Input
 
@@ -434,7 +420,7 @@ func (i NetworkEndpointGroupArray) ToNetworkEndpointGroupArrayOutputWithContext(
 // NetworkEndpointGroupMapInput is an input type that accepts NetworkEndpointGroupMap and NetworkEndpointGroupMapOutput values.
 // You can construct a concrete instance of `NetworkEndpointGroupMapInput` via:
 //
-//	NetworkEndpointGroupMap{ "key": NetworkEndpointGroupArgs{...} }
+//          NetworkEndpointGroupMap{ "key": NetworkEndpointGroupArgs{...} }
 type NetworkEndpointGroupMapInput interface {
 	pulumi.Input
 

@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+//     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 //
 // ## Example Usage
 // ### Artifact Registry Repository Basic
@@ -26,27 +26,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description:  pulumi.String("example docker repository"),
-//				Format:       pulumi.String("DOCKER"),
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("my-repository"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+// 			Description:  pulumi.String("example docker repository"),
+// 			Format:       pulumi.String("DOCKER"),
+// 			Location:     pulumi.String("us-central1"),
+// 			RepositoryId: pulumi.String("my-repository"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Artifact Registry Repository Cmek
 //
@@ -54,56 +51,45 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Description:  pulumi.String("example docker repository with cmek"),
-//				Format:       pulumi.String("DOCKER"),
-//				KmsKeyName:   pulumi.String("kms-key"),
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("my-repository"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+// 			Description:  pulumi.String("example docker repository with cmek"),
+// 			Format:       pulumi.String("DOCKER"),
+// 			KmsKeyName:   pulumi.String("kms-key"),
+// 			Location:     pulumi.String("us-central1"),
+// 			RepositoryId: pulumi.String("my-repository"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Repository can be imported using any of these accepted formats
+// Repository can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-//
+//  $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-//
+//  $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
-//
+//  $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
-//
+//  $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
 // ```
 type Repository struct {
 	pulumi.CustomResourceState
@@ -360,7 +346,7 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 // RepositoryArrayInput is an input type that accepts RepositoryArray and RepositoryArrayOutput values.
 // You can construct a concrete instance of `RepositoryArrayInput` via:
 //
-//	RepositoryArray{ RepositoryArgs{...} }
+//          RepositoryArray{ RepositoryArgs{...} }
 type RepositoryArrayInput interface {
 	pulumi.Input
 
@@ -385,7 +371,7 @@ func (i RepositoryArray) ToRepositoryArrayOutputWithContext(ctx context.Context)
 // RepositoryMapInput is an input type that accepts RepositoryMap and RepositoryMapOutput values.
 // You can construct a concrete instance of `RepositoryMapInput` via:
 //
-//	RepositoryMap{ "key": RepositoryArgs{...} }
+//          RepositoryMap{ "key": RepositoryArgs{...} }
 type RepositoryMapInput interface {
 	pulumi.Input
 

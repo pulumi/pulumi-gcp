@@ -17,33 +17,30 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				OrgId:     pulumi.String("1234567"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
-//				Project:    myProject.ProjectId,
-//				LocationId: pulumi.String("us-central"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("your-project-id"),
+// 			OrgId:     pulumi.String("1234567"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
+// 			Project:    myProject.ProjectId,
+// 			LocationId: pulumi.String("us-central"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -51,9 +48,7 @@ import (
 // Applications can be imported using the ID of the project the application belongs to, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/application:Application app your-project-id
-//
+//  $ pulumi import gcp:appengine/application:Application app your-project-id
 // ```
 type Application struct {
 	pulumi.CustomResourceState
@@ -276,7 +271,7 @@ func (i *Application) ToApplicationOutputWithContext(ctx context.Context) Applic
 // ApplicationArrayInput is an input type that accepts ApplicationArray and ApplicationArrayOutput values.
 // You can construct a concrete instance of `ApplicationArrayInput` via:
 //
-//	ApplicationArray{ ApplicationArgs{...} }
+//          ApplicationArray{ ApplicationArgs{...} }
 type ApplicationArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +296,7 @@ func (i ApplicationArray) ToApplicationArrayOutputWithContext(ctx context.Contex
 // ApplicationMapInput is an input type that accepts ApplicationMap and ApplicationMapOutput values.
 // You can construct a concrete instance of `ApplicationMapInput` via:
 //
-//	ApplicationMap{ "key": ApplicationArgs{...} }
+//          ApplicationMap{ "key": ApplicationArgs{...} }
 type ApplicationMapInput interface {
 	pulumi.Input
 

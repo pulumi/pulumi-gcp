@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/game-servers/docs)
+//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
 // ### Game Service Deployment Basic
@@ -26,47 +26,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gameservices.NewGameServerDeployment(ctx, "default", &gameservices.GameServerDeploymentArgs{
-//				DeploymentId: pulumi.String("tf-test-deployment"),
-//				Description:  pulumi.String("a deployment description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gameservices.NewGameServerDeployment(ctx, "default", &gameservices.GameServerDeploymentArgs{
+// 			DeploymentId: pulumi.String("tf-test-deployment"),
+// 			Description:  pulumi.String("a deployment description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # GameServerDeployment can be imported using any of these accepted formats
+// GameServerDeployment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default projects/{{project}}/locations/{{location}}/gameServerDeployments/{{deployment_id}}
-//
+//  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default projects/{{project}}/locations/{{location}}/gameServerDeployments/{{deployment_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{project}}/{{location}}/{{deployment_id}}
-//
+//  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{project}}/{{location}}/{{deployment_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{location}}/{{deployment_id}}
-//
+//  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{location}}/{{deployment_id}}
 // ```
 type GameServerDeployment struct {
 	pulumi.CustomResourceState
@@ -219,7 +210,7 @@ func (i *GameServerDeployment) ToGameServerDeploymentOutputWithContext(ctx conte
 // GameServerDeploymentArrayInput is an input type that accepts GameServerDeploymentArray and GameServerDeploymentArrayOutput values.
 // You can construct a concrete instance of `GameServerDeploymentArrayInput` via:
 //
-//	GameServerDeploymentArray{ GameServerDeploymentArgs{...} }
+//          GameServerDeploymentArray{ GameServerDeploymentArgs{...} }
 type GameServerDeploymentArrayInput interface {
 	pulumi.Input
 
@@ -244,7 +235,7 @@ func (i GameServerDeploymentArray) ToGameServerDeploymentArrayOutputWithContext(
 // GameServerDeploymentMapInput is an input type that accepts GameServerDeploymentMap and GameServerDeploymentMapOutput values.
 // You can construct a concrete instance of `GameServerDeploymentMapInput` via:
 //
-//	GameServerDeploymentMap{ "key": GameServerDeploymentArgs{...} }
+//          GameServerDeploymentMap{ "key": GameServerDeploymentArgs{...} }
 type GameServerDeploymentMapInput interface {
 	pulumi.Input
 

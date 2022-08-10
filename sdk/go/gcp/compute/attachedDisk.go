@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
 // * How-to Guides
-//   - [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+//     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 //
 // **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 //
@@ -31,58 +31,51 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
-//				MachineType: pulumi.String("e2-medium"),
-//				Zone:        pulumi.String("us-west1-a"),
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-9"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewAttachedDisk(ctx, "defaultAttachedDisk", &compute.AttachedDiskArgs{
-//				Disk:     pulumi.Any(google_compute_disk.Default.Id),
-//				Instance: defaultInstance.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultInstance, err := compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Zone:        pulumi.String("us-west1-a"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewAttachedDisk(ctx, "defaultAttachedDisk", &compute.AttachedDiskArgs{
+// 			Disk:     pulumi.Any(google_compute_disk.Default.Id),
+// 			Instance: defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Attached Disk can be imported the following ways
+// Attached Disk can be imported the following ways
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
-//
+//  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
-//
+//  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
 // ```
 type AttachedDisk struct {
 	pulumi.CustomResourceState
@@ -281,7 +274,7 @@ func (i *AttachedDisk) ToAttachedDiskOutputWithContext(ctx context.Context) Atta
 // AttachedDiskArrayInput is an input type that accepts AttachedDiskArray and AttachedDiskArrayOutput values.
 // You can construct a concrete instance of `AttachedDiskArrayInput` via:
 //
-//	AttachedDiskArray{ AttachedDiskArgs{...} }
+//          AttachedDiskArray{ AttachedDiskArgs{...} }
 type AttachedDiskArrayInput interface {
 	pulumi.Input
 
@@ -306,7 +299,7 @@ func (i AttachedDiskArray) ToAttachedDiskArrayOutputWithContext(ctx context.Cont
 // AttachedDiskMapInput is an input type that accepts AttachedDiskMap and AttachedDiskMapOutput values.
 // You can construct a concrete instance of `AttachedDiskMapInput` via:
 //
-//	AttachedDiskMap{ "key": AttachedDiskArgs{...} }
+//          AttachedDiskMap{ "key": AttachedDiskArgs{...} }
 type AttachedDiskMapInput interface {
 	pulumi.Input
 

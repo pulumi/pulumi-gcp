@@ -18,34 +18,31 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-//				ProjectId: pulumi.StringRef("foobar"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.LookupClient(ctx, &iap.LookupClientArgs{
-//				Brand:    fmt.Sprintf("projects/%v/brands/[BRAND_NUMBER]", project.Number),
-//				ClientId: FOO.Apps.Googleusercontent.Com,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// 			ProjectId: pulumi.StringRef("foobar"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.LookupClient(ctx, &iap.LookupClientArgs{
+// 			Brand:    fmt.Sprintf("projects/%v/brands/[BRAND_NUMBER]", project.Number),
+// 			ClientId: FOO.Apps.Googleusercontent.Com,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	var rv LookupClientResult

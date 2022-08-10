@@ -19,54 +19,51 @@ import (
 // package main
 //
 // import (
+// 	"encoding/base64"
+// 	"io/ioutil"
 //
-//	"encoding/base64"
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/endpoints"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/endpoints"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
-//		if fileData, err := ioutil.ReadFile(path); err == nil {
-//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := endpoints.NewService(ctx, "openapiService", &endpoints.ServiceArgs{
-//				ServiceName:   pulumi.String("api-name.endpoints.project-id.cloud.goog"),
-//				Project:       pulumi.String("project-id"),
-//				OpenapiConfig: readFileOrPanic("openapi_spec.yml"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = endpoints.NewService(ctx, "grpcService", &endpoints.ServiceArgs{
-//				ServiceName:        pulumi.String("api-name.endpoints.project-id.cloud.goog"),
-//				Project:            pulumi.String("project-id"),
-//				GrpcConfig:         readFileOrPanic("service_spec.yml"),
-//				ProtocOutputBase64: filebase64OrPanic("compiled_descriptor_file.pb"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := endpoints.NewService(ctx, "openapiService", &endpoints.ServiceArgs{
+// 			ServiceName:   pulumi.String("api-name.endpoints.project-id.cloud.goog"),
+// 			Project:       pulumi.String("project-id"),
+// 			OpenapiConfig: readFileOrPanic("openapi_spec.yml"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = endpoints.NewService(ctx, "grpcService", &endpoints.ServiceArgs{
+// 			ServiceName:        pulumi.String("api-name.endpoints.project-id.cloud.goog"),
+// 			Project:            pulumi.String("project-id"),
+// 			GrpcConfig:         readFileOrPanic("service_spec.yml"),
+// 			ProtocOutputBase64: filebase64OrPanic("compiled_descriptor_file.pb"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
@@ -245,7 +242,7 @@ func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput 
 // ServiceArrayInput is an input type that accepts ServiceArray and ServiceArrayOutput values.
 // You can construct a concrete instance of `ServiceArrayInput` via:
 //
-//	ServiceArray{ ServiceArgs{...} }
+//          ServiceArray{ ServiceArgs{...} }
 type ServiceArrayInput interface {
 	pulumi.Input
 
@@ -270,7 +267,7 @@ func (i ServiceArray) ToServiceArrayOutputWithContext(ctx context.Context) Servi
 // ServiceMapInput is an input type that accepts ServiceMap and ServiceMapOutput values.
 // You can construct a concrete instance of `ServiceMapInput` via:
 //
-//	ServiceMap{ "key": ServiceArgs{...} }
+//          ServiceMap{ "key": ServiceArgs{...} }
 type ServiceMapInput interface {
 	pulumi.Input
 

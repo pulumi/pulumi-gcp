@@ -24,7 +24,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
 // * How-to Guides
-//   - [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+//     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProject` and set `userProjectOverride` to true
@@ -39,58 +39,53 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
-//				Parent: pulumi.String("organizations/123456789"),
-//				Title:  pulumi.String("my policy"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = accesscontextmanager.NewServicePerimeter(ctx, "service-perimeter-resourceServicePerimeter", &accesscontextmanager.ServicePerimeterArgs{
-//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("accessPolicies/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Title: pulumi.String("restrict_all"),
-//				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
-//					RestrictedServices: pulumi.StringArray{
-//						pulumi.String("storage.googleapis.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = accesscontextmanager.NewServicePerimeterResource(ctx, "service-perimeter-resourceServicePerimeterResource", &accesscontextmanager.ServicePerimeterResourceArgs{
-//				PerimeterName: service_perimeter_resourceServicePerimeter.Name,
-//				Resource:      pulumi.String("projects/987654321"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Title:  pulumi.String("my policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewServicePerimeter(ctx, "service-perimeter-resourceServicePerimeter", &accesscontextmanager.ServicePerimeterArgs{
+// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Title: pulumi.String("restrict_all"),
+// 			Status: &accesscontextmanager.ServicePerimeterStatusArgs{
+// 				RestrictedServices: pulumi.StringArray{
+// 					pulumi.String("storage.googleapis.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewServicePerimeterResource(ctx, "service-perimeter-resourceServicePerimeterResource", &accesscontextmanager.ServicePerimeterResourceArgs{
+// 			PerimeterName: service_perimeter_resourceServicePerimeter.Name,
+// 			Resource:      pulumi.String("projects/987654321"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ServicePerimeterResource can be imported using any of these accepted formats
+// ServicePerimeterResource can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
-//
+//  $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
 // ```
 type ServicePerimeterResource struct {
 	pulumi.CustomResourceState
@@ -204,7 +199,7 @@ func (i *ServicePerimeterResource) ToServicePerimeterResourceOutputWithContext(c
 // ServicePerimeterResourceArrayInput is an input type that accepts ServicePerimeterResourceArray and ServicePerimeterResourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterResourceArrayInput` via:
 //
-//	ServicePerimeterResourceArray{ ServicePerimeterResourceArgs{...} }
+//          ServicePerimeterResourceArray{ ServicePerimeterResourceArgs{...} }
 type ServicePerimeterResourceArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +224,7 @@ func (i ServicePerimeterResourceArray) ToServicePerimeterResourceArrayOutputWith
 // ServicePerimeterResourceMapInput is an input type that accepts ServicePerimeterResourceMap and ServicePerimeterResourceMapOutput values.
 // You can construct a concrete instance of `ServicePerimeterResourceMapInput` via:
 //
-//	ServicePerimeterResourceMap{ "key": ServicePerimeterResourceArgs{...} }
+//          ServicePerimeterResourceMap{ "key": ServicePerimeterResourceArgs{...} }
 type ServicePerimeterResourceMapInput interface {
 	pulumi.Input
 

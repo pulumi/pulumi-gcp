@@ -23,103 +23,92 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
-//				Image: pulumi.String("debian-cloud/debian-9"),
-//				Size:  pulumi.Int(50),
-//				Type:  pulumi.String("pd-ssd"),
-//				Zone:  pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
-//				SourceDisk: disk.Name,
-//				Zone:       pulumi.String("us-central1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ssd, err := compute.NewRegionDisk(ctx, "ssd", &compute.RegionDiskArgs{
-//				ReplicaZones: pulumi.StringArray{
-//					pulumi.String("us-central1-a"),
-//					pulumi.String("us-central1-f"),
-//				},
-//				Snapshot: snapdisk.ID(),
-//				Size:     pulumi.Int(50),
-//				Type:     pulumi.String("pd-ssd"),
-//				Region:   pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionDiskResourcePolicyAttachment(ctx, "attachment", &compute.RegionDiskResourcePolicyAttachmentArgs{
-//				Disk:   ssd.Name,
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
-//				Region: pulumi.String("us-central1"),
-//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
-//						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
-//							DaysInCycle: pulumi.Int(1),
-//							StartTime:   pulumi.String("04:00"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-9"),
-//				Project: pulumi.StringRef("debian-cloud"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+// 			Image: pulumi.String("debian-cloud/debian-9"),
+// 			Size:  pulumi.Int(50),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+// 			SourceDisk: disk.Name,
+// 			Zone:       pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ssd, err := compute.NewRegionDisk(ctx, "ssd", &compute.RegionDiskArgs{
+// 			ReplicaZones: pulumi.StringArray{
+// 				pulumi.String("us-central1-a"),
+// 				pulumi.String("us-central1-f"),
+// 			},
+// 			Snapshot: snapdisk.ID(),
+// 			Size:     pulumi.Int(50),
+// 			Type:     pulumi.String("pd-ssd"),
+// 			Region:   pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionDiskResourcePolicyAttachment(ctx, "attachment", &compute.RegionDiskResourcePolicyAttachmentArgs{
+// 			Disk:   ssd.Name,
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+// 						DaysInCycle: pulumi.Int(1),
+// 						StartTime:   pulumi.String("04:00"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  pulumi.StringRef("debian-9"),
+// 			Project: pulumi.StringRef("debian-cloud"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats
+// RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
 // ```
 type RegionDiskResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -250,7 +239,7 @@ func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmen
 // RegionDiskResourcePolicyAttachmentArrayInput is an input type that accepts RegionDiskResourcePolicyAttachmentArray and RegionDiskResourcePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `RegionDiskResourcePolicyAttachmentArrayInput` via:
 //
-//	RegionDiskResourcePolicyAttachmentArray{ RegionDiskResourcePolicyAttachmentArgs{...} }
+//          RegionDiskResourcePolicyAttachmentArray{ RegionDiskResourcePolicyAttachmentArgs{...} }
 type RegionDiskResourcePolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +264,7 @@ func (i RegionDiskResourcePolicyAttachmentArray) ToRegionDiskResourcePolicyAttac
 // RegionDiskResourcePolicyAttachmentMapInput is an input type that accepts RegionDiskResourcePolicyAttachmentMap and RegionDiskResourcePolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `RegionDiskResourcePolicyAttachmentMapInput` via:
 //
-//	RegionDiskResourcePolicyAttachmentMap{ "key": RegionDiskResourcePolicyAttachmentArgs{...} }
+//          RegionDiskResourcePolicyAttachmentMap{ "key": RegionDiskResourcePolicyAttachmentArgs{...} }
 type RegionDiskResourcePolicyAttachmentMapInput interface {
 	pulumi.Input
 

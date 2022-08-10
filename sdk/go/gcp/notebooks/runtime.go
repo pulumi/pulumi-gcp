@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+//     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
 // ### Notebook Runtime Basic
@@ -30,39 +30,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewRuntime(ctx, "runtime", &notebooks.RuntimeArgs{
-//				AccessConfig: &notebooks.RuntimeAccessConfigArgs{
-//					AccessType:   pulumi.String("SINGLE_USER"),
-//					RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				VirtualMachine: &notebooks.RuntimeVirtualMachineArgs{
-//					VirtualMachineConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs{
-//						DataDisk: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{
-//							InitializeParams: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{
-//								DiskSizeGb: pulumi.Int(100),
-//								DiskType:   pulumi.String("PD_STANDARD"),
-//							},
-//						},
-//						MachineType: pulumi.String("n1-standard-4"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewRuntime(ctx, "runtime", &notebooks.RuntimeArgs{
+// 			AccessConfig: &notebooks.RuntimeAccessConfigArgs{
+// 				AccessType:   pulumi.String("SINGLE_USER"),
+// 				RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			VirtualMachine: &notebooks.RuntimeVirtualMachineArgs{
+// 				VirtualMachineConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs{
+// 					DataDisk: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{
+// 						InitializeParams: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{
+// 							DiskSizeGb: pulumi.Int(100),
+// 							DiskType:   pulumi.String("PD_STANDARD"),
+// 						},
+// 					},
+// 					MachineType: pulumi.String("n1-standard-4"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Notebook Runtime Basic Gpu
 //
@@ -70,46 +67,43 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewRuntime(ctx, "runtimeGpu", &notebooks.RuntimeArgs{
-//				AccessConfig: &notebooks.RuntimeAccessConfigArgs{
-//					AccessType:   pulumi.String("SINGLE_USER"),
-//					RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				SoftwareConfig: &notebooks.RuntimeSoftwareConfigArgs{
-//					InstallGpuDriver: pulumi.Bool(true),
-//				},
-//				VirtualMachine: &notebooks.RuntimeVirtualMachineArgs{
-//					VirtualMachineConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs{
-//						AcceleratorConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{
-//							CoreCount: pulumi.Int(1),
-//							Type:      pulumi.String("NVIDIA_TESLA_V100"),
-//						},
-//						DataDisk: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{
-//							InitializeParams: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{
-//								DiskSizeGb: pulumi.Int(100),
-//								DiskType:   pulumi.String("PD_STANDARD"),
-//							},
-//						},
-//						MachineType: pulumi.String("n1-standard-4"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewRuntime(ctx, "runtimeGpu", &notebooks.RuntimeArgs{
+// 			AccessConfig: &notebooks.RuntimeAccessConfigArgs{
+// 				AccessType:   pulumi.String("SINGLE_USER"),
+// 				RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			SoftwareConfig: &notebooks.RuntimeSoftwareConfigArgs{
+// 				InstallGpuDriver: pulumi.Bool(true),
+// 			},
+// 			VirtualMachine: &notebooks.RuntimeVirtualMachineArgs{
+// 				VirtualMachineConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs{
+// 					AcceleratorConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{
+// 						CoreCount: pulumi.Int(1),
+// 						Type:      pulumi.String("NVIDIA_TESLA_V100"),
+// 					},
+// 					DataDisk: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{
+// 						InitializeParams: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{
+// 							DiskSizeGb: pulumi.Int(100),
+// 							DiskType:   pulumi.String("PD_STANDARD"),
+// 						},
+// 					},
+// 					MachineType: pulumi.String("n1-standard-4"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Notebook Runtime Basic Container
 //
@@ -117,71 +111,62 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewRuntime(ctx, "runtimeContainer", &notebooks.RuntimeArgs{
-//				AccessConfig: &notebooks.RuntimeAccessConfigArgs{
-//					AccessType:   pulumi.String("SINGLE_USER"),
-//					RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				VirtualMachine: &notebooks.RuntimeVirtualMachineArgs{
-//					VirtualMachineConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs{
-//						ContainerImages: notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArray{
-//							&notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{
-//								Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
-//								Tag:        pulumi.String("latest"),
-//							},
-//							&notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{
-//								Repository: pulumi.String("gcr.io/deeplearning-platform-release/beam-notebooks"),
-//								Tag:        pulumi.String("latest"),
-//							},
-//						},
-//						DataDisk: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{
-//							InitializeParams: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{
-//								DiskSizeGb: pulumi.Int(100),
-//								DiskType:   pulumi.String("PD_STANDARD"),
-//							},
-//						},
-//						MachineType: pulumi.String("n1-standard-4"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewRuntime(ctx, "runtimeContainer", &notebooks.RuntimeArgs{
+// 			AccessConfig: &notebooks.RuntimeAccessConfigArgs{
+// 				AccessType:   pulumi.String("SINGLE_USER"),
+// 				RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			VirtualMachine: &notebooks.RuntimeVirtualMachineArgs{
+// 				VirtualMachineConfig: &notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs{
+// 					ContainerImages: notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArray{
+// 						&notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{
+// 							Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+// 							Tag:        pulumi.String("latest"),
+// 						},
+// 						&notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{
+// 							Repository: pulumi.String("gcr.io/deeplearning-platform-release/beam-notebooks"),
+// 							Tag:        pulumi.String("latest"),
+// 						},
+// 					},
+// 					DataDisk: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{
+// 						InitializeParams: &notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{
+// 							DiskSizeGb: pulumi.Int(100),
+// 							DiskType:   pulumi.String("PD_STANDARD"),
+// 						},
+// 					},
+// 					MachineType: pulumi.String("n1-standard-4"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Runtime can be imported using any of these accepted formats
+// Runtime can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/runtime:Runtime default projects/{{project}}/locations/{{location}}/runtimes/{{name}}
-//
+//  $ pulumi import gcp:notebooks/runtime:Runtime default projects/{{project}}/locations/{{location}}/runtimes/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/runtime:Runtime default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:notebooks/runtime:Runtime default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
 // ```
 type Runtime struct {
 	pulumi.CustomResourceState
@@ -363,7 +348,7 @@ func (i *Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput 
 // RuntimeArrayInput is an input type that accepts RuntimeArray and RuntimeArrayOutput values.
 // You can construct a concrete instance of `RuntimeArrayInput` via:
 //
-//	RuntimeArray{ RuntimeArgs{...} }
+//          RuntimeArray{ RuntimeArgs{...} }
 type RuntimeArrayInput interface {
 	pulumi.Input
 
@@ -388,7 +373,7 @@ func (i RuntimeArray) ToRuntimeArrayOutputWithContext(ctx context.Context) Runti
 // RuntimeMapInput is an input type that accepts RuntimeMap and RuntimeMapOutput values.
 // You can construct a concrete instance of `RuntimeMapInput` via:
 //
-//	RuntimeMap{ "key": RuntimeArgs{...} }
+//          RuntimeMap{ "key": RuntimeArgs{...} }
 type RuntimeMapInput interface {
 	pulumi.Input
 

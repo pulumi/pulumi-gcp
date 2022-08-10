@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.entityTypes)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+//     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
 // ### Dialogflowcx Entity Type Full
@@ -27,80 +27,73 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
-//				DisplayName:         pulumi.String("dialogflowcx-agent"),
-//				Location:            pulumi.String("global"),
-//				DefaultLanguageCode: pulumi.String("en"),
-//				SupportedLanguageCodes: pulumi.StringArray{
-//					pulumi.String("fr"),
-//					pulumi.String("de"),
-//					pulumi.String("es"),
-//				},
-//				TimeZone:                 pulumi.String("America/New_York"),
-//				Description:              pulumi.String("Example description."),
-//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-//				EnableStackdriverLogging: pulumi.Bool(true),
-//				EnableSpellCorrection:    pulumi.Bool(true),
-//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
-//					EnableSpeechAdaptation: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = diagflow.NewCxEntityType(ctx, "basicEntityType", &diagflow.CxEntityTypeArgs{
-//				Parent:      agent.ID(),
-//				DisplayName: pulumi.String("MyEntity"),
-//				Kind:        pulumi.String("KIND_MAP"),
-//				Entities: diagflow.CxEntityTypeEntityArray{
-//					&diagflow.CxEntityTypeEntityArgs{
-//						Value: pulumi.String("value1"),
-//						Synonyms: pulumi.StringArray{
-//							pulumi.String("synonym1"),
-//							pulumi.String("synonym2"),
-//						},
-//					},
-//					&diagflow.CxEntityTypeEntityArgs{
-//						Value: pulumi.String("value2"),
-//						Synonyms: pulumi.StringArray{
-//							pulumi.String("synonym3"),
-//							pulumi.String("synonym4"),
-//						},
-//					},
-//				},
-//				EnableFuzzyExtraction: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+// 			DisplayName:         pulumi.String("dialogflowcx-agent"),
+// 			Location:            pulumi.String("global"),
+// 			DefaultLanguageCode: pulumi.String("en"),
+// 			SupportedLanguageCodes: pulumi.StringArray{
+// 				pulumi.String("fr"),
+// 				pulumi.String("de"),
+// 				pulumi.String("es"),
+// 			},
+// 			TimeZone:                 pulumi.String("America/New_York"),
+// 			Description:              pulumi.String("Example description."),
+// 			AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+// 			EnableStackdriverLogging: pulumi.Bool(true),
+// 			EnableSpellCorrection:    pulumi.Bool(true),
+// 			SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+// 				EnableSpeechAdaptation: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = diagflow.NewCxEntityType(ctx, "basicEntityType", &diagflow.CxEntityTypeArgs{
+// 			Parent:      agent.ID(),
+// 			DisplayName: pulumi.String("MyEntity"),
+// 			Kind:        pulumi.String("KIND_MAP"),
+// 			Entities: diagflow.CxEntityTypeEntityArray{
+// 				&diagflow.CxEntityTypeEntityArgs{
+// 					Value: pulumi.String("value1"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym1"),
+// 						pulumi.String("synonym2"),
+// 					},
+// 				},
+// 				&diagflow.CxEntityTypeEntityArgs{
+// 					Value: pulumi.String("value2"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym3"),
+// 						pulumi.String("synonym4"),
+// 					},
+// 				},
+// 			},
+// 			EnableFuzzyExtraction: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # EntityType can be imported using any of these accepted formats
+// EntityType can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}
-//
+//  $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/{{name}}
-//
+//  $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/{{name}}
 // ```
 type CxEntityType struct {
 	pulumi.CustomResourceState
@@ -361,7 +354,7 @@ func (i *CxEntityType) ToCxEntityTypeOutputWithContext(ctx context.Context) CxEn
 // CxEntityTypeArrayInput is an input type that accepts CxEntityTypeArray and CxEntityTypeArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeArrayInput` via:
 //
-//	CxEntityTypeArray{ CxEntityTypeArgs{...} }
+//          CxEntityTypeArray{ CxEntityTypeArgs{...} }
 type CxEntityTypeArrayInput interface {
 	pulumi.Input
 
@@ -386,7 +379,7 @@ func (i CxEntityTypeArray) ToCxEntityTypeArrayOutputWithContext(ctx context.Cont
 // CxEntityTypeMapInput is an input type that accepts CxEntityTypeMap and CxEntityTypeMapOutput values.
 // You can construct a concrete instance of `CxEntityTypeMapInput` via:
 //
-//	CxEntityTypeMap{ "key": CxEntityTypeArgs{...} }
+//          CxEntityTypeMap{ "key": CxEntityTypeArgs{...} }
 type CxEntityTypeMapInput interface {
 	pulumi.Input
 
@@ -423,9 +416,9 @@ func (o CxEntityTypeOutput) ToCxEntityTypeOutputWithContext(ctx context.Context)
 }
 
 // Represents kinds of entities.
-//   - AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
-//   - AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-//     Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
+// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+//   Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 func (o CxEntityTypeOutput) AutoExpansionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringPtrOutput { return v.AutoExpansionMode }).(pulumi.StringPtrOutput)
 }
@@ -454,10 +447,10 @@ func (o CxEntityTypeOutput) ExcludedPhrases() CxEntityTypeExcludedPhraseArrayOut
 }
 
 // Indicates whether the entity type can be automatically expanded.
-//   - KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
-//   - KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
-//   - KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-//     Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
+// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
+// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 func (o CxEntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

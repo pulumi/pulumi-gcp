@@ -23,7 +23,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpHealthChecks)
 // * How-to Guides
-//   - [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+//     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 //
 // ## Example Usage
 // ### Http Health Check Basic
@@ -32,48 +32,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-//				CheckIntervalSec: pulumi.Int(1),
-//				RequestPath:      pulumi.String("/health_check"),
-//				TimeoutSec:       pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			RequestPath:      pulumi.String("/health_check"),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # HttpHealthCheck can be imported using any of these accepted formats
+// HttpHealthCheck can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default projects/{{project}}/global/httpHealthChecks/{{name}}
-//
+//  $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default projects/{{project}}/global/httpHealthChecks/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{name}}
-//
+//  $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default {{name}}
 // ```
 type HttpHealthCheck struct {
 	pulumi.CustomResourceState
@@ -348,7 +339,7 @@ func (i *HttpHealthCheck) ToHttpHealthCheckOutputWithContext(ctx context.Context
 // HttpHealthCheckArrayInput is an input type that accepts HttpHealthCheckArray and HttpHealthCheckArrayOutput values.
 // You can construct a concrete instance of `HttpHealthCheckArrayInput` via:
 //
-//	HttpHealthCheckArray{ HttpHealthCheckArgs{...} }
+//          HttpHealthCheckArray{ HttpHealthCheckArgs{...} }
 type HttpHealthCheckArrayInput interface {
 	pulumi.Input
 
@@ -373,7 +364,7 @@ func (i HttpHealthCheckArray) ToHttpHealthCheckArrayOutputWithContext(ctx contex
 // HttpHealthCheckMapInput is an input type that accepts HttpHealthCheckMap and HttpHealthCheckMapOutput values.
 // You can construct a concrete instance of `HttpHealthCheckMapInput` via:
 //
-//	HttpHealthCheckMap{ "key": HttpHealthCheckArgs{...} }
+//          HttpHealthCheckMap{ "key": HttpHealthCheckArgs{...} }
 type HttpHealthCheckMapInput interface {
 	pulumi.Input
 

@@ -24,50 +24,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identityplatform.NewOauthIdpConfig(ctx, "oauthIdpConfig", &identityplatform.OauthIdpConfigArgs{
-//				ClientId:     pulumi.String("client-id"),
-//				ClientSecret: pulumi.String("secret"),
-//				DisplayName:  pulumi.String("Display Name"),
-//				Enabled:      pulumi.Bool(true),
-//				Issuer:       pulumi.String("issuer"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identityplatform.NewOauthIdpConfig(ctx, "oauthIdpConfig", &identityplatform.OauthIdpConfigArgs{
+// 			ClientId:     pulumi.String("client-id"),
+// 			ClientSecret: pulumi.String("secret"),
+// 			DisplayName:  pulumi.String("Display Name"),
+// 			Enabled:      pulumi.Bool(true),
+// 			Issuer:       pulumi.String("issuer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # OauthIdpConfig can be imported using any of these accepted formats
+// OauthIdpConfig can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
-//
+//  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
-//
+//  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
 // ```
 type OauthIdpConfig struct {
 	pulumi.CustomResourceState
@@ -226,7 +217,7 @@ func (i *OauthIdpConfig) ToOauthIdpConfigOutputWithContext(ctx context.Context) 
 // OauthIdpConfigArrayInput is an input type that accepts OauthIdpConfigArray and OauthIdpConfigArrayOutput values.
 // You can construct a concrete instance of `OauthIdpConfigArrayInput` via:
 //
-//	OauthIdpConfigArray{ OauthIdpConfigArgs{...} }
+//          OauthIdpConfigArray{ OauthIdpConfigArgs{...} }
 type OauthIdpConfigArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +242,7 @@ func (i OauthIdpConfigArray) ToOauthIdpConfigArrayOutputWithContext(ctx context.
 // OauthIdpConfigMapInput is an input type that accepts OauthIdpConfigMap and OauthIdpConfigMapOutput values.
 // You can construct a concrete instance of `OauthIdpConfigMapInput` via:
 //
-//	OauthIdpConfigMap{ "key": OauthIdpConfigArgs{...} }
+//          OauthIdpConfigMap{ "key": OauthIdpConfigArgs{...} }
 type OauthIdpConfigMapInput interface {
 	pulumi.Input
 

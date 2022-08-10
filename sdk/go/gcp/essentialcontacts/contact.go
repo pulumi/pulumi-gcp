@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+//     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProject` and set `userProjectOverride` to true
@@ -32,44 +32,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = essentialcontacts.NewContact(ctx, "contact", &essentialcontacts.ContactArgs{
-//				Parent:      pulumi.String(project.Id),
-//				Email:       pulumi.String("foo@bar.com"),
-//				LanguageTag: pulumi.String("en-GB"),
-//				NotificationCategorySubscriptions: pulumi.StringArray{
-//					pulumi.String("ALL"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = essentialcontacts.NewContact(ctx, "contact", &essentialcontacts.ContactArgs{
+// 			Parent:      pulumi.String(project.Id),
+// 			Email:       pulumi.String("foo@bar.com"),
+// 			LanguageTag: pulumi.String("en-GB"),
+// 			NotificationCategorySubscriptions: pulumi.StringArray{
+// 				pulumi.String("ALL"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Contact can be imported using any of these accepted formats
+// Contact can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}
-//
+//  $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}
 // ```
 type Contact struct {
 	pulumi.CustomResourceState
@@ -205,7 +200,7 @@ func (i *Contact) ToContactOutputWithContext(ctx context.Context) ContactOutput 
 // ContactArrayInput is an input type that accepts ContactArray and ContactArrayOutput values.
 // You can construct a concrete instance of `ContactArrayInput` via:
 //
-//	ContactArray{ ContactArgs{...} }
+//          ContactArray{ ContactArgs{...} }
 type ContactArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +225,7 @@ func (i ContactArray) ToContactArrayOutputWithContext(ctx context.Context) Conta
 // ContactMapInput is an input type that accepts ContactMap and ContactMapOutput values.
 // You can construct a concrete instance of `ContactMapInput` via:
 //
-//	ContactMap{ "key": ContactArgs{...} }
+//          ContactMap{ "key": ContactArgs{...} }
 type ContactMapInput interface {
 	pulumi.Input
 

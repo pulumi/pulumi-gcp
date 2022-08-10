@@ -19,36 +19,28 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirrorings)
 // * How-to Guides
-//   - [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+//     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # PacketMirroring can be imported using any of these accepted formats
+// PacketMirroring can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
-//
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
-//
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
 // ```
 type PacketMirroring struct {
 	pulumi.CustomResourceState
@@ -290,7 +282,7 @@ func (i *PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context
 // PacketMirroringArrayInput is an input type that accepts PacketMirroringArray and PacketMirroringArrayOutput values.
 // You can construct a concrete instance of `PacketMirroringArrayInput` via:
 //
-//	PacketMirroringArray{ PacketMirroringArgs{...} }
+//          PacketMirroringArray{ PacketMirroringArgs{...} }
 type PacketMirroringArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +307,7 @@ func (i PacketMirroringArray) ToPacketMirroringArrayOutputWithContext(ctx contex
 // PacketMirroringMapInput is an input type that accepts PacketMirroringMap and PacketMirroringMapOutput values.
 // You can construct a concrete instance of `PacketMirroringMapInput` via:
 //
-//	PacketMirroringMap{ "key": PacketMirroringArgs{...} }
+//          PacketMirroringMap{ "key": PacketMirroringArgs{...} }
 type PacketMirroringMapInput interface {
 	pulumi.Input
 

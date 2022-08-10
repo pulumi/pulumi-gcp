@@ -35,7 +35,7 @@ type InstanceMaintenancePolicy struct {
 // InstanceMaintenancePolicyInput is an input type that accepts InstanceMaintenancePolicyArgs and InstanceMaintenancePolicyOutput values.
 // You can construct a concrete instance of `InstanceMaintenancePolicyInput` via:
 //
-//	InstanceMaintenancePolicyArgs{...}
+//          InstanceMaintenancePolicyArgs{...}
 type InstanceMaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -88,11 +88,11 @@ func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutputWithC
 // InstanceMaintenancePolicyPtrInput is an input type that accepts InstanceMaintenancePolicyArgs, InstanceMaintenancePolicyPtr and InstanceMaintenancePolicyPtrOutput values.
 // You can construct a concrete instance of `InstanceMaintenancePolicyPtrInput` via:
 //
-//	        InstanceMaintenancePolicyArgs{...}
+//          InstanceMaintenancePolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type InstanceMaintenancePolicyPtrInput interface {
 	pulumi.Input
 
@@ -278,7 +278,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
 // InstanceMaintenancePolicyWeeklyMaintenanceWindowInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs and InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput values.
 // You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowInput` via:
 //
-//	InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
+//          InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
 type InstanceMaintenancePolicyWeeklyMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -326,7 +326,7 @@ func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ToInstanceMaintena
 // InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowArray and InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput` via:
 //
-//	InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{ InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
+//          InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{ InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
 type InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput interface {
 	pulumi.Input
 
@@ -363,15 +363,15 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToInstanceMainte
 }
 
 // Required. The day of week that maintenance updates occur.
-//   - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
-//   - MONDAY: Monday
-//   - TUESDAY: Tuesday
-//   - WEDNESDAY: Wednesday
-//   - THURSDAY: Thursday
-//   - FRIDAY: Friday
-//   - SATURDAY: Saturday
-//   - SUNDAY: Sunday
-//     Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+// - MONDAY: Monday
+// - TUESDAY: Tuesday
+// - WEDNESDAY: Wednesday
+// - THURSDAY: Thursday
+// - FRIDAY: Friday
+// - SATURDAY: Saturday
+// - SUNDAY: Sunday
+//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
@@ -431,7 +431,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
 // InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs and InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput values.
 // You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput` via:
 //
-//	InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
+//          InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
 type InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface {
 	pulumi.Input
 
@@ -522,7 +522,7 @@ type InstanceMaintenanceSchedule struct {
 // InstanceMaintenanceScheduleInput is an input type that accepts InstanceMaintenanceScheduleArgs and InstanceMaintenanceScheduleOutput values.
 // You can construct a concrete instance of `InstanceMaintenanceScheduleInput` via:
 //
-//	InstanceMaintenanceScheduleArgs{...}
+//          InstanceMaintenanceScheduleArgs{...}
 type InstanceMaintenanceScheduleInput interface {
 	pulumi.Input
 
@@ -572,11 +572,11 @@ func (i InstanceMaintenanceScheduleArgs) ToInstanceMaintenanceSchedulePtrOutputW
 // InstanceMaintenanceSchedulePtrInput is an input type that accepts InstanceMaintenanceScheduleArgs, InstanceMaintenanceSchedulePtr and InstanceMaintenanceSchedulePtrOutput values.
 // You can construct a concrete instance of `InstanceMaintenanceSchedulePtrInput` via:
 //
-//	        InstanceMaintenanceScheduleArgs{...}
+//          InstanceMaintenanceScheduleArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type InstanceMaintenanceSchedulePtrInput interface {
 	pulumi.Input
 
@@ -724,7 +724,7 @@ type InstanceNode struct {
 // InstanceNodeInput is an input type that accepts InstanceNodeArgs and InstanceNodeOutput values.
 // You can construct a concrete instance of `InstanceNodeInput` via:
 //
-//	InstanceNodeArgs{...}
+//          InstanceNodeArgs{...}
 type InstanceNodeInput interface {
 	pulumi.Input
 
@@ -753,7 +753,7 @@ func (i InstanceNodeArgs) ToInstanceNodeOutputWithContext(ctx context.Context) I
 // InstanceNodeArrayInput is an input type that accepts InstanceNodeArray and InstanceNodeArrayOutput values.
 // You can construct a concrete instance of `InstanceNodeArrayInput` via:
 //
-//	InstanceNodeArray{ InstanceNodeArgs{...} }
+//          InstanceNodeArray{ InstanceNodeArgs{...} }
 type InstanceNodeArrayInput interface {
 	pulumi.Input
 
@@ -833,7 +833,7 @@ type InstanceServerCaCert struct {
 // InstanceServerCaCertInput is an input type that accepts InstanceServerCaCertArgs and InstanceServerCaCertOutput values.
 // You can construct a concrete instance of `InstanceServerCaCertInput` via:
 //
-//	InstanceServerCaCertArgs{...}
+//          InstanceServerCaCertArgs{...}
 type InstanceServerCaCertInput interface {
 	pulumi.Input
 
@@ -868,7 +868,7 @@ func (i InstanceServerCaCertArgs) ToInstanceServerCaCertOutputWithContext(ctx co
 // InstanceServerCaCertArrayInput is an input type that accepts InstanceServerCaCertArray and InstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `InstanceServerCaCertArrayInput` via:
 //
-//	InstanceServerCaCertArray{ InstanceServerCaCertArgs{...} }
+//          InstanceServerCaCertArray{ InstanceServerCaCertArgs{...} }
 type InstanceServerCaCertArrayInput interface {
 	pulumi.Input
 
@@ -958,7 +958,7 @@ type GetInstanceMaintenancePolicy struct {
 // GetInstanceMaintenancePolicyInput is an input type that accepts GetInstanceMaintenancePolicyArgs and GetInstanceMaintenancePolicyOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenancePolicyInput` via:
 //
-//	GetInstanceMaintenancePolicyArgs{...}
+//          GetInstanceMaintenancePolicyArgs{...}
 type GetInstanceMaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -988,7 +988,7 @@ func (i GetInstanceMaintenancePolicyArgs) ToGetInstanceMaintenancePolicyOutputWi
 // GetInstanceMaintenancePolicyArrayInput is an input type that accepts GetInstanceMaintenancePolicyArray and GetInstanceMaintenancePolicyArrayOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenancePolicyArrayInput` via:
 //
-//	GetInstanceMaintenancePolicyArray{ GetInstanceMaintenancePolicyArgs{...} }
+//          GetInstanceMaintenancePolicyArray{ GetInstanceMaintenancePolicyArgs{...} }
 type GetInstanceMaintenancePolicyArrayInput interface {
 	pulumi.Input
 
@@ -1071,7 +1071,7 @@ type GetInstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
 // GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput` via:
 //
-//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
+//          GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -1100,7 +1100,7 @@ func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ToGetInstanceMa
 // GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput` via:
 //
-//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray{ GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
+//          GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArray{ GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput interface {
 	pulumi.Input
 
@@ -1180,7 +1180,7 @@ type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
 // GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput` via:
 //
-//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
+//          GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface {
 	pulumi.Input
 
@@ -1210,7 +1210,7 @@ func (i GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToGetI
 // GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput is an input type that accepts GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray and GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput` via:
 //
-//	GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray{ GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...} }
+//          GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray{ GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...} }
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput interface {
 	pulumi.Input
 
@@ -1291,7 +1291,7 @@ type GetInstanceMaintenanceSchedule struct {
 // GetInstanceMaintenanceScheduleInput is an input type that accepts GetInstanceMaintenanceScheduleArgs and GetInstanceMaintenanceScheduleOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenanceScheduleInput` via:
 //
-//	GetInstanceMaintenanceScheduleArgs{...}
+//          GetInstanceMaintenanceScheduleArgs{...}
 type GetInstanceMaintenanceScheduleInput interface {
 	pulumi.Input
 
@@ -1320,7 +1320,7 @@ func (i GetInstanceMaintenanceScheduleArgs) ToGetInstanceMaintenanceScheduleOutp
 // GetInstanceMaintenanceScheduleArrayInput is an input type that accepts GetInstanceMaintenanceScheduleArray and GetInstanceMaintenanceScheduleArrayOutput values.
 // You can construct a concrete instance of `GetInstanceMaintenanceScheduleArrayInput` via:
 //
-//	GetInstanceMaintenanceScheduleArray{ GetInstanceMaintenanceScheduleArgs{...} }
+//          GetInstanceMaintenanceScheduleArray{ GetInstanceMaintenanceScheduleArgs{...} }
 type GetInstanceMaintenanceScheduleArrayInput interface {
 	pulumi.Input
 
@@ -1396,7 +1396,7 @@ type GetInstanceNode struct {
 // GetInstanceNodeInput is an input type that accepts GetInstanceNodeArgs and GetInstanceNodeOutput values.
 // You can construct a concrete instance of `GetInstanceNodeInput` via:
 //
-//	GetInstanceNodeArgs{...}
+//          GetInstanceNodeArgs{...}
 type GetInstanceNodeInput interface {
 	pulumi.Input
 
@@ -1424,7 +1424,7 @@ func (i GetInstanceNodeArgs) ToGetInstanceNodeOutputWithContext(ctx context.Cont
 // GetInstanceNodeArrayInput is an input type that accepts GetInstanceNodeArray and GetInstanceNodeArrayOutput values.
 // You can construct a concrete instance of `GetInstanceNodeArrayInput` via:
 //
-//	GetInstanceNodeArray{ GetInstanceNodeArgs{...} }
+//          GetInstanceNodeArray{ GetInstanceNodeArgs{...} }
 type GetInstanceNodeArrayInput interface {
 	pulumi.Input
 
@@ -1499,7 +1499,7 @@ type GetInstanceServerCaCert struct {
 // GetInstanceServerCaCertInput is an input type that accepts GetInstanceServerCaCertArgs and GetInstanceServerCaCertOutput values.
 // You can construct a concrete instance of `GetInstanceServerCaCertInput` via:
 //
-//	GetInstanceServerCaCertArgs{...}
+//          GetInstanceServerCaCertArgs{...}
 type GetInstanceServerCaCertInput interface {
 	pulumi.Input
 
@@ -1530,7 +1530,7 @@ func (i GetInstanceServerCaCertArgs) ToGetInstanceServerCaCertOutputWithContext(
 // GetInstanceServerCaCertArrayInput is an input type that accepts GetInstanceServerCaCertArray and GetInstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `GetInstanceServerCaCertArrayInput` via:
 //
-//	GetInstanceServerCaCertArray{ GetInstanceServerCaCertArgs{...} }
+//          GetInstanceServerCaCertArray{ GetInstanceServerCaCertArgs{...} }
 type GetInstanceServerCaCertArrayInput interface {
 	pulumi.Input
 

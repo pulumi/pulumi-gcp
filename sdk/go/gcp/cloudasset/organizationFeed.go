@@ -17,24 +17,20 @@ import (
 //
 // * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/asset-inventory/docs)
+//     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # OrganizationFeed can be imported using any of these accepted formats
+// OrganizationFeed can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}
-//
+//  $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
-//
+//  $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
 // ```
 type OrganizationFeed struct {
 	pulumi.CustomResourceState
@@ -290,7 +286,7 @@ func (i *OrganizationFeed) ToOrganizationFeedOutputWithContext(ctx context.Conte
 // OrganizationFeedArrayInput is an input type that accepts OrganizationFeedArray and OrganizationFeedArrayOutput values.
 // You can construct a concrete instance of `OrganizationFeedArrayInput` via:
 //
-//	OrganizationFeedArray{ OrganizationFeedArgs{...} }
+//          OrganizationFeedArray{ OrganizationFeedArgs{...} }
 type OrganizationFeedArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +311,7 @@ func (i OrganizationFeedArray) ToOrganizationFeedArrayOutputWithContext(ctx cont
 // OrganizationFeedMapInput is an input type that accepts OrganizationFeedMap and OrganizationFeedMapOutput values.
 // You can construct a concrete instance of `OrganizationFeedMapInput` via:
 //
-//	OrganizationFeedMap{ "key": OrganizationFeedArgs{...} }
+//          OrganizationFeedMap{ "key": OrganizationFeedArgs{...} }
 type OrganizationFeedMapInput interface {
 	pulumi.Input
 

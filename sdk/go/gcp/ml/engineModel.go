@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+//     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 //
 // ## Example Usage
 // ### Ml Model Basic
@@ -28,25 +28,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/ml"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/ml"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
-//				Description: pulumi.String("My model"),
-//				Regions:     pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
+// 			Description: pulumi.String("My model"),
+// 			Regions:     pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Ml Model Full
 //
@@ -54,52 +51,43 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/ml"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/ml"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
-//				Description: pulumi.String("My model"),
-//				Labels: pulumi.StringMap{
-//					"my_model": pulumi.String("foo"),
-//				},
-//				OnlinePredictionConsoleLogging: pulumi.Bool(true),
-//				OnlinePredictionLogging:        pulumi.Bool(true),
-//				Regions:                        pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
+// 			Description: pulumi.String("My model"),
+// 			Labels: pulumi.StringMap{
+// 				"my_model": pulumi.String("foo"),
+// 			},
+// 			OnlinePredictionConsoleLogging: pulumi.Bool(true),
+// 			OnlinePredictionLogging:        pulumi.Bool(true),
+// 			Regions:                        pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Model can be imported using any of these accepted formats
+// Model can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
-//
+//  $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
-//
+//  $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
 // ```
 type EngineModel struct {
 	pulumi.CustomResourceState
@@ -277,7 +265,7 @@ func (i *EngineModel) ToEngineModelOutputWithContext(ctx context.Context) Engine
 // EngineModelArrayInput is an input type that accepts EngineModelArray and EngineModelArrayOutput values.
 // You can construct a concrete instance of `EngineModelArrayInput` via:
 //
-//	EngineModelArray{ EngineModelArgs{...} }
+//          EngineModelArray{ EngineModelArgs{...} }
 type EngineModelArrayInput interface {
 	pulumi.Input
 
@@ -302,7 +290,7 @@ func (i EngineModelArray) ToEngineModelArrayOutputWithContext(ctx context.Contex
 // EngineModelMapInput is an input type that accepts EngineModelMap and EngineModelMapOutput values.
 // You can construct a concrete instance of `EngineModelMapInput` via:
 //
-//	EngineModelMap{ "key": EngineModelArgs{...} }
+//          EngineModelMap{ "key": EngineModelArgs{...} }
 type EngineModelMapInput interface {
 	pulumi.Input
 

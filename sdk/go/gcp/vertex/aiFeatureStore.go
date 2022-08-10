@@ -17,59 +17,48 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Region: pulumi.String("us-central1"),
-//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
-//					FixedNodeCount: pulumi.Int(2),
-//				},
-//				ForceDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 			OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+// 				FixedNodeCount: pulumi.Int(2),
+// 			},
+// 			ForceDestroy: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Featurestore can be imported using any of these accepted formats
+// Featurestore can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
-//
+//  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{name}}
-//
+//  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default {{name}}
 // ```
 type AiFeatureStore struct {
 	pulumi.CustomResourceState
@@ -241,7 +230,7 @@ func (i *AiFeatureStore) ToAiFeatureStoreOutputWithContext(ctx context.Context) 
 // AiFeatureStoreArrayInput is an input type that accepts AiFeatureStoreArray and AiFeatureStoreArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreArrayInput` via:
 //
-//	AiFeatureStoreArray{ AiFeatureStoreArgs{...} }
+//          AiFeatureStoreArray{ AiFeatureStoreArgs{...} }
 type AiFeatureStoreArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +255,7 @@ func (i AiFeatureStoreArray) ToAiFeatureStoreArrayOutputWithContext(ctx context.
 // AiFeatureStoreMapInput is an input type that accepts AiFeatureStoreMap and AiFeatureStoreMapOutput values.
 // You can construct a concrete instance of `AiFeatureStoreMapInput` via:
 //
-//	AiFeatureStoreMap{ "key": AiFeatureStoreArgs{...} }
+//          AiFeatureStoreMap{ "key": AiFeatureStoreArgs{...} }
 type AiFeatureStoreMapInput interface {
 	pulumi.Input
 

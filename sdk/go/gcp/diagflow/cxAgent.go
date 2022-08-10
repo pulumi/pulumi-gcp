@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+//     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
 // ### Dialogflowcx Agent Full
@@ -26,61 +26,52 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewCxAgent(ctx, "fullAgent", &diagflow.CxAgentArgs{
-//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-//				DefaultLanguageCode:      pulumi.String("en"),
-//				Description:              pulumi.String("Example description."),
-//				DisplayName:              pulumi.String("dialogflowcx-agent"),
-//				EnableSpellCorrection:    pulumi.Bool(true),
-//				EnableStackdriverLogging: pulumi.Bool(true),
-//				Location:                 pulumi.String("global"),
-//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
-//					EnableSpeechAdaptation: pulumi.Bool(true),
-//				},
-//				SupportedLanguageCodes: pulumi.StringArray{
-//					pulumi.String("fr"),
-//					pulumi.String("de"),
-//					pulumi.String("es"),
-//				},
-//				TimeZone: pulumi.String("America/New_York"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := diagflow.NewCxAgent(ctx, "fullAgent", &diagflow.CxAgentArgs{
+// 			AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+// 			DefaultLanguageCode:      pulumi.String("en"),
+// 			Description:              pulumi.String("Example description."),
+// 			DisplayName:              pulumi.String("dialogflowcx-agent"),
+// 			EnableSpellCorrection:    pulumi.Bool(true),
+// 			EnableStackdriverLogging: pulumi.Bool(true),
+// 			Location:                 pulumi.String("global"),
+// 			SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+// 				EnableSpeechAdaptation: pulumi.Bool(true),
+// 			},
+// 			SupportedLanguageCodes: pulumi.StringArray{
+// 				pulumi.String("fr"),
+// 				pulumi.String("de"),
+// 				pulumi.String("es"),
+// 			},
+// 			TimeZone: pulumi.String("America/New_York"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Agent can be imported using any of these accepted formats
+// Agent can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
-//
+//  $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/cxAgent:CxAgent default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
 // ```
 type CxAgent struct {
 	pulumi.CustomResourceState
@@ -343,7 +334,7 @@ func (i *CxAgent) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOutput 
 // CxAgentArrayInput is an input type that accepts CxAgentArray and CxAgentArrayOutput values.
 // You can construct a concrete instance of `CxAgentArrayInput` via:
 //
-//	CxAgentArray{ CxAgentArgs{...} }
+//          CxAgentArray{ CxAgentArgs{...} }
 type CxAgentArrayInput interface {
 	pulumi.Input
 
@@ -368,7 +359,7 @@ func (i CxAgentArray) ToCxAgentArrayOutputWithContext(ctx context.Context) CxAge
 // CxAgentMapInput is an input type that accepts CxAgentMap and CxAgentMapOutput values.
 // You can construct a concrete instance of `CxAgentMapInput` via:
 //
-//	CxAgentMap{ "key": CxAgentArgs{...} }
+//          CxAgentMap{ "key": CxAgentArgs{...} }
 type CxAgentMapInput interface {
 	pulumi.Input
 

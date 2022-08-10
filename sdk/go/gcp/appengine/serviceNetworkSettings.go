@@ -24,89 +24,80 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-//				Bucket: bucket.Name,
-//				Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			liveappV1, err := appengine.NewStandardAppVersion(ctx, "liveappV1", &appengine.StandardAppVersionArgs{
-//				VersionId:              pulumi.String("v1"),
-//				Service:                pulumi.String("liveapp"),
-//				DeleteServiceOnDestroy: pulumi.Bool(true),
-//				Runtime:                pulumi.String("nodejs10"),
-//				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
-//					Shell: pulumi.String("node ./app.js"),
-//				},
-//				Deployment: &appengine.StandardAppVersionDeploymentArgs{
-//					Zip: &appengine.StandardAppVersionDeploymentZipArgs{
-//						SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
-//							bucketName := _args[0].(string)
-//							objectName := _args[1].(string)
-//							return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
-//				EnvVariables: pulumi.StringMap{
-//					"port": pulumi.String("8080"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = appengine.NewServiceNetworkSettings(ctx, "liveapp", &appengine.ServiceNetworkSettingsArgs{
-//				Service: liveappV1.Service,
-//				NetworkSettings: &appengine.ServiceNetworkSettingsNetworkSettingsArgs{
-//					IngressTrafficAllowed: pulumi.String("INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		liveappV1, err := appengine.NewStandardAppVersion(ctx, "liveappV1", &appengine.StandardAppVersionArgs{
+// 			VersionId:              pulumi.String("v1"),
+// 			Service:                pulumi.String("liveapp"),
+// 			DeleteServiceOnDestroy: pulumi.Bool(true),
+// 			Runtime:                pulumi.String("nodejs10"),
+// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// 				Shell: pulumi.String("node ./app.js"),
+// 			},
+// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						bucketName := _args[0].(string)
+// 						objectName := _args[1].(string)
+// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			EnvVariables: pulumi.StringMap{
+// 				"port": pulumi.String("8080"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewServiceNetworkSettings(ctx, "liveapp", &appengine.ServiceNetworkSettingsArgs{
+// 			Service: liveappV1.Service,
+// 			NetworkSettings: &appengine.ServiceNetworkSettingsNetworkSettingsArgs{
+// 				IngressTrafficAllowed: pulumi.String("INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ServiceNetworkSettings can be imported using any of these accepted formats
+// ServiceNetworkSettings can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}
-//
+//  $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{project}}/{{service}}
-//
+//  $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{project}}/{{service}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
-//
+//  $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
 // ```
 type ServiceNetworkSettings struct {
 	pulumi.CustomResourceState
@@ -230,7 +221,7 @@ func (i *ServiceNetworkSettings) ToServiceNetworkSettingsOutputWithContext(ctx c
 // ServiceNetworkSettingsArrayInput is an input type that accepts ServiceNetworkSettingsArray and ServiceNetworkSettingsArrayOutput values.
 // You can construct a concrete instance of `ServiceNetworkSettingsArrayInput` via:
 //
-//	ServiceNetworkSettingsArray{ ServiceNetworkSettingsArgs{...} }
+//          ServiceNetworkSettingsArray{ ServiceNetworkSettingsArgs{...} }
 type ServiceNetworkSettingsArrayInput interface {
 	pulumi.Input
 
@@ -255,7 +246,7 @@ func (i ServiceNetworkSettingsArray) ToServiceNetworkSettingsArrayOutputWithCont
 // ServiceNetworkSettingsMapInput is an input type that accepts ServiceNetworkSettingsMap and ServiceNetworkSettingsMapOutput values.
 // You can construct a concrete instance of `ServiceNetworkSettingsMapInput` via:
 //
-//	ServiceNetworkSettingsMap{ "key": ServiceNetworkSettingsArgs{...} }
+//          ServiceNetworkSettingsMap{ "key": ServiceNetworkSettingsArgs{...} }
 type ServiceNetworkSettingsMapInput interface {
 	pulumi.Input
 

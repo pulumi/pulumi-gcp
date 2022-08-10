@@ -17,30 +17,24 @@ import (
 //
 // * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
 // * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
+//     * [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # WebApp can be imported using any of these accepted formats
+// WebApp can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/webApp:WebApp default {{project}} {{name}}
-//
+//  $ pulumi import gcp:firebase/webApp:WebApp default {{project}} {{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:firebase/webApp:WebApp default {{name}}
-//
+//  $ pulumi import gcp:firebase/webApp:WebApp default {{name}}
 // ```
 type WebApp struct {
 	pulumi.CustomResourceState
@@ -161,7 +155,7 @@ func (i *WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 // WebAppArrayInput is an input type that accepts WebAppArray and WebAppArrayOutput values.
 // You can construct a concrete instance of `WebAppArrayInput` via:
 //
-//	WebAppArray{ WebAppArgs{...} }
+//          WebAppArray{ WebAppArgs{...} }
 type WebAppArrayInput interface {
 	pulumi.Input
 
@@ -186,7 +180,7 @@ func (i WebAppArray) ToWebAppArrayOutputWithContext(ctx context.Context) WebAppA
 // WebAppMapInput is an input type that accepts WebAppMap and WebAppMapOutput values.
 // You can construct a concrete instance of `WebAppMapInput` via:
 //
-//	WebAppMap{ "key": WebAppArgs{...} }
+//          WebAppMap{ "key": WebAppArgs{...} }
 type WebAppMapInput interface {
 	pulumi.Input
 

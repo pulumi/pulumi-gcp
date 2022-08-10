@@ -27,39 +27,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/billing.viewer",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = billing.NewAccountIamPolicy(ctx, "editor", &billing.AccountIamPolicyArgs{
-//				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
-//				PolicyData:       pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/billing.viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = billing.NewAccountIamPolicy(ctx, "editor", &billing.AccountIamPolicyArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			PolicyData:       pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_billing\_account\_iam\_binding
@@ -68,28 +65,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := billing.NewAccountIamBinding(ctx, "editor", &billing.AccountIamBindingArgs{
-//				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Role: pulumi.String("roles/billing.viewer"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := billing.NewAccountIamBinding(ctx, "editor", &billing.AccountIamBindingArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/billing.viewer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_billing\_account\_iam\_member
@@ -98,26 +92,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := billing.NewAccountIamMember(ctx, "editor", &billing.AccountIamMemberArgs{
-//				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
-//				Member:           pulumi.String("user:jane@example.com"),
-//				Role:             pulumi.String("roles/billing.viewer"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := billing.NewAccountIamMember(ctx, "editor", &billing.AccountIamMemberArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			Member:           pulumi.String("user:jane@example.com"),
+// 			Role:             pulumi.String("roles/billing.viewer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -125,24 +116,18 @@ import (
 // Instance IAM resources can be imported using the project, table name, role and/or member.
 //
 // ```sh
-//
-//	$ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id"
-//
+//  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user"
-//
+//  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user user:jane@example.com"
-//
+//  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user user:jane@example.com"
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 type AccountIamBinding struct {
@@ -276,7 +261,7 @@ func (i *AccountIamBinding) ToAccountIamBindingOutputWithContext(ctx context.Con
 // AccountIamBindingArrayInput is an input type that accepts AccountIamBindingArray and AccountIamBindingArrayOutput values.
 // You can construct a concrete instance of `AccountIamBindingArrayInput` via:
 //
-//	AccountIamBindingArray{ AccountIamBindingArgs{...} }
+//          AccountIamBindingArray{ AccountIamBindingArgs{...} }
 type AccountIamBindingArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +286,7 @@ func (i AccountIamBindingArray) ToAccountIamBindingArrayOutputWithContext(ctx co
 // AccountIamBindingMapInput is an input type that accepts AccountIamBindingMap and AccountIamBindingMapOutput values.
 // You can construct a concrete instance of `AccountIamBindingMapInput` via:
 //
-//	AccountIamBindingMap{ "key": AccountIamBindingArgs{...} }
+//          AccountIamBindingMap{ "key": AccountIamBindingArgs{...} }
 type AccountIamBindingMapInput interface {
 	pulumi.Input
 

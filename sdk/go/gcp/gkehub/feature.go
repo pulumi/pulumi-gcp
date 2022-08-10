@@ -18,53 +18,50 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
-//				Location:         pulumi.String("us-central1-a"),
-//				InitialNodeCount: pulumi.Int(1),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("my-membership"),
-//				Endpoint: &gkehub.MembershipEndpointArgs{
-//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
-//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
-//				Description: pulumi.String("Membership"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Location: pulumi.String("global"),
-//				Spec: &gkehub.FeatureSpecArgs{
-//					Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
-//						ConfigMembership: membership.ID(),
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+// 			Location:         pulumi.String("us-central1-a"),
+// 			InitialNodeCount: pulumi.Int(1),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+// 			MembershipId: pulumi.String("my-membership"),
+// 			Endpoint: &gkehub.MembershipEndpointArgs{
+// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			Description: pulumi.String("Membership"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 			Spec: &gkehub.FeatureSpecArgs{
+// 				Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
+// 					ConfigMembership: membership.ID(),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Multi Cluster Service Discovery
 //
@@ -72,27 +69,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Location: pulumi.String("global"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Enable Anthos Service Mesh
 //
@@ -100,46 +94,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Location: pulumi.String("global"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Feature can be imported using any of these accepted formats
+// Feature can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
-//
+//  $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/feature:Feature default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:gkehub/feature:Feature default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
 // ```
 type Feature struct {
 	pulumi.CustomResourceState
@@ -300,7 +285,7 @@ func (i *Feature) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput 
 // FeatureArrayInput is an input type that accepts FeatureArray and FeatureArrayOutput values.
 // You can construct a concrete instance of `FeatureArrayInput` via:
 //
-//	FeatureArray{ FeatureArgs{...} }
+//          FeatureArray{ FeatureArgs{...} }
 type FeatureArrayInput interface {
 	pulumi.Input
 
@@ -325,7 +310,7 @@ func (i FeatureArray) ToFeatureArrayOutputWithContext(ctx context.Context) Featu
 // FeatureMapInput is an input type that accepts FeatureMap and FeatureMapOutput values.
 // You can construct a concrete instance of `FeatureMapInput` via:
 //
-//	FeatureMap{ "key": FeatureArgs{...} }
+//          FeatureMap{ "key": FeatureArgs{...} }
 type FeatureMapInput interface {
 	pulumi.Input
 

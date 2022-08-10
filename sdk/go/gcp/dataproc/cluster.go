@@ -14,7 +14,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/dataproc/docs)
+//     * [Official Documentation](https://cloud.google.com/dataproc/docs)
 //
 // !> **Warning:** Due to limitations of the API, all arguments except
 // `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
@@ -27,24 +27,21 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewCluster(ctx, "simplecluster", &dataproc.ClusterArgs{
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewCluster(ctx, "simplecluster", &dataproc.ClusterArgs{
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Advanced
 //
@@ -52,81 +49,78 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
-//				Region:                      pulumi.String("us-central1"),
-//				GracefulDecommissionTimeout: pulumi.String("120s"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
-//					StagingBucket: pulumi.String("dataproc-staging-bucket"),
-//					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
-//						NumInstances: pulumi.Int(1),
-//						MachineType:  pulumi.String("e2-medium"),
-//						DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
-//							BootDiskType:   pulumi.String("pd-ssd"),
-//							BootDiskSizeGb: pulumi.Int(30),
-//						},
-//					},
-//					WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
-//						NumInstances:   pulumi.Int(2),
-//						MachineType:    pulumi.String("e2-medium"),
-//						MinCpuPlatform: pulumi.String("Intel Skylake"),
-//						DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
-//							BootDiskSizeGb: pulumi.Int(30),
-//							NumLocalSsds:   pulumi.Int(1),
-//						},
-//					},
-//					PreemptibleWorkerConfig: &dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs{
-//						NumInstances: pulumi.Int(0),
-//					},
-//					SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
-//						ImageVersion: pulumi.String("2.0.35-debian10"),
-//						OverrideProperties: pulumi.StringMap{
-//							"dataproc:dataproc.allow.zero.workers": pulumi.String("true"),
-//						},
-//					},
-//					GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
-//						Tags: pulumi.StringArray{
-//							pulumi.String("foo"),
-//							pulumi.String("bar"),
-//						},
-//						ServiceAccount: _default.Email,
-//						ServiceAccountScopes: pulumi.StringArray{
-//							pulumi.String("cloud-platform"),
-//						},
-//					},
-//					InitializationActions: dataproc.ClusterClusterConfigInitializationActionArray{
-//						&dataproc.ClusterClusterConfigInitializationActionArgs{
-//							Script:     pulumi.String("gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"),
-//							TimeoutSec: pulumi.Int(500),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service-account-id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+// 			Region:                      pulumi.String("us-central1"),
+// 			GracefulDecommissionTimeout: pulumi.String("120s"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+// 				StagingBucket: pulumi.String("dataproc-staging-bucket"),
+// 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
+// 					NumInstances: pulumi.Int(1),
+// 					MachineType:  pulumi.String("e2-medium"),
+// 					DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+// 						BootDiskType:   pulumi.String("pd-ssd"),
+// 						BootDiskSizeGb: pulumi.Int(30),
+// 					},
+// 				},
+// 				WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
+// 					NumInstances:   pulumi.Int(2),
+// 					MachineType:    pulumi.String("e2-medium"),
+// 					MinCpuPlatform: pulumi.String("Intel Skylake"),
+// 					DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
+// 						BootDiskSizeGb: pulumi.Int(30),
+// 						NumLocalSsds:   pulumi.Int(1),
+// 					},
+// 				},
+// 				PreemptibleWorkerConfig: &dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs{
+// 					NumInstances: pulumi.Int(0),
+// 				},
+// 				SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
+// 					ImageVersion: pulumi.String("2.0.35-debian10"),
+// 					OverrideProperties: pulumi.StringMap{
+// 						"dataproc:dataproc.allow.zero.workers": pulumi.String("true"),
+// 					},
+// 				},
+// 				GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
+// 					Tags: pulumi.StringArray{
+// 						pulumi.String("foo"),
+// 						pulumi.String("bar"),
+// 					},
+// 					ServiceAccount: _default.Email,
+// 					ServiceAccountScopes: pulumi.StringArray{
+// 						pulumi.String("cloud-platform"),
+// 					},
+// 				},
+// 				InitializationActions: dataproc.ClusterClusterConfigInitializationActionArray{
+// 					&dataproc.ClusterClusterConfigInitializationActionArgs{
+// 						Script:     pulumi.String("gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"),
+// 						TimeoutSec: pulumi.Int(500),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Using A GPU Accelerator
 //
@@ -134,37 +128,34 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewCluster(ctx, "acceleratedCluster", &dataproc.ClusterArgs{
-//				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
-//					GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
-//						Zone: pulumi.String("us-central1-a"),
-//					},
-//					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
-//						Accelerators: dataproc.ClusterClusterConfigMasterConfigAcceleratorArray{
-//							&dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs{
-//								AcceleratorCount: pulumi.Int(1),
-//								AcceleratorType:  pulumi.String("nvidia-tesla-k80"),
-//							},
-//						},
-//					},
-//				},
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewCluster(ctx, "acceleratedCluster", &dataproc.ClusterArgs{
+// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+// 				GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
+// 					Zone: pulumi.String("us-central1-a"),
+// 				},
+// 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
+// 					Accelerators: dataproc.ClusterClusterConfigMasterConfigAcceleratorArray{
+// 						&dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs{
+// 							AcceleratorCount: pulumi.Int(1),
+// 							AcceleratorType:  pulumi.String("nvidia-tesla-k80"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -341,7 +332,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//	ClusterArray{ ClusterArgs{...} }
+//          ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -366,7 +357,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//	ClusterMap{ "key": ClusterArgs{...} }
+//          ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

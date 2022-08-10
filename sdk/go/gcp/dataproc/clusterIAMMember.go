@@ -27,41 +27,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/editor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataproc.NewClusterIAMPolicy(ctx, "editor", &dataproc.ClusterIAMPolicyArgs{
-//				Project:    pulumi.String("your-project"),
-//				Region:     pulumi.String("your-region"),
-//				Cluster:    pulumi.String("your-dataproc-cluster"),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/editor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewClusterIAMPolicy(ctx, "editor", &dataproc.ClusterIAMPolicyArgs{
+// 			Project:    pulumi.String("your-project"),
+// 			Region:     pulumi.String("your-region"),
+// 			Cluster:    pulumi.String("your-dataproc-cluster"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_dataproc\_cluster\_iam\_binding
@@ -70,28 +67,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewClusterIAMBinding(ctx, "editor", &dataproc.ClusterIAMBindingArgs{
-//				Cluster: pulumi.String("your-dataproc-cluster"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Role: pulumi.String("roles/editor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewClusterIAMBinding(ctx, "editor", &dataproc.ClusterIAMBindingArgs{
+// 			Cluster: pulumi.String("your-dataproc-cluster"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_dataproc\_cluster\_iam\_member
@@ -100,26 +94,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewClusterIAMMember(ctx, "editor", &dataproc.ClusterIAMMemberArgs{
-//				Cluster: pulumi.String("your-dataproc-cluster"),
-//				Member:  pulumi.String("user:jane@example.com"),
-//				Role:    pulumi.String("roles/editor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewClusterIAMMember(ctx, "editor", &dataproc.ClusterIAMMemberArgs{
+// 			Cluster: pulumi.String("your-dataproc-cluster"),
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 			Role:    pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -127,24 +118,18 @@ import (
 // Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
-//
+//  $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
-//
+//  $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
-//
+//  $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ClusterIAMMember struct {
@@ -308,7 +293,7 @@ func (i *ClusterIAMMember) ToClusterIAMMemberOutputWithContext(ctx context.Conte
 // ClusterIAMMemberArrayInput is an input type that accepts ClusterIAMMemberArray and ClusterIAMMemberArrayOutput values.
 // You can construct a concrete instance of `ClusterIAMMemberArrayInput` via:
 //
-//	ClusterIAMMemberArray{ ClusterIAMMemberArgs{...} }
+//          ClusterIAMMemberArray{ ClusterIAMMemberArgs{...} }
 type ClusterIAMMemberArrayInput interface {
 	pulumi.Input
 
@@ -333,7 +318,7 @@ func (i ClusterIAMMemberArray) ToClusterIAMMemberArrayOutputWithContext(ctx cont
 // ClusterIAMMemberMapInput is an input type that accepts ClusterIAMMemberMap and ClusterIAMMemberMapOutput values.
 // You can construct a concrete instance of `ClusterIAMMemberMapInput` via:
 //
-//	ClusterIAMMemberMap{ "key": ClusterIAMMemberArgs{...} }
+//          ClusterIAMMemberMap{ "key": ClusterIAMMemberArgs{...} }
 type ClusterIAMMemberMapInput interface {
 	pulumi.Input
 

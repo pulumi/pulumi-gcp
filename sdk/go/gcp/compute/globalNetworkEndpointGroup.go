@@ -22,7 +22,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+//     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 //
 // ## Example Usage
 // ### Global Network Endpoint Group
@@ -31,25 +31,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
-//				DefaultPort:         pulumi.Int(90),
-//				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
+// 			DefaultPort:         pulumi.Int(90),
+// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Global Network Endpoint Group Ip Address
 //
@@ -57,47 +54,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
-//				DefaultPort:         pulumi.Int(90),
-//				NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
+// 			DefaultPort:         pulumi.Int(90),
+// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # GlobalNetworkEndpointGroup can be imported using any of these accepted formats
+// GlobalNetworkEndpointGroup can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
-//
+//  $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
-//
+//  $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
 // ```
 type GlobalNetworkEndpointGroup struct {
 	pulumi.CustomResourceState
@@ -284,7 +272,7 @@ func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithConte
 // GlobalNetworkEndpointGroupArrayInput is an input type that accepts GlobalNetworkEndpointGroupArray and GlobalNetworkEndpointGroupArrayOutput values.
 // You can construct a concrete instance of `GlobalNetworkEndpointGroupArrayInput` via:
 //
-//	GlobalNetworkEndpointGroupArray{ GlobalNetworkEndpointGroupArgs{...} }
+//          GlobalNetworkEndpointGroupArray{ GlobalNetworkEndpointGroupArgs{...} }
 type GlobalNetworkEndpointGroupArrayInput interface {
 	pulumi.Input
 
@@ -309,7 +297,7 @@ func (i GlobalNetworkEndpointGroupArray) ToGlobalNetworkEndpointGroupArrayOutput
 // GlobalNetworkEndpointGroupMapInput is an input type that accepts GlobalNetworkEndpointGroupMap and GlobalNetworkEndpointGroupMapOutput values.
 // You can construct a concrete instance of `GlobalNetworkEndpointGroupMapInput` via:
 //
-//	GlobalNetworkEndpointGroupMap{ "key": GlobalNetworkEndpointGroupArgs{...} }
+//          GlobalNetworkEndpointGroupMap{ "key": GlobalNetworkEndpointGroupArgs{...} }
 type GlobalNetworkEndpointGroupMapInput interface {
 	pulumi.Input
 

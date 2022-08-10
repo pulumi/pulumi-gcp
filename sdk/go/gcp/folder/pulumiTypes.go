@@ -44,7 +44,7 @@ type AccessApprovalSettingsEnrolledService struct {
 // AccessApprovalSettingsEnrolledServiceInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArgs and AccessApprovalSettingsEnrolledServiceOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceInput` via:
 //
-//	AccessApprovalSettingsEnrolledServiceArgs{...}
+//          AccessApprovalSettingsEnrolledServiceArgs{...}
 type AccessApprovalSettingsEnrolledServiceInput interface {
 	pulumi.Input
 
@@ -98,7 +98,7 @@ func (i AccessApprovalSettingsEnrolledServiceArgs) ToAccessApprovalSettingsEnrol
 // AccessApprovalSettingsEnrolledServiceArrayInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArray and AccessApprovalSettingsEnrolledServiceArrayOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceArrayInput` via:
 //
-//	AccessApprovalSettingsEnrolledServiceArray{ AccessApprovalSettingsEnrolledServiceArgs{...} }
+//          AccessApprovalSettingsEnrolledServiceArray{ AccessApprovalSettingsEnrolledServiceArgs{...} }
 type AccessApprovalSettingsEnrolledServiceArrayInput interface {
 	pulumi.Input
 
@@ -135,28 +135,28 @@ func (o AccessApprovalSettingsEnrolledServiceOutput) ToAccessApprovalSettingsEnr
 }
 
 // The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
-//   - all
-//   - App Engine
-//   - BigQuery
-//   - Cloud Bigtable
-//   - Cloud Key Management Service
-//   - Compute Engine
-//   - Cloud Dataflow
-//   - Cloud Identity and Access Management
-//   - Cloud Pub/Sub
-//   - Cloud Storage
-//   - Persistent Disk
-//     Note: These values are supported as input, but considered a legacy format:
-//   - all
-//   - appengine.googleapis.com
-//   - bigquery.googleapis.com
-//   - bigtable.googleapis.com
-//   - cloudkms.googleapis.com
-//   - compute.googleapis.com
-//   - dataflow.googleapis.com
-//   - iam.googleapis.com
-//   - pubsub.googleapis.com
-//   - storage.googleapis.com
+// * all
+// * App Engine
+// * BigQuery
+// * Cloud Bigtable
+// * Cloud Key Management Service
+// * Compute Engine
+// * Cloud Dataflow
+// * Cloud Identity and Access Management
+// * Cloud Pub/Sub
+// * Cloud Storage
+// * Persistent Disk
+//   Note: These values are supported as input, but considered a legacy format:
+// * all
+// * appengine.googleapis.com
+// * bigquery.googleapis.com
+// * bigtable.googleapis.com
+// * cloudkms.googleapis.com
+// * compute.googleapis.com
+// * dataflow.googleapis.com
+// * iam.googleapis.com
+// * pubsub.googleapis.com
+// * storage.googleapis.com
 func (o AccessApprovalSettingsEnrolledServiceOutput) CloudProduct() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) string { return v.CloudProduct }).(pulumi.StringOutput)
 }
@@ -197,7 +197,7 @@ type IAMBindingCondition struct {
 // IAMBindingConditionInput is an input type that accepts IAMBindingConditionArgs and IAMBindingConditionOutput values.
 // You can construct a concrete instance of `IAMBindingConditionInput` via:
 //
-//	IAMBindingConditionArgs{...}
+//          IAMBindingConditionArgs{...}
 type IAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -234,11 +234,11 @@ func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutputWithContext(ctx c
 // IAMBindingConditionPtrInput is an input type that accepts IAMBindingConditionArgs, IAMBindingConditionPtr and IAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `IAMBindingConditionPtrInput` via:
 //
-//	        IAMBindingConditionArgs{...}
+//          IAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type IAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -363,7 +363,7 @@ type IAMMemberCondition struct {
 // IAMMemberConditionInput is an input type that accepts IAMMemberConditionArgs and IAMMemberConditionOutput values.
 // You can construct a concrete instance of `IAMMemberConditionInput` via:
 //
-//	IAMMemberConditionArgs{...}
+//          IAMMemberConditionArgs{...}
 type IAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -403,11 +403,11 @@ func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutputWithContext(ctx con
 // IAMMemberConditionPtrInput is an input type that accepts IAMMemberConditionArgs, IAMMemberConditionPtr and IAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `IAMMemberConditionPtrInput` via:
 //
-//	        IAMMemberConditionArgs{...}
+//          IAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type IAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -536,7 +536,7 @@ type IamAuditConfigAuditLogConfig struct {
 // IamAuditConfigAuditLogConfigInput is an input type that accepts IamAuditConfigAuditLogConfigArgs and IamAuditConfigAuditLogConfigOutput values.
 // You can construct a concrete instance of `IamAuditConfigAuditLogConfigInput` via:
 //
-//	IamAuditConfigAuditLogConfigArgs{...}
+//          IamAuditConfigAuditLogConfigArgs{...}
 type IamAuditConfigAuditLogConfigInput interface {
 	pulumi.Input
 
@@ -566,7 +566,7 @@ func (i IamAuditConfigAuditLogConfigArgs) ToIamAuditConfigAuditLogConfigOutputWi
 // IamAuditConfigAuditLogConfigArrayInput is an input type that accepts IamAuditConfigAuditLogConfigArray and IamAuditConfigAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigAuditLogConfigArrayInput` via:
 //
-//	IamAuditConfigAuditLogConfigArray{ IamAuditConfigAuditLogConfigArgs{...} }
+//          IamAuditConfigAuditLogConfigArray{ IamAuditConfigAuditLogConfigArgs{...} }
 type IamAuditConfigAuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -640,7 +640,7 @@ type OrganizationPolicyBooleanPolicy struct {
 // OrganizationPolicyBooleanPolicyInput is an input type that accepts OrganizationPolicyBooleanPolicyArgs and OrganizationPolicyBooleanPolicyOutput values.
 // You can construct a concrete instance of `OrganizationPolicyBooleanPolicyInput` via:
 //
-//	OrganizationPolicyBooleanPolicyArgs{...}
+//          OrganizationPolicyBooleanPolicyArgs{...}
 type OrganizationPolicyBooleanPolicyInput interface {
 	pulumi.Input
 
@@ -676,11 +676,11 @@ func (i OrganizationPolicyBooleanPolicyArgs) ToOrganizationPolicyBooleanPolicyPt
 // OrganizationPolicyBooleanPolicyPtrInput is an input type that accepts OrganizationPolicyBooleanPolicyArgs, OrganizationPolicyBooleanPolicyPtr and OrganizationPolicyBooleanPolicyPtrOutput values.
 // You can construct a concrete instance of `OrganizationPolicyBooleanPolicyPtrInput` via:
 //
-//	        OrganizationPolicyBooleanPolicyArgs{...}
+//          OrganizationPolicyBooleanPolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type OrganizationPolicyBooleanPolicyPtrInput interface {
 	pulumi.Input
 
@@ -783,7 +783,7 @@ type OrganizationPolicyListPolicy struct {
 // OrganizationPolicyListPolicyInput is an input type that accepts OrganizationPolicyListPolicyArgs and OrganizationPolicyListPolicyOutput values.
 // You can construct a concrete instance of `OrganizationPolicyListPolicyInput` via:
 //
-//	OrganizationPolicyListPolicyArgs{...}
+//          OrganizationPolicyListPolicyArgs{...}
 type OrganizationPolicyListPolicyInput interface {
 	pulumi.Input
 
@@ -825,11 +825,11 @@ func (i OrganizationPolicyListPolicyArgs) ToOrganizationPolicyListPolicyPtrOutpu
 // OrganizationPolicyListPolicyPtrInput is an input type that accepts OrganizationPolicyListPolicyArgs, OrganizationPolicyListPolicyPtr and OrganizationPolicyListPolicyPtrOutput values.
 // You can construct a concrete instance of `OrganizationPolicyListPolicyPtrInput` via:
 //
-//	        OrganizationPolicyListPolicyArgs{...}
+//          OrganizationPolicyListPolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type OrganizationPolicyListPolicyPtrInput interface {
 	pulumi.Input
 
@@ -973,7 +973,7 @@ type OrganizationPolicyListPolicyAllow struct {
 // OrganizationPolicyListPolicyAllowInput is an input type that accepts OrganizationPolicyListPolicyAllowArgs and OrganizationPolicyListPolicyAllowOutput values.
 // You can construct a concrete instance of `OrganizationPolicyListPolicyAllowInput` via:
 //
-//	OrganizationPolicyListPolicyAllowArgs{...}
+//          OrganizationPolicyListPolicyAllowArgs{...}
 type OrganizationPolicyListPolicyAllowInput interface {
 	pulumi.Input
 
@@ -1011,11 +1011,11 @@ func (i OrganizationPolicyListPolicyAllowArgs) ToOrganizationPolicyListPolicyAll
 // OrganizationPolicyListPolicyAllowPtrInput is an input type that accepts OrganizationPolicyListPolicyAllowArgs, OrganizationPolicyListPolicyAllowPtr and OrganizationPolicyListPolicyAllowPtrOutput values.
 // You can construct a concrete instance of `OrganizationPolicyListPolicyAllowPtrInput` via:
 //
-//	        OrganizationPolicyListPolicyAllowArgs{...}
+//          OrganizationPolicyListPolicyAllowArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type OrganizationPolicyListPolicyAllowPtrInput interface {
 	pulumi.Input
 
@@ -1129,7 +1129,7 @@ type OrganizationPolicyListPolicyDeny struct {
 // OrganizationPolicyListPolicyDenyInput is an input type that accepts OrganizationPolicyListPolicyDenyArgs and OrganizationPolicyListPolicyDenyOutput values.
 // You can construct a concrete instance of `OrganizationPolicyListPolicyDenyInput` via:
 //
-//	OrganizationPolicyListPolicyDenyArgs{...}
+//          OrganizationPolicyListPolicyDenyArgs{...}
 type OrganizationPolicyListPolicyDenyInput interface {
 	pulumi.Input
 
@@ -1167,11 +1167,11 @@ func (i OrganizationPolicyListPolicyDenyArgs) ToOrganizationPolicyListPolicyDeny
 // OrganizationPolicyListPolicyDenyPtrInput is an input type that accepts OrganizationPolicyListPolicyDenyArgs, OrganizationPolicyListPolicyDenyPtr and OrganizationPolicyListPolicyDenyPtrOutput values.
 // You can construct a concrete instance of `OrganizationPolicyListPolicyDenyPtrInput` via:
 //
-//	        OrganizationPolicyListPolicyDenyArgs{...}
+//          OrganizationPolicyListPolicyDenyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type OrganizationPolicyListPolicyDenyPtrInput interface {
 	pulumi.Input
 
@@ -1283,7 +1283,7 @@ type OrganizationPolicyRestorePolicy struct {
 // OrganizationPolicyRestorePolicyInput is an input type that accepts OrganizationPolicyRestorePolicyArgs and OrganizationPolicyRestorePolicyOutput values.
 // You can construct a concrete instance of `OrganizationPolicyRestorePolicyInput` via:
 //
-//	OrganizationPolicyRestorePolicyArgs{...}
+//          OrganizationPolicyRestorePolicyArgs{...}
 type OrganizationPolicyRestorePolicyInput interface {
 	pulumi.Input
 
@@ -1319,11 +1319,11 @@ func (i OrganizationPolicyRestorePolicyArgs) ToOrganizationPolicyRestorePolicyPt
 // OrganizationPolicyRestorePolicyPtrInput is an input type that accepts OrganizationPolicyRestorePolicyArgs, OrganizationPolicyRestorePolicyPtr and OrganizationPolicyRestorePolicyPtrOutput values.
 // You can construct a concrete instance of `OrganizationPolicyRestorePolicyPtrInput` via:
 //
-//	        OrganizationPolicyRestorePolicyArgs{...}
+//          OrganizationPolicyRestorePolicyArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type OrganizationPolicyRestorePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1419,7 +1419,7 @@ type GetOrganizationPolicyBooleanPolicy struct {
 // GetOrganizationPolicyBooleanPolicyInput is an input type that accepts GetOrganizationPolicyBooleanPolicyArgs and GetOrganizationPolicyBooleanPolicyOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyBooleanPolicyInput` via:
 //
-//	GetOrganizationPolicyBooleanPolicyArgs{...}
+//          GetOrganizationPolicyBooleanPolicyArgs{...}
 type GetOrganizationPolicyBooleanPolicyInput interface {
 	pulumi.Input
 
@@ -1446,7 +1446,7 @@ func (i GetOrganizationPolicyBooleanPolicyArgs) ToGetOrganizationPolicyBooleanPo
 // GetOrganizationPolicyBooleanPolicyArrayInput is an input type that accepts GetOrganizationPolicyBooleanPolicyArray and GetOrganizationPolicyBooleanPolicyArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyBooleanPolicyArrayInput` via:
 //
-//	GetOrganizationPolicyBooleanPolicyArray{ GetOrganizationPolicyBooleanPolicyArgs{...} }
+//          GetOrganizationPolicyBooleanPolicyArray{ GetOrganizationPolicyBooleanPolicyArgs{...} }
 type GetOrganizationPolicyBooleanPolicyArrayInput interface {
 	pulumi.Input
 
@@ -1516,7 +1516,7 @@ type GetOrganizationPolicyListPolicy struct {
 // GetOrganizationPolicyListPolicyInput is an input type that accepts GetOrganizationPolicyListPolicyArgs and GetOrganizationPolicyListPolicyOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyListPolicyInput` via:
 //
-//	GetOrganizationPolicyListPolicyArgs{...}
+//          GetOrganizationPolicyListPolicyArgs{...}
 type GetOrganizationPolicyListPolicyInput interface {
 	pulumi.Input
 
@@ -1546,7 +1546,7 @@ func (i GetOrganizationPolicyListPolicyArgs) ToGetOrganizationPolicyListPolicyOu
 // GetOrganizationPolicyListPolicyArrayInput is an input type that accepts GetOrganizationPolicyListPolicyArray and GetOrganizationPolicyListPolicyArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyListPolicyArrayInput` via:
 //
-//	GetOrganizationPolicyListPolicyArray{ GetOrganizationPolicyListPolicyArgs{...} }
+//          GetOrganizationPolicyListPolicyArray{ GetOrganizationPolicyListPolicyArgs{...} }
 type GetOrganizationPolicyListPolicyArrayInput interface {
 	pulumi.Input
 
@@ -1626,7 +1626,7 @@ type GetOrganizationPolicyListPolicyAllow struct {
 // GetOrganizationPolicyListPolicyAllowInput is an input type that accepts GetOrganizationPolicyListPolicyAllowArgs and GetOrganizationPolicyListPolicyAllowOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyListPolicyAllowInput` via:
 //
-//	GetOrganizationPolicyListPolicyAllowArgs{...}
+//          GetOrganizationPolicyListPolicyAllowArgs{...}
 type GetOrganizationPolicyListPolicyAllowInput interface {
 	pulumi.Input
 
@@ -1654,7 +1654,7 @@ func (i GetOrganizationPolicyListPolicyAllowArgs) ToGetOrganizationPolicyListPol
 // GetOrganizationPolicyListPolicyAllowArrayInput is an input type that accepts GetOrganizationPolicyListPolicyAllowArray and GetOrganizationPolicyListPolicyAllowArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyListPolicyAllowArrayInput` via:
 //
-//	GetOrganizationPolicyListPolicyAllowArray{ GetOrganizationPolicyListPolicyAllowArgs{...} }
+//          GetOrganizationPolicyListPolicyAllowArray{ GetOrganizationPolicyListPolicyAllowArgs{...} }
 type GetOrganizationPolicyListPolicyAllowArrayInput interface {
 	pulumi.Input
 
@@ -1726,7 +1726,7 @@ type GetOrganizationPolicyListPolicyDeny struct {
 // GetOrganizationPolicyListPolicyDenyInput is an input type that accepts GetOrganizationPolicyListPolicyDenyArgs and GetOrganizationPolicyListPolicyDenyOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyListPolicyDenyInput` via:
 //
-//	GetOrganizationPolicyListPolicyDenyArgs{...}
+//          GetOrganizationPolicyListPolicyDenyArgs{...}
 type GetOrganizationPolicyListPolicyDenyInput interface {
 	pulumi.Input
 
@@ -1754,7 +1754,7 @@ func (i GetOrganizationPolicyListPolicyDenyArgs) ToGetOrganizationPolicyListPoli
 // GetOrganizationPolicyListPolicyDenyArrayInput is an input type that accepts GetOrganizationPolicyListPolicyDenyArray and GetOrganizationPolicyListPolicyDenyArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyListPolicyDenyArrayInput` via:
 //
-//	GetOrganizationPolicyListPolicyDenyArray{ GetOrganizationPolicyListPolicyDenyArgs{...} }
+//          GetOrganizationPolicyListPolicyDenyArray{ GetOrganizationPolicyListPolicyDenyArgs{...} }
 type GetOrganizationPolicyListPolicyDenyArrayInput interface {
 	pulumi.Input
 
@@ -1825,7 +1825,7 @@ type GetOrganizationPolicyRestorePolicy struct {
 // GetOrganizationPolicyRestorePolicyInput is an input type that accepts GetOrganizationPolicyRestorePolicyArgs and GetOrganizationPolicyRestorePolicyOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyRestorePolicyInput` via:
 //
-//	GetOrganizationPolicyRestorePolicyArgs{...}
+//          GetOrganizationPolicyRestorePolicyArgs{...}
 type GetOrganizationPolicyRestorePolicyInput interface {
 	pulumi.Input
 
@@ -1852,7 +1852,7 @@ func (i GetOrganizationPolicyRestorePolicyArgs) ToGetOrganizationPolicyRestorePo
 // GetOrganizationPolicyRestorePolicyArrayInput is an input type that accepts GetOrganizationPolicyRestorePolicyArray and GetOrganizationPolicyRestorePolicyArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationPolicyRestorePolicyArrayInput` via:
 //
-//	GetOrganizationPolicyRestorePolicyArray{ GetOrganizationPolicyRestorePolicyArgs{...} }
+//          GetOrganizationPolicyRestorePolicyArray{ GetOrganizationPolicyRestorePolicyArgs{...} }
 type GetOrganizationPolicyRestorePolicyArrayInput interface {
 	pulumi.Input
 

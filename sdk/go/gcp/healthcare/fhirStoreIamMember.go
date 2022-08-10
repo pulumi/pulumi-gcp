@@ -27,39 +27,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/editor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhirStore", &healthcare.FhirStoreIamPolicyArgs{
-//				FhirStoreId: pulumi.String("your-fhir-store-id"),
-//				PolicyData:  pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/editor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhirStore", &healthcare.FhirStoreIamPolicyArgs{
+// 			FhirStoreId: pulumi.String("your-fhir-store-id"),
+// 			PolicyData:  pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_healthcare\_fhir\_store\_iam\_binding
@@ -68,28 +65,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewFhirStoreIamBinding(ctx, "fhirStore", &healthcare.FhirStoreIamBindingArgs{
-//				FhirStoreId: pulumi.String("your-fhir-store-id"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Role: pulumi.String("roles/editor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := healthcare.NewFhirStoreIamBinding(ctx, "fhirStore", &healthcare.FhirStoreIamBindingArgs{
+// 			FhirStoreId: pulumi.String("your-fhir-store-id"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_healthcare\_fhir\_store\_iam\_member
@@ -98,26 +92,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.NewFhirStoreIamMember(ctx, "fhirStore", &healthcare.FhirStoreIamMemberArgs{
-//				FhirStoreId: pulumi.String("your-fhir-store-id"),
-//				Member:      pulumi.String("user:jane@example.com"),
-//				Role:        pulumi.String("roles/editor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := healthcare.NewFhirStoreIamMember(ctx, "fhirStore", &healthcare.FhirStoreIamMemberArgs{
+// 			FhirStoreId: pulumi.String("your-fhir-store-id"),
+// 			Member:      pulumi.String("user:jane@example.com"),
+// 			Role:        pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -127,29 +118,23 @@ import (
 // This member resource can be imported using the `fhir_store_id`, role, and account e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer user:foo@example.com"
-//
+//  $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer user:foo@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
 //
 // This binding resource can be imported using the `fhir_store_id` and role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer"
-//
+//  $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question.
+//  IAM policy imports use the identifier of the resource in question.
 //
 // This policy resource can be imported using the `fhir_store_id`, role, and account e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
-//
+//  $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
 // ```
 type FhirStoreIamMember struct {
 	pulumi.CustomResourceState
@@ -297,7 +282,7 @@ func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.C
 // FhirStoreIamMemberArrayInput is an input type that accepts FhirStoreIamMemberArray and FhirStoreIamMemberArrayOutput values.
 // You can construct a concrete instance of `FhirStoreIamMemberArrayInput` via:
 //
-//	FhirStoreIamMemberArray{ FhirStoreIamMemberArgs{...} }
+//          FhirStoreIamMemberArray{ FhirStoreIamMemberArgs{...} }
 type FhirStoreIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +307,7 @@ func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutputWithContext(ctx 
 // FhirStoreIamMemberMapInput is an input type that accepts FhirStoreIamMemberMap and FhirStoreIamMemberMapOutput values.
 // You can construct a concrete instance of `FhirStoreIamMemberMapInput` via:
 //
-//	FhirStoreIamMemberMap{ "key": FhirStoreIamMemberArgs{...} }
+//          FhirStoreIamMemberMap{ "key": FhirStoreIamMemberArgs{...} }
 type FhirStoreIamMemberMapInput interface {
 	pulumi.Input
 

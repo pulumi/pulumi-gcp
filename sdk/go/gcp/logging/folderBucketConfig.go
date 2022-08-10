@@ -23,45 +23,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewFolder(ctx, "default", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("some-folder-name"),
-//				Parent:      pulumi.String("organizations/123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewFolderBucketConfig(ctx, "basic", &logging.FolderBucketConfigArgs{
-//				Folder:        _default.Name,
-//				Location:      pulumi.String("global"),
-//				RetentionDays: pulumi.Int(30),
-//				BucketId:      pulumi.String("_Default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewFolder(ctx, "default", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("some-folder-name"),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewFolderBucketConfig(ctx, "basic", &logging.FolderBucketConfigArgs{
+// 			Folder:        _default.Name,
+// 			Location:      pulumi.String("global"),
+// 			RetentionDays: pulumi.Int(30),
+// 			BucketId:      pulumi.String("_Default"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # This resource can be imported using the following format
+// This resource can be imported using the following format
 //
 // ```sh
-//
-//	$ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
-//
+//  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
 // ```
 type FolderBucketConfig struct {
 	pulumi.CustomResourceState
@@ -210,7 +205,7 @@ func (i *FolderBucketConfig) ToFolderBucketConfigOutputWithContext(ctx context.C
 // FolderBucketConfigArrayInput is an input type that accepts FolderBucketConfigArray and FolderBucketConfigArrayOutput values.
 // You can construct a concrete instance of `FolderBucketConfigArrayInput` via:
 //
-//	FolderBucketConfigArray{ FolderBucketConfigArgs{...} }
+//          FolderBucketConfigArray{ FolderBucketConfigArgs{...} }
 type FolderBucketConfigArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +230,7 @@ func (i FolderBucketConfigArray) ToFolderBucketConfigArrayOutputWithContext(ctx 
 // FolderBucketConfigMapInput is an input type that accepts FolderBucketConfigMap and FolderBucketConfigMapOutput values.
 // You can construct a concrete instance of `FolderBucketConfigMapInput` via:
 //
-//	FolderBucketConfigMap{ "key": FolderBucketConfigArgs{...} }
+//          FolderBucketConfigMap{ "key": FolderBucketConfigArgs{...} }
 type FolderBucketConfigMapInput interface {
 	pulumi.Input
 

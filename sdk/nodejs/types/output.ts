@@ -20459,7 +20459,6 @@ export namespace container {
          */
         maxUnavailable: number;
     }
-
 }
 
 export namespace containeranalysis {
@@ -28199,7 +28198,6 @@ export namespace monitoring {
          */
         port: number;
     }
-
 }
 
 export namespace networkconnectivity {
@@ -31659,6 +31657,7 @@ export namespace projects {
          */
         default: boolean;
     }
+
 }
 
 export namespace pubsub {
@@ -31881,6 +31880,7 @@ export namespace pubsub {
          */
         schema: string;
     }
+
 }
 
 export namespace recaptcha {

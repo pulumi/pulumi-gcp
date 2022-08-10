@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+//     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
 //
 // ## Example Usage
 // ### Dlp Job Trigger Basic
@@ -26,71 +26,64 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
-//				Description: pulumi.String("Description"),
-//				DisplayName: pulumi.String("Displayname"),
-//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
-//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
-//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
-//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
-//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
-//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("asdf"),
-//										ProjectId: pulumi.String("asdf"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//					InspectTemplateName: pulumi.String("fake"),
-//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
-//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
-//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
-//								Url: pulumi.String("gs://mybucket/directory/"),
-//							},
-//						},
-//					},
-//				},
-//				Parent: pulumi.String("projects/my-project-name"),
-//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
-//					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
-//							RecurrencePeriodDuration: pulumi.String("86400s"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
+// 			Description: pulumi.String("Description"),
+// 			DisplayName: pulumi.String("Displayname"),
+// 			InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+// 				Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+// 					&dataloss.PreventionJobTriggerInspectJobActionArgs{
+// 						SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+// 							OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+// 								Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+// 									DatasetId: pulumi.String("asdf"),
+// 									ProjectId: pulumi.String("asdf"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 				InspectTemplateName: pulumi.String("fake"),
+// 				StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+// 					CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+// 						FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+// 							Url: pulumi.String("gs://mybucket/directory/"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Parent: pulumi.String("projects/my-project-name"),
+// 			Triggers: dataloss.PreventionJobTriggerTriggerArray{
+// 				&dataloss.PreventionJobTriggerTriggerArgs{
+// 					Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+// 						RecurrencePeriodDuration: pulumi.String("86400s"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # JobTrigger can be imported using any of these accepted formats
+// JobTrigger can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
-//
+//  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
-//
+//  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
 // ```
 type PreventionJobTrigger struct {
 	pulumi.CustomResourceState
@@ -271,7 +264,7 @@ func (i *PreventionJobTrigger) ToPreventionJobTriggerOutputWithContext(ctx conte
 // PreventionJobTriggerArrayInput is an input type that accepts PreventionJobTriggerArray and PreventionJobTriggerArrayOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerArrayInput` via:
 //
-//	PreventionJobTriggerArray{ PreventionJobTriggerArgs{...} }
+//          PreventionJobTriggerArray{ PreventionJobTriggerArgs{...} }
 type PreventionJobTriggerArrayInput interface {
 	pulumi.Input
 
@@ -296,7 +289,7 @@ func (i PreventionJobTriggerArray) ToPreventionJobTriggerArrayOutputWithContext(
 // PreventionJobTriggerMapInput is an input type that accepts PreventionJobTriggerMap and PreventionJobTriggerMapOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerMapInput` via:
 //
-//	PreventionJobTriggerMap{ "key": PreventionJobTriggerArgs{...} }
+//          PreventionJobTriggerMap{ "key": PreventionJobTriggerArgs{...} }
 type PreventionJobTriggerMapInput interface {
 	pulumi.Input
 

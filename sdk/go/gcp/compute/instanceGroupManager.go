@@ -25,132 +25,118 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			autohealing, err := compute.NewHealthCheck(ctx, "autohealing", &compute.HealthCheckArgs{
-//				CheckIntervalSec:   pulumi.Int(5),
-//				TimeoutSec:         pulumi.Int(5),
-//				HealthyThreshold:   pulumi.Int(2),
-//				UnhealthyThreshold: pulumi.Int(10),
-//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
-//					RequestPath: pulumi.String("/healthz"),
-//					Port:        pulumi.Int(8080),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewInstanceGroupManager(ctx, "appserver", &compute.InstanceGroupManagerArgs{
-//				BaseInstanceName: pulumi.String("app"),
-//				Zone:             pulumi.String("us-central1-a"),
-//				Versions: compute.InstanceGroupManagerVersionArray{
-//					&compute.InstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
-//					},
-//				},
-//				AllInstancesConfig: &compute.InstanceGroupManagerAllInstancesConfigArgs{
-//					Metadata: pulumi.StringMap{
-//						"metadata_key": pulumi.String("metadata_value"),
-//					},
-//					Labels: pulumi.StringMap{
-//						"label_key": pulumi.String("label_value"),
-//					},
-//				},
-//				TargetPools: pulumi.StringArray{
-//					pulumi.Any(google_compute_target_pool.Appserver.Id),
-//				},
-//				TargetSize: pulumi.Int(2),
-//				NamedPorts: compute.InstanceGroupManagerNamedPortArray{
-//					&compute.InstanceGroupManagerNamedPortArgs{
-//						Name: pulumi.String("customhttp"),
-//						Port: pulumi.Int(8888),
-//					},
-//				},
-//				AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
-//					HealthCheck:     autohealing.ID(),
-//					InitialDelaySec: pulumi.Int(300),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		autohealing, err := compute.NewHealthCheck(ctx, "autohealing", &compute.HealthCheckArgs{
+// 			CheckIntervalSec:   pulumi.Int(5),
+// 			TimeoutSec:         pulumi.Int(5),
+// 			HealthyThreshold:   pulumi.Int(2),
+// 			UnhealthyThreshold: pulumi.Int(10),
+// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+// 				RequestPath: pulumi.String("/healthz"),
+// 				Port:        pulumi.Int(8080),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstanceGroupManager(ctx, "appserver", &compute.InstanceGroupManagerArgs{
+// 			BaseInstanceName: pulumi.String("app"),
+// 			Zone:             pulumi.String("us-central1-a"),
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+// 				},
+// 			},
+// 			AllInstancesConfig: &compute.InstanceGroupManagerAllInstancesConfigArgs{
+// 				Metadata: pulumi.StringMap{
+// 					"metadata_key": pulumi.String("metadata_value"),
+// 				},
+// 				Labels: pulumi.StringMap{
+// 					"label_key": pulumi.String("label_value"),
+// 				},
+// 			},
+// 			TargetPools: pulumi.StringArray{
+// 				pulumi.Any(google_compute_target_pool.Appserver.Id),
+// 			},
+// 			TargetSize: pulumi.Int(2),
+// 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
+// 				&compute.InstanceGroupManagerNamedPortArgs{
+// 					Name: pulumi.String("customhttp"),
+// 					Port: pulumi.Int(8888),
+// 				},
+// 			},
+// 			AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
+// 				HealthCheck:     autohealing.ID(),
+// 				InitialDelaySec: pulumi.Int(300),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### With Multiple Versions (`Google-Beta` Provider)
 // ```go
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceGroupManager(ctx, "appserver", &compute.InstanceGroupManagerArgs{
-//				BaseInstanceName: pulumi.String("app"),
-//				Zone:             pulumi.String("us-central1-a"),
-//				TargetSize:       pulumi.Int(5),
-//				Versions: compute.InstanceGroupManagerVersionArray{
-//					&compute.InstanceGroupManagerVersionArgs{
-//						Name:             pulumi.String("appserver"),
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
-//					},
-//					&compute.InstanceGroupManagerVersionArgs{
-//						Name:             pulumi.String("appserver-canary"),
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver - canary.Id),
-//						TargetSize: &compute.InstanceGroupManagerVersionTargetSizeArgs{
-//							Fixed: pulumi.Int(1),
-//						},
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceGroupManager(ctx, "appserver", &compute.InstanceGroupManagerArgs{
+// 			BaseInstanceName: pulumi.String("app"),
+// 			Zone:             pulumi.String("us-central1-a"),
+// 			TargetSize:       pulumi.Int(5),
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					Name:             pulumi.String("appserver"),
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+// 				},
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					Name:             pulumi.String("appserver-canary"),
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver - canary.Id),
+// 					TargetSize: &compute.InstanceGroupManagerVersionTargetSizeArgs{
+// 						Fixed: pulumi.Int(1),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Instance group managers can be imported using any of these accepted formats
+// Instance group managers can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
-//
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{zone}}/{{name}}
-//
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{name}}
-//
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
-//
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
 // ```
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
@@ -521,7 +507,7 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx conte
 // InstanceGroupManagerArrayInput is an input type that accepts InstanceGroupManagerArray and InstanceGroupManagerArrayOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerArrayInput` via:
 //
-//	InstanceGroupManagerArray{ InstanceGroupManagerArgs{...} }
+//          InstanceGroupManagerArray{ InstanceGroupManagerArgs{...} }
 type InstanceGroupManagerArrayInput interface {
 	pulumi.Input
 
@@ -546,7 +532,7 @@ func (i InstanceGroupManagerArray) ToInstanceGroupManagerArrayOutputWithContext(
 // InstanceGroupManagerMapInput is an input type that accepts InstanceGroupManagerMap and InstanceGroupManagerMapOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerMapInput` via:
 //
-//	InstanceGroupManagerMap{ "key": InstanceGroupManagerArgs{...} }
+//          InstanceGroupManagerMap{ "key": InstanceGroupManagerArgs{...} }
 type InstanceGroupManagerMapInput interface {
 	pulumi.Input
 

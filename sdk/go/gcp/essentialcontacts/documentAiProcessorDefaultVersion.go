@@ -20,47 +20,42 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			processorDocumentAiProcessor, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processorDocumentAiProcessor", &essentialcontacts.DocumentAiProcessorArgs{
-//				Location:    pulumi.String("us"),
-//				DisplayName: pulumi.String("test-processor"),
-//				Type:        pulumi.String("OCR_PROCESSOR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processorDocumentAiProcessorDefaultVersion", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
-//				Processor: processorDocumentAiProcessor.ID(),
-//				Version: processorDocumentAiProcessor.ID().ApplyT(func(id string) (string, error) {
-//					return fmt.Sprintf("%v/processorVersions/pretrained-next", id), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		processorDocumentAiProcessor, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processorDocumentAiProcessor", &essentialcontacts.DocumentAiProcessorArgs{
+// 			Location:    pulumi.String("us"),
+// 			DisplayName: pulumi.String("test-processor"),
+// 			Type:        pulumi.String("OCR_PROCESSOR"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processorDocumentAiProcessorDefaultVersion", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
+// 			Processor: processorDocumentAiProcessor.ID(),
+// 			Version: processorDocumentAiProcessor.ID().ApplyT(func(id string) (string, error) {
+// 				return fmt.Sprintf("%v/processorVersions/pretrained-next", id), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ProcessorDefaultVersion can be imported using any of these accepted formats
+// ProcessorDefaultVersion can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
-//
+//  $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
 // ```
 type DocumentAiProcessorDefaultVersion struct {
 	pulumi.CustomResourceState
@@ -164,7 +159,7 @@ func (i *DocumentAiProcessorDefaultVersion) ToDocumentAiProcessorDefaultVersionO
 // DocumentAiProcessorDefaultVersionArrayInput is an input type that accepts DocumentAiProcessorDefaultVersionArray and DocumentAiProcessorDefaultVersionArrayOutput values.
 // You can construct a concrete instance of `DocumentAiProcessorDefaultVersionArrayInput` via:
 //
-//	DocumentAiProcessorDefaultVersionArray{ DocumentAiProcessorDefaultVersionArgs{...} }
+//          DocumentAiProcessorDefaultVersionArray{ DocumentAiProcessorDefaultVersionArgs{...} }
 type DocumentAiProcessorDefaultVersionArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +184,7 @@ func (i DocumentAiProcessorDefaultVersionArray) ToDocumentAiProcessorDefaultVers
 // DocumentAiProcessorDefaultVersionMapInput is an input type that accepts DocumentAiProcessorDefaultVersionMap and DocumentAiProcessorDefaultVersionMapOutput values.
 // You can construct a concrete instance of `DocumentAiProcessorDefaultVersionMapInput` via:
 //
-//	DocumentAiProcessorDefaultVersionMap{ "key": DocumentAiProcessorDefaultVersionArgs{...} }
+//          DocumentAiProcessorDefaultVersionMap{ "key": DocumentAiProcessorDefaultVersionArgs{...} }
 type DocumentAiProcessorDefaultVersionMapInput interface {
 	pulumi.Input
 

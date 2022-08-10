@@ -17,12 +17,11 @@ import (
 // [API](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
 //
 // > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
-//
-//	from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
-//	same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
-//	after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
-//	made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
-//	by the provider, and new roles cannot share that name.
+//  from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
+//  same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
+//  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
+//  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
+//  by the provider, and new roles cannot share that name.
 //
 // ## Example Usage
 //
@@ -32,32 +31,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewIAMCustomRole(ctx, "my-custom-role", &organizations.IAMCustomRoleArgs{
-//				Description: pulumi.String("A description"),
-//				OrgId:       pulumi.String("123456789"),
-//				Permissions: pulumi.StringArray{
-//					pulumi.String("iam.roles.list"),
-//					pulumi.String("iam.roles.create"),
-//					pulumi.String("iam.roles.delete"),
-//				},
-//				RoleId: pulumi.String("myCustomRole"),
-//				Title:  pulumi.String("My Custom Role"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewIAMCustomRole(ctx, "my-custom-role", &organizations.IAMCustomRoleArgs{
+// 			Description: pulumi.String("A description"),
+// 			OrgId:       pulumi.String("123456789"),
+// 			Permissions: pulumi.StringArray{
+// 				pulumi.String("iam.roles.list"),
+// 				pulumi.String("iam.roles.create"),
+// 				pulumi.String("iam.roles.delete"),
+// 			},
+// 			RoleId: pulumi.String("myCustomRole"),
+// 			Title:  pulumi.String("My Custom Role"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -65,9 +61,7 @@ import (
 // Customized IAM organization role can be imported using their URI, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
-//
+//  $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
 // ```
 type IAMCustomRole struct {
 	pulumi.CustomResourceState
@@ -239,7 +233,7 @@ func (i *IAMCustomRole) ToIAMCustomRoleOutputWithContext(ctx context.Context) IA
 // IAMCustomRoleArrayInput is an input type that accepts IAMCustomRoleArray and IAMCustomRoleArrayOutput values.
 // You can construct a concrete instance of `IAMCustomRoleArrayInput` via:
 //
-//	IAMCustomRoleArray{ IAMCustomRoleArgs{...} }
+//          IAMCustomRoleArray{ IAMCustomRoleArgs{...} }
 type IAMCustomRoleArrayInput interface {
 	pulumi.Input
 
@@ -264,7 +258,7 @@ func (i IAMCustomRoleArray) ToIAMCustomRoleArrayOutputWithContext(ctx context.Co
 // IAMCustomRoleMapInput is an input type that accepts IAMCustomRoleMap and IAMCustomRoleMapOutput values.
 // You can construct a concrete instance of `IAMCustomRoleMapInput` via:
 //
-//	IAMCustomRoleMap{ "key": IAMCustomRoleArgs{...} }
+//          IAMCustomRoleMap{ "key": IAMCustomRoleArgs{...} }
 type IAMCustomRoleMapInput interface {
 	pulumi.Input
 

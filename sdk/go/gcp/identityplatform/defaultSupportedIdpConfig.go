@@ -24,49 +24,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identityplatform.NewDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.DefaultSupportedIdpConfigArgs{
-//				ClientId:     pulumi.String("client-id"),
-//				ClientSecret: pulumi.String("secret"),
-//				Enabled:      pulumi.Bool(true),
-//				IdpId:        pulumi.String("playgames.google.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identityplatform.NewDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.DefaultSupportedIdpConfigArgs{
+// 			ClientId:     pulumi.String("client-id"),
+// 			ClientSecret: pulumi.String("secret"),
+// 			Enabled:      pulumi.Bool(true),
+// 			IdpId:        pulumi.String("playgames.google.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # DefaultSupportedIdpConfig can be imported using any of these accepted formats
+// DefaultSupportedIdpConfig can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}
-//
+//  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{project}}/{{idp_id}}
-//
+//  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{project}}/{{idp_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
-//
+//  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
 // ```
 type DefaultSupportedIdpConfig struct {
 	pulumi.CustomResourceState
@@ -264,7 +255,7 @@ func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigOutputWithContext
 // DefaultSupportedIdpConfigArrayInput is an input type that accepts DefaultSupportedIdpConfigArray and DefaultSupportedIdpConfigArrayOutput values.
 // You can construct a concrete instance of `DefaultSupportedIdpConfigArrayInput` via:
 //
-//	DefaultSupportedIdpConfigArray{ DefaultSupportedIdpConfigArgs{...} }
+//          DefaultSupportedIdpConfigArray{ DefaultSupportedIdpConfigArgs{...} }
 type DefaultSupportedIdpConfigArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +280,7 @@ func (i DefaultSupportedIdpConfigArray) ToDefaultSupportedIdpConfigArrayOutputWi
 // DefaultSupportedIdpConfigMapInput is an input type that accepts DefaultSupportedIdpConfigMap and DefaultSupportedIdpConfigMapOutput values.
 // You can construct a concrete instance of `DefaultSupportedIdpConfigMapInput` via:
 //
-//	DefaultSupportedIdpConfigMap{ "key": DefaultSupportedIdpConfigArgs{...} }
+//          DefaultSupportedIdpConfigMap{ "key": DefaultSupportedIdpConfigArgs{...} }
 type DefaultSupportedIdpConfigMapInput interface {
 	pulumi.Input
 

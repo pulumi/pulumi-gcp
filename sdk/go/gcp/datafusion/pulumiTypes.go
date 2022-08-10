@@ -23,7 +23,7 @@ type InstanceNetworkConfig struct {
 // InstanceNetworkConfigInput is an input type that accepts InstanceNetworkConfigArgs and InstanceNetworkConfigOutput values.
 // You can construct a concrete instance of `InstanceNetworkConfigInput` via:
 //
-//	InstanceNetworkConfigArgs{...}
+//          InstanceNetworkConfigArgs{...}
 type InstanceNetworkConfigInput interface {
 	pulumi.Input
 
@@ -64,11 +64,11 @@ func (i InstanceNetworkConfigArgs) ToInstanceNetworkConfigPtrOutputWithContext(c
 // InstanceNetworkConfigPtrInput is an input type that accepts InstanceNetworkConfigArgs, InstanceNetworkConfigPtr and InstanceNetworkConfigPtrOutput values.
 // You can construct a concrete instance of `InstanceNetworkConfigPtrInput` via:
 //
-//	        InstanceNetworkConfigArgs{...}
+//          InstanceNetworkConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type InstanceNetworkConfigPtrInput interface {
 	pulumi.Input
 

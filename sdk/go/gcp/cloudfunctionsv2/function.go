@@ -17,55 +17,52 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location:                 pulumi.String("US"),
-//				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-//				Bucket: bucket.Name,
-//				Source: pulumi.NewFileAsset("path/to/index.zip"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudfunctionsv2.NewFunction(ctx, "terraform-test2", &cloudfunctionsv2.FunctionArgs{
-//				Location:    pulumi.String("us-central1"),
-//				Description: pulumi.String("a new function"),
-//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
-//					EntryPoint: pulumi.String("helloHttp"),
-//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
-//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
-//							Bucket: bucket.Name,
-//							Object: object.Name,
-//						},
-//					},
-//				},
-//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
-//					MaxInstanceCount: pulumi.Int(1),
-//					AvailableMemory:  pulumi.String("256M"),
-//					TimeoutSeconds:   pulumi.Int(60),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location:                 pulumi.String("US"),
+// 			UniformBucketLevelAccess: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("path/to/index.zip"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudfunctionsv2.NewFunction(ctx, "terraform-test2", &cloudfunctionsv2.FunctionArgs{
+// 			Location:    pulumi.String("us-central1"),
+// 			Description: pulumi.String("a new function"),
+// 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+// 				Runtime:    pulumi.String("nodejs16"),
+// 				EntryPoint: pulumi.String("helloHttp"),
+// 				Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+// 					StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+// 						Bucket: bucket.Name,
+// 						Object: object.Name,
+// 					},
+// 				},
+// 			},
+// 			ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+// 				MaxInstanceCount: pulumi.Int(1),
+// 				AvailableMemory:  pulumi.String("256M"),
+// 				TimeoutSeconds:   pulumi.Int(60),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Cloudfunctions2 Full
 //
@@ -73,85 +70,82 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("s-a"),
-//				DisplayName: pulumi.String("Test Service Account"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			sub, err := pubsub.NewTopic(ctx, "sub", nil, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location:                 pulumi.String("US"),
-//				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-//				Bucket: bucket.Name,
-//				Source: pulumi.NewFileAsset("path/to/index.zip"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudfunctionsv2.NewFunction(ctx, "terraform-test", &cloudfunctionsv2.FunctionArgs{
-//				Location:    pulumi.String("us-central1"),
-//				Description: pulumi.String("a new function"),
-//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-//					Runtime:    pulumi.String("nodejs16"),
-//					EntryPoint: pulumi.String("helloPubSub"),
-//					EnvironmentVariables: pulumi.StringMap{
-//						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
-//					},
-//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
-//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
-//							Bucket: bucket.Name,
-//							Object: object.Name,
-//						},
-//					},
-//				},
-//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
-//					MaxInstanceCount: pulumi.Int(3),
-//					MinInstanceCount: pulumi.Int(1),
-//					AvailableMemory:  pulumi.String("256M"),
-//					TimeoutSeconds:   pulumi.Int(60),
-//					EnvironmentVariables: pulumi.StringMap{
-//						"SERVICE_CONFIG_TEST": pulumi.String("config_test"),
-//					},
-//					IngressSettings:            pulumi.String("ALLOW_INTERNAL_ONLY"),
-//					AllTrafficOnLatestRevision: pulumi.Bool(true),
-//					ServiceAccountEmail:        account.Email,
-//				},
-//				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
-//					TriggerRegion:       pulumi.String("us-central1"),
-//					EventType:           pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:         sub.ID(),
-//					RetryPolicy:         pulumi.String("RETRY_POLICY_RETRY"),
-//					ServiceAccountEmail: account.Email,
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("s-a"),
+// 			DisplayName: pulumi.String("Test Service Account"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		sub, err := pubsub.NewTopic(ctx, "sub", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location:                 pulumi.String("US"),
+// 			UniformBucketLevelAccess: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("path/to/index.zip"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudfunctionsv2.NewFunction(ctx, "terraform-test", &cloudfunctionsv2.FunctionArgs{
+// 			Location:    pulumi.String("us-central1"),
+// 			Description: pulumi.String("a new function"),
+// 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+// 				Runtime:    pulumi.String("nodejs16"),
+// 				EntryPoint: pulumi.String("helloPubSub"),
+// 				EnvironmentVariables: pulumi.StringMap{
+// 					"BUILD_CONFIG_TEST": pulumi.String("build_test"),
+// 				},
+// 				Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+// 					StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+// 						Bucket: bucket.Name,
+// 						Object: object.Name,
+// 					},
+// 				},
+// 			},
+// 			ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+// 				MaxInstanceCount: pulumi.Int(3),
+// 				MinInstanceCount: pulumi.Int(1),
+// 				AvailableMemory:  pulumi.String("256M"),
+// 				TimeoutSeconds:   pulumi.Int(60),
+// 				EnvironmentVariables: pulumi.StringMap{
+// 					"SERVICE_CONFIG_TEST": pulumi.String("config_test"),
+// 				},
+// 				IngressSettings:            pulumi.String("ALLOW_INTERNAL_ONLY"),
+// 				AllTrafficOnLatestRevision: pulumi.Bool(true),
+// 				ServiceAccountEmail:        account.Email,
+// 			},
+// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
+// 				TriggerRegion:       pulumi.String("us-central1"),
+// 				EventType:           pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+// 				PubsubTopic:         sub.ID(),
+// 				RetryPolicy:         pulumi.String("RETRY_POLICY_RETRY"),
+// 				ServiceAccountEmail: account.Email,
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -159,21 +153,15 @@ import (
 // function can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
-//
+//  $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
 // ```
 type Function struct {
 	pulumi.CustomResourceState
@@ -384,7 +372,7 @@ func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutp
 // FunctionArrayInput is an input type that accepts FunctionArray and FunctionArrayOutput values.
 // You can construct a concrete instance of `FunctionArrayInput` via:
 //
-//	FunctionArray{ FunctionArgs{...} }
+//          FunctionArray{ FunctionArgs{...} }
 type FunctionArrayInput interface {
 	pulumi.Input
 
@@ -409,7 +397,7 @@ func (i FunctionArray) ToFunctionArrayOutputWithContext(ctx context.Context) Fun
 // FunctionMapInput is an input type that accepts FunctionMap and FunctionMapOutput values.
 // You can construct a concrete instance of `FunctionMapInput` via:
 //
-//	FunctionMap{ "key": FunctionArgs{...} }
+//          FunctionMap{ "key": FunctionArgs{...} }
 type FunctionMapInput interface {
 	pulumi.Input
 

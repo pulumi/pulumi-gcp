@@ -18,48 +18,45 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
-//				AccountId: pulumi.String("bqowner"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("example_dataset"),
-//				FriendlyName:             pulumi.String("test"),
-//				Description:              pulumi.String("This is a test description"),
-//				Location:                 pulumi.String("EU"),
-//				DefaultTableExpirationMs: pulumi.Int(3600000),
-//				Labels: pulumi.StringMap{
-//					"env": pulumi.String("default"),
-//				},
-//				Accesses: bigquery.DatasetAccessTypeArray{
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:        pulumi.String("OWNER"),
-//						UserByEmail: bqowner.Email,
-//					},
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:   pulumi.String("READER"),
-//						Domain: pulumi.String("hashicorp.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
+// 			AccountId: pulumi.String("bqowner"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("example_dataset"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This is a test description"),
+// 			Location:                 pulumi.String("EU"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 			Accesses: bigquery.DatasetAccessTypeArray{
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Role:        pulumi.String("OWNER"),
+// 					UserByEmail: bqowner.Email,
+// 				},
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Role:   pulumi.String("READER"),
+// 					Domain: pulumi.String("hashicorp.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Bigquery Dataset Cmek
 //
@@ -67,44 +64,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
-//				Location: pulumi.String("us"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
-//				KeyRing: keyRing.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("example_dataset"),
-//				FriendlyName:             pulumi.String("test"),
-//				Description:              pulumi.String("This is a test description"),
-//				Location:                 pulumi.String("US"),
-//				DefaultTableExpirationMs: pulumi.Int(3600000),
-//				DefaultEncryptionConfiguration: &bigquery.DatasetDefaultEncryptionConfigurationArgs{
-//					KmsKeyName: cryptoKey.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("us"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("example_dataset"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This is a test description"),
+// 			Location:                 pulumi.String("US"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			DefaultEncryptionConfiguration: &bigquery.DatasetDefaultEncryptionConfigurationArgs{
+// 				KmsKeyName: cryptoKey.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Bigquery Dataset Authorized Dataset
 //
@@ -112,104 +106,95 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
-//				AccountId: pulumi.String("bqowner"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("public"),
-//				FriendlyName:             pulumi.String("test"),
-//				Description:              pulumi.String("This dataset is public"),
-//				Location:                 pulumi.String("EU"),
-//				DefaultTableExpirationMs: pulumi.Int(3600000),
-//				Labels: pulumi.StringMap{
-//					"env": pulumi.String("default"),
-//				},
-//				Accesses: bigquery.DatasetAccessTypeArray{
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:        pulumi.String("OWNER"),
-//						UserByEmail: bqowner.Email,
-//					},
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:   pulumi.String("READER"),
-//						Domain: pulumi.String("hashicorp.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("private"),
-//				FriendlyName:             pulumi.String("test"),
-//				Description:              pulumi.String("This dataset is private"),
-//				Location:                 pulumi.String("EU"),
-//				DefaultTableExpirationMs: pulumi.Int(3600000),
-//				Labels: pulumi.StringMap{
-//					"env": pulumi.String("default"),
-//				},
-//				Accesses: bigquery.DatasetAccessTypeArray{
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:        pulumi.String("OWNER"),
-//						UserByEmail: bqowner.Email,
-//					},
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:   pulumi.String("READER"),
-//						Domain: pulumi.String("hashicorp.com"),
-//					},
-//					&bigquery.DatasetAccessTypeArgs{
-//						Dataset: &bigquery.DatasetAccessDatasetArgs{
-//							Dataset: &bigquery.DatasetAccessDatasetDatasetArgs{
-//								ProjectId: public.Project,
-//								DatasetId: public.DatasetId,
-//							},
-//							TargetTypes: pulumi.StringArray{
-//								pulumi.String("VIEWS"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
+// 			AccountId: pulumi.String("bqowner"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("public"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This dataset is public"),
+// 			Location:                 pulumi.String("EU"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 			Accesses: bigquery.DatasetAccessTypeArray{
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Role:        pulumi.String("OWNER"),
+// 					UserByEmail: bqowner.Email,
+// 				},
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Role:   pulumi.String("READER"),
+// 					Domain: pulumi.String("hashicorp.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("private"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This dataset is private"),
+// 			Location:                 pulumi.String("EU"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 			Accesses: bigquery.DatasetAccessTypeArray{
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Role:        pulumi.String("OWNER"),
+// 					UserByEmail: bqowner.Email,
+// 				},
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Role:   pulumi.String("READER"),
+// 					Domain: pulumi.String("hashicorp.com"),
+// 				},
+// 				&bigquery.DatasetAccessTypeArgs{
+// 					Dataset: &bigquery.DatasetAccessDatasetArgs{
+// 						Dataset: &bigquery.DatasetAccessDatasetDatasetArgs{
+// 							ProjectId: public.Project,
+// 							DatasetId: public.DatasetId,
+// 						},
+// 						TargetTypes: pulumi.StringArray{
+// 							pulumi.String("VIEWS"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Dataset can be imported using any of these accepted formats
+// Dataset can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-//
+//  $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-//
+//  $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
-//
+//  $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
 // ```
 type Dataset struct {
 	pulumi.CustomResourceState
@@ -479,7 +464,7 @@ func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput 
 // DatasetArrayInput is an input type that accepts DatasetArray and DatasetArrayOutput values.
 // You can construct a concrete instance of `DatasetArrayInput` via:
 //
-//	DatasetArray{ DatasetArgs{...} }
+//          DatasetArray{ DatasetArgs{...} }
 type DatasetArrayInput interface {
 	pulumi.Input
 
@@ -504,7 +489,7 @@ func (i DatasetArray) ToDatasetArrayOutputWithContext(ctx context.Context) Datas
 // DatasetMapInput is an input type that accepts DatasetMap and DatasetMapOutput values.
 // You can construct a concrete instance of `DatasetMapInput` via:
 //
-//	DatasetMap{ "key": DatasetArgs{...} }
+//          DatasetMap{ "key": DatasetArgs{...} }
 type DatasetMapInput interface {
 	pulumi.Input
 

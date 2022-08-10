@@ -19,29 +19,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuild.NewWorkerPool(ctx, "pool", &cloudbuild.WorkerPoolArgs{
-//				Location: pulumi.String("europe-west1"),
-//				WorkerConfig: &cloudbuild.WorkerPoolWorkerConfigArgs{
-//					DiskSizeGb:   pulumi.Int(100),
-//					MachineType:  pulumi.String("e2-standard-4"),
-//					NoExternalIp: pulumi.Bool(false),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudbuild.NewWorkerPool(ctx, "pool", &cloudbuild.WorkerPoolArgs{
+// 			Location: pulumi.String("europe-west1"),
+// 			WorkerConfig: &cloudbuild.WorkerPoolWorkerConfigArgs{
+// 				DiskSizeGb:   pulumi.Int(100),
+// 				MachineType:  pulumi.String("e2-standard-4"),
+// 				NoExternalIp: pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Network Config
 //
@@ -49,95 +46,86 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
-//				Service:          pulumi.String("servicenetworking.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			workerRange, err := compute.NewGlobalAddress(ctx, "workerRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      network.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			workerPoolConn, err := servicenetworking.NewConnection(ctx, "workerPoolConn", &servicenetworking.ConnectionArgs{
-//				Network: network.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					workerRange.Name,
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudbuild.NewWorkerPool(ctx, "pool", &cloudbuild.WorkerPoolArgs{
-//				Location: pulumi.String("europe-west1"),
-//				WorkerConfig: &cloudbuild.WorkerPoolWorkerConfigArgs{
-//					DiskSizeGb:   pulumi.Int(100),
-//					MachineType:  pulumi.String("e2-standard-4"),
-//					NoExternalIp: pulumi.Bool(false),
-//				},
-//				NetworkConfig: &cloudbuild.WorkerPoolNetworkConfigArgs{
-//					PeeredNetwork: network.ID(),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				workerPoolConn,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+// 			Service:          pulumi.String("servicenetworking.googleapis.com"),
+// 			DisableOnDestroy: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			servicenetworking,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		workerRange, err := compute.NewGlobalAddress(ctx, "workerRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      network.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		workerPoolConn, err := servicenetworking.NewConnection(ctx, "workerPoolConn", &servicenetworking.ConnectionArgs{
+// 			Network: network.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				workerRange.Name,
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			servicenetworking,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudbuild.NewWorkerPool(ctx, "pool", &cloudbuild.WorkerPoolArgs{
+// 			Location: pulumi.String("europe-west1"),
+// 			WorkerConfig: &cloudbuild.WorkerPoolWorkerConfigArgs{
+// 				DiskSizeGb:   pulumi.Int(100),
+// 				MachineType:  pulumi.String("e2-standard-4"),
+// 				NoExternalIp: pulumi.Bool(false),
+// 			},
+// 			NetworkConfig: &cloudbuild.WorkerPoolNetworkConfigArgs{
+// 				PeeredNetwork: network.ID(),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			workerPoolConn,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # WorkerPool can be imported using any of these accepted formats
+// WorkerPool can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
-//
+//  $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
 // ```
 type WorkerPool struct {
 	pulumi.CustomResourceState
@@ -323,7 +311,7 @@ func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPo
 // WorkerPoolArrayInput is an input type that accepts WorkerPoolArray and WorkerPoolArrayOutput values.
 // You can construct a concrete instance of `WorkerPoolArrayInput` via:
 //
-//	WorkerPoolArray{ WorkerPoolArgs{...} }
+//          WorkerPoolArray{ WorkerPoolArgs{...} }
 type WorkerPoolArrayInput interface {
 	pulumi.Input
 
@@ -348,7 +336,7 @@ func (i WorkerPoolArray) ToWorkerPoolArrayOutputWithContext(ctx context.Context)
 // WorkerPoolMapInput is an input type that accepts WorkerPoolMap and WorkerPoolMapOutput values.
 // You can construct a concrete instance of `WorkerPoolMapInput` via:
 //
-//	WorkerPoolMap{ "key": WorkerPoolArgs{...} }
+//          WorkerPoolMap{ "key": WorkerPoolArgs{...} }
 type WorkerPoolMapInput interface {
 	pulumi.Input
 

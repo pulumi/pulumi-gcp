@@ -22,50 +22,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.NewCertificateMap(ctx, "default", &certificatemanager.CertificateMapArgs{
-//				Description: pulumi.String("My acceptance test certificate map"),
-//				Labels: pulumi.StringMap{
-//					"terraform": pulumi.String("true"),
-//					"acc-test":  pulumi.String("true"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := certificatemanager.NewCertificateMap(ctx, "default", &certificatemanager.CertificateMapArgs{
+// 			Description: pulumi.String("My acceptance test certificate map"),
+// 			Labels: pulumi.StringMap{
+// 				"terraform": pulumi.String("true"),
+// 				"acc-test":  pulumi.String("true"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # CertificateMap can be imported using any of these accepted formats
+// CertificateMap can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
-//
+//  $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
 // ```
 type CertificateMap struct {
 	pulumi.CustomResourceState
@@ -217,7 +208,7 @@ func (i *CertificateMap) ToCertificateMapOutputWithContext(ctx context.Context) 
 // CertificateMapArrayInput is an input type that accepts CertificateMapArray and CertificateMapArrayOutput values.
 // You can construct a concrete instance of `CertificateMapArrayInput` via:
 //
-//	CertificateMapArray{ CertificateMapArgs{...} }
+//          CertificateMapArray{ CertificateMapArgs{...} }
 type CertificateMapArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +233,7 @@ func (i CertificateMapArray) ToCertificateMapArrayOutputWithContext(ctx context.
 // CertificateMapMapInput is an input type that accepts CertificateMapMap and CertificateMapMapOutput values.
 // You can construct a concrete instance of `CertificateMapMapInput` via:
 //
-//	CertificateMapMap{ "key": CertificateMapArgs{...} }
+//          CertificateMapMap{ "key": CertificateMapArgs{...} }
 type CertificateMapMapInput interface {
 	pulumi.Input
 

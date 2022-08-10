@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+//     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 //
 // ## Example Usage
 // ### App Engine Domain Mapping Basic
@@ -26,49 +26,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := appengine.NewDomainMapping(ctx, "domainMapping", &appengine.DomainMappingArgs{
-//				DomainName: pulumi.String("verified-domain.com"),
-//				SslSettings: &appengine.DomainMappingSslSettingsArgs{
-//					SslManagementType: pulumi.String("AUTOMATIC"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := appengine.NewDomainMapping(ctx, "domainMapping", &appengine.DomainMappingArgs{
+// 			DomainName: pulumi.String("verified-domain.com"),
+// 			SslSettings: &appengine.DomainMappingSslSettingsArgs{
+// 				SslManagementType: pulumi.String("AUTOMATIC"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # DomainMapping can be imported using any of these accepted formats
+// DomainMapping can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
-//
+//  $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
-//
+//  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
-//
+//  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
 // ```
 type DomainMapping struct {
 	pulumi.CustomResourceState
@@ -229,7 +220,7 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 // DomainMappingArrayInput is an input type that accepts DomainMappingArray and DomainMappingArrayOutput values.
 // You can construct a concrete instance of `DomainMappingArrayInput` via:
 //
-//	DomainMappingArray{ DomainMappingArgs{...} }
+//          DomainMappingArray{ DomainMappingArgs{...} }
 type DomainMappingArrayInput interface {
 	pulumi.Input
 
@@ -254,7 +245,7 @@ func (i DomainMappingArray) ToDomainMappingArrayOutputWithContext(ctx context.Co
 // DomainMappingMapInput is an input type that accepts DomainMappingMap and DomainMappingMapOutput values.
 // You can construct a concrete instance of `DomainMappingMapInput` via:
 //
-//	DomainMappingMap{ "key": DomainMappingArgs{...} }
+//          DomainMappingMap{ "key": DomainMappingArgs{...} }
 type DomainMappingMapInput interface {
 	pulumi.Input
 

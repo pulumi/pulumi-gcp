@@ -22,7 +22,7 @@ type CryptoKeyIAMBindingCondition struct {
 // CryptoKeyIAMBindingConditionInput is an input type that accepts CryptoKeyIAMBindingConditionArgs and CryptoKeyIAMBindingConditionOutput values.
 // You can construct a concrete instance of `CryptoKeyIAMBindingConditionInput` via:
 //
-//	CryptoKeyIAMBindingConditionArgs{...}
+//          CryptoKeyIAMBindingConditionArgs{...}
 type CryptoKeyIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -62,11 +62,11 @@ func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionPtrOutpu
 // CryptoKeyIAMBindingConditionPtrInput is an input type that accepts CryptoKeyIAMBindingConditionArgs, CryptoKeyIAMBindingConditionPtr and CryptoKeyIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `CryptoKeyIAMBindingConditionPtrInput` via:
 //
-//	        CryptoKeyIAMBindingConditionArgs{...}
+//          CryptoKeyIAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type CryptoKeyIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -197,7 +197,7 @@ type CryptoKeyIAMMemberCondition struct {
 // CryptoKeyIAMMemberConditionInput is an input type that accepts CryptoKeyIAMMemberConditionArgs and CryptoKeyIAMMemberConditionOutput values.
 // You can construct a concrete instance of `CryptoKeyIAMMemberConditionInput` via:
 //
-//	CryptoKeyIAMMemberConditionArgs{...}
+//          CryptoKeyIAMMemberConditionArgs{...}
 type CryptoKeyIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -237,11 +237,11 @@ func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionPtrOutputW
 // CryptoKeyIAMMemberConditionPtrInput is an input type that accepts CryptoKeyIAMMemberConditionArgs, CryptoKeyIAMMemberConditionPtr and CryptoKeyIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `CryptoKeyIAMMemberConditionPtrInput` via:
 //
-//	        CryptoKeyIAMMemberConditionArgs{...}
+//          CryptoKeyIAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type CryptoKeyIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -371,7 +371,7 @@ type CryptoKeyVersionTemplate struct {
 // CryptoKeyVersionTemplateInput is an input type that accepts CryptoKeyVersionTemplateArgs and CryptoKeyVersionTemplateOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionTemplateInput` via:
 //
-//	CryptoKeyVersionTemplateArgs{...}
+//          CryptoKeyVersionTemplateArgs{...}
 type CryptoKeyVersionTemplateInput interface {
 	pulumi.Input
 
@@ -410,11 +410,11 @@ func (i CryptoKeyVersionTemplateArgs) ToCryptoKeyVersionTemplatePtrOutputWithCon
 // CryptoKeyVersionTemplatePtrInput is an input type that accepts CryptoKeyVersionTemplateArgs, CryptoKeyVersionTemplatePtr and CryptoKeyVersionTemplatePtrOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionTemplatePtrInput` via:
 //
-//	        CryptoKeyVersionTemplateArgs{...}
+//          CryptoKeyVersionTemplateArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type CryptoKeyVersionTemplatePtrInput interface {
 	pulumi.Input
 
@@ -532,7 +532,7 @@ type KeyRingIAMBindingCondition struct {
 // KeyRingIAMBindingConditionInput is an input type that accepts KeyRingIAMBindingConditionArgs and KeyRingIAMBindingConditionOutput values.
 // You can construct a concrete instance of `KeyRingIAMBindingConditionInput` via:
 //
-//	KeyRingIAMBindingConditionArgs{...}
+//          KeyRingIAMBindingConditionArgs{...}
 type KeyRingIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -572,11 +572,11 @@ func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionPtrOutputWit
 // KeyRingIAMBindingConditionPtrInput is an input type that accepts KeyRingIAMBindingConditionArgs, KeyRingIAMBindingConditionPtr and KeyRingIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `KeyRingIAMBindingConditionPtrInput` via:
 //
-//	        KeyRingIAMBindingConditionArgs{...}
+//          KeyRingIAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type KeyRingIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -707,7 +707,7 @@ type KeyRingIAMMemberCondition struct {
 // KeyRingIAMMemberConditionInput is an input type that accepts KeyRingIAMMemberConditionArgs and KeyRingIAMMemberConditionOutput values.
 // You can construct a concrete instance of `KeyRingIAMMemberConditionInput` via:
 //
-//	KeyRingIAMMemberConditionArgs{...}
+//          KeyRingIAMMemberConditionArgs{...}
 type KeyRingIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -747,11 +747,11 @@ func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionPtrOutputWithC
 // KeyRingIAMMemberConditionPtrInput is an input type that accepts KeyRingIAMMemberConditionArgs, KeyRingIAMMemberConditionPtr and KeyRingIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `KeyRingIAMMemberConditionPtrInput` via:
 //
-//	        KeyRingIAMMemberConditionArgs{...}
+//          KeyRingIAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type KeyRingIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -878,7 +878,7 @@ type KeyRingImportJobAttestation struct {
 // KeyRingImportJobAttestationInput is an input type that accepts KeyRingImportJobAttestationArgs and KeyRingImportJobAttestationOutput values.
 // You can construct a concrete instance of `KeyRingImportJobAttestationInput` via:
 //
-//	KeyRingImportJobAttestationArgs{...}
+//          KeyRingImportJobAttestationArgs{...}
 type KeyRingImportJobAttestationInput interface {
 	pulumi.Input
 
@@ -906,7 +906,7 @@ func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationOutputWith
 // KeyRingImportJobAttestationArrayInput is an input type that accepts KeyRingImportJobAttestationArray and KeyRingImportJobAttestationArrayOutput values.
 // You can construct a concrete instance of `KeyRingImportJobAttestationArrayInput` via:
 //
-//	KeyRingImportJobAttestationArray{ KeyRingImportJobAttestationArgs{...} }
+//          KeyRingImportJobAttestationArray{ KeyRingImportJobAttestationArgs{...} }
 type KeyRingImportJobAttestationArrayInput interface {
 	pulumi.Input
 
@@ -977,7 +977,7 @@ type KeyRingImportJobPublicKey struct {
 // KeyRingImportJobPublicKeyInput is an input type that accepts KeyRingImportJobPublicKeyArgs and KeyRingImportJobPublicKeyOutput values.
 // You can construct a concrete instance of `KeyRingImportJobPublicKeyInput` via:
 //
-//	KeyRingImportJobPublicKeyArgs{...}
+//          KeyRingImportJobPublicKeyArgs{...}
 type KeyRingImportJobPublicKeyInput interface {
 	pulumi.Input
 
@@ -1004,7 +1004,7 @@ func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyOutputWithCont
 // KeyRingImportJobPublicKeyArrayInput is an input type that accepts KeyRingImportJobPublicKeyArray and KeyRingImportJobPublicKeyArrayOutput values.
 // You can construct a concrete instance of `KeyRingImportJobPublicKeyArrayInput` via:
 //
-//	KeyRingImportJobPublicKeyArray{ KeyRingImportJobPublicKeyArgs{...} }
+//          KeyRingImportJobPublicKeyArray{ KeyRingImportJobPublicKeyArgs{...} }
 type KeyRingImportJobPublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -1072,7 +1072,7 @@ type RegistryCredential struct {
 // RegistryCredentialInput is an input type that accepts RegistryCredentialArgs and RegistryCredentialOutput values.
 // You can construct a concrete instance of `RegistryCredentialInput` via:
 //
-//	RegistryCredentialArgs{...}
+//          RegistryCredentialArgs{...}
 type RegistryCredentialInput interface {
 	pulumi.Input
 
@@ -1100,7 +1100,7 @@ func (i RegistryCredentialArgs) ToRegistryCredentialOutputWithContext(ctx contex
 // RegistryCredentialArrayInput is an input type that accepts RegistryCredentialArray and RegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `RegistryCredentialArrayInput` via:
 //
-//	RegistryCredentialArray{ RegistryCredentialArgs{...} }
+//          RegistryCredentialArray{ RegistryCredentialArgs{...} }
 type RegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -1175,7 +1175,7 @@ type RegistryEventNotificationConfigItem struct {
 // RegistryEventNotificationConfigItemInput is an input type that accepts RegistryEventNotificationConfigItemArgs and RegistryEventNotificationConfigItemOutput values.
 // You can construct a concrete instance of `RegistryEventNotificationConfigItemInput` via:
 //
-//	RegistryEventNotificationConfigItemArgs{...}
+//          RegistryEventNotificationConfigItemArgs{...}
 type RegistryEventNotificationConfigItemInput interface {
 	pulumi.Input
 
@@ -1209,7 +1209,7 @@ func (i RegistryEventNotificationConfigItemArgs) ToRegistryEventNotificationConf
 // RegistryEventNotificationConfigItemArrayInput is an input type that accepts RegistryEventNotificationConfigItemArray and RegistryEventNotificationConfigItemArrayOutput values.
 // You can construct a concrete instance of `RegistryEventNotificationConfigItemArrayInput` via:
 //
-//	RegistryEventNotificationConfigItemArray{ RegistryEventNotificationConfigItemArgs{...} }
+//          RegistryEventNotificationConfigItemArray{ RegistryEventNotificationConfigItemArgs{...} }
 type RegistryEventNotificationConfigItemArrayInput interface {
 	pulumi.Input
 
@@ -1289,7 +1289,7 @@ type GetKMSCryptoKeyVersionPublicKey struct {
 // GetKMSCryptoKeyVersionPublicKeyInput is an input type that accepts GetKMSCryptoKeyVersionPublicKeyArgs and GetKMSCryptoKeyVersionPublicKeyOutput values.
 // You can construct a concrete instance of `GetKMSCryptoKeyVersionPublicKeyInput` via:
 //
-//	GetKMSCryptoKeyVersionPublicKeyArgs{...}
+//          GetKMSCryptoKeyVersionPublicKeyArgs{...}
 type GetKMSCryptoKeyVersionPublicKeyInput interface {
 	pulumi.Input
 
@@ -1319,7 +1319,7 @@ func (i GetKMSCryptoKeyVersionPublicKeyArgs) ToGetKMSCryptoKeyVersionPublicKeyOu
 // GetKMSCryptoKeyVersionPublicKeyArrayInput is an input type that accepts GetKMSCryptoKeyVersionPublicKeyArray and GetKMSCryptoKeyVersionPublicKeyArrayOutput values.
 // You can construct a concrete instance of `GetKMSCryptoKeyVersionPublicKeyArrayInput` via:
 //
-//	GetKMSCryptoKeyVersionPublicKeyArray{ GetKMSCryptoKeyVersionPublicKeyArgs{...} }
+//          GetKMSCryptoKeyVersionPublicKeyArray{ GetKMSCryptoKeyVersionPublicKeyArgs{...} }
 type GetKMSCryptoKeyVersionPublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -1393,7 +1393,7 @@ type GetKMSCryptoKeyVersionTemplate struct {
 // GetKMSCryptoKeyVersionTemplateInput is an input type that accepts GetKMSCryptoKeyVersionTemplateArgs and GetKMSCryptoKeyVersionTemplateOutput values.
 // You can construct a concrete instance of `GetKMSCryptoKeyVersionTemplateInput` via:
 //
-//	GetKMSCryptoKeyVersionTemplateArgs{...}
+//          GetKMSCryptoKeyVersionTemplateArgs{...}
 type GetKMSCryptoKeyVersionTemplateInput interface {
 	pulumi.Input
 
@@ -1421,7 +1421,7 @@ func (i GetKMSCryptoKeyVersionTemplateArgs) ToGetKMSCryptoKeyVersionTemplateOutp
 // GetKMSCryptoKeyVersionTemplateArrayInput is an input type that accepts GetKMSCryptoKeyVersionTemplateArray and GetKMSCryptoKeyVersionTemplateArrayOutput values.
 // You can construct a concrete instance of `GetKMSCryptoKeyVersionTemplateArrayInput` via:
 //
-//	GetKMSCryptoKeyVersionTemplateArray{ GetKMSCryptoKeyVersionTemplateArgs{...} }
+//          GetKMSCryptoKeyVersionTemplateArray{ GetKMSCryptoKeyVersionTemplateArgs{...} }
 type GetKMSCryptoKeyVersionTemplateArrayInput interface {
 	pulumi.Input
 

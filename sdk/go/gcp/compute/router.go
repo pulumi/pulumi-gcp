@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
 // * How-to Guides
-//   - [Google Cloud Router](https://cloud.google.com/router/docs/)
+//     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
 // ### Router Basic
@@ -26,45 +26,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
-//				Network: foobarNetwork.Name,
-//				Bgp: &compute.RouterBgpArgs{
-//					Asn:           pulumi.Int(64514),
-//					AdvertiseMode: pulumi.String("CUSTOM"),
-//					AdvertisedGroups: pulumi.StringArray{
-//						pulumi.String("ALL_SUBNETS"),
-//					},
-//					AdvertisedIpRanges: compute.RouterBgpAdvertisedIpRangeArray{
-//						&compute.RouterBgpAdvertisedIpRangeArgs{
-//							Range: pulumi.String("1.2.3.4"),
-//						},
-//						&compute.RouterBgpAdvertisedIpRangeArgs{
-//							Range: pulumi.String("6.7.0.0/16"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+// 			Network: foobarNetwork.Name,
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn:           pulumi.Int(64514),
+// 				AdvertiseMode: pulumi.String("CUSTOM"),
+// 				AdvertisedGroups: pulumi.StringArray{
+// 					pulumi.String("ALL_SUBNETS"),
+// 				},
+// 				AdvertisedIpRanges: compute.RouterBgpAdvertisedIpRangeArray{
+// 					&compute.RouterBgpAdvertisedIpRangeArgs{
+// 						Range: pulumi.String("1.2.3.4"),
+// 					},
+// 					&compute.RouterBgpAdvertisedIpRangeArgs{
+// 						Range: pulumi.String("6.7.0.0/16"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Compute Router Encrypted Interconnect
 //
@@ -72,62 +69,51 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRouter(ctx, "encrypted-interconnect-router", &compute.RouterArgs{
-//				Network:                     network.Name,
-//				EncryptedInterconnectRouter: pulumi.Bool(true),
-//				Bgp: &compute.RouterBgpArgs{
-//					Asn: pulumi.Int(64514),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRouter(ctx, "encrypted-interconnect-router", &compute.RouterArgs{
+// 			Network:                     network.Name,
+// 			EncryptedInterconnectRouter: pulumi.Bool(true),
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(64514),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Router can be imported using any of these accepted formats
+// Router can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
-//
+//  $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/router:Router default {{name}}
-//
+//  $ pulumi import gcp:compute/router:Router default {{name}}
 // ```
 type Router struct {
 	pulumi.CustomResourceState
@@ -335,7 +321,7 @@ func (i *Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 // RouterArrayInput is an input type that accepts RouterArray and RouterArrayOutput values.
 // You can construct a concrete instance of `RouterArrayInput` via:
 //
-//	RouterArray{ RouterArgs{...} }
+//          RouterArray{ RouterArgs{...} }
 type RouterArrayInput interface {
 	pulumi.Input
 
@@ -360,7 +346,7 @@ func (i RouterArray) ToRouterArrayOutputWithContext(ctx context.Context) RouterA
 // RouterMapInput is an input type that accepts RouterMap and RouterMapOutput values.
 // You can construct a concrete instance of `RouterMapInput` via:
 //
-//	RouterMap{ "key": RouterArgs{...} }
+//          RouterMap{ "key": RouterArgs{...} }
 type RouterMapInput interface {
 	pulumi.Input
 

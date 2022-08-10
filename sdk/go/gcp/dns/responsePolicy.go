@@ -18,67 +18,58 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewResponsePolicy(ctx, "example-response-policy", &dns.ResponsePolicyArgs{
-//				ResponsePolicyName: pulumi.String("example-response-policy"),
-//				Networks: dns.ResponsePolicyNetworkArray{
-//					&dns.ResponsePolicyNetworkArgs{
-//						NetworkUrl: network_1.ID(),
-//					},
-//					&dns.ResponsePolicyNetworkArgs{
-//						NetworkUrl: network_2.ID(),
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewResponsePolicy(ctx, "example-response-policy", &dns.ResponsePolicyArgs{
+// 			ResponsePolicyName: pulumi.String("example-response-policy"),
+// 			Networks: dns.ResponsePolicyNetworkArray{
+// 				&dns.ResponsePolicyNetworkArgs{
+// 					NetworkUrl: network_1.ID(),
+// 				},
+// 				&dns.ResponsePolicyNetworkArgs{
+// 					NetworkUrl: network_2.ID(),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ResponsePolicy can be imported using any of these accepted formats
+// ResponsePolicy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
-//
+//  $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{project}}/{{response_policy_name}}
-//
+//  $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{project}}/{{response_policy_name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
-//
+//  $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
 // ```
 type ResponsePolicy struct {
 	pulumi.CustomResourceState
@@ -209,7 +200,7 @@ func (i *ResponsePolicy) ToResponsePolicyOutputWithContext(ctx context.Context) 
 // ResponsePolicyArrayInput is an input type that accepts ResponsePolicyArray and ResponsePolicyArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyArrayInput` via:
 //
-//	ResponsePolicyArray{ ResponsePolicyArgs{...} }
+//          ResponsePolicyArray{ ResponsePolicyArgs{...} }
 type ResponsePolicyArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +225,7 @@ func (i ResponsePolicyArray) ToResponsePolicyArrayOutputWithContext(ctx context.
 // ResponsePolicyMapInput is an input type that accepts ResponsePolicyMap and ResponsePolicyMapOutput values.
 // You can construct a concrete instance of `ResponsePolicyMapInput` via:
 //
-//	ResponsePolicyMap{ "key": ResponsePolicyArgs{...} }
+//          ResponsePolicyMap{ "key": ResponsePolicyArgs{...} }
 type ResponsePolicyMapInput interface {
 	pulumi.Input
 

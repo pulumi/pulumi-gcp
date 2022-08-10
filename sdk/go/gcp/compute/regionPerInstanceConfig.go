@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 //
 // ## Example Usage
 // ### Stateful Rigm
@@ -28,132 +28,121 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-//				Family:  pulumi.StringRef("debian-9"),
-//				Project: pulumi.StringRef("debian-cloud"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
-//				MachineType:  pulumi.String("e2-medium"),
-//				CanIpForward: pulumi.Bool(false),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo"),
-//					pulumi.String("bar"),
-//				},
-//				Disks: compute.InstanceTemplateDiskArray{
-//					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String(myImage.SelfLink),
-//						AutoDelete:  pulumi.Bool(true),
-//						Boot:        pulumi.Bool(true),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-//					&compute.InstanceTemplateNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//					},
-//				},
-//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
-//					Scopes: pulumi.StringArray{
-//						pulumi.String("userinfo-email"),
-//						pulumi.String("compute-ro"),
-//						pulumi.String("storage-ro"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			rigm, err := compute.NewRegionInstanceGroupManager(ctx, "rigm", &compute.RegionInstanceGroupManagerArgs{
-//				Description: pulumi.String("Demo test instance group manager"),
-//				Versions: compute.RegionInstanceGroupManagerVersionArray{
-//					&compute.RegionInstanceGroupManagerVersionArgs{
-//						Name:             pulumi.String("prod"),
-//						InstanceTemplate: igm_basic.SelfLink,
-//					},
-//				},
-//				UpdatePolicy: &compute.RegionInstanceGroupManagerUpdatePolicyArgs{
-//					Type:                       pulumi.String("OPPORTUNISTIC"),
-//					InstanceRedistributionType: pulumi.String("NONE"),
-//					MinimalAction:              pulumi.String("RESTART"),
-//				},
-//				BaseInstanceName: pulumi.String("rigm"),
-//				Region:           pulumi.String("us-central1"),
-//				TargetSize:       pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
-//				Type:                   pulumi.String("pd-ssd"),
-//				Zone:                   pulumi.String("us-central1-a"),
-//				Image:                  pulumi.String("debian-8-jessie-v20170523"),
-//				PhysicalBlockSizeBytes: pulumi.Int(4096),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionPerInstanceConfig(ctx, "withDisk", &compute.RegionPerInstanceConfigArgs{
-//				Region:                     pulumi.Any(google_compute_region_instance_group_manager.Igm.Region),
-//				RegionInstanceGroupManager: rigm.Name,
-//				PreservedState: &compute.RegionPerInstanceConfigPreservedStateArgs{
-//					Metadata: pulumi.StringMap{
-//						"foo":               pulumi.String("bar"),
-//						"instance_template": igm_basic.SelfLink,
-//					},
-//					Disks: compute.RegionPerInstanceConfigPreservedStateDiskArray{
-//						&compute.RegionPerInstanceConfigPreservedStateDiskArgs{
-//							DeviceName: pulumi.String("my-stateful-disk"),
-//							Source:     _default.ID(),
-//							Mode:       pulumi.String("READ_ONLY"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  pulumi.StringRef("debian-9"),
+// 			Project: pulumi.StringRef("debian-cloud"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
+// 			MachineType:  pulumi.String("e2-medium"),
+// 			CanIpForward: pulumi.Bool(false),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String(myImage.SelfLink),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("userinfo-email"),
+// 					pulumi.String("compute-ro"),
+// 					pulumi.String("storage-ro"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		rigm, err := compute.NewRegionInstanceGroupManager(ctx, "rigm", &compute.RegionInstanceGroupManagerArgs{
+// 			Description: pulumi.String("Demo test instance group manager"),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					Name:             pulumi.String("prod"),
+// 					InstanceTemplate: igm_basic.SelfLink,
+// 				},
+// 			},
+// 			UpdatePolicy: &compute.RegionInstanceGroupManagerUpdatePolicyArgs{
+// 				Type:                       pulumi.String("OPPORTUNISTIC"),
+// 				InstanceRedistributionType: pulumi.String("NONE"),
+// 				MinimalAction:              pulumi.String("RESTART"),
+// 			},
+// 			BaseInstanceName: pulumi.String("rigm"),
+// 			Region:           pulumi.String("us-central1"),
+// 			TargetSize:       pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
+// 			Type:                   pulumi.String("pd-ssd"),
+// 			Zone:                   pulumi.String("us-central1-a"),
+// 			Image:                  pulumi.String("debian-8-jessie-v20170523"),
+// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionPerInstanceConfig(ctx, "withDisk", &compute.RegionPerInstanceConfigArgs{
+// 			Region:                     pulumi.Any(google_compute_region_instance_group_manager.Igm.Region),
+// 			RegionInstanceGroupManager: rigm.Name,
+// 			PreservedState: &compute.RegionPerInstanceConfigPreservedStateArgs{
+// 				Metadata: pulumi.StringMap{
+// 					"foo":               pulumi.String("bar"),
+// 					"instance_template": igm_basic.SelfLink,
+// 				},
+// 				Disks: compute.RegionPerInstanceConfigPreservedStateDiskArray{
+// 					&compute.RegionPerInstanceConfigPreservedStateDiskArgs{
+// 						DeviceName: pulumi.String("my-stateful-disk"),
+// 						Source:     _default.ID(),
+// 						Mode:       pulumi.String("READ_ONLY"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # RegionPerInstanceConfig can be imported using any of these accepted formats
+// RegionPerInstanceConfig can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
 // ```
 type RegionPerInstanceConfig struct {
 	pulumi.CustomResourceState
@@ -384,7 +373,7 @@ func (i *RegionPerInstanceConfig) ToRegionPerInstanceConfigOutputWithContext(ctx
 // RegionPerInstanceConfigArrayInput is an input type that accepts RegionPerInstanceConfigArray and RegionPerInstanceConfigArrayOutput values.
 // You can construct a concrete instance of `RegionPerInstanceConfigArrayInput` via:
 //
-//	RegionPerInstanceConfigArray{ RegionPerInstanceConfigArgs{...} }
+//          RegionPerInstanceConfigArray{ RegionPerInstanceConfigArgs{...} }
 type RegionPerInstanceConfigArrayInput interface {
 	pulumi.Input
 
@@ -409,7 +398,7 @@ func (i RegionPerInstanceConfigArray) ToRegionPerInstanceConfigArrayOutputWithCo
 // RegionPerInstanceConfigMapInput is an input type that accepts RegionPerInstanceConfigMap and RegionPerInstanceConfigMapOutput values.
 // You can construct a concrete instance of `RegionPerInstanceConfigMapInput` via:
 //
-//	RegionPerInstanceConfigMap{ "key": RegionPerInstanceConfigArgs{...} }
+//          RegionPerInstanceConfigMap{ "key": RegionPerInstanceConfigArgs{...} }
 type RegionPerInstanceConfigMapInput interface {
 	pulumi.Input
 

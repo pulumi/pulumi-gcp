@@ -18,30 +18,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/container-analysis/)
+//     * [Official Documentation](https://cloud.google.com/container-analysis/)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # Occurrence can be imported using any of these accepted formats
+// Occurrence can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
-//
+//  $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
-//
+//  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
 // ```
 type Occurence struct {
 	pulumi.CustomResourceState
@@ -270,7 +264,7 @@ func (i *Occurence) ToOccurenceOutputWithContext(ctx context.Context) OccurenceO
 // OccurenceArrayInput is an input type that accepts OccurenceArray and OccurenceArrayOutput values.
 // You can construct a concrete instance of `OccurenceArrayInput` via:
 //
-//	OccurenceArray{ OccurenceArgs{...} }
+//          OccurenceArray{ OccurenceArgs{...} }
 type OccurenceArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +289,7 @@ func (i OccurenceArray) ToOccurenceArrayOutputWithContext(ctx context.Context) O
 // OccurenceMapInput is an input type that accepts OccurenceMap and OccurenceMapOutput values.
 // You can construct a concrete instance of `OccurenceMapInput` via:
 //
-//	OccurenceMap{ "key": OccurenceArgs{...} }
+//          OccurenceMap{ "key": OccurenceArgs{...} }
 type OccurenceMapInput interface {
 	pulumi.Input
 

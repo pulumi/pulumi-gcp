@@ -20,7 +20,7 @@ type WorkloadKmsSettings struct {
 // WorkloadKmsSettingsInput is an input type that accepts WorkloadKmsSettingsArgs and WorkloadKmsSettingsOutput values.
 // You can construct a concrete instance of `WorkloadKmsSettingsInput` via:
 //
-//	WorkloadKmsSettingsArgs{...}
+//          WorkloadKmsSettingsArgs{...}
 type WorkloadKmsSettingsInput interface {
 	pulumi.Input
 
@@ -58,11 +58,11 @@ func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsPtrOutputWithContext(ctx c
 // WorkloadKmsSettingsPtrInput is an input type that accepts WorkloadKmsSettingsArgs, WorkloadKmsSettingsPtr and WorkloadKmsSettingsPtrOutput values.
 // You can construct a concrete instance of `WorkloadKmsSettingsPtrInput` via:
 //
-//	        WorkloadKmsSettingsArgs{...}
+//          WorkloadKmsSettingsArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type WorkloadKmsSettingsPtrInput interface {
 	pulumi.Input
 
@@ -176,7 +176,7 @@ type WorkloadResource struct {
 // WorkloadResourceInput is an input type that accepts WorkloadResourceArgs and WorkloadResourceOutput values.
 // You can construct a concrete instance of `WorkloadResourceInput` via:
 //
-//	WorkloadResourceArgs{...}
+//          WorkloadResourceArgs{...}
 type WorkloadResourceInput interface {
 	pulumi.Input
 
@@ -206,7 +206,7 @@ func (i WorkloadResourceArgs) ToWorkloadResourceOutputWithContext(ctx context.Co
 // WorkloadResourceArrayInput is an input type that accepts WorkloadResourceArray and WorkloadResourceArrayOutput values.
 // You can construct a concrete instance of `WorkloadResourceArrayInput` via:
 //
-//	WorkloadResourceArray{ WorkloadResourceArgs{...} }
+//          WorkloadResourceArray{ WorkloadResourceArgs{...} }
 type WorkloadResourceArrayInput interface {
 	pulumi.Input
 
@@ -282,7 +282,7 @@ type WorkloadResourceSetting struct {
 // WorkloadResourceSettingInput is an input type that accepts WorkloadResourceSettingArgs and WorkloadResourceSettingOutput values.
 // You can construct a concrete instance of `WorkloadResourceSettingInput` via:
 //
-//	WorkloadResourceSettingArgs{...}
+//          WorkloadResourceSettingArgs{...}
 type WorkloadResourceSettingInput interface {
 	pulumi.Input
 
@@ -312,7 +312,7 @@ func (i WorkloadResourceSettingArgs) ToWorkloadResourceSettingOutputWithContext(
 // WorkloadResourceSettingArrayInput is an input type that accepts WorkloadResourceSettingArray and WorkloadResourceSettingArrayOutput values.
 // You can construct a concrete instance of `WorkloadResourceSettingArrayInput` via:
 //
-//	WorkloadResourceSettingArray{ WorkloadResourceSettingArgs{...} }
+//          WorkloadResourceSettingArray{ WorkloadResourceSettingArgs{...} }
 type WorkloadResourceSettingArrayInput interface {
 	pulumi.Input
 

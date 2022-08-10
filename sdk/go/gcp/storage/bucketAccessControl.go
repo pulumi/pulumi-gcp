@@ -32,7 +32,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+//     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 //
 // ## Example Usage
 // ### Storage Bucket Access Control Public Bucket
@@ -41,42 +41,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucketAccessControl(ctx, "publicRule", &storage.BucketAccessControlArgs{
-//				Bucket: bucket.Name,
-//				Role:   pulumi.String("READER"),
-//				Entity: pulumi.String("allUsers"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewBucketAccessControl(ctx, "publicRule", &storage.BucketAccessControlArgs{
+// 			Bucket: bucket.Name,
+// 			Role:   pulumi.String("READER"),
+// 			Entity: pulumi.String("allUsers"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # BucketAccessControl can be imported using any of these accepted formats
+// BucketAccessControl can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
-//
+//  $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
 // ```
 type BucketAccessControl struct {
 	pulumi.CustomResourceState
@@ -277,7 +272,7 @@ func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context
 // BucketAccessControlArrayInput is an input type that accepts BucketAccessControlArray and BucketAccessControlArrayOutput values.
 // You can construct a concrete instance of `BucketAccessControlArrayInput` via:
 //
-//	BucketAccessControlArray{ BucketAccessControlArgs{...} }
+//          BucketAccessControlArray{ BucketAccessControlArgs{...} }
 type BucketAccessControlArrayInput interface {
 	pulumi.Input
 
@@ -302,7 +297,7 @@ func (i BucketAccessControlArray) ToBucketAccessControlArrayOutputWithContext(ct
 // BucketAccessControlMapInput is an input type that accepts BucketAccessControlMap and BucketAccessControlMapOutput values.
 // You can construct a concrete instance of `BucketAccessControlMapInput` via:
 //
-//	BucketAccessControlMap{ "key": BucketAccessControlArgs{...} }
+//          BucketAccessControlMap{ "key": BucketAccessControlArgs{...} }
 type BucketAccessControlMapInput interface {
 	pulumi.Input
 

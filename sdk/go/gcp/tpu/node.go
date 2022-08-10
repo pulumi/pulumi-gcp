@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/tpu/docs/)
+//     * [Official Documentation](https://cloud.google.com/tpu/docs/)
 //
 // ## Example Usage
 // ### TPU Node Basic
@@ -26,31 +26,28 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := tpu.GetTensorflowVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
-//				Zone:              pulumi.String("us-central1-b"),
-//				AcceleratorType:   pulumi.String("v3-8"),
-//				TensorflowVersion: pulumi.String(available.Versions[0]),
-//				CidrBlock:         pulumi.String("10.2.0.0/29"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		available, err := tpu.GetTensorflowVersions(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
+// 			Zone:              pulumi.String("us-central1-b"),
+// 			AcceleratorType:   pulumi.String("v3-8"),
+// 			TensorflowVersion: pulumi.String(available.Versions[0]),
+// 			CidrBlock:         pulumi.String("10.2.0.0/29"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### TPU Node Full
 //
@@ -58,94 +55,83 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := tpu.GetTensorflowVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "default",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(network.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(network.Id),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					serviceRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
-//				Zone:                 pulumi.String("us-central1-b"),
-//				AcceleratorType:      pulumi.String("v3-8"),
-//				TensorflowVersion:    pulumi.String(available.Versions[0]),
-//				Description:          pulumi.String("Google Provider test TPU"),
-//				UseServiceNetworking: pulumi.Bool(true),
-//				Network:              privateServiceConnection.Network,
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				SchedulingConfig: &tpu.NodeSchedulingConfigArgs{
-//					Preemptible: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		available, err := tpu.GetTensorflowVersions(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "default",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      pulumi.String(network.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+// 			Network: pulumi.String(network.Id),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				serviceRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
+// 			Zone:                 pulumi.String("us-central1-b"),
+// 			AcceleratorType:      pulumi.String("v3-8"),
+// 			TensorflowVersion:    pulumi.String(available.Versions[0]),
+// 			Description:          pulumi.String("Google Provider test TPU"),
+// 			UseServiceNetworking: pulumi.Bool(true),
+// 			Network:              privateServiceConnection.Network,
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			SchedulingConfig: &tpu.NodeSchedulingConfigArgs{
+// 				Preemptible: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Node can be imported using any of these accepted formats
+// Node can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
-//
+//  $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:tpu/node:Node default {{project}}/{{zone}}/{{name}}
-//
+//  $ pulumi import gcp:tpu/node:Node default {{project}}/{{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:tpu/node:Node default {{zone}}/{{name}}
-//
+//  $ pulumi import gcp:tpu/node:Node default {{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:tpu/node:Node default {{name}}
-//
+//  $ pulumi import gcp:tpu/node:Node default {{name}}
 // ```
 type Node struct {
 	pulumi.CustomResourceState
@@ -432,7 +418,7 @@ func (i *Node) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 // NodeArrayInput is an input type that accepts NodeArray and NodeArrayOutput values.
 // You can construct a concrete instance of `NodeArrayInput` via:
 //
-//	NodeArray{ NodeArgs{...} }
+//          NodeArray{ NodeArgs{...} }
 type NodeArrayInput interface {
 	pulumi.Input
 
@@ -457,7 +443,7 @@ func (i NodeArray) ToNodeArrayOutputWithContext(ctx context.Context) NodeArrayOu
 // NodeMapInput is an input type that accepts NodeMap and NodeMapOutput values.
 // You can construct a concrete instance of `NodeMapInput` via:
 //
-//	NodeMap{ "key": NodeArgs{...} }
+//          NodeMap{ "key": NodeArgs{...} }
 type NodeMapInput interface {
 	pulumi.Input
 

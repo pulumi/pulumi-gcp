@@ -27,7 +27,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
 // * How-to Guides
-//   - [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+//     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 //
 // ## Example Usage
 //
@@ -35,59 +35,53 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				OrgId:     pulumi.String("1234567"),
-//				ProjectId: pulumi.String("your-project-id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			OrgId:     pulumi.String("1234567"),
+// 			ProjectId: pulumi.String("your-project-id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
-// # To create a project under a specific folder
+// To create a project under a specific folder
 //
 // ```go
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("Department 1"),
-//				Parent:      pulumi.String("organizations/1234567"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.NewProject(ctx, "myProject-in-a-folder", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  department1.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("Department 1"),
+// 			Parent:      pulumi.String("organizations/1234567"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = organizations.NewProject(ctx, "myProject-in-a-folder", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("your-project-id"),
+// 			FolderId:  department1.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -95,9 +89,7 @@ import (
 // Projects can be imported using the `project_id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:organizations/project:Project my_project your-project-id
-//
+//  $ pulumi import gcp:organizations/project:Project my_project your-project-id
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -349,7 +341,7 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
-//	ProjectArray{ ProjectArgs{...} }
+//          ProjectArray{ ProjectArgs{...} }
 type ProjectArrayInput interface {
 	pulumi.Input
 
@@ -374,7 +366,7 @@ func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) Proje
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
 // You can construct a concrete instance of `ProjectMapInput` via:
 //
-//	ProjectMap{ "key": ProjectArgs{...} }
+//          ProjectMap{ "key": ProjectArgs{...} }
 type ProjectMapInput interface {
 	pulumi.Input
 

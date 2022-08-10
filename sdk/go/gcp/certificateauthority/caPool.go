@@ -22,32 +22,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Location: pulumi.String("us-central1"),
-//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
-//					PublishCaCert: pulumi.Bool(true),
-//					PublishCrl:    pulumi.Bool(true),
-//				},
-//				Tier: pulumi.String("ENTERPRISE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+// 				PublishCaCert: pulumi.Bool(true),
+// 				PublishCrl:    pulumi.Bool(true),
+// 			},
+// 			Tier: pulumi.String("ENTERPRISE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 // ### Privateca Quickstart
 //
@@ -55,143 +52,134 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			examplePrivateKey, err := tls.NewPrivateKey(ctx, "examplePrivateKey", &tls.PrivateKeyArgs{
-//				Algorithm: pulumi.String("RSA"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
-//				KeyAlgorithm:  pulumi.String("RSA"),
-//				PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
-//				Subjects: CertRequestSubjectArray{
-//					&CertRequestSubjectArgs{
-//						CommonName:   pulumi.String("example.com"),
-//						Organization: pulumi.String("ACME Examples, Inc"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
-//				Location: pulumi.String("us-central1"),
-//				Tier:     pulumi.String("ENTERPRISE"),
-//				Project:  pulumi.String("project-id"),
-//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
-//					PublishCaCert: pulumi.Bool(true),
-//					PublishCrl:    pulumi.Bool(true),
-//				},
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
-//					BaselineValues: &certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs{
-//						CaOptions: &certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{
-//							IsCa: pulumi.Bool(false),
-//						},
-//						KeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{
-//							BaseKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{
-//								DigitalSignature: pulumi.Bool(true),
-//								KeyEncipherment:  pulumi.Bool(true),
-//							},
-//							ExtendedKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{
-//								ServerAuth: pulumi.Bool(true),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificateauthority.NewAuthority(ctx, "test-ca", &certificateauthority.AuthorityArgs{
-//				CertificateAuthorityId: pulumi.String("my-authority"),
-//				Location:               pulumi.String("us-central1"),
-//				Project:                pulumi.String("project-id"),
-//				Pool:                   pulumi.Any(google_privateca_ca_pool.Pool.Name),
-//				Config: &certificateauthority.AuthorityConfigArgs{
-//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
-//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
-//							CountryCode:        pulumi.String("us"),
-//							Organization:       pulumi.String("google"),
-//							OrganizationalUnit: pulumi.String("enterprise"),
-//							Locality:           pulumi.String("mountain view"),
-//							Province:           pulumi.String("california"),
-//							StreetAddress:      pulumi.String("1600 amphitheatre parkway"),
-//							PostalCode:         pulumi.String("94109"),
-//							CommonName:         pulumi.String("my-certificate-authority"),
-//						},
-//					},
-//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
-//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
-//							IsCa: pulumi.Bool(true),
-//						},
-//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
-//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
-//								CertSign: pulumi.Bool(true),
-//								CrlSign:  pulumi.Bool(true),
-//							},
-//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
-//								ServerAuth: pulumi.Bool(true),
-//							},
-//						},
-//					},
-//				},
-//				Type: pulumi.String("SELF_SIGNED"),
-//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
-//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificateauthority.NewCertificate(ctx, "defaultCertificate", &certificateauthority.CertificateArgs{
-//				Pool:                 pulumi.Any(google_privateca_ca_pool.Pool.Name),
-//				CertificateAuthority: test_ca.CertificateAuthorityId,
-//				Project:              pulumi.String("project-id"),
-//				Location:             pulumi.String("us-central1"),
-//				Lifetime:             pulumi.String("860s"),
-//				PemCsr:               exampleCertRequest.CertRequestPem,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		examplePrivateKey, err := tls.NewPrivateKey(ctx, "examplePrivateKey", &tls.PrivateKeyArgs{
+// 			Algorithm: pulumi.String("RSA"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
+// 			KeyAlgorithm:  pulumi.String("RSA"),
+// 			PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
+// 			Subjects: CertRequestSubjectArray{
+// 				&CertRequestSubjectArgs{
+// 					CommonName:   pulumi.String("example.com"),
+// 					Organization: pulumi.String("ACME Examples, Inc"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Tier:     pulumi.String("ENTERPRISE"),
+// 			Project:  pulumi.String("project-id"),
+// 			PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+// 				PublishCaCert: pulumi.Bool(true),
+// 				PublishCrl:    pulumi.Bool(true),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
+// 				BaselineValues: &certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs{
+// 					CaOptions: &certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{
+// 						IsCa: pulumi.Bool(false),
+// 					},
+// 					KeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{
+// 						BaseKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{
+// 							DigitalSignature: pulumi.Bool(true),
+// 							KeyEncipherment:  pulumi.Bool(true),
+// 						},
+// 						ExtendedKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{
+// 							ServerAuth: pulumi.Bool(true),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificateauthority.NewAuthority(ctx, "test-ca", &certificateauthority.AuthorityArgs{
+// 			CertificateAuthorityId: pulumi.String("my-authority"),
+// 			Location:               pulumi.String("us-central1"),
+// 			Project:                pulumi.String("project-id"),
+// 			Pool:                   pulumi.Any(google_privateca_ca_pool.Pool.Name),
+// 			Config: &certificateauthority.AuthorityConfigArgs{
+// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+// 						CountryCode:        pulumi.String("us"),
+// 						Organization:       pulumi.String("google"),
+// 						OrganizationalUnit: pulumi.String("enterprise"),
+// 						Locality:           pulumi.String("mountain view"),
+// 						Province:           pulumi.String("california"),
+// 						StreetAddress:      pulumi.String("1600 amphitheatre parkway"),
+// 						PostalCode:         pulumi.String("94109"),
+// 						CommonName:         pulumi.String("my-certificate-authority"),
+// 					},
+// 				},
+// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+// 						IsCa: pulumi.Bool(true),
+// 					},
+// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+// 							CertSign: pulumi.Bool(true),
+// 							CrlSign:  pulumi.Bool(true),
+// 						},
+// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+// 							ServerAuth: pulumi.Bool(true),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Type: pulumi.String("SELF_SIGNED"),
+// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificateauthority.NewCertificate(ctx, "defaultCertificate", &certificateauthority.CertificateArgs{
+// 			Pool:                 pulumi.Any(google_privateca_ca_pool.Pool.Name),
+// 			CertificateAuthority: test_ca.CertificateAuthorityId,
+// 			Project:              pulumi.String("project-id"),
+// 			Location:             pulumi.String("us-central1"),
+// 			Lifetime:             pulumi.String("860s"),
+// 			PemCsr:               exampleCertRequest.CertRequestPem,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # CaPool can be imported using any of these accepted formats
+// CaPool can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
-//
+//  $ pulumi import gcp:certificateauthority/caPool:CaPool default projects/{{project}}/locations/{{location}}/caPools/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:certificateauthority/caPool:CaPool default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
 // ```
 type CaPool struct {
 	pulumi.CustomResourceState
@@ -375,7 +363,7 @@ func (i *CaPool) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 // CaPoolArrayInput is an input type that accepts CaPoolArray and CaPoolArrayOutput values.
 // You can construct a concrete instance of `CaPoolArrayInput` via:
 //
-//	CaPoolArray{ CaPoolArgs{...} }
+//          CaPoolArray{ CaPoolArgs{...} }
 type CaPoolArrayInput interface {
 	pulumi.Input
 
@@ -400,7 +388,7 @@ func (i CaPoolArray) ToCaPoolArrayOutputWithContext(ctx context.Context) CaPoolA
 // CaPoolMapInput is an input type that accepts CaPoolMap and CaPoolMapOutput values.
 // You can construct a concrete instance of `CaPoolMapInput` via:
 //
-//	CaPoolMap{ "key": CaPoolArgs{...} }
+//          CaPoolMap{ "key": CaPoolArgs{...} }
 type CaPoolMapInput interface {
 	pulumi.Input
 

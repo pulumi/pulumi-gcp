@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/spanner/)
+//     * [Official Documentation](https://cloud.google.com/spanner/)
 //
 // > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
 //
@@ -28,66 +28,55 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
-//				Config:      pulumi.String("regional-europe-west1"),
-//				DisplayName: pulumi.String("main-instance"),
-//				NumNodes:    pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
-//				Instance:               main.Name,
-//				VersionRetentionPeriod: pulumi.String("3d"),
-//				Ddls: pulumi.StringArray{
-//					pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),
-//					pulumi.String("CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"),
-//				},
-//				DeletionProtection: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("regional-europe-west1"),
+// 			DisplayName: pulumi.String("main-instance"),
+// 			NumNodes:    pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
+// 			Instance:               main.Name,
+// 			VersionRetentionPeriod: pulumi.String("3d"),
+// 			Ddls: pulumi.StringArray{
+// 				pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),
+// 				pulumi.String("CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"),
+// 			},
+// 			DeletionProtection: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Database can be imported using any of these accepted formats
+// Database can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
-//
+//  $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
-//
+//  $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
-//
+//  $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
-//
+//  $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
 // ```
 type Database struct {
 	pulumi.CustomResourceState
@@ -319,7 +308,7 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 // DatabaseArrayInput is an input type that accepts DatabaseArray and DatabaseArrayOutput values.
 // You can construct a concrete instance of `DatabaseArrayInput` via:
 //
-//	DatabaseArray{ DatabaseArgs{...} }
+//          DatabaseArray{ DatabaseArgs{...} }
 type DatabaseArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +333,7 @@ func (i DatabaseArray) ToDatabaseArrayOutputWithContext(ctx context.Context) Dat
 // DatabaseMapInput is an input type that accepts DatabaseMap and DatabaseMapOutput values.
 // You can construct a concrete instance of `DatabaseMapInput` via:
 //
-//	DatabaseMap{ "key": DatabaseArgs{...} }
+//          DatabaseMap{ "key": DatabaseArgs{...} }
 type DatabaseMapInput interface {
 	pulumi.Input
 

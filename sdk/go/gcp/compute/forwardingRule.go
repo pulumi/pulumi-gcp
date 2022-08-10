@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 //
 // ## Example Usage
 // ### Forwarding Rule Basic
@@ -27,57 +27,46 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultTargetPool, err := compute.NewTargetPool(ctx, "defaultTargetPool", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewForwardingRule(ctx, "defaultForwardingRule", &compute.ForwardingRuleArgs{
-//				Target:    defaultTargetPool.ID(),
-//				PortRange: pulumi.String("80"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultTargetPool, err := compute.NewTargetPool(ctx, "defaultTargetPool", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewForwardingRule(ctx, "defaultForwardingRule", &compute.ForwardingRuleArgs{
+// 			Target:    defaultTargetPool.ID(),
+// 			PortRange: pulumi.String("80"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # ForwardingRule can be imported using any of these accepted formats
+// ForwardingRule can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
-//
+//  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
-//
+//  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
 // ```
 type ForwardingRule struct {
 	pulumi.CustomResourceState
@@ -857,7 +846,7 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 // ForwardingRuleArrayInput is an input type that accepts ForwardingRuleArray and ForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleArrayInput` via:
 //
-//	ForwardingRuleArray{ ForwardingRuleArgs{...} }
+//          ForwardingRuleArray{ ForwardingRuleArgs{...} }
 type ForwardingRuleArrayInput interface {
 	pulumi.Input
 
@@ -882,7 +871,7 @@ func (i ForwardingRuleArray) ToForwardingRuleArrayOutputWithContext(ctx context.
 // ForwardingRuleMapInput is an input type that accepts ForwardingRuleMap and ForwardingRuleMapOutput values.
 // You can construct a concrete instance of `ForwardingRuleMapInput` via:
 //
-//	ForwardingRuleMap{ "key": ForwardingRuleArgs{...} }
+//          ForwardingRuleMap{ "key": ForwardingRuleArgs{...} }
 type ForwardingRuleMapInput interface {
 	pulumi.Input
 
@@ -1046,13 +1035,13 @@ func (o ForwardingRuleOutput) NetworkTier() pulumi.StringOutput {
 // disjoint port ranges.
 // Some types of forwarding target have constraints on the acceptable
 // ports:
-//   - TargetHttpProxy: 80, 8080
-//   - TargetHttpsProxy: 443
-//   - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-//     1883, 5222
-//   - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-//     1883, 5222
-//   - TargetVpnGateway: 500, 4500
+// * TargetHttpProxy: 80, 8080
+// * TargetHttpsProxy: 443
+// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
+//   1883, 5222
+// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
+//   1883, 5222
+// * TargetVpnGateway: 500, 4500
 func (o ForwardingRuleOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.PortRange }).(pulumi.StringPtrOutput)
 }

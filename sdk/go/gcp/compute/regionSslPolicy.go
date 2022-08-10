@@ -13,30 +13,22 @@ import (
 
 // ## Import
 //
-// # RegionSslPolicy can be imported using any of these accepted formats
+// RegionSslPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default projects/{{project}}/regions/{{region}}/sslPolicies/{{name}}
-//
+//  $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default projects/{{project}}/regions/{{region}}/sslPolicies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{project}}/{{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{region}}/{{name}}
-//
+//  $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{name}}
-//
+//  $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{name}}
 // ```
 type RegionSslPolicy struct {
 	pulumi.CustomResourceState
@@ -331,7 +323,7 @@ func (i *RegionSslPolicy) ToRegionSslPolicyOutputWithContext(ctx context.Context
 // RegionSslPolicyArrayInput is an input type that accepts RegionSslPolicyArray and RegionSslPolicyArrayOutput values.
 // You can construct a concrete instance of `RegionSslPolicyArrayInput` via:
 //
-//	RegionSslPolicyArray{ RegionSslPolicyArgs{...} }
+//          RegionSslPolicyArray{ RegionSslPolicyArgs{...} }
 type RegionSslPolicyArrayInput interface {
 	pulumi.Input
 
@@ -356,7 +348,7 @@ func (i RegionSslPolicyArray) ToRegionSslPolicyArrayOutputWithContext(ctx contex
 // RegionSslPolicyMapInput is an input type that accepts RegionSslPolicyMap and RegionSslPolicyMapOutput values.
 // You can construct a concrete instance of `RegionSslPolicyMapInput` via:
 //
-//	RegionSslPolicyMap{ "key": RegionSslPolicyArgs{...} }
+//          RegionSslPolicyMap{ "key": RegionSslPolicyArgs{...} }
 type RegionSslPolicyMapInput interface {
 	pulumi.Input
 

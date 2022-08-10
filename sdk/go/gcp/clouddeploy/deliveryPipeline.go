@@ -20,71 +20,62 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
-//				Annotations: pulumi.StringMap{
-//					"my_first_annotation":  pulumi.String("example-annotation-1"),
-//					"my_second_annotation": pulumi.String("example-annotation-2"),
-//				},
-//				Description: pulumi.String("basic description"),
-//				Labels: pulumi.StringMap{
-//					"my_first_label":  pulumi.String("example-label-1"),
-//					"my_second_label": pulumi.String("example-label-2"),
-//				},
-//				Location: pulumi.String("us-west1"),
-//				Project:  pulumi.String("my-project-name"),
-//				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
-//					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
-//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
-//							Profiles: pulumi.StringArray{
-//								pulumi.String("example-profile-one"),
-//								pulumi.String("example-profile-two"),
-//							},
-//							TargetId: pulumi.String("example-target-one"),
-//						},
-//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
-//							Profiles: pulumi.StringArray{},
-//							TargetId: pulumi.String("example-target-two"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
+// 			Annotations: pulumi.StringMap{
+// 				"my_first_annotation":  pulumi.String("example-annotation-1"),
+// 				"my_second_annotation": pulumi.String("example-annotation-2"),
+// 			},
+// 			Description: pulumi.String("basic description"),
+// 			Labels: pulumi.StringMap{
+// 				"my_first_label":  pulumi.String("example-label-1"),
+// 				"my_second_label": pulumi.String("example-label-2"),
+// 			},
+// 			Location: pulumi.String("us-west1"),
+// 			Project:  pulumi.String("my-project-name"),
+// 			SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
+// 				Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
+// 					&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+// 						Profiles: pulumi.StringArray{
+// 							pulumi.String("example-profile-one"),
+// 							pulumi.String("example-profile-two"),
+// 						},
+// 						TargetId: pulumi.String("example-target-one"),
+// 					},
+// 					&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+// 						Profiles: pulumi.StringArray{},
+// 						TargetId: pulumi.String("example-target-two"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # DeliveryPipeline can be imported using any of these accepted formats
+// DeliveryPipeline can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
-//
+//  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
 // ```
 type DeliveryPipeline struct {
 	pulumi.CustomResourceState
@@ -278,7 +269,7 @@ func (i *DeliveryPipeline) ToDeliveryPipelineOutputWithContext(ctx context.Conte
 // DeliveryPipelineArrayInput is an input type that accepts DeliveryPipelineArray and DeliveryPipelineArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineArrayInput` via:
 //
-//	DeliveryPipelineArray{ DeliveryPipelineArgs{...} }
+//          DeliveryPipelineArray{ DeliveryPipelineArgs{...} }
 type DeliveryPipelineArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +294,7 @@ func (i DeliveryPipelineArray) ToDeliveryPipelineArrayOutputWithContext(ctx cont
 // DeliveryPipelineMapInput is an input type that accepts DeliveryPipelineMap and DeliveryPipelineMapOutput values.
 // You can construct a concrete instance of `DeliveryPipelineMapInput` via:
 //
-//	DeliveryPipelineMap{ "key": DeliveryPipelineArgs{...} }
+//          DeliveryPipelineMap{ "key": DeliveryPipelineArgs{...} }
 type DeliveryPipelineMapInput interface {
 	pulumi.Input
 

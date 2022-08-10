@@ -17,30 +17,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms.gameServerClusters)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/game-servers/docs)
+//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// # GameServerCluster can be imported using any of these accepted formats
+// GameServerCluster can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}/gameServerClusters/{{cluster_id}}
-//
+//  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}/gameServerClusters/{{cluster_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{project}}/{{location}}/{{realm_id}}/{{cluster_id}}
-//
+//  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{project}}/{{location}}/{{realm_id}}/{{cluster_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{location}}/{{realm_id}}/{{cluster_id}}
-//
+//  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{location}}/{{realm_id}}/{{cluster_id}}
 // ```
 type GameServerCluster struct {
 	pulumi.CustomResourceState
@@ -229,7 +223,7 @@ func (i *GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Con
 // GameServerClusterArrayInput is an input type that accepts GameServerClusterArray and GameServerClusterArrayOutput values.
 // You can construct a concrete instance of `GameServerClusterArrayInput` via:
 //
-//	GameServerClusterArray{ GameServerClusterArgs{...} }
+//          GameServerClusterArray{ GameServerClusterArgs{...} }
 type GameServerClusterArrayInput interface {
 	pulumi.Input
 
@@ -254,7 +248,7 @@ func (i GameServerClusterArray) ToGameServerClusterArrayOutputWithContext(ctx co
 // GameServerClusterMapInput is an input type that accepts GameServerClusterMap and GameServerClusterMapOutput values.
 // You can construct a concrete instance of `GameServerClusterMapInput` via:
 //
-//	GameServerClusterMap{ "key": GameServerClusterArgs{...} }
+//          GameServerClusterMap{ "key": GameServerClusterArgs{...} }
 type GameServerClusterMapInput interface {
 	pulumi.Input
 

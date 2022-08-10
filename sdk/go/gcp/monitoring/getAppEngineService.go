@@ -21,8 +21,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
 // * How-to Guides
-//   - [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-//   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+//     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
 // ### Monitoring App Engine Service
@@ -31,62 +31,59 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-//				Bucket: bucket.Name,
-//				Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myapp, err := appengine.NewStandardAppVersion(ctx, "myapp", &appengine.StandardAppVersionArgs{
-//				VersionId: pulumi.String("v1"),
-//				Service:   pulumi.String("myapp"),
-//				Runtime:   pulumi.String("nodejs10"),
-//				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
-//					Shell: pulumi.String("node ./app.js"),
-//				},
-//				Deployment: &appengine.StandardAppVersionDeploymentArgs{
-//					Zip: &appengine.StandardAppVersionDeploymentZipArgs{
-//						SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
-//							bucketName := _args[0].(string)
-//							objectName := _args[1].(string)
-//							return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
-//				EnvVariables: pulumi.StringMap{
-//					"port": pulumi.String("8080"),
-//				},
-//				DeleteServiceOnDestroy: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_ = monitoring.GetAppEngineServiceOutput(ctx, monitoring.GetAppEngineServiceOutputArgs{
-//				ModuleId: myapp.Service,
-//			}, nil)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myapp, err := appengine.NewStandardAppVersion(ctx, "myapp", &appengine.StandardAppVersionArgs{
+// 			VersionId: pulumi.String("v1"),
+// 			Service:   pulumi.String("myapp"),
+// 			Runtime:   pulumi.String("nodejs10"),
+// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// 				Shell: pulumi.String("node ./app.js"),
+// 			},
+// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						bucketName := _args[0].(string)
+// 						objectName := _args[1].(string)
+// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			EnvVariables: pulumi.StringMap{
+// 				"port": pulumi.String("8080"),
+// 			},
+// 			DeleteServiceOnDestroy: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_ = monitoring.GetAppEngineServiceOutput(ctx, monitoring.GetAppEngineServiceOutputArgs{
+// 			ModuleId: myapp.Service,
+// 		}, nil)
+// 		return nil
+// 	})
+// }
 // ```
 func GetAppEngineService(ctx *pulumi.Context, args *GetAppEngineServiceArgs, opts ...pulumi.InvokeOption) (*GetAppEngineServiceResult, error) {
 	var rv GetAppEngineServiceResult

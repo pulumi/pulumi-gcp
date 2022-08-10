@@ -26,29 +26,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceFromMachineImage(ctx, "tpl", &compute.InstanceFromMachineImageArgs{
-//				Zone:               pulumi.String("us-central1-a"),
-//				SourceMachineImage: pulumi.String("projects/PROJECT-ID/global/machineImages/NAME"),
-//				CanIpForward:       pulumi.Bool(false),
-//				Labels: pulumi.StringMap{
-//					"my_key": pulumi.String("my_value"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceFromMachineImage(ctx, "tpl", &compute.InstanceFromMachineImageArgs{
+// 			Zone:               pulumi.String("us-central1-a"),
+// 			SourceMachineImage: pulumi.String("projects/PROJECT-ID/global/machineImages/NAME"),
+// 			CanIpForward:       pulumi.Bool(false),
+// 			Labels: pulumi.StringMap{
+// 				"my_key": pulumi.String("my_value"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 type InstanceFromMachineImage struct {
 	pulumi.CustomResourceState
@@ -509,7 +506,7 @@ func (i *InstanceFromMachineImage) ToInstanceFromMachineImageOutputWithContext(c
 // InstanceFromMachineImageArrayInput is an input type that accepts InstanceFromMachineImageArray and InstanceFromMachineImageArrayOutput values.
 // You can construct a concrete instance of `InstanceFromMachineImageArrayInput` via:
 //
-//	InstanceFromMachineImageArray{ InstanceFromMachineImageArgs{...} }
+//          InstanceFromMachineImageArray{ InstanceFromMachineImageArgs{...} }
 type InstanceFromMachineImageArrayInput interface {
 	pulumi.Input
 
@@ -534,7 +531,7 @@ func (i InstanceFromMachineImageArray) ToInstanceFromMachineImageArrayOutputWith
 // InstanceFromMachineImageMapInput is an input type that accepts InstanceFromMachineImageMap and InstanceFromMachineImageMapOutput values.
 // You can construct a concrete instance of `InstanceFromMachineImageMapInput` via:
 //
-//	InstanceFromMachineImageMap{ "key": InstanceFromMachineImageArgs{...} }
+//          InstanceFromMachineImageMap{ "key": InstanceFromMachineImageArgs{...} }
 type InstanceFromMachineImageMapInput interface {
 	pulumi.Input
 

@@ -23,57 +23,52 @@ import (
 // > **Note:** `folder.IAMBinding` resources **can be** used in conjunction with `folder.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
-//
-//	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+//    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 //
 // ## google\_folder\_iam\_policy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your folder
-//
-//	using this resource. Deleting a `folder.IAMPolicy` removes access
-//	from anyone without permissions on its parent folder/organization. Proceed with caution.
-//	It's not recommended to use `folder.IAMPolicy` with your provider folder
-//	to avoid locking yourself out, and it should generally only be used with folders
-//	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-//	applying the change.
+//    using this resource. Deleting a `folder.IAMPolicy` removes access
+//    from anyone without permissions on its parent folder/organization. Proceed with caution.
+//    It's not recommended to use `folder.IAMPolicy` with your provider folder
+//    to avoid locking yourself out, and it should generally only be used with folders
+//    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+//    applying the change.
 //
 // ```go
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Role: "roles/editor",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
-//				Folder:     pulumi.String("folders/1234567"),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/editor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
+// 			Folder:     pulumi.String("folders/1234567"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -82,44 +77,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Condition: organizations.GetIAMPolicyBindingCondition{
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//							Title:       "expires_after_2019_12_31",
-//						},
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//						Role: "roles/compute.admin",
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
-//				Folder:     pulumi.String("folders/1234567"),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Condition: organizations.GetIAMPolicyBindingCondition{
+// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+// 						Title:       "expires_after_2019_12_31",
+// 					},
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 					Role: "roles/compute.admin",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
+// 			Folder:     pulumi.String("folders/1234567"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_folder\_iam\_binding
@@ -128,28 +120,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
-//				Folder: pulumi.String("folders/1234567"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Role: pulumi.String("roles/editor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
+// 			Folder: pulumi.String("folders/1234567"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -158,33 +147,30 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
-//				Condition: &folder.IAMBindingConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
-//				Folder: pulumi.String("folders/1234567"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Role: pulumi.String("roles/container.admin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
+// 			Condition: &folder.IAMBindingConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Folder: pulumi.String("folders/1234567"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/container.admin"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_folder\_iam\_member
@@ -193,26 +179,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
-//				Folder: pulumi.String("folders/1234567"),
-//				Member: pulumi.String("user:jane@example.com"),
-//				Role:   pulumi.String("roles/editor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
+// 			Folder: pulumi.String("folders/1234567"),
+// 			Member: pulumi.String("user:jane@example.com"),
+// 			Role:   pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // With IAM Conditions:
@@ -221,31 +204,28 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
-//				Condition: &folder.IAMMemberConditionArgs{
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//				},
-//				Folder: pulumi.String("folders/1234567"),
-//				Member: pulumi.String("user:jane@example.com"),
-//				Role:   pulumi.String("roles/firebase.admin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
+// 			Condition: &folder.IAMMemberConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Folder: pulumi.String("folders/1234567"),
+// 			Member: pulumi.String("user:jane@example.com"),
+// 			Role:   pulumi.String("roles/firebase.admin"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## google\_folder\_iam\_audit\_config
@@ -254,36 +234,33 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIamAuditConfig(ctx, "folder", &folder.IamAuditConfigArgs{
-//				AuditLogConfigs: folder.IamAuditConfigAuditLogConfigArray{
-//					&folder.IamAuditConfigAuditLogConfigArgs{
-//						LogType: pulumi.String("ADMIN_READ"),
-//					},
-//					&folder.IamAuditConfigAuditLogConfigArgs{
-//						ExemptedMembers: pulumi.StringArray{
-//							pulumi.String("user:joebloggs@hashicorp.com"),
-//						},
-//						LogType: pulumi.String("DATA_READ"),
-//					},
-//				},
-//				Folder:  pulumi.String("folders/1234567"),
-//				Service: pulumi.String("allServices"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := folder.NewIamAuditConfig(ctx, "folder", &folder.IamAuditConfigArgs{
+// 			AuditLogConfigs: folder.IamAuditConfigAuditLogConfigArray{
+// 				&folder.IamAuditConfigAuditLogConfigArgs{
+// 					LogType: pulumi.String("ADMIN_READ"),
+// 				},
+// 				&folder.IamAuditConfigAuditLogConfigArgs{
+// 					ExemptedMembers: pulumi.StringArray{
+// 						pulumi.String("user:joebloggs@hashicorp.com"),
+// 					},
+// 					LogType: pulumi.String("DATA_READ"),
+// 				},
+// 			},
+// 			Folder:  pulumi.String("folders/1234567"),
+// 			Service: pulumi.String("allServices"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -293,47 +270,37 @@ import (
 // This member resource can be imported using the `folder`, role, and member e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer user:foo@example.com"
-//
+//  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer user:foo@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
 //
 // This binding resource can be imported using the `folder` and role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer"
-//
+//  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question.
+//  IAM policy imports use the identifier of the resource in question.
 //
 // This policy resource can be imported using the `folder`.
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder folder
-//
+//  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder folder
 // ```
 //
-//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
+//  IAM audit config imports use the identifier of the resource in question and the service, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder foo.googleapis.com"
-//
+//  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder foo.googleapis.com"
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
 //
 // ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
-//
+//  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 // ```
 type IamAuditConfig struct {
 	pulumi.CustomResourceState
@@ -456,7 +423,7 @@ func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) 
 // IamAuditConfigArrayInput is an input type that accepts IamAuditConfigArray and IamAuditConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigArrayInput` via:
 //
-//	IamAuditConfigArray{ IamAuditConfigArgs{...} }
+//          IamAuditConfigArray{ IamAuditConfigArgs{...} }
 type IamAuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -481,7 +448,7 @@ func (i IamAuditConfigArray) ToIamAuditConfigArrayOutputWithContext(ctx context.
 // IamAuditConfigMapInput is an input type that accepts IamAuditConfigMap and IamAuditConfigMapOutput values.
 // You can construct a concrete instance of `IamAuditConfigMapInput` via:
 //
-//	IamAuditConfigMap{ "key": IamAuditConfigArgs{...} }
+//          IamAuditConfigMap{ "key": IamAuditConfigArgs{...} }
 type IamAuditConfigMapInput interface {
 	pulumi.Input
 

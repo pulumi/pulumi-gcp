@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations.domainmappings)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
+//     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 //
 // ## Example Usage
 // ### Cloud Run Domain Mapping Basic
@@ -26,70 +26,61 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultService, err := cloudrun.NewService(ctx, "defaultService", &cloudrun.ServiceArgs{
-//				Location: pulumi.String("us-central1"),
-//				Metadata: &cloudrun.ServiceMetadataArgs{
-//					Namespace: pulumi.String("my-project-name"),
-//				},
-//				Template: &cloudrun.ServiceTemplateArgs{
-//					Spec: &cloudrun.ServiceTemplateSpecArgs{
-//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
-//							&cloudrun.ServiceTemplateSpecContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
-//				Location: pulumi.String("us-central1"),
-//				Metadata: &cloudrun.DomainMappingMetadataArgs{
-//					Namespace: pulumi.String("my-project-name"),
-//				},
-//				Spec: &cloudrun.DomainMappingSpecArgs{
-//					RouteName: defaultService.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultService, err := cloudrun.NewService(ctx, "defaultService", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 			},
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.DomainMappingMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 			},
+// 			Spec: &cloudrun.DomainMappingSpecArgs{
+// 				RouteName: defaultService.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # DomainMapping can be imported using any of these accepted formats
+// DomainMapping can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
-//
+//  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
-//
+//  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
 // ```
 type DomainMapping struct {
 	pulumi.CustomResourceState
@@ -247,7 +238,7 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 // DomainMappingArrayInput is an input type that accepts DomainMappingArray and DomainMappingArrayOutput values.
 // You can construct a concrete instance of `DomainMappingArrayInput` via:
 //
-//	DomainMappingArray{ DomainMappingArgs{...} }
+//          DomainMappingArray{ DomainMappingArgs{...} }
 type DomainMappingArrayInput interface {
 	pulumi.Input
 
@@ -272,7 +263,7 @@ func (i DomainMappingArray) ToDomainMappingArrayOutputWithContext(ctx context.Co
 // DomainMappingMapInput is an input type that accepts DomainMappingMap and DomainMappingMapOutput values.
 // You can construct a concrete instance of `DomainMappingMapInput` via:
 //
-//	DomainMappingMap{ "key": DomainMappingArgs{...} }
+//          DomainMappingMap{ "key": DomainMappingArgs{...} }
 type DomainMappingMapInput interface {
 	pulumi.Input
 

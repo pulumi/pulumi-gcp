@@ -23,48 +23,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
-//				MetricsScope: pulumi.String("existing-metrics-scope-project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("my-monitored-project"),
-//				OrgId:     pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
+// 			MetricsScope: pulumi.String("existing-metrics-scope-project"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("my-monitored-project"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # MonitoredProject can be imported using any of these accepted formats
+// MonitoredProject can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default locations/global/metricsScopes/{{metrics_scope}}/projects/{{name}}
-//
+//  $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default locations/global/metricsScopes/{{metrics_scope}}/projects/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{metrics_scope}}/{{name}}
-//
+//  $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{metrics_scope}}/{{name}}
 // ```
 type MonitoredProject struct {
 	pulumi.CustomResourceState
@@ -171,7 +164,7 @@ func (i *MonitoredProject) ToMonitoredProjectOutputWithContext(ctx context.Conte
 // MonitoredProjectArrayInput is an input type that accepts MonitoredProjectArray and MonitoredProjectArrayOutput values.
 // You can construct a concrete instance of `MonitoredProjectArrayInput` via:
 //
-//	MonitoredProjectArray{ MonitoredProjectArgs{...} }
+//          MonitoredProjectArray{ MonitoredProjectArgs{...} }
 type MonitoredProjectArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +189,7 @@ func (i MonitoredProjectArray) ToMonitoredProjectArrayOutputWithContext(ctx cont
 // MonitoredProjectMapInput is an input type that accepts MonitoredProjectMap and MonitoredProjectMapOutput values.
 // You can construct a concrete instance of `MonitoredProjectMapInput` via:
 //
-//	MonitoredProjectMap{ "key": MonitoredProjectArgs{...} }
+//          MonitoredProjectMap{ "key": MonitoredProjectArgs{...} }
 type MonitoredProjectMapInput interface {
 	pulumi.Input
 

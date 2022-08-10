@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
 // * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
+//     * [Official Documentation](https://firebase.google.com/)
 func GetWebAppConfig(ctx *pulumi.Context, args *GetWebAppConfigArgs, opts ...pulumi.InvokeOption) (*GetWebAppConfigResult, error) {
 	var rv GetWebAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, opts...)

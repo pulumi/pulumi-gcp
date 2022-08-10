@@ -12,16 +12,14 @@ import (
 )
 
 // Cloud Firestore indexes enable simple and complex queries against documents in a database.
-//
-//	This resource manages composite indexes and not single
-//
+//  This resource manages composite indexes and not single
 // field indexes.
 //
 // To get more information about Index, see:
 //
 // * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+//     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 //
 // > **Warning:** This resource creates a Firestore Index on a project that already has
 // Firestore enabled. If you haven't already enabled it, you can create a
@@ -36,45 +34,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
-//				Collection: pulumi.String("chatrooms"),
-//				Fields: firestore.IndexFieldArray{
-//					&firestore.IndexFieldArgs{
-//						FieldPath: pulumi.String("name"),
-//						Order:     pulumi.String("ASCENDING"),
-//					},
-//					&firestore.IndexFieldArgs{
-//						FieldPath: pulumi.String("description"),
-//						Order:     pulumi.String("DESCENDING"),
-//					},
-//				},
-//				Project: pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+// 			Collection: pulumi.String("chatrooms"),
+// 			Fields: firestore.IndexFieldArray{
+// 				&firestore.IndexFieldArgs{
+// 					FieldPath: pulumi.String("name"),
+// 					Order:     pulumi.String("ASCENDING"),
+// 				},
+// 				&firestore.IndexFieldArgs{
+// 					FieldPath: pulumi.String("description"),
+// 					Order:     pulumi.String("DESCENDING"),
+// 				},
+// 			},
+// 			Project: pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Index can be imported using any of these accepted formats
+// Index can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:firestore/index:Index default {{name}}
-//
+//  $ pulumi import gcp:firestore/index:Index default {{name}}
 // ```
 type Index struct {
 	pulumi.CustomResourceState
@@ -262,7 +255,7 @@ func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 // IndexArrayInput is an input type that accepts IndexArray and IndexArrayOutput values.
 // You can construct a concrete instance of `IndexArrayInput` via:
 //
-//	IndexArray{ IndexArgs{...} }
+//          IndexArray{ IndexArgs{...} }
 type IndexArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +280,7 @@ func (i IndexArray) ToIndexArrayOutputWithContext(ctx context.Context) IndexArra
 // IndexMapInput is an input type that accepts IndexMap and IndexMapOutput values.
 // You can construct a concrete instance of `IndexMapInput` via:
 //
-//	IndexMap{ "key": IndexArgs{...} }
+//          IndexMap{ "key": IndexArgs{...} }
 type IndexMapInput interface {
 	pulumi.Input
 

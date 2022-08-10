@@ -19,7 +19,7 @@ type ConsentStoreIamBindingCondition struct {
 // ConsentStoreIamBindingConditionInput is an input type that accepts ConsentStoreIamBindingConditionArgs and ConsentStoreIamBindingConditionOutput values.
 // You can construct a concrete instance of `ConsentStoreIamBindingConditionInput` via:
 //
-//	ConsentStoreIamBindingConditionArgs{...}
+//          ConsentStoreIamBindingConditionArgs{...}
 type ConsentStoreIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionPt
 // ConsentStoreIamBindingConditionPtrInput is an input type that accepts ConsentStoreIamBindingConditionArgs, ConsentStoreIamBindingConditionPtr and ConsentStoreIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `ConsentStoreIamBindingConditionPtrInput` via:
 //
-//	        ConsentStoreIamBindingConditionArgs{...}
+//          ConsentStoreIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type ConsentStoreIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type ConsentStoreIamMemberCondition struct {
 // ConsentStoreIamMemberConditionInput is an input type that accepts ConsentStoreIamMemberConditionArgs and ConsentStoreIamMemberConditionOutput values.
 // You can construct a concrete instance of `ConsentStoreIamMemberConditionInput` via:
 //
-//	ConsentStoreIamMemberConditionArgs{...}
+//          ConsentStoreIamMemberConditionArgs{...}
 type ConsentStoreIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -219,11 +219,11 @@ func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionPtrO
 // ConsentStoreIamMemberConditionPtrInput is an input type that accepts ConsentStoreIamMemberConditionArgs, ConsentStoreIamMemberConditionPtr and ConsentStoreIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `ConsentStoreIamMemberConditionPtrInput` via:
 //
-//	        ConsentStoreIamMemberConditionArgs{...}
+//          ConsentStoreIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type ConsentStoreIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type DatasetIamBindingCondition struct {
 // DatasetIamBindingConditionInput is an input type that accepts DatasetIamBindingConditionArgs and DatasetIamBindingConditionOutput values.
 // You can construct a concrete instance of `DatasetIamBindingConditionInput` via:
 //
-//	DatasetIamBindingConditionArgs{...}
+//          DatasetIamBindingConditionArgs{...}
 type DatasetIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -382,11 +382,11 @@ func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionPtrOutputWit
 // DatasetIamBindingConditionPtrInput is an input type that accepts DatasetIamBindingConditionArgs, DatasetIamBindingConditionPtr and DatasetIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `DatasetIamBindingConditionPtrInput` via:
 //
-//	        DatasetIamBindingConditionArgs{...}
+//          DatasetIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DatasetIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -508,7 +508,7 @@ type DatasetIamMemberCondition struct {
 // DatasetIamMemberConditionInput is an input type that accepts DatasetIamMemberConditionArgs and DatasetIamMemberConditionOutput values.
 // You can construct a concrete instance of `DatasetIamMemberConditionInput` via:
 //
-//	DatasetIamMemberConditionArgs{...}
+//          DatasetIamMemberConditionArgs{...}
 type DatasetIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -545,11 +545,11 @@ func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionPtrOutputWithC
 // DatasetIamMemberConditionPtrInput is an input type that accepts DatasetIamMemberConditionArgs, DatasetIamMemberConditionPtr and DatasetIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `DatasetIamMemberConditionPtrInput` via:
 //
-//	        DatasetIamMemberConditionArgs{...}
+//          DatasetIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DatasetIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -671,7 +671,7 @@ type DicomStoreIamBindingCondition struct {
 // DicomStoreIamBindingConditionInput is an input type that accepts DicomStoreIamBindingConditionArgs and DicomStoreIamBindingConditionOutput values.
 // You can construct a concrete instance of `DicomStoreIamBindingConditionInput` via:
 //
-//	DicomStoreIamBindingConditionArgs{...}
+//          DicomStoreIamBindingConditionArgs{...}
 type DicomStoreIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -708,11 +708,11 @@ func (i DicomStoreIamBindingConditionArgs) ToDicomStoreIamBindingConditionPtrOut
 // DicomStoreIamBindingConditionPtrInput is an input type that accepts DicomStoreIamBindingConditionArgs, DicomStoreIamBindingConditionPtr and DicomStoreIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `DicomStoreIamBindingConditionPtrInput` via:
 //
-//	        DicomStoreIamBindingConditionArgs{...}
+//          DicomStoreIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DicomStoreIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ type DicomStoreIamMemberCondition struct {
 // DicomStoreIamMemberConditionInput is an input type that accepts DicomStoreIamMemberConditionArgs and DicomStoreIamMemberConditionOutput values.
 // You can construct a concrete instance of `DicomStoreIamMemberConditionInput` via:
 //
-//	DicomStoreIamMemberConditionArgs{...}
+//          DicomStoreIamMemberConditionArgs{...}
 type DicomStoreIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -871,11 +871,11 @@ func (i DicomStoreIamMemberConditionArgs) ToDicomStoreIamMemberConditionPtrOutpu
 // DicomStoreIamMemberConditionPtrInput is an input type that accepts DicomStoreIamMemberConditionArgs, DicomStoreIamMemberConditionPtr and DicomStoreIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `DicomStoreIamMemberConditionPtrInput` via:
 //
-//	        DicomStoreIamMemberConditionArgs{...}
+//          DicomStoreIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DicomStoreIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1001,7 +1001,7 @@ type DicomStoreNotificationConfig struct {
 // DicomStoreNotificationConfigInput is an input type that accepts DicomStoreNotificationConfigArgs and DicomStoreNotificationConfigOutput values.
 // You can construct a concrete instance of `DicomStoreNotificationConfigInput` via:
 //
-//	DicomStoreNotificationConfigArgs{...}
+//          DicomStoreNotificationConfigArgs{...}
 type DicomStoreNotificationConfigInput interface {
 	pulumi.Input
 
@@ -1042,11 +1042,11 @@ func (i DicomStoreNotificationConfigArgs) ToDicomStoreNotificationConfigPtrOutpu
 // DicomStoreNotificationConfigPtrInput is an input type that accepts DicomStoreNotificationConfigArgs, DicomStoreNotificationConfigPtr and DicomStoreNotificationConfigPtrOutput values.
 // You can construct a concrete instance of `DicomStoreNotificationConfigPtrInput` via:
 //
-//	        DicomStoreNotificationConfigArgs{...}
+//          DicomStoreNotificationConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type DicomStoreNotificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -1154,7 +1154,7 @@ type DicomStoreStreamConfig struct {
 // DicomStoreStreamConfigInput is an input type that accepts DicomStoreStreamConfigArgs and DicomStoreStreamConfigOutput values.
 // You can construct a concrete instance of `DicomStoreStreamConfigInput` via:
 //
-//	DicomStoreStreamConfigArgs{...}
+//          DicomStoreStreamConfigArgs{...}
 type DicomStoreStreamConfigInput interface {
 	pulumi.Input
 
@@ -1183,7 +1183,7 @@ func (i DicomStoreStreamConfigArgs) ToDicomStoreStreamConfigOutputWithContext(ct
 // DicomStoreStreamConfigArrayInput is an input type that accepts DicomStoreStreamConfigArray and DicomStoreStreamConfigArrayOutput values.
 // You can construct a concrete instance of `DicomStoreStreamConfigArrayInput` via:
 //
-//	DicomStoreStreamConfigArray{ DicomStoreStreamConfigArgs{...} }
+//          DicomStoreStreamConfigArray{ DicomStoreStreamConfigArgs{...} }
 type DicomStoreStreamConfigArrayInput interface {
 	pulumi.Input
 
@@ -1253,7 +1253,7 @@ type DicomStoreStreamConfigBigqueryDestination struct {
 // DicomStoreStreamConfigBigqueryDestinationInput is an input type that accepts DicomStoreStreamConfigBigqueryDestinationArgs and DicomStoreStreamConfigBigqueryDestinationOutput values.
 // You can construct a concrete instance of `DicomStoreStreamConfigBigqueryDestinationInput` via:
 //
-//	DicomStoreStreamConfigBigqueryDestinationArgs{...}
+//          DicomStoreStreamConfigBigqueryDestinationArgs{...}
 type DicomStoreStreamConfigBigqueryDestinationInput interface {
 	pulumi.Input
 
@@ -1306,7 +1306,7 @@ type FhirStoreIamBindingCondition struct {
 // FhirStoreIamBindingConditionInput is an input type that accepts FhirStoreIamBindingConditionArgs and FhirStoreIamBindingConditionOutput values.
 // You can construct a concrete instance of `FhirStoreIamBindingConditionInput` via:
 //
-//	FhirStoreIamBindingConditionArgs{...}
+//          FhirStoreIamBindingConditionArgs{...}
 type FhirStoreIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1343,11 +1343,11 @@ func (i FhirStoreIamBindingConditionArgs) ToFhirStoreIamBindingConditionPtrOutpu
 // FhirStoreIamBindingConditionPtrInput is an input type that accepts FhirStoreIamBindingConditionArgs, FhirStoreIamBindingConditionPtr and FhirStoreIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `FhirStoreIamBindingConditionPtrInput` via:
 //
-//	        FhirStoreIamBindingConditionArgs{...}
+//          FhirStoreIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FhirStoreIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1469,7 +1469,7 @@ type FhirStoreIamMemberCondition struct {
 // FhirStoreIamMemberConditionInput is an input type that accepts FhirStoreIamMemberConditionArgs and FhirStoreIamMemberConditionOutput values.
 // You can construct a concrete instance of `FhirStoreIamMemberConditionInput` via:
 //
-//	FhirStoreIamMemberConditionArgs{...}
+//          FhirStoreIamMemberConditionArgs{...}
 type FhirStoreIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1506,11 +1506,11 @@ func (i FhirStoreIamMemberConditionArgs) ToFhirStoreIamMemberConditionPtrOutputW
 // FhirStoreIamMemberConditionPtrInput is an input type that accepts FhirStoreIamMemberConditionArgs, FhirStoreIamMemberConditionPtr and FhirStoreIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `FhirStoreIamMemberConditionPtrInput` via:
 //
-//	        FhirStoreIamMemberConditionArgs{...}
+//          FhirStoreIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FhirStoreIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1636,7 +1636,7 @@ type FhirStoreNotificationConfig struct {
 // FhirStoreNotificationConfigInput is an input type that accepts FhirStoreNotificationConfigArgs and FhirStoreNotificationConfigOutput values.
 // You can construct a concrete instance of `FhirStoreNotificationConfigInput` via:
 //
-//	FhirStoreNotificationConfigArgs{...}
+//          FhirStoreNotificationConfigArgs{...}
 type FhirStoreNotificationConfigInput interface {
 	pulumi.Input
 
@@ -1677,11 +1677,11 @@ func (i FhirStoreNotificationConfigArgs) ToFhirStoreNotificationConfigPtrOutputW
 // FhirStoreNotificationConfigPtrInput is an input type that accepts FhirStoreNotificationConfigArgs, FhirStoreNotificationConfigPtr and FhirStoreNotificationConfigPtrOutput values.
 // You can construct a concrete instance of `FhirStoreNotificationConfigPtrInput` via:
 //
-//	        FhirStoreNotificationConfigArgs{...}
+//          FhirStoreNotificationConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type FhirStoreNotificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -1797,7 +1797,7 @@ type FhirStoreStreamConfig struct {
 // FhirStoreStreamConfigInput is an input type that accepts FhirStoreStreamConfigArgs and FhirStoreStreamConfigOutput values.
 // You can construct a concrete instance of `FhirStoreStreamConfigInput` via:
 //
-//	FhirStoreStreamConfigArgs{...}
+//          FhirStoreStreamConfigArgs{...}
 type FhirStoreStreamConfigInput interface {
 	pulumi.Input
 
@@ -1834,7 +1834,7 @@ func (i FhirStoreStreamConfigArgs) ToFhirStoreStreamConfigOutputWithContext(ctx 
 // FhirStoreStreamConfigArrayInput is an input type that accepts FhirStoreStreamConfigArray and FhirStoreStreamConfigArrayOutput values.
 // You can construct a concrete instance of `FhirStoreStreamConfigArrayInput` via:
 //
-//	FhirStoreStreamConfigArray{ FhirStoreStreamConfigArgs{...} }
+//          FhirStoreStreamConfigArray{ FhirStoreStreamConfigArgs{...} }
 type FhirStoreStreamConfigArrayInput interface {
 	pulumi.Input
 
@@ -1918,7 +1918,7 @@ type FhirStoreStreamConfigBigqueryDestination struct {
 // FhirStoreStreamConfigBigqueryDestinationInput is an input type that accepts FhirStoreStreamConfigBigqueryDestinationArgs and FhirStoreStreamConfigBigqueryDestinationOutput values.
 // You can construct a concrete instance of `FhirStoreStreamConfigBigqueryDestinationInput` via:
 //
-//	FhirStoreStreamConfigBigqueryDestinationArgs{...}
+//          FhirStoreStreamConfigBigqueryDestinationArgs{...}
 type FhirStoreStreamConfigBigqueryDestinationInput interface {
 	pulumi.Input
 
@@ -1992,7 +1992,7 @@ type FhirStoreStreamConfigBigqueryDestinationSchemaConfig struct {
 // FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput is an input type that accepts FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs and FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput values.
 // You can construct a concrete instance of `FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput` via:
 //
-//	FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{...}
+//          FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{...}
 type FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput interface {
 	pulumi.Input
 
@@ -2051,12 +2051,12 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) RecursiveStr
 }
 
 // Specifies the output schema type.
-//   - ANALYTICS: Analytics schema defined by the FHIR community.
-//     See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
-//   - ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
-//   - LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
-//     Default value is `ANALYTICS`.
-//     Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
+// * ANALYTICS: Analytics schema defined by the FHIR community.
+//   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+// * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+// * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
+//   Default value is `ANALYTICS`.
+//   Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
 func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) SchemaType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
 }
@@ -2070,7 +2070,7 @@ type Hl7StoreIamBindingCondition struct {
 // Hl7StoreIamBindingConditionInput is an input type that accepts Hl7StoreIamBindingConditionArgs and Hl7StoreIamBindingConditionOutput values.
 // You can construct a concrete instance of `Hl7StoreIamBindingConditionInput` via:
 //
-//	Hl7StoreIamBindingConditionArgs{...}
+//          Hl7StoreIamBindingConditionArgs{...}
 type Hl7StoreIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -2107,11 +2107,11 @@ func (i Hl7StoreIamBindingConditionArgs) ToHl7StoreIamBindingConditionPtrOutputW
 // Hl7StoreIamBindingConditionPtrInput is an input type that accepts Hl7StoreIamBindingConditionArgs, Hl7StoreIamBindingConditionPtr and Hl7StoreIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `Hl7StoreIamBindingConditionPtrInput` via:
 //
-//	        Hl7StoreIamBindingConditionArgs{...}
+//          Hl7StoreIamBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type Hl7StoreIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -2233,7 +2233,7 @@ type Hl7StoreIamMemberCondition struct {
 // Hl7StoreIamMemberConditionInput is an input type that accepts Hl7StoreIamMemberConditionArgs and Hl7StoreIamMemberConditionOutput values.
 // You can construct a concrete instance of `Hl7StoreIamMemberConditionInput` via:
 //
-//	Hl7StoreIamMemberConditionArgs{...}
+//          Hl7StoreIamMemberConditionArgs{...}
 type Hl7StoreIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -2270,11 +2270,11 @@ func (i Hl7StoreIamMemberConditionArgs) ToHl7StoreIamMemberConditionPtrOutputWit
 // Hl7StoreIamMemberConditionPtrInput is an input type that accepts Hl7StoreIamMemberConditionArgs, Hl7StoreIamMemberConditionPtr and Hl7StoreIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `Hl7StoreIamMemberConditionPtrInput` via:
 //
-//	        Hl7StoreIamMemberConditionArgs{...}
+//          Hl7StoreIamMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type Hl7StoreIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -2400,7 +2400,7 @@ type Hl7StoreNotificationConfig struct {
 // Hl7StoreNotificationConfigInput is an input type that accepts Hl7StoreNotificationConfigArgs and Hl7StoreNotificationConfigOutput values.
 // You can construct a concrete instance of `Hl7StoreNotificationConfigInput` via:
 //
-//	Hl7StoreNotificationConfigArgs{...}
+//          Hl7StoreNotificationConfigArgs{...}
 type Hl7StoreNotificationConfigInput interface {
 	pulumi.Input
 
@@ -2441,11 +2441,11 @@ func (i Hl7StoreNotificationConfigArgs) ToHl7StoreNotificationConfigPtrOutputWit
 // Hl7StoreNotificationConfigPtrInput is an input type that accepts Hl7StoreNotificationConfigArgs, Hl7StoreNotificationConfigPtr and Hl7StoreNotificationConfigPtrOutput values.
 // You can construct a concrete instance of `Hl7StoreNotificationConfigPtrInput` via:
 //
-//	        Hl7StoreNotificationConfigArgs{...}
+//          Hl7StoreNotificationConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type Hl7StoreNotificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -2567,7 +2567,7 @@ type Hl7StoreNotificationConfigs struct {
 // Hl7StoreNotificationConfigsInput is an input type that accepts Hl7StoreNotificationConfigsArgs and Hl7StoreNotificationConfigsOutput values.
 // You can construct a concrete instance of `Hl7StoreNotificationConfigsInput` via:
 //
-//	Hl7StoreNotificationConfigsArgs{...}
+//          Hl7StoreNotificationConfigsArgs{...}
 type Hl7StoreNotificationConfigsInput interface {
 	pulumi.Input
 
@@ -2610,7 +2610,7 @@ func (i Hl7StoreNotificationConfigsArgs) ToHl7StoreNotificationConfigsOutputWith
 // Hl7StoreNotificationConfigsArrayInput is an input type that accepts Hl7StoreNotificationConfigsArray and Hl7StoreNotificationConfigsArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreNotificationConfigsArrayInput` via:
 //
-//	Hl7StoreNotificationConfigsArray{ Hl7StoreNotificationConfigsArgs{...} }
+//          Hl7StoreNotificationConfigsArray{ Hl7StoreNotificationConfigsArgs{...} }
 type Hl7StoreNotificationConfigsArrayInput interface {
 	pulumi.Input
 
@@ -2707,7 +2707,7 @@ type Hl7StoreParserConfig struct {
 // Hl7StoreParserConfigInput is an input type that accepts Hl7StoreParserConfigArgs and Hl7StoreParserConfigOutput values.
 // You can construct a concrete instance of `Hl7StoreParserConfigInput` via:
 //
-//	Hl7StoreParserConfigArgs{...}
+//          Hl7StoreParserConfigArgs{...}
 type Hl7StoreParserConfigInput interface {
 	pulumi.Input
 
@@ -2753,11 +2753,11 @@ func (i Hl7StoreParserConfigArgs) ToHl7StoreParserConfigPtrOutputWithContext(ctx
 // Hl7StoreParserConfigPtrInput is an input type that accepts Hl7StoreParserConfigArgs, Hl7StoreParserConfigPtr and Hl7StoreParserConfigPtrOutput values.
 // You can construct a concrete instance of `Hl7StoreParserConfigPtrInput` via:
 //
-//	        Hl7StoreParserConfigArgs{...}
+//          Hl7StoreParserConfigArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type Hl7StoreParserConfigPtrInput interface {
 	pulumi.Input
 

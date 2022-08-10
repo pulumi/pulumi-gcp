@@ -22,7 +22,7 @@ type IAMBindingCondition struct {
 // IAMBindingConditionInput is an input type that accepts IAMBindingConditionArgs and IAMBindingConditionOutput values.
 // You can construct a concrete instance of `IAMBindingConditionInput` via:
 //
-//	IAMBindingConditionArgs{...}
+//          IAMBindingConditionArgs{...}
 type IAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -62,11 +62,11 @@ func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutputWithContext(ctx c
 // IAMBindingConditionPtrInput is an input type that accepts IAMBindingConditionArgs, IAMBindingConditionPtr and IAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `IAMBindingConditionPtrInput` via:
 //
-//	        IAMBindingConditionArgs{...}
+//          IAMBindingConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type IAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -197,7 +197,7 @@ type IAMMemberCondition struct {
 // IAMMemberConditionInput is an input type that accepts IAMMemberConditionArgs and IAMMemberConditionOutput values.
 // You can construct a concrete instance of `IAMMemberConditionInput` via:
 //
-//	IAMMemberConditionArgs{...}
+//          IAMMemberConditionArgs{...}
 type IAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -237,11 +237,11 @@ func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutputWithContext(ctx con
 // IAMMemberConditionPtrInput is an input type that accepts IAMMemberConditionArgs, IAMMemberConditionPtr and IAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `IAMMemberConditionPtrInput` via:
 //
-//	        IAMMemberConditionArgs{...}
+//          IAMMemberConditionArgs{...}
 //
-//	or:
+//  or:
 //
-//	        nil
+//          nil
 type IAMMemberConditionPtrInput interface {
 	pulumi.Input
 

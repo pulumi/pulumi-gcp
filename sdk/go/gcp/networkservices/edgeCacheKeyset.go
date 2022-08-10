@@ -18,56 +18,47 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
-//				Description: pulumi.String("The default keyset"),
-//				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
-//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
-//						Id:    pulumi.String("my-public-key"),
-//						Value: pulumi.String("FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY"),
-//					},
-//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
-//						Id:    pulumi.String("my-public-key-2"),
-//						Value: pulumi.String("hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
+// 			Description: pulumi.String("The default keyset"),
+// 			PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
+// 				&networkservices.EdgeCacheKeysetPublicKeyArgs{
+// 					Id:    pulumi.String("my-public-key"),
+// 					Value: pulumi.String("FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY"),
+// 				},
+// 				&networkservices.EdgeCacheKeysetPublicKeyArgs{
+// 					Id:    pulumi.String("my-public-key-2"),
+// 					Value: pulumi.String("hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # EdgeCacheKeyset can be imported using any of these accepted formats
+// EdgeCacheKeyset can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
-//
+//  $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
-//
+//  $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
-//
+//  $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
 // ```
 type EdgeCacheKeyset struct {
 	pulumi.CustomResourceState
@@ -233,7 +224,7 @@ func (i *EdgeCacheKeyset) ToEdgeCacheKeysetOutputWithContext(ctx context.Context
 // EdgeCacheKeysetArrayInput is an input type that accepts EdgeCacheKeysetArray and EdgeCacheKeysetArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetArrayInput` via:
 //
-//	EdgeCacheKeysetArray{ EdgeCacheKeysetArgs{...} }
+//          EdgeCacheKeysetArray{ EdgeCacheKeysetArgs{...} }
 type EdgeCacheKeysetArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +249,7 @@ func (i EdgeCacheKeysetArray) ToEdgeCacheKeysetArrayOutputWithContext(ctx contex
 // EdgeCacheKeysetMapInput is an input type that accepts EdgeCacheKeysetMap and EdgeCacheKeysetMapOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetMapInput` via:
 //
-//	EdgeCacheKeysetMap{ "key": EdgeCacheKeysetArgs{...} }
+//          EdgeCacheKeysetMap{ "key": EdgeCacheKeysetArgs{...} }
 type EdgeCacheKeysetMapInput interface {
 	pulumi.Input
 

@@ -20,24 +20,18 @@ import (
 //
 // ## Import
 //
-// # CertificateTemplate can be imported using any of these accepted formats
+// CertificateTemplate can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}
-//
+//  $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{project}}/{{location}}/{{name}}
-//
+//  $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{location}}/{{name}}
-//
+//  $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default {{location}}/{{name}}
 // ```
 type CertificateTemplate struct {
 	pulumi.CustomResourceState
@@ -210,7 +204,7 @@ func (i *CertificateTemplate) ToCertificateTemplateOutputWithContext(ctx context
 // CertificateTemplateArrayInput is an input type that accepts CertificateTemplateArray and CertificateTemplateArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplateArrayInput` via:
 //
-//	CertificateTemplateArray{ CertificateTemplateArgs{...} }
+//          CertificateTemplateArray{ CertificateTemplateArgs{...} }
 type CertificateTemplateArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +229,7 @@ func (i CertificateTemplateArray) ToCertificateTemplateArrayOutputWithContext(ct
 // CertificateTemplateMapInput is an input type that accepts CertificateTemplateMap and CertificateTemplateMapOutput values.
 // You can construct a concrete instance of `CertificateTemplateMapInput` via:
 //
-//	CertificateTemplateMap{ "key": CertificateTemplateArgs{...} }
+//          CertificateTemplateMap{ "key": CertificateTemplateArgs{...} }
 type CertificateTemplateMapInput interface {
 	pulumi.Input
 

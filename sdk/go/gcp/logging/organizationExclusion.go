@@ -15,7 +15,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.exclusions)
 // * How-to Guides
-//   - [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+//     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 //
 // > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.OrganizationSink`
 //
@@ -25,26 +25,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewOrganizationExclusion(ctx, "my-exclusion", &logging.OrganizationExclusionArgs{
-//				Description: pulumi.String("Exclude GCE instance debug logs"),
-//				Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-//				OrgId:       pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewOrganizationExclusion(ctx, "my-exclusion", &logging.OrganizationExclusionArgs{
+// 			Description: pulumi.String("Exclude GCE instance debug logs"),
+// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+// 			OrgId:       pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -52,9 +49,7 @@ import (
 // Organization-level logging exclusions can be imported using their URI, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion my_exclusion organizations/{{organization}}/exclusions/{{name}}
-//
+//  $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion my_exclusion organizations/{{organization}}/exclusions/{{name}}
 // ```
 type OrganizationExclusion struct {
 	pulumi.CustomResourceState
@@ -203,7 +198,7 @@ func (i *OrganizationExclusion) ToOrganizationExclusionOutputWithContext(ctx con
 // OrganizationExclusionArrayInput is an input type that accepts OrganizationExclusionArray and OrganizationExclusionArrayOutput values.
 // You can construct a concrete instance of `OrganizationExclusionArrayInput` via:
 //
-//	OrganizationExclusionArray{ OrganizationExclusionArgs{...} }
+//          OrganizationExclusionArray{ OrganizationExclusionArgs{...} }
 type OrganizationExclusionArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +223,7 @@ func (i OrganizationExclusionArray) ToOrganizationExclusionArrayOutputWithContex
 // OrganizationExclusionMapInput is an input type that accepts OrganizationExclusionMap and OrganizationExclusionMapOutput values.
 // You can construct a concrete instance of `OrganizationExclusionMapInput` via:
 //
-//	OrganizationExclusionMap{ "key": OrganizationExclusionArgs{...} }
+//          OrganizationExclusionMap{ "key": OrganizationExclusionArgs{...} }
 type OrganizationExclusionMapInput interface {
 	pulumi.Input
 

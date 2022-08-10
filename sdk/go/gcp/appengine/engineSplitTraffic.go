@@ -21,24 +21,18 @@ import (
 //
 // ## Import
 //
-// # ServiceSplitTraffic can be imported using any of these accepted formats
+// ServiceSplitTraffic can be imported using any of these accepted formats
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
-//
+//  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
-//
+//  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
-//
+//  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
 // ```
 type EngineSplitTraffic struct {
 	pulumi.CustomResourceState
@@ -172,7 +166,7 @@ func (i *EngineSplitTraffic) ToEngineSplitTrafficOutputWithContext(ctx context.C
 // EngineSplitTrafficArrayInput is an input type that accepts EngineSplitTrafficArray and EngineSplitTrafficArrayOutput values.
 // You can construct a concrete instance of `EngineSplitTrafficArrayInput` via:
 //
-//	EngineSplitTrafficArray{ EngineSplitTrafficArgs{...} }
+//          EngineSplitTrafficArray{ EngineSplitTrafficArgs{...} }
 type EngineSplitTrafficArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +191,7 @@ func (i EngineSplitTrafficArray) ToEngineSplitTrafficArrayOutputWithContext(ctx 
 // EngineSplitTrafficMapInput is an input type that accepts EngineSplitTrafficMap and EngineSplitTrafficMapOutput values.
 // You can construct a concrete instance of `EngineSplitTrafficMapInput` via:
 //
-//	EngineSplitTrafficMap{ "key": EngineSplitTrafficArgs{...} }
+//          EngineSplitTrafficMap{ "key": EngineSplitTrafficArgs{...} }
 type EngineSplitTrafficMapInput interface {
 	pulumi.Input
 
