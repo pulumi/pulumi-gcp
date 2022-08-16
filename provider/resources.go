@@ -17,7 +17,6 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	googleoauth "golang.org/x/oauth2/google"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -160,117 +159,60 @@ func boolRef(b bool) *bool {
 	return &b
 }
 
-// Get a set of credentials with a given scope (clientScopes).
-// If defaultCredentials is true, we anre not running as a service account and return the initial set of creds instead.
-// TODO: expand serviceaccount options if defaultCredentials are not true
-func getCredentials(clientScopes []string, defaultCredentials bool, vars resource.PropertyMap) (googleoauth.Credentials, error) {
-	if !defaultCredentials {
-		// this means we're authenticating via Service Account
-
-		return googleoauth.Credentials{}, fmt.Errorf("unable to check non-default creds yet")
-
+// stringValue gets a string value from a property map if present, else ""
+func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
+	val, ok := vars[prop]
+	if ok && val.IsString() {
+		return val.StringValue()
 	}
-	//	if c.Credentials != "" {
-	//		contents, _, err := pathOrContents(c.Credentials)
-	//		if err != nil {
-	//			return googleoauth.Credentials{}, fmt.Errorf("error loading credentials: %s", err)
-	//		}
-	//
-	//		if c.ImpersonateServiceAccount != "" && !initialCredentialsOnly {
-	//			opts := []option.ClientOption{option.WithCredentialsJSON([]byte(contents)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(clientScopes...)}
-	//			creds, err := transport.Creds(context.TODO(), opts...)
-	//			if err != nil {
-	//				return googleoauth.Credentials{}, err
-	//			}
-	//			return *creds, nil
-	//		}
-	//
-	//		creds, err := googleoauth.CredentialsFromJSON(c.context, []byte(contents), clientScopes...)
-	//		if err != nil {
-	//			return googleoauth.Credentials{}, fmt.Errorf("unable to parse credentials from '%s': %s", contents, err)
-	//		}
-	//
-	//		log.Printf("[INFO] Authenticating using configured Google JSON 'credentials'...")
-	//		log.Printf("[INFO]   -- Scopes: %s", clientScopes)
-	//		return *creds, nil
-	//	}
-	//
-	//	if c.ImpersonateServiceAccount != "" && !initialCredentialsOnly {
-	//		opts := option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...)
-	//		creds, err := transport.Creds(context.TODO(), opts, option.WithScopes(clientScopes...))
-	//		if err != nil {
-	//			return googleoauth.Credentials{}, err
-	//		}
-	//
-	//		return *creds, nil
-	//	}
-
-	fmt.Println("Authenticating using DefaultClient...")
-	fmt.Printf("Client Scopes: %s\n", clientScopes)
-	defaultTS, err := googleoauth.DefaultTokenSource(context.Background(), clientScopes...)
-	if err != nil {
-		// TODO: make this error more Pulumi specific
-		return googleoauth.Credentials{}, fmt.Errorf("Attempted to load application default credentials since neither `credentials` nor `access_token` was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: %w", err)
+	for _, env := range envs {
+		val, ok := os.LookupEnv(env)
+		if ok {
+			return val
+		}
 	}
-
-	return googleoauth.Credentials{
-		TokenSource: defaultTS,
-	}, err
+	return ""
 }
 
 func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 
 	// check if skipCredentialsValidation is True, if yes, exit early
 	if val, ok := vars["skipCredentialsValidation"]; ok {
+		fmt.Println("SKIPPING VALIDATION")
 		if val.IsBool() {
 			return nil
 		}
 	}
 
-	// GCP has default client scopes.
-	var defaultClientScopes = []string{
-		"https://www.googleapis.com/auth/cloud-platform",
-		"https://www.googleapis.com/auth/userinfo.email",
+	config := google.Config{
+		AccessToken:               stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+		Credentials:               stringValue(vars, "credentials", []string{"GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON"}),
+		ImpersonateServiceAccount: stringValue(vars, "", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+		Project: stringValue(vars, "project", []string{"GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT",
+			"GCLOUD_PROJECT",
+			"CLOUDSDK_CORE_PROJECT"}),
+		Region: stringValue(vars, "region", []string{"GOOGLE_REGION",
+			"GCLOUD_REGION",
+			"CLOUDSDK_COMPUTE_REGION"}),
+		Zone: stringValue(vars, "zone", []string{"GOOGLE_ZONE",
+			"GCLOUD_ZONE",
+			"CLOUDSDK_COMPUTE_ZONE"}),
 	}
 
-	fmt.Println("here are some vars!")
+	fmt.Println(config)
 
-	fmt.Println(vars)
-
-	//// first, let's verify required vars are set at all - ACTUALLY we probably don't want to reinvent the wheel even if it saves us an auth call
-	//if _, found := vars["project"]; !found {
-	//	// check the environment
-	//	_, inEnv := os.LookupEnv("GOOGLE_PROJECT")
-	//	if !inEnv {
-	//		// TODO: abstract this error message
-	//		return fmt.Errorf("Unable to find Google Project. Make sure you have: \n" +
-	//			" \t Set your GCP project, e.g. `pulumi config set gcp:project pulumi-example\n")
-	//	}
-	//}
-
-	// check if this is a service account situation
-
-	_, svcAcct := os.LookupEnv("GOOGLE_CREDENTIALS")
-	if svcAcct {
-		err := fmt.Errorf("unable to check non-default creds yet")
-		return err
-	}
-
-	// else we use default creds
-	fmt.Println("Authenticating using DefaultClient...")
-	fmt.Printf("Client Scopes: %s\n", defaultClientScopes)
-	defaultTS, err := googleoauth.DefaultTokenSource(context.Background(), defaultClientScopes...)
+	// TODO: must set some other fields for default settings
+	// we need to catch the default gcloud config
+	fmt.Println("calling LoadAndValidate")
+	err := config.LoadAndValidate(context.Background())
 	if err != nil {
-		// TODO: make this error more Pulumi specific
-		return fmt.Errorf("Attempted to load application default credentials since `credentials` was not set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth login'.")
-	}
+		fmt.Println("and the error was not nil")
+		return fmt.Errorf("unable to validate GCP config because you did it wrong and you should feel bad.\n"+
+			"Original error: %w\n", err,
+		)
 
-	creds := googleoauth.Credentials{
-		TokenSource: defaultTS,
 	}
-
-	tokenSource := creds.TokenSource
-	fmt.Println(&tokenSource)
+	fmt.Println("and the error WAS nil, wtf GUINEVERE")
 
 	return nil
 
