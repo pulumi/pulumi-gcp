@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 {
 
-    public sealed class HubRoutingVpcGetArgs : Pulumi.ResourceArgs
+    public sealed class HubRoutingVpcGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("uri")]
         public Input<string>? Uri { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         public HubRoutingVpcGetArgs()
         {
         }
+        public static new HubRoutingVpcGetArgs Empty => new HubRoutingVpcGetArgs();
     }
 }

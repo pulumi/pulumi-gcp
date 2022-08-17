@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .zone(&#34;us-west1-a&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-9&#34;)
+ *                     .image(&#34;debian-cloud/debian-11&#34;)
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()

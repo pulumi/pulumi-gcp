@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex.Inputs
 {
 
-    public sealed class AiFeatureStoreEntityTypeMonitoringConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreEntityTypeMonitoringConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration of how features in Featurestore are monitored.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public AiFeatureStoreEntityTypeMonitoringConfigGetArgs()
         {
         }
+        public static new AiFeatureStoreEntityTypeMonitoringConfigGetArgs Empty => new AiFeatureStoreEntityTypeMonitoringConfigGetArgs();
     }
 }

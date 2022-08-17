@@ -13,7 +13,9 @@ import (
 
 // Creates a new object inside an existing bucket in Google cloud storage service (GCS).
 // [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `storage.ObjectACL` resource.
-//  For more information see
+//
+//	For more information see
+//
 // [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
@@ -26,22 +28,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucketObject(ctx, "picture", &storage.BucketObjectArgs{
-// 			Bucket: pulumi.String("image-store"),
-// 			Source: pulumi.NewFileAsset("/images/nature/garden-tiger-moth.jpg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucketObject(ctx, "picture", &storage.BucketObjectArgs{
+//				Bucket: pulumi.String("image-store"),
+//				Source: pulumi.NewFileAsset("/images/nature/garden-tiger-moth.jpg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -354,7 +359,7 @@ func (i *BucketObject) ToBucketObjectOutputWithContext(ctx context.Context) Buck
 // BucketObjectArrayInput is an input type that accepts BucketObjectArray and BucketObjectArrayOutput values.
 // You can construct a concrete instance of `BucketObjectArrayInput` via:
 //
-//          BucketObjectArray{ BucketObjectArgs{...} }
+//	BucketObjectArray{ BucketObjectArgs{...} }
 type BucketObjectArrayInput interface {
 	pulumi.Input
 
@@ -379,7 +384,7 @@ func (i BucketObjectArray) ToBucketObjectArrayOutputWithContext(ctx context.Cont
 // BucketObjectMapInput is an input type that accepts BucketObjectMap and BucketObjectMapOutput values.
 // You can construct a concrete instance of `BucketObjectMapInput` via:
 //
-//          BucketObjectMap{ "key": BucketObjectArgs{...} }
+//	BucketObjectMap{ "key": BucketObjectArgs{...} }
 type BucketObjectMapInput interface {
 	pulumi.Input
 

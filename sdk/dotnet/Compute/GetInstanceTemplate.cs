@@ -22,25 +22,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
         ///     {
-        ///         var generic = Output.Create(Gcp.Compute.GetInstanceTemplate.InvokeAsync(new Gcp.Compute.GetInstanceTemplateArgs
-        ///         {
-        ///             Name = "generic-tpl-20200107",
-        ///         }));
-        ///         var generic_regex = Output.Create(Gcp.Compute.GetInstanceTemplate.InvokeAsync(new Gcp.Compute.GetInstanceTemplateArgs
-        ///         {
-        ///             Filter = "name != generic-tpl-20200107",
-        ///             MostRecent = true,
-        ///         }));
-        ///     }
+        ///         Name = "generic-tpl-20200107",
+        ///     });
         /// 
-        /// }
+        ///     var generic_regex = Gcp.Compute.GetInstanceTemplate.Invoke(new()
+        ///     {
+        ///         Filter = "name != generic-tpl-20200107",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -59,25 +58,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
         ///     {
-        ///         var generic = Output.Create(Gcp.Compute.GetInstanceTemplate.InvokeAsync(new Gcp.Compute.GetInstanceTemplateArgs
-        ///         {
-        ///             Name = "generic-tpl-20200107",
-        ///         }));
-        ///         var generic_regex = Output.Create(Gcp.Compute.GetInstanceTemplate.InvokeAsync(new Gcp.Compute.GetInstanceTemplateArgs
-        ///         {
-        ///             Filter = "name != generic-tpl-20200107",
-        ///             MostRecent = true,
-        ///         }));
-        ///     }
+        ///         Name = "generic-tpl-20200107",
+        ///     });
         /// 
-        /// }
+        ///     var generic_regex = Gcp.Compute.GetInstanceTemplate.Invoke(new()
+        ///     {
+        ///         Filter = "name != generic-tpl-20200107",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -87,7 +85,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetInstanceTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A filter to retrieve the instance templates.
@@ -119,9 +117,10 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceTemplateArgs()
         {
         }
+        public static new GetInstanceTemplateArgs Empty => new GetInstanceTemplateArgs();
     }
 
-    public sealed class GetInstanceTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A filter to retrieve the instance templates.
@@ -153,6 +152,7 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceTemplateInvokeArgs()
         {
         }
+        public static new GetInstanceTemplateInvokeArgs Empty => new GetInstanceTemplateInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam.Inputs
 {
 
-    public sealed class WorkloadIdentityPoolProviderOidcGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolProviderOidcGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedAudiences")]
         private InputList<string>? _allowedAudiences;
@@ -24,15 +24,12 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         /// For example:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputList<string> AllowedAudiences
@@ -50,5 +47,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         public WorkloadIdentityPoolProviderOidcGetArgs()
         {
         }
+        public static new WorkloadIdentityPoolProviderOidcGetArgs Empty => new WorkloadIdentityPoolProviderOidcGetArgs();
     }
 }

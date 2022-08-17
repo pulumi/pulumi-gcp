@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// ```
     /// </summary>
     [GcpResourceType("gcp:containeranalysis/occurence:Occurence")]
-    public partial class Occurence : Pulumi.CustomResource
+    public partial class Occurence : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Occurrence that represents a single "attestation". The authenticity
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
         }
     }
 
-    public sealed class OccurenceArgs : Pulumi.ResourceArgs
+    public sealed class OccurenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Occurrence that represents a single "attestation". The authenticity
@@ -200,9 +200,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public OccurenceArgs()
         {
         }
+        public static new OccurenceArgs Empty => new OccurenceArgs();
     }
 
-    public sealed class OccurenceState : Pulumi.ResourceArgs
+    public sealed class OccurenceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Occurrence that represents a single "attestation". The authenticity
@@ -275,5 +276,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public OccurenceState()
         {
         }
+        public static new OccurenceState Empty => new OccurenceState();
     }
 }

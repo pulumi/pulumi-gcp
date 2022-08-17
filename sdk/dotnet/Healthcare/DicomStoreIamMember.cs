@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.Healthcare
     /// ## google\_healthcare\_dicom\_store\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var dicomStore = new Gcp.Healthcare.DicomStoreIamPolicy("dicomStore", new Gcp.Healthcare.DicomStoreIamPolicyArgs
-    ///         {
-    ///             DicomStoreId = "your-dicom-store-id",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamPolicy("dicomStore", new()
+    ///     {
+    ///         DicomStoreId = "your-dicom-store-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_dicom\_store\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamBinding("dicomStore", new()
     ///     {
-    ///         var dicomStore = new Gcp.Healthcare.DicomStoreIamBinding("dicomStore", new Gcp.Healthcare.DicomStoreIamBindingArgs
+    ///         DicomStoreId = "your-dicom-store-id",
+    ///         Members = new[]
     ///         {
-    ///             DicomStoreId = "your-dicom-store-id",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_dicom\_store\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dicomStore = new Gcp.Healthcare.DicomStoreIamMember("dicomStore", new()
     ///     {
-    ///         var dicomStore = new Gcp.Healthcare.DicomStoreIamMember("dicomStore", new Gcp.Healthcare.DicomStoreIamMemberArgs
-    ///         {
-    ///             DicomStoreId = "your-dicom-store-id",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         DicomStoreId = "your-dicom-store-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -126,7 +121,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember")]
-    public partial class DicomStoreIamMember : Pulumi.CustomResource
+    public partial class DicomStoreIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.DicomStoreIamMemberCondition?> Condition { get; private set; } = null!;
@@ -201,7 +196,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class DicomStoreIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class DicomStoreIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.DicomStoreIamMemberConditionArgs>? Condition { get; set; }
@@ -229,9 +224,10 @@ namespace Pulumi.Gcp.Healthcare
         public DicomStoreIamMemberArgs()
         {
         }
+        public static new DicomStoreIamMemberArgs Empty => new DicomStoreIamMemberArgs();
     }
 
-    public sealed class DicomStoreIamMemberState : Pulumi.ResourceArgs
+    public sealed class DicomStoreIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.DicomStoreIamMemberConditionGetArgs>? Condition { get; set; }
@@ -265,5 +261,6 @@ namespace Pulumi.Gcp.Healthcare
         public DicomStoreIamMemberState()
         {
         }
+        public static new DicomStoreIamMemberState Empty => new DicomStoreIamMemberState();
     }
 }

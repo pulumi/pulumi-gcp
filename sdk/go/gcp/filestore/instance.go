@@ -17,9 +17,9 @@ import (
 //
 // * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
-//     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
-//     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+//   - [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+//   - [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+//   - [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 //
 // ## Example Usage
 // ### Filestore Instance Basic
@@ -28,34 +28,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-// 			FileShares: &filestore.InstanceFileSharesArgs{
-// 				CapacityGb: pulumi.Int(2660),
-// 				Name:       pulumi.String("share1"),
-// 			},
-// 			Location: pulumi.String("us-central1-b"),
-// 			Networks: filestore.InstanceNetworkArray{
-// 				&filestore.InstanceNetworkArgs{
-// 					Modes: pulumi.StringArray{
-// 						pulumi.String("MODE_IPV4"),
-// 					},
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			Tier: pulumi.String("PREMIUM"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(2660),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Location: pulumi.String("us-central1-b"),
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Tier: pulumi.String("PREMIUM"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Filestore Instance Full
 //
@@ -63,53 +66,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-// 			FileShares: &filestore.InstanceFileSharesArgs{
-// 				CapacityGb: pulumi.Int(2660),
-// 				Name:       pulumi.String("share1"),
-// 				NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
-// 					&filestore.InstanceFileSharesNfsExportOptionArgs{
-// 						AccessMode: pulumi.String("READ_WRITE"),
-// 						IpRanges: pulumi.StringArray{
-// 							pulumi.String("10.0.0.0/24"),
-// 						},
-// 						SquashMode: pulumi.String("NO_ROOT_SQUASH"),
-// 					},
-// 					&filestore.InstanceFileSharesNfsExportOptionArgs{
-// 						AccessMode: pulumi.String("READ_ONLY"),
-// 						AnonGid:    pulumi.Int(456),
-// 						AnonUid:    pulumi.Int(123),
-// 						IpRanges: pulumi.StringArray{
-// 							pulumi.String("10.10.0.0/24"),
-// 						},
-// 						SquashMode: pulumi.String("ROOT_SQUASH"),
-// 					},
-// 				},
-// 			},
-// 			Location: pulumi.String("us-central1-b"),
-// 			Networks: filestore.InstanceNetworkArray{
-// 				&filestore.InstanceNetworkArgs{
-// 					ConnectMode: pulumi.String("DIRECT_PEERING"),
-// 					Modes: pulumi.StringArray{
-// 						pulumi.String("MODE_IPV4"),
-// 					},
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			Tier: pulumi.String("BASIC_SSD"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(2660),
+//					Name:       pulumi.String("share1"),
+//					NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
+//						&filestore.InstanceFileSharesNfsExportOptionArgs{
+//							AccessMode: pulumi.String("READ_WRITE"),
+//							IpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/24"),
+//							},
+//							SquashMode: pulumi.String("NO_ROOT_SQUASH"),
+//						},
+//						&filestore.InstanceFileSharesNfsExportOptionArgs{
+//							AccessMode: pulumi.String("READ_ONLY"),
+//							AnonGid:    pulumi.Int(456),
+//							AnonUid:    pulumi.Int(123),
+//							IpRanges: pulumi.StringArray{
+//								pulumi.String("10.10.0.0/24"),
+//							},
+//							SquashMode: pulumi.String("ROOT_SQUASH"),
+//						},
+//					},
+//				},
+//				Location: pulumi.String("us-central1-b"),
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						ConnectMode: pulumi.String("DIRECT_PEERING"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Tier: pulumi.String("BASIC_SSD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Filestore Instance Enterprise
 //
@@ -117,64 +123,73 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		filestoreKeyring, err := kms.NewKeyRing(ctx, "filestoreKeyring", &kms.KeyRingArgs{
-// 			Location: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		filestoreKey, err := kms.NewCryptoKey(ctx, "filestoreKey", &kms.CryptoKeyArgs{
-// 			KeyRing: filestoreKeyring.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-// 			Location: pulumi.String("us-central1"),
-// 			Tier:     pulumi.String("ENTERPRISE"),
-// 			FileShares: &filestore.InstanceFileSharesArgs{
-// 				CapacityGb: pulumi.Int(2560),
-// 				Name:       pulumi.String("share1"),
-// 			},
-// 			Networks: filestore.InstanceNetworkArray{
-// 				&filestore.InstanceNetworkArgs{
-// 					Network: pulumi.String("default"),
-// 					Modes: pulumi.StringArray{
-// 						pulumi.String("MODE_IPV4"),
-// 					},
-// 				},
-// 			},
-// 			KmsKeyName: filestoreKey.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			filestoreKeyring, err := kms.NewKeyRing(ctx, "filestoreKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			filestoreKey, err := kms.NewCryptoKey(ctx, "filestoreKey", &kms.CryptoKeyArgs{
+//				KeyRing: filestoreKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(2560),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String("default"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//					},
+//				},
+//				KmsKeyName: filestoreKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Instance can be imported using any of these accepted formats
+// # Instance can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+//
+//	$ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
+//
+//	$ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
+//
+//	$ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -423,7 +438,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -448,7 +463,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageServiceAccountArgs()
         {
         }
+        public static new InstanceFromMachineImageServiceAccountArgs Empty => new InstanceFromMachineImageServiceAccountArgs();
     }
 }

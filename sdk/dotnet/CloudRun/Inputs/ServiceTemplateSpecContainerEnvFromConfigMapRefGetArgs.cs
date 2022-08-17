@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Secret to select from.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecContainerEnvFromConfigMapRefGetArgs()
         {
         }
+        public static new ServiceTemplateSpecContainerEnvFromConfigMapRefGetArgs Empty => new ServiceTemplateSpecContainerEnvFromConfigMapRefGetArgs();
     }
 }

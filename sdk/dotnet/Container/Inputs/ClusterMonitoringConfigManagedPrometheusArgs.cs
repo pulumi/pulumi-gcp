@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMonitoringConfigManagedPrometheusArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMonitoringConfigManagedPrometheusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMonitoringConfigManagedPrometheusArgs()
         {
         }
+        public static new ClusterMonitoringConfigManagedPrometheusArgs Empty => new ClusterMonitoringConfigManagedPrometheusArgs();
     }
 }

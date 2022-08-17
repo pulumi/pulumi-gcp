@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("accelerators")]
         private InputList<Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs>? _accelerators;
@@ -96,5 +96,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs();
     }
 }

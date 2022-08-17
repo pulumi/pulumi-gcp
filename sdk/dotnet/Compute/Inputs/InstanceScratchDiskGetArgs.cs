@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceScratchDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceScratchDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The disk interface to use for attaching this disk; either SCSI or NVME.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceScratchDiskGetArgs()
         {
         }
+        public static new InstanceScratchDiskGetArgs Empty => new InstanceScratchDiskGetArgs();
     }
 }

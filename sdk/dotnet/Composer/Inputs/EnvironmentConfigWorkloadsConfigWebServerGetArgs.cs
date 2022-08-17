@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigWorkloadsConfigWebServerGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigWorkloadsConfigWebServerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigWorkloadsConfigWebServerGetArgs()
         {
         }
+        public static new EnvironmentConfigWorkloadsConfigWebServerGetArgs Empty => new EnvironmentConfigWorkloadsConfigWebServerGetArgs();
     }
 }

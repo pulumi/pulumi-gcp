@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis.Inputs
 {
 
-    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hours of day in 24 hour format. Should be from 0 to 23.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs()
         {
         }
+        public static new InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs Empty => new InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs();
     }
 }

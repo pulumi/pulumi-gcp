@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
  *     machineType: "e2-standard-4",
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-9",
+ *         sourceImage: "debian-cloud/debian-11",
  *         diskSizeGb: 250,
  *     }],
  *     networkInterfaces: [{
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const debian9 = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * ```

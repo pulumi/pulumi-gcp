@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ReservationSpecificReservationInstancePropertiesLocalSsdGetArgs : Pulumi.ResourceArgs
+    public sealed class ReservationSpecificReservationInstancePropertiesLocalSsdGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The size of the disk in base-2 GB.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ReservationSpecificReservationInstancePropertiesLocalSsdGetArgs()
         {
         }
+        public static new ReservationSpecificReservationInstancePropertiesLocalSsdGetArgs Empty => new ReservationSpecificReservationInstancePropertiesLocalSsdGetArgs();
     }
 }

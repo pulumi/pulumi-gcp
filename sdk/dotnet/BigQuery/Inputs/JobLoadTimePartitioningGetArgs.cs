@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobLoadTimePartitioningGetArgs : Pulumi.ResourceArgs
+    public sealed class JobLoadTimePartitioningGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobLoadTimePartitioningGetArgs()
         {
         }
+        public static new JobLoadTimePartitioningGetArgs Empty => new JobLoadTimePartitioningGetArgs();
     }
 }

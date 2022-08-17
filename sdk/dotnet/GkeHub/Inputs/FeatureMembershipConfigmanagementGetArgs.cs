@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Binauthz configuration for the cluster. Structure is documented below.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementGetArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementGetArgs Empty => new FeatureMembershipConfigmanagementGetArgs();
     }
 }

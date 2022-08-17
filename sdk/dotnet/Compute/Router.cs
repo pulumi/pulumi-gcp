@@ -22,71 +22,69 @@ namespace Pulumi.Gcp.Compute
     /// ### Router Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new()
     ///     {
-    ///         var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new Gcp.Compute.NetworkArgs
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var foobarRouter = new Gcp.Compute.Router("foobarRouter", new()
+    ///     {
+    ///         Network = foobarNetwork.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
     ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var foobarRouter = new Gcp.Compute.Router("foobarRouter", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = foobarNetwork.Name,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///             Asn = 64514,
+    ///             AdvertiseMode = "CUSTOM",
+    ///             AdvertisedGroups = new[]
     ///             {
-    ///                 Asn = 64514,
-    ///                 AdvertiseMode = "CUSTOM",
-    ///                 AdvertisedGroups = 
+    ///                 "ALL_SUBNETS",
+    ///             },
+    ///             AdvertisedIpRanges = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
     ///                 {
-    ///                     "ALL_SUBNETS",
+    ///                     Range = "1.2.3.4",
     ///                 },
-    ///                 AdvertisedIpRanges = 
+    ///                 new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
     ///                 {
-    ///                     new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
-    ///                     {
-    ///                         Range = "1.2.3.4",
-    ///                     },
-    ///                     new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
-    ///                     {
-    ///                         Range = "6.7.0.0/16",
-    ///                     },
+    ///                     Range = "6.7.0.0/16",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Compute Router Encrypted Interconnect
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var encrypted_interconnect_router = new Gcp.Compute.Router("encrypted-interconnect-router", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = network.Name,
-    ///             EncryptedInterconnectRouter = true,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///             {
-    ///                 Asn = 64514,
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var encrypted_interconnect_router = new Gcp.Compute.Router("encrypted-interconnect-router", new()
+    ///     {
+    ///         Network = network.Name,
+    ///         EncryptedInterconnectRouter = true,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -110,7 +108,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/router:Router")]
-    public partial class Router : Pulumi.CustomResource
+    public partial class Router : global::Pulumi.CustomResource
     {
         /// <summary>
         /// BGP information specific to this router.
@@ -219,7 +217,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RouterArgs : Pulumi.ResourceArgs
+    public sealed class RouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BGP information specific to this router.
@@ -275,9 +273,10 @@ namespace Pulumi.Gcp.Compute
         public RouterArgs()
         {
         }
+        public static new RouterArgs Empty => new RouterArgs();
     }
 
-    public sealed class RouterState : Pulumi.ResourceArgs
+    public sealed class RouterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BGP information specific to this router.
@@ -345,5 +344,6 @@ namespace Pulumi.Gcp.Compute
         public RouterState()
         {
         }
+        public static new RouterState Empty => new RouterState();
     }
 }

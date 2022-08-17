@@ -37,6 +37,11 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly bool? InstallGpuDriver;
         /// <summary>
+        /// Use a list of container images to use as Kernels in the notebook instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RuntimeSoftwareConfigKernel> Kernels;
+        /// <summary>
         /// Cron expression in UTC timezone for schedule instance auto upgrade.
         /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         /// </summary>
@@ -47,6 +52,16 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// Cloud Storage path (gs://path-to-file/file-name).
         /// </summary>
         public readonly string? PostStartupScript;
+        /// <summary>
+        /// Behavior for the post startup script.
+        /// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+        /// </summary>
+        public readonly string? PostStartupScriptBehavior;
+        /// <summary>
+        /// -
+        /// Bool indicating whether an newer image is available in an image family.
+        /// </summary>
+        public readonly bool? Upgradeable;
 
         [OutputConstructor]
         private RuntimeSoftwareConfig(
@@ -60,17 +75,26 @@ namespace Pulumi.Gcp.Notebooks.Outputs
 
             bool? installGpuDriver,
 
+            ImmutableArray<Outputs.RuntimeSoftwareConfigKernel> kernels,
+
             string? notebookUpgradeSchedule,
 
-            string? postStartupScript)
+            string? postStartupScript,
+
+            string? postStartupScriptBehavior,
+
+            bool? upgradeable)
         {
             CustomGpuDriverPath = customGpuDriverPath;
             EnableHealthMonitoring = enableHealthMonitoring;
             IdleShutdown = idleShutdown;
             IdleShutdownTimeout = idleShutdownTimeout;
             InstallGpuDriver = installGpuDriver;
+            Kernels = kernels;
             NotebookUpgradeSchedule = notebookUpgradeSchedule;
             PostStartupScript = postStartupScript;
+            PostStartupScriptBehavior = postStartupScriptBehavior;
+            Upgradeable = upgradeable;
         }
     }
 }

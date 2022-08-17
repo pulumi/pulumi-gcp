@@ -22,37 +22,36 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ### Service Directory Service Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
     ///     {
-    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
-    ///         {
-    ///             NamespaceId = "example-namespace",
-    ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
-    ///         {
-    ///             ServiceId = "example-service",
-    ///             Namespace = exampleNamespace.Id,
-    ///             Metadata = 
-    ///             {
-    ///                 { "stage", "prod" },
-    ///                 { "region", "us-central1" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         NamespaceId = "example-namespace",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     {
+    ///         ServiceId = "example-service",
+    ///         Namespace = exampleNamespace.Id,
+    ///         Metadata = 
+    ///         {
+    ///             { "stage", "prod" },
+    ///             { "region", "us-central1" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +71,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ```
     /// </summary>
     [GcpResourceType("gcp:servicedirectory/service:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Metadata for the service. This data can be consumed
@@ -146,7 +145,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
         private InputMap<string>? _metadata;
@@ -179,9 +178,10 @@ namespace Pulumi.Gcp.ServiceDirectory
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 
-    public sealed class ServiceState : Pulumi.ResourceArgs
+    public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
         private InputMap<string>? _metadata;
@@ -220,5 +220,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         public ServiceState()
         {
         }
+        public static new ServiceState Empty => new ServiceState();
     }
 }

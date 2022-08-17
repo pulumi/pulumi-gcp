@@ -34,22 +34,20 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Gcp.Monitoring.GetMeshIstioService.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Gcp.Monitoring.GetMeshIstioService.InvokeAsync(new Gcp.Monitoring.GetMeshIstioServiceArgs
-        ///         {
-        ///             MeshUid = "proj-573164786102",
-        ///             ServiceName = "prometheus",
-        ///             ServiceNamespace = "istio-system",
-        ///         }));
-        ///     }
+        ///         MeshUid = "proj-573164786102",
+        ///         ServiceName = "prometheus",
+        ///         ServiceNamespace = "istio-system",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -80,22 +78,20 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Gcp.Monitoring.GetMeshIstioService.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Gcp.Monitoring.GetMeshIstioService.InvokeAsync(new Gcp.Monitoring.GetMeshIstioServiceArgs
-        ///         {
-        ///             MeshUid = "proj-573164786102",
-        ///             ServiceName = "prometheus",
-        ///             ServiceNamespace = "istio-system",
-        ///         }));
-        ///     }
+        ///         MeshUid = "proj-573164786102",
+        ///         ServiceName = "prometheus",
+        ///         ServiceNamespace = "istio-system",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -105,7 +101,7 @@ namespace Pulumi.Gcp.Monitoring
     }
 
 
-    public sealed class GetMeshIstioServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetMeshIstioServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Identifier for the mesh in which this Istio service is defined.
@@ -138,9 +134,10 @@ namespace Pulumi.Gcp.Monitoring
         public GetMeshIstioServiceArgs()
         {
         }
+        public static new GetMeshIstioServiceArgs Empty => new GetMeshIstioServiceArgs();
     }
 
-    public sealed class GetMeshIstioServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMeshIstioServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Identifier for the mesh in which this Istio service is defined.
@@ -173,6 +170,7 @@ namespace Pulumi.Gcp.Monitoring
         public GetMeshIstioServiceInvokeArgs()
         {
         }
+        public static new GetMeshIstioServiceInvokeArgs Empty => new GetMeshIstioServiceInvokeArgs();
     }
 
 

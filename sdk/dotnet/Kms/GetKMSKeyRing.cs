@@ -25,21 +25,19 @@ namespace Pulumi.Gcp.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
         ///     {
-        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
-        ///         {
-        ///             Location = "us-central1",
-        ///             Name = "my-key-ring",
-        ///         }));
-        ///     }
+        ///         Location = "us-central1",
+        ///         Name = "my-key-ring",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -61,21 +59,19 @@ namespace Pulumi.Gcp.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
         ///     {
-        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
-        ///         {
-        ///             Location = "us-central1",
-        ///             Name = "my-key-ring",
-        ///         }));
-        ///     }
+        ///         Location = "us-central1",
+        ///         Name = "my-key-ring",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +81,7 @@ namespace Pulumi.Gcp.Kms
     }
 
 
-    public sealed class GetKMSKeyRingArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSKeyRingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Google Cloud Platform location for the KeyRing.
@@ -111,9 +107,10 @@ namespace Pulumi.Gcp.Kms
         public GetKMSKeyRingArgs()
         {
         }
+        public static new GetKMSKeyRingArgs Empty => new GetKMSKeyRingArgs();
     }
 
-    public sealed class GetKMSKeyRingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSKeyRingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Google Cloud Platform location for the KeyRing.
@@ -139,6 +136,7 @@ namespace Pulumi.Gcp.Kms
         public GetKMSKeyRingInvokeArgs()
         {
         }
+        public static new GetKMSKeyRingInvokeArgs Empty => new GetKMSKeyRingInvokeArgs();
     }
 
 

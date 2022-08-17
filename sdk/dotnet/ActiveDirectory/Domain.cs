@@ -22,25 +22,23 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// ### Active Directory Domain Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ad_domain = new Gcp.ActiveDirectory.Domain("ad-domain", new()
     ///     {
-    ///         var ad_domain = new Gcp.ActiveDirectory.Domain("ad-domain", new Gcp.ActiveDirectory.DomainArgs
+    ///         DomainName = "tfgen.org.com",
+    ///         Locations = new[]
     ///         {
-    ///             DomainName = "tfgen.org.com",
-    ///             Locations = 
-    ///             {
-    ///                 "us-central1",
-    ///             },
-    ///             ReservedIpRange = "192.168.255.0/24",
-    ///         });
-    ///     }
+    ///             "us-central1",
+    ///         },
+    ///         ReservedIpRange = "192.168.255.0/24",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// ```
     /// </summary>
     [GcpResourceType("gcp:activedirectory/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of delegated administrator account used to perform Active Directory operations.
@@ -159,7 +157,7 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of delegated administrator account used to perform Active Directory operations.
@@ -230,9 +228,10 @@ namespace Pulumi.Gcp.ActiveDirectory
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of delegated administrator account used to perform Active Directory operations.
@@ -316,5 +315,6 @@ namespace Pulumi.Gcp.ActiveDirectory
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

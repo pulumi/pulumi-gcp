@@ -20,51 +20,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
-// 			Annotations: pulumi.StringMap{
-// 				"my_first_annotation":  pulumi.String("example-annotation-1"),
-// 				"my_second_annotation": pulumi.String("example-annotation-2"),
-// 			},
-// 			Description: pulumi.String("basic description"),
-// 			Gke: &clouddeploy.TargetGkeArgs{
-// 				Cluster: pulumi.String("projects/my-project-name/locations/us-west1/clusters/example-cluster-name"),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"my_first_label":  pulumi.String("example-label-1"),
-// 				"my_second_label": pulumi.String("example-label-2"),
-// 			},
-// 			Location:        pulumi.String("us-west1"),
-// 			Project:         pulumi.String("my-project-name"),
-// 			RequireApproval: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				Gke: &clouddeploy.TargetGkeArgs{
+//					Cluster: pulumi.String("projects/my-project-name/locations/us-west1/clusters/example-cluster-name"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Location:        pulumi.String("us-west1"),
+//				Project:         pulumi.String("my-project-name"),
+//				RequireApproval: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Target can be imported using any of these accepted formats
+// # Target can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}
+//
+//	$ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:clouddeploy/target:Target default {{project}}/{{location}}/{{name}}
+//
+//	$ pulumi import gcp:clouddeploy/target:Target default {{project}}/{{location}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:clouddeploy/target:Target default {{location}}/{{name}}
+//
+//	$ pulumi import gcp:clouddeploy/target:Target default {{location}}/{{name}}
+//
 // ```
 type Target struct {
 	pulumi.CustomResourceState
@@ -278,7 +287,7 @@ func (i *Target) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 // TargetArrayInput is an input type that accepts TargetArray and TargetArrayOutput values.
 // You can construct a concrete instance of `TargetArrayInput` via:
 //
-//          TargetArray{ TargetArgs{...} }
+//	TargetArray{ TargetArgs{...} }
 type TargetArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +312,7 @@ func (i TargetArray) ToTargetArrayOutputWithContext(ctx context.Context) TargetA
 // TargetMapInput is an input type that accepts TargetMap and TargetMapOutput values.
 // You can construct a concrete instance of `TargetMapInput` via:
 //
-//          TargetMap{ "key": TargetArgs{...} }
+//	TargetMap{ "key": TargetArgs{...} }
 type TargetMapInput interface {
 	pulumi.Input
 

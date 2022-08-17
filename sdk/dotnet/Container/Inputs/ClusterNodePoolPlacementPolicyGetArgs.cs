@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolPlacementPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolPlacementPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolPlacementPolicyGetArgs()
         {
         }
+        public static new ClusterNodePoolPlacementPolicyGetArgs Empty => new ClusterNodePoolPlacementPolicyGetArgs();
     }
 }

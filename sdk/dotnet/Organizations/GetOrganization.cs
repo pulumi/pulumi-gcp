@@ -15,25 +15,24 @@ namespace Pulumi.Gcp.Organizations
         /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var org = Gcp.Organizations.GetOrganization.Invoke(new()
         ///     {
-        ///         var org = Output.Create(Gcp.Organizations.GetOrganization.InvokeAsync(new Gcp.Organizations.GetOrganizationArgs
-        ///         {
-        ///             Domain = "example.com",
-        ///         }));
-        ///         var sales = new Gcp.Organizations.Folder("sales", new Gcp.Organizations.FolderArgs
-        ///         {
-        ///             DisplayName = "Sales",
-        ///             Parent = org.Apply(org =&gt; org.Name),
-        ///         });
-        ///     }
+        ///         Domain = "example.com",
+        ///     });
         /// 
-        /// }
+        ///     var sales = new Gcp.Organizations.Folder("sales", new()
+        ///     {
+        ///         DisplayName = "Sales",
+        ///         Parent = org.Apply(getOrganizationResult =&gt; getOrganizationResult.Name),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
@@ -43,25 +42,24 @@ namespace Pulumi.Gcp.Organizations
         /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var org = Gcp.Organizations.GetOrganization.Invoke(new()
         ///     {
-        ///         var org = Output.Create(Gcp.Organizations.GetOrganization.InvokeAsync(new Gcp.Organizations.GetOrganizationArgs
-        ///         {
-        ///             Domain = "example.com",
-        ///         }));
-        ///         var sales = new Gcp.Organizations.Folder("sales", new Gcp.Organizations.FolderArgs
-        ///         {
-        ///             DisplayName = "Sales",
-        ///             Parent = org.Apply(org =&gt; org.Name),
-        ///         });
-        ///     }
+        ///         Domain = "example.com",
+        ///     });
         /// 
-        /// }
+        ///     var sales = new Gcp.Organizations.Folder("sales", new()
+        ///     {
+        ///         DisplayName = "Sales",
+        ///         Parent = org.Apply(getOrganizationResult =&gt; getOrganizationResult.Name),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs? args = null, InvokeOptions? options = null)
@@ -69,7 +67,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetOrganizationArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain name of the Organization.
@@ -86,9 +84,10 @@ namespace Pulumi.Gcp.Organizations
         public GetOrganizationArgs()
         {
         }
+        public static new GetOrganizationArgs Empty => new GetOrganizationArgs();
     }
 
-    public sealed class GetOrganizationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain name of the Organization.
@@ -105,6 +104,7 @@ namespace Pulumi.Gcp.Organizations
         public GetOrganizationInvokeArgs()
         {
         }
+        public static new GetOrganizationInvokeArgs Empty => new GetOrganizationInvokeArgs();
     }
 
 

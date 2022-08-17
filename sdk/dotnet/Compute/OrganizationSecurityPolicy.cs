@@ -22,24 +22,22 @@ namespace Pulumi.Gcp.Compute
     /// ### Organization Security Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new Gcp.Compute.OrganizationSecurityPolicyArgs
-    ///         {
-    ///             DisplayName = "tf-test",
-    ///             Parent = "organizations/123456789",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         DisplayName = "tf-test",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy")]
-    public partial class OrganizationSecurityPolicy : Pulumi.CustomResource
+    public partial class OrganizationSecurityPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A textual description for the organization security policy.
@@ -142,7 +140,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class OrganizationSecurityPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A textual description for the organization security policy.
@@ -176,9 +174,10 @@ namespace Pulumi.Gcp.Compute
         public OrganizationSecurityPolicyArgs()
         {
         }
+        public static new OrganizationSecurityPolicyArgs Empty => new OrganizationSecurityPolicyArgs();
     }
 
-    public sealed class OrganizationSecurityPolicyState : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A textual description for the organization security policy.
@@ -224,5 +223,6 @@ namespace Pulumi.Gcp.Compute
         public OrganizationSecurityPolicyState()
         {
         }
+        public static new OrganizationSecurityPolicyState Empty => new OrganizationSecurityPolicyState();
     }
 }

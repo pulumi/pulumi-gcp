@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionConditionThresholdTriggerArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionConditionThresholdTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The absolute number of time series
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionConditionThresholdTriggerArgs()
         {
         }
+        public static new AlertPolicyConditionConditionThresholdTriggerArgs Empty => new AlertPolicyConditionConditionThresholdTriggerArgs();
     }
 }

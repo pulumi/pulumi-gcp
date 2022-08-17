@@ -23,74 +23,68 @@ namespace Pulumi.Gcp.Spanner
     /// ### Spanner Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Spanner.Instance("example", new()
     ///     {
-    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         Config = "regional-us-central1",
+    ///         DisplayName = "Test Spanner Instance",
+    ///         Labels = 
     ///         {
-    ///             Config = "regional-us-central1",
-    ///             DisplayName = "Test Spanner Instance",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             NumNodes = 2,
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///         NumNodes = 2,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Spanner Instance Processing Units
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Spanner.Instance("example", new()
     ///     {
-    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         Config = "regional-us-central1",
+    ///         DisplayName = "Test Spanner Instance",
+    ///         Labels = 
     ///         {
-    ///             Config = "regional-us-central1",
-    ///             DisplayName = "Test Spanner Instance",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             ProcessingUnits = 200,
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ProcessingUnits = 200,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Spanner Instance Multi Regional
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Spanner.Instance("example", new()
     ///     {
-    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         Config = "nam-eur-asia1",
+    ///         DisplayName = "Multi Regional Instance",
+    ///         Labels = 
     ///         {
-    ///             Config = "nam-eur-asia1",
-    ///             DisplayName = "Multi Regional Instance",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             NumNodes = 2,
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///         NumNodes = 2,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -110,7 +104,7 @@ namespace Pulumi.Gcp.Spanner
     /// ```
     /// </summary>
     [GcpResourceType("gcp:spanner/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the instance's configuration (similar but not
@@ -223,7 +217,7 @@ namespace Pulumi.Gcp.Spanner
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the instance's configuration (similar but not
@@ -295,9 +289,10 @@ namespace Pulumi.Gcp.Spanner
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the instance's configuration (similar but not
@@ -375,5 +370,6 @@ namespace Pulumi.Gcp.Spanner
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

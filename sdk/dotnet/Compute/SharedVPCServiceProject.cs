@@ -24,21 +24,19 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var service1 = new Gcp.Compute.SharedVPCServiceProject("service1", new()
     ///     {
-    ///         var service1 = new Gcp.Compute.SharedVPCServiceProject("service1", new Gcp.Compute.SharedVPCServiceProjectArgs
-    ///         {
-    ///             HostProject = "host-project-id",
-    ///             ServiceProject = "service-project-id-1",
-    ///         });
-    ///     }
+    ///         HostProject = "host-project-id",
+    ///         ServiceProject = "service-project-id-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// For a complete Shared VPC example with both host and service projects, see
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject")]
-    public partial class SharedVPCServiceProject : Pulumi.CustomResource
+    public partial class SharedVPCServiceProject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of a host project to associate.
@@ -111,7 +109,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SharedVPCServiceProjectArgs : Pulumi.ResourceArgs
+    public sealed class SharedVPCServiceProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of a host project to associate.
@@ -128,9 +126,10 @@ namespace Pulumi.Gcp.Compute
         public SharedVPCServiceProjectArgs()
         {
         }
+        public static new SharedVPCServiceProjectArgs Empty => new SharedVPCServiceProjectArgs();
     }
 
-    public sealed class SharedVPCServiceProjectState : Pulumi.ResourceArgs
+    public sealed class SharedVPCServiceProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of a host project to associate.
@@ -147,5 +146,6 @@ namespace Pulumi.Gcp.Compute
         public SharedVPCServiceProjectState()
         {
         }
+        public static new SharedVPCServiceProjectState Empty => new SharedVPCServiceProjectState();
     }
 }

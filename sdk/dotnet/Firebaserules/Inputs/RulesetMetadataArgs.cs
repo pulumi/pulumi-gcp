@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebaserules.Inputs
 {
 
-    public sealed class RulesetMetadataArgs : Pulumi.ResourceArgs
+    public sealed class RulesetMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("services")]
         private InputList<string>? _services;
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Firebaserules.Inputs
         public RulesetMetadataArgs()
         {
         }
+        public static new RulesetMetadataArgs Empty => new RulesetMetadataArgs();
     }
 }

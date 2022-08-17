@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureStateArgs : Pulumi.ResourceArgs
+    public sealed class FeatureStateArgs : global::Pulumi.ResourceArgs
     {
         [Input("states")]
         private InputList<Inputs.FeatureStateStateArgs>? _states;
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureStateArgs()
         {
         }
+        public static new FeatureStateArgs Empty => new FeatureStateArgs();
     }
 }

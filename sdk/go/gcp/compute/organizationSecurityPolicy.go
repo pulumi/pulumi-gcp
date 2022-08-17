@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
 // * How-to Guides
-//     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+//   - [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 //
 // ## Example Usage
 // ### Organization Security Policy Basic
@@ -26,34 +26,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-// 			DisplayName: pulumi.String("tf-test"),
-// 			Parent:      pulumi.String("organizations/123456789"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
+//				DisplayName: pulumi.String("tf-test"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// OrganizationSecurityPolicy can be imported using any of these accepted formats
+// # OrganizationSecurityPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
+//
+//	$ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
+//
+//	$ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
+//
 // ```
 type OrganizationSecurityPolicy struct {
 	pulumi.CustomResourceState
@@ -214,7 +221,7 @@ func (i *OrganizationSecurityPolicy) ToOrganizationSecurityPolicyOutputWithConte
 // OrganizationSecurityPolicyArrayInput is an input type that accepts OrganizationSecurityPolicyArray and OrganizationSecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyArrayInput` via:
 //
-//          OrganizationSecurityPolicyArray{ OrganizationSecurityPolicyArgs{...} }
+//	OrganizationSecurityPolicyArray{ OrganizationSecurityPolicyArgs{...} }
 type OrganizationSecurityPolicyArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +246,7 @@ func (i OrganizationSecurityPolicyArray) ToOrganizationSecurityPolicyArrayOutput
 // OrganizationSecurityPolicyMapInput is an input type that accepts OrganizationSecurityPolicyMap and OrganizationSecurityPolicyMapOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyMapInput` via:
 //
-//          OrganizationSecurityPolicyMap{ "key": OrganizationSecurityPolicyArgs{...} }
+//	OrganizationSecurityPolicyMap{ "key": OrganizationSecurityPolicyArgs{...} }
 type OrganizationSecurityPolicyMapInput interface {
 	pulumi.Input
 

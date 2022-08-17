@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+//   - [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
 // ### Dialogflow Intent Basic
@@ -27,31 +27,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
-// 			DisplayName:         pulumi.String("example_agent"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			TimeZone:            pulumi.String("America/New_York"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewIntent(ctx, "basicIntent", &diagflow.IntentArgs{
-// 			DisplayName: pulumi.String("basic-intent"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			basicAgent,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+//				DisplayName:         pulumi.String("example_agent"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				TimeZone:            pulumi.String("America/New_York"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewIntent(ctx, "basicIntent", &diagflow.IntentArgs{
+//				DisplayName: pulumi.String("basic-intent"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicAgent,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Dialogflow Intent Full
 //
@@ -59,95 +62,100 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agentProjectProject, err := organizations.NewProject(ctx, "agentProjectProject", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("tf-test-dialogflow"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		agentProjectService, err := projects.NewService(ctx, "agentProjectService", &projects.ServiceArgs{
-// 			Project:                  agentProjectProject.ProjectId,
-// 			Service:                  pulumi.String("dialogflow.googleapis.com"),
-// 			DisableDependentServices: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		dialogflowServiceAccount, err := serviceAccount.NewAccount(ctx, "dialogflowServiceAccount", &serviceAccount.AccountArgs{
-// 			AccountId: pulumi.String("tf-test-dialogflow"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewIAMMember(ctx, "agentCreate", &projects.IAMMemberArgs{
-// 			Project: agentProjectService.Project,
-// 			Role:    pulumi.String("roles/dialogflow.admin"),
-// 			Member: dialogflowServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("serviceAccount:%v", email), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
-// 			Project:             agentProjectProject.ProjectId,
-// 			DisplayName:         pulumi.String("example_agent"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			TimeZone:            pulumi.String("America/New_York"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewIntent(ctx, "fullIntent", &diagflow.IntentArgs{
-// 			Project:       agentProjectProject.ProjectId,
-// 			DisplayName:   pulumi.String("full-intent"),
-// 			WebhookState:  pulumi.String("WEBHOOK_STATE_ENABLED"),
-// 			Priority:      pulumi.Int(1),
-// 			IsFallback:    pulumi.Bool(false),
-// 			MlDisabled:    pulumi.Bool(true),
-// 			Action:        pulumi.String("some_action"),
-// 			ResetContexts: pulumi.Bool(true),
-// 			InputContextNames: pulumi.StringArray{
-// 				agentProjectProject.ProjectId.ApplyT(func(projectId string) (string, error) {
-// 					return fmt.Sprintf("projects/%v/agent/sessions/-/contexts/some_id", projectId), nil
-// 				}).(pulumi.StringOutput),
-// 			},
-// 			Events: pulumi.StringArray{
-// 				pulumi.String("some_event"),
-// 			},
-// 			DefaultResponsePlatforms: pulumi.StringArray{
-// 				pulumi.String("FACEBOOK"),
-// 				pulumi.String("SLACK"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			basicAgent,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agentProjectProject, err := organizations.NewProject(ctx, "agentProjectProject", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("tf-test-dialogflow"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			agentProjectService, err := projects.NewService(ctx, "agentProjectService", &projects.ServiceArgs{
+//				Project:                  agentProjectProject.ProjectId,
+//				Service:                  pulumi.String("dialogflow.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dialogflowServiceAccount, err := serviceAccount.NewAccount(ctx, "dialogflowServiceAccount", &serviceAccount.AccountArgs{
+//				AccountId: pulumi.String("tf-test-dialogflow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "agentCreate", &projects.IAMMemberArgs{
+//				Project: agentProjectService.Project,
+//				Role:    pulumi.String("roles/dialogflow.admin"),
+//				Member: dialogflowServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+//				Project:             agentProjectProject.ProjectId,
+//				DisplayName:         pulumi.String("example_agent"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				TimeZone:            pulumi.String("America/New_York"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewIntent(ctx, "fullIntent", &diagflow.IntentArgs{
+//				Project:       agentProjectProject.ProjectId,
+//				DisplayName:   pulumi.String("full-intent"),
+//				WebhookState:  pulumi.String("WEBHOOK_STATE_ENABLED"),
+//				Priority:      pulumi.Int(1),
+//				IsFallback:    pulumi.Bool(false),
+//				MlDisabled:    pulumi.Bool(true),
+//				Action:        pulumi.String("some_action"),
+//				ResetContexts: pulumi.Bool(true),
+//				InputContextNames: pulumi.StringArray{
+//					agentProjectProject.ProjectId.ApplyT(func(projectId string) (string, error) {
+//						return fmt.Sprintf("projects/%v/agent/sessions/-/contexts/some_id", projectId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				Events: pulumi.StringArray{
+//					pulumi.String("some_event"),
+//				},
+//				DefaultResponsePlatforms: pulumi.StringArray{
+//					pulumi.String("FACEBOOK"),
+//					pulumi.String("SLACK"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicAgent,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Intent can be imported using any of these accepted formats
+// # Intent can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/intent:Intent default {{name}}
+//
+//	$ pulumi import gcp:diagflow/intent:Intent default {{name}}
+//
 // ```
 type Intent struct {
 	pulumi.CustomResourceState
@@ -457,7 +465,7 @@ func (i *Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 // IntentArrayInput is an input type that accepts IntentArray and IntentArrayOutput values.
 // You can construct a concrete instance of `IntentArrayInput` via:
 //
-//          IntentArray{ IntentArgs{...} }
+//	IntentArray{ IntentArgs{...} }
 type IntentArrayInput interface {
 	pulumi.Input
 
@@ -482,7 +490,7 @@ func (i IntentArray) ToIntentArrayOutputWithContext(ctx context.Context) IntentA
 // IntentMapInput is an input type that accepts IntentMap and IntentMapOutput values.
 // You can construct a concrete instance of `IntentMapInput` via:
 //
-//          IntentMap{ "key": IntentArgs{...} }
+//	IntentMap{ "key": IntentArgs{...} }
 type IntentMapInput interface {
 	pulumi.Input
 
@@ -579,9 +587,9 @@ func (o IntentOutput) ParentFollowupIntentName() pulumi.StringOutput {
 }
 
 // The priority of this intent. Higher numbers represent higher priorities.
-// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-//   to the Normal priority in the console.
-// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+//   - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+//     to the Normal priority in the console.
+//   - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 func (o IntentOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Intent) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
@@ -604,10 +612,10 @@ func (o IntentOutput) RootFollowupIntentName() pulumi.StringOutput {
 }
 
 // Indicates whether webhooks are enabled for the intent.
-// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
-// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-//   filling prompt is forwarded to the webhook.
-//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+//   - WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+//   - WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+//     filling prompt is forwarded to the webhook.
+//     Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 func (o IntentOutput) WebhookState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.WebhookState }).(pulumi.StringOutput)
 }

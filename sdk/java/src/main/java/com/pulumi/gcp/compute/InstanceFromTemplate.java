@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var tplInstanceTemplate = new InstanceTemplate(&#34;tplInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-9&#34;)
+ *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
  *                 .autoDelete(true)
  *                 .diskSizeGb(100)
  *                 .boot(true)

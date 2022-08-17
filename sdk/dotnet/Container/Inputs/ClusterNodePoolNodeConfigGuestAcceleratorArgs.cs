@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolNodeConfigGuestAcceleratorArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolNodeConfigGuestAcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the guest accelerator cards exposed to this instance.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolNodeConfigGuestAcceleratorArgs()
         {
         }
+        public static new ClusterNodePoolNodeConfigGuestAcceleratorArgs Empty => new ClusterNodePoolNodeConfigGuestAcceleratorArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobScheduleArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobScheduleArgs()
         {
         }
+        public static new TransferJobScheduleArgs Empty => new TransferJobScheduleArgs();
     }
 }

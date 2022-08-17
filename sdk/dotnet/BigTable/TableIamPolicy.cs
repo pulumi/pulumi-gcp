@@ -23,84 +23,79 @@ namespace Pulumi.Gcp.BigTable
     /// ## google\_bigtable\_table\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/bigtable.user",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/bigtable.user",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var editor = new Gcp.BigTable.TableIamPolicy("editor", new Gcp.BigTable.TableIamPolicyArgs
-    ///         {
-    ///             Project = "your-project",
-    ///             Instance = "your-bigtable-instance",
-    ///             Table = "your-bigtable-table",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var editor = new Gcp.BigTable.TableIamPolicy("editor", new()
+    ///     {
+    ///         Project = "your-project",
+    ///         Instance = "your-bigtable-instance",
+    ///         Table = "your-bigtable-table",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_bigtable\_table\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.BigTable.TableIamBinding("editor", new()
     ///     {
-    ///         var editor = new Gcp.BigTable.TableIamBinding("editor", new Gcp.BigTable.TableIamBindingArgs
+    ///         Instance = "your-bigtable-instance",
+    ///         Members = new[]
     ///         {
-    ///             Instance = "your-bigtable-instance",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/bigtable.user",
-    ///             Table = "your-bigtable-table",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/bigtable.user",
+    ///         Table = "your-bigtable-table",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_bigtable\_table\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.BigTable.TableIamMember("editor", new()
     ///     {
-    ///         var editor = new Gcp.BigTable.TableIamMember("editor", new Gcp.BigTable.TableIamMemberArgs
-    ///         {
-    ///             Instance = "your-bigtable-instance",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/bigtable.user",
-    ///             Table = "your-bigtable-table",
-    ///         });
-    ///     }
+    ///         Instance = "your-bigtable-instance",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/bigtable.user",
+    ///         Table = "your-bigtable-table",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -124,7 +119,7 @@ namespace Pulumi.Gcp.BigTable
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:bigtable/tableIamPolicy:TableIamPolicy")]
-    public partial class TableIamPolicy : Pulumi.CustomResource
+    public partial class TableIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the tables's IAM policy.
@@ -201,7 +196,7 @@ namespace Pulumi.Gcp.BigTable
         }
     }
 
-    public sealed class TableIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class TableIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name or relative resource id of the instance that owns the table.
@@ -231,9 +226,10 @@ namespace Pulumi.Gcp.BigTable
         public TableIamPolicyArgs()
         {
         }
+        public static new TableIamPolicyArgs Empty => new TableIamPolicyArgs();
     }
 
-    public sealed class TableIamPolicyState : Pulumi.ResourceArgs
+    public sealed class TableIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the tables's IAM policy.
@@ -269,5 +265,6 @@ namespace Pulumi.Gcp.BigTable
         public TableIamPolicyState()
         {
         }
+        public static new TableIamPolicyState Empty => new TableIamPolicyState();
     }
 }

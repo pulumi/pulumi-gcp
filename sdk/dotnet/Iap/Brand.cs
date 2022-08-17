@@ -29,32 +29,32 @@ namespace Pulumi.Gcp.Iap
     /// ### Iap Brand
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "tf-test",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var projectService = new Gcp.Projects.Service("projectService", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             Project = project.ProjectId,
-    ///             ServiceName = "iap.googleapis.com",
-    ///         });
-    ///         var projectBrand = new Gcp.Iap.Brand("projectBrand", new Gcp.Iap.BrandArgs
-    ///         {
-    ///             SupportEmail = "support@example.com",
-    ///             ApplicationTitle = "Cloud IAP protected Application",
-    ///             Project = projectService.Project,
-    ///         });
-    ///     }
+    ///         ProjectId = "tf-test",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var projectService = new Gcp.Projects.Service("projectService", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "iap.googleapis.com",
+    ///     });
+    /// 
+    ///     var projectBrand = new Gcp.Iap.Brand("projectBrand", new()
+    ///     {
+    ///         SupportEmail = "support@example.com",
+    ///         ApplicationTitle = "Cloud IAP protected Application",
+    ///         Project = projectService.Project,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Iap
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iap/brand:Brand")]
-    public partial class Brand : Pulumi.CustomResource
+    public partial class Brand : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Iap
         }
     }
 
-    public sealed class BrandArgs : Pulumi.ResourceArgs
+    public sealed class BrandArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
@@ -176,9 +176,10 @@ namespace Pulumi.Gcp.Iap
         public BrandArgs()
         {
         }
+        public static new BrandArgs Empty => new BrandArgs();
     }
 
-    public sealed class BrandState : Pulumi.ResourceArgs
+    public sealed class BrandState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
@@ -219,5 +220,6 @@ namespace Pulumi.Gcp.Iap
         public BrandState()
         {
         }
+        public static new BrandState Empty => new BrandState();
     }
 }

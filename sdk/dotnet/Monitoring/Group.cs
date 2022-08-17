@@ -25,46 +25,43 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Monitoring Group Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Monitoring.Group("basic", new()
     ///     {
-    ///         var basic = new Gcp.Monitoring.Group("basic", new Gcp.Monitoring.GroupArgs
-    ///         {
-    ///             DisplayName = "tf-test MonitoringGroup",
-    ///             Filter = "resource.metadata.region=\"europe-west2\"",
-    ///         });
-    ///     }
+    ///         DisplayName = "tf-test MonitoringGroup",
+    ///         Filter = "resource.metadata.region=\"europe-west2\"",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Monitoring Group Subgroup
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var parent = new Gcp.Monitoring.Group("parent", new()
     ///     {
-    ///         var parent = new Gcp.Monitoring.Group("parent", new Gcp.Monitoring.GroupArgs
-    ///         {
-    ///             DisplayName = "tf-test MonitoringParentGroup",
-    ///             Filter = "resource.metadata.region=\"europe-west2\"",
-    ///         });
-    ///         var subgroup = new Gcp.Monitoring.Group("subgroup", new Gcp.Monitoring.GroupArgs
-    ///         {
-    ///             DisplayName = "tf-test MonitoringSubGroup",
-    ///             Filter = "resource.metadata.region=\"europe-west2\"",
-    ///             ParentName = parent.Name,
-    ///         });
-    ///     }
+    ///         DisplayName = "tf-test MonitoringParentGroup",
+    ///         Filter = "resource.metadata.region=\"europe-west2\"",
+    ///     });
     /// 
-    /// }
+    ///     var subgroup = new Gcp.Monitoring.Group("subgroup", new()
+    ///     {
+    ///         DisplayName = "tf-test MonitoringSubGroup",
+    ///         Filter = "resource.metadata.region=\"europe-west2\"",
+    ///         ParentName = parent.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +73,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A user-assigned name for this group, used only for display
@@ -165,7 +162,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A user-assigned name for this group, used only for display
@@ -207,9 +204,10 @@ namespace Pulumi.Gcp.Monitoring
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A user-assigned name for this group, used only for display
@@ -257,5 +255,6 @@ namespace Pulumi.Gcp.Monitoring
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

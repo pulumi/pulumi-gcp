@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherPathRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherPathRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("paths", required: true)]
         private InputList<string>? _paths;
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherPathRuleGetArgs()
         {
         }
+        public static new URLMapPathMatcherPathRuleGetArgs Empty => new URLMapPathMatcherPathRuleGetArgs();
     }
 }

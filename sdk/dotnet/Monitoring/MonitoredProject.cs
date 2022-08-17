@@ -19,25 +19,24 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Basic_monitored_project
     /// A basic example of a monitoring monitored project
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Monitoring.MonitoredProject("primary", new()
     ///     {
-    ///         var primary = new Gcp.Monitoring.MonitoredProject("primary", new Gcp.Monitoring.MonitoredProjectArgs
-    ///         {
-    ///             MetricsScope = "existing-metrics-scope-project",
-    ///         });
-    ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "my-monitored-project",
-    ///             OrgId = "123456789",
-    ///         });
-    ///     }
+    ///         MetricsScope = "existing-metrics-scope-project",
+    ///     });
     /// 
-    /// }
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
+    ///     {
+    ///         ProjectId = "my-monitored-project",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/monitoredProject:MonitoredProject")]
-    public partial class MonitoredProject : Pulumi.CustomResource
+    public partial class MonitoredProject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. The time when this `MonitoredProject` was created.
@@ -117,7 +116,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class MonitoredProjectArgs : Pulumi.ResourceArgs
+    public sealed class MonitoredProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
@@ -134,9 +133,10 @@ namespace Pulumi.Gcp.Monitoring
         public MonitoredProjectArgs()
         {
         }
+        public static new MonitoredProjectArgs Empty => new MonitoredProjectArgs();
     }
 
-    public sealed class MonitoredProjectState : Pulumi.ResourceArgs
+    public sealed class MonitoredProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. The time when this `MonitoredProject` was created.
@@ -159,5 +159,6 @@ namespace Pulumi.Gcp.Monitoring
         public MonitoredProjectState()
         {
         }
+        public static new MonitoredProjectState Empty => new MonitoredProjectState();
     }
 }

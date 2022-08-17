@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex.Inputs
 {
 
-    public sealed class AiDatasetEncryptionSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class AiDatasetEncryptionSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public AiDatasetEncryptionSpecGetArgs()
         {
         }
+        public static new AiDatasetEncryptionSpecGetArgs Empty => new AiDatasetEncryptionSpecGetArgs();
     }
 }

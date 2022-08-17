@@ -13,26 +13,25 @@ namespace Pulumi.Gcp.AppEngine
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "your-project-id",
-    ///             OrgId = "1234567",
-    ///         });
-    ///         var app = new Gcp.AppEngine.Application("app", new Gcp.AppEngine.ApplicationArgs
-    ///         {
-    ///             Project = myProject.ProjectId,
-    ///             LocationId = "us-central",
-    ///         });
-    ///     }
+    ///         ProjectId = "your-project-id",
+    ///         OrgId = "1234567",
+    ///     });
     /// 
-    /// }
+    ///     var app = new Gcp.AppEngine.Application("app", new()
+    ///     {
+    ///         Project = myProject.ProjectId,
+    ///         LocationId = "us-central",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +43,7 @@ namespace Pulumi.Gcp.AppEngine
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/application:Application")]
-    public partial class Application : Pulumi.CustomResource
+    public partial class Application : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifier of the app, usually `{PROJECT_ID}`
@@ -180,7 +179,7 @@ namespace Pulumi.Gcp.AppEngine
         }
     }
 
-    public sealed class ApplicationArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to authenticate users with when using App Engine's User API.
@@ -233,9 +232,10 @@ namespace Pulumi.Gcp.AppEngine
         public ApplicationArgs()
         {
         }
+        public static new ApplicationArgs Empty => new ApplicationArgs();
     }
 
-    public sealed class ApplicationState : Pulumi.ResourceArgs
+    public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the app, usually `{PROJECT_ID}`
@@ -336,5 +336,6 @@ namespace Pulumi.Gcp.AppEngine
         public ApplicationState()
         {
         }
+        public static new ApplicationState Empty => new ApplicationState();
     }
 }

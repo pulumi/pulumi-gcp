@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.DataCatalog
     /// ## google\_data\_catalog\_entry\_group\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.DataCatalog.EntryGroupIamPolicy("policy", new Gcp.DataCatalog.EntryGroupIamPolicyArgs
-    ///         {
-    ///             EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.DataCatalog.EntryGroupIamPolicy("policy", new()
+    ///     {
+    ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_data\_catalog\_entry\_group\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.DataCatalog.EntryGroupIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.DataCatalog.EntryGroupIamBinding("binding", new Gcp.DataCatalog.EntryGroupIamBindingArgs
+    ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_data\_catalog\_entry\_group\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.DataCatalog.EntryGroupIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.DataCatalog.EntryGroupIamMember("member", new Gcp.DataCatalog.EntryGroupIamMemberArgs
-    ///         {
-    ///             EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -124,7 +119,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember")]
-    public partial class EntryGroupIamMember : Pulumi.CustomResource
+    public partial class EntryGroupIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.EntryGroupIamMemberCondition?> Condition { get; private set; } = null!;
@@ -206,7 +201,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class EntryGroupIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class EntryGroupIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.EntryGroupIamMemberConditionArgs>? Condition { get; set; }
@@ -241,9 +236,10 @@ namespace Pulumi.Gcp.DataCatalog
         public EntryGroupIamMemberArgs()
         {
         }
+        public static new EntryGroupIamMemberArgs Empty => new EntryGroupIamMemberArgs();
     }
 
-    public sealed class EntryGroupIamMemberState : Pulumi.ResourceArgs
+    public sealed class EntryGroupIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.EntryGroupIamMemberConditionGetArgs>? Condition { get; set; }
@@ -284,5 +280,6 @@ namespace Pulumi.Gcp.DataCatalog
         public EntryGroupIamMemberState()
         {
         }
+        public static new EntryGroupIamMemberState Empty => new EntryGroupIamMemberState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class AutoscalerAutoscalingPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalerAutoscalingPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of seconds that the autoscaler should wait before it
@@ -113,5 +113,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public AutoscalerAutoscalingPolicyGetArgs()
         {
         }
+        public static new AutoscalerAutoscalingPolicyGetArgs Empty => new AutoscalerAutoscalingPolicyGetArgs();
     }
 }

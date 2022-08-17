@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigTaintArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigTaintArgs()
         {
         }
+        public static new ClusterNodeConfigTaintArgs Empty => new ClusterNodeConfigTaintArgs();
     }
 }

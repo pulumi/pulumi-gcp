@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations.Inputs
 {
 
-    public sealed class GetIAMPolicyBindingInputArgs : Pulumi.ResourceArgs
+    public sealed class GetIAMPolicyBindingInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.Organizations.Inputs
         public GetIAMPolicyBindingInputArgs()
         {
         }
+        public static new GetIAMPolicyBindingInputArgs Empty => new GetIAMPolicyBindingInputArgs();
     }
 }

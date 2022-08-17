@@ -54,16 +54,14 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * A human-readable description of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * @return A human-readable description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -125,7 +123,6 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
 
     /**
      * A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      * 
      */
     @Import(name="matcher")
@@ -133,7 +130,6 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
 
     /**
      * @return A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      * 
      */
     public Optional<Output<String>> matcher() {
@@ -177,16 +173,14 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-     * progress. Some frontends may serve this configuration.
+     * A serving state of this Certificate Map Entry.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-     * progress. Some frontends may serve this configuration.
+     * @return A serving state of this Certificate Map Entry.
      * 
      */
     public Optional<Output<String>> state() {
@@ -305,8 +299,7 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description CertificateMapEntry is a list of certificate configurations,
-         * that have been issued for a particular hostname
+         * @param description A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -317,8 +310,7 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description CertificateMapEntry is a list of certificate configurations,
-         * that have been issued for a particular hostname
+         * @param description A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -400,7 +392,6 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
 
         /**
          * @param matcher A predefined matcher for particular cases, other than SNI selection
-         * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
          * 
          * @return builder
          * 
@@ -412,7 +403,6 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
 
         /**
          * @param matcher A predefined matcher for particular cases, other than SNI selection
-         * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
          * 
          * @return builder
          * 
@@ -470,8 +460,7 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-         * progress. Some frontends may serve this configuration.
+         * @param state A serving state of this Certificate Map Entry.
          * 
          * @return builder
          * 
@@ -482,8 +471,7 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-         * progress. Some frontends may serve this configuration.
+         * @param state A serving state of this Certificate Map Entry.
          * 
          * @return builder
          * 

@@ -23,187 +23,177 @@ namespace Pulumi.Gcp.Iap
     /// ## google\_iap\_tunnel\_instance\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/iap.tunnelResourceAccessor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/iap.tunnelResourceAccessor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Iap.TunnelInstanceIAMPolicy("policy", new Gcp.Iap.TunnelInstanceIAMPolicyArgs
-    ///         {
-    ///             Project = google_compute_instance.Tunnelvm.Project,
-    ///             Zone = google_compute_instance.Tunnelvm.Zone,
-    ///             Instance = google_compute_instance.Tunnelvm.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Iap.TunnelInstanceIAMPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_instance.Tunnelvm.Project,
+    ///         Zone = google_compute_instance.Tunnelvm.Zone,
+    ///         Instance = google_compute_instance.Tunnelvm.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/iap.tunnelResourceAccessor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/iap.tunnelResourceAccessor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Title = "expires_after_2019_12_31",
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     },
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Iap.TunnelInstanceIAMPolicy("policy", new Gcp.Iap.TunnelInstanceIAMPolicyArgs
-    ///         {
-    ///             Project = google_compute_instance.Tunnelvm.Project,
-    ///             Zone = google_compute_instance.Tunnelvm.Zone,
-    ///             Instance = google_compute_instance.Tunnelvm.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Iap.TunnelInstanceIAMPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_instance.Tunnelvm.Project,
+    ///         Zone = google_compute_instance.Tunnelvm.Zone,
+    ///         Instance = google_compute_instance.Tunnelvm.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## google\_iap\_tunnel\_instance\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Iap.TunnelInstanceIAMBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Iap.TunnelInstanceIAMBinding("binding", new Gcp.Iap.TunnelInstanceIAMBindingArgs
+    ///         Project = google_compute_instance.Tunnelvm.Project,
+    ///         Zone = google_compute_instance.Tunnelvm.Zone,
+    ///         Instance = google_compute_instance.Tunnelvm.Name,
+    ///         Role = "roles/iap.tunnelResourceAccessor",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_instance.Tunnelvm.Project,
-    ///             Zone = google_compute_instance.Tunnelvm.Zone,
-    ///             Instance = google_compute_instance.Tunnelvm.Name,
-    ///             Role = "roles/iap.tunnelResourceAccessor",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Iap.TunnelInstanceIAMBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Iap.TunnelInstanceIAMBinding("binding", new Gcp.Iap.TunnelInstanceIAMBindingArgs
+    ///         Project = google_compute_instance.Tunnelvm.Project,
+    ///         Zone = google_compute_instance.Tunnelvm.Zone,
+    ///         Instance = google_compute_instance.Tunnelvm.Name,
+    ///         Role = "roles/iap.tunnelResourceAccessor",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_instance.Tunnelvm.Project,
-    ///             Zone = google_compute_instance.Tunnelvm.Zone,
-    ///             Instance = google_compute_instance.Tunnelvm.Name,
-    ///             Role = "roles/iap.tunnelResourceAccessor",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Condition = new Gcp.Iap.Inputs.TunnelInstanceIAMBindingConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Iap.Inputs.TunnelInstanceIAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## google\_iap\_tunnel\_instance\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Iap.TunnelInstanceIAMMember("member", new()
     ///     {
-    ///         var member = new Gcp.Iap.TunnelInstanceIAMMember("member", new Gcp.Iap.TunnelInstanceIAMMemberArgs
-    ///         {
-    ///             Project = google_compute_instance.Tunnelvm.Project,
-    ///             Zone = google_compute_instance.Tunnelvm.Zone,
-    ///             Instance = google_compute_instance.Tunnelvm.Name,
-    ///             Role = "roles/iap.tunnelResourceAccessor",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_compute_instance.Tunnelvm.Project,
+    ///         Zone = google_compute_instance.Tunnelvm.Zone,
+    ///         Instance = google_compute_instance.Tunnelvm.Name,
+    ///         Role = "roles/iap.tunnelResourceAccessor",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Iap.TunnelInstanceIAMMember("member", new()
     ///     {
-    ///         var member = new Gcp.Iap.TunnelInstanceIAMMember("member", new Gcp.Iap.TunnelInstanceIAMMemberArgs
+    ///         Project = google_compute_instance.Tunnelvm.Project,
+    ///         Zone = google_compute_instance.Tunnelvm.Zone,
+    ///         Instance = google_compute_instance.Tunnelvm.Name,
+    ///         Role = "roles/iap.tunnelResourceAccessor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Iap.Inputs.TunnelInstanceIAMMemberConditionArgs
     ///         {
-    ///             Project = google_compute_instance.Tunnelvm.Project,
-    ///             Zone = google_compute_instance.Tunnelvm.Zone,
-    ///             Instance = google_compute_instance.Tunnelvm.Name,
-    ///             Role = "roles/iap.tunnelResourceAccessor",
-    ///             Member = "user:jane@example.com",
-    ///             Condition = new Gcp.Iap.Inputs.TunnelInstanceIAMMemberConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -231,7 +221,7 @@ namespace Pulumi.Gcp.Iap
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy")]
-    public partial class TunnelInstanceIAMPolicy : Pulumi.CustomResource
+    public partial class TunnelInstanceIAMPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -306,7 +296,7 @@ namespace Pulumi.Gcp.Iap
         }
     }
 
-    public sealed class TunnelInstanceIAMPolicyArgs : Pulumi.ResourceArgs
+    public sealed class TunnelInstanceIAMPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -334,9 +324,10 @@ namespace Pulumi.Gcp.Iap
         public TunnelInstanceIAMPolicyArgs()
         {
         }
+        public static new TunnelInstanceIAMPolicyArgs Empty => new TunnelInstanceIAMPolicyArgs();
     }
 
-    public sealed class TunnelInstanceIAMPolicyState : Pulumi.ResourceArgs
+    public sealed class TunnelInstanceIAMPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -370,5 +361,6 @@ namespace Pulumi.Gcp.Iap
         public TunnelInstanceIAMPolicyState()
         {
         }
+        public static new TunnelInstanceIAMPolicyState Empty => new TunnelInstanceIAMPolicyState();
     }
 }

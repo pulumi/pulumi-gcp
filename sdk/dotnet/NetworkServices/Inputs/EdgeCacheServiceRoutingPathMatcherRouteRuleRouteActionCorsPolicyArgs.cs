@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
@@ -87,5 +87,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs();
     }
 }

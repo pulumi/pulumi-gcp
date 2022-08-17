@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesAssignmentOsTypeArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesAssignmentOsTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesAssignmentOsTypeArgs()
         {
         }
+        public static new GuestPoliciesAssignmentOsTypeArgs Empty => new GuestPoliciesAssignmentOsTypeArgs();
     }
 }

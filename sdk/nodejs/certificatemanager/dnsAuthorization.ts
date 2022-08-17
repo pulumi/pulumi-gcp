@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * DnsAuthorization represents a HTTP-reachable backend for an DnsAuthorization.
+ * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  *
  * > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
  *
@@ -96,7 +96,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * Set of label tags associated with the EdgeCache resource.
+     * Set of label tags associated with the DNS Authorization resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -167,7 +167,7 @@ export interface DnsAuthorizationState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * Set of label tags associated with the EdgeCache resource.
+     * Set of label tags associated with the DNS Authorization resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -198,7 +198,7 @@ export interface DnsAuthorizationArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * Set of label tags associated with the EdgeCache resource.
+     * Set of label tags associated with the DNS Authorization resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

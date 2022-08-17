@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctions.Inputs
 {
 
-    public sealed class FunctionEventTriggerGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionEventTriggerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of event to observe. For example: `"google.storage.object.finalize"`.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
         public FunctionEventTriggerGetArgs()
         {
         }
+        public static new FunctionEventTriggerGetArgs Empty => new FunctionEventTriggerGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityConfigX509ConfigKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityConfigX509ConfigKeyUsageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes high-level ways in which a key may be used.
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityConfigX509ConfigKeyUsageArgs()
         {
         }
+        public static new AuthorityConfigX509ConfigKeyUsageArgs Empty => new AuthorityConfigX509ConfigKeyUsageArgs();
     }
 }

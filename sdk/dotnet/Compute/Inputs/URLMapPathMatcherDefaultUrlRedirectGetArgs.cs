@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherDefaultUrlRedirectGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherDefaultUrlRedirectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The host that will be used in the redirect response instead of the one that was
@@ -73,5 +73,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherDefaultUrlRedirectGetArgs()
         {
         }
+        public static new URLMapPathMatcherDefaultUrlRedirectGetArgs Empty => new URLMapPathMatcherDefaultUrlRedirectGetArgs();
     }
 }

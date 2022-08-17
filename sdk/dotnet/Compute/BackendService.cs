@@ -30,93 +30,91 @@ namespace Pulumi.Gcp.Compute
     /// ### Backend Service Cache Include Named Cookies
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.BackendService("default", new Gcp.Compute.BackendServiceArgs
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
     ///         {
-    ///             CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
     ///             {
-    ///                 CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
+    ///                 IncludeHost = true,
+    ///                 IncludeNamedCookies = new[]
     ///                 {
-    ///                     IncludeHost = true,
-    ///                     IncludeNamedCookies = 
-    ///                     {
-    ///                         "__next_preview_data",
-    ///                         "__prerender_bypass",
-    ///                     },
-    ///                     IncludeProtocol = true,
-    ///                     IncludeQueryString = true,
+    ///                     "__next_preview_data",
+    ///                     "__prerender_bypass",
     ///                 },
-    ///                 CacheMode = "CACHE_ALL_STATIC",
-    ///                 ClientTtl = 7200,
-    ///                 DefaultTtl = 3600,
-    ///                 MaxTtl = 10800,
+    ///                 IncludeProtocol = true,
+    ///                 IncludeQueryString = true,
     ///             },
-    ///             EnableCdn = true,
-    ///         });
-    ///     }
+    ///             CacheMode = "CACHE_ALL_STATIC",
+    ///             ClientTtl = 7200,
+    ///             DefaultTtl = 3600,
+    ///             MaxTtl = 10800,
+    ///         },
+    ///         EnableCdn = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Backend Service Network Endpoint
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var externalProxy = new Gcp.Compute.GlobalNetworkEndpointGroup("externalProxy", new()
     ///     {
-    ///         var externalProxy = new Gcp.Compute.GlobalNetworkEndpointGroup("externalProxy", new Gcp.Compute.GlobalNetworkEndpointGroupArgs
-    ///         {
-    ///             NetworkEndpointType = "INTERNET_FQDN_PORT",
-    ///             DefaultPort = 443,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var proxy = new Gcp.Compute.GlobalNetworkEndpoint("proxy", new Gcp.Compute.GlobalNetworkEndpointArgs
-    ///         {
-    ///             GlobalNetworkEndpointGroup = externalProxy.Id,
-    ///             Fqdn = "test.example.com",
-    ///             Port = externalProxy.DefaultPort,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var @default = new Gcp.Compute.BackendService("default", new Gcp.Compute.BackendServiceArgs
-    ///         {
-    ///             EnableCdn = true,
-    ///             TimeoutSec = 10,
-    ///             ConnectionDrainingTimeoutSec = 10,
-    ///             CustomRequestHeaders = 
-    ///             {
-    ///                 proxy.Fqdn.Apply(fqdn =&gt; $"host: {fqdn}"),
-    ///             },
-    ///             CustomResponseHeaders = 
-    ///             {
-    ///                 "X-Cache-Hit: {cdn_cache_status}",
-    ///             },
-    ///             Backends = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
-    ///                 {
-    ///                     Group = externalProxy.Id,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
+    ///         DefaultPort = 443,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var proxy = new Gcp.Compute.GlobalNetworkEndpoint("proxy", new()
+    ///     {
+    ///         GlobalNetworkEndpointGroup = externalProxy.Id,
+    ///         Fqdn = "test.example.com",
+    ///         Port = externalProxy.DefaultPort,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         EnableCdn = true,
+    ///         TimeoutSec = 10,
+    ///         ConnectionDrainingTimeoutSec = 10,
+    ///         CustomRequestHeaders = new[]
+    ///         {
+    ///             proxy.Fqdn.Apply(fqdn =&gt; $"host: {fqdn}"),
+    ///         },
+    ///         CustomResponseHeaders = new[]
+    ///         {
+    ///             "X-Cache-Hit: {cdn_cache_status}",
+    ///         },
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///             {
+    ///                 Group = externalProxy.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -136,7 +134,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/backendService:BackendService")]
-    public partial class BackendService : Pulumi.CustomResource
+    public partial class BackendService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Lifetime of cookies in seconds if session_affinity is
@@ -412,7 +410,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class BackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lifetime of cookies in seconds if session_affinity is
@@ -647,9 +645,10 @@ namespace Pulumi.Gcp.Compute
         public BackendServiceArgs()
         {
         }
+        public static new BackendServiceArgs Empty => new BackendServiceArgs();
     }
 
-    public sealed class BackendServiceState : Pulumi.ResourceArgs
+    public sealed class BackendServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lifetime of cookies in seconds if session_affinity is
@@ -902,5 +901,6 @@ namespace Pulumi.Gcp.Compute
         public BackendServiceState()
         {
         }
+        public static new BackendServiceState Empty => new BackendServiceState();
     }
 }

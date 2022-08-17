@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class TopicSchemaSettingsArgs : Pulumi.ResourceArgs
+    public sealed class TopicSchemaSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The encoding of messages validated against schema.
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public TopicSchemaSettingsArgs()
         {
         }
+        public static new TopicSchemaSettingsArgs Empty => new TopicSchemaSettingsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigWorkerConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigWorkerConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("accelerators")]
         private InputList<Inputs.ClusterClusterConfigWorkerConfigAcceleratorArgs>? _accelerators;
@@ -72,5 +72,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigWorkerConfigArgs()
         {
         }
+        public static new ClusterClusterConfigWorkerConfigArgs Empty => new ClusterClusterConfigWorkerConfigArgs();
     }
 }

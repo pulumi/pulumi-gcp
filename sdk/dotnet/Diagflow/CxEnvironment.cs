@@ -24,56 +24,56 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Environment Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
-    ///         var agent = new Gcp.Diagflow.CxAgent("agent", new Gcp.Diagflow.CxAgentArgs
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
     ///         {
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             Location = "global",
-    ///             DefaultLanguageCode = "en",
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///             Description = "Example description.",
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableSpellCorrection = true,
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///         });
-    ///         var version1 = new Gcp.Diagflow.CxVersion("version1", new Gcp.Diagflow.CxVersionArgs
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             Parent = agent.StartFlow,
-    ///             DisplayName = "1.0.0",
-    ///             Description = "version 1.0.0",
-    ///         });
-    ///         var development = new Gcp.Diagflow.CxEnvironment("development", new Gcp.Diagflow.CxEnvironmentArgs
-    ///         {
-    ///             Parent = agent.Id,
-    ///             DisplayName = "Development",
-    ///             Description = "Development Environment",
-    ///             VersionConfigs = 
-    ///             {
-    ///                 new Gcp.Diagflow.Inputs.CxEnvironmentVersionConfigArgs
-    ///                 {
-    ///                     Version = version1.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var version1 = new Gcp.Diagflow.CxVersion("version1", new()
+    ///     {
+    ///         Parent = agent.StartFlow,
+    ///         DisplayName = "1.0.0",
+    ///         Description = "version 1.0.0",
+    ///     });
+    /// 
+    ///     var development = new Gcp.Diagflow.CxEnvironment("development", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "Development",
+    ///         Description = "Development Environment",
+    ///         VersionConfigs = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxEnvironmentVersionConfigArgs
+    ///             {
+    ///                 Version = version1.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxEnvironment:CxEnvironment")]
-    public partial class CxEnvironment : Pulumi.CustomResource
+    public partial class CxEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxEnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class CxEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -211,9 +211,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxEnvironmentArgs()
         {
         }
+        public static new CxEnvironmentArgs Empty => new CxEnvironmentArgs();
     }
 
-    public sealed class CxEnvironmentState : Pulumi.ResourceArgs
+    public sealed class CxEnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -263,5 +264,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxEnvironmentState()
         {
         }
+        public static new CxEnvironmentState Empty => new CxEnvironmentState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class FirewallLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class FirewallLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field denotes whether to include or exclude metadata for firewall logs.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public FirewallLogConfigArgs()
         {
         }
+        public static new FirewallLogConfigArgs Empty => new FirewallLogConfigArgs();
     }
 }

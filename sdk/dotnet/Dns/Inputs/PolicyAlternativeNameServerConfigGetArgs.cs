@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class PolicyAlternativeNameServerConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicyAlternativeNameServerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("targetNameServers", required: true)]
         private InputList<Inputs.PolicyAlternativeNameServerConfigTargetNameServerGetArgs>? _targetNameServers;
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public PolicyAlternativeNameServerConfigGetArgs()
         {
         }
+        public static new PolicyAlternativeNameServerConfigGetArgs Empty => new PolicyAlternativeNameServerConfigGetArgs();
     }
 }

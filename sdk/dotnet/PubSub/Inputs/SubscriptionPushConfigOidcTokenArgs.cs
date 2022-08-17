@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class SubscriptionPushConfigOidcTokenArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionPushConfigOidcTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audience to be used when generating OIDC token. The audience claim
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public SubscriptionPushConfigOidcTokenArgs()
         {
         }
+        public static new SubscriptionPushConfigOidcTokenArgs Empty => new SubscriptionPushConfigOidcTokenArgs();
     }
 }

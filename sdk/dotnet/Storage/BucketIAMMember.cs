@@ -23,175 +23,165 @@ namespace Pulumi.Gcp.Storage
     /// ## google\_storage\_bucket\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/storage.admin",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/storage.admin",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Storage.BucketIAMPolicy("policy", new Gcp.Storage.BucketIAMPolicyArgs
-    ///         {
-    ///             Bucket = google_storage_bucket.Default.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Storage.BucketIAMPolicy("policy", new()
+    ///     {
+    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/storage.admin",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/storage.admin",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Title = "expires_after_2019_12_31",
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     },
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Storage.BucketIAMPolicy("policy", new Gcp.Storage.BucketIAMPolicyArgs
-    ///         {
-    ///             Bucket = google_storage_bucket.Default.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Storage.BucketIAMPolicy("policy", new()
+    ///     {
+    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## google\_storage\_bucket\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Storage.BucketIAMBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Storage.BucketIAMBinding("binding", new Gcp.Storage.BucketIAMBindingArgs
+    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Members = new[]
     ///         {
-    ///             Bucket = google_storage_bucket.Default.Name,
-    ///             Role = "roles/storage.admin",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Storage.BucketIAMBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Storage.BucketIAMBinding("binding", new Gcp.Storage.BucketIAMBindingArgs
+    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Members = new[]
     ///         {
-    ///             Bucket = google_storage_bucket.Default.Name,
-    ///             Role = "roles/storage.admin",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Condition = new Gcp.Storage.Inputs.BucketIAMBindingConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Storage.Inputs.BucketIAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## google\_storage\_bucket\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Storage.BucketIAMMember("member", new()
     ///     {
-    ///         var member = new Gcp.Storage.BucketIAMMember("member", new Gcp.Storage.BucketIAMMemberArgs
-    ///         {
-    ///             Bucket = google_storage_bucket.Default.Name,
-    ///             Role = "roles/storage.admin",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Storage.BucketIAMMember("member", new()
     ///     {
-    ///         var member = new Gcp.Storage.BucketIAMMember("member", new Gcp.Storage.BucketIAMMemberArgs
+    ///         Bucket = google_storage_bucket.Default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Storage.Inputs.BucketIAMMemberConditionArgs
     ///         {
-    ///             Bucket = google_storage_bucket.Default.Name,
-    ///             Role = "roles/storage.admin",
-    ///             Member = "user:jane@example.com",
-    ///             Condition = new Gcp.Storage.Inputs.BucketIAMMemberConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -219,7 +209,7 @@ namespace Pulumi.Gcp.Storage
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:storage/bucketIAMMember:BucketIAMMember")]
-    public partial class BucketIAMMember : Pulumi.CustomResource
+    public partial class BucketIAMMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -295,7 +285,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class BucketIAMMemberArgs : Pulumi.ResourceArgs
+    public sealed class BucketIAMMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -324,9 +314,10 @@ namespace Pulumi.Gcp.Storage
         public BucketIAMMemberArgs()
         {
         }
+        public static new BucketIAMMemberArgs Empty => new BucketIAMMemberArgs();
     }
 
-    public sealed class BucketIAMMemberState : Pulumi.ResourceArgs
+    public sealed class BucketIAMMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -361,5 +352,6 @@ namespace Pulumi.Gcp.Storage
         public BucketIAMMemberState()
         {
         }
+        public static new BucketIAMMemberState Empty => new BucketIAMMemberState();
     }
 }

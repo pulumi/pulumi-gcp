@@ -19,41 +19,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
-// 			Description: pulumi.String("A sample hub"),
-// 			Labels: pulumi.StringMap{
-// 				"label-one": pulumi.String("value-one"),
-// 			},
-// 			Project: pulumi.String("my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Description: pulumi.String("A sample hub"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Hub can be imported using any of these accepted formats
+// # Hub can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:networkconnectivity/hub:Hub default projects/{{project}}/locations/global/hubs/{{name}}
+//
+//	$ pulumi import gcp:networkconnectivity/hub:Hub default projects/{{project}}/locations/global/hubs/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:networkconnectivity/hub:Hub default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:networkconnectivity/hub:Hub default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
+//
+//	$ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
+//
 // ```
 type Hub struct {
 	pulumi.CustomResourceState
@@ -210,7 +219,7 @@ func (i *Hub) ToHubOutputWithContext(ctx context.Context) HubOutput {
 // HubArrayInput is an input type that accepts HubArray and HubArrayOutput values.
 // You can construct a concrete instance of `HubArrayInput` via:
 //
-//          HubArray{ HubArgs{...} }
+//	HubArray{ HubArgs{...} }
 type HubArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +244,7 @@ func (i HubArray) ToHubArrayOutputWithContext(ctx context.Context) HubArrayOutpu
 // HubMapInput is an input type that accepts HubMap and HubMapOutput values.
 // You can construct a concrete instance of `HubMapInput` via:
 //
-//          HubMap{ "key": HubArgs{...} }
+//	HubMap{ "key": HubArgs{...} }
 type HubMapInput interface {
 	pulumi.Input
 

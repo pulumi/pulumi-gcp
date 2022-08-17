@@ -25,89 +25,84 @@ namespace Pulumi.Gcp.PubSub
     /// ### Pubsub Topic Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
-    ///         var example = new Gcp.PubSub.Topic("example", new Gcp.PubSub.TopicArgs
+    ///         Labels = 
     ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             MessageRetentionDuration = "86600s",
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///         MessageRetentionDuration = "86600s",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Pubsub Topic Cmek
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyRing.Id,
-    ///         });
-    ///         var example = new Gcp.PubSub.Topic("example", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///             KmsKeyName = cryptoKey.Id,
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///     });
     /// 
-    /// }
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         KmsKeyName = cryptoKey.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Pubsub Topic Geo Restricted
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.PubSub.Topic("example", new()
     ///     {
-    ///         var example = new Gcp.PubSub.Topic("example", new Gcp.PubSub.TopicArgs
+    ///         MessageStoragePolicy = new Gcp.PubSub.Inputs.TopicMessageStoragePolicyArgs
     ///         {
-    ///             MessageStoragePolicy = new Gcp.PubSub.Inputs.TopicMessageStoragePolicyArgs
+    ///             AllowedPersistenceRegions = new[]
     ///             {
-    ///                 AllowedPersistenceRegions = 
-    ///                 {
-    ///                     "europe-west3",
-    ///                 },
+    ///                 "europe-west3",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Pubsub Topic Schema Settings
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new()
     ///     {
-    ///         var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new Gcp.PubSub.SchemaArgs
-    ///         {
-    ///             Type = "AVRO",
-    ///             Definition = @"{
+    ///         Type = "AVRO",
+    ///         Definition = @"{
     ///   ""type"" : ""record"",
     ///   ""name"" : ""Avro"",
     ///   ""fields"" : [
@@ -122,24 +117,24 @@ namespace Pulumi.Gcp.PubSub
     ///   ]
     /// }
     /// ",
-    ///         });
-    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///             SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
-    ///             {
-    ///                 Schema = "projects/my-project-name/schemas/example",
-    ///                 Encoding = "JSON",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleSchema,
-    ///             },
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     {
+    ///         SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
+    ///         {
+    ///             Schema = "projects/my-project-name/schemas/example",
+    ///             Encoding = "JSON",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             exampleSchema,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -159,7 +154,7 @@ namespace Pulumi.Gcp.PubSub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -262,7 +257,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -330,9 +325,10 @@ namespace Pulumi.Gcp.PubSub
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -400,5 +396,6 @@ namespace Pulumi.Gcp.PubSub
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }

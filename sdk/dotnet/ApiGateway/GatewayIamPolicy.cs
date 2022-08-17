@@ -23,95 +23,90 @@ namespace Pulumi.Gcp.ApiGateway
     /// ## google\_api\_gateway\_gateway\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/apigateway.viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/apigateway.viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.ApiGateway.GatewayIamPolicy("policy", new Gcp.ApiGateway.GatewayIamPolicyArgs
-    ///         {
-    ///             Project = google_api_gateway_gateway.Api_gw.Project,
-    ///             Region = google_api_gateway_gateway.Api_gw.Region,
-    ///             Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.ApiGateway.GatewayIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_api_gateway_gateway.Api_gw.Project,
+    ///         Region = google_api_gateway_gateway.Api_gw.Region,
+    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_api\_gateway\_gateway\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.ApiGateway.GatewayIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.ApiGateway.GatewayIamBinding("binding", new Gcp.ApiGateway.GatewayIamBindingArgs
+    ///         Project = google_api_gateway_gateway.Api_gw.Project,
+    ///         Region = google_api_gateway_gateway.Api_gw.Region,
+    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_api_gateway_gateway.Api_gw.Project,
-    ///             Region = google_api_gateway_gateway.Api_gw.Region,
-    ///             Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
-    ///             Role = "roles/apigateway.viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_api\_gateway\_gateway\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.ApiGateway.GatewayIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.ApiGateway.GatewayIamMember("member", new Gcp.ApiGateway.GatewayIamMemberArgs
-    ///         {
-    ///             Project = google_api_gateway_gateway.Api_gw.Project,
-    ///             Region = google_api_gateway_gateway.Api_gw.Region,
-    ///             Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
-    ///             Role = "roles/apigateway.viewer",
-    ///             Member = "user:jane@example.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Project = google_api_gateway_gateway.Api_gw.Project,
+    ///         Region = google_api_gateway_gateway.Api_gw.Region,
+    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -139,7 +134,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy")]
-    public partial class GatewayIamPolicy : Pulumi.CustomResource
+    public partial class GatewayIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -217,7 +212,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
     }
 
-    public sealed class GatewayIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GatewayIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("gateway", required: true)]
         public Input<string> Gateway { get; set; } = null!;
@@ -248,9 +243,10 @@ namespace Pulumi.Gcp.ApiGateway
         public GatewayIamPolicyArgs()
         {
         }
+        public static new GatewayIamPolicyArgs Empty => new GatewayIamPolicyArgs();
     }
 
-    public sealed class GatewayIamPolicyState : Pulumi.ResourceArgs
+    public sealed class GatewayIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -287,5 +283,6 @@ namespace Pulumi.Gcp.ApiGateway
         public GatewayIamPolicyState()
         {
         }
+        public static new GatewayIamPolicyState Empty => new GatewayIamPolicyState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateRevocationDetailArgs : Pulumi.ResourceArgs
+    public sealed class CertificateRevocationDetailArgs : global::Pulumi.ResourceArgs
     {
         [Input("revocationState")]
         public Input<string>? RevocationState { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateRevocationDetailArgs()
         {
         }
+        public static new CertificateRevocationDetailArgs Empty => new CertificateRevocationDetailArgs();
     }
 }

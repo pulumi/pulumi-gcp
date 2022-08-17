@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy")]
-    public partial class BackendServiceIamPolicy : Pulumi.CustomResource
+    public partial class BackendServiceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class BackendServiceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -132,9 +132,10 @@ namespace Pulumi.Gcp.Compute
         public BackendServiceIamPolicyArgs()
         {
         }
+        public static new BackendServiceIamPolicyArgs Empty => new BackendServiceIamPolicyArgs();
     }
 
-    public sealed class BackendServiceIamPolicyState : Pulumi.ResourceArgs
+    public sealed class BackendServiceIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -165,5 +166,6 @@ namespace Pulumi.Gcp.Compute
         public BackendServiceIamPolicyState()
         {
         }
+        public static new BackendServiceIamPolicyState Empty => new BackendServiceIamPolicyState();
     }
 }

@@ -2203,6 +2203,7 @@ func Provider() tfbridge.ProviderInfo {
 			// ActiveDirectory
 			"google_active_directory_domain":       {Tok: gcpResource(gcpActiveDirectory, "Domain")},
 			"google_active_directory_domain_trust": {Tok: gcpResource(gcpActiveDirectory, "DomainTrust")},
+			"google_active_directory_peering":      {Tok: gcpResource(gcpActiveDirectory, "Peering")},
 
 			// DataLoss
 			"google_data_loss_prevention_inspect_template": {
@@ -2219,7 +2220,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Dataplex
-			"google_dataplex_lake": {Tok: gcpResource(gcpDataPlex, "Lake")},
+			"google_dataplex_lake":  {Tok: gcpResource(gcpDataPlex, "Lake")},
+			"google_dataplex_asset": {Tok: gcpResource(gcpDataPlex, "Asset")},
+			"google_dataplex_zone":  {Tok: gcpResource(gcpDataPlex, "Zone")},
 
 			// IAM
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
@@ -2393,6 +2396,24 @@ func Provider() tfbridge.ProviderInfo {
 			"google_gke_hub_membership":         {Tok: gcpResource(gcpGkeHub, "Membership")},
 			"google_gke_hub_feature":            {Tok: gcpResource(gcpGkeHub, "Feature")},
 			"google_gke_hub_feature_membership": {Tok: gcpResource(gcpGkeHub, "FeatureMembership")},
+			"google_gke_hub_membership_iam_binding": {
+				Tok: gcpResource(gcpGkeHub, "MembershipIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_membership_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_membership_iam_member": {
+				Tok: gcpResource(gcpGkeHub, "MembershipIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_membership_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_membership_iam_policy": {
+				Tok: gcpResource(gcpGkeHub, "MembershipIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_membership_iam.html.markdown",
+				},
+			},
 
 			// tags
 			"google_tags_tag_key":     {Tok: gcpResource(gcpTags, "TagKey")},

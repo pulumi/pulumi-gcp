@@ -15,90 +15,88 @@ namespace Pulumi.Gcp.Dataproc
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var template = new Gcp.Dataproc.WorkflowTemplate("template", new()
     ///     {
-    ///         var template = new Gcp.Dataproc.WorkflowTemplate("template", new Gcp.Dataproc.WorkflowTemplateArgs
+    ///         Jobs = new[]
     ///         {
-    ///             Jobs = 
+    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
     ///             {
-    ///                 new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
+    ///                 SparkJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobSparkJobArgs
     ///                 {
-    ///                     SparkJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobSparkJobArgs
-    ///                     {
-    ///                         MainClass = "SomeClass",
-    ///                     },
-    ///                     StepId = "someJob",
+    ///                     MainClass = "SomeClass",
     ///                 },
-    ///                 new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
-    ///                 {
-    ///                     PrerequisiteStepIds = 
-    ///                     {
-    ///                         "someJob",
-    ///                     },
-    ///                     PrestoJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobPrestoJobArgs
-    ///                     {
-    ///                         QueryFileUri = "someuri",
-    ///                     },
-    ///                     StepId = "otherJob",
-    ///                 },
+    ///                 StepId = "someJob",
     ///             },
-    ///             Location = "us-central1",
-    ///             Placement = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementArgs
+    ///             new Gcp.Dataproc.Inputs.WorkflowTemplateJobArgs
     ///             {
-    ///                 ManagedCluster = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterArgs
+    ///                 PrerequisiteStepIds = new[]
     ///                 {
-    ///                     ClusterName = "my-cluster",
-    ///                     Config = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigArgs
+    ///                     "someJob",
+    ///                 },
+    ///                 PrestoJob = new Gcp.Dataproc.Inputs.WorkflowTemplateJobPrestoJobArgs
+    ///                 {
+    ///                     QueryFileUri = "someuri",
+    ///                 },
+    ///                 StepId = "otherJob",
+    ///             },
+    ///         },
+    ///         Location = "us-central1",
+    ///         Placement = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementArgs
+    ///         {
+    ///             ManagedCluster = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterArgs
+    ///             {
+    ///                 ClusterName = "my-cluster",
+    ///                 Config = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigArgs
+    ///                 {
+    ///                     GceClusterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs
     ///                     {
-    ///                         GceClusterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs
+    ///                         Tags = new[]
     ///                         {
-    ///                             Tags = 
-    ///                             {
-    ///                                 "foo",
-    ///                                 "bar",
-    ///                             },
-    ///                             Zone = "us-central1-a",
+    ///                             "foo",
+    ///                             "bar",
     ///                         },
-    ///                         MasterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
+    ///                         Zone = "us-central1-a",
+    ///                     },
+    ///                     MasterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
+    ///                     {
+    ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs
     ///                         {
-    ///                             DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs
-    ///                             {
-    ///                                 BootDiskSizeGb = 15,
-    ///                                 BootDiskType = "pd-ssd",
-    ///                             },
-    ///                             MachineType = "n1-standard-1",
-    ///                             NumInstances = 1,
+    ///                             BootDiskSizeGb = 15,
+    ///                             BootDiskType = "pd-ssd",
     ///                         },
-    ///                         SecondaryWorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs
+    ///                         MachineType = "n1-standard-1",
+    ///                         NumInstances = 1,
+    ///                     },
+    ///                     SecondaryWorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs
+    ///                     {
+    ///                         NumInstances = 2,
+    ///                     },
+    ///                     SoftwareConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs
+    ///                     {
+    ///                         ImageVersion = "2.0.35-debian10",
+    ///                     },
+    ///                     WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
+    ///                     {
+    ///                         DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs
     ///                         {
-    ///                             NumInstances = 2,
+    ///                             BootDiskSizeGb = 10,
+    ///                             NumLocalSsds = 2,
     ///                         },
-    ///                         SoftwareConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs
-    ///                         {
-    ///                             ImageVersion = "2.0.35-debian10",
-    ///                         },
-    ///                         WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
-    ///                         {
-    ///                             DiskConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs
-    ///                             {
-    ///                                 BootDiskSizeGb = 10,
-    ///                                 NumLocalSsds = 2,
-    ///                             },
-    ///                             MachineType = "n1-standard-2",
-    ///                             NumInstances = 3,
-    ///                         },
+    ///                         MachineType = "n1-standard-2",
+    ///                         NumInstances = 3,
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -118,7 +116,7 @@ namespace Pulumi.Gcp.Dataproc
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataproc/workflowTemplate:WorkflowTemplate")]
-    public partial class WorkflowTemplate : Pulumi.CustomResource
+    public partial class WorkflowTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. The time template was created.
@@ -230,7 +228,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class WorkflowTemplateArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
@@ -307,9 +305,10 @@ namespace Pulumi.Gcp.Dataproc
         public WorkflowTemplateArgs()
         {
         }
+        public static new WorkflowTemplateArgs Empty => new WorkflowTemplateArgs();
     }
 
-    public sealed class WorkflowTemplateState : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. The time template was created.
@@ -398,5 +397,6 @@ namespace Pulumi.Gcp.Dataproc
         public WorkflowTemplateState()
         {
         }
+        public static new WorkflowTemplateState Empty => new WorkflowTemplateState();
     }
 }

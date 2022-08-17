@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIssuancePolicyAllowedIssuanceModesArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIssuancePolicyAllowedIssuanceModesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIssuancePolicyAllowedIssuanceModesArgs()
         {
         }
+        public static new CaPoolIssuancePolicyAllowedIssuanceModesArgs Empty => new CaPoolIssuancePolicyAllowedIssuanceModesArgs();
     }
 }

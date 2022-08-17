@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam.Inputs
 {
 
-    public sealed class DenyPolicyRuleDenyRuleArgs : Pulumi.ResourceArgs
+    public sealed class DenyPolicyRuleDenyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
@@ -74,5 +74,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         public DenyPolicyRuleDenyRuleArgs()
         {
         }
+        public static new DenyPolicyRuleDenyRuleArgs Empty => new DenyPolicyRuleDenyRuleArgs();
     }
 }

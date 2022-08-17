@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class EntryBigqueryTableSpecTableSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class EntryBigqueryTableSpecTableSpecGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupedEntry")]
         public Input<string>? GroupedEntry { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public EntryBigqueryTableSpecTableSpecGetArgs()
         {
         }
+        public static new EntryBigqueryTableSpecTableSpecGetArgs Empty => new EntryBigqueryTableSpecTableSpecGetArgs();
     }
 }

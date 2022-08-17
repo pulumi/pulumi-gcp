@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ContainerAnalysis.Inputs
 {
 
-    public sealed class NoteRelatedUrlGetArgs : Pulumi.ResourceArgs
+    public sealed class NoteRelatedUrlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label to describe usage of the URL
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         public NoteRelatedUrlGetArgs()
         {
         }
+        public static new NoteRelatedUrlGetArgs Empty => new NoteRelatedUrlGetArgs();
     }
 }

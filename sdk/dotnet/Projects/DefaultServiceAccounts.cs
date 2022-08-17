@@ -28,42 +28,38 @@ namespace Pulumi.Gcp.Projects
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new()
     ///     {
-    ///         var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new Gcp.Projects.DefaultServiceAccountsArgs
-    ///         {
-    ///             Action = "DELETE",
-    ///             Project = "my-project-id",
-    ///         });
-    ///     }
+    ///         Action = "DELETE",
+    ///         Project = "my-project-id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// To enable the default service accounts on the resource destroy:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new()
     ///     {
-    ///         var myProject = new Gcp.Projects.DefaultServiceAccounts("myProject", new Gcp.Projects.DefaultServiceAccountsArgs
-    ///         {
-    ///             Action = "DISABLE",
-    ///             Project = "my-project-id",
-    ///             RestorePolicy = "REVERT",
-    ///         });
-    ///     }
+    ///         Action = "DISABLE",
+    ///         Project = "my-project-id",
+    ///         RestorePolicy = "REVERT",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Projects
     /// This resource does not support import
     /// </summary>
     [GcpResourceType("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts")]
-    public partial class DefaultServiceAccounts : Pulumi.CustomResource
+    public partial class DefaultServiceAccounts : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
@@ -144,7 +140,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class DefaultServiceAccountsArgs : Pulumi.ResourceArgs
+    public sealed class DefaultServiceAccountsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
@@ -170,9 +166,10 @@ namespace Pulumi.Gcp.Projects
         public DefaultServiceAccountsArgs()
         {
         }
+        public static new DefaultServiceAccountsArgs Empty => new DefaultServiceAccountsArgs();
     }
 
-    public sealed class DefaultServiceAccountsState : Pulumi.ResourceArgs
+    public sealed class DefaultServiceAccountsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
@@ -210,5 +207,6 @@ namespace Pulumi.Gcp.Projects
         public DefaultServiceAccountsState()
         {
         }
+        public static new DefaultServiceAccountsState Empty => new DefaultServiceAccountsState();
     }
 }

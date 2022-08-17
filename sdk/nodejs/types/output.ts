@@ -5784,6 +5784,13 @@ export namespace certificateauthority {
 export namespace certificatemanager {
     export interface CertificateManaged {
         /**
+         * -
+         * Detailed state of the latest authorization attempt for each domain
+         * specified for this Managed Certificate.
+         * Structure is documented below.
+         */
+        authorizationAttemptInfos: outputs.certificatemanager.CertificateManagedAuthorizationAttemptInfo[];
+        /**
          * Authorizations that will be used for performing domain authorization
          */
         dnsAuthorizations?: string[];
@@ -5794,9 +5801,55 @@ export namespace certificatemanager {
         domains?: string[];
         /**
          * -
-         * State of the managed certificate resource.
+         * Information about issues with provisioning this Managed Certificate.
+         * Structure is documented below.
+         */
+        provisioningIssues: outputs.certificatemanager.CertificateManagedProvisioningIssue[];
+        /**
+         * -
+         * State of the domain for managed certificate issuance.
          */
         state: string;
+    }
+
+    export interface CertificateManagedAuthorizationAttemptInfo {
+        /**
+         * -
+         * Human readable explanation for reaching the state. Provided to help
+         * address the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use `failureReason` field.
+         */
+        details: string;
+        /**
+         * -
+         * Domain name of the authorization attempt.
+         */
+        domain: string;
+        /**
+         * -
+         * Reason for failure of the authorization attempt for the domain.
+         */
+        failureReason: string;
+        /**
+         * -
+         * State of the domain for managed certificate issuance.
+         */
+        state: string;
+    }
+
+    export interface CertificateManagedProvisioningIssue {
+        /**
+         * -
+         * Human readable explanation for reaching the state. Provided to help
+         * address the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use `failureReason` field.
+         */
+        details: string;
+        /**
+         * -
+         * Reason for provisioning failures.
+         */
+        reason: string;
     }
 
     export interface CertificateMapGclbTarget {
@@ -6911,6 +6964,11 @@ export namespace cloudfunctionsv2 {
 
     export interface FunctionEventTrigger {
         /**
+         * Criteria used to filter events.
+         * Structure is documented below.
+         */
+        eventFilters?: outputs.cloudfunctionsv2.FunctionEventTriggerEventFilter[];
+        /**
          * Required. The type of event to observe.
          */
         eventType?: string;
@@ -6918,7 +6976,7 @@ export namespace cloudfunctionsv2 {
          * The name of a Pub/Sub topic in the same project that will be used
          * as the transport topic for the event delivery.
          */
-        pubsubTopic?: string;
+        pubsubTopic: string;
         /**
          * Describes the retry policy in case of function's execution failure.
          * Retried execution is charged as any other execution.
@@ -6941,6 +6999,28 @@ export namespace cloudfunctionsv2 {
          * region. If not provided, defaults to the same region as the function.
          */
         triggerRegion?: string;
+    }
+
+    export interface FunctionEventTriggerEventFilter {
+        /**
+         * 'Required. The name of a CloudEvents attribute.
+         * Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+         * Do not filter for the 'type' attribute here, as this is already achieved by the resource's `eventType` attribute.
+         */
+        attribute: string;
+        /**
+         * Optional. The operator used for matching the events with the value of
+         * the filter. If not specified, only events that have an exact key-value
+         * pair specified in the filter are matched.
+         * The only allowed value is `match-path-pattern`.
+         * [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+         */
+        operator?: string;
+        /**
+         * Required. The value for the attribute.
+         * If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+         */
+        value: string;
     }
 
     export interface FunctionIamBindingCondition {
@@ -10080,7 +10160,7 @@ export namespace compute {
          */
         image: string;
         /**
-         * A set of key/value label pairs assigned to the instance.
+         * A set of key/value label pairs assigned to the disk.
          */
         labels: {[key: string]: any};
         /**
@@ -18362,7 +18442,7 @@ export namespace container {
          */
         instanceType: string;
         /**
-         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -18868,7 +18948,9 @@ export namespace container {
          */
         enabled?: boolean;
         /**
-         * Mode of operation for Binary Authorization policy evaluation.
+         * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+         * deprecated `enableBinaryAuthorization` parameter being set to `true`.
          */
         evaluationMode?: string;
     }
@@ -18901,6 +18983,10 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+         */
+        bootDiskKmsKey?: string;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -19035,7 +19121,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: string[];
     }
@@ -19119,9 +19205,16 @@ export namespace container {
         displayName?: string;
     }
 
+    export interface ClusterMeshCertificates {
+        /**
+         * Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
+         */
+        enableCertificates: boolean;
+    }
+
     export interface ClusterMonitoringConfig {
         /**
-         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: string[];
         /**
@@ -19964,6 +20057,7 @@ export namespace container {
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
+        bootDiskKmsKey: string;
         imageType: string;
         minCpuPlatform: string;
         oauthScopes: string[];
@@ -20060,6 +20154,10 @@ export namespace container {
     export interface GetClusterMasterAuthorizedNetworksConfigCidrBlock {
         cidrBlock: string;
         displayName: string;
+    }
+
+    export interface GetClusterMeshCertificate {
+        enableCertificates: boolean;
     }
 
     export interface GetClusterMonitoringConfig {
@@ -20459,6 +20557,7 @@ export namespace container {
          */
         maxUnavailable: number;
     }
+
 }
 
 export namespace containeranalysis {
@@ -21884,6 +21983,102 @@ export namespace dataloss {
 }
 
 export namespace dataplex {
+    export interface AssetDiscoverySpec {
+        /**
+         * Optional. Configuration for CSV data.
+         */
+        csvOptions?: outputs.dataplex.AssetDiscoverySpecCsvOptions;
+        /**
+         * Required. Whether discovery is enabled.
+         */
+        enabled: boolean;
+        /**
+         * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        excludePatterns?: string[];
+        /**
+         * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        includePatterns?: string[];
+        /**
+         * Optional. Configuration for Json data.
+         */
+        jsonOptions?: outputs.dataplex.AssetDiscoverySpecJsonOptions;
+        /**
+         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         */
+        schedule?: string;
+    }
+
+    export interface AssetDiscoverySpecCsvOptions {
+        /**
+         * Optional. The delimiter being used to separate values. This defaults to ','.
+         */
+        delimiter?: string;
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: boolean;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: string;
+        /**
+         * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+         */
+        headerRows?: number;
+    }
+
+    export interface AssetDiscoverySpecJsonOptions {
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: boolean;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: string;
+    }
+
+    export interface AssetDiscoveryStatus {
+        lastRunDuration: string;
+        lastRunTime: string;
+        message: string;
+        state: string;
+        stats: outputs.dataplex.AssetDiscoveryStatusStat[];
+        updateTime: string;
+    }
+
+    export interface AssetDiscoveryStatusStat {
+        dataItems: number;
+        dataSize: number;
+        filesets: number;
+        tables: number;
+    }
+
+    export interface AssetResourceSpec {
+        /**
+         * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+         */
+        name?: string;
+        /**
+         * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+         */
+        type: string;
+    }
+
+    export interface AssetResourceStatus {
+        message: string;
+        state: string;
+        updateTime: string;
+    }
+
+    export interface AssetSecurityStatus {
+        message: string;
+        state: string;
+        updateTime: string;
+    }
+
     export interface LakeAssetStatus {
         activeAssets: number;
         securityPolicyApplyingAssets: number;
@@ -21902,6 +22097,76 @@ export namespace dataplex {
         message: string;
         state: string;
         updateTime: string;
+    }
+
+    export interface ZoneAssetStatus {
+        activeAssets: number;
+        securityPolicyApplyingAssets: number;
+        updateTime: string;
+    }
+
+    export interface ZoneDiscoverySpec {
+        /**
+         * Optional. Configuration for CSV data.
+         */
+        csvOptions?: outputs.dataplex.ZoneDiscoverySpecCsvOptions;
+        /**
+         * Required. Whether discovery is enabled.
+         */
+        enabled: boolean;
+        /**
+         * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        excludePatterns?: string[];
+        /**
+         * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        includePatterns?: string[];
+        /**
+         * Optional. Configuration for Json data.
+         */
+        jsonOptions?: outputs.dataplex.ZoneDiscoverySpecJsonOptions;
+        /**
+         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         */
+        schedule: string;
+    }
+
+    export interface ZoneDiscoverySpecCsvOptions {
+        /**
+         * Optional. The delimiter being used to separate values. This defaults to ','.
+         */
+        delimiter?: string;
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: boolean;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: string;
+        /**
+         * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+         */
+        headerRows?: number;
+    }
+
+    export interface ZoneDiscoverySpecJsonOptions {
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: boolean;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: string;
+    }
+
+    export interface ZoneResourceSpec {
+        /**
+         * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+         */
+        locationType: string;
     }
 
 }
@@ -25580,7 +25845,13 @@ export namespace gkehub {
          * Logs all denies and dry run failures.
          */
         logDeniesEnabled?: boolean;
+        /**
+         * Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+         */
         monitoring: outputs.gkehub.FeatureMembershipConfigmanagementPolicyControllerMonitoring;
+        /**
+         * Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+         */
         mutationEnabled?: boolean;
         /**
          * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
@@ -25640,6 +25911,18 @@ export namespace gkehub {
 
     export interface MembershipEndpointGkeCluster {
         resourceLink: string;
+    }
+
+    export interface MembershipIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface MembershipIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }
@@ -28198,6 +28481,7 @@ export namespace monitoring {
          */
         port: number;
     }
+
 }
 
 export namespace networkconnectivity {
@@ -29048,6 +29332,11 @@ export namespace notebooks {
          */
         installGpuDriver?: boolean;
         /**
+         * Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         */
+        kernels?: outputs.notebooks.RuntimeSoftwareConfigKernel[];
+        /**
          * Cron expression in UTC timezone for schedule instance auto upgrade.
          * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
          */
@@ -29058,6 +29347,28 @@ export namespace notebooks {
          * Cloud Storage path (gs://path-to-file/file-name).
          */
         postStartupScript?: string;
+        /**
+         * Behavior for the post startup script.
+         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         */
+        postStartupScriptBehavior?: string;
+        /**
+         * -
+         * Bool indicating whether an newer image is available in an image family.
+         */
+        upgradeable: boolean;
+    }
+
+    export interface RuntimeSoftwareConfigKernel {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
     }
 
     export interface RuntimeVirtualMachine {
@@ -31657,7 +31968,6 @@ export namespace projects {
          */
         default: boolean;
     }
-
 }
 
 export namespace pubsub {
@@ -31722,6 +32032,27 @@ export namespace pubsub {
          * Example: "3.5s".
          */
         period?: string;
+    }
+
+    export interface SubscriptionBigqueryConfig {
+        /**
+         * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+         * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+         */
+        dropUnknownFields?: boolean;
+        /**
+         * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+         */
+        table: string;
+        /**
+         * When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+         */
+        useTopicSchema?: boolean;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+         * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata?: boolean;
     }
 
     export interface SubscriptionDeadLetterPolicy {
@@ -31880,7 +32211,6 @@ export namespace pubsub {
          */
         schema: string;
     }
-
 }
 
 export namespace recaptcha {
@@ -32520,9 +32850,12 @@ export namespace sql {
         collation?: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
         /**
-         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
          */
         diskAutoresize?: boolean;
+        /**
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
         diskAutoresizeLimit?: number;
         /**
          * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
@@ -32993,9 +33326,17 @@ export namespace storage {
          */
         daysSinceNoncurrentTime?: number;
         /**
+         * One or more matching name prefixes to satisfy this condition.
+         */
+        matchesPrefixes?: string[];
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: string[];
+        /**
+         * One or more matching name suffixes to satisfy this condition.
+         */
+        matchesSuffixes?: string[];
         /**
          * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
          */
@@ -33096,7 +33437,9 @@ export namespace storage {
         customTimeBefore: string;
         daysSinceCustomTime: number;
         daysSinceNoncurrentTime: number;
+        matchesPrefixes: string[];
         matchesStorageClasses: string[];
+        matchesSuffixes: string[];
         noncurrentTimeBefore: string;
         numNewerVersions: number;
         withState: string;

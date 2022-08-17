@@ -19,25 +19,24 @@ namespace Pulumi.Gcp.Iap
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
         ///     {
-        ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
-        ///         {
-        ///             ProjectId = "foobar",
-        ///         }));
-        ///         var projectClient = project.Apply(project =&gt; Output.Create(Gcp.Iap.GetClient.InvokeAsync(new Gcp.Iap.GetClientArgs
-        ///         {
-        ///             Brand = $"projects/{project.Number}/brands/[BRAND_NUMBER]",
-        ///             ClientId = FOO.Apps.Googleusercontent.Com,
-        ///         })));
-        ///     }
+        ///         ProjectId = "foobar",
+        ///     });
         /// 
-        /// }
+        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
+        ///     {
+        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
+        ///         ClientId = FOO.Apps.Googleusercontent.Com,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,25 +52,24 @@ namespace Pulumi.Gcp.Iap
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
         ///     {
-        ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
-        ///         {
-        ///             ProjectId = "foobar",
-        ///         }));
-        ///         var projectClient = project.Apply(project =&gt; Output.Create(Gcp.Iap.GetClient.InvokeAsync(new Gcp.Iap.GetClientArgs
-        ///         {
-        ///             Brand = $"projects/{project.Number}/brands/[BRAND_NUMBER]",
-        ///             ClientId = FOO.Apps.Googleusercontent.Com,
-        ///         })));
-        ///     }
+        ///         ProjectId = "foobar",
+        ///     });
         /// 
-        /// }
+        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
+        ///     {
+        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
+        ///         ClientId = FOO.Apps.Googleusercontent.Com,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.Iap
     }
 
 
-    public sealed class GetClientArgs : Pulumi.InvokeArgs
+    public sealed class GetClientArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the brand.
@@ -98,9 +96,10 @@ namespace Pulumi.Gcp.Iap
         public GetClientArgs()
         {
         }
+        public static new GetClientArgs Empty => new GetClientArgs();
     }
 
-    public sealed class GetClientInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClientInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the brand.
@@ -117,6 +116,7 @@ namespace Pulumi.Gcp.Iap
         public GetClientInvokeArgs()
         {
         }
+        public static new GetClientInvokeArgs Empty => new GetClientInvokeArgs();
     }
 
 

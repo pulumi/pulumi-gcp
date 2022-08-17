@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 {
 
-    public sealed class SpokeLinkedInterconnectAttachmentsGetArgs : Pulumi.ResourceArgs
+    public sealed class SpokeLinkedInterconnectAttachmentsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         public SpokeLinkedInterconnectAttachmentsGetArgs()
         {
         }
+        public static new SpokeLinkedInterconnectAttachmentsGetArgs Empty => new SpokeLinkedInterconnectAttachmentsGetArgs();
     }
 }

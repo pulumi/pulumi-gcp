@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     ],
  *     bootDisk: {
  *         initializeParams: {
- *             image: "debian-cloud/debian-9",
+ *             image: "debian-cloud/debian-11",
  *         },
  *     },
  *     scratchDisks: [{

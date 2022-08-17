@@ -16,25 +16,23 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// ### Basic_hub
     /// A basic test of a networkconnectivity hub
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
     ///     {
-    ///         var primary = new Gcp.NetworkConnectivity.Hub("primary", new Gcp.NetworkConnectivity.HubArgs
+    ///         Description = "A sample hub",
+    ///         Labels = 
     ///         {
-    ///             Description = "A sample hub",
-    ///             Labels = 
-    ///             {
-    ///                 { "label-one", "value-one" },
-    ///             },
-    ///             Project = "my-project-name",
-    ///         });
-    ///     }
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkconnectivity/hub:Hub")]
-    public partial class Hub : Pulumi.CustomResource
+    public partial class Hub : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. The time the hub was created.
@@ -157,7 +155,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
     }
 
-    public sealed class HubArgs : Pulumi.ResourceArgs
+    public sealed class HubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the hub.
@@ -192,9 +190,10 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public HubArgs()
         {
         }
+        public static new HubArgs Empty => new HubArgs();
     }
 
-    public sealed class HubState : Pulumi.ResourceArgs
+    public sealed class HubState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. The time the hub was created.
@@ -268,5 +267,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public HubState()
         {
         }
+        public static new HubState Empty => new HubState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigWorkerConfigAcceleratorGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigWorkerConfigAcceleratorGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigWorkerConfigAcceleratorGetArgs()
         {
         }
+        public static new ClusterClusterConfigWorkerConfigAcceleratorGetArgs Empty => new ClusterClusterConfigWorkerConfigAcceleratorGetArgs();
     }
 }

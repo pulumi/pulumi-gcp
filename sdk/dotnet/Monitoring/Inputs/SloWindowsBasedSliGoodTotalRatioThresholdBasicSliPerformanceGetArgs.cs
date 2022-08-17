@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceGetArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Availability based SLI, dervied from count of requests made to this service that return successfully.
@@ -80,5 +80,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceGetArgs()
         {
         }
+        public static new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceGetArgs Empty => new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceGetArgs();
     }
 }

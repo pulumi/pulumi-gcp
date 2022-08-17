@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Memcache.Inputs
 {
 
-    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hours of day in 24 hour format. Should be from 0 to 23.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeGetArgs()
         {
         }
+        public static new InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeGetArgs Empty => new InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeGetArgs();
     }
 }

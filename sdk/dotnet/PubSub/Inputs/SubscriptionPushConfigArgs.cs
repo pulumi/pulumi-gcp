@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class SubscriptionPushConfigArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionPushConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputMap<string>? _attributes;
@@ -60,5 +60,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public SubscriptionPushConfigArgs()
         {
         }
+        public static new SubscriptionPushConfigArgs Empty => new SubscriptionPushConfigArgs();
     }
 }

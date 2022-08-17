@@ -22,21 +22,19 @@ namespace Pulumi.Gcp.Storage
     /// Example creating a public object in an existing `image-store` bucket.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var picture = new Gcp.Storage.BucketObject("picture", new()
     ///     {
-    ///         var picture = new Gcp.Storage.BucketObject("picture", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = "image-store",
-    ///             Source = new FileAsset("/images/nature/garden-tiger-moth.jpg"),
-    ///         });
-    ///     }
+    ///         Bucket = "image-store",
+    ///         Source = new FileAsset("/images/nature/garden-tiger-moth.jpg"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Storage
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:storage/bucketObject:BucketObject")]
-    public partial class BucketObject : Pulumi.CustomResource
+    public partial class BucketObject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -222,7 +220,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class BucketObjectArgs : Pulumi.ResourceArgs
+    public sealed class BucketObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -334,9 +332,10 @@ namespace Pulumi.Gcp.Storage
         public BucketObjectArgs()
         {
         }
+        public static new BucketObjectArgs Empty => new BucketObjectArgs();
     }
 
-    public sealed class BucketObjectState : Pulumi.ResourceArgs
+    public sealed class BucketObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -479,5 +478,6 @@ namespace Pulumi.Gcp.Storage
         public BucketObjectState()
         {
         }
+        public static new BucketObjectState Empty => new BucketObjectState();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Composer
     }
 
 
-    public sealed class GetEnvironmentArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvironmentArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the environment.
@@ -49,9 +49,10 @@ namespace Pulumi.Gcp.Composer
         public GetEnvironmentArgs()
         {
         }
+        public static new GetEnvironmentArgs Empty => new GetEnvironmentArgs();
     }
 
-    public sealed class GetEnvironmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvironmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the environment.
@@ -75,6 +76,7 @@ namespace Pulumi.Gcp.Composer
         public GetEnvironmentInvokeArgs()
         {
         }
+        public static new GetEnvironmentInvokeArgs Empty => new GetEnvironmentInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionNetworkEndpointGroupCloudFunctionGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionNetworkEndpointGroupCloudFunctionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A user-defined name of the Cloud Function.
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionNetworkEndpointGroupCloudFunctionGetArgs()
         {
         }
+        public static new RegionNetworkEndpointGroupCloudFunctionGetArgs Empty => new RegionNetworkEndpointGroupCloudFunctionGetArgs();
     }
 }

@@ -23,55 +23,55 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ReadFileBase64(string path) {
     /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apiGwApi = new Gcp.ApiGateway.Api("apiGwApi", new()
     ///     {
-    ///         var apiGwApi = new Gcp.ApiGateway.Api("apiGwApi", new Gcp.ApiGateway.ApiArgs
+    ///         ApiId = "api-gw",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("apiGwApiConfig", new()
+    ///     {
+    ///         Api = apiGwApi.ApiId,
+    ///         ApiConfigId = "config",
+    ///         OpenapiDocuments = new[]
     ///         {
-    ///             ApiId = "api-gw",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("apiGwApiConfig", new Gcp.ApiGateway.ApiConfigArgs
-    ///         {
-    ///             Api = apiGwApi.ApiId,
-    ///             ApiConfigId = "config",
-    ///             OpenapiDocuments = 
+    ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
     ///             {
-    ///                 new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
+    ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
     ///                 {
-    ///                     Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
-    ///                     {
-    ///                         Path = "spec.yaml",
-    ///                         Contents = ReadFileBase64("test-fixtures/apigateway/openapi.yaml"),
-    ///                     },
+    ///                     Path = "spec.yaml",
+    ///                     Contents = ReadFileBase64("test-fixtures/apigateway/openapi.yaml"),
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var apiGwGateway = new Gcp.ApiGateway.Gateway("apiGwGateway", new Gcp.ApiGateway.GatewayArgs
-    ///         {
-    ///             ApiConfig = apiGwApiConfig.Id,
-    ///             GatewayId = "api-gw",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var apiGwGateway = new Gcp.ApiGateway.Gateway("apiGwGateway", new()
+    ///     {
+    ///         ApiConfig = apiGwApiConfig.Id,
+    ///         GatewayId = "api-gw",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigateway/gateway:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
@@ -240,9 +240,10 @@ namespace Pulumi.Gcp.ApiGateway
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 
-    public sealed class GatewayState : Pulumi.ResourceArgs
+    public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
@@ -303,5 +304,6 @@ namespace Pulumi.Gcp.ApiGateway
         public GatewayState()
         {
         }
+        public static new GatewayState Empty => new GatewayState();
     }
 }

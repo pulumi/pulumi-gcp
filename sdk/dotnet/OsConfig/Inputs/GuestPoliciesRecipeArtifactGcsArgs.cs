@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeArtifactGcsArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeArtifactGcsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeArtifactGcsArgs()
         {
         }
+        public static new GuestPoliciesRecipeArtifactGcsArgs Empty => new GuestPoliciesRecipeArtifactGcsArgs();
     }
 }

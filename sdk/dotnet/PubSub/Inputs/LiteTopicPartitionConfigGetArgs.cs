@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class LiteTopicPartitionConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class LiteTopicPartitionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The capacity configuration.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public LiteTopicPartitionConfigGetArgs()
         {
         }
+        public static new LiteTopicPartitionConfigGetArgs Empty => new LiteTopicPartitionConfigGetArgs();
     }
 }

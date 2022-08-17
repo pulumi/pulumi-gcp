@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudIdentity.Inputs
 {
 
-    public sealed class GroupMembershipRoleArgs : Pulumi.ResourceArgs
+    public sealed class GroupMembershipRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.CloudIdentity.Inputs
         public GroupMembershipRoleArgs()
         {
         }
+        public static new GroupMembershipRoleArgs Empty => new GroupMembershipRoleArgs();
     }
 }

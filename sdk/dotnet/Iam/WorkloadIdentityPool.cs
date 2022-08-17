@@ -23,41 +23,37 @@ namespace Pulumi.Gcp.Iam
     /// ### Iam Workload Identity Pool Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Iam.WorkloadIdentityPool("example", new()
     ///     {
-    ///         var example = new Gcp.Iam.WorkloadIdentityPool("example", new Gcp.Iam.WorkloadIdentityPoolArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///         });
-    ///     }
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Iam Workload Identity Pool Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Iam.WorkloadIdentityPool("example", new()
     ///     {
-    ///         var example = new Gcp.Iam.WorkloadIdentityPool("example", new Gcp.Iam.WorkloadIdentityPoolArgs
-    ///         {
-    ///             Description = "Identity pool for automated test",
-    ///             Disabled = true,
-    ///             DisplayName = "Name of pool",
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///         });
-    ///     }
+    ///         Description = "Identity pool for automated test",
+    ///         Disabled = true,
+    ///         DisplayName = "Name of pool",
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +73,7 @@ namespace Pulumi.Gcp.Iam
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iam/workloadIdentityPool:WorkloadIdentityPool")]
-    public partial class WorkloadIdentityPool : Pulumi.CustomResource
+    public partial class WorkloadIdentityPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the pool. Cannot exceed 256 characters.
@@ -175,7 +171,7 @@ namespace Pulumi.Gcp.Iam
         }
     }
 
-    public sealed class WorkloadIdentityPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the pool. Cannot exceed 256 characters.
@@ -215,9 +211,10 @@ namespace Pulumi.Gcp.Iam
         public WorkloadIdentityPoolArgs()
         {
         }
+        public static new WorkloadIdentityPoolArgs Empty => new WorkloadIdentityPoolArgs();
     }
 
-    public sealed class WorkloadIdentityPoolState : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the pool. Cannot exceed 256 characters.
@@ -274,5 +271,6 @@ namespace Pulumi.Gcp.Iam
         public WorkloadIdentityPoolState()
         {
         }
+        public static new WorkloadIdentityPoolState Empty => new WorkloadIdentityPoolState();
     }
 }

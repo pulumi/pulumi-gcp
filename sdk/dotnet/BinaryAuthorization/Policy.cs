@@ -22,105 +22,105 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// ### Binary Authorization Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
-    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
-    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
     ///             {
-    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///                 {
-    ///                     HumanReadableName = "My attestor",
-    ///                 },
+    ///                 HumanReadableName = "My attestor",
     ///             },
-    ///         });
-    ///         var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new Gcp.BinaryAuthorization.AttestorArgs
-    ///         {
-    ///             AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
-    ///             {
-    ///                 NoteReference = note.Name,
-    ///             },
-    ///         });
-    ///         var policy = new Gcp.BinaryAuthorization.Policy("policy", new Gcp.BinaryAuthorization.PolicyArgs
-    ///         {
-    ///             AdmissionWhitelistPatterns = 
-    ///             {
-    ///                 new Gcp.BinaryAuthorization.Inputs.PolicyAdmissionWhitelistPatternArgs
-    ///                 {
-    ///                     NamePattern = "gcr.io/google_containers/*",
-    ///                 },
-    ///             },
-    ///             DefaultAdmissionRule = new Gcp.BinaryAuthorization.Inputs.PolicyDefaultAdmissionRuleArgs
-    ///             {
-    ///                 EvaluationMode = "ALWAYS_ALLOW",
-    ///                 EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
-    ///             },
-    ///             ClusterAdmissionRules = 
-    ///             {
-    ///                 new Gcp.BinaryAuthorization.Inputs.PolicyClusterAdmissionRuleArgs
-    ///                 {
-    ///                     Cluster = "us-central1-a.prod-cluster",
-    ///                     EvaluationMode = "REQUIRE_ATTESTATION",
-    ///                     EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
-    ///                     RequireAttestationsBies = 
-    ///                     {
-    ///                         attestor.Name,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
-    /// ```
-    /// ### Binary Authorization Policy Global Evaluation
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
     ///     {
-    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
     ///         {
-    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             NoteReference = note.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BinaryAuthorization.Policy("policy", new()
+    ///     {
+    ///         AdmissionWhitelistPatterns = new[]
+    ///         {
+    ///             new Gcp.BinaryAuthorization.Inputs.PolicyAdmissionWhitelistPatternArgs
     ///             {
-    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///                 {
-    ///                     HumanReadableName = "My attestor",
-    ///                 },
+    ///                 NamePattern = "gcr.io/google_containers/*",
     ///             },
-    ///         });
-    ///         var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new Gcp.BinaryAuthorization.AttestorArgs
+    ///         },
+    ///         DefaultAdmissionRule = new Gcp.BinaryAuthorization.Inputs.PolicyDefaultAdmissionRuleArgs
     ///         {
-    ///             AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
-    ///             {
-    ///                 NoteReference = note.Name,
-    ///             },
-    ///         });
-    ///         var policy = new Gcp.BinaryAuthorization.Policy("policy", new Gcp.BinaryAuthorization.PolicyArgs
+    ///             EvaluationMode = "ALWAYS_ALLOW",
+    ///             EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
+    ///         },
+    ///         ClusterAdmissionRules = new[]
     ///         {
-    ///             DefaultAdmissionRule = new Gcp.BinaryAuthorization.Inputs.PolicyDefaultAdmissionRuleArgs
+    ///             new Gcp.BinaryAuthorization.Inputs.PolicyClusterAdmissionRuleArgs
     ///             {
+    ///                 Cluster = "us-central1-a.prod-cluster",
     ///                 EvaluationMode = "REQUIRE_ATTESTATION",
     ///                 EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
-    ///                 RequireAttestationsBies = 
+    ///                 RequireAttestationsBies = new[]
     ///                 {
     ///                     attestor.Name,
     ///                 },
     ///             },
-    ///             GlobalPolicyEvaluationMode = "ENABLE",
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
+    /// ```
+    /// ### Binary Authorization Policy Global Evaluation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
+    ///     {
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///         {
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///             {
+    ///                 HumanReadableName = "My attestor",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
+    ///     {
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
+    ///         {
+    ///             NoteReference = note.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BinaryAuthorization.Policy("policy", new()
+    ///     {
+    ///         DefaultAdmissionRule = new Gcp.BinaryAuthorization.Inputs.PolicyDefaultAdmissionRuleArgs
+    ///         {
+    ///             EvaluationMode = "REQUIRE_ATTESTATION",
+    ///             EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
+    ///             RequireAttestationsBies = new[]
+    ///             {
+    ///                 attestor.Name,
+    ///             },
+    ///         },
+    ///         GlobalPolicyEvaluationMode = "ENABLE",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// ```
     /// </summary>
     [GcpResourceType("gcp:binaryauthorization/policy:Policy")]
-    public partial class Policy : Pulumi.CustomResource
+    public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A whitelist of image patterns to exclude from admission rules. If an
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         }
     }
 
-    public sealed class PolicyArgs : Pulumi.ResourceArgs
+    public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("admissionWhitelistPatterns")]
         private InputList<Inputs.PolicyAdmissionWhitelistPatternArgs>? _admissionWhitelistPatterns;
@@ -297,9 +297,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public PolicyArgs()
         {
         }
+        public static new PolicyArgs Empty => new PolicyArgs();
     }
 
-    public sealed class PolicyState : Pulumi.ResourceArgs
+    public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         [Input("admissionWhitelistPatterns")]
         private InputList<Inputs.PolicyAdmissionWhitelistPatternGetArgs>? _admissionWhitelistPatterns;
@@ -365,5 +366,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public PolicyState()
         {
         }
+        public static new PolicyState Empty => new PolicyState();
     }
 }

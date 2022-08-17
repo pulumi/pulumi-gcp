@@ -19,76 +19,76 @@ namespace Pulumi.Gcp.Sql
     /// Example creating a SQL User.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dbNameSuffix = new Random.RandomId("dbNameSuffix", new()
     ///     {
-    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
-    ///         {
-    ///             ByteLength = 4,
-    ///         });
-    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
-    ///         {
-    ///             DatabaseVersion = "MYSQL_5_7",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///         });
-    ///         var users = new Gcp.Sql.User("users", new Gcp.Sql.UserArgs
-    ///         {
-    ///             Instance = main.Name,
-    ///             Host = "me.com",
-    ///             Password = "changeme",
-    ///         });
-    ///     }
+    ///         ByteLength = 4,
+    ///     });
     /// 
-    /// }
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         DatabaseVersion = "MYSQL_5_7",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///     });
+    /// 
+    ///     var users = new Gcp.Sql.User("users", new()
+    ///     {
+    ///         Instance = main.Name,
+    ///         Host = "me.com",
+    ///         Password = "changeme",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Example creating a Cloud IAM User. (For MySQL, specify `cloudsql_iam_authentication`)
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dbNameSuffix = new Random.RandomId("dbNameSuffix", new()
     ///     {
-    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
+    ///         ByteLength = 4,
+    ///     });
+    /// 
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         DatabaseVersion = "POSTGRES_9_6",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
-    ///             ByteLength = 4,
-    ///         });
-    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
-    ///         {
-    ///             DatabaseVersion = "POSTGRES_9_6",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             Tier = "db-f1-micro",
+    ///             DatabaseFlags = new[]
     ///             {
-    ///                 Tier = "db-f1-micro",
-    ///                 DatabaseFlags = 
+    ///                 new Gcp.Sql.Inputs.DatabaseInstanceSettingsDatabaseFlagArgs
     ///                 {
-    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsDatabaseFlagArgs
-    ///                     {
-    ///                         Name = "cloudsql.iam_authentication",
-    ///                         Value = "on",
-    ///                     },
+    ///                     Name = "cloudsql.iam_authentication",
+    ///                     Value = "on",
     ///                 },
     ///             },
-    ///         });
-    ///         var users = new Gcp.Sql.User("users", new Gcp.Sql.UserArgs
-    ///         {
-    ///             Instance = main.Name,
-    ///             Type = "CLOUD_IAM_USER",
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var users = new Gcp.Sql.User("users", new()
+    ///     {
+    ///         Instance = main.Name,
+    ///         Type = "CLOUD_IAM_USER",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sql/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The deletion policy for the user.
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Sql
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The deletion policy for the user.
@@ -269,9 +269,10 @@ namespace Pulumi.Gcp.Sql
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The deletion policy for the user.
@@ -332,5 +333,6 @@ namespace Pulumi.Gcp.Sql
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

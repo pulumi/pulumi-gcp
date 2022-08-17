@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var healthCheck = Gcp.Compute.GetHealthCheck.Invoke(new()
         ///     {
-        ///         var healthCheck = Output.Create(Gcp.Compute.GetHealthCheck.InvokeAsync(new Gcp.Compute.GetHealthCheckArgs
-        ///         {
-        ///             Name = "my-hc",
-        ///         }));
-        ///     }
+        ///         Name = "my-hc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var healthCheck = Gcp.Compute.GetHealthCheck.Invoke(new()
         ///     {
-        ///         var healthCheck = Output.Create(Gcp.Compute.GetHealthCheck.InvokeAsync(new Gcp.Compute.GetHealthCheckArgs
-        ///         {
-        ///             Name = "my-hc",
-        ///         }));
-        ///     }
+        ///         Name = "my-hc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetHealthCheckArgs : Pulumi.InvokeArgs
+    public sealed class GetHealthCheckArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the resource.
@@ -89,9 +85,10 @@ namespace Pulumi.Gcp.Compute
         public GetHealthCheckArgs()
         {
         }
+        public static new GetHealthCheckArgs Empty => new GetHealthCheckArgs();
     }
 
-    public sealed class GetHealthCheckInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHealthCheckInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the resource.
@@ -109,6 +106,7 @@ namespace Pulumi.Gcp.Compute
         public GetHealthCheckInvokeArgs()
         {
         }
+        public static new GetHealthCheckInvokeArgs Empty => new GetHealthCheckInvokeArgs();
     }
 
 

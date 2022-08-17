@@ -15,32 +15,30 @@ namespace Pulumi.Gcp.Organizations
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Gcp.Organizations.IamAuditConfig("config", new()
     ///     {
-    ///         var config = new Gcp.Organizations.IamAuditConfig("config", new Gcp.Organizations.IamAuditConfigArgs
+    ///         AuditLogConfigs = new[]
     ///         {
-    ///             AuditLogConfigs = 
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///                 ExemptedMembers = new[]
     ///                 {
-    ///                     ExemptedMembers = 
-    ///                     {
-    ///                         "user:joebloggs@hashicorp.com",
-    ///                     },
-    ///                     LogType = "DATA_READ",
+    ///                     "user:joebloggs@hashicorp.com",
     ///                 },
+    ///                 LogType = "DATA_READ",
     ///             },
-    ///             OrgId = "your-organization-id",
-    ///             Service = "allServices",
-    ///         });
-    ///     }
+    ///         },
+    ///         OrgId = "your-organization-id",
+    ///         Service = "allServices",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Organizations
     /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/iamAuditConfig:IamAuditConfig")]
-    public partial class IamAuditConfig : Pulumi.CustomResource
+    public partial class IamAuditConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
@@ -122,7 +120,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
-    public sealed class IamAuditConfigArgs : Pulumi.ResourceArgs
+    public sealed class IamAuditConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs", required: true)]
         private InputList<Inputs.IamAuditConfigAuditLogConfigArgs>? _auditLogConfigs;
@@ -151,9 +149,10 @@ namespace Pulumi.Gcp.Organizations
         public IamAuditConfigArgs()
         {
         }
+        public static new IamAuditConfigArgs Empty => new IamAuditConfigArgs();
     }
 
-    public sealed class IamAuditConfigState : Pulumi.ResourceArgs
+    public sealed class IamAuditConfigState : global::Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs")]
         private InputList<Inputs.IamAuditConfigAuditLogConfigGetArgs>? _auditLogConfigs;
@@ -188,5 +187,6 @@ namespace Pulumi.Gcp.Organizations
         public IamAuditConfigState()
         {
         }
+        public static new IamAuditConfigState Empty => new IamAuditConfigState();
     }
 }

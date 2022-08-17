@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterPrivateClusterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterPrivateClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When `true`, the cluster's private
@@ -71,5 +71,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterPrivateClusterConfigGetArgs()
         {
         }
+        public static new ClusterPrivateClusterConfigGetArgs Empty => new ClusterPrivateClusterConfigGetArgs();
     }
 }

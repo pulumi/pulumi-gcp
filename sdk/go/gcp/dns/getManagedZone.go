@@ -20,35 +20,38 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		envDnsZone, err := dns.LookupManagedZone(ctx, &dns.LookupManagedZoneArgs{
-// 			Name: "qa-zone",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "dns", &dns.RecordSetArgs{
-// 			Name:        pulumi.String(fmt.Sprintf("my-address.%v", envDnsZone.DnsName)),
-// 			Type:        pulumi.String("TXT"),
-// 			Ttl:         pulumi.Int(300),
-// 			ManagedZone: pulumi.String(envDnsZone.Name),
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String("test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			envDnsZone, err := dns.LookupManagedZone(ctx, &dns.LookupManagedZoneArgs{
+//				Name: "qa-zone",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "dns", &dns.RecordSetArgs{
+//				Name:        pulumi.String(fmt.Sprintf("my-address.%v", envDnsZone.DnsName)),
+//				Type:        pulumi.String("TXT"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: pulumi.String(envDnsZone.Name),
+//				Rrdatas: pulumi.StringArray{
+//					pulumi.String("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupManagedZone(ctx *pulumi.Context, args *LookupManagedZoneArgs, opts ...pulumi.InvokeOption) (*LookupManagedZoneResult, error) {
 	var rv LookupManagedZoneResult

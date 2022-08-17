@@ -41,52 +41,48 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Notification Channel Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Monitoring.NotificationChannel("basic", new()
     ///     {
-    ///         var basic = new Gcp.Monitoring.NotificationChannel("basic", new Gcp.Monitoring.NotificationChannelArgs
+    ///         DisplayName = "Test Notification Channel",
+    ///         Labels = 
     ///         {
-    ///             DisplayName = "Test Notification Channel",
-    ///             Labels = 
-    ///             {
-    ///                 { "email_address", "fake_email@blahblah.com" },
-    ///             },
-    ///             Type = "email",
-    ///         });
-    ///     }
+    ///             { "email_address", "fake_email@blahblah.com" },
+    ///         },
+    ///         Type = "email",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Notification Channel Sensitive
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Monitoring.NotificationChannel("default", new()
     ///     {
-    ///         var @default = new Gcp.Monitoring.NotificationChannel("default", new Gcp.Monitoring.NotificationChannelArgs
+    ///         DisplayName = "Test Slack Channel",
+    ///         Labels = 
     ///         {
-    ///             DisplayName = "Test Slack Channel",
-    ///             Labels = 
-    ///             {
-    ///                 { "channel_name", "#foobar" },
-    ///             },
-    ///             SensitiveLabels = new Gcp.Monitoring.Inputs.NotificationChannelSensitiveLabelsArgs
-    ///             {
-    ///                 AuthToken = "one",
-    ///             },
-    ///             Type = "slack",
-    ///         });
-    ///     }
+    ///             { "channel_name", "#foobar" },
+    ///         },
+    ///         SensitiveLabels = new Gcp.Monitoring.Inputs.NotificationChannelSensitiveLabelsArgs
+    ///         {
+    ///             AuthToken = "one",
+    ///         },
+    ///         Type = "slack",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -98,7 +94,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/notificationChannel:NotificationChannel")]
-    public partial class NotificationChannel : Pulumi.CustomResource
+    public partial class NotificationChannel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
@@ -223,7 +219,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class NotificationChannelArgs : Pulumi.ResourceArgs
+    public sealed class NotificationChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
@@ -300,9 +296,10 @@ namespace Pulumi.Gcp.Monitoring
         public NotificationChannelArgs()
         {
         }
+        public static new NotificationChannelArgs Empty => new NotificationChannelArgs();
     }
 
-    public sealed class NotificationChannelState : Pulumi.ResourceArgs
+    public sealed class NotificationChannelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
@@ -398,5 +395,6 @@ namespace Pulumi.Gcp.Monitoring
         public NotificationChannelState()
         {
         }
+        public static new NotificationChannelState Empty => new NotificationChannelState();
     }
 }

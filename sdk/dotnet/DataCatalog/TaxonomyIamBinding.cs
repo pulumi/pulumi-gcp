@@ -23,89 +23,84 @@ namespace Pulumi.Gcp.DataCatalog
     /// ## google\_data\_catalog\_taxonomy\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.DataCatalog.TaxonomyIamPolicy("policy", new Gcp.DataCatalog.TaxonomyIamPolicyArgs
-    ///         {
-    ///             Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.DataCatalog.TaxonomyIamPolicy("policy", new()
+    ///     {
+    ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_data\_catalog\_taxonomy\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.DataCatalog.TaxonomyIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.DataCatalog.TaxonomyIamBinding("binding", new Gcp.DataCatalog.TaxonomyIamBindingArgs
+    ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_data\_catalog\_taxonomy\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.DataCatalog.TaxonomyIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.DataCatalog.TaxonomyIamMember("member", new Gcp.DataCatalog.TaxonomyIamMemberArgs
-    ///         {
-    ///             Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -133,7 +128,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding")]
-    public partial class TaxonomyIamBinding : Pulumi.CustomResource
+    public partial class TaxonomyIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.TaxonomyIamBindingCondition?> Condition { get; private set; } = null!;
@@ -215,7 +210,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class TaxonomyIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class TaxonomyIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TaxonomyIamBindingConditionArgs>? Condition { get; set; }
@@ -255,9 +250,10 @@ namespace Pulumi.Gcp.DataCatalog
         public TaxonomyIamBindingArgs()
         {
         }
+        public static new TaxonomyIamBindingArgs Empty => new TaxonomyIamBindingArgs();
     }
 
-    public sealed class TaxonomyIamBindingState : Pulumi.ResourceArgs
+    public sealed class TaxonomyIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TaxonomyIamBindingConditionGetArgs>? Condition { get; set; }
@@ -303,5 +299,6 @@ namespace Pulumi.Gcp.DataCatalog
         public TaxonomyIamBindingState()
         {
         }
+        public static new TaxonomyIamBindingState Empty => new TaxonomyIamBindingState();
     }
 }

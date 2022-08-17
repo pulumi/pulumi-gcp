@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataPlex.Inputs
 {
 
-    public sealed class LakeAssetStatusArgs : Pulumi.ResourceArgs
+    public sealed class LakeAssetStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("activeAssets")]
         public Input<int>? ActiveAssets { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public LakeAssetStatusArgs()
         {
         }
+        public static new LakeAssetStatusArgs Empty => new LakeAssetStatusArgs();
     }
 }

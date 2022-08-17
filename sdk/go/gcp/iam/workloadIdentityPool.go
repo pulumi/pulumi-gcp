@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
 // * How-to Guides
-//     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+//   - [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
 //
 // ## Example Usage
 // ### Iam Workload Identity Pool Basic
@@ -27,21 +27,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iam.NewWorkloadIdentityPool(ctx, "example", &iam.WorkloadIdentityPoolArgs{
-// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPool(ctx, "example", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Iam Workload Identity Pool Full
 //
@@ -49,40 +52,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iam.NewWorkloadIdentityPool(ctx, "example", &iam.WorkloadIdentityPoolArgs{
-// 			Description:            pulumi.String("Identity pool for automated test"),
-// 			Disabled:               pulumi.Bool(true),
-// 			DisplayName:            pulumi.String("Name of pool"),
-// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iam.NewWorkloadIdentityPool(ctx, "example", &iam.WorkloadIdentityPoolArgs{
+//				Description:            pulumi.String("Identity pool for automated test"),
+//				Disabled:               pulumi.Bool(true),
+//				DisplayName:            pulumi.String("Name of pool"),
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// WorkloadIdentityPool can be imported using any of these accepted formats
+// # WorkloadIdentityPool can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
+//
+//	$ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
+//
+//	$ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
+//
+//	$ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
+//
 // ```
 type WorkloadIdentityPool struct {
 	pulumi.CustomResourceState
@@ -265,7 +277,7 @@ func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx conte
 // WorkloadIdentityPoolArrayInput is an input type that accepts WorkloadIdentityPoolArray and WorkloadIdentityPoolArrayOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolArrayInput` via:
 //
-//          WorkloadIdentityPoolArray{ WorkloadIdentityPoolArgs{...} }
+//	WorkloadIdentityPoolArray{ WorkloadIdentityPoolArgs{...} }
 type WorkloadIdentityPoolArrayInput interface {
 	pulumi.Input
 
@@ -290,7 +302,7 @@ func (i WorkloadIdentityPoolArray) ToWorkloadIdentityPoolArrayOutputWithContext(
 // WorkloadIdentityPoolMapInput is an input type that accepts WorkloadIdentityPoolMap and WorkloadIdentityPoolMapOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolMapInput` via:
 //
-//          WorkloadIdentityPoolMap{ "key": WorkloadIdentityPoolArgs{...} }
+//	WorkloadIdentityPoolMap{ "key": WorkloadIdentityPoolArgs{...} }
 type WorkloadIdentityPoolMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionConditionMatchedLogGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionConditionMatchedLogGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A logs-based filter.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionConditionMatchedLogGetArgs()
         {
         }
+        public static new AlertPolicyConditionConditionMatchedLogGetArgs Empty => new AlertPolicyConditionConditionMatchedLogGetArgs();
     }
 }

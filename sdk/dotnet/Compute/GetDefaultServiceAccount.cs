@@ -19,20 +19,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
-        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
-        ///     }
+        ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
         /// 
-        ///     [Output("defaultAccount")]
-        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultAccount"] = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +47,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
-        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
-        ///     }
+        ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
         /// 
-        ///     [Output("defaultAccount")]
-        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultAccount"] = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetDefaultServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetDefaultServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID. If it is not provided, the provider project is used.
@@ -82,9 +80,10 @@ namespace Pulumi.Gcp.Compute
         public GetDefaultServiceAccountArgs()
         {
         }
+        public static new GetDefaultServiceAccountArgs Empty => new GetDefaultServiceAccountArgs();
     }
 
-    public sealed class GetDefaultServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDefaultServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID. If it is not provided, the provider project is used.
@@ -95,6 +94,7 @@ namespace Pulumi.Gcp.Compute
         public GetDefaultServiceAccountInvokeArgs()
         {
         }
+        public static new GetDefaultServiceAccountInvokeArgs Empty => new GetDefaultServiceAccountInvokeArgs();
     }
 
 

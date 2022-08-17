@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs : Pulumi.ResourceArgs
+    public sealed class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the header to add.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs()
         {
         }
+        public static new URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs Empty => new URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs();
     }
 }

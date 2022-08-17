@@ -18,59 +18,55 @@ namespace Pulumi.Gcp.Compute
     /// ### Empty Instance Group
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Gcp.Compute.InstanceGroup("test", new()
     ///     {
-    ///         var test = new Gcp.Compute.InstanceGroup("test", new Gcp.Compute.InstanceGroupArgs
-    ///         {
-    ///             Description = "Test instance group",
-    ///             Zone = "us-central1-a",
-    ///             Network = google_compute_network.Default.Id,
-    ///         });
-    ///     }
+    ///         Description = "Test instance group",
+    ///         Zone = "us-central1-a",
+    ///         Network = google_compute_network.Default.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Example Usage - With instances and named ports
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var webservers = new Gcp.Compute.InstanceGroup("webservers", new()
     ///     {
-    ///         var webservers = new Gcp.Compute.InstanceGroup("webservers", new Gcp.Compute.InstanceGroupArgs
+    ///         Description = "Test instance group",
+    ///         Instances = new[]
     ///         {
-    ///             Description = "Test instance group",
-    ///             Instances = 
+    ///             google_compute_instance.Test.Id,
+    ///             google_compute_instance.Test2.Id,
+    ///         },
+    ///         NamedPorts = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
     ///             {
-    ///                 google_compute_instance.Test.Id,
-    ///                 google_compute_instance.Test2.Id,
+    ///                 Name = "http",
+    ///                 Port = 8080,
     ///             },
-    ///             NamedPorts = 
+    ///             new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
-    ///                 {
-    ///                     Name = "http",
-    ///                     Port = 8080,
-    ///                 },
-    ///                 new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
-    ///                 {
-    ///                     Name = "https",
-    ///                     Port = 8443,
-    ///                 },
+    ///                 Name = "https",
+    ///                 Port = 8443,
     ///             },
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///     }
+    ///         },
+    ///         Zone = "us-central1-a",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -90,7 +86,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/instanceGroup:InstanceGroup")]
-    public partial class InstanceGroup : Pulumi.CustomResource
+    public partial class InstanceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional textual description of the instance
@@ -197,7 +193,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InstanceGroupArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional textual description of the instance
@@ -263,9 +259,10 @@ namespace Pulumi.Gcp.Compute
         public InstanceGroupArgs()
         {
         }
+        public static new InstanceGroupArgs Empty => new InstanceGroupArgs();
     }
 
-    public sealed class InstanceGroupState : Pulumi.ResourceArgs
+    public sealed class InstanceGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional textual description of the instance
@@ -343,5 +340,6 @@ namespace Pulumi.Gcp.Compute
         public InstanceGroupState()
         {
         }
+        public static new InstanceGroupState Empty => new InstanceGroupState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceReservationAffinitySpecificReservationGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceReservationAffinitySpecificReservationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceReservationAffinitySpecificReservationGetArgs()
         {
         }
+        public static new InstanceReservationAffinitySpecificReservationGetArgs Empty => new InstanceReservationAffinitySpecificReservationGetArgs();
     }
 }

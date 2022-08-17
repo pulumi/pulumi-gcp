@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxFlowEventHandlerArgs : Pulumi.ResourceArgs
+    public sealed class CxFlowEventHandlerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the event to handle.
@@ -49,5 +49,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxFlowEventHandlerArgs()
         {
         }
+        public static new CxFlowEventHandlerArgs Empty => new CxFlowEventHandlerArgs();
     }
 }

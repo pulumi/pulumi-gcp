@@ -682,7 +682,7 @@ class Address(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         static = gcp.compute.Address("static")
-        debian_image = gcp.compute.get_image(family="debian-9",
+        debian_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         instance_with_ip = gcp.compute.Instance("instanceWithIp",
             machine_type="f1-micro",
@@ -851,7 +851,7 @@ class Address(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         static = gcp.compute.Address("static")
-        debian_image = gcp.compute.get_image(family="debian-9",
+        debian_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         instance_with_ip = gcp.compute.Instance("instanceWithIp",
             machine_type="f1-micro",

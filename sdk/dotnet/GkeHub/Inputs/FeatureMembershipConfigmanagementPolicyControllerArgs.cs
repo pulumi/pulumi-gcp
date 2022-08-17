@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementPolicyControllerArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementPolicyControllerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -42,9 +42,15 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("logDeniesEnabled")]
         public Input<bool>? LogDeniesEnabled { get; set; }
 
+        /// <summary>
+        /// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+        /// </summary>
         [Input("monitoring")]
         public Input<Inputs.FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs>? Monitoring { get; set; }
 
+        /// <summary>
+        /// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        /// </summary>
         [Input("mutationEnabled")]
         public Input<bool>? MutationEnabled { get; set; }
 
@@ -63,5 +69,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementPolicyControllerArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementPolicyControllerArgs Empty => new FeatureMembershipConfigmanagementPolicyControllerArgs();
     }
 }

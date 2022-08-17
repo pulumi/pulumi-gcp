@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target number of concurrent requests.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionAutomaticScalingRequestUtilizationArgs()
         {
         }
+        public static new FlexibleAppVersionAutomaticScalingRequestUtilizationArgs Empty => new FlexibleAppVersionAutomaticScalingRequestUtilizationArgs();
     }
 }

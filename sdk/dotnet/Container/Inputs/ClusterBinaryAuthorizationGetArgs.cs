@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterBinaryAuthorizationGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterBinaryAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -20,7 +20,9 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Mode of operation for Binary Authorization policy evaluation.
+        /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+        /// deprecated `enable_binary_authorization` parameter being set to `true`.
         /// </summary>
         [Input("evaluationMode")]
         public Input<string>? EvaluationMode { get; set; }
@@ -28,5 +30,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterBinaryAuthorizationGetArgs()
         {
         }
+        public static new ClusterBinaryAuthorizationGetArgs Empty => new ClusterBinaryAuthorizationGetArgs();
     }
 }

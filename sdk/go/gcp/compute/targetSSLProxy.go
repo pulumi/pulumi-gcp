@@ -19,24 +19,30 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
 // * How-to Guides
-//     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+//   - [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// TargetSslProxy can be imported using any of these accepted formats
+// # TargetSslProxy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
+//
+//	$ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
+//
+//	$ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
+//
 // ```
 type TargetSSLProxy struct {
 	pulumi.CustomResourceState
@@ -278,7 +284,7 @@ func (i *TargetSSLProxy) ToTargetSSLProxyOutputWithContext(ctx context.Context) 
 // TargetSSLProxyArrayInput is an input type that accepts TargetSSLProxyArray and TargetSSLProxyArrayOutput values.
 // You can construct a concrete instance of `TargetSSLProxyArrayInput` via:
 //
-//          TargetSSLProxyArray{ TargetSSLProxyArgs{...} }
+//	TargetSSLProxyArray{ TargetSSLProxyArgs{...} }
 type TargetSSLProxyArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +309,7 @@ func (i TargetSSLProxyArray) ToTargetSSLProxyArrayOutputWithContext(ctx context.
 // TargetSSLProxyMapInput is an input type that accepts TargetSSLProxyMap and TargetSSLProxyMapOutput values.
 // You can construct a concrete instance of `TargetSSLProxyMapInput` via:
 //
-//          TargetSSLProxyMap{ "key": TargetSSLProxyArgs{...} }
+//	TargetSSLProxyMap{ "key": TargetSSLProxyArgs{...} }
 type TargetSSLProxyMapInput interface {
 	pulumi.Input
 

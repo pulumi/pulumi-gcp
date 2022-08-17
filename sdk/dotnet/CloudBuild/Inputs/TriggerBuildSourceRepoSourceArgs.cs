@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildSourceRepoSourceArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildSourceRepoSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
@@ -82,5 +82,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildSourceRepoSourceArgs()
         {
         }
+        public static new TriggerBuildSourceRepoSourceArgs Empty => new TriggerBuildSourceRepoSourceArgs();
     }
 }

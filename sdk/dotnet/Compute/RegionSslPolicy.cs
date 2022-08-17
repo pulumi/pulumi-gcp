@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionSslPolicy:RegionSslPolicy")]
-    public partial class RegionSslPolicy : Pulumi.CustomResource
+    public partial class RegionSslPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionSslPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionSslPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("customFeatures")]
         private InputList<string>? _customFeatures;
@@ -244,9 +244,10 @@ namespace Pulumi.Gcp.Compute
         public RegionSslPolicyArgs()
         {
         }
+        public static new RegionSslPolicyArgs Empty => new RegionSslPolicyArgs();
     }
 
-    public sealed class RegionSslPolicyState : Pulumi.ResourceArgs
+    public sealed class RegionSslPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -353,5 +354,6 @@ namespace Pulumi.Gcp.Compute
         public RegionSslPolicyState()
         {
         }
+        public static new RegionSslPolicyState Empty => new RegionSslPolicyState();
     }
 }

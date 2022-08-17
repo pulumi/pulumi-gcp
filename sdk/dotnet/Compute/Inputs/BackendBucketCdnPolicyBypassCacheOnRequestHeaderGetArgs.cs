@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendBucketCdnPolicyBypassCacheOnRequestHeaderGetArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketCdnPolicyBypassCacheOnRequestHeaderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The header field name to match on when bypassing cache. Values are case-insensitive.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendBucketCdnPolicyBypassCacheOnRequestHeaderGetArgs()
         {
         }
+        public static new BackendBucketCdnPolicyBypassCacheOnRequestHeaderGetArgs Empty => new BackendBucketCdnPolicyBypassCacheOnRequestHeaderGetArgs();
     }
 }

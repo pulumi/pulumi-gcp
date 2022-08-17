@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerSourceToBuildGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerSourceToBuildGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The branch or tag to use. Must start with "refs/" (required).
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerSourceToBuildGetArgs()
         {
         }
+        public static new TriggerSourceToBuildGetArgs Empty => new TriggerSourceToBuildGetArgs();
     }
 }

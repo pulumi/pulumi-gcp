@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterIpAllocationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterIpAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address range for the cluster pod IPs.
@@ -52,5 +52,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterIpAllocationPolicyArgs()
         {
         }
+        public static new ClusterIpAllocationPolicyArgs Empty => new ClusterIpAllocationPolicyArgs();
     }
 }

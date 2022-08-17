@@ -28,30 +28,27 @@ namespace Pulumi.Gcp.SecurityCenter
     /// ### Scc Notification Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var sccNotification = new Gcp.PubSub.Topic("sccNotification", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var customNotificationConfig = new Gcp.SecurityCenter.NotificationConfig("customNotificationConfig", new Gcp.SecurityCenter.NotificationConfigArgs
-    ///         {
-    ///             ConfigId = "my-config",
-    ///             Organization = "123456789",
-    ///             Description = "My custom Cloud Security Command Center Finding Notification Configuration",
-    ///             PubsubTopic = sccNotification.Id,
-    ///             StreamingConfig = new Gcp.SecurityCenter.Inputs.NotificationConfigStreamingConfigArgs
-    ///             {
-    ///                 Filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"",
-    ///             },
-    ///         });
-    ///     }
+    ///     var sccNotification = new Gcp.PubSub.Topic("sccNotification");
     /// 
-    /// }
+    ///     var customNotificationConfig = new Gcp.SecurityCenter.NotificationConfig("customNotificationConfig", new()
+    ///     {
+    ///         ConfigId = "my-config",
+    ///         Organization = "123456789",
+    ///         Description = "My custom Cloud Security Command Center Finding Notification Configuration",
+    ///         PubsubTopic = sccNotification.Id,
+    ///         StreamingConfig = new Gcp.SecurityCenter.Inputs.NotificationConfigStreamingConfigArgs
+    ///         {
+    ///             Filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +64,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// ```
     /// </summary>
     [GcpResourceType("gcp:securitycenter/notificationConfig:NotificationConfig")]
-    public partial class NotificationConfig : Pulumi.CustomResource
+    public partial class NotificationConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This must be unique within the organization.
@@ -159,7 +156,7 @@ namespace Pulumi.Gcp.SecurityCenter
         }
     }
 
-    public sealed class NotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This must be unique within the organization.
@@ -197,9 +194,10 @@ namespace Pulumi.Gcp.SecurityCenter
         public NotificationConfigArgs()
         {
         }
+        public static new NotificationConfigArgs Empty => new NotificationConfigArgs();
     }
 
-    public sealed class NotificationConfigState : Pulumi.ResourceArgs
+    public sealed class NotificationConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This must be unique within the organization.
@@ -250,5 +248,6 @@ namespace Pulumi.Gcp.SecurityCenter
         public NotificationConfigState()
         {
         }
+        public static new NotificationConfigState Empty => new NotificationConfigState();
     }
 }

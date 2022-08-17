@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Inputs
 {
 
-    public sealed class ProviderBatchingArgs : Pulumi.ResourceArgs
+    public sealed class ProviderBatchingArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableBatching")]
         public Input<bool>? EnableBatching { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Inputs
         public ProviderBatchingArgs()
         {
         }
+        public static new ProviderBatchingArgs Empty => new ProviderBatchingArgs();
     }
 }

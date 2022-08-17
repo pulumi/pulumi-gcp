@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The common name of the distinguished name.
@@ -63,5 +63,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs()
         {
         }
+        public static new CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs Empty => new CertificateCertificateDescriptionSubjectDescriptionSubjectGetArgs();
     }
 }

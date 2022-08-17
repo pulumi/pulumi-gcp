@@ -21,20 +21,18 @@ namespace Pulumi.Gcp.CloudIdentity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
         ///     {
-        ///         var groups = Output.Create(Gcp.CloudIdentity.GetGroups.InvokeAsync(new Gcp.CloudIdentity.GetGroupsArgs
-        ///         {
-        ///             Parent = "customers/A01b123xz",
-        ///         }));
-        ///     }
+        ///         Parent = "customers/A01b123xz",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +50,18 @@ namespace Pulumi.Gcp.CloudIdentity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
         ///     {
-        ///         var groups = Output.Create(Gcp.CloudIdentity.GetGroups.InvokeAsync(new Gcp.CloudIdentity.GetGroupsArgs
-        ///         {
-        ///             Parent = "customers/A01b123xz",
-        ///         }));
-        ///     }
+        ///         Parent = "customers/A01b123xz",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Gcp.CloudIdentity
     }
 
 
-    public sealed class GetGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
@@ -86,9 +82,10 @@ namespace Pulumi.Gcp.CloudIdentity
         public GetGroupsArgs()
         {
         }
+        public static new GetGroupsArgs Empty => new GetGroupsArgs();
     }
 
-    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
@@ -99,6 +96,7 @@ namespace Pulumi.Gcp.CloudIdentity
         public GetGroupsInvokeArgs()
         {
         }
+        public static new GetGroupsInvokeArgs Empty => new GetGroupsInvokeArgs();
     }
 
 

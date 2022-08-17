@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Memcache.Inputs
 {
 
-    public sealed class InstanceMemcacheNodeArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMemcacheNodeArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public InstanceMemcacheNodeArgs()
         {
         }
+        public static new InstanceMemcacheNodeArgs Empty => new InstanceMemcacheNodeArgs();
     }
 }

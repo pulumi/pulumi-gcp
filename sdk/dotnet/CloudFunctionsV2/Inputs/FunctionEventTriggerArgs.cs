@@ -10,8 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 {
 
-    public sealed class FunctionEventTriggerArgs : Pulumi.ResourceArgs
+    public sealed class FunctionEventTriggerArgs : global::Pulumi.ResourceArgs
     {
+        [Input("eventFilters")]
+        private InputList<Inputs.FunctionEventTriggerEventFilterArgs>? _eventFilters;
+
+        /// <summary>
+        /// Criteria used to filter events.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionEventTriggerEventFilterArgs> EventFilters
+        {
+            get => _eventFilters ?? (_eventFilters = new InputList<Inputs.FunctionEventTriggerEventFilterArgs>());
+            set => _eventFilters = value;
+        }
+
         /// <summary>
         /// Required. The type of event to observe.
         /// </summary>
@@ -58,5 +71,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public FunctionEventTriggerArgs()
         {
         }
+        public static new FunctionEventTriggerArgs Empty => new FunctionEventTriggerArgs();
     }
 }

@@ -23,65 +23,64 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Entity Type Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
-    ///         var agent = new Gcp.Diagflow.CxAgent("agent", new Gcp.Diagflow.CxAgentArgs
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
     ///         {
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             Location = "global",
-    ///             DefaultLanguageCode = "en",
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///             Description = "Example description.",
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableSpellCorrection = true,
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///         });
-    ///         var basicEntityType = new Gcp.Diagflow.CxEntityType("basicEntityType", new Gcp.Diagflow.CxEntityTypeArgs
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             Parent = agent.Id,
-    ///             DisplayName = "MyEntity",
-    ///             Kind = "KIND_MAP",
-    ///             Entities = 
-    ///             {
-    ///                 new Gcp.Diagflow.Inputs.CxEntityTypeEntityArgs
-    ///                 {
-    ///                     Value = "value1",
-    ///                     Synonyms = 
-    ///                     {
-    ///                         "synonym1",
-    ///                         "synonym2",
-    ///                     },
-    ///                 },
-    ///                 new Gcp.Diagflow.Inputs.CxEntityTypeEntityArgs
-    ///                 {
-    ///                     Value = "value2",
-    ///                     Synonyms = 
-    ///                     {
-    ///                         "synonym3",
-    ///                         "synonym4",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             EnableFuzzyExtraction = false,
-    ///         });
-    ///     }
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var basicEntityType = new Gcp.Diagflow.CxEntityType("basicEntityType", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyEntity",
+    ///         Kind = "KIND_MAP",
+    ///         Entities = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxEntityTypeEntityArgs
+    ///             {
+    ///                 Value = "value1",
+    ///                 Synonyms = new[]
+    ///                 {
+    ///                     "synonym1",
+    ///                     "synonym2",
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxEntityTypeEntityArgs
+    ///             {
+    ///                 Value = "value2",
+    ///                 Synonyms = new[]
+    ///                 {
+    ///                     "synonym3",
+    ///                     "synonym4",
+    ///                 },
+    ///             },
+    ///         },
+    ///         EnableFuzzyExtraction = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -97,7 +96,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxEntityType:CxEntityType")]
-    public partial class CxEntityType : Pulumi.CustomResource
+    public partial class CxEntityType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Represents kinds of entities.
@@ -219,7 +218,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxEntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class CxEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents kinds of entities.
@@ -305,9 +304,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxEntityTypeArgs()
         {
         }
+        public static new CxEntityTypeArgs Empty => new CxEntityTypeArgs();
     }
 
-    public sealed class CxEntityTypeState : Pulumi.ResourceArgs
+    public sealed class CxEntityTypeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents kinds of entities.
@@ -400,5 +400,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxEntityTypeState()
         {
         }
+        public static new CxEntityTypeState Empty => new CxEntityTypeState();
     }
 }

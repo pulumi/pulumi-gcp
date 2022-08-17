@@ -23,31 +23,25 @@ namespace Pulumi.Gcp.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
         ///     {
-        ///         var sample = Output.Create(Gcp.Dns.GetManagedZone.InvokeAsync(new Gcp.Dns.GetManagedZoneArgs
-        ///         {
-        ///             Name = "sample-zone",
-        ///         }));
-        ///         var rs = Output.Tuple(sample, sample).Apply(values =&gt;
-        ///         {
-        ///             var sample = values.Item1;
-        ///             var sample1 = values.Item2;
-        ///             return Output.Create(Gcp.Dns.GetRecordSet.InvokeAsync(new Gcp.Dns.GetRecordSetArgs
-        ///             {
-        ///                 ManagedZone = sample.Name,
-        ///                 Name = $"my-record.{sample1.DnsName}",
-        ///                 Type = "A",
-        ///             }));
-        ///         });
-        ///     }
+        ///         Name = "sample-zone",
+        ///     });
         /// 
-        /// }
+        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
+        ///     {
+        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "A",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -67,31 +61,25 @@ namespace Pulumi.Gcp.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
         ///     {
-        ///         var sample = Output.Create(Gcp.Dns.GetManagedZone.InvokeAsync(new Gcp.Dns.GetManagedZoneArgs
-        ///         {
-        ///             Name = "sample-zone",
-        ///         }));
-        ///         var rs = Output.Tuple(sample, sample).Apply(values =&gt;
-        ///         {
-        ///             var sample = values.Item1;
-        ///             var sample1 = values.Item2;
-        ///             return Output.Create(Gcp.Dns.GetRecordSet.InvokeAsync(new Gcp.Dns.GetRecordSetArgs
-        ///             {
-        ///                 ManagedZone = sample.Name,
-        ///                 Name = $"my-record.{sample1.DnsName}",
-        ///                 Type = "A",
-        ///             }));
-        ///         });
-        ///     }
+        ///         Name = "sample-zone",
+        ///     });
         /// 
-        /// }
+        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
+        ///     {
+        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "A",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -101,7 +89,7 @@ namespace Pulumi.Gcp.Dns
     }
 
 
-    public sealed class GetRecordSetArgs : Pulumi.InvokeArgs
+    public sealed class GetRecordSetArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Name of the zone.
@@ -127,9 +115,10 @@ namespace Pulumi.Gcp.Dns
         public GetRecordSetArgs()
         {
         }
+        public static new GetRecordSetArgs Empty => new GetRecordSetArgs();
     }
 
-    public sealed class GetRecordSetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRecordSetInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Name of the zone.
@@ -155,6 +144,7 @@ namespace Pulumi.Gcp.Dns
         public GetRecordSetInvokeArgs()
         {
         }
+        public static new GetRecordSetInvokeArgs Empty => new GetRecordSetInvokeArgs();
     }
 
 

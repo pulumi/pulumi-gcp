@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionConditionAbsentArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionConditionAbsentArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregations")]
         private InputList<Inputs.AlertPolicyConditionConditionAbsentAggregationArgs>? _aggregations;
@@ -80,5 +80,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionConditionAbsentArgs()
         {
         }
+        public static new AlertPolicyConditionConditionAbsentArgs Empty => new AlertPolicyConditionConditionAbsentArgs();
     }
 }

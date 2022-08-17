@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableExternalDataConfigurationHivePartitioningOptionsArgs : Pulumi.ResourceArgs
+    public sealed class TableExternalDataConfigurationHivePartitioningOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When set, what mode of hive partitioning to use when
@@ -49,5 +49,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableExternalDataConfigurationHivePartitioningOptionsArgs()
         {
         }
+        public static new TableExternalDataConfigurationHivePartitioningOptionsArgs Empty => new TableExternalDataConfigurationHivePartitioningOptionsArgs();
     }
 }

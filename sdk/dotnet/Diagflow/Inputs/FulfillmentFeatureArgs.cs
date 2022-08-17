@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class FulfillmentFeatureArgs : Pulumi.ResourceArgs
+    public sealed class FulfillmentFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the feature that enabled for fulfillment.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public FulfillmentFeatureArgs()
         {
         }
+        public static new FulfillmentFeatureArgs Empty => new FulfillmentFeatureArgs();
     }
 }

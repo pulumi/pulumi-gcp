@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class IamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class IamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public IamMemberConditionArgs()
         {
         }
+        public static new IamMemberConditionArgs Empty => new IamMemberConditionArgs();
     }
 }

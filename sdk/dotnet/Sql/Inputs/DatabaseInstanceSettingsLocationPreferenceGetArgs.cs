@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsLocationPreferenceGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsLocationPreferenceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A GAE application whose zone to remain
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsLocationPreferenceGetArgs()
         {
         }
+        public static new DatabaseInstanceSettingsLocationPreferenceGetArgs Empty => new DatabaseInstanceSettingsLocationPreferenceGetArgs();
     }
 }

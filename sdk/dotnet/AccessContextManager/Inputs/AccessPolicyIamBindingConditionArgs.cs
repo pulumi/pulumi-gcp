@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessPolicyIamBindingConditionArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessPolicyIamBindingConditionArgs()
         {
         }
+        public static new AccessPolicyIamBindingConditionArgs Empty => new AccessPolicyIamBindingConditionArgs();
     }
 }

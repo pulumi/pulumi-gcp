@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class FirewallAllowArgs : Pulumi.ResourceArgs
+    public sealed class FirewallAllowArgs : global::Pulumi.ResourceArgs
     {
         [Input("ports")]
         private InputList<string>? _ports;
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public FirewallAllowArgs()
         {
         }
+        public static new FirewallAllowArgs Empty => new FirewallAllowArgs();
     }
 }

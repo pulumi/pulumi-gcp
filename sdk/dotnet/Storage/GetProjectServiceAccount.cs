@@ -51,26 +51,25 @@ namespace Pulumi.Gcp.Storage
         /// ### Pub/Sub Notifications
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-        ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
-        ///         {
-        ///             Topic = google_pubsub_topic.Topic.Name,
-        ///             Role = "roles/pubsub.publisher",
-        ///             Members = 
-        ///             {
-        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-        ///             },
-        ///         });
-        ///     }
+        ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        /// }
+        ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+        ///     {
+        ///         Topic = google_pubsub_topic.Topic.Name,
+        ///         Role = "roles/pubsub.publisher",
+        ///         Members = new[]
+        ///         {
+        ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -78,40 +77,40 @@ namespace Pulumi.Gcp.Storage
         /// ### Cloud KMS Keys
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-        ///         var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new Gcp.Kms.CryptoKeyIAMBindingArgs
-        ///         {
-        ///             CryptoKeyId = "your-crypto-key-id",
-        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-        ///             Members = 
-        ///             {
-        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-        ///             },
-        ///         });
-        ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-        ///         {
-        ///             Location = "US",
-        ///             Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
-        ///             {
-        ///                 DefaultKmsKeyName = "your-crypto-key-id",
-        ///             },
-        ///         }, new CustomResourceOptions
-        ///         {
-        ///             DependsOn = 
-        ///             {
-        ///                 binding,
-        ///             },
-        ///         });
-        ///     }
+        ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        /// }
+        ///     var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new()
+        ///     {
+        ///         CryptoKeyId = "your-crypto-key-id",
+        ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///         Members = new[]
+        ///         {
+        ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+        ///         },
+        ///     });
+        /// 
+        ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+        ///     {
+        ///         Location = "US",
+        ///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
+        ///         {
+        ///             DefaultKmsKeyName = "your-crypto-key-id",
+        ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn = new[]
+        ///         {
+        ///             binding,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -159,26 +158,25 @@ namespace Pulumi.Gcp.Storage
         /// ### Pub/Sub Notifications
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-        ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
-        ///         {
-        ///             Topic = google_pubsub_topic.Topic.Name,
-        ///             Role = "roles/pubsub.publisher",
-        ///             Members = 
-        ///             {
-        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-        ///             },
-        ///         });
-        ///     }
+        ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        /// }
+        ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+        ///     {
+        ///         Topic = google_pubsub_topic.Topic.Name,
+        ///         Role = "roles/pubsub.publisher",
+        ///         Members = new[]
+        ///         {
+        ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -186,40 +184,40 @@ namespace Pulumi.Gcp.Storage
         /// ### Cloud KMS Keys
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-        ///         var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new Gcp.Kms.CryptoKeyIAMBindingArgs
-        ///         {
-        ///             CryptoKeyId = "your-crypto-key-id",
-        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-        ///             Members = 
-        ///             {
-        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-        ///             },
-        ///         });
-        ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-        ///         {
-        ///             Location = "US",
-        ///             Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
-        ///             {
-        ///                 DefaultKmsKeyName = "your-crypto-key-id",
-        ///             },
-        ///         }, new CustomResourceOptions
-        ///         {
-        ///             DependsOn = 
-        ///             {
-        ///                 binding,
-        ///             },
-        ///         });
-        ///     }
+        ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        /// }
+        ///     var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new()
+        ///     {
+        ///         CryptoKeyId = "your-crypto-key-id",
+        ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///         Members = new[]
+        ///         {
+        ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+        ///         },
+        ///     });
+        /// 
+        ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+        ///     {
+        ///         Location = "US",
+        ///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
+        ///         {
+        ///             DefaultKmsKeyName = "your-crypto-key-id",
+        ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn = new[]
+        ///         {
+        ///             binding,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -229,7 +227,7 @@ namespace Pulumi.Gcp.Storage
     }
 
 
-    public sealed class GetProjectServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -247,9 +245,10 @@ namespace Pulumi.Gcp.Storage
         public GetProjectServiceAccountArgs()
         {
         }
+        public static new GetProjectServiceAccountArgs Empty => new GetProjectServiceAccountArgs();
     }
 
-    public sealed class GetProjectServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -267,6 +266,7 @@ namespace Pulumi.Gcp.Storage
         public GetProjectServiceAccountInvokeArgs()
         {
         }
+        public static new GetProjectServiceAccountInvokeArgs Empty => new GetProjectServiceAccountInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketWebsiteArgs : Pulumi.ResourceArgs
+    public sealed class BucketWebsiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Behaves as the bucket's directory index where
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketWebsiteArgs()
         {
         }
+        public static new BucketWebsiteArgs Empty => new BucketWebsiteArgs();
     }
 }

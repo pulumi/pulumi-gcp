@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_vpn_gateway = Gcp.Compute.GetVPNGateway.Invoke(new()
         ///     {
-        ///         var my_vpn_gateway = Output.Create(Gcp.Compute.GetVPNGateway.InvokeAsync(new Gcp.Compute.GetVPNGatewayArgs
-        ///         {
-        ///             Name = "vpn-gateway-us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "vpn-gateway-us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_vpn_gateway = Gcp.Compute.GetVPNGateway.Invoke(new()
         ///     {
-        ///         var my_vpn_gateway = Output.Create(Gcp.Compute.GetVPNGateway.InvokeAsync(new Gcp.Compute.GetVPNGatewayArgs
-        ///         {
-        ///             Name = "vpn-gateway-us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "vpn-gateway-us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetVPNGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetVPNGatewayArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the VPN gateway.
@@ -96,9 +92,10 @@ namespace Pulumi.Gcp.Compute
         public GetVPNGatewayArgs()
         {
         }
+        public static new GetVPNGatewayArgs Empty => new GetVPNGatewayArgs();
     }
 
-    public sealed class GetVPNGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVPNGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the VPN gateway.
@@ -123,6 +120,7 @@ namespace Pulumi.Gcp.Compute
         public GetVPNGatewayInvokeArgs()
         {
         }
+        public static new GetVPNGatewayInvokeArgs Empty => new GetVPNGatewayInvokeArgs();
     }
 
 

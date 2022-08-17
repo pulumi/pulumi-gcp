@@ -20,28 +20,27 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Tenant Default Supported Idp Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
     ///     {
-    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
-    ///         {
-    ///             DisplayName = "tenant",
-    ///         });
-    ///         var idpConfig = new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfig("idpConfig", new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfigArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Tenant = tenant.Name,
-    ///             IdpId = "playgames.google.com",
-    ///             ClientId = "my-client-id",
-    ///             ClientSecret = "secret",
-    ///         });
-    ///     }
+    ///         DisplayName = "tenant",
+    ///     });
     /// 
-    /// }
+    ///     var idpConfig = new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfig("idpConfig", new()
+    ///     {
+    ///         Enabled = true,
+    ///         Tenant = tenant.Name,
+    ///         IdpId = "playgames.google.com",
+    ///         ClientId = "my-client-id",
+    ///         ClientSecret = "secret",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +60,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig")]
-    public partial class TenantDefaultSupportedIdpConfig : Pulumi.CustomResource
+    public partial class TenantDefaultSupportedIdpConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// OAuth client ID
@@ -160,7 +159,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class TenantDefaultSupportedIdpConfigArgs : Pulumi.ResourceArgs
+    public sealed class TenantDefaultSupportedIdpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth client ID
@@ -212,9 +211,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantDefaultSupportedIdpConfigArgs()
         {
         }
+        public static new TenantDefaultSupportedIdpConfigArgs Empty => new TenantDefaultSupportedIdpConfigArgs();
     }
 
-    public sealed class TenantDefaultSupportedIdpConfigState : Pulumi.ResourceArgs
+    public sealed class TenantDefaultSupportedIdpConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth client ID
@@ -272,5 +272,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantDefaultSupportedIdpConfigState()
         {
         }
+        public static new TenantDefaultSupportedIdpConfigState Empty => new TenantDefaultSupportedIdpConfigState();
     }
 }

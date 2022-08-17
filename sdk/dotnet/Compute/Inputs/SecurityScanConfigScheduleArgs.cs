@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityScanConfigScheduleArgs : Pulumi.ResourceArgs
+    public sealed class SecurityScanConfigScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The duration of time between executions in days
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityScanConfigScheduleArgs()
         {
         }
+        public static new SecurityScanConfigScheduleArgs Empty => new SecurityScanConfigScheduleArgs();
     }
 }

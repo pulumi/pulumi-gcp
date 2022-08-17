@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendServiceSecuritySettingsArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceSecuritySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ClientTlsPolicy is a resource that specifies how a client should authenticate
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendServiceSecuritySettingsArgs()
         {
         }
+        public static new BackendServiceSecuritySettingsArgs Empty => new BackendServiceSecuritySettingsArgs();
     }
 }

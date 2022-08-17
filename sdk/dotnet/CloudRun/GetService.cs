@@ -21,21 +21,19 @@ namespace Pulumi.Gcp.CloudRun
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         var run_service = Output.Create(Gcp.CloudRun.GetService.InvokeAsync(new Gcp.CloudRun.GetServiceArgs
-        ///         {
-        ///             Location = "us-central1",
-        ///             Name = "my-service",
-        ///         }));
-        ///     }
+        ///         Location = "us-central1",
+        ///         Name = "my-service",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,21 +51,19 @@ namespace Pulumi.Gcp.CloudRun
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var run_service = Gcp.CloudRun.GetService.Invoke(new()
         ///     {
-        ///         var run_service = Output.Create(Gcp.CloudRun.GetService.InvokeAsync(new Gcp.CloudRun.GetServiceArgs
-        ///         {
-        ///             Location = "us-central1",
-        ///             Name = "my-service",
-        ///         }));
-        ///     }
+        ///         Location = "us-central1",
+        ///         Name = "my-service",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -77,7 +73,7 @@ namespace Pulumi.Gcp.CloudRun
     }
 
 
-    public sealed class GetServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
@@ -101,9 +97,10 @@ namespace Pulumi.Gcp.CloudRun
         public GetServiceArgs()
         {
         }
+        public static new GetServiceArgs Empty => new GetServiceArgs();
     }
 
-    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
@@ -127,6 +124,7 @@ namespace Pulumi.Gcp.CloudRun
         public GetServiceInvokeArgs()
         {
         }
+        public static new GetServiceInvokeArgs Empty => new GetServiceInvokeArgs();
     }
 
 

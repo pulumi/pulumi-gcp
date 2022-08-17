@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/configIamBinding:ConfigIamBinding")]
-    public partial class ConfigIamBinding : Pulumi.CustomResource
+    public partial class ConfigIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.ConfigIamBindingCondition?> Condition { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         }
     }
 
-    public sealed class ConfigIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class ConfigIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConfigIamBindingConditionArgs>? Condition { get; set; }
@@ -151,9 +151,10 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamBindingArgs()
         {
         }
+        public static new ConfigIamBindingArgs Empty => new ConfigIamBindingArgs();
     }
 
-    public sealed class ConfigIamBindingState : Pulumi.ResourceArgs
+    public sealed class ConfigIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConfigIamBindingConditionGetArgs>? Condition { get; set; }
@@ -196,5 +197,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamBindingState()
         {
         }
+        public static new ConfigIamBindingState Empty => new ConfigIamBindingState();
     }
 }

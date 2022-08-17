@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAddonsConfigCloudrunConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAddonsConfigCloudrunConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the Istio addon, which makes it easy to set up Istio for services in a
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAddonsConfigCloudrunConfigGetArgs()
         {
         }
+        public static new ClusterAddonsConfigCloudrunConfigGetArgs Empty => new ClusterAddonsConfigCloudrunConfigGetArgs();
     }
 }

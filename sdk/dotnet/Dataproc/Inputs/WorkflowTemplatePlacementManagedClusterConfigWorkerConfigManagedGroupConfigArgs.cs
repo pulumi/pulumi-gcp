@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("instanceGroupManagerName")]
         public Input<string>? InstanceGroupManagerName { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs();
     }
 }

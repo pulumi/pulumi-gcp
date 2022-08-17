@@ -22,166 +22,167 @@ namespace Pulumi.Gcp.VpcAccess
     /// ### VPC Access Connector
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
     ///     {
-    ///         var connector = new Gcp.VpcAccess.Connector("connector", new Gcp.VpcAccess.ConnectorArgs
-    ///         {
-    ///             IpCidrRange = "10.8.0.0/28",
-    ///             Network = "default",
-    ///         });
-    ///     }
+    ///         IpCidrRange = "10.8.0.0/28",
+    ///         Network = "default",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### VPC Access Connector Shared VPC
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new()
     ///     {
-    ///         var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.2.0.0/28",
-    ///             Region = "us-central1",
-    ///             Network = customTestNetwork.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var connector = new Gcp.VpcAccess.Connector("connector", new Gcp.VpcAccess.ConnectorArgs
-    ///         {
-    ///             Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
-    ///             {
-    ///                 Name = customTestSubnetwork.Name,
-    ///             },
-    ///             MachineType = "e2-standard-4",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.2.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = customTestNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
+    ///     {
+    ///         Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
+    ///         {
+    ///             Name = customTestSubnetwork.Name,
+    ///         },
+    ///         MachineType = "e2-standard-4",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Cloudrun VPC Access Connector
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vpcaccessApi = new Gcp.Projects.Service("vpcaccessApi", new()
     ///     {
-    ///         var vpcaccessApi = new Gcp.Projects.Service("vpcaccessApi", new Gcp.Projects.ServiceArgs
+    ///         ServiceName = "vpcaccess.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // VPC
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // VPC access connector
+    ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
+    ///     {
+    ///         Region = "us-west1",
+    ///         IpCidrRange = "10.8.0.0/28",
+    ///         MaxThroughput = 300,
+    ///         Network = @default.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
     ///         {
-    ///             ServiceName = "vpcaccess.googleapis.com",
-    ///             DisableOnDestroy = false,
-    ///         }, new CustomResourceOptions
+    ///             vpcaccessApi,
+    ///         },
+    ///     });
+    /// 
+    ///     // Cloud Router
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Region = "us-west1",
+    ///         Network = @default.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // NAT configuration
+    ///     var routerNat = new Gcp.Compute.RouterNat("routerNat", new()
+    ///     {
+    ///         Region = "us-west1",
+    ///         Router = router.Name,
+    ///         SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
+    ///         NatIpAllocateOption = "AUTO_ONLY",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Cloud Run service
+    ///     var gcrService = new Gcp.CloudRun.Service("gcrService", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         // VPC
-    ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         // VPC access connector
-    ///         var connector = new Gcp.VpcAccess.Connector("connector", new Gcp.VpcAccess.ConnectorArgs
-    ///         {
-    ///             Region = "us-west1",
-    ///             IpCidrRange = "10.8.0.0/28",
-    ///             MaxThroughput = 300,
-    ///             Network = @default.Name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///             DependsOn = 
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
     ///             {
-    ///                 vpcaccessApi,
-    ///             },
-    ///         });
-    ///         // Cloud Router
-    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Region = "us-west1",
-    ///             Network = @default.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         // NAT configuration
-    ///         var routerNat = new Gcp.Compute.RouterNat("routerNat", new Gcp.Compute.RouterNatArgs
-    ///         {
-    ///             Region = "us-west1",
-    ///             Router = router.Name,
-    ///             SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
-    ///             NatIpAllocateOption = "AUTO_ONLY",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         // Cloud Run service
-    ///         var gcrService = new Gcp.CloudRun.Service("gcrService", new Gcp.CloudRun.ServiceArgs
-    ///         {
-    ///             Location = "us-west1",
-    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
-    ///             {
-    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 Containers = new[]
     ///                 {
-    ///                     Containers = 
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                     {
-    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Resources = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerResourcesArgs
     ///                         {
-    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
-    ///                             Resources = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerResourcesArgs
+    ///                             Limits = 
     ///                             {
-    ///                                 Limits = 
-    ///                                 {
-    ///                                     { "cpu", "1000m" },
-    ///                                     { "memory", "512M" },
-    ///                                 },
+    ///                                 { "cpu", "1000m" },
+    ///                                 { "memory", "512M" },
     ///                             },
     ///                         },
     ///                     },
     ///                 },
-    ///                 Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///             },
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///             {
+    ///                 Annotations = 
     ///                 {
-    ///                     Annotations = 
-    ///                     {
-    ///                         { "autoscaling.knative.dev/maxScale", "5" },
-    ///                         { "run.googleapis.com/vpc-access-connector", connector.Name },
-    ///                         { "run.googleapis.com/vpc-access-egress", "all-traffic" },
-    ///                     },
+    ///                     { "autoscaling.knative.dev/maxScale", "5" },
+    ///                     { "run.googleapis.com/vpc-access-connector", connector.Name },
+    ///                     { "run.googleapis.com/vpc-access-egress", "all-traffic" },
     ///                 },
     ///             },
-    ///             AutogenerateRevisionName = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///         AutogenerateRevisionName = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -205,7 +206,7 @@ namespace Pulumi.Gcp.VpcAccess
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vpcaccess/connector:Connector")]
-    public partial class Connector : Pulumi.CustomResource
+    public partial class Connector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
@@ -332,7 +333,7 @@ namespace Pulumi.Gcp.VpcAccess
         }
     }
 
-    public sealed class ConnectorArgs : Pulumi.ResourceArgs
+    public sealed class ConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
@@ -406,9 +407,10 @@ namespace Pulumi.Gcp.VpcAccess
         public ConnectorArgs()
         {
         }
+        public static new ConnectorArgs Empty => new ConnectorArgs();
     }
 
-    public sealed class ConnectorState : Pulumi.ResourceArgs
+    public sealed class ConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
@@ -494,5 +496,6 @@ namespace Pulumi.Gcp.VpcAccess
         public ConnectorState()
         {
         }
+        public static new ConnectorState Empty => new ConnectorState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendServiceLogConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceLogConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable logging for the load balancer traffic served by this backend service.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendServiceLogConfigGetArgs()
         {
         }
+        public static new BackendServiceLogConfigGetArgs Empty => new BackendServiceLogConfigGetArgs();
     }
 }

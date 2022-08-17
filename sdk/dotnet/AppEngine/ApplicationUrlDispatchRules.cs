@@ -20,70 +20,71 @@ namespace Pulumi.Gcp.AppEngine
     /// ### App Engine Application Url Dispatch Rules Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
-    ///         });
-    ///         var adminV3 = new Gcp.AppEngine.StandardAppVersion("adminV3", new Gcp.AppEngine.StandardAppVersionArgs
-    ///         {
-    ///             VersionId = "v3",
-    ///             Service = "admin",
-    ///             Runtime = "nodejs10",
-    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
-    ///             {
-    ///                 Shell = "node ./app.js",
-    ///             },
-    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
-    ///             {
-    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
-    ///                 {
-    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
-    ///                     {
-    ///                         var bucketName = values.Item1;
-    ///                         var objectName = values.Item2;
-    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
-    ///                     }),
-    ///                 },
-    ///             },
-    ///             EnvVariables = 
-    ///             {
-    ///                 { "port", "8080" },
-    ///             },
-    ///             NoopOnDestroy = true,
-    ///         });
-    ///         var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("webService", new Gcp.AppEngine.ApplicationUrlDispatchRulesArgs
-    ///         {
-    ///             DispatchRules = 
-    ///             {
-    ///                 new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
-    ///                 {
-    ///                     Domain = "*",
-    ///                     Path = "/*",
-    ///                     Service = "default",
-    ///                 },
-    ///                 new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
-    ///                 {
-    ///                     Domain = "*",
-    ///                     Path = "/admin/*",
-    ///                     Service = adminV3.Service,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///     });
+    /// 
+    ///     var adminV3 = new Gcp.AppEngine.StandardAppVersion("adminV3", new()
+    ///     {
+    ///         VersionId = "v3",
+    ///         Service = "admin",
+    ///         Runtime = "nodejs10",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///         NoopOnDestroy = true,
+    ///     });
+    /// 
+    ///     var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("webService", new()
+    ///     {
+    ///         DispatchRules = new[]
+    ///         {
+    ///             new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
+    ///             {
+    ///                 Domain = "*",
+    ///                 Path = "/*",
+    ///                 Service = "default",
+    ///             },
+    ///             new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
+    ///             {
+    ///                 Domain = "*",
+    ///                 Path = "/admin/*",
+    ///                 Service = adminV3.Service,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +96,7 @@ namespace Pulumi.Gcp.AppEngine
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules")]
-    public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
+    public partial class ApplicationUrlDispatchRules : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Rules to match an HTTP request and dispatch that request to a service.
@@ -155,7 +156,7 @@ namespace Pulumi.Gcp.AppEngine
         }
     }
 
-    public sealed class ApplicationUrlDispatchRulesArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationUrlDispatchRulesArgs : global::Pulumi.ResourceArgs
     {
         [Input("dispatchRules", required: true)]
         private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs>? _dispatchRules;
@@ -180,9 +181,10 @@ namespace Pulumi.Gcp.AppEngine
         public ApplicationUrlDispatchRulesArgs()
         {
         }
+        public static new ApplicationUrlDispatchRulesArgs Empty => new ApplicationUrlDispatchRulesArgs();
     }
 
-    public sealed class ApplicationUrlDispatchRulesState : Pulumi.ResourceArgs
+    public sealed class ApplicationUrlDispatchRulesState : global::Pulumi.ResourceArgs
     {
         [Input("dispatchRules")]
         private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleGetArgs>? _dispatchRules;
@@ -207,5 +209,6 @@ namespace Pulumi.Gcp.AppEngine
         public ApplicationUrlDispatchRulesState()
         {
         }
+        public static new ApplicationUrlDispatchRulesState Empty => new ApplicationUrlDispatchRulesState();
     }
 }

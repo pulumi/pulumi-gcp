@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolManagementGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolManagementGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolManagementGetArgs()
         {
         }
+        public static new ClusterNodePoolManagementGetArgs Empty => new ClusterNodePoolManagementGetArgs();
     }
 }

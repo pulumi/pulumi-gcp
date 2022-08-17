@@ -26,133 +26,127 @@ namespace Pulumi.Gcp.Notebooks
     /// ### Notebook Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         Location = "us-west1-a",
+    ///         MachineType = "e2-medium",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             Location = "us-west1-a",
-    ///             MachineType = "e2-medium",
-    ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
-    ///             {
-    ///                 ImageFamily = "tf-latest-cpu",
-    ///                 Project = "deeplearning-platform-release",
-    ///             },
-    ///         });
-    ///     }
+    ///             ImageFamily = "tf-latest-cpu",
+    ///             Project = "deeplearning-platform-release",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Notebook Instance Basic Container
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
     ///         {
-    ///             ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
-    ///             {
-    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
-    ///                 Tag = "latest",
-    ///             },
-    ///             Location = "us-west1-a",
-    ///             MachineType = "e2-medium",
-    ///             Metadata = 
-    ///             {
-    ///                 { "proxy-mode", "service_account" },
-    ///             },
-    ///         });
-    ///     }
+    ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///             Tag = "latest",
+    ///         },
+    ///         Location = "us-west1-a",
+    ///         MachineType = "e2-medium",
+    ///         Metadata = 
+    ///         {
+    ///             { "proxy-mode", "service_account" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Notebook Instance Basic Gpu
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
     ///         {
-    ///             AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
-    ///             {
-    ///                 CoreCount = 1,
-    ///                 Type = "NVIDIA_TESLA_T4",
-    ///             },
-    ///             InstallGpuDriver = true,
-    ///             Location = "us-west1-a",
-    ///             MachineType = "n1-standard-1",
-    ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
-    ///             {
-    ///                 ImageFamily = "tf-latest-gpu",
-    ///                 Project = "deeplearning-platform-release",
-    ///             },
-    ///         });
-    ///     }
+    ///             CoreCount = 1,
+    ///             Type = "NVIDIA_TESLA_T4",
+    ///         },
+    ///         InstallGpuDriver = true,
+    ///         Location = "us-west1-a",
+    ///         MachineType = "n1-standard-1",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///         {
+    ///             ImageFamily = "tf-latest-gpu",
+    ///             Project = "deeplearning-platform-release",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Notebook Instance Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myNetwork = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
-    ///         var myNetwork = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
-    ///         {
-    ///             Name = "default",
-    ///         }));
-    ///         var mySubnetwork = Output.Create(Gcp.Compute.GetSubnetwork.InvokeAsync(new Gcp.Compute.GetSubnetworkArgs
-    ///         {
-    ///             Name = "default",
-    ///             Region = "us-central1",
-    ///         }));
-    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
-    ///         {
-    ///             Location = "us-central1-a",
-    ///             MachineType = "e2-medium",
-    ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
-    ///             {
-    ///                 Project = "deeplearning-platform-release",
-    ///                 ImageFamily = "tf-latest-cpu",
-    ///             },
-    ///             InstanceOwners = 
-    ///             {
-    ///                 "admin@hashicorptest.com",
-    ///             },
-    ///             ServiceAccount = "emailAddress:my@service-account.com",
-    ///             InstallGpuDriver = true,
-    ///             BootDiskType = "PD_SSD",
-    ///             BootDiskSizeGb = 110,
-    ///             NoPublicIp = true,
-    ///             NoProxyAccess = true,
-    ///             Network = myNetwork.Apply(myNetwork =&gt; myNetwork.Id),
-    ///             Subnet = mySubnetwork.Apply(mySubnetwork =&gt; mySubnetwork.Id),
-    ///             Labels = 
-    ///             {
-    ///                 { "k", "val" },
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "default",
+    ///     });
     /// 
-    /// }
+    ///     var mySubnetwork = Gcp.Compute.GetSubnetwork.Invoke(new()
+    ///     {
+    ///         Name = "default",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         MachineType = "e2-medium",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///         {
+    ///             Project = "deeplearning-platform-release",
+    ///             ImageFamily = "tf-latest-cpu",
+    ///         },
+    ///         InstanceOwners = new[]
+    ///         {
+    ///             "admin@hashicorptest.com",
+    ///         },
+    ///         ServiceAccount = "emailAddress:my@service-account.com",
+    ///         InstallGpuDriver = true,
+    ///         BootDiskType = "PD_SSD",
+    ///         BootDiskSizeGb = 110,
+    ///         NoPublicIp = true,
+    ///         NoProxyAccess = true,
+    ///         Network = myNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Subnet = mySubnetwork.Apply(getSubnetworkResult =&gt; getSubnetworkResult.Id),
+    ///         Labels = 
+    ///         {
+    ///             { "k", "val" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -172,7 +166,7 @@ namespace Pulumi.Gcp.Notebooks
     /// ```
     /// </summary>
     [GcpResourceType("gcp:notebooks/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators,
@@ -193,7 +187,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Output("bootDiskType")]
         public Output<string?> BootDiskType { get; private set; } = null!;
@@ -229,7 +223,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Output("dataDiskType")]
         public Output<string?> DataDiskType { get; private set; } = null!;
@@ -461,7 +455,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators,
@@ -482,7 +476,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -518,7 +512,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
@@ -727,9 +721,10 @@ namespace Pulumi.Gcp.Notebooks
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The hardware accelerator used on this instance. If you use accelerators,
@@ -750,7 +745,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -786,7 +781,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
@@ -1007,5 +1002,6 @@ namespace Pulumi.Gcp.Notebooks
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

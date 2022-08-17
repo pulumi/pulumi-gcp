@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class SubscriptionExpirationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionExpirationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the "time-to-live" duration for an associated resource. The
@@ -25,5 +25,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public SubscriptionExpirationPolicyArgs()
         {
         }
+        public static new SubscriptionExpirationPolicyArgs Empty => new SubscriptionExpirationPolicyArgs();
     }
 }

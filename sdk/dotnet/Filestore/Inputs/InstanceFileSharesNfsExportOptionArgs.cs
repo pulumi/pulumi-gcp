@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Filestore.Inputs
 {
 
-    public sealed class InstanceFileSharesNfsExportOptionArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFileSharesNfsExportOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either READ_ONLY, for allowing only read requests on the exported directory,
@@ -63,5 +63,6 @@ namespace Pulumi.Gcp.Filestore.Inputs
         public InstanceFileSharesNfsExportOptionArgs()
         {
         }
+        public static new InstanceFileSharesNfsExportOptionArgs Empty => new InstanceFileSharesNfsExportOptionArgs();
     }
 }

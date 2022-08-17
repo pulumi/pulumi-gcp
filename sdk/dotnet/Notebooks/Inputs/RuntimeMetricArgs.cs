@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeMetricArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeMetricArgs : global::Pulumi.ResourceArgs
     {
         [Input("systemMetrics")]
         private InputMap<string>? _systemMetrics;
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeMetricArgs()
         {
         }
+        public static new RuntimeMetricArgs Empty => new RuntimeMetricArgs();
     }
 }

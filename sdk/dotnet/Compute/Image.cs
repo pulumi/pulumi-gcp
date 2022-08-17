@@ -37,55 +37,51 @@ namespace Pulumi.Gcp.Compute
     /// ### Image Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
-    ///         var example = new Gcp.Compute.Image("example", new Gcp.Compute.ImageArgs
+    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
     ///         {
-    ///             RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
-    ///             {
-    ///                 Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-    ///             },
-    ///         });
-    ///     }
+    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Image Guest Os
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
-    ///         var example = new Gcp.Compute.Image("example", new Gcp.Compute.ImageArgs
+    ///         GuestOsFeatures = new[]
     ///         {
-    ///             GuestOsFeatures = 
+    ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
-    ///                 {
-    ///                     Type = "SECURE_BOOT",
-    ///                 },
-    ///                 new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
-    ///                 {
-    ///                     Type = "MULTI_IP_SUBNET",
-    ///                 },
+    ///                 Type = "SECURE_BOOT",
     ///             },
-    ///             RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
+    ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
     ///             {
-    ///                 Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+    ///                 Type = "MULTI_IP_SUBNET",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
+    ///         {
+    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -105,7 +101,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/image:Image")]
-    public partial class Image : Pulumi.CustomResource
+    public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
@@ -275,7 +271,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when
@@ -398,9 +394,10 @@ namespace Pulumi.Gcp.Compute
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 
-    public sealed class ImageState : Pulumi.ResourceArgs
+    public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
@@ -547,5 +544,6 @@ namespace Pulumi.Gcp.Compute
         public ImageState()
         {
         }
+        public static new ImageState Empty => new ImageState();
     }
 }

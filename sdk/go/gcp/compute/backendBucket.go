@@ -23,7 +23,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
 // * How-to Guides
-//     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+//   - [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 //
 // ## Example Usage
 // ### Backend Bucket Basic
@@ -32,30 +32,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
-// 			Location: pulumi.String("EU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
-// 			Description: pulumi.String("Contains beautiful images"),
-// 			BucketName:  imageBucket.Name,
-// 			EnableCdn:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+//				Description: pulumi.String("Contains beautiful images"),
+//				BucketName:  imageBucket.Name,
+//				EnableCdn:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Backend Bucket Security Policy
 //
@@ -63,38 +66,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		imageBackendBucket, err := storage.NewBucket(ctx, "imageBackendBucket", &storage.BucketArgs{
-// 			Location: pulumi.String("EU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		policy, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
-// 			Description: pulumi.String("basic security policy"),
-// 			Type:        pulumi.String("CLOUD_ARMOR_EDGE"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendBucket(ctx, "imageBackendBackendBucket", &compute.BackendBucketArgs{
-// 			Description:        pulumi.String("Contains beautiful images"),
-// 			BucketName:         imageBackendBucket.Name,
-// 			EnableCdn:          pulumi.Bool(true),
-// 			EdgeSecurityPolicy: policy.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			imageBackendBucket, err := storage.NewBucket(ctx, "imageBackendBucket", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Description: pulumi.String("basic security policy"),
+//				Type:        pulumi.String("CLOUD_ARMOR_EDGE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucket(ctx, "imageBackendBackendBucket", &compute.BackendBucketArgs{
+//				Description:        pulumi.String("Contains beautiful images"),
+//				BucketName:         imageBackendBucket.Name,
+//				EnableCdn:          pulumi.Bool(true),
+//				EdgeSecurityPolicy: policy.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Backend Bucket Query String Whitelist
 //
@@ -102,37 +108,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
-// 			Location: pulumi.String("EU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
-// 			Description: pulumi.String("Contains beautiful images"),
-// 			BucketName:  imageBucket.Name,
-// 			EnableCdn:   pulumi.Bool(true),
-// 			CdnPolicy: &compute.BackendBucketCdnPolicyArgs{
-// 				CacheKeyPolicy: &compute.BackendBucketCdnPolicyCacheKeyPolicyArgs{
-// 					QueryStringWhitelists: pulumi.StringArray{
-// 						pulumi.String("image-version"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+//				Description: pulumi.String("Contains beautiful images"),
+//				BucketName:  imageBucket.Name,
+//				EnableCdn:   pulumi.Bool(true),
+//				CdnPolicy: &compute.BackendBucketCdnPolicyArgs{
+//					CacheKeyPolicy: &compute.BackendBucketCdnPolicyCacheKeyPolicyArgs{
+//						QueryStringWhitelists: pulumi.StringArray{
+//							pulumi.String("image-version"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Backend Bucket Include Http Headers
 //
@@ -140,53 +149,62 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
-// 			Location: pulumi.String("EU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
-// 			Description: pulumi.String("Contains beautiful images"),
-// 			BucketName:  imageBucket.Name,
-// 			EnableCdn:   pulumi.Bool(true),
-// 			CdnPolicy: &compute.BackendBucketCdnPolicyArgs{
-// 				CacheKeyPolicy: &compute.BackendBucketCdnPolicyCacheKeyPolicyArgs{
-// 					IncludeHttpHeaders: pulumi.StringArray{
-// 						pulumi.String("X-My-Header-Field"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+//				Description: pulumi.String("Contains beautiful images"),
+//				BucketName:  imageBucket.Name,
+//				EnableCdn:   pulumi.Bool(true),
+//				CdnPolicy: &compute.BackendBucketCdnPolicyArgs{
+//					CacheKeyPolicy: &compute.BackendBucketCdnPolicyCacheKeyPolicyArgs{
+//						IncludeHttpHeaders: pulumi.StringArray{
+//							pulumi.String("X-My-Header-Field"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// BackendBucket can be imported using any of these accepted formats
+// # BackendBucket can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
+//
+//	$ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
+//
+//	$ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
+//
 // ```
 type BackendBucket struct {
 	pulumi.CustomResourceState
@@ -404,7 +422,7 @@ func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) Ba
 // BackendBucketArrayInput is an input type that accepts BackendBucketArray and BackendBucketArrayOutput values.
 // You can construct a concrete instance of `BackendBucketArrayInput` via:
 //
-//          BackendBucketArray{ BackendBucketArgs{...} }
+//	BackendBucketArray{ BackendBucketArgs{...} }
 type BackendBucketArrayInput interface {
 	pulumi.Input
 
@@ -429,7 +447,7 @@ func (i BackendBucketArray) ToBackendBucketArrayOutputWithContext(ctx context.Co
 // BackendBucketMapInput is an input type that accepts BackendBucketMap and BackendBucketMapOutput values.
 // You can construct a concrete instance of `BackendBucketMapInput` via:
 //
-//          BackendBucketMap{ "key": BackendBucketArgs{...} }
+//	BackendBucketMap{ "key": BackendBucketArgs{...} }
 type BackendBucketMapInput interface {
 	pulumi.Input
 

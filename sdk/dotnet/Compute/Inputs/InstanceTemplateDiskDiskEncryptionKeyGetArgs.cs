@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateDiskDiskEncryptionKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateDiskDiskEncryptionKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The self link of the encryption key that is stored in Google Cloud KMS
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateDiskDiskEncryptionKeyGetArgs()
         {
         }
+        public static new InstanceTemplateDiskDiskEncryptionKeyGetArgs Empty => new InstanceTemplateDiskDiskEncryptionKeyGetArgs();
     }
 }

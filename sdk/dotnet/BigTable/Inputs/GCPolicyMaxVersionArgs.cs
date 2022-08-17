@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable.Inputs
 {
 
-    public sealed class GCPolicyMaxVersionArgs : Pulumi.ResourceArgs
+    public sealed class GCPolicyMaxVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of version before applying the GC policy.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public GCPolicyMaxVersionArgs()
         {
         }
+        public static new GCPolicyMaxVersionArgs Empty => new GCPolicyMaxVersionArgs();
     }
 }

@@ -16,52 +16,50 @@ namespace Pulumi.Gcp.CloudDeploy
     /// ### Delivery_pipeline
     /// Creates a basic Cloud Deploy delivery pipeline
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
     ///     {
-    ///         var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new Gcp.CloudDeploy.DeliveryPipelineArgs
+    ///         Annotations = 
     ///         {
-    ///             Annotations = 
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Description = "basic description",
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
+    ///         },
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
+    ///         {
+    ///             Stages = new[]
     ///             {
-    ///                 { "my_first_annotation", "example-annotation-1" },
-    ///                 { "my_second_annotation", "example-annotation-2" },
-    ///             },
-    ///             Description = "basic description",
-    ///             Labels = 
-    ///             {
-    ///                 { "my_first_label", "example-label-1" },
-    ///                 { "my_second_label", "example-label-2" },
-    ///             },
-    ///             Location = "us-west1",
-    ///             Project = "my-project-name",
-    ///             SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
-    ///             {
-    ///                 Stages = 
+    ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
-    ///                     new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
+    ///                     Profiles = new[]
     ///                     {
-    ///                         Profiles = 
-    ///                         {
-    ///                             "example-profile-one",
-    ///                             "example-profile-two",
-    ///                         },
-    ///                         TargetId = "example-target-one",
+    ///                         "example-profile-one",
+    ///                         "example-profile-two",
     ///                     },
-    ///                     new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
-    ///                     {
-    ///                         Profiles = {},
-    ///                         TargetId = "example-target-two",
-    ///                     },
+    ///                     TargetId = "example-target-one",
+    ///                 },
+    ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
+    ///                 {
+    ///                     Profiles = new[] {},
+    ///                     TargetId = "example-target-two",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// ```
     /// </summary>
     [GcpResourceType("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline")]
-    public partial class DeliveryPipeline : Pulumi.CustomResource
+    public partial class DeliveryPipeline : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -206,7 +204,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
     }
 
-    public sealed class DeliveryPipelineArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -271,9 +269,10 @@ namespace Pulumi.Gcp.CloudDeploy
         public DeliveryPipelineArgs()
         {
         }
+        public static new DeliveryPipelineArgs Empty => new DeliveryPipelineArgs();
     }
 
-    public sealed class DeliveryPipelineState : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -375,5 +374,6 @@ namespace Pulumi.Gcp.CloudDeploy
         public DeliveryPipelineState()
         {
         }
+        public static new DeliveryPipelineState Empty => new DeliveryPipelineState();
     }
 }

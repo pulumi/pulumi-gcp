@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class ApplicationIapArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationIapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public ApplicationIapArgs()
         {
         }
+        public static new ApplicationIapArgs Empty => new ApplicationIapArgs();
     }
 }

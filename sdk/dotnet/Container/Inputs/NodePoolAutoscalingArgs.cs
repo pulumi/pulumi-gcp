@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolAutoscalingArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolAutoscalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolAutoscalingArgs()
         {
         }
+        public static new NodePoolAutoscalingArgs Empty => new NodePoolAutoscalingArgs();
     }
 }

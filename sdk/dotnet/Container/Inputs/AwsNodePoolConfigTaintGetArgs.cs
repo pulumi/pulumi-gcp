@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsNodePoolConfigTaintGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsNodePoolConfigTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsNodePoolConfigTaintGetArgs()
         {
         }
+        public static new AwsNodePoolConfigTaintGetArgs Empty => new AwsNodePoolConfigTaintGetArgs();
     }
 }

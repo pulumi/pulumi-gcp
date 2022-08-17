@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.CloudRun
     /// ## google\_cloud\_run\_service\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.CloudRun.IamPolicy("policy", new Gcp.CloudRun.IamPolicyArgs
-    ///         {
-    ///             Location = google_cloud_run_service.Default.Location,
-    ///             Project = google_cloud_run_service.Default.Project,
-    ///             Service = google_cloud_run_service.Default.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.CloudRun.IamPolicy("policy", new()
+    ///     {
+    ///         Location = google_cloud_run_service.Default.Location,
+    ///         Project = google_cloud_run_service.Default.Project,
+    ///         Service = google_cloud_run_service.Default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_cloud\_run\_service\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.CloudRun.IamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.CloudRun.IamBinding("binding", new Gcp.CloudRun.IamBindingArgs
+    ///         Location = google_cloud_run_service.Default.Location,
+    ///         Project = google_cloud_run_service.Default.Project,
+    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Location = google_cloud_run_service.Default.Location,
-    ///             Project = google_cloud_run_service.Default.Project,
-    ///             Service = google_cloud_run_service.Default.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_cloud\_run\_service\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.CloudRun.IamMember("member", new()
     ///     {
-    ///         var member = new Gcp.CloudRun.IamMember("member", new Gcp.CloudRun.IamMemberArgs
-    ///         {
-    ///             Location = google_cloud_run_service.Default.Location,
-    ///             Project = google_cloud_run_service.Default.Project,
-    ///             Service = google_cloud_run_service.Default.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Location = google_cloud_run_service.Default.Location,
+    ///         Project = google_cloud_run_service.Default.Project,
+    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.CloudRun
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:cloudrun/iamPolicy:IamPolicy")]
-    public partial class IamPolicy : Pulumi.CustomResource
+    public partial class IamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -208,7 +203,7 @@ namespace Pulumi.Gcp.CloudRun
         }
     }
 
-    public sealed class IamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
@@ -239,9 +234,10 @@ namespace Pulumi.Gcp.CloudRun
         public IamPolicyArgs()
         {
         }
+        public static new IamPolicyArgs Empty => new IamPolicyArgs();
     }
 
-    public sealed class IamPolicyState : Pulumi.ResourceArgs
+    public sealed class IamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -278,5 +274,6 @@ namespace Pulumi.Gcp.CloudRun
         public IamPolicyState()
         {
         }
+        public static new IamPolicyState Empty => new IamPolicyState();
     }
 }

@@ -27,83 +27,81 @@ namespace Pulumi.Gcp.DataCatalog
     /// ### Data Catalog Entry Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
     ///     {
-    ///         var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///         var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new Gcp.DataCatalog.EntryArgs
-    ///         {
-    ///             EntryGroup = entryGroup.Id,
-    ///             EntryId = "my_entry",
-    ///             UserSpecifiedType = "my_custom_type",
-    ///             UserSpecifiedSystem = "SomethingExternal",
-    ///         });
-    ///     }
+    ///         EntryGroupId = "my_group",
+    ///     });
     /// 
-    /// }
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     {
+    ///         EntryGroup = entryGroup.Id,
+    ///         EntryId = "my_entry",
+    ///         UserSpecifiedType = "my_custom_type",
+    ///         UserSpecifiedSystem = "SomethingExternal",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Data Catalog Entry Fileset
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
     ///     {
-    ///         var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///         var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new Gcp.DataCatalog.EntryArgs
-    ///         {
-    ///             EntryGroup = entryGroup.Id,
-    ///             EntryId = "my_entry",
-    ///             Type = "FILESET",
-    ///             GcsFilesetSpec = new Gcp.DataCatalog.Inputs.EntryGcsFilesetSpecArgs
-    ///             {
-    ///                 FilePatterns = 
-    ///                 {
-    ///                     "gs://fake_bucket/dir/*",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         EntryGroupId = "my_group",
+    ///     });
     /// 
-    /// }
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     {
+    ///         EntryGroup = entryGroup.Id,
+    ///         EntryId = "my_entry",
+    ///         Type = "FILESET",
+    ///         GcsFilesetSpec = new Gcp.DataCatalog.Inputs.EntryGcsFilesetSpecArgs
+    ///         {
+    ///             FilePatterns = new[]
+    ///             {
+    ///                 "gs://fake_bucket/dir/*",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Data Catalog Entry Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
     ///     {
-    ///         var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///         var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new Gcp.DataCatalog.EntryArgs
-    ///         {
-    ///             EntryGroup = entryGroup.Id,
-    ///             EntryId = "my_entry",
-    ///             UserSpecifiedType = "my_user_specified_type",
-    ///             UserSpecifiedSystem = "Something_custom",
-    ///             LinkedResource = "my/linked/resource",
-    ///             DisplayName = "my custom type entry",
-    ///             Description = "a custom type entry for a user specified system",
-    ///             Schema = @"{
+    ///         EntryGroupId = "my_group",
+    ///     });
+    /// 
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     {
+    ///         EntryGroup = entryGroup.Id,
+    ///         EntryId = "my_entry",
+    ///         UserSpecifiedType = "my_user_specified_type",
+    ///         UserSpecifiedSystem = "Something_custom",
+    ///         LinkedResource = "my/linked/resource",
+    ///         DisplayName = "my custom type entry",
+    ///         Description = "a custom type entry for a user specified system",
+    ///         Schema = @"{
     ///   ""columns"": [
     ///     {
     ///       ""column"": ""first_name"",
@@ -140,10 +138,9 @@ namespace Pulumi.Gcp.DataCatalog
     ///   ]
     /// }
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -155,7 +152,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// ```
     /// </summary>
     [GcpResourceType("gcp:datacatalog/entry:Entry")]
-    public partial class Entry : Pulumi.CustomResource
+    public partial class Entry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
@@ -306,7 +303,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class EntryArgs : Pulumi.ResourceArgs
+    public sealed class EntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
@@ -389,9 +386,10 @@ namespace Pulumi.Gcp.DataCatalog
         public EntryArgs()
         {
         }
+        public static new EntryArgs Empty => new EntryArgs();
     }
 
-    public sealed class EntryState : Pulumi.ResourceArgs
+    public sealed class EntryState : global::Pulumi.ResourceArgs
     {
         [Input("bigqueryDateShardedSpecs")]
         private InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs>? _bigqueryDateShardedSpecs;
@@ -513,5 +511,6 @@ namespace Pulumi.Gcp.DataCatalog
         public EntryState()
         {
         }
+        public static new EntryState Empty => new EntryState();
     }
 }

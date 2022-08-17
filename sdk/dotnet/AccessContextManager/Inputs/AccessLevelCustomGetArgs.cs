@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelCustomGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelCustomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelCustomGetArgs()
         {
         }
+        public static new AccessLevelCustomGetArgs Empty => new AccessLevelCustomGetArgs();
     }
 }

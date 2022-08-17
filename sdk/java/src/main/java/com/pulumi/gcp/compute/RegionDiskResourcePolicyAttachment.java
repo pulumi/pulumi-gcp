@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
- *             .image(&#34;debian-cloud/debian-9&#34;)
+ *             .image(&#34;debian-cloud/debian-11&#34;)
  *             .size(50)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-central1-a&#34;)
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 

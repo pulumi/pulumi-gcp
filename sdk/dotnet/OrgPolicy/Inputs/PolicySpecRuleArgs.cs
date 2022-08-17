@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OrgPolicy.Inputs
 {
 
-    public sealed class PolicySpecRuleArgs : Pulumi.ResourceArgs
+    public sealed class PolicySpecRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         public PolicySpecRuleArgs()
         {
         }
+        public static new PolicySpecRuleArgs Empty => new PolicySpecRuleArgs();
     }
 }

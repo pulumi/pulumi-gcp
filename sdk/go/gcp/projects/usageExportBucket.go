@@ -27,7 +27,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
 // * How-to Guides
-//     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+//   - [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 //
 // ## Example Usage
 //
@@ -35,53 +35,59 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-// 			OrgId:     pulumi.String("1234567"),
-// 			ProjectId: pulumi.String("your-project-id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+//				OrgId:     pulumi.String("1234567"),
+//				ProjectId: pulumi.String("your-project-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// To create a project under a specific folder
+// # To create a project under a specific folder
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Department 1"),
-// 			Parent:      pulumi.String("organizations/1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = organizations.NewProject(ctx, "myProject-in-a-folder", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("your-project-id"),
-// 			FolderId:  department1.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("Department 1"),
+//				Parent:      pulumi.String("organizations/1234567"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewProject(ctx, "myProject-in-a-folder", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("your-project-id"),
+//				FolderId:  department1.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -89,7 +95,9 @@ import (
 // Projects can be imported using the `project_id`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
+//
+//	$ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
+//
 // ```
 type UsageExportBucket struct {
 	pulumi.CustomResourceState
@@ -200,7 +208,7 @@ func (i *UsageExportBucket) ToUsageExportBucketOutputWithContext(ctx context.Con
 // UsageExportBucketArrayInput is an input type that accepts UsageExportBucketArray and UsageExportBucketArrayOutput values.
 // You can construct a concrete instance of `UsageExportBucketArrayInput` via:
 //
-//          UsageExportBucketArray{ UsageExportBucketArgs{...} }
+//	UsageExportBucketArray{ UsageExportBucketArgs{...} }
 type UsageExportBucketArrayInput interface {
 	pulumi.Input
 
@@ -225,7 +233,7 @@ func (i UsageExportBucketArray) ToUsageExportBucketArrayOutputWithContext(ctx co
 // UsageExportBucketMapInput is an input type that accepts UsageExportBucketMap and UsageExportBucketMapOutput values.
 // You can construct a concrete instance of `UsageExportBucketMapInput` via:
 //
-//          UsageExportBucketMap{ "key": UsageExportBucketArgs{...} }
+//	UsageExportBucketMap{ "key": UsageExportBucketArgs{...} }
 type UsageExportBucketMapInput interface {
 	pulumi.Input
 

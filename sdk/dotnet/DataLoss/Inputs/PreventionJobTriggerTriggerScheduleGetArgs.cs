@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerTriggerScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerTriggerScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerTriggerScheduleGetArgs()
         {
         }
+        public static new PreventionJobTriggerTriggerScheduleGetArgs Empty => new PreventionJobTriggerTriggerScheduleGetArgs();
     }
 }

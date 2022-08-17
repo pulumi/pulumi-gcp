@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolNodeConfigKubeletConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolNodeConfigKubeletConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, enables CPU CFS quota enforcement for
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolNodeConfigKubeletConfigArgs()
         {
         }
+        public static new ClusterNodePoolNodeConfigKubeletConfigArgs Empty => new ClusterNodePoolNodeConfigKubeletConfigArgs();
     }
 }

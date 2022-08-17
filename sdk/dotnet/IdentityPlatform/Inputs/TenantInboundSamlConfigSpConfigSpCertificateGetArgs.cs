@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.IdentityPlatform.Inputs
 {
 
-    public sealed class TenantInboundSamlConfigSpConfigSpCertificateGetArgs : Pulumi.ResourceArgs
+    public sealed class TenantInboundSamlConfigSpConfigSpCertificateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
         public TenantInboundSamlConfigSpConfigSpCertificateGetArgs()
         {
         }
+        public static new TenantInboundSamlConfigSpConfigSpCertificateGetArgs Empty => new TenantInboundSamlConfigSpConfigSpCertificateGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class GlobalForwardingRuleMetadataFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class GlobalForwardingRuleMetadataFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterLabels", required: true)]
         private InputList<Inputs.GlobalForwardingRuleMetadataFilterFilterLabelGetArgs>? _filterLabels;
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public GlobalForwardingRuleMetadataFilterGetArgs()
         {
         }
+        public static new GlobalForwardingRuleMetadataFilterGetArgs Empty => new GlobalForwardingRuleMetadataFilterGetArgs();
     }
 }

@@ -31,39 +31,39 @@ namespace Pulumi.Gcp.Firebase
     /// ### Firebase Project Location Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
     ///     {
-    ///         var defaultProject = new Gcp.Organizations.Project("defaultProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "tf-test",
-    ///             OrgId = "123456789",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new Gcp.Firebase.ProjectArgs
-    ///         {
-    ///             ProjectID = defaultProject.ProjectId,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var basic = new Gcp.Firebase.ProjectLocation("basic", new Gcp.Firebase.ProjectLocationArgs
-    ///         {
-    ///             Project = defaultFirebase / projectProject.Project,
-    ///             LocationId = "us-central",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         ProjectId = "tf-test",
+    ///         OrgId = "123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
+    ///     {
+    ///         ProjectID = defaultProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Firebase.ProjectLocation("basic", new()
+    ///     {
+    ///         Project = defaultFirebase / projectProject.Project,
+    ///         LocationId = "us-central",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Firebase
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebase/projectLocation:ProjectLocation")]
-    public partial class ProjectLocation : Pulumi.CustomResource
+    public partial class ProjectLocation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Firebase
         }
     }
 
-    public sealed class ProjectLocationArgs : Pulumi.ResourceArgs
+    public sealed class ProjectLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
@@ -158,9 +158,10 @@ namespace Pulumi.Gcp.Firebase
         public ProjectLocationArgs()
         {
         }
+        public static new ProjectLocationArgs Empty => new ProjectLocationArgs();
     }
 
-    public sealed class ProjectLocationState : Pulumi.ResourceArgs
+    public sealed class ProjectLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
@@ -179,5 +180,6 @@ namespace Pulumi.Gcp.Firebase
         public ProjectLocationState()
         {
         }
+        public static new ProjectLocationState Empty => new ProjectLocationState();
     }
 }

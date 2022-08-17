@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
 // * How-to Guides
-//     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+//   - [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 //
 // > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
 //
@@ -28,51 +28,60 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		scannerStaticIp, err := compute.NewAddress(ctx, "scannerStaticIp", nil, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
-// 			DisplayName: pulumi.String("scan-config"),
-// 			StartingUrls: pulumi.StringArray{
-// 				scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
-// 					return fmt.Sprintf("http://%v", address), nil
-// 				}).(pulumi.StringOutput),
-// 			},
-// 			TargetPlatforms: pulumi.StringArray{
-// 				pulumi.String("COMPUTE"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scannerStaticIp, err := compute.NewAddress(ctx, "scannerStaticIp", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
+//				DisplayName: pulumi.String("scan-config"),
+//				StartingUrls: pulumi.StringArray{
+//					scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
+//						return fmt.Sprintf("http://%v", address), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				TargetPlatforms: pulumi.StringArray{
+//					pulumi.String("COMPUTE"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// ScanConfig can be imported using any of these accepted formats
+// # ScanConfig can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
+//
+//	$ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
+//
+//	$ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
+//
 // ```
 type SecurityScanConfig struct {
 	pulumi.CustomResourceState
@@ -317,7 +326,7 @@ func (i *SecurityScanConfig) ToSecurityScanConfigOutputWithContext(ctx context.C
 // SecurityScanConfigArrayInput is an input type that accepts SecurityScanConfigArray and SecurityScanConfigArrayOutput values.
 // You can construct a concrete instance of `SecurityScanConfigArrayInput` via:
 //
-//          SecurityScanConfigArray{ SecurityScanConfigArgs{...} }
+//	SecurityScanConfigArray{ SecurityScanConfigArgs{...} }
 type SecurityScanConfigArrayInput interface {
 	pulumi.Input
 
@@ -342,7 +351,7 @@ func (i SecurityScanConfigArray) ToSecurityScanConfigArrayOutputWithContext(ctx 
 // SecurityScanConfigMapInput is an input type that accepts SecurityScanConfigMap and SecurityScanConfigMapOutput values.
 // You can construct a concrete instance of `SecurityScanConfigMapInput` via:
 //
-//          SecurityScanConfigMap{ "key": SecurityScanConfigArgs{...} }
+//	SecurityScanConfigMap{ "key": SecurityScanConfigArgs{...} }
 type SecurityScanConfigMapInput interface {
 	pulumi.Input
 

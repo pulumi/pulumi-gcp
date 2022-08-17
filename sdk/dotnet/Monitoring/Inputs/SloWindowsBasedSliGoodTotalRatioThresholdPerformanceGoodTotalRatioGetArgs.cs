@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioGetArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioGetArgs()
         {
         }
+        public static new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioGetArgs Empty => new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class EntryBigqueryTableSpecArgs : Pulumi.ResourceArgs
+    public sealed class EntryBigqueryTableSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("tableSourceType")]
         public Input<string>? TableSourceType { get; set; }
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public EntryBigqueryTableSpecArgs()
         {
         }
+        public static new EntryBigqueryTableSpecArgs Empty => new EntryBigqueryTableSpecArgs();
     }
 }

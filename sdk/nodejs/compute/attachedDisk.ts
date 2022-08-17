@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     zone: "us-west1-a",
  *     bootDisk: {
  *         initializeParams: {
- *             image: "debian-cloud/debian-9",
+ *             image: "debian-cloud/debian-11",
  *         },
  *     },
  *     networkInterfaces: [{

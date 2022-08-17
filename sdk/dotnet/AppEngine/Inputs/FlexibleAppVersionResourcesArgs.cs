@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionResourcesArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of CPU cores needed.
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionResourcesArgs()
         {
         }
+        public static new FlexibleAppVersionResourcesArgs Empty => new FlexibleAppVersionResourcesArgs();
     }
 }

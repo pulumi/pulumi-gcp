@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target bytes received per second.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs()
         {
         }
+        public static new FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs Empty => new FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs();
     }
 }

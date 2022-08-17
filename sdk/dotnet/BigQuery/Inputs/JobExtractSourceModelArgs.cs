@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobExtractSourceModelArgs : Pulumi.ResourceArgs
+    public sealed class JobExtractSourceModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the dataset containing this model.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobExtractSourceModelArgs()
         {
         }
+        public static new JobExtractSourceModelArgs Empty => new JobExtractSourceModelArgs();
     }
 }

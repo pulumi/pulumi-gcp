@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner.Inputs
 {
 
-    public sealed class DatabaseIAMMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseIAMMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Spanner.Inputs
         public DatabaseIAMMemberConditionGetArgs()
         {
         }
+        public static new DatabaseIAMMemberConditionGetArgs Empty => new DatabaseIAMMemberConditionGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Volume's name.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs()
         {
         }
+        public static new ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs Empty => new ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs();
     }
 }

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.ServiceNetworking
     }
 
 
-    public sealed class GetPeeredDnsDomainArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeredDnsDomainArgs : global::Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.Gcp.ServiceNetworking
         public GetPeeredDnsDomainArgs()
         {
         }
+        public static new GetPeeredDnsDomainArgs Empty => new GetPeeredDnsDomainArgs();
     }
 
-    public sealed class GetPeeredDnsDomainInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeredDnsDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.Gcp.ServiceNetworking
         public GetPeeredDnsDomainInvokeArgs()
         {
         }
+        public static new GetPeeredDnsDomainInvokeArgs Empty => new GetPeeredDnsDomainInvokeArgs();
     }
 
 

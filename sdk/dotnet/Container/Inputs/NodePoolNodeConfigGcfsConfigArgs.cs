@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigGcfsConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigGcfsConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigGcfsConfigArgs()
         {
         }
+        public static new NodePoolNodeConfigGcfsConfigArgs Empty => new NodePoolNodeConfigGcfsConfigArgs();
     }
 }

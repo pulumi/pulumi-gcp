@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .disks(            
  *                 InstanceTemplateDiskArgs.builder()
- *                     .sourceImage(&#34;debian-cloud/debian-9&#34;)
+ *                     .sourceImage(&#34;debian-cloud/debian-11&#34;)
  *                     .autoDelete(true)
  *                     .boot(true)
  *                     .resourcePolicies(dailyBackup.id())
@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 
@@ -336,7 +336,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 
@@ -380,7 +380,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-9&#34;)
+ *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
  *                 .build())
  *             .machineType(&#34;e2-medium&#34;)
  *             .namePrefix(&#34;instance-template-&#34;)

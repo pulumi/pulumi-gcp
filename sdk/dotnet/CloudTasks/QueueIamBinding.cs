@@ -23,83 +23,78 @@ namespace Pulumi.Gcp.CloudTasks
     /// ## google\_cloud\_tasks\_queue\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.CloudTasks.QueueIamPolicy("policy", new Gcp.CloudTasks.QueueIamPolicyArgs
-    ///         {
-    ///             Project = google_cloud_tasks_queue.Default.Project,
-    ///             Location = google_cloud_tasks_queue.Default.Location,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.CloudTasks.QueueIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_cloud_tasks_queue.Default.Project,
+    ///         Location = google_cloud_tasks_queue.Default.Location,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_cloud\_tasks\_queue\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.CloudTasks.QueueIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.CloudTasks.QueueIamBinding("binding", new Gcp.CloudTasks.QueueIamBindingArgs
+    ///         Project = google_cloud_tasks_queue.Default.Project,
+    ///         Location = google_cloud_tasks_queue.Default.Location,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_cloud_tasks_queue.Default.Project,
-    ///             Location = google_cloud_tasks_queue.Default.Location,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_cloud\_tasks\_queue\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.CloudTasks.QueueIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.CloudTasks.QueueIamMember("member", new Gcp.CloudTasks.QueueIamMemberArgs
-    ///         {
-    ///             Project = google_cloud_tasks_queue.Default.Project,
-    ///             Location = google_cloud_tasks_queue.Default.Location,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_cloud_tasks_queue.Default.Project,
+    ///         Location = google_cloud_tasks_queue.Default.Location,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:cloudtasks/queueIamBinding:QueueIamBinding")]
-    public partial class QueueIamBinding : Pulumi.CustomResource
+    public partial class QueueIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.QueueIamBindingCondition?> Condition { get; private set; } = null!;
@@ -212,7 +207,7 @@ namespace Pulumi.Gcp.CloudTasks
         }
     }
 
-    public sealed class QueueIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class QueueIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.QueueIamBindingConditionArgs>? Condition { get; set; }
@@ -255,9 +250,10 @@ namespace Pulumi.Gcp.CloudTasks
         public QueueIamBindingArgs()
         {
         }
+        public static new QueueIamBindingArgs Empty => new QueueIamBindingArgs();
     }
 
-    public sealed class QueueIamBindingState : Pulumi.ResourceArgs
+    public sealed class QueueIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.QueueIamBindingConditionGetArgs>? Condition { get; set; }
@@ -306,5 +302,6 @@ namespace Pulumi.Gcp.CloudTasks
         public QueueIamBindingState()
         {
         }
+        public static new QueueIamBindingState Empty => new QueueIamBindingState();
     }
 }

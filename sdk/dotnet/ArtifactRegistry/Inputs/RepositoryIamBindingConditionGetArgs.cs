@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ArtifactRegistry.Inputs
 {
 
-    public sealed class RepositoryIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryIamBindingConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public RepositoryIamBindingConditionGetArgs()
         {
         }
+        public static new RepositoryIamBindingConditionGetArgs Empty => new RepositoryIamBindingConditionGetArgs();
     }
 }

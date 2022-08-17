@@ -27,30 +27,29 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Ssl Certificate Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.RegionSslCertificate("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.RegionSslCertificate("default", new Gcp.Compute.RegionSslCertificateArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             NamePrefix = "my-certificate-",
-    ///             Description = "a description",
-    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///         });
-    ///     }
+    ///         Region = "us-central1",
+    ///         NamePrefix = "my-certificate-",
+    ///         Description = "a description",
+    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Region Ssl Certificate Random Provider
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using System.Security.Cryptography;
     /// using System.Text;
@@ -58,36 +57,34 @@ namespace Pulumi.Gcp.Compute
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ComputeFileBase64Sha256(string path) {
     /// 		var fileData = Encoding.UTF8.GetBytes(File.ReadAllText(path));
     /// 		var hashData = SHA256.Create().ComputeHash(fileData);
     /// 		return Convert.ToBase64String(hashData);
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // You may also want to control name generation explicitly:
+    ///     var @default = new Gcp.Compute.RegionSslCertificate("default", new()
     ///     {
-    ///         // You may also want to control name generation explicitly:
-    ///         var @default = new Gcp.Compute.RegionSslCertificate("default", new Gcp.Compute.RegionSslCertificateArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///         });
-    ///         var certificate = new Random.RandomId("certificate", new Random.RandomIdArgs
-    ///         {
-    ///             ByteLength = 4,
-    ///             Prefix = "my-certificate-",
-    ///             Keepers = 
-    ///             {
-    ///                 { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
-    ///                 { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
-    ///             },
-    ///         });
-    ///     }
+    ///         Region = "us-central1",
+    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///     });
     /// 
-    /// }
+    ///     var certificate = new Random.RandomId("certificate", new()
+    ///     {
+    ///         ByteLength = 4,
+    ///         Prefix = "my-certificate-",
+    ///         Keepers = 
+    ///         {
+    ///             { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
+    ///             { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -111,7 +108,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionSslCertificate:RegionSslCertificate")]
-    public partial class RegionSslCertificate : Pulumi.CustomResource
+    public partial class RegionSslCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The certificate in PEM format.
@@ -230,7 +227,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionSslCertificateArgs : Pulumi.ResourceArgs
+    public sealed class RegionSslCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate in PEM format.
@@ -290,9 +287,10 @@ namespace Pulumi.Gcp.Compute
         public RegionSslCertificateArgs()
         {
         }
+        public static new RegionSslCertificateArgs Empty => new RegionSslCertificateArgs();
     }
 
-    public sealed class RegionSslCertificateState : Pulumi.ResourceArgs
+    public sealed class RegionSslCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate in PEM format.
@@ -370,5 +368,6 @@ namespace Pulumi.Gcp.Compute
         public RegionSslCertificateState()
         {
         }
+        public static new RegionSslCertificateState Empty => new RegionSslCertificateState();
     }
 }

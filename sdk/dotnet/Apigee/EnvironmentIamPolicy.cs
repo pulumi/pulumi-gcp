@@ -23,83 +23,78 @@ namespace Pulumi.Gcp.Apigee
     /// ## google\_apigee\_environment\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Apigee.EnvironmentIamPolicy("policy", new Gcp.Apigee.EnvironmentIamPolicyArgs
-    ///         {
-    ///             OrgId = google_apigee_environment.Apigee_environment.Org_id,
-    ///             EnvId = google_apigee_environment.Apigee_environment.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Apigee.EnvironmentIamPolicy("policy", new()
+    ///     {
+    ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
+    ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_apigee\_environment\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Apigee.EnvironmentIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Apigee.EnvironmentIamBinding("binding", new Gcp.Apigee.EnvironmentIamBindingArgs
+    ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
+    ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             OrgId = google_apigee_environment.Apigee_environment.Org_id,
-    ///             EnvId = google_apigee_environment.Apigee_environment.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_apigee\_environment\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Apigee.EnvironmentIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Apigee.EnvironmentIamMember("member", new Gcp.Apigee.EnvironmentIamMemberArgs
-    ///         {
-    ///             OrgId = google_apigee_environment.Apigee_environment.Org_id,
-    ///             EnvId = google_apigee_environment.Apigee_environment.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         OrgId = google_apigee_environment.Apigee_environment.Org_id,
+    ///         EnvId = google_apigee_environment.Apigee_environment.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.Apigee
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy")]
-    public partial class EnvironmentIamPolicy : Pulumi.CustomResource
+    public partial class EnvironmentIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -195,7 +190,7 @@ namespace Pulumi.Gcp.Apigee
         }
     }
 
-    public sealed class EnvironmentIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -216,9 +211,10 @@ namespace Pulumi.Gcp.Apigee
         public EnvironmentIamPolicyArgs()
         {
         }
+        public static new EnvironmentIamPolicyArgs Empty => new EnvironmentIamPolicyArgs();
     }
 
-    public sealed class EnvironmentIamPolicyState : Pulumi.ResourceArgs
+    public sealed class EnvironmentIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -245,5 +241,6 @@ namespace Pulumi.Gcp.Apigee
         public EnvironmentIamPolicyState()
         {
         }
+        public static new EnvironmentIamPolicyState Empty => new EnvironmentIamPolicyState();
     }
 }

@@ -23,87 +23,96 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificateMap", &certificatemanager.CertificateMapArgs{
-// 			Description: pulumi.String("My acceptance test certificate map"),
-// 			Labels: pulumi.StringMap{
-// 				"terraform": pulumi.String("true"),
-// 				"acc-test":  pulumi.String("true"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
-// 			Description: pulumi.String("The default dnss"),
-// 			Domain:      pulumi.String("subdomain.hashicorptest.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
-// 			Description: pulumi.String("The default dnss"),
-// 			Domain:      pulumi.String("subdomain2.hashicorptest.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		certificate, err := certificatemanager.NewCertificate(ctx, "certificate", &certificatemanager.CertificateArgs{
-// 			Description: pulumi.String("The default cert"),
-// 			Scope:       pulumi.String("DEFAULT"),
-// 			Managed: &certificatemanager.CertificateManagedArgs{
-// 				Domains: pulumi.StringArray{
-// 					instance.Domain,
-// 					instance2.Domain,
-// 				},
-// 				DnsAuthorizations: pulumi.StringArray{
-// 					instance.ID(),
-// 					instance2.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = certificatemanager.NewCertificateMapEntry(ctx, "default", &certificatemanager.CertificateMapEntryArgs{
-// 			Description: pulumi.String("My acceptance test certificate map entry"),
-// 			Map:         certificateMap.Name,
-// 			Labels: pulumi.StringMap{
-// 				"terraform": pulumi.String("true"),
-// 				"acc-test":  pulumi.String("true"),
-// 			},
-// 			Certificates: pulumi.StringArray{
-// 				certificate.ID(),
-// 			},
-// 			Matcher: pulumi.String("PRIMARY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificateMap", &certificatemanager.CertificateMapArgs{
+//				Description: pulumi.String("My acceptance test certificate map"),
+//				Labels: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//					"acc-test":  pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			certificate, err := certificatemanager.NewCertificate(ctx, "certificate", &certificatemanager.CertificateArgs{
+//				Description: pulumi.String("The default cert"),
+//				Scope:       pulumi.String("DEFAULT"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						instance.Domain,
+//						instance2.Domain,
+//					},
+//					DnsAuthorizations: pulumi.StringArray{
+//						instance.ID(),
+//						instance2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificateMapEntry(ctx, "default", &certificatemanager.CertificateMapEntryArgs{
+//				Description: pulumi.String("My acceptance test certificate map entry"),
+//				Map:         certificateMap.Name,
+//				Labels: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//					"acc-test":  pulumi.String("true"),
+//				},
+//				Certificates: pulumi.StringArray{
+//					certificate.ID(),
+//				},
+//				Matcher: pulumi.String("PRIMARY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// CertificateMapEntry can be imported using any of these accepted formats
+// # CertificateMapEntry can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
+//
 // ```
 type CertificateMapEntry struct {
 	pulumi.CustomResourceState
@@ -115,8 +124,7 @@ type CertificateMapEntry struct {
 	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// CertificateMapEntry is a list of certificate configurations,
-	// that have been issued for a particular hostname
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -129,7 +137,6 @@ type CertificateMapEntry struct {
 	// A map entry that is inputted into the cetrificate map
 	Map pulumi.StringOutput `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
-	// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
 	Matcher pulumi.StringPtrOutput `pulumi:"matcher"`
 	// A user-defined name of the Certificate Map Entry. Certificate Map Entry
 	// names must be unique globally and match pattern
@@ -138,8 +145,7 @@ type CertificateMapEntry struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-	// progress. Some frontends may serve this configuration.
+	// A serving state of this Certificate Map Entry.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -188,8 +194,7 @@ type certificateMapEntryState struct {
 	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
-	// CertificateMapEntry is a list of certificate configurations,
-	// that have been issued for a particular hostname
+	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -202,7 +207,6 @@ type certificateMapEntryState struct {
 	// A map entry that is inputted into the cetrificate map
 	Map *string `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
-	// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
 	Matcher *string `pulumi:"matcher"`
 	// A user-defined name of the Certificate Map Entry. Certificate Map Entry
 	// names must be unique globally and match pattern
@@ -211,8 +215,7 @@ type certificateMapEntryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-	// progress. Some frontends may serve this configuration.
+	// A serving state of this Certificate Map Entry.
 	State *string `pulumi:"state"`
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -227,8 +230,7 @@ type CertificateMapEntryState struct {
 	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
-	// CertificateMapEntry is a list of certificate configurations,
-	// that have been issued for a particular hostname
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -241,7 +243,6 @@ type CertificateMapEntryState struct {
 	// A map entry that is inputted into the cetrificate map
 	Map pulumi.StringPtrInput
 	// A predefined matcher for particular cases, other than SNI selection
-	// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
 	Matcher pulumi.StringPtrInput
 	// A user-defined name of the Certificate Map Entry. Certificate Map Entry
 	// names must be unique globally and match pattern
@@ -250,8 +251,7 @@ type CertificateMapEntryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-	// progress. Some frontends may serve this configuration.
+	// A serving state of this Certificate Map Entry.
 	State pulumi.StringPtrInput
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -267,8 +267,7 @@ type certificateMapEntryArgs struct {
 	// There can be defined up to fifteen certificates in each Certificate Map Entry.
 	// Each certificate must match pattern projects/*/locations/*/certificates/*.
 	Certificates []string `pulumi:"certificates"`
-	// CertificateMapEntry is a list of certificate configurations,
-	// that have been issued for a particular hostname
+	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -281,7 +280,6 @@ type certificateMapEntryArgs struct {
 	// A map entry that is inputted into the cetrificate map
 	Map string `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
-	// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
 	Matcher *string `pulumi:"matcher"`
 	// A user-defined name of the Certificate Map Entry. Certificate Map Entry
 	// names must be unique globally and match pattern
@@ -298,8 +296,7 @@ type CertificateMapEntryArgs struct {
 	// There can be defined up to fifteen certificates in each Certificate Map Entry.
 	// Each certificate must match pattern projects/*/locations/*/certificates/*.
 	Certificates pulumi.StringArrayInput
-	// CertificateMapEntry is a list of certificate configurations,
-	// that have been issued for a particular hostname
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
 	// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -312,7 +309,6 @@ type CertificateMapEntryArgs struct {
 	// A map entry that is inputted into the cetrificate map
 	Map pulumi.StringInput
 	// A predefined matcher for particular cases, other than SNI selection
-	// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
 	Matcher pulumi.StringPtrInput
 	// A user-defined name of the Certificate Map Entry. Certificate Map Entry
 	// names must be unique globally and match pattern
@@ -349,7 +345,7 @@ func (i *CertificateMapEntry) ToCertificateMapEntryOutputWithContext(ctx context
 // CertificateMapEntryArrayInput is an input type that accepts CertificateMapEntryArray and CertificateMapEntryArrayOutput values.
 // You can construct a concrete instance of `CertificateMapEntryArrayInput` via:
 //
-//          CertificateMapEntryArray{ CertificateMapEntryArgs{...} }
+//	CertificateMapEntryArray{ CertificateMapEntryArgs{...} }
 type CertificateMapEntryArrayInput interface {
 	pulumi.Input
 
@@ -374,7 +370,7 @@ func (i CertificateMapEntryArray) ToCertificateMapEntryArrayOutputWithContext(ct
 // CertificateMapEntryMapInput is an input type that accepts CertificateMapEntryMap and CertificateMapEntryMapOutput values.
 // You can construct a concrete instance of `CertificateMapEntryMapInput` via:
 //
-//          CertificateMapEntryMap{ "key": CertificateMapEntryArgs{...} }
+//	CertificateMapEntryMap{ "key": CertificateMapEntryArgs{...} }
 type CertificateMapEntryMapInput interface {
 	pulumi.Input
 
@@ -423,8 +419,7 @@ func (o CertificateMapEntryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// CertificateMapEntry is a list of certificate configurations,
-// that have been issued for a particular hostname
+// A human-readable description of the resource.
 func (o CertificateMapEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -449,7 +444,6 @@ func (o CertificateMapEntryOutput) Map() pulumi.StringOutput {
 }
 
 // A predefined matcher for particular cases, other than SNI selection
-// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
 func (o CertificateMapEntryOutput) Matcher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringPtrOutput { return v.Matcher }).(pulumi.StringPtrOutput)
 }
@@ -467,8 +461,7 @@ func (o CertificateMapEntryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-// progress. Some frontends may serve this configuration.
+// A serving state of this Certificate Map Entry.
 func (o CertificateMapEntryOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

@@ -114,8 +114,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * A human-readable description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -136,7 +135,6 @@ export class CertificateMapEntry extends pulumi.CustomResource {
     public readonly map!: pulumi.Output<string>;
     /**
      * A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      */
     public readonly matcher!: pulumi.Output<string | undefined>;
     /**
@@ -151,8 +149,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-     * progress. Some frontends may serve this configuration.
+     * A serving state of this Certificate Map Entry.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -226,8 +223,7 @@ export interface CertificateMapEntryState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -248,7 +244,6 @@ export interface CertificateMapEntryState {
     map?: pulumi.Input<string>;
     /**
      * A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      */
     matcher?: pulumi.Input<string>;
     /**
@@ -263,8 +258,7 @@ export interface CertificateMapEntryState {
      */
     project?: pulumi.Input<string>;
     /**
-     * A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-     * progress. Some frontends may serve this configuration.
+     * A serving state of this Certificate Map Entry.
      */
     state?: pulumi.Input<string>;
     /**
@@ -285,8 +279,7 @@ export interface CertificateMapEntryArgs {
      */
     certificates: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -307,7 +300,6 @@ export interface CertificateMapEntryArgs {
     map: pulumi.Input<string>;
     /**
      * A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      */
     matcher?: pulumi.Input<string>;
     /**

@@ -18,77 +18,76 @@ namespace Pulumi.Gcp.Dataproc
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mycluster = new Gcp.Dataproc.Cluster("mycluster", new()
     ///     {
-    ///         var mycluster = new Gcp.Dataproc.Cluster("mycluster", new Gcp.Dataproc.ClusterArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///         });
-    ///         // Submit an example spark job to a dataproc cluster
-    ///         var spark = new Gcp.Dataproc.Job("spark", new Gcp.Dataproc.JobArgs
-    ///         {
-    ///             Region = mycluster.Region,
-    ///             ForceDelete = true,
-    ///             Placement = new Gcp.Dataproc.Inputs.JobPlacementArgs
-    ///             {
-    ///                 ClusterName = mycluster.Name,
-    ///             },
-    ///             SparkConfig = new Gcp.Dataproc.Inputs.JobSparkConfigArgs
-    ///             {
-    ///                 MainClass = "org.apache.spark.examples.SparkPi",
-    ///                 JarFileUris = 
-    ///                 {
-    ///                     "file:///usr/lib/spark/examples/jars/spark-examples.jar",
-    ///                 },
-    ///                 Args = 
-    ///                 {
-    ///                     "1000",
-    ///                 },
-    ///                 Properties = 
-    ///                 {
-    ///                     { "spark.logConf", "true" },
-    ///                 },
-    ///                 LoggingConfig = new Gcp.Dataproc.Inputs.JobSparkConfigLoggingConfigArgs
-    ///                 {
-    ///                     DriverLogLevels = 
-    ///                     {
-    ///                         { "root", "INFO" },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         // Submit an example pyspark job to a dataproc cluster
-    ///         var pyspark = new Gcp.Dataproc.Job("pyspark", new Gcp.Dataproc.JobArgs
-    ///         {
-    ///             Region = mycluster.Region,
-    ///             ForceDelete = true,
-    ///             Placement = new Gcp.Dataproc.Inputs.JobPlacementArgs
-    ///             {
-    ///                 ClusterName = mycluster.Name,
-    ///             },
-    ///             PysparkConfig = new Gcp.Dataproc.Inputs.JobPysparkConfigArgs
-    ///             {
-    ///                 MainPythonFileUri = "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
-    ///                 Properties = 
-    ///                 {
-    ///                     { "spark.logConf", "true" },
-    ///                 },
-    ///             },
-    ///         });
-    ///         this.SparkStatus = spark.Statuses.Apply(statuses =&gt; statuses[0].State);
-    ///         this.PysparkStatus = pyspark.Statuses.Apply(statuses =&gt; statuses[0].State);
-    ///     }
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    ///     [Output("sparkStatus")]
-    ///     public Output&lt;string&gt; SparkStatus { get; set; }
-    ///     [Output("pysparkStatus")]
-    ///     public Output&lt;string&gt; PysparkStatus { get; set; }
-    /// }
+    ///     // Submit an example spark job to a dataproc cluster
+    ///     var spark = new Gcp.Dataproc.Job("spark", new()
+    ///     {
+    ///         Region = mycluster.Region,
+    ///         ForceDelete = true,
+    ///         Placement = new Gcp.Dataproc.Inputs.JobPlacementArgs
+    ///         {
+    ///             ClusterName = mycluster.Name,
+    ///         },
+    ///         SparkConfig = new Gcp.Dataproc.Inputs.JobSparkConfigArgs
+    ///         {
+    ///             MainClass = "org.apache.spark.examples.SparkPi",
+    ///             JarFileUris = new[]
+    ///             {
+    ///                 "file:///usr/lib/spark/examples/jars/spark-examples.jar",
+    ///             },
+    ///             Args = new[]
+    ///             {
+    ///                 "1000",
+    ///             },
+    ///             Properties = 
+    ///             {
+    ///                 { "spark.logConf", "true" },
+    ///             },
+    ///             LoggingConfig = new Gcp.Dataproc.Inputs.JobSparkConfigLoggingConfigArgs
+    ///             {
+    ///                 DriverLogLevels = 
+    ///                 {
+    ///                     { "root", "INFO" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Submit an example pyspark job to a dataproc cluster
+    ///     var pyspark = new Gcp.Dataproc.Job("pyspark", new()
+    ///     {
+    ///         Region = mycluster.Region,
+    ///         ForceDelete = true,
+    ///         Placement = new Gcp.Dataproc.Inputs.JobPlacementArgs
+    ///         {
+    ///             ClusterName = mycluster.Name,
+    ///         },
+    ///         PysparkConfig = new Gcp.Dataproc.Inputs.JobPysparkConfigArgs
+    ///         {
+    ///             MainPythonFileUri = "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+    ///             Properties = 
+    ///             {
+    ///                 { "spark.logConf", "true" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["sparkStatus"] = spark.Statuses.Apply(statuses =&gt; statuses[0].State),
+    ///         ["pysparkStatus"] = pyspark.Statuses.Apply(statuses =&gt; statuses[0].State),
+    ///     };
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -96,7 +95,7 @@ namespace Pulumi.Gcp.Dataproc
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:dataproc/job:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
@@ -248,7 +247,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// By default, you can only delete inactive jobs within
@@ -347,9 +346,10 @@ namespace Pulumi.Gcp.Dataproc
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 
-    public sealed class JobState : Pulumi.ResourceArgs
+    public sealed class JobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
@@ -472,5 +472,6 @@ namespace Pulumi.Gcp.Dataproc
         public JobState()
         {
         }
+        public static new JobState Empty => new JobState();
     }
 }

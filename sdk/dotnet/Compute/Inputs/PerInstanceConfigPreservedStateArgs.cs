@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class PerInstanceConfigPreservedStateArgs : Pulumi.ResourceArgs
+    public sealed class PerInstanceConfigPreservedStateArgs : global::Pulumi.ResourceArgs
     {
         [Input("disks")]
         private InputList<Inputs.PerInstanceConfigPreservedStateDiskArgs>? _disks;
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public PerInstanceConfigPreservedStateArgs()
         {
         }
+        public static new PerInstanceConfigPreservedStateArgs Empty => new PerInstanceConfigPreservedStateArgs();
     }
 }

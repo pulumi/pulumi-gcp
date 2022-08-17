@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding")]
-    public partial class GcpUserAccessBinding : Pulumi.CustomResource
+    public partial class GcpUserAccessBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class GcpUserAccessBindingArgs : Pulumi.ResourceArgs
+    public sealed class GcpUserAccessBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
@@ -122,9 +122,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public GcpUserAccessBindingArgs()
         {
         }
+        public static new GcpUserAccessBindingArgs Empty => new GcpUserAccessBindingArgs();
     }
 
-    public sealed class GcpUserAccessBindingState : Pulumi.ResourceArgs
+    public sealed class GcpUserAccessBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
@@ -155,5 +156,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public GcpUserAccessBindingState()
         {
         }
+        public static new GcpUserAccessBindingState Empty => new GcpUserAccessBindingState();
     }
 }

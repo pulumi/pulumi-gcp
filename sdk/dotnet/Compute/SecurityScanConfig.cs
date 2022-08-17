@@ -24,37 +24,36 @@ namespace Pulumi.Gcp.Compute
     /// ### Scan Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var scannerStaticIp = new Gcp.Compute.Address("scannerStaticIp", new()
     ///     {
-    ///         var scannerStaticIp = new Gcp.Compute.Address("scannerStaticIp", new Gcp.Compute.AddressArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new Gcp.Compute.SecurityScanConfigArgs
-    ///         {
-    ///             DisplayName = "scan-config",
-    ///             StartingUrls = 
-    ///             {
-    ///                 scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),
-    ///             },
-    ///             TargetPlatforms = 
-    ///             {
-    ///                 "COMPUTE",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
+    ///     {
+    ///         DisplayName = "scan-config",
+    ///         StartingUrls = new[]
+    ///         {
+    ///             scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),
+    ///         },
+    ///         TargetPlatforms = new[]
+    ///         {
+    ///             "COMPUTE",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +73,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityScanConfig:SecurityScanConfig")]
-    public partial class SecurityScanConfig : Pulumi.CustomResource
+    public partial class SecurityScanConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The authentication configuration.
@@ -197,7 +196,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SecurityScanConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityScanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication configuration.
@@ -291,9 +290,10 @@ namespace Pulumi.Gcp.Compute
         public SecurityScanConfigArgs()
         {
         }
+        public static new SecurityScanConfigArgs Empty => new SecurityScanConfigArgs();
     }
 
-    public sealed class SecurityScanConfigState : Pulumi.ResourceArgs
+    public sealed class SecurityScanConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication configuration.
@@ -393,5 +393,6 @@ namespace Pulumi.Gcp.Compute
         public SecurityScanConfigState()
         {
         }
+        public static new SecurityScanConfigState Empty => new SecurityScanConfigState();
     }
 }

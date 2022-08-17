@@ -17,27 +17,26 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new()
     ///     {
-    ///         var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new Gcp.Compute.FirewallPolicyArgs
-    ///         {
-    ///             Parent = "organizations/12345",
-    ///             ShortName = "my-policy",
-    ///             Description = "Example Resource",
-    ///         });
-    ///         var defaultFirewallPolicyAssociation = new Gcp.Compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation", new Gcp.Compute.FirewallPolicyAssociationArgs
-    ///         {
-    ///             FirewallPolicy = defaultFirewallPolicy.Id,
-    ///             AttachmentTarget = google_folder.Folder.Name,
-    ///         });
-    ///     }
+    ///         Parent = "organizations/12345",
+    ///         ShortName = "my-policy",
+    ///         Description = "Example Resource",
+    ///     });
     /// 
-    /// }
+    ///     var defaultFirewallPolicyAssociation = new Gcp.Compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation", new()
+    ///     {
+    ///         FirewallPolicy = defaultFirewallPolicy.Id,
+    ///         AttachmentTarget = google_folder.Folder.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation")]
-    public partial class FirewallPolicyAssociation : Pulumi.CustomResource
+    public partial class FirewallPolicyAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The target that the firewall policy is attached to.
@@ -123,7 +122,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class FirewallPolicyAssociationArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target that the firewall policy is attached to.
@@ -146,9 +145,10 @@ namespace Pulumi.Gcp.Compute
         public FirewallPolicyAssociationArgs()
         {
         }
+        public static new FirewallPolicyAssociationArgs Empty => new FirewallPolicyAssociationArgs();
     }
 
-    public sealed class FirewallPolicyAssociationState : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target that the firewall policy is attached to.
@@ -177,5 +177,6 @@ namespace Pulumi.Gcp.Compute
         public FirewallPolicyAssociationState()
         {
         }
+        public static new FirewallPolicyAssociationState Empty => new FirewallPolicyAssociationState();
     }
 }

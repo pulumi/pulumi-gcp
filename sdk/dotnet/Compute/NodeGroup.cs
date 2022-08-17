@@ -27,65 +27,63 @@ namespace Pulumi.Gcp.Compute
     /// ### Node Group Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
     ///     {
-    ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             NodeType = "n1-node-96-624",
-    ///         });
-    ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
-    ///         {
-    ///             Zone = "us-central1-a",
-    ///             Description = "example google_compute_node_group for the Google Provider",
-    ///             Size = 1,
-    ///             NodeTemplate = soletenant_tmpl.Id,
-    ///         });
-    ///     }
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///     });
     /// 
-    /// }
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for the Google Provider",
+    ///         Size = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Node Group Autoscaling Policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
     ///     {
-    ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             NodeType = "n1-node-96-624",
-    ///         });
-    ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
-    ///         {
-    ///             Zone = "us-central1-a",
-    ///             Description = "example google_compute_node_group for Google Provider",
-    ///             MaintenancePolicy = "RESTART_IN_PLACE",
-    ///             MaintenanceWindow = new Gcp.Compute.Inputs.NodeGroupMaintenanceWindowArgs
-    ///             {
-    ///                 StartTime = "08:00",
-    ///             },
-    ///             InitialSize = 1,
-    ///             NodeTemplate = soletenant_tmpl.Id,
-    ///             AutoscalingPolicy = new Gcp.Compute.Inputs.NodeGroupAutoscalingPolicyArgs
-    ///             {
-    ///                 Mode = "ONLY_SCALE_OUT",
-    ///                 MinNodes = 1,
-    ///                 MaxNodes = 10,
-    ///             },
-    ///         });
-    ///     }
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///     });
     /// 
-    /// }
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for Google Provider",
+    ///         MaintenancePolicy = "RESTART_IN_PLACE",
+    ///         MaintenanceWindow = new Gcp.Compute.Inputs.NodeGroupMaintenanceWindowArgs
+    ///         {
+    ///             StartTime = "08:00",
+    ///         },
+    ///         InitialSize = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///         AutoscalingPolicy = new Gcp.Compute.Inputs.NodeGroupAutoscalingPolicyArgs
+    ///         {
+    ///             Mode = "ONLY_SCALE_OUT",
+    ///             MinNodes = 1,
+    ///             MaxNodes = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -109,7 +107,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/nodeGroup:NodeGroup")]
-    public partial class NodeGroup : Pulumi.CustomResource
+    public partial class NodeGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If you use sole-tenant nodes for your workloads, you can use the node
@@ -231,7 +229,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class NodeGroupArgs : Pulumi.ResourceArgs
+    public sealed class NodeGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If you use sole-tenant nodes for your workloads, you can use the node
@@ -300,9 +298,10 @@ namespace Pulumi.Gcp.Compute
         public NodeGroupArgs()
         {
         }
+        public static new NodeGroupArgs Empty => new NodeGroupArgs();
     }
 
-    public sealed class NodeGroupState : Pulumi.ResourceArgs
+    public sealed class NodeGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If you use sole-tenant nodes for your workloads, you can use the node
@@ -383,5 +382,6 @@ namespace Pulumi.Gcp.Compute
         public NodeGroupState()
         {
         }
+        public static new NodeGroupState Empty => new NodeGroupState();
     }
 }

@@ -24,140 +24,136 @@ namespace Pulumi.Gcp.Filestore
     /// ### Filestore Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
+    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///             CapacityGb = 2660,
+    ///             Name = "share1",
+    ///         },
+    ///         Location = "us-central1-b",
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 CapacityGb = 2660,
-    ///                 Name = "share1",
-    ///             },
-    ///             Location = "us-central1-b",
-    ///             Networks = 
-    ///             {
-    ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///                 Modes = new[]
     ///                 {
-    ///                     Modes = 
-    ///                     {
-    ///                         "MODE_IPV4",
-    ///                     },
-    ///                     Network = "default",
+    ///                     "MODE_IPV4",
     ///                 },
+    ///                 Network = "default",
     ///             },
-    ///             Tier = "PREMIUM",
-    ///         });
-    ///     }
+    ///         },
+    ///         Tier = "PREMIUM",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Filestore Instance Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
+    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///             CapacityGb = 2660,
+    ///             Name = "share1",
+    ///             NfsExportOptions = new[]
     ///             {
-    ///                 CapacityGb = 2660,
-    ///                 Name = "share1",
-    ///                 NfsExportOptions = 
+    ///                 new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
     ///                 {
-    ///                     new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+    ///                     AccessMode = "READ_WRITE",
+    ///                     IpRanges = new[]
     ///                     {
-    ///                         AccessMode = "READ_WRITE",
-    ///                         IpRanges = 
-    ///                         {
-    ///                             "10.0.0.0/24",
-    ///                         },
-    ///                         SquashMode = "NO_ROOT_SQUASH",
+    ///                         "10.0.0.0/24",
     ///                     },
-    ///                     new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+    ///                     SquashMode = "NO_ROOT_SQUASH",
+    ///                 },
+    ///                 new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+    ///                 {
+    ///                     AccessMode = "READ_ONLY",
+    ///                     AnonGid = 456,
+    ///                     AnonUid = 123,
+    ///                     IpRanges = new[]
     ///                     {
-    ///                         AccessMode = "READ_ONLY",
-    ///                         AnonGid = 456,
-    ///                         AnonUid = 123,
-    ///                         IpRanges = 
-    ///                         {
-    ///                             "10.10.0.0/24",
-    ///                         },
-    ///                         SquashMode = "ROOT_SQUASH",
+    ///                         "10.10.0.0/24",
     ///                     },
+    ///                     SquashMode = "ROOT_SQUASH",
     ///                 },
     ///             },
-    ///             Location = "us-central1-b",
-    ///             Networks = 
+    ///         },
+    ///         Location = "us-central1-b",
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///                 ConnectMode = "DIRECT_PEERING",
+    ///                 Modes = new[]
     ///                 {
-    ///                     ConnectMode = "DIRECT_PEERING",
-    ///                     Modes = 
-    ///                     {
-    ///                         "MODE_IPV4",
-    ///                     },
-    ///                     Network = "default",
+    ///                     "MODE_IPV4",
     ///                 },
+    ///                 Network = "default",
     ///             },
-    ///             Tier = "BASIC_SSD",
-    ///         });
-    ///     }
+    ///         },
+    ///         Tier = "BASIC_SSD",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Filestore Instance Enterprise
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var filestoreKeyring = new Gcp.Kms.KeyRing("filestoreKeyring", new()
     ///     {
-    ///         var filestoreKeyring = new Gcp.Kms.KeyRing("filestoreKeyring", new Gcp.Kms.KeyRingArgs
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var filestoreKey = new Gcp.Kms.CryptoKey("filestoreKey", new()
+    ///     {
+    ///         KeyRing = filestoreKeyring.Id,
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Filestore.Instance("instance", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var filestoreKey = new Gcp.Kms.CryptoKey("filestoreKey", new Gcp.Kms.CryptoKeyArgs
+    ///             CapacityGb = 2560,
+    ///             Name = "share1",
+    ///         },
+    ///         Networks = new[]
     ///         {
-    ///             KeyRing = filestoreKeyring.Id,
-    ///         });
-    ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Tier = "ENTERPRISE",
-    ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 CapacityGb = 2560,
-    ///                 Name = "share1",
-    ///             },
-    ///             Networks = 
-    ///             {
-    ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///                 Network = "default",
+    ///                 Modes = new[]
     ///                 {
-    ///                     Network = "default",
-    ///                     Modes = 
-    ///                     {
-    ///                         "MODE_IPV4",
-    ///                     },
+    ///                     "MODE_IPV4",
     ///                 },
     ///             },
-    ///             KmsKeyName = filestoreKey.Id,
-    ///         });
-    ///     }
+    ///         },
+    ///         KmsKeyName = filestoreKey.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -177,7 +173,7 @@ namespace Pulumi.Gcp.Filestore
     /// ```
     /// </summary>
     [GcpResourceType("gcp:filestore/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -303,7 +299,7 @@ namespace Pulumi.Gcp.Filestore
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the instance.
@@ -388,9 +384,10 @@ namespace Pulumi.Gcp.Filestore
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -487,5 +484,6 @@ namespace Pulumi.Gcp.Filestore
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

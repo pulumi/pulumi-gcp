@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 
@@ -188,14 +188,14 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="port", type=Integer.class, parameters={})
-    private Output<Integer> port;
+    private Output</* @Nullable */ Integer> port;
 
     /**
      * @return Port number of network endpoint.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Output<Optional<Integer>> port() {
+        return Codegen.optional(this.port);
     }
     /**
      * The ID of the project in which the resource belongs.

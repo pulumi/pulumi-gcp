@@ -22,38 +22,39 @@ namespace Pulumi.Gcp.Tags
     /// ### Tag Binding Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             OrgId = "123456789",
-    ///             ProjectId = "project_id",
-    ///         });
-    ///         var key = new Gcp.Tags.TagKey("key", new Gcp.Tags.TagKeyArgs
-    ///         {
-    ///             Description = "For keyname resources.",
-    ///             Parent = "organizations/123456789",
-    ///             ShortName = "keyname",
-    ///         });
-    ///         var @value = new Gcp.Tags.TagValue("value", new Gcp.Tags.TagValueArgs
-    ///         {
-    ///             Description = "For valuename resources.",
-    ///             Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
-    ///             ShortName = "valuename",
-    ///         });
-    ///         var binding = new Gcp.Tags.TagBinding("binding", new Gcp.Tags.TagBindingArgs
-    ///         {
-    ///             Parent = project.Number.Apply(number =&gt; $"//cloudresourcemanager.googleapis.com/projects/{number}"),
-    ///             TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
-    ///         });
-    ///     }
+    ///         OrgId = "123456789",
+    ///         ProjectId = "project_id",
+    ///     });
     /// 
-    /// }
+    ///     var key = new Gcp.Tags.TagKey("key", new()
+    ///     {
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    ///     var @value = new Gcp.Tags.TagValue("value", new()
+    ///     {
+    ///         Description = "For valuename resources.",
+    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
+    ///     var binding = new Gcp.Tags.TagBinding("binding", new()
+    ///     {
+    ///         Parent = project.Number.Apply(number =&gt; $"//cloudresourcemanager.googleapis.com/projects/{number}"),
+    ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +70,7 @@ namespace Pulumi.Gcp.Tags
     /// ```
     /// </summary>
     [GcpResourceType("gcp:tags/tagBinding:TagBinding")]
-    public partial class TagBinding : Pulumi.CustomResource
+    public partial class TagBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
@@ -133,7 +134,7 @@ namespace Pulumi.Gcp.Tags
         }
     }
 
-    public sealed class TagBindingArgs : Pulumi.ResourceArgs
+    public sealed class TagBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
@@ -150,9 +151,10 @@ namespace Pulumi.Gcp.Tags
         public TagBindingArgs()
         {
         }
+        public static new TagBindingArgs Empty => new TagBindingArgs();
     }
 
-    public sealed class TagBindingState : Pulumi.ResourceArgs
+    public sealed class TagBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
@@ -175,5 +177,6 @@ namespace Pulumi.Gcp.Tags
         public TagBindingState()
         {
         }
+        public static new TagBindingState Empty => new TagBindingState();
     }
 }

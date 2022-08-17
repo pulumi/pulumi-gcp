@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentOptions")]
         private InputList<string>? _contentOptions;
@@ -96,5 +96,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigGetArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigGetArgs Empty => new PreventionInspectTemplateInspectConfigGetArgs();
     }
 }

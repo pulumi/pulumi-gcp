@@ -23,199 +23,189 @@ namespace Pulumi.Gcp.Compute
     /// ## google\_compute\_machine\_image\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/compute.admin",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Compute.MachineImageIamPolicy("policy", new Gcp.Compute.MachineImageIamPolicyArgs
-    ///         {
-    ///             Project = google_compute_machine_image.Image.Project,
-    ///             MachineImage = google_compute_machine_image.Image.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Compute.MachineImageIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_machine_image.Image.Project,
+    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/compute.admin",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Title = "expires_after_2019_12_31",
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     },
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Compute.MachineImageIamPolicy("policy", new Gcp.Compute.MachineImageIamPolicyArgs
-    ///         {
-    ///             Project = google_compute_machine_image.Image.Project,
-    ///             MachineImage = google_compute_machine_image.Image.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Compute.MachineImageIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_machine_image.Image.Project,
+    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## google\_compute\_machine\_image\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Compute.MachineImageIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Compute.MachineImageIamBinding("binding", new Gcp.Compute.MachineImageIamBindingArgs
+    ///         Project = google_compute_machine_image.Image.Project,
+    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_machine_image.Image.Project,
-    ///             MachineImage = google_compute_machine_image.Image.Name,
-    ///             Role = "roles/compute.admin",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Compute.MachineImageIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Compute.MachineImageIamBinding("binding", new Gcp.Compute.MachineImageIamBindingArgs
+    ///         Project = google_compute_machine_image.Image.Project,
+    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_machine_image.Image.Project,
-    ///             MachineImage = google_compute_machine_image.Image.Name,
-    ///             Role = "roles/compute.admin",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Condition = new Gcp.Compute.Inputs.MachineImageIamBindingConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         }, new CustomResourceOptions
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Compute.Inputs.MachineImageIamBindingConditionArgs
     ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## google\_compute\_machine\_image\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Compute.MachineImageIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Compute.MachineImageIamMember("member", new Gcp.Compute.MachineImageIamMemberArgs
-    ///         {
-    ///             Project = google_compute_machine_image.Image.Project,
-    ///             MachineImage = google_compute_machine_image.Image.Name,
-    ///             Role = "roles/compute.admin",
-    ///             Member = "user:jane@example.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Project = google_compute_machine_image.Image.Project,
+    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Compute.MachineImageIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Compute.MachineImageIamMember("member", new Gcp.Compute.MachineImageIamMemberArgs
+    ///         Project = google_compute_machine_image.Image.Project,
+    ///         MachineImage = google_compute_machine_image.Image.Name,
+    ///         Role = "roles/compute.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Compute.Inputs.MachineImageIamMemberConditionArgs
     ///         {
-    ///             Project = google_compute_machine_image.Image.Project,
-    ///             MachineImage = google_compute_machine_image.Image.Name,
-    ///             Role = "roles/compute.admin",
-    ///             Member = "user:jane@example.com",
-    ///             Condition = new Gcp.Compute.Inputs.MachineImageIamMemberConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -243,7 +233,7 @@ namespace Pulumi.Gcp.Compute
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/machineImageIamPolicy:MachineImageIamPolicy")]
-    public partial class MachineImageIamPolicy : Pulumi.CustomResource
+    public partial class MachineImageIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -315,7 +305,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class MachineImageIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class MachineImageIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -340,9 +330,10 @@ namespace Pulumi.Gcp.Compute
         public MachineImageIamPolicyArgs()
         {
         }
+        public static new MachineImageIamPolicyArgs Empty => new MachineImageIamPolicyArgs();
     }
 
-    public sealed class MachineImageIamPolicyState : Pulumi.ResourceArgs
+    public sealed class MachineImageIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -373,5 +364,6 @@ namespace Pulumi.Gcp.Compute
         public MachineImageIamPolicyState()
         {
         }
+        public static new MachineImageIamPolicyState Empty => new MachineImageIamPolicyState();
     }
 }

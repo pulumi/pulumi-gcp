@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionNetworkEndpointGroupServerlessDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class RegionNetworkEndpointGroupServerlessDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The platform of the NEG backend target(s). Possible values:
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionNetworkEndpointGroupServerlessDeploymentArgs()
         {
         }
+        public static new RegionNetworkEndpointGroupServerlessDeploymentArgs Empty => new RegionNetworkEndpointGroupServerlessDeploymentArgs();
     }
 }

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterLoggingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLoggingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableComponents", required: true)]
         private InputList<string>? _enableComponents;
 
         /// <summary>
-        /// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        /// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         /// </summary>
         public InputList<string> EnableComponents
         {
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterLoggingConfigGetArgs()
         {
         }
+        public static new ClusterLoggingConfigGetArgs Empty => new ClusterLoggingConfigGetArgs();
     }
 }

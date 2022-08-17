@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Recaptcha.Inputs
 {
 
-    public sealed class EnterpriseKeyAndroidSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseKeyAndroidSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, it means allowed_package_names will not be enforced.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
         public EnterpriseKeyAndroidSettingsGetArgs()
         {
         }
+        public static new EnterpriseKeyAndroidSettingsGetArgs Empty => new EnterpriseKeyAndroidSettingsGetArgs();
     }
 }

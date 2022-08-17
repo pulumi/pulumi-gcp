@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class CustomServiceTelemetryGetArgs : Pulumi.ResourceArgs
+    public sealed class CustomServiceTelemetryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full name of the resource that defines this service.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public CustomServiceTelemetryGetArgs()
         {
         }
+        public static new CustomServiceTelemetryGetArgs Empty => new CustomServiceTelemetryGetArgs();
     }
 }

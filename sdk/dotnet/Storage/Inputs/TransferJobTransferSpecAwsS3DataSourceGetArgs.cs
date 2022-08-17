@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecAwsS3DataSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecAwsS3DataSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS credentials block.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecAwsS3DataSourceGetArgs()
         {
         }
+        public static new TransferJobTransferSpecAwsS3DataSourceGetArgs Empty => new TransferJobTransferSpecAwsS3DataSourceGetArgs();
     }
 }

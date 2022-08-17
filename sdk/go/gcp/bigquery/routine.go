@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 // * How-to Guides
-//     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
+//   - [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 //
 // ## Example Usage
 // ### Big Query Routine Basic
@@ -26,31 +26,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("dataset_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
-// 			DatasetId:      test.DatasetId,
-// 			RoutineId:      pulumi.String("routine_id"),
-// 			RoutineType:    pulumi.String("PROCEDURE"),
-// 			Language:       pulumi.String("SQL"),
-// 			DefinitionBody: pulumi.String("CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
+//				RoutineId:      pulumi.String("routine_id"),
+//				RoutineType:    pulumi.String("PROCEDURE"),
+//				Language:       pulumi.String("SQL"),
+//				DefinitionBody: pulumi.String("CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Big Query Routine Json
 //
@@ -58,42 +61,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("dataset_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
-// 			DatasetId:      test.DatasetId,
-// 			RoutineId:      pulumi.String("tf_test_routine_id"),
-// 			RoutineType:    pulumi.String("SCALAR_FUNCTION"),
-// 			Language:       pulumi.String("JAVASCRIPT"),
-// 			DefinitionBody: pulumi.String("CREATE FUNCTION multiplyInputs return x*y;"),
-// 			Arguments: bigquery.RoutineArgumentArray{
-// 				&bigquery.RoutineArgumentArgs{
-// 					Name:     pulumi.String("x"),
-// 					DataType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
-// 				},
-// 				&bigquery.RoutineArgumentArgs{
-// 					Name:     pulumi.String("y"),
-// 					DataType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
-// 				},
-// 			},
-// 			ReturnType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
+//				RoutineId:      pulumi.String("tf_test_routine_id"),
+//				RoutineType:    pulumi.String("SCALAR_FUNCTION"),
+//				Language:       pulumi.String("JAVASCRIPT"),
+//				DefinitionBody: pulumi.String("CREATE FUNCTION multiplyInputs return x*y;"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:     pulumi.String("x"),
+//						DataType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
+//					},
+//					&bigquery.RoutineArgumentArgs{
+//						Name:     pulumi.String("y"),
+//						DataType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
+//					},
+//				},
+//				ReturnType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Big Query Routine Tvf
 //
@@ -101,78 +107,87 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("dataset_id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"typeKind": "INT64",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
-// 			"columns": []map[string]interface{}{
-// 				map[string]interface{}{
-// 					"name": "value",
-// 					"type": map[string]interface{}{
-// 						"typeKind": "INT64",
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json1 := string(tmpJSON1)
-// 		_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
-// 			DatasetId:      test.DatasetId,
-// 			RoutineId:      pulumi.String("tf_test_routine_id"),
-// 			RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
-// 			Language:       pulumi.String("SQL"),
-// 			DefinitionBody: pulumi.String("SELECT 1 + value AS value\n"),
-// 			Arguments: bigquery.RoutineArgumentArray{
-// 				&bigquery.RoutineArgumentArgs{
-// 					Name:         pulumi.String("value"),
-// 					ArgumentKind: pulumi.String("FIXED_TYPE"),
-// 					DataType:     pulumi.String(json0),
-// 				},
-// 			},
-// 			ReturnTableType: pulumi.String(json1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"typeKind": "INT64",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"columns": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name": "value",
+//						"type": map[string]interface{}{
+//							"typeKind": "INT64",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
+//				RoutineId:      pulumi.String("tf_test_routine_id"),
+//				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//				Language:       pulumi.String("SQL"),
+//				DefinitionBody: pulumi.String("SELECT 1 + value AS value\n"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:         pulumi.String("value"),
+//						ArgumentKind: pulumi.String("FIXED_TYPE"),
+//						DataType:     pulumi.String(json0),
+//					},
+//				},
+//				ReturnTableType: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Routine can be imported using any of these accepted formats
+// # Routine can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}
+//
+//	$ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/routine:Routine default {{project}}/{{dataset_id}}/{{routine_id}}
+//
+//	$ pulumi import gcp:bigquery/routine:Routine default {{project}}/{{dataset_id}}/{{routine_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
+//
+//	$ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
+//
 // ```
 type Routine struct {
 	pulumi.CustomResourceState
@@ -481,7 +496,7 @@ func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput 
 // RoutineArrayInput is an input type that accepts RoutineArray and RoutineArrayOutput values.
 // You can construct a concrete instance of `RoutineArrayInput` via:
 //
-//          RoutineArray{ RoutineArgs{...} }
+//	RoutineArray{ RoutineArgs{...} }
 type RoutineArrayInput interface {
 	pulumi.Input
 
@@ -506,7 +521,7 @@ func (i RoutineArray) ToRoutineArrayOutputWithContext(ctx context.Context) Routi
 // RoutineMapInput is an input type that accepts RoutineMap and RoutineMapOutput values.
 // You can construct a concrete instance of `RoutineMapInput` via:
 //
-//          RoutineMap{ "key": RoutineArgs{...} }
+//	RoutineMap{ "key": RoutineArgs{...} }
 type RoutineMapInput interface {
 	pulumi.Input
 

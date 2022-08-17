@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigDatabaseConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigDatabaseConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigDatabaseConfigGetArgs()
         {
         }
+        public static new EnvironmentConfigDatabaseConfigGetArgs Empty => new EnvironmentConfigDatabaseConfigGetArgs();
     }
 }

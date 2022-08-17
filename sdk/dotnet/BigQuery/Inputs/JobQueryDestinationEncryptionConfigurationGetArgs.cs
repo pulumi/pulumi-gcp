@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobQueryDestinationEncryptionConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class JobQueryDestinationEncryptionConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobQueryDestinationEncryptionConfigurationGetArgs()
         {
         }
+        public static new JobQueryDestinationEncryptionConfigurationGetArgs Empty => new JobQueryDestinationEncryptionConfigurationGetArgs();
     }
 }

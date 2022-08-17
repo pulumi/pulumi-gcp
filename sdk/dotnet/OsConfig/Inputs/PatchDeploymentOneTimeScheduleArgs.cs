@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentOneTimeScheduleArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentOneTimeScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentOneTimeScheduleArgs()
         {
         }
+        public static new PatchDeploymentOneTimeScheduleArgs Empty => new PatchDeploymentOneTimeScheduleArgs();
     }
 }

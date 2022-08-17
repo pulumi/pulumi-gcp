@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class AutoscalingPolicyIamBindingConditionArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public AutoscalingPolicyIamBindingConditionArgs()
         {
         }
+        public static new AutoscalingPolicyIamBindingConditionArgs Empty => new AutoscalingPolicyIamBindingConditionArgs();
     }
 }

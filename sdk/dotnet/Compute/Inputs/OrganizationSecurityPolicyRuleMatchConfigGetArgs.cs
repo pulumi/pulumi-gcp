@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class OrganizationSecurityPolicyRuleMatchConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyRuleMatchConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public OrganizationSecurityPolicyRuleMatchConfigGetArgs()
         {
         }
+        public static new OrganizationSecurityPolicyRuleMatchConfigGetArgs Empty => new OrganizationSecurityPolicyRuleMatchConfigGetArgs();
     }
 }

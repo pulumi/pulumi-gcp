@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.pubsub.SubscriptionArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionState;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionBigqueryConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionExpirationPolicy;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfig;
@@ -194,6 +195,94 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Pubsub Subscription Push Bq
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var viewer = new IAMMember(&#34;viewer&#34;, IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .role(&#34;roles/bigquery.metadataViewer&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var editor = new IAMMember(&#34;editor&#34;, IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .role(&#34;roles/bigquery.dataEditor&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;example_dataset&#34;)
+ *             .build());
+ * 
+ *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *             .deletionProtection(false)
+ *             .tableId(&#34;example_table&#34;)
+ *             .datasetId(testDataset.datasetId())
+ *             .schema(&#34;&#34;&#34;
+ * [
+ *   {
+ *     &#34;name&#34;: &#34;data&#34;,
+ *     &#34;type&#34;: &#34;STRING&#34;,
+ *     &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *     &#34;description&#34;: &#34;The data&#34;
+ *   }
+ * ]
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
+ *             .topic(exampleTopic.name())
+ *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
+ *                     var project = values.t1;
+ *                     var datasetId = values.t2;
+ *                     var tableId = values.t3;
+ *                     return String.format(&#34;%s.%s.%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult),datasetId,tableId);
+ *                 }))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     viewer,
+ *                     editor)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -255,6 +344,26 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> ackDeadlineSeconds() {
         return this.ackDeadlineSeconds;
+    }
+    /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bigqueryConfig", type=SubscriptionBigqueryConfig.class, parameters={})
+    private Output</* @Nullable */ SubscriptionBigqueryConfig> bigqueryConfig;
+
+    /**
+     * @return If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SubscriptionBigqueryConfig>> bigqueryConfig() {
+        return Codegen.optional(this.bigqueryConfig);
     }
     /**
      * A policy that specifies the conditions for dead lettering messages in

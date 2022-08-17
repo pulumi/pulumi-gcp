@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloBasicSliAvailabilityGetArgs : Pulumi.ResourceArgs
+    public sealed class SloBasicSliAvailabilityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloBasicSliAvailabilityGetArgs()
         {
         }
+        public static new SloBasicSliAvailabilityGetArgs Empty => new SloBasicSliAvailabilityGetArgs();
     }
 }

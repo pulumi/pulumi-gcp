@@ -19,27 +19,26 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = Gcp.Organizations.GetBillingAccount.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-    ///         {
-    ///             BillingAccount = "00AA00-000AAA-00AA0A",
-    ///         }));
-    ///         var basic = new Gcp.Logging.BillingAccountBucketConfig("basic", new Gcp.Logging.BillingAccountBucketConfigArgs
-    ///         {
-    ///             BillingAccount = @default.Apply(@default =&gt; @default.BillingAccount),
-    ///             Location = "global",
-    ///             RetentionDays = 30,
-    ///             BucketId = "_Default",
-    ///         });
-    ///     }
+    ///         BillingAccount = "00AA00-000AAA-00AA0A",
+    ///     });
     /// 
-    /// }
+    ///     var basic = new Gcp.Logging.BillingAccountBucketConfig("basic", new()
+    ///     {
+    ///         BillingAccount = @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult).Apply(@default =&gt; @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult.BillingAccount)),
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +50,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig")]
-    public partial class BillingAccountBucketConfig : Pulumi.CustomResource
+    public partial class BillingAccountBucketConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The parent resource that contains the logging bucket.
@@ -139,7 +138,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class BillingAccountBucketConfigArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountBucketConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parent resource that contains the logging bucket.
@@ -174,9 +173,10 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountBucketConfigArgs()
         {
         }
+        public static new BillingAccountBucketConfigArgs Empty => new BillingAccountBucketConfigArgs();
     }
 
-    public sealed class BillingAccountBucketConfigState : Pulumi.ResourceArgs
+    public sealed class BillingAccountBucketConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parent resource that contains the logging bucket.
@@ -223,5 +223,6 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountBucketConfigState()
         {
         }
+        public static new BillingAccountBucketConfigState Empty => new BillingAccountBucketConfigState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRecurringScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRecurringScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The end time at which a recurring patch deployment schedule is no longer active.
@@ -74,5 +74,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRecurringScheduleGetArgs()
         {
         }
+        public static new PatchDeploymentRecurringScheduleGetArgs Empty => new PatchDeploymentRecurringScheduleGetArgs();
     }
 }

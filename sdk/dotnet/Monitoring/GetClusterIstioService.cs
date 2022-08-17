@@ -34,23 +34,21 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Gcp.Monitoring.GetClusterIstioService.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Gcp.Monitoring.GetClusterIstioService.InvokeAsync(new Gcp.Monitoring.GetClusterIstioServiceArgs
-        ///         {
-        ///             ClusterName = "west",
-        ///             Location = "us-west2-a",
-        ///             ServiceName = "istio-policy",
-        ///             ServiceNamespace = "istio-system",
-        ///         }));
-        ///     }
+        ///         ClusterName = "west",
+        ///         Location = "us-west2-a",
+        ///         ServiceName = "istio-policy",
+        ///         ServiceNamespace = "istio-system",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,23 +79,21 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Gcp.Monitoring.GetClusterIstioService.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Gcp.Monitoring.GetClusterIstioService.InvokeAsync(new Gcp.Monitoring.GetClusterIstioServiceArgs
-        ///         {
-        ///             ClusterName = "west",
-        ///             Location = "us-west2-a",
-        ///             ServiceName = "istio-policy",
-        ///             ServiceNamespace = "istio-system",
-        ///         }));
-        ///     }
+        ///         ClusterName = "west",
+        ///         Location = "us-west2-a",
+        ///         ServiceName = "istio-policy",
+        ///         ServiceNamespace = "istio-system",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -107,7 +103,7 @@ namespace Pulumi.Gcp.Monitoring
     }
 
 
-    public sealed class GetClusterIstioServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterIstioServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Kubernetes cluster in which this Istio service 
@@ -147,9 +143,10 @@ namespace Pulumi.Gcp.Monitoring
         public GetClusterIstioServiceArgs()
         {
         }
+        public static new GetClusterIstioServiceArgs Empty => new GetClusterIstioServiceArgs();
     }
 
-    public sealed class GetClusterIstioServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterIstioServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Kubernetes cluster in which this Istio service 
@@ -189,6 +186,7 @@ namespace Pulumi.Gcp.Monitoring
         public GetClusterIstioServiceInvokeArgs()
         {
         }
+        public static new GetClusterIstioServiceInvokeArgs Empty => new GetClusterIstioServiceInvokeArgs();
     }
 
 

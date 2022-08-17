@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class ApiKeyRestrictionsServerKeyRestrictionsArgs : Pulumi.ResourceArgs
+    public sealed class ApiKeyRestrictionsServerKeyRestrictionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedIps", required: true)]
         private InputList<string>? _allowedIps;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Projects.Inputs
         public ApiKeyRestrictionsServerKeyRestrictionsArgs()
         {
         }
+        public static new ApiKeyRestrictionsServerKeyRestrictionsArgs Empty => new ApiKeyRestrictionsServerKeyRestrictionsArgs();
     }
 }

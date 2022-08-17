@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretRotationArgs : Pulumi.ResourceArgs
+    public sealed class SecretRotationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timestamp in UTC at which the Secret is scheduled to rotate.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretRotationArgs()
         {
         }
+        public static new SecretRotationArgs Empty => new SecretRotationArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeInstallStepFileExecArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeInstallStepFileExecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeInstallStepFileExecArgs()
         {
         }
+        public static new GuestPoliciesRecipeInstallStepFileExecArgs Empty => new GuestPoliciesRecipeInstallStepFileExecArgs();
     }
 }

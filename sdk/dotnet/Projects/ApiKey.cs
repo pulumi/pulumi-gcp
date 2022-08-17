@@ -16,210 +16,205 @@ namespace Pulumi.Gcp.Projects
     /// ### Android_key
     /// A basic example of a android api keys key
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
+    ///         ProjectId = "app",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Projects.ApiKey("primary", new()
+    ///     {
+    ///         DisplayName = "sample-key",
+    ///         Project = basic.Name,
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
     ///         {
-    ///             ProjectId = "app",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var primary = new Gcp.Projects.ApiKey("primary", new Gcp.Projects.ApiKeyArgs
-    ///         {
-    ///             DisplayName = "sample-key",
-    ///             Project = basic.Name,
-    ///             Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///             AndroidKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs
     ///             {
-    ///                 AndroidKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs
+    ///                 AllowedApplications = new[]
     ///                 {
-    ///                     AllowedApplications = 
+    ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs
     ///                     {
-    ///                         new Gcp.Projects.Inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs
-    ///                         {
-    ///                             PackageName = "com.example.app123",
-    ///                             Sha1Fingerprint = "1699466a142d4682a5f91b50fdf400f2358e2b0b",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 ApiTargets = 
-    ///                 {
-    ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
-    ///                     {
-    ///                         Service = "translate.googleapis.com",
-    ///                         Methods = 
-    ///                         {
-    ///                             "GET*",
-    ///                         },
+    ///                         PackageName = "com.example.app123",
+    ///                         Sha1Fingerprint = "1699466a142d4682a5f91b50fdf400f2358e2b0b",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             ApiTargets = new[]
+    ///             {
+    ///                 new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
+    ///                 {
+    ///                     Service = "translate.googleapis.com",
+    ///                     Methods = new[]
+    ///                     {
+    ///                         "GET*",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Basic_key
     /// A basic example of a api keys key
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
+    ///         ProjectId = "app",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Projects.ApiKey("primary", new()
+    ///     {
+    ///         DisplayName = "sample-key",
+    ///         Project = basic.Name,
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
     ///         {
-    ///             ProjectId = "app",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var primary = new Gcp.Projects.ApiKey("primary", new Gcp.Projects.ApiKeyArgs
-    ///         {
-    ///             DisplayName = "sample-key",
-    ///             Project = basic.Name,
-    ///             Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///             ApiTargets = new[]
     ///             {
-    ///                 ApiTargets = 
+    ///                 new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                 {
-    ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
+    ///                     Service = "translate.googleapis.com",
+    ///                     Methods = new[]
     ///                     {
-    ///                         Service = "translate.googleapis.com",
-    ///                         Methods = 
-    ///                         {
-    ///                             "GET*",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 BrowserKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs
-    ///                 {
-    ///                     AllowedReferrers = 
-    ///                     {
-    ///                         ".*",
+    ///                         "GET*",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             BrowserKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs
+    ///             {
+    ///                 AllowedReferrers = new[]
+    ///                 {
+    ///                     ".*",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Ios_key
     /// A basic example of a ios api keys key
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
+    ///         ProjectId = "app",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Projects.ApiKey("primary", new()
+    ///     {
+    ///         DisplayName = "sample-key",
+    ///         Project = basic.Name,
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
     ///         {
-    ///             ProjectId = "app",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var primary = new Gcp.Projects.ApiKey("primary", new Gcp.Projects.ApiKeyArgs
-    ///         {
-    ///             DisplayName = "sample-key",
-    ///             Project = basic.Name,
-    ///             Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///             ApiTargets = new[]
     ///             {
-    ///                 ApiTargets = 
+    ///                 new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                 {
-    ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
+    ///                     Service = "translate.googleapis.com",
+    ///                     Methods = new[]
     ///                     {
-    ///                         Service = "translate.googleapis.com",
-    ///                         Methods = 
-    ///                         {
-    ///                             "GET*",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 IosKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs
-    ///                 {
-    ///                     AllowedBundleIds = 
-    ///                     {
-    ///                         "com.google.app.macos",
+    ///                         "GET*",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             IosKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs
+    ///             {
+    ///                 AllowedBundleIds = new[]
+    ///                 {
+    ///                     "com.google.app.macos",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Minimal_key
     /// A minimal example of a api keys key
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "app",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var primary = new Gcp.Projects.ApiKey("primary", new Gcp.Projects.ApiKeyArgs
-    ///         {
-    ///             DisplayName = "sample-key",
-    ///             Project = basic.Name,
-    ///         });
-    ///     }
+    ///         ProjectId = "app",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Projects.ApiKey("primary", new()
+    ///     {
+    ///         DisplayName = "sample-key",
+    ///         Project = basic.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Server_key
     /// A basic example of a server api keys key
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         var basic = new Gcp.Organizations.Project("basic", new Gcp.Organizations.ProjectArgs
+    ///         ProjectId = "app",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Projects.ApiKey("primary", new()
+    ///     {
+    ///         DisplayName = "sample-key",
+    ///         Project = basic.Name,
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
     ///         {
-    ///             ProjectId = "app",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var primary = new Gcp.Projects.ApiKey("primary", new Gcp.Projects.ApiKeyArgs
-    ///         {
-    ///             DisplayName = "sample-key",
-    ///             Project = basic.Name,
-    ///             Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///             ApiTargets = new[]
     ///             {
-    ///                 ApiTargets = 
+    ///                 new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                 {
-    ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
+    ///                     Service = "translate.googleapis.com",
+    ///                     Methods = new[]
     ///                     {
-    ///                         Service = "translate.googleapis.com",
-    ///                         Methods = 
-    ///                         {
-    ///                             "GET*",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 ServerKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsServerKeyRestrictionsArgs
-    ///                 {
-    ///                     AllowedIps = 
-    ///                     {
-    ///                         "127.0.0.1",
+    ///                         "GET*",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             ServerKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsServerKeyRestrictionsArgs
+    ///             {
+    ///                 AllowedIps = new[]
+    ///                 {
+    ///                     "127.0.0.1",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -239,7 +234,7 @@ namespace Pulumi.Gcp.Projects
     /// ```
     /// </summary>
     [GcpResourceType("gcp:projects/apiKey:ApiKey")]
-    public partial class ApiKey : Pulumi.CustomResource
+    public partial class ApiKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human-readable display name of this API key. Modifiable by user.
@@ -322,7 +317,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class ApiKeyArgs : Pulumi.ResourceArgs
+    public sealed class ApiKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human-readable display name of this API key. Modifiable by user.
@@ -351,9 +346,10 @@ namespace Pulumi.Gcp.Projects
         public ApiKeyArgs()
         {
         }
+        public static new ApiKeyArgs Empty => new ApiKeyArgs();
     }
 
-    public sealed class ApiKeyState : Pulumi.ResourceArgs
+    public sealed class ApiKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human-readable display name of this API key. Modifiable by user.
@@ -395,5 +391,6 @@ namespace Pulumi.Gcp.Projects
         public ApiKeyState()
         {
         }
+        public static new ApiKeyState Empty => new ApiKeyState();
     }
 }

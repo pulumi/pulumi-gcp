@@ -14,50 +14,49 @@ namespace Pulumi.Gcp.Vertex
     /// ### Vertex Ai Featurestore Entitytype
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new Gcp.Vertex.AiFeatureStoreArgs
+    ///         Labels = 
     ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Region = "us-central1",
-    ///             OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
-    ///             {
-    ///                 FixedNodeCount = 2,
-    ///             },
-    ///         }, new CustomResourceOptions
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
     ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new Gcp.Vertex.AiFeatureStoreEntityTypeArgs
-    ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Featurestore = featurestore.Id,
-    ///             MonitoringConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs
-    ///             {
-    ///                 SnapshotAnalysis = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs
-    ///                 {
-    ///                     Disabled = false,
-    ///                     MonitoringInterval = "86400s",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             FixedNodeCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Featurestore = featurestore.Id,
+    ///         MonitoringConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs
+    ///         {
+    ///             SnapshotAnalysis = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs
+    ///             {
+    ///                 Disabled = false,
+    ///                 MonitoringInterval = "86400s",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +68,7 @@ namespace Pulumi.Gcp.Vertex
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType")]
-    public partial class AiFeatureStoreEntityType : Pulumi.CustomResource
+    public partial class AiFeatureStoreEntityType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
@@ -161,7 +160,7 @@ namespace Pulumi.Gcp.Vertex
         }
     }
 
-    public sealed class AiFeatureStoreEntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -198,9 +197,10 @@ namespace Pulumi.Gcp.Vertex
         public AiFeatureStoreEntityTypeArgs()
         {
         }
+        public static new AiFeatureStoreEntityTypeArgs Empty => new AiFeatureStoreEntityTypeArgs();
     }
 
-    public sealed class AiFeatureStoreEntityTypeState : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreEntityTypeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
@@ -257,5 +257,6 @@ namespace Pulumi.Gcp.Vertex
         public AiFeatureStoreEntityTypeState()
         {
         }
+        public static new AiFeatureStoreEntityTypeState Empty => new AiFeatureStoreEntityTypeState();
     }
 }

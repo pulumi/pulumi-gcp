@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerConfigScalingConfigSelectorGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerConfigScalingConfigSelectorGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerConfigScalingConfigSelectorGetArgs()
         {
         }
+        public static new GameServerConfigScalingConfigSelectorGetArgs Empty => new GameServerConfigScalingConfigSelectorGetArgs();
     }
 }

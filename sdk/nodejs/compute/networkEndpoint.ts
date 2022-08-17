@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myImage = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
@@ -127,7 +127,7 @@ export class NetworkEndpoint extends pulumi.CustomResource {
     /**
      * Port number of network endpoint.
      */
-    public readonly port!: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -164,9 +164,6 @@ export class NetworkEndpoint extends pulumi.CustomResource {
             }
             if ((!args || args.networkEndpointGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
-            }
-            if ((!args || args.port === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'port'");
             }
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
@@ -238,7 +235,7 @@ export interface NetworkEndpointArgs {
     /**
      * Port number of network endpoint.
      */
-    port: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

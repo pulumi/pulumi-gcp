@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceCircuitBreakersArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceCircuitBreakersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timeout for new network connections to hosts.
@@ -59,5 +59,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceCircuitBreakersArgs()
         {
         }
+        public static new RegionBackendServiceCircuitBreakersArgs Empty => new RegionBackendServiceCircuitBreakersArgs();
     }
 }

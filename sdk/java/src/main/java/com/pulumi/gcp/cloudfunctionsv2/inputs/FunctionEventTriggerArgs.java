@@ -5,7 +5,9 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerEventFilterArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,23 @@ import javax.annotation.Nullable;
 public final class FunctionEventTriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FunctionEventTriggerArgs Empty = new FunctionEventTriggerArgs();
+
+    /**
+     * Criteria used to filter events.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="eventFilters")
+    private @Nullable Output<List<FunctionEventTriggerEventFilterArgs>> eventFilters;
+
+    /**
+     * @return Criteria used to filter events.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FunctionEventTriggerEventFilterArgs>>> eventFilters() {
+        return Optional.ofNullable(this.eventFilters);
+    }
 
     /**
      * Required. The type of event to observe.
@@ -122,6 +141,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     private FunctionEventTriggerArgs() {}
 
     private FunctionEventTriggerArgs(FunctionEventTriggerArgs $) {
+        this.eventFilters = $.eventFilters;
         this.eventType = $.eventType;
         this.pubsubTopic = $.pubsubTopic;
         this.retryPolicy = $.retryPolicy;
@@ -146,6 +166,40 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
 
         public Builder(FunctionEventTriggerArgs defaults) {
             $ = new FunctionEventTriggerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param eventFilters Criteria used to filter events.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventFilters(@Nullable Output<List<FunctionEventTriggerEventFilterArgs>> eventFilters) {
+            $.eventFilters = eventFilters;
+            return this;
+        }
+
+        /**
+         * @param eventFilters Criteria used to filter events.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventFilters(List<FunctionEventTriggerEventFilterArgs> eventFilters) {
+            return eventFilters(Output.of(eventFilters));
+        }
+
+        /**
+         * @param eventFilters Criteria used to filter events.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventFilters(FunctionEventTriggerEventFilterArgs... eventFilters) {
+            return eventFilters(List.of(eventFilters));
         }
 
         /**

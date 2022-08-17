@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigLimitsGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigLimitsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxFindingsPerInfoTypes")]
         private InputList<Inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs>? _maxFindingsPerInfoTypes;
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigLimitsGetArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigLimitsGetArgs Empty => new PreventionInspectTemplateInspectConfigLimitsGetArgs();
     }
 }

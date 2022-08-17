@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetArgs;
 import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 import com.pulumi.gcp.cloudscheduler.inputs.JobPubsubTargetArgs;
 import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -123,6 +124,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -212,6 +228,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * State of the job.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return State of the job.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * Specifies the time zone to be used in interpreting schedule.
      * The value of this field must be a time zone name from the tz database.
      * 
@@ -236,11 +267,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.httpTarget = $.httpTarget;
         this.name = $.name;
+        this.paused = $.paused;
         this.project = $.project;
         this.pubsubTarget = $.pubsubTarget;
         this.region = $.region;
         this.retryConfig = $.retryConfig;
         this.schedule = $.schedule;
+        this.state = $.state;
         this.timeZone = $.timeZone;
     }
 
@@ -396,6 +429,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param paused Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
+            return this;
+        }
+
+        /**
+         * @param paused Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -512,6 +566,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schedule(String schedule) {
             return schedule(Output.of(schedule));
+        }
+
+        /**
+         * @param state State of the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state State of the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

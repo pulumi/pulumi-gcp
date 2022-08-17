@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageSchedulingNodeAffinityArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageSchedulingNodeAffinityArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageSchedulingNodeAffinityArgs()
         {
         }
+        public static new InstanceFromMachineImageSchedulingNodeAffinityArgs Empty => new InstanceFromMachineImageSchedulingNodeAffinityArgs();
     }
 }

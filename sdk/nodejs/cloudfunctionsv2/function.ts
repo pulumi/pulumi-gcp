@@ -7,89 +7,82 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Cloudfunctions2 Basic
+ * ### Cloudfunctions2 Basic Gcs
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // [START functions_v2_basic]
- * const bucket = new gcp.storage.Bucket("bucket", {
+ * // [START functions_v2_basic_gcs]
+ * const source_bucket = new gcp.storage.Bucket("source-bucket", {
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * }, {
  *     provider: google_beta,
  * });
  * const object = new gcp.storage.BucketObject("object", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("path/to/index.zip"),
+ *     bucket: source_bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * }, {
  *     provider: google_beta,
  * });
  * // Add path to the zipped function source code
- * const terraform_test2 = new gcp.cloudfunctionsv2.Function("terraform-test2", {
+ * const trigger_bucket = new gcp.storage.Bucket("trigger-bucket", {
  *     location: "us-central1",
- *     description: "a new function",
- *     buildConfig: {
- *         runtime: "nodejs16",
- *         entryPoint: "helloHttp",
- *         source: {
- *             storageSource: {
- *                 bucket: bucket.name,
- *                 object: object.name,
- *             },
- *         },
- *     },
- *     serviceConfig: {
- *         maxInstanceCount: 1,
- *         availableMemory: "256M",
- *         timeoutSeconds: 60,
- *     },
+ *     uniformBucketLevelAccess: true,
  * }, {
  *     provider: google_beta,
  * });
- * ```
- * ### Cloudfunctions2 Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // [START functions_v2_full]
+ * const gcsAccount = gcp.storage.getProjectServiceAccount({});
+ * // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
+ * // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
+ * const gcs_pubsub_publishing = new gcp.projects.IAMMember("gcs-pubsub-publishing", {
+ *     project: "my-project-name",
+ *     role: "roles/pubsub.publisher",
+ *     member: gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`),
+ * }, {
+ *     provider: google_beta,
+ * });
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "s-a",
- *     displayName: "Test Service Account",
+ *     accountId: "test-sa",
+ *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
  * }, {
  *     provider: google_beta,
  * });
- * const sub = new gcp.pubsub.Topic("sub", {}, {
- *     provider: google_beta,
- * });
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "US",
- *     uniformBucketLevelAccess: true,
+ * // Permissions on the service account used by the function and Eventarc trigger
+ * const invoking = new gcp.projects.IAMMember("invoking", {
+ *     project: "my-project-name",
+ *     role: "roles/run.invoker",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * }, {
  *     provider: google_beta,
  * });
- * const object = new gcp.storage.BucketObject("object", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("path/to/index.zip"),
+ * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
+ *     project: "my-project-name",
+ *     role: "roles/eventarc.eventReceiver",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * }, {
  *     provider: google_beta,
  * });
- * // Add path to the zipped function source code
- * const terraform_test = new gcp.cloudfunctionsv2.Function("terraform-test", {
+ * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
+ *     project: "my-project-name",
+ *     role: "roles/artifactregistry.reader",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs16",
- *         entryPoint: "helloPubSub",
+ *         runtime: "nodejs12",
+ *         entryPoint: "entryPoint",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
  *         },
  *         source: {
  *             storageSource: {
- *                 bucket: bucket.name,
+ *                 bucket: source_bucket.name,
  *                 object: object.name,
  *             },
  *         },
@@ -108,13 +101,138 @@ import * as utilities from "../utilities";
  *     },
  *     eventTrigger: {
  *         triggerRegion: "us-central1",
- *         eventType: "google.cloud.pubsub.topic.v1.messagePublished",
- *         pubsubTopic: sub.id,
+ *         eventType: "google.cloud.storage.object.v1.finalized",
  *         retryPolicy: "RETRY_POLICY_RETRY",
  *         serviceAccountEmail: account.email,
+ *         eventFilters: [{
+ *             attribute: "bucket",
+ *             value: trigger_bucket.name,
+ *         }],
  *     },
  * }, {
  *     provider: google_beta,
+ *     dependsOn: [
+ *         event_receiving,
+ *         artifactregistry_reader,
+ *     ],
+ * });
+ * ```
+ * ### Cloudfunctions2 Basic Auditlogs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // [START functions_v2_basic_auditlogs]
+ * // This example follows the examples shown in this Google Cloud Community blog post
+ * // https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
+ * // and the docs:
+ * // https://cloud.google.com/eventarc/docs/path-patterns
+ * const source_bucket = new gcp.storage.Bucket("source-bucket", {
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: source_bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Add path to the zipped function source code
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "gcf-sa",
+ *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
+ * // Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
+ * // google_cloudfunctions2_function below (Audit Log events have path pattern support)
+ * const audit_log_bucket = new gcp.storage.Bucket("audit-log-bucket", {
+ *     location: "us-central1",
+ *     uniformBucketLevelAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Permissions on the service account used by the function and Eventarc trigger
+ * const invoking = new gcp.projects.IAMMember("invoking", {
+ *     project: "my-project-name",
+ *     role: "roles/run.invoker",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
+ *     project: "my-project-name",
+ *     role: "roles/eventarc.eventReceiver",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
+ *     project: "my-project-name",
+ *     role: "roles/artifactregistry.reader",
+ *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     location: "us-central1",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs12",
+ *         entryPoint: "entryPoint",
+ *         environmentVariables: {
+ *             BUILD_CONFIG_TEST: "build_test",
+ *         },
+ *         source: {
+ *             storageSource: {
+ *                 bucket: source_bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 3,
+ *         minInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *         environmentVariables: {
+ *             SERVICE_CONFIG_TEST: "config_test",
+ *         },
+ *         ingressSettings: "ALLOW_INTERNAL_ONLY",
+ *         allTrafficOnLatestRevision: true,
+ *         serviceAccountEmail: account.email,
+ *     },
+ *     eventTrigger: {
+ *         triggerRegion: "us-central1",
+ *         eventType: "google.cloud.audit.log.v1.written",
+ *         retryPolicy: "RETRY_POLICY_RETRY",
+ *         serviceAccountEmail: account.email,
+ *         eventFilters: [
+ *             {
+ *                 attribute: "serviceName",
+ *                 value: "storage.googleapis.com",
+ *             },
+ *             {
+ *                 attribute: "methodName",
+ *                 value: "storage.objects.create",
+ *             },
+ *             {
+ *                 attribute: "resourceName",
+ *                 value: pulumi.interpolate`/projects/_/buckets/${audit_log_bucket.name}/objects/*.txt`,
+ *                 operator: "match-path-pattern",
+ *             },
+ *         ],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [
+ *         event_receiving,
+ *         artifactregistry_reader,
+ *     ],
  * });
  * ```
  *

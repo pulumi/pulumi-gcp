@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class TagFieldGetArgs : Pulumi.ResourceArgs
+    public sealed class TagFieldGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Holds the value for a tag field with boolean type.
@@ -68,5 +68,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public TagFieldGetArgs()
         {
         }
+        public static new TagFieldGetArgs Empty => new TagFieldGetArgs();
     }
 }

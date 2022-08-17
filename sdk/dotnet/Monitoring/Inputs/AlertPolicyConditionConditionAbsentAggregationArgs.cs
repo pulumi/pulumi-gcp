@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionConditionAbsentAggregationArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionConditionAbsentAggregationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alignment period for per-time
@@ -116,5 +116,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionConditionAbsentAggregationArgs()
         {
         }
+        public static new AlertPolicyConditionConditionAbsentAggregationArgs Empty => new AlertPolicyConditionConditionAbsentAggregationArgs();
     }
 }

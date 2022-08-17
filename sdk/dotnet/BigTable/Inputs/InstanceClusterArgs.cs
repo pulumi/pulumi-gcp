@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable.Inputs
 {
 
-    public sealed class InstanceClusterArgs : Pulumi.ResourceArgs
+    public sealed class InstanceClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Autoscaling config for the cluster, contains the following arguments:
@@ -56,5 +56,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public InstanceClusterArgs()
         {
         }
+        public static new InstanceClusterArgs Empty => new InstanceClusterArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class IamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class IamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public IamMemberConditionGetArgs()
         {
         }
+        public static new IamMemberConditionGetArgs Empty => new IamMemberConditionGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimeterStatusIngressPolicyIngressToGetArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimeterStatusIngressPolicyIngressToGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("operations")]
         private InputList<Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationGetArgs>? _operations;
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimeterStatusIngressPolicyIngressToGetArgs()
         {
         }
+        public static new ServicePerimeterStatusIngressPolicyIngressToGetArgs Empty => new ServicePerimeterStatusIngressPolicyIngressToGetArgs();
     }
 }

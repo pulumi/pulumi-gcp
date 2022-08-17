@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iot.Inputs
 {
 
-    public sealed class DeviceGatewayConfigArgs : Pulumi.ResourceArgs
+    public sealed class DeviceGatewayConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the device is a gateway.
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.Iot.Inputs
         public DeviceGatewayConfigArgs()
         {
         }
+        public static new DeviceGatewayConfigArgs Empty => new DeviceGatewayConfigArgs();
     }
 }

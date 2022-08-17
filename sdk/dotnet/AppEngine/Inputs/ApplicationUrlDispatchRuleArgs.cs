@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class ApplicationUrlDispatchRuleArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationUrlDispatchRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public ApplicationUrlDispatchRuleArgs()
         {
         }
+        public static new ApplicationUrlDispatchRuleArgs Empty => new ApplicationUrlDispatchRuleArgs();
     }
 }

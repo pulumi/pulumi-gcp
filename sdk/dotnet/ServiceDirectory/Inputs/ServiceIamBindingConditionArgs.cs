@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ServiceDirectory.Inputs
 {
 
-    public sealed class ServiceIamBindingConditionArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.ServiceDirectory.Inputs
         public ServiceIamBindingConditionArgs()
         {
         }
+        public static new ServiceIamBindingConditionArgs Empty => new ServiceIamBindingConditionArgs();
     }
 }

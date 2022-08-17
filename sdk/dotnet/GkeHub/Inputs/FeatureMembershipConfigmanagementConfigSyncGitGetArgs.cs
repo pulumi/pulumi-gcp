@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementConfigSyncGitGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementConfigSyncGitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
@@ -63,5 +63,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementConfigSyncGitGetArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementConfigSyncGitGetArgs Empty => new FeatureMembershipConfigmanagementConfigSyncGitGetArgs();
     }
 }

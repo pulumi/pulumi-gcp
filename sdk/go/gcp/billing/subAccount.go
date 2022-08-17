@@ -19,30 +19,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := billing.NewSubAccount(ctx, "subaccount", &billing.SubAccountArgs{
-// 			DisplayName:          pulumi.String("My Billing Account"),
-// 			MasterBillingAccount: pulumi.String("012345-567890-ABCDEF"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := billing.NewSubAccount(ctx, "subaccount", &billing.SubAccountArgs{
+//				DisplayName:          pulumi.String("My Billing Account"),
+//				MasterBillingAccount: pulumi.String("012345-567890-ABCDEF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Billing Subaccounts can be imported using any of these accepted formats
+// # Billing Subaccounts can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
+//
+//	$ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
+//
 // ```
 type SubAccount struct {
 	pulumi.CustomResourceState
@@ -189,7 +194,7 @@ func (i *SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccou
 // SubAccountArrayInput is an input type that accepts SubAccountArray and SubAccountArrayOutput values.
 // You can construct a concrete instance of `SubAccountArrayInput` via:
 //
-//          SubAccountArray{ SubAccountArgs{...} }
+//	SubAccountArray{ SubAccountArgs{...} }
 type SubAccountArrayInput interface {
 	pulumi.Input
 
@@ -214,7 +219,7 @@ func (i SubAccountArray) ToSubAccountArrayOutputWithContext(ctx context.Context)
 // SubAccountMapInput is an input type that accepts SubAccountMap and SubAccountMapOutput values.
 // You can construct a concrete instance of `SubAccountMapInput` via:
 //
-//          SubAccountMap{ "key": SubAccountArgs{...} }
+//	SubAccountMap{ "key": SubAccountArgs{...} }
 type SubAccountMapInput interface {
 	pulumi.Input
 

@@ -23,42 +23,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
-// 			SecretId: pulumi.String("secret-version"),
-// 			Labels: pulumi.StringMap{
-// 				"label": pulumi.String("my-label"),
-// 			},
-// 			Replication: &secretmanager.SecretReplicationArgs{
-// 				Automatic: pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-// 			Secret:     secret_basic.ID(),
-// 			SecretData: pulumi.String("secret-data"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-version"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Automatic: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//				Secret:     secret_basic.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// SecretVersion can be imported using any of these accepted formats
+// # SecretVersion can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default {{name}}/{{name}}
+//
+//	$ pulumi import gcp:secretmanager/secretVersion:SecretVersion default {{name}}/{{name}}
+//
 // ```
 type SecretVersion struct {
 	pulumi.CustomResourceState
@@ -195,7 +200,7 @@ func (i *SecretVersion) ToSecretVersionOutputWithContext(ctx context.Context) Se
 // SecretVersionArrayInput is an input type that accepts SecretVersionArray and SecretVersionArrayOutput values.
 // You can construct a concrete instance of `SecretVersionArrayInput` via:
 //
-//          SecretVersionArray{ SecretVersionArgs{...} }
+//	SecretVersionArray{ SecretVersionArgs{...} }
 type SecretVersionArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +225,7 @@ func (i SecretVersionArray) ToSecretVersionArrayOutputWithContext(ctx context.Co
 // SecretVersionMapInput is an input type that accepts SecretVersionMap and SecretVersionMapOutput values.
 // You can construct a concrete instance of `SecretVersionMapInput` via:
 //
-//          SecretVersionMap{ "key": SecretVersionArgs{...} }
+//	SecretVersionMap{ "key": SecretVersionArgs{...} }
 type SecretVersionMapInput interface {
 	pulumi.Input
 

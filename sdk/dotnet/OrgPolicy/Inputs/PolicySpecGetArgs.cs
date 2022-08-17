@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OrgPolicy.Inputs
 {
 
-    public sealed class PolicySpecGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicySpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -53,5 +53,6 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         public PolicySpecGetArgs()
         {
         }
+        public static new PolicySpecGetArgs Empty => new PolicySpecGetArgs();
     }
 }

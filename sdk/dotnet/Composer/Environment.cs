@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Composer
     /// ```
     /// </summary>
     [GcpResourceType("gcp:composer/environment:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration parameters for this environment.
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Composer
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration parameters for this environment.
@@ -152,9 +152,10 @@ namespace Pulumi.Gcp.Composer
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 
-    public sealed class EnvironmentState : Pulumi.ResourceArgs
+    public sealed class EnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration parameters for this environment.
@@ -199,5 +200,6 @@ namespace Pulumi.Gcp.Composer
         public EnvironmentState()
         {
         }
+        public static new EnvironmentState Empty => new EnvironmentState();
     }
 }

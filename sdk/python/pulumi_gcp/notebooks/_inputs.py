@@ -24,6 +24,7 @@ __all__ = [
     'RuntimeIamMemberConditionArgs',
     'RuntimeMetricArgs',
     'RuntimeSoftwareConfigArgs',
+    'RuntimeSoftwareConfigKernelArgs',
     'RuntimeVirtualMachineArgs',
     'RuntimeVirtualMachineVirtualMachineConfigArgs',
     'RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs',
@@ -634,8 +635,11 @@ class RuntimeSoftwareConfigArgs:
                  idle_shutdown: Optional[pulumi.Input[bool]] = None,
                  idle_shutdown_timeout: Optional[pulumi.Input[int]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
+                 kernels: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]] = None,
                  notebook_upgrade_schedule: Optional[pulumi.Input[str]] = None,
-                 post_startup_script: Optional[pulumi.Input[str]] = None):
+                 post_startup_script: Optional[pulumi.Input[str]] = None,
+                 post_startup_script_behavior: Optional[pulumi.Input[str]] = None,
+                 upgradeable: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
                If not specified, we'll automatically choose from official GPU drivers.
@@ -645,11 +649,17 @@ class RuntimeSoftwareConfigArgs:
         :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shuting down runtime.
                Default: 180 minutes
         :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically.
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]] kernels: Use a list of container images to use as Kernels in the notebook instance.
+               Structure is documented below.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone for schedule instance auto upgrade.
                Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance
                fully boots up. The path must be a URL or
                Cloud Storage path (gs://path-to-file/file-name).
+        :param pulumi.Input[str] post_startup_script_behavior: Behavior for the post startup script.
+               Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+        :param pulumi.Input[bool] upgradeable: -
+               Bool indicating whether an newer image is available in an image family.
         """
         if custom_gpu_driver_path is not None:
             pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -661,10 +671,16 @@ class RuntimeSoftwareConfigArgs:
             pulumi.set(__self__, "idle_shutdown_timeout", idle_shutdown_timeout)
         if install_gpu_driver is not None:
             pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+        if kernels is not None:
+            pulumi.set(__self__, "kernels", kernels)
         if notebook_upgrade_schedule is not None:
             pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         if post_startup_script is not None:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
+        if post_startup_script_behavior is not None:
+            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
+        if upgradeable is not None:
+            pulumi.set(__self__, "upgradeable", upgradeable)
 
     @property
     @pulumi.getter(name="customGpuDriverPath")
@@ -730,6 +746,19 @@ class RuntimeSoftwareConfigArgs:
         pulumi.set(self, "install_gpu_driver", value)
 
     @property
+    @pulumi.getter
+    def kernels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]:
+        """
+        Use a list of container images to use as Kernels in the notebook instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kernels")
+
+    @kernels.setter
+    def kernels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]):
+        pulumi.set(self, "kernels", value)
+
+    @property
     @pulumi.getter(name="notebookUpgradeSchedule")
     def notebook_upgrade_schedule(self) -> Optional[pulumi.Input[str]]:
         """
@@ -755,6 +784,72 @@ class RuntimeSoftwareConfigArgs:
     @post_startup_script.setter
     def post_startup_script(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "post_startup_script", value)
+
+    @property
+    @pulumi.getter(name="postStartupScriptBehavior")
+    def post_startup_script_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Behavior for the post startup script.
+        Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+        """
+        return pulumi.get(self, "post_startup_script_behavior")
+
+    @post_startup_script_behavior.setter
+    def post_startup_script_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_startup_script_behavior", value)
+
+    @property
+    @pulumi.getter
+    def upgradeable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        -
+        Bool indicating whether an newer image is available in an image family.
+        """
+        return pulumi.get(self, "upgradeable")
+
+    @upgradeable.setter
+    def upgradeable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgradeable", value)
+
+
+@pulumi.input_type
+class RuntimeSoftwareConfigKernelArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[str],
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] repository: The path to the container image repository.
+               For example: gcr.io/{project_id}/{imageName}
+        :param pulumi.Input[str] tag: The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        pulumi.set(__self__, "repository", repository)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        The path to the container image repository.
+        For example: gcr.io/{project_id}/{imageName}
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type

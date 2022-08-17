@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class JobSchedulingArgs : Pulumi.ResourceArgs
+    public sealed class JobSchedulingArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxFailuresPerHour", required: true)]
         public Input<int> MaxFailuresPerHour { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public JobSchedulingArgs()
         {
         }
+        public static new JobSchedulingArgs Empty => new JobSchedulingArgs();
     }
 }

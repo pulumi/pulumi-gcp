@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class TagTemplateFieldTypeGetArgs : Pulumi.ResourceArgs
+    public sealed class TagTemplateFieldTypeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents an enum type.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public TagTemplateFieldTypeGetArgs()
         {
         }
+        public static new TagTemplateFieldTypeGetArgs Empty => new TagTemplateFieldTypeGetArgs();
     }
 }

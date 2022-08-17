@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the request parameters that contribute to the cache key.
@@ -112,5 +112,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs();
     }
 }

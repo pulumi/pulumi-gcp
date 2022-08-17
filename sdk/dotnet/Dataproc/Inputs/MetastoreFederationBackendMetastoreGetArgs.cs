@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreFederationBackendMetastoreGetArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationBackendMetastoreGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the backend metastore.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreFederationBackendMetastoreGetArgs()
         {
         }
+        public static new MetastoreFederationBackendMetastoreGetArgs Empty => new MetastoreFederationBackendMetastoreGetArgs();
     }
 }

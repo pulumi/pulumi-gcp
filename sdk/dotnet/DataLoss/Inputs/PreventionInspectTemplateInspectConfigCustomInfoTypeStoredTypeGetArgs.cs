@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeGetArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeGetArgs Empty => new PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeGetArgs();
     }
 }

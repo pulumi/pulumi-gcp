@@ -21,18 +21,24 @@ import (
 //
 // ## Import
 //
-// UrlMap can be imported using any of these accepted formats
+// # UrlMap can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
+//
+//	$ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/uRLMap:URLMap default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
+//
+//	$ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
+//
 // ```
 type URLMap struct {
 	pulumi.CustomResourceState
@@ -329,7 +335,7 @@ func (i *URLMap) ToURLMapOutputWithContext(ctx context.Context) URLMapOutput {
 // URLMapArrayInput is an input type that accepts URLMapArray and URLMapArrayOutput values.
 // You can construct a concrete instance of `URLMapArrayInput` via:
 //
-//          URLMapArray{ URLMapArgs{...} }
+//	URLMapArray{ URLMapArgs{...} }
 type URLMapArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +360,7 @@ func (i URLMapArray) ToURLMapArrayOutputWithContext(ctx context.Context) URLMapA
 // URLMapMapInput is an input type that accepts URLMapMap and URLMapMapOutput values.
 // You can construct a concrete instance of `URLMapMapInput` via:
 //
-//          URLMapMap{ "key": URLMapArgs{...} }
+//	URLMapMap{ "key": URLMapArgs{...} }
 type URLMapMapInput interface {
 	pulumi.Input
 

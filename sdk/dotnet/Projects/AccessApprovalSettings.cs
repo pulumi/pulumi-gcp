@@ -20,93 +20,94 @@ namespace Pulumi.Gcp.Projects
     /// ### Project Access Approval Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new()
     ///     {
-    ///         var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new Gcp.Projects.AccessApprovalSettingsArgs
+    ///         EnrolledServices = new[]
     ///         {
-    ///             EnrolledServices = 
+    ///             new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
     ///             {
-    ///                 new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
-    ///                 {
-    ///                     CloudProduct = "all",
-    ///                     EnrollmentLevel = "BLOCK_ALL",
-    ///                 },
+    ///                 CloudProduct = "all",
+    ///                 EnrollmentLevel = "BLOCK_ALL",
     ///             },
-    ///             NotificationEmails = 
-    ///             {
-    ///                 "testuser@example.com",
-    ///                 "example.user@example.com",
-    ///             },
-    ///             ProjectId = "my-project-name",
-    ///         });
-    ///     }
+    ///         },
+    ///         NotificationEmails = new[]
+    ///         {
+    ///             "testuser@example.com",
+    ///             "example.user@example.com",
+    ///         },
+    ///         ProjectId = "my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Project Access Approval Active Key Version
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///             Project = "my-project-name",
-    ///         });
-    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyRing.Id,
-    ///             Purpose = "ASYMMETRIC_SIGN",
-    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
-    ///             {
-    ///                 Algorithm = "EC_SIGN_P384_SHA384",
-    ///             },
-    ///         });
-    ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetProjectServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetProjectServiceAccountArgs
-    ///         {
-    ///             ProjectId = "my-project-name",
-    ///         }));
-    ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-    ///         {
-    ///             CryptoKeyId = cryptoKey.Id,
-    ///             Role = "roles/cloudkms.signerVerifier",
-    ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-    ///         });
-    ///         var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
-    ///         {
-    ///             CryptoKey = cryptoKey.Id,
-    ///         });
-    ///         var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new Gcp.Projects.AccessApprovalSettingsArgs
-    ///         {
-    ///             ProjectId = "my-project-name",
-    ///             ActiveKeyVersion = cryptoKeyVersion.Apply(cryptoKeyVersion =&gt; cryptoKeyVersion.Name),
-    ///             EnrolledServices = 
-    ///             {
-    ///                 new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
-    ///                 {
-    ///                     CloudProduct = "all",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 iam,
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ASYMMETRIC_SIGN",
+    ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///         {
+    ///             Algorithm = "EC_SIGN_P384_SHA384",
+    ///         },
+    ///     });
+    /// 
+    ///     var serviceAccount = Gcp.AccessApproval.GetProjectServiceAccount.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.signerVerifier",
+    ///         Member = $"serviceAccount:{serviceAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.AccountEmail)}",
+    ///     });
+    /// 
+    ///     var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+    ///     {
+    ///         CryptoKey = cryptoKey.Id,
+    ///     });
+    /// 
+    ///     var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
+    ///         EnrolledServices = new[]
+    ///         {
+    ///             new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "all",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             iam,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -122,7 +123,7 @@ namespace Pulumi.Gcp.Projects
     /// ```
     /// </summary>
     [GcpResourceType("gcp:projects/accessApprovalSettings:AccessApprovalSettings")]
-    public partial class AccessApprovalSettings : Pulumi.CustomResource
+    public partial class AccessApprovalSettings : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
@@ -236,7 +237,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class AccessApprovalSettingsArgs : Pulumi.ResourceArgs
+    public sealed class AccessApprovalSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
@@ -293,9 +294,10 @@ namespace Pulumi.Gcp.Projects
         public AccessApprovalSettingsArgs()
         {
         }
+        public static new AccessApprovalSettingsArgs Empty => new AccessApprovalSettingsArgs();
     }
 
-    public sealed class AccessApprovalSettingsState : Pulumi.ResourceArgs
+    public sealed class AccessApprovalSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
@@ -380,5 +382,6 @@ namespace Pulumi.Gcp.Projects
         public AccessApprovalSettingsState()
         {
         }
+        public static new AccessApprovalSettingsState Empty => new AccessApprovalSettingsState();
     }
 }

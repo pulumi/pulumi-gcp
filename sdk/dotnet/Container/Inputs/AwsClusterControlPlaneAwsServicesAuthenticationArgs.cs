@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterControlPlaneAwsServicesAuthenticationArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterControlPlaneAwsServicesAuthenticationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterControlPlaneAwsServicesAuthenticationArgs()
         {
         }
+        public static new AwsClusterControlPlaneAwsServicesAuthenticationArgs Empty => new AwsClusterControlPlaneAwsServicesAuthenticationArgs();
     }
 }

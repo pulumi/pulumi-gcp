@@ -17,51 +17,50 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new()
     ///     {
-    ///         var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new Gcp.Compute.FirewallPolicyArgs
+    ///         Parent = "organizations/12345",
+    ///         ShortName = "my-policy",
+    ///         Description = "Example Resource",
+    ///     });
+    /// 
+    ///     var defaultFirewallPolicyRule = new Gcp.Compute.FirewallPolicyRule("defaultFirewallPolicyRule", new()
+    ///     {
+    ///         FirewallPolicy = defaultFirewallPolicy.Id,
+    ///         Description = "Example Resource",
+    ///         Priority = 9000,
+    ///         EnableLogging = true,
+    ///         Action = "allow",
+    ///         Direction = "EGRESS",
+    ///         Disabled = false,
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
     ///         {
-    ///             Parent = "organizations/12345",
-    ///             ShortName = "my-policy",
-    ///             Description = "Example Resource",
-    ///         });
-    ///         var defaultFirewallPolicyRule = new Gcp.Compute.FirewallPolicyRule("defaultFirewallPolicyRule", new Gcp.Compute.FirewallPolicyRuleArgs
-    ///         {
-    ///             FirewallPolicy = defaultFirewallPolicy.Id,
-    ///             Description = "Example Resource",
-    ///             Priority = 9000,
-    ///             EnableLogging = true,
-    ///             Action = "allow",
-    ///             Direction = "EGRESS",
-    ///             Disabled = false,
-    ///             Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///             Layer4Configs = new[]
     ///             {
-    ///                 Layer4Configs = 
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
     ///                 {
-    ///                     new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                     IpProtocol = "tcp",
+    ///                     Ports = new[]
     ///                     {
-    ///                         IpProtocol = "tcp",
-    ///                         Ports = 
-    ///                         {
-    ///                             "80",
-    ///                             "8080",
-    ///                         },
+    ///                         "80",
+    ///                         "8080",
     ///                     },
     ///                 },
-    ///                 DestIpRanges = 
-    ///                 {
-    ///                     "11.100.0.1/32",
-    ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/firewallPolicyRule:FirewallPolicyRule")]
-    public partial class FirewallPolicyRule : Pulumi.CustomResource
+    public partial class FirewallPolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
@@ -195,7 +194,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class FirewallPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
@@ -272,9 +271,10 @@ namespace Pulumi.Gcp.Compute
         public FirewallPolicyRuleArgs()
         {
         }
+        public static new FirewallPolicyRuleArgs Empty => new FirewallPolicyRuleArgs();
     }
 
-    public sealed class FirewallPolicyRuleState : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
@@ -363,5 +363,6 @@ namespace Pulumi.Gcp.Compute
         public FirewallPolicyRuleState()
         {
         }
+        public static new FirewallPolicyRuleState Empty => new FirewallPolicyRuleState();
     }
 }

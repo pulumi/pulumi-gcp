@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The end of the range (exclusive).
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchGetArgs()
         {
         }
+        public static new URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchGetArgs Empty => new URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchGetArgs();
     }
 }

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tplInstanceTemplate", {
  *     machineType: "e2-medium",
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-9",
+ *         sourceImage: "debian-cloud/debian-11",
  *         autoDelete: true,
  *         diskSizeGb: 100,
  *         boot: true,

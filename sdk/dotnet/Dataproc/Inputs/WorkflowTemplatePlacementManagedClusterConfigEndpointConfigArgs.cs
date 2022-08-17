@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs();
     }
 }

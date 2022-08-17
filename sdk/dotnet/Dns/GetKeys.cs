@@ -22,32 +22,32 @@ namespace Pulumi.Gcp.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = new Gcp.Dns.ManagedZone("foo", new()
         ///     {
-        ///         var foo = new Gcp.Dns.ManagedZone("foo", new Gcp.Dns.ManagedZoneArgs
+        ///         DnsName = "foo.bar.",
+        ///         DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
         ///         {
-        ///             DnsName = "foo.bar.",
-        ///             DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
-        ///             {
-        ///                 State = "on",
-        ///                 NonExistence = "nsec3",
-        ///             },
-        ///         });
-        ///         var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new Gcp.Dns.GetKeysInvokeArgs
-        ///         {
-        ///             ManagedZone = foo.Id,
-        ///         });
-        ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
-        ///     }
+        ///             State = "on",
+        ///             NonExistence = "nsec3",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("fooDnsDsRecord")]
-        ///     public Output&lt;string&gt; FooDnsDsRecord { get; set; }
-        /// }
+        ///     var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new()
+        ///     {
+        ///         ManagedZone = foo.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fooDnsDsRecord"] = fooDnsKeys.Apply(getKeysResult =&gt; getKeysResult.KeySigningKeys[0]?.DsRecord),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -66,32 +66,32 @@ namespace Pulumi.Gcp.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = new Gcp.Dns.ManagedZone("foo", new()
         ///     {
-        ///         var foo = new Gcp.Dns.ManagedZone("foo", new Gcp.Dns.ManagedZoneArgs
+        ///         DnsName = "foo.bar.",
+        ///         DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
         ///         {
-        ///             DnsName = "foo.bar.",
-        ///             DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
-        ///             {
-        ///                 State = "on",
-        ///                 NonExistence = "nsec3",
-        ///             },
-        ///         });
-        ///         var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new Gcp.Dns.GetKeysInvokeArgs
-        ///         {
-        ///             ManagedZone = foo.Id,
-        ///         });
-        ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys?[0]?.DsRecord);
-        ///     }
+        ///             State = "on",
+        ///             NonExistence = "nsec3",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("fooDnsDsRecord")]
-        ///     public Output&lt;string&gt; FooDnsDsRecord { get; set; }
-        /// }
+        ///     var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new()
+        ///     {
+        ///         ManagedZone = foo.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fooDnsDsRecord"] = fooDnsKeys.Apply(getKeysResult =&gt; getKeysResult.KeySigningKeys[0]?.DsRecord),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Dns
     }
 
 
-    public sealed class GetKeysArgs : Pulumi.InvokeArgs
+    public sealed class GetKeysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name or id of the Cloud DNS managed zone.
@@ -118,9 +118,10 @@ namespace Pulumi.Gcp.Dns
         public GetKeysArgs()
         {
         }
+        public static new GetKeysArgs Empty => new GetKeysArgs();
     }
 
-    public sealed class GetKeysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name or id of the Cloud DNS managed zone.
@@ -137,6 +138,7 @@ namespace Pulumi.Gcp.Dns
         public GetKeysInvokeArgs()
         {
         }
+        public static new GetKeysInvokeArgs Empty => new GetKeysInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For satisfying the matchRule condition, the path of the request must exactly
@@ -100,5 +100,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherRouteRuleMatchRuleGetArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherRouteRuleMatchRuleGetArgs Empty => new RegionUrlMapPathMatcherRouteRuleMatchRuleGetArgs();
     }
 }

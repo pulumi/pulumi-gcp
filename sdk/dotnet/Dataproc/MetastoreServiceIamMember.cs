@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.Dataproc
     /// ## google\_dataproc\_metastore\_service\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Dataproc.MetastoreServiceIamPolicy("policy", new Gcp.Dataproc.MetastoreServiceIamPolicyArgs
-    ///         {
-    ///             Project = google_dataproc_metastore_service.Default.Project,
-    ///             Location = google_dataproc_metastore_service.Default.Location,
-    ///             ServiceId = google_dataproc_metastore_service.Default.Service_id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Dataproc.MetastoreServiceIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_dataproc_metastore_service.Default.Project,
+    ///         Location = google_dataproc_metastore_service.Default.Location,
+    ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_metastore\_service\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Dataproc.MetastoreServiceIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Dataproc.MetastoreServiceIamBinding("binding", new Gcp.Dataproc.MetastoreServiceIamBindingArgs
+    ///         Project = google_dataproc_metastore_service.Default.Project,
+    ///         Location = google_dataproc_metastore_service.Default.Location,
+    ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_dataproc_metastore_service.Default.Project,
-    ///             Location = google_dataproc_metastore_service.Default.Location,
-    ///             ServiceId = google_dataproc_metastore_service.Default.Service_id,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_metastore\_service\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Dataproc.MetastoreServiceIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Dataproc.MetastoreServiceIamMember("member", new Gcp.Dataproc.MetastoreServiceIamMemberArgs
-    ///         {
-    ///             Project = google_dataproc_metastore_service.Default.Project,
-    ///             Location = google_dataproc_metastore_service.Default.Location,
-    ///             ServiceId = google_dataproc_metastore_service.Default.Service_id,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_dataproc_metastore_service.Default.Project,
+    ///         Location = google_dataproc_metastore_service.Default.Location,
+    ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember")]
-    public partial class MetastoreServiceIamMember : Pulumi.CustomResource
+    public partial class MetastoreServiceIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.MetastoreServiceIamMemberCondition?> Condition { get; private set; } = null!;
@@ -214,7 +209,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class MetastoreServiceIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.MetastoreServiceIamMemberConditionArgs>? Condition { get; set; }
@@ -251,9 +246,10 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreServiceIamMemberArgs()
         {
         }
+        public static new MetastoreServiceIamMemberArgs Empty => new MetastoreServiceIamMemberArgs();
     }
 
-    public sealed class MetastoreServiceIamMemberState : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.MetastoreServiceIamMemberConditionGetArgs>? Condition { get; set; }
@@ -296,5 +292,6 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreServiceIamMemberState()
         {
         }
+        public static new MetastoreServiceIamMemberState Empty => new MetastoreServiceIamMemberState();
     }
 }

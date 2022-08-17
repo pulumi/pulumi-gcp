@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Multicluster Ingress-specific spec.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureSpecGetArgs()
         {
         }
+        public static new FeatureSpecGetArgs Empty => new FeatureSpecGetArgs();
     }
 }

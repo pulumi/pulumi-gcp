@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs();
     }
 }

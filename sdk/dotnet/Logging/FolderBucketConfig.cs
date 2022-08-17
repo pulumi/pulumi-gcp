@@ -19,28 +19,27 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Organizations.Folder("default", new()
     ///     {
-    ///         var @default = new Gcp.Organizations.Folder("default", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "some-folder-name",
-    ///             Parent = "organizations/123456789",
-    ///         });
-    ///         var basic = new Gcp.Logging.FolderBucketConfig("basic", new Gcp.Logging.FolderBucketConfigArgs
-    ///         {
-    ///             Folder = @default.Name,
-    ///             Location = "global",
-    ///             RetentionDays = 30,
-    ///             BucketId = "_Default",
-    ///         });
-    ///     }
+    ///         DisplayName = "some-folder-name",
+    ///         Parent = "organizations/123456789",
+    ///     });
     /// 
-    /// }
+    ///     var basic = new Gcp.Logging.FolderBucketConfig("basic", new()
+    ///     {
+    ///         Folder = @default.Name,
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/folderBucketConfig:FolderBucketConfig")]
-    public partial class FolderBucketConfig : Pulumi.CustomResource
+    public partial class FolderBucketConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -140,7 +139,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class FolderBucketConfigArgs : Pulumi.ResourceArgs
+    public sealed class FolderBucketConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -175,9 +174,10 @@ namespace Pulumi.Gcp.Logging
         public FolderBucketConfigArgs()
         {
         }
+        public static new FolderBucketConfigArgs Empty => new FolderBucketConfigArgs();
     }
 
-    public sealed class FolderBucketConfigState : Pulumi.ResourceArgs
+    public sealed class FolderBucketConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -224,5 +224,6 @@ namespace Pulumi.Gcp.Logging
         public FolderBucketConfigState()
         {
         }
+        public static new FolderBucketConfigState Empty => new FolderBucketConfigState();
     }
 }

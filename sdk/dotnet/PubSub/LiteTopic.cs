@@ -22,43 +22,43 @@ namespace Pulumi.Gcp.PubSub
     /// ### Pubsub Lite Topic Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var exampleLiteReservation = new Gcp.PubSub.LiteReservation("exampleLiteReservation", new Gcp.PubSub.LiteReservationArgs
-    ///         {
-    ///             Project = project.Apply(project =&gt; project.Number),
-    ///             ThroughputCapacity = 2,
-    ///         });
-    ///         var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new Gcp.PubSub.LiteTopicArgs
-    ///         {
-    ///             Project = project.Apply(project =&gt; project.Number),
-    ///             PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
-    ///             {
-    ///                 Count = 1,
-    ///                 Capacity = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigCapacityArgs
-    ///                 {
-    ///                     PublishMibPerSec = 4,
-    ///                     SubscribeMibPerSec = 8,
-    ///                 },
-    ///             },
-    ///             RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
-    ///             {
-    ///                 PerPartitionBytes = "32212254720",
-    ///             },
-    ///             ReservationConfig = new Gcp.PubSub.Inputs.LiteTopicReservationConfigArgs
-    ///             {
-    ///                 ThroughputReservation = exampleLiteReservation.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    /// }
+    ///     var exampleLiteReservation = new Gcp.PubSub.LiteReservation("exampleLiteReservation", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         ThroughputCapacity = 2,
+    ///     });
+    /// 
+    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
+    ///         {
+    ///             Count = 1,
+    ///             Capacity = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigCapacityArgs
+    ///             {
+    ///                 PublishMibPerSec = 4,
+    ///                 SubscribeMibPerSec = 8,
+    ///             },
+    ///         },
+    ///         RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
+    ///         {
+    ///             PerPartitionBytes = "32212254720",
+    ///         },
+    ///         ReservationConfig = new Gcp.PubSub.Inputs.LiteTopicReservationConfigArgs
+    ///         {
+    ///             ThroughputReservation = exampleLiteReservation.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.PubSub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/liteTopic:LiteTopic")]
-    public partial class LiteTopic : Pulumi.CustomResource
+    public partial class LiteTopic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the topic.
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class LiteTopicArgs : Pulumi.ResourceArgs
+    public sealed class LiteTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the topic.
@@ -225,9 +225,10 @@ namespace Pulumi.Gcp.PubSub
         public LiteTopicArgs()
         {
         }
+        public static new LiteTopicArgs Empty => new LiteTopicArgs();
     }
 
-    public sealed class LiteTopicState : Pulumi.ResourceArgs
+    public sealed class LiteTopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the topic.
@@ -278,5 +279,6 @@ namespace Pulumi.Gcp.PubSub
         public LiteTopicState()
         {
         }
+        public static new LiteTopicState Empty => new LiteTopicState();
     }
 }

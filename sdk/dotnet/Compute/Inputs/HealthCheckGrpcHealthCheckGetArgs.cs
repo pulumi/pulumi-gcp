@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class HealthCheckGrpcHealthCheckGetArgs : Pulumi.ResourceArgs
+    public sealed class HealthCheckGrpcHealthCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The gRPC service name for the health check.
@@ -56,5 +56,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public HealthCheckGrpcHealthCheckGetArgs()
         {
         }
+        public static new HealthCheckGrpcHealthCheckGetArgs Empty => new HealthCheckGrpcHealthCheckGetArgs();
     }
 }

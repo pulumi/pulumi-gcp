@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRecurringScheduleMonthlyArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRecurringScheduleMonthlyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRecurringScheduleMonthlyArgs()
         {
         }
+        public static new PatchDeploymentRecurringScheduleMonthlyArgs Empty => new PatchDeploymentRecurringScheduleMonthlyArgs();
     }
 }

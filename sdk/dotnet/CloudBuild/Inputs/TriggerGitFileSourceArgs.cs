@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerGitFileSourceArgs : Pulumi.ResourceArgs
+    public sealed class TriggerGitFileSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path at which to mount the volume.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerGitFileSourceArgs()
         {
         }
+        public static new TriggerGitFileSourceArgs Empty => new TriggerGitFileSourceArgs();
     }
 }

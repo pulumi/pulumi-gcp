@@ -17,21 +17,19 @@ namespace Pulumi.Gcp.Compute
         /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all = Gcp.Compute.GetInstanceGroup.Invoke(new()
         ///     {
-        ///         var all = Output.Create(Gcp.Compute.GetInstanceGroup.InvokeAsync(new Gcp.Compute.GetInstanceGroupArgs
-        ///         {
-        ///             Name = "instance-group-name",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///     }
+        ///         Name = "instance-group-name",
+        ///         Zone = "us-central1-a",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs? args = null, InvokeOptions? options = null)
@@ -43,21 +41,19 @@ namespace Pulumi.Gcp.Compute
         /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all = Gcp.Compute.GetInstanceGroup.Invoke(new()
         ///     {
-        ///         var all = Output.Create(Gcp.Compute.GetInstanceGroup.InvokeAsync(new Gcp.Compute.GetInstanceGroupArgs
-        ///         {
-        ///             Name = "instance-group-name",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///     }
+        ///         Name = "instance-group-name",
+        ///         Zone = "us-central1-a",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Output<GetInstanceGroupResult> Invoke(GetInstanceGroupInvokeArgs? args = null, InvokeOptions? options = null)
@@ -65,7 +61,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetInstanceGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance group. Either `name` or `self_link` must be provided.
@@ -96,9 +92,10 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceGroupArgs()
         {
         }
+        public static new GetInstanceGroupArgs Empty => new GetInstanceGroupArgs();
     }
 
-    public sealed class GetInstanceGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance group. Either `name` or `self_link` must be provided.
@@ -129,6 +126,7 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceGroupInvokeArgs()
         {
         }
+        public static new GetInstanceGroupInvokeArgs Empty => new GetInstanceGroupInvokeArgs();
     }
 
 

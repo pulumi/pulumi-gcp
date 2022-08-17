@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxPageFormParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class CxPageFormParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the parameter, unique within the form.
@@ -55,5 +55,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxPageFormParameterGetArgs()
         {
         }
+        public static new CxPageFormParameterGetArgs Empty => new CxPageFormParameterGetArgs();
     }
 }

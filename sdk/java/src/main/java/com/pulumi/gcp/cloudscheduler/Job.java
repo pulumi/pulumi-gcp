@@ -14,6 +14,7 @@ import com.pulumi.gcp.cloudscheduler.outputs.JobAppEngineHttpTarget;
 import com.pulumi.gcp.cloudscheduler.outputs.JobHttpTarget;
 import com.pulumi.gcp.cloudscheduler.outputs.JobPubsubTarget;
 import com.pulumi.gcp.cloudscheduler.outputs.JobRetryConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -292,6 +293,20 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     * 
+     */
+    @Export(name="paused", type=Boolean.class, parameters={})
+    private Output<Boolean> paused;
+
+    /**
+     * @return Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     * 
+     */
+    public Output<Boolean> paused() {
+        return this.paused;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -374,6 +389,20 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> schedule() {
         return Codegen.optional(this.schedule);
+    }
+    /**
+     * State of the job.
+     * 
+     */
+    @Export(name="state", type=String.class, parameters={})
+    private Output<String> state;
+
+    /**
+     * @return State of the job.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * Specifies the time zone to be used in interpreting schedule.

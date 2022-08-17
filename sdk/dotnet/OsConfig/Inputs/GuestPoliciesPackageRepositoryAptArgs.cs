@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesPackageRepositoryAptArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesPackageRepositoryAptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of archive files in this repository. The default behavior is DEB.
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesPackageRepositoryAptArgs()
         {
         }
+        public static new GuestPoliciesPackageRepositoryAptArgs Empty => new GuestPoliciesPackageRepositoryAptArgs();
     }
 }

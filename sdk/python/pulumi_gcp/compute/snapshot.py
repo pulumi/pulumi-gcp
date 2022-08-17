@@ -527,7 +527,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-9",
+        debian = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             image=debian.self_link,
@@ -619,7 +619,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian = gcp.compute.get_image(family="debian-9",
+        debian = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         persistent = gcp.compute.Disk("persistent",
             image=debian.self_link,

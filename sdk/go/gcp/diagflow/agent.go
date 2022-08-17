@@ -20,7 +20,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+//   - [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
 // ### Dialogflow Agent Full
@@ -29,43 +29,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := diagflow.NewAgent(ctx, "fullAgent", &diagflow.AgentArgs{
-// 			ApiVersion:              pulumi.String("API_VERSION_V2_BETA_1"),
-// 			AvatarUri:               pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-// 			ClassificationThreshold: pulumi.Float64(0.3),
-// 			DefaultLanguageCode:     pulumi.String("en"),
-// 			Description:             pulumi.String("Example description."),
-// 			DisplayName:             pulumi.String("dialogflow-agent"),
-// 			EnableLogging:           pulumi.Bool(true),
-// 			MatchMode:               pulumi.String("MATCH_MODE_ML_ONLY"),
-// 			SupportedLanguageCodes: pulumi.StringArray{
-// 				pulumi.String("fr"),
-// 				pulumi.String("de"),
-// 				pulumi.String("es"),
-// 			},
-// 			Tier:     pulumi.String("TIER_STANDARD"),
-// 			TimeZone: pulumi.String("America/New_York"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := diagflow.NewAgent(ctx, "fullAgent", &diagflow.AgentArgs{
+//				ApiVersion:              pulumi.String("API_VERSION_V2_BETA_1"),
+//				AvatarUri:               pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				ClassificationThreshold: pulumi.Float64(0.3),
+//				DefaultLanguageCode:     pulumi.String("en"),
+//				Description:             pulumi.String("Example description."),
+//				DisplayName:             pulumi.String("dialogflow-agent"),
+//				EnableLogging:           pulumi.Bool(true),
+//				MatchMode:               pulumi.String("MATCH_MODE_ML_ONLY"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				Tier:     pulumi.String("TIER_STANDARD"),
+//				TimeZone: pulumi.String("America/New_York"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Agent can be imported using any of these accepted formats
+// # Agent can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/agent:Agent default {{project}}
+//
+//	$ pulumi import gcp:diagflow/agent:Agent default {{project}}
+//
 // ```
 type Agent struct {
 	pulumi.CustomResourceState
@@ -406,7 +411,7 @@ func (i *Agent) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 // AgentArrayInput is an input type that accepts AgentArray and AgentArrayOutput values.
 // You can construct a concrete instance of `AgentArrayInput` via:
 //
-//          AgentArray{ AgentArgs{...} }
+//	AgentArray{ AgentArgs{...} }
 type AgentArrayInput interface {
 	pulumi.Input
 
@@ -431,7 +436,7 @@ func (i AgentArray) ToAgentArrayOutputWithContext(ctx context.Context) AgentArra
 // AgentMapInput is an input type that accepts AgentMap and AgentMapOutput values.
 // You can construct a concrete instance of `AgentMapInput` via:
 //
-//          AgentMap{ "key": AgentArgs{...} }
+//	AgentMap{ "key": AgentArgs{...} }
 type AgentMapInput interface {
 	pulumi.Input
 
@@ -470,10 +475,10 @@ func (o AgentOutput) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 // API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
 // different service endpoints for different API versions. However, bots connectors and webhook calls will follow
 // the specified API version.
-// * API_VERSION_V1: Legacy V1 API.
-// * API_VERSION_V2: V2 API.
-// * API_VERSION_V2_BETA_1: V2beta1 API.
-//   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+//   - API_VERSION_V1: Legacy V1 API.
+//   - API_VERSION_V2: V2 API.
+//   - API_VERSION_V2_BETA_1: V2beta1 API.
+//     Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
 func (o AgentOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
 }
@@ -522,11 +527,11 @@ func (o AgentOutput) EnableLogging() pulumi.BoolPtrOutput {
 }
 
 // Determines how intents are detected from user queries.
-// * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-//   syntax and composite entities.
-// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-//   using @sys.any or very large developer entities.
-//   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+//   - MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
+//     syntax and composite entities.
+//   - MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
+//     using @sys.any or very large developer entities.
+//     Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
 func (o AgentOutput) MatchMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.MatchMode }).(pulumi.StringOutput)
 }
@@ -543,11 +548,11 @@ func (o AgentOutput) SupportedLanguageCodes() pulumi.StringArrayOutput {
 }
 
 // The agent tier. If not specified, TIER_STANDARD is assumed.
-// * TIER_STANDARD: Standard tier.
-// * TIER_ENTERPRISE: Enterprise tier (Essentials).
-// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+//   - TIER_STANDARD: Standard tier.
+//   - TIER_ENTERPRISE: Enterprise tier (Essentials).
+//   - TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
+//     NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+//     the the provider state and Dialogflow if the agent tier is changed outside of the provider.
 func (o AgentOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringPtrOutput { return v.Tier }).(pulumi.StringPtrOutput)
 }

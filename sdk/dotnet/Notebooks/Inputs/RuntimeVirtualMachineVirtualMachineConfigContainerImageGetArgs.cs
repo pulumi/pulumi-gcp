@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigContainerImageGetArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigContainerImageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to the container image repository.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigContainerImageGetArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigContainerImageGetArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigContainerImageGetArgs();
     }
 }

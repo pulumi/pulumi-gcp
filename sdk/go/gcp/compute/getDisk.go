@@ -20,31 +20,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		persistent_boot_disk, err := compute.LookupDisk(ctx, &compute.LookupDiskArgs{
-// 			Name:    "persistent-boot-disk",
-// 			Project: pulumi.StringRef("example"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				Source:     pulumi.String(persistent_boot_disk.SelfLink),
-// 				AutoDelete: pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			persistent_boot_disk, err := compute.LookupDisk(ctx, &compute.LookupDiskArgs{
+//				Name:    "persistent-boot-disk",
+//				Project: pulumi.StringRef("example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					Source:     pulumi.String(persistent_boot_disk.SelfLink),
+//					AutoDelete: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	var rv LookupDiskResult

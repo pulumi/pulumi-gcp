@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesGetArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedServices")]
         private InputList<string>? _allowedServices;
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimetersServicePerimeterSpecVpcAccessibleServicesGetArgs()
         {
         }
+        public static new ServicePerimetersServicePerimeterSpecVpcAccessibleServicesGetArgs Empty => new ServicePerimetersServicePerimeterSpecVpcAccessibleServicesGetArgs();
     }
 }

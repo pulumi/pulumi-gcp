@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ServiceAttachmentConsumerAcceptListArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAttachmentConsumerAcceptListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of consumer forwarding rules the consumer project can
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ServiceAttachmentConsumerAcceptListArgs()
         {
         }
+        public static new ServiceAttachmentConsumerAcceptListArgs Empty => new ServiceAttachmentConsumerAcceptListArgs();
     }
 }

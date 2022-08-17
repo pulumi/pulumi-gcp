@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam.Inputs
 {
 
-    public sealed class WorkloadIdentityPoolProviderAwsArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolProviderAwsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AWS account ID.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         public WorkloadIdentityPoolProviderAwsArgs()
         {
         }
+        public static new WorkloadIdentityPoolProviderAwsArgs Empty => new WorkloadIdentityPoolProviderAwsArgs();
     }
 }

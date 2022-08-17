@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy.Inputs
 {
 
-    public sealed class TargetExecutionConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class TargetExecutionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public TargetExecutionConfigGetArgs()
         {
         }
+        public static new TargetExecutionConfigGetArgs Empty => new TargetExecutionConfigGetArgs();
     }
 }

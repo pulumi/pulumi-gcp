@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class AutoscalerAutoscalingPolicyScalingScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalerAutoscalingPolicyScalingScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public AutoscalerAutoscalingPolicyScalingScheduleGetArgs()
         {
         }
+        public static new AutoscalerAutoscalingPolicyScalingScheduleGetArgs Empty => new AutoscalerAutoscalingPolicyScalingScheduleGetArgs();
     }
 }

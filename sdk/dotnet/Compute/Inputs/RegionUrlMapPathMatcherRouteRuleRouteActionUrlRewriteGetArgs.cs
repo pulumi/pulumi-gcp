@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prior to forwarding the request to the selected service, the request's host
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs Empty => new RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs();
     }
 }

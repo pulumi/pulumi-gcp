@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ContainerAnalysis.Inputs
 {
 
-    public sealed class OccurenceAttestationArgs : Pulumi.ResourceArgs
+    public sealed class OccurenceAttestationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The serialized payload that is verified by one or
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         public OccurenceAttestationArgs()
         {
         }
+        public static new OccurenceAttestationArgs Empty => new OccurenceAttestationArgs();
     }
 }

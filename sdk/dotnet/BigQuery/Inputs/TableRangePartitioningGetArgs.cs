@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableRangePartitioningGetArgs : Pulumi.ResourceArgs
+    public sealed class TableRangePartitioningGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The field used to determine how to create a range-based
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableRangePartitioningGetArgs()
         {
         }
+        public static new TableRangePartitioningGetArgs Empty => new TableRangePartitioningGetArgs();
     }
 }

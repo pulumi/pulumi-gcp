@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs()
         {
         }
+        public static new EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs Empty => new EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs();
     }
 }

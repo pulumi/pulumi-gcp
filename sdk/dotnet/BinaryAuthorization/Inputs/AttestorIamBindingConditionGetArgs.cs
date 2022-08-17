@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 {
 
-    public sealed class AttestorIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class AttestorIamBindingConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         public AttestorIamBindingConditionGetArgs()
         {
         }
+        public static new AttestorIamBindingConditionGetArgs Empty => new AttestorIamBindingConditionGetArgs();
     }
 }

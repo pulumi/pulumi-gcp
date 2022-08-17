@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendBucketIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendBucketIamMemberConditionGetArgs()
         {
         }
+        public static new BackendBucketIamMemberConditionGetArgs Empty => new BackendBucketIamMemberConditionGetArgs();
     }
 }

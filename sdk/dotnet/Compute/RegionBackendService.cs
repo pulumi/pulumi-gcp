@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionBackendService:RegionBackendService")]
-    public partial class RegionBackendService : Pulumi.CustomResource
+    public partial class RegionBackendService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Lifetime of cookies in seconds if session_affinity is
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionBackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lifetime of cookies in seconds if session_affinity is
@@ -550,9 +550,10 @@ namespace Pulumi.Gcp.Compute
         public RegionBackendServiceArgs()
         {
         }
+        public static new RegionBackendServiceArgs Empty => new RegionBackendServiceArgs();
     }
 
-    public sealed class RegionBackendServiceState : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lifetime of cookies in seconds if session_affinity is
@@ -802,5 +803,6 @@ namespace Pulumi.Gcp.Compute
         public RegionBackendServiceState()
         {
         }
+        public static new RegionBackendServiceState Empty => new RegionBackendServiceState();
     }
 }

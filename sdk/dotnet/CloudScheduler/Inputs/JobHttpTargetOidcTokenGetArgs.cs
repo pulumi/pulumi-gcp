@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudScheduler.Inputs
 {
 
-    public sealed class JobHttpTargetOidcTokenGetArgs : Pulumi.ResourceArgs
+    public sealed class JobHttpTargetOidcTokenGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audience to be used when generating OIDC token. If not specified,
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         public JobHttpTargetOidcTokenGetArgs()
         {
         }
+        public static new JobHttpTargetOidcTokenGetArgs Empty => new JobHttpTargetOidcTokenGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionNetworkEndpointGroupCloudRunGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionNetworkEndpointGroupCloudRunGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional serving service.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionNetworkEndpointGroupCloudRunGetArgs()
         {
         }
+        public static new RegionNetworkEndpointGroupCloudRunGetArgs Empty => new RegionNetworkEndpointGroupCloudRunGetArgs();
     }
 }

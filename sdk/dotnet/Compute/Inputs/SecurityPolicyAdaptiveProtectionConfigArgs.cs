@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyAdaptiveProtectionConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAdaptiveProtectionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyAdaptiveProtectionConfigArgs()
         {
         }
+        public static new SecurityPolicyAdaptiveProtectionConfigArgs Empty => new SecurityPolicyAdaptiveProtectionConfigArgs();
     }
 }

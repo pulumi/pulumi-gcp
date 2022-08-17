@@ -23,64 +23,62 @@ namespace Pulumi.Gcp.Healthcare
     /// ### Healthcare Hl7 V2 Store Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var store = new Gcp.Healthcare.Hl7Store("store", new Gcp.Healthcare.Hl7StoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             NotificationConfigs = 
-    ///             {
-    ///                 new Gcp.Healthcare.Inputs.Hl7StoreNotificationConfigsArgs
-    ///                 {
-    ///                     PubsubTopic = topic.Id,
-    ///                 },
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "label1", "labelvalue1" },
-    ///             },
-    ///         });
-    ///     }
+    ///     var topic = new Gcp.PubSub.Topic("topic");
     /// 
-    /// }
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var store = new Gcp.Healthcare.Hl7Store("store", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.Hl7StoreNotificationConfigsArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Healthcare Hl7 V2 Store Parser Config
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var store = new Gcp.Healthcare.Hl7Store("store", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         ParserConfig = new Gcp.Healthcare.Inputs.Hl7StoreParserConfigArgs
     ///         {
-    ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var store = new Gcp.Healthcare.Hl7Store("store", new Gcp.Healthcare.Hl7StoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             ParserConfig = new Gcp.Healthcare.Inputs.Hl7StoreParserConfigArgs
-    ///             {
-    ///                 AllowNullHeader = false,
-    ///                 SegmentTerminator = "Jw==",
-    ///                 Schema = @"{
+    ///             AllowNullHeader = false,
+    ///             SegmentTerminator = "Jw==",
+    ///             Schema = @"{
     ///   ""schemas"": [{
     ///     ""messageSchemaConfigs"": {
     ///       ""ADT_A01"": {
@@ -159,48 +157,46 @@ namespace Pulumi.Gcp.Healthcare
     ///   ""ignoreMinOccurs"": true
     /// }
     /// ",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Healthcare Hl7 V2 Store Unschematized
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var store = new Gcp.Healthcare.Hl7Store("store", new Gcp.Healthcare.Hl7StoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             ParserConfig = new Gcp.Healthcare.Inputs.Hl7StoreParserConfigArgs
-    ///             {
-    ///                 AllowNullHeader = false,
-    ///                 SegmentTerminator = "Jw==",
-    ///                 Version = "V2",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var store = new Gcp.Healthcare.Hl7Store("store", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         ParserConfig = new Gcp.Healthcare.Inputs.Hl7StoreParserConfigArgs
+    ///         {
+    ///             AllowNullHeader = false,
+    ///             SegmentTerminator = "Jw==",
+    ///             Version = "V2",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -216,7 +212,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/hl7Store:Hl7Store")]
-    public partial class Hl7Store : Pulumi.CustomResource
+    public partial class Hl7Store : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -320,7 +316,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class Hl7StoreArgs : Pulumi.ResourceArgs
+    public sealed class Hl7StoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -389,9 +385,10 @@ namespace Pulumi.Gcp.Healthcare
         public Hl7StoreArgs()
         {
         }
+        public static new Hl7StoreArgs Empty => new Hl7StoreArgs();
     }
 
-    public sealed class Hl7StoreState : Pulumi.ResourceArgs
+    public sealed class Hl7StoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -466,5 +463,6 @@ namespace Pulumi.Gcp.Healthcare
         public Hl7StoreState()
         {
         }
+        public static new Hl7StoreState Empty => new Hl7StoreState();
     }
 }

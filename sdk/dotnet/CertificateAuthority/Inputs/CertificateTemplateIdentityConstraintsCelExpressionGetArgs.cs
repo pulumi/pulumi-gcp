@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateTemplateIdentityConstraintsCelExpressionGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateTemplateIdentityConstraintsCelExpressionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateTemplateIdentityConstraintsCelExpressionGetArgs()
         {
         }
+        public static new CertificateTemplateIdentityConstraintsCelExpressionGetArgs Empty => new CertificateTemplateIdentityConstraintsCelExpressionGetArgs();
     }
 }

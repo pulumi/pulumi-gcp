@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ReservationSpecificReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationSpecificReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of resources that are allocated.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ReservationSpecificReservationArgs()
         {
         }
+        public static new ReservationSpecificReservationArgs Empty => new ReservationSpecificReservationArgs();
     }
 }

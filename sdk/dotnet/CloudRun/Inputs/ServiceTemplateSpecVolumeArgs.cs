@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecVolumeArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Volume's name.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecVolumeArgs()
         {
         }
+        public static new ServiceTemplateSpecVolumeArgs Empty => new ServiceTemplateSpecVolumeArgs();
     }
 }

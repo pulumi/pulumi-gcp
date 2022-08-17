@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the header.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs Empty => new RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs();
     }
 }

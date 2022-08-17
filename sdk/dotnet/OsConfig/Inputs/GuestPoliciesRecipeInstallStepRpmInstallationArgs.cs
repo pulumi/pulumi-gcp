@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeInstallStepRpmInstallationArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeInstallStepRpmInstallationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the relevant artifact in the recipe.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeInstallStepRpmInstallationArgs()
         {
         }
+        public static new GuestPoliciesRecipeInstallStepRpmInstallationArgs Empty => new GuestPoliciesRecipeInstallStepRpmInstallationArgs();
     }
 }

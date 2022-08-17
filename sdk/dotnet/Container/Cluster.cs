@@ -22,43 +22,43 @@ namespace Pulumi.Gcp.Container
     /// ### With A Separately Managed Node Pool (Recommended)
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "service-account-id",
-    ///             DisplayName = "Service Account",
-    ///         });
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             RemoveDefaultNodePool = true,
-    ///             InitialNodeCount = 1,
-    ///         });
-    ///         var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new Gcp.Container.NodePoolArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Cluster = primary.Name,
-    ///             NodeCount = 1,
-    ///             NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
-    ///             {
-    ///                 Preemptible = true,
-    ///                 MachineType = "e2-medium",
-    ///                 ServiceAccount = @default.Email,
-    ///                 OauthScopes = 
-    ///                 {
-    ///                     "https://www.googleapis.com/auth/cloud-platform",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RemoveDefaultNodePool = true,
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Cluster = primary.Name,
+    ///         NodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
+    ///         {
+    ///             Preemptible = true,
+    ///             MachineType = "e2-medium",
+    ///             ServiceAccount = @default.Email,
+    ///             OauthScopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// &gt; **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
@@ -67,26 +67,25 @@ namespace Pulumi.Gcp.Container
     /// ### Autopilot
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "service-account-id",
-    ///             DisplayName = "Service Account",
-    ///         });
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             EnableAutopilot = true,
-    ///             Location = "us-central1-a",
-    ///         });
-    ///     }
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         EnableAutopilot = true,
+    ///         Location = "us-central1-a",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -108,7 +107,7 @@ namespace Pulumi.Gcp.Container
     ///  For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
     /// </summary>
     [GcpResourceType("gcp:container/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration for addons supported by GKE.
@@ -362,6 +361,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("masterVersion")]
         public Output<string> MasterVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Output("meshCertificates")]
+        public Output<Outputs.ClusterMeshCertificates> MeshCertificates { get; private set; } = null!;
 
         /// <summary>
         /// The minimum version of the master. GKE
@@ -639,7 +644,7 @@ namespace Pulumi.Gcp.Container
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration for addons supported by GKE.
@@ -875,6 +880,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterMasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Input("meshCertificates")]
+        public Input<Inputs.ClusterMeshCertificatesArgs>? MeshCertificates { get; set; }
+
+        /// <summary>
         /// The minimum version of the master. GKE
         /// will auto-update the master to new versions, so this does not guarantee the
         /// current master version--use the read-only `master_version` field to obtain that.
@@ -1101,9 +1112,10 @@ namespace Pulumi.Gcp.Container
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration for addons supported by GKE.
@@ -1359,6 +1371,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? MasterVersion { get; set; }
 
         /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Input("meshCertificates")]
+        public Input<Inputs.ClusterMeshCertificatesGetArgs>? MeshCertificates { get; set; }
+
+        /// <summary>
         /// The minimum version of the master. GKE
         /// will auto-update the master to new versions, so this does not guarantee the
         /// current master version--use the read-only `master_version` field to obtain that.
@@ -1611,5 +1629,6 @@ namespace Pulumi.Gcp.Container
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

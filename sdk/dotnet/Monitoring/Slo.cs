@@ -29,78 +29,76 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Monitoring Slo Appengine
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = Gcp.Monitoring.GetAppEngineService.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
-    ///         {
-    ///             ModuleId = "default",
-    ///         }));
-    ///         var appengSlo = new Gcp.Monitoring.Slo("appengSlo", new Gcp.Monitoring.SloArgs
-    ///         {
-    ///             Service = @default.Apply(@default =&gt; @default.ServiceId),
-    ///             SloId = "ae-slo",
-    ///             DisplayName = "Test SLO for App Engine",
-    ///             Goal = 0.9,
-    ///             CalendarPeriod = "DAY",
-    ///             BasicSli = new Gcp.Monitoring.Inputs.SloBasicSliArgs
-    ///             {
-    ///                 Latency = new Gcp.Monitoring.Inputs.SloBasicSliLatencyArgs
-    ///                 {
-    ///                     Threshold = "1s",
-    ///                 },
-    ///             },
-    ///             UserLabels = 
-    ///             {
-    ///                 { "my_key", "my_value" },
-    ///                 { "my_other_key", "my_other_value" },
-    ///             },
-    ///         });
-    ///     }
+    ///         ModuleId = "default",
+    ///     });
     /// 
-    /// }
+    ///     var appengSlo = new Gcp.Monitoring.Slo("appengSlo", new()
+    ///     {
+    ///         Service = @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult).Apply(@default =&gt; @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult.ServiceId)),
+    ///         SloId = "ae-slo",
+    ///         DisplayName = "Test SLO for App Engine",
+    ///         Goal = 0.9,
+    ///         CalendarPeriod = "DAY",
+    ///         BasicSli = new Gcp.Monitoring.Inputs.SloBasicSliArgs
+    ///         {
+    ///             Latency = new Gcp.Monitoring.Inputs.SloBasicSliLatencyArgs
+    ///             {
+    ///                 Threshold = "1s",
+    ///             },
+    ///         },
+    ///         UserLabels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///             { "my_other_key", "my_other_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Monitoring Slo Request Based
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var customsrv = new Gcp.Monitoring.CustomService("customsrv", new()
     ///     {
-    ///         var customsrv = new Gcp.Monitoring.CustomService("customsrv", new Gcp.Monitoring.CustomServiceArgs
+    ///         ServiceId = "custom-srv-request-slos",
+    ///         DisplayName = "My Custom Service",
+    ///     });
+    /// 
+    ///     var requestBasedSlo = new Gcp.Monitoring.Slo("requestBasedSlo", new()
+    ///     {
+    ///         Service = customsrv.ServiceId,
+    ///         SloId = "consumed-api-slo",
+    ///         DisplayName = "Test SLO with request based SLI (good total ratio)",
+    ///         Goal = 0.9,
+    ///         RollingPeriodDays = 30,
+    ///         RequestBasedSli = new Gcp.Monitoring.Inputs.SloRequestBasedSliArgs
     ///         {
-    ///             ServiceId = "custom-srv-request-slos",
-    ///             DisplayName = "My Custom Service",
-    ///         });
-    ///         var requestBasedSlo = new Gcp.Monitoring.Slo("requestBasedSlo", new Gcp.Monitoring.SloArgs
-    ///         {
-    ///             Service = customsrv.ServiceId,
-    ///             SloId = "consumed-api-slo",
-    ///             DisplayName = "Test SLO with request based SLI (good total ratio)",
-    ///             Goal = 0.9,
-    ///             RollingPeriodDays = 30,
-    ///             RequestBasedSli = new Gcp.Monitoring.Inputs.SloRequestBasedSliArgs
+    ///             DistributionCut = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutArgs
     ///             {
-    ///                 DistributionCut = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutArgs
+    ///                 DistributionFilter = "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
+    ///                 Range = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutRangeArgs
     ///                 {
-    ///                     DistributionFilter = "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
-    ///                     Range = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutRangeArgs
-    ///                     {
-    ///                         Max = 0.5,
-    ///                     },
+    ///                     Max = 0.5,
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -112,7 +110,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/slo:Slo")]
-    public partial class Slo : Pulumi.CustomResource
+    public partial class Slo : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Basic Service-Level Indicator (SLI) on a well-known service type.
@@ -261,7 +259,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class SloArgs : Pulumi.ResourceArgs
+    public sealed class SloArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic Service-Level Indicator (SLI) on a well-known service type.
@@ -368,9 +366,10 @@ namespace Pulumi.Gcp.Monitoring
         public SloArgs()
         {
         }
+        public static new SloArgs Empty => new SloArgs();
     }
 
-    public sealed class SloState : Pulumi.ResourceArgs
+    public sealed class SloState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic Service-Level Indicator (SLI) on a well-known service type.
@@ -484,5 +483,6 @@ namespace Pulumi.Gcp.Monitoring
         public SloState()
         {
         }
+        public static new SloState Empty => new SloState();
     }
 }

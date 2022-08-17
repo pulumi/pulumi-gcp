@@ -14,222 +14,216 @@ namespace Pulumi.Gcp.Dns
     /// ### Binding a DNS name to the ephemeral IP of a new instance:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var frontendInstance = new Gcp.Compute.Instance("frontendInstance", new()
     ///     {
-    ///         var frontendInstance = new Gcp.Compute.Instance("frontendInstance", new Gcp.Compute.InstanceArgs
+    ///         MachineType = "g1-small",
+    ///         Zone = "us-central1-b",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
-    ///             MachineType = "g1-small",
-    ///             Zone = "us-central1-b",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
     ///                 {
-    ///                     Image = "debian-cloud/debian-9",
+    ///                     ,
     ///                 },
     ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var frontendRecordSet = new Gcp.Dns.RecordSet("frontendRecordSet", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-    ///             Type = "A",
-    ///             Ttl = 300,
-    ///             ManagedZone = prod.Name,
-    ///             Rrdatas = 
-    ///             {
-    ///                 frontendInstance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].AccessConfigs?[0]?.NatIp),
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
+    ///     {
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
+    /// 
+    ///     var frontendRecordSet = new Gcp.Dns.RecordSet("frontendRecordSet", new()
+    ///     {
+    ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         ManagedZone = prod.Name,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             frontendInstance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].AccessConfigs[0]?.NatIp),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Adding an A record
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var recordSet = new Gcp.Dns.RecordSet("recordSet", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
-    ///             ManagedZone = prod.Name,
-    ///             Type = "A",
-    ///             Ttl = 300,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "8.8.8.8",
-    ///             },
-    ///         });
-    ///     }
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
     /// 
-    /// }
+    ///     var recordSet = new Gcp.Dns.RecordSet("recordSet", new()
+    ///     {
+    ///         Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
+    ///         ManagedZone = prod.Name,
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             "8.8.8.8",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Adding an MX record
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var mx = new Gcp.Dns.RecordSet("mx", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName,
-    ///             ManagedZone = prod.Name,
-    ///             Type = "MX",
-    ///             Ttl = 3600,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "1 aspmx.l.google.com.",
-    ///                 "5 alt1.aspmx.l.google.com.",
-    ///                 "5 alt2.aspmx.l.google.com.",
-    ///                 "10 alt3.aspmx.l.google.com.",
-    ///                 "10 alt4.aspmx.l.google.com.",
-    ///             },
-    ///         });
-    ///     }
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
     /// 
-    /// }
+    ///     var mx = new Gcp.Dns.RecordSet("mx", new()
+    ///     {
+    ///         Name = prod.DnsName,
+    ///         ManagedZone = prod.Name,
+    ///         Type = "MX",
+    ///         Ttl = 3600,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             "1 aspmx.l.google.com.",
+    ///             "5 alt1.aspmx.l.google.com.",
+    ///             "5 alt2.aspmx.l.google.com.",
+    ///             "10 alt3.aspmx.l.google.com.",
+    ///             "10 alt4.aspmx.l.google.com.",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Adding an SPF record
     /// 
     /// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var spf = new Gcp.Dns.RecordSet("spf", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-    ///             ManagedZone = prod.Name,
-    ///             Type = "TXT",
-    ///             Ttl = 300,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\"",
-    ///             },
-    ///         });
-    ///     }
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
     /// 
-    /// }
+    ///     var spf = new Gcp.Dns.RecordSet("spf", new()
+    ///     {
+    ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
+    ///         ManagedZone = prod.Name,
+    ///         Type = "TXT",
+    ///         Ttl = 300,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             "\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\"",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Adding a CNAME record
     /// 
     ///  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
     ///     {
-    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "prod.mydomain.com.",
-    ///         });
-    ///         var cname = new Gcp.Dns.RecordSet("cname", new Gcp.Dns.RecordSetArgs
-    ///         {
-    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-    ///             ManagedZone = prod.Name,
-    ///             Type = "CNAME",
-    ///             Ttl = 300,
-    ///             Rrdatas = 
-    ///             {
-    ///                 "frontend.mydomain.com.",
-    ///             },
-    ///         });
-    ///     }
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
     /// 
-    /// }
+    ///     var cname = new Gcp.Dns.RecordSet("cname", new()
+    ///     {
+    ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
+    ///         ManagedZone = prod.Name,
+    ///         Type = "CNAME",
+    ///         Ttl = 300,
+    ///         Rrdatas = new[]
+    ///         {
+    ///             "frontend.mydomain.com.",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Setting Routing Policy instead of using rrdatas
     /// ### Geolocation
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var geo = new Gcp.Dns.RecordSet("geo", new()
     ///     {
-    ///         var geo = new Gcp.Dns.RecordSet("geo", new Gcp.Dns.RecordSetArgs
+    ///         Name = $"backend.{google_dns_managed_zone.Prod.Dns_name}",
+    ///         ManagedZone = google_dns_managed_zone.Prod.Name,
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs
     ///         {
-    ///             Name = $"backend.{google_dns_managed_zone.Prod.Dns_name}",
-    ///             ManagedZone = google_dns_managed_zone.Prod.Name,
-    ///             Type = "A",
-    ///             Ttl = 300,
-    ///             RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs
+    ///             Geos = new[]
     ///             {
-    ///                 Geos = 
+    ///                 new Gcp.Dns.Inputs.RecordSetRoutingPolicyGeoArgs
     ///                 {
-    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyGeoArgs
+    ///                     Location = "asia-east1",
+    ///                     Rrdatas = new[]
     ///                     {
-    ///                         Location = "asia-east1",
-    ///                         Rrdatas = 
-    ///                         {
-    ///                             "10.128.1.1",
-    ///                         },
+    ///                         "10.128.1.1",
     ///                     },
-    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyGeoArgs
+    ///                 },
+    ///                 new Gcp.Dns.Inputs.RecordSetRoutingPolicyGeoArgs
+    ///                 {
+    ///                     Location = "us-central1",
+    ///                     Rrdatas = new[]
     ///                     {
-    ///                         Location = "us-central1",
-    ///                         Rrdatas = 
-    ///                         {
-    ///                             "10.130.1.1",
-    ///                         },
+    ///                         "10.130.1.1",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -251,7 +245,7 @@ namespace Pulumi.Gcp.Dns
     ///  NoteThe record name must include the trailing dot at the end.
     /// </summary>
     [GcpResourceType("gcp:dns/recordSet:RecordSet")]
-    public partial class RecordSet : Pulumi.CustomResource
+    public partial class RecordSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the zone in which this record set will
@@ -343,7 +337,7 @@ namespace Pulumi.Gcp.Dns
         }
     }
 
-    public sealed class RecordSetArgs : Pulumi.ResourceArgs
+    public sealed class RecordSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the zone in which this record set will
@@ -400,9 +394,10 @@ namespace Pulumi.Gcp.Dns
         public RecordSetArgs()
         {
         }
+        public static new RecordSetArgs Empty => new RecordSetArgs();
     }
 
-    public sealed class RecordSetState : Pulumi.ResourceArgs
+    public sealed class RecordSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the zone in which this record set will
@@ -459,5 +454,6 @@ namespace Pulumi.Gcp.Dns
         public RecordSetState()
         {
         }
+        public static new RecordSetState Empty => new RecordSetState();
     }
 }

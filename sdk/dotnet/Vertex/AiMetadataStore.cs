@@ -14,21 +14,19 @@ namespace Pulumi.Gcp.Vertex
     /// ### Vertex Ai Metadata Store
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var store = new Gcp.Vertex.AiMetadataStore("store", new()
     ///     {
-    ///         var store = new Gcp.Vertex.AiMetadataStore("store", new Gcp.Vertex.AiMetadataStoreArgs
-    ///         {
-    ///             Description = "Store to test the terraform module",
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         Description = "Store to test the terraform module",
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Vertex
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vertex/aiMetadataStore:AiMetadataStore")]
-    public partial class AiMetadataStore : Pulumi.CustomResource
+    public partial class AiMetadataStore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
@@ -150,7 +148,7 @@ namespace Pulumi.Gcp.Vertex
         }
     }
 
-    public sealed class AiMetadataStoreArgs : Pulumi.ResourceArgs
+    public sealed class AiMetadataStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the MetadataStore.
@@ -187,9 +185,10 @@ namespace Pulumi.Gcp.Vertex
         public AiMetadataStoreArgs()
         {
         }
+        public static new AiMetadataStoreArgs Empty => new AiMetadataStoreArgs();
     }
 
-    public sealed class AiMetadataStoreState : Pulumi.ResourceArgs
+    public sealed class AiMetadataStoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
@@ -252,5 +251,6 @@ namespace Pulumi.Gcp.Vertex
         public AiMetadataStoreState()
         {
         }
+        public static new AiMetadataStoreState Empty => new AiMetadataStoreState();
     }
 }

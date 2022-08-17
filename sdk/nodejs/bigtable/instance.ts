@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
  * ## +---
  *
  * subcategory: "Cloud Bigtable"
- * layout: "google"
  * page_title: "Google: gcp.bigtable.Instance"
- * sidebar_current: "docs-google-bigtable-instance"
  * description: |-
  *   Creates a Google Bigtable instance.
  * ---

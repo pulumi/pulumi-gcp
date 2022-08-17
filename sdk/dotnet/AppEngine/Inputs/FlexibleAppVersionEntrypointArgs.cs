@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionEntrypointArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionEntrypointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format should be a shell command that can be fed to bash -c.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionEntrypointArgs()
         {
         }
+        public static new FlexibleAppVersionEntrypointArgs Empty => new FlexibleAppVersionEntrypointArgs();
     }
 }

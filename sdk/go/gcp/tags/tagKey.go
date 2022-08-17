@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
 // ### Tag Key Basic
@@ -26,35 +26,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-// 			Description: pulumi.String("For keyname resources."),
-// 			Parent:      pulumi.String("organizations/123456789"),
-// 			ShortName:   pulumi.String("keyname"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				ShortName:   pulumi.String("keyname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// TagKey can be imported using any of these accepted formats
+// # TagKey can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
+//
+//	$ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:tags/tagKey:TagKey default {{name}}
+//
+//	$ pulumi import gcp:tags/tagKey:TagKey default {{name}}
+//
 // ```
 type TagKey struct {
 	pulumi.CustomResourceState
@@ -203,7 +210,7 @@ func (i *TagKey) ToTagKeyOutputWithContext(ctx context.Context) TagKeyOutput {
 // TagKeyArrayInput is an input type that accepts TagKeyArray and TagKeyArrayOutput values.
 // You can construct a concrete instance of `TagKeyArrayInput` via:
 //
-//          TagKeyArray{ TagKeyArgs{...} }
+//	TagKeyArray{ TagKeyArgs{...} }
 type TagKeyArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +235,7 @@ func (i TagKeyArray) ToTagKeyArrayOutputWithContext(ctx context.Context) TagKeyA
 // TagKeyMapInput is an input type that accepts TagKeyMap and TagKeyMapOutput values.
 // You can construct a concrete instance of `TagKeyMapInput` via:
 //
-//          TagKeyMap{ "key": TagKeyArgs{...} }
+//	TagKeyMap{ "key": TagKeyArgs{...} }
 type TagKeyMapInput interface {
 	pulumi.Input
 

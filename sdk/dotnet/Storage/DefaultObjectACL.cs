@@ -29,29 +29,28 @@ namespace Pulumi.Gcp.Storage
     /// Example creating a default object ACL on a bucket with one owner, and one reader.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
     ///     {
-    ///         var image_store = new Gcp.Storage.Bucket("image-store", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var image_store_default_acl = new Gcp.Storage.DefaultObjectACL("image-store-default-acl", new Gcp.Storage.DefaultObjectACLArgs
-    ///         {
-    ///             Bucket = image_store.Name,
-    ///             RoleEntities = 
-    ///             {
-    ///                 "OWNER:user-my.email@gmail.com",
-    ///                 "READER:group-mygroup",
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "EU",
+    ///     });
     /// 
-    /// }
+    ///     var image_store_default_acl = new Gcp.Storage.DefaultObjectACL("image-store-default-acl", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         RoleEntities = new[]
+    ///         {
+    ///             "OWNER:user-my.email@gmail.com",
+    ///             "READER:group-mygroup",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +58,7 @@ namespace Pulumi.Gcp.Storage
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:storage/defaultObjectACL:DefaultObjectACL")]
-    public partial class DefaultObjectACL : Pulumi.CustomResource
+    public partial class DefaultObjectACL : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket it applies to.
@@ -119,7 +118,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class DefaultObjectACLArgs : Pulumi.ResourceArgs
+    public sealed class DefaultObjectACLArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket it applies to.
@@ -144,9 +143,10 @@ namespace Pulumi.Gcp.Storage
         public DefaultObjectACLArgs()
         {
         }
+        public static new DefaultObjectACLArgs Empty => new DefaultObjectACLArgs();
     }
 
-    public sealed class DefaultObjectACLState : Pulumi.ResourceArgs
+    public sealed class DefaultObjectACLState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket it applies to.
@@ -171,5 +171,6 @@ namespace Pulumi.Gcp.Storage
         public DefaultObjectACLState()
         {
         }
+        public static new DefaultObjectACLState Empty => new DefaultObjectACLState();
     }
 }

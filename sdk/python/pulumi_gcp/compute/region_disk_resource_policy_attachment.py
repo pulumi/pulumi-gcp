@@ -186,7 +186,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
-            image="debian-cloud/debian-9",
+            image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
@@ -215,7 +215,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                     ),
                 ),
             ))
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
 
@@ -268,7 +268,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
-            image="debian-cloud/debian-9",
+            image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
@@ -297,7 +297,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                     ),
                 ),
             ))
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
 

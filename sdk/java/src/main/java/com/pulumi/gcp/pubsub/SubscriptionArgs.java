@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionDeadLetterPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionExpirationPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
@@ -63,6 +64,27 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> ackDeadlineSeconds() {
         return Optional.ofNullable(this.ackDeadlineSeconds);
+    }
+
+    /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bigqueryConfig")
+    private @Nullable Output<SubscriptionBigqueryConfigArgs> bigqueryConfig;
+
+    /**
+     * @return If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubscriptionBigqueryConfigArgs>> bigqueryConfig() {
+        return Optional.ofNullable(this.bigqueryConfig);
     }
 
     /**
@@ -346,6 +368,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     private SubscriptionArgs(SubscriptionArgs $) {
         this.ackDeadlineSeconds = $.ackDeadlineSeconds;
+        this.bigqueryConfig = $.bigqueryConfig;
         this.deadLetterPolicy = $.deadLetterPolicy;
         this.enableExactlyOnceDelivery = $.enableExactlyOnceDelivery;
         this.enableMessageOrdering = $.enableMessageOrdering;
@@ -426,6 +449,33 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ackDeadlineSeconds(Integer ackDeadlineSeconds) {
             return ackDeadlineSeconds(Output.of(ackDeadlineSeconds));
+        }
+
+        /**
+         * @param bigqueryConfig If delivery to BigQuery is used with this subscription, this field is used to configure it.
+         * Either pushConfig or bigQueryConfig can be set, but not both.
+         * If both are empty, then the subscriber will pull and ack messages using API methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigqueryConfig(@Nullable Output<SubscriptionBigqueryConfigArgs> bigqueryConfig) {
+            $.bigqueryConfig = bigqueryConfig;
+            return this;
+        }
+
+        /**
+         * @param bigqueryConfig If delivery to BigQuery is used with this subscription, this field is used to configure it.
+         * Either pushConfig or bigQueryConfig can be set, but not both.
+         * If both are empty, then the subscriber will pull and ack messages using API methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigqueryConfig(SubscriptionBigqueryConfigArgs bigqueryConfig) {
+            return bigqueryConfig(Output.of(bigqueryConfig));
         }
 
         /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Datastore kind.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs Empty => new PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs();
     }
 }

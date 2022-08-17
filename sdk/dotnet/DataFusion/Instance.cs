@@ -22,56 +22,53 @@ namespace Pulumi.Gcp.DataFusion
     /// ### Data Fusion Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new()
     ///     {
-    ///         var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new Gcp.DataFusion.InstanceArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Type = "BASIC",
-    ///         });
-    ///     }
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Data Fusion Instance Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(Gcp.AppEngine.GetDefaultServiceAccount.InvokeAsync());
-    ///         var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new Gcp.DataFusion.InstanceArgs
-    ///         {
-    ///             Description = "My Data Fusion instance",
-    ///             Region = "us-central1",
-    ///             Type = "BASIC",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableStackdriverMonitoring = true,
-    ///             Labels = 
-    ///             {
-    ///                 { "example_key", "example_value" },
-    ///             },
-    ///             PrivateInstance = true,
-    ///             NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
-    ///             {
-    ///                 Network = "default",
-    ///                 IpAllocation = "10.89.48.0/22",
-    ///             },
-    ///             Version = "6.3.0",
-    ///             DataprocServiceAccount = @default.Apply(@default =&gt; @default.Email),
-    ///         });
-    ///     }
+    ///     var @default = Gcp.AppEngine.GetDefaultServiceAccount.Invoke();
     /// 
-    /// }
+    ///     var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new()
+    ///     {
+    ///         Description = "My Data Fusion instance",
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableStackdriverMonitoring = true,
+    ///         Labels = 
+    ///         {
+    ///             { "example_key", "example_value" },
+    ///         },
+    ///         PrivateInstance = true,
+    ///         NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+    ///         {
+    ///             Network = "default",
+    ///             IpAllocation = "10.89.48.0/22",
+    ///         },
+    ///         Version = "6.3.0",
+    ///         DataprocServiceAccount = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +92,7 @@ namespace Pulumi.Gcp.DataFusion
     /// ```
     /// </summary>
     [GcpResourceType("gcp:datafusion/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -284,7 +281,7 @@ namespace Pulumi.Gcp.DataFusion
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
@@ -394,9 +391,10 @@ namespace Pulumi.Gcp.DataFusion
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -556,5 +554,6 @@ namespace Pulumi.Gcp.DataFusion
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

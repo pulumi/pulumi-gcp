@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class ApiKeyRestrictionsBrowserKeyRestrictionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiKeyRestrictionsBrowserKeyRestrictionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedReferrers", required: true)]
         private InputList<string>? _allowedReferrers;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Projects.Inputs
         public ApiKeyRestrictionsBrowserKeyRestrictionsGetArgs()
         {
         }
+        public static new ApiKeyRestrictionsBrowserKeyRestrictionsGetArgs Empty => new ApiKeyRestrictionsBrowserKeyRestrictionsGetArgs();
     }
 }

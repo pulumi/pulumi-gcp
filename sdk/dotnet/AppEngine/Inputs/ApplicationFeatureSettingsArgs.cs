@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class ApplicationFeatureSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationFeatureSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set to false to use the legacy health check instead of the readiness
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public ApplicationFeatureSettingsArgs()
         {
         }
+        public static new ApplicationFeatureSettingsArgs Empty => new ApplicationFeatureSettingsArgs();
     }
 }

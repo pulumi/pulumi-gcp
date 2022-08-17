@@ -14,48 +14,48 @@ namespace Pulumi.Gcp.Dns
     /// ### Dns Response Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
-    ///         var network_1 = new Gcp.Compute.Network("network-1", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var network_2 = new Gcp.Compute.Network("network-2", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var example_response_policy = new Gcp.Dns.ResponsePolicy("example-response-policy", new Gcp.Dns.ResponsePolicyArgs
-    ///         {
-    ///             ResponsePolicyName = "example-response-policy",
-    ///             Networks = 
-    ///             {
-    ///                 new Gcp.Dns.Inputs.ResponsePolicyNetworkArgs
-    ///                 {
-    ///                     NetworkUrl = network_1.Id,
-    ///                 },
-    ///                 new Gcp.Dns.Inputs.ResponsePolicyNetworkArgs
-    ///                 {
-    ///                     NetworkUrl = network_2.Id,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var network_2 = new Gcp.Compute.Network("network-2", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var example_response_policy = new Gcp.Dns.ResponsePolicy("example-response-policy", new()
+    ///     {
+    ///         ResponsePolicyName = "example-response-policy",
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Dns.Inputs.ResponsePolicyNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_1.Id,
+    ///             },
+    ///             new Gcp.Dns.Inputs.ResponsePolicyNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_2.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Dns
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dns/responsePolicy:ResponsePolicy")]
-    public partial class ResponsePolicy : Pulumi.CustomResource
+    public partial class ResponsePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the response policy, such as `My new response policy`.
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Dns
         }
     }
 
-    public sealed class ResponsePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the response policy, such as `My new response policy`.
@@ -184,9 +184,10 @@ namespace Pulumi.Gcp.Dns
         public ResponsePolicyArgs()
         {
         }
+        public static new ResponsePolicyArgs Empty => new ResponsePolicyArgs();
     }
 
-    public sealed class ResponsePolicyState : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the response policy, such as `My new response policy`.
@@ -223,5 +224,6 @@ namespace Pulumi.Gcp.Dns
         public ResponsePolicyState()
         {
         }
+        public static new ResponsePolicyState Empty => new ResponsePolicyState();
     }
 }

@@ -16,30 +16,29 @@ namespace Pulumi.Gcp.ResourceManager
     /// ### Resource Manager Lien
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "staging-project",
-    ///         });
-    ///         var lien = new Gcp.ResourceManager.Lien("lien", new Gcp.ResourceManager.LienArgs
-    ///         {
-    ///             Origin = "machine-readable-explanation",
-    ///             Parent = project.Number.Apply(number =&gt; $"projects/{number}"),
-    ///             Reason = "This project is an important environment",
-    ///             Restrictions = 
-    ///             {
-    ///                 "resourcemanager.projects.delete",
-    ///             },
-    ///         });
-    ///     }
+    ///         ProjectId = "staging-project",
+    ///     });
     /// 
-    /// }
+    ///     var lien = new Gcp.ResourceManager.Lien("lien", new()
+    ///     {
+    ///         Origin = "machine-readable-explanation",
+    ///         Parent = project.Number.Apply(number =&gt; $"projects/{number}"),
+    ///         Reason = "This project is an important environment",
+    ///         Restrictions = new[]
+    ///         {
+    ///             "resourcemanager.projects.delete",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +50,7 @@ namespace Pulumi.Gcp.ResourceManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:resourcemanager/lien:Lien")]
-    public partial class Lien : Pulumi.CustomResource
+    public partial class Lien : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time of creation
@@ -143,7 +142,7 @@ namespace Pulumi.Gcp.ResourceManager
         }
     }
 
-    public sealed class LienArgs : Pulumi.ResourceArgs
+    public sealed class LienArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A stable, user-visible/meaningful string identifying the origin
@@ -188,9 +187,10 @@ namespace Pulumi.Gcp.ResourceManager
         public LienArgs()
         {
         }
+        public static new LienArgs Empty => new LienArgs();
     }
 
-    public sealed class LienState : Pulumi.ResourceArgs
+    public sealed class LienState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time of creation
@@ -247,5 +247,6 @@ namespace Pulumi.Gcp.ResourceManager
         public LienState()
         {
         }
+        public static new LienState Empty => new LienState();
     }
 }

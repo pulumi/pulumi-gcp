@@ -22,22 +22,20 @@ namespace Pulumi.Gcp.Vertex
     /// ### Vertex Ai Dataset
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Vertex.AiDataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Vertex.AiDataset("dataset", new Gcp.Vertex.AiDatasetArgs
-    ///         {
-    ///             DisplayName = "terraform",
-    ///             MetadataSchemaUri = "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         DisplayName = "terraform",
+    ///         MetadataSchemaUri = "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.Gcp.Vertex
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:vertex/aiDataset:AiDataset")]
-    public partial class AiDataset : Pulumi.CustomResource
+    public partial class AiDataset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -149,7 +147,7 @@ namespace Pulumi.Gcp.Vertex
         }
     }
 
-    public sealed class AiDatasetArgs : Pulumi.ResourceArgs
+    public sealed class AiDatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
@@ -198,9 +196,10 @@ namespace Pulumi.Gcp.Vertex
         public AiDatasetArgs()
         {
         }
+        public static new AiDatasetArgs Empty => new AiDatasetArgs();
     }
 
-    public sealed class AiDatasetState : Pulumi.ResourceArgs
+    public sealed class AiDatasetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -269,5 +268,6 @@ namespace Pulumi.Gcp.Vertex
         public AiDatasetState()
         {
         }
+        public static new AiDatasetState Empty => new AiDatasetState();
     }
 }

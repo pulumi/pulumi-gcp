@@ -28,35 +28,33 @@ namespace Pulumi.Gcp.DeploymentManager
     /// ### Deployment Manager Deployment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var deployment = new Gcp.DeploymentManager.Deployment("deployment", new()
     ///     {
-    ///         var deployment = new Gcp.DeploymentManager.Deployment("deployment", new Gcp.DeploymentManager.DeploymentArgs
+    ///         Target = new Gcp.DeploymentManager.Inputs.DeploymentTargetArgs
     ///         {
-    ///             Target = new Gcp.DeploymentManager.Inputs.DeploymentTargetArgs
+    ///             Config = new Gcp.DeploymentManager.Inputs.DeploymentTargetConfigArgs
     ///             {
-    ///                 Config = new Gcp.DeploymentManager.Inputs.DeploymentTargetConfigArgs
-    ///                 {
-    ///                     Content = File.ReadAllText("path/to/config.yml"),
-    ///                 },
+    ///                 Content = File.ReadAllText("path/to/config.yml"),
     ///             },
-    ///             Labels = 
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new Gcp.DeploymentManager.Inputs.DeploymentLabelArgs
     ///             {
-    ///                 new Gcp.DeploymentManager.Inputs.DeploymentLabelArgs
-    ///                 {
-    ///                     Key = "foo",
-    ///                     Value = "bar",
-    ///                 },
+    ///                 Key = "foo",
+    ///                 Value = "bar",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +74,7 @@ namespace Pulumi.Gcp.DeploymentManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:deploymentmanager/deployment:Deployment")]
-    public partial class Deployment : Pulumi.CustomResource
+    public partial class Deployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Set the policy to use for creating new resources. Only used on
@@ -213,7 +211,7 @@ namespace Pulumi.Gcp.DeploymentManager
         }
     }
 
-    public sealed class DeploymentArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set the policy to use for creating new resources. Only used on
@@ -297,9 +295,10 @@ namespace Pulumi.Gcp.DeploymentManager
         public DeploymentArgs()
         {
         }
+        public static new DeploymentArgs Empty => new DeploymentArgs();
     }
 
-    public sealed class DeploymentState : Pulumi.ResourceArgs
+    public sealed class DeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set the policy to use for creating new resources. Only used on
@@ -401,5 +400,6 @@ namespace Pulumi.Gcp.DeploymentManager
         public DeploymentState()
         {
         }
+        public static new DeploymentState Empty => new DeploymentState();
     }
 }

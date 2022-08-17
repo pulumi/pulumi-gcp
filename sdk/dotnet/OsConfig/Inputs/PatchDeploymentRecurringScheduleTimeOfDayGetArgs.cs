@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRecurringScheduleTimeOfDayGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRecurringScheduleTimeOfDayGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hours of day in 24 hour format. Should be from 0 to 23.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRecurringScheduleTimeOfDayGetArgs()
         {
         }
+        public static new PatchDeploymentRecurringScheduleTimeOfDayGetArgs Empty => new PatchDeploymentRecurringScheduleTimeOfDayGetArgs();
     }
 }

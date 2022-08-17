@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobQueryUserDefinedFunctionResourceArgs : Pulumi.ResourceArgs
+    public sealed class JobQueryUserDefinedFunctionResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An inline resource that contains code for a user-defined function (UDF).
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobQueryUserDefinedFunctionResourceArgs()
         {
         }
+        public static new JobQueryUserDefinedFunctionResourceArgs Empty => new JobQueryUserDefinedFunctionResourceArgs();
     }
 }

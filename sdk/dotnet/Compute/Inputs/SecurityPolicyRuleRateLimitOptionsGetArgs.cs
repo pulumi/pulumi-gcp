@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleRateLimitOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRateLimitOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can only be specified if the `action` for the rule is "rate_based_ban".
@@ -64,5 +64,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleRateLimitOptionsGetArgs()
         {
         }
+        public static new SecurityPolicyRuleRateLimitOptionsGetArgs Empty => new SecurityPolicyRuleRateLimitOptionsGetArgs();
     }
 }

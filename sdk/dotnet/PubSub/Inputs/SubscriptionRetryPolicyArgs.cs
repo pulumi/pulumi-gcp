@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class SubscriptionRetryPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionRetryPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public SubscriptionRetryPolicyArgs()
         {
         }
+        public static new SubscriptionRetryPolicyArgs Empty => new SubscriptionRetryPolicyArgs();
     }
 }

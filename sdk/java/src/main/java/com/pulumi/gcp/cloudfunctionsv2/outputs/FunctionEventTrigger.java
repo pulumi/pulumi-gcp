@@ -4,13 +4,21 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionEventTriggerEventFilter;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionEventTrigger {
+    /**
+     * @return Criteria used to filter events.
+     * Structure is documented below.
+     * 
+     */
+    private final @Nullable List<FunctionEventTriggerEventFilter> eventFilters;
     /**
      * @return Required. The type of event to observe.
      * 
@@ -51,12 +59,14 @@ public final class FunctionEventTrigger {
 
     @CustomType.Constructor
     private FunctionEventTrigger(
+        @CustomType.Parameter("eventFilters") @Nullable List<FunctionEventTriggerEventFilter> eventFilters,
         @CustomType.Parameter("eventType") @Nullable String eventType,
         @CustomType.Parameter("pubsubTopic") @Nullable String pubsubTopic,
         @CustomType.Parameter("retryPolicy") @Nullable String retryPolicy,
         @CustomType.Parameter("serviceAccountEmail") @Nullable String serviceAccountEmail,
         @CustomType.Parameter("trigger") @Nullable String trigger,
         @CustomType.Parameter("triggerRegion") @Nullable String triggerRegion) {
+        this.eventFilters = eventFilters;
         this.eventType = eventType;
         this.pubsubTopic = pubsubTopic;
         this.retryPolicy = retryPolicy;
@@ -65,6 +75,14 @@ public final class FunctionEventTrigger {
         this.triggerRegion = triggerRegion;
     }
 
+    /**
+     * @return Criteria used to filter events.
+     * Structure is documented below.
+     * 
+     */
+    public List<FunctionEventTriggerEventFilter> eventFilters() {
+        return this.eventFilters == null ? List.of() : this.eventFilters;
+    }
     /**
      * @return Required. The type of event to observe.
      * 
@@ -124,6 +142,7 @@ public final class FunctionEventTrigger {
     }
 
     public static final class Builder {
+        private @Nullable List<FunctionEventTriggerEventFilter> eventFilters;
         private @Nullable String eventType;
         private @Nullable String pubsubTopic;
         private @Nullable String retryPolicy;
@@ -137,6 +156,7 @@ public final class FunctionEventTrigger {
 
         public Builder(FunctionEventTrigger defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.eventFilters = defaults.eventFilters;
     	      this.eventType = defaults.eventType;
     	      this.pubsubTopic = defaults.pubsubTopic;
     	      this.retryPolicy = defaults.retryPolicy;
@@ -145,6 +165,13 @@ public final class FunctionEventTrigger {
     	      this.triggerRegion = defaults.triggerRegion;
         }
 
+        public Builder eventFilters(@Nullable List<FunctionEventTriggerEventFilter> eventFilters) {
+            this.eventFilters = eventFilters;
+            return this;
+        }
+        public Builder eventFilters(FunctionEventTriggerEventFilter... eventFilters) {
+            return eventFilters(List.of(eventFilters));
+        }
         public Builder eventType(@Nullable String eventType) {
             this.eventType = eventType;
             return this;
@@ -169,7 +196,7 @@ public final class FunctionEventTrigger {
             this.triggerRegion = triggerRegion;
             return this;
         }        public FunctionEventTrigger build() {
-            return new FunctionEventTrigger(eventType, pubsubTopic, retryPolicy, serviceAccountEmail, trigger, triggerRegion);
+            return new FunctionEventTrigger(eventFilters, eventType, pubsubTopic, retryPolicy, serviceAccountEmail, trigger, triggerRegion);
         }
     }
 }

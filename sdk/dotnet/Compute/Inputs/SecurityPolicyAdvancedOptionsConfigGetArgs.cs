@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyAdvancedOptionsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAdvancedOptionsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyAdvancedOptionsConfigGetArgs()
         {
         }
+        public static new SecurityPolicyAdvancedOptionsConfigGetArgs Empty => new SecurityPolicyAdvancedOptionsConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerConfigScalingConfigScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerConfigScalingConfigScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The duration for the cron job event. The duration of the event is effective
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerConfigScalingConfigScheduleGetArgs()
         {
         }
+        public static new GameServerConfigScalingConfigScheduleGetArgs Empty => new GameServerConfigScalingConfigScheduleGetArgs();
     }
 }

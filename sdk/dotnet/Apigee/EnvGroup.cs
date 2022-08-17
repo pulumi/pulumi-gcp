@@ -22,56 +22,57 @@ namespace Pulumi.Gcp.Apigee
     /// ### Apigee Environment Group Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(Gcp.Organizations.GetClientConfig.InvokeAsync());
-    ///         var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = apigeeNetwork.Id,
-    ///         });
-    ///         var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = apigeeNetwork.Id,
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 apigeeRange.Name,
-    ///             },
-    ///         });
-    ///         var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new Gcp.Apigee.OrganizationArgs
-    ///         {
-    ///             AnalyticsRegion = "us-central1",
-    ///             ProjectId = current.Apply(current =&gt; current.Project),
-    ///             AuthorizedNetwork = apigeeNetwork.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 apigeeVpcConnection,
-    ///             },
-    ///         });
-    ///         var envGrp = new Gcp.Apigee.EnvGroup("envGrp", new Gcp.Apigee.EnvGroupArgs
-    ///         {
-    ///             Hostnames = 
-    ///             {
-    ///                 "abc.foo.com",
-    ///             },
-    ///             OrgId = apigeeOrg.Id,
-    ///         });
-    ///     }
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    /// }
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeVpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var envGrp = new Gcp.Apigee.EnvGroup("envGrp", new()
+    ///     {
+    ///         Hostnames = new[]
+    ///         {
+    ///             "abc.foo.com",
+    ///         },
+    ///         OrgId = apigeeOrg.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -87,7 +88,7 @@ namespace Pulumi.Gcp.Apigee
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigee/envGroup:EnvGroup")]
-    public partial class EnvGroup : Pulumi.CustomResource
+    public partial class EnvGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Hostnames of the environment group.
@@ -152,7 +153,7 @@ namespace Pulumi.Gcp.Apigee
         }
     }
 
-    public sealed class EnvGroupArgs : Pulumi.ResourceArgs
+    public sealed class EnvGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostnames")]
         private InputList<string>? _hostnames;
@@ -182,9 +183,10 @@ namespace Pulumi.Gcp.Apigee
         public EnvGroupArgs()
         {
         }
+        public static new EnvGroupArgs Empty => new EnvGroupArgs();
     }
 
-    public sealed class EnvGroupState : Pulumi.ResourceArgs
+    public sealed class EnvGroupState : global::Pulumi.ResourceArgs
     {
         [Input("hostnames")]
         private InputList<string>? _hostnames;
@@ -214,5 +216,6 @@ namespace Pulumi.Gcp.Apigee
         public EnvGroupState()
         {
         }
+        public static new EnvGroupState Empty => new EnvGroupState();
     }
 }

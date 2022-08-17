@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerApprovalConfigArgs : Pulumi.ResourceArgs
+    public sealed class TriggerApprovalConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not approval is needed. If this is set on a build, it will become pending when run,
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerApprovalConfigArgs()
         {
         }
+        public static new TriggerApprovalConfigArgs Empty => new TriggerApprovalConfigArgs();
     }
 }

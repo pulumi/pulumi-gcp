@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetThresholdRuleArgs : Pulumi.ResourceArgs
+    public sealed class BudgetThresholdRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of basis used to determine if spend has passed
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetThresholdRuleArgs()
         {
         }
+        public static new BudgetThresholdRuleArgs Empty => new BudgetThresholdRuleArgs();
     }
 }

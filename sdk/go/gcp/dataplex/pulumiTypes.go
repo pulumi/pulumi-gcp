@@ -10,6 +10,1192 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AssetDiscoverySpec struct {
+	// Optional. Configuration for CSV data.
+	CsvOptions *AssetDiscoverySpecCsvOptions `pulumi:"csvOptions"`
+	// Required. Whether discovery is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	ExcludePatterns []string `pulumi:"excludePatterns"`
+	// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	IncludePatterns []string `pulumi:"includePatterns"`
+	// Optional. Configuration for Json data.
+	JsonOptions *AssetDiscoverySpecJsonOptions `pulumi:"jsonOptions"`
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	Schedule *string `pulumi:"schedule"`
+}
+
+// AssetDiscoverySpecInput is an input type that accepts AssetDiscoverySpecArgs and AssetDiscoverySpecOutput values.
+// You can construct a concrete instance of `AssetDiscoverySpecInput` via:
+//
+//	AssetDiscoverySpecArgs{...}
+type AssetDiscoverySpecInput interface {
+	pulumi.Input
+
+	ToAssetDiscoverySpecOutput() AssetDiscoverySpecOutput
+	ToAssetDiscoverySpecOutputWithContext(context.Context) AssetDiscoverySpecOutput
+}
+
+type AssetDiscoverySpecArgs struct {
+	// Optional. Configuration for CSV data.
+	CsvOptions AssetDiscoverySpecCsvOptionsPtrInput `pulumi:"csvOptions"`
+	// Required. Whether discovery is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	ExcludePatterns pulumi.StringArrayInput `pulumi:"excludePatterns"`
+	// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
+	// Optional. Configuration for Json data.
+	JsonOptions AssetDiscoverySpecJsonOptionsPtrInput `pulumi:"jsonOptions"`
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+}
+
+func (AssetDiscoverySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoverySpec)(nil)).Elem()
+}
+
+func (i AssetDiscoverySpecArgs) ToAssetDiscoverySpecOutput() AssetDiscoverySpecOutput {
+	return i.ToAssetDiscoverySpecOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoverySpecArgs) ToAssetDiscoverySpecOutputWithContext(ctx context.Context) AssetDiscoverySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecOutput)
+}
+
+func (i AssetDiscoverySpecArgs) ToAssetDiscoverySpecPtrOutput() AssetDiscoverySpecPtrOutput {
+	return i.ToAssetDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoverySpecArgs) ToAssetDiscoverySpecPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecOutput).ToAssetDiscoverySpecPtrOutputWithContext(ctx)
+}
+
+// AssetDiscoverySpecPtrInput is an input type that accepts AssetDiscoverySpecArgs, AssetDiscoverySpecPtr and AssetDiscoverySpecPtrOutput values.
+// You can construct a concrete instance of `AssetDiscoverySpecPtrInput` via:
+//
+//	        AssetDiscoverySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetDiscoverySpecPtrInput interface {
+	pulumi.Input
+
+	ToAssetDiscoverySpecPtrOutput() AssetDiscoverySpecPtrOutput
+	ToAssetDiscoverySpecPtrOutputWithContext(context.Context) AssetDiscoverySpecPtrOutput
+}
+
+type assetDiscoverySpecPtrType AssetDiscoverySpecArgs
+
+func AssetDiscoverySpecPtr(v *AssetDiscoverySpecArgs) AssetDiscoverySpecPtrInput {
+	return (*assetDiscoverySpecPtrType)(v)
+}
+
+func (*assetDiscoverySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetDiscoverySpec)(nil)).Elem()
+}
+
+func (i *assetDiscoverySpecPtrType) ToAssetDiscoverySpecPtrOutput() AssetDiscoverySpecPtrOutput {
+	return i.ToAssetDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *assetDiscoverySpecPtrType) ToAssetDiscoverySpecPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecPtrOutput)
+}
+
+type AssetDiscoverySpecOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoverySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoverySpec)(nil)).Elem()
+}
+
+func (o AssetDiscoverySpecOutput) ToAssetDiscoverySpecOutput() AssetDiscoverySpecOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecOutput) ToAssetDiscoverySpecOutputWithContext(ctx context.Context) AssetDiscoverySpecOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecOutput) ToAssetDiscoverySpecPtrOutput() AssetDiscoverySpecPtrOutput {
+	return o.ToAssetDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (o AssetDiscoverySpecOutput) ToAssetDiscoverySpecPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetDiscoverySpec) *AssetDiscoverySpec {
+		return &v
+	}).(AssetDiscoverySpecPtrOutput)
+}
+
+// Optional. Configuration for CSV data.
+func (o AssetDiscoverySpecOutput) CsvOptions() AssetDiscoverySpecCsvOptionsPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpec) *AssetDiscoverySpecCsvOptions { return v.CsvOptions }).(AssetDiscoverySpecCsvOptionsPtrOutput)
+}
+
+// Required. Whether discovery is enabled.
+func (o AssetDiscoverySpecOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AssetDiscoverySpec) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o AssetDiscoverySpecOutput) ExcludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AssetDiscoverySpec) []string { return v.ExcludePatterns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o AssetDiscoverySpecOutput) IncludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AssetDiscoverySpec) []string { return v.IncludePatterns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration for Json data.
+func (o AssetDiscoverySpecOutput) JsonOptions() AssetDiscoverySpecJsonOptionsPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpec) *AssetDiscoverySpecJsonOptions { return v.JsonOptions }).(AssetDiscoverySpecJsonOptionsPtrOutput)
+}
+
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+func (o AssetDiscoverySpecOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+type AssetDiscoverySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoverySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetDiscoverySpec)(nil)).Elem()
+}
+
+func (o AssetDiscoverySpecPtrOutput) ToAssetDiscoverySpecPtrOutput() AssetDiscoverySpecPtrOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecPtrOutput) ToAssetDiscoverySpecPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecPtrOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecPtrOutput) Elem() AssetDiscoverySpecOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) AssetDiscoverySpec {
+		if v != nil {
+			return *v
+		}
+		var ret AssetDiscoverySpec
+		return ret
+	}).(AssetDiscoverySpecOutput)
+}
+
+// Optional. Configuration for CSV data.
+func (o AssetDiscoverySpecPtrOutput) CsvOptions() AssetDiscoverySpecCsvOptionsPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) *AssetDiscoverySpecCsvOptions {
+		if v == nil {
+			return nil
+		}
+		return v.CsvOptions
+	}).(AssetDiscoverySpecCsvOptionsPtrOutput)
+}
+
+// Required. Whether discovery is enabled.
+func (o AssetDiscoverySpecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o AssetDiscoverySpecPtrOutput) ExcludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o AssetDiscoverySpecPtrOutput) IncludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludePatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration for Json data.
+func (o AssetDiscoverySpecPtrOutput) JsonOptions() AssetDiscoverySpecJsonOptionsPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) *AssetDiscoverySpecJsonOptions {
+		if v == nil {
+			return nil
+		}
+		return v.JsonOptions
+	}).(AssetDiscoverySpecJsonOptionsPtrOutput)
+}
+
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+func (o AssetDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetDiscoverySpecCsvOptions struct {
+	// Optional. The delimiter being used to separate values. This defaults to ','.
+	Delimiter *string `pulumi:"delimiter"`
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference *bool `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+	HeaderRows *int `pulumi:"headerRows"`
+}
+
+// AssetDiscoverySpecCsvOptionsInput is an input type that accepts AssetDiscoverySpecCsvOptionsArgs and AssetDiscoverySpecCsvOptionsOutput values.
+// You can construct a concrete instance of `AssetDiscoverySpecCsvOptionsInput` via:
+//
+//	AssetDiscoverySpecCsvOptionsArgs{...}
+type AssetDiscoverySpecCsvOptionsInput interface {
+	pulumi.Input
+
+	ToAssetDiscoverySpecCsvOptionsOutput() AssetDiscoverySpecCsvOptionsOutput
+	ToAssetDiscoverySpecCsvOptionsOutputWithContext(context.Context) AssetDiscoverySpecCsvOptionsOutput
+}
+
+type AssetDiscoverySpecCsvOptionsArgs struct {
+	// Optional. The delimiter being used to separate values. This defaults to ','.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference pulumi.BoolPtrInput `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+	HeaderRows pulumi.IntPtrInput `pulumi:"headerRows"`
+}
+
+func (AssetDiscoverySpecCsvOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (i AssetDiscoverySpecCsvOptionsArgs) ToAssetDiscoverySpecCsvOptionsOutput() AssetDiscoverySpecCsvOptionsOutput {
+	return i.ToAssetDiscoverySpecCsvOptionsOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoverySpecCsvOptionsArgs) ToAssetDiscoverySpecCsvOptionsOutputWithContext(ctx context.Context) AssetDiscoverySpecCsvOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecCsvOptionsOutput)
+}
+
+func (i AssetDiscoverySpecCsvOptionsArgs) ToAssetDiscoverySpecCsvOptionsPtrOutput() AssetDiscoverySpecCsvOptionsPtrOutput {
+	return i.ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoverySpecCsvOptionsArgs) ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecCsvOptionsOutput).ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx)
+}
+
+// AssetDiscoverySpecCsvOptionsPtrInput is an input type that accepts AssetDiscoverySpecCsvOptionsArgs, AssetDiscoverySpecCsvOptionsPtr and AssetDiscoverySpecCsvOptionsPtrOutput values.
+// You can construct a concrete instance of `AssetDiscoverySpecCsvOptionsPtrInput` via:
+//
+//	        AssetDiscoverySpecCsvOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetDiscoverySpecCsvOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAssetDiscoverySpecCsvOptionsPtrOutput() AssetDiscoverySpecCsvOptionsPtrOutput
+	ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(context.Context) AssetDiscoverySpecCsvOptionsPtrOutput
+}
+
+type assetDiscoverySpecCsvOptionsPtrType AssetDiscoverySpecCsvOptionsArgs
+
+func AssetDiscoverySpecCsvOptionsPtr(v *AssetDiscoverySpecCsvOptionsArgs) AssetDiscoverySpecCsvOptionsPtrInput {
+	return (*assetDiscoverySpecCsvOptionsPtrType)(v)
+}
+
+func (*assetDiscoverySpecCsvOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (i *assetDiscoverySpecCsvOptionsPtrType) ToAssetDiscoverySpecCsvOptionsPtrOutput() AssetDiscoverySpecCsvOptionsPtrOutput {
+	return i.ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *assetDiscoverySpecCsvOptionsPtrType) ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecCsvOptionsPtrOutput)
+}
+
+type AssetDiscoverySpecCsvOptionsOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoverySpecCsvOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (o AssetDiscoverySpecCsvOptionsOutput) ToAssetDiscoverySpecCsvOptionsOutput() AssetDiscoverySpecCsvOptionsOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecCsvOptionsOutput) ToAssetDiscoverySpecCsvOptionsOutputWithContext(ctx context.Context) AssetDiscoverySpecCsvOptionsOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecCsvOptionsOutput) ToAssetDiscoverySpecCsvOptionsPtrOutput() AssetDiscoverySpecCsvOptionsPtrOutput {
+	return o.ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AssetDiscoverySpecCsvOptionsOutput) ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecCsvOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetDiscoverySpecCsvOptions) *AssetDiscoverySpecCsvOptions {
+		return &v
+	}).(AssetDiscoverySpecCsvOptionsPtrOutput)
+}
+
+// Optional. The delimiter being used to separate values. This defaults to ','.
+func (o AssetDiscoverySpecCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpecCsvOptions) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o AssetDiscoverySpecCsvOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpecCsvOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o AssetDiscoverySpecCsvOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpecCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+func (o AssetDiscoverySpecCsvOptionsOutput) HeaderRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpecCsvOptions) *int { return v.HeaderRows }).(pulumi.IntPtrOutput)
+}
+
+type AssetDiscoverySpecCsvOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoverySpecCsvOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) ToAssetDiscoverySpecCsvOptionsPtrOutput() AssetDiscoverySpecCsvOptionsPtrOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) ToAssetDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecCsvOptionsPtrOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) Elem() AssetDiscoverySpecCsvOptionsOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecCsvOptions) AssetDiscoverySpecCsvOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AssetDiscoverySpecCsvOptions
+		return ret
+	}).(AssetDiscoverySpecCsvOptionsOutput)
+}
+
+// Optional. The delimiter being used to separate values. This defaults to ','.
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecCsvOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTypeInference
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+func (o AssetDiscoverySpecCsvOptionsPtrOutput) HeaderRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecCsvOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderRows
+	}).(pulumi.IntPtrOutput)
+}
+
+type AssetDiscoverySpecJsonOptions struct {
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference *bool `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+}
+
+// AssetDiscoverySpecJsonOptionsInput is an input type that accepts AssetDiscoverySpecJsonOptionsArgs and AssetDiscoverySpecJsonOptionsOutput values.
+// You can construct a concrete instance of `AssetDiscoverySpecJsonOptionsInput` via:
+//
+//	AssetDiscoverySpecJsonOptionsArgs{...}
+type AssetDiscoverySpecJsonOptionsInput interface {
+	pulumi.Input
+
+	ToAssetDiscoverySpecJsonOptionsOutput() AssetDiscoverySpecJsonOptionsOutput
+	ToAssetDiscoverySpecJsonOptionsOutputWithContext(context.Context) AssetDiscoverySpecJsonOptionsOutput
+}
+
+type AssetDiscoverySpecJsonOptionsArgs struct {
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference pulumi.BoolPtrInput `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+}
+
+func (AssetDiscoverySpecJsonOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (i AssetDiscoverySpecJsonOptionsArgs) ToAssetDiscoverySpecJsonOptionsOutput() AssetDiscoverySpecJsonOptionsOutput {
+	return i.ToAssetDiscoverySpecJsonOptionsOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoverySpecJsonOptionsArgs) ToAssetDiscoverySpecJsonOptionsOutputWithContext(ctx context.Context) AssetDiscoverySpecJsonOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecJsonOptionsOutput)
+}
+
+func (i AssetDiscoverySpecJsonOptionsArgs) ToAssetDiscoverySpecJsonOptionsPtrOutput() AssetDiscoverySpecJsonOptionsPtrOutput {
+	return i.ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoverySpecJsonOptionsArgs) ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecJsonOptionsOutput).ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx)
+}
+
+// AssetDiscoverySpecJsonOptionsPtrInput is an input type that accepts AssetDiscoverySpecJsonOptionsArgs, AssetDiscoverySpecJsonOptionsPtr and AssetDiscoverySpecJsonOptionsPtrOutput values.
+// You can construct a concrete instance of `AssetDiscoverySpecJsonOptionsPtrInput` via:
+//
+//	        AssetDiscoverySpecJsonOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetDiscoverySpecJsonOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAssetDiscoverySpecJsonOptionsPtrOutput() AssetDiscoverySpecJsonOptionsPtrOutput
+	ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(context.Context) AssetDiscoverySpecJsonOptionsPtrOutput
+}
+
+type assetDiscoverySpecJsonOptionsPtrType AssetDiscoverySpecJsonOptionsArgs
+
+func AssetDiscoverySpecJsonOptionsPtr(v *AssetDiscoverySpecJsonOptionsArgs) AssetDiscoverySpecJsonOptionsPtrInput {
+	return (*assetDiscoverySpecJsonOptionsPtrType)(v)
+}
+
+func (*assetDiscoverySpecJsonOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (i *assetDiscoverySpecJsonOptionsPtrType) ToAssetDiscoverySpecJsonOptionsPtrOutput() AssetDiscoverySpecJsonOptionsPtrOutput {
+	return i.ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *assetDiscoverySpecJsonOptionsPtrType) ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoverySpecJsonOptionsPtrOutput)
+}
+
+type AssetDiscoverySpecJsonOptionsOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoverySpecJsonOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (o AssetDiscoverySpecJsonOptionsOutput) ToAssetDiscoverySpecJsonOptionsOutput() AssetDiscoverySpecJsonOptionsOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecJsonOptionsOutput) ToAssetDiscoverySpecJsonOptionsOutputWithContext(ctx context.Context) AssetDiscoverySpecJsonOptionsOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecJsonOptionsOutput) ToAssetDiscoverySpecJsonOptionsPtrOutput() AssetDiscoverySpecJsonOptionsPtrOutput {
+	return o.ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AssetDiscoverySpecJsonOptionsOutput) ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecJsonOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetDiscoverySpecJsonOptions) *AssetDiscoverySpecJsonOptions {
+		return &v
+	}).(AssetDiscoverySpecJsonOptionsPtrOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o AssetDiscoverySpecJsonOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpecJsonOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o AssetDiscoverySpecJsonOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoverySpecJsonOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+type AssetDiscoverySpecJsonOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoverySpecJsonOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (o AssetDiscoverySpecJsonOptionsPtrOutput) ToAssetDiscoverySpecJsonOptionsPtrOutput() AssetDiscoverySpecJsonOptionsPtrOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecJsonOptionsPtrOutput) ToAssetDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) AssetDiscoverySpecJsonOptionsPtrOutput {
+	return o
+}
+
+func (o AssetDiscoverySpecJsonOptionsPtrOutput) Elem() AssetDiscoverySpecJsonOptionsOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecJsonOptions) AssetDiscoverySpecJsonOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AssetDiscoverySpecJsonOptions
+		return ret
+	}).(AssetDiscoverySpecJsonOptionsOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o AssetDiscoverySpecJsonOptionsPtrOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecJsonOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTypeInference
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o AssetDiscoverySpecJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetDiscoverySpecJsonOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetDiscoveryStatus struct {
+	LastRunDuration *string                    `pulumi:"lastRunDuration"`
+	LastRunTime     *string                    `pulumi:"lastRunTime"`
+	Message         *string                    `pulumi:"message"`
+	State           *string                    `pulumi:"state"`
+	Stats           []AssetDiscoveryStatusStat `pulumi:"stats"`
+	UpdateTime      *string                    `pulumi:"updateTime"`
+}
+
+// AssetDiscoveryStatusInput is an input type that accepts AssetDiscoveryStatusArgs and AssetDiscoveryStatusOutput values.
+// You can construct a concrete instance of `AssetDiscoveryStatusInput` via:
+//
+//	AssetDiscoveryStatusArgs{...}
+type AssetDiscoveryStatusInput interface {
+	pulumi.Input
+
+	ToAssetDiscoveryStatusOutput() AssetDiscoveryStatusOutput
+	ToAssetDiscoveryStatusOutputWithContext(context.Context) AssetDiscoveryStatusOutput
+}
+
+type AssetDiscoveryStatusArgs struct {
+	LastRunDuration pulumi.StringPtrInput              `pulumi:"lastRunDuration"`
+	LastRunTime     pulumi.StringPtrInput              `pulumi:"lastRunTime"`
+	Message         pulumi.StringPtrInput              `pulumi:"message"`
+	State           pulumi.StringPtrInput              `pulumi:"state"`
+	Stats           AssetDiscoveryStatusStatArrayInput `pulumi:"stats"`
+	UpdateTime      pulumi.StringPtrInput              `pulumi:"updateTime"`
+}
+
+func (AssetDiscoveryStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoveryStatus)(nil)).Elem()
+}
+
+func (i AssetDiscoveryStatusArgs) ToAssetDiscoveryStatusOutput() AssetDiscoveryStatusOutput {
+	return i.ToAssetDiscoveryStatusOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoveryStatusArgs) ToAssetDiscoveryStatusOutputWithContext(ctx context.Context) AssetDiscoveryStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoveryStatusOutput)
+}
+
+// AssetDiscoveryStatusArrayInput is an input type that accepts AssetDiscoveryStatusArray and AssetDiscoveryStatusArrayOutput values.
+// You can construct a concrete instance of `AssetDiscoveryStatusArrayInput` via:
+//
+//	AssetDiscoveryStatusArray{ AssetDiscoveryStatusArgs{...} }
+type AssetDiscoveryStatusArrayInput interface {
+	pulumi.Input
+
+	ToAssetDiscoveryStatusArrayOutput() AssetDiscoveryStatusArrayOutput
+	ToAssetDiscoveryStatusArrayOutputWithContext(context.Context) AssetDiscoveryStatusArrayOutput
+}
+
+type AssetDiscoveryStatusArray []AssetDiscoveryStatusInput
+
+func (AssetDiscoveryStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetDiscoveryStatus)(nil)).Elem()
+}
+
+func (i AssetDiscoveryStatusArray) ToAssetDiscoveryStatusArrayOutput() AssetDiscoveryStatusArrayOutput {
+	return i.ToAssetDiscoveryStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoveryStatusArray) ToAssetDiscoveryStatusArrayOutputWithContext(ctx context.Context) AssetDiscoveryStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoveryStatusArrayOutput)
+}
+
+type AssetDiscoveryStatusOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoveryStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoveryStatus)(nil)).Elem()
+}
+
+func (o AssetDiscoveryStatusOutput) ToAssetDiscoveryStatusOutput() AssetDiscoveryStatusOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusOutput) ToAssetDiscoveryStatusOutputWithContext(ctx context.Context) AssetDiscoveryStatusOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusOutput) LastRunDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.LastRunDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetDiscoveryStatusOutput) LastRunTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.LastRunTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetDiscoveryStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetDiscoveryStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetDiscoveryStatusOutput) Stats() AssetDiscoveryStatusStatArrayOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatus) []AssetDiscoveryStatusStat { return v.Stats }).(AssetDiscoveryStatusStatArrayOutput)
+}
+
+func (o AssetDiscoveryStatusOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AssetDiscoveryStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoveryStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetDiscoveryStatus)(nil)).Elem()
+}
+
+func (o AssetDiscoveryStatusArrayOutput) ToAssetDiscoveryStatusArrayOutput() AssetDiscoveryStatusArrayOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusArrayOutput) ToAssetDiscoveryStatusArrayOutputWithContext(ctx context.Context) AssetDiscoveryStatusArrayOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusArrayOutput) Index(i pulumi.IntInput) AssetDiscoveryStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetDiscoveryStatus {
+		return vs[0].([]AssetDiscoveryStatus)[vs[1].(int)]
+	}).(AssetDiscoveryStatusOutput)
+}
+
+type AssetDiscoveryStatusStat struct {
+	DataItems *int `pulumi:"dataItems"`
+	DataSize  *int `pulumi:"dataSize"`
+	Filesets  *int `pulumi:"filesets"`
+	Tables    *int `pulumi:"tables"`
+}
+
+// AssetDiscoveryStatusStatInput is an input type that accepts AssetDiscoveryStatusStatArgs and AssetDiscoveryStatusStatOutput values.
+// You can construct a concrete instance of `AssetDiscoveryStatusStatInput` via:
+//
+//	AssetDiscoveryStatusStatArgs{...}
+type AssetDiscoveryStatusStatInput interface {
+	pulumi.Input
+
+	ToAssetDiscoveryStatusStatOutput() AssetDiscoveryStatusStatOutput
+	ToAssetDiscoveryStatusStatOutputWithContext(context.Context) AssetDiscoveryStatusStatOutput
+}
+
+type AssetDiscoveryStatusStatArgs struct {
+	DataItems pulumi.IntPtrInput `pulumi:"dataItems"`
+	DataSize  pulumi.IntPtrInput `pulumi:"dataSize"`
+	Filesets  pulumi.IntPtrInput `pulumi:"filesets"`
+	Tables    pulumi.IntPtrInput `pulumi:"tables"`
+}
+
+func (AssetDiscoveryStatusStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoveryStatusStat)(nil)).Elem()
+}
+
+func (i AssetDiscoveryStatusStatArgs) ToAssetDiscoveryStatusStatOutput() AssetDiscoveryStatusStatOutput {
+	return i.ToAssetDiscoveryStatusStatOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoveryStatusStatArgs) ToAssetDiscoveryStatusStatOutputWithContext(ctx context.Context) AssetDiscoveryStatusStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoveryStatusStatOutput)
+}
+
+// AssetDiscoveryStatusStatArrayInput is an input type that accepts AssetDiscoveryStatusStatArray and AssetDiscoveryStatusStatArrayOutput values.
+// You can construct a concrete instance of `AssetDiscoveryStatusStatArrayInput` via:
+//
+//	AssetDiscoveryStatusStatArray{ AssetDiscoveryStatusStatArgs{...} }
+type AssetDiscoveryStatusStatArrayInput interface {
+	pulumi.Input
+
+	ToAssetDiscoveryStatusStatArrayOutput() AssetDiscoveryStatusStatArrayOutput
+	ToAssetDiscoveryStatusStatArrayOutputWithContext(context.Context) AssetDiscoveryStatusStatArrayOutput
+}
+
+type AssetDiscoveryStatusStatArray []AssetDiscoveryStatusStatInput
+
+func (AssetDiscoveryStatusStatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetDiscoveryStatusStat)(nil)).Elem()
+}
+
+func (i AssetDiscoveryStatusStatArray) ToAssetDiscoveryStatusStatArrayOutput() AssetDiscoveryStatusStatArrayOutput {
+	return i.ToAssetDiscoveryStatusStatArrayOutputWithContext(context.Background())
+}
+
+func (i AssetDiscoveryStatusStatArray) ToAssetDiscoveryStatusStatArrayOutputWithContext(ctx context.Context) AssetDiscoveryStatusStatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetDiscoveryStatusStatArrayOutput)
+}
+
+type AssetDiscoveryStatusStatOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoveryStatusStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetDiscoveryStatusStat)(nil)).Elem()
+}
+
+func (o AssetDiscoveryStatusStatOutput) ToAssetDiscoveryStatusStatOutput() AssetDiscoveryStatusStatOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusStatOutput) ToAssetDiscoveryStatusStatOutputWithContext(ctx context.Context) AssetDiscoveryStatusStatOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusStatOutput) DataItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.DataItems }).(pulumi.IntPtrOutput)
+}
+
+func (o AssetDiscoveryStatusStatOutput) DataSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.DataSize }).(pulumi.IntPtrOutput)
+}
+
+func (o AssetDiscoveryStatusStatOutput) Filesets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.Filesets }).(pulumi.IntPtrOutput)
+}
+
+func (o AssetDiscoveryStatusStatOutput) Tables() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.Tables }).(pulumi.IntPtrOutput)
+}
+
+type AssetDiscoveryStatusStatArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetDiscoveryStatusStatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetDiscoveryStatusStat)(nil)).Elem()
+}
+
+func (o AssetDiscoveryStatusStatArrayOutput) ToAssetDiscoveryStatusStatArrayOutput() AssetDiscoveryStatusStatArrayOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusStatArrayOutput) ToAssetDiscoveryStatusStatArrayOutputWithContext(ctx context.Context) AssetDiscoveryStatusStatArrayOutput {
+	return o
+}
+
+func (o AssetDiscoveryStatusStatArrayOutput) Index(i pulumi.IntInput) AssetDiscoveryStatusStatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetDiscoveryStatusStat {
+		return vs[0].([]AssetDiscoveryStatusStat)[vs[1].(int)]
+	}).(AssetDiscoveryStatusStatOutput)
+}
+
+type AssetResourceSpec struct {
+	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	Name *string `pulumi:"name"`
+	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+	Type string `pulumi:"type"`
+}
+
+// AssetResourceSpecInput is an input type that accepts AssetResourceSpecArgs and AssetResourceSpecOutput values.
+// You can construct a concrete instance of `AssetResourceSpecInput` via:
+//
+//	AssetResourceSpecArgs{...}
+type AssetResourceSpecInput interface {
+	pulumi.Input
+
+	ToAssetResourceSpecOutput() AssetResourceSpecOutput
+	ToAssetResourceSpecOutputWithContext(context.Context) AssetResourceSpecOutput
+}
+
+type AssetResourceSpecArgs struct {
+	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AssetResourceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetResourceSpec)(nil)).Elem()
+}
+
+func (i AssetResourceSpecArgs) ToAssetResourceSpecOutput() AssetResourceSpecOutput {
+	return i.ToAssetResourceSpecOutputWithContext(context.Background())
+}
+
+func (i AssetResourceSpecArgs) ToAssetResourceSpecOutputWithContext(ctx context.Context) AssetResourceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetResourceSpecOutput)
+}
+
+func (i AssetResourceSpecArgs) ToAssetResourceSpecPtrOutput() AssetResourceSpecPtrOutput {
+	return i.ToAssetResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AssetResourceSpecArgs) ToAssetResourceSpecPtrOutputWithContext(ctx context.Context) AssetResourceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetResourceSpecOutput).ToAssetResourceSpecPtrOutputWithContext(ctx)
+}
+
+// AssetResourceSpecPtrInput is an input type that accepts AssetResourceSpecArgs, AssetResourceSpecPtr and AssetResourceSpecPtrOutput values.
+// You can construct a concrete instance of `AssetResourceSpecPtrInput` via:
+//
+//	        AssetResourceSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetResourceSpecPtrInput interface {
+	pulumi.Input
+
+	ToAssetResourceSpecPtrOutput() AssetResourceSpecPtrOutput
+	ToAssetResourceSpecPtrOutputWithContext(context.Context) AssetResourceSpecPtrOutput
+}
+
+type assetResourceSpecPtrType AssetResourceSpecArgs
+
+func AssetResourceSpecPtr(v *AssetResourceSpecArgs) AssetResourceSpecPtrInput {
+	return (*assetResourceSpecPtrType)(v)
+}
+
+func (*assetResourceSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetResourceSpec)(nil)).Elem()
+}
+
+func (i *assetResourceSpecPtrType) ToAssetResourceSpecPtrOutput() AssetResourceSpecPtrOutput {
+	return i.ToAssetResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *assetResourceSpecPtrType) ToAssetResourceSpecPtrOutputWithContext(ctx context.Context) AssetResourceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetResourceSpecPtrOutput)
+}
+
+type AssetResourceSpecOutput struct{ *pulumi.OutputState }
+
+func (AssetResourceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetResourceSpec)(nil)).Elem()
+}
+
+func (o AssetResourceSpecOutput) ToAssetResourceSpecOutput() AssetResourceSpecOutput {
+	return o
+}
+
+func (o AssetResourceSpecOutput) ToAssetResourceSpecOutputWithContext(ctx context.Context) AssetResourceSpecOutput {
+	return o
+}
+
+func (o AssetResourceSpecOutput) ToAssetResourceSpecPtrOutput() AssetResourceSpecPtrOutput {
+	return o.ToAssetResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AssetResourceSpecOutput) ToAssetResourceSpecPtrOutputWithContext(ctx context.Context) AssetResourceSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetResourceSpec) *AssetResourceSpec {
+		return &v
+	}).(AssetResourceSpecPtrOutput)
+}
+
+// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+func (o AssetResourceSpecOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetResourceSpec) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+func (o AssetResourceSpecOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetResourceSpec) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AssetResourceSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetResourceSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetResourceSpec)(nil)).Elem()
+}
+
+func (o AssetResourceSpecPtrOutput) ToAssetResourceSpecPtrOutput() AssetResourceSpecPtrOutput {
+	return o
+}
+
+func (o AssetResourceSpecPtrOutput) ToAssetResourceSpecPtrOutputWithContext(ctx context.Context) AssetResourceSpecPtrOutput {
+	return o
+}
+
+func (o AssetResourceSpecPtrOutput) Elem() AssetResourceSpecOutput {
+	return o.ApplyT(func(v *AssetResourceSpec) AssetResourceSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AssetResourceSpec
+		return ret
+	}).(AssetResourceSpecOutput)
+}
+
+// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+func (o AssetResourceSpecPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetResourceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+func (o AssetResourceSpecPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetResourceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetResourceStatus struct {
+	Message    *string `pulumi:"message"`
+	State      *string `pulumi:"state"`
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AssetResourceStatusInput is an input type that accepts AssetResourceStatusArgs and AssetResourceStatusOutput values.
+// You can construct a concrete instance of `AssetResourceStatusInput` via:
+//
+//	AssetResourceStatusArgs{...}
+type AssetResourceStatusInput interface {
+	pulumi.Input
+
+	ToAssetResourceStatusOutput() AssetResourceStatusOutput
+	ToAssetResourceStatusOutputWithContext(context.Context) AssetResourceStatusOutput
+}
+
+type AssetResourceStatusArgs struct {
+	Message    pulumi.StringPtrInput `pulumi:"message"`
+	State      pulumi.StringPtrInput `pulumi:"state"`
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AssetResourceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetResourceStatus)(nil)).Elem()
+}
+
+func (i AssetResourceStatusArgs) ToAssetResourceStatusOutput() AssetResourceStatusOutput {
+	return i.ToAssetResourceStatusOutputWithContext(context.Background())
+}
+
+func (i AssetResourceStatusArgs) ToAssetResourceStatusOutputWithContext(ctx context.Context) AssetResourceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetResourceStatusOutput)
+}
+
+// AssetResourceStatusArrayInput is an input type that accepts AssetResourceStatusArray and AssetResourceStatusArrayOutput values.
+// You can construct a concrete instance of `AssetResourceStatusArrayInput` via:
+//
+//	AssetResourceStatusArray{ AssetResourceStatusArgs{...} }
+type AssetResourceStatusArrayInput interface {
+	pulumi.Input
+
+	ToAssetResourceStatusArrayOutput() AssetResourceStatusArrayOutput
+	ToAssetResourceStatusArrayOutputWithContext(context.Context) AssetResourceStatusArrayOutput
+}
+
+type AssetResourceStatusArray []AssetResourceStatusInput
+
+func (AssetResourceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetResourceStatus)(nil)).Elem()
+}
+
+func (i AssetResourceStatusArray) ToAssetResourceStatusArrayOutput() AssetResourceStatusArrayOutput {
+	return i.ToAssetResourceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AssetResourceStatusArray) ToAssetResourceStatusArrayOutputWithContext(ctx context.Context) AssetResourceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetResourceStatusArrayOutput)
+}
+
+type AssetResourceStatusOutput struct{ *pulumi.OutputState }
+
+func (AssetResourceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetResourceStatus)(nil)).Elem()
+}
+
+func (o AssetResourceStatusOutput) ToAssetResourceStatusOutput() AssetResourceStatusOutput {
+	return o
+}
+
+func (o AssetResourceStatusOutput) ToAssetResourceStatusOutputWithContext(ctx context.Context) AssetResourceStatusOutput {
+	return o
+}
+
+func (o AssetResourceStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetResourceStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetResourceStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetResourceStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetResourceStatusOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetResourceStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AssetResourceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetResourceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetResourceStatus)(nil)).Elem()
+}
+
+func (o AssetResourceStatusArrayOutput) ToAssetResourceStatusArrayOutput() AssetResourceStatusArrayOutput {
+	return o
+}
+
+func (o AssetResourceStatusArrayOutput) ToAssetResourceStatusArrayOutputWithContext(ctx context.Context) AssetResourceStatusArrayOutput {
+	return o
+}
+
+func (o AssetResourceStatusArrayOutput) Index(i pulumi.IntInput) AssetResourceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetResourceStatus {
+		return vs[0].([]AssetResourceStatus)[vs[1].(int)]
+	}).(AssetResourceStatusOutput)
+}
+
+type AssetSecurityStatus struct {
+	Message    *string `pulumi:"message"`
+	State      *string `pulumi:"state"`
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// AssetSecurityStatusInput is an input type that accepts AssetSecurityStatusArgs and AssetSecurityStatusOutput values.
+// You can construct a concrete instance of `AssetSecurityStatusInput` via:
+//
+//	AssetSecurityStatusArgs{...}
+type AssetSecurityStatusInput interface {
+	pulumi.Input
+
+	ToAssetSecurityStatusOutput() AssetSecurityStatusOutput
+	ToAssetSecurityStatusOutputWithContext(context.Context) AssetSecurityStatusOutput
+}
+
+type AssetSecurityStatusArgs struct {
+	Message    pulumi.StringPtrInput `pulumi:"message"`
+	State      pulumi.StringPtrInput `pulumi:"state"`
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (AssetSecurityStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetSecurityStatus)(nil)).Elem()
+}
+
+func (i AssetSecurityStatusArgs) ToAssetSecurityStatusOutput() AssetSecurityStatusOutput {
+	return i.ToAssetSecurityStatusOutputWithContext(context.Background())
+}
+
+func (i AssetSecurityStatusArgs) ToAssetSecurityStatusOutputWithContext(ctx context.Context) AssetSecurityStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetSecurityStatusOutput)
+}
+
+// AssetSecurityStatusArrayInput is an input type that accepts AssetSecurityStatusArray and AssetSecurityStatusArrayOutput values.
+// You can construct a concrete instance of `AssetSecurityStatusArrayInput` via:
+//
+//	AssetSecurityStatusArray{ AssetSecurityStatusArgs{...} }
+type AssetSecurityStatusArrayInput interface {
+	pulumi.Input
+
+	ToAssetSecurityStatusArrayOutput() AssetSecurityStatusArrayOutput
+	ToAssetSecurityStatusArrayOutputWithContext(context.Context) AssetSecurityStatusArrayOutput
+}
+
+type AssetSecurityStatusArray []AssetSecurityStatusInput
+
+func (AssetSecurityStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetSecurityStatus)(nil)).Elem()
+}
+
+func (i AssetSecurityStatusArray) ToAssetSecurityStatusArrayOutput() AssetSecurityStatusArrayOutput {
+	return i.ToAssetSecurityStatusArrayOutputWithContext(context.Background())
+}
+
+func (i AssetSecurityStatusArray) ToAssetSecurityStatusArrayOutputWithContext(ctx context.Context) AssetSecurityStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetSecurityStatusArrayOutput)
+}
+
+type AssetSecurityStatusOutput struct{ *pulumi.OutputState }
+
+func (AssetSecurityStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetSecurityStatus)(nil)).Elem()
+}
+
+func (o AssetSecurityStatusOutput) ToAssetSecurityStatusOutput() AssetSecurityStatusOutput {
+	return o
+}
+
+func (o AssetSecurityStatusOutput) ToAssetSecurityStatusOutputWithContext(ctx context.Context) AssetSecurityStatusOutput {
+	return o
+}
+
+func (o AssetSecurityStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetSecurityStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetSecurityStatusOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type AssetSecurityStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetSecurityStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetSecurityStatus)(nil)).Elem()
+}
+
+func (o AssetSecurityStatusArrayOutput) ToAssetSecurityStatusArrayOutput() AssetSecurityStatusArrayOutput {
+	return o
+}
+
+func (o AssetSecurityStatusArrayOutput) ToAssetSecurityStatusArrayOutputWithContext(ctx context.Context) AssetSecurityStatusArrayOutput {
+	return o
+}
+
+func (o AssetSecurityStatusArrayOutput) Index(i pulumi.IntInput) AssetSecurityStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetSecurityStatus {
+		return vs[0].([]AssetSecurityStatus)[vs[1].(int)]
+	}).(AssetSecurityStatusOutput)
+}
+
 type LakeAssetStatus struct {
 	ActiveAssets                 *int    `pulumi:"activeAssets"`
 	SecurityPolicyApplyingAssets *int    `pulumi:"securityPolicyApplyingAssets"`
@@ -19,7 +1205,7 @@ type LakeAssetStatus struct {
 // LakeAssetStatusInput is an input type that accepts LakeAssetStatusArgs and LakeAssetStatusOutput values.
 // You can construct a concrete instance of `LakeAssetStatusInput` via:
 //
-//          LakeAssetStatusArgs{...}
+//	LakeAssetStatusArgs{...}
 type LakeAssetStatusInput interface {
 	pulumi.Input
 
@@ -48,7 +1234,7 @@ func (i LakeAssetStatusArgs) ToLakeAssetStatusOutputWithContext(ctx context.Cont
 // LakeAssetStatusArrayInput is an input type that accepts LakeAssetStatusArray and LakeAssetStatusArrayOutput values.
 // You can construct a concrete instance of `LakeAssetStatusArrayInput` via:
 //
-//          LakeAssetStatusArray{ LakeAssetStatusArgs{...} }
+//	LakeAssetStatusArray{ LakeAssetStatusArgs{...} }
 type LakeAssetStatusArrayInput interface {
 	pulumi.Input
 
@@ -124,7 +1310,7 @@ type LakeMetastore struct {
 // LakeMetastoreInput is an input type that accepts LakeMetastoreArgs and LakeMetastoreOutput values.
 // You can construct a concrete instance of `LakeMetastoreInput` via:
 //
-//          LakeMetastoreArgs{...}
+//	LakeMetastoreArgs{...}
 type LakeMetastoreInput interface {
 	pulumi.Input
 
@@ -160,11 +1346,11 @@ func (i LakeMetastoreArgs) ToLakeMetastorePtrOutputWithContext(ctx context.Conte
 // LakeMetastorePtrInput is an input type that accepts LakeMetastoreArgs, LakeMetastorePtr and LakeMetastorePtrOutput values.
 // You can construct a concrete instance of `LakeMetastorePtrInput` via:
 //
-//          LakeMetastoreArgs{...}
+//	        LakeMetastoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LakeMetastorePtrInput interface {
 	pulumi.Input
 
@@ -263,7 +1449,7 @@ type LakeMetastoreStatus struct {
 // LakeMetastoreStatusInput is an input type that accepts LakeMetastoreStatusArgs and LakeMetastoreStatusOutput values.
 // You can construct a concrete instance of `LakeMetastoreStatusInput` via:
 //
-//          LakeMetastoreStatusArgs{...}
+//	LakeMetastoreStatusArgs{...}
 type LakeMetastoreStatusInput interface {
 	pulumi.Input
 
@@ -293,7 +1479,7 @@ func (i LakeMetastoreStatusArgs) ToLakeMetastoreStatusOutputWithContext(ctx cont
 // LakeMetastoreStatusArrayInput is an input type that accepts LakeMetastoreStatusArray and LakeMetastoreStatusArrayOutput values.
 // You can construct a concrete instance of `LakeMetastoreStatusArrayInput` via:
 //
-//          LakeMetastoreStatusArray{ LakeMetastoreStatusArgs{...} }
+//	LakeMetastoreStatusArray{ LakeMetastoreStatusArgs{...} }
 type LakeMetastoreStatusArrayInput interface {
 	pulumi.Input
 
@@ -365,17 +1551,894 @@ func (o LakeMetastoreStatusArrayOutput) Index(i pulumi.IntInput) LakeMetastoreSt
 	}).(LakeMetastoreStatusOutput)
 }
 
+type ZoneAssetStatus struct {
+	ActiveAssets                 *int    `pulumi:"activeAssets"`
+	SecurityPolicyApplyingAssets *int    `pulumi:"securityPolicyApplyingAssets"`
+	UpdateTime                   *string `pulumi:"updateTime"`
+}
+
+// ZoneAssetStatusInput is an input type that accepts ZoneAssetStatusArgs and ZoneAssetStatusOutput values.
+// You can construct a concrete instance of `ZoneAssetStatusInput` via:
+//
+//	ZoneAssetStatusArgs{...}
+type ZoneAssetStatusInput interface {
+	pulumi.Input
+
+	ToZoneAssetStatusOutput() ZoneAssetStatusOutput
+	ToZoneAssetStatusOutputWithContext(context.Context) ZoneAssetStatusOutput
+}
+
+type ZoneAssetStatusArgs struct {
+	ActiveAssets                 pulumi.IntPtrInput    `pulumi:"activeAssets"`
+	SecurityPolicyApplyingAssets pulumi.IntPtrInput    `pulumi:"securityPolicyApplyingAssets"`
+	UpdateTime                   pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (ZoneAssetStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAssetStatus)(nil)).Elem()
+}
+
+func (i ZoneAssetStatusArgs) ToZoneAssetStatusOutput() ZoneAssetStatusOutput {
+	return i.ToZoneAssetStatusOutputWithContext(context.Background())
+}
+
+func (i ZoneAssetStatusArgs) ToZoneAssetStatusOutputWithContext(ctx context.Context) ZoneAssetStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAssetStatusOutput)
+}
+
+// ZoneAssetStatusArrayInput is an input type that accepts ZoneAssetStatusArray and ZoneAssetStatusArrayOutput values.
+// You can construct a concrete instance of `ZoneAssetStatusArrayInput` via:
+//
+//	ZoneAssetStatusArray{ ZoneAssetStatusArgs{...} }
+type ZoneAssetStatusArrayInput interface {
+	pulumi.Input
+
+	ToZoneAssetStatusArrayOutput() ZoneAssetStatusArrayOutput
+	ToZoneAssetStatusArrayOutputWithContext(context.Context) ZoneAssetStatusArrayOutput
+}
+
+type ZoneAssetStatusArray []ZoneAssetStatusInput
+
+func (ZoneAssetStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneAssetStatus)(nil)).Elem()
+}
+
+func (i ZoneAssetStatusArray) ToZoneAssetStatusArrayOutput() ZoneAssetStatusArrayOutput {
+	return i.ToZoneAssetStatusArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneAssetStatusArray) ToZoneAssetStatusArrayOutputWithContext(ctx context.Context) ZoneAssetStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAssetStatusArrayOutput)
+}
+
+type ZoneAssetStatusOutput struct{ *pulumi.OutputState }
+
+func (ZoneAssetStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneAssetStatus)(nil)).Elem()
+}
+
+func (o ZoneAssetStatusOutput) ToZoneAssetStatusOutput() ZoneAssetStatusOutput {
+	return o
+}
+
+func (o ZoneAssetStatusOutput) ToZoneAssetStatusOutputWithContext(ctx context.Context) ZoneAssetStatusOutput {
+	return o
+}
+
+func (o ZoneAssetStatusOutput) ActiveAssets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneAssetStatus) *int { return v.ActiveAssets }).(pulumi.IntPtrOutput)
+}
+
+func (o ZoneAssetStatusOutput) SecurityPolicyApplyingAssets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneAssetStatus) *int { return v.SecurityPolicyApplyingAssets }).(pulumi.IntPtrOutput)
+}
+
+func (o ZoneAssetStatusOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneAssetStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type ZoneAssetStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneAssetStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneAssetStatus)(nil)).Elem()
+}
+
+func (o ZoneAssetStatusArrayOutput) ToZoneAssetStatusArrayOutput() ZoneAssetStatusArrayOutput {
+	return o
+}
+
+func (o ZoneAssetStatusArrayOutput) ToZoneAssetStatusArrayOutputWithContext(ctx context.Context) ZoneAssetStatusArrayOutput {
+	return o
+}
+
+func (o ZoneAssetStatusArrayOutput) Index(i pulumi.IntInput) ZoneAssetStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneAssetStatus {
+		return vs[0].([]ZoneAssetStatus)[vs[1].(int)]
+	}).(ZoneAssetStatusOutput)
+}
+
+type ZoneDiscoverySpec struct {
+	// Optional. Configuration for CSV data.
+	CsvOptions *ZoneDiscoverySpecCsvOptions `pulumi:"csvOptions"`
+	// Required. Whether discovery is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	ExcludePatterns []string `pulumi:"excludePatterns"`
+	// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	IncludePatterns []string `pulumi:"includePatterns"`
+	// Optional. Configuration for Json data.
+	JsonOptions *ZoneDiscoverySpecJsonOptions `pulumi:"jsonOptions"`
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	Schedule *string `pulumi:"schedule"`
+}
+
+// ZoneDiscoverySpecInput is an input type that accepts ZoneDiscoverySpecArgs and ZoneDiscoverySpecOutput values.
+// You can construct a concrete instance of `ZoneDiscoverySpecInput` via:
+//
+//	ZoneDiscoverySpecArgs{...}
+type ZoneDiscoverySpecInput interface {
+	pulumi.Input
+
+	ToZoneDiscoverySpecOutput() ZoneDiscoverySpecOutput
+	ToZoneDiscoverySpecOutputWithContext(context.Context) ZoneDiscoverySpecOutput
+}
+
+type ZoneDiscoverySpecArgs struct {
+	// Optional. Configuration for CSV data.
+	CsvOptions ZoneDiscoverySpecCsvOptionsPtrInput `pulumi:"csvOptions"`
+	// Required. Whether discovery is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	ExcludePatterns pulumi.StringArrayInput `pulumi:"excludePatterns"`
+	// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
+	// Optional. Configuration for Json data.
+	JsonOptions ZoneDiscoverySpecJsonOptionsPtrInput `pulumi:"jsonOptions"`
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+}
+
+func (ZoneDiscoverySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDiscoverySpec)(nil)).Elem()
+}
+
+func (i ZoneDiscoverySpecArgs) ToZoneDiscoverySpecOutput() ZoneDiscoverySpecOutput {
+	return i.ToZoneDiscoverySpecOutputWithContext(context.Background())
+}
+
+func (i ZoneDiscoverySpecArgs) ToZoneDiscoverySpecOutputWithContext(ctx context.Context) ZoneDiscoverySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecOutput)
+}
+
+func (i ZoneDiscoverySpecArgs) ToZoneDiscoverySpecPtrOutput() ZoneDiscoverySpecPtrOutput {
+	return i.ToZoneDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneDiscoverySpecArgs) ToZoneDiscoverySpecPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecOutput).ToZoneDiscoverySpecPtrOutputWithContext(ctx)
+}
+
+// ZoneDiscoverySpecPtrInput is an input type that accepts ZoneDiscoverySpecArgs, ZoneDiscoverySpecPtr and ZoneDiscoverySpecPtrOutput values.
+// You can construct a concrete instance of `ZoneDiscoverySpecPtrInput` via:
+//
+//	        ZoneDiscoverySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneDiscoverySpecPtrInput interface {
+	pulumi.Input
+
+	ToZoneDiscoverySpecPtrOutput() ZoneDiscoverySpecPtrOutput
+	ToZoneDiscoverySpecPtrOutputWithContext(context.Context) ZoneDiscoverySpecPtrOutput
+}
+
+type zoneDiscoverySpecPtrType ZoneDiscoverySpecArgs
+
+func ZoneDiscoverySpecPtr(v *ZoneDiscoverySpecArgs) ZoneDiscoverySpecPtrInput {
+	return (*zoneDiscoverySpecPtrType)(v)
+}
+
+func (*zoneDiscoverySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDiscoverySpec)(nil)).Elem()
+}
+
+func (i *zoneDiscoverySpecPtrType) ToZoneDiscoverySpecPtrOutput() ZoneDiscoverySpecPtrOutput {
+	return i.ToZoneDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneDiscoverySpecPtrType) ToZoneDiscoverySpecPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecPtrOutput)
+}
+
+type ZoneDiscoverySpecOutput struct{ *pulumi.OutputState }
+
+func (ZoneDiscoverySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDiscoverySpec)(nil)).Elem()
+}
+
+func (o ZoneDiscoverySpecOutput) ToZoneDiscoverySpecOutput() ZoneDiscoverySpecOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecOutput) ToZoneDiscoverySpecOutputWithContext(ctx context.Context) ZoneDiscoverySpecOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecOutput) ToZoneDiscoverySpecPtrOutput() ZoneDiscoverySpecPtrOutput {
+	return o.ToZoneDiscoverySpecPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneDiscoverySpecOutput) ToZoneDiscoverySpecPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneDiscoverySpec) *ZoneDiscoverySpec {
+		return &v
+	}).(ZoneDiscoverySpecPtrOutput)
+}
+
+// Optional. Configuration for CSV data.
+func (o ZoneDiscoverySpecOutput) CsvOptions() ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpec) *ZoneDiscoverySpecCsvOptions { return v.CsvOptions }).(ZoneDiscoverySpecCsvOptionsPtrOutput)
+}
+
+// Required. Whether discovery is enabled.
+func (o ZoneDiscoverySpecOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpec) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o ZoneDiscoverySpecOutput) ExcludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpec) []string { return v.ExcludePatterns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o ZoneDiscoverySpecOutput) IncludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpec) []string { return v.IncludePatterns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration for Json data.
+func (o ZoneDiscoverySpecOutput) JsonOptions() ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpec) *ZoneDiscoverySpecJsonOptions { return v.JsonOptions }).(ZoneDiscoverySpecJsonOptionsPtrOutput)
+}
+
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+func (o ZoneDiscoverySpecOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+type ZoneDiscoverySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneDiscoverySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDiscoverySpec)(nil)).Elem()
+}
+
+func (o ZoneDiscoverySpecPtrOutput) ToZoneDiscoverySpecPtrOutput() ZoneDiscoverySpecPtrOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecPtrOutput) ToZoneDiscoverySpecPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecPtrOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecPtrOutput) Elem() ZoneDiscoverySpecOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) ZoneDiscoverySpec {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneDiscoverySpec
+		return ret
+	}).(ZoneDiscoverySpecOutput)
+}
+
+// Optional. Configuration for CSV data.
+func (o ZoneDiscoverySpecPtrOutput) CsvOptions() ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) *ZoneDiscoverySpecCsvOptions {
+		if v == nil {
+			return nil
+		}
+		return v.CsvOptions
+	}).(ZoneDiscoverySpecCsvOptionsPtrOutput)
+}
+
+// Required. Whether discovery is enabled.
+func (o ZoneDiscoverySpecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o ZoneDiscoverySpecPtrOutput) ExcludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+func (o ZoneDiscoverySpecPtrOutput) IncludePatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludePatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration for Json data.
+func (o ZoneDiscoverySpecPtrOutput) JsonOptions() ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) *ZoneDiscoverySpecJsonOptions {
+		if v == nil {
+			return nil
+		}
+		return v.JsonOptions
+	}).(ZoneDiscoverySpecJsonOptionsPtrOutput)
+}
+
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+func (o ZoneDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZoneDiscoverySpecCsvOptions struct {
+	// Optional. The delimiter being used to separate values. This defaults to ','.
+	Delimiter *string `pulumi:"delimiter"`
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference *bool `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+	HeaderRows *int `pulumi:"headerRows"`
+}
+
+// ZoneDiscoverySpecCsvOptionsInput is an input type that accepts ZoneDiscoverySpecCsvOptionsArgs and ZoneDiscoverySpecCsvOptionsOutput values.
+// You can construct a concrete instance of `ZoneDiscoverySpecCsvOptionsInput` via:
+//
+//	ZoneDiscoverySpecCsvOptionsArgs{...}
+type ZoneDiscoverySpecCsvOptionsInput interface {
+	pulumi.Input
+
+	ToZoneDiscoverySpecCsvOptionsOutput() ZoneDiscoverySpecCsvOptionsOutput
+	ToZoneDiscoverySpecCsvOptionsOutputWithContext(context.Context) ZoneDiscoverySpecCsvOptionsOutput
+}
+
+type ZoneDiscoverySpecCsvOptionsArgs struct {
+	// Optional. The delimiter being used to separate values. This defaults to ','.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference pulumi.BoolPtrInput `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+	HeaderRows pulumi.IntPtrInput `pulumi:"headerRows"`
+}
+
+func (ZoneDiscoverySpecCsvOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (i ZoneDiscoverySpecCsvOptionsArgs) ToZoneDiscoverySpecCsvOptionsOutput() ZoneDiscoverySpecCsvOptionsOutput {
+	return i.ToZoneDiscoverySpecCsvOptionsOutputWithContext(context.Background())
+}
+
+func (i ZoneDiscoverySpecCsvOptionsArgs) ToZoneDiscoverySpecCsvOptionsOutputWithContext(ctx context.Context) ZoneDiscoverySpecCsvOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecCsvOptionsOutput)
+}
+
+func (i ZoneDiscoverySpecCsvOptionsArgs) ToZoneDiscoverySpecCsvOptionsPtrOutput() ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return i.ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneDiscoverySpecCsvOptionsArgs) ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecCsvOptionsOutput).ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx)
+}
+
+// ZoneDiscoverySpecCsvOptionsPtrInput is an input type that accepts ZoneDiscoverySpecCsvOptionsArgs, ZoneDiscoverySpecCsvOptionsPtr and ZoneDiscoverySpecCsvOptionsPtrOutput values.
+// You can construct a concrete instance of `ZoneDiscoverySpecCsvOptionsPtrInput` via:
+//
+//	        ZoneDiscoverySpecCsvOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneDiscoverySpecCsvOptionsPtrInput interface {
+	pulumi.Input
+
+	ToZoneDiscoverySpecCsvOptionsPtrOutput() ZoneDiscoverySpecCsvOptionsPtrOutput
+	ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(context.Context) ZoneDiscoverySpecCsvOptionsPtrOutput
+}
+
+type zoneDiscoverySpecCsvOptionsPtrType ZoneDiscoverySpecCsvOptionsArgs
+
+func ZoneDiscoverySpecCsvOptionsPtr(v *ZoneDiscoverySpecCsvOptionsArgs) ZoneDiscoverySpecCsvOptionsPtrInput {
+	return (*zoneDiscoverySpecCsvOptionsPtrType)(v)
+}
+
+func (*zoneDiscoverySpecCsvOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (i *zoneDiscoverySpecCsvOptionsPtrType) ToZoneDiscoverySpecCsvOptionsPtrOutput() ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return i.ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneDiscoverySpecCsvOptionsPtrType) ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecCsvOptionsPtrOutput)
+}
+
+type ZoneDiscoverySpecCsvOptionsOutput struct{ *pulumi.OutputState }
+
+func (ZoneDiscoverySpecCsvOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (o ZoneDiscoverySpecCsvOptionsOutput) ToZoneDiscoverySpecCsvOptionsOutput() ZoneDiscoverySpecCsvOptionsOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecCsvOptionsOutput) ToZoneDiscoverySpecCsvOptionsOutputWithContext(ctx context.Context) ZoneDiscoverySpecCsvOptionsOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecCsvOptionsOutput) ToZoneDiscoverySpecCsvOptionsPtrOutput() ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return o.ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneDiscoverySpecCsvOptionsOutput) ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneDiscoverySpecCsvOptions) *ZoneDiscoverySpecCsvOptions {
+		return &v
+	}).(ZoneDiscoverySpecCsvOptionsPtrOutput)
+}
+
+// Optional. The delimiter being used to separate values. This defaults to ','.
+func (o ZoneDiscoverySpecCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpecCsvOptions) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o ZoneDiscoverySpecCsvOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpecCsvOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o ZoneDiscoverySpecCsvOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpecCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+func (o ZoneDiscoverySpecCsvOptionsOutput) HeaderRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpecCsvOptions) *int { return v.HeaderRows }).(pulumi.IntPtrOutput)
+}
+
+type ZoneDiscoverySpecCsvOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneDiscoverySpecCsvOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDiscoverySpecCsvOptions)(nil)).Elem()
+}
+
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) ToZoneDiscoverySpecCsvOptionsPtrOutput() ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) ToZoneDiscoverySpecCsvOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecCsvOptionsPtrOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) Elem() ZoneDiscoverySpecCsvOptionsOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecCsvOptions) ZoneDiscoverySpecCsvOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneDiscoverySpecCsvOptions
+		return ret
+	}).(ZoneDiscoverySpecCsvOptionsOutput)
+}
+
+// Optional. The delimiter being used to separate values. This defaults to ','.
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecCsvOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTypeInference
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+func (o ZoneDiscoverySpecCsvOptionsPtrOutput) HeaderRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecCsvOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderRows
+	}).(pulumi.IntPtrOutput)
+}
+
+type ZoneDiscoverySpecJsonOptions struct {
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference *bool `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+}
+
+// ZoneDiscoverySpecJsonOptionsInput is an input type that accepts ZoneDiscoverySpecJsonOptionsArgs and ZoneDiscoverySpecJsonOptionsOutput values.
+// You can construct a concrete instance of `ZoneDiscoverySpecJsonOptionsInput` via:
+//
+//	ZoneDiscoverySpecJsonOptionsArgs{...}
+type ZoneDiscoverySpecJsonOptionsInput interface {
+	pulumi.Input
+
+	ToZoneDiscoverySpecJsonOptionsOutput() ZoneDiscoverySpecJsonOptionsOutput
+	ToZoneDiscoverySpecJsonOptionsOutputWithContext(context.Context) ZoneDiscoverySpecJsonOptionsOutput
+}
+
+type ZoneDiscoverySpecJsonOptionsArgs struct {
+	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	DisableTypeInference pulumi.BoolPtrInput `pulumi:"disableTypeInference"`
+	// Optional. The character encoding of the data. The default is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+}
+
+func (ZoneDiscoverySpecJsonOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (i ZoneDiscoverySpecJsonOptionsArgs) ToZoneDiscoverySpecJsonOptionsOutput() ZoneDiscoverySpecJsonOptionsOutput {
+	return i.ToZoneDiscoverySpecJsonOptionsOutputWithContext(context.Background())
+}
+
+func (i ZoneDiscoverySpecJsonOptionsArgs) ToZoneDiscoverySpecJsonOptionsOutputWithContext(ctx context.Context) ZoneDiscoverySpecJsonOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecJsonOptionsOutput)
+}
+
+func (i ZoneDiscoverySpecJsonOptionsArgs) ToZoneDiscoverySpecJsonOptionsPtrOutput() ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return i.ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneDiscoverySpecJsonOptionsArgs) ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecJsonOptionsOutput).ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx)
+}
+
+// ZoneDiscoverySpecJsonOptionsPtrInput is an input type that accepts ZoneDiscoverySpecJsonOptionsArgs, ZoneDiscoverySpecJsonOptionsPtr and ZoneDiscoverySpecJsonOptionsPtrOutput values.
+// You can construct a concrete instance of `ZoneDiscoverySpecJsonOptionsPtrInput` via:
+//
+//	        ZoneDiscoverySpecJsonOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneDiscoverySpecJsonOptionsPtrInput interface {
+	pulumi.Input
+
+	ToZoneDiscoverySpecJsonOptionsPtrOutput() ZoneDiscoverySpecJsonOptionsPtrOutput
+	ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(context.Context) ZoneDiscoverySpecJsonOptionsPtrOutput
+}
+
+type zoneDiscoverySpecJsonOptionsPtrType ZoneDiscoverySpecJsonOptionsArgs
+
+func ZoneDiscoverySpecJsonOptionsPtr(v *ZoneDiscoverySpecJsonOptionsArgs) ZoneDiscoverySpecJsonOptionsPtrInput {
+	return (*zoneDiscoverySpecJsonOptionsPtrType)(v)
+}
+
+func (*zoneDiscoverySpecJsonOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (i *zoneDiscoverySpecJsonOptionsPtrType) ToZoneDiscoverySpecJsonOptionsPtrOutput() ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return i.ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneDiscoverySpecJsonOptionsPtrType) ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDiscoverySpecJsonOptionsPtrOutput)
+}
+
+type ZoneDiscoverySpecJsonOptionsOutput struct{ *pulumi.OutputState }
+
+func (ZoneDiscoverySpecJsonOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (o ZoneDiscoverySpecJsonOptionsOutput) ToZoneDiscoverySpecJsonOptionsOutput() ZoneDiscoverySpecJsonOptionsOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecJsonOptionsOutput) ToZoneDiscoverySpecJsonOptionsOutputWithContext(ctx context.Context) ZoneDiscoverySpecJsonOptionsOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecJsonOptionsOutput) ToZoneDiscoverySpecJsonOptionsPtrOutput() ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return o.ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneDiscoverySpecJsonOptionsOutput) ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneDiscoverySpecJsonOptions) *ZoneDiscoverySpecJsonOptions {
+		return &v
+	}).(ZoneDiscoverySpecJsonOptionsPtrOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o ZoneDiscoverySpecJsonOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpecJsonOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o ZoneDiscoverySpecJsonOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDiscoverySpecJsonOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+type ZoneDiscoverySpecJsonOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneDiscoverySpecJsonOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDiscoverySpecJsonOptions)(nil)).Elem()
+}
+
+func (o ZoneDiscoverySpecJsonOptionsPtrOutput) ToZoneDiscoverySpecJsonOptionsPtrOutput() ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecJsonOptionsPtrOutput) ToZoneDiscoverySpecJsonOptionsPtrOutputWithContext(ctx context.Context) ZoneDiscoverySpecJsonOptionsPtrOutput {
+	return o
+}
+
+func (o ZoneDiscoverySpecJsonOptionsPtrOutput) Elem() ZoneDiscoverySpecJsonOptionsOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecJsonOptions) ZoneDiscoverySpecJsonOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneDiscoverySpecJsonOptions
+		return ret
+	}).(ZoneDiscoverySpecJsonOptionsOutput)
+}
+
+// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+func (o ZoneDiscoverySpecJsonOptionsPtrOutput) DisableTypeInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecJsonOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTypeInference
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The character encoding of the data. The default is UTF-8.
+func (o ZoneDiscoverySpecJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneDiscoverySpecJsonOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZoneResourceSpec struct {
+	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+	LocationType string `pulumi:"locationType"`
+}
+
+// ZoneResourceSpecInput is an input type that accepts ZoneResourceSpecArgs and ZoneResourceSpecOutput values.
+// You can construct a concrete instance of `ZoneResourceSpecInput` via:
+//
+//	ZoneResourceSpecArgs{...}
+type ZoneResourceSpecInput interface {
+	pulumi.Input
+
+	ToZoneResourceSpecOutput() ZoneResourceSpecOutput
+	ToZoneResourceSpecOutputWithContext(context.Context) ZoneResourceSpecOutput
+}
+
+type ZoneResourceSpecArgs struct {
+	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+	LocationType pulumi.StringInput `pulumi:"locationType"`
+}
+
+func (ZoneResourceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneResourceSpec)(nil)).Elem()
+}
+
+func (i ZoneResourceSpecArgs) ToZoneResourceSpecOutput() ZoneResourceSpecOutput {
+	return i.ToZoneResourceSpecOutputWithContext(context.Background())
+}
+
+func (i ZoneResourceSpecArgs) ToZoneResourceSpecOutputWithContext(ctx context.Context) ZoneResourceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneResourceSpecOutput)
+}
+
+func (i ZoneResourceSpecArgs) ToZoneResourceSpecPtrOutput() ZoneResourceSpecPtrOutput {
+	return i.ToZoneResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneResourceSpecArgs) ToZoneResourceSpecPtrOutputWithContext(ctx context.Context) ZoneResourceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneResourceSpecOutput).ToZoneResourceSpecPtrOutputWithContext(ctx)
+}
+
+// ZoneResourceSpecPtrInput is an input type that accepts ZoneResourceSpecArgs, ZoneResourceSpecPtr and ZoneResourceSpecPtrOutput values.
+// You can construct a concrete instance of `ZoneResourceSpecPtrInput` via:
+//
+//	        ZoneResourceSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneResourceSpecPtrInput interface {
+	pulumi.Input
+
+	ToZoneResourceSpecPtrOutput() ZoneResourceSpecPtrOutput
+	ToZoneResourceSpecPtrOutputWithContext(context.Context) ZoneResourceSpecPtrOutput
+}
+
+type zoneResourceSpecPtrType ZoneResourceSpecArgs
+
+func ZoneResourceSpecPtr(v *ZoneResourceSpecArgs) ZoneResourceSpecPtrInput {
+	return (*zoneResourceSpecPtrType)(v)
+}
+
+func (*zoneResourceSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneResourceSpec)(nil)).Elem()
+}
+
+func (i *zoneResourceSpecPtrType) ToZoneResourceSpecPtrOutput() ZoneResourceSpecPtrOutput {
+	return i.ToZoneResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneResourceSpecPtrType) ToZoneResourceSpecPtrOutputWithContext(ctx context.Context) ZoneResourceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneResourceSpecPtrOutput)
+}
+
+type ZoneResourceSpecOutput struct{ *pulumi.OutputState }
+
+func (ZoneResourceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneResourceSpec)(nil)).Elem()
+}
+
+func (o ZoneResourceSpecOutput) ToZoneResourceSpecOutput() ZoneResourceSpecOutput {
+	return o
+}
+
+func (o ZoneResourceSpecOutput) ToZoneResourceSpecOutputWithContext(ctx context.Context) ZoneResourceSpecOutput {
+	return o
+}
+
+func (o ZoneResourceSpecOutput) ToZoneResourceSpecPtrOutput() ZoneResourceSpecPtrOutput {
+	return o.ToZoneResourceSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneResourceSpecOutput) ToZoneResourceSpecPtrOutputWithContext(ctx context.Context) ZoneResourceSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneResourceSpec) *ZoneResourceSpec {
+		return &v
+	}).(ZoneResourceSpecPtrOutput)
+}
+
+// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+func (o ZoneResourceSpecOutput) LocationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneResourceSpec) string { return v.LocationType }).(pulumi.StringOutput)
+}
+
+type ZoneResourceSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneResourceSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneResourceSpec)(nil)).Elem()
+}
+
+func (o ZoneResourceSpecPtrOutput) ToZoneResourceSpecPtrOutput() ZoneResourceSpecPtrOutput {
+	return o
+}
+
+func (o ZoneResourceSpecPtrOutput) ToZoneResourceSpecPtrOutputWithContext(ctx context.Context) ZoneResourceSpecPtrOutput {
+	return o
+}
+
+func (o ZoneResourceSpecPtrOutput) Elem() ZoneResourceSpecOutput {
+	return o.ApplyT(func(v *ZoneResourceSpec) ZoneResourceSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneResourceSpec
+		return ret
+	}).(ZoneResourceSpecOutput)
+}
+
+// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+func (o ZoneResourceSpecPtrOutput) LocationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneResourceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LocationType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoverySpecInput)(nil)).Elem(), AssetDiscoverySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoverySpecPtrInput)(nil)).Elem(), AssetDiscoverySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoverySpecCsvOptionsInput)(nil)).Elem(), AssetDiscoverySpecCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoverySpecCsvOptionsPtrInput)(nil)).Elem(), AssetDiscoverySpecCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoverySpecJsonOptionsInput)(nil)).Elem(), AssetDiscoverySpecJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoverySpecJsonOptionsPtrInput)(nil)).Elem(), AssetDiscoverySpecJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusInput)(nil)).Elem(), AssetDiscoveryStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusArrayInput)(nil)).Elem(), AssetDiscoveryStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusStatInput)(nil)).Elem(), AssetDiscoveryStatusStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusStatArrayInput)(nil)).Elem(), AssetDiscoveryStatusStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceSpecInput)(nil)).Elem(), AssetResourceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceSpecPtrInput)(nil)).Elem(), AssetResourceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceStatusInput)(nil)).Elem(), AssetResourceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceStatusArrayInput)(nil)).Elem(), AssetResourceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusInput)(nil)).Elem(), AssetSecurityStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusInput)(nil)).Elem(), LakeAssetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusArrayInput)(nil)).Elem(), LakeAssetStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreInput)(nil)).Elem(), LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastorePtrInput)(nil)).Elem(), LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusInput)(nil)).Elem(), LakeMetastoreStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusArrayInput)(nil)).Elem(), LakeMetastoreStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAssetStatusInput)(nil)).Elem(), ZoneAssetStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAssetStatusArrayInput)(nil)).Elem(), ZoneAssetStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecInput)(nil)).Elem(), ZoneDiscoverySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecPtrInput)(nil)).Elem(), ZoneDiscoverySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecCsvOptionsInput)(nil)).Elem(), ZoneDiscoverySpecCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecCsvOptionsPtrInput)(nil)).Elem(), ZoneDiscoverySpecCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecJsonOptionsInput)(nil)).Elem(), ZoneDiscoverySpecJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecJsonOptionsPtrInput)(nil)).Elem(), ZoneDiscoverySpecJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneResourceSpecInput)(nil)).Elem(), ZoneResourceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneResourceSpecPtrInput)(nil)).Elem(), ZoneResourceSpecArgs{})
+	pulumi.RegisterOutputType(AssetDiscoverySpecOutput{})
+	pulumi.RegisterOutputType(AssetDiscoverySpecPtrOutput{})
+	pulumi.RegisterOutputType(AssetDiscoverySpecCsvOptionsOutput{})
+	pulumi.RegisterOutputType(AssetDiscoverySpecCsvOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AssetDiscoverySpecJsonOptionsOutput{})
+	pulumi.RegisterOutputType(AssetDiscoverySpecJsonOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AssetDiscoveryStatusOutput{})
+	pulumi.RegisterOutputType(AssetDiscoveryStatusArrayOutput{})
+	pulumi.RegisterOutputType(AssetDiscoveryStatusStatOutput{})
+	pulumi.RegisterOutputType(AssetDiscoveryStatusStatArrayOutput{})
+	pulumi.RegisterOutputType(AssetResourceSpecOutput{})
+	pulumi.RegisterOutputType(AssetResourceSpecPtrOutput{})
+	pulumi.RegisterOutputType(AssetResourceStatusOutput{})
+	pulumi.RegisterOutputType(AssetResourceStatusArrayOutput{})
+	pulumi.RegisterOutputType(AssetSecurityStatusOutput{})
+	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusArrayOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreOutput{})
 	pulumi.RegisterOutputType(LakeMetastorePtrOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusArrayOutput{})
+	pulumi.RegisterOutputType(ZoneAssetStatusOutput{})
+	pulumi.RegisterOutputType(ZoneAssetStatusArrayOutput{})
+	pulumi.RegisterOutputType(ZoneDiscoverySpecOutput{})
+	pulumi.RegisterOutputType(ZoneDiscoverySpecPtrOutput{})
+	pulumi.RegisterOutputType(ZoneDiscoverySpecCsvOptionsOutput{})
+	pulumi.RegisterOutputType(ZoneDiscoverySpecCsvOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ZoneDiscoverySpecJsonOptionsOutput{})
+	pulumi.RegisterOutputType(ZoneDiscoverySpecJsonOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ZoneResourceSpecOutput{})
+	pulumi.RegisterOutputType(ZoneResourceSpecPtrOutput{})
 }

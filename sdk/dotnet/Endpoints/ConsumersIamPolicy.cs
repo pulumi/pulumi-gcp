@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Endpoints
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy")]
-    public partial class ConsumersIamPolicy : Pulumi.CustomResource
+    public partial class ConsumersIamPolicy : global::Pulumi.CustomResource
     {
         [Output("consumerProject")]
         public Output<string> ConsumerProject { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.Endpoints
         }
     }
 
-    public sealed class ConsumersIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ConsumersIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumerProject", required: true)]
         public Input<string> ConsumerProject { get; set; } = null!;
@@ -128,9 +128,10 @@ namespace Pulumi.Gcp.Endpoints
         public ConsumersIamPolicyArgs()
         {
         }
+        public static new ConsumersIamPolicyArgs Empty => new ConsumersIamPolicyArgs();
     }
 
-    public sealed class ConsumersIamPolicyState : Pulumi.ResourceArgs
+    public sealed class ConsumersIamPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("consumerProject")]
         public Input<string>? ConsumerProject { get; set; }
@@ -154,5 +155,6 @@ namespace Pulumi.Gcp.Endpoints
         public ConsumersIamPolicyState()
         {
         }
+        public static new ConsumersIamPolicyState Empty => new ConsumersIamPolicyState();
     }
 }

@@ -22,81 +22,78 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Monitoring Metric Descriptor Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Monitoring.MetricDescriptor("basic", new()
     ///     {
-    ///         var basic = new Gcp.Monitoring.MetricDescriptor("basic", new Gcp.Monitoring.MetricDescriptorArgs
+    ///         Description = "Daily sales records from all branch stores.",
+    ///         DisplayName = "metric-descriptor",
+    ///         Labels = new[]
     ///         {
-    ///             Description = "Daily sales records from all branch stores.",
-    ///             DisplayName = "metric-descriptor",
-    ///             Labels = 
+    ///             new Gcp.Monitoring.Inputs.MetricDescriptorLabelArgs
     ///             {
-    ///                 new Gcp.Monitoring.Inputs.MetricDescriptorLabelArgs
-    ///                 {
-    ///                     Description = "The ID of the store.",
-    ///                     Key = "store_id",
-    ///                     ValueType = "STRING",
-    ///                 },
+    ///                 Description = "The ID of the store.",
+    ///                 Key = "store_id",
+    ///                 ValueType = "STRING",
     ///             },
-    ///             LaunchStage = "BETA",
-    ///             Metadata = new Gcp.Monitoring.Inputs.MetricDescriptorMetadataArgs
-    ///             {
-    ///                 IngestDelay = "30s",
-    ///                 SamplePeriod = "60s",
-    ///             },
-    ///             MetricKind = "GAUGE",
-    ///             Type = "custom.googleapis.com/stores/daily_sales",
-    ///             Unit = "{USD}",
-    ///             ValueType = "DOUBLE",
-    ///         });
-    ///     }
+    ///         },
+    ///         LaunchStage = "BETA",
+    ///         Metadata = new Gcp.Monitoring.Inputs.MetricDescriptorMetadataArgs
+    ///         {
+    ///             IngestDelay = "30s",
+    ///             SamplePeriod = "60s",
+    ///         },
+    ///         MetricKind = "GAUGE",
+    ///         Type = "custom.googleapis.com/stores/daily_sales",
+    ///         Unit = "{USD}",
+    ///         ValueType = "DOUBLE",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Monitoring Metric Descriptor Alert
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var withAlert = new Gcp.Monitoring.MetricDescriptor("withAlert", new()
     ///     {
-    ///         var withAlert = new Gcp.Monitoring.MetricDescriptor("withAlert", new Gcp.Monitoring.MetricDescriptorArgs
-    ///         {
-    ///             Description = "Daily sales records from all branch stores.",
-    ///             DisplayName = "metric-descriptor",
-    ///             MetricKind = "GAUGE",
-    ///             Type = "custom.googleapis.com/stores/daily_sales",
-    ///             Unit = "{USD}",
-    ///             ValueType = "DOUBLE",
-    ///         });
-    ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
-    ///         {
-    ///             Combiner = "OR",
-    ///             Conditions = 
-    ///             {
-    ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
-    ///                 {
-    ///                     ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
-    ///                     {
-    ///                         Comparison = "COMPARISON_GT",
-    ///                         Duration = "60s",
-    ///                         Filter = withAlert.Type.Apply(type =&gt; $"metric.type=\"{type}\" AND resource.type=\"gce_instance\""),
-    ///                     },
-    ///                     DisplayName = "test condition",
-    ///                 },
-    ///             },
-    ///             DisplayName = "metric-descriptor",
-    ///         });
-    ///     }
+    ///         Description = "Daily sales records from all branch stores.",
+    ///         DisplayName = "metric-descriptor",
+    ///         MetricKind = "GAUGE",
+    ///         Type = "custom.googleapis.com/stores/daily_sales",
+    ///         Unit = "{USD}",
+    ///         ValueType = "DOUBLE",
+    ///     });
     /// 
-    /// }
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     {
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                 {
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     Filter = withAlert.Type.Apply(type =&gt; $"metric.type=\"{type}\" AND resource.type=\"gce_instance\""),
+    ///                 },
+    ///                 DisplayName = "test condition",
+    ///             },
+    ///         },
+    ///         DisplayName = "metric-descriptor",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -108,7 +105,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/metricDescriptor:MetricDescriptor")]
-    public partial class MetricDescriptor : Pulumi.CustomResource
+    public partial class MetricDescriptor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description for the label.
@@ -252,7 +249,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class MetricDescriptorArgs : Pulumi.ResourceArgs
+    public sealed class MetricDescriptorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description for the label.
@@ -346,9 +343,10 @@ namespace Pulumi.Gcp.Monitoring
         public MetricDescriptorArgs()
         {
         }
+        public static new MetricDescriptorArgs Empty => new MetricDescriptorArgs();
     }
 
-    public sealed class MetricDescriptorState : Pulumi.ResourceArgs
+    public sealed class MetricDescriptorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description for the label.
@@ -463,5 +461,6 @@ namespace Pulumi.Gcp.Monitoring
         public MetricDescriptorState()
         {
         }
+        public static new MetricDescriptorState Empty => new MetricDescriptorState();
     }
 }

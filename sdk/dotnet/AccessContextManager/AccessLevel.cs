@@ -29,52 +29,51 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ### Access Context Manager Access Level Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
     ///     {
-    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         Parent = "organizations/123456789",
+    ///         Title = "my policy",
+    ///     });
+    /// 
+    ///     var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new()
+    ///     {
+    ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {
-    ///             Parent = "organizations/123456789",
-    ///             Title = "my policy",
-    ///         });
-    ///         var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new Gcp.AccessContextManager.AccessLevelArgs
-    ///         {
-    ///             Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///             Conditions = new[]
     ///             {
-    ///                 Conditions = 
+    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
     ///                 {
-    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                     DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
     ///                     {
-    ///                         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                         OsConstraints = new[]
     ///                         {
-    ///                             OsConstraints = 
+    ///                             new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
     ///                             {
-    ///                                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
-    ///                                 {
-    ///                                     OsType = "DESKTOP_CHROME_OS",
-    ///                                 },
+    ///                                 OsType = "DESKTOP_CHROME_OS",
     ///                             },
-    ///                             RequireScreenLock = true,
     ///                         },
-    ///                         Regions = 
-    ///                         {
-    ///                             "CH",
-    ///                             "IT",
-    ///                             "US",
-    ///                         },
+    ///                         RequireScreenLock = true,
+    ///                     },
+    ///                     Regions = new[]
+    ///                     {
+    ///                         "CH",
+    ///                         "IT",
+    ///                         "US",
     ///                     },
     ///                 },
     ///             },
-    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///             Title = "chromeos_no_lock",
-    ///         });
-    ///     }
+    ///         },
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Title = "chromeos_no_lock",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +85,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/accessLevel:AccessLevel")]
-    public partial class AccessLevel : Pulumi.CustomResource
+    public partial class AccessLevel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A set of predefined conditions for the access level and a combining function.
@@ -174,7 +173,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class AccessLevelArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A set of predefined conditions for the access level and a combining function.
@@ -221,9 +220,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessLevelArgs()
         {
         }
+        public static new AccessLevelArgs Empty => new AccessLevelArgs();
     }
 
-    public sealed class AccessLevelState : Pulumi.ResourceArgs
+    public sealed class AccessLevelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A set of predefined conditions for the access level and a combining function.
@@ -270,5 +270,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessLevelState()
         {
         }
+        public static new AccessLevelState Empty => new AccessLevelState();
     }
 }

@@ -19,29 +19,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myCert = Gcp.Compute.GetRegionSslCertificate.Invoke(new()
         ///     {
-        ///         var myCert = Output.Create(Gcp.Compute.GetRegionSslCertificate.InvokeAsync(new Gcp.Compute.GetRegionSslCertificateArgs
-        ///         {
-        ///             Name = "my-cert",
-        ///         }));
-        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
-        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
-        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
-        ///     }
+        ///         Name = "my-cert",
+        ///     });
         /// 
-        ///     [Output("certificate")]
-        ///     public Output&lt;string&gt; Certificate { get; set; }
-        ///     [Output("certificateId")]
-        ///     public Output&lt;string&gt; CertificateId { get; set; }
-        ///     [Output("selfLink")]
-        ///     public Output&lt;string&gt; SelfLink { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificate"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.Certificate),
+        ///         ["certificateId"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.CertificateId),
+        ///         ["selfLink"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.SelfLink),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -57,29 +52,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myCert = Gcp.Compute.GetRegionSslCertificate.Invoke(new()
         ///     {
-        ///         var myCert = Output.Create(Gcp.Compute.GetRegionSslCertificate.InvokeAsync(new Gcp.Compute.GetRegionSslCertificateArgs
-        ///         {
-        ///             Name = "my-cert",
-        ///         }));
-        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
-        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
-        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
-        ///     }
+        ///         Name = "my-cert",
+        ///     });
         /// 
-        ///     [Output("certificate")]
-        ///     public Output&lt;string&gt; Certificate { get; set; }
-        ///     [Output("certificateId")]
-        ///     public Output&lt;string&gt; CertificateId { get; set; }
-        ///     [Output("selfLink")]
-        ///     public Output&lt;string&gt; SelfLink { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificate"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.Certificate),
+        ///         ["certificateId"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.CertificateId),
+        ///         ["selfLink"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.SelfLink),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -89,7 +79,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetRegionSslCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionSslCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the certificate.
@@ -114,9 +104,10 @@ namespace Pulumi.Gcp.Compute
         public GetRegionSslCertificateArgs()
         {
         }
+        public static new GetRegionSslCertificateArgs Empty => new GetRegionSslCertificateArgs();
     }
 
-    public sealed class GetRegionSslCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionSslCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the certificate.
@@ -141,6 +132,7 @@ namespace Pulumi.Gcp.Compute
         public GetRegionSslCertificateInvokeArgs()
         {
         }
+        public static new GetRegionSslCertificateInvokeArgs Empty => new GetRegionSslCertificateInvokeArgs();
     }
 
 

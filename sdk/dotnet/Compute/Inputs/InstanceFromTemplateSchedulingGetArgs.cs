@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateSchedulingGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateSchedulingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateSchedulingGetArgs()
         {
         }
+        public static new InstanceFromTemplateSchedulingGetArgs Empty => new InstanceFromTemplateSchedulingGetArgs();
     }
 }

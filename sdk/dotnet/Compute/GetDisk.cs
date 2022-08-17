@@ -21,30 +21,29 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var persistent_boot_disk = Gcp.Compute.GetDisk.Invoke(new()
         ///     {
-        ///         var persistent_boot_disk = Output.Create(Gcp.Compute.GetDisk.InvokeAsync(new Gcp.Compute.GetDiskArgs
-        ///         {
-        ///             Name = "persistent-boot-disk",
-        ///             Project = "example",
-        ///         }));
-        ///         // ...
-        ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
-        ///         {
-        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-        ///             {
-        ///                 Source = persistent_boot_disk.Apply(persistent_boot_disk =&gt; persistent_boot_disk.SelfLink),
-        ///                 AutoDelete = false,
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "persistent-boot-disk",
+        ///         Project = "example",
+        ///     });
         /// 
-        /// }
+        ///     // ...
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             Source = persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult).Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
+        ///             AutoDelete = false,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -62,30 +61,29 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var persistent_boot_disk = Gcp.Compute.GetDisk.Invoke(new()
         ///     {
-        ///         var persistent_boot_disk = Output.Create(Gcp.Compute.GetDisk.InvokeAsync(new Gcp.Compute.GetDiskArgs
-        ///         {
-        ///             Name = "persistent-boot-disk",
-        ///             Project = "example",
-        ///         }));
-        ///         // ...
-        ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
-        ///         {
-        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-        ///             {
-        ///                 Source = persistent_boot_disk.Apply(persistent_boot_disk =&gt; persistent_boot_disk.SelfLink),
-        ///                 AutoDelete = false,
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "persistent-boot-disk",
+        ///         Project = "example",
+        ///     });
         /// 
-        /// }
+        ///     // ...
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             Source = persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult).Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
+        ///             AutoDelete = false,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +93,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetDiskArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of a specific disk.
@@ -119,9 +117,10 @@ namespace Pulumi.Gcp.Compute
         public GetDiskArgs()
         {
         }
+        public static new GetDiskArgs Empty => new GetDiskArgs();
     }
 
-    public sealed class GetDiskInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of a specific disk.
@@ -145,6 +144,7 @@ namespace Pulumi.Gcp.Compute
         public GetDiskInvokeArgs()
         {
         }
+        public static new GetDiskInvokeArgs Empty => new GetDiskInvokeArgs();
     }
 
 

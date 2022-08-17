@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceOutlierDetectionArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceOutlierDetectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base time that a host is ejected for. The real time is equal to the base
@@ -109,5 +109,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceOutlierDetectionArgs()
         {
         }
+        public static new RegionBackendServiceOutlierDetectionArgs Empty => new RegionBackendServiceOutlierDetectionArgs();
     }
 }

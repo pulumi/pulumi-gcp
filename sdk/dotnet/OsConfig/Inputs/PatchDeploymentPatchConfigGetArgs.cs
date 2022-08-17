@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Apt update settings. Use this setting to override the default apt patch rules.
@@ -77,5 +77,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigGetArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigGetArgs Empty => new PatchDeploymentPatchConfigGetArgs();
     }
 }

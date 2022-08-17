@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerClusterConnectionInfoGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerClusterConnectionInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Reference of the GKE cluster where the game servers are installed.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerClusterConnectionInfoGetArgs()
         {
         }
+        public static new GameServerClusterConnectionInfoGetArgs Empty => new GameServerClusterConnectionInfoGetArgs();
     }
 }

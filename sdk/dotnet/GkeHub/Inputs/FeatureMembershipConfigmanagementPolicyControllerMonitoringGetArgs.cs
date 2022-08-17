@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementPolicyControllerMonitoringGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementPolicyControllerMonitoringGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("backends")]
         private InputList<string>? _backends;
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementPolicyControllerMonitoringGetArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementPolicyControllerMonitoringGetArgs Empty => new FeatureMembershipConfigmanagementPolicyControllerMonitoringGetArgs();
     }
 }

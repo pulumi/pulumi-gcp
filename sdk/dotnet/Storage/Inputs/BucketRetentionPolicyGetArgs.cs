@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketRetentionPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketRetentionPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketRetentionPolicyGetArgs()
         {
         }
+        public static new BucketRetentionPolicyGetArgs Empty => new BucketRetentionPolicyGetArgs();
     }
 }

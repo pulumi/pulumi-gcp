@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RouterNatLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not to export logs.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RouterNatLogConfigArgs()
         {
         }
+        public static new RouterNatLogConfigArgs Empty => new RouterNatLogConfigArgs();
     }
 }

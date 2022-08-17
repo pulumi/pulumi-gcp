@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionDeploymentGetArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionDeploymentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("files")]
         private InputList<Inputs.StandardAppVersionDeploymentFileGetArgs>? _files;
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionDeploymentGetArgs()
         {
         }
+        public static new StandardAppVersionDeploymentGetArgs Empty => new StandardAppVersionDeploymentGetArgs();
     }
 }

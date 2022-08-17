@@ -21,27 +21,26 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_folder = new Gcp.Organizations.Folder("my-folder", new()
     ///     {
-    ///         var my_folder = new Gcp.Organizations.Folder("my-folder", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "My folder",
-    ///             Parent = "organizations/123456",
-    ///         });
-    ///         var my_exclusion = new Gcp.Logging.FolderExclusion("my-exclusion", new Gcp.Logging.FolderExclusionArgs
-    ///         {
-    ///             Folder = my_folder.Name,
-    ///             Description = "Exclude GCE instance debug logs",
-    ///             Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
-    ///         });
-    ///     }
+    ///         DisplayName = "My folder",
+    ///         Parent = "organizations/123456",
+    ///     });
     /// 
-    /// }
+    ///     var my_exclusion = new Gcp.Logging.FolderExclusion("my-exclusion", new()
+    ///     {
+    ///         Folder = my_folder.Name,
+    ///         Description = "Exclude GCE instance debug logs",
+    ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/folderExclusion:FolderExclusion")]
-    public partial class FolderExclusion : Pulumi.CustomResource
+    public partial class FolderExclusion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description.
@@ -133,7 +132,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class FolderExclusionArgs : Pulumi.ResourceArgs
+    public sealed class FolderExclusionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description.
@@ -172,9 +171,10 @@ namespace Pulumi.Gcp.Logging
         public FolderExclusionArgs()
         {
         }
+        public static new FolderExclusionArgs Empty => new FolderExclusionArgs();
     }
 
-    public sealed class FolderExclusionState : Pulumi.ResourceArgs
+    public sealed class FolderExclusionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description.
@@ -213,5 +213,6 @@ namespace Pulumi.Gcp.Logging
         public FolderExclusionState()
         {
         }
+        public static new FolderExclusionState Empty => new FolderExclusionState();
     }
 }

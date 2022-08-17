@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterResourceUsageExportConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterResourceUsageExportConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Parameters for using BigQuery as the destination of resource usage export.
@@ -38,5 +38,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterResourceUsageExportConfigArgs()
         {
         }
+        public static new ClusterResourceUsageExportConfigArgs Empty => new ClusterResourceUsageExportConfigArgs();
     }
 }

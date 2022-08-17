@@ -25,22 +25,20 @@ namespace Pulumi.Gcp.SecurityCenter
     /// ### Scc Source Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var customSource = new Gcp.SecurityCenter.Source("customSource", new()
     ///     {
-    ///         var customSource = new Gcp.SecurityCenter.Source("customSource", new Gcp.SecurityCenter.SourceArgs
-    ///         {
-    ///             Description = "My custom Cloud Security Command Center Finding Source",
-    ///             DisplayName = "My Source",
-    ///             Organization = "123456789",
-    ///         });
-    ///     }
+    ///         Description = "My custom Cloud Security Command Center Finding Source",
+    ///         DisplayName = "My Source",
+    ///         Organization = "123456789",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// ```
     /// </summary>
     [GcpResourceType("gcp:securitycenter/source:Source")]
-    public partial class Source : Pulumi.CustomResource
+    public partial class Source : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the source (max of 1024 characters).
@@ -131,7 +129,7 @@ namespace Pulumi.Gcp.SecurityCenter
         }
     }
 
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the source (max of 1024 characters).
@@ -159,9 +157,10 @@ namespace Pulumi.Gcp.SecurityCenter
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 
-    public sealed class SourceState : Pulumi.ResourceArgs
+    public sealed class SourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the source (max of 1024 characters).
@@ -195,5 +194,6 @@ namespace Pulumi.Gcp.SecurityCenter
         public SourceState()
         {
         }
+        public static new SourceState Empty => new SourceState();
     }
 }

@@ -229,6 +229,12 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * "default" project network if unspecified.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
      * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -257,6 +263,11 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * serverlessDeployment may be set.
      */
     public readonly serverlessDeployment!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupServerlessDeployment | undefined>;
+    /**
+     * This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     */
+    public readonly subnetwork!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RegionNetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -276,12 +287,14 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["cloudRun"] = state ? state.cloudRun : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscTargetService"] = state ? state.pscTargetService : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serverlessDeployment"] = state ? state.serverlessDeployment : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as RegionNetworkEndpointGroupArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
@@ -292,11 +305,13 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -342,6 +357,12 @@ export interface RegionNetworkEndpointGroupState {
      */
     name?: pulumi.Input<string>;
     /**
+     * This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * "default" project network if unspecified.
+     */
+    network?: pulumi.Input<string>;
+    /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
      * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -370,6 +391,11 @@ export interface RegionNetworkEndpointGroupState {
      * serverlessDeployment may be set.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
+    /**
+     * This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     */
+    subnetwork?: pulumi.Input<string>;
 }
 
 /**
@@ -410,6 +436,12 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * "default" project network if unspecified.
+     */
+    network?: pulumi.Input<string>;
+    /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
      * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -434,4 +466,9 @@ export interface RegionNetworkEndpointGroupArgs {
      * serverlessDeployment may be set.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
+    /**
+     * This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     */
+    subnetwork?: pulumi.Input<string>;
 }

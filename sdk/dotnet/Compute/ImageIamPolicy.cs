@@ -23,181 +23,171 @@ namespace Pulumi.Gcp.Compute
     /// ## google\_compute\_image\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/compute.imageUser",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/compute.imageUser",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Compute.ImageIamPolicy("policy", new Gcp.Compute.ImageIamPolicyArgs
-    ///         {
-    ///             Project = google_compute_image.Example.Project,
-    ///             Image = google_compute_image.Example.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Compute.ImageIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_image.Example.Project,
+    ///         Image = google_compute_image.Example.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/compute.imageUser",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/compute.imageUser",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Title = "expires_after_2019_12_31",
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     },
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Compute.ImageIamPolicy("policy", new Gcp.Compute.ImageIamPolicyArgs
-    ///         {
-    ///             Project = google_compute_image.Example.Project,
-    ///             Image = google_compute_image.Example.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Compute.ImageIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_image.Example.Project,
+    ///         Image = google_compute_image.Example.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## google\_compute\_image\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Compute.ImageIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Compute.ImageIamBinding("binding", new Gcp.Compute.ImageIamBindingArgs
+    ///         Project = google_compute_image.Example.Project,
+    ///         Image = google_compute_image.Example.Name,
+    ///         Role = "roles/compute.imageUser",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_image.Example.Project,
-    ///             Image = google_compute_image.Example.Name,
-    ///             Role = "roles/compute.imageUser",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Compute.ImageIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Compute.ImageIamBinding("binding", new Gcp.Compute.ImageIamBindingArgs
+    ///         Project = google_compute_image.Example.Project,
+    ///         Image = google_compute_image.Example.Name,
+    ///         Role = "roles/compute.imageUser",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_image.Example.Project,
-    ///             Image = google_compute_image.Example.Name,
-    ///             Role = "roles/compute.imageUser",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Condition = new Gcp.Compute.Inputs.ImageIamBindingConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Compute.Inputs.ImageIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## google\_compute\_image\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Compute.ImageIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Compute.ImageIamMember("member", new Gcp.Compute.ImageIamMemberArgs
-    ///         {
-    ///             Project = google_compute_image.Example.Project,
-    ///             Image = google_compute_image.Example.Name,
-    ///             Role = "roles/compute.imageUser",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_compute_image.Example.Project,
+    ///         Image = google_compute_image.Example.Name,
+    ///         Role = "roles/compute.imageUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Compute.ImageIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Compute.ImageIamMember("member", new Gcp.Compute.ImageIamMemberArgs
+    ///         Project = google_compute_image.Example.Project,
+    ///         Image = google_compute_image.Example.Name,
+    ///         Role = "roles/compute.imageUser",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Compute.Inputs.ImageIamMemberConditionArgs
     ///         {
-    ///             Project = google_compute_image.Example.Project,
-    ///             Image = google_compute_image.Example.Name,
-    ///             Role = "roles/compute.imageUser",
-    ///             Member = "user:jane@example.com",
-    ///             Condition = new Gcp.Compute.Inputs.ImageIamMemberConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -225,7 +215,7 @@ namespace Pulumi.Gcp.Compute
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/imageIamPolicy:ImageIamPolicy")]
-    public partial class ImageIamPolicy : Pulumi.CustomResource
+    public partial class ImageIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -297,7 +287,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ImageIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ImageIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -322,9 +312,10 @@ namespace Pulumi.Gcp.Compute
         public ImageIamPolicyArgs()
         {
         }
+        public static new ImageIamPolicyArgs Empty => new ImageIamPolicyArgs();
     }
 
-    public sealed class ImageIamPolicyState : Pulumi.ResourceArgs
+    public sealed class ImageIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -355,5 +346,6 @@ namespace Pulumi.Gcp.Compute
         public ImageIamPolicyState()
         {
         }
+        public static new ImageIamPolicyState Empty => new ImageIamPolicyState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterControlPlaneDatabaseEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterControlPlaneDatabaseEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ARM ID of the Azure Key Vault key to encrypt / decrypt data. For example: `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-id&gt;/providers/Microsoft.KeyVault/vaults/&lt;key-vault-id&gt;/keys/&lt;key-name&gt;` Encryption will always take the latest version of the key and hence specific version is not supported.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterControlPlaneDatabaseEncryptionArgs()
         {
         }
+        public static new AzureClusterControlPlaneDatabaseEncryptionArgs Empty => new AzureClusterControlPlaneDatabaseEncryptionArgs();
     }
 }

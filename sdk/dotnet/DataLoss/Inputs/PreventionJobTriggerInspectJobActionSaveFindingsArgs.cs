@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobActionSaveFindingsArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobActionSaveFindingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information on where to store output
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobActionSaveFindingsArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobActionSaveFindingsArgs Empty => new PreventionJobTriggerInspectJobActionSaveFindingsArgs();
     }
 }

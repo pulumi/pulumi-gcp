@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Bucket of the Cloud Storage object.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs();
     }
 }

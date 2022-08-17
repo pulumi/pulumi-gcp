@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionStoredInfoTypeDictionaryWordListGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionStoredInfoTypeDictionaryWordListGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("words", required: true)]
         private InputList<string>? _words;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionStoredInfoTypeDictionaryWordListGetArgs()
         {
         }
+        public static new PreventionStoredInfoTypeDictionaryWordListGetArgs Empty => new PreventionStoredInfoTypeDictionaryWordListGetArgs();
     }
 }

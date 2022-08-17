@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class DomainMappingSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The mode of the certificate.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public DomainMappingSpecGetArgs()
         {
         }
+        public static new DomainMappingSpecGetArgs Empty => new DomainMappingSpecGetArgs();
     }
 }

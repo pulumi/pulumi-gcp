@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigPrivateEnvironmentConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigPrivateEnvironmentConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cloudComposerConnectionSubnetwork")]
         public Input<string>? CloudComposerConnectionSubnetwork { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigPrivateEnvironmentConfigGetArgs()
         {
         }
+        public static new EnvironmentConfigPrivateEnvironmentConfigGetArgs Empty => new EnvironmentConfigPrivateEnvironmentConfigGetArgs();
     }
 }

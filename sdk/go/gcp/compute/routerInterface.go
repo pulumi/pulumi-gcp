@@ -22,24 +22,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRouterInterface(ctx, "foobar", &compute.RouterInterfaceArgs{
-// 			IpRange:   pulumi.String("169.254.1.1/30"),
-// 			Region:    pulumi.String("us-central1"),
-// 			Router:    pulumi.String("router-1"),
-// 			VpnTunnel: pulumi.String("tunnel-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRouterInterface(ctx, "foobar", &compute.RouterInterfaceArgs{
+//				IpRange:   pulumi.String("169.254.1.1/30"),
+//				Region:    pulumi.String("us-central1"),
+//				Router:    pulumi.String("router-1"),
+//				VpnTunnel: pulumi.String("tunnel-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Router interfaces can be imported using the `region`, `router`, and `name`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/routerInterface:RouterInterface foobar us-central1/router-1/interface-1
+//
+//	$ pulumi import gcp:compute/routerInterface:RouterInterface foobar us-central1/router-1/interface-1
+//
 // ```
 type RouterInterface struct {
 	pulumi.CustomResourceState
@@ -253,7 +258,7 @@ func (i *RouterInterface) ToRouterInterfaceOutputWithContext(ctx context.Context
 // RouterInterfaceArrayInput is an input type that accepts RouterInterfaceArray and RouterInterfaceArrayOutput values.
 // You can construct a concrete instance of `RouterInterfaceArrayInput` via:
 //
-//          RouterInterfaceArray{ RouterInterfaceArgs{...} }
+//	RouterInterfaceArray{ RouterInterfaceArgs{...} }
 type RouterInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -278,7 +283,7 @@ func (i RouterInterfaceArray) ToRouterInterfaceArrayOutputWithContext(ctx contex
 // RouterInterfaceMapInput is an input type that accepts RouterInterfaceMap and RouterInterfaceMapOutput values.
 // You can construct a concrete instance of `RouterInterfaceMapInput` via:
 //
-//          RouterInterfaceMap{ "key": RouterInterfaceArgs{...} }
+//	RouterInterfaceMap{ "key": RouterInterfaceArgs{...} }
 type RouterInterfaceMapInput interface {
 	pulumi.Input
 

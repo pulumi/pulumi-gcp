@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterLoggingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterLoggingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration of the logging components.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterLoggingConfigGetArgs()
         {
         }
+        public static new AwsClusterLoggingConfigGetArgs Empty => new AwsClusterLoggingConfigGetArgs();
     }
 }

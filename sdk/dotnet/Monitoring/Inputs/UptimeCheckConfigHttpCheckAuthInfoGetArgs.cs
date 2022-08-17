@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class UptimeCheckConfigHttpCheckAuthInfoGetArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigHttpCheckAuthInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password to authenticate.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public UptimeCheckConfigHttpCheckAuthInfoGetArgs()
         {
         }
+        public static new UptimeCheckConfigHttpCheckAuthInfoGetArgs Empty => new UptimeCheckConfigHttpCheckAuthInfoGetArgs();
     }
 }

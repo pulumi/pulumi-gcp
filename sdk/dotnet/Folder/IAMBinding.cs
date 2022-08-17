@@ -24,30 +24,29 @@ namespace Pulumi.Gcp.Folder
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
     ///     {
-    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Department 1",
-    ///             Parent = "organizations/1234567",
-    ///         });
-    ///         var admin = new Gcp.Folder.IAMBinding("admin", new Gcp.Folder.IAMBindingArgs
-    ///         {
-    ///             Folder = department1.Name,
-    ///             Role = "roles/editor",
-    ///             Members = 
-    ///             {
-    ///                 "user:alice@gmail.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         DisplayName = "Department 1",
+    ///         Parent = "organizations/1234567",
+    ///     });
     /// 
-    /// }
+    ///     var admin = new Gcp.Folder.IAMBinding("admin", new()
+    ///     {
+    ///         Folder = department1.Name,
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:alice@gmail.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +64,7 @@ namespace Pulumi.Gcp.Folder
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:folder/iAMBinding:IAMBinding")]
-    public partial class IAMBinding : Pulumi.CustomResource
+    public partial class IAMBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
@@ -146,7 +145,7 @@ namespace Pulumi.Gcp.Folder
         }
     }
 
-    public sealed class IAMBindingArgs : Pulumi.ResourceArgs
+    public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
@@ -186,9 +185,10 @@ namespace Pulumi.Gcp.Folder
         public IAMBindingArgs()
         {
         }
+        public static new IAMBindingArgs Empty => new IAMBindingArgs();
     }
 
-    public sealed class IAMBindingState : Pulumi.ResourceArgs
+    public sealed class IAMBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
@@ -234,5 +234,6 @@ namespace Pulumi.Gcp.Folder
         public IAMBindingState()
         {
         }
+        public static new IAMBindingState Empty => new IAMBindingState();
     }
 }

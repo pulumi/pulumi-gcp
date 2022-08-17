@@ -14,215 +14,211 @@ namespace Pulumi.Gcp.BigQuery
     /// ### Bigquery Connection Cloud Resource
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
-    ///         {
-    ///             CloudResource = ,
-    ///             ConnectionId = "my-connection",
-    ///             Description = "a riveting description",
-    ///             FriendlyName = "👋",
-    ///             Location = "US",
-    ///         });
-    ///     }
+    ///         CloudResource = ,
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Bigquery Connection Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
+    ///         DatabaseVersion = "POSTGRES_11",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
-    ///             DatabaseVersion = "POSTGRES_11",
-    ///             Region = "us-central1",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///             DeletionProtection = true,
-    ///         });
-    ///         var db = new Gcp.Sql.Database("db", new Gcp.Sql.DatabaseArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///         });
-    ///         var pwd = new Random.RandomPassword("pwd", new Random.RandomPasswordArgs
-    ///         {
-    ///             Length = 16,
-    ///             Special = false,
-    ///         });
-    ///         var user = new Gcp.Sql.User("user", new Gcp.Sql.UserArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///             Password = pwd.Result,
-    ///         });
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
-    ///         {
-    ///             FriendlyName = "👋",
-    ///             Description = "a riveting description",
-    ///             Location = "US",
-    ///             CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
-    ///             {
-    ///                 InstanceId = instance.ConnectionName,
-    ///                 Database = db.Name,
-    ///                 Type = "POSTGRES",
-    ///                 Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
-    ///                 {
-    ///                     Username = user.Name,
-    ///                     Password = user.Password,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
     /// 
-    /// }
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         Location = "US",
+    ///         CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
+    ///         {
+    ///             InstanceId = instance.ConnectionName,
+    ///             Database = db.Name,
+    ///             Type = "POSTGRES",
+    ///             Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
+    ///             {
+    ///                 Username = user.Name,
+    ///                 Password = user.Password,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigquery Connection Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
+    ///         DatabaseVersion = "POSTGRES_11",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
-    ///             DatabaseVersion = "POSTGRES_11",
-    ///             Region = "us-central1",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///             DeletionProtection = true,
-    ///         });
-    ///         var db = new Gcp.Sql.Database("db", new Gcp.Sql.DatabaseArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///         });
-    ///         var pwd = new Random.RandomPassword("pwd", new Random.RandomPasswordArgs
-    ///         {
-    ///             Length = 16,
-    ///             Special = false,
-    ///         });
-    ///         var user = new Gcp.Sql.User("user", new Gcp.Sql.UserArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///             Password = pwd.Result,
-    ///         });
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
-    ///         {
-    ///             ConnectionId = "my-connection",
-    ///             Location = "US",
-    ///             FriendlyName = "👋",
-    ///             Description = "a riveting description",
-    ///             CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
-    ///             {
-    ///                 InstanceId = instance.ConnectionName,
-    ///                 Database = db.Name,
-    ///                 Type = "POSTGRES",
-    ///                 Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
-    ///                 {
-    ///                     Username = user.Name,
-    ///                     Password = user.Password,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
     /// 
-    /// }
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "US",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
+    ///         {
+    ///             InstanceId = instance.ConnectionName,
+    ///             Database = db.Name,
+    ///             Type = "POSTGRES",
+    ///             Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
+    ///             {
+    ///                 Username = user.Name,
+    ///                 Password = user.Password,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigquery Connection Aws
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
+    ///         Aws = new Gcp.BigQuery.Inputs.ConnectionAwsArgs
     ///         {
-    ///             Aws = new Gcp.BigQuery.Inputs.ConnectionAwsArgs
+    ///             AccessRole = new Gcp.BigQuery.Inputs.ConnectionAwsAccessRoleArgs
     ///             {
-    ///                 AccessRole = new Gcp.BigQuery.Inputs.ConnectionAwsAccessRoleArgs
-    ///                 {
-    ///                     IamRoleId = "arn:aws:iam::999999999999:role/omnirole",
-    ///                 },
+    ///                 IamRoleId = "arn:aws:iam::999999999999:role/omnirole",
     ///             },
-    ///             ConnectionId = "my-connection",
-    ///             Description = "a riveting description",
-    ///             FriendlyName = "👋",
-    ///             Location = "aws-us-east-1",
-    ///         });
-    ///     }
+    ///         },
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "aws-us-east-1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Bigquery Connection Azure
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
+    ///         Azure = new Gcp.BigQuery.Inputs.ConnectionAzureArgs
     ///         {
-    ///             Azure = new Gcp.BigQuery.Inputs.ConnectionAzureArgs
-    ///             {
-    ///                 CustomerTenantId = "customer-tenant-id",
-    ///             },
-    ///             ConnectionId = "my-connection",
-    ///             Description = "a riveting description",
-    ///             FriendlyName = "👋",
-    ///             Location = "azure-eastus2",
-    ///         });
-    ///     }
+    ///             CustomerTenantId = "customer-tenant-id",
+    ///         },
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "azure-eastus2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Bigquery Connection Cloudspanner
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
+    ///         CloudSpanner = new Gcp.BigQuery.Inputs.ConnectionCloudSpannerArgs
     ///         {
-    ///             CloudSpanner = new Gcp.BigQuery.Inputs.ConnectionCloudSpannerArgs
-    ///             {
-    ///                 Database = "projects/project/instances/instance/databases/database",
-    ///             },
-    ///             ConnectionId = "my-connection",
-    ///             Description = "a riveting description",
-    ///             FriendlyName = "👋",
-    ///             Location = "US",
-    ///         });
-    ///     }
+    ///             Database = "projects/project/instances/instance/databases/database",
+    ///         },
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -242,7 +238,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Connection properties specific to Amazon Web Services.
@@ -373,7 +369,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Connection properties specific to Amazon Web Services.
@@ -450,9 +446,10 @@ namespace Pulumi.Gcp.BigQuery
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Connection properties specific to Amazon Web Services.
@@ -542,5 +539,6 @@ namespace Pulumi.Gcp.BigQuery
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

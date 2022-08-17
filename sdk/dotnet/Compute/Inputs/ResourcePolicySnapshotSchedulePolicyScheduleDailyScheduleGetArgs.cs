@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of days between snapshots.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs Empty => new ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs();
     }
 }

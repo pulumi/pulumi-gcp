@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.Dataproc
     /// ## google\_dataproc\_autoscaling\_policy\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Dataproc.AutoscalingPolicyIamPolicy("policy", new Gcp.Dataproc.AutoscalingPolicyIamPolicyArgs
-    ///         {
-    ///             Project = google_dataproc_autoscaling_policy.Basic.Project,
-    ///             Location = google_dataproc_autoscaling_policy.Basic.Location,
-    ///             PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Dataproc.AutoscalingPolicyIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
+    ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
+    ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_autoscaling\_policy\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Dataproc.AutoscalingPolicyIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Dataproc.AutoscalingPolicyIamBinding("binding", new Gcp.Dataproc.AutoscalingPolicyIamBindingArgs
+    ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
+    ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
+    ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_dataproc_autoscaling_policy.Basic.Project,
-    ///             Location = google_dataproc_autoscaling_policy.Basic.Location,
-    ///             PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_autoscaling\_policy\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Dataproc.AutoscalingPolicyIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Dataproc.AutoscalingPolicyIamMember("member", new Gcp.Dataproc.AutoscalingPolicyIamMemberArgs
-    ///         {
-    ///             Project = google_dataproc_autoscaling_policy.Basic.Project,
-    ///             Location = google_dataproc_autoscaling_policy.Basic.Location,
-    ///             PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
+    ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
+    ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember")]
-    public partial class AutoscalingPolicyIamMember : Pulumi.CustomResource
+    public partial class AutoscalingPolicyIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.AutoscalingPolicyIamMemberCondition?> Condition { get; private set; } = null!;
@@ -220,7 +215,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class AutoscalingPolicyIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.AutoscalingPolicyIamMemberConditionArgs>? Condition { get; set; }
@@ -263,9 +258,10 @@ namespace Pulumi.Gcp.Dataproc
         public AutoscalingPolicyIamMemberArgs()
         {
         }
+        public static new AutoscalingPolicyIamMemberArgs Empty => new AutoscalingPolicyIamMemberArgs();
     }
 
-    public sealed class AutoscalingPolicyIamMemberState : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.AutoscalingPolicyIamMemberConditionGetArgs>? Condition { get; set; }
@@ -314,5 +310,6 @@ namespace Pulumi.Gcp.Dataproc
         public AutoscalingPolicyIamMemberState()
         {
         }
+        public static new AutoscalingPolicyIamMemberState Empty => new AutoscalingPolicyIamMemberState();
     }
 }

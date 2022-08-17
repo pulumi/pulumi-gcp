@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityConfigGetArgs()
         {
         }
+        public static new AuthorityConfigGetArgs Empty => new AuthorityConfigGetArgs();
     }
 }

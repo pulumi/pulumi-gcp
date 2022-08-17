@@ -34,7 +34,15 @@ public final class FeatureMembershipConfigmanagementPolicyController {
      * 
      */
     private final @Nullable Boolean logDeniesEnabled;
+    /**
+     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+     * 
+     */
     private final @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring;
+    /**
+     * @return Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+     * 
+     */
     private final @Nullable Boolean mutationEnabled;
     /**
      * @return Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
@@ -95,9 +103,17 @@ public final class FeatureMembershipConfigmanagementPolicyController {
     public Optional<Boolean> logDeniesEnabled() {
         return Optional.ofNullable(this.logDeniesEnabled);
     }
+    /**
+     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+     * 
+     */
     public Optional<FeatureMembershipConfigmanagementPolicyControllerMonitoring> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
+    /**
+     * @return Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+     * 
+     */
     public Optional<Boolean> mutationEnabled() {
         return Optional.ofNullable(this.mutationEnabled);
     }

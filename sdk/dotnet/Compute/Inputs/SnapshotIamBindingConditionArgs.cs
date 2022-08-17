@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SnapshotIamBindingConditionArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SnapshotIamBindingConditionArgs()
         {
         }
+        public static new SnapshotIamBindingConditionArgs Empty => new SnapshotIamBindingConditionArgs();
     }
 }

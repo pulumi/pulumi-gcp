@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.Tags
     /// ## google\_tags\_tag\_value\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Tags.TagValueIamPolicy("policy", new Gcp.Tags.TagValueIamPolicyArgs
-    ///         {
-    ///             TagValue = google_tags_tag_value.Value.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Tags.TagValueIamPolicy("policy", new()
+    ///     {
+    ///         TagValue = google_tags_tag_value.Value.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_tags\_tag\_value\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Tags.TagValueIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Tags.TagValueIamBinding("binding", new Gcp.Tags.TagValueIamBindingArgs
+    ///         TagValue = google_tags_tag_value.Value.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             TagValue = google_tags_tag_value.Value.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_tags\_tag\_value\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Tags.TagValueIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Tags.TagValueIamMember("member", new Gcp.Tags.TagValueIamMemberArgs
-    ///         {
-    ///             TagValue = google_tags_tag_value.Value.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         TagValue = google_tags_tag_value.Value.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -124,7 +119,7 @@ namespace Pulumi.Gcp.Tags
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:tags/tagValueIamMember:TagValueIamMember")]
-    public partial class TagValueIamMember : Pulumi.CustomResource
+    public partial class TagValueIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.TagValueIamMemberCondition?> Condition { get; private set; } = null!;
@@ -196,7 +191,7 @@ namespace Pulumi.Gcp.Tags
         }
     }
 
-    public sealed class TagValueIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class TagValueIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TagValueIamMemberConditionArgs>? Condition { get; set; }
@@ -221,9 +216,10 @@ namespace Pulumi.Gcp.Tags
         public TagValueIamMemberArgs()
         {
         }
+        public static new TagValueIamMemberArgs Empty => new TagValueIamMemberArgs();
     }
 
-    public sealed class TagValueIamMemberState : Pulumi.ResourceArgs
+    public sealed class TagValueIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TagValueIamMemberConditionGetArgs>? Condition { get; set; }
@@ -254,5 +250,6 @@ namespace Pulumi.Gcp.Tags
         public TagValueIamMemberState()
         {
         }
+        public static new TagValueIamMemberState Empty => new TagValueIamMemberState();
     }
 }

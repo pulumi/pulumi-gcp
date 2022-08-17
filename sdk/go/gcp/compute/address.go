@@ -28,8 +28,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
 // * How-to Guides
-//     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
-//     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+//   - [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+//   - [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 //
 // ## Example Usage
 // ### Address Basic
@@ -38,19 +38,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewAddress(ctx, "ipAddress", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewAddress(ctx, "ipAddress", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Address With Subnetwork
 //
@@ -58,36 +61,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Network:     defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewAddress(ctx, "internalWithSubnetAndAddress", &compute.AddressArgs{
-// 			Subnetwork:  defaultSubnetwork.ID(),
-// 			AddressType: pulumi.String("INTERNAL"),
-// 			Address:     pulumi.String("10.0.42.42"),
-// 			Region:      pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewAddress(ctx, "internalWithSubnetAndAddress", &compute.AddressArgs{
+//				Subnetwork:  defaultSubnetwork.ID(),
+//				AddressType: pulumi.String("INTERNAL"),
+//				Address:     pulumi.String("10.0.42.42"),
+//				Region:      pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Address With Gce Endpoint
 //
@@ -95,22 +101,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewAddress(ctx, "internalWithGceEndpoint", &compute.AddressArgs{
-// 			AddressType: pulumi.String("INTERNAL"),
-// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewAddress(ctx, "internalWithGceEndpoint", &compute.AddressArgs{
+//				AddressType: pulumi.String("INTERNAL"),
+//				Purpose:     pulumi.String("GCE_ENDPOINT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Instance With Ip
 //
@@ -118,48 +127,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		static, err := compute.NewAddress(ctx, "static", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "instanceWithIp", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("f1-micro"),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String(debianImage.SelfLink),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{
-// 							NatIp: static.Address,
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			static, err := compute.NewAddress(ctx, "static", nil)
+//			if err != nil {
+//				return err
+//			}
+//			debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "instanceWithIp", &compute.InstanceArgs{
+//				MachineType: pulumi.String("f1-micro"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(debianImage.SelfLink),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceNetworkInterfaceAccessConfigArgs{
+//								NatIp: static.Address,
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Compute Address Ipsec Interconnect
 //
@@ -167,51 +179,62 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewAddress(ctx, "ipsec-interconnect-address", &compute.AddressArgs{
-// 			AddressType:  pulumi.String("INTERNAL"),
-// 			Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
-// 			Address:      pulumi.String("192.168.1.0"),
-// 			PrefixLength: pulumi.Int(29),
-// 			Network:      network.SelfLink,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewAddress(ctx, "ipsec-interconnect-address", &compute.AddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
+//				Address:      pulumi.String("192.168.1.0"),
+//				PrefixLength: pulumi.Int(29),
+//				Network:      network.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Address can be imported using any of these accepted formats
+// # Address can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
+//
+//	$ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/address:Address default {{name}}
+//
+//	$ pulumi import gcp:compute/address:Address default {{name}}
+//
 // ```
 type Address struct {
 	pulumi.CustomResourceState
@@ -588,7 +611,7 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 // AddressArrayInput is an input type that accepts AddressArray and AddressArrayOutput values.
 // You can construct a concrete instance of `AddressArrayInput` via:
 //
-//          AddressArray{ AddressArgs{...} }
+//	AddressArray{ AddressArgs{...} }
 type AddressArrayInput interface {
 	pulumi.Input
 
@@ -613,7 +636,7 @@ func (i AddressArray) ToAddressArrayOutputWithContext(ctx context.Context) Addre
 // AddressMapInput is an input type that accepts AddressMap and AddressMapOutput values.
 // You can construct a concrete instance of `AddressMapInput` via:
 //
-//          AddressMap{ "key": AddressArgs{...} }
+//	AddressMap{ "key": AddressArgs{...} }
 type AddressMapInput interface {
 	pulumi.Input
 
@@ -720,18 +743,18 @@ func (o AddressOutput) Project() pulumi.StringOutput {
 }
 
 // The purpose of this resource, which can be one of the following values:
-// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-//   ranges, internal load balancers, and similar resources.
-// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-//   internal load balancers.
-// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-// * IPSEC_INTERCONNECT for addresses created from a private IP range
-//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-//   Interconnect configuration. These addresses are regional resources.
-// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-//   to configure Private Service Connect. Only global internal addresses
-//   can use this purpose.
-//   This should only be set when using an Internal address.
+//   - GCE_ENDPOINT for addresses that are used by VM instances, alias IP
+//     ranges, internal load balancers, and similar resources.
+//   - SHARED_LOADBALANCER_VIP for an address that can be used by multiple
+//     internal load balancers.
+//   - VPC_PEERING for addresses that are reserved for VPC peer networks.
+//   - IPSEC_INTERCONNECT for addresses created from a private IP range
+//     that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
+//     Interconnect configuration. These addresses are regional resources.
+//   - PRIVATE_SERVICE_CONNECT for a private network address that is used
+//     to configure Private Service Connect. Only global internal addresses
+//     can use this purpose.
+//     This should only be set when using an Internal address.
 func (o AddressOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
 }

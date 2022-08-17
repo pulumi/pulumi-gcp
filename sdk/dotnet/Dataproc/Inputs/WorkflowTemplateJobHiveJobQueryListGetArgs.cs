@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateJobHiveJobQueryListGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateJobHiveJobQueryListGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("queries", required: true)]
         private InputList<string>? _queries;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateJobHiveJobQueryListGetArgs()
         {
         }
+        public static new WorkflowTemplateJobHiveJobQueryListGetArgs Empty => new WorkflowTemplateJobHiveJobQueryListGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -69,5 +69,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliArgs()
         {
         }
+        public static new SloWindowsBasedSliArgs Empty => new SloWindowsBasedSliArgs();
     }
 }

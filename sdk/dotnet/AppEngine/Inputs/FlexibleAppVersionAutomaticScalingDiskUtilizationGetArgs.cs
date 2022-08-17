@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target bytes read per second.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs()
         {
         }
+        public static new FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs Empty => new FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs();
     }
 }

@@ -22,114 +22,113 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Flow Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
-    ///         var agent = new Gcp.Diagflow.CxAgent("agent", new Gcp.Diagflow.CxAgentArgs
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
     ///         {
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             Location = "global",
-    ///             DefaultLanguageCode = "en",
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///             Description = "Example description.",
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableSpellCorrection = true,
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///         });
-    ///         var basicFlow = new Gcp.Diagflow.CxFlow("basicFlow", new Gcp.Diagflow.CxFlowArgs
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             Parent = agent.Id,
-    ///             DisplayName = "MyFlow",
-    ///             Description = "Test Flow",
-    ///             NluSettings = new Gcp.Diagflow.Inputs.CxFlowNluSettingsArgs
-    ///             {
-    ///                 ClassificationThreshold = 0.3,
-    ///                 ModelType = "MODEL_TYPE_STANDARD",
-    ///             },
-    ///             EventHandlers = 
-    ///             {
-    ///                 new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
-    ///                 {
-    ///                     Event = "custom-event",
-    ///                     TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
-    ///                     {
-    ///                         ReturnPartialResponses = false,
-    ///                         Messages = 
-    ///                         {
-    ///                             new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
-    ///                             {
-    ///                                 Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
-    ///                                 {
-    ///                                     Texts = 
-    ///                                     {
-    ///                                         "I didn't get that. Can you say it again?",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
-    ///                 {
-    ///                     Event = "sys.no-match-default",
-    ///                     TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
-    ///                     {
-    ///                         ReturnPartialResponses = false,
-    ///                         Messages = 
-    ///                         {
-    ///                             new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
-    ///                             {
-    ///                                 Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
-    ///                                 {
-    ///                                     Texts = 
-    ///                                     {
-    ///                                         "Sorry, could you say that again?",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
-    ///                 {
-    ///                     Event = "sys.no-input-default",
-    ///                     TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
-    ///                     {
-    ///                         ReturnPartialResponses = false,
-    ///                         Messages = 
-    ///                         {
-    ///                             new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
-    ///                             {
-    ///                                 Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
-    ///                                 {
-    ///                                     Texts = 
-    ///                                     {
-    ///                                         "One more time?",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var basicFlow = new Gcp.Diagflow.CxFlow("basicFlow", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyFlow",
+    ///         Description = "Test Flow",
+    ///         NluSettings = new Gcp.Diagflow.Inputs.CxFlowNluSettingsArgs
+    ///         {
+    ///             ClassificationThreshold = 0.3,
+    ///             ModelType = "MODEL_TYPE_STANDARD",
+    ///         },
+    ///         EventHandlers = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
+    ///             {
+    ///                 Event = "custom-event",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = false,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "I didn't get that. Can you say it again?",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
+    ///             {
+    ///                 Event = "sys.no-match-default",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = false,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "Sorry, could you say that again?",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
+    ///             {
+    ///                 Event = "sys.no-input-default",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = false,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "One more time?",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -145,7 +144,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxFlow:CxFlow")]
-    public partial class CxFlow : Pulumi.CustomResource
+    public partial class CxFlow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -262,7 +261,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxFlowArgs : Pulumi.ResourceArgs
+    public sealed class CxFlowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -349,9 +348,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxFlowArgs()
         {
         }
+        public static new CxFlowArgs Empty => new CxFlowArgs();
     }
 
-    public sealed class CxFlowState : Pulumi.ResourceArgs
+    public sealed class CxFlowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -445,5 +445,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxFlowState()
         {
         }
+        public static new CxFlowState Empty => new CxFlowState();
     }
 }

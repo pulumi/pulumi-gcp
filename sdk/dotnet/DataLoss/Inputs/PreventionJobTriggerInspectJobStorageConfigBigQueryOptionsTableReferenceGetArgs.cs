@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataset ID of the table.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceGetArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceGetArgs Empty => new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceGetArgs();
     }
 }

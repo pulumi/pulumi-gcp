@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class DicomStoreNotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class DicomStoreNotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
@@ -26,5 +26,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public DicomStoreNotificationConfigArgs()
         {
         }
+        public static new DicomStoreNotificationConfigArgs Empty => new DicomStoreNotificationConfigArgs();
     }
 }

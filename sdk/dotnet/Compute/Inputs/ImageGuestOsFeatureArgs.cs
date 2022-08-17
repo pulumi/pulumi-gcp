@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ImageGuestOsFeatureArgs : Pulumi.ResourceArgs
+    public sealed class ImageGuestOsFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ImageGuestOsFeatureArgs()
         {
         }
+        public static new ImageGuestOsFeatureArgs Empty => new ImageGuestOsFeatureArgs();
     }
 }

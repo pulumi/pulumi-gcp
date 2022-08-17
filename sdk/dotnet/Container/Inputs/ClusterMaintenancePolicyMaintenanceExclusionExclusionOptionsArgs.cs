@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs()
         {
         }
+        public static new ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs Empty => new ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs();
     }
 }

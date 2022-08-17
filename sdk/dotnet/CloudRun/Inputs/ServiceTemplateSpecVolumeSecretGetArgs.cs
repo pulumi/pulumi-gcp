@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecVolumeSecretGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecVolumeSecretGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Mode bits to use on created files by default. Must be a value between 0000
@@ -55,5 +55,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecVolumeSecretGetArgs()
         {
         }
+        public static new ServiceTemplateSpecVolumeSecretGetArgs Empty => new ServiceTemplateSpecVolumeSecretGetArgs();
     }
 }

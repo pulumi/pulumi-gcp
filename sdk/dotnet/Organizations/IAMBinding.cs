@@ -24,25 +24,23 @@ namespace Pulumi.Gcp.Organizations
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Organizations.IAMBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Organizations.IAMBinding("binding", new Gcp.Organizations.IAMBindingArgs
+    ///         Members = new[]
     ///         {
-    ///             Members = 
-    ///             {
-    ///                 "user:alice@gmail.com",
-    ///             },
-    ///             OrgId = "123456789",
-    ///             Role = "roles/browser",
-    ///         });
-    ///     }
+    ///             "user:alice@gmail.com",
+    ///         },
+    ///         OrgId = "123456789",
+    ///         Role = "roles/browser",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.Gcp.Organizations
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
-    public partial class IAMBinding : Pulumi.CustomResource
+    public partial class IAMBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
@@ -135,7 +133,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
-    public sealed class IAMBindingArgs : Pulumi.ResourceArgs
+    public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
@@ -169,9 +167,10 @@ namespace Pulumi.Gcp.Organizations
         public IAMBindingArgs()
         {
         }
+        public static new IAMBindingArgs Empty => new IAMBindingArgs();
     }
 
-    public sealed class IAMBindingState : Pulumi.ResourceArgs
+    public sealed class IAMBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
@@ -211,5 +210,6 @@ namespace Pulumi.Gcp.Organizations
         public IAMBindingState()
         {
         }
+        public static new IAMBindingState Empty => new IAMBindingState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudTasks.Inputs
 {
 
-    public sealed class QueueStackdriverLoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class QueueStackdriverLoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the fraction of operations to write to Stackdriver Logging.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.CloudTasks.Inputs
         public QueueStackdriverLoggingConfigArgs()
         {
         }
+        public static new QueueStackdriverLoggingConfigArgs Empty => new QueueStackdriverLoggingConfigArgs();
     }
 }

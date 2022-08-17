@@ -27,23 +27,22 @@ namespace Pulumi.Gcp.BigQuery
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var bqSa = Output.Create(Gcp.BigQuery.GetDefaultServiceAccount.InvokeAsync());
-        ///         var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
-        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-        ///             Member = bqSa.Apply(bqSa =&gt; $"serviceAccount:{bqSa.Email}"),
-        ///         });
-        ///     }
+        ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
         /// 
-        /// }
+        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+        ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -67,23 +66,22 @@ namespace Pulumi.Gcp.BigQuery
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var bqSa = Output.Create(Gcp.BigQuery.GetDefaultServiceAccount.InvokeAsync());
-        ///         var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
-        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-        ///             Member = bqSa.Apply(bqSa =&gt; $"serviceAccount:{bqSa.Email}"),
-        ///         });
-        ///     }
+        ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
         /// 
-        /// }
+        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
+        ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -93,7 +91,7 @@ namespace Pulumi.Gcp.BigQuery
     }
 
 
-    public sealed class GetDefaultServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetDefaultServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -104,9 +102,10 @@ namespace Pulumi.Gcp.BigQuery
         public GetDefaultServiceAccountArgs()
         {
         }
+        public static new GetDefaultServiceAccountArgs Empty => new GetDefaultServiceAccountArgs();
     }
 
-    public sealed class GetDefaultServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDefaultServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -117,6 +116,7 @@ namespace Pulumi.Gcp.BigQuery
         public GetDefaultServiceAccountInvokeArgs()
         {
         }
+        public static new GetDefaultServiceAccountInvokeArgs Empty => new GetDefaultServiceAccountInvokeArgs();
     }
 
 

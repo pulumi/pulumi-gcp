@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGroupManagerStatusVersionTargetGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerStatusVersionTargetGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("isReached")]
         public Input<bool>? IsReached { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGroupManagerStatusVersionTargetGetArgs()
         {
         }
+        public static new InstanceGroupManagerStatusVersionTargetGetArgs Empty => new InstanceGroupManagerStatusVersionTargetGetArgs();
     }
 }

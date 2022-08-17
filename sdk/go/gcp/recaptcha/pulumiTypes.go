@@ -20,7 +20,7 @@ type EnterpriseKeyAndroidSettings struct {
 // EnterpriseKeyAndroidSettingsInput is an input type that accepts EnterpriseKeyAndroidSettingsArgs and EnterpriseKeyAndroidSettingsOutput values.
 // You can construct a concrete instance of `EnterpriseKeyAndroidSettingsInput` via:
 //
-//          EnterpriseKeyAndroidSettingsArgs{...}
+//	EnterpriseKeyAndroidSettingsArgs{...}
 type EnterpriseKeyAndroidSettingsInput interface {
 	pulumi.Input
 
@@ -58,11 +58,11 @@ func (i EnterpriseKeyAndroidSettingsArgs) ToEnterpriseKeyAndroidSettingsPtrOutpu
 // EnterpriseKeyAndroidSettingsPtrInput is an input type that accepts EnterpriseKeyAndroidSettingsArgs, EnterpriseKeyAndroidSettingsPtr and EnterpriseKeyAndroidSettingsPtrOutput values.
 // You can construct a concrete instance of `EnterpriseKeyAndroidSettingsPtrInput` via:
 //
-//          EnterpriseKeyAndroidSettingsArgs{...}
+//	        EnterpriseKeyAndroidSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnterpriseKeyAndroidSettingsPtrInput interface {
 	pulumi.Input
 
@@ -176,7 +176,7 @@ type EnterpriseKeyIosSettings struct {
 // EnterpriseKeyIosSettingsInput is an input type that accepts EnterpriseKeyIosSettingsArgs and EnterpriseKeyIosSettingsOutput values.
 // You can construct a concrete instance of `EnterpriseKeyIosSettingsInput` via:
 //
-//          EnterpriseKeyIosSettingsArgs{...}
+//	EnterpriseKeyIosSettingsArgs{...}
 type EnterpriseKeyIosSettingsInput interface {
 	pulumi.Input
 
@@ -214,11 +214,11 @@ func (i EnterpriseKeyIosSettingsArgs) ToEnterpriseKeyIosSettingsPtrOutputWithCon
 // EnterpriseKeyIosSettingsPtrInput is an input type that accepts EnterpriseKeyIosSettingsArgs, EnterpriseKeyIosSettingsPtr and EnterpriseKeyIosSettingsPtrOutput values.
 // You can construct a concrete instance of `EnterpriseKeyIosSettingsPtrInput` via:
 //
-//          EnterpriseKeyIosSettingsArgs{...}
+//	        EnterpriseKeyIosSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnterpriseKeyIosSettingsPtrInput interface {
 	pulumi.Input
 
@@ -332,7 +332,7 @@ type EnterpriseKeyTestingOptions struct {
 // EnterpriseKeyTestingOptionsInput is an input type that accepts EnterpriseKeyTestingOptionsArgs and EnterpriseKeyTestingOptionsOutput values.
 // You can construct a concrete instance of `EnterpriseKeyTestingOptionsInput` via:
 //
-//          EnterpriseKeyTestingOptionsArgs{...}
+//	EnterpriseKeyTestingOptionsArgs{...}
 type EnterpriseKeyTestingOptionsInput interface {
 	pulumi.Input
 
@@ -370,11 +370,11 @@ func (i EnterpriseKeyTestingOptionsArgs) ToEnterpriseKeyTestingOptionsPtrOutputW
 // EnterpriseKeyTestingOptionsPtrInput is an input type that accepts EnterpriseKeyTestingOptionsArgs, EnterpriseKeyTestingOptionsPtr and EnterpriseKeyTestingOptionsPtrOutput values.
 // You can construct a concrete instance of `EnterpriseKeyTestingOptionsPtrInput` via:
 //
-//          EnterpriseKeyTestingOptionsArgs{...}
+//	        EnterpriseKeyTestingOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnterpriseKeyTestingOptionsPtrInput interface {
 	pulumi.Input
 
@@ -494,7 +494,7 @@ type EnterpriseKeyWebSettings struct {
 // EnterpriseKeyWebSettingsInput is an input type that accepts EnterpriseKeyWebSettingsArgs and EnterpriseKeyWebSettingsOutput values.
 // You can construct a concrete instance of `EnterpriseKeyWebSettingsInput` via:
 //
-//          EnterpriseKeyWebSettingsArgs{...}
+//	EnterpriseKeyWebSettingsArgs{...}
 type EnterpriseKeyWebSettingsInput interface {
 	pulumi.Input
 
@@ -538,11 +538,11 @@ func (i EnterpriseKeyWebSettingsArgs) ToEnterpriseKeyWebSettingsPtrOutputWithCon
 // EnterpriseKeyWebSettingsPtrInput is an input type that accepts EnterpriseKeyWebSettingsArgs, EnterpriseKeyWebSettingsPtr and EnterpriseKeyWebSettingsPtrOutput values.
 // You can construct a concrete instance of `EnterpriseKeyWebSettingsPtrInput` via:
 //
-//          EnterpriseKeyWebSettingsArgs{...}
+//	        EnterpriseKeyWebSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnterpriseKeyWebSettingsPtrInput interface {
 	pulumi.Input
 

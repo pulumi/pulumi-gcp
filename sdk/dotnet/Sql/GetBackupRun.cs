@@ -19,21 +19,19 @@ namespace Pulumi.Gcp.Sql
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var backup = Gcp.Sql.GetBackupRun.Invoke(new()
         ///     {
-        ///         var backup = Output.Create(Gcp.Sql.GetBackupRun.InvokeAsync(new Gcp.Sql.GetBackupRunArgs
-        ///         {
-        ///             Instance = google_sql_database_instance.Main.Name,
-        ///             MostRecent = true,
-        ///         }));
-        ///     }
+        ///         Instance = google_sql_database_instance.Main.Name,
+        ///         MostRecent = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Gcp.Sql
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var backup = Gcp.Sql.GetBackupRun.Invoke(new()
         ///     {
-        ///         var backup = Output.Create(Gcp.Sql.GetBackupRun.InvokeAsync(new Gcp.Sql.GetBackupRunArgs
-        ///         {
-        ///             Instance = google_sql_database_instance.Main.Name,
-        ///             MostRecent = true,
-        ///         }));
-        ///     }
+        ///         Instance = google_sql_database_instance.Main.Name,
+        ///         MostRecent = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Sql
     }
 
 
-    public sealed class GetBackupRunArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupRunArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
@@ -105,9 +101,10 @@ namespace Pulumi.Gcp.Sql
         public GetBackupRunArgs()
         {
         }
+        public static new GetBackupRunArgs Empty => new GetBackupRunArgs();
     }
 
-    public sealed class GetBackupRunInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupRunInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
@@ -139,6 +136,7 @@ namespace Pulumi.Gcp.Sql
         public GetBackupRunInvokeArgs()
         {
         }
+        public static new GetBackupRunInvokeArgs Empty => new GetBackupRunInvokeArgs();
     }
 
 

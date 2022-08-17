@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:certificateauthority/caPoolIamMember:CaPoolIamMember")]
-    public partial class CaPoolIamMember : Pulumi.CustomResource
+    public partial class CaPoolIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
     }
 
-    public sealed class CaPoolIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -170,9 +170,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         public CaPoolIamMemberArgs()
         {
         }
+        public static new CaPoolIamMemberArgs Empty => new CaPoolIamMemberArgs();
     }
 
-    public sealed class CaPoolIamMemberState : Pulumi.ResourceArgs
+    public sealed class CaPoolIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -222,5 +223,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public CaPoolIamMemberState()
         {
         }
+        public static new CaPoolIamMemberState Empty => new CaPoolIamMemberState();
     }
 }

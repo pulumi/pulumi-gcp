@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class Hl7StoreNotificationConfigsArgs : Pulumi.ResourceArgs
+    public sealed class Hl7StoreNotificationConfigsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Restricts notifications sent for messages matching a filter. If this is empty, all messages
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public Hl7StoreNotificationConfigsArgs()
         {
         }
+        public static new Hl7StoreNotificationConfigsArgs Empty => new Hl7StoreNotificationConfigsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
@@ -78,5 +78,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecGetArgs()
         {
         }
+        public static new ServiceTemplateSpecGetArgs Empty => new ServiceTemplateSpecGetArgs();
     }
 }

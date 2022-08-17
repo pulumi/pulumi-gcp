@@ -24,52 +24,49 @@ namespace Pulumi.Gcp.Compute
     /// ### Node Template Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var template = new Gcp.Compute.NodeTemplate("template", new()
     ///     {
-    ///         var template = new Gcp.Compute.NodeTemplate("template", new Gcp.Compute.NodeTemplateArgs
-    ///         {
-    ///             NodeType = "n1-node-96-624",
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         NodeType = "n1-node-96-624",
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Node Template Server Binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var central1a = Gcp.Compute.GetNodeTypes.Invoke(new()
     ///     {
-    ///         var central1a = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
-    ///         {
-    ///             Zone = "us-central1-a",
-    ///         }));
-    ///         var template = new Gcp.Compute.NodeTemplate("template", new Gcp.Compute.NodeTemplateArgs
-    ///         {
-    ///             NodeAffinityLabels = 
-    ///             {
-    ///                 { "foo", "baz" },
-    ///             },
-    ///             NodeType = "n1-node-96-624",
-    ///             Region = "us-central1",
-    ///             ServerBinding = new Gcp.Compute.Inputs.NodeTemplateServerBindingArgs
-    ///             {
-    ///                 Type = "RESTART_NODE_ON_MINIMAL_SERVERS",
-    ///             },
-    ///         });
-    ///     }
+    ///         Zone = "us-central1-a",
+    ///     });
     /// 
-    /// }
+    ///     var template = new Gcp.Compute.NodeTemplate("template", new()
+    ///     {
+    ///         NodeAffinityLabels = 
+    ///         {
+    ///             { "foo", "baz" },
+    ///         },
+    ///         NodeType = "n1-node-96-624",
+    ///         Region = "us-central1",
+    ///         ServerBinding = new Gcp.Compute.Inputs.NodeTemplateServerBindingArgs
+    ///         {
+    ///             Type = "RESTART_NODE_ON_MINIMAL_SERVERS",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -93,7 +90,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/nodeTemplate:NodeTemplate")]
-    public partial class NodeTemplate : Pulumi.CustomResource
+    public partial class NodeTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// CPU overcommit.
@@ -217,7 +214,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class NodeTemplateArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CPU overcommit.
@@ -294,9 +291,10 @@ namespace Pulumi.Gcp.Compute
         public NodeTemplateArgs()
         {
         }
+        public static new NodeTemplateArgs Empty => new NodeTemplateArgs();
     }
 
-    public sealed class NodeTemplateState : Pulumi.ResourceArgs
+    public sealed class NodeTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CPU overcommit.
@@ -385,5 +383,6 @@ namespace Pulumi.Gcp.Compute
         public NodeTemplateState()
         {
         }
+        public static new NodeTemplateState Empty => new NodeTemplateState();
     }
 }

@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.Notebooks
     /// ## google\_notebooks\_instance\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Notebooks.InstanceIamPolicy("policy", new Gcp.Notebooks.InstanceIamPolicyArgs
-    ///         {
-    ///             Project = google_notebooks_instance.Instance.Project,
-    ///             Location = google_notebooks_instance.Instance.Location,
-    ///             InstanceName = google_notebooks_instance.Instance.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Notebooks.InstanceIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_notebooks_instance.Instance.Project,
+    ///         Location = google_notebooks_instance.Instance.Location,
+    ///         InstanceName = google_notebooks_instance.Instance.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_notebooks\_instance\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Notebooks.InstanceIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Notebooks.InstanceIamBinding("binding", new Gcp.Notebooks.InstanceIamBindingArgs
+    ///         Project = google_notebooks_instance.Instance.Project,
+    ///         Location = google_notebooks_instance.Instance.Location,
+    ///         InstanceName = google_notebooks_instance.Instance.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_notebooks_instance.Instance.Project,
-    ///             Location = google_notebooks_instance.Instance.Location,
-    ///             InstanceName = google_notebooks_instance.Instance.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_notebooks\_instance\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Notebooks.InstanceIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Notebooks.InstanceIamMember("member", new Gcp.Notebooks.InstanceIamMemberArgs
-    ///         {
-    ///             Project = google_notebooks_instance.Instance.Project,
-    ///             Location = google_notebooks_instance.Instance.Location,
-    ///             InstanceName = google_notebooks_instance.Instance.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_notebooks_instance.Instance.Project,
+    ///         Location = google_notebooks_instance.Instance.Location,
+    ///         InstanceName = google_notebooks_instance.Instance.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Notebooks
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:notebooks/instanceIamMember:InstanceIamMember")]
-    public partial class InstanceIamMember : Pulumi.CustomResource
+    public partial class InstanceIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.InstanceIamMemberCondition?> Condition { get; private set; } = null!;
@@ -215,7 +210,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class InstanceIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class InstanceIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.InstanceIamMemberConditionArgs>? Condition { get; set; }
@@ -253,9 +248,10 @@ namespace Pulumi.Gcp.Notebooks
         public InstanceIamMemberArgs()
         {
         }
+        public static new InstanceIamMemberArgs Empty => new InstanceIamMemberArgs();
     }
 
-    public sealed class InstanceIamMemberState : Pulumi.ResourceArgs
+    public sealed class InstanceIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.InstanceIamMemberConditionGetArgs>? Condition { get; set; }
@@ -299,5 +295,6 @@ namespace Pulumi.Gcp.Notebooks
         public InstanceIamMemberState()
         {
         }
+        public static new InstanceIamMemberState Empty => new InstanceIamMemberState();
     }
 }

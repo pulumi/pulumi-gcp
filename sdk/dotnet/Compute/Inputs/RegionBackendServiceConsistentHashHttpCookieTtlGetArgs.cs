@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceConsistentHashHttpCookieTtlGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceConsistentHashHttpCookieTtlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution. Durations
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceConsistentHashHttpCookieTtlGetArgs()
         {
         }
+        public static new RegionBackendServiceConsistentHashHttpCookieTtlGetArgs Empty => new RegionBackendServiceConsistentHashHttpCookieTtlGetArgs();
     }
 }

@@ -15,25 +15,24 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// Example creating a RuntimeConfig variable.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
     ///     {
-    ///         var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new Gcp.RuntimeConfig.ConfigArgs
-    ///         {
-    ///             Description = "Runtime configuration values for my service",
-    ///         });
-    ///         var environment = new Gcp.RuntimeConfig.Variable("environment", new Gcp.RuntimeConfig.VariableArgs
-    ///         {
-    ///             Parent = my_runtime_config.Name,
-    ///             Text = "example.com",
-    ///         });
-    ///     }
+    ///         Description = "Runtime configuration values for my service",
+    ///     });
     /// 
-    /// }
+    ///     var environment = new Gcp.RuntimeConfig.Variable("environment", new()
+    ///     {
+    ///         Parent = my_runtime_config.Name,
+    ///         Text = "example.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// You can also encode binary content using the `value` argument instead. The
@@ -43,30 +42,29 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ReadFileBase64(string path) {
     /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
     ///     {
-    ///         var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new Gcp.RuntimeConfig.ConfigArgs
-    ///         {
-    ///             Description = "Runtime configuration values for my service",
-    ///         });
-    ///         var my_secret = new Gcp.RuntimeConfig.Variable("my-secret", new Gcp.RuntimeConfig.VariableArgs
-    ///         {
-    ///             Parent = my_runtime_config.Name,
-    ///             Value = ReadFileBase64("my-encrypted-secret.dat"),
-    ///         });
-    ///     }
+    ///         Description = "Runtime configuration values for my service",
+    ///     });
     /// 
-    /// }
+    ///     var my_secret = new Gcp.RuntimeConfig.Variable("my-secret", new()
+    ///     {
+    ///         Parent = my_runtime_config.Name,
+    ///         Value = ReadFileBase64("my-encrypted-secret.dat"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +82,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     ///  When importing using only the name, the provider project must be set.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/variable:Variable")]
-    public partial class Variable : Pulumi.CustomResource
+    public partial class Variable : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the variable to manage. Note that variable
@@ -171,7 +169,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         }
     }
 
-    public sealed class VariableArgs : Pulumi.ResourceArgs
+    public sealed class VariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the variable to manage. Note that variable
@@ -209,9 +207,10 @@ namespace Pulumi.Gcp.RuntimeConfig
         public VariableArgs()
         {
         }
+        public static new VariableArgs Empty => new VariableArgs();
     }
 
-    public sealed class VariableState : Pulumi.ResourceArgs
+    public sealed class VariableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the variable to manage. Note that variable
@@ -257,5 +256,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         public VariableState()
         {
         }
+        public static new VariableState Empty => new VariableState();
     }
 }

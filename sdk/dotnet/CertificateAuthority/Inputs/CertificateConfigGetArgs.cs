@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A PublicKey describes a public key.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateConfigGetArgs()
         {
         }
+        public static new CertificateConfigGetArgs Empty => new CertificateConfigGetArgs();
     }
 }

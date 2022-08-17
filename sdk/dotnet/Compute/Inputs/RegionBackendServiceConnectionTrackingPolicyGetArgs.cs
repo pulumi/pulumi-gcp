@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceConnectionTrackingPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceConnectionTrackingPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies connection persistence when backends are unhealthy.
@@ -56,5 +56,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceConnectionTrackingPolicyGetArgs()
         {
         }
+        public static new RegionBackendServiceConnectionTrackingPolicyGetArgs Empty => new RegionBackendServiceConnectionTrackingPolicyGetArgs();
     }
 }

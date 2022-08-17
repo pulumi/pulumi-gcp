@@ -16,72 +16,69 @@ namespace Pulumi.Gcp.NetworkServices
     /// ### Network Services Edge Cache Origin Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new()
     ///     {
-    ///         var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new Gcp.NetworkServices.EdgeCacheOriginArgs
-    ///         {
-    ///             Description = "The default bucket for media edge test",
-    ///             OriginAddress = "gs://media-edge-default",
-    ///         });
-    ///     }
+    ///         Description = "The default bucket for media edge test",
+    ///         OriginAddress = "gs://media-edge-default",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Network Services Edge Cache Origin Advanced
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fallback = new Gcp.NetworkServices.EdgeCacheOrigin("fallback", new()
     ///     {
-    ///         var fallback = new Gcp.NetworkServices.EdgeCacheOrigin("fallback", new Gcp.NetworkServices.EdgeCacheOriginArgs
+    ///         OriginAddress = "gs://media-edge-fallback",
+    ///         Description = "The default bucket for media edge test",
+    ///         MaxAttempts = 3,
+    ///         Protocol = "HTTP",
+    ///         Port = 80,
+    ///         RetryConditions = new[]
     ///         {
-    ///             OriginAddress = "gs://media-edge-fallback",
-    ///             Description = "The default bucket for media edge test",
-    ///             MaxAttempts = 3,
-    ///             Protocol = "HTTP",
-    ///             Port = 80,
-    ///             RetryConditions = 
-    ///             {
-    ///                 "CONNECT_FAILURE",
-    ///                 "NOT_FOUND",
-    ///                 "HTTP_5XX",
-    ///                 "FORBIDDEN",
-    ///             },
-    ///             Timeout = new Gcp.NetworkServices.Inputs.EdgeCacheOriginTimeoutArgs
-    ///             {
-    ///                 ConnectTimeout = "10s",
-    ///                 MaxAttemptsTimeout = "20s",
-    ///                 ResponseTimeout = "60s",
-    ///                 ReadTimeout = "5s",
-    ///             },
-    ///         });
-    ///         var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new Gcp.NetworkServices.EdgeCacheOriginArgs
+    ///             "CONNECT_FAILURE",
+    ///             "NOT_FOUND",
+    ///             "HTTP_5XX",
+    ///             "FORBIDDEN",
+    ///         },
+    ///         Timeout = new Gcp.NetworkServices.Inputs.EdgeCacheOriginTimeoutArgs
     ///         {
-    ///             OriginAddress = "gs://media-edge-default",
-    ///             FailoverOrigin = fallback.Id,
-    ///             Description = "The default bucket for media edge test",
-    ///             MaxAttempts = 2,
-    ///             Labels = 
-    ///             {
-    ///                 { "a", "b" },
-    ///             },
-    ///             Timeout = new Gcp.NetworkServices.Inputs.EdgeCacheOriginTimeoutArgs
-    ///             {
-    ///                 ConnectTimeout = "10s",
-    ///             },
-    ///         });
-    ///     }
+    ///             ConnectTimeout = "10s",
+    ///             MaxAttemptsTimeout = "20s",
+    ///             ResponseTimeout = "60s",
+    ///             ReadTimeout = "5s",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new()
+    ///     {
+    ///         OriginAddress = "gs://media-edge-default",
+    ///         FailoverOrigin = fallback.Id,
+    ///         Description = "The default bucket for media edge test",
+    ///         MaxAttempts = 2,
+    ///         Labels = 
+    ///         {
+    ///             { "a", "b" },
+    ///         },
+    ///         Timeout = new Gcp.NetworkServices.Inputs.EdgeCacheOriginTimeoutArgs
+    ///         {
+    ///             ConnectTimeout = "10s",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -101,7 +98,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin")]
-    public partial class EdgeCacheOrigin : Pulumi.CustomResource
+    public partial class EdgeCacheOrigin : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -246,7 +243,7 @@ namespace Pulumi.Gcp.NetworkServices
         }
     }
 
-    public sealed class EdgeCacheOriginArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -362,9 +359,10 @@ namespace Pulumi.Gcp.NetworkServices
         public EdgeCacheOriginArgs()
         {
         }
+        public static new EdgeCacheOriginArgs Empty => new EdgeCacheOriginArgs();
     }
 
-    public sealed class EdgeCacheOriginState : Pulumi.ResourceArgs
+    public sealed class EdgeCacheOriginState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -480,5 +478,6 @@ namespace Pulumi.Gcp.NetworkServices
         public EdgeCacheOriginState()
         {
         }
+        public static new EdgeCacheOriginState Empty => new EdgeCacheOriginState();
     }
 }

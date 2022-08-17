@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 

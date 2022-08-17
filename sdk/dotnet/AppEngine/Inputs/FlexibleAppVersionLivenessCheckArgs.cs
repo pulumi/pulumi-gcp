@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionLivenessCheckArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionLivenessCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Interval between health checks.
@@ -58,5 +58,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionLivenessCheckArgs()
         {
         }
+        public static new FlexibleAppVersionLivenessCheckArgs Empty => new FlexibleAppVersionLivenessCheckArgs();
     }
 }

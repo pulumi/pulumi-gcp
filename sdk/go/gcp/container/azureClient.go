@@ -22,40 +22,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := container.NewAzureClient(ctx, "primary", &container.AzureClientArgs{
-// 			ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
-// 			Location:      pulumi.String("us-west1"),
-// 			Project:       pulumi.String("my-project-name"),
-// 			TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.NewAzureClient(ctx, "primary", &container.AzureClientArgs{
+//				ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
+//				Location:      pulumi.String("us-west1"),
+//				Project:       pulumi.String("my-project-name"),
+//				TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Client can be imported using any of these accepted formats
+// # Client can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}
+//
+//	$ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:container/azureClient:AzureClient default {{project}}/{{location}}/{{name}}
+//
+//	$ pulumi import gcp:container/azureClient:AzureClient default {{project}}/{{location}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:container/azureClient:AzureClient default {{location}}/{{name}}
+//
+//	$ pulumi import gcp:container/azureClient:AzureClient default {{location}}/{{name}}
+//
 // ```
 type AzureClient struct {
 	pulumi.CustomResourceState
@@ -210,7 +219,7 @@ func (i *AzureClient) ToAzureClientOutputWithContext(ctx context.Context) AzureC
 // AzureClientArrayInput is an input type that accepts AzureClientArray and AzureClientArrayOutput values.
 // You can construct a concrete instance of `AzureClientArrayInput` via:
 //
-//          AzureClientArray{ AzureClientArgs{...} }
+//	AzureClientArray{ AzureClientArgs{...} }
 type AzureClientArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +244,7 @@ func (i AzureClientArray) ToAzureClientArrayOutputWithContext(ctx context.Contex
 // AzureClientMapInput is an input type that accepts AzureClientMap and AzureClientMapOutput values.
 // You can construct a concrete instance of `AzureClientMapInput` via:
 //
-//          AzureClientMap{ "key": AzureClientArgs{...} }
+//	AzureClientMap{ "key": AzureClientArgs{...} }
 type AzureClientMapInput interface {
 	pulumi.Input
 

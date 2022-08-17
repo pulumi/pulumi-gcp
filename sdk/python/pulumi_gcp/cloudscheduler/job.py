@@ -21,6 +21,7 @@ class JobArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input['JobHttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input['JobPubsubTargetArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class JobArgs:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+        :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['JobPubsubTargetArgs'] pubsub_target: Pub/Sub target
@@ -73,6 +75,8 @@ class JobArgs:
             pulumi.set(__self__, "http_target", http_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pubsub_target is not None:
@@ -159,6 +163,18 @@ class JobArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
 
     @property
     @pulumi.getter
@@ -249,11 +265,13 @@ class _JobState:
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input['JobHttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input['JobPubsubTargetArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  retry_config: Optional[pulumi.Input['JobRetryConfigArgs']] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
@@ -276,6 +294,7 @@ class _JobState:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+        :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['JobPubsubTargetArgs'] pubsub_target: Pub/Sub target
@@ -288,6 +307,7 @@ class _JobState:
                then it will be retried with exponential backoff according to the settings
                Structure is documented below.
         :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
+        :param pulumi.Input[str] state: State of the job.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
         """
@@ -301,6 +321,8 @@ class _JobState:
             pulumi.set(__self__, "http_target", http_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pubsub_target is not None:
@@ -311,6 +333,8 @@ class _JobState:
             pulumi.set(__self__, "retry_config", retry_config)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
 
@@ -390,6 +414,18 @@ class _JobState:
 
     @property
     @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -456,6 +492,18 @@ class _JobState:
         pulumi.set(self, "schedule", value)
 
     @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the job.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -479,6 +527,7 @@ class Job(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input[pulumi.InputType['JobHttpTargetArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -606,6 +655,7 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+        :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']] pubsub_target: Pub/Sub target
@@ -746,6 +796,7 @@ class Job(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input[pulumi.InputType['JobHttpTargetArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -766,12 +817,14 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["http_target"] = http_target
             __props__.__dict__["name"] = name
+            __props__.__dict__["paused"] = paused
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_target"] = pubsub_target
             __props__.__dict__["region"] = region
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["time_zone"] = time_zone
+            __props__.__dict__["state"] = None
         super(Job, __self__).__init__(
             'gcp:cloudscheduler/job:Job',
             resource_name,
@@ -787,11 +840,13 @@ class Job(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             http_target: Optional[pulumi.Input[pulumi.InputType['JobHttpTargetArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            paused: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pubsub_target: Optional[pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             retry_config: Optional[pulumi.Input[pulumi.InputType['JobRetryConfigArgs']]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
             time_zone: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -819,6 +874,7 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+        :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobPubsubTargetArgs']] pubsub_target: Pub/Sub target
@@ -831,6 +887,7 @@ class Job(pulumi.CustomResource):
                then it will be retried with exponential backoff according to the settings
                Structure is documented below.
         :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
+        :param pulumi.Input[str] state: State of the job.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule.
                The value of this field must be a time zone name from the tz database.
         """
@@ -843,11 +900,13 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["http_target"] = http_target
         __props__.__dict__["name"] = name
+        __props__.__dict__["paused"] = paused
         __props__.__dict__["project"] = project
         __props__.__dict__["pubsub_target"] = pubsub_target
         __props__.__dict__["region"] = region
         __props__.__dict__["retry_config"] = retry_config
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["state"] = state
         __props__.__dict__["time_zone"] = time_zone
         return Job(resource_name, opts=opts, __props__=__props__)
 
@@ -907,6 +966,14 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def paused(self) -> pulumi.Output[bool]:
+        """
+        Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+        """
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs.
@@ -951,6 +1018,14 @@ class Job(pulumi.CustomResource):
         Describes the schedule on which the job will be executed.
         """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the job.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="timeZone")

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecGetArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourceExecGetArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourceExecGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs()
         {
         }
+        public static new DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs Empty => new DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs();
     }
 }

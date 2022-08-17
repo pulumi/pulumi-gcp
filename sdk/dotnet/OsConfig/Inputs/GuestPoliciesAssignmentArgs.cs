@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesAssignmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupLabels")]
         private InputList<Inputs.GuestPoliciesAssignmentGroupLabelArgs>? _groupLabels;
@@ -87,5 +87,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesAssignmentArgs()
         {
         }
+        public static new GuestPoliciesAssignmentArgs Empty => new GuestPoliciesAssignmentArgs();
     }
 }

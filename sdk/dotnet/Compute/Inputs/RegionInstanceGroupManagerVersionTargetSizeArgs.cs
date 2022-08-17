@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionInstanceGroupManagerVersionTargetSizeArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerVersionTargetSizeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// , The number of instances which are managed for this version. Conflicts with `percent`.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionInstanceGroupManagerVersionTargetSizeArgs()
         {
         }
+        public static new RegionInstanceGroupManagerVersionTargetSizeArgs Empty => new RegionInstanceGroupManagerVersionTargetSizeArgs();
     }
 }

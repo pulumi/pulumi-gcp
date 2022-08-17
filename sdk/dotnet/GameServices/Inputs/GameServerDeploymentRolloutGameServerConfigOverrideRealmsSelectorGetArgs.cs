@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("realms")]
         private InputList<string>? _realms;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorGetArgs()
         {
         }
+        public static new GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorGetArgs Empty => new GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorGetArgs();
     }
 }

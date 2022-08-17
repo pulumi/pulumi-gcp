@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableRangePartitioningRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class TableRangePartitioningRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// End of the range partitioning, exclusive.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableRangePartitioningRangeGetArgs()
         {
         }
+        public static new TableRangePartitioningRangeGetArgs Empty => new TableRangePartitioningRangeGetArgs();
     }
 }

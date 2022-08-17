@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
- *             .image(&#34;debian-8-jessie-v20170523&#34;)
+ *             .image(&#34;debian-11-bullseye-v20220719&#34;)
  *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
  *             .physicalBlockSizeBytes(4096)
  *             .type(&#34;pd-ssd&#34;)

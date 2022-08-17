@@ -25,47 +25,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("service-account-id"),
-// 			DisplayName: pulumi.String("Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			Location:              pulumi.String("us-central1"),
-// 			RemoveDefaultNodePool: pulumi.Bool(true),
-// 			InitialNodeCount:      pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
-// 			Location:  pulumi.String("us-central1"),
-// 			Cluster:   primary.Name,
-// 			NodeCount: pulumi.Int(1),
-// 			NodeConfig: &container.NodePoolNodeConfigArgs{
-// 				Preemptible:    pulumi.Bool(true),
-// 				MachineType:    pulumi.String("e2-medium"),
-// 				ServiceAccount: _default.Email,
-// 				OauthScopes: pulumi.StringArray{
-// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Location:              pulumi.String("us-central1"),
+//				RemoveDefaultNodePool: pulumi.Bool(true),
+//				InitialNodeCount:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+//				Location:  pulumi.String("us-central1"),
+//				Cluster:   primary.Name,
+//				NodeCount: pulumi.Int(1),
+//				NodeConfig: &container.NodePoolNodeConfigArgs{
+//					Preemptible:    pulumi.Bool(true),
+//					MachineType:    pulumi.String("e2-medium"),
+//					ServiceAccount: _default.Email,
+//					OauthScopes: pulumi.StringArray{
+//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
@@ -77,30 +80,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("service-account-id"),
-// 			DisplayName: pulumi.String("Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			EnableAutopilot: pulumi.Bool(true),
-// 			Location:        pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				EnableAutopilot: pulumi.Bool(true),
+//				Location:        pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -108,18 +114,24 @@ import (
 // GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
 //
 // ```sh
-//  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+//
+//	$ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+//
+//	$ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+//
+//	$ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+//
 // ```
 //
-//  For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
+//	For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -246,6 +258,8 @@ type Cluster struct {
 	// be different than the `minMasterVersion` set in the config if the master
 	// has been updated by GKE.
 	MasterVersion pulumi.StringOutput `pulumi:"masterVersion"`
+	// Structure is documented below.
+	MeshCertificates ClusterMeshCertificatesOutput `pulumi:"meshCertificates"`
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `masterVersion` field to obtain that.
@@ -522,6 +536,8 @@ type clusterState struct {
 	// be different than the `minMasterVersion` set in the config if the master
 	// has been updated by GKE.
 	MasterVersion *string `pulumi:"masterVersion"`
+	// Structure is documented below.
+	MeshCertificates *ClusterMeshCertificates `pulumi:"meshCertificates"`
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `masterVersion` field to obtain that.
@@ -770,6 +786,8 @@ type ClusterState struct {
 	// be different than the `minMasterVersion` set in the config if the master
 	// has been updated by GKE.
 	MasterVersion pulumi.StringPtrInput
+	// Structure is documented below.
+	MeshCertificates ClusterMeshCertificatesPtrInput
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `masterVersion` field to obtain that.
@@ -1014,6 +1032,8 @@ type clusterArgs struct {
 	// the cluster node IPs, which GKE automatically whitelists).
 	// Structure is documented below.
 	MasterAuthorizedNetworksConfig *ClusterMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
+	// Structure is documented below.
+	MeshCertificates *ClusterMeshCertificates `pulumi:"meshCertificates"`
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `masterVersion` field to obtain that.
@@ -1243,6 +1263,8 @@ type ClusterArgs struct {
 	// the cluster node IPs, which GKE automatically whitelists).
 	// Structure is documented below.
 	MasterAuthorizedNetworksConfig ClusterMasterAuthorizedNetworksConfigPtrInput
+	// Structure is documented below.
+	MeshCertificates ClusterMeshCertificatesPtrInput
 	// The minimum version of the master. GKE
 	// will auto-update the master to new versions, so this does not guarantee the
 	// current master version--use the read-only `masterVersion` field to obtain that.
@@ -1381,7 +1403,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -1406,7 +1428,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 
@@ -1664,6 +1686,11 @@ func (o ClusterOutput) MasterAuthorizedNetworksConfig() ClusterMasterAuthorizedN
 // has been updated by GKE.
 func (o ClusterOutput) MasterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MasterVersion }).(pulumi.StringOutput)
+}
+
+// Structure is documented below.
+func (o ClusterOutput) MeshCertificates() ClusterMeshCertificatesOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMeshCertificatesOutput { return v.MeshCertificates }).(ClusterMeshCertificatesOutput)
 }
 
 // The minimum version of the master. GKE

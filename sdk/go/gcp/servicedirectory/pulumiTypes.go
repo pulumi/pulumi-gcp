@@ -19,7 +19,7 @@ type NamespaceIamBindingCondition struct {
 // NamespaceIamBindingConditionInput is an input type that accepts NamespaceIamBindingConditionArgs and NamespaceIamBindingConditionOutput values.
 // You can construct a concrete instance of `NamespaceIamBindingConditionInput` via:
 //
-//          NamespaceIamBindingConditionArgs{...}
+//	NamespaceIamBindingConditionArgs{...}
 type NamespaceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i NamespaceIamBindingConditionArgs) ToNamespaceIamBindingConditionPtrOutpu
 // NamespaceIamBindingConditionPtrInput is an input type that accepts NamespaceIamBindingConditionArgs, NamespaceIamBindingConditionPtr and NamespaceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `NamespaceIamBindingConditionPtrInput` via:
 //
-//          NamespaceIamBindingConditionArgs{...}
+//	        NamespaceIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NamespaceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type NamespaceIamMemberCondition struct {
 // NamespaceIamMemberConditionInput is an input type that accepts NamespaceIamMemberConditionArgs and NamespaceIamMemberConditionOutput values.
 // You can construct a concrete instance of `NamespaceIamMemberConditionInput` via:
 //
-//          NamespaceIamMemberConditionArgs{...}
+//	NamespaceIamMemberConditionArgs{...}
 type NamespaceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -219,11 +219,11 @@ func (i NamespaceIamMemberConditionArgs) ToNamespaceIamMemberConditionPtrOutputW
 // NamespaceIamMemberConditionPtrInput is an input type that accepts NamespaceIamMemberConditionArgs, NamespaceIamMemberConditionPtr and NamespaceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `NamespaceIamMemberConditionPtrInput` via:
 //
-//          NamespaceIamMemberConditionArgs{...}
+//	        NamespaceIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NamespaceIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type ServiceIamBindingCondition struct {
 // ServiceIamBindingConditionInput is an input type that accepts ServiceIamBindingConditionArgs and ServiceIamBindingConditionOutput values.
 // You can construct a concrete instance of `ServiceIamBindingConditionInput` via:
 //
-//          ServiceIamBindingConditionArgs{...}
+//	ServiceIamBindingConditionArgs{...}
 type ServiceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -382,11 +382,11 @@ func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutputWit
 // ServiceIamBindingConditionPtrInput is an input type that accepts ServiceIamBindingConditionArgs, ServiceIamBindingConditionPtr and ServiceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `ServiceIamBindingConditionPtrInput` via:
 //
-//          ServiceIamBindingConditionArgs{...}
+//	        ServiceIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -508,7 +508,7 @@ type ServiceIamMemberCondition struct {
 // ServiceIamMemberConditionInput is an input type that accepts ServiceIamMemberConditionArgs and ServiceIamMemberConditionOutput values.
 // You can construct a concrete instance of `ServiceIamMemberConditionInput` via:
 //
-//          ServiceIamMemberConditionArgs{...}
+//	ServiceIamMemberConditionArgs{...}
 type ServiceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -545,11 +545,11 @@ func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutputWithC
 // ServiceIamMemberConditionPtrInput is an input type that accepts ServiceIamMemberConditionArgs, ServiceIamMemberConditionPtr and ServiceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `ServiceIamMemberConditionPtrInput` via:
 //
-//          ServiceIamMemberConditionArgs{...}
+//	        ServiceIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIamMemberConditionPtrInput interface {
 	pulumi.Input
 

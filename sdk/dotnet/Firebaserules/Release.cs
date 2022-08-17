@@ -16,87 +16,86 @@ namespace Pulumi.Gcp.Firebaserules
     /// ### Basic_release
     /// Creates a basic Firebase Rules Release
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Firebaserules.Ruleset("basic", new()
     ///     {
-    ///         var basic = new Gcp.Firebaserules.Ruleset("basic", new Gcp.Firebaserules.RulesetArgs
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
-    ///             Project = "my-project-name",
-    ///             Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///             Files = new[]
     ///             {
-    ///                 Files = 
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
-    ///                     new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                     {
-    ///                         Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                         Fingerprint = "",
-    ///                         Name = "firestore.rules",
-    ///                     },
-    ///                 },
-    ///                 Language = "",
-    ///             },
-    ///         });
-    ///         var primary = new Gcp.Firebaserules.Release("primary", new Gcp.Firebaserules.ReleaseArgs
-    ///         {
-    ///             Project = "my-project-name",
-    ///             RulesetName = basic.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
-    ///         });
-    ///         var minimal = new Gcp.Firebaserules.Ruleset("minimal", new Gcp.Firebaserules.RulesetArgs
-    ///         {
-    ///             Project = "my-project-name",
-    ///             Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
-    ///             {
-    ///                 Files = 
-    ///                 {
-    ///                     new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                     {
-    ///                         Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                         Name = "firestore.rules",
-    ///                     },
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Fingerprint = "",
+    ///                     Name = "firestore.rules",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             Language = "",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Firebaserules.Release("primary", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         RulesetName = basic.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
+    ///     });
+    /// 
+    ///     var minimal = new Gcp.Firebaserules.Ruleset("minimal", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///         {
+    ///             Files = new[]
+    ///             {
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
+    ///                 {
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Name = "firestore.rules",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Minimal_release
     /// Creates a minimal Firebase Rules Release
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var minimal = new Gcp.Firebaserules.Ruleset("minimal", new()
     ///     {
-    ///         var minimal = new Gcp.Firebaserules.Ruleset("minimal", new Gcp.Firebaserules.RulesetArgs
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
-    ///             Project = "my-project-name",
-    ///             Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///             Files = new[]
     ///             {
-    ///                 Files = 
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
-    ///                     new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                     {
-    ///                         Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                         Name = "firestore.rules",
-    ///                     },
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Name = "firestore.rules",
     ///                 },
     ///             },
-    ///         });
-    ///         var primary = new Gcp.Firebaserules.Release("primary", new Gcp.Firebaserules.ReleaseArgs
-    ///         {
-    ///             Project = "my-project-name",
-    ///             RulesetName = minimal.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Firebaserules.Release("primary", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         RulesetName = minimal.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -108,7 +107,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebaserules/release:Release")]
-    public partial class Release : Pulumi.CustomResource
+    public partial class Release : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. Time the release was created.
@@ -191,7 +190,7 @@ namespace Pulumi.Gcp.Firebaserules
         }
     }
 
-    public sealed class ReleaseArgs : Pulumi.ResourceArgs
+    public sealed class ReleaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -214,9 +213,10 @@ namespace Pulumi.Gcp.Firebaserules
         public ReleaseArgs()
         {
         }
+        public static new ReleaseArgs Empty => new ReleaseArgs();
     }
 
-    public sealed class ReleaseState : Pulumi.ResourceArgs
+    public sealed class ReleaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. Time the release was created.
@@ -258,5 +258,6 @@ namespace Pulumi.Gcp.Firebaserules
         public ReleaseState()
         {
         }
+        public static new ReleaseState Empty => new ReleaseState();
     }
 }

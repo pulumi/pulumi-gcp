@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentInstanceFilterArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentInstanceFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target all VM instances in the project. If true, no other criteria is permitted.
@@ -73,5 +73,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentInstanceFilterArgs()
         {
         }
+        public static new PatchDeploymentInstanceFilterArgs Empty => new PatchDeploymentInstanceFilterArgs();
     }
 }

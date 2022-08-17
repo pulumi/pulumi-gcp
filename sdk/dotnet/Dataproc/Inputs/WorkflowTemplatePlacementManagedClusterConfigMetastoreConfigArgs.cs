@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterControlPlaneInstancePlacementGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterControlPlaneInstancePlacementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterControlPlaneInstancePlacementGetArgs()
         {
         }
+        public static new AwsClusterControlPlaneInstancePlacementGetArgs Empty => new AwsClusterControlPlaneInstancePlacementGetArgs();
     }
 }

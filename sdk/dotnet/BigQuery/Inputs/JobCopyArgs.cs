@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobCopyArgs : Pulumi.ResourceArgs
+    public sealed class JobCopyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -66,5 +66,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobCopyArgs()
         {
         }
+        public static new JobCopyArgs Empty => new JobCopyArgs();
     }
 }

@@ -198,6 +198,115 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Notebook Runtime Kernels
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.notebooks.Runtime;
+ * import com.pulumi.gcp.notebooks.RuntimeArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeAccessConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var runtimeContainer = new Runtime(&#34;runtimeContainer&#34;, RuntimeArgs.builder()        
+ *             .accessConfig(RuntimeAccessConfigArgs.builder()
+ *                 .accessType(&#34;SINGLE_USER&#34;)
+ *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
+ *                 .kernels(RuntimeSoftwareConfigKernelArgs.builder()
+ *                     .repository(&#34;gcr.io/deeplearning-platform-release/base-cpu&#34;)
+ *                     .tag(&#34;latest&#34;)
+ *                     .build())
+ *                 .build())
+ *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
+ *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
+ *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
+ *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
+ *                             .diskSizeGb(&#34;100&#34;)
+ *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Notebook Runtime Script
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.notebooks.Runtime;
+ * import com.pulumi.gcp.notebooks.RuntimeArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeAccessConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
+ * import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var runtimeContainer = new Runtime(&#34;runtimeContainer&#34;, RuntimeArgs.builder()        
+ *             .accessConfig(RuntimeAccessConfigArgs.builder()
+ *                 .accessType(&#34;SINGLE_USER&#34;)
+ *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
+ *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
+ *                 .postStartupScriptBehavior(&#34;RUN_EVERY_START&#34;)
+ *                 .build())
+ *             .virtualMachine(RuntimeVirtualMachineArgs.builder()
+ *                 .virtualMachineConfig(RuntimeVirtualMachineVirtualMachineConfigArgs.builder()
+ *                     .dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs.builder()
+ *                         .initializeParams(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs.builder()
+ *                             .diskSizeGb(&#34;100&#34;)
+ *                             .diskType(&#34;PD_STANDARD&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .machineType(&#34;n1-standard-4&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

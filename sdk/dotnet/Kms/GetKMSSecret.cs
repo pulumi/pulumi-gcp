@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Kms
     }
 
 
-    public sealed class GetKMSSecretArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSSecretArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
@@ -68,9 +68,10 @@ namespace Pulumi.Gcp.Kms
         public GetKMSSecretArgs()
         {
         }
+        public static new GetKMSSecretArgs Empty => new GetKMSSecretArgs();
     }
 
-    public sealed class GetKMSSecretInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.Kms
         public GetKMSSecretInvokeArgs()
         {
         }
+        public static new GetKMSSecretInvokeArgs Empty => new GetKMSSecretInvokeArgs();
     }
 
 

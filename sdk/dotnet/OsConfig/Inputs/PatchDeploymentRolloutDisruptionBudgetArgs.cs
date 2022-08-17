@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRolloutDisruptionBudgetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRolloutDisruptionBudgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fixed value.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRolloutDisruptionBudgetArgs()
         {
         }
+        public static new PatchDeploymentRolloutDisruptionBudgetArgs Empty => new PatchDeploymentRolloutDisruptionBudgetArgs();
     }
 }

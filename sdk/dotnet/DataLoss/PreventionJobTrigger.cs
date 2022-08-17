@@ -22,63 +22,61 @@ namespace Pulumi.Gcp.DataLoss
     /// ### Dlp Job Trigger Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.DataLoss.PreventionJobTrigger("basic", new()
     ///     {
-    ///         var basic = new Gcp.DataLoss.PreventionJobTrigger("basic", new Gcp.DataLoss.PreventionJobTriggerArgs
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
     ///         {
-    ///             Description = "Description",
-    ///             DisplayName = "Displayname",
-    ///             InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///             Actions = new[]
     ///             {
-    ///                 Actions = 
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
     ///                 {
-    ///                     new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
     ///                     {
-    ///                         SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
     ///                         {
-    ///                             OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
     ///                             {
-    ///                                 Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
-    ///                                 {
-    ///                                     DatasetId = "asdf",
-    ///                                     ProjectId = "asdf",
-    ///                                 },
+    ///                                 DatasetId = "asdf",
+    ///                                 ProjectId = "asdf",
     ///                             },
     ///                         },
     ///                     },
     ///                 },
-    ///                 InspectTemplateName = "fake",
-    ///                 StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
-    ///                 {
-    ///                     CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
-    ///                     {
-    ///                         FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
-    ///                         {
-    ///                             Url = "gs://mybucket/directory/",
-    ///                         },
-    ///                     },
-    ///                 },
     ///             },
-    ///             Parent = "projects/my-project-name",
-    ///             Triggers = 
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
     ///             {
-    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
     ///                 {
-    ///                     Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
     ///                     {
-    ///                         RecurrencePeriodDuration = "86400s",
+    ///                         Url = "gs://mybucket/directory/",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,7 +92,7 @@ namespace Pulumi.Gcp.DataLoss
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger")]
-    public partial class PreventionJobTrigger : Pulumi.CustomResource
+    public partial class PreventionJobTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the job trigger.
@@ -193,7 +191,7 @@ namespace Pulumi.Gcp.DataLoss
         }
     }
 
-    public sealed class PreventionJobTriggerArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the job trigger.
@@ -245,9 +243,10 @@ namespace Pulumi.Gcp.DataLoss
         public PreventionJobTriggerArgs()
         {
         }
+        public static new PreventionJobTriggerArgs Empty => new PreventionJobTriggerArgs();
     }
 
-    public sealed class PreventionJobTriggerState : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the job trigger.
@@ -311,5 +310,6 @@ namespace Pulumi.Gcp.DataLoss
         public PreventionJobTriggerState()
         {
         }
+        public static new PreventionJobTriggerState Empty => new PreventionJobTriggerState();
     }
 }

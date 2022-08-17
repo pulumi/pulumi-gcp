@@ -25,26 +25,25 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serviceAccount = Gcp.AccessApproval.GetFolderServiceAccount.Invoke(new()
         ///     {
-        ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetFolderServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetFolderServiceAccountArgs
-        ///         {
-        ///             FolderId = "my-folder",
-        ///         }));
-        ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///             Role = "roles/cloudkms.signerVerifier",
-        ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-        ///         });
-        ///     }
+        ///         FolderId = "my-folder",
+        ///     });
         /// 
-        /// }
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getFolderServiceAccountResult =&gt; getFolderServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -66,26 +65,25 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serviceAccount = Gcp.AccessApproval.GetFolderServiceAccount.Invoke(new()
         ///     {
-        ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetFolderServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetFolderServiceAccountArgs
-        ///         {
-        ///             FolderId = "my-folder",
-        ///         }));
-        ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///             Role = "roles/cloudkms.signerVerifier",
-        ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-        ///         });
-        ///     }
+        ///         FolderId = "my-folder",
+        ///     });
         /// 
-        /// }
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getFolderServiceAccountResult =&gt; getFolderServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +93,7 @@ namespace Pulumi.Gcp.AccessApproval
     }
 
 
-    public sealed class GetFolderServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The folder ID the service account was created for.
@@ -106,9 +104,10 @@ namespace Pulumi.Gcp.AccessApproval
         public GetFolderServiceAccountArgs()
         {
         }
+        public static new GetFolderServiceAccountArgs Empty => new GetFolderServiceAccountArgs();
     }
 
-    public sealed class GetFolderServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The folder ID the service account was created for.
@@ -119,6 +118,7 @@ namespace Pulumi.Gcp.AccessApproval
         public GetFolderServiceAccountInvokeArgs()
         {
         }
+        public static new GetFolderServiceAccountInvokeArgs Empty => new GetFolderServiceAccountInvokeArgs();
     }
 
 

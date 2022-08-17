@@ -19,30 +19,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewIamAuditConfig(ctx, "config", &organizations.IamAuditConfigArgs{
-// 			AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
-// 				&organizations.IamAuditConfigAuditLogConfigArgs{
-// 					ExemptedMembers: pulumi.StringArray{
-// 						pulumi.String("user:joebloggs@hashicorp.com"),
-// 					},
-// 					LogType: pulumi.String("DATA_READ"),
-// 				},
-// 			},
-// 			OrgId:   pulumi.String("your-organization-id"),
-// 			Service: pulumi.String("allServices"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamAuditConfig(ctx, "config", &organizations.IamAuditConfigArgs{
+//				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@hashicorp.com"),
+//						},
+//						LogType: pulumi.String("DATA_READ"),
+//					},
+//				},
+//				OrgId:   pulumi.String("your-organization-id"),
+//				Service: pulumi.String("allServices"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // IAM audit config imports use the identifier of the resource in question and the service, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+//
+//	$ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+//
 // ```
 type IamAuditConfig struct {
 	pulumi.CustomResourceState
@@ -173,7 +178,7 @@ func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) 
 // IamAuditConfigArrayInput is an input type that accepts IamAuditConfigArray and IamAuditConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigArrayInput` via:
 //
-//          IamAuditConfigArray{ IamAuditConfigArgs{...} }
+//	IamAuditConfigArray{ IamAuditConfigArgs{...} }
 type IamAuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +203,7 @@ func (i IamAuditConfigArray) ToIamAuditConfigArrayOutputWithContext(ctx context.
 // IamAuditConfigMapInput is an input type that accepts IamAuditConfigMap and IamAuditConfigMapOutput values.
 // You can construct a concrete instance of `IamAuditConfigMapInput` via:
 //
-//          IamAuditConfigMap{ "key": IamAuditConfigArgs{...} }
+//	IamAuditConfigMap{ "key": IamAuditConfigArgs{...} }
 type IamAuditConfigMapInput interface {
 	pulumi.Input
 

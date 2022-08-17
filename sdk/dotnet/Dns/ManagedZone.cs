@@ -24,221 +24,219 @@ namespace Pulumi.Gcp.Dns
     /// ### Dns Managed Zone Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example_zone = new Gcp.Dns.ManagedZone("example-zone", new()
     ///     {
-    ///         var example_zone = new Gcp.Dns.ManagedZone("example-zone", new Gcp.Dns.ManagedZoneArgs
+    ///         Description = "Example DNS zone",
+    ///         DnsName = "my-domain.com.",
+    ///         Labels = 
     ///         {
-    ///             Description = "Example DNS zone",
-    ///             DnsName = "my-domain.com.",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Dns Managed Zone Private
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
-    ///         var network_1 = new Gcp.Compute.Network("network-1", new Gcp.Compute.NetworkArgs
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var network_2 = new Gcp.Compute.Network("network-2", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var private_zone = new Gcp.Dns.ManagedZone("private-zone", new()
+    ///     {
+    ///         DnsName = "private.example.com.",
+    ///         Description = "Example private DNS zone",
+    ///         Labels = 
     ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var network_2 = new Gcp.Compute.Network("network-2", new Gcp.Compute.NetworkArgs
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
     ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var private_zone = new Gcp.Dns.ManagedZone("private-zone", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "private.example.com.",
-    ///             Description = "Example private DNS zone",
-    ///             Labels = 
+    ///             Networks = new[]
     ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Visibility = "private",
-    ///             PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
-    ///             {
-    ///                 Networks = 
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
     ///                 {
-    ///                     new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
-    ///                     {
-    ///                         NetworkUrl = network_1.Id,
-    ///                     },
-    ///                     new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
-    ///                     {
-    ///                         NetworkUrl = network_2.Id,
-    ///                     },
+    ///                     NetworkUrl = network_1.Id,
+    ///                 },
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network_2.Id,
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Dns Managed Zone Private Forwarding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
-    ///         var network_1 = new Gcp.Compute.Network("network-1", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var network_2 = new Gcp.Compute.Network("network-2", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var private_zone = new Gcp.Dns.ManagedZone("private-zone", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "private.example.com.",
-    ///             Description = "Example private DNS zone",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Visibility = "private",
-    ///             PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
-    ///             {
-    ///                 Networks = 
-    ///                 {
-    ///                     new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
-    ///                     {
-    ///                         NetworkUrl = network_1.Id,
-    ///                     },
-    ///                     new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
-    ///                     {
-    ///                         NetworkUrl = network_2.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ForwardingConfig = new Gcp.Dns.Inputs.ManagedZoneForwardingConfigArgs
-    ///             {
-    ///                 TargetNameServers = 
-    ///                 {
-    ///                     new Gcp.Dns.Inputs.ManagedZoneForwardingConfigTargetNameServerArgs
-    ///                     {
-    ///                         Ipv4Address = "172.16.1.10",
-    ///                     },
-    ///                     new Gcp.Dns.Inputs.ManagedZoneForwardingConfigTargetNameServerArgs
-    ///                     {
-    ///                         Ipv4Address = "172.16.1.20",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var network_2 = new Gcp.Compute.Network("network-2", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var private_zone = new Gcp.Dns.ManagedZone("private-zone", new()
+    ///     {
+    ///         DnsName = "private.example.com.",
+    ///         Description = "Example private DNS zone",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network_1.Id,
+    ///                 },
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network_2.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ForwardingConfig = new Gcp.Dns.Inputs.ManagedZoneForwardingConfigArgs
+    ///         {
+    ///             TargetNameServers = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZoneForwardingConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv4Address = "172.16.1.10",
+    ///                 },
+    ///                 new Gcp.Dns.Inputs.ManagedZoneForwardingConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv4Address = "172.16.1.20",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Dns Managed Zone Private Peering
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network_source = new Gcp.Compute.Network("network-source", new()
     ///     {
-    ///         var network_source = new Gcp.Compute.Network("network-source", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var network_target = new Gcp.Compute.Network("network-target", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var peering_zone = new Gcp.Dns.ManagedZone("peering-zone", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "peering.example.com.",
-    ///             Description = "Example private DNS peering zone",
-    ///             Visibility = "private",
-    ///             PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
-    ///             {
-    ///                 Networks = 
-    ///                 {
-    ///                     new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
-    ///                     {
-    ///                         NetworkUrl = network_source.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             PeeringConfig = new Gcp.Dns.Inputs.ManagedZonePeeringConfigArgs
-    ///             {
-    ///                 TargetNetwork = new Gcp.Dns.Inputs.ManagedZonePeeringConfigTargetNetworkArgs
-    ///                 {
-    ///                     NetworkUrl = network_target.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var network_target = new Gcp.Compute.Network("network-target", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var peering_zone = new Gcp.Dns.ManagedZone("peering-zone", new()
+    ///     {
+    ///         DnsName = "peering.example.com.",
+    ///         Description = "Example private DNS peering zone",
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network_source.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         PeeringConfig = new Gcp.Dns.Inputs.ManagedZonePeeringConfigArgs
+    ///         {
+    ///             TargetNetwork = new Gcp.Dns.Inputs.ManagedZonePeeringConfigTargetNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_target.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Dns Managed Zone Service Directory
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.ServiceDirectory.Namespace("example", new()
     ///     {
-    ///         var example = new Gcp.ServiceDirectory.Namespace("example", new Gcp.ServiceDirectory.NamespaceArgs
-    ///         {
-    ///             NamespaceId = "example",
-    ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var sd_zone = new Gcp.Dns.ManagedZone("sd-zone", new Gcp.Dns.ManagedZoneArgs
-    ///         {
-    ///             DnsName = "services.example.com.",
-    ///             Description = "Example private DNS Service Directory zone",
-    ///             Visibility = "private",
-    ///             ServiceDirectoryConfig = new Gcp.Dns.Inputs.ManagedZoneServiceDirectoryConfigArgs
-    ///             {
-    ///                 Namespace = new Gcp.Dns.Inputs.ManagedZoneServiceDirectoryConfigNamespaceArgs
-    ///                 {
-    ///                     NamespaceUrl = example.Id,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         NamespaceId = "example",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var sd_zone = new Gcp.Dns.ManagedZone("sd-zone", new()
+    ///     {
+    ///         DnsName = "services.example.com.",
+    ///         Description = "Example private DNS Service Directory zone",
+    ///         Visibility = "private",
+    ///         ServiceDirectoryConfig = new Gcp.Dns.Inputs.ManagedZoneServiceDirectoryConfigArgs
+    ///         {
+    ///             Namespace = new Gcp.Dns.Inputs.ManagedZoneServiceDirectoryConfigNamespaceArgs
+    ///             {
+    ///                 NamespaceUrl = example.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -258,7 +256,7 @@ namespace Pulumi.Gcp.Dns
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dns/managedZone:ManagedZone")]
-    public partial class ManagedZone : Pulumi.CustomResource
+    public partial class ManagedZone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format.
@@ -416,7 +414,7 @@ namespace Pulumi.Gcp.Dns
         }
     }
 
-    public sealed class ManagedZoneArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A textual description field. Defaults to 'Managed by Pulumi'.
@@ -522,9 +520,10 @@ namespace Pulumi.Gcp.Dns
         {
             Description = "Managed by Pulumi";
         }
+        public static new ManagedZoneArgs Empty => new ManagedZoneArgs();
     }
 
-    public sealed class ManagedZoneState : Pulumi.ResourceArgs
+    public sealed class ManagedZoneState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format.
@@ -654,5 +653,6 @@ namespace Pulumi.Gcp.Dns
         {
             Description = "Managed by Pulumi";
         }
+        public static new ManagedZoneState Empty => new ManagedZoneState();
     }
 }

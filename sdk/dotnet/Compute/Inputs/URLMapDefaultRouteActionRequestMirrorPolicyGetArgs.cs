@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapDefaultRouteActionRequestMirrorPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapDefaultRouteActionRequestMirrorPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full or partial URL to the BackendService resource being mirrored to.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapDefaultRouteActionRequestMirrorPolicyGetArgs()
         {
         }
+        public static new URLMapDefaultRouteActionRequestMirrorPolicyGetArgs Empty => new URLMapDefaultRouteActionRequestMirrorPolicyGetArgs();
     }
 }

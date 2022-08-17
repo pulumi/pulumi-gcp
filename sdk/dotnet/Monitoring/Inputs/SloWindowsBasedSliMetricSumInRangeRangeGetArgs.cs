@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliMetricSumInRangeRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliMetricSumInRangeRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// max value for the range (inclusive). If not given,
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliMetricSumInRangeRangeGetArgs()
         {
         }
+        public static new SloWindowsBasedSliMetricSumInRangeRangeGetArgs Empty => new SloWindowsBasedSliMetricSumInRangeRangeGetArgs();
     }
 }

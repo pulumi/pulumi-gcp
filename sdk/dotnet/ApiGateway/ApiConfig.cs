@@ -23,47 +23,46 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ReadFileBase64(string path) {
     /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apiCfgApi = new Gcp.ApiGateway.Api("apiCfgApi", new()
     ///     {
-    ///         var apiCfgApi = new Gcp.ApiGateway.Api("apiCfgApi", new Gcp.ApiGateway.ApiArgs
+    ///         ApiId = "api-cfg",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("apiCfgApiConfig", new()
+    ///     {
+    ///         Api = apiCfgApi.ApiId,
+    ///         ApiConfigId = "cfg",
+    ///         OpenapiDocuments = new[]
     ///         {
-    ///             ApiId = "api-cfg",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("apiCfgApiConfig", new Gcp.ApiGateway.ApiConfigArgs
-    ///         {
-    ///             Api = apiCfgApi.ApiId,
-    ///             ApiConfigId = "cfg",
-    ///             OpenapiDocuments = 
+    ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
     ///             {
-    ///                 new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
+    ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
     ///                 {
-    ///                     Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
-    ///                     {
-    ///                         Path = "spec.yaml",
-    ///                         Contents = ReadFileBase64("test-fixtures/apigateway/openapi.yaml"),
-    ///                     },
+    ///                     Path = "spec.yaml",
+    ///                     Contents = ReadFileBase64("test-fixtures/apigateway/openapi.yaml"),
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -83,7 +82,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigateway/apiConfig:ApiConfig")]
-    public partial class ApiConfig : Pulumi.CustomResource
+    public partial class ApiConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API to attach the config to.
@@ -209,7 +208,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
     }
 
-    public sealed class ApiConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API to attach the config to.
@@ -306,9 +305,10 @@ namespace Pulumi.Gcp.ApiGateway
         public ApiConfigArgs()
         {
         }
+        public static new ApiConfigArgs Empty => new ApiConfigArgs();
     }
 
-    public sealed class ApiConfigState : Pulumi.ResourceArgs
+    public sealed class ApiConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API to attach the config to.
@@ -417,5 +417,6 @@ namespace Pulumi.Gcp.ApiGateway
         public ApiConfigState()
         {
         }
+        public static new ApiConfigState Empty => new ApiConfigState();
     }
 }

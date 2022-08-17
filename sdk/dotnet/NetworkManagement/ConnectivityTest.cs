@@ -24,134 +24,134 @@ namespace Pulumi.Gcp.NetworkManagement
     /// ### Network Management Connectivity Test Instances
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpc = new Gcp.Compute.Network("vpc", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var debian9 = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var source = new Gcp.Compute.Instance("source", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = debian9.Apply(debian9 =&gt; debian9.Id),
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = vpc.Id,
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var destination = new Gcp.Compute.Instance("destination", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = debian9.Apply(debian9 =&gt; debian9.Id),
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = vpc.Id,
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var instance_test = new Gcp.NetworkManagement.ConnectivityTest("instance-test", new Gcp.NetworkManagement.ConnectivityTestArgs
-    ///         {
-    ///             Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
-    ///             {
-    ///                 Instance = source.Id,
-    ///             },
-    ///             Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
-    ///             {
-    ///                 Instance = destination.Id,
-    ///             },
-    ///             Protocol = "TCP",
-    ///         });
-    ///     }
+    ///     var vpc = new Gcp.Compute.Network("vpc");
     /// 
-    /// }
+    ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var source = new Gcp.Compute.Instance("source", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = debian9.Apply(getImageResult =&gt; getImageResult.Id),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = vpc.Id,
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     ,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var destination = new Gcp.Compute.Instance("destination", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = debian9.Apply(getImageResult =&gt; getImageResult.Id),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = vpc.Id,
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     ,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var instance_test = new Gcp.NetworkManagement.ConnectivityTest("instance-test", new()
+    ///     {
+    ///         Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+    ///         {
+    ///             Instance = source.Id,
+    ///         },
+    ///         Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+    ///         {
+    ///             Instance = destination.Id,
+    ///         },
+    ///         Protocol = "TCP",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Network Management Connectivity Test Addresses
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpc = new Gcp.Compute.Network("vpc", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var subnet = new Gcp.Compute.Subnetwork("subnet", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/16",
-    ///             Region = "us-central1",
-    ///             Network = vpc.Id,
-    ///         });
-    ///         var source_addr = new Gcp.Compute.Address("source-addr", new Gcp.Compute.AddressArgs
-    ///         {
-    ///             Subnetwork = subnet.Id,
-    ///             AddressType = "INTERNAL",
-    ///             IPAddress = "10.0.42.42",
-    ///             Region = "us-central1",
-    ///         });
-    ///         var dest_addr = new Gcp.Compute.Address("dest-addr", new Gcp.Compute.AddressArgs
-    ///         {
-    ///             Subnetwork = subnet.Id,
-    ///             AddressType = "INTERNAL",
-    ///             IPAddress = "10.0.43.43",
-    ///             Region = "us-central1",
-    ///         });
-    ///         var address_test = new Gcp.NetworkManagement.ConnectivityTest("address-test", new Gcp.NetworkManagement.ConnectivityTestArgs
-    ///         {
-    ///             Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
-    ///             {
-    ///                 IpAddress = source_addr.IPAddress,
-    ///                 ProjectId = source_addr.Project,
-    ///                 Network = vpc.Id,
-    ///                 NetworkType = "GCP_NETWORK",
-    ///             },
-    ///             Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
-    ///             {
-    ///                 IpAddress = dest_addr.IPAddress,
-    ///                 ProjectId = dest_addr.Project,
-    ///                 Network = vpc.Id,
-    ///             },
-    ///             Protocol = "UDP",
-    ///         });
-    ///     }
+    ///     var vpc = new Gcp.Compute.Network("vpc");
     /// 
-    /// }
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = vpc.Id,
+    ///     });
+    /// 
+    ///     var source_addr = new Gcp.Compute.Address("source-addr", new()
+    ///     {
+    ///         Subnetwork = subnet.Id,
+    ///         AddressType = "INTERNAL",
+    ///         IPAddress = "10.0.42.42",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var dest_addr = new Gcp.Compute.Address("dest-addr", new()
+    ///     {
+    ///         Subnetwork = subnet.Id,
+    ///         AddressType = "INTERNAL",
+    ///         IPAddress = "10.0.43.43",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var address_test = new Gcp.NetworkManagement.ConnectivityTest("address-test", new()
+    ///     {
+    ///         Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+    ///         {
+    ///             IpAddress = source_addr.IPAddress,
+    ///             ProjectId = source_addr.Project,
+    ///             Network = vpc.Id,
+    ///             NetworkType = "GCP_NETWORK",
+    ///         },
+    ///         Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+    ///         {
+    ///             IpAddress = dest_addr.IPAddress,
+    ///             ProjectId = dest_addr.Project,
+    ///             Network = vpc.Id,
+    ///         },
+    ///         Protocol = "UDP",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkmanagement/connectivityTest:ConnectivityTest")]
-    public partial class ConnectivityTest : Pulumi.CustomResource
+    public partial class ConnectivityTest : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The user-supplied description of the Connectivity Test.
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.NetworkManagement
         }
     }
 
-    public sealed class ConnectivityTestArgs : Pulumi.ResourceArgs
+    public sealed class ConnectivityTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-supplied description of the Connectivity Test.
@@ -402,9 +402,10 @@ namespace Pulumi.Gcp.NetworkManagement
         public ConnectivityTestArgs()
         {
         }
+        public static new ConnectivityTestArgs Empty => new ConnectivityTestArgs();
     }
 
-    public sealed class ConnectivityTestState : Pulumi.ResourceArgs
+    public sealed class ConnectivityTestState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-supplied description of the Connectivity Test.
@@ -505,5 +506,6 @@ namespace Pulumi.Gcp.NetworkManagement
         public ConnectivityTestState()
         {
         }
+        public static new ConnectivityTestState Empty => new ConnectivityTestState();
     }
 }

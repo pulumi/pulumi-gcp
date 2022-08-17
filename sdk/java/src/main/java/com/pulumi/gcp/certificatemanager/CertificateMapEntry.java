@@ -152,16 +152,14 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * A human-readable description of the resource.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * @return A human-readable description of the resource.
      * 
      */
     public Output<Optional<String>> description() {
@@ -219,7 +217,6 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
     }
     /**
      * A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      * 
      */
     @Export(name="matcher", type=String.class, parameters={})
@@ -227,7 +224,6 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      * 
      */
     public Output<Optional<String>> matcher() {
@@ -268,16 +264,14 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-     * progress. Some frontends may serve this configuration.
+     * A serving state of this Certificate Map Entry.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-     * progress. Some frontends may serve this configuration.
+     * @return A serving state of this Certificate Map Entry.
      * 
      */
     public Output<String> state() {

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const myImage = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.InstanceTemplate("foobar", {
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myImage = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
  *     // boot disk
  *     disks: [{
- *         sourceImage: "debian-cloud/debian-9",
+ *         sourceImage: "debian-cloud/debian-11",
  *     }],
  *     machineType: "e2-medium",
  *     namePrefix: "instance-template-",

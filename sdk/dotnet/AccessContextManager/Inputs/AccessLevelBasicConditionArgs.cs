@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelBasicConditionArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelBasicConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Device specific restrictions, all restrictions must hold for
@@ -101,5 +101,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelBasicConditionArgs()
         {
         }
+        public static new AccessLevelBasicConditionArgs Empty => new AccessLevelBasicConditionArgs();
     }
 }

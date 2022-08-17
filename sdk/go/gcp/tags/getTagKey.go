@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
-// 			Parent:    "organizations/12345",
-// 			ShortName: "environment",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
+//				Parent:    "organizations/12345",
+//				ShortName: "environment",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupTagKey(ctx *pulumi.Context, args *LookupTagKeyArgs, opts ...pulumi.InvokeOption) (*LookupTagKeyResult, error) {
 	var rv LookupTagKeyResult

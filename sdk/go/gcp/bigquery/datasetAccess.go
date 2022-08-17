@@ -18,36 +18,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("example_dataset"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
-// 			AccountId: pulumi.String("bqowner"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
-// 			DatasetId:   dataset.DatasetId,
-// 			Role:        pulumi.String("OWNER"),
-// 			UserByEmail: bqowner.Email,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
+//				AccountId: pulumi.String("bqowner"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
+//				DatasetId:   dataset.DatasetId,
+//				Role:        pulumi.String("OWNER"),
+//				UserByEmail: bqowner.Email,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Bigquery Dataset Access View
 //
@@ -55,50 +58,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		private, err := bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("example_dataset"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("example_dataset2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		publicTable, err := bigquery.NewTable(ctx, "publicTable", &bigquery.TableArgs{
-// 			DeletionProtection: pulumi.Bool(false),
-// 			DatasetId:          publicDataset.DatasetId,
-// 			TableId:            pulumi.String("example_table"),
-// 			View: &bigquery.TableViewArgs{
-// 				Query:        pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
-// 				UseLegacySql: pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
-// 			DatasetId: private.DatasetId,
-// 			View: &bigquery.DatasetAccessViewArgs{
-// 				ProjectId: publicTable.Project,
-// 				DatasetId: publicDataset.DatasetId,
-// 				TableId:   publicTable.TableId,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			private, err := bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			publicTable, err := bigquery.NewTable(ctx, "publicTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          publicDataset.DatasetId,
+//				TableId:            pulumi.String("example_table"),
+//				View: &bigquery.TableViewArgs{
+//					Query:        pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
+//					UseLegacySql: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
+//				DatasetId: private.DatasetId,
+//				View: &bigquery.DatasetAccessViewArgs{
+//					ProjectId: publicTable.Project,
+//					DatasetId: publicDataset.DatasetId,
+//					TableId:   publicTable.TableId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Bigquery Dataset Access Authorized Dataset
 //
@@ -106,42 +112,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		private, err := bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("private"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
-// 			DatasetId: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
-// 			DatasetId: private.DatasetId,
-// 			AuthorizedDataset: &bigquery.DatasetAccessAuthorizedDatasetArgs{
-// 				Dataset: &bigquery.DatasetAccessAuthorizedDatasetDatasetArgs{
-// 					ProjectId: public.Project,
-// 					DatasetId: public.DatasetId,
-// 				},
-// 				TargetTypes: pulumi.StringArray{
-// 					pulumi.String("VIEWS"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			private, err := bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("private"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
+//				DatasetId: private.DatasetId,
+//				AuthorizedDataset: &bigquery.DatasetAccessAuthorizedDatasetArgs{
+//					Dataset: &bigquery.DatasetAccessAuthorizedDatasetDatasetArgs{
+//						ProjectId: public.Project,
+//						DatasetId: public.DatasetId,
+//					},
+//					TargetTypes: pulumi.StringArray{
+//						pulumi.String("VIEWS"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -410,7 +419,7 @@ func (i *DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) Da
 // DatasetAccessArrayInput is an input type that accepts DatasetAccessArray and DatasetAccessArrayOutput values.
 // You can construct a concrete instance of `DatasetAccessArrayInput` via:
 //
-//          DatasetAccessArray{ DatasetAccessArgs{...} }
+//	DatasetAccessArray{ DatasetAccessArgs{...} }
 type DatasetAccessArrayInput interface {
 	pulumi.Input
 
@@ -435,7 +444,7 @@ func (i DatasetAccessArray) ToDatasetAccessArrayOutputWithContext(ctx context.Co
 // DatasetAccessMapInput is an input type that accepts DatasetAccessMap and DatasetAccessMapOutput values.
 // You can construct a concrete instance of `DatasetAccessMapInput` via:
 //
-//          DatasetAccessMap{ "key": DatasetAccessArgs{...} }
+//	DatasetAccessMap{ "key": DatasetAccessArgs{...} }
 type DatasetAccessMapInput interface {
 	pulumi.Input
 

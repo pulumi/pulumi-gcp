@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timeout for YARN graceful decommissioning of Node Managers. Specifies the
@@ -66,5 +66,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs()
         {
         }
+        public static new AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs Empty => new AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs();
     }
 }

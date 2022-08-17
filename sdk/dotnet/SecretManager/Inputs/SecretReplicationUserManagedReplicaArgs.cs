@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretReplicationUserManagedReplicaArgs : Pulumi.ResourceArgs
+    public sealed class SecretReplicationUserManagedReplicaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Customer Managed Encryption for the secret.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretReplicationUserManagedReplicaArgs()
         {
         }
+        public static new SecretReplicationUserManagedReplicaArgs Empty => new SecretReplicationUserManagedReplicaArgs();
     }
 }

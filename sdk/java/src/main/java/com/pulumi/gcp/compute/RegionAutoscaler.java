@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var foobarInstanceTemplate = new InstanceTemplate(&#34;foobarInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .machineType(&#34;e2-standard-4&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-9&#34;)
+ *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
  *                 .diskSizeGb(250)
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 

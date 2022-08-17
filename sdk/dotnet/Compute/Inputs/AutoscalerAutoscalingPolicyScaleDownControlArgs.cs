@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class AutoscalerAutoscalingPolicyScaleDownControlArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalerAutoscalingPolicyScaleDownControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A nested object resource
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public AutoscalerAutoscalingPolicyScaleDownControlArgs()
         {
         }
+        public static new AutoscalerAutoscalingPolicyScaleDownControlArgs Empty => new AutoscalerAutoscalingPolicyScaleDownControlArgs();
     }
 }

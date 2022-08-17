@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigNodeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
@@ -58,5 +58,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigNodeConfigGetArgs()
         {
         }
+        public static new EnvironmentConfigNodeConfigGetArgs Empty => new EnvironmentConfigNodeConfigGetArgs();
     }
 }

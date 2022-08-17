@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterWorkloadIdentityConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterWorkloadIdentityConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The workload pool to attach all Kubernetes service accounts to.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterWorkloadIdentityConfigGetArgs()
         {
         }
+        public static new ClusterWorkloadIdentityConfigGetArgs Empty => new ClusterWorkloadIdentityConfigGetArgs();
     }
 }

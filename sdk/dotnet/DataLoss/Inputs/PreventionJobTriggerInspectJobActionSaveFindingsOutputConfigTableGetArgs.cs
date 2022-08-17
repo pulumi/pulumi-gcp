@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataset ID of the table.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs Empty => new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs();
     }
 }

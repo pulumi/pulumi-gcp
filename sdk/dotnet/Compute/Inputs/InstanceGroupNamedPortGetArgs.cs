@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGroupNamedPortGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupNamedPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name which the port will be mapped to.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGroupNamedPortGetArgs()
         {
         }
+        public static new InstanceGroupNamedPortGetArgs Empty => new InstanceGroupNamedPortGetArgs();
     }
 }

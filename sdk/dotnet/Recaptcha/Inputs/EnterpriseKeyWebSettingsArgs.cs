@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Recaptcha.Inputs
 {
 
-    public sealed class EnterpriseKeyWebSettingsArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseKeyWebSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, it means allowed_domains will not be enforced.
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
         public EnterpriseKeyWebSettingsArgs()
         {
         }
+        public static new EnterpriseKeyWebSettingsArgs Empty => new EnterpriseKeyWebSettingsArgs();
     }
 }

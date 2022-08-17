@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineGetArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineGetArgs()
         {
         }
+        public static new RuntimeVirtualMachineGetArgs Empty => new RuntimeVirtualMachineGetArgs();
     }
 }

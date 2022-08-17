@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreServiceMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The day of week, when the window starts.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreServiceMaintenanceWindowArgs()
         {
         }
+        public static new MetastoreServiceMaintenanceWindowArgs Empty => new MetastoreServiceMaintenanceWindowArgs();
     }
 }

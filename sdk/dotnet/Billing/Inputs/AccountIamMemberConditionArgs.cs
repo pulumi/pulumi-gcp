@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class AccountIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class AccountIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public AccountIamMemberConditionArgs()
         {
         }
+        public static new AccountIamMemberConditionArgs Empty => new AccountIamMemberConditionArgs();
     }
 }

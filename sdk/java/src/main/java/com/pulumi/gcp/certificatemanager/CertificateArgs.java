@@ -34,14 +34,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of label tags associated with the EdgeCache resource.
+     * Set of label tags associated with the Certificate resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the EdgeCache resource.
+     * @return Set of label tags associated with the Certificate resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -107,13 +107,11 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The scope of the certificate.
-     * Certificates with default scope are served from core Google data centers.
+     * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
-     * Certificates with scope EDGE_CACHE are special-purposed certificates,
+     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
      * Currently allowed only for managed certificates.
-     * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `EDGE_CACHE`.
      * 
      */
     @Import(name="scope")
@@ -121,13 +119,11 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The scope of the certificate.
-     * Certificates with default scope are served from core Google data centers.
+     * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
-     * Certificates with scope EDGE_CACHE are special-purposed certificates,
+     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
      * Currently allowed only for managed certificates.
-     * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `EDGE_CACHE`.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -207,7 +203,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of label tags associated with the EdgeCache resource.
+         * @param labels Set of label tags associated with the Certificate resource.
          * 
          * @return builder
          * 
@@ -218,7 +214,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of label tags associated with the EdgeCache resource.
+         * @param labels Set of label tags associated with the Certificate resource.
          * 
          * @return builder
          * 
@@ -304,13 +300,11 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scope The scope of the certificate.
-         * Certificates with default scope are served from core Google data centers.
+         * DEFAULT: Certificates with default scope are served from core Google data centers.
          * If unsure, choose this option.
-         * Certificates with scope EDGE_CACHE are special-purposed certificates,
+         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
          * served from non-core Google data centers.
          * Currently allowed only for managed certificates.
-         * Default value is `DEFAULT`.
-         * Possible values are `DEFAULT` and `EDGE_CACHE`.
          * 
          * @return builder
          * 
@@ -322,13 +316,11 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scope The scope of the certificate.
-         * Certificates with default scope are served from core Google data centers.
+         * DEFAULT: Certificates with default scope are served from core Google data centers.
          * If unsure, choose this option.
-         * Certificates with scope EDGE_CACHE are special-purposed certificates,
+         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
          * served from non-core Google data centers.
          * Currently allowed only for managed certificates.
-         * Default value is `DEFAULT`.
-         * Possible values are `DEFAULT` and `EDGE_CACHE`.
          * 
          * @return builder
          * 

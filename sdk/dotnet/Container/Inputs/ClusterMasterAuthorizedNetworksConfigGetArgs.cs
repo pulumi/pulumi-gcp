@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMasterAuthorizedNetworksConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMasterAuthorizedNetworksConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrBlocks")]
         private InputList<Inputs.ClusterMasterAuthorizedNetworksConfigCidrBlockGetArgs>? _cidrBlocks;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMasterAuthorizedNetworksConfigGetArgs()
         {
         }
+        public static new ClusterMasterAuthorizedNetworksConfigGetArgs Empty => new ClusterMasterAuthorizedNetworksConfigGetArgs();
     }
 }

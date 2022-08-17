@@ -24,27 +24,26 @@ namespace Pulumi.Gcp.Compute
     /// ### Global Network Endpoint
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var neg = new Gcp.Compute.GlobalNetworkEndpointGroup("neg", new()
     ///     {
-    ///         var neg = new Gcp.Compute.GlobalNetworkEndpointGroup("neg", new Gcp.Compute.GlobalNetworkEndpointGroupArgs
-    ///         {
-    ///             DefaultPort = 90,
-    ///             NetworkEndpointType = "INTERNET_FQDN_PORT",
-    ///         });
-    ///         var default_endpoint = new Gcp.Compute.GlobalNetworkEndpoint("default-endpoint", new Gcp.Compute.GlobalNetworkEndpointArgs
-    ///         {
-    ///             GlobalNetworkEndpointGroup = neg.Name,
-    ///             Fqdn = "www.example.com",
-    ///             Port = 90,
-    ///         });
-    ///     }
+    ///         DefaultPort = 90,
+    ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
+    ///     });
     /// 
-    /// }
+    ///     var default_endpoint = new Gcp.Compute.GlobalNetworkEndpoint("default-endpoint", new()
+    ///     {
+    ///         GlobalNetworkEndpointGroup = neg.Name,
+    ///         Fqdn = "www.example.com",
+    ///         Port = 90,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint")]
-    public partial class GlobalNetworkEndpoint : Pulumi.CustomResource
+    public partial class GlobalNetworkEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Fully qualified domain name of network endpoint.
@@ -142,7 +141,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class GlobalNetworkEndpointArgs : Pulumi.ResourceArgs
+    public sealed class GlobalNetworkEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully qualified domain name of network endpoint.
@@ -179,9 +178,10 @@ namespace Pulumi.Gcp.Compute
         public GlobalNetworkEndpointArgs()
         {
         }
+        public static new GlobalNetworkEndpointArgs Empty => new GlobalNetworkEndpointArgs();
     }
 
-    public sealed class GlobalNetworkEndpointState : Pulumi.ResourceArgs
+    public sealed class GlobalNetworkEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully qualified domain name of network endpoint.
@@ -218,5 +218,6 @@ namespace Pulumi.Gcp.Compute
         public GlobalNetworkEndpointState()
         {
         }
+        public static new GlobalNetworkEndpointState Empty => new GlobalNetworkEndpointState();
     }
 }

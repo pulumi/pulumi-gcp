@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigEncryptionConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigEncryptionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud KMS key name to use for PD disk encryption for
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigEncryptionConfigGetArgs()
         {
         }
+        public static new ClusterClusterConfigEncryptionConfigGetArgs Empty => new ClusterClusterConfigEncryptionConfigGetArgs();
     }
 }

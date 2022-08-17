@@ -36,7 +36,7 @@ type ConnectivityTestDestination struct {
 // ConnectivityTestDestinationInput is an input type that accepts ConnectivityTestDestinationArgs and ConnectivityTestDestinationOutput values.
 // You can construct a concrete instance of `ConnectivityTestDestinationInput` via:
 //
-//          ConnectivityTestDestinationArgs{...}
+//	ConnectivityTestDestinationArgs{...}
 type ConnectivityTestDestinationInput interface {
 	pulumi.Input
 
@@ -90,11 +90,11 @@ func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationPtrOutputW
 // ConnectivityTestDestinationPtrInput is an input type that accepts ConnectivityTestDestinationArgs, ConnectivityTestDestinationPtr and ConnectivityTestDestinationPtrOutput values.
 // You can construct a concrete instance of `ConnectivityTestDestinationPtrInput` via:
 //
-//          ConnectivityTestDestinationArgs{...}
+//	        ConnectivityTestDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConnectivityTestDestinationPtrInput interface {
 	pulumi.Input
 
@@ -170,11 +170,11 @@ func (o ConnectivityTestDestinationOutput) Port() pulumi.IntPtrOutput {
 // Project ID where the endpoint is located. The Project ID can be
 // derived from the URI if you provide a VM instance or network URI.
 // The following are two cases where you must provide the project ID:
-// 1. Only the IP address is specified, and the IP address is within
-//    a GCP project. 2. When you are using Shared VPC and the IP address
-//    that you provide is from the service project. In this case, the
-//    network that the IP address resides in is defined in the host
-//    project.
+//  1. Only the IP address is specified, and the IP address is within
+//     a GCP project. 2. When you are using Shared VPC and the IP address
+//     that you provide is from the service project. In this case, the
+//     network that the IP address resides in is defined in the host
+//     project.
 func (o ConnectivityTestDestinationOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -249,11 +249,11 @@ func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 // Project ID where the endpoint is located. The Project ID can be
 // derived from the URI if you provide a VM instance or network URI.
 // The following are two cases where you must provide the project ID:
-// 1. Only the IP address is specified, and the IP address is within
-//    a GCP project. 2. When you are using Shared VPC and the IP address
-//    that you provide is from the service project. In this case, the
-//    network that the IP address resides in is defined in the host
-//    project.
+//  1. Only the IP address is specified, and the IP address is within
+//     a GCP project. 2. When you are using Shared VPC and the IP address
+//     that you provide is from the service project. In this case, the
+//     network that the IP address resides in is defined in the host
+//     project.
 func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -292,7 +292,7 @@ type ConnectivityTestSource struct {
 // ConnectivityTestSourceInput is an input type that accepts ConnectivityTestSourceArgs and ConnectivityTestSourceOutput values.
 // You can construct a concrete instance of `ConnectivityTestSourceInput` via:
 //
-//          ConnectivityTestSourceArgs{...}
+//	ConnectivityTestSourceArgs{...}
 type ConnectivityTestSourceInput interface {
 	pulumi.Input
 
@@ -349,11 +349,11 @@ func (i ConnectivityTestSourceArgs) ToConnectivityTestSourcePtrOutputWithContext
 // ConnectivityTestSourcePtrInput is an input type that accepts ConnectivityTestSourceArgs, ConnectivityTestSourcePtr and ConnectivityTestSourcePtrOutput values.
 // You can construct a concrete instance of `ConnectivityTestSourcePtrInput` via:
 //
-//          ConnectivityTestSourceArgs{...}
+//	        ConnectivityTestSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConnectivityTestSourcePtrInput interface {
 	pulumi.Input
 
@@ -435,11 +435,11 @@ func (o ConnectivityTestSourceOutput) Port() pulumi.IntPtrOutput {
 // Project ID where the endpoint is located. The Project ID can be
 // derived from the URI if you provide a VM instance or network URI.
 // The following are two cases where you must provide the project ID:
-// 1. Only the IP address is specified, and the IP address is within
-//    a GCP project. 2. When you are using Shared VPC and the IP address
-//    that you provide is from the service project. In this case, the
-//    network that the IP address resides in is defined in the host
-//    project.
+//  1. Only the IP address is specified, and the IP address is within
+//     a GCP project. 2. When you are using Shared VPC and the IP address
+//     that you provide is from the service project. In this case, the
+//     network that the IP address resides in is defined in the host
+//     project.
 func (o ConnectivityTestSourceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -525,11 +525,11 @@ func (o ConnectivityTestSourcePtrOutput) Port() pulumi.IntPtrOutput {
 // Project ID where the endpoint is located. The Project ID can be
 // derived from the URI if you provide a VM instance or network URI.
 // The following are two cases where you must provide the project ID:
-// 1. Only the IP address is specified, and the IP address is within
-//    a GCP project. 2. When you are using Shared VPC and the IP address
-//    that you provide is from the service project. In this case, the
-//    network that the IP address resides in is defined in the host
-//    project.
+//  1. Only the IP address is specified, and the IP address is within
+//     a GCP project. 2. When you are using Shared VPC and the IP address
+//     that you provide is from the service project. In this case, the
+//     network that the IP address resides in is defined in the host
+//     project.
 func (o ConnectivityTestSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {

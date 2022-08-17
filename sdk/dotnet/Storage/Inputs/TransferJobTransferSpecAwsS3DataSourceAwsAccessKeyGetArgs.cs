@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS Key ID.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs()
         {
         }
+        public static new TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs Empty => new TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs();
     }
 }

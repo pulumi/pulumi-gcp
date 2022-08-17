@@ -20,20 +20,18 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var objectViewer = Gcp.ServiceAccount.GetAccount.Invoke(new()
         ///     {
-        ///         var objectViewer = Output.Create(Gcp.ServiceAccount.GetAccount.InvokeAsync(new Gcp.ServiceAccount.GetAccountArgs
-        ///         {
-        ///             AccountId = "object-viewer",
-        ///         }));
-        ///     }
+        ///         AccountId = "object-viewer",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -51,20 +49,18 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var objectViewer = Gcp.ServiceAccount.GetAccount.Invoke(new()
         ///     {
-        ///         var objectViewer = Output.Create(Gcp.ServiceAccount.GetAccount.InvokeAsync(new Gcp.ServiceAccount.GetAccountArgs
-        ///         {
-        ///             AccountId = "object-viewer",
-        ///         }));
-        ///     }
+        ///         AccountId = "object-viewer",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Gcp.ServiceAccount
     }
 
 
-    public sealed class GetAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Google service account ID. This be one of:
@@ -93,9 +89,10 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountArgs()
         {
         }
+        public static new GetAccountArgs Empty => new GetAccountArgs();
     }
 
-    public sealed class GetAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Google service account ID. This be one of:
@@ -113,6 +110,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountInvokeArgs()
         {
         }
+        public static new GetAccountInvokeArgs Empty => new GetAccountInvokeArgs();
     }
 
 

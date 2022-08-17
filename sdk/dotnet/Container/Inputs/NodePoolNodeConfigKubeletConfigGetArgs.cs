@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigKubeletConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigKubeletConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cpuCfsQuota")]
         public Input<bool>? CpuCfsQuota { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigKubeletConfigGetArgs()
         {
         }
+        public static new NodePoolNodeConfigKubeletConfigGetArgs Empty => new NodePoolNodeConfigKubeletConfigGetArgs();
     }
 }

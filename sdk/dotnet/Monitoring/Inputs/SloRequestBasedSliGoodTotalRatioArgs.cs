@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloRequestBasedSliGoodTotalRatioArgs : Pulumi.ResourceArgs
+    public sealed class SloRequestBasedSliGoodTotalRatioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloRequestBasedSliGoodTotalRatioArgs()
         {
         }
+        public static new SloRequestBasedSliGoodTotalRatioArgs Empty => new SloRequestBasedSliGoodTotalRatioArgs();
     }
 }

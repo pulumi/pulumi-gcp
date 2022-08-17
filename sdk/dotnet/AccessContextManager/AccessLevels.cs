@@ -24,90 +24,89 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ### Access Context Manager Access Levels Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
     ///     {
-    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
-    ///         {
-    ///             Parent = "organizations/123456789",
-    ///             Title = "my policy",
-    ///         });
-    ///         var access_levels = new Gcp.AccessContextManager.AccessLevels("access-levels", new Gcp.AccessContextManager.AccessLevelsArgs
-    ///         {
-    ///             AccessLevelDetails = 
-    ///             {
-    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
-    ///                 {
-    ///                     Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
-    ///                     {
-    ///                         Conditions = 
-    ///                         {
-    ///                             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionArgs
-    ///                             {
-    ///                                 DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
-    ///                                 {
-    ///                                     OsConstraints = 
-    ///                                     {
-    ///                                         new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
-    ///                                         {
-    ///                                             OsType = "DESKTOP_CHROME_OS",
-    ///                                         },
-    ///                                     },
-    ///                                     RequireScreenLock = true,
-    ///                                 },
-    ///                                 Regions = 
-    ///                                 {
-    ///                                     "CH",
-    ///                                     "IT",
-    ///                                     "US",
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-    ///                     Title = "chromeos_no_lock",
-    ///                 },
-    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
-    ///                 {
-    ///                     Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
-    ///                     {
-    ///                         Conditions = 
-    ///                         {
-    ///                             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionArgs
-    ///                             {
-    ///                                 DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
-    ///                                 {
-    ///                                     OsConstraints = 
-    ///                                     {
-    ///                                         new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
-    ///                                         {
-    ///                                             OsType = "DESKTOP_MAC",
-    ///                                         },
-    ///                                     },
-    ///                                     RequireScreenLock = true,
-    ///                                 },
-    ///                                 Regions = 
-    ///                                 {
-    ///                                     "CH",
-    ///                                     "IT",
-    ///                                     "US",
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/mac_no_lock"),
-    ///                     Title = "mac_no_lock",
-    ///                 },
-    ///             },
-    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///         });
-    ///     }
+    ///         Parent = "organizations/123456789",
+    ///         Title = "my policy",
+    ///     });
     /// 
-    /// }
+    ///     var access_levels = new Gcp.AccessContextManager.AccessLevels("access-levels", new()
+    ///     {
+    ///         AccessLevelDetails = new[]
+    ///         {
+    ///             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
+    ///             {
+    ///                 Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
+    ///                 {
+    ///                     Conditions = new[]
+    ///                     {
+    ///                         new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionArgs
+    ///                         {
+    ///                             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
+    ///                             {
+    ///                                 OsConstraints = new[]
+    ///                                 {
+    ///                                     new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                     {
+    ///                                         OsType = "DESKTOP_CHROME_OS",
+    ///                                     },
+    ///                                 },
+    ///                                 RequireScreenLock = true,
+    ///                             },
+    ///                             Regions = new[]
+    ///                             {
+    ///                                 "CH",
+    ///                                 "IT",
+    ///                                 "US",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+    ///                 Title = "chromeos_no_lock",
+    ///             },
+    ///             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
+    ///             {
+    ///                 Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
+    ///                 {
+    ///                     Conditions = new[]
+    ///                     {
+    ///                         new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionArgs
+    ///                         {
+    ///                             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
+    ///                             {
+    ///                                 OsConstraints = new[]
+    ///                                 {
+    ///                                     new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                     {
+    ///                                         OsType = "DESKTOP_MAC",
+    ///                                     },
+    ///                                 },
+    ///                                 RequireScreenLock = true,
+    ///                             },
+    ///                             Regions = new[]
+    ///                             {
+    ///                                 "CH",
+    ///                                 "IT",
+    ///                                 "US",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/mac_no_lock"),
+    ///                 Title = "mac_no_lock",
+    ///             },
+    ///         },
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -123,7 +122,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/accessLevels:AccessLevels")]
-    public partial class AccessLevels : Pulumi.CustomResource
+    public partial class AccessLevels : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
@@ -183,7 +182,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class AccessLevelsArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessLevels")]
         private InputList<Inputs.AccessLevelsAccessLevelArgs>? _accessLevels;
@@ -208,9 +207,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessLevelsArgs()
         {
         }
+        public static new AccessLevelsArgs Empty => new AccessLevelsArgs();
     }
 
-    public sealed class AccessLevelsState : Pulumi.ResourceArgs
+    public sealed class AccessLevelsState : global::Pulumi.ResourceArgs
     {
         [Input("accessLevels")]
         private InputList<Inputs.AccessLevelsAccessLevelGetArgs>? _accessLevels;
@@ -235,5 +235,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessLevelsState()
         {
         }
+        public static new AccessLevelsState Empty => new AccessLevelsState();
     }
 }

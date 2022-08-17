@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.CloudAsset
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudasset/folderFeed:FolderFeed")]
-    public partial class FolderFeed : Pulumi.CustomResource
+    public partial class FolderFeed : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of the full names of the assets to receive updates. You must specify either or both of
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.CloudAsset
         }
     }
 
-    public sealed class FolderFeedArgs : Pulumi.ResourceArgs
+    public sealed class FolderFeedArgs : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -236,9 +236,10 @@ namespace Pulumi.Gcp.CloudAsset
         public FolderFeedArgs()
         {
         }
+        public static new FolderFeedArgs Empty => new FolderFeedArgs();
     }
 
-    public sealed class FolderFeedState : Pulumi.ResourceArgs
+    public sealed class FolderFeedState : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -331,5 +332,6 @@ namespace Pulumi.Gcp.CloudAsset
         public FolderFeedState()
         {
         }
+        public static new FolderFeedState Empty => new FolderFeedState();
     }
 }

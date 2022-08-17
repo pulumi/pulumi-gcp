@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobStatusArgs : Pulumi.ResourceArgs
+    public sealed class JobStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("errorResults")]
         private InputList<Inputs.JobStatusErrorResultArgs>? _errorResults;
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobStatusArgs()
         {
         }
+        public static new JobStatusArgs Empty => new JobStatusArgs();
     }
 }

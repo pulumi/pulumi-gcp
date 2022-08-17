@@ -16,7 +16,9 @@ public final class GetBucketLifecycleRuleCondition {
     private final String customTimeBefore;
     private final Integer daysSinceCustomTime;
     private final Integer daysSinceNoncurrentTime;
+    private final List<String> matchesPrefixes;
     private final List<String> matchesStorageClasses;
+    private final List<String> matchesSuffixes;
     private final String noncurrentTimeBefore;
     private final Integer numNewerVersions;
     private final String withState;
@@ -28,7 +30,9 @@ public final class GetBucketLifecycleRuleCondition {
         @CustomType.Parameter("customTimeBefore") String customTimeBefore,
         @CustomType.Parameter("daysSinceCustomTime") Integer daysSinceCustomTime,
         @CustomType.Parameter("daysSinceNoncurrentTime") Integer daysSinceNoncurrentTime,
+        @CustomType.Parameter("matchesPrefixes") List<String> matchesPrefixes,
         @CustomType.Parameter("matchesStorageClasses") List<String> matchesStorageClasses,
+        @CustomType.Parameter("matchesSuffixes") List<String> matchesSuffixes,
         @CustomType.Parameter("noncurrentTimeBefore") String noncurrentTimeBefore,
         @CustomType.Parameter("numNewerVersions") Integer numNewerVersions,
         @CustomType.Parameter("withState") String withState) {
@@ -37,7 +41,9 @@ public final class GetBucketLifecycleRuleCondition {
         this.customTimeBefore = customTimeBefore;
         this.daysSinceCustomTime = daysSinceCustomTime;
         this.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
+        this.matchesPrefixes = matchesPrefixes;
         this.matchesStorageClasses = matchesStorageClasses;
+        this.matchesSuffixes = matchesSuffixes;
         this.noncurrentTimeBefore = noncurrentTimeBefore;
         this.numNewerVersions = numNewerVersions;
         this.withState = withState;
@@ -58,8 +64,14 @@ public final class GetBucketLifecycleRuleCondition {
     public Integer daysSinceNoncurrentTime() {
         return this.daysSinceNoncurrentTime;
     }
+    public List<String> matchesPrefixes() {
+        return this.matchesPrefixes;
+    }
     public List<String> matchesStorageClasses() {
         return this.matchesStorageClasses;
+    }
+    public List<String> matchesSuffixes() {
+        return this.matchesSuffixes;
     }
     public String noncurrentTimeBefore() {
         return this.noncurrentTimeBefore;
@@ -85,7 +97,9 @@ public final class GetBucketLifecycleRuleCondition {
         private String customTimeBefore;
         private Integer daysSinceCustomTime;
         private Integer daysSinceNoncurrentTime;
+        private List<String> matchesPrefixes;
         private List<String> matchesStorageClasses;
+        private List<String> matchesSuffixes;
         private String noncurrentTimeBefore;
         private Integer numNewerVersions;
         private String withState;
@@ -101,7 +115,9 @@ public final class GetBucketLifecycleRuleCondition {
     	      this.customTimeBefore = defaults.customTimeBefore;
     	      this.daysSinceCustomTime = defaults.daysSinceCustomTime;
     	      this.daysSinceNoncurrentTime = defaults.daysSinceNoncurrentTime;
+    	      this.matchesPrefixes = defaults.matchesPrefixes;
     	      this.matchesStorageClasses = defaults.matchesStorageClasses;
+    	      this.matchesSuffixes = defaults.matchesSuffixes;
     	      this.noncurrentTimeBefore = defaults.noncurrentTimeBefore;
     	      this.numNewerVersions = defaults.numNewerVersions;
     	      this.withState = defaults.withState;
@@ -127,12 +143,26 @@ public final class GetBucketLifecycleRuleCondition {
             this.daysSinceNoncurrentTime = Objects.requireNonNull(daysSinceNoncurrentTime);
             return this;
         }
+        public Builder matchesPrefixes(List<String> matchesPrefixes) {
+            this.matchesPrefixes = Objects.requireNonNull(matchesPrefixes);
+            return this;
+        }
+        public Builder matchesPrefixes(String... matchesPrefixes) {
+            return matchesPrefixes(List.of(matchesPrefixes));
+        }
         public Builder matchesStorageClasses(List<String> matchesStorageClasses) {
             this.matchesStorageClasses = Objects.requireNonNull(matchesStorageClasses);
             return this;
         }
         public Builder matchesStorageClasses(String... matchesStorageClasses) {
             return matchesStorageClasses(List.of(matchesStorageClasses));
+        }
+        public Builder matchesSuffixes(List<String> matchesSuffixes) {
+            this.matchesSuffixes = Objects.requireNonNull(matchesSuffixes);
+            return this;
+        }
+        public Builder matchesSuffixes(String... matchesSuffixes) {
+            return matchesSuffixes(List.of(matchesSuffixes));
         }
         public Builder noncurrentTimeBefore(String noncurrentTimeBefore) {
             this.noncurrentTimeBefore = Objects.requireNonNull(noncurrentTimeBefore);
@@ -146,7 +176,7 @@ public final class GetBucketLifecycleRuleCondition {
             this.withState = Objects.requireNonNull(withState);
             return this;
         }        public GetBucketLifecycleRuleCondition build() {
-            return new GetBucketLifecycleRuleCondition(age, createdBefore, customTimeBefore, daysSinceCustomTime, daysSinceNoncurrentTime, matchesStorageClasses, noncurrentTimeBefore, numNewerVersions, withState);
+            return new GetBucketLifecycleRuleCondition(age, createdBefore, customTimeBefore, daysSinceCustomTime, daysSinceNoncurrentTime, matchesPrefixes, matchesStorageClasses, matchesSuffixes, noncurrentTimeBefore, numNewerVersions, withState);
         }
     }
 }

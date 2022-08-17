@@ -21,24 +21,23 @@ namespace Pulumi.Gcp.Projects
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var policy = Gcp.Projects.GetOrganizationPolicy.Invoke(new()
         ///     {
-        ///         var policy = Output.Create(Gcp.Projects.GetOrganizationPolicy.InvokeAsync(new Gcp.Projects.GetOrganizationPolicyArgs
-        ///         {
-        ///             Project = "project-id",
-        ///             Constraint = "constraints/serviceuser.services",
-        ///         }));
-        ///         this.Version = policy.Apply(policy =&gt; policy.Version);
-        ///     }
+        ///         Project = "project-id",
+        ///         Constraint = "constraints/serviceuser.services",
+        ///     });
         /// 
-        ///     [Output("version")]
-        ///     public Output&lt;string&gt; Version { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["version"] = policy.Apply(getOrganizationPolicyResult =&gt; getOrganizationPolicyResult.Version),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -56,24 +55,23 @@ namespace Pulumi.Gcp.Projects
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var policy = Gcp.Projects.GetOrganizationPolicy.Invoke(new()
         ///     {
-        ///         var policy = Output.Create(Gcp.Projects.GetOrganizationPolicy.InvokeAsync(new Gcp.Projects.GetOrganizationPolicyArgs
-        ///         {
-        ///             Project = "project-id",
-        ///             Constraint = "constraints/serviceuser.services",
-        ///         }));
-        ///         this.Version = policy.Apply(policy =&gt; policy.Version);
-        ///     }
+        ///         Project = "project-id",
+        ///         Constraint = "constraints/serviceuser.services",
+        ///     });
         /// 
-        ///     [Output("version")]
-        ///     public Output&lt;string&gt; Version { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["version"] = policy.Apply(getOrganizationPolicyResult =&gt; getOrganizationPolicyResult.Version),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -83,7 +81,7 @@ namespace Pulumi.Gcp.Projects
     }
 
 
-    public sealed class GetOrganizationPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
@@ -100,9 +98,10 @@ namespace Pulumi.Gcp.Projects
         public GetOrganizationPolicyArgs()
         {
         }
+        public static new GetOrganizationPolicyArgs Empty => new GetOrganizationPolicyArgs();
     }
 
-    public sealed class GetOrganizationPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
@@ -119,6 +118,7 @@ namespace Pulumi.Gcp.Projects
         public GetOrganizationPolicyInvokeArgs()
         {
         }
+        public static new GetOrganizationPolicyInvokeArgs Empty => new GetOrganizationPolicyInvokeArgs();
     }
 
 

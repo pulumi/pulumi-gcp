@@ -22,207 +22,206 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Network Endpoint Group Functions
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("path/to/index.zip"),
-    ///         });
-    ///         var functionNegFunction = new Gcp.CloudFunctions.Function("functionNegFunction", new Gcp.CloudFunctions.FunctionArgs
-    ///         {
-    ///             Description = "My function",
-    ///             Runtime = "nodejs10",
-    ///             AvailableMemoryMb = 128,
-    ///             SourceArchiveBucket = bucket.Name,
-    ///             SourceArchiveObject = archive.Name,
-    ///             TriggerHttp = true,
-    ///             Timeout = 60,
-    ///             EntryPoint = "helloGET",
-    ///         });
-    ///         // Cloud Functions Example
-    ///         var functionNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup", new Gcp.Compute.RegionNetworkEndpointGroupArgs
-    ///         {
-    ///             NetworkEndpointType = "SERVERLESS",
-    ///             Region = "us-central1",
-    ///             CloudFunction = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudFunctionArgs
-    ///             {
-    ///                 Function = functionNegFunction.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var archive = new Gcp.Storage.BucketObject("archive", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("path/to/index.zip"),
+    ///     });
+    /// 
+    ///     var functionNegFunction = new Gcp.CloudFunctions.Function("functionNegFunction", new()
+    ///     {
+    ///         Description = "My function",
+    ///         Runtime = "nodejs10",
+    ///         AvailableMemoryMb = 128,
+    ///         SourceArchiveBucket = bucket.Name,
+    ///         SourceArchiveObject = archive.Name,
+    ///         TriggerHttp = true,
+    ///         Timeout = 60,
+    ///         EntryPoint = "helloGET",
+    ///     });
+    /// 
+    ///     // Cloud Functions Example
+    ///     var functionNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup", new()
+    ///     {
+    ///         NetworkEndpointType = "SERVERLESS",
+    ///         Region = "us-central1",
+    ///         CloudFunction = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudFunctionArgs
+    ///         {
+    ///             Function = functionNegFunction.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Region Network Endpoint Group Cloudrun
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cloudrunNegService = new Gcp.CloudRun.Service("cloudrunNegService", new()
     ///     {
-    ///         var cloudrunNegService = new Gcp.CloudRun.Service("cloudrunNegService", new Gcp.CloudRun.ServiceArgs
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
-    ///             Location = "us-central1",
-    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
     ///             {
-    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 Containers = new[]
     ///                 {
-    ///                     Containers = 
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                     {
-    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
-    ///                         {
-    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
-    ///                         },
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                     },
     ///                 },
     ///             },
-    ///             Traffics = 
-    ///             {
-    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
-    ///                 {
-    ///                     Percent = 100,
-    ///                     LatestRevision = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///         // Cloud Run Example
-    ///         var cloudrunNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup", new Gcp.Compute.RegionNetworkEndpointGroupArgs
+    ///         },
+    ///         Traffics = new[]
     ///         {
-    ///             NetworkEndpointType = "SERVERLESS",
-    ///             Region = "us-central1",
-    ///             CloudRun = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudRunArgs
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
     ///             {
-    ///                 Service = cloudrunNegService.Name,
+    ///                 Percent = 100,
+    ///                 LatestRevision = true,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Cloud Run Example
+    ///     var cloudrunNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup", new()
+    ///     {
+    ///         NetworkEndpointType = "SERVERLESS",
+    ///         Region = "us-central1",
+    ///         CloudRun = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudRunArgs
+    ///         {
+    ///             Service = cloudrunNegService.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Region Network Endpoint Group Appengine
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var appengineNegBucket = new Gcp.Storage.Bucket("appengineNegBucket", new()
     ///     {
-    ///         var appengineNegBucket = new Gcp.Storage.Bucket("appengineNegBucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengineNegBucketObject", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = appengineNegBucket.Name,
-    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
-    ///         });
-    ///         var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengineNegFlexibleAppVersion", new Gcp.AppEngine.FlexibleAppVersionArgs
-    ///         {
-    ///             VersionId = "v1",
-    ///             Service = "appengine-network-endpoint-group",
-    ///             Runtime = "nodejs",
-    ///             Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
-    ///             {
-    ///                 Shell = "node ./app.js",
-    ///             },
-    ///             Deployment = new Gcp.AppEngine.Inputs.FlexibleAppVersionDeploymentArgs
-    ///             {
-    ///                 Zip = new Gcp.AppEngine.Inputs.FlexibleAppVersionDeploymentZipArgs
-    ///                 {
-    ///                     SourceUrl = Output.Tuple(appengineNegBucket.Name, appengineNegBucketObject.Name).Apply(values =&gt;
-    ///                     {
-    ///                         var appengineNegBucketName = values.Item1;
-    ///                         var appengineNegBucketObjectName = values.Item2;
-    ///                         return $"https://storage.googleapis.com/{appengineNegBucketName}/{appengineNegBucketObjectName}";
-    ///                     }),
-    ///                 },
-    ///             },
-    ///             LivenessCheck = new Gcp.AppEngine.Inputs.FlexibleAppVersionLivenessCheckArgs
-    ///             {
-    ///                 Path = "/",
-    ///             },
-    ///             ReadinessCheck = new Gcp.AppEngine.Inputs.FlexibleAppVersionReadinessCheckArgs
-    ///             {
-    ///                 Path = "/",
-    ///             },
-    ///             EnvVariables = 
-    ///             {
-    ///                 { "port", "8080" },
-    ///             },
-    ///             Handlers = 
-    ///             {
-    ///                 new Gcp.AppEngine.Inputs.FlexibleAppVersionHandlerArgs
-    ///                 {
-    ///                     UrlRegex = ".*\\/my-path\\/*",
-    ///                     SecurityLevel = "SECURE_ALWAYS",
-    ///                     Login = "LOGIN_REQUIRED",
-    ///                     AuthFailAction = "AUTH_FAIL_ACTION_REDIRECT",
-    ///                     StaticFiles = new Gcp.AppEngine.Inputs.FlexibleAppVersionHandlerStaticFilesArgs
-    ///                     {
-    ///                         Path = "my-other-path",
-    ///                         UploadPathRegex = ".*\\/my-path\\/*",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             AutomaticScaling = new Gcp.AppEngine.Inputs.FlexibleAppVersionAutomaticScalingArgs
-    ///             {
-    ///                 CoolDownPeriod = "120s",
-    ///                 CpuUtilization = new Gcp.AppEngine.Inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs
-    ///                 {
-    ///                     TargetUtilization = 0.5,
-    ///                 },
-    ///             },
-    ///             NoopOnDestroy = true,
-    ///         });
-    ///         // App Engine Example
-    ///         var appengineNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", new Gcp.Compute.RegionNetworkEndpointGroupArgs
-    ///         {
-    ///             NetworkEndpointType = "SERVERLESS",
-    ///             Region = "us-central1",
-    ///             AppEngine = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupAppEngineArgs
-    ///             {
-    ///                 Service = appengineNegFlexibleAppVersion.Service,
-    ///                 Version = appengineNegFlexibleAppVersion.VersionId,
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengineNegBucketObject", new()
+    ///     {
+    ///         Bucket = appengineNegBucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///     });
+    /// 
+    ///     var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengineNegFlexibleAppVersion", new()
+    ///     {
+    ///         VersionId = "v1",
+    ///         Service = "appengine-network-endpoint-group",
+    ///         Runtime = "nodejs",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.FlexibleAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.FlexibleAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(appengineNegBucket.Name, appengineNegBucketObject.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var appengineNegBucketName = values.Item1;
+    ///                     var appengineNegBucketObjectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{appengineNegBucketName}/{appengineNegBucketObjectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         LivenessCheck = new Gcp.AppEngine.Inputs.FlexibleAppVersionLivenessCheckArgs
+    ///         {
+    ///             Path = "/",
+    ///         },
+    ///         ReadinessCheck = new Gcp.AppEngine.Inputs.FlexibleAppVersionReadinessCheckArgs
+    ///         {
+    ///             Path = "/",
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///         Handlers = new[]
+    ///         {
+    ///             new Gcp.AppEngine.Inputs.FlexibleAppVersionHandlerArgs
+    ///             {
+    ///                 UrlRegex = ".*\\/my-path\\/*",
+    ///                 SecurityLevel = "SECURE_ALWAYS",
+    ///                 Login = "LOGIN_REQUIRED",
+    ///                 AuthFailAction = "AUTH_FAIL_ACTION_REDIRECT",
+    ///                 StaticFiles = new Gcp.AppEngine.Inputs.FlexibleAppVersionHandlerStaticFilesArgs
+    ///                 {
+    ///                     Path = "my-other-path",
+    ///                     UploadPathRegex = ".*\\/my-path\\/*",
+    ///                 },
+    ///             },
+    ///         },
+    ///         AutomaticScaling = new Gcp.AppEngine.Inputs.FlexibleAppVersionAutomaticScalingArgs
+    ///         {
+    ///             CoolDownPeriod = "120s",
+    ///             CpuUtilization = new Gcp.AppEngine.Inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs
+    ///             {
+    ///                 TargetUtilization = 0.5,
+    ///             },
+    ///         },
+    ///         NoopOnDestroy = true,
+    ///     });
+    /// 
+    ///     // App Engine Example
+    ///     var appengineNegRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", new()
+    ///     {
+    ///         NetworkEndpointType = "SERVERLESS",
+    ///         Region = "us-central1",
+    ///         AppEngine = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupAppEngineArgs
+    ///         {
+    ///             Service = appengineNegFlexibleAppVersion.Service,
+    ///             Version = appengineNegFlexibleAppVersion.VersionId,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Region Network Endpoint Group Psc
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pscNeg = new Gcp.Compute.RegionNetworkEndpointGroup("pscNeg", new()
     ///     {
-    ///         var pscNeg = new Gcp.Compute.RegionNetworkEndpointGroup("pscNeg", new Gcp.Compute.RegionNetworkEndpointGroupArgs
-    ///         {
-    ///             NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
-    ///             PscTargetService = "asia-northeast3-cloudkms.googleapis.com",
-    ///             Region = "asia-northeast3",
-    ///         });
-    ///     }
+    ///         NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
+    ///         PscTargetService = "asia-northeast3-cloudkms.googleapis.com",
+    ///         Region = "asia-northeast3",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -246,7 +245,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup")]
-    public partial class RegionNetworkEndpointGroup : Pulumi.CustomResource
+    public partial class RegionNetworkEndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
@@ -292,6 +291,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// This field is only used for PSC.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses
+        /// "default" project network if unspecified.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
         /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -331,6 +338,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("serverlessDeployment")]
         public Output<Outputs.RegionNetworkEndpointGroupServerlessDeployment?> ServerlessDeployment { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is only used for PSC.
+        /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string?> Subnetwork { get; private set; } = null!;
 
 
         /// <summary>
@@ -376,7 +390,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionNetworkEndpointGroupArgs : Pulumi.ResourceArgs
+    public sealed class RegionNetworkEndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
@@ -422,6 +436,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses
+        /// "default" project network if unspecified.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
         /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -456,12 +478,20 @@ namespace Pulumi.Gcp.Compute
         [Input("serverlessDeployment")]
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
 
+        /// <summary>
+        /// This field is only used for PSC.
+        /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
         public RegionNetworkEndpointGroupArgs()
         {
         }
+        public static new RegionNetworkEndpointGroupArgs Empty => new RegionNetworkEndpointGroupArgs();
     }
 
-    public sealed class RegionNetworkEndpointGroupState : Pulumi.ResourceArgs
+    public sealed class RegionNetworkEndpointGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
@@ -507,6 +537,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses
+        /// "default" project network if unspecified.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
         /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -547,8 +585,16 @@ namespace Pulumi.Gcp.Compute
         [Input("serverlessDeployment")]
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentGetArgs>? ServerlessDeployment { get; set; }
 
+        /// <summary>
+        /// This field is only used for PSC.
+        /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
         public RegionNetworkEndpointGroupState()
         {
         }
+        public static new RegionNetworkEndpointGroupState Empty => new RegionNetworkEndpointGroupState();
     }
 }

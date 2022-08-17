@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeInstallStepArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeInstallStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Extracts an archive into the specified directory.
@@ -64,5 +64,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeInstallStepArgs()
         {
         }
+        public static new GuestPoliciesRecipeInstallStepArgs Empty => new GuestPoliciesRecipeInstallStepArgs();
     }
 }

@@ -26,25 +26,23 @@ namespace Pulumi.Gcp.ServiceAccount
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.ServiceAccount.GetAccountJwt.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.ServiceAccount.GetAccountJwt.InvokeAsync(new Gcp.ServiceAccount.GetAccountJwtArgs
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Payload = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///             Payload = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-        ///             {
-        ///                 { "foo", "bar" },
-        ///                 { "sub", "subject" },
-        ///             }),
-        ///         }));
-        ///         this.Jwt = foo.Apply(foo =&gt; foo.Jwt);
-        ///     }
+        ///             ["foo"] = "bar",
+        ///             ["sub"] = "subject",
+        ///         }),
+        ///     });
         /// 
-        ///     [Output("jwt")]
-        ///     public Output&lt;string&gt; Jwt { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jwt"] = foo.Apply(getAccountJwtResult =&gt; getAccountJwtResult.Jwt),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -67,25 +65,23 @@ namespace Pulumi.Gcp.ServiceAccount
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.ServiceAccount.GetAccountJwt.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.ServiceAccount.GetAccountJwt.InvokeAsync(new Gcp.ServiceAccount.GetAccountJwtArgs
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Payload = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
-        ///             Payload = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-        ///             {
-        ///                 { "foo", "bar" },
-        ///                 { "sub", "subject" },
-        ///             }),
-        ///         }));
-        ///         this.Jwt = foo.Apply(foo =&gt; foo.Jwt);
-        ///     }
+        ///             ["foo"] = "bar",
+        ///             ["sub"] = "subject",
+        ///         }),
+        ///     });
         /// 
-        ///     [Output("jwt")]
-        ///     public Output&lt;string&gt; Jwt { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jwt"] = foo.Apply(getAccountJwtResult =&gt; getAccountJwtResult.Jwt),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +91,7 @@ namespace Pulumi.Gcp.ServiceAccount
     }
 
 
-    public sealed class GetAccountJwtArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountJwtArgs : global::Pulumi.InvokeArgs
     {
         [Input("delegates")]
         private List<string>? _delegates;
@@ -124,9 +120,10 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountJwtArgs()
         {
         }
+        public static new GetAccountJwtArgs Empty => new GetAccountJwtArgs();
     }
 
-    public sealed class GetAccountJwtInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountJwtInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("delegates")]
         private InputList<string>? _delegates;
@@ -155,6 +152,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountJwtInvokeArgs()
         {
         }
+        public static new GetAccountJwtInvokeArgs Empty => new GetAccountJwtInvokeArgs();
     }
 
 

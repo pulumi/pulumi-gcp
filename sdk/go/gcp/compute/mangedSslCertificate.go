@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 //
 // > **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
 // certificate is complex.  Ensure that you understand the lifecycle of a
@@ -40,18 +40,24 @@ import (
 //
 // ## Import
 //
-// ManagedSslCertificate can be imported using any of these accepted formats
+// # ManagedSslCertificate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+//
+//	$ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
+//
+//	$ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
+//
 // ```
 //
 // Deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate
@@ -275,7 +281,7 @@ func (i *MangedSslCertificate) ToMangedSslCertificateOutputWithContext(ctx conte
 // MangedSslCertificateArrayInput is an input type that accepts MangedSslCertificateArray and MangedSslCertificateArrayOutput values.
 // You can construct a concrete instance of `MangedSslCertificateArrayInput` via:
 //
-//          MangedSslCertificateArray{ MangedSslCertificateArgs{...} }
+//	MangedSslCertificateArray{ MangedSslCertificateArgs{...} }
 type MangedSslCertificateArrayInput interface {
 	pulumi.Input
 
@@ -300,7 +306,7 @@ func (i MangedSslCertificateArray) ToMangedSslCertificateArrayOutputWithContext(
 // MangedSslCertificateMapInput is an input type that accepts MangedSslCertificateMap and MangedSslCertificateMapOutput values.
 // You can construct a concrete instance of `MangedSslCertificateMapInput` via:
 //
-//          MangedSslCertificateMap{ "key": MangedSslCertificateArgs{...} }
+//	MangedSslCertificateMap{ "key": MangedSslCertificateArgs{...} }
 type MangedSslCertificateMapInput interface {
 	pulumi.Input
 

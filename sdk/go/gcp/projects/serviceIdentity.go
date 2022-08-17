@@ -31,39 +31,42 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		hcSa, err := projects.NewServiceIdentity(ctx, "hcSa", &projects.ServiceIdentityArgs{
-// 			Project: pulumi.String(project.ProjectId),
-// 			Service: pulumi.String("healthcare.googleapis.com"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewIAMMember(ctx, "hcSaBqJobuser", &projects.IAMMemberArgs{
-// 			Project: pulumi.String(project.ProjectId),
-// 			Role:    pulumi.String("roles/bigquery.jobUser"),
-// 			Member: hcSa.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("serviceAccount:%v", email), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			hcSa, err := projects.NewServiceIdentity(ctx, "hcSa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Service: pulumi.String("healthcare.googleapis.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "hcSaBqJobuser", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.jobUser"),
+//				Member: hcSa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -183,7 +186,7 @@ func (i *ServiceIdentity) ToServiceIdentityOutputWithContext(ctx context.Context
 // ServiceIdentityArrayInput is an input type that accepts ServiceIdentityArray and ServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `ServiceIdentityArrayInput` via:
 //
-//          ServiceIdentityArray{ ServiceIdentityArgs{...} }
+//	ServiceIdentityArray{ ServiceIdentityArgs{...} }
 type ServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +211,7 @@ func (i ServiceIdentityArray) ToServiceIdentityArrayOutputWithContext(ctx contex
 // ServiceIdentityMapInput is an input type that accepts ServiceIdentityMap and ServiceIdentityMapOutput values.
 // You can construct a concrete instance of `ServiceIdentityMapInput` via:
 //
-//          ServiceIdentityMap{ "key": ServiceIdentityArgs{...} }
+//	ServiceIdentityMap{ "key": ServiceIdentityArgs{...} }
 type ServiceIdentityMapInput interface {
 	pulumi.Input
 

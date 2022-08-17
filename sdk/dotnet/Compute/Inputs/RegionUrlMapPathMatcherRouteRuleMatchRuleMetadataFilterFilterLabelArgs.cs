@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the query parameter to match. The query parameter must exist in the
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs Empty => new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs();
     }
 }

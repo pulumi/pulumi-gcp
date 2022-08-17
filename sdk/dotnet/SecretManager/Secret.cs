@@ -20,41 +20,39 @@ namespace Pulumi.Gcp.SecretManager
     /// ### Secret Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
     ///     {
-    ///         var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new Gcp.SecretManager.SecretArgs
+    ///         Labels = 
     ///         {
-    ///             Labels = 
+    ///             { "label", "my-label" },
+    ///         },
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
     ///             {
-    ///                 { "label", "my-label" },
-    ///             },
-    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///             {
-    ///                 UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
+    ///                 Replicas = new[]
     ///                 {
-    ///                     Replicas = 
+    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
     ///                     {
-    ///                         new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
-    ///                         {
-    ///                             Location = "us-central1",
-    ///                         },
-    ///                         new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
-    ///                         {
-    ///                             Location = "us-east1",
-    ///                         },
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
+    ///                     {
+    ///                         Location = "us-east1",
     ///                     },
     ///                 },
     ///             },
-    ///             SecretId = "secret",
-    ///         });
-    ///     }
+    ///         },
+    ///         SecretId = "secret",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +72,7 @@ namespace Pulumi.Gcp.SecretManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:secretmanager/secret:Secret")]
-    public partial class Secret : Pulumi.CustomResource
+    public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the Secret was created.
@@ -195,7 +193,7 @@ namespace Pulumi.Gcp.SecretManager
         }
     }
 
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
@@ -274,9 +272,10 @@ namespace Pulumi.Gcp.SecretManager
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 
-    public sealed class SecretState : Pulumi.ResourceArgs
+    public sealed class SecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which the Secret was created.
@@ -368,5 +367,6 @@ namespace Pulumi.Gcp.SecretManager
         public SecretState()
         {
         }
+        public static new SecretState Empty => new SecretState();
     }
 }

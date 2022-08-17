@@ -17,6 +17,21 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     public static final ClusterClusterAutoscalingAutoProvisioningDefaultsArgs Empty = new ClusterClusterAutoscalingAutoProvisioningDefaultsArgs();
 
     /**
+     * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * 
+     */
+    @Import(name="bootDiskKmsKey")
+    private @Nullable Output<String> bootDiskKmsKey;
+
+    /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * 
+     */
+    public Optional<Output<String>> bootDiskKmsKey() {
+        return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+
+    /**
      * The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
      * 
@@ -95,6 +110,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs() {}
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs(ClusterClusterAutoscalingAutoProvisioningDefaultsArgs $) {
+        this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.imageType = $.imageType;
         this.minCpuPlatform = $.minCpuPlatform;
         this.oauthScopes = $.oauthScopes;
@@ -117,6 +133,27 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
 
         public Builder(ClusterClusterAutoscalingAutoProvisioningDefaultsArgs defaults) {
             $ = new ClusterClusterAutoscalingAutoProvisioningDefaultsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskKmsKey(@Nullable Output<String> bootDiskKmsKey) {
+            $.bootDiskKmsKey = bootDiskKmsKey;
+            return this;
+        }
+
+        /**
+         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskKmsKey(String bootDiskKmsKey) {
+            return bootDiskKmsKey(Output.of(bootDiskKmsKey));
         }
 
         /**

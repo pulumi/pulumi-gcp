@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/targetPool:TargetPool")]
-    public partial class TargetPool : Pulumi.CustomResource
+    public partial class TargetPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// URL to the backup target pool. Must also set
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class TargetPoolArgs : Pulumi.ResourceArgs
+    public sealed class TargetPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL to the backup target pool. Must also set
@@ -232,9 +232,10 @@ namespace Pulumi.Gcp.Compute
         public TargetPoolArgs()
         {
         }
+        public static new TargetPoolArgs Empty => new TargetPoolArgs();
     }
 
-    public sealed class TargetPoolState : Pulumi.ResourceArgs
+    public sealed class TargetPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL to the backup target pool. Must also set
@@ -317,5 +318,6 @@ namespace Pulumi.Gcp.Compute
         public TargetPoolState()
         {
         }
+        public static new TargetPoolState Empty => new TargetPoolState();
     }
 }

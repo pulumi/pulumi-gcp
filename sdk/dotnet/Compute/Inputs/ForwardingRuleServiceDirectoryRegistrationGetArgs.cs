@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ForwardingRuleServiceDirectoryRegistrationGetArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleServiceDirectoryRegistrationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Service Directory namespace to register the forwarding rule under.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ForwardingRuleServiceDirectoryRegistrationGetArgs()
         {
         }
+        public static new ForwardingRuleServiceDirectoryRegistrationGetArgs Empty => new ForwardingRuleServiceDirectoryRegistrationGetArgs();
     }
 }

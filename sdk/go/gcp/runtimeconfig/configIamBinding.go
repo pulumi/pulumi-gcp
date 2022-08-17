@@ -16,22 +16,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/configs/{{config}} * {{project}}/{{config}} * {{config}} Any variables not passed in the import command will be taken from the provider configuration. Runtime Configurator config IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer user:jane@example.com"
+//
+//	$ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer"
+//
+//	$ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor "projects/{{project}}/configs/{{config}} roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor projects/{{project}}/configs/{{config}}
+//
+//	$ pulumi import gcp:runtimeconfig/configIamBinding:ConfigIamBinding editor projects/{{project}}/configs/{{config}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ConfigIamBinding struct {
@@ -180,7 +186,7 @@ func (i *ConfigIamBinding) ToConfigIamBindingOutputWithContext(ctx context.Conte
 // ConfigIamBindingArrayInput is an input type that accepts ConfigIamBindingArray and ConfigIamBindingArrayOutput values.
 // You can construct a concrete instance of `ConfigIamBindingArrayInput` via:
 //
-//          ConfigIamBindingArray{ ConfigIamBindingArgs{...} }
+//	ConfigIamBindingArray{ ConfigIamBindingArgs{...} }
 type ConfigIamBindingArrayInput interface {
 	pulumi.Input
 
@@ -205,7 +211,7 @@ func (i ConfigIamBindingArray) ToConfigIamBindingArrayOutputWithContext(ctx cont
 // ConfigIamBindingMapInput is an input type that accepts ConfigIamBindingMap and ConfigIamBindingMapOutput values.
 // You can construct a concrete instance of `ConfigIamBindingMapInput` via:
 //
-//          ConfigIamBindingMap{ "key": ConfigIamBindingArgs{...} }
+//	ConfigIamBindingMap{ "key": ConfigIamBindingArgs{...} }
 type ConfigIamBindingMapInput interface {
 	pulumi.Input
 

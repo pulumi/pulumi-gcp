@@ -31,46 +31,43 @@ namespace Pulumi.Gcp.Organizations
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             OrgId = "1234567",
-    ///             ProjectId = "your-project-id",
-    ///         });
-    ///     }
+    ///         OrgId = "1234567",
+    ///         ProjectId = "your-project-id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// To create a project under a specific folder
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
     ///     {
-    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Department 1",
-    ///             Parent = "organizations/1234567",
-    ///         });
-    ///         var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "your-project-id",
-    ///             FolderId = department1.Name,
-    ///         });
-    ///     }
+    ///         DisplayName = "Department 1",
+    ///         Parent = "organizations/1234567",
+    ///     });
     /// 
-    /// }
+    ///     var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new()
+    ///     {
+    ///         ProjectId = "your-project-id",
+    ///         FolderId = department1.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -82,7 +79,7 @@ namespace Pulumi.Gcp.Organizations
     /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Create the 'default' network automatically.  Default `true`.
@@ -199,7 +196,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Create the 'default' network automatically.  Default `true`.
@@ -275,9 +272,10 @@ namespace Pulumi.Gcp.Organizations
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Create the 'default' network automatically.  Default `true`.
@@ -359,5 +357,6 @@ namespace Pulumi.Gcp.Organizations
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

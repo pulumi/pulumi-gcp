@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsBackupConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsBackupConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup retention settings. The configuration is detailed below.
@@ -59,5 +59,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsBackupConfigurationGetArgs()
         {
         }
+        public static new DatabaseInstanceSettingsBackupConfigurationGetArgs Empty => new DatabaseInstanceSettingsBackupConfigurationGetArgs();
     }
 }

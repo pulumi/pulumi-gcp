@@ -25,7 +25,7 @@ type FunctionEventTrigger struct {
 // FunctionEventTriggerInput is an input type that accepts FunctionEventTriggerArgs and FunctionEventTriggerOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+//	FunctionEventTriggerArgs{...}
 type FunctionEventTriggerInput interface {
 	pulumi.Input
 
@@ -68,11 +68,11 @@ func (i FunctionEventTriggerArgs) ToFunctionEventTriggerPtrOutputWithContext(ctx
 // FunctionEventTriggerPtrInput is an input type that accepts FunctionEventTriggerArgs, FunctionEventTriggerPtr and FunctionEventTriggerPtrOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerPtrInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+//	        FunctionEventTriggerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionEventTriggerPtrInput interface {
 	pulumi.Input
 
@@ -205,7 +205,7 @@ type FunctionEventTriggerFailurePolicy struct {
 // FunctionEventTriggerFailurePolicyInput is an input type that accepts FunctionEventTriggerFailurePolicyArgs and FunctionEventTriggerFailurePolicyOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerFailurePolicyInput` via:
 //
-//          FunctionEventTriggerFailurePolicyArgs{...}
+//	FunctionEventTriggerFailurePolicyArgs{...}
 type FunctionEventTriggerFailurePolicyInput interface {
 	pulumi.Input
 
@@ -241,11 +241,11 @@ func (i FunctionEventTriggerFailurePolicyArgs) ToFunctionEventTriggerFailurePoli
 // FunctionEventTriggerFailurePolicyPtrInput is an input type that accepts FunctionEventTriggerFailurePolicyArgs, FunctionEventTriggerFailurePolicyPtr and FunctionEventTriggerFailurePolicyPtrOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerFailurePolicyPtrInput` via:
 //
-//          FunctionEventTriggerFailurePolicyArgs{...}
+//	        FunctionEventTriggerFailurePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionEventTriggerFailurePolicyPtrInput interface {
 	pulumi.Input
 
@@ -343,7 +343,7 @@ type FunctionIamBindingCondition struct {
 // FunctionIamBindingConditionInput is an input type that accepts FunctionIamBindingConditionArgs and FunctionIamBindingConditionOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+//	FunctionIamBindingConditionArgs{...}
 type FunctionIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -380,11 +380,11 @@ func (i FunctionIamBindingConditionArgs) ToFunctionIamBindingConditionPtrOutputW
 // FunctionIamBindingConditionPtrInput is an input type that accepts FunctionIamBindingConditionArgs, FunctionIamBindingConditionPtr and FunctionIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionPtrInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+//	        FunctionIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -506,7 +506,7 @@ type FunctionIamMemberCondition struct {
 // FunctionIamMemberConditionInput is an input type that accepts FunctionIamMemberConditionArgs and FunctionIamMemberConditionOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+//	FunctionIamMemberConditionArgs{...}
 type FunctionIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -543,11 +543,11 @@ func (i FunctionIamMemberConditionArgs) ToFunctionIamMemberConditionPtrOutputWit
 // FunctionIamMemberConditionPtrInput is an input type that accepts FunctionIamMemberConditionArgs, FunctionIamMemberConditionPtr and FunctionIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionPtrInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+//	        FunctionIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -674,7 +674,7 @@ type FunctionSecretEnvironmentVariable struct {
 // FunctionSecretEnvironmentVariableInput is an input type that accepts FunctionSecretEnvironmentVariableArgs and FunctionSecretEnvironmentVariableOutput values.
 // You can construct a concrete instance of `FunctionSecretEnvironmentVariableInput` via:
 //
-//          FunctionSecretEnvironmentVariableArgs{...}
+//	FunctionSecretEnvironmentVariableArgs{...}
 type FunctionSecretEnvironmentVariableInput interface {
 	pulumi.Input
 
@@ -708,7 +708,7 @@ func (i FunctionSecretEnvironmentVariableArgs) ToFunctionSecretEnvironmentVariab
 // FunctionSecretEnvironmentVariableArrayInput is an input type that accepts FunctionSecretEnvironmentVariableArray and FunctionSecretEnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `FunctionSecretEnvironmentVariableArrayInput` via:
 //
-//          FunctionSecretEnvironmentVariableArray{ FunctionSecretEnvironmentVariableArgs{...} }
+//	FunctionSecretEnvironmentVariableArray{ FunctionSecretEnvironmentVariableArgs{...} }
 type FunctionSecretEnvironmentVariableArrayInput interface {
 	pulumi.Input
 
@@ -798,7 +798,7 @@ type FunctionSecretVolume struct {
 // FunctionSecretVolumeInput is an input type that accepts FunctionSecretVolumeArgs and FunctionSecretVolumeOutput values.
 // You can construct a concrete instance of `FunctionSecretVolumeInput` via:
 //
-//          FunctionSecretVolumeArgs{...}
+//	FunctionSecretVolumeArgs{...}
 type FunctionSecretVolumeInput interface {
 	pulumi.Input
 
@@ -832,7 +832,7 @@ func (i FunctionSecretVolumeArgs) ToFunctionSecretVolumeOutputWithContext(ctx co
 // FunctionSecretVolumeArrayInput is an input type that accepts FunctionSecretVolumeArray and FunctionSecretVolumeArrayOutput values.
 // You can construct a concrete instance of `FunctionSecretVolumeArrayInput` via:
 //
-//          FunctionSecretVolumeArray{ FunctionSecretVolumeArgs{...} }
+//	FunctionSecretVolumeArray{ FunctionSecretVolumeArgs{...} }
 type FunctionSecretVolumeArrayInput interface {
 	pulumi.Input
 
@@ -918,7 +918,7 @@ type FunctionSecretVolumeVersion struct {
 // FunctionSecretVolumeVersionInput is an input type that accepts FunctionSecretVolumeVersionArgs and FunctionSecretVolumeVersionOutput values.
 // You can construct a concrete instance of `FunctionSecretVolumeVersionInput` via:
 //
-//          FunctionSecretVolumeVersionArgs{...}
+//	FunctionSecretVolumeVersionArgs{...}
 type FunctionSecretVolumeVersionInput interface {
 	pulumi.Input
 
@@ -948,7 +948,7 @@ func (i FunctionSecretVolumeVersionArgs) ToFunctionSecretVolumeVersionOutputWith
 // FunctionSecretVolumeVersionArrayInput is an input type that accepts FunctionSecretVolumeVersionArray and FunctionSecretVolumeVersionArrayOutput values.
 // You can construct a concrete instance of `FunctionSecretVolumeVersionArrayInput` via:
 //
-//          FunctionSecretVolumeVersionArray{ FunctionSecretVolumeVersionArgs{...} }
+//	FunctionSecretVolumeVersionArray{ FunctionSecretVolumeVersionArgs{...} }
 type FunctionSecretVolumeVersionArrayInput interface {
 	pulumi.Input
 
@@ -1023,7 +1023,7 @@ type FunctionSourceRepository struct {
 // FunctionSourceRepositoryInput is an input type that accepts FunctionSourceRepositoryArgs and FunctionSourceRepositoryOutput values.
 // You can construct a concrete instance of `FunctionSourceRepositoryInput` via:
 //
-//          FunctionSourceRepositoryArgs{...}
+//	FunctionSourceRepositoryArgs{...}
 type FunctionSourceRepositoryInput interface {
 	pulumi.Input
 
@@ -1060,11 +1060,11 @@ func (i FunctionSourceRepositoryArgs) ToFunctionSourceRepositoryPtrOutputWithCon
 // FunctionSourceRepositoryPtrInput is an input type that accepts FunctionSourceRepositoryArgs, FunctionSourceRepositoryPtr and FunctionSourceRepositoryPtrOutput values.
 // You can construct a concrete instance of `FunctionSourceRepositoryPtrInput` via:
 //
-//          FunctionSourceRepositoryArgs{...}
+//	        FunctionSourceRepositoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionSourceRepositoryPtrInput interface {
 	pulumi.Input
 
@@ -1180,7 +1180,7 @@ type GetFunctionEventTrigger struct {
 // GetFunctionEventTriggerInput is an input type that accepts GetFunctionEventTriggerArgs and GetFunctionEventTriggerOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerInput` via:
 //
-//          GetFunctionEventTriggerArgs{...}
+//	GetFunctionEventTriggerArgs{...}
 type GetFunctionEventTriggerInput interface {
 	pulumi.Input
 
@@ -1214,7 +1214,7 @@ func (i GetFunctionEventTriggerArgs) ToGetFunctionEventTriggerOutputWithContext(
 // GetFunctionEventTriggerArrayInput is an input type that accepts GetFunctionEventTriggerArray and GetFunctionEventTriggerArrayOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerArrayInput` via:
 //
-//          GetFunctionEventTriggerArray{ GetFunctionEventTriggerArgs{...} }
+//	GetFunctionEventTriggerArray{ GetFunctionEventTriggerArgs{...} }
 type GetFunctionEventTriggerArrayInput interface {
 	pulumi.Input
 
@@ -1295,7 +1295,7 @@ type GetFunctionEventTriggerFailurePolicy struct {
 // GetFunctionEventTriggerFailurePolicyInput is an input type that accepts GetFunctionEventTriggerFailurePolicyArgs and GetFunctionEventTriggerFailurePolicyOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerFailurePolicyInput` via:
 //
-//          GetFunctionEventTriggerFailurePolicyArgs{...}
+//	GetFunctionEventTriggerFailurePolicyArgs{...}
 type GetFunctionEventTriggerFailurePolicyInput interface {
 	pulumi.Input
 
@@ -1323,7 +1323,7 @@ func (i GetFunctionEventTriggerFailurePolicyArgs) ToGetFunctionEventTriggerFailu
 // GetFunctionEventTriggerFailurePolicyArrayInput is an input type that accepts GetFunctionEventTriggerFailurePolicyArray and GetFunctionEventTriggerFailurePolicyArrayOutput values.
 // You can construct a concrete instance of `GetFunctionEventTriggerFailurePolicyArrayInput` via:
 //
-//          GetFunctionEventTriggerFailurePolicyArray{ GetFunctionEventTriggerFailurePolicyArgs{...} }
+//	GetFunctionEventTriggerFailurePolicyArray{ GetFunctionEventTriggerFailurePolicyArgs{...} }
 type GetFunctionEventTriggerFailurePolicyArrayInput interface {
 	pulumi.Input
 
@@ -1394,7 +1394,7 @@ type GetFunctionSecretEnvironmentVariable struct {
 // GetFunctionSecretEnvironmentVariableInput is an input type that accepts GetFunctionSecretEnvironmentVariableArgs and GetFunctionSecretEnvironmentVariableOutput values.
 // You can construct a concrete instance of `GetFunctionSecretEnvironmentVariableInput` via:
 //
-//          GetFunctionSecretEnvironmentVariableArgs{...}
+//	GetFunctionSecretEnvironmentVariableArgs{...}
 type GetFunctionSecretEnvironmentVariableInput interface {
 	pulumi.Input
 
@@ -1424,7 +1424,7 @@ func (i GetFunctionSecretEnvironmentVariableArgs) ToGetFunctionSecretEnvironment
 // GetFunctionSecretEnvironmentVariableArrayInput is an input type that accepts GetFunctionSecretEnvironmentVariableArray and GetFunctionSecretEnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSecretEnvironmentVariableArrayInput` via:
 //
-//          GetFunctionSecretEnvironmentVariableArray{ GetFunctionSecretEnvironmentVariableArgs{...} }
+//	GetFunctionSecretEnvironmentVariableArray{ GetFunctionSecretEnvironmentVariableArgs{...} }
 type GetFunctionSecretEnvironmentVariableArrayInput interface {
 	pulumi.Input
 
@@ -1506,7 +1506,7 @@ type GetFunctionSecretVolume struct {
 // GetFunctionSecretVolumeInput is an input type that accepts GetFunctionSecretVolumeArgs and GetFunctionSecretVolumeOutput values.
 // You can construct a concrete instance of `GetFunctionSecretVolumeInput` via:
 //
-//          GetFunctionSecretVolumeArgs{...}
+//	GetFunctionSecretVolumeArgs{...}
 type GetFunctionSecretVolumeInput interface {
 	pulumi.Input
 
@@ -1536,7 +1536,7 @@ func (i GetFunctionSecretVolumeArgs) ToGetFunctionSecretVolumeOutputWithContext(
 // GetFunctionSecretVolumeArrayInput is an input type that accepts GetFunctionSecretVolumeArray and GetFunctionSecretVolumeArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSecretVolumeArrayInput` via:
 //
-//          GetFunctionSecretVolumeArray{ GetFunctionSecretVolumeArgs{...} }
+//	GetFunctionSecretVolumeArray{ GetFunctionSecretVolumeArgs{...} }
 type GetFunctionSecretVolumeArrayInput interface {
 	pulumi.Input
 
@@ -1616,7 +1616,7 @@ type GetFunctionSecretVolumeVersion struct {
 // GetFunctionSecretVolumeVersionInput is an input type that accepts GetFunctionSecretVolumeVersionArgs and GetFunctionSecretVolumeVersionOutput values.
 // You can construct a concrete instance of `GetFunctionSecretVolumeVersionInput` via:
 //
-//          GetFunctionSecretVolumeVersionArgs{...}
+//	GetFunctionSecretVolumeVersionArgs{...}
 type GetFunctionSecretVolumeVersionInput interface {
 	pulumi.Input
 
@@ -1644,7 +1644,7 @@ func (i GetFunctionSecretVolumeVersionArgs) ToGetFunctionSecretVolumeVersionOutp
 // GetFunctionSecretVolumeVersionArrayInput is an input type that accepts GetFunctionSecretVolumeVersionArray and GetFunctionSecretVolumeVersionArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSecretVolumeVersionArrayInput` via:
 //
-//          GetFunctionSecretVolumeVersionArray{ GetFunctionSecretVolumeVersionArgs{...} }
+//	GetFunctionSecretVolumeVersionArray{ GetFunctionSecretVolumeVersionArgs{...} }
 type GetFunctionSecretVolumeVersionArrayInput interface {
 	pulumi.Input
 
@@ -1717,7 +1717,7 @@ type GetFunctionSourceRepository struct {
 // GetFunctionSourceRepositoryInput is an input type that accepts GetFunctionSourceRepositoryArgs and GetFunctionSourceRepositoryOutput values.
 // You can construct a concrete instance of `GetFunctionSourceRepositoryInput` via:
 //
-//          GetFunctionSourceRepositoryArgs{...}
+//	GetFunctionSourceRepositoryArgs{...}
 type GetFunctionSourceRepositoryInput interface {
 	pulumi.Input
 
@@ -1746,7 +1746,7 @@ func (i GetFunctionSourceRepositoryArgs) ToGetFunctionSourceRepositoryOutputWith
 // GetFunctionSourceRepositoryArrayInput is an input type that accepts GetFunctionSourceRepositoryArray and GetFunctionSourceRepositoryArrayOutput values.
 // You can construct a concrete instance of `GetFunctionSourceRepositoryArrayInput` via:
 //
-//          GetFunctionSourceRepositoryArray{ GetFunctionSourceRepositoryArgs{...} }
+//	GetFunctionSourceRepositoryArray{ GetFunctionSourceRepositoryArgs{...} }
 type GetFunctionSourceRepositoryArrayInput interface {
 	pulumi.Input
 

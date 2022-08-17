@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class DicomStoreStreamConfigBigqueryDestinationGetArgs : Pulumi.ResourceArgs
+    public sealed class DicomStoreStreamConfigBigqueryDestinationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public DicomStoreStreamConfigBigqueryDestinationGetArgs()
         {
         }
+        public static new DicomStoreStreamConfigBigqueryDestinationGetArgs Empty => new DicomStoreStreamConfigBigqueryDestinationGetArgs();
     }
 }

@@ -16,160 +16,150 @@ namespace Pulumi.Gcp.Recaptcha
     /// ### Android_key
     /// A basic test of recaptcha enterprise key that can be used by Android apps
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
-    ///         var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new Gcp.Recaptcha.EnterpriseKeyArgs
+    ///         AndroidSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyAndroidSettingsArgs
     ///         {
-    ///             AndroidSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyAndroidSettingsArgs
-    ///             {
-    ///                 AllowAllPackageNames = true,
-    ///                 AllowedPackageNames = {},
-    ///             },
-    ///             DisplayName = "display-name-one",
-    ///             Labels = 
-    ///             {
-    ///                 { "label-one", "value-one" },
-    ///             },
-    ///             Project = "my-project-name",
-    ///             TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
-    ///             {
-    ///                 TestingScore = 0.8,
-    ///             },
-    ///         });
-    ///     }
+    ///             AllowAllPackageNames = true,
+    ///             AllowedPackageNames = new[] {},
+    ///         },
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingScore = 0.8,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Ios_key
     /// A basic test of recaptcha enterprise key that can be used by iOS apps
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
-    ///         var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new Gcp.Recaptcha.EnterpriseKeyArgs
+    ///         DisplayName = "display-name-one",
+    ///         IosSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyIosSettingsArgs
     ///         {
-    ///             DisplayName = "display-name-one",
-    ///             IosSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyIosSettingsArgs
-    ///             {
-    ///                 AllowAllBundleIds = true,
-    ///                 AllowedBundleIds = {},
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "label-one", "value-one" },
-    ///             },
-    ///             Project = "my-project-name",
-    ///             TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
-    ///             {
-    ///                 TestingScore = 1,
-    ///             },
-    ///         });
-    ///     }
+    ///             AllowAllBundleIds = true,
+    ///             AllowedBundleIds = new[] {},
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingScore = 1,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Minimal_key
     /// A minimal test of recaptcha enterprise key
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
-    ///         var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new Gcp.Recaptcha.EnterpriseKeyArgs
+    ///         DisplayName = "display-name-one",
+    ///         Labels = ,
+    ///         Project = "my-project-name",
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {
-    ///             DisplayName = "display-name-one",
-    ///             Labels = ,
-    ///             Project = "my-project-name",
-    ///             WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
-    ///             {
-    ///                 AllowAllDomains = true,
-    ///                 IntegrationType = "SCORE",
-    ///             },
-    ///         });
-    ///     }
+    ///             AllowAllDomains = true,
+    ///             IntegrationType = "SCORE",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Web_key
     /// A basic test of recaptcha enterprise key that can be used by websites
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
-    ///         var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new Gcp.Recaptcha.EnterpriseKeyArgs
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
     ///         {
-    ///             DisplayName = "display-name-one",
-    ///             Labels = 
-    ///             {
-    ///                 { "label-one", "value-one" },
-    ///             },
-    ///             Project = "my-project-name",
-    ///             TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
-    ///             {
-    ///                 TestingChallenge = "NOCAPTCHA",
-    ///                 TestingScore = 0.5,
-    ///             },
-    ///             WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
-    ///             {
-    ///                 AllowAllDomains = true,
-    ///                 AllowedDomains = {},
-    ///                 ChallengeSecurityPreference = "USABILITY",
-    ///                 IntegrationType = "CHECKBOX",
-    ///             },
-    ///         });
-    ///     }
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingChallenge = "NOCAPTCHA",
+    ///             TestingScore = 0.5,
+    ///         },
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             AllowAllDomains = true,
+    ///             AllowedDomains = new[] {},
+    ///             ChallengeSecurityPreference = "USABILITY",
+    ///             IntegrationType = "CHECKBOX",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Web_score_key
     /// A basic test of recaptcha enterprise key with score integration type that can be used by websites
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
-    ///         var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new Gcp.Recaptcha.EnterpriseKeyArgs
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
     ///         {
-    ///             DisplayName = "display-name-one",
-    ///             Labels = 
-    ///             {
-    ///                 { "label-one", "value-one" },
-    ///             },
-    ///             Project = "my-project-name",
-    ///             TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
-    ///             {
-    ///                 TestingScore = 0.5,
-    ///             },
-    ///             WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
-    ///             {
-    ///                 AllowAllDomains = true,
-    ///                 AllowAmpTraffic = false,
-    ///                 AllowedDomains = {},
-    ///                 IntegrationType = "SCORE",
-    ///             },
-    ///         });
-    ///     }
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingScore = 0.5,
+    ///         },
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             AllowAllDomains = true,
+    ///             AllowAmpTraffic = false,
+    ///             AllowedDomains = new[] {},
+    ///             IntegrationType = "SCORE",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -189,7 +179,7 @@ namespace Pulumi.Gcp.Recaptcha
     /// ```
     /// </summary>
     [GcpResourceType("gcp:recaptcha/enterpriseKey:EnterpriseKey")]
-    public partial class EnterpriseKey : Pulumi.CustomResource
+    public partial class EnterpriseKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Settings for keys that can be used by Android apps.
@@ -289,7 +279,7 @@ namespace Pulumi.Gcp.Recaptcha
         }
     }
 
-    public sealed class EnterpriseKeyArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Settings for keys that can be used by Android apps.
@@ -342,9 +332,10 @@ namespace Pulumi.Gcp.Recaptcha
         public EnterpriseKeyArgs()
         {
         }
+        public static new EnterpriseKeyArgs Empty => new EnterpriseKeyArgs();
     }
 
-    public sealed class EnterpriseKeyState : Pulumi.ResourceArgs
+    public sealed class EnterpriseKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Settings for keys that can be used by Android apps.
@@ -409,5 +400,6 @@ namespace Pulumi.Gcp.Recaptcha
         public EnterpriseKeyState()
         {
         }
+        public static new EnterpriseKeyState Empty => new EnterpriseKeyState();
     }
 }

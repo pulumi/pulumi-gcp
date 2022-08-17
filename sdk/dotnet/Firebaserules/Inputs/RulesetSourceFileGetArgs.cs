@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebaserules.Inputs
 {
 
-    public sealed class RulesetSourceFileGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetSourceFileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Textual Content.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Firebaserules.Inputs
         public RulesetSourceFileGetArgs()
         {
         }
+        public static new RulesetSourceFileGetArgs Empty => new RulesetSourceFileGetArgs();
     }
 }

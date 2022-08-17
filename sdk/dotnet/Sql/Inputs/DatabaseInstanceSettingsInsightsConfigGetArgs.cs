@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsInsightsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsInsightsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True if Query Insights feature is enabled.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsInsightsConfigGetArgs()
         {
         }
+        public static new DatabaseInstanceSettingsInsightsConfigGetArgs Empty => new DatabaseInstanceSettingsInsightsConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscaling")]
         public Input<Inputs.ClusterNodePoolAutoscalingArgs>? Autoscaling { get; set; }
@@ -105,5 +105,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolArgs()
         {
         }
+        public static new ClusterNodePoolArgs Empty => new ClusterNodePoolArgs();
     }
 }

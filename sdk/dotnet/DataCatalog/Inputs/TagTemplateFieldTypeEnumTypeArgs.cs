@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class TagTemplateFieldTypeEnumTypeArgs : Pulumi.ResourceArgs
+    public sealed class TagTemplateFieldTypeEnumTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedValues", required: true)]
         private InputList<Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs>? _allowedValues;
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public TagTemplateFieldTypeEnumTypeArgs()
         {
         }
+        public static new TagTemplateFieldTypeEnumTypeArgs Empty => new TagTemplateFieldTypeEnumTypeArgs();
     }
 }

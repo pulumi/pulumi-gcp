@@ -19,22 +19,20 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.FirewallPolicy("default", new Gcp.Compute.FirewallPolicyArgs
-    ///         {
-    ///             Description = "Example Resource",
-    ///             Parent = "organizations/12345",
-    ///             ShortName = "my-policy",
-    ///         });
-    ///     }
+    ///         Description = "Example Resource",
+    ///         Parent = "organizations/12345",
+    ///         ShortName = "my-policy",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/firewallPolicy:FirewallPolicy")]
-    public partial class FirewallPolicy : Pulumi.CustomResource
+    public partial class FirewallPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -156,7 +154,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class FirewallPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -179,9 +177,10 @@ namespace Pulumi.Gcp.Compute
         public FirewallPolicyArgs()
         {
         }
+        public static new FirewallPolicyArgs Empty => new FirewallPolicyArgs();
     }
 
-    public sealed class FirewallPolicyState : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -246,5 +245,6 @@ namespace Pulumi.Gcp.Compute
         public FirewallPolicyState()
         {
         }
+        public static new FirewallPolicyState Empty => new FirewallPolicyState();
     }
 }

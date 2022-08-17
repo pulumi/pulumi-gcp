@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementHierarchyControllerGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementHierarchyControllerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether hierarchical resource quota is enabled in this cluster.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementHierarchyControllerGetArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementHierarchyControllerGetArgs Empty => new FeatureMembershipConfigmanagementHierarchyControllerGetArgs();
     }
 }

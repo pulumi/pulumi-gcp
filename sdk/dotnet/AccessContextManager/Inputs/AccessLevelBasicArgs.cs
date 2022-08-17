@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelBasicArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelBasicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How the conditions list should be combined to determine if a request
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelBasicArgs()
         {
         }
+        public static new AccessLevelBasicArgs Empty => new AccessLevelBasicArgs();
     }
 }

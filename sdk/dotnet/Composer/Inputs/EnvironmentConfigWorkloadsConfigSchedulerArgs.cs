@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigWorkloadsConfigSchedulerArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigWorkloadsConfigSchedulerArgs : global::Pulumi.ResourceArgs
     {
         [Input("count")]
         public Input<int>? Count { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigWorkloadsConfigSchedulerArgs()
         {
         }
+        public static new EnvironmentConfigWorkloadsConfigSchedulerArgs Empty => new EnvironmentConfigWorkloadsConfigSchedulerArgs();
     }
 }

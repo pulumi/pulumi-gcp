@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthoritySubordinateConfigPemIssuerChainGetArgs : Pulumi.ResourceArgs
+    public sealed class AuthoritySubordinateConfigPemIssuerChainGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("pemCertificates")]
         private InputList<string>? _pemCertificates;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthoritySubordinateConfigPemIssuerChainGetArgs()
         {
         }
+        public static new AuthoritySubordinateConfigPemIssuerChainGetArgs Empty => new AuthoritySubordinateConfigPemIssuerChainGetArgs();
     }
 }

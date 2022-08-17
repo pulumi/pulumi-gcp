@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class KeyRingImportJobPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingImportJobPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("pem")]
         public Input<string>? Pem { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         public KeyRingImportJobPublicKeyArgs()
         {
         }
+        public static new KeyRingImportJobPublicKeyArgs Empty => new KeyRingImportJobPublicKeyArgs();
     }
 }

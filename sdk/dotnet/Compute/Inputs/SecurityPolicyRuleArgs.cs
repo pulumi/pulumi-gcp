@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take when `match` matches the request. Valid values:
@@ -65,5 +65,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleArgs()
         {
         }
+        public static new SecurityPolicyRuleArgs Empty => new SecurityPolicyRuleArgs();
     }
 }

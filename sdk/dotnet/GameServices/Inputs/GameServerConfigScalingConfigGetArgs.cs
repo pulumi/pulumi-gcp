@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerConfigScalingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerConfigScalingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fleet autoscaler spec, which is sent to Agones.
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerConfigScalingConfigGetArgs()
         {
         }
+        public static new GameServerConfigScalingConfigGetArgs Empty => new GameServerConfigScalingConfigGetArgs();
     }
 }

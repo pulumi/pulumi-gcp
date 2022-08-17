@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A reference to a RegionBackendService resource. This will be used if
@@ -81,5 +81,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherArgs Empty => new RegionUrlMapPathMatcherArgs();
     }
 }

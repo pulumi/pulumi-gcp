@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleRedirectOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRedirectOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// External redirection target when "EXTERNAL_302" is set in 'type'.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleRedirectOptionsGetArgs()
         {
         }
+        public static new SecurityPolicyRuleRedirectOptionsGetArgs Empty => new SecurityPolicyRuleRedirectOptionsGetArgs();
     }
 }

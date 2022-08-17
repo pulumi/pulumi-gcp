@@ -21,25 +21,23 @@ namespace Pulumi.Gcp.Iam
         /// Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var perms = Gcp.Iam.GetTestablePermissions.Invoke(new()
         ///     {
-        ///         var perms = Output.Create(Gcp.Iam.GetTestablePermissions.InvokeAsync(new Gcp.Iam.GetTestablePermissionsArgs
+        ///         FullResourceName = "//cloudresourcemanager.googleapis.com/projects/my-project",
+        ///         Stages = new[]
         ///         {
-        ///             FullResourceName = "//cloudresourcemanager.googleapis.com/projects/my-project",
-        ///             Stages = 
-        ///             {
-        ///                 "GA",
-        ///                 "BETA",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "GA",
+        ///             "BETA",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -57,25 +55,23 @@ namespace Pulumi.Gcp.Iam
         /// Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var perms = Gcp.Iam.GetTestablePermissions.Invoke(new()
         ///     {
-        ///         var perms = Output.Create(Gcp.Iam.GetTestablePermissions.InvokeAsync(new Gcp.Iam.GetTestablePermissionsArgs
+        ///         FullResourceName = "//cloudresourcemanager.googleapis.com/projects/my-project",
+        ///         Stages = new[]
         ///         {
-        ///             FullResourceName = "//cloudresourcemanager.googleapis.com/projects/my-project",
-        ///             Stages = 
-        ///             {
-        ///                 "GA",
-        ///                 "BETA",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "GA",
+        ///             "BETA",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +81,7 @@ namespace Pulumi.Gcp.Iam
     }
 
 
-    public sealed class GetTestablePermissionsArgs : Pulumi.InvokeArgs
+    public sealed class GetTestablePermissionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
@@ -114,9 +110,10 @@ namespace Pulumi.Gcp.Iam
         public GetTestablePermissionsArgs()
         {
         }
+        public static new GetTestablePermissionsArgs Empty => new GetTestablePermissionsArgs();
     }
 
-    public sealed class GetTestablePermissionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTestablePermissionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
@@ -145,6 +142,7 @@ namespace Pulumi.Gcp.Iam
         public GetTestablePermissionsInvokeArgs()
         {
         }
+        public static new GetTestablePermissionsInvokeArgs Empty => new GetTestablePermissionsInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigRuleSetRuleArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigRuleSetRuleArgs Empty => new PreventionInspectTemplateInspectConfigRuleSetRuleArgs();
     }
 }

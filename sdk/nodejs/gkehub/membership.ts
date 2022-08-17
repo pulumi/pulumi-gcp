@@ -65,7 +65,15 @@ import * as utilities from "../utilities";
  * Membership can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default {{name}}
+ *  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
  * ```
  */
 export class Membership extends pulumi.CustomResource {

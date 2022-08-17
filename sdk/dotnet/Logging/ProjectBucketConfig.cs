@@ -19,50 +19,47 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Organizations.Project("default", new()
     ///     {
-    ///         var @default = new Gcp.Organizations.Project("default", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "your-project-id",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var basic = new Gcp.Logging.ProjectBucketConfig("basic", new Gcp.Logging.ProjectBucketConfigArgs
-    ///         {
-    ///             Project = @default.Id,
-    ///             Location = "global",
-    ///             RetentionDays = 30,
-    ///             BucketId = "_Default",
-    ///         });
-    ///     }
+    ///         ProjectId = "your-project-id",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
+    ///     {
+    ///         Project = @default.Id,
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Create logging bucket with customId
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
     ///     {
-    ///         var basic = new Gcp.Logging.ProjectBucketConfig("basic", new Gcp.Logging.ProjectBucketConfigArgs
-    ///         {
-    ///             BucketId = "custom-bucket",
-    ///             Location = "global",
-    ///             Project = "project_id",
-    ///             RetentionDays = 30,
-    ///         });
-    ///     }
+    ///         BucketId = "custom-bucket",
+    ///         Location = "global",
+    ///         Project = "project_id",
+    ///         RetentionDays = 30,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +71,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/projectBucketConfig:ProjectBucketConfig")]
-    public partial class ProjectBucketConfig : Pulumi.CustomResource
+    public partial class ProjectBucketConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -162,7 +159,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class ProjectBucketConfigArgs : Pulumi.ResourceArgs
+    public sealed class ProjectBucketConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -197,9 +194,10 @@ namespace Pulumi.Gcp.Logging
         public ProjectBucketConfigArgs()
         {
         }
+        public static new ProjectBucketConfigArgs Empty => new ProjectBucketConfigArgs();
     }
 
-    public sealed class ProjectBucketConfigState : Pulumi.ResourceArgs
+    public sealed class ProjectBucketConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -246,5 +244,6 @@ namespace Pulumi.Gcp.Logging
         public ProjectBucketConfigState()
         {
         }
+        public static new ProjectBucketConfigState Empty => new ProjectBucketConfigState();
     }
 }

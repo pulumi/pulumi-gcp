@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ReservationShareSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class ReservationShareSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("projectMaps")]
         private InputList<Inputs.ReservationShareSettingsProjectMapGetArgs>? _projectMaps;
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ReservationShareSettingsGetArgs()
         {
         }
+        public static new ReservationShareSettingsGetArgs Empty => new ReservationShareSettingsGetArgs();
     }
 }

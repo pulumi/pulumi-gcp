@@ -22,53 +22,47 @@ namespace Pulumi.Gcp.SourceRepo
     /// ### Sourcerepo Repository Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var my_repo = new Gcp.SourceRepo.Repository("my-repo", new Gcp.SourceRepo.RepositoryArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo");
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Sourcerepo Repository Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var testAccount = new Gcp.ServiceAccount.Account("testAccount", new()
     ///     {
-    ///         var testAccount = new Gcp.ServiceAccount.Account("testAccount", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-account",
-    ///             DisplayName = "Test Service Account",
-    ///         });
-    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var my_repo = new Gcp.SourceRepo.Repository("my-repo", new Gcp.SourceRepo.RepositoryArgs
-    ///         {
-    ///             PubsubConfigs = 
-    ///             {
-    ///                 new Gcp.SourceRepo.Inputs.RepositoryPubsubConfigArgs
-    ///                 {
-    ///                     Topic = topic.Id,
-    ///                     MessageFormat = "JSON",
-    ///                     ServiceAccountEmail = testAccount.Email,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo", new()
+    ///     {
+    ///         PubsubConfigs = new[]
+    ///         {
+    ///             new Gcp.SourceRepo.Inputs.RepositoryPubsubConfigArgs
+    ///             {
+    ///                 Topic = topic.Id,
+    ///                 MessageFormat = "JSON",
+    ///                 ServiceAccountEmail = testAccount.Email,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +78,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sourcerepo/repository:Repository")]
-    public partial class Repository : Pulumi.CustomResource
+    public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
@@ -164,7 +158,7 @@ namespace Pulumi.Gcp.SourceRepo
         }
     }
 
-    public sealed class RepositoryArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
@@ -197,9 +191,10 @@ namespace Pulumi.Gcp.SourceRepo
         public RepositoryArgs()
         {
         }
+        public static new RepositoryArgs Empty => new RepositoryArgs();
     }
 
-    public sealed class RepositoryState : Pulumi.ResourceArgs
+    public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
@@ -244,5 +239,6 @@ namespace Pulumi.Gcp.SourceRepo
         public RepositoryState()
         {
         }
+        public static new RepositoryState Empty => new RepositoryState();
     }
 }

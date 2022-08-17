@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Memcache.Inputs
 {
 
-    public sealed class InstanceMaintenancePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenancePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -56,5 +56,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public InstanceMaintenancePolicyGetArgs()
         {
         }
+        public static new InstanceMaintenancePolicyGetArgs Empty => new InstanceMaintenancePolicyGetArgs();
     }
 }

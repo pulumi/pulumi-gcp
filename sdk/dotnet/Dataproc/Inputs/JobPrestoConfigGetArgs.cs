@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class JobPrestoConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class JobPrestoConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientTags")]
         private InputList<string>? _clientTags;
@@ -74,5 +74,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public JobPrestoConfigGetArgs()
         {
         }
+        public static new JobPrestoConfigGetArgs Empty => new JobPrestoConfigGetArgs();
     }
 }

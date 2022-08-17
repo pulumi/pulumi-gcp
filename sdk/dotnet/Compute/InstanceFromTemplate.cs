@@ -22,52 +22,51 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tplInstanceTemplate = new Gcp.Compute.InstanceTemplate("tplInstanceTemplate", new()
     ///     {
-    ///         var tplInstanceTemplate = new Gcp.Compute.InstanceTemplate("tplInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         MachineType = "e2-medium",
+    ///         Disks = new[]
     ///         {
-    ///             MachineType = "e2-medium",
-    ///             Disks = 
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-    ///                 {
-    ///                     SourceImage = "debian-cloud/debian-9",
-    ///                     AutoDelete = true,
-    ///                     DiskSizeGb = 100,
-    ///                     Boot = true,
-    ///                 },
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 AutoDelete = true,
+    ///                 DiskSizeGb = 100,
+    ///                 Boot = true,
     ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                 },
-    ///             },
-    ///             Metadata = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             CanIpForward = true,
-    ///         });
-    ///         var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tplInstanceFromTemplate", new Gcp.Compute.InstanceFromTemplateArgs
+    ///         },
+    ///         NetworkInterfaces = new[]
     ///         {
-    ///             Zone = "us-central1-a",
-    ///             SourceInstanceTemplate = tplInstanceTemplate.Id,
-    ///             CanIpForward = false,
-    ///             Labels = 
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
     ///             {
-    ///                 { "my_key", "my_value" },
+    ///                 Network = "default",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         CanIpForward = true,
+    ///     });
     /// 
-    /// }
+    ///     var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tplInstanceFromTemplate", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         SourceInstanceTemplate = tplInstanceTemplate.Id,
+    ///         CanIpForward = false,
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:compute/instanceFromTemplate:InstanceFromTemplate")]
-    public partial class InstanceFromTemplate : Pulumi.CustomResource
+    public partial class InstanceFromTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features.
@@ -353,7 +352,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InstanceFromTemplateArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features.
@@ -590,9 +589,10 @@ namespace Pulumi.Gcp.Compute
         public InstanceFromTemplateArgs()
         {
         }
+        public static new InstanceFromTemplateArgs Empty => new InstanceFromTemplateArgs();
     }
 
-    public sealed class InstanceFromTemplateState : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features.
@@ -871,5 +871,6 @@ namespace Pulumi.Gcp.Compute
         public InstanceFromTemplateState()
         {
         }
+        public static new InstanceFromTemplateState Empty => new InstanceFromTemplateState();
     }
 }

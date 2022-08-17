@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceServerCaCertArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceServerCaCertArgs : global::Pulumi.ResourceArgs
     {
         [Input("cert")]
         public Input<string>? Cert { get; set; }
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceServerCaCertArgs()
         {
         }
+        public static new DatabaseInstanceServerCaCertArgs Empty => new DatabaseInstanceServerCaCertArgs();
     }
 }

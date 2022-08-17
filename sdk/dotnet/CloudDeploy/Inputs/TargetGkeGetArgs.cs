@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy.Inputs
 {
 
-    public sealed class TargetGkeGetArgs : Pulumi.ResourceArgs
+    public sealed class TargetGkeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public TargetGkeGetArgs()
         {
         }
+        public static new TargetGkeGetArgs Empty => new TargetGkeGetArgs();
     }
 }

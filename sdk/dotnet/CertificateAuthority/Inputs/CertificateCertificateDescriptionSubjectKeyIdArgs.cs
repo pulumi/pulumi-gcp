@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionSubjectKeyIdArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionSubjectKeyIdArgs : global::Pulumi.ResourceArgs
     {
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionSubjectKeyIdArgs()
         {
         }
+        public static new CertificateCertificateDescriptionSubjectKeyIdArgs Empty => new CertificateCertificateDescriptionSubjectKeyIdArgs();
     }
 }

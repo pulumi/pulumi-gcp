@@ -16,6 +16,7 @@ __all__ = [
     'FunctionBuildConfigSourceRepoSource',
     'FunctionBuildConfigSourceStorageSource',
     'FunctionEventTrigger',
+    'FunctionEventTriggerEventFilter',
     'FunctionIamBindingCondition',
     'FunctionIamMemberCondition',
     'FunctionServiceConfig',
@@ -377,7 +378,9 @@ class FunctionEventTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "eventType":
+        if key == "eventFilters":
+            suggest = "event_filters"
+        elif key == "eventType":
             suggest = "event_type"
         elif key == "pubsubTopic":
             suggest = "pubsub_topic"
@@ -400,6 +403,7 @@ class FunctionEventTrigger(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 event_filters: Optional[Sequence['outputs.FunctionEventTriggerEventFilter']] = None,
                  event_type: Optional[str] = None,
                  pubsub_topic: Optional[str] = None,
                  retry_policy: Optional[str] = None,
@@ -407,6 +411,8 @@ class FunctionEventTrigger(dict):
                  trigger: Optional[str] = None,
                  trigger_region: Optional[str] = None):
         """
+        :param Sequence['FunctionEventTriggerEventFilterArgs'] event_filters: Criteria used to filter events.
+               Structure is documented below.
         :param str event_type: Required. The type of event to observe.
         :param str pubsub_topic: The name of a Pub/Sub topic in the same project that will be used
                as the transport topic for the event delivery.
@@ -421,6 +427,8 @@ class FunctionEventTrigger(dict):
                region as the function, a different region or multi-region, or the global
                region. If not provided, defaults to the same region as the function.
         """
+        if event_filters is not None:
+            pulumi.set(__self__, "event_filters", event_filters)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
         if pubsub_topic is not None:
@@ -433,6 +441,15 @@ class FunctionEventTrigger(dict):
             pulumi.set(__self__, "trigger", trigger)
         if trigger_region is not None:
             pulumi.set(__self__, "trigger_region", trigger_region)
+
+    @property
+    @pulumi.getter(name="eventFilters")
+    def event_filters(self) -> Optional[Sequence['outputs.FunctionEventTriggerEventFilter']]:
+        """
+        Criteria used to filter events.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event_filters")
 
     @property
     @pulumi.getter(name="eventType")
@@ -488,6 +505,61 @@ class FunctionEventTrigger(dict):
         region. If not provided, defaults to the same region as the function.
         """
         return pulumi.get(self, "trigger_region")
+
+
+@pulumi.output_type
+class FunctionEventTriggerEventFilter(dict):
+    def __init__(__self__, *,
+                 attribute: str,
+                 value: str,
+                 operator: Optional[str] = None):
+        """
+        :param str attribute: 'Required. The name of a CloudEvents attribute.
+               Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+               Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
+        :param str value: Required. The value for the attribute.
+               If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+        :param str operator: Optional. The operator used for matching the events with the value of
+               the filter. If not specified, only events that have an exact key-value
+               pair specified in the filter are matched.
+               The only allowed value is `match-path-pattern`.
+               [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "value", value)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> str:
+        """
+        'Required. The name of a CloudEvents attribute.
+        Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+        Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Required. The value for the attribute.
+        If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Optional. The operator used for matching the events with the value of
+        the filter. If not specified, only events that have an exact key-value
+        pair specified in the filter are matched.
+        The only allowed value is `match-path-pattern`.
+        [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+        """
+        return pulumi.get(self, "operator")
 
 
 @pulumi.output_type

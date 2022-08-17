@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentInstanceFilterGroupLabelGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentInstanceFilterGroupLabelGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels", required: true)]
         private InputMap<string>? _labels;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentInstanceFilterGroupLabelGetArgs()
         {
         }
+        public static new PatchDeploymentInstanceFilterGroupLabelGetArgs Empty => new PatchDeploymentInstanceFilterGroupLabelGetArgs();
     }
 }

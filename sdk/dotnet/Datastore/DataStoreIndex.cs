@@ -28,33 +28,31 @@ namespace Pulumi.Gcp.Datastore
     /// ### Datastore Index
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Datastore.DataStoreIndex("default", new()
     ///     {
-    ///         var @default = new Gcp.Datastore.DataStoreIndex("default", new Gcp.Datastore.DataStoreIndexArgs
+    ///         Kind = "foo",
+    ///         Properties = new[]
     ///         {
-    ///             Kind = "foo",
-    ///             Properties = 
+    ///             new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
     ///             {
-    ///                 new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
-    ///                 {
-    ///                     Direction = "ASCENDING",
-    ///                     Name = "property_a",
-    ///                 },
-    ///                 new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
-    ///                 {
-    ///                     Direction = "ASCENDING",
-    ///                     Name = "property_b",
-    ///                 },
+    ///                 Direction = "ASCENDING",
+    ///                 Name = "property_a",
     ///             },
-    ///         });
-    ///     }
+    ///             new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
+    ///             {
+    ///                 Direction = "ASCENDING",
+    ///                 Name = "property_b",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +72,7 @@ namespace Pulumi.Gcp.Datastore
     /// ```
     /// </summary>
     [GcpResourceType("gcp:datastore/dataStoreIndex:DataStoreIndex")]
-    public partial class DataStoreIndex : Pulumi.CustomResource
+    public partial class DataStoreIndex : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Policy for including ancestors in the index.
@@ -154,7 +152,7 @@ namespace Pulumi.Gcp.Datastore
         }
     }
 
-    public sealed class DataStoreIndexArgs : Pulumi.ResourceArgs
+    public sealed class DataStoreIndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Policy for including ancestors in the index.
@@ -193,9 +191,10 @@ namespace Pulumi.Gcp.Datastore
         public DataStoreIndexArgs()
         {
         }
+        public static new DataStoreIndexArgs Empty => new DataStoreIndexArgs();
     }
 
-    public sealed class DataStoreIndexState : Pulumi.ResourceArgs
+    public sealed class DataStoreIndexState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Policy for including ancestors in the index.
@@ -240,5 +239,6 @@ namespace Pulumi.Gcp.Datastore
         public DataStoreIndexState()
         {
         }
+        public static new DataStoreIndexState Empty => new DataStoreIndexState();
     }
 }

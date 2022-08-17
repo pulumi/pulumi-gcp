@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Endpoints.Inputs
 {
 
-    public sealed class ServiceApiArgs : Pulumi.ResourceArgs
+    public sealed class ServiceApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("methods")]
         private InputList<Inputs.ServiceApiMethodArgs>? _methods;
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.Endpoints.Inputs
         public ServiceApiArgs()
         {
         }
+        public static new ServiceApiArgs Empty => new ServiceApiArgs();
     }
 }

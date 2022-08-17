@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthoritySubordinateConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AuthoritySubordinateConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This can refer to a CertificateAuthority that was used to create a
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthoritySubordinateConfigGetArgs()
         {
         }
+        public static new AuthoritySubordinateConfigGetArgs Empty => new AuthoritySubordinateConfigGetArgs();
     }
 }

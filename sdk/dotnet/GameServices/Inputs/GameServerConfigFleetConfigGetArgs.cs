@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerConfigFleetConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerConfigFleetConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fleet spec, which is sent to Agones to configure fleet.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerConfigFleetConfigGetArgs()
         {
         }
+        public static new GameServerConfigFleetConfigGetArgs Empty => new GameServerConfigFleetConfigGetArgs();
     }
 }

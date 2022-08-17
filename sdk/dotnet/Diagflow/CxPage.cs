@@ -22,119 +22,119 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Page Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
-    ///         var agent = new Gcp.Diagflow.CxAgent("agent", new Gcp.Diagflow.CxAgentArgs
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
     ///         {
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             Location = "global",
-    ///             DefaultLanguageCode = "en",
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///             Description = "Example description.",
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableSpellCorrection = true,
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///         });
-    ///         var myPage2 = new Gcp.Diagflow.CxPage("myPage2", new Gcp.Diagflow.CxPageArgs
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             Parent = agent.StartFlow,
-    ///             DisplayName = "MyPage2",
-    ///         });
-    ///         var basicPage = new Gcp.Diagflow.CxPage("basicPage", new Gcp.Diagflow.CxPageArgs
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var myPage2 = new Gcp.Diagflow.CxPage("myPage2", new()
+    ///     {
+    ///         Parent = agent.StartFlow,
+    ///         DisplayName = "MyPage2",
+    ///     });
+    /// 
+    ///     var basicPage = new Gcp.Diagflow.CxPage("basicPage", new()
+    ///     {
+    ///         Parent = agent.StartFlow,
+    ///         DisplayName = "MyPage",
+    ///         EntryFulfillment = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentArgs
     ///         {
-    ///             Parent = agent.StartFlow,
-    ///             DisplayName = "MyPage",
-    ///             EntryFulfillment = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentArgs
+    ///             Messages = new[]
     ///             {
-    ///                 Messages = 
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
     ///                 {
-    ///                     new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                     Text = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageTextArgs
     ///                     {
-    ///                         Text = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageTextArgs
+    ///                         Texts = new[]
     ///                         {
-    ///                             Texts = 
-    ///                             {
-    ///                                 "Welcome to page",
-    ///                             },
+    ///                             "Welcome to page",
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///             Form = new Gcp.Diagflow.Inputs.CxPageFormArgs
+    ///         },
+    ///         Form = new Gcp.Diagflow.Inputs.CxPageFormArgs
+    ///         {
+    ///             Parameters = new[]
     ///             {
-    ///                 Parameters = 
+    ///                 new Gcp.Diagflow.Inputs.CxPageFormParameterArgs
     ///                 {
-    ///                     new Gcp.Diagflow.Inputs.CxPageFormParameterArgs
+    ///                     DisplayName = "param1",
+    ///                     EntityType = "projects/-/locations/-/agents/-/entityTypes/sys.date",
+    ///                     FillBehavior = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorArgs
     ///                     {
-    ///                         DisplayName = "param1",
-    ///                         EntityType = "projects/-/locations/-/agents/-/entityTypes/sys.date",
-    ///                         FillBehavior = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorArgs
+    ///                         InitialPromptFulfillment = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs
     ///                         {
-    ///                             InitialPromptFulfillment = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs
+    ///                             Messages = new[]
     ///                             {
-    ///                                 Messages = 
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
     ///                                 {
-    ///                                     new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                     Text = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs
     ///                                     {
-    ///                                         Text = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs
+    ///                                         Texts = new[]
     ///                                         {
-    ///                                             Texts = 
-    ///                                             {
-    ///                                                 "Please provide param1",
-    ///                                             },
+    ///                                             "Please provide param1",
     ///                                         },
     ///                                     },
     ///                                 },
     ///                             },
     ///                         },
-    ///                         Required = true,
-    ///                         Redact = true,
     ///                     },
+    ///                     Required = true,
+    ///                     Redact = true,
     ///                 },
     ///             },
-    ///             TransitionRoutes = 
+    ///         },
+    ///         TransitionRoutes = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxPageTransitionRouteArgs
     ///             {
-    ///                 new Gcp.Diagflow.Inputs.CxPageTransitionRouteArgs
+    ///                 Condition = "$page.params.status = 'FINAL'",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentArgs
     ///                 {
-    ///                     Condition = "$page.params.status = 'FINAL'",
-    ///                     TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentArgs
+    ///                     Messages = new[]
     ///                     {
-    ///                         Messages = 
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
     ///                         {
-    ///                             new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                             Text = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs
     ///                             {
-    ///                                 Text = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs
+    ///                                 Texts = new[]
     ///                                 {
-    ///                                     Texts = 
-    ///                                     {
-    ///                                         "information completed, navigating to page 2",
-    ///                                     },
+    ///                                     "information completed, navigating to page 2",
     ///                                 },
     ///                             },
     ///                         },
     ///                     },
-    ///                     TargetPage = myPage2.Id,
     ///                 },
+    ///                 TargetPage = myPage2.Id,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxPage:CxPage")]
-    public partial class CxPage : Pulumi.CustomResource
+    public partial class CxPage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The human-readable name of the parameter, unique within the form.
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxPageArgs : Pulumi.ResourceArgs
+    public sealed class CxPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the parameter, unique within the form.
@@ -374,9 +374,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxPageArgs()
         {
         }
+        public static new CxPageArgs Empty => new CxPageArgs();
     }
 
-    public sealed class CxPageState : Pulumi.ResourceArgs
+    public sealed class CxPageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the parameter, unique within the form.
@@ -480,5 +481,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxPageState()
         {
         }
+        public static new CxPageState Empty => new CxPageState();
     }
 }

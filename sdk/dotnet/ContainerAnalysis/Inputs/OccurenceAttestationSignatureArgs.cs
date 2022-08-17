@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ContainerAnalysis.Inputs
 {
 
-    public sealed class OccurenceAttestationSignatureArgs : Pulumi.ResourceArgs
+    public sealed class OccurenceAttestationSignatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier for the public key that verifies this
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         public OccurenceAttestationSignatureArgs()
         {
         }
+        public static new OccurenceAttestationSignatureArgs Empty => new OccurenceAttestationSignatureArgs();
     }
 }

@@ -15,31 +15,29 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to get information about a Google Cloud Folder.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myFolder1 = Gcp.Organizations.GetFolder.Invoke(new()
         ///     {
-        ///         var myFolder1 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = "folders/12345",
-        ///             LookupOrganization = true,
-        ///         }));
-        ///         var myFolder2 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = "folders/23456",
-        ///         }));
-        ///         this.MyFolder1Organization = myFolder1.Apply(myFolder1 =&gt; myFolder1.Organization);
-        ///         this.MyFolder2Parent = myFolder2.Apply(myFolder2 =&gt; myFolder2.Parent);
-        ///     }
+        ///         Folder = "folders/12345",
+        ///         LookupOrganization = true,
+        ///     });
         /// 
-        ///     [Output("myFolder1Organization")]
-        ///     public Output&lt;string&gt; MyFolder1Organization { get; set; }
-        ///     [Output("myFolder2Parent")]
-        ///     public Output&lt;string&gt; MyFolder2Parent { get; set; }
-        /// }
+        ///     var myFolder2 = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = "folders/23456",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myFolder1Organization"] = myFolder1.Apply(getFolderResult =&gt; getFolderResult.Organization),
+        ///         ["myFolder2Parent"] = myFolder2.Apply(getFolderResult =&gt; getFolderResult.Parent),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
@@ -49,31 +47,29 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to get information about a Google Cloud Folder.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myFolder1 = Gcp.Organizations.GetFolder.Invoke(new()
         ///     {
-        ///         var myFolder1 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = "folders/12345",
-        ///             LookupOrganization = true,
-        ///         }));
-        ///         var myFolder2 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = "folders/23456",
-        ///         }));
-        ///         this.MyFolder1Organization = myFolder1.Apply(myFolder1 =&gt; myFolder1.Organization);
-        ///         this.MyFolder2Parent = myFolder2.Apply(myFolder2 =&gt; myFolder2.Parent);
-        ///     }
+        ///         Folder = "folders/12345",
+        ///         LookupOrganization = true,
+        ///     });
         /// 
-        ///     [Output("myFolder1Organization")]
-        ///     public Output&lt;string&gt; MyFolder1Organization { get; set; }
-        ///     [Output("myFolder2Parent")]
-        ///     public Output&lt;string&gt; MyFolder2Parent { get; set; }
-        /// }
+        ///     var myFolder2 = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = "folders/23456",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myFolder1Organization"] = myFolder1.Apply(getFolderResult =&gt; getFolderResult.Organization),
+        ///         ["myFolder2Parent"] = myFolder2.Apply(getFolderResult =&gt; getFolderResult.Parent),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
@@ -81,7 +77,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetFolderArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
@@ -98,9 +94,10 @@ namespace Pulumi.Gcp.Organizations
         public GetFolderArgs()
         {
         }
+        public static new GetFolderArgs Empty => new GetFolderArgs();
     }
 
-    public sealed class GetFolderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
@@ -117,6 +114,7 @@ namespace Pulumi.Gcp.Organizations
         public GetFolderInvokeArgs()
         {
         }
+        public static new GetFolderInvokeArgs Empty => new GetFolderInvokeArgs();
     }
 
 

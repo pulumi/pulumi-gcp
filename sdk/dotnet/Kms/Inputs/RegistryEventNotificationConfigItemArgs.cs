@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class RegistryEventNotificationConfigItemArgs : Pulumi.ResourceArgs
+    public sealed class RegistryEventNotificationConfigItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PubSub topic name to publish device events.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         public RegistryEventNotificationConfigItemArgs()
         {
         }
+        public static new RegistryEventNotificationConfigItemArgs Empty => new RegistryEventNotificationConfigItemArgs();
     }
 }

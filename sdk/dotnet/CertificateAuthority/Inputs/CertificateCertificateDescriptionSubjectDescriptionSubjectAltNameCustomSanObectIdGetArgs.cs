@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("objectIdPaths")]
         private InputList<int>? _objectIdPaths;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs()
         {
         }
+        public static new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs Empty => new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs();
     }
 }

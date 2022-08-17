@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretReplicationUserManagedGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretReplicationUserManagedGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("replicas", required: true)]
         private InputList<Inputs.SecretReplicationUserManagedReplicaGetArgs>? _replicas;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretReplicationUserManagedGetArgs()
         {
         }
+        public static new SecretReplicationUserManagedGetArgs Empty => new SecretReplicationUserManagedGetArgs();
     }
 }

@@ -99,6 +99,7 @@ export interface GetClusterResult {
     readonly masterAuthorizedNetworksConfigs: outputs.container.GetClusterMasterAuthorizedNetworksConfig[];
     readonly masterAuths: outputs.container.GetClusterMasterAuth[];
     readonly masterVersion: string;
+    readonly meshCertificates: outputs.container.GetClusterMeshCertificate[];
     readonly minMasterVersion: string;
     readonly monitoringConfigs: outputs.container.GetClusterMonitoringConfig[];
     readonly monitoringService: string;

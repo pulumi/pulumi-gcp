@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DeploymentManager.Inputs
 {
 
-    public sealed class DeploymentLabelArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for label.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.DeploymentManager.Inputs
         public DeploymentLabelArgs()
         {
         }
+        public static new DeploymentLabelArgs Empty => new DeploymentLabelArgs();
     }
 }

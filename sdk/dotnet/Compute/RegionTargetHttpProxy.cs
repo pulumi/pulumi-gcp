@@ -23,30 +23,29 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Target Http Proxy Https Redirect
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("defaultRegionUrlMap", new()
     ///     {
-    ///         var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("defaultRegionUrlMap", new Gcp.Compute.RegionUrlMapArgs
+    ///         Region = "us-central1",
+    ///         DefaultUrlRedirect = new Gcp.Compute.Inputs.RegionUrlMapDefaultUrlRedirectArgs
     ///         {
-    ///             Region = "us-central1",
-    ///             DefaultUrlRedirect = new Gcp.Compute.Inputs.RegionUrlMapDefaultUrlRedirectArgs
-    ///             {
-    ///                 HttpsRedirect = true,
-    ///                 StripQuery = false,
-    ///             },
-    ///         });
-    ///         var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", new Gcp.Compute.RegionTargetHttpProxyArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             UrlMap = defaultRegionUrlMap.Id,
-    ///         });
-    ///     }
+    ///             HttpsRedirect = true,
+    ///             StripQuery = false,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var defaultRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy")]
-    public partial class RegionTargetHttpProxy : Pulumi.CustomResource
+    public partial class RegionTargetHttpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -173,7 +172,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionTargetHttpProxyArgs : Pulumi.ResourceArgs
+    public sealed class RegionTargetHttpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -217,9 +216,10 @@ namespace Pulumi.Gcp.Compute
         public RegionTargetHttpProxyArgs()
         {
         }
+        public static new RegionTargetHttpProxyArgs Empty => new RegionTargetHttpProxyArgs();
     }
 
-    public sealed class RegionTargetHttpProxyState : Pulumi.ResourceArgs
+    public sealed class RegionTargetHttpProxyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -281,5 +281,6 @@ namespace Pulumi.Gcp.Compute
         public RegionTargetHttpProxyState()
         {
         }
+        public static new RegionTargetHttpProxyState Empty => new RegionTargetHttpProxyState();
     }
 }

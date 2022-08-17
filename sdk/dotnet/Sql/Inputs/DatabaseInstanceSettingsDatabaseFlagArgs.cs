@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsDatabaseFlagArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsDatabaseFlagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A name for this whitelist entry.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsDatabaseFlagArgs()
         {
         }
+        public static new DatabaseInstanceSettingsDatabaseFlagArgs Empty => new DatabaseInstanceSettingsDatabaseFlagArgs();
     }
 }

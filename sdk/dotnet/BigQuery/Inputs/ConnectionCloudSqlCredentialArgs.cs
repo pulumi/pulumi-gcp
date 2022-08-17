@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class ConnectionCloudSqlCredentialArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionCloudSqlCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Password for database.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public ConnectionCloudSqlCredentialArgs()
         {
         }
+        public static new ConnectionCloudSqlCredentialArgs Empty => new ConnectionCloudSqlCredentialArgs();
     }
 }

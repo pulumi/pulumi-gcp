@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy will execute every nth day at the specified time.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicyScheduleArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyScheduleArgs Empty => new ResourcePolicySnapshotSchedulePolicyScheduleArgs();
     }
 }

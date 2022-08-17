@@ -17,31 +17,30 @@ namespace Pulumi.Gcp.Sql
     /// ### Sql Database Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
-    ///         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
-    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
-    ///             Region = "us-central1",
-    ///             DatabaseVersion = "MYSQL_8_0",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///             DeletionProtection = true,
-    ///         });
-    ///         var database = new Gcp.Sql.Database("database", new Gcp.Sql.DatabaseArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///         });
-    ///     }
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
     /// 
-    /// }
+    ///     var database = new Gcp.Sql.Database("database", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +68,7 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sql/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The charset value. See MySQL's
@@ -162,7 +161,7 @@ namespace Pulumi.Gcp.Sql
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The charset value. See MySQL's
@@ -208,9 +207,10 @@ namespace Pulumi.Gcp.Sql
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The charset value. See MySQL's
@@ -262,5 +262,6 @@ namespace Pulumi.Gcp.Sql
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

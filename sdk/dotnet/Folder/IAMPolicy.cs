@@ -35,212 +35,200 @@ namespace Pulumi.Gcp.Folder
     ///    applying the change.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var folder = new Gcp.Folder.IAMPolicy("folder", new Gcp.Folder.IAMPolicyArgs
-    ///         {
-    ///             Folder = "folders/1234567",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
     ///                 {
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                         Title = "expires_after_2019_12_31",
-    ///                     },
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Role = "roles/compute.admin",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                     Title = "expires_after_2019_12_31",
     ///                 },
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Role = "roles/compute.admin",
     ///             },
-    ///         }));
-    ///         var folder = new Gcp.Folder.IAMPolicy("folder", new Gcp.Folder.IAMPolicyArgs
-    ///         {
-    ///             Folder = "folders/1234567",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_folder\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
     ///     {
-    ///         var folder = new Gcp.Folder.IAMBinding("folder", new Gcp.Folder.IAMBindingArgs
+    ///         Folder = "folders/1234567",
+    ///         Members = new[]
     ///         {
-    ///             Folder = "folders/1234567",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
     ///     {
-    ///         var folder = new Gcp.Folder.IAMBinding("folder", new Gcp.Folder.IAMBindingArgs
+    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
     ///         {
-    ///             Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
-    ///             {
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                 Title = "expires_after_2019_12_31",
-    ///             },
-    ///             Folder = "folders/1234567",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/container.admin",
-    ///         });
-    ///     }
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         Folder = "folders/1234567",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/container.admin",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_folder\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
     ///     {
-    ///         var folder = new Gcp.Folder.IAMMember("folder", new Gcp.Folder.IAMMemberArgs
-    ///         {
-    ///             Folder = "folders/1234567",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         Folder = "folders/1234567",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
     ///     {
-    ///         var folder = new Gcp.Folder.IAMMember("folder", new Gcp.Folder.IAMMemberArgs
+    ///         Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
     ///         {
-    ///             Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
-    ///             {
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                 Title = "expires_after_2019_12_31",
-    ///             },
-    ///             Folder = "folders/1234567",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/firebase.admin",
-    ///         });
-    ///     }
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         Folder = "folders/1234567",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/firebase.admin",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_folder\_iam\_audit\_config
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var folder = new Gcp.Folder.IamAuditConfig("folder", new()
     ///     {
-    ///         var folder = new Gcp.Folder.IamAuditConfig("folder", new Gcp.Folder.IamAuditConfigArgs
+    ///         AuditLogConfigs = new[]
     ///         {
-    ///             AuditLogConfigs = 
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
     ///             {
-    ///                 new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
-    ///                 {
-    ///                     LogType = "ADMIN_READ",
-    ///                 },
-    ///                 new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
-    ///                 {
-    ///                     ExemptedMembers = 
-    ///                     {
-    ///                         "user:joebloggs@hashicorp.com",
-    ///                     },
-    ///                     LogType = "DATA_READ",
-    ///                 },
+    ///                 LogType = "ADMIN_READ",
     ///             },
-    ///             Folder = "folders/1234567",
-    ///             Service = "allServices",
-    ///         });
-    ///     }
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@hashicorp.com",
+    ///                 },
+    ///                 LogType = "DATA_READ",
+    ///             },
+    ///         },
+    ///         Folder = "folders/1234567",
+    ///         Service = "allServices",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -284,7 +272,7 @@ namespace Pulumi.Gcp.Folder
     /// ```
     /// </summary>
     [GcpResourceType("gcp:folder/iAMPolicy:IAMPolicy")]
-    public partial class IAMPolicy : Pulumi.CustomResource
+    public partial class IAMPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the folder's IAM policy.
@@ -350,7 +338,7 @@ namespace Pulumi.Gcp.Folder
         }
     }
 
-    public sealed class IAMPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IAMPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -369,9 +357,10 @@ namespace Pulumi.Gcp.Folder
         public IAMPolicyArgs()
         {
         }
+        public static new IAMPolicyArgs Empty => new IAMPolicyArgs();
     }
 
-    public sealed class IAMPolicyState : Pulumi.ResourceArgs
+    public sealed class IAMPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the folder's IAM policy.
@@ -396,5 +385,6 @@ namespace Pulumi.Gcp.Folder
         public IAMPolicyState()
         {
         }
+        public static new IAMPolicyState Empty => new IAMPolicyState();
     }
 }

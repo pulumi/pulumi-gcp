@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class PolicyNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicyNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id or fully qualified URL of the VPC network to forward queries to.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public PolicyNetworkGetArgs()
         {
         }
+        public static new PolicyNetworkGetArgs Empty => new PolicyNetworkGetArgs();
     }
 }

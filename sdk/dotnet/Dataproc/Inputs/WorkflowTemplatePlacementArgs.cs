@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementArgs()
         {
         }
+        public static new WorkflowTemplatePlacementArgs Empty => new WorkflowTemplatePlacementArgs();
     }
 }

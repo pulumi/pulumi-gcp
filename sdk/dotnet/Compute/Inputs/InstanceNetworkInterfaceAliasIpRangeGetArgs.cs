@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceNetworkInterfaceAliasIpRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNetworkInterfaceAliasIpRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP CIDR range represented by this alias IP range. This IP CIDR range
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceNetworkInterfaceAliasIpRangeGetArgs()
         {
         }
+        public static new InstanceNetworkInterfaceAliasIpRangeGetArgs Empty => new InstanceNetworkInterfaceAliasIpRangeGetArgs();
     }
 }

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificateauthority/certificateTemplate:CertificateTemplate")]
-    public partial class CertificateTemplate : Pulumi.CustomResource
+    public partial class CertificateTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. The time at which this CertificateTemplate was created.
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
     }
 
-    public sealed class CertificateTemplateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -199,9 +199,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         public CertificateTemplateArgs()
         {
         }
+        public static new CertificateTemplateArgs Empty => new CertificateTemplateArgs();
     }
 
-    public sealed class CertificateTemplateState : Pulumi.ResourceArgs
+    public sealed class CertificateTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. The time at which this CertificateTemplate was created.
@@ -272,5 +273,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public CertificateTemplateState()
         {
         }
+        public static new CertificateTemplateState Empty => new CertificateTemplateState();
     }
 }

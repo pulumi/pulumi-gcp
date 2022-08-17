@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class MetricMetricDescriptorGetArgs : Pulumi.ResourceArgs
+    public sealed class MetricMetricDescriptorGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case
@@ -64,5 +64,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public MetricMetricDescriptorGetArgs()
         {
         }
+        public static new MetricMetricDescriptorGetArgs Empty => new MetricMetricDescriptorGetArgs();
     }
 }

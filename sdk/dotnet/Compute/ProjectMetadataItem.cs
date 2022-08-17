@@ -18,21 +18,19 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.ProjectMetadataItem("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.ProjectMetadataItem("default", new Gcp.Compute.ProjectMetadataItemArgs
-    ///         {
-    ///             Key = "my_metadata",
-    ///             Value = "my_value",
-    ///         });
-    ///     }
+    ///         Key = "my_metadata",
+    ///         Value = "my_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/projectMetadataItem:ProjectMetadataItem")]
-    public partial class ProjectMetadataItem : Pulumi.CustomResource
+    public partial class ProjectMetadataItem : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The metadata key to set.
@@ -109,7 +107,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ProjectMetadataItemArgs : Pulumi.ResourceArgs
+    public sealed class ProjectMetadataItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The metadata key to set.
@@ -133,9 +131,10 @@ namespace Pulumi.Gcp.Compute
         public ProjectMetadataItemArgs()
         {
         }
+        public static new ProjectMetadataItemArgs Empty => new ProjectMetadataItemArgs();
     }
 
-    public sealed class ProjectMetadataItemState : Pulumi.ResourceArgs
+    public sealed class ProjectMetadataItemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The metadata key to set.
@@ -159,5 +158,6 @@ namespace Pulumi.Gcp.Compute
         public ProjectMetadataItemState()
         {
         }
+        public static new ProjectMetadataItemState Empty => new ProjectMetadataItemState();
     }
 }

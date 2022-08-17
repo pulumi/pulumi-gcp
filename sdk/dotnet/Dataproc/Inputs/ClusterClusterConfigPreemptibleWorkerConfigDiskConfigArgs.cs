@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Size of the primary disk attached to each preemptible worker node, specified
@@ -38,5 +38,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs()
         {
         }
+        public static new ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs Empty => new ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs();
     }
 }

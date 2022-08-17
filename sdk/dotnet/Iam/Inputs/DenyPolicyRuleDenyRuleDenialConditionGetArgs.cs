@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam.Inputs
 {
 
-    public sealed class DenyPolicyRuleDenyRuleDenialConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class DenyPolicyRuleDenyRuleDenialConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the expression. This is a longer text which describes the expression,
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         public DenyPolicyRuleDenyRuleDenialConditionGetArgs()
         {
         }
+        public static new DenyPolicyRuleDenyRuleDenialConditionGetArgs Empty => new DenyPolicyRuleDenyRuleDenialConditionGetArgs();
     }
 }

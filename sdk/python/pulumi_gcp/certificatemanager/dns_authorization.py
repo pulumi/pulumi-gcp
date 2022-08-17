@@ -27,7 +27,7 @@ class DnsAuthorizationArgs:
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -74,7 +74,7 @@ class DnsAuthorizationArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
+        Set of label tags associated with the DNS Authorization resource.
         """
         return pulumi.get(self, "labels")
 
@@ -127,7 +127,7 @@ class _DnsAuthorizationState:
         :param pulumi.Input[str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -190,7 +190,7 @@ class _DnsAuthorizationState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
+        Set of label tags associated with the DNS Authorization resource.
         """
         return pulumi.get(self, "labels")
 
@@ -238,7 +238,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        DnsAuthorization represents a HTTP-reachable backend for an DnsAuthorization.
+        DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
         > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 
@@ -266,7 +266,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -280,7 +280,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  args: DnsAuthorizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        DnsAuthorization represents a HTTP-reachable backend for an DnsAuthorization.
+        DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
         > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 
@@ -368,7 +368,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the DNS Authorization resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
@@ -418,7 +418,7 @@ class DnsAuthorization(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
+        Set of label tags associated with the DNS Authorization resource.
         """
         return pulumi.get(self, "labels")
 

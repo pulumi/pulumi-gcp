@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionDiskIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionDiskIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionDiskIamMemberConditionGetArgs()
         {
         }
+        public static new RegionDiskIamMemberConditionGetArgs Empty => new RegionDiskIamMemberConditionGetArgs();
     }
 }

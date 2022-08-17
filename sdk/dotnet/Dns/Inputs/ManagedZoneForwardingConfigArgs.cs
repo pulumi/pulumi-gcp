@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZoneForwardingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneForwardingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("targetNameServers", required: true)]
         private InputList<Inputs.ManagedZoneForwardingConfigTargetNameServerArgs>? _targetNameServers;
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZoneForwardingConfigArgs()
         {
         }
+        public static new ManagedZoneForwardingConfigArgs Empty => new ManagedZoneForwardingConfigArgs();
     }
 }

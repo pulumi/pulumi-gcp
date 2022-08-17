@@ -24,22 +24,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
-// 			Location: "us-central1",
-// 			Name:     "my-key-ring",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
+//				Location: "us-central1",
+//				Name:     "my-key-ring",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetKMSKeyRing(ctx *pulumi.Context, args *GetKMSKeyRingArgs, opts ...pulumi.InvokeOption) (*GetKMSKeyRingResult, error) {
 	var rv GetKMSKeyRingResult

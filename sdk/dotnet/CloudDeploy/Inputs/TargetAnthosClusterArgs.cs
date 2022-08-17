@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy.Inputs
 {
 
-    public sealed class TargetAnthosClusterArgs : Pulumi.ResourceArgs
+    public sealed class TargetAnthosClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public TargetAnthosClusterArgs()
         {
         }
+        public static new TargetAnthosClusterArgs Empty => new TargetAnthosClusterArgs();
     }
 }

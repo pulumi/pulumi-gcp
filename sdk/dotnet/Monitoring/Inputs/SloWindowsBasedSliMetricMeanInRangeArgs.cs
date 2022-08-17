@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliMetricMeanInRangeArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliMetricMeanInRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Range of numerical values. The computed good_service
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliMetricMeanInRangeArgs()
         {
         }
+        public static new SloWindowsBasedSliMetricMeanInRangeArgs Empty => new SloWindowsBasedSliMetricMeanInRangeArgs();
     }
 }

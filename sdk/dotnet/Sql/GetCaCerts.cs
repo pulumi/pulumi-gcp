@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Sql
     }
 
 
-    public sealed class GetCaCertsArgs : Pulumi.InvokeArgs
+    public sealed class GetCaCertsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name or self link of the instance.
@@ -48,9 +48,10 @@ namespace Pulumi.Gcp.Sql
         public GetCaCertsArgs()
         {
         }
+        public static new GetCaCertsArgs Empty => new GetCaCertsArgs();
     }
 
-    public sealed class GetCaCertsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCaCertsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name or self link of the instance.
@@ -67,6 +68,7 @@ namespace Pulumi.Gcp.Sql
         public GetCaCertsInvokeArgs()
         {
         }
+        public static new GetCaCertsInvokeArgs Empty => new GetCaCertsInvokeArgs();
     }
 
 

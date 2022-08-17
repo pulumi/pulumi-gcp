@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRecurringScheduleTimeZoneArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRecurringScheduleTimeZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IANA Time Zone Database time zone, e.g. "America/New_York".
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRecurringScheduleTimeZoneArgs()
         {
         }
+        public static new PatchDeploymentRecurringScheduleTimeZoneArgs Empty => new PatchDeploymentRecurringScheduleTimeZoneArgs();
     }
 }

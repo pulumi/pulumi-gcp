@@ -24,48 +24,57 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
-// 			DisplayName: pulumi.String("tenant"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = identityplatform.NewTenantOauthIdpConfig(ctx, "tenantOauthIdpConfig", &identityplatform.TenantOauthIdpConfigArgs{
-// 			Tenant:       tenant.Name,
-// 			DisplayName:  pulumi.String("Display Name"),
-// 			ClientId:     pulumi.String("client-id"),
-// 			Issuer:       pulumi.String("issuer"),
-// 			Enabled:      pulumi.Bool(true),
-// 			ClientSecret: pulumi.String("secret"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+//				DisplayName: pulumi.String("tenant"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identityplatform.NewTenantOauthIdpConfig(ctx, "tenantOauthIdpConfig", &identityplatform.TenantOauthIdpConfigArgs{
+//				Tenant:       tenant.Name,
+//				DisplayName:  pulumi.String("Display Name"),
+//				ClientId:     pulumi.String("client-id"),
+//				Issuer:       pulumi.String("issuer"),
+//				Enabled:      pulumi.Bool(true),
+//				ClientSecret: pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// TenantOauthIdpConfig can be imported using any of these accepted formats
+// # TenantOauthIdpConfig can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
+//
+//	$ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
+//
+//	$ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
+//
+//	$ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
+//
 // ```
 type TenantOauthIdpConfig struct {
 	pulumi.CustomResourceState
@@ -240,7 +249,7 @@ func (i *TenantOauthIdpConfig) ToTenantOauthIdpConfigOutputWithContext(ctx conte
 // TenantOauthIdpConfigArrayInput is an input type that accepts TenantOauthIdpConfigArray and TenantOauthIdpConfigArrayOutput values.
 // You can construct a concrete instance of `TenantOauthIdpConfigArrayInput` via:
 //
-//          TenantOauthIdpConfigArray{ TenantOauthIdpConfigArgs{...} }
+//	TenantOauthIdpConfigArray{ TenantOauthIdpConfigArgs{...} }
 type TenantOauthIdpConfigArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +274,7 @@ func (i TenantOauthIdpConfigArray) ToTenantOauthIdpConfigArrayOutputWithContext(
 // TenantOauthIdpConfigMapInput is an input type that accepts TenantOauthIdpConfigMap and TenantOauthIdpConfigMapOutput values.
 // You can construct a concrete instance of `TenantOauthIdpConfigMapInput` via:
 //
-//          TenantOauthIdpConfigMap{ "key": TenantOauthIdpConfigArgs{...} }
+//	TenantOauthIdpConfigMap{ "key": TenantOauthIdpConfigArgs{...} }
 type TenantOauthIdpConfigMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelsAccessLevelGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelsAccessLevelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A set of predefined conditions for the access level and a combining function.
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelsAccessLevelGetArgs()
         {
         }
+        public static new AccessLevelsAccessLevelGetArgs Empty => new AccessLevelsAccessLevelGetArgs();
     }
 }

@@ -22,29 +22,27 @@ namespace Pulumi.Gcp.DataCatalog
     /// ### Data Catalog Taxonomy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicTaxonomy = new Gcp.DataCatalog.Taxonomy("basicTaxonomy", new()
     ///     {
-    ///         var basicTaxonomy = new Gcp.DataCatalog.Taxonomy("basicTaxonomy", new Gcp.DataCatalog.TaxonomyArgs
+    ///         Region = "us",
+    ///         DisplayName = "my_display_name",
+    ///         Description = "A collection of policy tags",
+    ///         ActivatedPolicyTypes = new[]
     ///         {
-    ///             Region = "us",
-    ///             DisplayName = "my_display_name",
-    ///             Description = "A collection of policy tags",
-    ///             ActivatedPolicyTypes = 
-    ///             {
-    ///                 "FINE_GRAINED_ACCESS_CONTROL",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "FINE_GRAINED_ACCESS_CONTROL",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// ```
     /// </summary>
     [GcpResourceType("gcp:datacatalog/taxonomy:Taxonomy")]
-    public partial class Taxonomy : Pulumi.CustomResource
+    public partial class Taxonomy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of policy types that are activated for this taxonomy. If not set,
@@ -146,7 +144,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class TaxonomyArgs : Pulumi.ResourceArgs
+    public sealed class TaxonomyArgs : global::Pulumi.ResourceArgs
     {
         [Input("activatedPolicyTypes")]
         private InputList<string>? _activatedPolicyTypes;
@@ -195,9 +193,10 @@ namespace Pulumi.Gcp.DataCatalog
         public TaxonomyArgs()
         {
         }
+        public static new TaxonomyArgs Empty => new TaxonomyArgs();
     }
 
-    public sealed class TaxonomyState : Pulumi.ResourceArgs
+    public sealed class TaxonomyState : global::Pulumi.ResourceArgs
     {
         [Input("activatedPolicyTypes")]
         private InputList<string>? _activatedPolicyTypes;
@@ -252,5 +251,6 @@ namespace Pulumi.Gcp.DataCatalog
         public TaxonomyState()
         {
         }
+        public static new TaxonomyState Empty => new TaxonomyState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctions.Inputs
 {
 
-    public sealed class FunctionSourceRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class FunctionSourceRepositoryArgs : global::Pulumi.ResourceArgs
     {
         [Input("deployedUrl")]
         public Input<string>? DeployedUrl { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
         public FunctionSourceRepositoryArgs()
         {
         }
+        public static new FunctionSourceRepositoryArgs Empty => new FunctionSourceRepositoryArgs();
     }
 }

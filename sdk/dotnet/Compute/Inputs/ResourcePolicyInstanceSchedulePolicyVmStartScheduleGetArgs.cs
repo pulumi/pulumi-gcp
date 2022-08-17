@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicyInstanceSchedulePolicyVmStartScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyInstanceSchedulePolicyVmStartScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the frequency for the operation, using the unix-cron format.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicyInstanceSchedulePolicyVmStartScheduleGetArgs()
         {
         }
+        public static new ResourcePolicyInstanceSchedulePolicyVmStartScheduleGetArgs Empty => new ResourcePolicyInstanceSchedulePolicyVmStartScheduleGetArgs();
     }
 }

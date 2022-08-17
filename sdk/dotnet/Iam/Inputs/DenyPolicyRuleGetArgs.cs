@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam.Inputs
 {
 
-    public sealed class DenyPolicyRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class DenyPolicyRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A deny rule in an IAM deny policy.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         public DenyPolicyRuleGetArgs()
         {
         }
+        public static new DenyPolicyRuleGetArgs Empty => new DenyPolicyRuleGetArgs();
     }
 }

@@ -21,25 +21,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var neg1 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
         ///     {
-        ///         var neg1 = Output.Create(Gcp.Compute.GetNetworkEndpointGroup.InvokeAsync(new Gcp.Compute.GetNetworkEndpointGroupArgs
-        ///         {
-        ///             Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///         var neg2 = Output.Create(Gcp.Compute.GetNetworkEndpointGroup.InvokeAsync(new Gcp.Compute.GetNetworkEndpointGroupArgs
-        ///         {
-        ///             SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///         }));
-        ///     }
+        ///         Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///         Zone = "us-central1-a",
+        ///     });
         /// 
-        /// }
+        ///     var neg2 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -57,25 +56,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var neg1 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
         ///     {
-        ///         var neg1 = Output.Create(Gcp.Compute.GetNetworkEndpointGroup.InvokeAsync(new Gcp.Compute.GetNetworkEndpointGroupArgs
-        ///         {
-        ///             Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///         var neg2 = Output.Create(Gcp.Compute.GetNetworkEndpointGroup.InvokeAsync(new Gcp.Compute.GetNetworkEndpointGroupArgs
-        ///         {
-        ///             SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
-        ///         }));
-        ///     }
+        ///         Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///         Zone = "us-central1-a",
+        ///     });
         /// 
-        /// }
+        ///     var neg2 = Gcp.Compute.GetNetworkEndpointGroup.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +83,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetNetworkEndpointGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkEndpointGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Network Endpoint Group name.
@@ -116,9 +114,10 @@ namespace Pulumi.Gcp.Compute
         public GetNetworkEndpointGroupArgs()
         {
         }
+        public static new GetNetworkEndpointGroupArgs Empty => new GetNetworkEndpointGroupArgs();
     }
 
-    public sealed class GetNetworkEndpointGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkEndpointGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Network Endpoint Group name.
@@ -149,6 +148,7 @@ namespace Pulumi.Gcp.Compute
         public GetNetworkEndpointGroupInvokeArgs()
         {
         }
+        public static new GetNetworkEndpointGroupInvokeArgs Empty => new GetNetworkEndpointGroupInvokeArgs();
     }
 
 

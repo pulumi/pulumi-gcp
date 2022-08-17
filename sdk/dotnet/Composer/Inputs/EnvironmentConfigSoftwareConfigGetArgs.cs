@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigSoftwareConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigSoftwareConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("airflowConfigOverrides")]
         private InputMap<string>? _airflowConfigOverrides;
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigSoftwareConfigGetArgs()
         {
         }
+        public static new EnvironmentConfigSoftwareConfigGetArgs Empty => new EnvironmentConfigSoftwareConfigGetArgs();
     }
 }

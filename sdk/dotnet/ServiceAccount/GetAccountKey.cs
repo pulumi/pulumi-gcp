@@ -19,29 +19,29 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
         ///     {
-        ///         var myaccount = new Gcp.ServiceAccount.Account("myaccount", new Gcp.ServiceAccount.AccountArgs
-        ///         {
-        ///             AccountId = "dev-foo-account",
-        ///         });
-        ///         var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new Gcp.ServiceAccount.KeyArgs
-        ///         {
-        ///             ServiceAccountId = myaccount.Name,
-        ///         });
-        ///         var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new Gcp.ServiceAccount.GetAccountKeyInvokeArgs
-        ///         {
-        ///             Name = mykeyKey.Name,
-        ///             PublicKeyType = "TYPE_X509_PEM_FILE",
-        ///         });
-        ///     }
+        ///         AccountId = "dev-foo-account",
+        ///     });
         /// 
-        /// }
+        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new()
+        ///     {
+        ///         ServiceAccountId = myaccount.Name,
+        ///     });
+        /// 
+        ///     var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
+        ///     {
+        ///         Name = mykeyKey.Name,
+        ///         PublicKeyType = "TYPE_X509_PEM_FILE",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -57,29 +57,29 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
         ///     {
-        ///         var myaccount = new Gcp.ServiceAccount.Account("myaccount", new Gcp.ServiceAccount.AccountArgs
-        ///         {
-        ///             AccountId = "dev-foo-account",
-        ///         });
-        ///         var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new Gcp.ServiceAccount.KeyArgs
-        ///         {
-        ///             ServiceAccountId = myaccount.Name,
-        ///         });
-        ///         var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new Gcp.ServiceAccount.GetAccountKeyInvokeArgs
-        ///         {
-        ///             Name = mykeyKey.Name,
-        ///             PublicKeyType = "TYPE_X509_PEM_FILE",
-        ///         });
-        ///     }
+        ///         AccountId = "dev-foo-account",
+        ///     });
         /// 
-        /// }
+        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new()
+        ///     {
+        ///         ServiceAccountId = myaccount.Name,
+        ///     });
+        /// 
+        ///     var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
+        ///     {
+        ///         Name = mykeyKey.Name,
+        ///         PublicKeyType = "TYPE_X509_PEM_FILE",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.ServiceAccount
     }
 
 
-    public sealed class GetAccountKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the service account key. This must have format
@@ -115,9 +115,10 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountKeyArgs()
         {
         }
+        public static new GetAccountKeyArgs Empty => new GetAccountKeyArgs();
     }
 
-    public sealed class GetAccountKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the service account key. This must have format
@@ -143,6 +144,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountKeyInvokeArgs()
         {
         }
+        public static new GetAccountKeyInvokeArgs Empty => new GetAccountKeyInvokeArgs();
     }
 
 

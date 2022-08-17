@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway.Inputs
 {
 
-    public sealed class ApiConfigOpenapiDocumentArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigOpenapiDocumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The OpenAPI Specification document file.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
         public ApiConfigOpenapiDocumentArgs()
         {
         }
+        public static new ApiConfigOpenapiDocumentArgs Empty => new ApiConfigOpenapiDocumentArgs();
     }
 }

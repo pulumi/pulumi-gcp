@@ -111,6 +111,65 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Notebook Runtime Kernels
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ *     accessConfig: {
+ *         accessType: "SINGLE_USER",
+ *         runtimeOwner: "admin@hashicorptest.com",
+ *     },
+ *     location: "us-central1",
+ *     softwareConfig: {
+ *         kernels: [{
+ *             repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *             tag: "latest",
+ *         }],
+ *     },
+ *     virtualMachine: {
+ *         virtualMachineConfig: {
+ *             dataDisk: {
+ *                 initializeParams: {
+ *                     diskSizeGb: 100,
+ *                     diskType: "PD_STANDARD",
+ *                 },
+ *             },
+ *             machineType: "n1-standard-4",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Notebook Runtime Script
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ *     accessConfig: {
+ *         accessType: "SINGLE_USER",
+ *         runtimeOwner: "admin@hashicorptest.com",
+ *     },
+ *     location: "us-central1",
+ *     softwareConfig: {
+ *         postStartupScriptBehavior: "RUN_EVERY_START",
+ *     },
+ *     virtualMachine: {
+ *         virtualMachineConfig: {
+ *             dataDisk: {
+ *                 initializeParams: {
+ *                     diskSizeGb: 100,
+ *                     diskType: "PD_STANDARD",
+ *                 },
+ *             },
+ *             machineType: "n1-standard-4",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

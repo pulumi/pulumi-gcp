@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigLifecycleConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigLifecycleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when cluster will be auto-deleted.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigLifecycleConfigArgs()
         {
         }
+        public static new ClusterClusterConfigLifecycleConfigArgs Empty => new ClusterClusterConfigLifecycleConfigArgs();
     }
 }

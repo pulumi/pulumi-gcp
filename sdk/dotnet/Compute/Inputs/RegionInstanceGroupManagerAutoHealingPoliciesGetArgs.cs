@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionInstanceGroupManagerAutoHealingPoliciesGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerAutoHealingPoliciesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The health check resource that signals autohealing.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionInstanceGroupManagerAutoHealingPoliciesGetArgs()
         {
         }
+        public static new RegionInstanceGroupManagerAutoHealingPoliciesGetArgs Empty => new RegionInstanceGroupManagerAutoHealingPoliciesGetArgs();
     }
 }

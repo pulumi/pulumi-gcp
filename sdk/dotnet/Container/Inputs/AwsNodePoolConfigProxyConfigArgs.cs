@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsNodePoolConfigProxyConfigArgs : Pulumi.ResourceArgs
+    public sealed class AwsNodePoolConfigProxyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsNodePoolConfigProxyConfigArgs()
         {
         }
+        public static new AwsNodePoolConfigProxyConfigArgs Empty => new AwsNodePoolConfigProxyConfigArgs();
     }
 }

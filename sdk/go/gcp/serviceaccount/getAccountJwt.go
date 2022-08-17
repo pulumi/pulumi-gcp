@@ -20,33 +20,36 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"foo": "bar",
-// 			"sub": "subject",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		foo, err := serviceAccount.GetAccountJwt(ctx, &serviceaccount.GetAccountJwtArgs{
-// 			TargetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
-// 			Payload:              json0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("jwt", foo.Jwt)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"foo": "bar",
+//				"sub": "subject",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			foo, err := serviceAccount.GetAccountJwt(ctx, &serviceaccount.GetAccountJwtArgs{
+//				TargetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+//				Payload:              json0,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("jwt", foo.Jwt)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccountJwt(ctx *pulumi.Context, args *GetAccountJwtArgs, opts ...pulumi.InvokeOption) (*GetAccountJwtResult, error) {
 	var rv GetAccountJwtResult

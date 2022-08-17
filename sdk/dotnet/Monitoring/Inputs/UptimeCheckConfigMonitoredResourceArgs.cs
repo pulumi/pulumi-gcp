@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class UptimeCheckConfigMonitoredResourceArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigMonitoredResourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels", required: true)]
         private InputMap<string>? _labels;
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public UptimeCheckConfigMonitoredResourceArgs()
         {
         }
+        public static new UptimeCheckConfigMonitoredResourceArgs Empty => new UptimeCheckConfigMonitoredResourceArgs();
     }
 }

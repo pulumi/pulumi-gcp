@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseKeyUsages")]
         private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs>? _baseKeyUsages;
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionConfigValueKeyUsageArgs()
         {
         }
+        public static new CertificateCertificateDescriptionConfigValueKeyUsageArgs Empty => new CertificateCertificateDescriptionConfigValueKeyUsageArgs();
     }
 }

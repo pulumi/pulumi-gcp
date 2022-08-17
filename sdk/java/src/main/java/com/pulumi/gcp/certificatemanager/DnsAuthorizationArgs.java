@@ -51,14 +51,14 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Set of label tags associated with the EdgeCache resource.
+     * Set of label tags associated with the DNS Authorization resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the EdgeCache resource.
+     * @return Set of label tags associated with the DNS Authorization resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -176,7 +176,7 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Set of label tags associated with the EdgeCache resource.
+         * @param labels Set of label tags associated with the DNS Authorization resource.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Set of label tags associated with the EdgeCache resource.
+         * @param labels Set of label tags associated with the DNS Authorization resource.
          * 
          * @return builder
          * 

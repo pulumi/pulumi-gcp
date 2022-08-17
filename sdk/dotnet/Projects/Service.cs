@@ -27,22 +27,20 @@ namespace Pulumi.Gcp.Projects
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Projects.Service("project", new()
     ///     {
-    ///         var project = new Gcp.Projects.Service("project", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             DisableDependentServices = true,
-    ///             Project = "your-project-id",
-    ///             ServiceName = "iam.googleapis.com",
-    ///         });
-    ///     }
+    ///         DisableDependentServices = true,
+    ///         Project = "your-project-id",
+    ///         ServiceName = "iam.googleapis.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.Projects
     ///  Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
     /// </summary>
     [GcpResourceType("gcp:projects/service:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If `true`, services that are enabled
@@ -130,7 +128,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If `true`, services that are enabled
@@ -163,9 +161,10 @@ namespace Pulumi.Gcp.Projects
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 
-    public sealed class ServiceState : Pulumi.ResourceArgs
+    public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If `true`, services that are enabled
@@ -198,5 +197,6 @@ namespace Pulumi.Gcp.Projects
         public ServiceState()
         {
         }
+        public static new ServiceState Empty => new ServiceState();
     }
 }

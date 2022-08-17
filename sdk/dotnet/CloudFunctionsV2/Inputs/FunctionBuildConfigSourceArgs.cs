@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 {
 
-    public sealed class FunctionBuildConfigSourceArgs : Pulumi.ResourceArgs
+    public sealed class FunctionBuildConfigSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public FunctionBuildConfigSourceArgs()
         {
         }
+        public static new FunctionBuildConfigSourceArgs Empty => new FunctionBuildConfigSourceArgs();
     }
 }

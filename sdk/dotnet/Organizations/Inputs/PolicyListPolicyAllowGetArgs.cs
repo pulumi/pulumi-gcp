@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations.Inputs
 {
 
-    public sealed class PolicyListPolicyAllowGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicyListPolicyAllowGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy allows or denies all values.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Organizations.Inputs
         public PolicyListPolicyAllowGetArgs()
         {
         }
+        public static new PolicyListPolicyAllowGetArgs Empty => new PolicyListPolicyAllowGetArgs();
     }
 }

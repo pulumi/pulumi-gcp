@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentRolloutDisruptionBudgetGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentRolloutDisruptionBudgetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fixed value.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentRolloutDisruptionBudgetGetArgs()
         {
         }
+        public static new OsPolicyAssignmentRolloutDisruptionBudgetGetArgs Empty => new OsPolicyAssignmentRolloutDisruptionBudgetGetArgs();
     }
 }

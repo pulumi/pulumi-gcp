@@ -17,24 +17,30 @@ import (
 //
 // * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
+//   - [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// ProjectFeed can be imported using any of these accepted formats
+// # ProjectFeed can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
+//
+//	$ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
+//
+//	$ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
+//
 // ```
 type ProjectFeed struct {
 	pulumi.CustomResourceState
@@ -294,7 +300,7 @@ func (i *ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) Projec
 // ProjectFeedArrayInput is an input type that accepts ProjectFeedArray and ProjectFeedArrayOutput values.
 // You can construct a concrete instance of `ProjectFeedArrayInput` via:
 //
-//          ProjectFeedArray{ ProjectFeedArgs{...} }
+//	ProjectFeedArray{ ProjectFeedArgs{...} }
 type ProjectFeedArrayInput interface {
 	pulumi.Input
 
@@ -319,7 +325,7 @@ func (i ProjectFeedArray) ToProjectFeedArrayOutputWithContext(ctx context.Contex
 // ProjectFeedMapInput is an input type that accepts ProjectFeedMap and ProjectFeedMapOutput values.
 // You can construct a concrete instance of `ProjectFeedMapInput` via:
 //
-//          ProjectFeedMap{ "key": ProjectFeedArgs{...} }
+//	ProjectFeedMap{ "key": ProjectFeedArgs{...} }
 type ProjectFeedMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloBasicSliLatencyGetArgs : Pulumi.ResourceArgs
+    public sealed class SloBasicSliLatencyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A duration string, e.g. 10s.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloBasicSliLatencyGetArgs()
         {
         }
+        public static new SloBasicSliLatencyGetArgs Empty => new SloBasicSliLatencyGetArgs();
     }
 }

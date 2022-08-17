@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildAvailableSecretsSecretManagerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildAvailableSecretsSecretManagerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A list of global environment variable definitions that will exist for all build steps
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildAvailableSecretsSecretManagerArgs()
         {
         }
+        public static new TriggerBuildAvailableSecretsSecretManagerArgs Empty => new TriggerBuildAvailableSecretsSecretManagerArgs();
     }
 }

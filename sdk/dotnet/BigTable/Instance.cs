@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.BigTable
     /// ## +---
     /// 
     /// subcategory: "Cloud Bigtable"
-    /// layout: "google"
     /// page_title: "Google: gcp.bigtable.Instance"
-    /// sidebar_current: "docs-google-bigtable-instance"
     /// description: |-
     ///   Creates a Google Bigtable instance.
     /// ---
@@ -32,75 +30,71 @@ namespace Pulumi.Gcp.BigTable
     /// ### Simple Instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var production_instance = new Gcp.BigTable.Instance("production-instance", new()
     ///     {
-    ///         var production_instance = new Gcp.BigTable.Instance("production-instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "tf-instance-cluster",
-    ///                     NumNodes = 1,
-    ///                     StorageType = "HDD",
-    ///                 },
+    ///                 ClusterId = "tf-instance-cluster",
+    ///                 NumNodes = 1,
+    ///                 StorageType = "HDD",
     ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "my-label", "prod-label" },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my-label", "prod-label" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Replicated Instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var production_instance = new Gcp.BigTable.Instance("production-instance", new()
     ///     {
-    ///         var production_instance = new Gcp.BigTable.Instance("production-instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "tf-instance-cluster1",
-    ///                     NumNodes = 1,
-    ///                     StorageType = "HDD",
-    ///                     Zone = "us-central1-c",
-    ///                 },
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     AutoscalingConfig = new Gcp.BigTable.Inputs.InstanceClusterAutoscalingConfigArgs
-    ///                     {
-    ///                         CpuTarget = 50,
-    ///                         MaxNodes = 3,
-    ///                         MinNodes = 1,
-    ///                     },
-    ///                     ClusterId = "tf-instance-cluster2",
-    ///                     StorageType = "HDD",
-    ///                     Zone = "us-central1-b",
-    ///                 },
+    ///                 ClusterId = "tf-instance-cluster1",
+    ///                 NumNodes = 1,
+    ///                 StorageType = "HDD",
+    ///                 Zone = "us-central1-c",
     ///             },
-    ///             Labels = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 { "my-label", "prod-label" },
+    ///                 AutoscalingConfig = new Gcp.BigTable.Inputs.InstanceClusterAutoscalingConfigArgs
+    ///                 {
+    ///                     CpuTarget = 50,
+    ///                     MaxNodes = 3,
+    ///                     MinNodes = 1,
+    ///                 },
+    ///                 ClusterId = "tf-instance-cluster2",
+    ///                 StorageType = "HDD",
+    ///                 Zone = "us-central1-b",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my-label", "prod-label" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +114,7 @@ namespace Pulumi.Gcp.BigTable
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigtable/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
@@ -215,7 +209,7 @@ namespace Pulumi.Gcp.BigTable
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusters")]
         private InputList<Inputs.InstanceClusterArgs>? _clusters;
@@ -281,9 +275,10 @@ namespace Pulumi.Gcp.BigTable
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         [Input("clusters")]
         private InputList<Inputs.InstanceClusterGetArgs>? _clusters;
@@ -349,5 +344,6 @@ namespace Pulumi.Gcp.BigTable
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

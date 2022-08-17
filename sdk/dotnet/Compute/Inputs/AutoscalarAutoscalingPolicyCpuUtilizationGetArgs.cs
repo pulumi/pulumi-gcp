@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class AutoscalarAutoscalingPolicyCpuUtilizationGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalarAutoscalingPolicyCpuUtilizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public AutoscalarAutoscalingPolicyCpuUtilizationGetArgs()
         {
         }
+        public static new AutoscalarAutoscalingPolicyCpuUtilizationGetArgs Empty => new AutoscalarAutoscalingPolicyCpuUtilizationGetArgs();
     }
 }

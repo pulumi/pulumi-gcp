@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageGetArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageGetArgs()
         {
         }
+        public static new AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageGetArgs Empty => new AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageGetArgs();
     }
 }

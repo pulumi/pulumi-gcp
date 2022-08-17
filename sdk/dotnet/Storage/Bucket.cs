@@ -25,83 +25,79 @@ namespace Pulumi.Gcp.Storage
     /// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var static_site = new Gcp.Storage.Bucket("static-site", new()
     ///     {
-    ///         var static_site = new Gcp.Storage.Bucket("static-site", new Gcp.Storage.BucketArgs
+    ///         Cors = new[]
     ///         {
-    ///             Cors = 
+    ///             new Gcp.Storage.Inputs.BucketCorArgs
     ///             {
-    ///                 new Gcp.Storage.Inputs.BucketCorArgs
+    ///                 MaxAgeSeconds = 3600,
+    ///                 Methods = new[]
     ///                 {
-    ///                     MaxAgeSeconds = 3600,
-    ///                     Methods = 
-    ///                     {
-    ///                         "GET",
-    ///                         "HEAD",
-    ///                         "PUT",
-    ///                         "POST",
-    ///                         "DELETE",
-    ///                     },
-    ///                     Origins = 
-    ///                     {
-    ///                         "http://image-store.com",
-    ///                     },
-    ///                     ResponseHeaders = 
-    ///                     {
-    ///                         "*",
-    ///                     },
+    ///                     "GET",
+    ///                     "HEAD",
+    ///                     "PUT",
+    ///                     "POST",
+    ///                     "DELETE",
+    ///                 },
+    ///                 Origins = new[]
+    ///                 {
+    ///                     "http://image-store.com",
+    ///                 },
+    ///                 ResponseHeaders = new[]
+    ///                 {
+    ///                     "*",
     ///                 },
     ///             },
-    ///             ForceDestroy = true,
-    ///             Location = "EU",
-    ///             UniformBucketLevelAccess = true,
-    ///             Website = new Gcp.Storage.Inputs.BucketWebsiteArgs
-    ///             {
-    ///                 MainPageSuffix = "index.html",
-    ///                 NotFoundPage = "404.html",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         ForceDestroy = true,
+    ///         Location = "EU",
+    ///         UniformBucketLevelAccess = true,
+    ///         Website = new Gcp.Storage.Inputs.BucketWebsiteArgs
+    ///         {
+    ///             MainPageSuffix = "index.html",
+    ///             NotFoundPage = "404.html",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Life Cycle Settings For Storage Bucket Objects
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var auto_expire = new Gcp.Storage.Bucket("auto-expire", new()
     ///     {
-    ///         var auto_expire = new Gcp.Storage.Bucket("auto-expire", new Gcp.Storage.BucketArgs
+    ///         ForceDestroy = true,
+    ///         LifecycleRules = new[]
     ///         {
-    ///             ForceDestroy = true,
-    ///             LifecycleRules = 
+    ///             new Gcp.Storage.Inputs.BucketLifecycleRuleArgs
     ///             {
-    ///                 new Gcp.Storage.Inputs.BucketLifecycleRuleArgs
+    ///                 Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
     ///                 {
-    ///                     Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
-    ///                     {
-    ///                         Type = "Delete",
-    ///                     },
-    ///                     Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
-    ///                     {
-    ///                         Age = 3,
-    ///                     },
+    ///                     Type = "Delete",
+    ///                 },
+    ///                 Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
+    ///                 {
+    ///                     Age = 3,
     ///                 },
     ///             },
-    ///             Location = "US",
-    ///         });
-    ///     }
+    ///         },
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -121,7 +117,7 @@ namespace Pulumi.Gcp.Storage
     ///  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
     /// </summary>
     [GcpResourceType("gcp:storage/bucket:Bucket")]
-    public partial class Bucket : Pulumi.CustomResource
+    public partial class Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -284,7 +280,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class BucketArgs : Pulumi.ResourceArgs
+    public sealed class BucketArgs : global::Pulumi.ResourceArgs
     {
         [Input("cors")]
         private InputList<Inputs.BucketCorArgs>? _cors;
@@ -412,9 +408,10 @@ namespace Pulumi.Gcp.Storage
         public BucketArgs()
         {
         }
+        public static new BucketArgs Empty => new BucketArgs();
     }
 
-    public sealed class BucketState : Pulumi.ResourceArgs
+    public sealed class BucketState : global::Pulumi.ResourceArgs
     {
         [Input("cors")]
         private InputList<Inputs.BucketCorGetArgs>? _cors;
@@ -554,5 +551,6 @@ namespace Pulumi.Gcp.Storage
         public BucketState()
         {
         }
+        public static new BucketState Empty => new BucketState();
     }
 }

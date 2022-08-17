@@ -25,133 +25,128 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Uptime Check Config Http
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var http = new Gcp.Monitoring.UptimeCheckConfig("http", new()
     ///     {
-    ///         var http = new Gcp.Monitoring.UptimeCheckConfig("http", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         CheckerType = "STATIC_IP_CHECKERS",
+    ///         ContentMatchers = new[]
     ///         {
-    ///             CheckerType = "STATIC_IP_CHECKERS",
-    ///             ContentMatchers = 
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
     ///             {
-    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///                 Content = "\"example\"",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
     ///                 {
-    ///                     Content = "\"example\"",
-    ///                     JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
-    ///                     {
-    ///                         JsonMatcher = "EXACT_MATCH",
-    ///                         JsonPath = "$.path",
-    ///                     },
-    ///                     Matcher = "MATCHES_JSON_PATH",
+    ///                     JsonMatcher = "EXACT_MATCH",
+    ///                     JsonPath = "$.path",
     ///                 },
+    ///                 Matcher = "MATCHES_JSON_PATH",
     ///             },
-    ///             DisplayName = "http-uptime-check",
-    ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         },
+    ///         DisplayName = "http-uptime-check",
+    ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         {
+    ///             Body = "Zm9vJTI1M0RiYXI=",
+    ///             ContentType = "URL_ENCODED",
+    ///             Path = "some-path",
+    ///             Port = 8010,
+    ///             RequestMethod = "POST",
+    ///         },
+    ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///         {
+    ///             Labels = 
     ///             {
-    ///                 Body = "Zm9vJTI1M0RiYXI=",
-    ///                 ContentType = "URL_ENCODED",
-    ///                 Path = "some-path",
-    ///                 Port = 8010,
-    ///                 RequestMethod = "POST",
+    ///                 { "host", "192.168.1.1" },
+    ///                 { "projectId", "my-project-name" },
     ///             },
-    ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
-    ///             {
-    ///                 Labels = 
-    ///                 {
-    ///                     { "host", "192.168.1.1" },
-    ///                     { "projectId", "my-project-name" },
-    ///                 },
-    ///                 Type = "uptime_url",
-    ///             },
-    ///             Timeout = "60s",
-    ///         });
-    ///     }
+    ///             Type = "uptime_url",
+    ///         },
+    ///         Timeout = "60s",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Uptime Check Config Https
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var https = new Gcp.Monitoring.UptimeCheckConfig("https", new()
     ///     {
-    ///         var https = new Gcp.Monitoring.UptimeCheckConfig("https", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         ContentMatchers = new[]
     ///         {
-    ///             ContentMatchers = 
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
     ///             {
-    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///                 Content = "example",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
     ///                 {
-    ///                     Content = "example",
-    ///                     JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
-    ///                     {
-    ///                         JsonMatcher = "REGEX_MATCH",
-    ///                         JsonPath = "$.path",
-    ///                     },
-    ///                     Matcher = "MATCHES_JSON_PATH",
+    ///                     JsonMatcher = "REGEX_MATCH",
+    ///                     JsonPath = "$.path",
     ///                 },
+    ///                 Matcher = "MATCHES_JSON_PATH",
     ///             },
-    ///             DisplayName = "https-uptime-check",
-    ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         },
+    ///         DisplayName = "https-uptime-check",
+    ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         {
+    ///             Path = "/some-path",
+    ///             Port = 443,
+    ///             UseSsl = true,
+    ///             ValidateSsl = true,
+    ///         },
+    ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///         {
+    ///             Labels = 
     ///             {
-    ///                 Path = "/some-path",
-    ///                 Port = 443,
-    ///                 UseSsl = true,
-    ///                 ValidateSsl = true,
+    ///                 { "host", "192.168.1.1" },
+    ///                 { "projectId", "my-project-name" },
     ///             },
-    ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
-    ///             {
-    ///                 Labels = 
-    ///                 {
-    ///                     { "host", "192.168.1.1" },
-    ///                     { "projectId", "my-project-name" },
-    ///                 },
-    ///                 Type = "uptime_url",
-    ///             },
-    ///             Timeout = "60s",
-    ///         });
-    ///     }
+    ///             Type = "uptime_url",
+    ///         },
+    ///         Timeout = "60s",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Uptime Check Tcp
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var check = new Gcp.Monitoring.Group("check", new()
     ///     {
-    ///         var check = new Gcp.Monitoring.Group("check", new Gcp.Monitoring.GroupArgs
-    ///         {
-    ///             DisplayName = "uptime-check-group",
-    ///             Filter = "resource.metadata.name=has_substring(\"foo\")",
-    ///         });
-    ///         var tcpGroup = new Gcp.Monitoring.UptimeCheckConfig("tcpGroup", new Gcp.Monitoring.UptimeCheckConfigArgs
-    ///         {
-    ///             DisplayName = "tcp-uptime-check",
-    ///             Timeout = "60s",
-    ///             TcpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigTcpCheckArgs
-    ///             {
-    ///                 Port = 888,
-    ///             },
-    ///             ResourceGroup = new Gcp.Monitoring.Inputs.UptimeCheckConfigResourceGroupArgs
-    ///             {
-    ///                 ResourceType = "INSTANCE",
-    ///                 GroupId = check.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///         DisplayName = "uptime-check-group",
+    ///         Filter = "resource.metadata.name=has_substring(\"foo\")",
+    ///     });
     /// 
-    /// }
+    ///     var tcpGroup = new Gcp.Monitoring.UptimeCheckConfig("tcpGroup", new()
+    ///     {
+    ///         DisplayName = "tcp-uptime-check",
+    ///         Timeout = "60s",
+    ///         TcpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigTcpCheckArgs
+    ///         {
+    ///             Port = 888,
+    ///         },
+    ///         ResourceGroup = new Gcp.Monitoring.Inputs.UptimeCheckConfigResourceGroupArgs
+    ///         {
+    ///             ResourceType = "INSTANCE",
+    ///             GroupId = check.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -163,7 +158,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig")]
-    public partial class UptimeCheckConfig : Pulumi.CustomResource
+    public partial class UptimeCheckConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
@@ -295,7 +290,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class UptimeCheckConfigArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
@@ -385,9 +380,10 @@ namespace Pulumi.Gcp.Monitoring
         public UptimeCheckConfigArgs()
         {
         }
+        public static new UptimeCheckConfigArgs Empty => new UptimeCheckConfigArgs();
     }
 
-    public sealed class UptimeCheckConfigState : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
@@ -490,5 +486,6 @@ namespace Pulumi.Gcp.Monitoring
         public UptimeCheckConfigState()
         {
         }
+        public static new UptimeCheckConfigState Empty => new UptimeCheckConfigState();
     }
 }

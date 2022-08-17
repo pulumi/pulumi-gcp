@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionDeploymentCloudBuildOptionsArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionDeploymentCloudBuildOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to the yaml file used in deployment, used to determine runtime configuration details.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionDeploymentCloudBuildOptionsArgs()
         {
         }
+        public static new FlexibleAppVersionDeploymentCloudBuildOptionsArgs Empty => new FlexibleAppVersionDeploymentCloudBuildOptionsArgs();
     }
 }

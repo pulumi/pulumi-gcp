@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class DiskSourceImageEncryptionKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class DiskSourceImageEncryptionKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
@@ -47,5 +47,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public DiskSourceImageEncryptionKeyGetArgs()
         {
         }
+        public static new DiskSourceImageEncryptionKeyGetArgs Empty => new DiskSourceImageEncryptionKeyGetArgs();
     }
 }

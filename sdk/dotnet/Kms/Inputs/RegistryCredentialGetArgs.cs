@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class RegistryCredentialGetArgs : Pulumi.ResourceArgs
+    public sealed class RegistryCredentialGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("publicKeyCertificate", required: true)]
         private InputMap<object>? _publicKeyCertificate;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         public RegistryCredentialGetArgs()
         {
         }
+        public static new RegistryCredentialGetArgs Empty => new RegistryCredentialGetArgs();
     }
 }

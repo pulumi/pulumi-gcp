@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/packetMirroring:PacketMirroring")]
-    public partial class PacketMirroring : Pulumi.CustomResource
+    public partial class PacketMirroring : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class PacketMirroringArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
@@ -228,9 +228,10 @@ namespace Pulumi.Gcp.Compute
         public PacketMirroringArgs()
         {
         }
+        public static new PacketMirroringArgs Empty => new PacketMirroringArgs();
     }
 
-    public sealed class PacketMirroringState : Pulumi.ResourceArgs
+    public sealed class PacketMirroringState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
@@ -302,5 +303,6 @@ namespace Pulumi.Gcp.Compute
         public PacketMirroringState()
         {
         }
+        public static new PacketMirroringState Empty => new PacketMirroringState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsNodePoolConfigRootVolumeArgs : Pulumi.ResourceArgs
+    public sealed class AwsNodePoolConfigRootVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsNodePoolConfigRootVolumeArgs()
         {
         }
+        public static new AwsNodePoolConfigRootVolumeArgs Empty => new AwsNodePoolConfigRootVolumeArgs();
     }
 }

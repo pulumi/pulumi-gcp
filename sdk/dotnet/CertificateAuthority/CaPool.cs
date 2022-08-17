@@ -18,156 +18,28 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// ### Privateca Capool Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
-    ///         var @default = new Gcp.CertificateAuthority.CaPool("default", new Gcp.CertificateAuthority.CaPoolArgs
+    ///         Labels = 
     ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Location = "us-central1",
-    ///             PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
-    ///             {
-    ///                 PublishCaCert = true,
-    ///                 PublishCrl = true,
-    ///             },
-    ///             Tier = "ENTERPRISE",
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Location = "us-central1",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
+    ///         },
+    ///         Tier = "ENTERPRISE",
+    ///     });
     /// 
-    /// }
-    /// ```
-    /// ### Privateca Quickstart
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Tls = Pulumi.Tls;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new Tls.PrivateKeyArgs
-    ///         {
-    ///             Algorithm = "RSA",
-    ///         });
-    ///         var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new Tls.CertRequestArgs
-    ///         {
-    ///             KeyAlgorithm = "RSA",
-    ///             PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
-    ///             Subjects = 
-    ///             {
-    ///                 new Tls.Inputs.CertRequestSubjectArgs
-    ///                 {
-    ///                     CommonName = "example.com",
-    ///                     Organization = "ACME Examples, Inc",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new Gcp.CertificateAuthority.CaPoolArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Tier = "ENTERPRISE",
-    ///             Project = "project-id",
-    ///             PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
-    ///             {
-    ///                 PublishCaCert = true,
-    ///                 PublishCrl = true,
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             IssuancePolicy = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyArgs
-    ///             {
-    ///                 BaselineValues = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesArgs
-    ///                 {
-    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs
-    ///                     {
-    ///                         IsCa = false,
-    ///                     },
-    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs
-    ///                     {
-    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs
-    ///                         {
-    ///                             DigitalSignature = true,
-    ///                             KeyEncipherment = true,
-    ///                         },
-    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs
-    ///                         {
-    ///                             ServerAuth = true,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new Gcp.CertificateAuthority.AuthorityArgs
-    ///         {
-    ///             CertificateAuthorityId = "my-authority",
-    ///             Location = "us-central1",
-    ///             Project = "project-id",
-    ///             Pool = google_privateca_ca_pool.Pool.Name,
-    ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
-    ///             {
-    ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
-    ///                 {
-    ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
-    ///                     {
-    ///                         CountryCode = "us",
-    ///                         Organization = "google",
-    ///                         OrganizationalUnit = "enterprise",
-    ///                         Locality = "mountain view",
-    ///                         Province = "california",
-    ///                         StreetAddress = "1600 amphitheatre parkway",
-    ///                         PostalCode = "94109",
-    ///                         CommonName = "my-certificate-authority",
-    ///                     },
-    ///                 },
-    ///                 X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
-    ///                 {
-    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
-    ///                     {
-    ///                         IsCa = true,
-    ///                     },
-    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
-    ///                     {
-    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
-    ///                         {
-    ///                             CertSign = true,
-    ///                             CrlSign = true,
-    ///                         },
-    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-    ///                         {
-    ///                             ServerAuth = true,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Type = "SELF_SIGNED",
-    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
-    ///             {
-    ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
-    ///             },
-    ///         });
-    ///         var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new Gcp.CertificateAuthority.CertificateArgs
-    ///         {
-    ///             Pool = google_privateca_ca_pool.Pool.Name,
-    ///             CertificateAuthority = test_ca.CertificateAuthorityId,
-    ///             Project = "project-id",
-    ///             Location = "us-central1",
-    ///             Lifetime = "860s",
-    ///             PemCsr = exampleCertRequest.CertRequestPem,
-    ///         });
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -187,7 +59,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificateauthority/caPool:CaPool")]
-    public partial class CaPool : Pulumi.CustomResource
+    public partial class CaPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -281,7 +153,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
     }
 
-    public sealed class CaPoolArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -340,9 +212,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         public CaPoolArgs()
         {
         }
+        public static new CaPoolArgs Empty => new CaPoolArgs();
     }
 
-    public sealed class CaPoolState : Pulumi.ResourceArgs
+    public sealed class CaPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -401,5 +274,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         public CaPoolState()
         {
         }
+        public static new CaPoolState Empty => new CaPoolState();
     }
 }

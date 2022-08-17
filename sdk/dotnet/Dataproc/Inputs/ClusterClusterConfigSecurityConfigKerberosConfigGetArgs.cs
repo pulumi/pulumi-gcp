@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigSecurityConfigKerberosConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigSecurityConfigKerberosConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The admin server (IP or hostname) for the
@@ -121,5 +121,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigSecurityConfigKerberosConfigGetArgs()
         {
         }
+        public static new ClusterClusterConfigSecurityConfigKerberosConfigGetArgs Empty => new ClusterClusterConfigSecurityConfigKerberosConfigGetArgs();
     }
 }

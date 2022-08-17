@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityConfigSubjectConfigArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityConfigSubjectConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Contains distinguished name fields such as the location and organization.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityConfigSubjectConfigArgs()
         {
         }
+        public static new AuthorityConfigSubjectConfigArgs Empty => new AuthorityConfigSubjectConfigArgs();
     }
 }

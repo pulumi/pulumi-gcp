@@ -23,83 +23,78 @@ namespace Pulumi.Gcp.SecretManager
     /// ## google\_secret\_manager\_secret\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/secretmanager.secretAccessor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new Gcp.SecretManager.SecretIamPolicyArgs
-    ///         {
-    ///             Project = google_secret_manager_secret.Secret_basic.Project,
-    ///             SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_secret_manager_secret.Secret_basic.Project,
+    ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_secret\_manager\_secret\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.SecretManager.SecretIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.SecretManager.SecretIamBinding("binding", new Gcp.SecretManager.SecretIamBindingArgs
+    ///         Project = google_secret_manager_secret.Secret_basic.Project,
+    ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_secret_manager_secret.Secret_basic.Project,
-    ///             SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
-    ///             Role = "roles/secretmanager.secretAccessor",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_secret\_manager\_secret\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.SecretManager.SecretIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.SecretManager.SecretIamMember("member", new Gcp.SecretManager.SecretIamMemberArgs
-    ///         {
-    ///             Project = google_secret_manager_secret.Secret_basic.Project,
-    ///             SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
-    ///             Role = "roles/secretmanager.secretAccessor",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_secret_manager_secret.Secret_basic.Project,
+    ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.SecretManager
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:secretmanager/secretIamPolicy:SecretIamPolicy")]
-    public partial class SecretIamPolicy : Pulumi.CustomResource
+    public partial class SecretIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -196,7 +191,7 @@ namespace Pulumi.Gcp.SecretManager
         }
     }
 
-    public sealed class SecretIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SecretIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy data generated by
@@ -218,9 +213,10 @@ namespace Pulumi.Gcp.SecretManager
         public SecretIamPolicyArgs()
         {
         }
+        public static new SecretIamPolicyArgs Empty => new SecretIamPolicyArgs();
     }
 
-    public sealed class SecretIamPolicyState : Pulumi.ResourceArgs
+    public sealed class SecretIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -248,5 +244,6 @@ namespace Pulumi.Gcp.SecretManager
         public SecretIamPolicyState()
         {
         }
+        public static new SecretIamPolicyState Empty => new SecretIamPolicyState();
     }
 }

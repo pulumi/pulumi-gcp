@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkManagement.Inputs
 {
 
-    public sealed class ConnectivityTestSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectivityTestSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Compute Engine instance URI.
@@ -62,5 +62,6 @@ namespace Pulumi.Gcp.NetworkManagement.Inputs
         public ConnectivityTestSourceGetArgs()
         {
         }
+        public static new ConnectivityTestSourceGetArgs Empty => new ConnectivityTestSourceGetArgs();
     }
 }

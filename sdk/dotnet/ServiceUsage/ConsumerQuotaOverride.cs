@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.ServiceUsage
     /// ```
     /// </summary>
     [GcpResourceType("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride")]
-    public partial class ConsumerQuotaOverride : Pulumi.CustomResource
+    public partial class ConsumerQuotaOverride : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.ServiceUsage
         }
     }
 
-    public sealed class ConsumerQuotaOverrideArgs : Pulumi.ResourceArgs
+    public sealed class ConsumerQuotaOverrideArgs : global::Pulumi.ResourceArgs
     {
         [Input("dimensions")]
         private InputMap<string>? _dimensions;
@@ -190,9 +190,10 @@ namespace Pulumi.Gcp.ServiceUsage
         public ConsumerQuotaOverrideArgs()
         {
         }
+        public static new ConsumerQuotaOverrideArgs Empty => new ConsumerQuotaOverrideArgs();
     }
 
-    public sealed class ConsumerQuotaOverrideState : Pulumi.ResourceArgs
+    public sealed class ConsumerQuotaOverrideState : global::Pulumi.ResourceArgs
     {
         [Input("dimensions")]
         private InputMap<string>? _dimensions;
@@ -253,5 +254,6 @@ namespace Pulumi.Gcp.ServiceUsage
         public ConsumerQuotaOverrideState()
         {
         }
+        public static new ConsumerQuotaOverrideState Empty => new ConsumerQuotaOverrideState();
     }
 }

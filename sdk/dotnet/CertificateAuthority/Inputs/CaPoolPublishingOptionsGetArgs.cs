@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolPublishingOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolPublishingOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolPublishingOptionsGetArgs()
         {
         }
+        public static new CaPoolPublishingOptionsGetArgs Empty => new CaPoolPublishingOptionsGetArgs();
     }
 }

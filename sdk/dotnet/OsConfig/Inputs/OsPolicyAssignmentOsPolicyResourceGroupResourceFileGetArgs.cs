@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A a file with this content. The size of the content is limited to 1024 characters.
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterControlPlaneReplicaPlacementArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterControlPlaneReplicaPlacementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For a given replica, the Azure availability zone where to provision the control plane VM and the ETCD disk.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterControlPlaneReplicaPlacementArgs()
         {
         }
+        public static new AzureClusterControlPlaneReplicaPlacementArgs Empty => new AzureClusterControlPlaneReplicaPlacementArgs();
     }
 }

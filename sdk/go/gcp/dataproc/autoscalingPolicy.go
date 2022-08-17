@@ -20,59 +20,68 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		asp, err := dataproc.NewAutoscalingPolicy(ctx, "asp", &dataproc.AutoscalingPolicyArgs{
-// 			PolicyId: pulumi.String("dataproc-policy"),
-// 			Location: pulumi.String("us-central1"),
-// 			WorkerConfig: &dataproc.AutoscalingPolicyWorkerConfigArgs{
-// 				MaxInstances: pulumi.Int(3),
-// 			},
-// 			BasicAlgorithm: &dataproc.AutoscalingPolicyBasicAlgorithmArgs{
-// 				YarnConfig: &dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs{
-// 					GracefulDecommissionTimeout: pulumi.String("30s"),
-// 					ScaleUpFactor:               pulumi.Float64(0.5),
-// 					ScaleDownFactor:             pulumi.Float64(0.5),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
-// 			Region: pulumi.String("us-central1"),
-// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
-// 				AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{
-// 					PolicyUri: asp.Name,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			asp, err := dataproc.NewAutoscalingPolicy(ctx, "asp", &dataproc.AutoscalingPolicyArgs{
+//				PolicyId: pulumi.String("dataproc-policy"),
+//				Location: pulumi.String("us-central1"),
+//				WorkerConfig: &dataproc.AutoscalingPolicyWorkerConfigArgs{
+//					MaxInstances: pulumi.Int(3),
+//				},
+//				BasicAlgorithm: &dataproc.AutoscalingPolicyBasicAlgorithmArgs{
+//					YarnConfig: &dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs{
+//						GracefulDecommissionTimeout: pulumi.String("30s"),
+//						ScaleUpFactor:               pulumi.Float64(0.5),
+//						ScaleDownFactor:             pulumi.Float64(0.5),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
+//				Region: pulumi.String("us-central1"),
+//				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+//					AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{
+//						PolicyUri: asp.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// AutoscalingPolicy can be imported using any of these accepted formats
+// # AutoscalingPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+//
+//	$ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
+//
+//	$ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
+//
+//	$ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
+//
 // ```
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
@@ -254,7 +263,7 @@ func (i *AutoscalingPolicy) ToAutoscalingPolicyOutputWithContext(ctx context.Con
 // AutoscalingPolicyArrayInput is an input type that accepts AutoscalingPolicyArray and AutoscalingPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyArrayInput` via:
 //
-//          AutoscalingPolicyArray{ AutoscalingPolicyArgs{...} }
+//	AutoscalingPolicyArray{ AutoscalingPolicyArgs{...} }
 type AutoscalingPolicyArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +288,7 @@ func (i AutoscalingPolicyArray) ToAutoscalingPolicyArrayOutputWithContext(ctx co
 // AutoscalingPolicyMapInput is an input type that accepts AutoscalingPolicyMap and AutoscalingPolicyMapOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyMapInput` via:
 //
-//          AutoscalingPolicyMap{ "key": AutoscalingPolicyArgs{...} }
+//	AutoscalingPolicyMap{ "key": AutoscalingPolicyArgs{...} }
 type AutoscalingPolicyMapInput interface {
 	pulumi.Input
 

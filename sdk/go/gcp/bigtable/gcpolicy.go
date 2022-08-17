@@ -21,49 +21,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
-// 			Clusters: bigtable.InstanceClusterArray{
-// 				&bigtable.InstanceClusterArgs{
-// 					ClusterId:   pulumi.String("tf-instance-cluster"),
-// 					NumNodes:    pulumi.Int(3),
-// 					StorageType: pulumi.String("HDD"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
-// 			InstanceName: instance.Name,
-// 			ColumnFamilies: bigtable.TableColumnFamilyArray{
-// 				&bigtable.TableColumnFamilyArgs{
-// 					Family: pulumi.String("name"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-// 			InstanceName: instance.Name,
-// 			Table:        table.Name,
-// 			ColumnFamily: pulumi.String("name"),
-// 			MaxAge: &bigtable.GCPolicyMaxAgeArgs{
-// 				Duration: pulumi.String("168h"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("tf-instance-cluster"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
+//				InstanceName: instance.Name,
+//				ColumnFamilies: bigtable.TableColumnFamilyArray{
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("name"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
+//				InstanceName: instance.Name,
+//				Table:        table.Name,
+//				ColumnFamily: pulumi.String("name"),
+//				MaxAge: &bigtable.GCPolicyMaxAgeArgs{
+//					Duration: pulumi.String("168h"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
@@ -72,32 +75,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-// 			InstanceName: pulumi.Any(google_bigtable_instance.Instance.Name),
-// 			Table:        pulumi.Any(google_bigtable_table.Table.Name),
-// 			ColumnFamily: pulumi.String("name"),
-// 			Mode:         pulumi.String("UNION"),
-// 			MaxAge: &bigtable.GCPolicyMaxAgeArgs{
-// 				Duration: pulumi.String("168h"),
-// 			},
-// 			MaxVersions: bigtable.GCPolicyMaxVersionArray{
-// 				&bigtable.GCPolicyMaxVersionArgs{
-// 					Number: pulumi.Int(10),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
+//				InstanceName: pulumi.Any(google_bigtable_instance.Instance.Name),
+//				Table:        pulumi.Any(google_bigtable_table.Table.Name),
+//				ColumnFamily: pulumi.String("name"),
+//				Mode:         pulumi.String("UNION"),
+//				MaxAge: &bigtable.GCPolicyMaxAgeArgs{
+//					Duration: pulumi.String("168h"),
+//				},
+//				MaxVersions: bigtable.GCPolicyMaxVersionArray{
+//					&bigtable.GCPolicyMaxVersionArgs{
+//						Number: pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // For complex, nested policies, an optional `gcRules` field are supported. This field
@@ -107,83 +113,91 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
-// 			Clusters: bigtable.InstanceClusterArray{
-// 				&bigtable.InstanceClusterArgs{
-// 					ClusterId: pulumi.String("cid"),
-// 					Zone:      pulumi.String("us-central1-b"),
-// 				},
-// 			},
-// 			InstanceType:       pulumi.String("DEVELOPMENT"),
-// 			DeletionProtection: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
-// 			InstanceName: instance.ID(),
-// 			ColumnFamilies: bigtable.TableColumnFamilyArray{
-// 				&bigtable.TableColumnFamilyArgs{
-// 					Family: pulumi.String("cf1"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-// 			InstanceName: instance.ID(),
-// 			Table:        table.Name,
-// 			ColumnFamily: pulumi.String("cf1"),
-// 			GcRules: pulumi.String(fmt.Sprintf(`{
-//   "mode": "union",
-//   "rules": [
-//     {
-//       "max_age": "10h"
-//     },
-//     {
-//       "mode": "intersection",
-//       "rules": [
-//         {
-//           "max_age": "2h"
-//         },
-//         {
-//           "max_version": 2
-//         }
-//       ]
-//     }
-//   ]
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId: pulumi.String("cid"),
+//						Zone:      pulumi.String("us-central1-b"),
+//					},
+//				},
+//				InstanceType:       pulumi.String("DEVELOPMENT"),
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
+//				InstanceName: instance.ID(),
+//				ColumnFamilies: bigtable.TableColumnFamilyArray{
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("cf1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
+//				InstanceName: instance.ID(),
+//				Table:        table.Name,
+//				ColumnFamily: pulumi.String("cf1"),
+//				GcRules: pulumi.String(fmt.Sprintf(`{
+//	  "mode": "union",
+//	  "rules": [
+//	    {
+//	      "max_age": "10h"
+//	    },
+//	    {
+//	      "mode": "intersection",
+//	      "rules": [
+//	        {
+//	          "max_age": "2h"
+//	        },
+//	        {
+//	          "max_version": 2
+//	        }
+//	      ]
+//	    }
+//	  ]
+//	}
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // This is equivalent to running the following `cbt` command:
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -354,7 +368,7 @@ func (i *GCPolicy) ToGCPolicyOutputWithContext(ctx context.Context) GCPolicyOutp
 // GCPolicyArrayInput is an input type that accepts GCPolicyArray and GCPolicyArrayOutput values.
 // You can construct a concrete instance of `GCPolicyArrayInput` via:
 //
-//          GCPolicyArray{ GCPolicyArgs{...} }
+//	GCPolicyArray{ GCPolicyArgs{...} }
 type GCPolicyArrayInput interface {
 	pulumi.Input
 
@@ -379,7 +393,7 @@ func (i GCPolicyArray) ToGCPolicyArrayOutputWithContext(ctx context.Context) GCP
 // GCPolicyMapInput is an input type that accepts GCPolicyMap and GCPolicyMapOutput values.
 // You can construct a concrete instance of `GCPolicyMapInput` via:
 //
-//          GCPolicyMap{ "key": GCPolicyArgs{...} }
+//	GCPolicyMap{ "key": GCPolicyArgs{...} }
 type GCPolicyMapInput interface {
 	pulumi.Input
 

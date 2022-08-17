@@ -23,175 +23,165 @@ namespace Pulumi.Gcp.Iap
     /// ## google\_iap\_web\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/iap.httpsResourceAccessor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/iap.httpsResourceAccessor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Iap.WebIamPolicy("policy", new Gcp.Iap.WebIamPolicyArgs
-    ///         {
-    ///             Project = google_project_service.Project_service.Project,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Iap.WebIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_project_service.Project_service.Project,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/iap.httpsResourceAccessor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/iap.httpsResourceAccessor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Title = "expires_after_2019_12_31",
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     },
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Iap.WebIamPolicy("policy", new Gcp.Iap.WebIamPolicyArgs
-    ///         {
-    ///             Project = google_project_service.Project_service.Project,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Iap.WebIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_project_service.Project_service.Project,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## google\_iap\_web\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Iap.WebIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Iap.WebIamBinding("binding", new Gcp.Iap.WebIamBindingArgs
+    ///         Project = google_project_service.Project_service.Project,
+    ///         Role = "roles/iap.httpsResourceAccessor",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_project_service.Project_service.Project,
-    ///             Role = "roles/iap.httpsResourceAccessor",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Iap.WebIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Iap.WebIamBinding("binding", new Gcp.Iap.WebIamBindingArgs
+    ///         Project = google_project_service.Project_service.Project,
+    ///         Role = "roles/iap.httpsResourceAccessor",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_project_service.Project_service.Project,
-    ///             Role = "roles/iap.httpsResourceAccessor",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Condition = new Gcp.Iap.Inputs.WebIamBindingConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Iap.Inputs.WebIamBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## google\_iap\_web\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Iap.WebIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Iap.WebIamMember("member", new Gcp.Iap.WebIamMemberArgs
-    ///         {
-    ///             Project = google_project_service.Project_service.Project,
-    ///             Role = "roles/iap.httpsResourceAccessor",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_project_service.Project_service.Project,
+    ///         Role = "roles/iap.httpsResourceAccessor",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Iap.WebIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Iap.WebIamMember("member", new Gcp.Iap.WebIamMemberArgs
+    ///         Project = google_project_service.Project_service.Project,
+    ///         Role = "roles/iap.httpsResourceAccessor",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Iap.Inputs.WebIamMemberConditionArgs
     ///         {
-    ///             Project = google_project_service.Project_service.Project,
-    ///             Role = "roles/iap.httpsResourceAccessor",
-    ///             Member = "user:jane@example.com",
-    ///             Condition = new Gcp.Iap.Inputs.WebIamMemberConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -219,7 +209,7 @@ namespace Pulumi.Gcp.Iap
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:iap/webIamMember:WebIamMember")]
-    public partial class WebIamMember : Pulumi.CustomResource
+    public partial class WebIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -296,7 +286,7 @@ namespace Pulumi.Gcp.Iap
         }
     }
 
-    public sealed class WebIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class WebIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -326,9 +316,10 @@ namespace Pulumi.Gcp.Iap
         public WebIamMemberArgs()
         {
         }
+        public static new WebIamMemberArgs Empty => new WebIamMemberArgs();
     }
 
-    public sealed class WebIamMemberState : Pulumi.ResourceArgs
+    public sealed class WebIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -364,5 +355,6 @@ namespace Pulumi.Gcp.Iap
         public WebIamMemberState()
         {
         }
+        public static new WebIamMemberState Empty => new WebIamMemberState();
     }
 }

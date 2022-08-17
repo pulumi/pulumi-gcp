@@ -38,7 +38,7 @@ type FunctionBuildConfig struct {
 // FunctionBuildConfigInput is an input type that accepts FunctionBuildConfigArgs and FunctionBuildConfigOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigInput` via:
 //
-//          FunctionBuildConfigArgs{...}
+//	FunctionBuildConfigArgs{...}
 type FunctionBuildConfigInput interface {
 	pulumi.Input
 
@@ -94,11 +94,11 @@ func (i FunctionBuildConfigArgs) ToFunctionBuildConfigPtrOutputWithContext(ctx c
 // FunctionBuildConfigPtrInput is an input type that accepts FunctionBuildConfigArgs, FunctionBuildConfigPtr and FunctionBuildConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigPtrInput` via:
 //
-//          FunctionBuildConfigArgs{...}
+//	        FunctionBuildConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigPtrInput interface {
 	pulumi.Input
 
@@ -305,7 +305,7 @@ type FunctionBuildConfigSource struct {
 // FunctionBuildConfigSourceInput is an input type that accepts FunctionBuildConfigSourceArgs and FunctionBuildConfigSourceOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceInput` via:
 //
-//          FunctionBuildConfigSourceArgs{...}
+//	FunctionBuildConfigSourceArgs{...}
 type FunctionBuildConfigSourceInput interface {
 	pulumi.Input
 
@@ -345,11 +345,11 @@ func (i FunctionBuildConfigSourceArgs) ToFunctionBuildConfigSourcePtrOutputWithC
 // FunctionBuildConfigSourcePtrInput is an input type that accepts FunctionBuildConfigSourceArgs, FunctionBuildConfigSourcePtr and FunctionBuildConfigSourcePtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourcePtrInput` via:
 //
-//          FunctionBuildConfigSourceArgs{...}
+//	        FunctionBuildConfigSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigSourcePtrInput interface {
 	pulumi.Input
 
@@ -479,7 +479,7 @@ type FunctionBuildConfigSourceRepoSource struct {
 // FunctionBuildConfigSourceRepoSourceInput is an input type that accepts FunctionBuildConfigSourceRepoSourceArgs and FunctionBuildConfigSourceRepoSourceOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceRepoSourceInput` via:
 //
-//          FunctionBuildConfigSourceRepoSourceArgs{...}
+//	FunctionBuildConfigSourceRepoSourceArgs{...}
 type FunctionBuildConfigSourceRepoSourceInput interface {
 	pulumi.Input
 
@@ -529,11 +529,11 @@ func (i FunctionBuildConfigSourceRepoSourceArgs) ToFunctionBuildConfigSourceRepo
 // FunctionBuildConfigSourceRepoSourcePtrInput is an input type that accepts FunctionBuildConfigSourceRepoSourceArgs, FunctionBuildConfigSourceRepoSourcePtr and FunctionBuildConfigSourceRepoSourcePtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceRepoSourcePtrInput` via:
 //
-//          FunctionBuildConfigSourceRepoSourceArgs{...}
+//	        FunctionBuildConfigSourceRepoSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigSourceRepoSourcePtrInput interface {
 	pulumi.Input
 
@@ -729,7 +729,7 @@ type FunctionBuildConfigSourceStorageSource struct {
 // FunctionBuildConfigSourceStorageSourceInput is an input type that accepts FunctionBuildConfigSourceStorageSourceArgs and FunctionBuildConfigSourceStorageSourceOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceStorageSourceInput` via:
 //
-//          FunctionBuildConfigSourceStorageSourceArgs{...}
+//	FunctionBuildConfigSourceStorageSourceArgs{...}
 type FunctionBuildConfigSourceStorageSourceInput interface {
 	pulumi.Input
 
@@ -770,11 +770,11 @@ func (i FunctionBuildConfigSourceStorageSourceArgs) ToFunctionBuildConfigSourceS
 // FunctionBuildConfigSourceStorageSourcePtrInput is an input type that accepts FunctionBuildConfigSourceStorageSourceArgs, FunctionBuildConfigSourceStorageSourcePtr and FunctionBuildConfigSourceStorageSourcePtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceStorageSourcePtrInput` via:
 //
-//          FunctionBuildConfigSourceStorageSourceArgs{...}
+//	        FunctionBuildConfigSourceStorageSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigSourceStorageSourcePtrInput interface {
 	pulumi.Input
 
@@ -896,6 +896,9 @@ func (o FunctionBuildConfigSourceStorageSourcePtrOutput) Object() pulumi.StringP
 }
 
 type FunctionEventTrigger struct {
+	// Criteria used to filter events.
+	// Structure is documented below.
+	EventFilters []FunctionEventTriggerEventFilter `pulumi:"eventFilters"`
 	// Required. The type of event to observe.
 	EventType *string `pulumi:"eventType"`
 	// The name of a Pub/Sub topic in the same project that will be used
@@ -920,7 +923,7 @@ type FunctionEventTrigger struct {
 // FunctionEventTriggerInput is an input type that accepts FunctionEventTriggerArgs and FunctionEventTriggerOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+//	FunctionEventTriggerArgs{...}
 type FunctionEventTriggerInput interface {
 	pulumi.Input
 
@@ -929,6 +932,9 @@ type FunctionEventTriggerInput interface {
 }
 
 type FunctionEventTriggerArgs struct {
+	// Criteria used to filter events.
+	// Structure is documented below.
+	EventFilters FunctionEventTriggerEventFilterArrayInput `pulumi:"eventFilters"`
 	// Required. The type of event to observe.
 	EventType pulumi.StringPtrInput `pulumi:"eventType"`
 	// The name of a Pub/Sub topic in the same project that will be used
@@ -973,11 +979,11 @@ func (i FunctionEventTriggerArgs) ToFunctionEventTriggerPtrOutputWithContext(ctx
 // FunctionEventTriggerPtrInput is an input type that accepts FunctionEventTriggerArgs, FunctionEventTriggerPtr and FunctionEventTriggerPtrOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerPtrInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+//	        FunctionEventTriggerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionEventTriggerPtrInput interface {
 	pulumi.Input
 
@@ -1025,6 +1031,12 @@ func (o FunctionEventTriggerOutput) ToFunctionEventTriggerPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionEventTrigger) *FunctionEventTrigger {
 		return &v
 	}).(FunctionEventTriggerPtrOutput)
+}
+
+// Criteria used to filter events.
+// Structure is documented below.
+func (o FunctionEventTriggerOutput) EventFilters() FunctionEventTriggerEventFilterArrayOutput {
+	return o.ApplyT(func(v FunctionEventTrigger) []FunctionEventTriggerEventFilter { return v.EventFilters }).(FunctionEventTriggerEventFilterArrayOutput)
 }
 
 // Required. The type of event to observe.
@@ -1086,6 +1098,17 @@ func (o FunctionEventTriggerPtrOutput) Elem() FunctionEventTriggerOutput {
 		var ret FunctionEventTrigger
 		return ret
 	}).(FunctionEventTriggerOutput)
+}
+
+// Criteria used to filter events.
+// Structure is documented below.
+func (o FunctionEventTriggerPtrOutput) EventFilters() FunctionEventTriggerEventFilterArrayOutput {
+	return o.ApplyT(func(v *FunctionEventTrigger) []FunctionEventTriggerEventFilter {
+		if v == nil {
+			return nil
+		}
+		return v.EventFilters
+	}).(FunctionEventTriggerEventFilterArrayOutput)
 }
 
 // Required. The type of event to observe.
@@ -1155,6 +1178,142 @@ func (o FunctionEventTriggerPtrOutput) TriggerRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type FunctionEventTriggerEventFilter struct {
+	// 'Required. The name of a CloudEvents attribute.
+	// Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+	// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `eventType` attribute.
+	Attribute string `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of
+	// the filter. If not specified, only events that have an exact key-value
+	// pair specified in the filter are matched.
+	// The only allowed value is `match-path-pattern`.
+	// [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+	Operator *string `pulumi:"operator"`
+	// Required. The value for the attribute.
+	// If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+	Value string `pulumi:"value"`
+}
+
+// FunctionEventTriggerEventFilterInput is an input type that accepts FunctionEventTriggerEventFilterArgs and FunctionEventTriggerEventFilterOutput values.
+// You can construct a concrete instance of `FunctionEventTriggerEventFilterInput` via:
+//
+//	FunctionEventTriggerEventFilterArgs{...}
+type FunctionEventTriggerEventFilterInput interface {
+	pulumi.Input
+
+	ToFunctionEventTriggerEventFilterOutput() FunctionEventTriggerEventFilterOutput
+	ToFunctionEventTriggerEventFilterOutputWithContext(context.Context) FunctionEventTriggerEventFilterOutput
+}
+
+type FunctionEventTriggerEventFilterArgs struct {
+	// 'Required. The name of a CloudEvents attribute.
+	// Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+	// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `eventType` attribute.
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of
+	// the filter. If not specified, only events that have an exact key-value
+	// pair specified in the filter are matched.
+	// The only allowed value is `match-path-pattern`.
+	// [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Required. The value for the attribute.
+	// If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (FunctionEventTriggerEventFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (i FunctionEventTriggerEventFilterArgs) ToFunctionEventTriggerEventFilterOutput() FunctionEventTriggerEventFilterOutput {
+	return i.ToFunctionEventTriggerEventFilterOutputWithContext(context.Background())
+}
+
+func (i FunctionEventTriggerEventFilterArgs) ToFunctionEventTriggerEventFilterOutputWithContext(ctx context.Context) FunctionEventTriggerEventFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerEventFilterOutput)
+}
+
+// FunctionEventTriggerEventFilterArrayInput is an input type that accepts FunctionEventTriggerEventFilterArray and FunctionEventTriggerEventFilterArrayOutput values.
+// You can construct a concrete instance of `FunctionEventTriggerEventFilterArrayInput` via:
+//
+//	FunctionEventTriggerEventFilterArray{ FunctionEventTriggerEventFilterArgs{...} }
+type FunctionEventTriggerEventFilterArrayInput interface {
+	pulumi.Input
+
+	ToFunctionEventTriggerEventFilterArrayOutput() FunctionEventTriggerEventFilterArrayOutput
+	ToFunctionEventTriggerEventFilterArrayOutputWithContext(context.Context) FunctionEventTriggerEventFilterArrayOutput
+}
+
+type FunctionEventTriggerEventFilterArray []FunctionEventTriggerEventFilterInput
+
+func (FunctionEventTriggerEventFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (i FunctionEventTriggerEventFilterArray) ToFunctionEventTriggerEventFilterArrayOutput() FunctionEventTriggerEventFilterArrayOutput {
+	return i.ToFunctionEventTriggerEventFilterArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionEventTriggerEventFilterArray) ToFunctionEventTriggerEventFilterArrayOutputWithContext(ctx context.Context) FunctionEventTriggerEventFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerEventFilterArrayOutput)
+}
+
+type FunctionEventTriggerEventFilterOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventTriggerEventFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (o FunctionEventTriggerEventFilterOutput) ToFunctionEventTriggerEventFilterOutput() FunctionEventTriggerEventFilterOutput {
+	return o
+}
+
+func (o FunctionEventTriggerEventFilterOutput) ToFunctionEventTriggerEventFilterOutputWithContext(ctx context.Context) FunctionEventTriggerEventFilterOutput {
+	return o
+}
+
+// 'Required. The name of a CloudEvents attribute.
+// Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `eventType` attribute.
+func (o FunctionEventTriggerEventFilterOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventTriggerEventFilter) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// Optional. The operator used for matching the events with the value of
+// the filter. If not specified, only events that have an exact key-value
+// pair specified in the filter are matched.
+// The only allowed value is `match-path-pattern`.
+// [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+func (o FunctionEventTriggerEventFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionEventTriggerEventFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Required. The value for the attribute.
+// If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+func (o FunctionEventTriggerEventFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventTriggerEventFilter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type FunctionEventTriggerEventFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventTriggerEventFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (o FunctionEventTriggerEventFilterArrayOutput) ToFunctionEventTriggerEventFilterArrayOutput() FunctionEventTriggerEventFilterArrayOutput {
+	return o
+}
+
+func (o FunctionEventTriggerEventFilterArrayOutput) ToFunctionEventTriggerEventFilterArrayOutputWithContext(ctx context.Context) FunctionEventTriggerEventFilterArrayOutput {
+	return o
+}
+
+func (o FunctionEventTriggerEventFilterArrayOutput) Index(i pulumi.IntInput) FunctionEventTriggerEventFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionEventTriggerEventFilter {
+		return vs[0].([]FunctionEventTriggerEventFilter)[vs[1].(int)]
+	}).(FunctionEventTriggerEventFilterOutput)
+}
+
 type FunctionIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1164,7 +1323,7 @@ type FunctionIamBindingCondition struct {
 // FunctionIamBindingConditionInput is an input type that accepts FunctionIamBindingConditionArgs and FunctionIamBindingConditionOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+//	FunctionIamBindingConditionArgs{...}
 type FunctionIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1201,11 +1360,11 @@ func (i FunctionIamBindingConditionArgs) ToFunctionIamBindingConditionPtrOutputW
 // FunctionIamBindingConditionPtrInput is an input type that accepts FunctionIamBindingConditionArgs, FunctionIamBindingConditionPtr and FunctionIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionPtrInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+//	        FunctionIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1327,7 +1486,7 @@ type FunctionIamMemberCondition struct {
 // FunctionIamMemberConditionInput is an input type that accepts FunctionIamMemberConditionArgs and FunctionIamMemberConditionOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+//	FunctionIamMemberConditionArgs{...}
 type FunctionIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1364,11 +1523,11 @@ func (i FunctionIamMemberConditionArgs) ToFunctionIamMemberConditionPtrOutputWit
 // FunctionIamMemberConditionPtrInput is an input type that accepts FunctionIamMemberConditionArgs, FunctionIamMemberConditionPtr and FunctionIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionPtrInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+//	        FunctionIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1524,7 +1683,7 @@ type FunctionServiceConfig struct {
 // FunctionServiceConfigInput is an input type that accepts FunctionServiceConfigArgs and FunctionServiceConfigOutput values.
 // You can construct a concrete instance of `FunctionServiceConfigInput` via:
 //
-//          FunctionServiceConfigArgs{...}
+//	FunctionServiceConfigArgs{...}
 type FunctionServiceConfigInput interface {
 	pulumi.Input
 
@@ -1595,11 +1754,11 @@ func (i FunctionServiceConfigArgs) ToFunctionServiceConfigPtrOutputWithContext(c
 // FunctionServiceConfigPtrInput is an input type that accepts FunctionServiceConfigArgs, FunctionServiceConfigPtr and FunctionServiceConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionServiceConfigPtrInput` via:
 //
-//          FunctionServiceConfigArgs{...}
+//	        FunctionServiceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionServiceConfigPtrInput interface {
 	pulumi.Input
 
@@ -1901,6 +2060,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigSourceStorageSourcePtrInput)(nil)).Elem(), FunctionBuildConfigSourceStorageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerInput)(nil)).Elem(), FunctionEventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerPtrInput)(nil)).Elem(), FunctionEventTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerEventFilterInput)(nil)).Elem(), FunctionEventTriggerEventFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerEventFilterArrayInput)(nil)).Elem(), FunctionEventTriggerEventFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamBindingConditionInput)(nil)).Elem(), FunctionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamBindingConditionPtrInput)(nil)).Elem(), FunctionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
@@ -1917,6 +2078,8 @@ func init() {
 	pulumi.RegisterOutputType(FunctionBuildConfigSourceStorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerPtrOutput{})
+	pulumi.RegisterOutputType(FunctionEventTriggerEventFilterOutput{})
+	pulumi.RegisterOutputType(FunctionEventTriggerEventFilterArrayOutput{})
 	pulumi.RegisterOutputType(FunctionIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(FunctionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FunctionIamMemberConditionOutput{})

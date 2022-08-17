@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of characters after the finding to consider. Either this or window_before must be specified
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs Empty => new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs();
     }
 }

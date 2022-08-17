@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable.Inputs
 {
 
-    public sealed class InstanceClusterAutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceClusterAutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CPU utilization target in percentage. Must be between 10 and 80.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public InstanceClusterAutoscalingConfigArgs()
         {
         }
+        public static new InstanceClusterAutoscalingConfigArgs Empty => new InstanceClusterAutoscalingConfigArgs();
     }
 }

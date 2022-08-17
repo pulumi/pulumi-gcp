@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-b",
  *     bootDisk: {
  *         initializeParams: {
- *             image: "debian-cloud/debian-9",
+ *             image: "debian-cloud/debian-11",
  *         },
  *     },
  *     networkInterfaces: [{

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A target for the deployment.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs();
     }
 }

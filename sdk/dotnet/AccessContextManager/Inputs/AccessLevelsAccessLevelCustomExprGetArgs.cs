@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelsAccessLevelCustomExprGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelsAccessLevelCustomExprGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the expression
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelsAccessLevelCustomExprGetArgs()
         {
         }
+        public static new AccessLevelsAccessLevelCustomExprGetArgs Empty => new AccessLevelsAccessLevelCustomExprGetArgs();
     }
 }

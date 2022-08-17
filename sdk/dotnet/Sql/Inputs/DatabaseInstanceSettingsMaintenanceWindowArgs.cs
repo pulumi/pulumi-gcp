@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Day of week (`1-7`), starting on Monday
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsMaintenanceWindowArgs()
         {
         }
+        public static new DatabaseInstanceSettingsMaintenanceWindowArgs Empty => new DatabaseInstanceSettingsMaintenanceWindowArgs();
     }
 }

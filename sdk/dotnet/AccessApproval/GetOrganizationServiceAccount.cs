@@ -25,26 +25,25 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serviceAccount = Gcp.AccessApproval.GetOrganizationServiceAccount.Invoke(new()
         ///     {
-        ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetOrganizationServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetOrganizationServiceAccountArgs
-        ///         {
-        ///             OrganizationId = "my-organization",
-        ///         }));
-        ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///             Role = "roles/cloudkms.signerVerifier",
-        ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-        ///         });
-        ///     }
+        ///         OrganizationId = "my-organization",
+        ///     });
         /// 
-        /// }
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getOrganizationServiceAccountResult =&gt; getOrganizationServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -66,26 +65,25 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serviceAccount = Gcp.AccessApproval.GetOrganizationServiceAccount.Invoke(new()
         ///     {
-        ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetOrganizationServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetOrganizationServiceAccountArgs
-        ///         {
-        ///             OrganizationId = "my-organization",
-        ///         }));
-        ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///             Role = "roles/cloudkms.signerVerifier",
-        ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-        ///         });
-        ///     }
+        ///         OrganizationId = "my-organization",
+        ///     });
         /// 
-        /// }
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getOrganizationServiceAccountResult =&gt; getOrganizationServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +93,7 @@ namespace Pulumi.Gcp.AccessApproval
     }
 
 
-    public sealed class GetOrganizationServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The organization ID the service account was created for.
@@ -106,9 +104,10 @@ namespace Pulumi.Gcp.AccessApproval
         public GetOrganizationServiceAccountArgs()
         {
         }
+        public static new GetOrganizationServiceAccountArgs Empty => new GetOrganizationServiceAccountArgs();
     }
 
-    public sealed class GetOrganizationServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The organization ID the service account was created for.
@@ -119,6 +118,7 @@ namespace Pulumi.Gcp.AccessApproval
         public GetOrganizationServiceAccountInvokeArgs()
         {
         }
+        public static new GetOrganizationServiceAccountInvokeArgs Empty => new GetOrganizationServiceAccountInvokeArgs();
     }
 
 

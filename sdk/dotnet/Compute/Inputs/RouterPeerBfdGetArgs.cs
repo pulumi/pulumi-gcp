@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RouterPeerBfdGetArgs : Pulumi.ResourceArgs
+    public sealed class RouterPeerBfdGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimum interval, in milliseconds, between BFD control packets
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RouterPeerBfdGetArgs()
         {
         }
+        public static new RouterPeerBfdGetArgs Empty => new RouterPeerBfdGetArgs();
     }
 }

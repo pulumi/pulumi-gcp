@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAddonsConfigIstioConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAddonsConfigIstioConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAddonsConfigIstioConfigGetArgs()
         {
         }
+        public static new ClusterAddonsConfigIstioConfigGetArgs Empty => new ClusterAddonsConfigIstioConfigGetArgs();
     }
 }

@@ -20,57 +20,64 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/assuredworkloads"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/assuredworkloads"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := assuredworkloads.NewWorkload(ctx, "primary", &assuredworkloads.WorkloadArgs{
-// 			BillingAccount:   pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
-// 			ComplianceRegime: pulumi.String("FEDRAMP_MODERATE"),
-// 			DisplayName:      pulumi.String("Workload Example"),
-// 			KmsSettings: &assuredworkloads.WorkloadKmsSettingsArgs{
-// 				NextRotationTime: pulumi.String("9999-10-02T15:01:23Z"),
-// 				RotationPeriod:   pulumi.String("10368000s"),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"label-one": pulumi.String("value-one"),
-// 			},
-// 			Location:                   pulumi.String("us-west1"),
-// 			Organization:               pulumi.String("123456789"),
-// 			ProvisionedResourcesParent: pulumi.String("folders/519620126891"),
-// 			ResourceSettings: assuredworkloads.WorkloadResourceSettingArray{
-// 				&assuredworkloads.WorkloadResourceSettingArgs{
-// 					ResourceType: pulumi.String("CONSUMER_PROJECT"),
-// 				},
-// 				&assuredworkloads.WorkloadResourceSettingArgs{
-// 					ResourceType: pulumi.String("ENCRYPTION_KEYS_PROJECT"),
-// 				},
-// 				&assuredworkloads.WorkloadResourceSettingArgs{
-// 					ResourceId:   pulumi.String("ring"),
-// 					ResourceType: pulumi.String("KEYRING"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := assuredworkloads.NewWorkload(ctx, "primary", &assuredworkloads.WorkloadArgs{
+//				BillingAccount:   pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
+//				ComplianceRegime: pulumi.String("FEDRAMP_MODERATE"),
+//				DisplayName:      pulumi.String("Workload Example"),
+//				KmsSettings: &assuredworkloads.WorkloadKmsSettingsArgs{
+//					NextRotationTime: pulumi.String("9999-10-02T15:01:23Z"),
+//					RotationPeriod:   pulumi.String("10368000s"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Location:                   pulumi.String("us-west1"),
+//				Organization:               pulumi.String("123456789"),
+//				ProvisionedResourcesParent: pulumi.String("folders/519620126891"),
+//				ResourceSettings: assuredworkloads.WorkloadResourceSettingArray{
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceType: pulumi.String("CONSUMER_PROJECT"),
+//					},
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceType: pulumi.String("ENCRYPTION_KEYS_PROJECT"),
+//					},
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceId:   pulumi.String("ring"),
+//						ResourceType: pulumi.String("KEYRING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Workload can be imported using any of these accepted formats
+// # Workload can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}
+//
+//	$ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:assuredworkloads/workload:Workload default {{organization}}/{{location}}/{{name}}
+//
+//	$ pulumi import gcp:assuredworkloads/workload:Workload default {{organization}}/{{location}}/{{name}}
+//
 // ```
 type Workload struct {
 	pulumi.CustomResourceState
@@ -274,7 +281,7 @@ func (i *Workload) ToWorkloadOutputWithContext(ctx context.Context) WorkloadOutp
 // WorkloadArrayInput is an input type that accepts WorkloadArray and WorkloadArrayOutput values.
 // You can construct a concrete instance of `WorkloadArrayInput` via:
 //
-//          WorkloadArray{ WorkloadArgs{...} }
+//	WorkloadArray{ WorkloadArgs{...} }
 type WorkloadArrayInput interface {
 	pulumi.Input
 
@@ -299,7 +306,7 @@ func (i WorkloadArray) ToWorkloadArrayOutputWithContext(ctx context.Context) Wor
 // WorkloadMapInput is an input type that accepts WorkloadMap and WorkloadMapOutput values.
 // You can construct a concrete instance of `WorkloadMapInput` via:
 //
-//          WorkloadMap{ "key": WorkloadArgs{...} }
+//	WorkloadMap{ "key": WorkloadArgs{...} }
 type WorkloadMapInput interface {
 	pulumi.Input
 

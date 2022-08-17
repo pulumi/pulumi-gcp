@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterDatabaseEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class ClusterDatabaseEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterDatabaseEncryptionArgs()
         {
         }
+        public static new ClusterDatabaseEncryptionArgs Empty => new ClusterDatabaseEncryptionArgs();
     }
 }

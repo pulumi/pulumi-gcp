@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZonePrivateVisibilityConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePrivateVisibilityConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("networks", required: true)]
         private InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs>? _networks;
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZonePrivateVisibilityConfigArgs()
         {
         }
+        public static new ManagedZonePrivateVisibilityConfigArgs Empty => new ManagedZonePrivateVisibilityConfigArgs();
     }
 }

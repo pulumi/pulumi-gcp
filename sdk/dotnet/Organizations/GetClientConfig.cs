@@ -17,20 +17,19 @@ namespace Pulumi.Gcp.Organizations
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Gcp.Organizations.GetClientConfig.InvokeAsync());
-        ///         this.Project = current.Apply(current =&gt; current.Project);
-        ///     }
+        ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
         /// 
-        ///     [Output("project")]
-        ///     public Output&lt;string&gt; Project { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["project"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+        ///     };
+        /// });
         /// ```
         /// 
         /// {{% /example %}}

@@ -25,46 +25,42 @@ namespace Pulumi.Gcp.ML
     /// ### Ml Model Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.ML.EngineModel("default", new()
     ///     {
-    ///         var @default = new Gcp.ML.EngineModel("default", new Gcp.ML.EngineModelArgs
-    ///         {
-    ///             Description = "My model",
-    ///             Regions = "us-central1",
-    ///         });
-    ///     }
+    ///         Description = "My model",
+    ///         Regions = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Ml Model Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.ML.EngineModel("default", new()
     ///     {
-    ///         var @default = new Gcp.ML.EngineModel("default", new Gcp.ML.EngineModelArgs
+    ///         Description = "My model",
+    ///         Labels = 
     ///         {
-    ///             Description = "My model",
-    ///             Labels = 
-    ///             {
-    ///                 { "my_model", "foo" },
-    ///             },
-    ///             OnlinePredictionConsoleLogging = true,
-    ///             OnlinePredictionLogging = true,
-    ///             Regions = "us-central1",
-    ///         });
-    ///     }
+    ///             { "my_model", "foo" },
+    ///         },
+    ///         OnlinePredictionConsoleLogging = true,
+    ///         OnlinePredictionLogging = true,
+    ///         Regions = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +80,7 @@ namespace Pulumi.Gcp.ML
     /// ```
     /// </summary>
     [GcpResourceType("gcp:ml/engineModel:EngineModel")]
-    public partial class EngineModel : Pulumi.CustomResource
+    public partial class EngineModel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle
@@ -182,7 +178,7 @@ namespace Pulumi.Gcp.ML
         }
     }
 
-    public sealed class EngineModelArgs : Pulumi.ResourceArgs
+    public sealed class EngineModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle
@@ -245,9 +241,10 @@ namespace Pulumi.Gcp.ML
         public EngineModelArgs()
         {
         }
+        public static new EngineModelArgs Empty => new EngineModelArgs();
     }
 
-    public sealed class EngineModelState : Pulumi.ResourceArgs
+    public sealed class EngineModelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle
@@ -310,5 +307,6 @@ namespace Pulumi.Gcp.ML
         public EngineModelState()
         {
         }
+        public static new EngineModelState Empty => new EngineModelState();
     }
 }

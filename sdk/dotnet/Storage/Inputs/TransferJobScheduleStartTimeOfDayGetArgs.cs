@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobScheduleStartTimeOfDayGetArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobScheduleStartTimeOfDayGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hours of day in 24 hour format. Should be from 0 to 23
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobScheduleStartTimeOfDayGetArgs()
         {
         }
+        public static new TransferJobScheduleStartTimeOfDayGetArgs Empty => new TransferJobScheduleStartTimeOfDayGetArgs();
     }
 }

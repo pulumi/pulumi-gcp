@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsNodePoolConfigSshConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsNodePoolConfigSshConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the EC2 key pair used to login into cluster machines.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsNodePoolConfigSshConfigGetArgs()
         {
         }
+        public static new AwsNodePoolConfigSshConfigGetArgs Empty => new AwsNodePoolConfigSshConfigGetArgs();
     }
 }

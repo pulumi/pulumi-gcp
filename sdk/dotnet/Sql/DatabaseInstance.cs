@@ -26,94 +26,94 @@ namespace Pulumi.Gcp.Sql
     /// ### SQL Second Generation Instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
-    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
+    ///         DatabaseVersion = "POSTGRES_14",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
-    ///             DatabaseVersion = "POSTGRES_14",
-    ///             Region = "us-central1",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///         });
-    ///     }
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Private IP Instance
     /// &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var privateNetwork = new Gcp.Compute.Network("privateNetwork", new()
     ///     {
-    ///         var privateNetwork = new Gcp.Compute.Network("privateNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = privateNetwork.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var privateVpcConnection = new Gcp.ServiceNetworking.Connection("privateVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = privateNetwork.Id,
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 privateIpAddress.Name,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
-    ///         {
-    ///             ByteLength = 4,
-    ///         });
-    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             DatabaseVersion = "MYSQL_5_7",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///                 IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
-    ///                 {
-    ///                     Ipv4Enabled = false,
-    ///                     PrivateNetwork = privateNetwork.Id,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///             DependsOn = 
-    ///             {
-    ///                 privateVpcConnection,
-    ///             },
-    ///         });
-    ///     }
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = privateNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var privateVpcConnection = new Gcp.ServiceNetworking.Connection("privateVpcConnection", new()
+    ///     {
+    ///         Network = privateNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAddress.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var dbNameSuffix = new Random.RandomId("dbNameSuffix", new()
+    ///     {
+    ///         ByteLength = 4,
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "MYSQL_5_7",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 Ipv4Enabled = false,
+    ///                 PrivateNetwork = privateNetwork.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             privateVpcConnection,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Sql
     ///  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
     /// </summary>
     [GcpResourceType("gcp:sql/databaseInstance:DatabaseInstance")]
-    public partial class DatabaseInstance : Pulumi.CustomResource
+    public partial class DatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.Sql
         }
     }
 
-    public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
@@ -426,9 +426,10 @@ namespace Pulumi.Gcp.Sql
         public DatabaseInstanceArgs()
         {
         }
+        public static new DatabaseInstanceArgs Empty => new DatabaseInstanceArgs();
     }
 
-    public sealed class DatabaseInstanceState : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
@@ -585,5 +586,6 @@ namespace Pulumi.Gcp.Sql
         public DatabaseInstanceState()
         {
         }
+        public static new DatabaseInstanceState Empty => new DatabaseInstanceState();
     }
 }

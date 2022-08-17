@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloRequestBasedSliDistributionCutRangeArgs : Pulumi.ResourceArgs
+    public sealed class SloRequestBasedSliDistributionCutRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// max value for the range (inclusive). If not given,
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloRequestBasedSliDistributionCutRangeArgs()
         {
         }
+        public static new SloRequestBasedSliDistributionCutRangeArgs Empty => new SloRequestBasedSliDistributionCutRangeArgs();
     }
 }

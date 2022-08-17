@@ -15,27 +15,26 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to get information about a Google Billing Account.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var acct = Gcp.Organizations.GetBillingAccount.Invoke(new()
         ///     {
-        ///         var acct = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-        ///         {
-        ///             DisplayName = "My Billing Account",
-        ///             Open = true,
-        ///         }));
-        ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-        ///         {
-        ///             ProjectId = "your-project-id",
-        ///             OrgId = "1234567",
-        ///             BillingAccount = acct.Apply(acct =&gt; acct.Id),
-        ///         });
-        ///     }
+        ///         DisplayName = "My Billing Account",
+        ///         Open = true,
+        ///     });
         /// 
-        /// }
+        ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+        ///     {
+        ///         ProjectId = "your-project-id",
+        ///         OrgId = "1234567",
+        ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
@@ -45,27 +44,26 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to get information about a Google Billing Account.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var acct = Gcp.Organizations.GetBillingAccount.Invoke(new()
         ///     {
-        ///         var acct = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-        ///         {
-        ///             DisplayName = "My Billing Account",
-        ///             Open = true,
-        ///         }));
-        ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-        ///         {
-        ///             ProjectId = "your-project-id",
-        ///             OrgId = "1234567",
-        ///             BillingAccount = acct.Apply(acct =&gt; acct.Id),
-        ///         });
-        ///     }
+        ///         DisplayName = "My Billing Account",
+        ///         Open = true,
+        ///     });
         /// 
-        /// }
+        ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+        ///     {
+        ///         ProjectId = "your-project-id",
+        ///         OrgId = "1234567",
+        ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetBillingAccountResult> Invoke(GetBillingAccountInvokeArgs? args = null, InvokeOptions? options = null)
@@ -73,7 +71,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetBillingAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -96,9 +94,10 @@ namespace Pulumi.Gcp.Organizations
         public GetBillingAccountArgs()
         {
         }
+        public static new GetBillingAccountArgs Empty => new GetBillingAccountArgs();
     }
 
-    public sealed class GetBillingAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -121,6 +120,7 @@ namespace Pulumi.Gcp.Organizations
         public GetBillingAccountInvokeArgs()
         {
         }
+        public static new GetBillingAccountInvokeArgs Empty => new GetBillingAccountInvokeArgs();
     }
 
 

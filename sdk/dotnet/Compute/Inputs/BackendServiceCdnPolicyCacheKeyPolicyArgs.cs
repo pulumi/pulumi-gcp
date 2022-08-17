@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendServiceCdnPolicyCacheKeyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceCdnPolicyCacheKeyPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true requests to different hosts will be cached separately.
@@ -82,5 +82,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendServiceCdnPolicyCacheKeyPolicyArgs()
         {
         }
+        public static new BackendServiceCdnPolicyCacheKeyPolicyArgs Empty => new BackendServiceCdnPolicyCacheKeyPolicyArgs();
     }
 }

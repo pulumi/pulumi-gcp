@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetBudgetFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class BudgetBudgetFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A CalendarPeriod represents the abstract concept of a recurring time period that has a
@@ -120,5 +120,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetBudgetFilterGetArgs()
         {
         }
+        public static new BudgetBudgetFilterGetArgs Empty => new BudgetBudgetFilterGetArgs();
     }
 }

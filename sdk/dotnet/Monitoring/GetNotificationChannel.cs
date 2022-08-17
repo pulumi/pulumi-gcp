@@ -33,50 +33,49 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var basic = Gcp.Monitoring.GetNotificationChannel.Invoke(new()
         ///     {
-        ///         var basic = Output.Create(Gcp.Monitoring.GetNotificationChannel.InvokeAsync(new Gcp.Monitoring.GetNotificationChannelArgs
+        ///         DisplayName = "Test Notification Channel",
+        ///     });
+        /// 
+        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+        ///     {
+        ///         DisplayName = "My Alert Policy",
+        ///         NotificationChannels = new[]
         ///         {
-        ///             DisplayName = "Test Notification Channel",
-        ///         }));
-        ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
+        ///             basic.Apply(getNotificationChannelResult =&gt; getNotificationChannelResult.Name),
+        ///         },
+        ///         Combiner = "OR",
+        ///         Conditions = new[]
         ///         {
-        ///             DisplayName = "My Alert Policy",
-        ///             NotificationChannels = 
+        ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
         ///             {
-        ///                 basic.Apply(basic =&gt; basic.Name),
-        ///             },
-        ///             Combiner = "OR",
-        ///             Conditions = 
-        ///             {
-        ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+        ///                 DisplayName = "test condition",
+        ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
         ///                 {
-        ///                     DisplayName = "test condition",
-        ///                     ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+        ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+        ///                     Duration = "60s",
+        ///                     Comparison = "COMPARISON_GT",
+        ///                     Aggregations = new[]
         ///                     {
-        ///                         Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
-        ///                         Duration = "60s",
-        ///                         Comparison = "COMPARISON_GT",
-        ///                         Aggregations = 
+        ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
         ///                         {
-        ///                             new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
-        ///                             {
-        ///                                 AlignmentPeriod = "60s",
-        ///                                 PerSeriesAligner = "ALIGN_RATE",
-        ///                             },
+        ///                             AlignmentPeriod = "60s",
+        ///                             PerSeriesAligner = "ALIGN_RATE",
         ///                         },
         ///                     },
         ///                 },
         ///             },
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -106,50 +105,49 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var basic = Gcp.Monitoring.GetNotificationChannel.Invoke(new()
         ///     {
-        ///         var basic = Output.Create(Gcp.Monitoring.GetNotificationChannel.InvokeAsync(new Gcp.Monitoring.GetNotificationChannelArgs
+        ///         DisplayName = "Test Notification Channel",
+        ///     });
+        /// 
+        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+        ///     {
+        ///         DisplayName = "My Alert Policy",
+        ///         NotificationChannels = new[]
         ///         {
-        ///             DisplayName = "Test Notification Channel",
-        ///         }));
-        ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
+        ///             basic.Apply(getNotificationChannelResult =&gt; getNotificationChannelResult.Name),
+        ///         },
+        ///         Combiner = "OR",
+        ///         Conditions = new[]
         ///         {
-        ///             DisplayName = "My Alert Policy",
-        ///             NotificationChannels = 
+        ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
         ///             {
-        ///                 basic.Apply(basic =&gt; basic.Name),
-        ///             },
-        ///             Combiner = "OR",
-        ///             Conditions = 
-        ///             {
-        ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+        ///                 DisplayName = "test condition",
+        ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
         ///                 {
-        ///                     DisplayName = "test condition",
-        ///                     ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+        ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+        ///                     Duration = "60s",
+        ///                     Comparison = "COMPARISON_GT",
+        ///                     Aggregations = new[]
         ///                     {
-        ///                         Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
-        ///                         Duration = "60s",
-        ///                         Comparison = "COMPARISON_GT",
-        ///                         Aggregations = 
+        ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
         ///                         {
-        ///                             new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
-        ///                             {
-        ///                                 AlignmentPeriod = "60s",
-        ///                                 PerSeriesAligner = "ALIGN_RATE",
-        ///                             },
+        ///                             AlignmentPeriod = "60s",
+        ///                             PerSeriesAligner = "ALIGN_RATE",
         ///                         },
         ///                     },
         ///                 },
         ///             },
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -159,7 +157,7 @@ namespace Pulumi.Gcp.Monitoring
     }
 
 
-    public sealed class GetNotificationChannelArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationChannelArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The display name for this notification channel.
@@ -208,9 +206,10 @@ namespace Pulumi.Gcp.Monitoring
         public GetNotificationChannelArgs()
         {
         }
+        public static new GetNotificationChannelArgs Empty => new GetNotificationChannelArgs();
     }
 
-    public sealed class GetNotificationChannelInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationChannelInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The display name for this notification channel.
@@ -259,6 +258,7 @@ namespace Pulumi.Gcp.Monitoring
         public GetNotificationChannelInvokeArgs()
         {
         }
+        public static new GetNotificationChannelInvokeArgs Empty => new GetNotificationChannelInvokeArgs();
     }
 
 

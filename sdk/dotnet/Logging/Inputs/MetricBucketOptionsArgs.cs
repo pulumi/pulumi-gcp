@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class MetricBucketOptionsArgs : Pulumi.ResourceArgs
+    public sealed class MetricBucketOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a set of buckets with arbitrary widths.
@@ -38,5 +38,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public MetricBucketOptionsArgs()
         {
         }
+        public static new MetricBucketOptionsArgs Empty => new MetricBucketOptionsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis.Inputs
 {
 
-    public sealed class InstanceServerCaCertArgs : Pulumi.ResourceArgs
+    public sealed class InstanceServerCaCertArgs : global::Pulumi.ResourceArgs
     {
         [Input("cert")]
         public Input<string>? Cert { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public InstanceServerCaCertArgs()
         {
         }
+        public static new InstanceServerCaCertArgs Empty => new InstanceServerCaCertArgs();
     }
 }

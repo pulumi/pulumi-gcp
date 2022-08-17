@@ -318,7 +318,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
             machine_type="e2-standard-4",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-9",
+                source_image="debian-cloud/debian-11",
                 disk_size_gb=250,
             )],
             network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
@@ -358,7 +358,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                     target=0.5,
                 ),
             ))
-        debian9 = gcp.compute.get_image(family="debian-9",
+        debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
 
@@ -428,7 +428,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
             machine_type="e2-standard-4",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-9",
+                source_image="debian-cloud/debian-11",
                 disk_size_gb=250,
             )],
             network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
@@ -468,7 +468,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                     target=0.5,
                 ),
             ))
-        debian9 = gcp.compute.get_image(family="debian-9",
+        debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
 

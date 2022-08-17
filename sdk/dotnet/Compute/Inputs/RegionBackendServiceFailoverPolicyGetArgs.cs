@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceFailoverPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceFailoverPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// On failover or failback, this field indicates whether connection drain
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceFailoverPolicyGetArgs()
         {
         }
+        public static new RegionBackendServiceFailoverPolicyGetArgs Empty => new RegionBackendServiceFailoverPolicyGetArgs();
     }
 }

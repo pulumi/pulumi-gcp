@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterWorkloadIdentityConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterWorkloadIdentityConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("identityProvider")]
         public Input<string>? IdentityProvider { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterWorkloadIdentityConfigGetArgs()
         {
         }
+        public static new AzureClusterWorkloadIdentityConfigGetArgs Empty => new AzureClusterWorkloadIdentityConfigGetArgs();
     }
 }

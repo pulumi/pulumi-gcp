@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable.Inputs
 {
 
-    public sealed class TableIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class TableIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public TableIamMemberConditionArgs()
         {
         }
+        public static new TableIamMemberConditionArgs Empty => new TableIamMemberConditionArgs();
     }
 }

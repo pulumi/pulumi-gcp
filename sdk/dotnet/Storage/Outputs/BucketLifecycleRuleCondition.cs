@@ -34,9 +34,17 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly int? DaysSinceNoncurrentTime;
         /// <summary>
+        /// One or more matching name prefixes to satisfy this condition.
+        /// </summary>
+        public readonly ImmutableArray<string> MatchesPrefixes;
+        /// <summary>
         /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         /// </summary>
         public readonly ImmutableArray<string> MatchesStorageClasses;
+        /// <summary>
+        /// One or more matching name suffixes to satisfy this condition.
+        /// </summary>
+        public readonly ImmutableArray<string> MatchesSuffixes;
         /// <summary>
         /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         /// </summary>
@@ -62,7 +70,11 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             int? daysSinceNoncurrentTime,
 
+            ImmutableArray<string> matchesPrefixes,
+
             ImmutableArray<string> matchesStorageClasses,
+
+            ImmutableArray<string> matchesSuffixes,
 
             string? noncurrentTimeBefore,
 
@@ -75,7 +87,9 @@ namespace Pulumi.Gcp.Storage.Outputs
             CustomTimeBefore = customTimeBefore;
             DaysSinceCustomTime = daysSinceCustomTime;
             DaysSinceNoncurrentTime = daysSinceNoncurrentTime;
+            MatchesPrefixes = matchesPrefixes;
             MatchesStorageClasses = matchesStorageClasses;
+            MatchesSuffixes = matchesSuffixes;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
             WithState = withState;

@@ -21,56 +21,69 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-// 			Region:          pulumi.String("us-central1"),
-// 			DatabaseVersion: pulumi.String("MYSQL_8_0"),
-// 			Settings: &sql.DatabaseInstanceSettingsArgs{
-// 				Tier: pulumi.String("db-f1-micro"),
-// 			},
-// 			DeletionProtection: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sql.NewDatabase(ctx, "database", &sql.DatabaseArgs{
-// 			Instance: instance.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Region:          pulumi.String("us-central1"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewDatabase(ctx, "database", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Database can be imported using any of these accepted formats
+// # Database can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+//
+//	$ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
+//
+//	$ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
+//
+//	$ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
+//
+//	$ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:sql/database:Database default {{name}}
+//
+//	$ pulumi import gcp:sql/database:Database default {{name}}
+//
 // ```
 type Database struct {
 	pulumi.CustomResourceState
@@ -262,7 +275,7 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 // DatabaseArrayInput is an input type that accepts DatabaseArray and DatabaseArrayOutput values.
 // You can construct a concrete instance of `DatabaseArrayInput` via:
 //
-//          DatabaseArray{ DatabaseArgs{...} }
+//	DatabaseArray{ DatabaseArgs{...} }
 type DatabaseArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +300,7 @@ func (i DatabaseArray) ToDatabaseArrayOutputWithContext(ctx context.Context) Dat
 // DatabaseMapInput is an input type that accepts DatabaseMap and DatabaseMapOutput values.
 // You can construct a concrete instance of `DatabaseMapInput` via:
 //
-//          DatabaseMap{ "key": DatabaseArgs{...} }
+//	DatabaseMap{ "key": DatabaseArgs{...} }
 type DatabaseMapInput interface {
 	pulumi.Input
 

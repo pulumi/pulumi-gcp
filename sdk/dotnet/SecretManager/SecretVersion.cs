@@ -19,33 +19,32 @@ namespace Pulumi.Gcp.SecretManager
     /// ### Secret Version Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
     ///     {
-    ///         var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new Gcp.SecretManager.SecretArgs
+    ///         SecretId = "secret-version",
+    ///         Labels = 
     ///         {
-    ///             SecretId = "secret-version",
-    ///             Labels = 
-    ///             {
-    ///                 { "label", "my-label" },
-    ///             },
-    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///             {
-    ///                 Automatic = true,
-    ///             },
-    ///         });
-    ///         var secret_version_basic = new Gcp.SecretManager.SecretVersion("secret-version-basic", new Gcp.SecretManager.SecretVersionArgs
+    ///             { "label", "my-label" },
+    ///         },
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Secret = secret_basic.Id,
-    ///             SecretData = "secret-data",
-    ///         });
-    ///     }
+    ///             Automatic = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var secret_version_basic = new Gcp.SecretManager.SecretVersion("secret-version-basic", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +56,7 @@ namespace Pulumi.Gcp.SecretManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:secretmanager/secretVersion:SecretVersion")]
-    public partial class SecretVersion : Pulumi.CustomResource
+    public partial class SecretVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the Secret was created.
@@ -140,7 +139,7 @@ namespace Pulumi.Gcp.SecretManager
         }
     }
 
-    public sealed class SecretVersionArgs : Pulumi.ResourceArgs
+    public sealed class SecretVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The current state of the SecretVersion.
@@ -164,9 +163,10 @@ namespace Pulumi.Gcp.SecretManager
         public SecretVersionArgs()
         {
         }
+        public static new SecretVersionArgs Empty => new SecretVersionArgs();
     }
 
-    public sealed class SecretVersionState : Pulumi.ResourceArgs
+    public sealed class SecretVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which the Secret was created.
@@ -208,5 +208,6 @@ namespace Pulumi.Gcp.SecretManager
         public SecretVersionState()
         {
         }
+        public static new SecretVersionState Empty => new SecretVersionState();
     }
 }

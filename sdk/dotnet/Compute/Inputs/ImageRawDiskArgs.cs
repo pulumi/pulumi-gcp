@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ImageRawDiskArgs : Pulumi.ResourceArgs
+    public sealed class ImageRawDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format used to encode and transmit the block device, which
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ImageRawDiskArgs()
         {
         }
+        public static new ImageRawDiskArgs Empty => new ImageRawDiskArgs();
     }
 }

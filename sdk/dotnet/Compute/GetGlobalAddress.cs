@@ -20,35 +20,35 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myAddress = Gcp.Compute.GetGlobalAddress.Invoke(new()
         ///     {
-        ///         var myAddress = Output.Create(Gcp.Compute.GetGlobalAddress.InvokeAsync(new Gcp.Compute.GetGlobalAddressArgs
-        ///         {
-        ///             Name = "foobar",
-        ///         }));
-        ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-        ///         {
-        ///             DnsName = "prod.mydomain.com.",
-        ///         });
-        ///         var frontend = new Gcp.Dns.RecordSet("frontend", new Gcp.Dns.RecordSetArgs
-        ///         {
-        ///             Name = prod.DnsName.Apply(dnsName =&gt; $"lb.{dnsName}"),
-        ///             Type = "A",
-        ///             Ttl = 300,
-        ///             ManagedZone = prod.Name,
-        ///             Rrdatas = 
-        ///             {
-        ///                 myAddress.Apply(myAddress =&gt; myAddress.Address),
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "foobar",
+        ///     });
         /// 
-        /// }
+        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
+        ///     {
+        ///         DnsName = "prod.mydomain.com.",
+        ///     });
+        /// 
+        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
+        ///     {
+        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"lb.{dnsName}"),
+        ///         Type = "A",
+        ///         Ttl = 300,
+        ///         ManagedZone = prod.Name,
+        ///         Rrdatas = new[]
+        ///         {
+        ///             myAddress.Apply(getGlobalAddressResult =&gt; getGlobalAddressResult.Address),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -65,35 +65,35 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myAddress = Gcp.Compute.GetGlobalAddress.Invoke(new()
         ///     {
-        ///         var myAddress = Output.Create(Gcp.Compute.GetGlobalAddress.InvokeAsync(new Gcp.Compute.GetGlobalAddressArgs
-        ///         {
-        ///             Name = "foobar",
-        ///         }));
-        ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-        ///         {
-        ///             DnsName = "prod.mydomain.com.",
-        ///         });
-        ///         var frontend = new Gcp.Dns.RecordSet("frontend", new Gcp.Dns.RecordSetArgs
-        ///         {
-        ///             Name = prod.DnsName.Apply(dnsName =&gt; $"lb.{dnsName}"),
-        ///             Type = "A",
-        ///             Ttl = 300,
-        ///             ManagedZone = prod.Name,
-        ///             Rrdatas = 
-        ///             {
-        ///                 myAddress.Apply(myAddress =&gt; myAddress.Address),
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "foobar",
+        ///     });
         /// 
-        /// }
+        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
+        ///     {
+        ///         DnsName = "prod.mydomain.com.",
+        ///     });
+        /// 
+        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
+        ///     {
+        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"lb.{dnsName}"),
+        ///         Type = "A",
+        ///         Ttl = 300,
+        ///         ManagedZone = prod.Name,
+        ///         Rrdatas = new[]
+        ///         {
+        ///             myAddress.Apply(getGlobalAddressResult =&gt; getGlobalAddressResult.Address),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetGlobalAddressArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalAddressArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A unique name for the resource, required by GCE.
@@ -121,9 +121,10 @@ namespace Pulumi.Gcp.Compute
         public GetGlobalAddressArgs()
         {
         }
+        public static new GetGlobalAddressArgs Empty => new GetGlobalAddressArgs();
     }
 
-    public sealed class GetGlobalAddressInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalAddressInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A unique name for the resource, required by GCE.
@@ -141,6 +142,7 @@ namespace Pulumi.Gcp.Compute
         public GetGlobalAddressInvokeArgs()
         {
         }
+        public static new GetGlobalAddressInvokeArgs Empty => new GetGlobalAddressInvokeArgs();
     }
 
 

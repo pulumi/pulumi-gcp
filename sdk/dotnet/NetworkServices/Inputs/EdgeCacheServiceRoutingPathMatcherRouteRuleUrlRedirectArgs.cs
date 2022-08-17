@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The host that will be used in the redirect response instead of the one that was supplied in the request.
@@ -58,5 +58,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs();
     }
 }

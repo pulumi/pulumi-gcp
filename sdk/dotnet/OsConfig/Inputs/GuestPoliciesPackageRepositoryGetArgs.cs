@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesPackageRepositoryGetArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesPackageRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An Apt Repository.
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesPackageRepositoryGetArgs()
         {
         }
+        public static new GuestPoliciesPackageRepositoryGetArgs Empty => new GuestPoliciesPackageRepositoryGetArgs();
     }
 }

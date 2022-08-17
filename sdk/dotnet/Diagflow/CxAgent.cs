@@ -22,37 +22,35 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Agent Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fullAgent = new Gcp.Diagflow.CxAgent("fullAgent", new()
     ///     {
-    ///         var fullAgent = new Gcp.Diagflow.CxAgent("fullAgent", new Gcp.Diagflow.CxAgentArgs
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         DefaultLanguageCode = "en",
+    ///         Description = "Example description.",
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         EnableSpellCorrection = true,
+    ///         EnableStackdriverLogging = true,
+    ///         Location = "global",
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             DefaultLanguageCode = "en",
-    ///             Description = "Example description.",
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             EnableSpellCorrection = true,
-    ///             EnableStackdriverLogging = true,
-    ///             Location = "global",
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///         });
-    ///     }
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +70,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxAgent:CxAgent")]
-    public partial class CxAgent : Pulumi.CustomResource
+    public partial class CxAgent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -211,7 +209,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxAgentArgs : Pulumi.ResourceArgs
+    public sealed class CxAgentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -301,9 +299,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxAgentArgs()
         {
         }
+        public static new CxAgentArgs Empty => new CxAgentArgs();
     }
 
-    public sealed class CxAgentState : Pulumi.ResourceArgs
+    public sealed class CxAgentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -407,5 +406,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxAgentState()
         {
         }
+        public static new CxAgentState Empty => new CxAgentState();
     }
 }

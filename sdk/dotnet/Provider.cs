@@ -16,7 +16,7 @@ namespace Pulumi.Gcp
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [GcpResourceType("pulumi:providers:gcp")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("accessApprovalCustomEndpoint")]
         public Output<string?> AccessApprovalCustomEndpoint { get; private set; } = null!;
@@ -383,7 +383,7 @@ namespace Pulumi.Gcp
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessApprovalCustomEndpoint")]
         public Input<string>? AccessApprovalCustomEndpoint { get; set; }
@@ -755,5 +755,6 @@ namespace Pulumi.Gcp
             Region = Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             Zone = Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

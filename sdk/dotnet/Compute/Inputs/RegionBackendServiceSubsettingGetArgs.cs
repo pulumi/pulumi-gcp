@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceSubsettingGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceSubsettingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm used for subsetting.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceSubsettingGetArgs()
         {
         }
+        public static new RegionBackendServiceSubsettingGetArgs Empty => new RegionBackendServiceSubsettingGetArgs();
     }
 }

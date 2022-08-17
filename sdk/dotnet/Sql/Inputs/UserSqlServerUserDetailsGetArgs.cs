@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class UserSqlServerUserDetailsGetArgs : Pulumi.ResourceArgs
+    public sealed class UserSqlServerUserDetailsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public UserSqlServerUserDetailsGetArgs()
         {
         }
+        public static new UserSqlServerUserDetailsGetArgs Empty => new UserSqlServerUserDetailsGetArgs();
     }
 }

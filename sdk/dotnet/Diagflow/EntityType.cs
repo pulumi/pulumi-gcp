@@ -22,54 +22,53 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflow Entity Type Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
     ///     {
-    ///         var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new Gcp.Diagflow.AgentArgs
-    ///         {
-    ///             DisplayName = "example_agent",
-    ///             DefaultLanguageCode = "en",
-    ///             TimeZone = "America/New_York",
-    ///         });
-    ///         var basicEntityType = new Gcp.Diagflow.EntityType("basicEntityType", new Gcp.Diagflow.EntityTypeArgs
-    ///         {
-    ///             DisplayName = "",
-    ///             Kind = "KIND_MAP",
-    ///             Entities = 
-    ///             {
-    ///                 new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
-    ///                 {
-    ///                     Value = "value1",
-    ///                     Synonyms = 
-    ///                     {
-    ///                         "synonym1",
-    ///                         "synonym2",
-    ///                     },
-    ///                 },
-    ///                 new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
-    ///                 {
-    ///                     Value = "value2",
-    ///                     Synonyms = 
-    ///                     {
-    ///                         "synonym3",
-    ///                         "synonym4",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 basicAgent,
-    ///             },
-    ///         });
-    ///     }
+    ///         DisplayName = "example_agent",
+    ///         DefaultLanguageCode = "en",
+    ///         TimeZone = "America/New_York",
+    ///     });
     /// 
-    /// }
+    ///     var basicEntityType = new Gcp.Diagflow.EntityType("basicEntityType", new()
+    ///     {
+    ///         DisplayName = "",
+    ///         Kind = "KIND_MAP",
+    ///         Entities = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
+    ///             {
+    ///                 Value = "value1",
+    ///                 Synonyms = new[]
+    ///                 {
+    ///                     "synonym1",
+    ///                     "synonym2",
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
+    ///             {
+    ///                 Value = "value2",
+    ///                 Synonyms = new[]
+    ///                 {
+    ///                     "synonym3",
+    ///                     "synonym4",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             basicAgent,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +80,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/entityType:EntityType")]
-    public partial class EntityType : Pulumi.CustomResource
+    public partial class EntityType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of this entity type to be displayed on the console.
@@ -170,7 +169,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class EntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class EntityTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of this entity type to be displayed on the console.
@@ -218,9 +217,10 @@ namespace Pulumi.Gcp.Diagflow
         public EntityTypeArgs()
         {
         }
+        public static new EntityTypeArgs Empty => new EntityTypeArgs();
     }
 
-    public sealed class EntityTypeState : Pulumi.ResourceArgs
+    public sealed class EntityTypeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of this entity type to be displayed on the console.
@@ -274,5 +274,6 @@ namespace Pulumi.Gcp.Diagflow
         public EntityTypeState()
         {
         }
+        public static new EntityTypeState Empty => new EntityTypeState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketLifecycleRuleActionGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketLifecycleRuleActionGetArgs()
         {
         }
+        public static new BucketLifecycleRuleActionGetArgs Empty => new BucketLifecycleRuleActionGetArgs();
     }
 }

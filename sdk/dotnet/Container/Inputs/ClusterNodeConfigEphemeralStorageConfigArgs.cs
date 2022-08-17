@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigEphemeralStorageConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigEphemeralStorageConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigEphemeralStorageConfigArgs()
         {
         }
+        public static new ClusterNodeConfigEphemeralStorageConfigArgs Empty => new ClusterNodeConfigEphemeralStorageConfigArgs();
     }
 }

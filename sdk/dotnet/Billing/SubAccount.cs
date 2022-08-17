@@ -15,21 +15,19 @@ namespace Pulumi.Gcp.Billing
     /// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var subaccount = new Gcp.Billing.SubAccount("subaccount", new()
     ///     {
-    ///         var subaccount = new Gcp.Billing.SubAccount("subaccount", new Gcp.Billing.SubAccountArgs
-    ///         {
-    ///             DisplayName = "My Billing Account",
-    ///             MasterBillingAccount = "012345-567890-ABCDEF",
-    ///         });
-    ///     }
+    ///         DisplayName = "My Billing Account",
+    ///         MasterBillingAccount = "012345-567890-ABCDEF",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.Gcp.Billing
     /// ```
     /// </summary>
     [GcpResourceType("gcp:billing/subAccount:SubAccount")]
-    public partial class SubAccount : Pulumi.CustomResource
+    public partial class SubAccount : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The billing account id.
@@ -126,7 +124,7 @@ namespace Pulumi.Gcp.Billing
         }
     }
 
-    public sealed class SubAccountArgs : Pulumi.ResourceArgs
+    public sealed class SubAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account display_name
@@ -152,9 +150,10 @@ namespace Pulumi.Gcp.Billing
         public SubAccountArgs()
         {
         }
+        public static new SubAccountArgs Empty => new SubAccountArgs();
     }
 
-    public sealed class SubAccountState : Pulumi.ResourceArgs
+    public sealed class SubAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The billing account id.
@@ -198,5 +197,6 @@ namespace Pulumi.Gcp.Billing
         public SubAccountState()
         {
         }
+        public static new SubAccountState Empty => new SubAccountState();
     }
 }

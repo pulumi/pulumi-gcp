@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheKeysetPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheKeysetPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheKeysetPublicKeyArgs()
         {
         }
+        public static new EdgeCacheKeysetPublicKeyArgs Empty => new EdgeCacheKeysetPublicKeyArgs();
     }
 }

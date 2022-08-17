@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudScheduler.Inputs
 {
 
-    public sealed class JobHttpTargetOauthTokenGetArgs : Pulumi.ResourceArgs
+    public sealed class JobHttpTargetOauthTokenGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth scope to be used for generating OAuth access token. If not specified,
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         public JobHttpTargetOauthTokenGetArgs()
         {
         }
+        public static new JobHttpTargetOauthTokenGetArgs Empty => new JobHttpTargetOauthTokenGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxIntentTrainingPhrasePartGetArgs : Pulumi.ResourceArgs
+    public sealed class CxIntentTrainingPhrasePartGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxIntentTrainingPhrasePartGetArgs()
         {
         }
+        public static new CxIntentTrainingPhrasePartGetArgs Empty => new CxIntentTrainingPhrasePartGetArgs();
     }
 }

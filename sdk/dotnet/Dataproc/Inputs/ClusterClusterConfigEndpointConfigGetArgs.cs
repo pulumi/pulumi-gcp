@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigEndpointConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigEndpointConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The flag to enable http access to specific ports
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigEndpointConfigGetArgs()
         {
         }
+        public static new ClusterClusterConfigEndpointConfigGetArgs Empty => new ClusterClusterConfigEndpointConfigGetArgs();
     }
 }

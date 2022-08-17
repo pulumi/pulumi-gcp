@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildStepGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildStepGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -148,5 +148,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildStepGetArgs()
         {
         }
+        public static new TriggerBuildStepGetArgs Empty => new TriggerBuildStepGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionAutomaticScalingStandardSchedulerSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionAutomaticScalingStandardSchedulerSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionAutomaticScalingStandardSchedulerSettingsGetArgs()
         {
         }
+        public static new StandardAppVersionAutomaticScalingStandardSchedulerSettingsGetArgs Empty => new StandardAppVersionAutomaticScalingStandardSchedulerSettingsGetArgs();
     }
 }

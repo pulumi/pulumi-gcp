@@ -22,33 +22,33 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// ### Binary Authorization Attestor Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
-    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
-    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
     ///             {
-    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///                 {
-    ///                     HumanReadableName = "Attestor Note",
-    ///                 },
+    ///                 HumanReadableName = "Attestor Note",
     ///             },
-    ///         });
-    ///         var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new Gcp.BinaryAuthorization.AttestorArgs
+    ///         },
+    ///     });
+    /// 
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
+    ///     {
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
     ///         {
-    ///             AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
+    ///             NoteReference = note.Name,
+    ///             PublicKeys = new[]
     ///             {
-    ///                 NoteReference = note.Name,
-    ///                 PublicKeys = 
+    ///                 new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyArgs
     ///                 {
-    ///                     new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyArgs
-    ///                     {
-    ///                         AsciiArmoredPgpPublicKey = @"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+    ///                     AsciiArmoredPgpPublicKey = @"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
     /// bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
     /// oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
     /// V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
@@ -64,73 +64,74 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
     /// =6Bvm
     /// ",
-    ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Binary Authorization Attestor Kms
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var crypto_key = new Gcp.Kms.CryptoKey("crypto-key", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         Purpose = "ASYMMETRIC_SIGN",
+    ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
     ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var crypto_key = new Gcp.Kms.CryptoKey("crypto-key", new Gcp.Kms.CryptoKeyArgs
+    ///             Algorithm = "RSA_SIGN_PKCS1_4096_SHA512",
+    ///         },
+    ///     });
+    /// 
+    ///     var version = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+    ///     {
+    ///         CryptoKey = crypto_key.Id,
+    ///     });
+    /// 
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
+    ///     {
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
-    ///             KeyRing = keyring.Id,
-    ///             Purpose = "ASYMMETRIC_SIGN",
-    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
     ///             {
-    ///                 Algorithm = "RSA_SIGN_PKCS1_4096_SHA512",
+    ///                 HumanReadableName = "Attestor Note",
     ///             },
-    ///         });
-    ///         var version = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
+    ///         },
+    ///     });
+    /// 
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
+    ///     {
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
     ///         {
-    ///             CryptoKey = crypto_key.Id,
-    ///         });
-    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
-    ///         {
-    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             NoteReference = note.Name,
+    ///             PublicKeys = new[]
     ///             {
-    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///                 new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyArgs
     ///                 {
-    ///                     HumanReadableName = "Attestor Note",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new Gcp.BinaryAuthorization.AttestorArgs
-    ///         {
-    ///             AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
-    ///             {
-    ///                 NoteReference = note.Name,
-    ///                 PublicKeys = 
-    ///                 {
-    ///                     new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyArgs
+    ///                     Id = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Id),
+    ///                     PkixPublicKey = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs
     ///                     {
-    ///                         Id = version.Apply(version =&gt; version.Id),
-    ///                         PkixPublicKey = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs
-    ///                         {
-    ///                             PublicKeyPem = version.Apply(version =&gt; version.PublicKeys?[0]?.Pem),
-    ///                             SignatureAlgorithm = version.Apply(version =&gt; version.PublicKeys?[0]?.Algorithm),
-    ///                         },
+    ///                         PublicKeyPem = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.PublicKeys[0]?.Pem),
+    ///                         SignatureAlgorithm = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.PublicKeys[0]?.Algorithm),
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -150,7 +151,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// ```
     /// </summary>
     [GcpResourceType("gcp:binaryauthorization/attestor:Attestor")]
-    public partial class Attestor : Pulumi.CustomResource
+    public partial class Attestor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
@@ -223,7 +224,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         }
     }
 
-    public sealed class AttestorArgs : Pulumi.ResourceArgs
+    public sealed class AttestorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
@@ -255,9 +256,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public AttestorArgs()
         {
         }
+        public static new AttestorArgs Empty => new AttestorArgs();
     }
 
-    public sealed class AttestorState : Pulumi.ResourceArgs
+    public sealed class AttestorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
@@ -289,5 +291,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public AttestorState()
         {
         }
+        public static new AttestorState Empty => new AttestorState();
     }
 }

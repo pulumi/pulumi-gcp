@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/source-repositories/)
+//   - [Official Documentation](https://cloud.google.com/source-repositories/)
 //
 // ## Example Usage
 // ### Sourcerepo Repository Basic
@@ -25,19 +25,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sourcerepo.NewRepository(ctx, "my-repo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sourcerepo.NewRepository(ctx, "my-repo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Sourcerepo Repository Full
 //
@@ -45,52 +48,59 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("my-account"),
-// 			DisplayName: pulumi.String("Test Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sourcerepo.NewRepository(ctx, "my-repo", &sourcerepo.RepositoryArgs{
-// 			PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
-// 				&sourcerepo.RepositoryPubsubConfigArgs{
-// 					Topic:               topic.ID(),
-// 					MessageFormat:       pulumi.String("JSON"),
-// 					ServiceAccountEmail: testAccount.Email,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sourcerepo.NewRepository(ctx, "my-repo", &sourcerepo.RepositoryArgs{
+//				PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
+//					&sourcerepo.RepositoryPubsubConfigArgs{
+//						Topic:               topic.ID(),
+//						MessageFormat:       pulumi.String("JSON"),
+//						ServiceAccountEmail: testAccount.Email,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Repository can be imported using any of these accepted formats
+// # Repository can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+//
+//	$ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+//
+//	$ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+//
 // ```
 type Repository struct {
 	pulumi.CustomResourceState
@@ -230,7 +240,7 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 // RepositoryArrayInput is an input type that accepts RepositoryArray and RepositoryArrayOutput values.
 // You can construct a concrete instance of `RepositoryArrayInput` via:
 //
-//          RepositoryArray{ RepositoryArgs{...} }
+//	RepositoryArray{ RepositoryArgs{...} }
 type RepositoryArrayInput interface {
 	pulumi.Input
 
@@ -255,7 +265,7 @@ func (i RepositoryArray) ToRepositoryArrayOutputWithContext(ctx context.Context)
 // RepositoryMapInput is an input type that accepts RepositoryMap and RepositoryMapOutput values.
 // You can construct a concrete instance of `RepositoryMapInput` via:
 //
-//          RepositoryMap{ "key": RepositoryArgs{...} }
+//	RepositoryMap{ "key": RepositoryArgs{...} }
 type RepositoryMapInput interface {
 	pulumi.Input
 

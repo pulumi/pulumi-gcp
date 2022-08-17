@@ -25,79 +25,73 @@ namespace Pulumi.Gcp.Compute
     /// ### Router Peer Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
-    ///         var peer = new Gcp.Compute.RouterPeer("peer", new Gcp.Compute.RouterPeerArgs
-    ///         {
-    ///             AdvertisedRoutePriority = 100,
-    ///             Interface = "interface-1",
-    ///             PeerAsn = 65513,
-    ///             PeerIpAddress = "169.254.1.2",
-    ///             Region = "us-central1",
-    ///             Router = "my-router",
-    ///         });
-    ///     }
+    ///         AdvertisedRoutePriority = 100,
+    ///         Interface = "interface-1",
+    ///         PeerAsn = 65513,
+    ///         PeerIpAddress = "169.254.1.2",
+    ///         Region = "us-central1",
+    ///         Router = "my-router",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Router Peer Disabled
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
-    ///         var peer = new Gcp.Compute.RouterPeer("peer", new Gcp.Compute.RouterPeerArgs
-    ///         {
-    ///             AdvertisedRoutePriority = 100,
-    ///             Enable = false,
-    ///             Interface = "interface-1",
-    ///             PeerAsn = 65513,
-    ///             PeerIpAddress = "169.254.1.2",
-    ///             Region = "us-central1",
-    ///             Router = "my-router",
-    ///         });
-    ///     }
+    ///         AdvertisedRoutePriority = 100,
+    ///         Enable = false,
+    ///         Interface = "interface-1",
+    ///         PeerAsn = 65513,
+    ///         PeerIpAddress = "169.254.1.2",
+    ///         Region = "us-central1",
+    ///         Router = "my-router",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Router Peer Bfd
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
     ///     {
-    ///         var peer = new Gcp.Compute.RouterPeer("peer", new Gcp.Compute.RouterPeerArgs
+    ///         AdvertisedRoutePriority = 100,
+    ///         Bfd = new Gcp.Compute.Inputs.RouterPeerBfdArgs
     ///         {
-    ///             AdvertisedRoutePriority = 100,
-    ///             Bfd = new Gcp.Compute.Inputs.RouterPeerBfdArgs
-    ///             {
-    ///                 MinReceiveInterval = 1000,
-    ///                 MinTransmitInterval = 1000,
-    ///                 Multiplier = 5,
-    ///                 SessionInitializationMode = "ACTIVE",
-    ///             },
-    ///             Interface = "interface-1",
-    ///             PeerAsn = 65513,
-    ///             PeerIpAddress = "169.254.1.2",
-    ///             Region = "us-central1",
-    ///             Router = "my-router",
-    ///         });
-    ///     }
+    ///             MinReceiveInterval = 1000,
+    ///             MinTransmitInterval = 1000,
+    ///             Multiplier = 5,
+    ///             SessionInitializationMode = "ACTIVE",
+    ///         },
+    ///         Interface = "interface-1",
+    ///         PeerAsn = 65513,
+    ///         PeerIpAddress = "169.254.1.2",
+    ///         Region = "us-central1",
+    ///         Router = "my-router",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -121,7 +115,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/routerPeer:RouterPeer")]
-    public partial class RouterPeer : Pulumi.CustomResource
+    public partial class RouterPeer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
@@ -288,7 +282,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RouterPeerArgs : Pulumi.ResourceArgs
+    public sealed class RouterPeerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
@@ -417,9 +411,10 @@ namespace Pulumi.Gcp.Compute
         public RouterPeerArgs()
         {
         }
+        public static new RouterPeerArgs Empty => new RouterPeerArgs();
     }
 
-    public sealed class RouterPeerState : Pulumi.ResourceArgs
+    public sealed class RouterPeerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
@@ -557,5 +552,6 @@ namespace Pulumi.Gcp.Compute
         public RouterPeerState()
         {
         }
+        public static new RouterPeerState Empty => new RouterPeerState();
     }
 }

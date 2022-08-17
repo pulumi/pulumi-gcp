@@ -34,11 +34,12 @@ import (
 // provider update errors in cases where the service account does not yet exist.
 //
 // >  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
-//    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
-//    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
-//    bucket configuration, otherwise the API calls will fail.
-//    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
-//    See the examples here and in the `storage.Notification` resource.
+//
+//	you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
+//	Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
+//	bucket configuration, otherwise the API calls will fail.
+//	You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+//	See the examples here and in the `storage.Notification` resource.
 //
 // For more information see
 // [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
@@ -50,32 +51,35 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-// 			Topic: pulumi.Any(google_pubsub_topic.Topic.Name),
-// 			Role:  pulumi.String("roles/pubsub.publisher"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//				Topic: pulumi.Any(google_pubsub_topic.Topic.Name),
+//				Role:  pulumi.String("roles/pubsub.publisher"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloud KMS Keys
 //
@@ -83,43 +87,46 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		binding, err := kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
-// 			CryptoKeyId: pulumi.String("your-crypto-key-id"),
-// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-// 			Location: pulumi.String("US"),
-// 			Encryption: &storage.BucketEncryptionArgs{
-// 				DefaultKmsKeyName: pulumi.String("your-crypto-key-id"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			binding,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			binding, err := kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: pulumi.String("your-crypto-key-id"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//				Encryption: &storage.BucketEncryptionArgs{
+//					DefaultKmsKeyName: pulumi.String("your-crypto-key-id"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				binding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceAccountResult, error) {
 	var rv GetProjectServiceAccountResult

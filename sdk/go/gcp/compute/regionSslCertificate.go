@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslCertificates)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 //
 // > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
 // state as plain-text.
@@ -31,35 +31,38 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
-// 			Region:      pulumi.String("us-central1"),
-// 			NamePrefix:  pulumi.String("my-certificate-"),
-// 			Description: pulumi.String("a description"),
-// 			PrivateKey:  readFileOrPanic("path/to/private.key"),
-// 			Certificate: readFileOrPanic("path/to/certificate.crt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
+//				Region:      pulumi.String("us-central1"),
+//				NamePrefix:  pulumi.String("my-certificate-"),
+//				Description: pulumi.String("a description"),
+//				PrivateKey:  readFileOrPanic("path/to/private.key"),
+//				Certificate: readFileOrPanic("path/to/certificate.crt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Region Ssl Certificate Random Provider
 //
@@ -67,76 +70,87 @@ import (
 // package main
 //
 // import (
-// 	"crypto/sha256"
-// 	"fmt"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"crypto/sha256"
+//	"fmt"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func filebase64sha256OrPanic(path string) pulumi.StringPtrInput {
-// 	if fileData, err := ioutil.ReadFile(path); err == nil {
-// 		hashedData := sha256.Sum256([]byte(fileData))
-// 		return pulumi.String(base64.StdEncoding.EncodeToString(hashedData[:]))
-// 	} else {
-// 		panic(err.Error())
-// 	}
-// }
+//	func filebase64sha256OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := ioutil.ReadFile(path); err == nil {
+//			hashedData := sha256.Sum256([]byte(fileData))
+//			return pulumi.String(base64.StdEncoding.EncodeToString(hashedData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
-// 			Region:      pulumi.String("us-central1"),
-// 			PrivateKey:  readFileOrPanic("path/to/private.key"),
-// 			Certificate: readFileOrPanic("path/to/certificate.crt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
-// 			ByteLength: pulumi.Int(4),
-// 			Prefix:     pulumi.String("my-certificate-"),
-// 			Keepers: pulumi.AnyMap{
-// 				"private_key": filebase64sha256OrPanic("path/to/private.key"),
-// 				"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
+//				Region:      pulumi.String("us-central1"),
+//				PrivateKey:  readFileOrPanic("path/to/private.key"),
+//				Certificate: readFileOrPanic("path/to/certificate.crt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
+//				Prefix:     pulumi.String("my-certificate-"),
+//				Keepers: pulumi.AnyMap{
+//					"private_key": filebase64sha256OrPanic("path/to/private.key"),
+//					"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// RegionSslCertificate can be imported using any of these accepted formats
+// # RegionSslCertificate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
+//
+//	$ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
+//
+//	$ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
+//
 // ```
 type RegionSslCertificate struct {
 	pulumi.CustomResourceState
@@ -373,7 +387,7 @@ func (i *RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx conte
 // RegionSslCertificateArrayInput is an input type that accepts RegionSslCertificateArray and RegionSslCertificateArrayOutput values.
 // You can construct a concrete instance of `RegionSslCertificateArrayInput` via:
 //
-//          RegionSslCertificateArray{ RegionSslCertificateArgs{...} }
+//	RegionSslCertificateArray{ RegionSslCertificateArgs{...} }
 type RegionSslCertificateArrayInput interface {
 	pulumi.Input
 
@@ -398,7 +412,7 @@ func (i RegionSslCertificateArray) ToRegionSslCertificateArrayOutputWithContext(
 // RegionSslCertificateMapInput is an input type that accepts RegionSslCertificateMap and RegionSslCertificateMapOutput values.
 // You can construct a concrete instance of `RegionSslCertificateMapInput` via:
 //
-//          RegionSslCertificateMap{ "key": RegionSslCertificateArgs{...} }
+//	RegionSslCertificateMap{ "key": RegionSslCertificateArgs{...} }
 type RegionSslCertificateMapInput interface {
 	pulumi.Input
 

@@ -13,22 +13,20 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_exclusion = new Gcp.Logging.BillingAccountExclusion("my-exclusion", new()
     ///     {
-    ///         var my_exclusion = new Gcp.Logging.BillingAccountExclusion("my-exclusion", new Gcp.Logging.BillingAccountExclusionArgs
-    ///         {
-    ///             BillingAccount = "ABCDEF-012345-GHIJKL",
-    ///             Description = "Exclude GCE instance debug logs",
-    ///             Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
-    ///         });
-    ///     }
+    ///         BillingAccount = "ABCDEF-012345-GHIJKL",
+    ///         Description = "Exclude GCE instance debug logs",
+    ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/billingAccountExclusion:BillingAccountExclusion")]
-    public partial class BillingAccountExclusion : Pulumi.CustomResource
+    public partial class BillingAccountExclusion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The billing account to create the exclusion for.
@@ -119,7 +117,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class BillingAccountExclusionArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountExclusionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The billing account to create the exclusion for.
@@ -157,9 +155,10 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountExclusionArgs()
         {
         }
+        public static new BillingAccountExclusionArgs Empty => new BillingAccountExclusionArgs();
     }
 
-    public sealed class BillingAccountExclusionState : Pulumi.ResourceArgs
+    public sealed class BillingAccountExclusionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The billing account to create the exclusion for.
@@ -197,5 +196,6 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountExclusionState()
         {
         }
+        public static new BillingAccountExclusionState Empty => new BillingAccountExclusionState();
     }
 }

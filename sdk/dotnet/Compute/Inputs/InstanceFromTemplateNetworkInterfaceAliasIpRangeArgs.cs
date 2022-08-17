@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs()
         {
         }
+        public static new InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs Empty => new InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs();
     }
 }

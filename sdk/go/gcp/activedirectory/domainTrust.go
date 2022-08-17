@@ -18,44 +18,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/activedirectory"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/activedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := activedirectory.NewDomainTrust(ctx, "ad-domain-trust", &activedirectory.DomainTrustArgs{
-// 			Domain: pulumi.String("test-managed-ad.com"),
-// 			TargetDnsIpAddresses: pulumi.StringArray{
-// 				pulumi.String("10.1.0.100"),
-// 			},
-// 			TargetDomainName:     pulumi.String("example-gcp.com"),
-// 			TrustDirection:       pulumi.String("OUTBOUND"),
-// 			TrustHandshakeSecret: pulumi.String("Testing1!"),
-// 			TrustType:            pulumi.String("FOREST"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := activedirectory.NewDomainTrust(ctx, "ad-domain-trust", &activedirectory.DomainTrustArgs{
+//				Domain: pulumi.String("test-managed-ad.com"),
+//				TargetDnsIpAddresses: pulumi.StringArray{
+//					pulumi.String("10.1.0.100"),
+//				},
+//				TargetDomainName:     pulumi.String("example-gcp.com"),
+//				TrustDirection:       pulumi.String("OUTBOUND"),
+//				TrustHandshakeSecret: pulumi.String("Testing1!"),
+//				TrustType:            pulumi.String("FOREST"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// DomainTrust can be imported using any of these accepted formats
+// # DomainTrust can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}
+//
+//	$ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
+//
+//	$ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
+//
+//	$ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
+//
 // ```
 type DomainTrust struct {
 	pulumi.CustomResourceState
@@ -256,7 +265,7 @@ func (i *DomainTrust) ToDomainTrustOutputWithContext(ctx context.Context) Domain
 // DomainTrustArrayInput is an input type that accepts DomainTrustArray and DomainTrustArrayOutput values.
 // You can construct a concrete instance of `DomainTrustArrayInput` via:
 //
-//          DomainTrustArray{ DomainTrustArgs{...} }
+//	DomainTrustArray{ DomainTrustArgs{...} }
 type DomainTrustArrayInput interface {
 	pulumi.Input
 
@@ -281,7 +290,7 @@ func (i DomainTrustArray) ToDomainTrustArrayOutputWithContext(ctx context.Contex
 // DomainTrustMapInput is an input type that accepts DomainTrustMap and DomainTrustMapOutput values.
 // You can construct a concrete instance of `DomainTrustMapInput` via:
 //
-//          DomainTrustMap{ "key": DomainTrustArgs{...} }
+//	DomainTrustMap{ "key": DomainTrustArgs{...} }
 type DomainTrustMapInput interface {
 	pulumi.Input
 

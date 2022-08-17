@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class JobPigConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class JobPigConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
@@ -80,5 +80,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public JobPigConfigGetArgs()
         {
         }
+        public static new JobPigConfigGetArgs Empty => new JobPigConfigGetArgs();
     }
 }

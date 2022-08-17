@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMasterAuthGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMasterAuthGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientCertificate")]
         public Input<string>? ClientCertificate { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMasterAuthGetArgs()
         {
         }
+        public static new ClusterMasterAuthGetArgs Empty => new ClusterMasterAuthGetArgs();
     }
 }

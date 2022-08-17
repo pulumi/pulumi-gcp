@@ -14,33 +14,31 @@ namespace Pulumi.Gcp.NetworkServices
     /// ### Network Services Edge Cache Keyset Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.NetworkServices.EdgeCacheKeyset("default", new()
     ///     {
-    ///         var @default = new Gcp.NetworkServices.EdgeCacheKeyset("default", new Gcp.NetworkServices.EdgeCacheKeysetArgs
+    ///         Description = "The default keyset",
+    ///         PublicKeys = new[]
     ///         {
-    ///             Description = "The default keyset",
-    ///             PublicKeys = 
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
     ///             {
-    ///                 new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
-    ///                 {
-    ///                     Id = "my-public-key",
-    ///                     Value = "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
-    ///                 },
-    ///                 new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
-    ///                 {
-    ///                     Id = "my-public-key-2",
-    ///                     Value = "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
-    ///                 },
+    ///                 Id = "my-public-key",
+    ///                 Value = "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
     ///             },
-    ///         });
-    ///     }
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
+    ///             {
+    ///                 Id = "my-public-key-2",
+    ///                 Value = "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset")]
-    public partial class EdgeCacheKeyset : Pulumi.CustomResource
+    public partial class EdgeCacheKeyset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -143,7 +141,7 @@ namespace Pulumi.Gcp.NetworkServices
         }
     }
 
-    public sealed class EdgeCacheKeysetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheKeysetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -197,9 +195,10 @@ namespace Pulumi.Gcp.NetworkServices
         public EdgeCacheKeysetArgs()
         {
         }
+        public static new EdgeCacheKeysetArgs Empty => new EdgeCacheKeysetArgs();
     }
 
-    public sealed class EdgeCacheKeysetState : Pulumi.ResourceArgs
+    public sealed class EdgeCacheKeysetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -253,5 +252,6 @@ namespace Pulumi.Gcp.NetworkServices
         public EdgeCacheKeysetState()
         {
         }
+        public static new EdgeCacheKeysetState Empty => new EdgeCacheKeysetState();
     }
 }

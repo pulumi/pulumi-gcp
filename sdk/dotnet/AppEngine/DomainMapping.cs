@@ -22,24 +22,22 @@ namespace Pulumi.Gcp.AppEngine
     /// ### App Engine Domain Mapping Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var domainMapping = new Gcp.AppEngine.DomainMapping("domainMapping", new()
     ///     {
-    ///         var domainMapping = new Gcp.AppEngine.DomainMapping("domainMapping", new Gcp.AppEngine.DomainMappingArgs
+    ///         DomainName = "verified-domain.com",
+    ///         SslSettings = new Gcp.AppEngine.Inputs.DomainMappingSslSettingsArgs
     ///         {
-    ///             DomainName = "verified-domain.com",
-    ///             SslSettings = new Gcp.AppEngine.Inputs.DomainMappingSslSettingsArgs
-    ///             {
-    ///                 SslManagementType = "AUTOMATIC",
-    ///             },
-    ///         });
-    ///     }
+    ///             SslManagementType = "AUTOMATIC",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.AppEngine
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/domainMapping:DomainMapping")]
-    public partial class DomainMapping : Pulumi.CustomResource
+    public partial class DomainMapping : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
@@ -147,7 +145,7 @@ namespace Pulumi.Gcp.AppEngine
         }
     }
 
-    public sealed class DomainMappingArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
@@ -181,9 +179,10 @@ namespace Pulumi.Gcp.AppEngine
         public DomainMappingArgs()
         {
         }
+        public static new DomainMappingArgs Empty => new DomainMappingArgs();
     }
 
-    public sealed class DomainMappingState : Pulumi.ResourceArgs
+    public sealed class DomainMappingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
@@ -236,5 +235,6 @@ namespace Pulumi.Gcp.AppEngine
         public DomainMappingState()
         {
         }
+        public static new DomainMappingState Empty => new DomainMappingState();
     }
 }

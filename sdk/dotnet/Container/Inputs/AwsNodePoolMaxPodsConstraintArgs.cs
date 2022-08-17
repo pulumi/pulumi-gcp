@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsNodePoolMaxPodsConstraintArgs : Pulumi.ResourceArgs
+    public sealed class AwsNodePoolMaxPodsConstraintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of pods to schedule on a single node.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsNodePoolMaxPodsConstraintArgs()
         {
         }
+        public static new AwsNodePoolMaxPodsConstraintArgs Empty => new AwsNodePoolMaxPodsConstraintArgs();
     }
 }

@@ -19,21 +19,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_router = Gcp.Compute.GetRouter.Invoke(new()
         ///     {
-        ///         var my_router = Output.Create(Gcp.Compute.GetRouter.InvokeAsync(new Gcp.Compute.GetRouterArgs
-        ///         {
-        ///             Name = "myrouter-us-east1",
-        ///             Network = "my-network",
-        ///         }));
-        ///     }
+        ///         Name = "myrouter-us-east1",
+        ///         Network = "my-network",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_router = Gcp.Compute.GetRouter.Invoke(new()
         ///     {
-        ///         var my_router = Output.Create(Gcp.Compute.GetRouter.InvokeAsync(new Gcp.Compute.GetRouterArgs
-        ///         {
-        ///             Name = "myrouter-us-east1",
-        ///             Network = "my-network",
-        ///         }));
-        ///     }
+        ///         Name = "myrouter-us-east1",
+        ///         Network = "my-network",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetRouterArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the router.
@@ -104,9 +100,10 @@ namespace Pulumi.Gcp.Compute
         public GetRouterArgs()
         {
         }
+        public static new GetRouterArgs Empty => new GetRouterArgs();
     }
 
-    public sealed class GetRouterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the router.
@@ -137,6 +134,7 @@ namespace Pulumi.Gcp.Compute
         public GetRouterInvokeArgs()
         {
         }
+        public static new GetRouterInvokeArgs Empty => new GetRouterInvokeArgs();
     }
 
 

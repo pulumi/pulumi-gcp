@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class PacketMirroringFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrRanges")]
         private InputList<string>? _cidrRanges;
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public PacketMirroringFilterGetArgs()
         {
         }
+        public static new PacketMirroringFilterGetArgs Empty => new PacketMirroringFilterGetArgs();
     }
 }

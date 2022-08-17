@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/scheduler/)
+//   - [Official Documentation](https://cloud.google.com/scheduler/)
 //
 // ## Example Usage
 // ### Scheduler Job App Engine
@@ -26,39 +26,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudscheduler"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudscheduler"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
-// 			AppEngineHttpTarget: &cloudscheduler.JobAppEngineHttpTargetArgs{
-// 				AppEngineRouting: &cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs{
-// 					Instance: pulumi.String("my-instance-001"),
-// 					Service:  pulumi.String("web"),
-// 					Version:  pulumi.String("prod"),
-// 				},
-// 				HttpMethod:  pulumi.String("POST"),
-// 				RelativeUri: pulumi.String("/ping"),
-// 			},
-// 			AttemptDeadline: pulumi.String("320s"),
-// 			Description:     pulumi.String("test app engine job"),
-// 			RetryConfig: &cloudscheduler.JobRetryConfigArgs{
-// 				MaxDoublings:       pulumi.Int(2),
-// 				MaxRetryDuration:   pulumi.String("10s"),
-// 				MinBackoffDuration: pulumi.String("1s"),
-// 				RetryCount:         pulumi.Int(3),
-// 			},
-// 			Schedule: pulumi.String("*/4 * * * *"),
-// 			TimeZone: pulumi.String("Europe/London"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
+//				AppEngineHttpTarget: &cloudscheduler.JobAppEngineHttpTargetArgs{
+//					AppEngineRouting: &cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs{
+//						Instance: pulumi.String("my-instance-001"),
+//						Service:  pulumi.String("web"),
+//						Version:  pulumi.String("prod"),
+//					},
+//					HttpMethod:  pulumi.String("POST"),
+//					RelativeUri: pulumi.String("/ping"),
+//				},
+//				AttemptDeadline: pulumi.String("320s"),
+//				Description:     pulumi.String("test app engine job"),
+//				RetryConfig: &cloudscheduler.JobRetryConfigArgs{
+//					MaxDoublings:       pulumi.Int(2),
+//					MaxRetryDuration:   pulumi.String("10s"),
+//					MinBackoffDuration: pulumi.String("1s"),
+//					RetryCount:         pulumi.Int(3),
+//				},
+//				Schedule: pulumi.String("*/4 * * * *"),
+//				TimeZone: pulumi.String("Europe/London"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Scheduler Job Oauth
 //
@@ -66,36 +69,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudscheduler"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudscheduler"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
-// 			Description:     pulumi.String("test http job"),
-// 			Schedule:        pulumi.String("*/8 * * * *"),
-// 			TimeZone:        pulumi.String("America/New_York"),
-// 			AttemptDeadline: pulumi.String("320s"),
-// 			HttpTarget: &cloudscheduler.JobHttpTargetArgs{
-// 				HttpMethod: pulumi.String("GET"),
-// 				Uri:        pulumi.String("https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs"),
-// 				OauthToken: &cloudscheduler.JobHttpTargetOauthTokenArgs{
-// 					ServiceAccountEmail: pulumi.String(_default.Email),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
+//				Description:     pulumi.String("test http job"),
+//				Schedule:        pulumi.String("*/8 * * * *"),
+//				TimeZone:        pulumi.String("America/New_York"),
+//				AttemptDeadline: pulumi.String("320s"),
+//				HttpTarget: &cloudscheduler.JobHttpTargetArgs{
+//					HttpMethod: pulumi.String("GET"),
+//					Uri:        pulumi.String("https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs"),
+//					OauthToken: &cloudscheduler.JobHttpTargetOauthTokenArgs{
+//						ServiceAccountEmail: pulumi.String(_default.Email),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Scheduler Job Oidc
 //
@@ -103,56 +109,67 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudscheduler"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudscheduler"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
-// 			Description:     pulumi.String("test http job"),
-// 			Schedule:        pulumi.String("*/8 * * * *"),
-// 			TimeZone:        pulumi.String("America/New_York"),
-// 			AttemptDeadline: pulumi.String("320s"),
-// 			HttpTarget: &cloudscheduler.JobHttpTargetArgs{
-// 				HttpMethod: pulumi.String("GET"),
-// 				Uri:        pulumi.String("https://example.com/ping"),
-// 				OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
-// 					ServiceAccountEmail: pulumi.String(_default.Email),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
+//				Description:     pulumi.String("test http job"),
+//				Schedule:        pulumi.String("*/8 * * * *"),
+//				TimeZone:        pulumi.String("America/New_York"),
+//				AttemptDeadline: pulumi.String("320s"),
+//				HttpTarget: &cloudscheduler.JobHttpTargetArgs{
+//					HttpMethod: pulumi.String("GET"),
+//					Uri:        pulumi.String("https://example.com/ping"),
+//					OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
+//						ServiceAccountEmail: pulumi.String(_default.Email),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Job can be imported using any of these accepted formats
+// # Job can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
+//
+//	$ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
+//
+//	$ pulumi import gcp:cloudscheduler/job:Job default {{name}}
+//
 // ```
 type Job struct {
 	pulumi.CustomResourceState
@@ -181,6 +198,8 @@ type Job struct {
 	HttpTarget JobHttpTargetPtrOutput `pulumi:"httpTarget"`
 	// The name of the job.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -198,6 +217,8 @@ type Job struct {
 	RetryConfig JobRetryConfigPtrOutput `pulumi:"retryConfig"`
 	// Describes the schedule on which the job will be executed.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
+	// State of the job.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Specifies the time zone to be used in interpreting schedule.
 	// The value of this field must be a time zone name from the tz database.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
@@ -256,6 +277,8 @@ type jobState struct {
 	HttpTarget *JobHttpTarget `pulumi:"httpTarget"`
 	// The name of the job.
 	Name *string `pulumi:"name"`
+	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+	Paused *bool `pulumi:"paused"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -273,6 +296,8 @@ type jobState struct {
 	RetryConfig *JobRetryConfig `pulumi:"retryConfig"`
 	// Describes the schedule on which the job will be executed.
 	Schedule *string `pulumi:"schedule"`
+	// State of the job.
+	State *string `pulumi:"state"`
 	// Specifies the time zone to be used in interpreting schedule.
 	// The value of this field must be a time zone name from the tz database.
 	TimeZone *string `pulumi:"timeZone"`
@@ -303,6 +328,8 @@ type JobState struct {
 	HttpTarget JobHttpTargetPtrInput
 	// The name of the job.
 	Name pulumi.StringPtrInput
+	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+	Paused pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -320,6 +347,8 @@ type JobState struct {
 	RetryConfig JobRetryConfigPtrInput
 	// Describes the schedule on which the job will be executed.
 	Schedule pulumi.StringPtrInput
+	// State of the job.
+	State pulumi.StringPtrInput
 	// Specifies the time zone to be used in interpreting schedule.
 	// The value of this field must be a time zone name from the tz database.
 	TimeZone pulumi.StringPtrInput
@@ -354,6 +383,8 @@ type jobArgs struct {
 	HttpTarget *JobHttpTarget `pulumi:"httpTarget"`
 	// The name of the job.
 	Name *string `pulumi:"name"`
+	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+	Paused *bool `pulumi:"paused"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -402,6 +433,8 @@ type JobArgs struct {
 	HttpTarget JobHttpTargetPtrInput
 	// The name of the job.
 	Name pulumi.StringPtrInput
+	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+	Paused pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -450,7 +483,7 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 // JobArrayInput is an input type that accepts JobArray and JobArrayOutput values.
 // You can construct a concrete instance of `JobArrayInput` via:
 //
-//          JobArray{ JobArgs{...} }
+//	JobArray{ JobArgs{...} }
 type JobArrayInput interface {
 	pulumi.Input
 
@@ -475,7 +508,7 @@ func (i JobArray) ToJobArrayOutputWithContext(ctx context.Context) JobArrayOutpu
 // JobMapInput is an input type that accepts JobMap and JobMapOutput values.
 // You can construct a concrete instance of `JobMapInput` via:
 //
-//          JobMap{ "key": JobArgs{...} }
+//	JobMap{ "key": JobArgs{...} }
 type JobMapInput interface {
 	pulumi.Input
 
@@ -523,10 +556,10 @@ func (o JobOutput) AppEngineHttpTarget() JobAppEngineHttpTargetPtrOutput {
 // cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
 // execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
 // The allowed duration for this deadline is:
-// * For HTTP targets, between 15 seconds and 30 minutes.
-// * For App Engine HTTP targets, between 15 seconds and 24 hours.
-// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+//   - For HTTP targets, between 15 seconds and 30 minutes.
+//   - For App Engine HTTP targets, between 15 seconds and 24 hours.
+//   - **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
+//     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 func (o JobOutput) AttemptDeadline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.AttemptDeadline }).(pulumi.StringPtrOutput)
 }
@@ -548,6 +581,11 @@ func (o JobOutput) HttpTarget() JobHttpTargetPtrOutput {
 // The name of the job.
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+func (o JobOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -580,6 +618,11 @@ func (o JobOutput) RetryConfig() JobRetryConfigPtrOutput {
 // Describes the schedule on which the job will be executed.
 func (o JobOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// State of the job.
+func (o JobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // Specifies the time zone to be used in interpreting schedule.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class LiteTopicPartitionConfigCapacityArgs : Pulumi.ResourceArgs
+    public sealed class LiteTopicPartitionConfigCapacityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public LiteTopicPartitionConfigCapacityArgs()
         {
         }
+        public static new LiteTopicPartitionConfigCapacityArgs Empty => new LiteTopicPartitionConfigCapacityArgs();
     }
 }

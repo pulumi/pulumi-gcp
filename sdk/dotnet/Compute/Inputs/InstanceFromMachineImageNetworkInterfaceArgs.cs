@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.InstanceFromMachineImageNetworkInterfaceAccessConfigArgs>? _accessConfigs;
@@ -70,5 +70,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageNetworkInterfaceArgs()
         {
         }
+        public static new InstanceFromMachineImageNetworkInterfaceArgs Empty => new InstanceFromMachineImageNetworkInterfaceArgs();
     }
 }

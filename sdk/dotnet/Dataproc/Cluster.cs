@@ -24,142 +24,137 @@ namespace Pulumi.Gcp.Dataproc
     /// ### Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var simplecluster = new Gcp.Dataproc.Cluster("simplecluster", new()
     ///     {
-    ///         var simplecluster = new Gcp.Dataproc.Cluster("simplecluster", new Gcp.Dataproc.ClusterArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Advanced
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "service-account-id",
-    ///             DisplayName = "Service Account",
-    ///         });
-    ///         var mycluster = new Gcp.Dataproc.Cluster("mycluster", new Gcp.Dataproc.ClusterArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             GracefulDecommissionTimeout = "120s",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
-    ///             {
-    ///                 StagingBucket = "dataproc-staging-bucket",
-    ///                 MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
-    ///                 {
-    ///                     NumInstances = 1,
-    ///                     MachineType = "e2-medium",
-    ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
-    ///                     {
-    ///                         BootDiskType = "pd-ssd",
-    ///                         BootDiskSizeGb = 30,
-    ///                     },
-    ///                 },
-    ///                 WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
-    ///                 {
-    ///                     NumInstances = 2,
-    ///                     MachineType = "e2-medium",
-    ///                     MinCpuPlatform = "Intel Skylake",
-    ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
-    ///                     {
-    ///                         BootDiskSizeGb = 30,
-    ///                         NumLocalSsds = 1,
-    ///                     },
-    ///                 },
-    ///                 PreemptibleWorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs
-    ///                 {
-    ///                     NumInstances = 0,
-    ///                 },
-    ///                 SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
-    ///                 {
-    ///                     ImageVersion = "2.0.35-debian10",
-    ///                     OverrideProperties = 
-    ///                     {
-    ///                         { "dataproc:dataproc.allow.zero.workers", "true" },
-    ///                     },
-    ///                 },
-    ///                 GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
-    ///                 {
-    ///                     Tags = 
-    ///                     {
-    ///                         "foo",
-    ///                         "bar",
-    ///                     },
-    ///                     ServiceAccount = @default.Email,
-    ///                     ServiceAccountScopes = 
-    ///                     {
-    ///                         "cloud-platform",
-    ///                     },
-    ///                 },
-    ///                 InitializationActions = 
-    ///                 {
-    ///                     new Gcp.Dataproc.Inputs.ClusterClusterConfigInitializationActionArgs
-    ///                     {
-    ///                         Script = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-    ///                         TimeoutSec = 500,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var mycluster = new Gcp.Dataproc.Cluster("mycluster", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         GracefulDecommissionTimeout = "120s",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///         {
+    ///             StagingBucket = "dataproc-staging-bucket",
+    ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+    ///             {
+    ///                 NumInstances = 1,
+    ///                 MachineType = "e2-medium",
+    ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
+    ///                 {
+    ///                     BootDiskType = "pd-ssd",
+    ///                     BootDiskSizeGb = 30,
+    ///                 },
+    ///             },
+    ///             WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
+    ///             {
+    ///                 NumInstances = 2,
+    ///                 MachineType = "e2-medium",
+    ///                 MinCpuPlatform = "Intel Skylake",
+    ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
+    ///                 {
+    ///                     BootDiskSizeGb = 30,
+    ///                     NumLocalSsds = 1,
+    ///                 },
+    ///             },
+    ///             PreemptibleWorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs
+    ///             {
+    ///                 NumInstances = 0,
+    ///             },
+    ///             SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
+    ///             {
+    ///                 ImageVersion = "2.0.35-debian10",
+    ///                 OverrideProperties = 
+    ///                 {
+    ///                     { "dataproc:dataproc.allow.zero.workers", "true" },
+    ///                 },
+    ///             },
+    ///             GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
+    ///             {
+    ///                 Tags = new[]
+    ///                 {
+    ///                     "foo",
+    ///                     "bar",
+    ///                 },
+    ///                 ServiceAccount = @default.Email,
+    ///                 ServiceAccountScopes = new[]
+    ///                 {
+    ///                     "cloud-platform",
+    ///                 },
+    ///             },
+    ///             InitializationActions = new[]
+    ///             {
+    ///                 new Gcp.Dataproc.Inputs.ClusterClusterConfigInitializationActionArgs
+    ///                 {
+    ///                     Script = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+    ///                     TimeoutSec = 500,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Using A GPU Accelerator
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var acceleratedCluster = new Gcp.Dataproc.Cluster("acceleratedCluster", new()
     ///     {
-    ///         var acceleratedCluster = new Gcp.Dataproc.Cluster("acceleratedCluster", new Gcp.Dataproc.ClusterArgs
+    ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
-    ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///             GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
     ///             {
-    ///                 GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
+    ///                 Zone = "us-central1-a",
+    ///             },
+    ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+    ///             {
+    ///                 Accelerators = new[]
     ///                 {
-    ///                     Zone = "us-central1-a",
-    ///                 },
-    ///                 MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
-    ///                 {
-    ///                     Accelerators = 
+    ///                     new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigAcceleratorArgs
     ///                     {
-    ///                         new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigAcceleratorArgs
-    ///                         {
-    ///                             AcceleratorCount = 1,
-    ///                             AcceleratorType = "nvidia-tesla-k80",
-    ///                         },
+    ///                         AcceleratorCount = 1,
+    ///                         AcceleratorType = "nvidia-tesla-k80",
     ///                     },
     ///                 },
     ///             },
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         },
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -167,7 +162,7 @@ namespace Pulumi.Gcp.Dataproc
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:dataproc/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Allows you to configure various aspects of the cluster.
@@ -256,7 +251,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows you to configure various aspects of the cluster.
@@ -310,9 +305,10 @@ namespace Pulumi.Gcp.Dataproc
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows you to configure various aspects of the cluster.
@@ -366,5 +362,6 @@ namespace Pulumi.Gcp.Dataproc
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

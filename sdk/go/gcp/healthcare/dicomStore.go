@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores)
 // * How-to Guides
-//     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+//   - [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 //
 // ## Example Usage
 // ### Healthcare Dicom Store Basic
@@ -27,38 +27,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
-// 			Location: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
-// 			Dataset: dataset.ID(),
-// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-// 				PubsubTopic: topic.ID(),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"label1": pulumi.String("labelvalue1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
+//				Dataset: dataset.ID(),
+//				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
+//					PubsubTopic: topic.ID(),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Healthcare Dicom Store Bq Stream
 //
@@ -66,83 +69,90 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		topic, err := pubsub.NewTopic(ctx, "topic", nil, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
-// 			Location: pulumi.String("us-central1"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bqDataset, err := bigquery.NewDataset(ctx, "bqDataset", &bigquery.DatasetArgs{
-// 			DatasetId:               pulumi.String("dicom_bq_ds"),
-// 			FriendlyName:            pulumi.String("test"),
-// 			Description:             pulumi.String("This is a test description"),
-// 			Location:                pulumi.String("US"),
-// 			DeleteContentsOnDestroy: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bqTable, err := bigquery.NewTable(ctx, "bqTable", &bigquery.TableArgs{
-// 			DeletionProtection: pulumi.Bool(false),
-// 			DatasetId:          bqDataset.DatasetId,
-// 			TableId:            pulumi.String("dicom_bq_tb"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
-// 			Dataset: dataset.ID(),
-// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-// 				PubsubTopic: topic.ID(),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"label1": pulumi.String("labelvalue1"),
-// 			},
-// 			StreamConfigs: healthcare.DicomStoreStreamConfigArray{
-// 				&healthcare.DicomStoreStreamConfigArgs{
-// 					BigqueryDestination: &healthcare.DicomStoreStreamConfigBigqueryDestinationArgs{
-// 						TableUri: pulumi.All(bqDataset.Project, bqDataset.DatasetId, bqTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
-// 							project := _args[0].(string)
-// 							datasetId := _args[1].(string)
-// 							tableId := _args[2].(string)
-// 							return fmt.Sprintf("bq://%v.%v.%v", project, datasetId, tableId), nil
-// 						}).(pulumi.StringOutput),
-// 					},
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			bqDataset, err := bigquery.NewDataset(ctx, "bqDataset", &bigquery.DatasetArgs{
+//				DatasetId:               pulumi.String("dicom_bq_ds"),
+//				FriendlyName:            pulumi.String("test"),
+//				Description:             pulumi.String("This is a test description"),
+//				Location:                pulumi.String("US"),
+//				DeleteContentsOnDestroy: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			bqTable, err := bigquery.NewTable(ctx, "bqTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          bqDataset.DatasetId,
+//				TableId:            pulumi.String("dicom_bq_tb"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
+//				Dataset: dataset.ID(),
+//				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
+//					PubsubTopic: topic.ID(),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
+//				StreamConfigs: healthcare.DicomStoreStreamConfigArray{
+//					&healthcare.DicomStoreStreamConfigArgs{
+//						BigqueryDestination: &healthcare.DicomStoreStreamConfigBigqueryDestinationArgs{
+//							TableUri: pulumi.All(bqDataset.Project, bqDataset.DatasetId, bqTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//								project := _args[0].(string)
+//								datasetId := _args[1].(string)
+//								tableId := _args[2].(string)
+//								return fmt.Sprintf("bq://%v.%v.%v", project, datasetId, tableId), nil
+//							}).(pulumi.StringOutput),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// DicomStore can be imported using any of these accepted formats
+// # DicomStore can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
+//
+//	$ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
+//
+//	$ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
+//
 // ```
 type DicomStore struct {
 	pulumi.CustomResourceState
@@ -339,7 +349,7 @@ func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomSto
 // DicomStoreArrayInput is an input type that accepts DicomStoreArray and DicomStoreArrayOutput values.
 // You can construct a concrete instance of `DicomStoreArrayInput` via:
 //
-//          DicomStoreArray{ DicomStoreArgs{...} }
+//	DicomStoreArray{ DicomStoreArgs{...} }
 type DicomStoreArrayInput interface {
 	pulumi.Input
 
@@ -364,7 +374,7 @@ func (i DicomStoreArray) ToDicomStoreArrayOutputWithContext(ctx context.Context)
 // DicomStoreMapInput is an input type that accepts DicomStoreMap and DicomStoreMapOutput values.
 // You can construct a concrete instance of `DicomStoreMapInput` via:
 //
-//          DicomStoreMap{ "key": DicomStoreArgs{...} }
+//	DicomStoreMap{ "key": DicomStoreArgs{...} }
 type DicomStoreMapInput interface {
 	pulumi.Input
 

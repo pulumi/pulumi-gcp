@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// SHA256 checksum of the remote file.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs();
     }
 }

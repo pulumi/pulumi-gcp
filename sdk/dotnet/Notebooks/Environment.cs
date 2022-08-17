@@ -22,24 +22,22 @@ namespace Pulumi.Gcp.Notebooks
     /// ### Notebook Environment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var environment = new Gcp.Notebooks.Environment("environment", new()
     ///     {
-    ///         var environment = new Gcp.Notebooks.Environment("environment", new Gcp.Notebooks.EnvironmentArgs
+    ///         ContainerImage = new Gcp.Notebooks.Inputs.EnvironmentContainerImageArgs
     ///         {
-    ///             ContainerImage = new Gcp.Notebooks.Inputs.EnvironmentContainerImageArgs
-    ///             {
-    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
-    ///             },
-    ///             Location = "us-west1-a",
-    ///         });
-    ///     }
+    ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///         },
+    ///         Location = "us-west1-a",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.Notebooks
     /// ```
     /// </summary>
     [GcpResourceType("gcp:notebooks/environment:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Use a container image to start the notebook instance.
@@ -164,7 +162,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use a container image to start the notebook instance.
@@ -222,9 +220,10 @@ namespace Pulumi.Gcp.Notebooks
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 
-    public sealed class EnvironmentState : Pulumi.ResourceArgs
+    public sealed class EnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use a container image to start the notebook instance.
@@ -288,5 +287,6 @@ namespace Pulumi.Gcp.Notebooks
         public EnvironmentState()
         {
         }
+        public static new EnvironmentState Empty => new EnvironmentState();
     }
 }

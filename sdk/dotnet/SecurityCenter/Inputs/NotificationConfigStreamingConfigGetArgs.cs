@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecurityCenter.Inputs
 {
 
-    public sealed class NotificationConfigStreamingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NotificationConfigStreamingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Expression that defines the filter to apply across create/update
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.SecurityCenter.Inputs
         public NotificationConfigStreamingConfigGetArgs()
         {
         }
+        public static new NotificationConfigStreamingConfigGetArgs Empty => new NotificationConfigStreamingConfigGetArgs();
     }
 }

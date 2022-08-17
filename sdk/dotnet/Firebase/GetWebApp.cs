@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Firebase
     }
 
 
-    public sealed class GetWebAppArgs : Pulumi.InvokeArgs
+    public sealed class GetWebAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The app_ip of name of the Firebase webApp.
@@ -36,9 +36,10 @@ namespace Pulumi.Gcp.Firebase
         public GetWebAppArgs()
         {
         }
+        public static new GetWebAppArgs Empty => new GetWebAppArgs();
     }
 
-    public sealed class GetWebAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWebAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The app_ip of name of the Firebase webApp.
@@ -49,6 +50,7 @@ namespace Pulumi.Gcp.Firebase
         public GetWebAppInvokeArgs()
         {
         }
+        public static new GetWebAppInvokeArgs Empty => new GetWebAppInvokeArgs();
     }
 
 

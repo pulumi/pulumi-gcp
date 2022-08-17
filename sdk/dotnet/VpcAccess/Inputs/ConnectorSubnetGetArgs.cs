@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.VpcAccess.Inputs
 {
 
-    public sealed class ConnectorSubnetGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectorSubnetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.VpcAccess.Inputs
         public ConnectorSubnetGetArgs()
         {
         }
+        public static new ConnectorSubnetGetArgs Empty => new ConnectorSubnetGetArgs();
     }
 }

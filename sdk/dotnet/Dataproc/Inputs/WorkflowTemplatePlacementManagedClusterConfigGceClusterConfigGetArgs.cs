@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
@@ -99,5 +99,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigGetArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigGetArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigGetArgs();
     }
 }

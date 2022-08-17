@@ -20,25 +20,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var central1b = Gcp.Compute.GetNodeTypes.Invoke(new()
         ///     {
-        ///         var central1b = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
-        ///         {
-        ///             Zone = "us-central1-b",
-        ///         }));
-        ///         var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new Gcp.Compute.NodeTemplateArgs
-        ///         {
-        ///             Region = "us-central1",
-        ///             NodeType = data.Google_compute_node_types.Types.Names[0],
-        ///         });
-        ///     }
+        ///         Zone = "us-central1-b",
+        ///     });
         /// 
-        /// }
+        ///     var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new()
+        ///     {
+        ///         Region = "us-central1",
+        ///         NodeType = data.Google_compute_node_types.Types.Names[0],
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,25 +54,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var central1b = Gcp.Compute.GetNodeTypes.Invoke(new()
         ///     {
-        ///         var central1b = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
-        ///         {
-        ///             Zone = "us-central1-b",
-        ///         }));
-        ///         var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new Gcp.Compute.NodeTemplateArgs
-        ///         {
-        ///             Region = "us-central1",
-        ///             NodeType = data.Google_compute_node_types.Types.Names[0],
-        ///         });
-        ///     }
+        ///         Zone = "us-central1-b",
+        ///     });
         /// 
-        /// }
+        ///     var tmpl = new Gcp.Compute.NodeTemplate("tmpl", new()
+        ///     {
+        ///         Region = "us-central1",
+        ///         NodeType = data.Google_compute_node_types.Types.Names[0],
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -83,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetNodeTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTypesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the project to list available node types for.
@@ -103,9 +101,10 @@ namespace Pulumi.Gcp.Compute
         public GetNodeTypesArgs()
         {
         }
+        public static new GetNodeTypesArgs Empty => new GetNodeTypesArgs();
     }
 
-    public sealed class GetNodeTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the project to list available node types for.
@@ -125,6 +124,7 @@ namespace Pulumi.Gcp.Compute
         public GetNodeTypesInvokeArgs()
         {
         }
+        public static new GetNodeTypesInvokeArgs Empty => new GetNodeTypesInvokeArgs();
     }
 
 

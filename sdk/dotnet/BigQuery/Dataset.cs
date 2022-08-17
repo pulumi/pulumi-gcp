@@ -14,162 +14,161 @@ namespace Pulumi.Gcp.BigQuery
     /// ### Bigquery Dataset Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
     ///     {
-    ///         var bqowner = new Gcp.ServiceAccount.Account("bqowner", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "bqowner",
-    ///         });
-    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///             FriendlyName = "test",
-    ///             Description = "This is a test description",
-    ///             Location = "EU",
-    ///             DefaultTableExpirationMs = 3600000,
-    ///             Labels = 
-    ///             {
-    ///                 { "env", "default" },
-    ///             },
-    ///             Accesses = 
-    ///             {
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///                 {
-    ///                     Role = "OWNER",
-    ///                     UserByEmail = bqowner.Email,
-    ///                 },
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///                 {
-    ///                     Role = "READER",
-    ///                     Domain = "hashicorp.com",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "bqowner",
+    ///     });
     /// 
-    /// }
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "EU",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         Labels = 
+    ///         {
+    ///             { "env", "default" },
+    ///         },
+    ///         Accesses = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///             {
+    ///                 Role = "OWNER",
+    ///                 UserByEmail = bqowner.Email,
+    ///             },
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///             {
+    ///                 Role = "READER",
+    ///                 Domain = "hashicorp.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigquery Dataset Cmek
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "us",
-    ///         });
-    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyRing.Id,
-    ///         });
-    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///             FriendlyName = "test",
-    ///             Description = "This is a test description",
-    ///             Location = "US",
-    ///             DefaultTableExpirationMs = 3600000,
-    ///             DefaultEncryptionConfiguration = new Gcp.BigQuery.Inputs.DatasetDefaultEncryptionConfigurationArgs
-    ///             {
-    ///                 KmsKeyName = cryptoKey.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "us",
+    ///     });
     /// 
-    /// }
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         DefaultEncryptionConfiguration = new Gcp.BigQuery.Inputs.DatasetDefaultEncryptionConfigurationArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigquery Dataset Authorized Dataset
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
     ///     {
-    ///         var bqowner = new Gcp.ServiceAccount.Account("bqowner", new Gcp.ServiceAccount.AccountArgs
+    ///         AccountId = "bqowner",
+    ///     });
+    /// 
+    ///     var @public = new Gcp.BigQuery.Dataset("public", new()
+    ///     {
+    ///         DatasetId = "public",
+    ///         FriendlyName = "test",
+    ///         Description = "This dataset is public",
+    ///         Location = "EU",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         Labels = 
     ///         {
-    ///             AccountId = "bqowner",
-    ///         });
-    ///         var @public = new Gcp.BigQuery.Dataset("public", new Gcp.BigQuery.DatasetArgs
+    ///             { "env", "default" },
+    ///         },
+    ///         Accesses = new[]
     ///         {
-    ///             DatasetId = "public",
-    ///             FriendlyName = "test",
-    ///             Description = "This dataset is public",
-    ///             Location = "EU",
-    ///             DefaultTableExpirationMs = 3600000,
-    ///             Labels = 
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
-    ///                 { "env", "default" },
+    ///                 Role = "OWNER",
+    ///                 UserByEmail = bqowner.Email,
     ///             },
-    ///             Accesses = 
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///                 {
-    ///                     Role = "OWNER",
-    ///                     UserByEmail = bqowner.Email,
-    ///                 },
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///                 {
-    ///                     Role = "READER",
-    ///                     Domain = "hashicorp.com",
-    ///                 },
+    ///                 Role = "READER",
+    ///                 Domain = "hashicorp.com",
     ///             },
-    ///         });
-    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         },
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "private",
+    ///         FriendlyName = "test",
+    ///         Description = "This dataset is private",
+    ///         Location = "EU",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         Labels = 
     ///         {
-    ///             DatasetId = "private",
-    ///             FriendlyName = "test",
-    ///             Description = "This dataset is private",
-    ///             Location = "EU",
-    ///             DefaultTableExpirationMs = 3600000,
-    ///             Labels = 
+    ///             { "env", "default" },
+    ///         },
+    ///         Accesses = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
-    ///                 { "env", "default" },
+    ///                 Role = "OWNER",
+    ///                 UserByEmail = bqowner.Email,
     ///             },
-    ///             Accesses = 
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 Role = "READER",
+    ///                 Domain = "hashicorp.com",
+    ///             },
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///             {
+    ///                 Dataset = new Gcp.BigQuery.Inputs.DatasetAccessDatasetArgs
     ///                 {
-    ///                     Role = "OWNER",
-    ///                     UserByEmail = bqowner.Email,
-    ///                 },
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///                 {
-    ///                     Role = "READER",
-    ///                     Domain = "hashicorp.com",
-    ///                 },
-    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///                 {
-    ///                     Dataset = new Gcp.BigQuery.Inputs.DatasetAccessDatasetArgs
+    ///                     Dataset = new Gcp.BigQuery.Inputs.DatasetAccessDatasetDatasetArgs
     ///                     {
-    ///                         Dataset = new Gcp.BigQuery.Inputs.DatasetAccessDatasetDatasetArgs
-    ///                         {
-    ///                             ProjectId = @public.Project,
-    ///                             DatasetId = @public.DatasetId,
-    ///                         },
-    ///                         TargetTypes = 
-    ///                         {
-    ///                             "VIEWS",
-    ///                         },
+    ///                         ProjectId = @public.Project,
+    ///                         DatasetId = @public.DatasetId,
+    ///                     },
+    ///                     TargetTypes = new[]
+    ///                     {
+    ///                         "VIEWS",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -189,7 +188,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/dataset:Dataset")]
-    public partial class Dataset : Pulumi.CustomResource
+    public partial class Dataset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An array of objects that define dataset access for one or more entities.
@@ -336,7 +335,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class DatasetArgs : Pulumi.ResourceArgs
+    public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accesses")]
         private InputList<Inputs.DatasetAccessArgs>? _accesses;
@@ -430,9 +429,10 @@ namespace Pulumi.Gcp.BigQuery
         public DatasetArgs()
         {
         }
+        public static new DatasetArgs Empty => new DatasetArgs();
     }
 
-    public sealed class DatasetState : Pulumi.ResourceArgs
+    public sealed class DatasetState : global::Pulumi.ResourceArgs
     {
         [Input("accesses")]
         private InputList<Inputs.DatasetAccessGetArgs>? _accesses;
@@ -550,5 +550,6 @@ namespace Pulumi.Gcp.BigQuery
         public DatasetState()
         {
         }
+        public static new DatasetState Empty => new DatasetState();
     }
 }

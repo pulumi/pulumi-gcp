@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateNetworkPerformanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateNetworkPerformanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateNetworkPerformanceConfigArgs()
         {
         }
+        public static new InstanceTemplateNetworkPerformanceConfigArgs Empty => new InstanceTemplateNetworkPerformanceConfigArgs();
     }
 }

@@ -17,60 +17,58 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
     ///     {
-    ///         var policy = new Gcp.Compute.SecurityPolicy("policy", new Gcp.Compute.SecurityPolicyArgs
+    ///         Rules = new[]
     ///         {
-    ///             Rules = 
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///                 Action = "deny(403)",
+    ///                 Description = "Deny access to IPs in 9.9.9.0/24",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
     ///                 {
-    ///                     Action = "deny(403)",
-    ///                     Description = "Deny access to IPs in 9.9.9.0/24",
-    ///                     Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
     ///                     {
-    ///                         Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                         SrcIpRanges = new[]
     ///                         {
-    ///                             SrcIpRanges = 
-    ///                             {
-    ///                                 "9.9.9.0/24",
-    ///                             },
+    ///                             "9.9.9.0/24",
     ///                         },
-    ///                         VersionedExpr = "SRC_IPS_V1",
     ///                     },
-    ///                     Priority = 1000,
+    ///                     VersionedExpr = "SRC_IPS_V1",
     ///                 },
-    ///                 new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
-    ///                 {
-    ///                     Action = "allow",
-    ///                     Description = "default rule",
-    ///                     Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
-    ///                     {
-    ///                         Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
-    ///                         {
-    ///                             SrcIpRanges = 
-    ///                             {
-    ///                                 "*",
-    ///                             },
-    ///                         },
-    ///                         VersionedExpr = "SRC_IPS_V1",
-    ///                     },
-    ///                     Priority = 2147483647,
-    ///                 },
+    ///                 Priority = 1000,
     ///             },
-    ///         });
-    ///     }
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Description = "default rule",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 2147483647,
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
-    public partial class SecurityPolicy : Pulumi.CustomResource
+    public partial class SecurityPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -173,7 +171,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SecurityPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -229,9 +227,10 @@ namespace Pulumi.Gcp.Compute
         public SecurityPolicyArgs()
         {
         }
+        public static new SecurityPolicyArgs Empty => new SecurityPolicyArgs();
     }
 
-    public sealed class SecurityPolicyState : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -299,5 +298,6 @@ namespace Pulumi.Gcp.Compute
         public SecurityPolicyState()
         {
         }
+        public static new SecurityPolicyState Empty => new SecurityPolicyState();
     }
 }

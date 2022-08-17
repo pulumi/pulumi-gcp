@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs()
         {
         }
+        public static new RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs Empty => new RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs();
     }
 }

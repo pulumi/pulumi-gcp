@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctions.Inputs
 {
 
-    public sealed class FunctionSecretEnvironmentVariableArgs : Pulumi.ResourceArgs
+    public sealed class FunctionSecretEnvironmentVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the environment variable.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
         public FunctionSecretEnvironmentVariableArgs()
         {
         }
+        public static new FunctionSecretEnvironmentVariableArgs Empty => new FunctionSecretEnvironmentVariableArgs();
     }
 }

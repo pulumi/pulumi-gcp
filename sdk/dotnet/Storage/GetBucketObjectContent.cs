@@ -26,24 +26,23 @@ namespace Pulumi.Gcp.Storage
         /// Example file object  stored within a folder.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var key = Gcp.Storage.GetBucketObjectContent.Invoke(new()
         ///     {
-        ///         var key = Output.Create(Gcp.Storage.GetBucketObjectContent.InvokeAsync(new Gcp.Storage.GetBucketObjectContentArgs
-        ///         {
-        ///             Name = "encryptedkey",
-        ///             Bucket = "keystore",
-        ///         }));
-        ///         this.Encrypted = key.Apply(key =&gt; key.Content);
-        ///     }
+        ///         Name = "encryptedkey",
+        ///         Bucket = "keystore",
+        ///     });
         /// 
-        ///     [Output("encrypted")]
-        ///     public Output&lt;string&gt; Encrypted { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["encrypted"] = key.Apply(getBucketObjectContentResult =&gt; getBucketObjectContentResult.Content),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -66,24 +65,23 @@ namespace Pulumi.Gcp.Storage
         /// Example file object  stored within a folder.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var key = Gcp.Storage.GetBucketObjectContent.Invoke(new()
         ///     {
-        ///         var key = Output.Create(Gcp.Storage.GetBucketObjectContent.InvokeAsync(new Gcp.Storage.GetBucketObjectContentArgs
-        ///         {
-        ///             Name = "encryptedkey",
-        ///             Bucket = "keystore",
-        ///         }));
-        ///         this.Encrypted = key.Apply(key =&gt; key.Content);
-        ///     }
+        ///         Name = "encryptedkey",
+        ///         Bucket = "keystore",
+        ///     });
         /// 
-        ///     [Output("encrypted")]
-        ///     public Output&lt;string&gt; Encrypted { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["encrypted"] = key.Apply(getBucketObjectContentResult =&gt; getBucketObjectContentResult.Content),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -93,7 +91,7 @@ namespace Pulumi.Gcp.Storage
     }
 
 
-    public sealed class GetBucketObjectContentArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketObjectContentArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -116,9 +114,10 @@ namespace Pulumi.Gcp.Storage
         public GetBucketObjectContentArgs()
         {
         }
+        public static new GetBucketObjectContentArgs Empty => new GetBucketObjectContentArgs();
     }
 
-    public sealed class GetBucketObjectContentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketObjectContentInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -141,6 +140,7 @@ namespace Pulumi.Gcp.Storage
         public GetBucketObjectContentInvokeArgs()
         {
         }
+        public static new GetBucketObjectContentInvokeArgs Empty => new GetBucketObjectContentInvokeArgs();
     }
 
 

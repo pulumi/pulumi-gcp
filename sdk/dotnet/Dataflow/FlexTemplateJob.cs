@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dataflow
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:dataflow/flexTemplateJob:FlexTemplateJob")]
-    public partial class FlexTemplateJob : Pulumi.CustomResource
+    public partial class FlexTemplateJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The GCS path to the Dataflow job Flex
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Dataflow
         }
     }
 
-    public sealed class FlexTemplateJobArgs : Pulumi.ResourceArgs
+    public sealed class FlexTemplateJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GCS path to the Dataflow job Flex
@@ -213,9 +213,10 @@ namespace Pulumi.Gcp.Dataflow
         public FlexTemplateJobArgs()
         {
         }
+        public static new FlexTemplateJobArgs Empty => new FlexTemplateJobArgs();
     }
 
-    public sealed class FlexTemplateJobState : Pulumi.ResourceArgs
+    public sealed class FlexTemplateJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GCS path to the Dataflow job Flex
@@ -306,5 +307,6 @@ namespace Pulumi.Gcp.Dataflow
         public FlexTemplateJobState()
         {
         }
+        public static new FlexTemplateJobState Empty => new FlexTemplateJobState();
     }
 }

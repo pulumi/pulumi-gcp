@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultDisk = new gcp.compute.Disk("default", {
- *     image: "debian-8-jessie-v20170523",
+ *     image: "debian-11-bullseye-v20220719",
  *     labels: {
  *         environment: "dev",
  *     },

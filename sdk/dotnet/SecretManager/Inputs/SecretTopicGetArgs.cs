@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretTopicGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretTopicGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretTopicGetArgs()
         {
         }
+        public static new SecretTopicGetArgs Empty => new SecretTopicGetArgs();
     }
 }

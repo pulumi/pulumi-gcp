@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigPostStepArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigPostStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigPostStepArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigPostStepArgs Empty => new PatchDeploymentPatchConfigPostStepArgs();
     }
 }

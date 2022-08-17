@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendServiceConsistentHashGetArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceConsistentHashGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hash is based on HTTP Cookie. This field describes a HTTP cookie
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendServiceConsistentHashGetArgs()
         {
         }
+        public static new BackendServiceConsistentHashGetArgs Empty => new BackendServiceConsistentHashGetArgs();
     }
 }

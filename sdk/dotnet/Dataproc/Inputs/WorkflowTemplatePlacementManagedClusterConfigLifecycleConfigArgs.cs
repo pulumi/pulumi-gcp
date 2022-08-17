@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs();
     }
 }

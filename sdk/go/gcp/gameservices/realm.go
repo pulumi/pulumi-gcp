@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+//   - [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
 // ### Game Service Realm Basic
@@ -26,40 +26,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gameservices.NewRealm(ctx, "default", &gameservices.RealmArgs{
-// 			Description: pulumi.String("one of the nine"),
-// 			Location:    pulumi.String("global"),
-// 			RealmId:     pulumi.String("tf-test-realm"),
-// 			TimeZone:    pulumi.String("EST"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gameservices.NewRealm(ctx, "default", &gameservices.RealmArgs{
+//				Description: pulumi.String("one of the nine"),
+//				Location:    pulumi.String("global"),
+//				RealmId:     pulumi.String("tf-test-realm"),
+//				TimeZone:    pulumi.String("EST"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Realm can be imported using any of these accepted formats
+// # Realm can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:gameservices/realm:Realm default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}
+//
+//	$ pulumi import gcp:gameservices/realm:Realm default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:gameservices/realm:Realm default {{project}}/{{location}}/{{realm_id}}
+//
+//	$ pulumi import gcp:gameservices/realm:Realm default {{project}}/{{location}}/{{realm_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
+//
+//	$ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
+//
 // ```
 type Realm struct {
 	pulumi.CustomResourceState
@@ -233,7 +242,7 @@ func (i *Realm) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 // RealmArrayInput is an input type that accepts RealmArray and RealmArrayOutput values.
 // You can construct a concrete instance of `RealmArrayInput` via:
 //
-//          RealmArray{ RealmArgs{...} }
+//	RealmArray{ RealmArgs{...} }
 type RealmArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +267,7 @@ func (i RealmArray) ToRealmArrayOutputWithContext(ctx context.Context) RealmArra
 // RealmMapInput is an input type that accepts RealmMap and RealmMapOutput values.
 // You can construct a concrete instance of `RealmMapInput` via:
 //
-//          RealmMap{ "key": RealmArgs{...} }
+//	RealmMap{ "key": RealmArgs{...} }
 type RealmMapInput interface {
 	pulumi.Input
 

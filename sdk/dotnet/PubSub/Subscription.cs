@@ -26,125 +26,186 @@ namespace Pulumi.Gcp.PubSub
     /// ### Pubsub Subscription Push
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
-    ///         {
-    ///             Topic = exampleTopic.Name,
-    ///             AckDeadlineSeconds = 20,
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
-    ///             {
-    ///                 PushEndpoint = "https://example.com/push",
-    ///                 Attributes = 
-    ///                 {
-    ///                     { "x-goog-version", "v1" },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
     /// 
-    /// }
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         AckDeadlineSeconds = 20,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
+    ///         {
+    ///             PushEndpoint = "https://example.com/push",
+    ///             Attributes = 
+    ///             {
+    ///                 { "x-goog-version", "v1" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Pubsub Subscription Pull
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
-    ///         {
-    ///             Topic = exampleTopic.Name,
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             MessageRetentionDuration = "1200s",
-    ///             RetainAckedMessages = true,
-    ///             AckDeadlineSeconds = 20,
-    ///             ExpirationPolicy = new Gcp.PubSub.Inputs.SubscriptionExpirationPolicyArgs
-    ///             {
-    ///                 Ttl = "300000.5s",
-    ///             },
-    ///             RetryPolicy = new Gcp.PubSub.Inputs.SubscriptionRetryPolicyArgs
-    ///             {
-    ///                 MinimumBackoff = "10s",
-    ///             },
-    ///             EnableMessageOrdering = false,
-    ///         });
-    ///     }
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
     /// 
-    /// }
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         MessageRetentionDuration = "1200s",
+    ///         RetainAckedMessages = true,
+    ///         AckDeadlineSeconds = 20,
+    ///         ExpirationPolicy = new Gcp.PubSub.Inputs.SubscriptionExpirationPolicyArgs
+    ///         {
+    ///             Ttl = "300000.5s",
+    ///         },
+    ///         RetryPolicy = new Gcp.PubSub.Inputs.SubscriptionRetryPolicyArgs
+    ///         {
+    ///             MinimumBackoff = "10s",
+    ///         },
+    ///         EnableMessageOrdering = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Pubsub Subscription Different Project
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
     ///     {
-    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///             Project = "topic-project",
-    ///         });
-    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
-    ///         {
-    ///             Project = "subscription-project",
-    ///             Topic = exampleTopic.Name,
-    ///         });
-    ///     }
+    ///         Project = "topic-project",
+    ///     });
     /// 
-    /// }
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Project = "subscription-project",
+    ///         Topic = exampleTopic.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Pubsub Subscription Dead Letter
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var exampleDeadLetter = new Gcp.PubSub.Topic("exampleDeadLetter", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
-    ///         {
-    ///             Topic = exampleTopic.Name,
-    ///             DeadLetterPolicy = new Gcp.PubSub.Inputs.SubscriptionDeadLetterPolicyArgs
-    ///             {
-    ///                 DeadLetterTopic = exampleDeadLetter.Id,
-    ///                 MaxDeliveryAttempts = 10,
-    ///             },
-    ///         });
-    ///     }
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
     /// 
-    /// }
+    ///     var exampleDeadLetter = new Gcp.PubSub.Topic("exampleDeadLetter");
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         DeadLetterPolicy = new Gcp.PubSub.Inputs.SubscriptionDeadLetterPolicyArgs
+    ///         {
+    ///             DeadLetterTopic = exampleDeadLetter.Id,
+    ///             MaxDeliveryAttempts = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Push Bq
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.metadataViewer",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var testTable = new Gcp.BigQuery.Table("testTable", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "example_table",
+    ///         DatasetId = testDataset.DatasetId,
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""data"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""The data""
+    ///   }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
+    ///         {
+    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"{project.Apply(getProjectResult =&gt; getProjectResult)}.{datasetId}.{tableId}";
+    ///             }),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             viewer,
+    ///             editor,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -164,7 +225,7 @@ namespace Pulumi.Gcp.PubSub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/subscription:Subscription")]
-    public partial class Subscription : Pulumi.CustomResource
+    public partial class Subscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This value is the maximum time after a subscriber receives a message
@@ -185,6 +246,15 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("ackDeadlineSeconds")]
         public Output<int> AckDeadlineSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        /// Either pushConfig or bigQueryConfig can be set, but not both.
+        /// If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bigqueryConfig")]
+        public Output<Outputs.SubscriptionBigqueryConfig?> BigqueryConfig { get; private set; } = null!;
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
@@ -349,7 +419,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class SubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This value is the maximum time after a subscriber receives a message
@@ -370,6 +440,15 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }
+
+        /// <summary>
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        /// Either pushConfig or bigQueryConfig can be set, but not both.
+        /// If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bigqueryConfig")]
+        public Input<Inputs.SubscriptionBigqueryConfigArgs>? BigqueryConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
@@ -499,9 +578,10 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionArgs()
         {
         }
+        public static new SubscriptionArgs Empty => new SubscriptionArgs();
     }
 
-    public sealed class SubscriptionState : Pulumi.ResourceArgs
+    public sealed class SubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This value is the maximum time after a subscriber receives a message
@@ -522,6 +602,15 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }
+
+        /// <summary>
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        /// Either pushConfig or bigQueryConfig can be set, but not both.
+        /// If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bigqueryConfig")]
+        public Input<Inputs.SubscriptionBigqueryConfigGetArgs>? BigqueryConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
@@ -651,5 +740,6 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionState()
         {
         }
+        public static new SubscriptionState Empty => new SubscriptionState();
     }
 }

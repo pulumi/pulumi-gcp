@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs : Pulumi.ResourceArgs
+    public sealed class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the guest accelerator cards exposed to
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs()
         {
         }
+        public static new ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs Empty => new ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs();
     }
 }

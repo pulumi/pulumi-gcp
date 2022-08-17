@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class NodeGroupAutoscalingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class NodeGroupAutoscalingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum size of the node group. Set to a value less than or equal
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public NodeGroupAutoscalingPolicyArgs()
         {
         }
+        public static new NodeGroupAutoscalingPolicyArgs Empty => new NodeGroupAutoscalingPolicyArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SnapshotSourceDiskEncryptionKeyArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotSourceDiskEncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The service account used for the encryption request for the given KMS key.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SnapshotSourceDiskEncryptionKeyArgs()
         {
         }
+        public static new SnapshotSourceDiskEncryptionKeyArgs Empty => new SnapshotSourceDiskEncryptionKeyArgs();
     }
 }

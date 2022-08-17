@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class InstanceShieldedInstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceShieldedInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public InstanceShieldedInstanceConfigGetArgs()
         {
         }
+        public static new InstanceShieldedInstanceConfigGetArgs Empty => new InstanceShieldedInstanceConfigGetArgs();
     }
 }

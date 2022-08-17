@@ -17,7 +17,7 @@ type RulesetMetadata struct {
 // RulesetMetadataInput is an input type that accepts RulesetMetadataArgs and RulesetMetadataOutput values.
 // You can construct a concrete instance of `RulesetMetadataInput` via:
 //
-//          RulesetMetadataArgs{...}
+//	RulesetMetadataArgs{...}
 type RulesetMetadataInput interface {
 	pulumi.Input
 
@@ -44,7 +44,7 @@ func (i RulesetMetadataArgs) ToRulesetMetadataOutputWithContext(ctx context.Cont
 // RulesetMetadataArrayInput is an input type that accepts RulesetMetadataArray and RulesetMetadataArrayOutput values.
 // You can construct a concrete instance of `RulesetMetadataArrayInput` via:
 //
-//          RulesetMetadataArray{ RulesetMetadataArgs{...} }
+//	RulesetMetadataArray{ RulesetMetadataArgs{...} }
 type RulesetMetadataArrayInput interface {
 	pulumi.Input
 
@@ -114,7 +114,7 @@ type RulesetSource struct {
 // RulesetSourceInput is an input type that accepts RulesetSourceArgs and RulesetSourceOutput values.
 // You can construct a concrete instance of `RulesetSourceInput` via:
 //
-//          RulesetSourceArgs{...}
+//	RulesetSourceArgs{...}
 type RulesetSourceInput interface {
 	pulumi.Input
 
@@ -152,11 +152,11 @@ func (i RulesetSourceArgs) ToRulesetSourcePtrOutputWithContext(ctx context.Conte
 // RulesetSourcePtrInput is an input type that accepts RulesetSourceArgs, RulesetSourcePtr and RulesetSourcePtrOutput values.
 // You can construct a concrete instance of `RulesetSourcePtrInput` via:
 //
-//          RulesetSourceArgs{...}
+//	        RulesetSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetSourcePtrInput interface {
 	pulumi.Input
 
@@ -272,7 +272,7 @@ type RulesetSourceFile struct {
 // RulesetSourceFileInput is an input type that accepts RulesetSourceFileArgs and RulesetSourceFileOutput values.
 // You can construct a concrete instance of `RulesetSourceFileInput` via:
 //
-//          RulesetSourceFileArgs{...}
+//	RulesetSourceFileArgs{...}
 type RulesetSourceFileInput interface {
 	pulumi.Input
 
@@ -304,7 +304,7 @@ func (i RulesetSourceFileArgs) ToRulesetSourceFileOutputWithContext(ctx context.
 // RulesetSourceFileArrayInput is an input type that accepts RulesetSourceFileArray and RulesetSourceFileArrayOutput values.
 // You can construct a concrete instance of `RulesetSourceFileArrayInput` via:
 //
-//          RulesetSourceFileArray{ RulesetSourceFileArgs{...} }
+//	RulesetSourceFileArray{ RulesetSourceFileArgs{...} }
 type RulesetSourceFileArrayInput interface {
 	pulumi.Input
 

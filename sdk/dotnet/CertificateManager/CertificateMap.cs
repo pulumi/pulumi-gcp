@@ -19,25 +19,23 @@ namespace Pulumi.Gcp.CertificateManager
     /// ### Certificate Manager Certificate Map Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.CertificateManager.CertificateMap("default", new()
     ///     {
-    ///         var @default = new Gcp.CertificateManager.CertificateMap("default", new Gcp.CertificateManager.CertificateMapArgs
+    ///         Description = "My acceptance test certificate map",
+    ///         Labels = 
     ///         {
-    ///             Description = "My acceptance test certificate map",
-    ///             Labels = 
-    ///             {
-    ///                 { "terraform", "true" },
-    ///                 { "acc-test", "true" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "terraform", "true" },
+    ///             { "acc-test", "true" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificatemanager/certificateMap:CertificateMap")]
-    public partial class CertificateMap : Pulumi.CustomResource
+    public partial class CertificateMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
@@ -67,7 +65,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// One or more paragraphs of text description of a certificate map entry.
+        /// A human-readable description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -149,10 +147,10 @@ namespace Pulumi.Gcp.CertificateManager
         }
     }
 
-    public sealed class CertificateMapArgs : Pulumi.ResourceArgs
+    public sealed class CertificateMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// One or more paragraphs of text description of a certificate map entry.
+        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -186,9 +184,10 @@ namespace Pulumi.Gcp.CertificateManager
         public CertificateMapArgs()
         {
         }
+        public static new CertificateMapArgs Empty => new CertificateMapArgs();
     }
 
-    public sealed class CertificateMapState : Pulumi.ResourceArgs
+    public sealed class CertificateMapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
@@ -198,7 +197,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// One or more paragraphs of text description of a certificate map entry.
+        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -251,5 +250,6 @@ namespace Pulumi.Gcp.CertificateManager
         public CertificateMapState()
         {
         }
+        public static new CertificateMapState Empty => new CertificateMapState();
     }
 }

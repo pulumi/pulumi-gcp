@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class AccessApprovalSettingsEnrolledServiceArgs : Pulumi.ResourceArgs
+    public sealed class AccessApprovalSettingsEnrolledServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Projects.Inputs
         public AccessApprovalSettingsEnrolledServiceArgs()
         {
         }
+        public static new AccessApprovalSettingsEnrolledServiceArgs Empty => new AccessApprovalSettingsEnrolledServiceArgs();
     }
 }

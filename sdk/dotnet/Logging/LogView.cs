@@ -15,29 +15,28 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// ### Basic
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
     ///     {
-    ///         var basic = new Gcp.Logging.ProjectBucketConfig("basic", new Gcp.Logging.ProjectBucketConfigArgs
-    ///         {
-    ///             Project = "my-project-name",
-    ///             Location = "global",
-    ///             RetentionDays = 30,
-    ///             BucketId = "_Default",
-    ///         });
-    ///         var primary = new Gcp.Logging.LogView("primary", new Gcp.Logging.LogViewArgs
-    ///         {
-    ///             Bucket = basic.Id,
-    ///             Description = "A logging view configured with Terraform",
-    ///             Filter = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
-    ///         });
-    ///     }
+    ///         Project = "my-project-name",
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Logging.LogView("primary", new()
+    ///     {
+    ///         Bucket = basic.Id,
+    ///         Description = "A logging view configured with Terraform",
+    ///         Filter = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +48,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/logView:LogView")]
-    public partial class LogView : Pulumi.CustomResource
+    public partial class LogView : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The bucket of the resource
@@ -143,7 +142,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class LogViewArgs : Pulumi.ResourceArgs
+    public sealed class LogViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bucket of the resource
@@ -184,9 +183,10 @@ namespace Pulumi.Gcp.Logging
         public LogViewArgs()
         {
         }
+        public static new LogViewArgs Empty => new LogViewArgs();
     }
 
-    public sealed class LogViewState : Pulumi.ResourceArgs
+    public sealed class LogViewState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bucket of the resource
@@ -239,5 +239,6 @@ namespace Pulumi.Gcp.Logging
         public LogViewState()
         {
         }
+        public static new LogViewState Empty => new LogViewState();
     }
 }

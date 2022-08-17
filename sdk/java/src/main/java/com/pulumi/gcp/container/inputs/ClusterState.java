@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterMeshCertificatesArgs;
 import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNetworkPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
@@ -660,6 +661,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="meshCertificates")
+    private @Nullable Output<ClusterMeshCertificatesArgs> meshCertificates;
+
+    /**
+     * @return Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterMeshCertificatesArgs>> meshCertificates() {
+        return Optional.ofNullable(this.meshCertificates);
+    }
+
+    /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
      * current master version--use the read-only `master_version` field to obtain that.
@@ -1241,6 +1257,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.masterAuth = $.masterAuth;
         this.masterAuthorizedNetworksConfig = $.masterAuthorizedNetworksConfig;
         this.masterVersion = $.masterVersion;
+        this.meshCertificates = $.meshCertificates;
         this.minMasterVersion = $.minMasterVersion;
         this.monitoringConfig = $.monitoringConfig;
         this.monitoringService = $.monitoringService;
@@ -2098,6 +2115,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder masterVersion(String masterVersion) {
             return masterVersion(Output.of(masterVersion));
+        }
+
+        /**
+         * @param meshCertificates Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder meshCertificates(@Nullable Output<ClusterMeshCertificatesArgs> meshCertificates) {
+            $.meshCertificates = meshCertificates;
+            return this;
+        }
+
+        /**
+         * @param meshCertificates Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder meshCertificates(ClusterMeshCertificatesArgs meshCertificates) {
+            return meshCertificates(Output.of(meshCertificates));
         }
 
         /**

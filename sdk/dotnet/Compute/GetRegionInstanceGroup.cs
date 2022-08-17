@@ -16,20 +16,18 @@ namespace Pulumi.Gcp.Compute
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @group = Gcp.Compute.GetRegionInstanceGroup.Invoke(new()
         ///     {
-        ///         var @group = Output.Create(Gcp.Compute.GetRegionInstanceGroup.InvokeAsync(new Gcp.Compute.GetRegionInstanceGroupArgs
-        ///         {
-        ///             Name = "instance-group-name",
-        ///         }));
-        ///     }
+        ///         Name = "instance-group-name",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -42,20 +40,18 @@ namespace Pulumi.Gcp.Compute
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @group = Gcp.Compute.GetRegionInstanceGroup.Invoke(new()
         ///     {
-        ///         var @group = Output.Create(Gcp.Compute.GetRegionInstanceGroup.InvokeAsync(new Gcp.Compute.GetRegionInstanceGroupArgs
-        ///         {
-        ///             Name = "instance-group-name",
-        ///         }));
-        ///     }
+        ///         Name = "instance-group-name",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
@@ -65,7 +61,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetRegionInstanceGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInstanceGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance group.  One of `name` or `self_link` must be provided.
@@ -98,9 +94,10 @@ namespace Pulumi.Gcp.Compute
         public GetRegionInstanceGroupArgs()
         {
         }
+        public static new GetRegionInstanceGroupArgs Empty => new GetRegionInstanceGroupArgs();
     }
 
-    public sealed class GetRegionInstanceGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInstanceGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance group.  One of `name` or `self_link` must be provided.
@@ -133,6 +130,7 @@ namespace Pulumi.Gcp.Compute
         public GetRegionInstanceGroupInvokeArgs()
         {
         }
+        public static new GetRegionInstanceGroupInvokeArgs Empty => new GetRegionInstanceGroupInvokeArgs();
     }
 
 

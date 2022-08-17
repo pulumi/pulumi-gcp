@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs Empty => new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeGetArgs();
     }
 }

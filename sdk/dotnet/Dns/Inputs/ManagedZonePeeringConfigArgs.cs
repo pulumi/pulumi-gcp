@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZonePeeringConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePeeringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The network with which to peer.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZonePeeringConfigArgs()
         {
         }
+        public static new ManagedZonePeeringConfigArgs Empty => new ManagedZonePeeringConfigArgs();
     }
 }

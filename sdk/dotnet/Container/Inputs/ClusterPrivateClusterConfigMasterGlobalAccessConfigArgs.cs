@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs()
         {
         }
+        public static new ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs Empty => new ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs();
     }
 }

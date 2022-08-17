@@ -36,14 +36,14 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * One or more paragraphs of text description of a certificate map entry.
+     * A human-readable description of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return One or more paragraphs of text description of a certificate map entry.
+     * @return A human-readable description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -185,7 +185,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description One or more paragraphs of text description of a certificate map entry.
+         * @param description A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description One or more paragraphs of text description of a certificate map entry.
+         * @param description A human-readable description of the resource.
          * 
          * @return builder
          * 

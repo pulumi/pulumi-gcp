@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceStatusConditionArgs : Pulumi.ResourceArgs
+    public sealed class ServiceStatusConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("message")]
         public Input<string>? Message { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceStatusConditionArgs()
         {
         }
+        public static new ServiceStatusConditionArgs Empty => new ServiceStatusConditionArgs();
     }
 }

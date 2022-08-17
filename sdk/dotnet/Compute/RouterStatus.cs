@@ -25,20 +25,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_router = Gcp.Compute.GetRouterStatus.Invoke(new()
         ///     {
-        ///         var my_router = Output.Create(Gcp.Compute.GetRouterStatus.InvokeAsync(new Gcp.Compute.GetRouterStatusArgs
-        ///         {
-        ///             Name = "myrouter",
-        ///         }));
-        ///     }
+        ///         Name = "myrouter",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -59,20 +57,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_router = Gcp.Compute.GetRouterStatus.Invoke(new()
         ///     {
-        ///         var my_router = Output.Create(Gcp.Compute.GetRouterStatus.InvokeAsync(new Gcp.Compute.GetRouterStatusArgs
-        ///         {
-        ///             Name = "myrouter",
-        ///         }));
-        ///     }
+        ///         Name = "myrouter",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -82,7 +78,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class RouterStatusArgs : Pulumi.InvokeArgs
+    public sealed class RouterStatusArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the router.
@@ -107,9 +103,10 @@ namespace Pulumi.Gcp.Compute
         public RouterStatusArgs()
         {
         }
+        public static new RouterStatusArgs Empty => new RouterStatusArgs();
     }
 
-    public sealed class RouterStatusInvokeArgs : Pulumi.InvokeArgs
+    public sealed class RouterStatusInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the router.
@@ -134,6 +131,7 @@ namespace Pulumi.Gcp.Compute
         public RouterStatusInvokeArgs()
         {
         }
+        public static new RouterStatusInvokeArgs Empty => new RouterStatusInvokeArgs();
     }
 
 

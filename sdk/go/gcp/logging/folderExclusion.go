@@ -15,7 +15,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.exclusions)
 // * How-to Guides
-//     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+//   - [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 //
 // > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.FolderSink`
 //
@@ -25,31 +25,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewFolder(ctx, "my-folder", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("My folder"),
-// 			Parent:      pulumi.String("organizations/123456"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = logging.NewFolderExclusion(ctx, "my-exclusion", &logging.FolderExclusionArgs{
-// 			Folder:      my_folder.Name,
-// 			Description: pulumi.String("Exclude GCE instance debug logs"),
-// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewFolder(ctx, "my-folder", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("My folder"),
+//				Parent:      pulumi.String("organizations/123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewFolderExclusion(ctx, "my-exclusion", &logging.FolderExclusionArgs{
+//				Folder:      my_folder.Name,
+//				Description: pulumi.String("Exclude GCE instance debug logs"),
+//				Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Folder-level logging exclusions can be imported using their URI, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+//
+//	$ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+//
 // ```
 type FolderExclusion struct {
 	pulumi.CustomResourceState
@@ -211,7 +216,7 @@ func (i *FolderExclusion) ToFolderExclusionOutputWithContext(ctx context.Context
 // FolderExclusionArrayInput is an input type that accepts FolderExclusionArray and FolderExclusionArrayOutput values.
 // You can construct a concrete instance of `FolderExclusionArrayInput` via:
 //
-//          FolderExclusionArray{ FolderExclusionArgs{...} }
+//	FolderExclusionArray{ FolderExclusionArgs{...} }
 type FolderExclusionArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +241,7 @@ func (i FolderExclusionArray) ToFolderExclusionArrayOutputWithContext(ctx contex
 // FolderExclusionMapInput is an input type that accepts FolderExclusionMap and FolderExclusionMapOutput values.
 // You can construct a concrete instance of `FolderExclusionMapInput` via:
 //
-//          FolderExclusionMap{ "key": FolderExclusionArgs{...} }
+//	FolderExclusionMap{ "key": FolderExclusionArgs{...} }
 type FolderExclusionMapInput interface {
 	pulumi.Input
 

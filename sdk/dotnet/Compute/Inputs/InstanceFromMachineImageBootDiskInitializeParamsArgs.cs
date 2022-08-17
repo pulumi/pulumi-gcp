@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageBootDiskInitializeParamsArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageBootDiskInitializeParamsArgs : global::Pulumi.ResourceArgs
     {
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageBootDiskInitializeParamsArgs()
         {
         }
+        public static new InstanceFromMachineImageBootDiskInitializeParamsArgs Empty => new InstanceFromMachineImageBootDiskInitializeParamsArgs();
     }
 }

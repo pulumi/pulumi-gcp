@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetBackendServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Backend Service.
@@ -46,9 +46,10 @@ namespace Pulumi.Gcp.Compute
         public GetBackendServiceArgs()
         {
         }
+        public static new GetBackendServiceArgs Empty => new GetBackendServiceArgs();
     }
 
-    public sealed class GetBackendServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Backend Service.
@@ -65,6 +66,7 @@ namespace Pulumi.Gcp.Compute
         public GetBackendServiceInvokeArgs()
         {
         }
+        public static new GetBackendServiceInvokeArgs Empty => new GetBackendServiceInvokeArgs();
     }
 
 

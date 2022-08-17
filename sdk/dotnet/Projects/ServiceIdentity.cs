@@ -27,31 +27,31 @@ namespace Pulumi.Gcp.Projects
     /// ### Service Identity Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var hcSa = new Gcp.Projects.ServiceIdentity("hcSa", new Gcp.Projects.ServiceIdentityArgs
-    ///         {
-    ///             Project = project.Apply(project =&gt; project.ProjectId),
-    ///             Service = "healthcare.googleapis.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var hcSaBqJobuser = new Gcp.Projects.IAMMember("hcSaBqJobuser", new Gcp.Projects.IAMMemberArgs
-    ///         {
-    ///             Project = project.Apply(project =&gt; project.ProjectId),
-    ///             Role = "roles/bigquery.jobUser",
-    ///             Member = hcSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         });
-    ///     }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    /// }
+    ///     var hcSa = new Gcp.Projects.ServiceIdentity("hcSa", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Service = "healthcare.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var hcSaBqJobuser = new Gcp.Projects.IAMMember("hcSaBqJobuser", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.jobUser",
+    ///         Member = hcSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Projects
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:projects/serviceIdentity:ServiceIdentity")]
-    public partial class ServiceIdentity : Pulumi.CustomResource
+    public partial class ServiceIdentity : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The email address of the Google managed service account.
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class ServiceIdentityArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email address of the Google managed service account.
@@ -148,9 +148,10 @@ namespace Pulumi.Gcp.Projects
         public ServiceIdentityArgs()
         {
         }
+        public static new ServiceIdentityArgs Empty => new ServiceIdentityArgs();
     }
 
-    public sealed class ServiceIdentityState : Pulumi.ResourceArgs
+    public sealed class ServiceIdentityState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email address of the Google managed service account.
@@ -174,5 +175,6 @@ namespace Pulumi.Gcp.Projects
         public ServiceIdentityState()
         {
         }
+        public static new ServiceIdentityState Empty => new ServiceIdentityState();
     }
 }

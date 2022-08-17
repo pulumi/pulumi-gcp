@@ -19,65 +19,68 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Disk Resource Policy Attachment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var disk = new Gcp.Compute.Disk("disk", new()
     ///     {
-    ///         var disk = new Gcp.Compute.Disk("disk", new Gcp.Compute.DiskArgs
+    ///         Image = "debian-cloud/debian-11",
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
+    ///     {
+    ///         SourceDisk = disk.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var ssd = new Gcp.Compute.RegionDisk("ssd", new()
+    ///     {
+    ///         ReplicaZones = new[]
     ///         {
-    ///             Image = "debian-cloud/debian-9",
-    ///             Size = 50,
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new Gcp.Compute.SnapshotArgs
+    ///             "us-central1-a",
+    ///             "us-central1-f",
+    ///         },
+    ///         Snapshot = snapdisk.Id,
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var attachment = new Gcp.Compute.RegionDiskResourcePolicyAttachment("attachment", new()
+    ///     {
+    ///         Disk = ssd.Name,
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.ResourcePolicy("policy", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
-    ///             SourceDisk = disk.Name,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var ssd = new Gcp.Compute.RegionDisk("ssd", new Gcp.Compute.RegionDiskArgs
-    ///         {
-    ///             ReplicaZones = 
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
     ///             {
-    ///                 "us-central1-a",
-    ///                 "us-central1-f",
-    ///             },
-    ///             Snapshot = snapdisk.Id,
-    ///             Size = 50,
-    ///             Type = "pd-ssd",
-    ///             Region = "us-central1",
-    ///         });
-    ///         var attachment = new Gcp.Compute.RegionDiskResourcePolicyAttachment("attachment", new Gcp.Compute.RegionDiskResourcePolicyAttachmentArgs
-    ///         {
-    ///             Disk = ssd.Name,
-    ///             Region = "us-central1",
-    ///         });
-    ///         var policy = new Gcp.Compute.ResourcePolicy("policy", new Gcp.Compute.ResourcePolicyArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
-    ///             {
-    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
     ///                 {
-    ///                     DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
-    ///                     {
-    ///                         DaysInCycle = 1,
-    ///                         StartTime = "04:00",
-    ///                     },
+    ///                     DaysInCycle = 1,
+    ///                     StartTime = "04:00",
     ///                 },
     ///             },
-    ///         });
-    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -101,7 +104,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment")]
-    public partial class RegionDiskResourcePolicyAttachment : Pulumi.CustomResource
+    public partial class RegionDiskResourcePolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the regional disk in which the resource policies are attached to.
@@ -173,7 +176,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionDiskResourcePolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class RegionDiskResourcePolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the regional disk in which the resource policies are attached to.
@@ -204,9 +207,10 @@ namespace Pulumi.Gcp.Compute
         public RegionDiskResourcePolicyAttachmentArgs()
         {
         }
+        public static new RegionDiskResourcePolicyAttachmentArgs Empty => new RegionDiskResourcePolicyAttachmentArgs();
     }
 
-    public sealed class RegionDiskResourcePolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class RegionDiskResourcePolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the regional disk in which the resource policies are attached to.
@@ -237,5 +241,6 @@ namespace Pulumi.Gcp.Compute
         public RegionDiskResourcePolicyAttachmentState()
         {
         }
+        public static new RegionDiskResourcePolicyAttachmentState Empty => new RegionDiskResourcePolicyAttachmentState();
     }
 }

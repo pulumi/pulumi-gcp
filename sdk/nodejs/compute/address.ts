@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *
  * const static = new gcp.compute.Address("static", {});
  * const debianImage = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const instanceWithIp = new gcp.compute.Instance("instanceWithIp", {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dayOfWeeks", required: true)]
         private InputList<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekGetArgs>? _dayOfWeeks;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs Empty => new ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs();
     }
 }

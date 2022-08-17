@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class ApiKeyRestrictionsArgs : Pulumi.ResourceArgs
+    public sealed class ApiKeyRestrictionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Android apps that are allowed to use the key.
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.Projects.Inputs
         public ApiKeyRestrictionsArgs()
         {
         }
+        public static new ApiKeyRestrictionsArgs Empty => new ApiKeyRestrictionsArgs();
     }
 }

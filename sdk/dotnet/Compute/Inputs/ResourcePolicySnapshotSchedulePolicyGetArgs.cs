@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Retention policy applied to snapshots created by this resource policy.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicyGetArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyGetArgs Empty => new ResourcePolicySnapshotSchedulePolicyGetArgs();
     }
 }

@@ -530,7 +530,7 @@ class PatchDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.Instance("foobar",
             machine_type="e2-medium",
@@ -809,7 +809,7 @@ class PatchDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.Instance("foobar",
             machine_type="e2-medium",

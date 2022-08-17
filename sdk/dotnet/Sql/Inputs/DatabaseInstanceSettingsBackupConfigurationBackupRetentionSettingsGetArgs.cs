@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs()
         {
         }
+        public static new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs Empty => new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs();
     }
 }

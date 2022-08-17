@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iot.Inputs
 {
 
-    public sealed class RegistryEventNotificationConfigItemGetArgs : Pulumi.ResourceArgs
+    public sealed class RegistryEventNotificationConfigItemGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PubSub topic name to publish device events.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Iot.Inputs
         public RegistryEventNotificationConfigItemGetArgs()
         {
         }
+        public static new RegistryEventNotificationConfigItemGetArgs Empty => new RegistryEventNotificationConfigItemGetArgs();
     }
 }

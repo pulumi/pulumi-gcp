@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIssuancePolicyAllowedKeyTypeGetArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIssuancePolicyAllowedKeyTypeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents an allowed Elliptic Curve key type.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIssuancePolicyAllowedKeyTypeGetArgs()
         {
         }
+        public static new CaPoolIssuancePolicyAllowedKeyTypeGetArgs Empty => new CaPoolIssuancePolicyAllowedKeyTypeGetArgs();
     }
 }

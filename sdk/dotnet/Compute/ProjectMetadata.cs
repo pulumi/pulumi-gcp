@@ -23,52 +23,48 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.ProjectMetadata("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.ProjectMetadata("default", new Gcp.Compute.ProjectMetadataArgs
+    ///         Metadata = 
     ///         {
-    ///             Metadata = 
-    ///             {
-    ///                 { "13", "42" },
-    ///                 { "fizz", "buzz" },
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "13", "42" },
+    ///             { "fizz", "buzz" },
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Adding An SSH Key
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     //A key set in project metadata is propagated to every instance in the project.
+    ///     //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
+    ///     //It is better to use OS Login instead.
+    ///     var mySshKey = new Gcp.Compute.ProjectMetadata("mySshKey", new()
     ///     {
-    ///         //A key set in project metadata is propagated to every instance in the project.
-    ///         //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
-    ///         //It is better to use OS Login instead.
-    ///         var mySshKey = new Gcp.Compute.ProjectMetadata("mySshKey", new Gcp.Compute.ProjectMetadataArgs
+    ///         Metadata = 
     ///         {
-    ///             Metadata = 
-    ///             {
-    ///                 { "ssh-keys", @"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
+    ///             { "ssh-keys", @"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
     ///       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
     ///     
     /// " },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/projectMetadata:ProjectMetadata")]
-    public partial class ProjectMetadata : Pulumi.CustomResource
+    public partial class ProjectMetadata : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A series of key value pairs.
@@ -139,7 +135,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ProjectMetadataArgs : Pulumi.ResourceArgs
+    public sealed class ProjectMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("metadata", required: true)]
         private InputMap<string>? _metadata;
@@ -163,9 +159,10 @@ namespace Pulumi.Gcp.Compute
         public ProjectMetadataArgs()
         {
         }
+        public static new ProjectMetadataArgs Empty => new ProjectMetadataArgs();
     }
 
-    public sealed class ProjectMetadataState : Pulumi.ResourceArgs
+    public sealed class ProjectMetadataState : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
         private InputMap<string>? _metadata;
@@ -189,5 +186,6 @@ namespace Pulumi.Gcp.Compute
         public ProjectMetadataState()
         {
         }
+        public static new ProjectMetadataState Empty => new ProjectMetadataState();
     }
 }

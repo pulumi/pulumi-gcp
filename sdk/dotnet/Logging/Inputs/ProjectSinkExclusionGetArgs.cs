@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class ProjectSinkExclusionGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectSinkExclusionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of this exclusion.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public ProjectSinkExclusionGetArgs()
         {
         }
+        public static new ProjectSinkExclusionGetArgs Empty => new ProjectSinkExclusionGetArgs();
     }
 }

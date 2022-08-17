@@ -22,49 +22,48 @@ namespace Pulumi.Gcp.CloudRun
     /// ### Cloud Run Domain Mapping Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultService = new Gcp.CloudRun.Service("defaultService", new()
     ///     {
-    ///         var defaultService = new Gcp.CloudRun.Service("defaultService", new Gcp.CloudRun.ServiceArgs
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
     ///         {
-    ///             Location = "us-central1",
-    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             Namespace = "my-project-name",
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
     ///             {
-    ///                 Namespace = "my-project-name",
-    ///             },
-    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
-    ///             {
-    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 Containers = new[]
     ///                 {
-    ///                     Containers = 
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                     {
-    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
-    ///                         {
-    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
-    ///                         },
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///         var defaultDomainMapping = new Gcp.CloudRun.DomainMapping("defaultDomainMapping", new Gcp.CloudRun.DomainMappingArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Metadata = new Gcp.CloudRun.Inputs.DomainMappingMetadataArgs
-    ///             {
-    ///                 Namespace = "my-project-name",
-    ///             },
-    ///             Spec = new Gcp.CloudRun.Inputs.DomainMappingSpecArgs
-    ///             {
-    ///                 RouteName = defaultService.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var defaultDomainMapping = new Gcp.CloudRun.DomainMapping("defaultDomainMapping", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.DomainMappingMetadataArgs
+    ///         {
+    ///             Namespace = "my-project-name",
+    ///         },
+    ///         Spec = new Gcp.CloudRun.Inputs.DomainMappingSpecArgs
+    ///         {
+    ///             RouteName = defaultService.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +83,7 @@ namespace Pulumi.Gcp.CloudRun
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudrun/domainMapping:DomainMapping")]
-    public partial class DomainMapping : Pulumi.CustomResource
+    public partial class DomainMapping : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
@@ -169,7 +168,7 @@ namespace Pulumi.Gcp.CloudRun
         }
     }
 
-    public sealed class DomainMappingArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
@@ -207,9 +206,10 @@ namespace Pulumi.Gcp.CloudRun
         public DomainMappingArgs()
         {
         }
+        public static new DomainMappingArgs Empty => new DomainMappingArgs();
     }
 
-    public sealed class DomainMappingState : Pulumi.ResourceArgs
+    public sealed class DomainMappingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
@@ -259,5 +259,6 @@ namespace Pulumi.Gcp.CloudRun
         public DomainMappingState()
         {
         }
+        public static new DomainMappingState Empty => new DomainMappingState();
     }
 }

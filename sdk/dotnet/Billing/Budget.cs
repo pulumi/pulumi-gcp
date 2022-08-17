@@ -28,276 +28,276 @@ namespace Pulumi.Gcp.Billing
     /// ### Billing Budget Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var account = Gcp.Organizations.GetBillingAccount.Invoke(new()
     ///     {
-    ///         var account = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-    ///         {
-    ///             BillingAccount = "000000-0000000-0000000-000000",
-    ///         }));
-    ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
-    ///         {
-    ///             BillingAccount = account.Apply(account =&gt; account.Id),
-    ///             DisplayName = "Example Billing Budget",
-    ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
-    ///             {
-    ///                 SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
-    ///                 {
-    ///                     CurrencyCode = "USD",
-    ///                     Units = "100000",
-    ///                 },
-    ///             },
-    ///             ThresholdRules = 
-    ///             {
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 0.5,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
     /// 
-    /// }
+    ///     var budget = new Gcp.Billing.Budget("budget", new()
+    ///     {
+    ///         BillingAccount = account.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+    ///         DisplayName = "Example Billing Budget",
+    ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///         {
+    ///             SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
+    ///             {
+    ///                 CurrencyCode = "USD",
+    ///                 Units = "100000",
+    ///             },
+    ///         },
+    ///         ThresholdRules = new[]
+    ///         {
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 0.5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Billing Budget Lastperiod
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var account = Gcp.Organizations.GetBillingAccount.Invoke(new()
     ///     {
-    ///         var account = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-    ///         {
-    ///             BillingAccount = "000000-0000000-0000000-000000",
-    ///         }));
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
-    ///         {
-    ///             BillingAccount = account.Apply(account =&gt; account.Id),
-    ///             DisplayName = "Example Billing Budget",
-    ///             BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
-    ///             {
-    ///                 Projects = 
-    ///                 {
-    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
-    ///                 },
-    ///             },
-    ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
-    ///             {
-    ///                 LastPeriodAmount = true,
-    ///             },
-    ///             ThresholdRules = 
-    ///             {
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
     /// 
-    /// }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var budget = new Gcp.Billing.Budget("budget", new()
+    ///     {
+    ///         BillingAccount = account.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+    ///         DisplayName = "Example Billing Budget",
+    ///         BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
+    ///         {
+    ///             Projects = new[]
+    ///             {
+    ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///             },
+    ///         },
+    ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///         {
+    ///             LastPeriodAmount = true,
+    ///         },
+    ///         ThresholdRules = new[]
+    ///         {
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Billing Budget Filter
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var account = Gcp.Organizations.GetBillingAccount.Invoke(new()
     ///     {
-    ///         var account = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-    ///         {
-    ///             BillingAccount = "000000-0000000-0000000-000000",
-    ///         }));
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
-    ///         {
-    ///             BillingAccount = account.Apply(account =&gt; account.Id),
-    ///             DisplayName = "Example Billing Budget",
-    ///             BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
-    ///             {
-    ///                 Projects = 
-    ///                 {
-    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
-    ///                 },
-    ///                 CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
-    ///                 Services = 
-    ///                 {
-    ///                     "services/24E6-581D-38E5",
-    ///                 },
-    ///             },
-    ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
-    ///             {
-    ///                 SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
-    ///                 {
-    ///                     CurrencyCode = "USD",
-    ///                     Units = "100000",
-    ///                 },
-    ///             },
-    ///             ThresholdRules = 
-    ///             {
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 0.5,
-    ///                 },
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 0.9,
-    ///                     SpendBasis = "FORECASTED_SPEND",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
     /// 
-    /// }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var budget = new Gcp.Billing.Budget("budget", new()
+    ///     {
+    ///         BillingAccount = account.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+    ///         DisplayName = "Example Billing Budget",
+    ///         BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
+    ///         {
+    ///             Projects = new[]
+    ///             {
+    ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///             },
+    ///             CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
+    ///             Services = new[]
+    ///             {
+    ///                 "services/24E6-581D-38E5",
+    ///             },
+    ///         },
+    ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///         {
+    ///             SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
+    ///             {
+    ///                 CurrencyCode = "USD",
+    ///                 Units = "100000",
+    ///             },
+    ///         },
+    ///         ThresholdRules = new[]
+    ///         {
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 0.5,
+    ///             },
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 0.9,
+    ///                 SpendBasis = "FORECASTED_SPEND",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Billing Budget Notify
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var account = Gcp.Organizations.GetBillingAccount.Invoke(new()
     ///     {
-    ///         var account = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-    ///         {
-    ///             BillingAccount = "000000-0000000-0000000-000000",
-    ///         }));
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var notificationChannel = new Gcp.Monitoring.NotificationChannel("notificationChannel", new Gcp.Monitoring.NotificationChannelArgs
-    ///         {
-    ///             DisplayName = "Example Notification Channel",
-    ///             Type = "email",
-    ///             Labels = 
-    ///             {
-    ///                 { "email_address", "address@example.com" },
-    ///             },
-    ///         });
-    ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
-    ///         {
-    ///             BillingAccount = account.Apply(account =&gt; account.Id),
-    ///             DisplayName = "Example Billing Budget",
-    ///             BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
-    ///             {
-    ///                 Projects = 
-    ///                 {
-    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
-    ///                 },
-    ///             },
-    ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
-    ///             {
-    ///                 SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
-    ///                 {
-    ///                     CurrencyCode = "USD",
-    ///                     Units = "100000",
-    ///                 },
-    ///             },
-    ///             ThresholdRules = 
-    ///             {
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 1,
-    ///                 },
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 1,
-    ///                     SpendBasis = "FORECASTED_SPEND",
-    ///                 },
-    ///             },
-    ///             AllUpdatesRule = new Gcp.Billing.Inputs.BudgetAllUpdatesRuleArgs
-    ///             {
-    ///                 MonitoringNotificationChannels = 
-    ///                 {
-    ///                     notificationChannel.Id,
-    ///                 },
-    ///                 DisableDefaultIamRecipients = true,
-    ///             },
-    ///         });
-    ///     }
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
     /// 
-    /// }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var notificationChannel = new Gcp.Monitoring.NotificationChannel("notificationChannel", new()
+    ///     {
+    ///         DisplayName = "Example Notification Channel",
+    ///         Type = "email",
+    ///         Labels = 
+    ///         {
+    ///             { "email_address", "address@example.com" },
+    ///         },
+    ///     });
+    /// 
+    ///     var budget = new Gcp.Billing.Budget("budget", new()
+    ///     {
+    ///         BillingAccount = account.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+    ///         DisplayName = "Example Billing Budget",
+    ///         BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
+    ///         {
+    ///             Projects = new[]
+    ///             {
+    ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///             },
+    ///         },
+    ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///         {
+    ///             SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
+    ///             {
+    ///                 CurrencyCode = "USD",
+    ///                 Units = "100000",
+    ///             },
+    ///         },
+    ///         ThresholdRules = new[]
+    ///         {
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 1,
+    ///             },
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 1,
+    ///                 SpendBasis = "FORECASTED_SPEND",
+    ///             },
+    ///         },
+    ///         AllUpdatesRule = new Gcp.Billing.Inputs.BudgetAllUpdatesRuleArgs
+    ///         {
+    ///             MonitoringNotificationChannels = new[]
+    ///             {
+    ///                 notificationChannel.Id,
+    ///             },
+    ///             DisableDefaultIamRecipients = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Billing Budget Customperiod
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var account = Gcp.Organizations.GetBillingAccount.Invoke(new()
     ///     {
-    ///         var account = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
-    ///         {
-    ///             BillingAccount = "000000-0000000-0000000-000000",
-    ///         }));
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
-    ///         {
-    ///             BillingAccount = account.Apply(account =&gt; account.Id),
-    ///             DisplayName = "Example Billing Budget",
-    ///             BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
-    ///             {
-    ///                 Projects = 
-    ///                 {
-    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
-    ///                 },
-    ///                 CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
-    ///                 Services = 
-    ///                 {
-    ///                     "services/24E6-581D-38E5",
-    ///                 },
-    ///                 CustomPeriod = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodArgs
-    ///                 {
-    ///                     StartDate = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodStartDateArgs
-    ///                     {
-    ///                         Year = 2022,
-    ///                         Month = 1,
-    ///                         Day = 1,
-    ///                     },
-    ///                     EndDate = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodEndDateArgs
-    ///                     {
-    ///                         Year = 2023,
-    ///                         Month = 12,
-    ///                         Day = 31,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
-    ///             {
-    ///                 SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
-    ///                 {
-    ///                     CurrencyCode = "USD",
-    ///                     Units = "100000",
-    ///                 },
-    ///             },
-    ///             ThresholdRules = 
-    ///             {
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 0.5,
-    ///                 },
-    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
-    ///                 {
-    ///                     ThresholdPercent = 0.9,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
     /// 
-    /// }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var budget = new Gcp.Billing.Budget("budget", new()
+    ///     {
+    ///         BillingAccount = account.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+    ///         DisplayName = "Example Billing Budget",
+    ///         BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
+    ///         {
+    ///             Projects = new[]
+    ///             {
+    ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///             },
+    ///             CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
+    ///             Services = new[]
+    ///             {
+    ///                 "services/24E6-581D-38E5",
+    ///             },
+    ///             CustomPeriod = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodArgs
+    ///             {
+    ///                 StartDate = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodStartDateArgs
+    ///                 {
+    ///                     Year = 2022,
+    ///                     Month = 1,
+    ///                     Day = 1,
+    ///                 },
+    ///                 EndDate = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodEndDateArgs
+    ///                 {
+    ///                     Year = 2023,
+    ///                     Month = 12,
+    ///                     Day = 31,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///         {
+    ///             SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
+    ///             {
+    ///                 CurrencyCode = "USD",
+    ///                 Units = "100000",
+    ///             },
+    ///         },
+    ///         ThresholdRules = new[]
+    ///         {
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 0.5,
+    ///             },
+    ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///             {
+    ///                 ThresholdPercent = 0.9,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.Billing
     /// ```
     /// </summary>
     [GcpResourceType("gcp:billing/budget:Budget")]
-    public partial class Budget : Pulumi.CustomResource
+    public partial class Budget : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Defines notifications that are sent on every update to the
@@ -415,7 +415,7 @@ namespace Pulumi.Gcp.Billing
         }
     }
 
-    public sealed class BudgetArgs : Pulumi.ResourceArgs
+    public sealed class BudgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines notifications that are sent on every update to the
@@ -471,9 +471,10 @@ namespace Pulumi.Gcp.Billing
         public BudgetArgs()
         {
         }
+        public static new BudgetArgs Empty => new BudgetArgs();
     }
 
-    public sealed class BudgetState : Pulumi.ResourceArgs
+    public sealed class BudgetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines notifications that are sent on every update to the
@@ -536,5 +537,6 @@ namespace Pulumi.Gcp.Billing
         public BudgetState()
         {
         }
+        public static new BudgetState Empty => new BudgetState();
     }
 }

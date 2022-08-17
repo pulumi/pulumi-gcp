@@ -23,7 +23,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
+//   - [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 //
 // ## Example Usage
 // ### App Engine Flexible App Version
@@ -32,132 +32,141 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-// 			ProjectId:      pulumi.String("appeng-flex"),
-// 			OrgId:          pulumi.String("123456789"),
-// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
-// 			Project:    myProject.ProjectId,
-// 			LocationId: pulumi.String("us-central"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		service, err := projects.NewService(ctx, "service", &projects.ServiceArgs{
-// 			Project:                  myProject.ProjectId,
-// 			Service:                  pulumi.String("appengineflex.googleapis.com"),
-// 			DisableDependentServices: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		gaeApi, err := projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
-// 			Project: service.Project,
-// 			Role:    pulumi.String("roles/compute.networkUser"),
-// 			Member: myProject.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("serviceAccount:service-%v@gae-api-prod.google.com.iam.gserviceaccount.com", number), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-// 			Project:  myProject.ProjectId,
-// 			Location: pulumi.String("US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-// 			Bucket: bucket.Name,
-// 			Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = appengine.NewFlexibleAppVersion(ctx, "myappV1", &appengine.FlexibleAppVersionArgs{
-// 			VersionId: pulumi.String("v1"),
-// 			Project:   gaeApi.Project,
-// 			Service:   pulumi.String("default"),
-// 			Runtime:   pulumi.String("nodejs"),
-// 			Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
-// 				Shell: pulumi.String("node ./app.js"),
-// 			},
-// 			Deployment: &appengine.FlexibleAppVersionDeploymentArgs{
-// 				Zip: &appengine.FlexibleAppVersionDeploymentZipArgs{
-// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
-// 						bucketName := _args[0].(string)
-// 						objectName := _args[1].(string)
-// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
-// 					}).(pulumi.StringOutput),
-// 				},
-// 			},
-// 			LivenessCheck: &appengine.FlexibleAppVersionLivenessCheckArgs{
-// 				Path: pulumi.String("/"),
-// 			},
-// 			ReadinessCheck: &appengine.FlexibleAppVersionReadinessCheckArgs{
-// 				Path: pulumi.String("/"),
-// 			},
-// 			EnvVariables: pulumi.StringMap{
-// 				"port": pulumi.String("8080"),
-// 			},
-// 			Handlers: appengine.FlexibleAppVersionHandlerArray{
-// 				&appengine.FlexibleAppVersionHandlerArgs{
-// 					UrlRegex:       pulumi.String(".*\\/my-path\\/*"),
-// 					SecurityLevel:  pulumi.String("SECURE_ALWAYS"),
-// 					Login:          pulumi.String("LOGIN_REQUIRED"),
-// 					AuthFailAction: pulumi.String("AUTH_FAIL_ACTION_REDIRECT"),
-// 					StaticFiles: &appengine.FlexibleAppVersionHandlerStaticFilesArgs{
-// 						Path:            pulumi.String("my-other-path"),
-// 						UploadPathRegex: pulumi.String(".*\\/my-path\\/*"),
-// 					},
-// 				},
-// 			},
-// 			AutomaticScaling: &appengine.FlexibleAppVersionAutomaticScalingArgs{
-// 				CoolDownPeriod: pulumi.String("120s"),
-// 				CpuUtilization: &appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{
-// 					TargetUtilization: pulumi.Float64(0.5),
-// 				},
-// 			},
-// 			NoopOnDestroy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("appeng-flex"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
+//				Project:    myProject.ProjectId,
+//				LocationId: pulumi.String("us-central"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			service, err := projects.NewService(ctx, "service", &projects.ServiceArgs{
+//				Project:                  myProject.ProjectId,
+//				Service:                  pulumi.String("appengineflex.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gaeApi, err := projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
+//				Project: service.Project,
+//				Role:    pulumi.String("roles/compute.networkUser"),
+//				Member: myProject.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:service-%v@gae-api-prod.google.com.iam.gserviceaccount.com", number), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Project:  myProject.ProjectId,
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = appengine.NewFlexibleAppVersion(ctx, "myappV1", &appengine.FlexibleAppVersionArgs{
+//				VersionId: pulumi.String("v1"),
+//				Project:   gaeApi.Project,
+//				Service:   pulumi.String("default"),
+//				Runtime:   pulumi.String("nodejs"),
+//				Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
+//					Shell: pulumi.String("node ./app.js"),
+//				},
+//				Deployment: &appengine.FlexibleAppVersionDeploymentArgs{
+//					Zip: &appengine.FlexibleAppVersionDeploymentZipArgs{
+//						SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							bucketName := _args[0].(string)
+//							objectName := _args[1].(string)
+//							return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//				LivenessCheck: &appengine.FlexibleAppVersionLivenessCheckArgs{
+//					Path: pulumi.String("/"),
+//				},
+//				ReadinessCheck: &appengine.FlexibleAppVersionReadinessCheckArgs{
+//					Path: pulumi.String("/"),
+//				},
+//				EnvVariables: pulumi.StringMap{
+//					"port": pulumi.String("8080"),
+//				},
+//				Handlers: appengine.FlexibleAppVersionHandlerArray{
+//					&appengine.FlexibleAppVersionHandlerArgs{
+//						UrlRegex:       pulumi.String(".*\\/my-path\\/*"),
+//						SecurityLevel:  pulumi.String("SECURE_ALWAYS"),
+//						Login:          pulumi.String("LOGIN_REQUIRED"),
+//						AuthFailAction: pulumi.String("AUTH_FAIL_ACTION_REDIRECT"),
+//						StaticFiles: &appengine.FlexibleAppVersionHandlerStaticFilesArgs{
+//							Path:            pulumi.String("my-other-path"),
+//							UploadPathRegex: pulumi.String(".*\\/my-path\\/*"),
+//						},
+//					},
+//				},
+//				AutomaticScaling: &appengine.FlexibleAppVersionAutomaticScalingArgs{
+//					CoolDownPeriod: pulumi.String("120s"),
+//					CpuUtilization: &appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{
+//						TargetUtilization: pulumi.Float64(0.5),
+//					},
+//				},
+//				NoopOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// FlexibleAppVersion can be imported using any of these accepted formats
+// # FlexibleAppVersion can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+//
+//	$ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
+//
+//	$ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
+//
+//	$ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
+//
 // ```
 type FlexibleAppVersion struct {
 	pulumi.CustomResourceState
@@ -653,7 +662,7 @@ func (i *FlexibleAppVersion) ToFlexibleAppVersionOutputWithContext(ctx context.C
 // FlexibleAppVersionArrayInput is an input type that accepts FlexibleAppVersionArray and FlexibleAppVersionArrayOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionArrayInput` via:
 //
-//          FlexibleAppVersionArray{ FlexibleAppVersionArgs{...} }
+//	FlexibleAppVersionArray{ FlexibleAppVersionArgs{...} }
 type FlexibleAppVersionArrayInput interface {
 	pulumi.Input
 
@@ -678,7 +687,7 @@ func (i FlexibleAppVersionArray) ToFlexibleAppVersionArrayOutputWithContext(ctx 
 // FlexibleAppVersionMapInput is an input type that accepts FlexibleAppVersionMap and FlexibleAppVersionMapOutput values.
 // You can construct a concrete instance of `FlexibleAppVersionMapInput` via:
 //
-//          FlexibleAppVersionMap{ "key": FlexibleAppVersionArgs{...} }
+//	FlexibleAppVersionMap{ "key": FlexibleAppVersionArgs{...} }
 type FlexibleAppVersionMapInput interface {
 	pulumi.Input
 

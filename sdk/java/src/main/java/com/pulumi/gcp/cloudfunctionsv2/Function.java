@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ### Cloudfunctions2 Basic
+ * ### Cloudfunctions2 Basic Gcs
  * ```java
  * package generated_program;
  * 
@@ -31,81 +31,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.gcp.cloudfunctionsv2.Function;
- * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
- * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
- * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
- * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
- * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import com.pulumi.asset.FileAsset;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .location(&#34;US&#34;)
- *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;path/to/index.zip&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var terraform_test2 = new Function(&#34;terraform-test2&#34;, FunctionArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;a new function&#34;)
- *             .buildConfig(FunctionBuildConfigArgs.builder()
- *                 .runtime(&#34;nodejs16&#34;)
- *                 .entryPoint(&#34;helloHttp&#34;)
- *                 .source(FunctionBuildConfigSourceArgs.builder()
- *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
- *                         .bucket(bucket.name())
- *                         .object(object.name())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .serviceConfig(FunctionServiceConfigArgs.builder()
- *                 .maxInstanceCount(1)
- *                 .availableMemory(&#34;256M&#34;)
- *                 .timeoutSeconds(60)
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
- * ### Cloudfunctions2 Full
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.StorageFunctions;
+ * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.storage.Bucket;
- * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.BucketObject;
- * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
@@ -128,18 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;s-a&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var sub = new Topic(&#34;sub&#34;, TopicArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
- *             .build());
- * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *         var source_bucket = new Bucket(&#34;source-bucket&#34;, BucketArgs.builder()        
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .build(), CustomResourceOptions.builder()
@@ -147,22 +67,70 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
- *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;path/to/index.zip&#34;))
+ *             .bucket(source_bucket.name())
+ *             .source(new FileAsset(&#34;function-source.zip&#34;))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
  * 
- *         var terraform_test = new Function(&#34;terraform-test&#34;, FunctionArgs.builder()        
+ *         var trigger_bucket = new Bucket(&#34;trigger-bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+ * 
+ *         var gcs_pubsub_publishing = new IAMMember(&#34;gcs-pubsub-publishing&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/pubsub.publisher&#34;)
+ *             .member(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;test-sa&#34;)
+ *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/run.invoker&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/eventarc.eventReceiver&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/artifactregistry.reader&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;a new function&#34;)
  *             .buildConfig(FunctionBuildConfigArgs.builder()
- *                 .runtime(&#34;nodejs16&#34;)
- *                 .entryPoint(&#34;helloPubSub&#34;)
+ *                 .runtime(&#34;nodejs12&#34;)
+ *                 .entryPoint(&#34;entryPoint&#34;)
  *                 .environmentVariables(Map.of(&#34;BUILD_CONFIG_TEST&#34;, &#34;build_test&#34;))
  *                 .source(FunctionBuildConfigSourceArgs.builder()
  *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
- *                         .bucket(bucket.name())
+ *                         .bucket(source_bucket.name())
  *                         .object(object.name())
  *                         .build())
  *                     .build())
@@ -179,13 +147,162 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .eventTrigger(FunctionEventTriggerArgs.builder()
  *                 .triggerRegion(&#34;us-central1&#34;)
- *                 .eventType(&#34;google.cloud.pubsub.topic.v1.messagePublished&#34;)
- *                 .pubsubTopic(sub.id())
+ *                 .eventType(&#34;google.cloud.storage.object.v1.finalized&#34;)
  *                 .retryPolicy(&#34;RETRY_POLICY_RETRY&#34;)
  *                 .serviceAccountEmail(account.email())
+ *                 .eventFilters(FunctionEventTriggerEventFilterArgs.builder()
+ *                     .attribute(&#34;bucket&#34;)
+ *                     .value(trigger_bucket.name())
+ *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
+ *                 .dependsOn(                
+ *                     event_receiving,
+ *                     artifactregistry_reader)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudfunctions2 Basic Auditlogs
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var source_bucket = new Bucket(&#34;source-bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .bucket(source_bucket.name())
+ *             .source(new FileAsset(&#34;function-source.zip&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;gcf-sa&#34;)
+ *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var audit_log_bucket = new Bucket(&#34;audit-log-bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/run.invoker&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/eventarc.eventReceiver&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .role(&#34;roles/artifactregistry.reader&#34;)
+ *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;a new function&#34;)
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime(&#34;nodejs12&#34;)
+ *                 .entryPoint(&#34;entryPoint&#34;)
+ *                 .environmentVariables(Map.of(&#34;BUILD_CONFIG_TEST&#34;, &#34;build_test&#34;))
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(source_bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(3)
+ *                 .minInstanceCount(1)
+ *                 .availableMemory(&#34;256M&#34;)
+ *                 .timeoutSeconds(60)
+ *                 .environmentVariables(Map.of(&#34;SERVICE_CONFIG_TEST&#34;, &#34;config_test&#34;))
+ *                 .ingressSettings(&#34;ALLOW_INTERNAL_ONLY&#34;)
+ *                 .allTrafficOnLatestRevision(true)
+ *                 .serviceAccountEmail(account.email())
+ *                 .build())
+ *             .eventTrigger(FunctionEventTriggerArgs.builder()
+ *                 .triggerRegion(&#34;us-central1&#34;)
+ *                 .eventType(&#34;google.cloud.audit.log.v1.written&#34;)
+ *                 .retryPolicy(&#34;RETRY_POLICY_RETRY&#34;)
+ *                 .serviceAccountEmail(account.email())
+ *                 .eventFilters(                
+ *                     FunctionEventTriggerEventFilterArgs.builder()
+ *                         .attribute(&#34;serviceName&#34;)
+ *                         .value(&#34;storage.googleapis.com&#34;)
+ *                         .build(),
+ *                     FunctionEventTriggerEventFilterArgs.builder()
+ *                         .attribute(&#34;methodName&#34;)
+ *                         .value(&#34;storage.objects.create&#34;)
+ *                         .build(),
+ *                     FunctionEventTriggerEventFilterArgs.builder()
+ *                         .attribute(&#34;resourceName&#34;)
+ *                         .value(audit_log_bucket.name().applyValue(name -&gt; String.format(&#34;/projects/_/buckets/%s/objects/*.txt&#34;, name)))
+ *                         .operator(&#34;match-path-pattern&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(                
+ *                     event_receiving,
+ *                     artifactregistry_reader)
  *                 .build());
  * 
  *     }

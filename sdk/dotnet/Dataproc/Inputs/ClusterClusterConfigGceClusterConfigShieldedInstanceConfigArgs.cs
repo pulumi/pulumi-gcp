@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether instances have integrity monitoring enabled.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs()
         {
         }
+        public static new ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs Empty => new ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs();
     }
 }

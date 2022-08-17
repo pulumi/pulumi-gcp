@@ -17,23 +17,21 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var name = new Gcp.ServiceNetworking.PeeredDnsDomain("name", new()
     ///     {
-    ///         var name = new Gcp.ServiceNetworking.PeeredDnsDomain("name", new Gcp.ServiceNetworking.PeeredDnsDomainArgs
-    ///         {
-    ///             DnsSuffix = "example.com.",
-    ///             Network = "default",
-    ///             Project = "10000000",
-    ///             Service = "peering-service",
-    ///         });
-    ///     }
+    ///         DnsSuffix = "example.com.",
+    ///         Network = "default",
+    ///         Project = "10000000",
+    ///         Service = "peering-service",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///  Where- `service` is the service connection, defaults to `servicenetworking.googleapis.com`. - `project` is the producer project name. - `network` is the consumer network name. - `name` is the name of your peered DNS domain.
     /// </summary>
     [GcpResourceType("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain")]
-    public partial class PeeredDnsDomain : Pulumi.CustomResource
+    public partial class PeeredDnsDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
@@ -129,7 +127,7 @@ namespace Pulumi.Gcp.ServiceNetworking
         }
     }
 
-    public sealed class PeeredDnsDomainArgs : Pulumi.ResourceArgs
+    public sealed class PeeredDnsDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
@@ -164,9 +162,10 @@ namespace Pulumi.Gcp.ServiceNetworking
         public PeeredDnsDomainArgs()
         {
         }
+        public static new PeeredDnsDomainArgs Empty => new PeeredDnsDomainArgs();
     }
 
-    public sealed class PeeredDnsDomainState : Pulumi.ResourceArgs
+    public sealed class PeeredDnsDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
@@ -207,5 +206,6 @@ namespace Pulumi.Gcp.ServiceNetworking
         public PeeredDnsDomainState()
         {
         }
+        public static new PeeredDnsDomainState Empty => new PeeredDnsDomainState();
     }
 }

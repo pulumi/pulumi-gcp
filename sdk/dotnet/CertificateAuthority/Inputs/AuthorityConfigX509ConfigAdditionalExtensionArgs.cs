@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityConfigX509ConfigAdditionalExtensionArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityConfigX509ConfigAdditionalExtensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityConfigX509ConfigAdditionalExtensionArgs()
         {
         }
+        public static new AuthorityConfigX509ConfigAdditionalExtensionArgs Empty => new AuthorityConfigX509ConfigAdditionalExtensionArgs();
     }
 }

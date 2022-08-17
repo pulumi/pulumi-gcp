@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding")]
-    public partial class RegionBackendServiceIamBinding : Pulumi.CustomResource
+    public partial class RegionBackendServiceIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionBackendServiceIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -179,9 +179,10 @@ namespace Pulumi.Gcp.Compute
         public RegionBackendServiceIamBindingArgs()
         {
         }
+        public static new RegionBackendServiceIamBindingArgs Empty => new RegionBackendServiceIamBindingArgs();
     }
 
-    public sealed class RegionBackendServiceIamBindingState : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -238,5 +239,6 @@ namespace Pulumi.Gcp.Compute
         public RegionBackendServiceIamBindingState()
         {
         }
+        public static new RegionBackendServiceIamBindingState Empty => new RegionBackendServiceIamBindingState();
     }
 }

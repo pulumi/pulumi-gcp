@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureNodePoolConfigArgs : Pulumi.ResourceArgs
+    public sealed class AzureNodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Beta only) The OS image type to use on node pool instances.
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureNodePoolConfigArgs()
         {
         }
+        public static new AzureNodePoolConfigArgs Empty => new AzureNodePoolConfigArgs();
     }
 }

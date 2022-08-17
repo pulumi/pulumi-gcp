@@ -23,92 +23,87 @@ namespace Pulumi.Gcp.ApiGateway
     /// ## google\_api\_gateway\_api\_config\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/apigateway.viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/apigateway.viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.ApiGateway.ApiConfigIamPolicy("policy", new Gcp.ApiGateway.ApiConfigIamPolicyArgs
-    ///         {
-    ///             Api = google_api_gateway_api_config.Api_cfg.Api,
-    ///             ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.ApiGateway.ApiConfigIamPolicy("policy", new()
+    ///     {
+    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
+    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_api\_gateway\_api\_config\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.ApiGateway.ApiConfigIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.ApiGateway.ApiConfigIamBinding("binding", new Gcp.ApiGateway.ApiConfigIamBindingArgs
+    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
+    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Members = new[]
     ///         {
-    ///             Api = google_api_gateway_api_config.Api_cfg.Api,
-    ///             ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
-    ///             Role = "roles/apigateway.viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_api\_gateway\_api\_config\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.ApiGateway.ApiConfigIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.ApiGateway.ApiConfigIamMember("member", new Gcp.ApiGateway.ApiConfigIamMemberArgs
-    ///         {
-    ///             Api = google_api_gateway_api_config.Api_cfg.Api,
-    ///             ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
-    ///             Role = "roles/apigateway.viewer",
-    ///             Member = "user:jane@example.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
+    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -136,7 +131,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:apigateway/apiConfigIamMember:ApiConfigIamMember")]
-    public partial class ApiConfigIamMember : Pulumi.CustomResource
+    public partial class ApiConfigIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API to attach the config to.
@@ -219,7 +214,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
     }
 
-    public sealed class ApiConfigIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API to attach the config to.
@@ -255,9 +250,10 @@ namespace Pulumi.Gcp.ApiGateway
         public ApiConfigIamMemberArgs()
         {
         }
+        public static new ApiConfigIamMemberArgs Empty => new ApiConfigIamMemberArgs();
     }
 
-    public sealed class ApiConfigIamMemberState : Pulumi.ResourceArgs
+    public sealed class ApiConfigIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API to attach the config to.
@@ -299,5 +295,6 @@ namespace Pulumi.Gcp.ApiGateway
         public ApiConfigIamMemberState()
         {
         }
+        public static new ApiConfigIamMemberState Empty => new ApiConfigIamMemberState();
     }
 }

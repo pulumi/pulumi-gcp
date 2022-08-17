@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class TopicIAMBindingConditionArgs : Pulumi.ResourceArgs
+    public sealed class TopicIAMBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public TopicIAMBindingConditionArgs()
         {
         }
+        public static new TopicIAMBindingConditionArgs Empty => new TopicIAMBindingConditionArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionPerInstanceConfigPreservedStateGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionPerInstanceConfigPreservedStateGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("disks")]
         private InputList<Inputs.RegionPerInstanceConfigPreservedStateDiskGetArgs>? _disks;
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionPerInstanceConfigPreservedStateGetArgs()
         {
         }
+        public static new RegionPerInstanceConfigPreservedStateGetArgs Empty => new RegionPerInstanceConfigPreservedStateGetArgs();
     }
 }

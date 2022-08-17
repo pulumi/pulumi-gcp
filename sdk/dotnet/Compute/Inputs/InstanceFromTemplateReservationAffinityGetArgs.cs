@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateReservationAffinityGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateReservationAffinityGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("specificReservation")]
         public Input<Inputs.InstanceFromTemplateReservationAffinitySpecificReservationGetArgs>? SpecificReservation { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateReservationAffinityGetArgs()
         {
         }
+        public static new InstanceFromTemplateReservationAffinityGetArgs Empty => new InstanceFromTemplateReservationAffinityGetArgs();
     }
 }

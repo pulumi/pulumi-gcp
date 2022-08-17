@@ -24,106 +24,108 @@ namespace Pulumi.Gcp.Compute
     /// ### Stateful Rigm
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new Gcp.Compute.InstanceTemplateArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             CanIpForward = false,
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///                 "bar",
-    ///             },
-    ///             Disks = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-    ///                 {
-    ///                     SourceImage = myImage.Apply(myImage =&gt; myImage.SelfLink),
-    ///                     AutoDelete = true,
-    ///                     Boot = true,
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                 },
-    ///             },
-    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
-    ///             {
-    ///                 Scopes = 
-    ///                 {
-    ///                     "userinfo-email",
-    ///                     "compute-ro",
-    ///                     "storage-ro",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new Gcp.Compute.RegionInstanceGroupManagerArgs
-    ///         {
-    ///             Description = "Demo test instance group manager",
-    ///             Versions = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
-    ///                 {
-    ///                     Name = "prod",
-    ///                     InstanceTemplate = igm_basic.SelfLink,
-    ///                 },
-    ///             },
-    ///             UpdatePolicy = new Gcp.Compute.Inputs.RegionInstanceGroupManagerUpdatePolicyArgs
-    ///             {
-    ///                 Type = "OPPORTUNISTIC",
-    ///                 InstanceRedistributionType = "NONE",
-    ///                 MinimalAction = "RESTART",
-    ///             },
-    ///             BaseInstanceName = "rigm",
-    ///             Region = "us-central1",
-    ///             TargetSize = 2,
-    ///         });
-    ///         var @default = new Gcp.Compute.Disk("default", new Gcp.Compute.DiskArgs
-    ///         {
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///             Image = "debian-8-jessie-v20170523",
-    ///             PhysicalBlockSizeBytes = 4096,
-    ///         });
-    ///         var withDisk = new Gcp.Compute.RegionPerInstanceConfig("withDisk", new Gcp.Compute.RegionPerInstanceConfigArgs
-    ///         {
-    ///             Region = google_compute_region_instance_group_manager.Igm.Region,
-    ///             RegionInstanceGroupManager = rigm.Name,
-    ///             PreservedState = new Gcp.Compute.Inputs.RegionPerInstanceConfigPreservedStateArgs
-    ///             {
-    ///                 Metadata = 
-    ///                 {
-    ///                     { "foo", "bar" },
-    ///                     { "instance_template", igm_basic.SelfLink },
-    ///                 },
-    ///                 Disks = 
-    ///                 {
-    ///                     new Gcp.Compute.Inputs.RegionPerInstanceConfigPreservedStateDiskArgs
-    ///                     {
-    ///                         DeviceName = "my-stateful-disk",
-    ///                         Source = @default.Id,
-    ///                         Mode = "READ_ONLY",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
     /// 
-    /// }
+    ///     var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new()
+    ///     {
+    ///         Description = "Demo test instance group manager",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 Name = "prod",
+    ///                 InstanceTemplate = igm_basic.SelfLink,
+    ///             },
+    ///         },
+    ///         UpdatePolicy = new Gcp.Compute.Inputs.RegionInstanceGroupManagerUpdatePolicyArgs
+    ///         {
+    ///             Type = "OPPORTUNISTIC",
+    ///             InstanceRedistributionType = "NONE",
+    ///             MinimalAction = "RESTART",
+    ///         },
+    ///         BaseInstanceName = "rigm",
+    ///         Region = "us-central1",
+    ///         TargetSize = 2,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Disk("default", new()
+    ///     {
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///         Image = "debian-11-bullseye-v20220719",
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///     });
+    /// 
+    ///     var withDisk = new Gcp.Compute.RegionPerInstanceConfig("withDisk", new()
+    ///     {
+    ///         Region = google_compute_region_instance_group_manager.Igm.Region,
+    ///         RegionInstanceGroupManager = rigm.Name,
+    ///         PreservedState = new Gcp.Compute.Inputs.RegionPerInstanceConfigPreservedStateArgs
+    ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///                 { "instance_template", igm_basic.SelfLink },
+    ///             },
+    ///             Disks = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionPerInstanceConfigPreservedStateDiskArgs
+    ///                 {
+    ///                     DeviceName = "my-stateful-disk",
+    ///                     Source = @default.Id,
+    ///                     Mode = "READ_ONLY",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -147,7 +149,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig")]
-    public partial class RegionPerInstanceConfig : Pulumi.CustomResource
+    public partial class RegionPerInstanceConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The minimal action to perform on the instance during an update.
@@ -255,7 +257,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionPerInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class RegionPerInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimal action to perform on the instance during an update.
@@ -322,9 +324,10 @@ namespace Pulumi.Gcp.Compute
         public RegionPerInstanceConfigArgs()
         {
         }
+        public static new RegionPerInstanceConfigArgs Empty => new RegionPerInstanceConfigArgs();
     }
 
-    public sealed class RegionPerInstanceConfigState : Pulumi.ResourceArgs
+    public sealed class RegionPerInstanceConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimal action to perform on the instance during an update.
@@ -391,5 +394,6 @@ namespace Pulumi.Gcp.Compute
         public RegionPerInstanceConfigState()
         {
         }
+        public static new RegionPerInstanceConfigState Empty => new RegionPerInstanceConfigState();
     }
 }

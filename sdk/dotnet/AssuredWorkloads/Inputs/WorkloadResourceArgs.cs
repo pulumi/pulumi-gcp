@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AssuredWorkloads.Inputs
 {
 
-    public sealed class WorkloadResourceArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.AssuredWorkloads.Inputs
         public WorkloadResourceArgs()
         {
         }
+        public static new WorkloadResourceArgs Empty => new WorkloadResourceArgs();
     }
 }

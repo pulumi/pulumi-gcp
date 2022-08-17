@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionHandlerStaticFilesGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionHandlerStaticFilesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether files should also be uploaded as code data. By default, files declared in static file handlers are
@@ -70,5 +70,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionHandlerStaticFilesGetArgs()
         {
         }
+        public static new FlexibleAppVersionHandlerStaticFilesGetArgs Empty => new FlexibleAppVersionHandlerStaticFilesGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTrafficGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTrafficGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// LatestRevision may be optionally provided to indicate that the latest ready
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTrafficGetArgs()
         {
         }
+        public static new ServiceTrafficGetArgs Empty => new ServiceTrafficGetArgs();
     }
 }

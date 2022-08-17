@@ -20,102 +20,104 @@ namespace Pulumi.Gcp.Organizations
     /// ### Organization Access Approval Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new()
     ///     {
-    ///         var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new Gcp.Organizations.AccessApprovalSettingsArgs
+    ///         EnrolledServices = new[]
     ///         {
-    ///             EnrolledServices = 
+    ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
-    ///                 {
-    ///                     CloudProduct = "appengine.googleapis.com",
-    ///                 },
-    ///                 new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
-    ///                 {
-    ///                     CloudProduct = "dataflow.googleapis.com",
-    ///                     EnrollmentLevel = "BLOCK_ALL",
-    ///                 },
+    ///                 CloudProduct = "appengine.googleapis.com",
     ///             },
-    ///             NotificationEmails = 
+    ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
     ///             {
-    ///                 "testuser@example.com",
-    ///                 "example.user@example.com",
+    ///                 CloudProduct = "dataflow.googleapis.com",
+    ///                 EnrollmentLevel = "BLOCK_ALL",
     ///             },
-    ///             OrganizationId = "123456789",
-    ///         });
-    ///     }
+    ///         },
+    ///         NotificationEmails = new[]
+    ///         {
+    ///             "testuser@example.com",
+    ///             "example.user@example.com",
+    ///         },
+    ///         OrganizationId = "123456789",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Organization Access Approval Active Key Version
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "your-project-id",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///             Project = myProject.ProjectId,
-    ///         });
-    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyRing.Id,
-    ///             Purpose = "ASYMMETRIC_SIGN",
-    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
-    ///             {
-    ///                 Algorithm = "EC_SIGN_P384_SHA384",
-    ///             },
-    ///         });
-    ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetOrganizationServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetOrganizationServiceAccountArgs
-    ///         {
-    ///             OrganizationId = "123456789",
-    ///         }));
-    ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-    ///         {
-    ///             CryptoKeyId = cryptoKey.Id,
-    ///             Role = "roles/cloudkms.signerVerifier",
-    ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-    ///         });
-    ///         var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
-    ///         {
-    ///             CryptoKey = cryptoKey.Id,
-    ///         });
-    ///         var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new Gcp.Organizations.AccessApprovalSettingsArgs
-    ///         {
-    ///             OrganizationId = "123456789",
-    ///             ActiveKeyVersion = cryptoKeyVersion.Apply(cryptoKeyVersion =&gt; cryptoKeyVersion.Name),
-    ///             EnrolledServices = 
-    ///             {
-    ///                 new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
-    ///                 {
-    ///                     CloudProduct = "all",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 iam,
-    ///             },
-    ///         });
-    ///     }
+    ///         ProjectId = "your-project-id",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "global",
+    ///         Project = myProject.ProjectId,
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ASYMMETRIC_SIGN",
+    ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///         {
+    ///             Algorithm = "EC_SIGN_P384_SHA384",
+    ///         },
+    ///     });
+    /// 
+    ///     var serviceAccount = Gcp.AccessApproval.GetOrganizationServiceAccount.Invoke(new()
+    ///     {
+    ///         OrganizationId = "123456789",
+    ///     });
+    /// 
+    ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.signerVerifier",
+    ///         Member = $"serviceAccount:{serviceAccount.Apply(getOrganizationServiceAccountResult =&gt; getOrganizationServiceAccountResult.AccountEmail)}",
+    ///     });
+    /// 
+    ///     var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+    ///     {
+    ///         CryptoKey = cryptoKey.Id,
+    ///     });
+    /// 
+    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new()
+    ///     {
+    ///         OrganizationId = "123456789",
+    ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
+    ///         EnrolledServices = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "all",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             iam,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -131,7 +133,7 @@ namespace Pulumi.Gcp.Organizations
     /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/accessApprovalSettings:AccessApprovalSettings")]
-    public partial class AccessApprovalSettings : Pulumi.CustomResource
+    public partial class AccessApprovalSettings : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
@@ -234,7 +236,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
-    public sealed class AccessApprovalSettingsArgs : Pulumi.ResourceArgs
+    public sealed class AccessApprovalSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
@@ -282,9 +284,10 @@ namespace Pulumi.Gcp.Organizations
         public AccessApprovalSettingsArgs()
         {
         }
+        public static new AccessApprovalSettingsArgs Empty => new AccessApprovalSettingsArgs();
     }
 
-    public sealed class AccessApprovalSettingsState : Pulumi.ResourceArgs
+    public sealed class AccessApprovalSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
@@ -358,5 +361,6 @@ namespace Pulumi.Gcp.Organizations
         public AccessApprovalSettingsState()
         {
         }
+        public static new AccessApprovalSettingsState Empty => new AccessApprovalSettingsState();
     }
 }

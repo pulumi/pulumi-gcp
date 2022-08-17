@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecContainerPortGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecContainerPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecContainerPortGetArgs()
         {
         }
+        public static new ServiceTemplateSpecContainerPortGetArgs Empty => new ServiceTemplateSpecContainerPortGetArgs();
     }
 }

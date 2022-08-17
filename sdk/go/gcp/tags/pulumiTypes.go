@@ -19,7 +19,7 @@ type TagKeyIamBindingCondition struct {
 // TagKeyIamBindingConditionInput is an input type that accepts TagKeyIamBindingConditionArgs and TagKeyIamBindingConditionOutput values.
 // You can construct a concrete instance of `TagKeyIamBindingConditionInput` via:
 //
-//          TagKeyIamBindingConditionArgs{...}
+//	TagKeyIamBindingConditionArgs{...}
 type TagKeyIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i TagKeyIamBindingConditionArgs) ToTagKeyIamBindingConditionPtrOutputWithC
 // TagKeyIamBindingConditionPtrInput is an input type that accepts TagKeyIamBindingConditionArgs, TagKeyIamBindingConditionPtr and TagKeyIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `TagKeyIamBindingConditionPtrInput` via:
 //
-//          TagKeyIamBindingConditionArgs{...}
+//	        TagKeyIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TagKeyIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ type TagKeyIamMemberCondition struct {
 // TagKeyIamMemberConditionInput is an input type that accepts TagKeyIamMemberConditionArgs and TagKeyIamMemberConditionOutput values.
 // You can construct a concrete instance of `TagKeyIamMemberConditionInput` via:
 //
-//          TagKeyIamMemberConditionArgs{...}
+//	TagKeyIamMemberConditionArgs{...}
 type TagKeyIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -219,11 +219,11 @@ func (i TagKeyIamMemberConditionArgs) ToTagKeyIamMemberConditionPtrOutputWithCon
 // TagKeyIamMemberConditionPtrInput is an input type that accepts TagKeyIamMemberConditionArgs, TagKeyIamMemberConditionPtr and TagKeyIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `TagKeyIamMemberConditionPtrInput` via:
 //
-//          TagKeyIamMemberConditionArgs{...}
+//	        TagKeyIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TagKeyIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type TagValueIamBindingCondition struct {
 // TagValueIamBindingConditionInput is an input type that accepts TagValueIamBindingConditionArgs and TagValueIamBindingConditionOutput values.
 // You can construct a concrete instance of `TagValueIamBindingConditionInput` via:
 //
-//          TagValueIamBindingConditionArgs{...}
+//	TagValueIamBindingConditionArgs{...}
 type TagValueIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -382,11 +382,11 @@ func (i TagValueIamBindingConditionArgs) ToTagValueIamBindingConditionPtrOutputW
 // TagValueIamBindingConditionPtrInput is an input type that accepts TagValueIamBindingConditionArgs, TagValueIamBindingConditionPtr and TagValueIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `TagValueIamBindingConditionPtrInput` via:
 //
-//          TagValueIamBindingConditionArgs{...}
+//	        TagValueIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TagValueIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -508,7 +508,7 @@ type TagValueIamMemberCondition struct {
 // TagValueIamMemberConditionInput is an input type that accepts TagValueIamMemberConditionArgs and TagValueIamMemberConditionOutput values.
 // You can construct a concrete instance of `TagValueIamMemberConditionInput` via:
 //
-//          TagValueIamMemberConditionArgs{...}
+//	TagValueIamMemberConditionArgs{...}
 type TagValueIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -545,11 +545,11 @@ func (i TagValueIamMemberConditionArgs) ToTagValueIamMemberConditionPtrOutputWit
 // TagValueIamMemberConditionPtrInput is an input type that accepts TagValueIamMemberConditionArgs, TagValueIamMemberConditionPtr and TagValueIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `TagValueIamMemberConditionPtrInput` via:
 //
-//          TagValueIamMemberConditionArgs{...}
+//	        TagValueIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TagValueIamMemberConditionPtrInput interface {
 	pulumi.Input
 

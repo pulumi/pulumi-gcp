@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Sql
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qa = Gcp.Sql.GetDatabaseInstance.Invoke(new()
         ///     {
-        ///         var qa = Output.Create(Gcp.Sql.GetDatabaseInstance.InvokeAsync(new Gcp.Sql.GetDatabaseInstanceArgs
-        ///         {
-        ///             Name = "test-sql-instance",
-        ///         }));
-        ///     }
+        ///         Name = "test-sql-instance",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Sql
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qa = Gcp.Sql.GetDatabaseInstance.Invoke(new()
         ///     {
-        ///         var qa = Output.Create(Gcp.Sql.GetDatabaseInstance.InvokeAsync(new Gcp.Sql.GetDatabaseInstanceArgs
-        ///         {
-        ///             Name = "test-sql-instance",
-        ///         }));
-        ///     }
+        ///         Name = "test-sql-instance",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Sql
     }
 
 
-    public sealed class GetDatabaseInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseInstanceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance.
@@ -88,9 +84,10 @@ namespace Pulumi.Gcp.Sql
         public GetDatabaseInstanceArgs()
         {
         }
+        public static new GetDatabaseInstanceArgs Empty => new GetDatabaseInstanceArgs();
     }
 
-    public sealed class GetDatabaseInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance.
@@ -107,6 +104,7 @@ namespace Pulumi.Gcp.Sql
         public GetDatabaseInstanceInvokeArgs()
         {
         }
+        public static new GetDatabaseInstanceInvokeArgs Empty => new GetDatabaseInstanceInvokeArgs();
     }
 
 

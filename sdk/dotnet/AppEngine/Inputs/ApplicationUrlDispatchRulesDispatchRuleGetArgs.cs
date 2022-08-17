@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class ApplicationUrlDispatchRulesDispatchRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationUrlDispatchRulesDispatchRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public ApplicationUrlDispatchRulesDispatchRuleGetArgs()
         {
         }
+        public static new ApplicationUrlDispatchRulesDispatchRuleGetArgs Empty => new ApplicationUrlDispatchRulesDispatchRuleGetArgs();
     }
 }

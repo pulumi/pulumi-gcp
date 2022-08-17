@@ -27,28 +27,26 @@ namespace Pulumi.Gcp.Projects
     /// This snippet creates a customized IAM role.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new()
     ///     {
-    ///         var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new Gcp.Projects.IAMCustomRoleArgs
+    ///         Description = "A description",
+    ///         Permissions = new[]
     ///         {
-    ///             Description = "A description",
-    ///             Permissions = 
-    ///             {
-    ///                 "iam.roles.list",
-    ///                 "iam.roles.create",
-    ///                 "iam.roles.delete",
-    ///             },
-    ///             RoleId = "myCustomRole",
-    ///             Title = "My Custom Role",
-    ///         });
-    ///     }
+    ///             "iam.roles.list",
+    ///             "iam.roles.create",
+    ///             "iam.roles.delete",
+    ///         },
+    ///         RoleId = "myCustomRole",
+    ///         Title = "My Custom Role",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Projects
     /// ```
     /// </summary>
     [GcpResourceType("gcp:projects/iAMCustomRole:IAMCustomRole")]
-    public partial class IAMCustomRole : Pulumi.CustomResource
+    public partial class IAMCustomRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Optional) The current deleted state of the role.
@@ -165,7 +163,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class IAMCustomRoleArgs : Pulumi.ResourceArgs
+    public sealed class IAMCustomRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description for the role.
@@ -215,9 +213,10 @@ namespace Pulumi.Gcp.Projects
         public IAMCustomRoleArgs()
         {
         }
+        public static new IAMCustomRoleArgs Empty => new IAMCustomRoleArgs();
     }
 
-    public sealed class IAMCustomRoleState : Pulumi.ResourceArgs
+    public sealed class IAMCustomRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) The current deleted state of the role.
@@ -279,5 +278,6 @@ namespace Pulumi.Gcp.Projects
         public IAMCustomRoleState()
         {
         }
+        public static new IAMCustomRoleState Empty => new IAMCustomRoleState();
     }
 }

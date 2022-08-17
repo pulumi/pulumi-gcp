@@ -18,23 +18,21 @@ namespace Pulumi.Gcp.Container
     /// ### Basic_azure_client
     /// A basic example of a containerazure azure client
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Container.AzureClient("primary", new()
     ///     {
-    ///         var primary = new Gcp.Container.AzureClient("primary", new Gcp.Container.AzureClientArgs
-    ///         {
-    ///             ApplicationId = "12345678-1234-1234-1234-123456789111",
-    ///             Location = "us-west1",
-    ///             Project = "my-project-name",
-    ///             TenantId = "12345678-1234-1234-1234-123456789111",
-    ///         });
-    ///     }
+    ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///         TenantId = "12345678-1234-1234-1234-123456789111",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.Gcp.Container
     /// ```
     /// </summary>
     [GcpResourceType("gcp:container/azureClient:AzureClient")]
-    public partial class AzureClient : Pulumi.CustomResource
+    public partial class AzureClient : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Azure Active Directory Application ID.
@@ -148,7 +146,7 @@ namespace Pulumi.Gcp.Container
         }
     }
 
-    public sealed class AzureClientArgs : Pulumi.ResourceArgs
+    public sealed class AzureClientArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Azure Active Directory Application ID.
@@ -183,9 +181,10 @@ namespace Pulumi.Gcp.Container
         public AzureClientArgs()
         {
         }
+        public static new AzureClientArgs Empty => new AzureClientArgs();
     }
 
-    public sealed class AzureClientState : Pulumi.ResourceArgs
+    public sealed class AzureClientState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Azure Active Directory Application ID.
@@ -238,5 +237,6 @@ namespace Pulumi.Gcp.Container
         public AzureClientState()
         {
         }
+        public static new AzureClientState Empty => new AzureClientState();
     }
 }

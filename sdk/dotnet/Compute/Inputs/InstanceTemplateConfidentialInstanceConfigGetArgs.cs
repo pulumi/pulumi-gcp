@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateConfidentialInstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateConfidentialInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateConfidentialInstanceConfigGetArgs()
         {
         }
+        public static new InstanceTemplateConfidentialInstanceConfigGetArgs Empty => new InstanceTemplateConfidentialInstanceConfigGetArgs();
     }
 }

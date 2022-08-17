@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class AutoscalingPolicyWorkerConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyWorkerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of instances for this group. Note that by default, clusters will not use
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public AutoscalingPolicyWorkerConfigGetArgs()
         {
         }
+        public static new AutoscalingPolicyWorkerConfigGetArgs Empty => new AutoscalingPolicyWorkerConfigGetArgs();
     }
 }

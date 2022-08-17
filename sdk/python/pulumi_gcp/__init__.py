@@ -382,6 +382,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "activedirectory/peering",
+  "fqn": "pulumi_gcp.activedirectory",
+  "classes": {
+   "gcp:activedirectory/peering:Peering": "Peering"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigateway/api",
   "fqn": "pulumi_gcp.apigateway",
   "classes": {
@@ -2542,10 +2550,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/asset",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/asset:Asset": "Asset"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/lake",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/lake:Lake": "Lake"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/zone",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/zone:Zone": "Zone"
   }
  },
  {
@@ -3122,6 +3146,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkehub",
   "classes": {
    "gcp:gkehub/membership:Membership": "Membership"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/membershipIamBinding",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/membershipIamBinding:MembershipIamBinding": "MembershipIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/membershipIamMember",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/membershipIamMember:MembershipIamMember": "MembershipIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/membershipIamPolicy",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy": "MembershipIamPolicy"
   }
  },
  {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetAllUpdatesRuleArgs : Pulumi.ResourceArgs
+    public sealed class BudgetAllUpdatesRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. When set to true, disables default notifications sent
@@ -56,5 +56,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetAllUpdatesRuleArgs()
         {
         }
+        public static new BudgetAllUpdatesRuleArgs Empty => new BudgetAllUpdatesRuleArgs();
     }
 }

@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.Healthcare
     /// ## google\_healthcare\_dataset\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var dataset = new Gcp.Healthcare.DatasetIamPolicy("dataset", new Gcp.Healthcare.DatasetIamPolicyArgs
-    ///         {
-    ///             DatasetId = "your-dataset-id",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var dataset = new Gcp.Healthcare.DatasetIamPolicy("dataset", new()
+    ///     {
+    ///         DatasetId = "your-dataset-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_dataset\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.DatasetIamBinding("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.DatasetIamBinding("dataset", new Gcp.Healthcare.DatasetIamBindingArgs
+    ///         DatasetId = "your-dataset-id",
+    ///         Members = new[]
     ///         {
-    ///             DatasetId = "your-dataset-id",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_dataset\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.DatasetIamMember("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.DatasetIamMember("dataset", new Gcp.Healthcare.DatasetIamMemberArgs
-    ///         {
-    ///             DatasetId = "your-dataset-id",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         DatasetId = "your-dataset-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Healthcare
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:healthcare/datasetIamPolicy:DatasetIamPolicy")]
-    public partial class DatasetIamPolicy : Pulumi.CustomResource
+    public partial class DatasetIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dataset ID, in the form
@@ -198,7 +193,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class DatasetIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DatasetIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset ID, in the form
@@ -219,9 +214,10 @@ namespace Pulumi.Gcp.Healthcare
         public DatasetIamPolicyArgs()
         {
         }
+        public static new DatasetIamPolicyArgs Empty => new DatasetIamPolicyArgs();
     }
 
-    public sealed class DatasetIamPolicyState : Pulumi.ResourceArgs
+    public sealed class DatasetIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset ID, in the form
@@ -248,5 +244,6 @@ namespace Pulumi.Gcp.Healthcare
         public DatasetIamPolicyState()
         {
         }
+        public static new DatasetIamPolicyState Empty => new DatasetIamPolicyState();
     }
 }

@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *         var static_ = new Address(&#34;static&#34;);
  * 
  *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-9&#34;)
+ *             .family(&#34;debian-11&#34;)
  *             .project(&#34;debian-cloud&#34;)
  *             .build());
  * 

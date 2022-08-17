@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctions.Inputs
 {
 
-    public sealed class FunctionEventTriggerFailurePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionEventTriggerFailurePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the function should be retried on failure. Defaults to `false`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
         public FunctionEventTriggerFailurePolicyGetArgs()
         {
         }
+        public static new FunctionEventTriggerFailurePolicyGetArgs Empty => new FunctionEventTriggerFailurePolicyGetArgs();
     }
 }

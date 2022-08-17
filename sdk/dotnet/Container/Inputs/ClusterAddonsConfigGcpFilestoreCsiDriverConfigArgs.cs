@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs()
         {
         }
+        public static new ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs Empty => new ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway.Inputs
 {
 
-    public sealed class ApiConfigManagedServiceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigManagedServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Base64 encoded content of the file.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
         public ApiConfigManagedServiceConfigGetArgs()
         {
         }
+        public static new ApiConfigManagedServiceConfigGetArgs Empty => new ApiConfigManagedServiceConfigGetArgs();
     }
 }

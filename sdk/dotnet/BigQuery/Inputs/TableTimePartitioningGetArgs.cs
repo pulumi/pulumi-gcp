@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableTimePartitioningGetArgs : Pulumi.ResourceArgs
+    public sealed class TableTimePartitioningGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of milliseconds for which to keep the
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableTimePartitioningGetArgs()
         {
         }
+        public static new TableTimePartitioningGetArgs Empty => new TableTimePartitioningGetArgs();
     }
 }

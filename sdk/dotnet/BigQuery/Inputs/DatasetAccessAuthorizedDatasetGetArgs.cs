@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class DatasetAccessAuthorizedDatasetGetArgs : Pulumi.ResourceArgs
+    public sealed class DatasetAccessAuthorizedDatasetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset this entry applies to
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public DatasetAccessAuthorizedDatasetGetArgs()
         {
         }
+        public static new DatasetAccessAuthorizedDatasetGetArgs Empty => new DatasetAccessAuthorizedDatasetGetArgs();
     }
 }

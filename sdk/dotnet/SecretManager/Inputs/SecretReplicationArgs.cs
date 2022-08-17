@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretReplicationArgs : Pulumi.ResourceArgs
+    public sealed class SecretReplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Secret will automatically be replicated without any restrictions.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretReplicationArgs()
         {
         }
+        public static new SecretReplicationArgs Empty => new SecretReplicationArgs();
     }
 }

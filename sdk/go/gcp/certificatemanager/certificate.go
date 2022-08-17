@@ -17,69 +17,78 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
-// 			Description: pulumi.String("The default dnss"),
-// 			Domain:      pulumi.String("subdomain.hashicorptest.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
-// 			Description: pulumi.String("The default dnss"),
-// 			Domain:      pulumi.String("subdomain2.hashicorptest.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-// 			Description: pulumi.String("The default cert"),
-// 			Scope:       pulumi.String("EDGE_CACHE"),
-// 			Managed: &certificatemanager.CertificateManagedArgs{
-// 				Domains: pulumi.StringArray{
-// 					instance.Domain,
-// 					instance2.Domain,
-// 				},
-// 				DnsAuthorizations: pulumi.StringArray{
-// 					instance.ID(),
-// 					instance2.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Description: pulumi.String("The default cert"),
+//				Scope:       pulumi.String("EDGE_CACHE"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						instance.Domain,
+//						instance2.Domain,
+//					},
+//					DnsAuthorizations: pulumi.StringArray{
+//						instance.ID(),
+//						instance2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Certificate can be imported using any of these accepted formats
+// # Certificate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+//
 // ```
 type Certificate struct {
 	pulumi.CustomResourceState
 
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the Certificate resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
@@ -94,13 +103,11 @@ type Certificate struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The scope of the certificate.
-	// Certificates with default scope are served from core Google data centers.
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// Certificates with scope EDGE_CACHE are special-purposed certificates,
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
 	// Currently allowed only for managed certificates.
-	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `EDGE_CACHE`.
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -140,7 +147,7 @@ func GetCertificate(ctx *pulumi.Context,
 type certificateState struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the Certificate resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
@@ -155,13 +162,11 @@ type certificateState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The scope of the certificate.
-	// Certificates with default scope are served from core Google data centers.
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// Certificates with scope EDGE_CACHE are special-purposed certificates,
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
 	// Currently allowed only for managed certificates.
-	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `EDGE_CACHE`.
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -173,7 +178,7 @@ type certificateState struct {
 type CertificateState struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the Certificate resource.
 	Labels pulumi.StringMapInput
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
@@ -188,13 +193,11 @@ type CertificateState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The scope of the certificate.
-	// Certificates with default scope are served from core Google data centers.
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// Certificates with scope EDGE_CACHE are special-purposed certificates,
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
 	// Currently allowed only for managed certificates.
-	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `EDGE_CACHE`.
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -210,7 +213,7 @@ func (CertificateState) ElementType() reflect.Type {
 type certificateArgs struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the Certificate resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
@@ -225,13 +228,11 @@ type certificateArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The scope of the certificate.
-	// Certificates with default scope are served from core Google data centers.
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// Certificates with scope EDGE_CACHE are special-purposed certificates,
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
 	// Currently allowed only for managed certificates.
-	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `EDGE_CACHE`.
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -244,7 +245,7 @@ type certificateArgs struct {
 type CertificateArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the Certificate resource.
 	Labels pulumi.StringMapInput
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
@@ -259,13 +260,11 @@ type CertificateArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The scope of the certificate.
-	// Certificates with default scope are served from core Google data centers.
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// Certificates with scope EDGE_CACHE are special-purposed certificates,
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
 	// Currently allowed only for managed certificates.
-	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `EDGE_CACHE`.
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -300,7 +299,7 @@ func (i *Certificate) ToCertificateOutputWithContext(ctx context.Context) Certif
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
-//          CertificateArray{ CertificateArgs{...} }
+//	CertificateArray{ CertificateArgs{...} }
 type CertificateArrayInput interface {
 	pulumi.Input
 
@@ -325,7 +324,7 @@ func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Contex
 // CertificateMapInput is an input type that accepts CertificateMap and CertificateMapOutput values.
 // You can construct a concrete instance of `CertificateMapInput` via:
 //
-//          CertificateMap{ "key": CertificateArgs{...} }
+//	CertificateMap{ "key": CertificateArgs{...} }
 type CertificateMapInput interface {
 	pulumi.Input
 
@@ -366,7 +365,7 @@ func (o CertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Set of label tags associated with the EdgeCache resource.
+// Set of label tags associated with the Certificate resource.
 func (o CertificateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -393,13 +392,11 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 }
 
 // The scope of the certificate.
-// Certificates with default scope are served from core Google data centers.
+// DEFAULT: Certificates with default scope are served from core Google data centers.
 // If unsure, choose this option.
-// Certificates with scope EDGE_CACHE are special-purposed certificates,
+// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 // served from non-core Google data centers.
 // Currently allowed only for managed certificates.
-// Default value is `DEFAULT`.
-// Possible values are `DEFAULT` and `EDGE_CACHE`.
 func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }

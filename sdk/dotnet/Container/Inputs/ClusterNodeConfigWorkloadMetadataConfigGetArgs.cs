@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigWorkloadMetadataConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigWorkloadMetadataConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How to expose the node metadata to the workload running on the node.
@@ -25,5 +25,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigWorkloadMetadataConfigGetArgs()
         {
         }
+        public static new ClusterNodeConfigWorkloadMetadataConfigGetArgs Empty => new ClusterNodeConfigWorkloadMetadataConfigGetArgs();
     }
 }

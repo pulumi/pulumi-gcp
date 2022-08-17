@@ -21,20 +21,18 @@ namespace Pulumi.Gcp.PubSub
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_pubsub_topic = Gcp.PubSub.GetTopic.Invoke(new()
         ///     {
-        ///         var my_pubsub_topic = Output.Create(Gcp.PubSub.GetTopic.InvokeAsync(new Gcp.PubSub.GetTopicArgs
-        ///         {
-        ///             Name = "my-pubsub-topic",
-        ///         }));
-        ///     }
+        ///         Name = "my-pubsub-topic",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +50,18 @@ namespace Pulumi.Gcp.PubSub
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_pubsub_topic = Gcp.PubSub.GetTopic.Invoke(new()
         ///     {
-        ///         var my_pubsub_topic = Output.Create(Gcp.PubSub.GetTopic.InvokeAsync(new Gcp.PubSub.GetTopicArgs
-        ///         {
-        ///             Name = "my-pubsub-topic",
-        ///         }));
-        ///     }
+        ///         Name = "my-pubsub-topic",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Gcp.PubSub
     }
 
 
-    public sealed class GetTopicArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Cloud Pub/Sub Topic.
@@ -93,9 +89,10 @@ namespace Pulumi.Gcp.PubSub
         public GetTopicArgs()
         {
         }
+        public static new GetTopicArgs Empty => new GetTopicArgs();
     }
 
-    public sealed class GetTopicInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Cloud Pub/Sub Topic.
@@ -113,6 +110,7 @@ namespace Pulumi.Gcp.PubSub
         public GetTopicInvokeArgs()
         {
         }
+        public static new GetTopicInvokeArgs Empty => new GetTopicInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionHandlerGetArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionHandlerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Actions to take when the user is not logged in.
@@ -65,5 +65,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionHandlerGetArgs()
         {
         }
+        public static new StandardAppVersionHandlerGetArgs Empty => new StandardAppVersionHandlerGetArgs();
     }
 }

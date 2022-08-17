@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In response to a preflight request, setting this to true indicates that the
@@ -99,5 +99,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs Empty => new RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs();
     }
 }

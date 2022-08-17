@@ -23,20 +23,18 @@ namespace Pulumi.Gcp.SourceRepo
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_repo = Gcp.SourceRepo.GetRepository.Invoke(new()
         ///     {
-        ///         var my_repo = Output.Create(Gcp.SourceRepo.GetRepository.InvokeAsync(new Gcp.SourceRepo.GetRepositoryArgs
-        ///         {
-        ///             Name = "my-repository",
-        ///         }));
-        ///     }
+        ///         Name = "my-repository",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -56,20 +54,18 @@ namespace Pulumi.Gcp.SourceRepo
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_repo = Gcp.SourceRepo.GetRepository.Invoke(new()
         ///     {
-        ///         var my_repo = Output.Create(Gcp.SourceRepo.GetRepository.InvokeAsync(new Gcp.SourceRepo.GetRepositoryArgs
-        ///         {
-        ///             Name = "my-repository",
-        ///         }));
-        ///     }
+        ///         Name = "my-repository",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,7 +75,7 @@ namespace Pulumi.Gcp.SourceRepo
     }
 
 
-    public sealed class GetRepositoryArgs : Pulumi.InvokeArgs
+    public sealed class GetRepositoryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
@@ -96,9 +92,10 @@ namespace Pulumi.Gcp.SourceRepo
         public GetRepositoryArgs()
         {
         }
+        public static new GetRepositoryArgs Empty => new GetRepositoryArgs();
     }
 
-    public sealed class GetRepositoryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRepositoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
@@ -115,6 +112,7 @@ namespace Pulumi.Gcp.SourceRepo
         public GetRepositoryInvokeArgs()
         {
         }
+        public static new GetRepositoryInvokeArgs Empty => new GetRepositoryInvokeArgs();
     }
 
 

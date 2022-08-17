@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionReadinessCheckArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionReadinessCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A maximum time limit on application initialization, measured from moment the application successfully
@@ -59,5 +59,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionReadinessCheckArgs()
         {
         }
+        public static new FlexibleAppVersionReadinessCheckArgs Empty => new FlexibleAppVersionReadinessCheckArgs();
     }
 }

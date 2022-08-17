@@ -23,35 +23,35 @@ namespace Pulumi.Gcp.Compute
     /// ### Ssl Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var prod_ssl_policy = new Gcp.Compute.SSLPolicy("prod-ssl-policy", new()
     ///     {
-    ///         var prod_ssl_policy = new Gcp.Compute.SSLPolicy("prod-ssl-policy", new Gcp.Compute.SSLPolicyArgs
-    ///         {
-    ///             Profile = "MODERN",
-    ///         });
-    ///         var nonprod_ssl_policy = new Gcp.Compute.SSLPolicy("nonprod-ssl-policy", new Gcp.Compute.SSLPolicyArgs
-    ///         {
-    ///             MinTlsVersion = "TLS_1_2",
-    ///             Profile = "MODERN",
-    ///         });
-    ///         var custom_ssl_policy = new Gcp.Compute.SSLPolicy("custom-ssl-policy", new Gcp.Compute.SSLPolicyArgs
-    ///         {
-    ///             CustomFeatures = 
-    ///             {
-    ///                 "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-    ///                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-    ///             },
-    ///             MinTlsVersion = "TLS_1_2",
-    ///             Profile = "CUSTOM",
-    ///         });
-    ///     }
+    ///         Profile = "MODERN",
+    ///     });
     /// 
-    /// }
+    ///     var nonprod_ssl_policy = new Gcp.Compute.SSLPolicy("nonprod-ssl-policy", new()
+    ///     {
+    ///         MinTlsVersion = "TLS_1_2",
+    ///         Profile = "MODERN",
+    ///     });
+    /// 
+    ///     var custom_ssl_policy = new Gcp.Compute.SSLPolicy("custom-ssl-policy", new()
+    ///     {
+    ///         CustomFeatures = new[]
+    ///         {
+    ///             "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    ///             "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    ///         },
+    ///         MinTlsVersion = "TLS_1_2",
+    ///         Profile = "CUSTOM",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/sSLPolicy:SSLPolicy")]
-    public partial class SSLPolicy : Pulumi.CustomResource
+    public partial class SSLPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SSLPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SSLPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("customFeatures")]
         private InputList<string>? _customFeatures;
@@ -276,9 +276,10 @@ namespace Pulumi.Gcp.Compute
         public SSLPolicyArgs()
         {
         }
+        public static new SSLPolicyArgs Empty => new SSLPolicyArgs();
     }
 
-    public sealed class SSLPolicyState : Pulumi.ResourceArgs
+    public sealed class SSLPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -381,5 +382,6 @@ namespace Pulumi.Gcp.Compute
         public SSLPolicyState()
         {
         }
+        public static new SSLPolicyState Empty => new SSLPolicyState();
     }
 }

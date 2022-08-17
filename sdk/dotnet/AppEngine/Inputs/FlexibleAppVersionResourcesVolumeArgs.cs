@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionResourcesVolumeArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionResourcesVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionResourcesVolumeArgs()
         {
         }
+        public static new FlexibleAppVersionResourcesVolumeArgs Empty => new FlexibleAppVersionResourcesVolumeArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceRestoreBackupContextArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceRestoreBackupContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the backup run to restore from.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceRestoreBackupContextArgs()
         {
         }
+        public static new DatabaseInstanceRestoreBackupContextArgs Empty => new DatabaseInstanceRestoreBackupContextArgs();
     }
 }

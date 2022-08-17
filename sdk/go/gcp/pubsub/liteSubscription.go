@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
 // * How-to Guides
-//     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
+//   - [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 //
 // ## Example Usage
 // ### Pubsub Lite Subscription Basic
@@ -27,65 +27,76 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleLiteTopic, err := pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
-// 			Project: pulumi.String(project.Number),
-// 			PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
-// 				Count: pulumi.Int(1),
-// 				Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{
-// 					PublishMibPerSec:   pulumi.Int(4),
-// 					SubscribeMibPerSec: pulumi.Int(8),
-// 				},
-// 			},
-// 			RetentionConfig: &pubsub.LiteTopicRetentionConfigArgs{
-// 				PerPartitionBytes: pulumi.String("32212254720"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewLiteSubscription(ctx, "exampleLiteSubscription", &pubsub.LiteSubscriptionArgs{
-// 			Topic: exampleLiteTopic.Name,
-// 			DeliveryConfig: &pubsub.LiteSubscriptionDeliveryConfigArgs{
-// 				DeliveryRequirement: pulumi.String("DELIVER_AFTER_STORED"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleLiteTopic, err := pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
+//				Project: pulumi.String(project.Number),
+//				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
+//					Count: pulumi.Int(1),
+//					Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{
+//						PublishMibPerSec:   pulumi.Int(4),
+//						SubscribeMibPerSec: pulumi.Int(8),
+//					},
+//				},
+//				RetentionConfig: &pubsub.LiteTopicRetentionConfigArgs{
+//					PerPartitionBytes: pulumi.String("32212254720"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewLiteSubscription(ctx, "exampleLiteSubscription", &pubsub.LiteSubscriptionArgs{
+//				Topic: exampleLiteTopic.Name,
+//				DeliveryConfig: &pubsub.LiteSubscriptionDeliveryConfigArgs{
+//					DeliveryRequirement: pulumi.String("DELIVER_AFTER_STORED"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Subscription can be imported using any of these accepted formats
+// # Subscription can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
+//
+//	$ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
+//
 // ```
 type LiteSubscription struct {
 	pulumi.CustomResourceState
@@ -236,7 +247,7 @@ func (i *LiteSubscription) ToLiteSubscriptionOutputWithContext(ctx context.Conte
 // LiteSubscriptionArrayInput is an input type that accepts LiteSubscriptionArray and LiteSubscriptionArrayOutput values.
 // You can construct a concrete instance of `LiteSubscriptionArrayInput` via:
 //
-//          LiteSubscriptionArray{ LiteSubscriptionArgs{...} }
+//	LiteSubscriptionArray{ LiteSubscriptionArgs{...} }
 type LiteSubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +272,7 @@ func (i LiteSubscriptionArray) ToLiteSubscriptionArrayOutputWithContext(ctx cont
 // LiteSubscriptionMapInput is an input type that accepts LiteSubscriptionMap and LiteSubscriptionMapOutput values.
 // You can construct a concrete instance of `LiteSubscriptionMapInput` via:
 //
-//          LiteSubscriptionMap{ "key": LiteSubscriptionArgs{...} }
+//	LiteSubscriptionMap{ "key": LiteSubscriptionArgs{...} }
 type LiteSubscriptionMapInput interface {
 	pulumi.Input
 

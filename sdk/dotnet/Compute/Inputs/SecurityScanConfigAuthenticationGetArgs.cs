@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityScanConfigAuthenticationGetArgs : Pulumi.ResourceArgs
+    public sealed class SecurityScanConfigAuthenticationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes authentication configuration that uses a custom account.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityScanConfigAuthenticationGetArgs()
         {
         }
+        public static new SecurityScanConfigAuthenticationGetArgs Empty => new SecurityScanConfigAuthenticationGetArgs();
     }
 }

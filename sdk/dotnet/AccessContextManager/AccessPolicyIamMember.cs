@@ -23,77 +23,72 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ## google\_access\_context\_manager\_access\_policy\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/accesscontextmanager.policyAdmin",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/accesscontextmanager.policyAdmin",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.AccessContextManager.AccessPolicyIamPolicy("policy", new Gcp.AccessContextManager.AccessPolicyIamPolicyArgs
-    ///         {
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.AccessContextManager.AccessPolicyIamPolicy("policy", new()
+    ///     {
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_access\_context\_manager\_access\_policy\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.AccessContextManager.AccessPolicyIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.AccessContextManager.AccessPolicyIamBinding("binding", new Gcp.AccessContextManager.AccessPolicyIamBindingArgs
+    ///         Role = "roles/accesscontextmanager.policyAdmin",
+    ///         Members = new[]
     ///         {
-    ///             Role = "roles/accesscontextmanager.policyAdmin",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_access\_context\_manager\_access\_policy\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.AccessContextManager.AccessPolicyIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.AccessContextManager.AccessPolicyIamMember("member", new Gcp.AccessContextManager.AccessPolicyIamMemberArgs
-    ///         {
-    ///             Role = "roles/accesscontextmanager.policyAdmin",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Role = "roles/accesscontextmanager.policyAdmin",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -121,7 +116,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember")]
-    public partial class AccessPolicyIamMember : Pulumi.CustomResource
+    public partial class AccessPolicyIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.AccessPolicyIamMemberCondition?> Condition { get; private set; } = null!;
@@ -193,7 +188,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class AccessPolicyIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.AccessPolicyIamMemberConditionArgs>? Condition { get; set; }
@@ -218,9 +213,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessPolicyIamMemberArgs()
         {
         }
+        public static new AccessPolicyIamMemberArgs Empty => new AccessPolicyIamMemberArgs();
     }
 
-    public sealed class AccessPolicyIamMemberState : Pulumi.ResourceArgs
+    public sealed class AccessPolicyIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.AccessPolicyIamMemberConditionGetArgs>? Condition { get; set; }
@@ -251,5 +247,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessPolicyIamMemberState()
         {
         }
+        public static new AccessPolicyIamMemberState Empty => new AccessPolicyIamMemberState();
     }
 }

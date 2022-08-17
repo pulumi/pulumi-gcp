@@ -16,22 +16,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/backendBuckets/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine backendbucket IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer user:jane@example.com"
+//
+//	$ pulumi import gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer"
+//
+//	$ pulumi import gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy editor "projects/{{project}}/global/backendBuckets/{{backend_bucket}} roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy editor projects/{{project}}/global/backendBuckets/{{backend_bucket}}
+//
+//	$ pulumi import gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy editor projects/{{project}}/global/backendBuckets/{{backend_bucket}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type BackendBucketIamPolicy struct {
@@ -159,7 +165,7 @@ func (i *BackendBucketIamPolicy) ToBackendBucketIamPolicyOutputWithContext(ctx c
 // BackendBucketIamPolicyArrayInput is an input type that accepts BackendBucketIamPolicyArray and BackendBucketIamPolicyArrayOutput values.
 // You can construct a concrete instance of `BackendBucketIamPolicyArrayInput` via:
 //
-//          BackendBucketIamPolicyArray{ BackendBucketIamPolicyArgs{...} }
+//	BackendBucketIamPolicyArray{ BackendBucketIamPolicyArgs{...} }
 type BackendBucketIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +190,7 @@ func (i BackendBucketIamPolicyArray) ToBackendBucketIamPolicyArrayOutputWithCont
 // BackendBucketIamPolicyMapInput is an input type that accepts BackendBucketIamPolicyMap and BackendBucketIamPolicyMapOutput values.
 // You can construct a concrete instance of `BackendBucketIamPolicyMapInput` via:
 //
-//          BackendBucketIamPolicyMap{ "key": BackendBucketIamPolicyArgs{...} }
+//	BackendBucketIamPolicyMap{ "key": BackendBucketIamPolicyArgs{...} }
 type BackendBucketIamPolicyMapInput interface {
 	pulumi.Input
 

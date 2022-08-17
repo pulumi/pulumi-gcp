@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>

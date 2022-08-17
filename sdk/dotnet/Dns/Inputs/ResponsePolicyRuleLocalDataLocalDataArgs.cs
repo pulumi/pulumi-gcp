@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ResponsePolicyRuleLocalDataLocalDataArgs : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyRuleLocalDataLocalDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For example, www.example.com.
@@ -47,5 +47,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ResponsePolicyRuleLocalDataLocalDataArgs()
         {
         }
+        public static new ResponsePolicyRuleLocalDataLocalDataArgs Empty => new ResponsePolicyRuleLocalDataLocalDataArgs();
     }
 }

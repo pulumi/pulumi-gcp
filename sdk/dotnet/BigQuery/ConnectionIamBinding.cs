@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.BigQuery
     /// ## google\_bigquery\_connection\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.BigQuery.ConnectionIamPolicy("policy", new Gcp.BigQuery.ConnectionIamPolicyArgs
-    ///         {
-    ///             Project = google_bigquery_connection.Connection.Project,
-    ///             Location = google_bigquery_connection.Connection.Location,
-    ///             ConnectionId = google_bigquery_connection.Connection.Connection_id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.BigQuery.ConnectionIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_bigquery_connection.Connection.Project,
+    ///         Location = google_bigquery_connection.Connection.Location,
+    ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_bigquery\_connection\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.BigQuery.ConnectionIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.BigQuery.ConnectionIamBinding("binding", new Gcp.BigQuery.ConnectionIamBindingArgs
+    ///         Project = google_bigquery_connection.Connection.Project,
+    ///         Location = google_bigquery_connection.Connection.Location,
+    ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_bigquery_connection.Connection.Project,
-    ///             Location = google_bigquery_connection.Connection.Location,
-    ///             ConnectionId = google_bigquery_connection.Connection.Connection_id,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_bigquery\_connection\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.BigQuery.ConnectionIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.BigQuery.ConnectionIamMember("member", new Gcp.BigQuery.ConnectionIamMemberArgs
-    ///         {
-    ///             Project = google_bigquery_connection.Connection.Project,
-    ///             Location = google_bigquery_connection.Connection.Location,
-    ///             ConnectionId = google_bigquery_connection.Connection.Connection_id,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_bigquery_connection.Connection.Project,
+    ///         Location = google_bigquery_connection.Connection.Location,
+    ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.BigQuery
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:bigquery/connectionIamBinding:ConnectionIamBinding")]
-    public partial class ConnectionIamBinding : Pulumi.CustomResource
+    public partial class ConnectionIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.ConnectionIamBindingCondition?> Condition { get; private set; } = null!;
@@ -222,7 +217,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class ConnectionIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConnectionIamBindingConditionArgs>? Condition { get; set; }
@@ -272,9 +267,10 @@ namespace Pulumi.Gcp.BigQuery
         public ConnectionIamBindingArgs()
         {
         }
+        public static new ConnectionIamBindingArgs Empty => new ConnectionIamBindingArgs();
     }
 
-    public sealed class ConnectionIamBindingState : Pulumi.ResourceArgs
+    public sealed class ConnectionIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConnectionIamBindingConditionGetArgs>? Condition { get; set; }
@@ -330,5 +326,6 @@ namespace Pulumi.Gcp.BigQuery
         public ConnectionIamBindingState()
         {
         }
+        public static new ConnectionIamBindingState Empty => new ConnectionIamBindingState();
     }
 }

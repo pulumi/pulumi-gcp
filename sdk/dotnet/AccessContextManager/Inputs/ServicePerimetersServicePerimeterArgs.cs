@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimetersServicePerimeterArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimetersServicePerimeterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -104,5 +104,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimetersServicePerimeterArgs()
         {
         }
+        public static new ServicePerimetersServicePerimeterArgs Empty => new ServicePerimetersServicePerimeterArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterControlPlaneSshConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterControlPlaneSshConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterControlPlaneSshConfigGetArgs()
         {
         }
+        public static new AzureClusterControlPlaneSshConfigGetArgs Empty => new AzureClusterControlPlaneSshConfigGetArgs();
     }
 }

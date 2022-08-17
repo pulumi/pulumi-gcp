@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution. Durations
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs()
         {
         }
+        public static new RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs Empty => new RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs();
     }
 }

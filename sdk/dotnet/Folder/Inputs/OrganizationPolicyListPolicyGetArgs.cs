@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Folder.Inputs
 {
 
-    public sealed class OrganizationPolicyListPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationPolicyListPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// or `deny` - (Optional) One or the other must be set.
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Folder.Inputs
         public OrganizationPolicyListPolicyGetArgs()
         {
         }
+        public static new OrganizationPolicyListPolicyGetArgs Empty => new OrganizationPolicyListPolicyGetArgs();
     }
 }

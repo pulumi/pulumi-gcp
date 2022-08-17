@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsGetArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Provide this property when creating the disk.
@@ -62,5 +62,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsGetArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsGetArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsGetArgs();
     }
 }

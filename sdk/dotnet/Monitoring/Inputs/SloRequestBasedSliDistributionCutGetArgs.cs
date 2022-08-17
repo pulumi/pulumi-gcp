@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloRequestBasedSliDistributionCutGetArgs : Pulumi.ResourceArgs
+    public sealed class SloRequestBasedSliDistributionCutGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloRequestBasedSliDistributionCutGetArgs()
         {
         }
+        public static new SloRequestBasedSliDistributionCutGetArgs Empty => new SloRequestBasedSliDistributionCutGetArgs();
     }
 }

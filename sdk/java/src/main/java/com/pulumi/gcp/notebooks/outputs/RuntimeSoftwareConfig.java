@@ -4,9 +4,11 @@
 package com.pulumi.gcp.notebooks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.notebooks.outputs.RuntimeSoftwareConfigKernel;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -42,6 +44,12 @@ public final class RuntimeSoftwareConfig {
      */
     private final @Nullable Boolean installGpuDriver;
     /**
+     * @return Use a list of container images to use as Kernels in the notebook instance.
+     * Structure is documented below.
+     * 
+     */
+    private final @Nullable List<RuntimeSoftwareConfigKernel> kernels;
+    /**
      * @return Cron expression in UTC timezone for schedule instance auto upgrade.
      * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
      * 
@@ -54,6 +62,18 @@ public final class RuntimeSoftwareConfig {
      * 
      */
     private final @Nullable String postStartupScript;
+    /**
+     * @return Behavior for the post startup script.
+     * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+     * 
+     */
+    private final @Nullable String postStartupScriptBehavior;
+    /**
+     * @return -
+     * Bool indicating whether an newer image is available in an image family.
+     * 
+     */
+    private final @Nullable Boolean upgradeable;
 
     @CustomType.Constructor
     private RuntimeSoftwareConfig(
@@ -62,15 +82,21 @@ public final class RuntimeSoftwareConfig {
         @CustomType.Parameter("idleShutdown") @Nullable Boolean idleShutdown,
         @CustomType.Parameter("idleShutdownTimeout") @Nullable Integer idleShutdownTimeout,
         @CustomType.Parameter("installGpuDriver") @Nullable Boolean installGpuDriver,
+        @CustomType.Parameter("kernels") @Nullable List<RuntimeSoftwareConfigKernel> kernels,
         @CustomType.Parameter("notebookUpgradeSchedule") @Nullable String notebookUpgradeSchedule,
-        @CustomType.Parameter("postStartupScript") @Nullable String postStartupScript) {
+        @CustomType.Parameter("postStartupScript") @Nullable String postStartupScript,
+        @CustomType.Parameter("postStartupScriptBehavior") @Nullable String postStartupScriptBehavior,
+        @CustomType.Parameter("upgradeable") @Nullable Boolean upgradeable) {
         this.customGpuDriverPath = customGpuDriverPath;
         this.enableHealthMonitoring = enableHealthMonitoring;
         this.idleShutdown = idleShutdown;
         this.idleShutdownTimeout = idleShutdownTimeout;
         this.installGpuDriver = installGpuDriver;
+        this.kernels = kernels;
         this.notebookUpgradeSchedule = notebookUpgradeSchedule;
         this.postStartupScript = postStartupScript;
+        this.postStartupScriptBehavior = postStartupScriptBehavior;
+        this.upgradeable = upgradeable;
     }
 
     /**
@@ -112,6 +138,14 @@ public final class RuntimeSoftwareConfig {
         return Optional.ofNullable(this.installGpuDriver);
     }
     /**
+     * @return Use a list of container images to use as Kernels in the notebook instance.
+     * Structure is documented below.
+     * 
+     */
+    public List<RuntimeSoftwareConfigKernel> kernels() {
+        return this.kernels == null ? List.of() : this.kernels;
+    }
+    /**
      * @return Cron expression in UTC timezone for schedule instance auto upgrade.
      * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
      * 
@@ -128,6 +162,22 @@ public final class RuntimeSoftwareConfig {
     public Optional<String> postStartupScript() {
         return Optional.ofNullable(this.postStartupScript);
     }
+    /**
+     * @return Behavior for the post startup script.
+     * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+     * 
+     */
+    public Optional<String> postStartupScriptBehavior() {
+        return Optional.ofNullable(this.postStartupScriptBehavior);
+    }
+    /**
+     * @return -
+     * Bool indicating whether an newer image is available in an image family.
+     * 
+     */
+    public Optional<Boolean> upgradeable() {
+        return Optional.ofNullable(this.upgradeable);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -143,8 +193,11 @@ public final class RuntimeSoftwareConfig {
         private @Nullable Boolean idleShutdown;
         private @Nullable Integer idleShutdownTimeout;
         private @Nullable Boolean installGpuDriver;
+        private @Nullable List<RuntimeSoftwareConfigKernel> kernels;
         private @Nullable String notebookUpgradeSchedule;
         private @Nullable String postStartupScript;
+        private @Nullable String postStartupScriptBehavior;
+        private @Nullable Boolean upgradeable;
 
         public Builder() {
     	      // Empty
@@ -157,8 +210,11 @@ public final class RuntimeSoftwareConfig {
     	      this.idleShutdown = defaults.idleShutdown;
     	      this.idleShutdownTimeout = defaults.idleShutdownTimeout;
     	      this.installGpuDriver = defaults.installGpuDriver;
+    	      this.kernels = defaults.kernels;
     	      this.notebookUpgradeSchedule = defaults.notebookUpgradeSchedule;
     	      this.postStartupScript = defaults.postStartupScript;
+    	      this.postStartupScriptBehavior = defaults.postStartupScriptBehavior;
+    	      this.upgradeable = defaults.upgradeable;
         }
 
         public Builder customGpuDriverPath(@Nullable String customGpuDriverPath) {
@@ -181,6 +237,13 @@ public final class RuntimeSoftwareConfig {
             this.installGpuDriver = installGpuDriver;
             return this;
         }
+        public Builder kernels(@Nullable List<RuntimeSoftwareConfigKernel> kernels) {
+            this.kernels = kernels;
+            return this;
+        }
+        public Builder kernels(RuntimeSoftwareConfigKernel... kernels) {
+            return kernels(List.of(kernels));
+        }
         public Builder notebookUpgradeSchedule(@Nullable String notebookUpgradeSchedule) {
             this.notebookUpgradeSchedule = notebookUpgradeSchedule;
             return this;
@@ -188,8 +251,16 @@ public final class RuntimeSoftwareConfig {
         public Builder postStartupScript(@Nullable String postStartupScript) {
             this.postStartupScript = postStartupScript;
             return this;
+        }
+        public Builder postStartupScriptBehavior(@Nullable String postStartupScriptBehavior) {
+            this.postStartupScriptBehavior = postStartupScriptBehavior;
+            return this;
+        }
+        public Builder upgradeable(@Nullable Boolean upgradeable) {
+            this.upgradeable = upgradeable;
+            return this;
         }        public RuntimeSoftwareConfig build() {
-            return new RuntimeSoftwareConfig(customGpuDriverPath, enableHealthMonitoring, idleShutdown, idleShutdownTimeout, installGpuDriver, notebookUpgradeSchedule, postStartupScript);
+            return new RuntimeSoftwareConfig(customGpuDriverPath, enableHealthMonitoring, idleShutdown, idleShutdownTimeout, installGpuDriver, kernels, notebookUpgradeSchedule, postStartupScript, postStartupScriptBehavior, upgradeable);
         }
     }
 }

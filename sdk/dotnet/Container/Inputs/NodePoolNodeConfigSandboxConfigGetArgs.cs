@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigSandboxConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigSandboxConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("sandboxType", required: true)]
         public Input<string> SandboxType { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigSandboxConfigGetArgs()
         {
         }
+        public static new NodePoolNodeConfigSandboxConfigGetArgs Empty => new NodePoolNodeConfigSandboxConfigGetArgs();
     }
 }

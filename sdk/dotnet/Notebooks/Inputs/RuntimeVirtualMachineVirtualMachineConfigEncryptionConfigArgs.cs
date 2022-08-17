@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud KMS resource identifier of the customer-managed
@@ -25,5 +25,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs();
     }
 }

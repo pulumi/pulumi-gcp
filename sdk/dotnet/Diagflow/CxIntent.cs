@@ -22,79 +22,78 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Intent Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
-    ///         var agent = new Gcp.Diagflow.CxAgent("agent", new Gcp.Diagflow.CxAgentArgs
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
     ///         {
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             Location = "global",
-    ///             DefaultLanguageCode = "en",
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///             Description = "Example description.",
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableSpellCorrection = true,
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///         });
-    ///         var basicIntent = new Gcp.Diagflow.CxIntent("basicIntent", new Gcp.Diagflow.CxIntentArgs
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             Parent = agent.Id,
-    ///             DisplayName = "Example",
-    ///             Priority = 1,
-    ///             Description = "Intent example",
-    ///             TrainingPhrases = 
-    ///             {
-    ///                 new Gcp.Diagflow.Inputs.CxIntentTrainingPhraseArgs
-    ///                 {
-    ///                     Parts = 
-    ///                     {
-    ///                         new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
-    ///                         {
-    ///                             Text = "training",
-    ///                         },
-    ///                         new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
-    ///                         {
-    ///                             Text = "phrase",
-    ///                         },
-    ///                         new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
-    ///                         {
-    ///                             Text = "example",
-    ///                         },
-    ///                     },
-    ///                     RepeatCount = 1,
-    ///                 },
-    ///             },
-    ///             Parameters = 
-    ///             {
-    ///                 new Gcp.Diagflow.Inputs.CxIntentParameterArgs
-    ///                 {
-    ///                     Id = "param1",
-    ///                     EntityType = "projects/-/locations/-/agents/-/entityTypes/sys.date",
-    ///                 },
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "label1", "value1" },
-    ///                 { "label2", "value2" },
-    ///             },
-    ///         });
-    ///     }
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var basicIntent = new Gcp.Diagflow.CxIntent("basicIntent", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "Example",
+    ///         Priority = 1,
+    ///         Description = "Intent example",
+    ///         TrainingPhrases = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxIntentTrainingPhraseArgs
+    ///             {
+    ///                 Parts = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "training",
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "phrase",
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "example",
+    ///                     },
+    ///                 },
+    ///                 RepeatCount = 1,
+    ///             },
+    ///         },
+    ///         Parameters = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxIntentParameterArgs
+    ///             {
+    ///                 Id = "param1",
+    ///                 EntityType = "projects/-/locations/-/agents/-/entityTypes/sys.date",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "value1" },
+    ///             { "label2", "value2" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -110,7 +109,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxIntent:CxIntent")]
-    public partial class CxIntent : Pulumi.CustomResource
+    public partial class CxIntent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -227,7 +226,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxIntentArgs : Pulumi.ResourceArgs
+    public sealed class CxIntentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -314,9 +313,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxIntentArgs()
         {
         }
+        public static new CxIntentArgs Empty => new CxIntentArgs();
     }
 
-    public sealed class CxIntentState : Pulumi.ResourceArgs
+    public sealed class CxIntentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -410,5 +410,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxIntentState()
         {
         }
+        public static new CxIntentState Empty => new CxIntentState();
     }
 }

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionUrlMap:RegionUrlMap")]
-    public partial class RegionUrlMap : Pulumi.CustomResource
+    public partial class RegionUrlMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionUrlMapArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A reference to a RegionBackendService resource. This will be used if
@@ -261,9 +261,10 @@ namespace Pulumi.Gcp.Compute
         public RegionUrlMapArgs()
         {
         }
+        public static new RegionUrlMapArgs Empty => new RegionUrlMapArgs();
     }
 
-    public sealed class RegionUrlMapState : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -376,5 +377,6 @@ namespace Pulumi.Gcp.Compute
         public RegionUrlMapState()
         {
         }
+        public static new RegionUrlMapState Empty => new RegionUrlMapState();
     }
 }

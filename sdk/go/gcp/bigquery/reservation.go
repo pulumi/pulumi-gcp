@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
 // * How-to Guides
-//     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+//   - [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 //
 // ## Example Usage
 // ### Bigquery Reservation Basic
@@ -26,39 +26,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
-// 			IgnoreIdleSlots: pulumi.Bool(false),
-// 			Location:        pulumi.String("asia-northeast1"),
-// 			SlotCapacity:    pulumi.Int(0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+//				IgnoreIdleSlots: pulumi.Bool(false),
+//				Location:        pulumi.String("asia-northeast1"),
+//				SlotCapacity:    pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Reservation can be imported using any of these accepted formats
+// # Reservation can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/reservation:Reservation default projects/{{project}}/locations/{{location}}/reservations/{{name}}
+//
+//	$ pulumi import gcp:bigquery/reservation:Reservation default projects/{{project}}/locations/{{location}}/reservations/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/reservation:Reservation default {{project}}/{{location}}/{{name}}
+//
+//	$ pulumi import gcp:bigquery/reservation:Reservation default {{project}}/{{location}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/reservation:Reservation default {{location}}/{{name}}
+//
+//	$ pulumi import gcp:bigquery/reservation:Reservation default {{location}}/{{name}}
+//
 // ```
 type Reservation struct {
 	pulumi.CustomResourceState
@@ -214,7 +223,7 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 // ReservationArrayInput is an input type that accepts ReservationArray and ReservationArrayOutput values.
 // You can construct a concrete instance of `ReservationArrayInput` via:
 //
-//          ReservationArray{ ReservationArgs{...} }
+//	ReservationArray{ ReservationArgs{...} }
 type ReservationArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +248,7 @@ func (i ReservationArray) ToReservationArrayOutputWithContext(ctx context.Contex
 // ReservationMapInput is an input type that accepts ReservationMap and ReservationMapOutput values.
 // You can construct a concrete instance of `ReservationMapInput` via:
 //
-//          ReservationMap{ "key": ReservationArgs{...} }
+//	ReservationMap{ "key": ReservationArgs{...} }
 type ReservationMapInput interface {
 	pulumi.Input
 

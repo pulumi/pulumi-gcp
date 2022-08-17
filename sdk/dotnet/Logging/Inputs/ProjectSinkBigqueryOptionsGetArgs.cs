@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class ProjectSinkBigqueryOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ProjectSinkBigqueryOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public ProjectSinkBigqueryOptionsGetArgs()
         {
         }
+        public static new ProjectSinkBigqueryOptionsGetArgs Empty => new ProjectSinkBigqueryOptionsGetArgs();
     }
 }

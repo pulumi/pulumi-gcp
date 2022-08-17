@@ -39,27 +39,25 @@ namespace Pulumi.Gcp.Compute
     /// ### Disk Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.Disk("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.Disk("default", new Gcp.Compute.DiskArgs
+    ///         Image = "debian-11-bullseye-v20220719",
+    ///         Labels = 
     ///         {
-    ///             Image = "debian-8-jessie-v20170523",
-    ///             Labels = 
-    ///             {
-    ///                 { "environment", "dev" },
-    ///             },
-    ///             PhysicalBlockSizeBytes = 4096,
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///     }
+    ///             { "environment", "dev" },
+    ///         },
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -83,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/disk:Disk")]
-    public partial class Disk : Pulumi.CustomResource
+    public partial class Disk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -340,7 +338,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class DiskArgs : Pulumi.ResourceArgs
+    public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when
@@ -516,9 +514,10 @@ namespace Pulumi.Gcp.Compute
         public DiskArgs()
         {
         }
+        public static new DiskArgs Empty => new DiskArgs();
     }
 
-    public sealed class DiskState : Pulumi.ResourceArgs
+    public sealed class DiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -752,5 +751,6 @@ namespace Pulumi.Gcp.Compute
         public DiskState()
         {
         }
+        public static new DiskState Empty => new DiskState();
     }
 }

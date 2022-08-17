@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateJobArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Job is a Hadoop job.
@@ -99,5 +99,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateJobArgs()
         {
         }
+        public static new WorkflowTemplateJobArgs Empty => new WorkflowTemplateJobArgs();
     }
 }

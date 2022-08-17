@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP protocol to which this rule applies. The protocol
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs()
         {
         }
+        public static new OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs Empty => new OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigGetArgs();
     }
 }

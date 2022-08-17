@@ -22,23 +22,21 @@ namespace Pulumi.Gcp.ApiGateway
     /// ### Apigateway Api Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var api = new Gcp.ApiGateway.Api("api", new()
     ///     {
-    ///         var api = new Gcp.ApiGateway.Api("api", new Gcp.ApiGateway.ApiArgs
-    ///         {
-    ///             ApiId = "api",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         ApiId = "api",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigateway/api:Api")]
-    public partial class Api : Pulumi.CustomResource
+    public partial class Api : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
@@ -148,7 +146,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
     }
 
-    public sealed class ApiArgs : Pulumi.ResourceArgs
+    public sealed class ApiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
@@ -191,9 +189,10 @@ namespace Pulumi.Gcp.ApiGateway
         public ApiArgs()
         {
         }
+        public static new ApiArgs Empty => new ApiArgs();
     }
 
-    public sealed class ApiState : Pulumi.ResourceArgs
+    public sealed class ApiState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
@@ -248,5 +247,6 @@ namespace Pulumi.Gcp.ApiGateway
         public ApiState()
         {
         }
+        public static new ApiState Empty => new ApiState();
     }
 }

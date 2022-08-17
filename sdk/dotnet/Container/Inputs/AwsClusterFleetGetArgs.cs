@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterFleetGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterFleetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterFleetGetArgs()
         {
         }
+        public static new AwsClusterFleetGetArgs Empty => new AwsClusterFleetGetArgs();
     }
 }

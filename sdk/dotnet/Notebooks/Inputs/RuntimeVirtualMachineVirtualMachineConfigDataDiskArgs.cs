@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -141,5 +141,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs();
     }
 }

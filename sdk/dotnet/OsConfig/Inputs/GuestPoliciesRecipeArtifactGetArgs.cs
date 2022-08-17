@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeArtifactGetArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeArtifactGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to false. When false, recipes are subject to validations based on the artifact type:
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeArtifactGetArgs()
         {
         }
+        public static new GuestPoliciesRecipeArtifactGetArgs Empty => new GuestPoliciesRecipeArtifactGetArgs();
     }
 }

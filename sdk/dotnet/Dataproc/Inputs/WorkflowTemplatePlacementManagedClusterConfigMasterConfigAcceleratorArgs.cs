@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the accelerator cards of this type exposed to this instance.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs();
     }
 }

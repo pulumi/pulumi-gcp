@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionApiConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionApiConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take when users access resources that require authentication.
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionApiConfigGetArgs()
         {
         }
+        public static new FlexibleAppVersionApiConfigGetArgs Empty => new FlexibleAppVersionApiConfigGetArgs();
     }
 }

@@ -94,14 +94,14 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * One or more paragraphs of text description of a certificate map entry.
+     * A human-readable description of the resource.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return One or more paragraphs of text description of a certificate map entry.
+     * @return A human-readable description of the resource.
      * 
      */
     public Output<Optional<String>> description() {

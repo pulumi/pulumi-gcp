@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class FolderSinkExclusionGetArgs : Pulumi.ResourceArgs
+    public sealed class FolderSinkExclusionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of this exclusion.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public FolderSinkExclusionGetArgs()
         {
         }
+        public static new FolderSinkExclusionGetArgs Empty => new FolderSinkExclusionGetArgs();
     }
 }

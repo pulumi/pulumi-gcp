@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 {
 
-    public sealed class PolicyDefaultAdmissionRuleArgs : Pulumi.ResourceArgs
+    public sealed class PolicyDefaultAdmissionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action when a pod creation is denied by the admission rule.
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         public PolicyDefaultAdmissionRuleArgs()
         {
         }
+        public static new PolicyDefaultAdmissionRuleArgs Empty => new PolicyDefaultAdmissionRuleArgs();
     }
 }

@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
 // * How-to Guides
-//     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+//   - [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProject` and set `userProjectOverride` to true
@@ -33,60 +33,65 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
-// 			Parent: pulumi.String("organizations/123456789"),
-// 			Title:  pulumi.String("my policy"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level", &accesscontextmanager.AccessLevelArgs{
-// 			Basic: &accesscontextmanager.AccessLevelBasicArgs{
-// 				Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
-// 					&accesscontextmanager.AccessLevelBasicConditionArgs{
-// 						DevicePolicy: &accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs{
-// 							OsConstraints: accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArray{
-// 								&accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs{
-// 									OsType: pulumi.String("DESKTOP_CHROME_OS"),
-// 								},
-// 							},
-// 							RequireScreenLock: pulumi.Bool(true),
-// 						},
-// 						Regions: pulumi.StringArray{
-// 							pulumi.String("CH"),
-// 							pulumi.String("IT"),
-// 							pulumi.String("US"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("accessPolicies/%v", name), nil
-// 			}).(pulumi.StringOutput),
-// 			Title: pulumi.String("chromeos_no_lock"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+//				Parent: pulumi.String("organizations/123456789"),
+//				Title:  pulumi.String("my policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level", &accesscontextmanager.AccessLevelArgs{
+//				Basic: &accesscontextmanager.AccessLevelBasicArgs{
+//					Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
+//						&accesscontextmanager.AccessLevelBasicConditionArgs{
+//							DevicePolicy: &accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs{
+//								OsConstraints: accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArray{
+//									&accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs{
+//										OsType: pulumi.String("DESKTOP_CHROME_OS"),
+//									},
+//								},
+//								RequireScreenLock: pulumi.Bool(true),
+//							},
+//							Regions: pulumi.StringArray{
+//								pulumi.String("CH"),
+//								pulumi.String("IT"),
+//								pulumi.String("US"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accessPolicies/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Title: pulumi.String("chromeos_no_lock"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// AccessLevel can be imported using any of these accepted formats
+// # AccessLevel can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
+//
+//	$ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
+//
 // ```
 type AccessLevel struct {
 	pulumi.CustomResourceState
@@ -260,7 +265,7 @@ func (i *AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) Access
 // AccessLevelArrayInput is an input type that accepts AccessLevelArray and AccessLevelArrayOutput values.
 // You can construct a concrete instance of `AccessLevelArrayInput` via:
 //
-//          AccessLevelArray{ AccessLevelArgs{...} }
+//	AccessLevelArray{ AccessLevelArgs{...} }
 type AccessLevelArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +290,7 @@ func (i AccessLevelArray) ToAccessLevelArrayOutputWithContext(ctx context.Contex
 // AccessLevelMapInput is an input type that accepts AccessLevelMap and AccessLevelMapOutput values.
 // You can construct a concrete instance of `AccessLevelMapInput` via:
 //
-//          AccessLevelMap{ "key": AccessLevelArgs{...} }
+//	AccessLevelMap{ "key": AccessLevelArgs{...} }
 type AccessLevelMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateJobPrestoJobGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateJobPrestoJobGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientTags")]
         private InputList<string>? _clientTags;
@@ -69,5 +69,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateJobPrestoJobGetArgs()
         {
         }
+        public static new WorkflowTemplateJobPrestoJobGetArgs Empty => new WorkflowTemplateJobPrestoJobGetArgs();
     }
 }

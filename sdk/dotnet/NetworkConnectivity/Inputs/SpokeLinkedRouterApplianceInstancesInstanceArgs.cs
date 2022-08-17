@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 {
 
-    public sealed class SpokeLinkedRouterApplianceInstancesInstanceArgs : Pulumi.ResourceArgs
+    public sealed class SpokeLinkedRouterApplianceInstancesInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address on the VM to use for peering.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         public SpokeLinkedRouterApplianceInstancesInstanceArgs()
         {
         }
+        public static new SpokeLinkedRouterApplianceInstancesInstanceArgs Empty => new SpokeLinkedRouterApplianceInstancesInstanceArgs();
     }
 }

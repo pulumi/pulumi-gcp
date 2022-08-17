@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceBootDiskInitializeParamsGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBootDiskInitializeParamsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The image from which to initialize this disk. This can be
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceBootDiskInitializeParamsGetArgs()
         {
         }
+        public static new InstanceBootDiskInitializeParamsGetArgs Empty => new InstanceBootDiskInitializeParamsGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelBasicConditionDevicePolicyOsConstraintGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelBasicConditionDevicePolicyOsConstraintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimum allowed OS version. If not set, any version
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelBasicConditionDevicePolicyOsConstraintGetArgs()
         {
         }
+        public static new AccessLevelBasicConditionDevicePolicyOsConstraintGetArgs Empty => new AccessLevelBasicConditionDevicePolicyOsConstraintGetArgs();
     }
 }

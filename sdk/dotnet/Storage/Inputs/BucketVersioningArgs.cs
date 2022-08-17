@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketVersioningArgs : Pulumi.ResourceArgs
+    public sealed class BucketVersioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// While set to `true`, versioning is fully enabled for this bucket.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketVersioningArgs()
         {
         }
+        public static new BucketVersioningArgs Empty => new BucketVersioningArgs();
     }
 }

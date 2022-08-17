@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels,
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateArgs()
         {
         }
+        public static new ServiceTemplateArgs Empty => new ServiceTemplateArgs();
     }
 }

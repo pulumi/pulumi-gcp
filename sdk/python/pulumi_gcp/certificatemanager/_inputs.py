@@ -11,6 +11,8 @@ from .. import _utilities
 
 __all__ = [
     'CertificateManagedArgs',
+    'CertificateManagedAuthorizationAttemptInfoArgs',
+    'CertificateManagedProvisioningIssueArgs',
     'CertificateMapGclbTargetArgs',
     'CertificateMapGclbTargetIpConfigArgs',
     'CertificateSelfManagedArgs',
@@ -20,22 +22,50 @@ __all__ = [
 @pulumi.input_type
 class CertificateManagedArgs:
     def __init__(__self__, *,
+                 authorization_attempt_infos: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]] = None,
                  dns_authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]] authorization_attempt_infos: -
+               Detailed state of the latest authorization attempt for each domain
+               specified for this Managed Certificate.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Authorizations that will be used for performing domain authorization
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]] provisioning_issues: -
+               Information about issues with provisioning this Managed Certificate.
+               Structure is documented below.
         :param pulumi.Input[str] state: -
-               State of the managed certificate resource.
+               State of the domain for managed certificate issuance.
         """
+        if authorization_attempt_infos is not None:
+            pulumi.set(__self__, "authorization_attempt_infos", authorization_attempt_infos)
         if dns_authorizations is not None:
             pulumi.set(__self__, "dns_authorizations", dns_authorizations)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if provisioning_issues is not None:
+            pulumi.set(__self__, "provisioning_issues", provisioning_issues)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="authorizationAttemptInfos")
+    def authorization_attempt_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]:
+        """
+        -
+        Detailed state of the latest authorization attempt for each domain
+        specified for this Managed Certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorization_attempt_infos")
+
+    @authorization_attempt_infos.setter
+    def authorization_attempt_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]):
+        pulumi.set(self, "authorization_attempt_infos", value)
 
     @property
     @pulumi.getter(name="dnsAuthorizations")
@@ -63,17 +93,161 @@ class CertificateManagedArgs:
         pulumi.set(self, "domains", value)
 
     @property
+    @pulumi.getter(name="provisioningIssues")
+    def provisioning_issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]:
+        """
+        -
+        Information about issues with provisioning this Managed Certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "provisioning_issues")
+
+    @provisioning_issues.setter
+    def provisioning_issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]):
+        pulumi.set(self, "provisioning_issues", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         -
-        State of the managed certificate resource.
+        State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class CertificateManagedAuthorizationAttemptInfoArgs:
+    def __init__(__self__, *,
+                 details: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 failure_reason: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] details: -
+               Human readable explanation for reaching the state. Provided to help
+               address the configuration issues.
+               Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        :param pulumi.Input[str] domain: -
+               Domain name of the authorization attempt.
+        :param pulumi.Input[str] failure_reason: -
+               Reason for failure of the authorization attempt for the domain.
+        :param pulumi.Input[str] state: -
+               State of the domain for managed certificate issuance.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if failure_reason is not None:
+            pulumi.set(__self__, "failure_reason", failure_reason)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Human readable explanation for reaching the state. Provided to help
+        address the configuration issues.
+        Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Domain name of the authorization attempt.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="failureReason")
+    def failure_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Reason for failure of the authorization attempt for the domain.
+        """
+        return pulumi.get(self, "failure_reason")
+
+    @failure_reason.setter
+    def failure_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "failure_reason", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        State of the domain for managed certificate issuance.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class CertificateManagedProvisioningIssueArgs:
+    def __init__(__self__, *,
+                 details: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] details: -
+               Human readable explanation for reaching the state. Provided to help
+               address the configuration issues.
+               Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        :param pulumi.Input[str] reason: -
+               Reason for provisioning failures.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Human readable explanation for reaching the state. Provided to help
+        address the configuration issues.
+        Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Reason for provisioning failures.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
 
 
 @pulumi.input_type

@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
 // ### Network Endpoint
@@ -30,95 +30,106 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.0.0.1/16"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Network:     defaultNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String(myImage.SelfLink),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Subnetwork: defaultSubnetwork.ID(),
-// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-// 						nil,
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
-// 			NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
-// 			Instance:             endpoint_instance.Name,
-// 			Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
-// 			IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
-// 				return networkInterfaces[0].NetworkIp, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
-// 			Network:     defaultNetwork.ID(),
-// 			Subnetwork:  defaultSubnetwork.ID(),
-// 			DefaultPort: pulumi.Int(90),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.0.0.1/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "endpoint-instance", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Subnetwork: defaultSubnetwork.ID(),
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
+//				NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
+//				Instance:             endpoint_instance.Name,
+//				Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
+//				IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
+//					return networkInterfaces[0].NetworkIp, nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
+//				Network:     defaultNetwork.ID(),
+//				Subnetwork:  defaultSubnetwork.ID(),
+//				DefaultPort: pulumi.Int(90),
+//				Zone:        pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// NetworkEndpoint can be imported using any of these accepted formats
+// # NetworkEndpoint can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
+//	$ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
+//	$ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
+//	$ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
+//	$ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+//
 // ```
 type NetworkEndpoint struct {
 	pulumi.CustomResourceState
@@ -134,7 +145,7 @@ type NetworkEndpoint struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringOutput `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
-	Port pulumi.IntOutput `pulumi:"port"`
+	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -154,9 +165,6 @@ func NewNetworkEndpoint(ctx *pulumi.Context,
 	}
 	if args.NetworkEndpointGroup == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkEndpointGroup'")
-	}
-	if args.Port == nil {
-		return nil, errors.New("invalid value for required argument 'Port'")
 	}
 	var resource NetworkEndpoint
 	err := ctx.RegisterResource("gcp:compute/networkEndpoint:NetworkEndpoint", name, args, &resource, opts...)
@@ -235,7 +243,7 @@ type networkEndpointArgs struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
-	Port int `pulumi:"port"`
+	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -256,7 +264,7 @@ type NetworkEndpointArgs struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringInput
 	// Port number of network endpoint.
-	Port pulumi.IntInput
+	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -290,7 +298,7 @@ func (i *NetworkEndpoint) ToNetworkEndpointOutputWithContext(ctx context.Context
 // NetworkEndpointArrayInput is an input type that accepts NetworkEndpointArray and NetworkEndpointArrayOutput values.
 // You can construct a concrete instance of `NetworkEndpointArrayInput` via:
 //
-//          NetworkEndpointArray{ NetworkEndpointArgs{...} }
+//	NetworkEndpointArray{ NetworkEndpointArgs{...} }
 type NetworkEndpointArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +323,7 @@ func (i NetworkEndpointArray) ToNetworkEndpointArrayOutputWithContext(ctx contex
 // NetworkEndpointMapInput is an input type that accepts NetworkEndpointMap and NetworkEndpointMapOutput values.
 // You can construct a concrete instance of `NetworkEndpointMapInput` via:
 //
-//          NetworkEndpointMap{ "key": NetworkEndpointArgs{...} }
+//	NetworkEndpointMap{ "key": NetworkEndpointArgs{...} }
 type NetworkEndpointMapInput interface {
 	pulumi.Input
 
@@ -371,8 +379,8 @@ func (o NetworkEndpointOutput) NetworkEndpointGroup() pulumi.StringOutput {
 }
 
 // Port number of network endpoint.
-func (o NetworkEndpointOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkEndpoint) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+func (o NetworkEndpointOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpoint) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

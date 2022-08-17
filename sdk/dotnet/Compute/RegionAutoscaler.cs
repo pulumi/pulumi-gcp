@@ -26,95 +26,95 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Autoscaler Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new()
     ///     {
-    ///         var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         MachineType = "e2-standard-4",
+    ///         Disks = new[]
     ///         {
-    ///             MachineType = "e2-standard-4",
-    ///             Disks = 
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-    ///                 {
-    ///                     SourceImage = "debian-cloud/debian-9",
-    ///                     DiskSizeGb = 250,
-    ///                 },
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 DiskSizeGb = 250,
     ///             },
-    ///             NetworkInterfaces = 
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
     ///                 {
-    ///                     Network = "default",
-    ///                     AccessConfigs = 
+    ///                     new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs
     ///                     {
-    ///                         new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs
-    ///                         {
-    ///                             NetworkTier = "PREMIUM",
-    ///                         },
+    ///                         NetworkTier = "PREMIUM",
     ///                     },
     ///                 },
     ///             },
-    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
-    ///             {
-    ///                 Scopes = 
-    ///                 {
-    ///                     "https://www.googleapis.com/auth/devstorage.read_only",
-    ///                     "https://www.googleapis.com/auth/logging.write",
-    ///                     "https://www.googleapis.com/auth/monitoring.write",
-    ///                     "https://www.googleapis.com/auth/pubsub",
-    ///                     "https://www.googleapis.com/auth/service.management.readonly",
-    ///                     "https://www.googleapis.com/auth/servicecontrol",
-    ///                     "https://www.googleapis.com/auth/trace.append",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var foobarTargetPool = new Gcp.Compute.TargetPool("foobarTargetPool", new Gcp.Compute.TargetPoolArgs
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
     ///         {
-    ///         });
-    ///         var foobarRegionInstanceGroupManager = new Gcp.Compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager", new Gcp.Compute.RegionInstanceGroupManagerArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Versions = 
+    ///             Scopes = new[]
     ///             {
-    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
-    ///                 {
-    ///                     InstanceTemplate = foobarInstanceTemplate.Id,
-    ///                     Name = "primary",
-    ///                 },
+    ///                 "https://www.googleapis.com/auth/devstorage.read_only",
+    ///                 "https://www.googleapis.com/auth/logging.write",
+    ///                 "https://www.googleapis.com/auth/monitoring.write",
+    ///                 "https://www.googleapis.com/auth/pubsub",
+    ///                 "https://www.googleapis.com/auth/service.management.readonly",
+    ///                 "https://www.googleapis.com/auth/servicecontrol",
+    ///                 "https://www.googleapis.com/auth/trace.append",
     ///             },
-    ///             TargetPools = 
-    ///             {
-    ///                 foobarTargetPool.Id,
-    ///             },
-    ///             BaseInstanceName = "foobar",
-    ///         });
-    ///         var foobarRegionAutoscaler = new Gcp.Compute.RegionAutoscaler("foobarRegionAutoscaler", new Gcp.Compute.RegionAutoscalerArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Target = foobarRegionInstanceGroupManager.Id,
-    ///             AutoscalingPolicy = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyArgs
-    ///             {
-    ///                 MaxReplicas = 5,
-    ///                 MinReplicas = 1,
-    ///                 CooldownPeriod = 60,
-    ///                 CpuUtilization = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs
-    ///                 {
-    ///                     Target = 0.5,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var debian9 = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobarTargetPool");
+    /// 
+    ///     var foobarRegionInstanceGroupManager = new Gcp.Compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = foobarInstanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         TargetPools = new[]
+    ///         {
+    ///             foobarTargetPool.Id,
+    ///         },
+    ///         BaseInstanceName = "foobar",
+    ///     });
+    /// 
+    ///     var foobarRegionAutoscaler = new Gcp.Compute.RegionAutoscaler("foobarRegionAutoscaler", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Target = foobarRegionInstanceGroupManager.Id,
+    ///         AutoscalingPolicy = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyArgs
+    ///         {
+    ///             MaxReplicas = 5,
+    ///             MinReplicas = 1,
+    ///             CooldownPeriod = 60,
+    ///             CpuUtilization = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs
+    ///             {
+    ///                 Target = 0.5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionAutoscaler:RegionAutoscaler")]
-    public partial class RegionAutoscaler : Pulumi.CustomResource
+    public partial class RegionAutoscaler : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can
@@ -240,7 +240,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionAutoscalerArgs : Pulumi.ResourceArgs
+    public sealed class RegionAutoscalerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can
@@ -289,9 +289,10 @@ namespace Pulumi.Gcp.Compute
         public RegionAutoscalerArgs()
         {
         }
+        public static new RegionAutoscalerArgs Empty => new RegionAutoscalerArgs();
     }
 
-    public sealed class RegionAutoscalerState : Pulumi.ResourceArgs
+    public sealed class RegionAutoscalerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can
@@ -352,5 +353,6 @@ namespace Pulumi.Gcp.Compute
         public RegionAutoscalerState()
         {
         }
+        public static new RegionAutoscalerState Empty => new RegionAutoscalerState();
     }
 }

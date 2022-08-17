@@ -16,37 +16,35 @@ namespace Pulumi.Gcp.CloudDeploy
     /// ### Target
     /// Creates a basic Cloud Deploy target
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.CloudDeploy.Target("primary", new()
     ///     {
-    ///         var primary = new Gcp.CloudDeploy.Target("primary", new Gcp.CloudDeploy.TargetArgs
+    ///         Annotations = 
     ///         {
-    ///             Annotations = 
-    ///             {
-    ///                 { "my_first_annotation", "example-annotation-1" },
-    ///                 { "my_second_annotation", "example-annotation-2" },
-    ///             },
-    ///             Description = "basic description",
-    ///             Gke = new Gcp.CloudDeploy.Inputs.TargetGkeArgs
-    ///             {
-    ///                 Cluster = "projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "my_first_label", "example-label-1" },
-    ///                 { "my_second_label", "example-label-2" },
-    ///             },
-    ///             Location = "us-west1",
-    ///             Project = "my-project-name",
-    ///             RequireApproval = false,
-    ///         });
-    ///     }
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Description = "basic description",
+    ///         Gke = new Gcp.CloudDeploy.Inputs.TargetGkeArgs
+    ///         {
+    ///             Cluster = "projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
+    ///         },
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///         RequireApproval = false,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// ```
     /// </summary>
     [GcpResourceType("gcp:clouddeploy/target:Target")]
-    public partial class Target : Pulumi.CustomResource
+    public partial class Target : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -203,7 +201,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
     }
 
-    public sealed class TargetArgs : Pulumi.ResourceArgs
+    public sealed class TargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -286,9 +284,10 @@ namespace Pulumi.Gcp.CloudDeploy
         public TargetArgs()
         {
         }
+        public static new TargetArgs Empty => new TargetArgs();
     }
 
-    public sealed class TargetState : Pulumi.ResourceArgs
+    public sealed class TargetState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -402,5 +401,6 @@ namespace Pulumi.Gcp.CloudDeploy
         public TargetState()
         {
         }
+        public static new TargetState Empty => new TargetState();
     }
 }

@@ -21,20 +21,19 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Gcp.Container.GetRegistryRepository.InvokeAsync());
-        ///         this.GcrLocation = foo.Apply(foo =&gt; foo.RepositoryUrl);
-        ///     }
+        ///     var foo = Gcp.Container.GetRegistryRepository.Invoke();
         /// 
-        ///     [Output("gcrLocation")]
-        ///     public Output&lt;string&gt; GcrLocation { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcrLocation"] = foo.Apply(getRegistryRepositoryResult =&gt; getRegistryRepositoryResult.RepositoryUrl),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +51,19 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Gcp.Container.GetRegistryRepository.InvokeAsync());
-        ///         this.GcrLocation = foo.Apply(foo =&gt; foo.RepositoryUrl);
-        ///     }
+        ///     var foo = Gcp.Container.GetRegistryRepository.Invoke();
         /// 
-        ///     [Output("gcrLocation")]
-        ///     public Output&lt;string&gt; GcrLocation { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcrLocation"] = foo.Apply(getRegistryRepositoryResult =&gt; getRegistryRepositoryResult.RepositoryUrl),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +73,7 @@ namespace Pulumi.Gcp.Container
     }
 
 
-    public sealed class GetRegistryRepositoryArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryRepositoryArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -86,9 +84,10 @@ namespace Pulumi.Gcp.Container
         public GetRegistryRepositoryArgs()
         {
         }
+        public static new GetRegistryRepositoryArgs Empty => new GetRegistryRepositoryArgs();
     }
 
-    public sealed class GetRegistryRepositoryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryRepositoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -99,6 +98,7 @@ namespace Pulumi.Gcp.Container
         public GetRegistryRepositoryInvokeArgs()
         {
         }
+        public static new GetRegistryRepositoryInvokeArgs Empty => new GetRegistryRepositoryInvokeArgs();
     }
 
 

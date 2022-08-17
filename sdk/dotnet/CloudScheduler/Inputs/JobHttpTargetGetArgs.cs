@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudScheduler.Inputs
 {
 
-    public sealed class JobHttpTargetGetArgs : Pulumi.ResourceArgs
+    public sealed class JobHttpTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// HTTP request body.
@@ -65,5 +65,6 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         public JobHttpTargetGetArgs()
         {
         }
+        public static new JobHttpTargetGetArgs Empty => new JobHttpTargetGetArgs();
     }
 }

@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Spanner
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.Spanner.GetInstance.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.Spanner.GetInstance.InvokeAsync(new Gcp.Spanner.GetInstanceArgs
-        ///         {
-        ///             Name = "bar",
-        ///         }));
-        ///     }
+        ///         Name = "bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Spanner
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.Spanner.GetInstance.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.Spanner.GetInstance.InvokeAsync(new Gcp.Spanner.GetInstanceArgs
-        ///         {
-        ///             Name = "bar",
-        ///         }));
-        ///     }
+        ///         Name = "bar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Spanner
     }
 
 
-    public sealed class GetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("config")]
         public string? Config { get; set; }
@@ -95,9 +91,10 @@ namespace Pulumi.Gcp.Spanner
         public GetInstanceArgs()
         {
         }
+        public static new GetInstanceArgs Empty => new GetInstanceArgs();
     }
 
-    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -121,6 +118,7 @@ namespace Pulumi.Gcp.Spanner
         public GetInstanceInvokeArgs()
         {
         }
+        public static new GetInstanceInvokeArgs Empty => new GetInstanceInvokeArgs();
     }
 
 

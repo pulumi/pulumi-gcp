@@ -25,6 +25,8 @@ __all__ = [
     'MembershipAuthorityArgs',
     'MembershipEndpointArgs',
     'MembershipEndpointGkeClusterArgs',
+    'MembershipIamBindingConditionArgs',
+    'MembershipIamMemberConditionArgs',
 ]
 
 @pulumi.input_type
@@ -400,6 +402,8 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
         :param pulumi.Input[bool] enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param pulumi.Input[bool] log_denies_enabled: Logs all denies and dry run failures.
+        :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs'] monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        :param pulumi.Input[bool] mutation_enabled: Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         :param pulumi.Input[bool] referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param pulumi.Input[bool] template_library_installed: Installs the default template library along with Policy Controller.
         """
@@ -471,6 +475,9 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
     @property
     @pulumi.getter
     def monitoring(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]:
+        """
+        Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        """
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
@@ -480,6 +487,9 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
     @property
     @pulumi.getter(name="mutationEnabled")
     def mutation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        """
         return pulumi.get(self, "mutation_enabled")
 
     @mutation_enabled.setter
@@ -717,5 +727,83 @@ class MembershipEndpointGkeClusterArgs:
     @resource_link.setter
     def resource_link(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_link", value)
+
+
+@pulumi.input_type
+class MembershipIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class MembershipIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 

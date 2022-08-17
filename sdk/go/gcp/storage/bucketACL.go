@@ -30,31 +30,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
-// 			Location: pulumi.String("EU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewBucketACL(ctx, "image-store-acl", &storage.BucketACLArgs{
-// 			Bucket: image_store.Name,
-// 			RoleEntities: pulumi.StringArray{
-// 				pulumi.String("OWNER:user-my.email@gmail.com"),
-// 				pulumi.String("READER:group-mygroup"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketACL(ctx, "image-store-acl", &storage.BucketACLArgs{
+//				Bucket: image_store.Name,
+//				RoleEntities: pulumi.StringArray{
+//					pulumi.String("OWNER:user-my.email@gmail.com"),
+//					pulumi.String("READER:group-mygroup"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -179,7 +182,7 @@ func (i *BucketACL) ToBucketACLOutputWithContext(ctx context.Context) BucketACLO
 // BucketACLArrayInput is an input type that accepts BucketACLArray and BucketACLArrayOutput values.
 // You can construct a concrete instance of `BucketACLArrayInput` via:
 //
-//          BucketACLArray{ BucketACLArgs{...} }
+//	BucketACLArray{ BucketACLArgs{...} }
 type BucketACLArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +207,7 @@ func (i BucketACLArray) ToBucketACLArrayOutputWithContext(ctx context.Context) B
 // BucketACLMapInput is an input type that accepts BucketACLMap and BucketACLMapOutput values.
 // You can construct a concrete instance of `BucketACLMapInput` via:
 //
-//          BucketACLMap{ "key": BucketACLArgs{...} }
+//	BucketACLMap{ "key": BucketACLArgs{...} }
 type BucketACLMapInput interface {
 	pulumi.Input
 

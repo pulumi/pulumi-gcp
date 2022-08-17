@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("externalIpv6")]
         public Input<string>? ExternalIpv6 { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs()
         {
         }
+        public static new InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs Empty => new InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs();
     }
 }

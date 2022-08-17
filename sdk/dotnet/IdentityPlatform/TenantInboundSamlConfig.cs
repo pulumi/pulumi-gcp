@@ -20,44 +20,43 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Tenant Inbound Saml Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
     ///     {
-    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
+    ///         DisplayName = "tenant",
+    ///     });
+    /// 
+    ///     var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenantSamlConfig", new()
+    ///     {
+    ///         DisplayName = "Display Name",
+    ///         Tenant = tenant.Name,
+    ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigArgs
     ///         {
-    ///             DisplayName = "tenant",
-    ///         });
-    ///         var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenantSamlConfig", new Gcp.IdentityPlatform.TenantInboundSamlConfigArgs
-    ///         {
-    ///             DisplayName = "Display Name",
-    ///             Tenant = tenant.Name,
-    ///             IdpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigArgs
+    ///             IdpEntityId = "tf-idp",
+    ///             SignRequest = true,
+    ///             SsoUrl = "https://example.com",
+    ///             IdpCertificates = new[]
     ///             {
-    ///                 IdpEntityId = "tf-idp",
-    ///                 SignRequest = true,
-    ///                 SsoUrl = "https://example.com",
-    ///                 IdpCertificates = 
+    ///                 new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs
     ///                 {
-    ///                     new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs
-    ///                     {
-    ///                         X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
-    ///                     },
+    ///                     X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
     ///                 },
     ///             },
-    ///             SpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigSpConfigArgs
-    ///             {
-    ///                 SpEntityId = "tf-sp",
-    ///                 CallbackUri = "https://example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         SpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigSpConfigArgs
+    ///         {
+    ///             SpEntityId = "tf-sp",
+    ///             CallbackUri = "https://example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +76,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig")]
-    public partial class TenantInboundSamlConfig : Pulumi.CustomResource
+    public partial class TenantInboundSamlConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human friendly display name.
@@ -171,7 +170,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class TenantInboundSamlConfigArgs : Pulumi.ResourceArgs
+    public sealed class TenantInboundSamlConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human friendly display name.
@@ -224,9 +223,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantInboundSamlConfigArgs()
         {
         }
+        public static new TenantInboundSamlConfigArgs Empty => new TenantInboundSamlConfigArgs();
     }
 
-    public sealed class TenantInboundSamlConfigState : Pulumi.ResourceArgs
+    public sealed class TenantInboundSamlConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human friendly display name.
@@ -279,5 +279,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantInboundSamlConfigState()
         {
         }
+        public static new TenantInboundSamlConfigState Empty => new TenantInboundSamlConfigState();
     }
 }

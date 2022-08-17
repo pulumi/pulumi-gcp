@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesPackageRepositoryZypperArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesPackageRepositoryZypperArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the repository directory.
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesPackageRepositoryZypperArgs()
         {
         }
+        public static new GuestPoliciesPackageRepositoryZypperArgs Empty => new GuestPoliciesPackageRepositoryZypperArgs();
     }
 }

@@ -24,91 +24,87 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Monitoring Alert Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
     ///     {
-    ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
     ///         {
-    ///             Combiner = "OR",
-    ///             Conditions = 
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
-    ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
     ///                 {
-    ///                     ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                     Aggregations = new[]
     ///                     {
-    ///                         Aggregations = 
+    ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
     ///                         {
-    ///                             new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
-    ///                             {
-    ///                                 AlignmentPeriod = "60s",
-    ///                                 PerSeriesAligner = "ALIGN_RATE",
-    ///                             },
+    ///                             AlignmentPeriod = "60s",
+    ///                             PerSeriesAligner = "ALIGN_RATE",
     ///                         },
-    ///                         Comparison = "COMPARISON_GT",
-    ///                         Duration = "60s",
-    ///                         Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
     ///                     },
-    ///                     DisplayName = "test condition",
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
     ///                 },
+    ///                 DisplayName = "test condition",
     ///             },
-    ///             DisplayName = "My Alert Policy",
-    ///             UserLabels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         DisplayName = "My Alert Policy",
+    ///         UserLabels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Monitoring Alert Policy Evaluation Missing Data
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
     ///     {
-    ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
     ///         {
-    ///             Combiner = "OR",
-    ///             Conditions = 
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
     ///             {
-    ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
     ///                 {
-    ///                     ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                     Aggregations = new[]
     ///                     {
-    ///                         Aggregations = 
+    ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
     ///                         {
-    ///                             new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
-    ///                             {
-    ///                                 AlignmentPeriod = "60s",
-    ///                                 PerSeriesAligner = "ALIGN_RATE",
-    ///                             },
+    ///                             AlignmentPeriod = "60s",
+    ///                             PerSeriesAligner = "ALIGN_RATE",
     ///                         },
-    ///                         Comparison = "COMPARISON_GT",
-    ///                         Duration = "60s",
-    ///                         EvaluationMissingData = "EVALUATION_MISSING_DATA_INACTIVE",
-    ///                         Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
     ///                     },
-    ///                     DisplayName = "test condition",
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     EvaluationMissingData = "EVALUATION_MISSING_DATA_INACTIVE",
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
     ///                 },
+    ///                 DisplayName = "test condition",
     ///             },
-    ///             DisplayName = "My Alert Policy",
-    ///             UserLabels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         DisplayName = "My Alert Policy",
+    ///         UserLabels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +116,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/alertPolicy:AlertPolicy")]
-    public partial class AlertPolicy : Pulumi.CustomResource
+    public partial class AlertPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Control over how this alert policy's notification channels are notified.
@@ -266,7 +262,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Control over how this alert policy's notification channels are notified.
@@ -370,9 +366,10 @@ namespace Pulumi.Gcp.Monitoring
         public AlertPolicyArgs()
         {
         }
+        public static new AlertPolicyArgs Empty => new AlertPolicyArgs();
     }
 
-    public sealed class AlertPolicyState : Pulumi.ResourceArgs
+    public sealed class AlertPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Control over how this alert policy's notification channels are notified.
@@ -501,5 +498,6 @@ namespace Pulumi.Gcp.Monitoring
         public AlertPolicyState()
         {
         }
+        public static new AlertPolicyState Empty => new AlertPolicyState();
     }
 }

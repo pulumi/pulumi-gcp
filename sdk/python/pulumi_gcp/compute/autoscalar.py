@@ -320,7 +320,7 @@ class Autoscalar(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian9 = gcp.compute.get_image(family="debian-9",
+        debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
             machine_type="e2-medium",
@@ -377,7 +377,7 @@ class Autoscalar(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian9 = gcp.compute.get_image(family="debian-9",
+        debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
             machine_type="e2-medium",
@@ -487,7 +487,7 @@ class Autoscalar(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian9 = gcp.compute.get_image(family="debian-9",
+        debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
             machine_type="e2-medium",
@@ -544,7 +544,7 @@ class Autoscalar(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        debian9 = gcp.compute.get_image(family="debian-9",
+        debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
             machine_type="e2-medium",

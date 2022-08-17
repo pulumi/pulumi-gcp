@@ -21,54 +21,49 @@ namespace Pulumi.Gcp.Storage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var artifact = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
         ///     {
-        ///         var artifact = Output.Create(Gcp.Storage.GetObjectSignedUrl.InvokeAsync(new Gcp.Storage.GetObjectSignedUrlArgs
-        ///         {
-        ///             Bucket = "install_binaries",
-        ///             Path = "path/to/install_file.bin",
-        ///         }));
-        ///         var vm = new Gcp.Compute.Instance("vm", new Gcp.Compute.InstanceArgs
-        ///         {
-        ///         });
-        ///     }
+        ///         Bucket = "install_binaries",
+        ///         Path = "path/to/install_file.bin",
+        ///     });
         /// 
-        /// }
+        ///     var vm = new Gcp.Compute.Instance("vm");
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Full Example
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.IO;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var getUrl = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
         ///     {
-        ///         var getUrl = Output.Create(Gcp.Storage.GetObjectSignedUrl.InvokeAsync(new Gcp.Storage.GetObjectSignedUrlArgs
+        ///         Bucket = "fried_chicken",
+        ///         Path = "path/to/file",
+        ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
+        ///         ContentType = "text/plain",
+        ///         Duration = "2d",
+        ///         Credentials = File.ReadAllText("path/to/credentials.json"),
+        ///         ExtensionHeaders = 
         ///         {
-        ///             Bucket = "fried_chicken",
-        ///             Path = "path/to/file",
-        ///             ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
-        ///             ContentType = "text/plain",
-        ///             Duration = "2d",
-        ///             Credentials = File.ReadAllText("path/to/credentials.json"),
-        ///             ExtensionHeaders = 
-        ///             {
-        ///                 { "x-goog-if-generation-match", "1" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "x-goog-if-generation-match", "1" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Task<GetObjectSignedUrlResult> InvokeAsync(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
@@ -84,54 +79,49 @@ namespace Pulumi.Gcp.Storage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var artifact = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
         ///     {
-        ///         var artifact = Output.Create(Gcp.Storage.GetObjectSignedUrl.InvokeAsync(new Gcp.Storage.GetObjectSignedUrlArgs
-        ///         {
-        ///             Bucket = "install_binaries",
-        ///             Path = "path/to/install_file.bin",
-        ///         }));
-        ///         var vm = new Gcp.Compute.Instance("vm", new Gcp.Compute.InstanceArgs
-        ///         {
-        ///         });
-        ///     }
+        ///         Bucket = "install_binaries",
+        ///         Path = "path/to/install_file.bin",
+        ///     });
         /// 
-        /// }
+        ///     var vm = new Gcp.Compute.Instance("vm");
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Full Example
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.IO;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var getUrl = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
         ///     {
-        ///         var getUrl = Output.Create(Gcp.Storage.GetObjectSignedUrl.InvokeAsync(new Gcp.Storage.GetObjectSignedUrlArgs
+        ///         Bucket = "fried_chicken",
+        ///         Path = "path/to/file",
+        ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
+        ///         ContentType = "text/plain",
+        ///         Duration = "2d",
+        ///         Credentials = File.ReadAllText("path/to/credentials.json"),
+        ///         ExtensionHeaders = 
         ///         {
-        ///             Bucket = "fried_chicken",
-        ///             Path = "path/to/file",
-        ///             ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
-        ///             ContentType = "text/plain",
-        ///             Duration = "2d",
-        ///             Credentials = File.ReadAllText("path/to/credentials.json"),
-        ///             ExtensionHeaders = 
-        ///             {
-        ///                 { "x-goog-if-generation-match", "1" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "x-goog-if-generation-match", "1" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Output<GetObjectSignedUrlResult> Invoke(GetObjectSignedUrlInvokeArgs args, InvokeOptions? options = null)
@@ -139,7 +129,7 @@ namespace Pulumi.Gcp.Storage
     }
 
 
-    public sealed class GetObjectSignedUrlArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectSignedUrlArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the bucket to read the object from
@@ -203,9 +193,10 @@ namespace Pulumi.Gcp.Storage
         public GetObjectSignedUrlArgs()
         {
         }
+        public static new GetObjectSignedUrlArgs Empty => new GetObjectSignedUrlArgs();
     }
 
-    public sealed class GetObjectSignedUrlInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectSignedUrlInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the bucket to read the object from
@@ -269,6 +260,7 @@ namespace Pulumi.Gcp.Storage
         public GetObjectSignedUrlInvokeArgs()
         {
         }
+        public static new GetObjectSignedUrlInvokeArgs Empty => new GetObjectSignedUrlInvokeArgs();
     }
 
 
