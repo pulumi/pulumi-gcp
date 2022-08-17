@@ -176,9 +176,20 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 
 func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 
+	// explicitly check to make sure that the user has a project available before we do
+	// anything with the provider
+
+	project := stringValue(vars, "project", []string{"GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT",
+		"GCLOUD_PROJECT",
+		"CLOUDSDK_CORE_PROJECT"})
+	if project == "" {
+		return fmt.Errorf("unable to find required configuration setting: GCP Project\n" +
+			"Set the GCP Project by using:\n" +
+			"\t`pulumi config set gcp:project <project>`")
+	}
+
 	// check if skipCredentialsValidation is True, if yes, exit early
 	if val, ok := vars["skipCredentialsValidation"]; ok {
-		fmt.Println("SKIPPING VALIDATION")
 		if val.IsBool() {
 			return nil
 		}
@@ -188,9 +199,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 		AccessToken:               stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
 		Credentials:               stringValue(vars, "credentials", []string{"GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON"}),
 		ImpersonateServiceAccount: stringValue(vars, "", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
-		Project: stringValue(vars, "project", []string{"GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT",
-			"GCLOUD_PROJECT",
-			"CLOUDSDK_CORE_PROJECT"}),
+		Project:                   project,
 		Region: stringValue(vars, "region", []string{"GOOGLE_REGION",
 			"GCLOUD_REGION",
 			"CLOUDSDK_COMPUTE_REGION"}),
@@ -199,17 +208,14 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 			"CLOUDSDK_COMPUTE_ZONE"}),
 	}
 
-	fmt.Println(config)
-
-	// TODO: must set some other fields for default settings
 	// we need to catch the default gcloud config
-	fmt.Println("calling LoadAndValidate")
 	err := config.LoadAndValidate(context.Background())
 	if err != nil {
-		fmt.Println("and the error was not nil")
-		return fmt.Errorf("unable to validate GCP config because you did it wrong and you should feel bad.\n"+
-			"Original error: %w\n", err,
-		)
+		// TODO: parse other errors too?
+		return fmt.Errorf("failed to load application default credentials.\n" +
+			"To use your gcloud credentials, run:\n" +
+			"\t`gcloud auth application-default login`\n" +
+			"See https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.")
 
 	}
 	fmt.Println("and the error WAS nil, wtf GUINEVERE")
