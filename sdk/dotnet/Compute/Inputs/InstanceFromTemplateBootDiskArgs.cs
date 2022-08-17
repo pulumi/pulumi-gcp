@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateBootDiskArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateBootDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoDelete")]
         public Input<bool>? AutoDelete { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateBootDiskArgs()
         {
         }
+        public static new InstanceFromTemplateBootDiskArgs Empty => new InstanceFromTemplateBootDiskArgs();
     }
 }

@@ -28,124 +28,121 @@ namespace Pulumi.Gcp.Compute
     /// ### Backend Bucket Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var imageBucket = new Gcp.Storage.Bucket("imageBucket", new()
     ///     {
-    ///         var imageBucket = new Gcp.Storage.Bucket("imageBucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new Gcp.Compute.BackendBucketArgs
-    ///         {
-    ///             Description = "Contains beautiful images",
-    ///             BucketName = imageBucket.Name,
-    ///             EnableCdn = true,
-    ///         });
-    ///     }
+    ///         Location = "EU",
+    ///     });
     /// 
-    /// }
+    ///     var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBucket.Name,
+    ///         EnableCdn = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Backend Bucket Security Policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var imageBackendBucket = new Gcp.Storage.Bucket("imageBackendBucket", new()
     ///     {
-    ///         var imageBackendBucket = new Gcp.Storage.Bucket("imageBackendBucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var policy = new Gcp.Compute.SecurityPolicy("policy", new Gcp.Compute.SecurityPolicyArgs
-    ///         {
-    ///             Description = "basic security policy",
-    ///             Type = "CLOUD_ARMOR_EDGE",
-    ///         });
-    ///         var imageBackendBackendBucket = new Gcp.Compute.BackendBucket("imageBackendBackendBucket", new Gcp.Compute.BackendBucketArgs
-    ///         {
-    ///             Description = "Contains beautiful images",
-    ///             BucketName = imageBackendBucket.Name,
-    ///             EnableCdn = true,
-    ///             EdgeSecurityPolicy = policy.Id,
-    ///         });
-    ///     }
+    ///         Location = "EU",
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Description = "basic security policy",
+    ///         Type = "CLOUD_ARMOR_EDGE",
+    ///     });
+    /// 
+    ///     var imageBackendBackendBucket = new Gcp.Compute.BackendBucket("imageBackendBackendBucket", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBackendBucket.Name,
+    ///         EnableCdn = true,
+    ///         EdgeSecurityPolicy = policy.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Backend Bucket Query String Whitelist
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var imageBucket = new Gcp.Storage.Bucket("imageBucket", new()
     ///     {
-    ///         var imageBucket = new Gcp.Storage.Bucket("imageBucket", new Gcp.Storage.BucketArgs
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBucket.Name,
+    ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyArgs
     ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new Gcp.Compute.BackendBucketArgs
-    ///         {
-    ///             Description = "Contains beautiful images",
-    ///             BucketName = imageBucket.Name,
-    ///             EnableCdn = true,
-    ///             CdnPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyArgs
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs
     ///             {
-    ///                 CacheKeyPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs
+    ///                 QueryStringWhitelists = new[]
     ///                 {
-    ///                     QueryStringWhitelists = 
-    ///                     {
-    ///                         "image-version",
-    ///                     },
+    ///                     "image-version",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Backend Bucket Include Http Headers
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var imageBucket = new Gcp.Storage.Bucket("imageBucket", new()
     ///     {
-    ///         var imageBucket = new Gcp.Storage.Bucket("imageBucket", new Gcp.Storage.BucketArgs
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBucket.Name,
+    ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyArgs
     ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new Gcp.Compute.BackendBucketArgs
-    ///         {
-    ///             Description = "Contains beautiful images",
-    ///             BucketName = imageBucket.Name,
-    ///             EnableCdn = true,
-    ///             CdnPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyArgs
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs
     ///             {
-    ///                 CacheKeyPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs
+    ///                 IncludeHttpHeaders = new[]
     ///                 {
-    ///                     IncludeHttpHeaders = 
-    ///                     {
-    ///                         "X-My-Header-Field",
-    ///                     },
+    ///                     "X-My-Header-Field",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -165,7 +162,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/backendBucket:BackendBucket")]
-    public partial class BackendBucket : Pulumi.CustomResource
+    public partial class BackendBucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cloud Storage bucket name.
@@ -280,7 +277,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class BackendBucketArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage bucket name.
@@ -348,9 +345,10 @@ namespace Pulumi.Gcp.Compute
         public BackendBucketArgs()
         {
         }
+        public static new BackendBucketArgs Empty => new BackendBucketArgs();
     }
 
-    public sealed class BackendBucketState : Pulumi.ResourceArgs
+    public sealed class BackendBucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage bucket name.
@@ -430,5 +428,6 @@ namespace Pulumi.Gcp.Compute
         public BackendBucketState()
         {
         }
+        public static new BackendBucketState Empty => new BackendBucketState();
     }
 }

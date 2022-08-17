@@ -26,6 +26,8 @@ __all__ = [
     'MembershipAuthority',
     'MembershipEndpoint',
     'MembershipEndpointGkeCluster',
+    'MembershipIamBindingCondition',
+    'MembershipIamMemberCondition',
 ]
 
 @pulumi.output_type
@@ -438,6 +440,8 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
         :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param 'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs' monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        :param bool mutation_enabled: Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param bool template_library_installed: Installs the default template library along with Policy Controller.
         """
@@ -493,11 +497,17 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
     @property
     @pulumi.getter
     def monitoring(self) -> Optional['outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring']:
+        """
+        Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        """
         return pulumi.get(self, "monitoring")
 
     @property
     @pulumi.getter(name="mutationEnabled")
     def mutation_enabled(self) -> Optional[bool]:
+        """
+        Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        """
         return pulumi.get(self, "mutation_enabled")
 
     @property
@@ -760,5 +770,59 @@ class MembershipEndpointGkeCluster(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
+class MembershipIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MembershipIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 

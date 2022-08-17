@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dataflow
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:dataflow/job:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.Dataflow
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExperiments")]
         private InputList<string>? _additionalExperiments;
@@ -354,9 +354,10 @@ namespace Pulumi.Gcp.Dataflow
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 
-    public sealed class JobState : Pulumi.ResourceArgs
+    public sealed class JobState : global::Pulumi.ResourceArgs
     {
         [Input("additionalExperiments")]
         private InputList<string>? _additionalExperiments;
@@ -526,5 +527,6 @@ namespace Pulumi.Gcp.Dataflow
         public JobState()
         {
         }
+        public static new JobState Empty => new JobState();
     }
 }

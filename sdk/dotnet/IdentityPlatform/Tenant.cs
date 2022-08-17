@@ -23,21 +23,19 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Tenant Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
     ///     {
-    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
-    ///         {
-    ///             AllowPasswordSignup = true,
-    ///             DisplayName = "tenant",
-    ///         });
-    ///     }
+    ///         AllowPasswordSignup = true,
+    ///         DisplayName = "tenant",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/tenant:Tenant")]
-    public partial class Tenant : Pulumi.CustomResource
+    public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to allow email/password user authentication.
@@ -142,7 +140,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class TenantArgs : Pulumi.ResourceArgs
+    public sealed class TenantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to allow email/password user authentication.
@@ -180,9 +178,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantArgs()
         {
         }
+        public static new TenantArgs Empty => new TenantArgs();
     }
 
-    public sealed class TenantState : Pulumi.ResourceArgs
+    public sealed class TenantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to allow email/password user authentication.
@@ -226,5 +225,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantState()
         {
         }
+        public static new TenantState Empty => new TenantState();
     }
 }

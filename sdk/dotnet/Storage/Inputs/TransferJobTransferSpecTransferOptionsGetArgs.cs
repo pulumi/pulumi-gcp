@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecTransferOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecTransferOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecTransferOptionsGetArgs()
         {
         }
+        public static new TransferJobTransferSpecTransferOptionsGetArgs Empty => new TransferJobTransferSpecTransferOptionsGetArgs();
     }
 }

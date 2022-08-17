@@ -19,48 +19,49 @@ namespace Pulumi.Gcp.Compute
     /// ### Disk Resource Policy Attachment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var ssd = new Gcp.Compute.Disk("ssd", new()
+    ///     {
+    ///         Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var attachment = new Gcp.Compute.DiskResourcePolicyAttachment("attachment", new()
+    ///     {
+    ///         Disk = ssd.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.ResourcePolicy("policy", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var ssd = new Gcp.Compute.Disk("ssd", new Gcp.Compute.DiskArgs
-    ///         {
-    ///             Image = myImage.Apply(myImage =&gt; myImage.SelfLink),
-    ///             Size = 50,
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var attachment = new Gcp.Compute.DiskResourcePolicyAttachment("attachment", new Gcp.Compute.DiskResourcePolicyAttachmentArgs
-    ///         {
-    ///             Disk = ssd.Name,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var policy = new Gcp.Compute.ResourcePolicy("policy", new Gcp.Compute.ResourcePolicyArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
     ///             {
-    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
     ///                 {
-    ///                     DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
-    ///                     {
-    ///                         DaysInCycle = 1,
-    ///                         StartTime = "04:00",
-    ///                     },
+    ///                     DaysInCycle = 1,
+    ///                     StartTime = "04:00",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +85,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment")]
-    public partial class DiskResourcePolicyAttachment : Pulumi.CustomResource
+    public partial class DiskResourcePolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the disk in which the resource policies are attached to.
@@ -156,7 +157,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class DiskResourcePolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class DiskResourcePolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the disk in which the resource policies are attached to.
@@ -187,9 +188,10 @@ namespace Pulumi.Gcp.Compute
         public DiskResourcePolicyAttachmentArgs()
         {
         }
+        public static new DiskResourcePolicyAttachmentArgs Empty => new DiskResourcePolicyAttachmentArgs();
     }
 
-    public sealed class DiskResourcePolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class DiskResourcePolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the disk in which the resource policies are attached to.
@@ -220,5 +222,6 @@ namespace Pulumi.Gcp.Compute
         public DiskResourcePolicyAttachmentState()
         {
         }
+        public static new DiskResourcePolicyAttachmentState Empty => new DiskResourcePolicyAttachmentState();
     }
 }

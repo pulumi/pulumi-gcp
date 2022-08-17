@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP status code used to abort the request.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs()
         {
         }
+        public static new URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs Empty => new URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs();
     }
 }

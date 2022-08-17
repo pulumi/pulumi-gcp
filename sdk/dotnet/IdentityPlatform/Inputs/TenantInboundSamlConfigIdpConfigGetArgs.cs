@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.IdentityPlatform.Inputs
 {
 
-    public sealed class TenantInboundSamlConfigIdpConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class TenantInboundSamlConfigIdpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("idpCertificates", required: true)]
         private InputList<Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateGetArgs>? _idpCertificates;
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
         public TenantInboundSamlConfigIdpConfigGetArgs()
         {
         }
+        public static new TenantInboundSamlConfigIdpConfigGetArgs Empty => new TenantInboundSamlConfigIdpConfigGetArgs();
     }
 }

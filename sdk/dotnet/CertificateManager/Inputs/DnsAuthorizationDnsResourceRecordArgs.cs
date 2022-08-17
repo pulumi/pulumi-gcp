@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateManager.Inputs
 {
 
-    public sealed class DnsAuthorizationDnsResourceRecordArgs : Pulumi.ResourceArgs
+    public sealed class DnsAuthorizationDnsResourceRecordArgs : global::Pulumi.ResourceArgs
     {
         [Input("data")]
         public Input<string>? Data { get; set; }
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         public DnsAuthorizationDnsResourceRecordArgs()
         {
         }
+        public static new DnsAuthorizationDnsResourceRecordArgs Empty => new DnsAuthorizationDnsResourceRecordArgs();
     }
 }

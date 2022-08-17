@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An `AccessLevel` resource name that allow resources within the
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceGetArgs()
         {
         }
+        public static new ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceGetArgs Empty => new ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceGetArgs();
     }
 }

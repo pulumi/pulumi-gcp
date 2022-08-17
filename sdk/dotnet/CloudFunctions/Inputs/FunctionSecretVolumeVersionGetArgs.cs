@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctions.Inputs
 {
 
-    public sealed class FunctionSecretVolumeVersionGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionSecretVolumeVersionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
         public FunctionSecretVolumeVersionGetArgs()
         {
         }
+        public static new FunctionSecretVolumeVersionGetArgs Empty => new FunctionSecretVolumeVersionGetArgs();
     }
 }

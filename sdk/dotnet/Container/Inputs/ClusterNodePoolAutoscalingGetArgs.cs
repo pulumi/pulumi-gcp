@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolAutoscalingGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxNodeCount", required: true)]
         public Input<int> MaxNodeCount { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolAutoscalingGetArgs()
         {
         }
+        public static new ClusterNodePoolAutoscalingGetArgs Empty => new ClusterNodePoolAutoscalingGetArgs();
     }
 }

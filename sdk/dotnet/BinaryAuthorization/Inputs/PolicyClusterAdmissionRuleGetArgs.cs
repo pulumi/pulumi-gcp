@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 {
 
-    public sealed class PolicyClusterAdmissionRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicyClusterAdmissionRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier for this object. Format specified above.
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         public PolicyClusterAdmissionRuleGetArgs()
         {
         }
+        public static new PolicyClusterAdmissionRuleGetArgs Empty => new PolicyClusterAdmissionRuleGetArgs();
     }
 }

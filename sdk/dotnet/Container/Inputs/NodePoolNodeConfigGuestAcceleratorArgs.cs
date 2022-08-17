@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigGuestAcceleratorArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigGuestAcceleratorArgs : global::Pulumi.ResourceArgs
     {
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigGuestAcceleratorArgs()
         {
         }
+        public static new NodePoolNodeConfigGuestAcceleratorArgs Empty => new NodePoolNodeConfigGuestAcceleratorArgs();
     }
 }

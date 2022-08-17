@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableViewArgs : Pulumi.ResourceArgs
+    public sealed class TableViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A query whose result is persisted.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableViewArgs()
         {
         }
+        public static new TableViewArgs Empty => new TableViewArgs();
     }
 }

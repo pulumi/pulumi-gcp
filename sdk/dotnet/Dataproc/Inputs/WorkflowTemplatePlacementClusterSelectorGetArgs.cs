@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementClusterSelectorGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementClusterSelectorGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterLabels", required: true)]
         private InputMap<string>? _clusterLabels;
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementClusterSelectorGetArgs()
         {
         }
+        public static new WorkflowTemplatePlacementClusterSelectorGetArgs Empty => new WorkflowTemplatePlacementClusterSelectorGetArgs();
     }
 }

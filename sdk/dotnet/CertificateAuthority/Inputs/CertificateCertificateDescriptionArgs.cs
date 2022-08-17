@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("aiaIssuingCertificateUrls")]
         private InputList<string>? _aiaIssuingCertificateUrls;
@@ -93,5 +93,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionArgs()
         {
         }
+        public static new CertificateCertificateDescriptionArgs Empty => new CertificateCertificateDescriptionArgs();
     }
 }

@@ -767,7 +767,7 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
-            image="debian-cloud/debian-9",
+            image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")
@@ -898,7 +898,7 @@ class RegionDisk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         disk = gcp.compute.Disk("disk",
-            image="debian-cloud/debian-9",
+            image="debian-cloud/debian-11",
             size=50,
             type="pd-ssd",
             zone="us-central1-a")

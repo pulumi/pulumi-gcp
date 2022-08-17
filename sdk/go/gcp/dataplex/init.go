@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:dataplex/asset:Asset":
+		r = &Asset{}
 	case "gcp:dataplex/lake:Lake":
 		r = &Lake{}
+	case "gcp:dataplex/zone:Zone":
+		r = &Zone{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +42,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"dataplex/asset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"dataplex/lake",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/zone",
 		&module{version},
 	)
 }

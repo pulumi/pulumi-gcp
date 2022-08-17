@@ -15,6 +15,7 @@ __all__ = [
     'FunctionBuildConfigSourceRepoSourceArgs',
     'FunctionBuildConfigSourceStorageSourceArgs',
     'FunctionEventTriggerArgs',
+    'FunctionEventTriggerEventFilterArgs',
     'FunctionIamBindingConditionArgs',
     'FunctionIamMemberConditionArgs',
     'FunctionServiceConfigArgs',
@@ -381,6 +382,7 @@ class FunctionBuildConfigSourceStorageSourceArgs:
 @pulumi.input_type
 class FunctionEventTriggerArgs:
     def __init__(__self__, *,
+                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]] = None,
                  event_type: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  retry_policy: Optional[pulumi.Input[str]] = None,
@@ -388,6 +390,8 @@ class FunctionEventTriggerArgs:
                  trigger: Optional[pulumi.Input[str]] = None,
                  trigger_region: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]] event_filters: Criteria used to filter events.
+               Structure is documented below.
         :param pulumi.Input[str] event_type: Required. The type of event to observe.
         :param pulumi.Input[str] pubsub_topic: The name of a Pub/Sub topic in the same project that will be used
                as the transport topic for the event delivery.
@@ -402,6 +406,8 @@ class FunctionEventTriggerArgs:
                region as the function, a different region or multi-region, or the global
                region. If not provided, defaults to the same region as the function.
         """
+        if event_filters is not None:
+            pulumi.set(__self__, "event_filters", event_filters)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
         if pubsub_topic is not None:
@@ -414,6 +420,19 @@ class FunctionEventTriggerArgs:
             pulumi.set(__self__, "trigger", trigger)
         if trigger_region is not None:
             pulumi.set(__self__, "trigger_region", trigger_region)
+
+    @property
+    @pulumi.getter(name="eventFilters")
+    def event_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]:
+        """
+        Criteria used to filter events.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event_filters")
+
+    @event_filters.setter
+    def event_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]):
+        pulumi.set(self, "event_filters", value)
 
     @property
     @pulumi.getter(name="eventType")
@@ -493,6 +512,73 @@ class FunctionEventTriggerArgs:
     @trigger_region.setter
     def trigger_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trigger_region", value)
+
+
+@pulumi.input_type
+class FunctionEventTriggerEventFilterArgs:
+    def __init__(__self__, *,
+                 attribute: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 operator: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute: 'Required. The name of a CloudEvents attribute.
+               Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+               Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
+        :param pulumi.Input[str] value: Required. The value for the attribute.
+               If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+        :param pulumi.Input[str] operator: Optional. The operator used for matching the events with the value of
+               the filter. If not specified, only events that have an exact key-value
+               pair specified in the filter are matched.
+               The only allowed value is `match-path-pattern`.
+               [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "value", value)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> pulumi.Input[str]:
+        """
+        'Required. The name of a CloudEvents attribute.
+        Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+        Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @attribute.setter
+    def attribute(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Required. The value for the attribute.
+        If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The operator used for matching the events with the value of
+        the filter. If not specified, only events that have an exact key-value
+        pair specified in the filter are matched.
+        The only allowed value is `match-path-pattern`.
+        [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
 
 
 @pulumi.input_type

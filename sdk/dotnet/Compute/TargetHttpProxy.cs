@@ -23,28 +23,27 @@ namespace Pulumi.Gcp.Compute
     /// ### Target Http Proxy Https Redirect
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new()
     ///     {
-    ///         var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         DefaultUrlRedirect = new Gcp.Compute.Inputs.URLMapDefaultUrlRedirectArgs
     ///         {
-    ///             DefaultUrlRedirect = new Gcp.Compute.Inputs.URLMapDefaultUrlRedirectArgs
-    ///             {
-    ///                 HttpsRedirect = true,
-    ///                 StripQuery = false,
-    ///             },
-    ///         });
-    ///         var defaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("defaultTargetHttpProxy", new Gcp.Compute.TargetHttpProxyArgs
-    ///         {
-    ///             UrlMap = defaultURLMap.Id,
-    ///         });
-    ///     }
+    ///             HttpsRedirect = true,
+    ///             StripQuery = false,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var defaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("defaultTargetHttpProxy", new()
+    ///     {
+    ///         UrlMap = defaultURLMap.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/targetHttpProxy:TargetHttpProxy")]
-    public partial class TargetHttpProxy : Pulumi.CustomResource
+    public partial class TargetHttpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -167,7 +166,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class TargetHttpProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetHttpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -211,9 +210,10 @@ namespace Pulumi.Gcp.Compute
         public TargetHttpProxyArgs()
         {
         }
+        public static new TargetHttpProxyArgs Empty => new TargetHttpProxyArgs();
     }
 
-    public sealed class TargetHttpProxyState : Pulumi.ResourceArgs
+    public sealed class TargetHttpProxyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -275,5 +275,6 @@ namespace Pulumi.Gcp.Compute
         public TargetHttpProxyState()
         {
         }
+        public static new TargetHttpProxyState Empty => new TargetHttpProxyState();
     }
 }

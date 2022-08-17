@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class LiteSubscriptionDeliveryConfigArgs : Pulumi.ResourceArgs
+    public sealed class LiteSubscriptionDeliveryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When this subscription should send messages to subscribers relative to messages persistence in storage.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public LiteSubscriptionDeliveryConfigArgs()
         {
         }
+        public static new LiteSubscriptionDeliveryConfigArgs Empty => new LiteSubscriptionDeliveryConfigArgs();
     }
 }

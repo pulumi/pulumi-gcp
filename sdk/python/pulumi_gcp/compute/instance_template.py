@@ -1003,7 +1003,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.get_default_service_account()
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
             machine_type="e2-medium",
@@ -1086,7 +1086,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
             name_prefix="instance-template-",
@@ -1107,7 +1107,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-9",
+                source_image="debian-cloud/debian-11",
             )],
             machine_type="e2-medium",
             name_prefix="instance-template-",
@@ -1208,7 +1208,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.get_default_service_account()
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
             machine_type="e2-medium",
@@ -1291,7 +1291,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
             name_prefix="instance-template-",
@@ -1312,7 +1312,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-9",
+                source_image="debian-cloud/debian-11",
             )],
             machine_type="e2-medium",
             name_prefix="instance-template-",

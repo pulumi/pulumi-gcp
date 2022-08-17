@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolPlacementPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolPlacementPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the policy. Supports a single value: COMPACT.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolPlacementPolicyGetArgs()
         {
         }
+        public static new NodePoolPlacementPolicyGetArgs Empty => new NodePoolPlacementPolicyGetArgs();
     }
 }

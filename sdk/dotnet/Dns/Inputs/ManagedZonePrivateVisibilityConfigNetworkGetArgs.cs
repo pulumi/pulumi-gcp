@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZonePrivateVisibilityConfigNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePrivateVisibilityConfigNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id or fully qualified URL of the VPC network to forward queries to.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZonePrivateVisibilityConfigNetworkGetArgs()
         {
         }
+        public static new ManagedZonePrivateVisibilityConfigNetworkGetArgs Empty => new ManagedZonePrivateVisibilityConfigNetworkGetArgs();
     }
 }

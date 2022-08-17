@@ -22,61 +22,60 @@ namespace Pulumi.Gcp.Compute
     /// ### Organization Security Policy Rule Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new()
     ///     {
-    ///         var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new Gcp.Compute.OrganizationSecurityPolicyArgs
+    ///         DisplayName = "tf-test",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new()
+    ///     {
+    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         EnableLogging = true,
+    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
     ///         {
-    ///             DisplayName = "tf-test",
-    ///             Parent = "organizations/123456789",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new Gcp.Compute.OrganizationSecurityPolicyRuleArgs
-    ///         {
-    ///             PolicyId = policyOrganizationSecurityPolicy.Id,
-    ///             Action = "allow",
-    ///             Direction = "INGRESS",
-    ///             EnableLogging = true,
-    ///             Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///             Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
     ///             {
-    ///                 Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
+    ///                 SrcIpRanges = new[]
     ///                 {
-    ///                     SrcIpRanges = 
+    ///                     "192.168.0.0/16",
+    ///                     "10.0.0.0/8",
+    ///                 },
+    ///                 Layer4Configs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
     ///                     {
-    ///                         "192.168.0.0/16",
-    ///                         "10.0.0.0/8",
+    ///                         IpProtocol = "tcp",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "22",
+    ///                         },
     ///                     },
-    ///                     Layer4Configs = 
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
     ///                     {
-    ///                         new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "tcp",
-    ///                             Ports = 
-    ///                             {
-    ///                                 "22",
-    ///                             },
-    ///                         },
-    ///                         new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "icmp",
-    ///                         },
+    ///                         IpProtocol = "icmp",
     ///                     },
     ///                 },
     ///             },
-    ///             Priority = 100,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///         Priority = 100,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -88,7 +87,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule")]
-    public partial class OrganizationSecurityPolicyRule : Pulumi.CustomResource
+    public partial class OrganizationSecurityPolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either
@@ -205,7 +204,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class OrganizationSecurityPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either
@@ -293,9 +292,10 @@ namespace Pulumi.Gcp.Compute
         public OrganizationSecurityPolicyRuleArgs()
         {
         }
+        public static new OrganizationSecurityPolicyRuleArgs Empty => new OrganizationSecurityPolicyRuleArgs();
     }
 
-    public sealed class OrganizationSecurityPolicyRuleState : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either
@@ -383,5 +383,6 @@ namespace Pulumi.Gcp.Compute
         public OrganizationSecurityPolicyRuleState()
         {
         }
+        public static new OrganizationSecurityPolicyRuleState Empty => new OrganizationSecurityPolicyRuleState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs : Pulumi.ResourceArgs
+    public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs : global::Pulumi.ResourceArgs
     {
         [Input("infoTypes")]
         private InputList<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs>? _infoTypes;
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs()
         {
         }
+        public static new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs Empty => new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs();
     }
 }

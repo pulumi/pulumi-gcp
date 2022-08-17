@@ -20,60 +20,61 @@ namespace Pulumi.Gcp.AppEngine
     /// ### App Engine Service Network Settings
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
-    ///         });
-    ///         var liveappV1 = new Gcp.AppEngine.StandardAppVersion("liveappV1", new Gcp.AppEngine.StandardAppVersionArgs
-    ///         {
-    ///             VersionId = "v1",
-    ///             Service = "liveapp",
-    ///             DeleteServiceOnDestroy = true,
-    ///             Runtime = "nodejs10",
-    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
-    ///             {
-    ///                 Shell = "node ./app.js",
-    ///             },
-    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
-    ///             {
-    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
-    ///                 {
-    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
-    ///                     {
-    ///                         var bucketName = values.Item1;
-    ///                         var objectName = values.Item2;
-    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
-    ///                     }),
-    ///                 },
-    ///             },
-    ///             EnvVariables = 
-    ///             {
-    ///                 { "port", "8080" },
-    ///             },
-    ///         });
-    ///         var liveapp = new Gcp.AppEngine.ServiceNetworkSettings("liveapp", new Gcp.AppEngine.ServiceNetworkSettingsArgs
-    ///         {
-    ///             Service = liveappV1.Service,
-    ///             NetworkSettings = new Gcp.AppEngine.Inputs.ServiceNetworkSettingsNetworkSettingsArgs
-    ///             {
-    ///                 IngressTrafficAllowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///     });
+    /// 
+    ///     var liveappV1 = new Gcp.AppEngine.StandardAppVersion("liveappV1", new()
+    ///     {
+    ///         VersionId = "v1",
+    ///         Service = "liveapp",
+    ///         DeleteServiceOnDestroy = true,
+    ///         Runtime = "nodejs10",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///     });
+    /// 
+    ///     var liveapp = new Gcp.AppEngine.ServiceNetworkSettings("liveapp", new()
+    ///     {
+    ///         Service = liveappV1.Service,
+    ///         NetworkSettings = new Gcp.AppEngine.Inputs.ServiceNetworkSettingsNetworkSettingsArgs
+    ///         {
+    ///             IngressTrafficAllowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -93,7 +94,7 @@ namespace Pulumi.Gcp.AppEngine
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings")]
-    public partial class ServiceNetworkSettings : Pulumi.CustomResource
+    public partial class ServiceNetworkSettings : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Ingress settings for this service. Will apply to all versions.
@@ -159,7 +160,7 @@ namespace Pulumi.Gcp.AppEngine
         }
     }
 
-    public sealed class ServiceNetworkSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ServiceNetworkSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ingress settings for this service. Will apply to all versions.
@@ -184,9 +185,10 @@ namespace Pulumi.Gcp.AppEngine
         public ServiceNetworkSettingsArgs()
         {
         }
+        public static new ServiceNetworkSettingsArgs Empty => new ServiceNetworkSettingsArgs();
     }
 
-    public sealed class ServiceNetworkSettingsState : Pulumi.ResourceArgs
+    public sealed class ServiceNetworkSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ingress settings for this service. Will apply to all versions.
@@ -211,5 +213,6 @@ namespace Pulumi.Gcp.AppEngine
         public ServiceNetworkSettingsState()
         {
         }
+        public static new ServiceNetworkSettingsState Empty => new ServiceNetworkSettingsState();
     }
 }

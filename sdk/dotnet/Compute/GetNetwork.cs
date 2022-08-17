@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_network = Gcp.Compute.GetNetwork.Invoke(new()
         ///     {
-        ///         var my_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
-        ///         {
-        ///             Name = "default-us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "default-us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_network = Gcp.Compute.GetNetwork.Invoke(new()
         ///     {
-        ///         var my_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
-        ///         {
-        ///             Name = "default-us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "default-us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetNetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the network.
@@ -89,9 +85,10 @@ namespace Pulumi.Gcp.Compute
         public GetNetworkArgs()
         {
         }
+        public static new GetNetworkArgs Empty => new GetNetworkArgs();
     }
 
-    public sealed class GetNetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the network.
@@ -109,6 +106,7 @@ namespace Pulumi.Gcp.Compute
         public GetNetworkInvokeArgs()
         {
         }
+        public static new GetNetworkInvokeArgs Empty => new GetNetworkInvokeArgs();
     }
 
 

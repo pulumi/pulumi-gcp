@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SubnetworkSecondaryIpRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkSecondaryIpRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The range of IP addresses belonging to this subnetwork secondary
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SubnetworkSecondaryIpRangeGetArgs()
         {
         }
+        public static new SubnetworkSecondaryIpRangeGetArgs Empty => new SubnetworkSecondaryIpRangeGetArgs();
     }
 }

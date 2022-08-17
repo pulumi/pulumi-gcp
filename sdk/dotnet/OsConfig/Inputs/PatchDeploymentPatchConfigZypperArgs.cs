@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigZypperArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigZypperArgs : global::Pulumi.ResourceArgs
     {
         [Input("categories")]
         private InputList<string>? _categories;
@@ -76,5 +76,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigZypperArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigZypperArgs Empty => new PatchDeploymentPatchConfigZypperArgs();
     }
 }

@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/managedSslCertificate:ManagedSslCertificate")]
-    public partial class ManagedSslCertificate : Pulumi.CustomResource
+    public partial class ManagedSslCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique identifier for the resource.
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Compute
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "gcp:compute/mangedSslCertificate:MangedSslCertificate"},
+                    new global::Pulumi.Alias { Type = "gcp:compute/mangedSslCertificate:MangedSslCertificate"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ManagedSslCertificateArgs : Pulumi.ResourceArgs
+    public sealed class ManagedSslCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier for the resource.
@@ -230,9 +230,10 @@ namespace Pulumi.Gcp.Compute
         public ManagedSslCertificateArgs()
         {
         }
+        public static new ManagedSslCertificateArgs Empty => new ManagedSslCertificateArgs();
     }
 
-    public sealed class ManagedSslCertificateState : Pulumi.ResourceArgs
+    public sealed class ManagedSslCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier for the resource.
@@ -315,5 +316,6 @@ namespace Pulumi.Gcp.Compute
         public ManagedSslCertificateState()
         {
         }
+        public static new ManagedSslCertificateState Empty => new ManagedSslCertificateState();
     }
 }

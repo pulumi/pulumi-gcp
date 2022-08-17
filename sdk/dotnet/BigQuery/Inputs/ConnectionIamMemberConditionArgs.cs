@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class ConnectionIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public ConnectionIamMemberConditionArgs()
         {
         }
+        public static new ConnectionIamMemberConditionArgs Empty => new ConnectionIamMemberConditionArgs();
     }
 }

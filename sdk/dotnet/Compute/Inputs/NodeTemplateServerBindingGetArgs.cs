@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class NodeTemplateServerBindingGetArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateServerBindingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public NodeTemplateServerBindingGetArgs()
         {
         }
+        public static new NodeTemplateServerBindingGetArgs Empty => new NodeTemplateServerBindingGetArgs();
     }
 }

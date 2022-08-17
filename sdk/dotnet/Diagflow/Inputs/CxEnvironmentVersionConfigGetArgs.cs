@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxEnvironmentVersionConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CxEnvironmentVersionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxEnvironmentVersionConfigGetArgs()
         {
         }
+        public static new CxEnvironmentVersionConfigGetArgs Empty => new CxEnvironmentVersionConfigGetArgs();
     }
 }

@@ -19,21 +19,19 @@ namespace Pulumi.Gcp.Iam
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPoolProvider.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.Iam.GetWorkloadIdentityPoolProvider.InvokeAsync(new Gcp.Iam.GetWorkloadIdentityPoolProviderArgs
-        ///         {
-        ///             WorkloadIdentityPoolId = "foo-pool",
-        ///             WorkloadIdentityPoolProviderId = "bar-provider",
-        ///         }));
-        ///     }
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///         WorkloadIdentityPoolProviderId = "bar-provider",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Gcp.Iam
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPoolProvider.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.Iam.GetWorkloadIdentityPoolProvider.InvokeAsync(new Gcp.Iam.GetWorkloadIdentityPoolProviderArgs
-        ///         {
-        ///             WorkloadIdentityPoolId = "foo-pool",
-        ///             WorkloadIdentityPoolProviderId = "bar-provider",
-        ///         }));
-        ///     }
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///         WorkloadIdentityPoolProviderId = "bar-provider",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Iam
     }
 
 
-    public sealed class GetWorkloadIdentityPoolProviderArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadIdentityPoolProviderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project in which the resource belongs. If it
@@ -99,9 +95,10 @@ namespace Pulumi.Gcp.Iam
         public GetWorkloadIdentityPoolProviderArgs()
         {
         }
+        public static new GetWorkloadIdentityPoolProviderArgs Empty => new GetWorkloadIdentityPoolProviderArgs();
     }
 
-    public sealed class GetWorkloadIdentityPoolProviderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadIdentityPoolProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project in which the resource belongs. If it
@@ -127,6 +124,7 @@ namespace Pulumi.Gcp.Iam
         public GetWorkloadIdentityPoolProviderInvokeArgs()
         {
         }
+        public static new GetWorkloadIdentityPoolProviderInvokeArgs Empty => new GetWorkloadIdentityPoolProviderInvokeArgs();
     }
 
 

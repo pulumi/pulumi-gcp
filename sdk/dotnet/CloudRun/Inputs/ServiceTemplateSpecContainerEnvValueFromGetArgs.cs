@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecContainerEnvValueFromGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecContainerEnvValueFromGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Selects a key (version) of a secret in Secret Manager.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecContainerEnvValueFromGetArgs()
         {
         }
+        public static new ServiceTemplateSpecContainerEnvValueFromGetArgs Empty => new ServiceTemplateSpecContainerEnvValueFromGetArgs();
     }
 }

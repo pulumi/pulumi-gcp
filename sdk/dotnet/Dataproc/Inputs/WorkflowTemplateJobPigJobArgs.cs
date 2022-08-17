@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateJobPigJobArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateJobPigJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
@@ -75,5 +75,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateJobPigJobArgs()
         {
         }
+        public static new WorkflowTemplateJobPigJobArgs Empty => new WorkflowTemplateJobPigJobArgs();
     }
 }

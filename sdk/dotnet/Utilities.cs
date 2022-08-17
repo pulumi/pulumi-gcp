@@ -74,7 +74,7 @@ namespace Pulumi.Gcp
         }
     }
 
-    internal sealed class GcpResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class GcpResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public GcpResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

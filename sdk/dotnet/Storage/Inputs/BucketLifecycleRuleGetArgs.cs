@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketLifecycleRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketLifecycleRuleGetArgs()
         {
         }
+        public static new BucketLifecycleRuleGetArgs Empty => new BucketLifecycleRuleGetArgs();
     }
 }

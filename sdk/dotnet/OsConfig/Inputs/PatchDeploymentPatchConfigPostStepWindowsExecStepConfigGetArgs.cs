@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedSuccessCodes")]
         private InputList<int>? _allowedSuccessCodes;
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGetArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGetArgs Empty => new PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretReplicationUserManagedReplicaCustomerManagedEncryptionGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretReplicationUserManagedReplicaCustomerManagedEncryptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the Cloud KMS encryption key that will be used to protect destination secret.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretReplicationUserManagedReplicaCustomerManagedEncryptionGetArgs()
         {
         }
+        public static new SecretReplicationUserManagedReplicaCustomerManagedEncryptionGetArgs Empty => new SecretReplicationUserManagedReplicaCustomerManagedEncryptionGetArgs();
     }
 }

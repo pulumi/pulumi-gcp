@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterClusterTelemetryGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterTelemetryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterClusterTelemetryGetArgs()
         {
         }
+        public static new ClusterClusterTelemetryGetArgs Empty => new ClusterClusterTelemetryGetArgs();
     }
 }

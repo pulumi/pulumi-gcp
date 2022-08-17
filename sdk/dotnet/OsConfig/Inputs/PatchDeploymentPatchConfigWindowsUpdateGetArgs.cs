@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigWindowsUpdateGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigWindowsUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("classifications")]
         private InputList<string>? _classifications;
@@ -53,5 +53,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigWindowsUpdateGetArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigWindowsUpdateGetArgs Empty => new PatchDeploymentPatchConfigWindowsUpdateGetArgs();
     }
 }

@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 &#34;bar&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-9&#34;)
+ *                     .image(&#34;debian-cloud/debian-11&#34;)
  *                     .build())
  *                 .build())
  *             .scratchDisks(InstanceScratchDiskArgs.builder()

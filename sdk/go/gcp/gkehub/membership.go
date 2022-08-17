@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
 // * How-to Guides
-//     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+//   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 //
 // ## Example Usage
 // ### Gkehub Membership Basic
@@ -26,38 +26,41 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			InitialNodeCount: pulumi.Int(1),
-// 			Location:         pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-// 			Endpoint: &gkehub.MembershipEndpointArgs{
-// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
-// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
-// 					}).(pulumi.StringOutput),
-// 				},
-// 			},
-// 			MembershipId: pulumi.String("basic"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				InitialNodeCount: pulumi.Int(1),
+//				Location:         pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//				MembershipId: pulumi.String("basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Gkehub Membership Issuer
 //
@@ -65,52 +68,69 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			Location:         pulumi.String("us-central1-a"),
-// 			InitialNodeCount: pulumi.Int(1),
-// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-// 			MembershipId: pulumi.String("basic"),
-// 			Endpoint: &gkehub.MembershipEndpointArgs{
-// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-// 					ResourceLink: primary.ID(),
-// 				},
-// 			},
-// 			Authority: &gkehub.MembershipAuthorityArgs{
-// 				Issuer: primary.ID().ApplyT(func(id string) (string, error) {
-// 					return fmt.Sprintf("https://container.googleapis.com/v1/%v", id), nil
-// 				}).(pulumi.StringOutput),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("basic"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: primary.ID(),
+//					},
+//				},
+//				Authority: &gkehub.MembershipAuthorityArgs{
+//					Issuer: primary.ID().ApplyT(func(id string) (string, error) {
+//						return fmt.Sprintf("https://container.googleapis.com/v1/%v", id), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Membership can be imported using any of these accepted formats
+// # Membership can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:gkehub/membership:Membership default {{name}}
+//
+//	$ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+//
 // ```
 type Membership struct {
 	pulumi.CustomResourceState
@@ -292,7 +312,7 @@ func (i *Membership) ToMembershipOutputWithContext(ctx context.Context) Membersh
 // MembershipArrayInput is an input type that accepts MembershipArray and MembershipArrayOutput values.
 // You can construct a concrete instance of `MembershipArrayInput` via:
 //
-//          MembershipArray{ MembershipArgs{...} }
+//	MembershipArray{ MembershipArgs{...} }
 type MembershipArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +337,7 @@ func (i MembershipArray) ToMembershipArrayOutputWithContext(ctx context.Context)
 // MembershipMapInput is an input type that accepts MembershipMap and MembershipMapOutput values.
 // You can construct a concrete instance of `MembershipMapInput` via:
 //
-//          MembershipMap{ "key": MembershipArgs{...} }
+//	MembershipMap{ "key": MembershipArgs{...} }
 type MembershipMapInput interface {
 	pulumi.Input
 

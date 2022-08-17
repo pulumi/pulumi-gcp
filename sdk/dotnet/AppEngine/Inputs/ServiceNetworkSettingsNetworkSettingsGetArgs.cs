@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class ServiceNetworkSettingsNetworkSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceNetworkSettingsNetworkSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ingress settings for version or service.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public ServiceNetworkSettingsNetworkSettingsGetArgs()
         {
         }
+        public static new ServiceNetworkSettingsNetworkSettingsGetArgs Empty => new ServiceNetworkSettingsNetworkSettingsGetArgs();
     }
 }

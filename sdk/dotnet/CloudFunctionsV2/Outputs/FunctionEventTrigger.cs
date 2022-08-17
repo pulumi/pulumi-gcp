@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     public sealed class FunctionEventTrigger
     {
         /// <summary>
+        /// Criteria used to filter events.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FunctionEventTriggerEventFilter> EventFilters;
+        /// <summary>
         /// Required. The type of event to observe.
         /// </summary>
         public readonly string? EventType;
@@ -47,6 +52,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
         [OutputConstructor]
         private FunctionEventTrigger(
+            ImmutableArray<Outputs.FunctionEventTriggerEventFilter> eventFilters,
+
             string? eventType,
 
             string? pubsubTopic,
@@ -59,6 +66,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             string? triggerRegion)
         {
+            EventFilters = eventFilters;
             EventType = eventType;
             PubsubTopic = pubsubTopic;
             RetryPolicy = retryPolicy;

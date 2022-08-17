@@ -32,46 +32,43 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ### Access Context Manager Access Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
     ///     {
-    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
-    ///         {
-    ///             Parent = "organizations/123456789",
-    ///             Title = "Org Access Policy",
-    ///         });
-    ///     }
+    ///         Parent = "organizations/123456789",
+    ///         Title = "Org Access Policy",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Access Context Manager Access Policy Scoped
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             OrgId = "123456789",
-    ///             ProjectId = "acm-test-proj-123",
-    ///         });
-    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
-    ///         {
-    ///             Parent = "organizations/123456789",
-    ///             Scopes = project.Number.Apply(number =&gt; $"projects/{number}"),
-    ///             Title = "Scoped Access Policy",
-    ///         });
-    ///     }
+    ///         OrgId = "123456789",
+    ///         ProjectId = "acm-test-proj-123",
+    ///     });
     /// 
-    /// }
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Scopes = project.Number.Apply(number =&gt; $"projects/{number}"),
+    ///         Title = "Scoped Access Policy",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -83,7 +80,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/accessPolicy:AccessPolicy")]
-    public partial class AccessPolicy : Pulumi.CustomResource
+    public partial class AccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the AccessPolicy was created in UTC.
@@ -167,7 +164,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
@@ -192,9 +189,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessPolicyArgs()
         {
         }
+        public static new AccessPolicyArgs Empty => new AccessPolicyArgs();
     }
 
-    public sealed class AccessPolicyState : Pulumi.ResourceArgs
+    public sealed class AccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time the AccessPolicy was created in UTC.
@@ -237,5 +235,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessPolicyState()
         {
         }
+        public static new AccessPolicyState Empty => new AccessPolicyState();
     }
 }

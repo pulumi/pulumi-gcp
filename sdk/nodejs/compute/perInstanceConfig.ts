@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myImage = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.Disk("default", {
  *     type: "pd-ssd",
  *     zone: google_compute_instance_group_manager.igm.zone,
- *     image: "debian-8-jessie-v20170523",
+ *     image: "debian-11-bullseye-v20220719",
  *     physicalBlockSizeBytes: 4096,
  * });
  * const withDisk = new gcp.compute.PerInstanceConfig("withDisk", {

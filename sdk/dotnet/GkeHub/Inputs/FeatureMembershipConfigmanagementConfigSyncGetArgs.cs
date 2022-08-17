@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementConfigSyncGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementConfigSyncGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementConfigSyncGetArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementConfigSyncGetArgs Empty => new FeatureMembershipConfigmanagementConfigSyncGetArgs();
     }
 }

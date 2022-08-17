@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxAgentSpeechToTextSettingsArgs : Pulumi.ResourceArgs
+    public sealed class CxAgentSpeechToTextSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to use speech adaptation for speech recognition.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxAgentSpeechToTextSettingsArgs()
         {
         }
+        public static new CxAgentSpeechToTextSettingsArgs Empty => new CxAgentSpeechToTextSettingsArgs();
     }
 }

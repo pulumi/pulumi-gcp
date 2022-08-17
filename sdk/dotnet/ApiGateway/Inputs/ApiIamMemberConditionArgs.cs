@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway.Inputs
 {
 
-    public sealed class ApiIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class ApiIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
         public ApiIamMemberConditionArgs()
         {
         }
+        public static new ApiIamMemberConditionArgs Empty => new ApiIamMemberConditionArgs();
     }
 }

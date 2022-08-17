@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeArtifactRemoteGetArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeArtifactRemoteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeArtifactRemoteGetArgs()
         {
         }
+        public static new GuestPoliciesRecipeArtifactRemoteGetArgs Empty => new GuestPoliciesRecipeArtifactRemoteGetArgs();
     }
 }

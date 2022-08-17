@@ -18,35 +18,33 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var peeringNetwork = new Gcp.Compute.Network("peeringNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = peeringNetwork.Id,
-    ///         });
-    ///         var foobar = new Gcp.ServiceNetworking.Connection("foobar", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = peeringNetwork.Id,
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 privateIpAlloc.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///     var peeringNetwork = new Gcp.Compute.Network("peeringNetwork");
     /// 
-    /// }
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = peeringNetwork.Id,
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.ServiceNetworking.Connection("foobar", new()
+    ///     {
+    ///         Network = peeringNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// ```
     /// </summary>
     [GcpResourceType("gcp:servicenetworking/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of VPC network connected with service producers using VPC peering.
@@ -136,7 +134,7 @@ namespace Pulumi.Gcp.ServiceNetworking
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of VPC network connected with service producers using VPC peering.
@@ -169,9 +167,10 @@ namespace Pulumi.Gcp.ServiceNetworking
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of VPC network connected with service producers using VPC peering.
@@ -210,5 +209,6 @@ namespace Pulumi.Gcp.ServiceNetworking
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

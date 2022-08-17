@@ -22,24 +22,23 @@ namespace Pulumi.Gcp.Organizations
         /// ### Searching For Folders At The Root Of An Org
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
         ///     {
-        ///         var my_org_folders = Output.Create(Gcp.Organizations.GetFolders.InvokeAsync(new Gcp.Organizations.GetFoldersArgs
-        ///         {
-        ///             ParentId = $"organizations/{@var.Organization_id}",
-        ///         }));
-        ///         var first_folder = my_org_folders.Apply(my_org_folders =&gt; Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = my_org_folders.Folders?[0]?.Name,
-        ///         })));
-        ///     }
+        ///         ParentId = $"organizations/{@var.Organization_id}",
+        ///     });
         /// 
-        /// }
+        ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = my_org_folders.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Name),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -58,24 +57,23 @@ namespace Pulumi.Gcp.Organizations
         /// ### Searching For Folders At The Root Of An Org
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
         ///     {
-        ///         var my_org_folders = Output.Create(Gcp.Organizations.GetFolders.InvokeAsync(new Gcp.Organizations.GetFoldersArgs
-        ///         {
-        ///             ParentId = $"organizations/{@var.Organization_id}",
-        ///         }));
-        ///         var first_folder = my_org_folders.Apply(my_org_folders =&gt; Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = my_org_folders.Folders?[0]?.Name,
-        ///         })));
-        ///     }
+        ///         ParentId = $"organizations/{@var.Organization_id}",
+        ///     });
         /// 
-        /// }
+        ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = my_org_folders.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Name),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +83,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetFoldersArgs : Pulumi.InvokeArgs
+    public sealed class GetFoldersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
@@ -96,9 +94,10 @@ namespace Pulumi.Gcp.Organizations
         public GetFoldersArgs()
         {
         }
+        public static new GetFoldersArgs Empty => new GetFoldersArgs();
     }
 
-    public sealed class GetFoldersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFoldersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
@@ -109,6 +108,7 @@ namespace Pulumi.Gcp.Organizations
         public GetFoldersInvokeArgs()
         {
         }
+        public static new GetFoldersInvokeArgs Empty => new GetFoldersInvokeArgs();
     }
 
 

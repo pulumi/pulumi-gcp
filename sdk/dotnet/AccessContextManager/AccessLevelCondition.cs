@@ -35,89 +35,90 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ### Access Context Manager Access Level Condition Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
     ///     {
-    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         Parent = "organizations/123456789",
+    ///         Title = "my policy",
+    ///     });
+    /// 
+    ///     var access_level_service_account = new Gcp.AccessContextManager.AccessLevel("access-level-service-account", new()
+    ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Title = "tf_test_chromeos_no_lock",
+    ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {
-    ///             Parent = "organizations/123456789",
-    ///             Title = "my policy",
-    ///         });
-    ///         var access_level_service_account = new Gcp.AccessContextManager.AccessLevel("access-level-service-account", new Gcp.AccessContextManager.AccessLevelArgs
-    ///         {
-    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///             Title = "tf_test_chromeos_no_lock",
-    ///             Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///             Conditions = new[]
     ///             {
-    ///                 Conditions = 
+    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
     ///                 {
-    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                     DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
     ///                     {
-    ///                         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                         RequireScreenLock = true,
+    ///                         OsConstraints = new[]
     ///                         {
-    ///                             RequireScreenLock = true,
-    ///                             OsConstraints = 
+    ///                             new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
     ///                             {
-    ///                                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
-    ///                                 {
-    ///                                     OsType = "DESKTOP_CHROME_OS",
-    ///                                 },
+    ///                                 OsType = "DESKTOP_CHROME_OS",
     ///                             },
     ///                         },
-    ///                         Regions = 
-    ///                         {
-    ///                             "CH",
-    ///                             "IT",
-    ///                             "US",
-    ///                         },
     ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var created_later = new Gcp.ServiceAccount.Account("created-later", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "tf-test",
-    ///         });
-    ///         var access_level_conditions = new Gcp.AccessContextManager.AccessLevelCondition("access-level-conditions", new Gcp.AccessContextManager.AccessLevelConditionArgs
-    ///         {
-    ///             AccessLevel = access_level_service_account.Name,
-    ///             IpSubnetworks = 
-    ///             {
-    ///                 "192.0.4.0/24",
-    ///             },
-    ///             Members = 
-    ///             {
-    ///                 "user:test@google.com",
-    ///                 "user:test2@google.com",
-    ///                 created_later.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///             },
-    ///             Negate = false,
-    ///             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelConditionDevicePolicyArgs
-    ///             {
-    ///                 RequireScreenLock = false,
-    ///                 RequireAdminApproval = false,
-    ///                 RequireCorpOwned = true,
-    ///                 OsConstraints = 
-    ///                 {
-    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelConditionDevicePolicyOsConstraintArgs
+    ///                     Regions = new[]
     ///                     {
-    ///                         OsType = "DESKTOP_CHROME_OS",
+    ///                         "CH",
+    ///                         "IT",
+    ///                         "US",
     ///                     },
     ///                 },
     ///             },
-    ///             Regions = 
-    ///             {
-    ///                 "IT",
-    ///                 "US",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var created_later = new Gcp.ServiceAccount.Account("created-later", new()
+    ///     {
+    ///         AccountId = "tf-test",
+    ///     });
+    /// 
+    ///     var access_level_conditions = new Gcp.AccessContextManager.AccessLevelCondition("access-level-conditions", new()
+    ///     {
+    ///         AccessLevel = access_level_service_account.Name,
+    ///         IpSubnetworks = new[]
+    ///         {
+    ///             "192.0.4.0/24",
+    ///         },
+    ///         Members = new[]
+    ///         {
+    ///             "user:test@google.com",
+    ///             "user:test2@google.com",
+    ///             created_later.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///         Negate = false,
+    ///         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelConditionDevicePolicyArgs
+    ///         {
+    ///             RequireScreenLock = false,
+    ///             RequireAdminApproval = false,
+    ///             RequireCorpOwned = true,
+    ///             OsConstraints = new[]
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelConditionDevicePolicyOsConstraintArgs
+    ///                 {
+    ///                     OsType = "DESKTOP_CHROME_OS",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Regions = new[]
+    ///         {
+    ///             "IT",
+    ///             "US",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -125,7 +126,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition")]
-    public partial class AccessLevelCondition : Pulumi.CustomResource
+    public partial class AccessLevelCondition : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
@@ -239,7 +240,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class AccessLevelConditionArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
@@ -336,9 +337,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessLevelConditionArgs()
         {
         }
+        public static new AccessLevelConditionArgs Empty => new AccessLevelConditionArgs();
     }
 
-    public sealed class AccessLevelConditionState : Pulumi.ResourceArgs
+    public sealed class AccessLevelConditionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
@@ -435,5 +437,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public AccessLevelConditionState()
         {
         }
+        public static new AccessLevelConditionState Empty => new AccessLevelConditionState();
     }
 }

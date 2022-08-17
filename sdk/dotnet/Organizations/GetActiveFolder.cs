@@ -19,21 +19,19 @@ namespace Pulumi.Gcp.Organizations
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var department1 = Gcp.Organizations.GetActiveFolder.Invoke(new()
         ///     {
-        ///         var department1 = Output.Create(Gcp.Organizations.GetActiveFolder.InvokeAsync(new Gcp.Organizations.GetActiveFolderArgs
-        ///         {
-        ///             DisplayName = "Department 1",
-        ///             Parent = "organizations/1234567",
-        ///         }));
-        ///     }
+        ///         DisplayName = "Department 1",
+        ///         Parent = "organizations/1234567",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Gcp.Organizations
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var department1 = Gcp.Organizations.GetActiveFolder.Invoke(new()
         ///     {
-        ///         var department1 = Output.Create(Gcp.Organizations.GetActiveFolder.InvokeAsync(new Gcp.Organizations.GetActiveFolderArgs
-        ///         {
-        ///             DisplayName = "Department 1",
-        ///             Parent = "organizations/1234567",
-        ///         }));
-        ///     }
+        ///         DisplayName = "Department 1",
+        ///         Parent = "organizations/1234567",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetActiveFolderArgs : Pulumi.InvokeArgs
+    public sealed class GetActiveFolderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The folder's display name.
@@ -90,9 +86,10 @@ namespace Pulumi.Gcp.Organizations
         public GetActiveFolderArgs()
         {
         }
+        public static new GetActiveFolderArgs Empty => new GetActiveFolderArgs();
     }
 
-    public sealed class GetActiveFolderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetActiveFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The folder's display name.
@@ -109,6 +106,7 @@ namespace Pulumi.Gcp.Organizations
         public GetActiveFolderInvokeArgs()
         {
         }
+        public static new GetActiveFolderInvokeArgs Empty => new GetActiveFolderInvokeArgs();
     }
 
 

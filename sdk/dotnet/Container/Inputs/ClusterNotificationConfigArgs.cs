@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The pubsub config for the cluster's upgrade notifications.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNotificationConfigArgs()
         {
         }
+        public static new ClusterNotificationConfigArgs Empty => new ClusterNotificationConfigArgs();
     }
 }

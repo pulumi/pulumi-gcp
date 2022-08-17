@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class BucketEncryptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultKmsKeyName", required: true)]
         public Input<string> DefaultKmsKeyName { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketEncryptionArgs()
         {
         }
+        public static new BucketEncryptionArgs Empty => new BucketEncryptionArgs();
     }
 }

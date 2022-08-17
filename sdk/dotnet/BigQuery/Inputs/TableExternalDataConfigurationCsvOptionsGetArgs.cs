@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableExternalDataConfigurationCsvOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class TableExternalDataConfigurationCsvOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates if BigQuery should accept rows
@@ -63,5 +63,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableExternalDataConfigurationCsvOptionsGetArgs()
         {
         }
+        public static new TableExternalDataConfigurationCsvOptionsGetArgs Empty => new TableExternalDataConfigurationCsvOptionsGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeInstallStepArchiveExtractionArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeInstallStepArchiveExtractionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the relevant artifact in the recipe.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeInstallStepArchiveExtractionArgs()
         {
         }
+        public static new GuestPoliciesRecipeInstallStepArchiveExtractionArgs Empty => new GuestPoliciesRecipeInstallStepArchiveExtractionArgs();
     }
 }

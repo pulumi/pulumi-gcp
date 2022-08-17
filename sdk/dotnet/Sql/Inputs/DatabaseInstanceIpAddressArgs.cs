@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceIpAddressArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceIpAddressArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceIpAddressArgs()
         {
         }
+        public static new DatabaseInstanceIpAddressArgs Empty => new DatabaseInstanceIpAddressArgs();
     }
 }

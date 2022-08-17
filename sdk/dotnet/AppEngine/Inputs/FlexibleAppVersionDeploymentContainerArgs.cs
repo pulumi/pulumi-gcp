@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionDeploymentContainerArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionDeploymentContainerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionDeploymentContainerArgs()
         {
         }
+        public static new FlexibleAppVersionDeploymentContainerArgs Empty => new FlexibleAppVersionDeploymentContainerArgs();
     }
 }

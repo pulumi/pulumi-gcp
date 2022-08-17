@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIamMemberConditionGetArgs()
         {
         }
+        public static new CaPoolIamMemberConditionGetArgs Empty => new CaPoolIamMemberConditionGetArgs();
     }
 }

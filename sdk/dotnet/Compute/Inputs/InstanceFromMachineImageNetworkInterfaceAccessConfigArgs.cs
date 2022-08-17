@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("natIp")]
         public Input<string>? NatIp { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageNetworkInterfaceAccessConfigArgs()
         {
         }
+        public static new InstanceFromMachineImageNetworkInterfaceAccessConfigArgs Empty => new InstanceFromMachineImageNetworkInterfaceAccessConfigArgs();
     }
 }

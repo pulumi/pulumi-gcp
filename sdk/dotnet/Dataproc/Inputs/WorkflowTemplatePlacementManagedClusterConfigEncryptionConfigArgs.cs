@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs();
     }
 }

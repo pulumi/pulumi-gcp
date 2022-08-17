@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 {
 
-    public sealed class FunctionServiceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether 100% of traffic is routed to the latest revision. Defaults to true.
@@ -110,5 +110,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public FunctionServiceConfigGetArgs()
         {
         }
+        public static new FunctionServiceConfigGetArgs Empty => new FunctionServiceConfigGetArgs();
     }
 }

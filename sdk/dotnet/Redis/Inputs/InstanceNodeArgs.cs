@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis.Inputs
 {
 
-    public sealed class InstanceNodeArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public InstanceNodeArgs()
         {
         }
+        public static new InstanceNodeArgs Empty => new InstanceNodeArgs();
     }
 }

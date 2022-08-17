@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityScanConfigAuthenticationGoogleAccountArgs : Pulumi.ResourceArgs
+    public sealed class SecurityScanConfigAuthenticationGoogleAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the custom account. The credential is stored encrypted
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityScanConfigAuthenticationGoogleAccountArgs()
         {
         }
+        public static new SecurityScanConfigAuthenticationGoogleAccountArgs Empty => new SecurityScanConfigAuthenticationGoogleAccountArgs();
     }
 }

@@ -29,37 +29,38 @@ namespace Pulumi.Gcp.Iap
     /// ### Iap Client
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "tf-test",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var projectService = new Gcp.Projects.Service("projectService", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             Project = project.ProjectId,
-    ///             ServiceName = "iap.googleapis.com",
-    ///         });
-    ///         var projectBrand = new Gcp.Iap.Brand("projectBrand", new Gcp.Iap.BrandArgs
-    ///         {
-    ///             SupportEmail = "support@example.com",
-    ///             ApplicationTitle = "Cloud IAP protected Application",
-    ///             Project = projectService.Project,
-    ///         });
-    ///         var projectClient = new Gcp.Iap.Client("projectClient", new Gcp.Iap.ClientArgs
-    ///         {
-    ///             DisplayName = "Test Client",
-    ///             Brand = projectBrand.Name,
-    ///         });
-    ///     }
+    ///         ProjectId = "tf-test",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var projectService = new Gcp.Projects.Service("projectService", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "iap.googleapis.com",
+    ///     });
+    /// 
+    ///     var projectBrand = new Gcp.Iap.Brand("projectBrand", new()
+    ///     {
+    ///         SupportEmail = "support@example.com",
+    ///         ApplicationTitle = "Cloud IAP protected Application",
+    ///         Project = projectService.Project,
+    ///     });
+    /// 
+    ///     var projectClient = new Gcp.Iap.Client("projectClient", new()
+    ///     {
+    ///         DisplayName = "Test Client",
+    ///         Brand = projectBrand.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +76,7 @@ namespace Pulumi.Gcp.Iap
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iap/client:Client")]
-    public partial class Client : Pulumi.CustomResource
+    public partial class Client : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifier of the brand to which this client
@@ -147,7 +148,7 @@ namespace Pulumi.Gcp.Iap
         }
     }
 
-    public sealed class ClientArgs : Pulumi.ResourceArgs
+    public sealed class ClientArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the brand to which this client
@@ -166,9 +167,10 @@ namespace Pulumi.Gcp.Iap
         public ClientArgs()
         {
         }
+        public static new ClientArgs Empty => new ClientArgs();
     }
 
-    public sealed class ClientState : Pulumi.ResourceArgs
+    public sealed class ClientState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the brand to which this client
@@ -199,5 +201,6 @@ namespace Pulumi.Gcp.Iap
         public ClientState()
         {
         }
+        public static new ClientState Empty => new ClientState();
     }
 }

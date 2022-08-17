@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterDnsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterDnsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterDnsConfigGetArgs()
         {
         }
+        public static new ClusterDnsConfigGetArgs Empty => new ClusterDnsConfigGetArgs();
     }
 }

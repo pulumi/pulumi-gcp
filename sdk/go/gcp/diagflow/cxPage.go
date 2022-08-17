@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+//   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
 // ### Dialogflowcx Page Full
@@ -26,115 +26,122 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
-// 			DisplayName:         pulumi.String("dialogflowcx-agent"),
-// 			Location:            pulumi.String("global"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			SupportedLanguageCodes: pulumi.StringArray{
-// 				pulumi.String("fr"),
-// 				pulumi.String("de"),
-// 				pulumi.String("es"),
-// 			},
-// 			TimeZone:                 pulumi.String("America/New_York"),
-// 			Description:              pulumi.String("Example description."),
-// 			AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-// 			EnableStackdriverLogging: pulumi.Bool(true),
-// 			EnableSpellCorrection:    pulumi.Bool(true),
-// 			SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
-// 				EnableSpeechAdaptation: pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myPage2, err := diagflow.NewCxPage(ctx, "myPage2", &diagflow.CxPageArgs{
-// 			Parent:      agent.StartFlow,
-// 			DisplayName: pulumi.String("MyPage2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewCxPage(ctx, "basicPage", &diagflow.CxPageArgs{
-// 			Parent:      agent.StartFlow,
-// 			DisplayName: pulumi.String("MyPage"),
-// 			EntryFulfillment: &diagflow.CxPageEntryFulfillmentArgs{
-// 				Messages: diagflow.CxPageEntryFulfillmentMessageArray{
-// 					&diagflow.CxPageEntryFulfillmentMessageArgs{
-// 						Text: &diagflow.CxPageEntryFulfillmentMessageTextArgs{
-// 							Texts: pulumi.StringArray{
-// 								pulumi.String("Welcome to page"),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Form: &diagflow.CxPageFormArgs{
-// 				Parameters: diagflow.CxPageFormParameterArray{
-// 					&diagflow.CxPageFormParameterArgs{
-// 						DisplayName: pulumi.String("param1"),
-// 						EntityType:  pulumi.String("projects/-/locations/-/agents/-/entityTypes/sys.date"),
-// 						FillBehavior: &diagflow.CxPageFormParameterFillBehaviorArgs{
-// 							InitialPromptFulfillment: &diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{
-// 								Messages: diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray{
-// 									&diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{
-// 										Text: &diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{
-// 											Texts: pulumi.StringArray{
-// 												pulumi.String("Please provide param1"),
-// 											},
-// 										},
-// 									},
-// 								},
-// 							},
-// 						},
-// 						Required: pulumi.Bool(true),
-// 						Redact:   pulumi.Bool(true),
-// 					},
-// 				},
-// 			},
-// 			TransitionRoutes: diagflow.CxPageTransitionRouteArray{
-// 				&diagflow.CxPageTransitionRouteArgs{
-// 					Condition: pulumi.String(fmt.Sprintf("$page.params.status = 'FINAL'")),
-// 					TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
-// 						Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
-// 							&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{
-// 								Text: &diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{
-// 									Texts: pulumi.StringArray{
-// 										pulumi.String("information completed, navigating to page 2"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 					TargetPage: myPage2.ID(),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myPage2, err := diagflow.NewCxPage(ctx, "myPage2", &diagflow.CxPageArgs{
+//				Parent:      agent.StartFlow,
+//				DisplayName: pulumi.String("MyPage2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxPage(ctx, "basicPage", &diagflow.CxPageArgs{
+//				Parent:      agent.StartFlow,
+//				DisplayName: pulumi.String("MyPage"),
+//				EntryFulfillment: &diagflow.CxPageEntryFulfillmentArgs{
+//					Messages: diagflow.CxPageEntryFulfillmentMessageArray{
+//						&diagflow.CxPageEntryFulfillmentMessageArgs{
+//							Text: &diagflow.CxPageEntryFulfillmentMessageTextArgs{
+//								Texts: pulumi.StringArray{
+//									pulumi.String("Welcome to page"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Form: &diagflow.CxPageFormArgs{
+//					Parameters: diagflow.CxPageFormParameterArray{
+//						&diagflow.CxPageFormParameterArgs{
+//							DisplayName: pulumi.String("param1"),
+//							EntityType:  pulumi.String("projects/-/locations/-/agents/-/entityTypes/sys.date"),
+//							FillBehavior: &diagflow.CxPageFormParameterFillBehaviorArgs{
+//								InitialPromptFulfillment: &diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{
+//									Messages: diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray{
+//										&diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{
+//											Text: &diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{
+//												Texts: pulumi.StringArray{
+//													pulumi.String("Please provide param1"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//							Required: pulumi.Bool(true),
+//							Redact:   pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				TransitionRoutes: diagflow.CxPageTransitionRouteArray{
+//					&diagflow.CxPageTransitionRouteArgs{
+//						Condition: pulumi.String(fmt.Sprintf("$page.params.status = 'FINAL'")),
+//						TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
+//							Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
+//								&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("information completed, navigating to page 2"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//						TargetPage: myPage2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Page can be imported using any of these accepted formats
+// # Page can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
+//
+//	$ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/{{name}}
+//
+//	$ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/{{name}}
+//
 // ```
 type CxPage struct {
 	pulumi.CustomResourceState
@@ -434,7 +441,7 @@ func (i *CxPage) ToCxPageOutputWithContext(ctx context.Context) CxPageOutput {
 // CxPageArrayInput is an input type that accepts CxPageArray and CxPageArrayOutput values.
 // You can construct a concrete instance of `CxPageArrayInput` via:
 //
-//          CxPageArray{ CxPageArgs{...} }
+//	CxPageArray{ CxPageArgs{...} }
 type CxPageArrayInput interface {
 	pulumi.Input
 
@@ -459,7 +466,7 @@ func (i CxPageArray) ToCxPageArrayOutputWithContext(ctx context.Context) CxPageA
 // CxPageMapInput is an input type that accepts CxPageMap and CxPageMapOutput values.
 // You can construct a concrete instance of `CxPageMapInput` via:
 //
-//          CxPageMap{ "key": CxPageArgs{...} }
+//	CxPageMap{ "key": CxPageArgs{...} }
 type CxPageMapInput interface {
 	pulumi.Input
 

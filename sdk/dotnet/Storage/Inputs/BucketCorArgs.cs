@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketCorArgs : Pulumi.ResourceArgs
+    public sealed class BucketCorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketCorArgs()
         {
         }
+        public static new BucketCorArgs Empty => new BucketCorArgs();
     }
 }

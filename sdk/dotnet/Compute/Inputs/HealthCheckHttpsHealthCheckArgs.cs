@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class HealthCheckHttpsHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class HealthCheckHttpsHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of the host header in the HTTP2 health check request.
@@ -78,5 +78,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public HealthCheckHttpsHealthCheckArgs()
         {
         }
+        public static new HealthCheckHttpsHealthCheckArgs Empty => new HealthCheckHttpsHealthCheckArgs();
     }
 }

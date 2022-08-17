@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxFlowTransitionRouteTriggerFulfillmentGetArgs : Pulumi.ResourceArgs
+    public sealed class CxFlowTransitionRouteTriggerFulfillmentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("messages")]
         private InputList<Inputs.CxFlowTransitionRouteTriggerFulfillmentMessageGetArgs>? _messages;
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxFlowTransitionRouteTriggerFulfillmentGetArgs()
         {
         }
+        public static new CxFlowTransitionRouteTriggerFulfillmentGetArgs Empty => new CxFlowTransitionRouteTriggerFulfillmentGetArgs();
     }
 }

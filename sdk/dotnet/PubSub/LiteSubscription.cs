@@ -23,42 +23,42 @@ namespace Pulumi.Gcp.PubSub
     /// ### Pubsub Lite Subscription Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new Gcp.PubSub.LiteTopicArgs
-    ///         {
-    ///             Project = project.Apply(project =&gt; project.Number),
-    ///             PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
-    ///             {
-    ///                 Count = 1,
-    ///                 Capacity = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigCapacityArgs
-    ///                 {
-    ///                     PublishMibPerSec = 4,
-    ///                     SubscribeMibPerSec = 8,
-    ///                 },
-    ///             },
-    ///             RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
-    ///             {
-    ///                 PerPartitionBytes = "32212254720",
-    ///             },
-    ///         });
-    ///         var exampleLiteSubscription = new Gcp.PubSub.LiteSubscription("exampleLiteSubscription", new Gcp.PubSub.LiteSubscriptionArgs
-    ///         {
-    ///             Topic = exampleLiteTopic.Name,
-    ///             DeliveryConfig = new Gcp.PubSub.Inputs.LiteSubscriptionDeliveryConfigArgs
-    ///             {
-    ///                 DeliveryRequirement = "DELIVER_AFTER_STORED",
-    ///             },
-    ///         });
-    ///     }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    /// }
+    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
+    ///         {
+    ///             Count = 1,
+    ///             Capacity = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigCapacityArgs
+    ///             {
+    ///                 PublishMibPerSec = 4,
+    ///                 SubscribeMibPerSec = 8,
+    ///             },
+    ///         },
+    ///         RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
+    ///         {
+    ///             PerPartitionBytes = "32212254720",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleLiteSubscription = new Gcp.PubSub.LiteSubscription("exampleLiteSubscription", new()
+    ///     {
+    ///         Topic = exampleLiteTopic.Name,
+    ///         DeliveryConfig = new Gcp.PubSub.Inputs.LiteSubscriptionDeliveryConfigArgs
+    ///         {
+    ///             DeliveryRequirement = "DELIVER_AFTER_STORED",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.PubSub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/liteSubscription:LiteSubscription")]
-    public partial class LiteSubscription : Pulumi.CustomResource
+    public partial class LiteSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The settings for this subscription's message delivery.
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class LiteSubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class LiteSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The settings for this subscription's message delivery.
@@ -209,9 +209,10 @@ namespace Pulumi.Gcp.PubSub
         public LiteSubscriptionArgs()
         {
         }
+        public static new LiteSubscriptionArgs Empty => new LiteSubscriptionArgs();
     }
 
-    public sealed class LiteSubscriptionState : Pulumi.ResourceArgs
+    public sealed class LiteSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The settings for this subscription's message delivery.
@@ -254,5 +255,6 @@ namespace Pulumi.Gcp.PubSub
         public LiteSubscriptionState()
         {
         }
+        public static new LiteSubscriptionState Empty => new LiteSubscriptionState();
     }
 }

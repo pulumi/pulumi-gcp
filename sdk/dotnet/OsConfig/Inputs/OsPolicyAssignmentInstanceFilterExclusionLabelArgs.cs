@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentInstanceFilterExclusionLabelArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentInstanceFilterExclusionLabelArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentInstanceFilterExclusionLabelArgs()
         {
         }
+        public static new OsPolicyAssignmentInstanceFilterExclusionLabelArgs Empty => new OsPolicyAssignmentInstanceFilterExclusionLabelArgs();
     }
 }

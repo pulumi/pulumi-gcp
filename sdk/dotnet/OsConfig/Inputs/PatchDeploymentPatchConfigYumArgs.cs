@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigYumArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigYumArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
@@ -53,5 +53,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigYumArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigYumArgs Empty => new PatchDeploymentPatchConfigYumArgs();
     }
 }

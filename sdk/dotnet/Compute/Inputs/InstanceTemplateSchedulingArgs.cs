@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateSchedulingArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateSchedulingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the instance should be
@@ -72,5 +72,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateSchedulingArgs()
         {
         }
+        public static new InstanceTemplateSchedulingArgs Empty => new InstanceTemplateSchedulingArgs();
     }
 }

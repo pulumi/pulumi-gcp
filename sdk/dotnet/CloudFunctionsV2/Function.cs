@@ -11,157 +11,317 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Cloudfunctions2 Basic
+    /// ### Cloudfunctions2 Basic Gcs
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // [START functions_v2_basic_gcs]
+    ///     var source_bucket = new Gcp.Storage.Bucket("source-bucket", new()
     ///     {
-    ///         // [START functions_v2_basic]
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = source_bucket.Name,
+    ///         Source = new FileAsset("function-source.zip"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Add path to the zipped function source code
+    ///     var trigger_bucket = new Gcp.Storage.Bucket("trigger-bucket", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         UniformBucketLevelAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
+    /// 
+    ///     // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
+    ///     // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
+    ///     var gcs_pubsub_publishing = new Gcp.Projects.IAMMember("gcs-pubsub-publishing", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/pubsub.publisher",
+    ///         Member = $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var account = new Gcp.ServiceAccount.Account("account", new()
+    ///     {
+    ///         AccountId = "test-sa",
+    ///         DisplayName = "Test Service Account - used for both the cloud function and eventarc trigger in the test",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Permissions on the service account used by the function and Eventarc trigger
+    ///     var invoking = new Gcp.Projects.IAMMember("invoking", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/run.invoker",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/eventarc.eventReceiver",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/artifactregistry.reader",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Description = "a new function",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///         {
-    ///             Location = "US",
-    ///             UniformBucketLevelAccess = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("path/to/index.zip"),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         // Add path to the zipped function source code
-    ///         var terraform_test2 = new Gcp.CloudFunctionsV2.Function("terraform-test2", new Gcp.CloudFunctionsV2.FunctionArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Description = "a new function",
-    ///             BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///             Runtime = "nodejs12",
+    ///             EntryPoint = "entryPoint",
+    ///             EnvironmentVariables = 
     ///             {
-    ///                 Runtime = "nodejs16",
-    ///                 EntryPoint = "helloHttp",
-    ///                 Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///                 { "BUILD_CONFIG_TEST", "build_test" },
+    ///             },
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
     ///                 {
-    ///                     StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
-    ///                     {
-    ///                         Bucket = bucket.Name,
-    ///                         Object = @object.Name,
-    ///                     },
+    ///                     Bucket = source_bucket.Name,
+    ///                     Object = @object.Name,
     ///                 },
     ///             },
-    ///             ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
-    ///             {
-    ///                 MaxInstanceCount = 1,
-    ///                 AvailableMemory = "256M",
-    ///                 TimeoutSeconds = 60,
-    ///             },
-    ///         }, new CustomResourceOptions
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
     ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             MaxInstanceCount = 3,
+    ///             MinInstanceCount = 1,
+    ///             AvailableMemory = "256M",
+    ///             TimeoutSeconds = 60,
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "SERVICE_CONFIG_TEST", "config_test" },
+    ///             },
+    ///             IngressSettings = "ALLOW_INTERNAL_ONLY",
+    ///             AllTrafficOnLatestRevision = true,
+    ///             ServiceAccountEmail = account.Email,
+    ///         },
+    ///         EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
+    ///         {
+    ///             TriggerRegion = "us-central1",
+    ///             EventType = "google.cloud.storage.object.v1.finalized",
+    ///             RetryPolicy = "RETRY_POLICY_RETRY",
+    ///             ServiceAccountEmail = account.Email,
+    ///             EventFilters = new[]
+    ///             {
+    ///                 new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerEventFilterArgs
+    ///                 {
+    ///                     Attribute = "bucket",
+    ///                     Value = trigger_bucket.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             event_receiving,
+    ///             artifactregistry_reader,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
-    /// ### Cloudfunctions2 Full
+    /// ### Cloudfunctions2 Basic Auditlogs
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // [START functions_v2_basic_auditlogs]
+    ///     // This example follows the examples shown in this Google Cloud Community blog post
+    ///     // https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
+    ///     // and the docs:
+    ///     // https://cloud.google.com/eventarc/docs/path-patterns
+    ///     var source_bucket = new Gcp.Storage.Bucket("source-bucket", new()
     ///     {
-    ///         // [START functions_v2_full]
-    ///         var account = new Gcp.ServiceAccount.Account("account", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "s-a",
-    ///             DisplayName = "Test Service Account",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var sub = new Gcp.PubSub.Topic("sub", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///             UniformBucketLevelAccess = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("path/to/index.zip"),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         // Add path to the zipped function source code
-    ///         var terraform_test = new Gcp.CloudFunctionsV2.Function("terraform-test", new Gcp.CloudFunctionsV2.FunctionArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             Description = "a new function",
-    ///             BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
-    ///             {
-    ///                 Runtime = "nodejs16",
-    ///                 EntryPoint = "helloPubSub",
-    ///                 EnvironmentVariables = 
-    ///                 {
-    ///                     { "BUILD_CONFIG_TEST", "build_test" },
-    ///                 },
-    ///                 Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
-    ///                 {
-    ///                     StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
-    ///                     {
-    ///                         Bucket = bucket.Name,
-    ///                         Object = @object.Name,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
-    ///             {
-    ///                 MaxInstanceCount = 3,
-    ///                 MinInstanceCount = 1,
-    ///                 AvailableMemory = "256M",
-    ///                 TimeoutSeconds = 60,
-    ///                 EnvironmentVariables = 
-    ///                 {
-    ///                     { "SERVICE_CONFIG_TEST", "config_test" },
-    ///                 },
-    ///                 IngressSettings = "ALLOW_INTERNAL_ONLY",
-    ///                 AllTrafficOnLatestRevision = true,
-    ///                 ServiceAccountEmail = account.Email,
-    ///             },
-    ///             EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
-    ///             {
-    ///                 TriggerRegion = "us-central1",
-    ///                 EventType = "google.cloud.pubsub.topic.v1.messagePublished",
-    ///                 PubsubTopic = sub.Id,
-    ///                 RetryPolicy = "RETRY_POLICY_RETRY",
-    ///                 ServiceAccountEmail = account.Email,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = source_bucket.Name,
+    ///         Source = new FileAsset("function-source.zip"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Add path to the zipped function source code
+    ///     var account = new Gcp.ServiceAccount.Account("account", new()
+    ///     {
+    ///         AccountId = "gcf-sa",
+    ///         DisplayName = "Test Service Account - used for both the cloud function and eventarc trigger in the test",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
+    ///     // Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
+    ///     // google_cloudfunctions2_function below (Audit Log events have path pattern support)
+    ///     var audit_log_bucket = new Gcp.Storage.Bucket("audit-log-bucket", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         UniformBucketLevelAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Permissions on the service account used by the function and Eventarc trigger
+    ///     var invoking = new Gcp.Projects.IAMMember("invoking", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/run.invoker",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/eventarc.eventReceiver",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/artifactregistry.reader",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Description = "a new function",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///         {
+    ///             Runtime = "nodejs12",
+    ///             EntryPoint = "entryPoint",
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "BUILD_CONFIG_TEST", "build_test" },
+    ///             },
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
+    ///                 {
+    ///                     Bucket = source_bucket.Name,
+    ///                     Object = @object.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
+    ///         {
+    ///             MaxInstanceCount = 3,
+    ///             MinInstanceCount = 1,
+    ///             AvailableMemory = "256M",
+    ///             TimeoutSeconds = 60,
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "SERVICE_CONFIG_TEST", "config_test" },
+    ///             },
+    ///             IngressSettings = "ALLOW_INTERNAL_ONLY",
+    ///             AllTrafficOnLatestRevision = true,
+    ///             ServiceAccountEmail = account.Email,
+    ///         },
+    ///         EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
+    ///         {
+    ///             TriggerRegion = "us-central1",
+    ///             EventType = "google.cloud.audit.log.v1.written",
+    ///             RetryPolicy = "RETRY_POLICY_RETRY",
+    ///             ServiceAccountEmail = account.Email,
+    ///             EventFilters = new[]
+    ///             {
+    ///                 new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerEventFilterArgs
+    ///                 {
+    ///                     Attribute = "serviceName",
+    ///                     Value = "storage.googleapis.com",
+    ///                 },
+    ///                 new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerEventFilterArgs
+    ///                 {
+    ///                     Attribute = "methodName",
+    ///                     Value = "storage.objects.create",
+    ///                 },
+    ///                 new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerEventFilterArgs
+    ///                 {
+    ///                     Attribute = "resourceName",
+    ///                     Value = audit_log_bucket.Name.Apply(name =&gt; $"/projects/_/buckets/{name}/objects/*.txt"),
+    ///                     Operator = "match-path-pattern",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             event_receiving,
+    ///             artifactregistry_reader,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -181,7 +341,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudfunctionsv2/function:Function")]
-    public partial class Function : Pulumi.CustomResource
+    public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Describes the Build step of the function that builds a container
@@ -300,7 +460,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         }
     }
 
-    public sealed class FunctionArgs : Pulumi.ResourceArgs
+    public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the Build step of the function that builds a container
@@ -366,9 +526,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public FunctionArgs()
         {
         }
+        public static new FunctionArgs Empty => new FunctionArgs();
     }
 
-    public sealed class FunctionState : Pulumi.ResourceArgs
+    public sealed class FunctionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the Build step of the function that builds a container
@@ -452,5 +613,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public FunctionState()
         {
         }
+        public static new FunctionState Empty => new FunctionState();
     }
 }

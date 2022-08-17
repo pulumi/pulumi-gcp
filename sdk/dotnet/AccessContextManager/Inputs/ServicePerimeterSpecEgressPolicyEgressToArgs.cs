@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimeterSpecEgressPolicyEgressToArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimeterSpecEgressPolicyEgressToArgs : global::Pulumi.ResourceArgs
     {
         [Input("externalResources")]
         private InputList<string>? _externalResources;
@@ -59,5 +59,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimeterSpecEgressPolicyEgressToArgs()
         {
         }
+        public static new ServicePerimeterSpecEgressPolicyEgressToArgs Empty => new ServicePerimeterSpecEgressPolicyEgressToArgs();
     }
 }

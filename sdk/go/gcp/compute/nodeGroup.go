@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
 // * How-to Guides
-//     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+//   - [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 //
 // > **Warning:** Due to limitations of the API, this provider cannot update the
 // number of nodes in a node group and changes to node group size either
@@ -31,31 +31,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
-// 			Region:   pulumi.String("us-central1"),
-// 			NodeType: pulumi.String("n1-node-96-624"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
-// 			Zone:         pulumi.String("us-central1-a"),
-// 			Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
-// 			Size:         pulumi.Int(1),
-// 			NodeTemplate: soletenant_tmpl.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n1-node-96-624"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Zone:         pulumi.String("us-central1-a"),
+//				Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
+//				Size:         pulumi.Int(1),
+//				NodeTemplate: soletenant_tmpl.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Node Group Autoscaling Policy
 //
@@ -63,60 +66,71 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
-// 			Region:   pulumi.String("us-central1"),
-// 			NodeType: pulumi.String("n1-node-96-624"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
-// 			Zone:              pulumi.String("us-central1-a"),
-// 			Description:       pulumi.String("example google_compute_node_group for Google Provider"),
-// 			MaintenancePolicy: pulumi.String("RESTART_IN_PLACE"),
-// 			MaintenanceWindow: &compute.NodeGroupMaintenanceWindowArgs{
-// 				StartTime: pulumi.String("08:00"),
-// 			},
-// 			InitialSize:  pulumi.Int(1),
-// 			NodeTemplate: soletenant_tmpl.ID(),
-// 			AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
-// 				Mode:     pulumi.String("ONLY_SCALE_OUT"),
-// 				MinNodes: pulumi.Int(1),
-// 				MaxNodes: pulumi.Int(10),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n1-node-96-624"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Zone:              pulumi.String("us-central1-a"),
+//				Description:       pulumi.String("example google_compute_node_group for Google Provider"),
+//				MaintenancePolicy: pulumi.String("RESTART_IN_PLACE"),
+//				MaintenanceWindow: &compute.NodeGroupMaintenanceWindowArgs{
+//					StartTime: pulumi.String("08:00"),
+//				},
+//				InitialSize:  pulumi.Int(1),
+//				NodeTemplate: soletenant_tmpl.ID(),
+//				AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
+//					Mode:     pulumi.String("ONLY_SCALE_OUT"),
+//					MinNodes: pulumi.Int(1),
+//					MaxNodes: pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// NodeGroup can be imported using any of these accepted formats
+// # NodeGroup can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
+//
+//	$ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{project}}/{{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/nodeGroup:NodeGroup default {{project}}/{{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
+//
+//	$ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
+//
 // ```
 type NodeGroup struct {
 	pulumi.CustomResourceState
@@ -329,7 +343,7 @@ func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupO
 // NodeGroupArrayInput is an input type that accepts NodeGroupArray and NodeGroupArrayOutput values.
 // You can construct a concrete instance of `NodeGroupArrayInput` via:
 //
-//          NodeGroupArray{ NodeGroupArgs{...} }
+//	NodeGroupArray{ NodeGroupArgs{...} }
 type NodeGroupArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +368,7 @@ func (i NodeGroupArray) ToNodeGroupArrayOutputWithContext(ctx context.Context) N
 // NodeGroupMapInput is an input type that accepts NodeGroupMap and NodeGroupMapOutput values.
 // You can construct a concrete instance of `NodeGroupMapInput` via:
 //
-//          NodeGroupMap{ "key": NodeGroupArgs{...} }
+//	NodeGroupMap{ "key": NodeGroupArgs{...} }
 type NodeGroupMapInput interface {
 	pulumi.Input
 

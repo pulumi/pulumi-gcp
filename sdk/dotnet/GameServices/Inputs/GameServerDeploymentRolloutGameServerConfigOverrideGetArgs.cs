@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GameServices.Inputs
 {
 
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverrideGetArgs : Pulumi.ResourceArgs
+    public sealed class GameServerDeploymentRolloutGameServerConfigOverrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Version of the configuration.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.GameServices.Inputs
         public GameServerDeploymentRolloutGameServerConfigOverrideGetArgs()
         {
         }
+        public static new GameServerDeploymentRolloutGameServerConfigOverrideGetArgs Empty => new GameServerDeploymentRolloutGameServerConfigOverrideGetArgs();
     }
 }

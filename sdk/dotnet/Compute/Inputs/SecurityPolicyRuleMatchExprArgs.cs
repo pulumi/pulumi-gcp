@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleMatchExprArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatchExprArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Textual representation of an expression in Common Expression Language syntax.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleMatchExprArgs()
         {
         }
+        public static new SecurityPolicyRuleMatchExprArgs Empty => new SecurityPolicyRuleMatchExprArgs();
     }
 }

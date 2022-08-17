@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis.Inputs
 {
 
-    public sealed class InstanceMaintenancePolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -56,5 +56,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public InstanceMaintenancePolicyArgs()
         {
         }
+        public static new InstanceMaintenancePolicyArgs Empty => new InstanceMaintenancePolicyArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceBootDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBootDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the disk will be auto-deleted when the instance
@@ -72,5 +72,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceBootDiskGetArgs()
         {
         }
+        public static new InstanceBootDiskGetArgs Empty => new InstanceBootDiskGetArgs();
     }
 }

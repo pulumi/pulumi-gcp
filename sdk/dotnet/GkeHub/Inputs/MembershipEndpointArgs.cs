@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class MembershipEndpointArgs : Pulumi.ResourceArgs
+    public sealed class MembershipEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public MembershipEndpointArgs()
         {
         }
+        public static new MembershipEndpointArgs Empty => new MembershipEndpointArgs();
     }
 }

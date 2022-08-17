@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudIdentity.Inputs
 {
 
-    public sealed class GroupGroupKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class GroupGroupKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the entity.
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.CloudIdentity.Inputs
         public GroupGroupKeyGetArgs()
         {
         }
+        public static new GroupGroupKeyGetArgs Empty => new GroupGroupKeyGetArgs();
     }
 }

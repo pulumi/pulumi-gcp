@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterIpv4CidrBlock")]
         public Input<string>? ClusterIpv4CidrBlock { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs()
         {
         }
+        public static new EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs Empty => new EnvironmentConfigNodeConfigIpAllocationPolicyGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DeploymentManager.Inputs
 {
 
-    public sealed class DeploymentTargetConfigArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentTargetConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full contents of the template that you want to import.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.DeploymentManager.Inputs
         public DeploymentTargetConfigArgs()
         {
         }
+        public static new DeploymentTargetConfigArgs Empty => new DeploymentTargetConfigArgs();
     }
 }

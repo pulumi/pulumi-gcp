@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis.Inputs
 {
 
-    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The day of week that maintenance updates occur.
@@ -49,5 +49,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public InstanceMaintenancePolicyWeeklyMaintenanceWindowGetArgs()
         {
         }
+        public static new InstanceMaintenancePolicyWeeklyMaintenanceWindowGetArgs Empty => new InstanceMaintenancePolicyWeeklyMaintenanceWindowGetArgs();
     }
 }

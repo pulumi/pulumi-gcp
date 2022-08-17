@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudScheduler.Inputs
 {
 
-    public sealed class JobRetryConfigArgs : Pulumi.ResourceArgs
+    public sealed class JobRetryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum amount of time to wait before retrying a job after it fails.
@@ -54,5 +54,6 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         public JobRetryConfigArgs()
         {
         }
+        public static new JobRetryConfigArgs Empty => new JobRetryConfigArgs();
     }
 }

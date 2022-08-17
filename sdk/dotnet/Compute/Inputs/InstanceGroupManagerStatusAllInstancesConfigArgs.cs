@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGroupManagerStatusAllInstancesConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerStatusAllInstancesConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("effective")]
         public Input<bool>? Effective { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGroupManagerStatusAllInstancesConfigArgs()
         {
         }
+        public static new InstanceGroupManagerStatusAllInstancesConfigArgs Empty => new InstanceGroupManagerStatusAllInstancesConfigArgs();
     }
 }

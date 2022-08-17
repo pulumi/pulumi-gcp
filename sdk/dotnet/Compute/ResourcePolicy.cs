@@ -16,128 +16,120 @@ namespace Pulumi.Gcp.Compute
     /// ### Resource Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Gcp.Compute.ResourcePolicy("foo", new()
     ///     {
-    ///         var foo = new Gcp.Compute.ResourcePolicy("foo", new Gcp.Compute.ResourcePolicyArgs
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
-    ///             Region = "us-central1",
-    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
     ///             {
-    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
     ///                 {
-    ///                     DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
-    ///                     {
-    ///                         DaysInCycle = 1,
-    ///                         StartTime = "04:00",
-    ///                     },
+    ///                     DaysInCycle = 1,
+    ///                     StartTime = "04:00",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Resource Policy Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bar = new Gcp.Compute.ResourcePolicy("bar", new()
     ///     {
-    ///         var bar = new Gcp.Compute.ResourcePolicy("bar", new Gcp.Compute.ResourcePolicyArgs
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
-    ///             Region = "us-central1",
-    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
     ///             {
-    ///                 RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
+    ///                 MaxRetentionDays = 10,
+    ///                 OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
+    ///             },
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///             {
+    ///                 HourlySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
     ///                 {
-    ///                     MaxRetentionDays = 10,
-    ///                     OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
-    ///                 },
-    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
-    ///                 {
-    ///                     HourlySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
-    ///                     {
-    ///                         HoursInCycle = 20,
-    ///                         StartTime = "23:00",
-    ///                     },
-    ///                 },
-    ///                 SnapshotProperties = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs
-    ///                 {
-    ///                     GuestFlush = true,
-    ///                     Labels = 
-    ///                     {
-    ///                         { "myLabel", "value" },
-    ///                     },
-    ///                     StorageLocations = "us",
+    ///                     HoursInCycle = 20,
+    ///                     StartTime = "23:00",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             SnapshotProperties = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs
+    ///             {
+    ///                 GuestFlush = true,
+    ///                 Labels = 
+    ///                 {
+    ///                     { "myLabel", "value" },
+    ///                 },
+    ///                 StorageLocations = "us",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Resource Policy Placement Policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var baz = new Gcp.Compute.ResourcePolicy("baz", new()
     ///     {
-    ///         var baz = new Gcp.Compute.ResourcePolicy("baz", new Gcp.Compute.ResourcePolicyArgs
+    ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
     ///         {
-    ///             GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
-    ///             {
-    ///                 Collocation = "COLLOCATED",
-    ///                 VmCount = 2,
-    ///             },
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///             Collocation = "COLLOCATED",
+    ///             VmCount = 2,
+    ///         },
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Resource Policy Instance Schedule Policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var hourly = new Gcp.Compute.ResourcePolicy("hourly", new()
     ///     {
-    ///         var hourly = new Gcp.Compute.ResourcePolicy("hourly", new Gcp.Compute.ResourcePolicyArgs
+    ///         Description = "Start and stop instances",
+    ///         InstanceSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyArgs
     ///         {
-    ///             Description = "Start and stop instances",
-    ///             InstanceSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyArgs
+    ///             TimeZone = "US/Central",
+    ///             VmStartSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs
     ///             {
-    ///                 TimeZone = "US/Central",
-    ///                 VmStartSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs
-    ///                 {
-    ///                     Schedule = "0 * * * *",
-    ///                 },
-    ///                 VmStopSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs
-    ///                 {
-    ///                     Schedule = "15 * * * *",
-    ///                 },
+    ///                 Schedule = "0 * * * *",
     ///             },
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///             VmStopSchedule = new Gcp.Compute.Inputs.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs
+    ///             {
+    ///                 Schedule = "15 * * * *",
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -161,7 +153,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/resourcePolicy:ResourcePolicy")]
-    public partial class ResourcePolicy : Pulumi.CustomResource
+    public partial class ResourcePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -265,7 +257,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -322,9 +314,10 @@ namespace Pulumi.Gcp.Compute
         public ResourcePolicyArgs()
         {
         }
+        public static new ResourcePolicyArgs Empty => new ResourcePolicyArgs();
     }
 
-    public sealed class ResourcePolicyState : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -387,5 +380,6 @@ namespace Pulumi.Gcp.Compute
         public ResourcePolicyState()
         {
         }
+        public static new ResourcePolicyState Empty => new ResourcePolicyState();
     }
 }

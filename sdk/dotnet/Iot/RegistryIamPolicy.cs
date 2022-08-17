@@ -23,83 +23,78 @@ namespace Pulumi.Gcp.Iot
     /// ## google\_cloudiot\_registry\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Iot.RegistryIamPolicy("policy", new Gcp.Iot.RegistryIamPolicyArgs
-    ///         {
-    ///             Project = google_cloudiot_registry.Test_registry.Project,
-    ///             Region = google_cloudiot_registry.Test_registry.Region,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Iot.RegistryIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_cloudiot_registry.Test_registry.Project,
+    ///         Region = google_cloudiot_registry.Test_registry.Region,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_cloudiot\_registry\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Iot.RegistryIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Iot.RegistryIamBinding("binding", new Gcp.Iot.RegistryIamBindingArgs
+    ///         Project = google_cloudiot_registry.Test_registry.Project,
+    ///         Region = google_cloudiot_registry.Test_registry.Region,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_cloudiot_registry.Test_registry.Project,
-    ///             Region = google_cloudiot_registry.Test_registry.Region,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_cloudiot\_registry\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Iot.RegistryIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Iot.RegistryIamMember("member", new Gcp.Iot.RegistryIamMemberArgs
-    ///         {
-    ///             Project = google_cloudiot_registry.Test_registry.Project,
-    ///             Region = google_cloudiot_registry.Test_registry.Region,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_cloudiot_registry.Test_registry.Project,
+    ///         Region = google_cloudiot_registry.Test_registry.Region,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.Iot
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:iot/registryIamPolicy:RegistryIamPolicy")]
-    public partial class RegistryIamPolicy : Pulumi.CustomResource
+    public partial class RegistryIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -209,7 +204,7 @@ namespace Pulumi.Gcp.Iot
         }
     }
 
-    public sealed class RegistryIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegistryIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -244,9 +239,10 @@ namespace Pulumi.Gcp.Iot
         public RegistryIamPolicyArgs()
         {
         }
+        public static new RegistryIamPolicyArgs Empty => new RegistryIamPolicyArgs();
     }
 
-    public sealed class RegistryIamPolicyState : Pulumi.ResourceArgs
+    public sealed class RegistryIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -287,5 +283,6 @@ namespace Pulumi.Gcp.Iot
         public RegistryIamPolicyState()
         {
         }
+        public static new RegistryIamPolicyState Empty => new RegistryIamPolicyState();
     }
 }

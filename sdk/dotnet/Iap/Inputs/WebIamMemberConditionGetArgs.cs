@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iap.Inputs
 {
 
-    public sealed class WebIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class WebIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Iap.Inputs
         public WebIamMemberConditionGetArgs()
         {
         }
+        public static new WebIamMemberConditionGetArgs Empty => new WebIamMemberConditionGetArgs();
     }
 }

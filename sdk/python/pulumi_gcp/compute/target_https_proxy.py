@@ -14,21 +14,22 @@ __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
 @pulumi.input_type
 class TargetHttpsProxyArgs:
     def __init__(__self__, *,
-                 ssl_certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
                  url_map: pulumi.Input[str],
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input[str]] = None,
+                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetHttpsProxy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. At least one SSL
-               certificate must be specified.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
+        :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
+               associated with the given target proxy. This field can only be set for global target proxies.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -48,12 +49,16 @@ class TargetHttpsProxyArgs:
                equivalent to DISABLE.
                Default value is `NONE`.
                Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
+               connections between users and the load balancer. At least one SSL
+               certificate must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
         """
-        pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         pulumi.set(__self__, "url_map", url_map)
+        if certificate_map is not None:
+            pulumi.set(__self__, "certificate_map", certificate_map)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -64,22 +69,10 @@ class TargetHttpsProxyArgs:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if quic_override is not None:
             pulumi.set(__self__, "quic_override", quic_override)
+        if ssl_certificates is not None:
+            pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
-
-    @property
-    @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of SslCertificate resources that are used to authenticate
-        connections between users and the load balancer. At least one SSL
-        certificate must be specified.
-        """
-        return pulumi.get(self, "ssl_certificates")
-
-    @ssl_certificates.setter
-    def ssl_certificates(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "ssl_certificates", value)
 
     @property
     @pulumi.getter(name="urlMap")
@@ -93,6 +86,20 @@ class TargetHttpsProxyArgs:
     @url_map.setter
     def url_map(self, value: pulumi.Input[str]):
         pulumi.set(self, "url_map", value)
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the CertificateMap resource uri that identifies a certificate map
+        associated with the given target proxy. This field can only be set for global target proxies.
+        Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        """
+        return pulumi.get(self, "certificate_map")
+
+    @certificate_map.setter
+    def certificate_map(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_map", value)
 
     @property
     @pulumi.getter
@@ -169,6 +176,20 @@ class TargetHttpsProxyArgs:
         pulumi.set(self, "quic_override", value)
 
     @property
+    @pulumi.getter(name="sslCertificates")
+    def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of SslCertificate resources that are used to authenticate
+        connections between users and the load balancer. At least one SSL
+        certificate must be specified.
+        """
+        return pulumi.get(self, "ssl_certificates")
+
+    @ssl_certificates.setter
+    def ssl_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ssl_certificates", value)
+
+    @property
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -186,6 +207,7 @@ class TargetHttpsProxyArgs:
 @pulumi.input_type
 class _TargetHttpsProxyState:
     def __init__(__self__, *,
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -199,6 +221,9 @@ class _TargetHttpsProxyState:
                  url_map: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TargetHttpsProxy resources.
+        :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
+               associated with the given target proxy. This field can only be set for global target proxies.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -230,6 +255,8 @@ class _TargetHttpsProxyState:
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
         """
+        if certificate_map is not None:
+            pulumi.set(__self__, "certificate_map", certificate_map)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -252,6 +279,20 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
         if url_map is not None:
             pulumi.set(__self__, "url_map", url_map)
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the CertificateMap resource uri that identifies a certificate map
+        associated with the given target proxy. This field can only be set for global target proxies.
+        Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        """
+        return pulumi.get(self, "certificate_map")
+
+    @certificate_map.setter
+    def certificate_map(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_map", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -410,6 +451,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -449,6 +491,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
+               associated with the given target proxy. This field can only be set for global target proxies.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -526,6 +571,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -543,13 +589,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TargetHttpsProxyArgs.__new__(TargetHttpsProxyArgs)
 
+            __props__.__dict__["certificate_map"] = certificate_map
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             __props__.__dict__["quic_override"] = quic_override
-            if ssl_certificates is None and not opts.urn:
-                raise TypeError("Missing required property 'ssl_certificates'")
             __props__.__dict__["ssl_certificates"] = ssl_certificates
             __props__.__dict__["ssl_policy"] = ssl_policy
             if url_map is None and not opts.urn:
@@ -568,6 +613,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_map: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -586,6 +632,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
+               associated with the given target proxy. This field can only be set for global target proxies.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -621,6 +670,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         __props__ = _TargetHttpsProxyState.__new__(_TargetHttpsProxyState)
 
+        __props__.__dict__["certificate_map"] = certificate_map
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
@@ -633,6 +683,16 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["ssl_policy"] = ssl_policy
         __props__.__dict__["url_map"] = url_map
         return TargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> pulumi.Output[Optional[str]]:
+        """
+        A reference to the CertificateMap resource uri that identifies a certificate map
+        associated with the given target proxy. This field can only be set for global target proxies.
+        Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        """
+        return pulumi.get(self, "certificate_map")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -714,7 +774,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> pulumi.Output[Sequence[str]]:
+    def ssl_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of SslCertificate resources that are used to authenticate
         connections between users and the load balancer. At least one SSL

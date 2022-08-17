@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specification for how client requests are aborted as part of fault injection.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs()
         {
         }
+        public static new URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs Empty => new URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs();
     }
 }

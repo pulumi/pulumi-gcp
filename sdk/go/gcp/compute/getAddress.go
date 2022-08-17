@@ -19,44 +19,47 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myAddress, err := compute.LookupAddress(ctx, &compute.LookupAddressArgs{
-// 			Name: "foobar",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
-// 			DnsName: pulumi.String("prod.mydomain.com."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
-// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("frontend.%v", dnsName), nil
-// 			}).(pulumi.StringOutput),
-// 			Type:        pulumi.String("A"),
-// 			Ttl:         pulumi.Int(300),
-// 			ManagedZone: prod.Name,
-// 			Rrdatas: pulumi.StringArray{
-// 				pulumi.String(myAddress.Address),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myAddress, err := compute.LookupAddress(ctx, &compute.LookupAddressArgs{
+//				Name: "foobar",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				DnsName: pulumi.String("prod.mydomain.com."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
+//				Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+//					return fmt.Sprintf("frontend.%v", dnsName), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: prod.Name,
+//				Rrdatas: pulumi.StringArray{
+//					pulumi.String(myAddress.Address),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	var rv LookupAddressResult

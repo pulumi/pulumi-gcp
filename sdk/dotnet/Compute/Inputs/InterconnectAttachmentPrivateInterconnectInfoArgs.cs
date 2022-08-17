@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InterconnectAttachmentPrivateInterconnectInfoArgs : Pulumi.ResourceArgs
+    public sealed class InterconnectAttachmentPrivateInterconnectInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("tag8021q")]
         public Input<int>? Tag8021q { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InterconnectAttachmentPrivateInterconnectInfoArgs()
         {
         }
+        public static new InterconnectAttachmentPrivateInterconnectInfoArgs Empty => new InterconnectAttachmentPrivateInterconnectInfoArgs();
     }
 }

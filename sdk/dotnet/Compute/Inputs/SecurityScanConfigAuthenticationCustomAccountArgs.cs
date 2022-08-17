@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityScanConfigAuthenticationCustomAccountArgs : Pulumi.ResourceArgs
+    public sealed class SecurityScanConfigAuthenticationCustomAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The login form URL of the website.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityScanConfigAuthenticationCustomAccountArgs()
         {
         }
+        public static new SecurityScanConfigAuthenticationCustomAccountArgs Empty => new SecurityScanConfigAuthenticationCustomAccountArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobQueryGetArgs : Pulumi.ResourceArgs
+    public sealed class JobQueryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
@@ -162,5 +162,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobQueryGetArgs()
         {
         }
+        public static new JobQueryGetArgs Empty => new JobQueryGetArgs();
     }
 }

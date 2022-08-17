@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used when good_service is defined by a count of values aggregated in a
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs()
         {
         }
+        public static new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs Empty => new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs();
     }
 }

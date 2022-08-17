@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class MetricMetricDescriptorLabelArgs : Pulumi.ResourceArgs
+    public sealed class MetricMetricDescriptorLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of this metric, which is used in documentation. The maximum length of the
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public MetricMetricDescriptorLabelArgs()
         {
         }
+        public static new MetricMetricDescriptorLabelArgs Empty => new MetricMetricDescriptorLabelArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheOriginTimeoutArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheOriginTimeoutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheOriginTimeoutArgs()
         {
         }
+        public static new EdgeCacheOriginTimeoutArgs Empty => new EdgeCacheOriginTimeoutArgs();
     }
 }

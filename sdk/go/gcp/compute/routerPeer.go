@@ -20,7 +20,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
 // * How-to Guides
-//     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+//   - [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
 // ### Router Peer Basic
@@ -29,26 +29,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
-// 			AdvertisedRoutePriority: pulumi.Int(100),
-// 			Interface:               pulumi.String("interface-1"),
-// 			PeerAsn:                 pulumi.Int(65513),
-// 			PeerIpAddress:           pulumi.String("169.254.1.2"),
-// 			Region:                  pulumi.String("us-central1"),
-// 			Router:                  pulumi.String("my-router"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+//				AdvertisedRoutePriority: pulumi.Int(100),
+//				Interface:               pulumi.String("interface-1"),
+//				PeerAsn:                 pulumi.Int(65513),
+//				PeerIpAddress:           pulumi.String("169.254.1.2"),
+//				Region:                  pulumi.String("us-central1"),
+//				Router:                  pulumi.String("my-router"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Router Peer Disabled
 //
@@ -56,27 +59,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
-// 			AdvertisedRoutePriority: pulumi.Int(100),
-// 			Enable:                  pulumi.Bool(false),
-// 			Interface:               pulumi.String("interface-1"),
-// 			PeerAsn:                 pulumi.Int(65513),
-// 			PeerIpAddress:           pulumi.String("169.254.1.2"),
-// 			Region:                  pulumi.String("us-central1"),
-// 			Router:                  pulumi.String("my-router"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+//				AdvertisedRoutePriority: pulumi.Int(100),
+//				Enable:                  pulumi.Bool(false),
+//				Interface:               pulumi.String("interface-1"),
+//				PeerAsn:                 pulumi.Int(65513),
+//				PeerIpAddress:           pulumi.String("169.254.1.2"),
+//				Region:                  pulumi.String("us-central1"),
+//				Router:                  pulumi.String("my-router"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Router Peer Bfd
 //
@@ -84,52 +90,63 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
-// 			AdvertisedRoutePriority: pulumi.Int(100),
-// 			Bfd: &compute.RouterPeerBfdArgs{
-// 				MinReceiveInterval:        pulumi.Int(1000),
-// 				MinTransmitInterval:       pulumi.Int(1000),
-// 				Multiplier:                pulumi.Int(5),
-// 				SessionInitializationMode: pulumi.String("ACTIVE"),
-// 			},
-// 			Interface:     pulumi.String("interface-1"),
-// 			PeerAsn:       pulumi.Int(65513),
-// 			PeerIpAddress: pulumi.String("169.254.1.2"),
-// 			Region:        pulumi.String("us-central1"),
-// 			Router:        pulumi.String("my-router"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+//				AdvertisedRoutePriority: pulumi.Int(100),
+//				Bfd: &compute.RouterPeerBfdArgs{
+//					MinReceiveInterval:        pulumi.Int(1000),
+//					MinTransmitInterval:       pulumi.Int(1000),
+//					Multiplier:                pulumi.Int(5),
+//					SessionInitializationMode: pulumi.String("ACTIVE"),
+//				},
+//				Interface:     pulumi.String("interface-1"),
+//				PeerAsn:       pulumi.Int(65513),
+//				PeerIpAddress: pulumi.String("169.254.1.2"),
+//				Region:        pulumi.String("us-central1"),
+//				Router:        pulumi.String("my-router"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// RouterBgpPeer can be imported using any of these accepted formats
+// # RouterBgpPeer can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+//
+//	$ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
+//
+//	$ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
+//
+//	$ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
+//
+//	$ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
+//
 // ```
 type RouterPeer struct {
 	pulumi.CustomResourceState
@@ -514,7 +531,7 @@ func (i *RouterPeer) ToRouterPeerOutputWithContext(ctx context.Context) RouterPe
 // RouterPeerArrayInput is an input type that accepts RouterPeerArray and RouterPeerArrayOutput values.
 // You can construct a concrete instance of `RouterPeerArrayInput` via:
 //
-//          RouterPeerArray{ RouterPeerArgs{...} }
+//	RouterPeerArray{ RouterPeerArgs{...} }
 type RouterPeerArrayInput interface {
 	pulumi.Input
 
@@ -539,7 +556,7 @@ func (i RouterPeerArray) ToRouterPeerArrayOutputWithContext(ctx context.Context)
 // RouterPeerMapInput is an input type that accepts RouterPeerMap and RouterPeerMapOutput values.
 // You can construct a concrete instance of `RouterPeerMapInput` via:
 //
-//          RouterPeerMap{ "key": RouterPeerArgs{...} }
+//	RouterPeerMap{ "key": RouterPeerArgs{...} }
 type RouterPeerMapInput interface {
 	pulumi.Input
 

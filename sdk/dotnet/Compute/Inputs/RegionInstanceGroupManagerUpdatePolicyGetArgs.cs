@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionInstanceGroupManagerUpdatePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
@@ -76,5 +76,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionInstanceGroupManagerUpdatePolicyGetArgs()
         {
         }
+        public static new RegionInstanceGroupManagerUpdatePolicyGetArgs Empty => new RegionInstanceGroupManagerUpdatePolicyGetArgs();
     }
 }

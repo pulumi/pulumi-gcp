@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway.Inputs
 {
 
-    public sealed class ApiConfigGatewayConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigGatewayConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backend settings that are applied to all backends of the Gateway.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
         public ApiConfigGatewayConfigGetArgs()
         {
         }
+        public static new ApiConfigGatewayConfigGetArgs Empty => new ApiConfigGatewayConfigGetArgs();
     }
 }

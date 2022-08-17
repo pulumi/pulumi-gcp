@@ -20,24 +20,22 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Oauth Idp Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauthIdpConfig", new()
     ///     {
-    ///         var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauthIdpConfig", new Gcp.IdentityPlatform.OauthIdpConfigArgs
-    ///         {
-    ///             ClientId = "client-id",
-    ///             ClientSecret = "secret",
-    ///             DisplayName = "Display Name",
-    ///             Enabled = true,
-    ///             Issuer = "issuer",
-    ///         });
-    ///     }
+    ///         ClientId = "client-id",
+    ///         ClientSecret = "secret",
+    ///         DisplayName = "Display Name",
+    ///         Enabled = true,
+    ///         Issuer = "issuer",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig")]
-    public partial class OauthIdpConfig : Pulumi.CustomResource
+    public partial class OauthIdpConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The client id of an OAuth client.
@@ -146,7 +144,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class OauthIdpConfigArgs : Pulumi.ResourceArgs
+    public sealed class OauthIdpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client id of an OAuth client.
@@ -194,9 +192,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public OauthIdpConfigArgs()
         {
         }
+        public static new OauthIdpConfigArgs Empty => new OauthIdpConfigArgs();
     }
 
-    public sealed class OauthIdpConfigState : Pulumi.ResourceArgs
+    public sealed class OauthIdpConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client id of an OAuth client.
@@ -244,5 +243,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public OauthIdpConfigState()
         {
         }
+        public static new OauthIdpConfigState Empty => new OauthIdpConfigState();
     }
 }

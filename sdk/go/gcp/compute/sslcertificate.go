@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 //
 // > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
 // state as plain-text.
@@ -31,34 +31,37 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
-// 			NamePrefix:  pulumi.String("my-certificate-"),
-// 			Description: pulumi.String("a description"),
-// 			PrivateKey:  readFileOrPanic("path/to/private.key"),
-// 			Certificate: readFileOrPanic("path/to/certificate.crt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
+//				NamePrefix:  pulumi.String("my-certificate-"),
+//				Description: pulumi.String("a description"),
+//				PrivateKey:  readFileOrPanic("path/to/private.key"),
+//				Certificate: readFileOrPanic("path/to/certificate.crt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Ssl Certificate Random Provider
 //
@@ -66,71 +69,80 @@ import (
 // package main
 //
 // import (
-// 	"crypto/sha256"
-// 	"fmt"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"crypto/sha256"
+//	"fmt"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func filebase64sha256OrPanic(path string) pulumi.StringPtrInput {
-// 	if fileData, err := ioutil.ReadFile(path); err == nil {
-// 		hashedData := sha256.Sum256([]byte(fileData))
-// 		return pulumi.String(base64.StdEncoding.EncodeToString(hashedData[:]))
-// 	} else {
-// 		panic(err.Error())
-// 	}
-// }
+//	func filebase64sha256OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := ioutil.ReadFile(path); err == nil {
+//			hashedData := sha256.Sum256([]byte(fileData))
+//			return pulumi.String(base64.StdEncoding.EncodeToString(hashedData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
-// 			PrivateKey:  readFileOrPanic("path/to/private.key"),
-// 			Certificate: readFileOrPanic("path/to/certificate.crt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
-// 			ByteLength: pulumi.Int(4),
-// 			Prefix:     pulumi.String("my-certificate-"),
-// 			Keepers: pulumi.AnyMap{
-// 				"private_key": filebase64sha256OrPanic("path/to/private.key"),
-// 				"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
+//				PrivateKey:  readFileOrPanic("path/to/private.key"),
+//				Certificate: readFileOrPanic("path/to/certificate.crt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
+//				Prefix:     pulumi.String("my-certificate-"),
+//				Keepers: pulumi.AnyMap{
+//					"private_key": filebase64sha256OrPanic("path/to/private.key"),
+//					"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// SslCertificate can be imported using any of these accepted formats
+// # SslCertificate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+//
+//	$ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
+//
+//	$ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
+//
 // ```
 type SSLCertificate struct {
 	pulumi.CustomResourceState
@@ -352,7 +364,7 @@ func (i *SSLCertificate) ToSSLCertificateOutputWithContext(ctx context.Context) 
 // SSLCertificateArrayInput is an input type that accepts SSLCertificateArray and SSLCertificateArrayOutput values.
 // You can construct a concrete instance of `SSLCertificateArrayInput` via:
 //
-//          SSLCertificateArray{ SSLCertificateArgs{...} }
+//	SSLCertificateArray{ SSLCertificateArgs{...} }
 type SSLCertificateArrayInput interface {
 	pulumi.Input
 
@@ -377,7 +389,7 @@ func (i SSLCertificateArray) ToSSLCertificateArrayOutputWithContext(ctx context.
 // SSLCertificateMapInput is an input type that accepts SSLCertificateMap and SSLCertificateMapOutput values.
 // You can construct a concrete instance of `SSLCertificateMapInput` via:
 //
-//          SSLCertificateMap{ "key": SSLCertificateArgs{...} }
+//	SSLCertificateMap{ "key": SSLCertificateArgs{...} }
 type SSLCertificateMapInput interface {
 	pulumi.Input
 

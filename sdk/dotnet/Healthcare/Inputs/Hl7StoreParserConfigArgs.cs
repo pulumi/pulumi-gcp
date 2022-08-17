@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class Hl7StoreParserConfigArgs : Pulumi.ResourceArgs
+    public sealed class Hl7StoreParserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether messages with no header are allowed.
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public Hl7StoreParserConfigArgs()
         {
         }
+        public static new Hl7StoreParserConfigArgs Empty => new Hl7StoreParserConfigArgs();
     }
 }

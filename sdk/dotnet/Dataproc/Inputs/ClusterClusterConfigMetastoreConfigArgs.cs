@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigMetastoreConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigMetastoreConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of an existing Dataproc Metastore service.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigMetastoreConfigArgs()
         {
         }
+        public static new ClusterClusterConfigMetastoreConfigArgs Empty => new ClusterClusterConfigMetastoreConfigArgs();
     }
 }

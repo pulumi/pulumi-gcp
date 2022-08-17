@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember")]
-    public partial class MetastoreFederationIamMember : Pulumi.CustomResource
+    public partial class MetastoreFederationIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.MetastoreFederationIamMemberCondition?> Condition { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class MetastoreFederationIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.MetastoreFederationIamMemberConditionArgs>? Condition { get; set; }
@@ -154,9 +154,10 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationIamMemberArgs()
         {
         }
+        public static new MetastoreFederationIamMemberArgs Empty => new MetastoreFederationIamMemberArgs();
     }
 
-    public sealed class MetastoreFederationIamMemberState : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.MetastoreFederationIamMemberConditionGetArgs>? Condition { get; set; }
@@ -198,5 +199,6 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationIamMemberState()
         {
         }
+        public static new MetastoreFederationIamMemberState Empty => new MetastoreFederationIamMemberState();
     }
 }

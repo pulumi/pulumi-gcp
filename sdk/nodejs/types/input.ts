@@ -1498,7 +1498,6 @@ export namespace accesscontextmanager {
          */
         enableRestriction?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace apigateway {
@@ -2438,7 +2437,6 @@ export namespace appengine {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace artifactregistry {
@@ -5673,6 +5671,13 @@ export namespace certificateauthority {
 export namespace certificatemanager {
     export interface CertificateManaged {
         /**
+         * -
+         * Detailed state of the latest authorization attempt for each domain
+         * specified for this Managed Certificate.
+         * Structure is documented below.
+         */
+        authorizationAttemptInfos?: pulumi.Input<pulumi.Input<inputs.certificatemanager.CertificateManagedAuthorizationAttemptInfo>[]>;
+        /**
          * Authorizations that will be used for performing domain authorization
          */
         dnsAuthorizations?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5683,9 +5688,55 @@ export namespace certificatemanager {
         domains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * -
-         * State of the managed certificate resource.
+         * Information about issues with provisioning this Managed Certificate.
+         * Structure is documented below.
+         */
+        provisioningIssues?: pulumi.Input<pulumi.Input<inputs.certificatemanager.CertificateManagedProvisioningIssue>[]>;
+        /**
+         * -
+         * State of the domain for managed certificate issuance.
          */
         state?: pulumi.Input<string>;
+    }
+
+    export interface CertificateManagedAuthorizationAttemptInfo {
+        /**
+         * -
+         * Human readable explanation for reaching the state. Provided to help
+         * address the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use `failureReason` field.
+         */
+        details?: pulumi.Input<string>;
+        /**
+         * -
+         * Domain name of the authorization attempt.
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * -
+         * Reason for failure of the authorization attempt for the domain.
+         */
+        failureReason?: pulumi.Input<string>;
+        /**
+         * -
+         * State of the domain for managed certificate issuance.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface CertificateManagedProvisioningIssue {
+        /**
+         * -
+         * Human readable explanation for reaching the state. Provided to help
+         * address the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use `failureReason` field.
+         */
+        details?: pulumi.Input<string>;
+        /**
+         * -
+         * Reason for provisioning failures.
+         */
+        reason?: pulumi.Input<string>;
     }
 
     export interface CertificateMapGclbTarget {
@@ -6745,6 +6796,11 @@ export namespace cloudfunctionsv2 {
 
     export interface FunctionEventTrigger {
         /**
+         * Criteria used to filter events.
+         * Structure is documented below.
+         */
+        eventFilters?: pulumi.Input<pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTriggerEventFilter>[]>;
+        /**
          * Required. The type of event to observe.
          */
         eventType?: pulumi.Input<string>;
@@ -6775,6 +6831,28 @@ export namespace cloudfunctionsv2 {
          * region. If not provided, defaults to the same region as the function.
          */
         triggerRegion?: pulumi.Input<string>;
+    }
+
+    export interface FunctionEventTriggerEventFilter {
+        /**
+         * 'Required. The name of a CloudEvents attribute.
+         * Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
+         * Do not filter for the 'type' attribute here, as this is already achieved by the resource's `eventType` attribute.
+         */
+        attribute: pulumi.Input<string>;
+        /**
+         * Optional. The operator used for matching the events with the value of
+         * the filter. If not specified, only events that have an exact key-value
+         * pair specified in the filter are matched.
+         * The only allowed value is `match-path-pattern`.
+         * [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Required. The value for the attribute.
+         * If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface FunctionIamBindingCondition {
@@ -16788,7 +16866,7 @@ export namespace container {
          */
         instanceType?: pulumi.Input<string>;
         /**
-         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -17294,7 +17372,9 @@ export namespace container {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Mode of operation for Binary Authorization policy evaluation.
+         * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+         * deprecated `enableBinaryAuthorization` parameter being set to `true`.
          */
         evaluationMode?: pulumi.Input<string>;
     }
@@ -17327,6 +17407,10 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+         */
+        bootDiskKmsKey?: pulumi.Input<string>;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -17461,7 +17545,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17545,9 +17629,16 @@ export namespace container {
         displayName?: pulumi.Input<string>;
     }
 
+    export interface ClusterMeshCertificates {
+        /**
+         * Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
+         */
+        enableCertificates: pulumi.Input<boolean>;
+    }
+
     export interface ClusterMonitoringConfig {
         /**
-         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -18445,7 +18536,6 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
-
 }
 
 export namespace containeranalysis {
@@ -19864,10 +19954,105 @@ export namespace dataloss {
          */
         pattern: pulumi.Input<string>;
     }
-
 }
 
 export namespace dataplex {
+    export interface AssetDiscoverySpec {
+        /**
+         * Optional. Configuration for CSV data.
+         */
+        csvOptions?: pulumi.Input<inputs.dataplex.AssetDiscoverySpecCsvOptions>;
+        /**
+         * Required. Whether discovery is enabled.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        excludePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        includePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Configuration for Json data.
+         */
+        jsonOptions?: pulumi.Input<inputs.dataplex.AssetDiscoverySpecJsonOptions>;
+        /**
+         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         */
+        schedule?: pulumi.Input<string>;
+    }
+
+    export interface AssetDiscoverySpecCsvOptions {
+        /**
+         * Optional. The delimiter being used to separate values. This defaults to ','.
+         */
+        delimiter?: pulumi.Input<string>;
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: pulumi.Input<boolean>;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+         */
+        headerRows?: pulumi.Input<number>;
+    }
+
+    export interface AssetDiscoverySpecJsonOptions {
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: pulumi.Input<boolean>;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+    }
+
+    export interface AssetDiscoveryStatus {
+        lastRunDuration?: pulumi.Input<string>;
+        lastRunTime?: pulumi.Input<string>;
+        message?: pulumi.Input<string>;
+        state?: pulumi.Input<string>;
+        stats?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetDiscoveryStatusStat>[]>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface AssetDiscoveryStatusStat {
+        dataItems?: pulumi.Input<number>;
+        dataSize?: pulumi.Input<number>;
+        filesets?: pulumi.Input<number>;
+        tables?: pulumi.Input<number>;
+    }
+
+    export interface AssetResourceSpec {
+        /**
+         * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AssetResourceStatus {
+        message?: pulumi.Input<string>;
+        state?: pulumi.Input<string>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface AssetSecurityStatus {
+        message?: pulumi.Input<string>;
+        state?: pulumi.Input<string>;
+        updateTime?: pulumi.Input<string>;
+    }
+
     export interface LakeAssetStatus {
         activeAssets?: pulumi.Input<number>;
         securityPolicyApplyingAssets?: pulumi.Input<number>;
@@ -19886,6 +20071,76 @@ export namespace dataplex {
         message?: pulumi.Input<string>;
         state?: pulumi.Input<string>;
         updateTime?: pulumi.Input<string>;
+    }
+
+    export interface ZoneAssetStatus {
+        activeAssets?: pulumi.Input<number>;
+        securityPolicyApplyingAssets?: pulumi.Input<number>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface ZoneDiscoverySpec {
+        /**
+         * Optional. Configuration for CSV data.
+         */
+        csvOptions?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpecCsvOptions>;
+        /**
+         * Required. Whether discovery is enabled.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        excludePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        includePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Configuration for Json data.
+         */
+        jsonOptions?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpecJsonOptions>;
+        /**
+         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         */
+        schedule?: pulumi.Input<string>;
+    }
+
+    export interface ZoneDiscoverySpecCsvOptions {
+        /**
+         * Optional. The delimiter being used to separate values. This defaults to ','.
+         */
+        delimiter?: pulumi.Input<string>;
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: pulumi.Input<boolean>;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+         */
+        headerRows?: pulumi.Input<number>;
+    }
+
+    export interface ZoneDiscoverySpecJsonOptions {
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: pulumi.Input<boolean>;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+    }
+
+    export interface ZoneResourceSpec {
+        /**
+         * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+         */
+        locationType: pulumi.Input<string>;
     }
 }
 
@@ -22544,7 +22799,6 @@ export namespace diagflow {
          */
         parentFollowupIntentName?: pulumi.Input<string>;
     }
-
 }
 
 export namespace dns {
@@ -23419,7 +23673,13 @@ export namespace gkehub {
          * Logs all denies and dry run failures.
          */
         logDeniesEnabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+         */
         monitoring?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementPolicyControllerMonitoring>;
+        /**
+         * Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+         */
         mutationEnabled?: pulumi.Input<boolean>;
         /**
          * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
@@ -23479,6 +23739,18 @@ export namespace gkehub {
 
     export interface MembershipEndpointGkeCluster {
         resourceLink: pulumi.Input<string>;
+    }
+
+    export interface MembershipIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface MembershipIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -25940,7 +26212,6 @@ export namespace monitoring {
          */
         port: pulumi.Input<number>;
     }
-
 }
 
 export namespace networkconnectivity {
@@ -26607,7 +26878,6 @@ export namespace networkservices {
          */
         stripQuery?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace notebooks {
@@ -26789,6 +27059,11 @@ export namespace notebooks {
          */
         installGpuDriver?: pulumi.Input<boolean>;
         /**
+         * Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         */
+        kernels?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeSoftwareConfigKernel>[]>;
+        /**
          * Cron expression in UTC timezone for schedule instance auto upgrade.
          * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
          */
@@ -26799,6 +27074,28 @@ export namespace notebooks {
          * Cloud Storage path (gs://path-to-file/file-name).
          */
         postStartupScript?: pulumi.Input<string>;
+        /**
+         * Behavior for the post startup script.
+         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         */
+        postStartupScriptBehavior?: pulumi.Input<string>;
+        /**
+         * -
+         * Bool indicating whether an newer image is available in an image family.
+         */
+        upgradeable?: pulumi.Input<boolean>;
+    }
+
+    export interface RuntimeSoftwareConfigKernel {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: pulumi.Input<string>;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: pulumi.Input<string>;
     }
 
     export interface RuntimeVirtualMachine {
@@ -27115,7 +27412,6 @@ export namespace notebooks {
          */
         enableVtpm?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace organizations {
@@ -27164,17 +27460,6 @@ export namespace organizations {
         service: pulumi.Input<string>;
     }
 
-    export interface GetIAMPolicyAuditConfigAuditLogConfigArgs {
-        /**
-         * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-         */
-        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-         */
-        logType: pulumi.Input<string>;
-    }
-
     export interface GetIAMPolicyAuditConfigAuditLogConfig {
         /**
          * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
@@ -27186,28 +27471,15 @@ export namespace organizations {
         logType: string;
     }
 
-    export interface GetIAMPolicyBindingArgs {
+    export interface GetIAMPolicyAuditConfigAuditLogConfigArgs {
         /**
-         * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+         * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
          */
-        condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
+        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-         * Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
          */
-        members: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The role/permission that will be granted to the members.
-         * See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
-         * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-         */
-        role: pulumi.Input<string>;
+        logType: pulumi.Input<string>;
     }
 
     export interface GetIAMPolicyBinding {
@@ -27232,6 +27504,30 @@ export namespace organizations {
          * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
          */
         role: string;
+    }
+
+    export interface GetIAMPolicyBindingArgs {
+        /**
+         * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+         */
+        condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
+        /**
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         */
+        members: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The role/permission that will be granted to the members.
+         * See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
+         * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         */
+        role: pulumi.Input<string>;
     }
 
     export interface GetIAMPolicyBindingCondition {
@@ -29425,6 +29721,27 @@ export namespace pubsub {
         period?: pulumi.Input<string>;
     }
 
+    export interface SubscriptionBigqueryConfig {
+        /**
+         * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+         * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+         */
+        dropUnknownFields?: pulumi.Input<boolean>;
+        /**
+         * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+         */
+        table: pulumi.Input<string>;
+        /**
+         * When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+         */
+        useTopicSchema?: pulumi.Input<boolean>;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+         * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata?: pulumi.Input<boolean>;
+    }
+
     export interface SubscriptionDeadLetterPolicy {
         /**
          * The name of the topic to which dead letter messages should be published.
@@ -29581,6 +29898,7 @@ export namespace pubsub {
          */
         schema: pulumi.Input<string>;
     }
+
 }
 
 export namespace recaptcha {
@@ -30143,9 +30461,12 @@ export namespace sql {
         collation?: pulumi.Input<string>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
-         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
          */
         diskAutoresize?: pulumi.Input<boolean>;
+        /**
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
         diskAutoresizeLimit?: pulumi.Input<number>;
         /**
          * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
@@ -30458,9 +30779,17 @@ export namespace storage {
          */
         daysSinceNoncurrentTime?: pulumi.Input<number>;
         /**
+         * One or more matching name prefixes to satisfy this condition.
+         */
+        matchesPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * One or more matching name suffixes to satisfy this condition.
+         */
+        matchesSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
          */
@@ -30775,6 +31104,7 @@ export namespace storage {
          */
         overwriteObjectsAlreadyExistingInSink?: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace tags {

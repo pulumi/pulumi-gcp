@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigGcfsConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigGcfsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigGcfsConfigArgs()
         {
         }
+        public static new ClusterNodeConfigGcfsConfigArgs Empty => new ClusterNodeConfigGcfsConfigArgs();
     }
 }

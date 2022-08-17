@@ -29,45 +29,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "static-site", &storage.BucketArgs{
-// 			Cors: storage.BucketCorArray{
-// 				&storage.BucketCorArgs{
-// 					MaxAgeSeconds: pulumi.Int(3600),
-// 					Methods: pulumi.StringArray{
-// 						pulumi.String("GET"),
-// 						pulumi.String("HEAD"),
-// 						pulumi.String("PUT"),
-// 						pulumi.String("POST"),
-// 						pulumi.String("DELETE"),
-// 					},
-// 					Origins: pulumi.StringArray{
-// 						pulumi.String("http://image-store.com"),
-// 					},
-// 					ResponseHeaders: pulumi.StringArray{
-// 						pulumi.String("*"),
-// 					},
-// 				},
-// 			},
-// 			ForceDestroy:             pulumi.Bool(true),
-// 			Location:                 pulumi.String("EU"),
-// 			UniformBucketLevelAccess: pulumi.Bool(true),
-// 			Website: &storage.BucketWebsiteArgs{
-// 				MainPageSuffix: pulumi.String("index.html"),
-// 				NotFoundPage:   pulumi.String("404.html"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "static-site", &storage.BucketArgs{
+//				Cors: storage.BucketCorArray{
+//					&storage.BucketCorArgs{
+//						MaxAgeSeconds: pulumi.Int(3600),
+//						Methods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("HEAD"),
+//							pulumi.String("PUT"),
+//							pulumi.String("POST"),
+//							pulumi.String("DELETE"),
+//						},
+//						Origins: pulumi.StringArray{
+//							pulumi.String("http://image-store.com"),
+//						},
+//						ResponseHeaders: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//					},
+//				},
+//				ForceDestroy:             pulumi.Bool(true),
+//				Location:                 pulumi.String("EU"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				Website: &storage.BucketWebsiteArgs{
+//					MainPageSuffix: pulumi.String("index.html"),
+//					NotFoundPage:   pulumi.String("404.html"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Life Cycle Settings For Storage Bucket Objects
 //
@@ -75,49 +78,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
-// 			ForceDestroy: pulumi.Bool(true),
-// 			LifecycleRules: storage.BucketLifecycleRuleArray{
-// 				&storage.BucketLifecycleRuleArgs{
-// 					Action: &storage.BucketLifecycleRuleActionArgs{
-// 						Type: pulumi.String("Delete"),
-// 					},
-// 					Condition: &storage.BucketLifecycleRuleConditionArgs{
-// 						Age: pulumi.Int(3),
-// 					},
-// 				},
-// 			},
-// 			Location: pulumi.String("US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+//				ForceDestroy: pulumi.Bool(true),
+//				LifecycleRules: storage.BucketLifecycleRuleArray{
+//					&storage.BucketLifecycleRuleArgs{
+//						Action: &storage.BucketLifecycleRuleActionArgs{
+//							Type: pulumi.String("Delete"),
+//						},
+//						Condition: &storage.BucketLifecycleRuleConditionArgs{
+//							Age: pulumi.Int(3),
+//						},
+//					},
+//				},
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Storage buckets can be imported using the `name` or
+// # Storage buckets can be imported using the `name` or
 //
 // `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
 //
 // ```sh
-//  $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+//
+//	$ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+//
+//	$ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+//
 // ```
 //
-//  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
+//	`false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
 type Bucket struct {
 	pulumi.CustomResourceState
 
@@ -394,7 +404,7 @@ func (i *Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 // BucketArrayInput is an input type that accepts BucketArray and BucketArrayOutput values.
 // You can construct a concrete instance of `BucketArrayInput` via:
 //
-//          BucketArray{ BucketArgs{...} }
+//	BucketArray{ BucketArgs{...} }
 type BucketArrayInput interface {
 	pulumi.Input
 
@@ -419,7 +429,7 @@ func (i BucketArray) ToBucketArrayOutputWithContext(ctx context.Context) BucketA
 // BucketMapInput is an input type that accepts BucketMap and BucketMapOutput values.
 // You can construct a concrete instance of `BucketMapInput` via:
 //
-//          BucketMap{ "key": BucketArgs{...} }
+//	BucketMap{ "key": BucketArgs{...} }
 type BucketMapInput interface {
 	pulumi.Input
 

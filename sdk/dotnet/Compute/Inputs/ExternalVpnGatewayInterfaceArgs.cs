@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ExternalVpnGatewayInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class ExternalVpnGatewayInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The numeric ID for this interface. Allowed values are based on the redundancy type
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ExternalVpnGatewayInterfaceArgs()
         {
         }
+        public static new ExternalVpnGatewayInterfaceArgs Empty => new ExternalVpnGatewayInterfaceArgs();
     }
 }

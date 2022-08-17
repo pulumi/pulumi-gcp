@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateNetworkPerformanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateNetworkPerformanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("totalEgressBandwidthTier", required: true)]
         public Input<string> TotalEgressBandwidthTier { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateNetworkPerformanceConfigGetArgs()
         {
         }
+        public static new InstanceFromTemplateNetworkPerformanceConfigGetArgs Empty => new InstanceFromTemplateNetworkPerformanceConfigGetArgs();
     }
 }

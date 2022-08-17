@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex.Inputs
 {
 
-    public sealed class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs()
         {
         }
+        public static new AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs Empty => new AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs();
     }
 }

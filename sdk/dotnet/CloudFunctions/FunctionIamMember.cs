@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.CloudFunctions
     /// ## google\_cloudfunctions\_function\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.CloudFunctions.FunctionIamPolicy("policy", new Gcp.CloudFunctions.FunctionIamPolicyArgs
-    ///         {
-    ///             Project = google_cloudfunctions_function.Function.Project,
-    ///             Region = google_cloudfunctions_function.Function.Region,
-    ///             CloudFunction = google_cloudfunctions_function.Function.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.CloudFunctions.FunctionIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_cloudfunctions_function.Function.Project,
+    ///         Region = google_cloudfunctions_function.Function.Region,
+    ///         CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_cloudfunctions\_function\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.CloudFunctions.FunctionIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.CloudFunctions.FunctionIamBinding("binding", new Gcp.CloudFunctions.FunctionIamBindingArgs
+    ///         Project = google_cloudfunctions_function.Function.Project,
+    ///         Region = google_cloudfunctions_function.Function.Region,
+    ///         CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_cloudfunctions_function.Function.Project,
-    ///             Region = google_cloudfunctions_function.Function.Region,
-    ///             CloudFunction = google_cloudfunctions_function.Function.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_cloudfunctions\_function\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.CloudFunctions.FunctionIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.CloudFunctions.FunctionIamMember("member", new Gcp.CloudFunctions.FunctionIamMemberArgs
-    ///         {
-    ///             Project = google_cloudfunctions_function.Function.Project,
-    ///             Region = google_cloudfunctions_function.Function.Region,
-    ///             CloudFunction = google_cloudfunctions_function.Function.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_cloudfunctions_function.Function.Project,
+    ///         Region = google_cloudfunctions_function.Function.Region,
+    ///         CloudFunction = google_cloudfunctions_function.Function.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:cloudfunctions/functionIamMember:FunctionIamMember")]
-    public partial class FunctionIamMember : Pulumi.CustomResource
+    public partial class FunctionIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -217,7 +212,7 @@ namespace Pulumi.Gcp.CloudFunctions
         }
     }
 
-    public sealed class FunctionIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class FunctionIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -257,9 +252,10 @@ namespace Pulumi.Gcp.CloudFunctions
         public FunctionIamMemberArgs()
         {
         }
+        public static new FunctionIamMemberArgs Empty => new FunctionIamMemberArgs();
     }
 
-    public sealed class FunctionIamMemberState : Pulumi.ResourceArgs
+    public sealed class FunctionIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -305,5 +301,6 @@ namespace Pulumi.Gcp.CloudFunctions
         public FunctionIamMemberState()
         {
         }
+        public static new FunctionIamMemberState Empty => new FunctionIamMemberState();
     }
 }

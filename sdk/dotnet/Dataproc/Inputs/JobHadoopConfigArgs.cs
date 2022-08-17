@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class JobHadoopConfigArgs : Pulumi.ResourceArgs
+    public sealed class JobHadoopConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -90,5 +90,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public JobHadoopConfigArgs()
         {
         }
+        public static new JobHadoopConfigArgs Empty => new JobHadoopConfigArgs();
     }
 }

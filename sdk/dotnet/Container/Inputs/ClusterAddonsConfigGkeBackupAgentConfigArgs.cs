@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAddonsConfigGkeBackupAgentConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAddonsConfigGkeBackupAgentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAddonsConfigGkeBackupAgentConfigArgs()
         {
         }
+        public static new ClusterAddonsConfigGkeBackupAgentConfigArgs Empty => new ClusterAddonsConfigGkeBackupAgentConfigArgs();
     }
 }

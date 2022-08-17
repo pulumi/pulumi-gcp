@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildOptionsVolumeArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildOptionsVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the volume to mount.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildOptionsVolumeArgs()
         {
         }
+        public static new TriggerBuildOptionsVolumeArgs Empty => new TriggerBuildOptionsVolumeArgs();
     }
 }

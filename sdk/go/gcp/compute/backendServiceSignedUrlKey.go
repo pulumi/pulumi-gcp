@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
 // * How-to Guides
-//     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+//   - [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 //
 // > **Warning:** All arguments including `keyValue` will be stored in the raw
 // state as plain-text.
@@ -164,7 +164,7 @@ func (i *BackendServiceSignedUrlKey) ToBackendServiceSignedUrlKeyOutputWithConte
 // BackendServiceSignedUrlKeyArrayInput is an input type that accepts BackendServiceSignedUrlKeyArray and BackendServiceSignedUrlKeyArrayOutput values.
 // You can construct a concrete instance of `BackendServiceSignedUrlKeyArrayInput` via:
 //
-//          BackendServiceSignedUrlKeyArray{ BackendServiceSignedUrlKeyArgs{...} }
+//	BackendServiceSignedUrlKeyArray{ BackendServiceSignedUrlKeyArgs{...} }
 type BackendServiceSignedUrlKeyArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +189,7 @@ func (i BackendServiceSignedUrlKeyArray) ToBackendServiceSignedUrlKeyArrayOutput
 // BackendServiceSignedUrlKeyMapInput is an input type that accepts BackendServiceSignedUrlKeyMap and BackendServiceSignedUrlKeyMapOutput values.
 // You can construct a concrete instance of `BackendServiceSignedUrlKeyMapInput` via:
 //
-//          BackendServiceSignedUrlKeyMap{ "key": BackendServiceSignedUrlKeyArgs{...} }
+//	BackendServiceSignedUrlKeyMap{ "key": BackendServiceSignedUrlKeyArgs{...} }
 type BackendServiceSignedUrlKeyMapInput interface {
 	pulumi.Input
 

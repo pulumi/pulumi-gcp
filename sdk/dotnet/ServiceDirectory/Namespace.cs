@@ -23,29 +23,27 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ### Service Directory Namespace Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.ServiceDirectory.Namespace("example", new()
     ///     {
-    ///         var example = new Gcp.ServiceDirectory.Namespace("example", new Gcp.ServiceDirectory.NamespaceArgs
+    ///         NamespaceId = "example-namespace",
+    ///         Location = "us-central1",
+    ///         Labels = 
     ///         {
-    ///             NamespaceId = "example-namespace",
-    ///             Location = "us-central1",
-    ///             Labels = 
-    ///             {
-    ///                 { "key", "value" },
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             { "key", "value" },
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +63,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ```
     /// </summary>
     [GcpResourceType("gcp:servicedirectory/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource labels associated with this Namespace. No more than 64 user
@@ -147,7 +145,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -188,9 +186,10 @@ namespace Pulumi.Gcp.ServiceDirectory
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -237,5 +236,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

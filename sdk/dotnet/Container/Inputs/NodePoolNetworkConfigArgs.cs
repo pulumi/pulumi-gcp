@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("createPodRange")]
         public Input<bool>? CreatePodRange { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNetworkConfigArgs()
         {
         }
+        public static new NodePoolNetworkConfigArgs Empty => new NodePoolNetworkConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RouterNatSubnetworkArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatSubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Self-link of subnetwork to NAT
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RouterNatSubnetworkArgs()
         {
         }
+        public static new RouterNatSubnetworkArgs Empty => new RouterNatSubnetworkArgs();
     }
 }

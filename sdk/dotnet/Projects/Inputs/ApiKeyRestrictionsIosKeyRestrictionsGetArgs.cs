@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class ApiKeyRestrictionsIosKeyRestrictionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiKeyRestrictionsIosKeyRestrictionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedBundleIds", required: true)]
         private InputList<string>? _allowedBundleIds;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Projects.Inputs
         public ApiKeyRestrictionsIosKeyRestrictionsGetArgs()
         {
         }
+        public static new ApiKeyRestrictionsIosKeyRestrictionsGetArgs Empty => new ApiKeyRestrictionsIosKeyRestrictionsGetArgs();
     }
 }

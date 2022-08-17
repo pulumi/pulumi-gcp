@@ -18,20 +18,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := storage.GetTransferProjectServieAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("defaultAccount", _default.Email)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := storage.GetTransferProjectServieAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("defaultAccount", _default.Email)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProjectServieAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServieAccountResult, error) {
 	var rv GetTransferProjectServieAccountResult

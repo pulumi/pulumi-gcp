@@ -30,26 +30,25 @@ namespace Pulumi.Gcp.Storage
     /// ### Storage Hmac Key
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new service account
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
     ///     {
-    ///         // Create a new service account
-    ///         var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-svc-acc",
-    ///         });
-    ///         //Create the HMAC key for the associated service account
-    ///         var key = new Gcp.Storage.HmacKey("key", new Gcp.Storage.HmacKeyArgs
-    ///         {
-    ///             ServiceAccountEmail = serviceAccount.Email,
-    ///         });
-    ///     }
+    ///         AccountId = "my-svc-acc",
+    ///     });
     /// 
-    /// }
+    ///     //Create the HMAC key for the associated service account
+    ///     var key = new Gcp.Storage.HmacKey("key", new()
+    ///     {
+    ///         ServiceAccountEmail = serviceAccount.Email,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +68,7 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// </summary>
     [GcpResourceType("gcp:storage/hmacKey:HmacKey")]
-    public partial class HmacKey : Pulumi.CustomResource
+    public partial class HmacKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access ID of the HMAC Key.
@@ -160,7 +159,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class HmacKeyArgs : Pulumi.ResourceArgs
+    public sealed class HmacKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -186,9 +185,10 @@ namespace Pulumi.Gcp.Storage
         public HmacKeyArgs()
         {
         }
+        public static new HmacKeyArgs Empty => new HmacKeyArgs();
     }
 
-    public sealed class HmacKeyState : Pulumi.ResourceArgs
+    public sealed class HmacKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access ID of the HMAC Key.
@@ -238,5 +238,6 @@ namespace Pulumi.Gcp.Storage
         public HmacKeyState()
         {
         }
+        public static new HmacKeyState Empty => new HmacKeyState();
     }
 }

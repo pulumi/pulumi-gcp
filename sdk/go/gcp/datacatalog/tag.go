@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
 // ### Data Catalog Entry Tag Basic
@@ -28,88 +28,91 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
-// 			EntryGroupId: pulumi.String("my_entry_group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
-// 			EntryGroup:          entryGroup.ID(),
-// 			EntryId:             pulumi.String("my_entry"),
-// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
-// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
-// 			TagTemplateId: pulumi.String("my_template"),
-// 			Region:        pulumi.String("us-central1"),
-// 			DisplayName:   pulumi.String("Demo Tag Template"),
-// 			Fields: datacatalog.TagTemplateFieldArray{
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("source"),
-// 					DisplayName: pulumi.String("Source of data asset"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						PrimitiveType: pulumi.String("STRING"),
-// 					},
-// 					IsRequired: pulumi.Bool(true),
-// 				},
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("num_rows"),
-// 					DisplayName: pulumi.String("Number of rows in the data asset"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						PrimitiveType: pulumi.String("DOUBLE"),
-// 					},
-// 				},
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("pii_type"),
-// 					DisplayName: pulumi.String("PII type"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
-// 							AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("EMAIL"),
-// 								},
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
-// 								},
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("NONE"),
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			ForceDelete: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewTag(ctx, "basicTag", &datacatalog.TagArgs{
-// 			Parent:   entry.ID(),
-// 			Template: tagTemplate.ID(),
-// 			Fields: datacatalog.TagFieldArray{
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName:   pulumi.String("source"),
-// 					StringValue: pulumi.String("my-string"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//				EntryGroupId: pulumi.String("my_entry_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
+//				EntryGroup:          entryGroup.ID(),
+//				EntryId:             pulumi.String("my_entry"),
+//				UserSpecifiedType:   pulumi.String("my_custom_type"),
+//				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
+//				TagTemplateId: pulumi.String("my_template"),
+//				Region:        pulumi.String("us-central1"),
+//				DisplayName:   pulumi.String("Demo Tag Template"),
+//				Fields: datacatalog.TagTemplateFieldArray{
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("source"),
+//						DisplayName: pulumi.String("Source of data asset"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							PrimitiveType: pulumi.String("STRING"),
+//						},
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("num_rows"),
+//						DisplayName: pulumi.String("Number of rows in the data asset"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							PrimitiveType: pulumi.String("DOUBLE"),
+//						},
+//					},
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("pii_type"),
+//						DisplayName: pulumi.String("PII type"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
+//								AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("EMAIL"),
+//									},
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
+//									},
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("NONE"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ForceDelete: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewTag(ctx, "basicTag", &datacatalog.TagArgs{
+//				Parent:   entry.ID(),
+//				Template: tagTemplate.ID(),
+//				Fields: datacatalog.TagFieldArray{
+//					&datacatalog.TagFieldArgs{
+//						FieldName:   pulumi.String("source"),
+//						StringValue: pulumi.String("my-string"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Data Catalog Entry Group Tag
 //
@@ -117,97 +120,100 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
-// 			EntryGroupId: pulumi.String("my_entry_group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewEntry(ctx, "firstEntry", &datacatalog.EntryArgs{
-// 			EntryGroup:          entryGroup.ID(),
-// 			EntryId:             pulumi.String("first_entry"),
-// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
-// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewEntry(ctx, "secondEntry", &datacatalog.EntryArgs{
-// 			EntryGroup:          entryGroup.ID(),
-// 			EntryId:             pulumi.String("second_entry"),
-// 			UserSpecifiedType:   pulumi.String("another_custom_type"),
-// 			UserSpecifiedSystem: pulumi.String("SomethingElseExternal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
-// 			TagTemplateId: pulumi.String("my_template"),
-// 			Region:        pulumi.String("us-central1"),
-// 			DisplayName:   pulumi.String("Demo Tag Template"),
-// 			Fields: datacatalog.TagTemplateFieldArray{
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("source"),
-// 					DisplayName: pulumi.String("Source of data asset"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						PrimitiveType: pulumi.String("STRING"),
-// 					},
-// 					IsRequired: pulumi.Bool(true),
-// 				},
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("num_rows"),
-// 					DisplayName: pulumi.String("Number of rows in the data asset"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						PrimitiveType: pulumi.String("DOUBLE"),
-// 					},
-// 				},
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("pii_type"),
-// 					DisplayName: pulumi.String("PII type"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
-// 							AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("EMAIL"),
-// 								},
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
-// 								},
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("NONE"),
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			ForceDelete: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewTag(ctx, "entryGroupTag", &datacatalog.TagArgs{
-// 			Parent:   entryGroup.ID(),
-// 			Template: tagTemplate.ID(),
-// 			Fields: datacatalog.TagFieldArray{
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName:   pulumi.String("source"),
-// 					StringValue: pulumi.String("my-string"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//				EntryGroupId: pulumi.String("my_entry_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewEntry(ctx, "firstEntry", &datacatalog.EntryArgs{
+//				EntryGroup:          entryGroup.ID(),
+//				EntryId:             pulumi.String("first_entry"),
+//				UserSpecifiedType:   pulumi.String("my_custom_type"),
+//				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewEntry(ctx, "secondEntry", &datacatalog.EntryArgs{
+//				EntryGroup:          entryGroup.ID(),
+//				EntryId:             pulumi.String("second_entry"),
+//				UserSpecifiedType:   pulumi.String("another_custom_type"),
+//				UserSpecifiedSystem: pulumi.String("SomethingElseExternal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
+//				TagTemplateId: pulumi.String("my_template"),
+//				Region:        pulumi.String("us-central1"),
+//				DisplayName:   pulumi.String("Demo Tag Template"),
+//				Fields: datacatalog.TagTemplateFieldArray{
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("source"),
+//						DisplayName: pulumi.String("Source of data asset"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							PrimitiveType: pulumi.String("STRING"),
+//						},
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("num_rows"),
+//						DisplayName: pulumi.String("Number of rows in the data asset"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							PrimitiveType: pulumi.String("DOUBLE"),
+//						},
+//					},
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("pii_type"),
+//						DisplayName: pulumi.String("PII type"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
+//								AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("EMAIL"),
+//									},
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
+//									},
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("NONE"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ForceDelete: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewTag(ctx, "entryGroupTag", &datacatalog.TagArgs{
+//				Parent:   entryGroup.ID(),
+//				Template: tagTemplate.ID(),
+//				Fields: datacatalog.TagFieldArray{
+//					&datacatalog.TagFieldArgs{
+//						FieldName:   pulumi.String("source"),
+//						StringValue: pulumi.String("my-string"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Data Catalog Entry Tag Full
 //
@@ -215,162 +221,169 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
-// 			EntryGroupId: pulumi.String("my_entry_group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
-// 			EntryGroup:          entryGroup.ID(),
-// 			EntryId:             pulumi.String("my_entry"),
-// 			UserSpecifiedType:   pulumi.String("my_custom_type"),
-// 			UserSpecifiedSystem: pulumi.String("SomethingExternal"),
-// 			Schema: pulumi.String(fmt.Sprintf(`{
-//   "columns": [
-//     {
-//       "column": "first_name",
-//       "description": "First name",
-//       "mode": "REQUIRED",
-//       "type": "STRING"
-//     },
-//     {
-//       "column": "last_name",
-//       "description": "Last name",
-//       "mode": "REQUIRED",
-//       "type": "STRING"
-//     },
-//     {
-//       "column": "address",
-//       "description": "Address",
-//       "mode": "REPEATED",
-//       "subcolumns": [
-//         {
-//           "column": "city",
-//           "description": "City",
-//           "mode": "NULLABLE",
-//           "type": "STRING"
-//         },
-//         {
-//           "column": "state",
-//           "description": "State",
-//           "mode": "NULLABLE",
-//           "type": "STRING"
-//         }
-//       ],
-//       "type": "RECORD"
-//     }
-//   ]
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			entryGroup, err := datacatalog.NewEntryGroup(ctx, "entryGroup", &datacatalog.EntryGroupArgs{
+//				EntryGroupId: pulumi.String("my_entry_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
+//				EntryGroup:          entryGroup.ID(),
+//				EntryId:             pulumi.String("my_entry"),
+//				UserSpecifiedType:   pulumi.String("my_custom_type"),
+//				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
+//				Schema: pulumi.String(fmt.Sprintf(`{
+//	  "columns": [
+//	    {
+//	      "column": "first_name",
+//	      "description": "First name",
+//	      "mode": "REQUIRED",
+//	      "type": "STRING"
+//	    },
+//	    {
+//	      "column": "last_name",
+//	      "description": "Last name",
+//	      "mode": "REQUIRED",
+//	      "type": "STRING"
+//	    },
+//	    {
+//	      "column": "address",
+//	      "description": "Address",
+//	      "mode": "REPEATED",
+//	      "subcolumns": [
+//	        {
+//	          "column": "city",
+//	          "description": "City",
+//	          "mode": "NULLABLE",
+//	          "type": "STRING"
+//	        },
+//	        {
+//	          "column": "state",
+//	          "description": "State",
+//	          "mode": "NULLABLE",
+//	          "type": "STRING"
+//	        }
+//	      ],
+//	      "type": "RECORD"
+//	    }
+//	  ]
+//	}
+//
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
-// 			TagTemplateId: pulumi.String("my_template"),
-// 			Region:        pulumi.String("us-central1"),
-// 			DisplayName:   pulumi.String("Demo Tag Template"),
-// 			Fields: datacatalog.TagTemplateFieldArray{
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("source"),
-// 					DisplayName: pulumi.String("Source of data asset"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						PrimitiveType: pulumi.String("STRING"),
-// 					},
-// 					IsRequired: pulumi.Bool(true),
-// 				},
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("num_rows"),
-// 					DisplayName: pulumi.String("Number of rows in the data asset"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						PrimitiveType: pulumi.String("DOUBLE"),
-// 					},
-// 				},
-// 				&datacatalog.TagTemplateFieldArgs{
-// 					FieldId:     pulumi.String("pii_type"),
-// 					DisplayName: pulumi.String("PII type"),
-// 					Type: &datacatalog.TagTemplateFieldTypeArgs{
-// 						EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
-// 							AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("EMAIL"),
-// 								},
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
-// 								},
-// 								&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
-// 									DisplayName: pulumi.String("NONE"),
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			ForceDelete: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewTag(ctx, "basicTag", &datacatalog.TagArgs{
-// 			Parent:   entry.ID(),
-// 			Template: tagTemplate.ID(),
-// 			Fields: datacatalog.TagFieldArray{
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName:   pulumi.String("source"),
-// 					StringValue: pulumi.String("my-string"),
-// 				},
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName:   pulumi.String("num_rows"),
-// 					DoubleValue: pulumi.Float64(5),
-// 				},
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName: pulumi.String("pii_type"),
-// 					EnumValue: pulumi.String("EMAIL"),
-// 				},
-// 			},
-// 			Column: pulumi.String("address"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewTag(ctx, "second-tag", &datacatalog.TagArgs{
-// 			Parent:   entry.ID(),
-// 			Template: tagTemplate.ID(),
-// 			Fields: datacatalog.TagFieldArray{
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName:   pulumi.String("source"),
-// 					StringValue: pulumi.String("my-string"),
-// 				},
-// 				&datacatalog.TagFieldArgs{
-// 					FieldName: pulumi.String("pii_type"),
-// 					EnumValue: pulumi.String("NONE"),
-// 				},
-// 			},
-// 			Column: pulumi.String("first_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagTemplate, err := datacatalog.NewTagTemplate(ctx, "tagTemplate", &datacatalog.TagTemplateArgs{
+//				TagTemplateId: pulumi.String("my_template"),
+//				Region:        pulumi.String("us-central1"),
+//				DisplayName:   pulumi.String("Demo Tag Template"),
+//				Fields: datacatalog.TagTemplateFieldArray{
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("source"),
+//						DisplayName: pulumi.String("Source of data asset"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							PrimitiveType: pulumi.String("STRING"),
+//						},
+//						IsRequired: pulumi.Bool(true),
+//					},
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("num_rows"),
+//						DisplayName: pulumi.String("Number of rows in the data asset"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							PrimitiveType: pulumi.String("DOUBLE"),
+//						},
+//					},
+//					&datacatalog.TagTemplateFieldArgs{
+//						FieldId:     pulumi.String("pii_type"),
+//						DisplayName: pulumi.String("PII type"),
+//						Type: &datacatalog.TagTemplateFieldTypeArgs{
+//							EnumType: &datacatalog.TagTemplateFieldTypeEnumTypeArgs{
+//								AllowedValues: datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArray{
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("EMAIL"),
+//									},
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("SOCIAL SECURITY NUMBER"),
+//									},
+//									&datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs{
+//										DisplayName: pulumi.String("NONE"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ForceDelete: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewTag(ctx, "basicTag", &datacatalog.TagArgs{
+//				Parent:   entry.ID(),
+//				Template: tagTemplate.ID(),
+//				Fields: datacatalog.TagFieldArray{
+//					&datacatalog.TagFieldArgs{
+//						FieldName:   pulumi.String("source"),
+//						StringValue: pulumi.String("my-string"),
+//					},
+//					&datacatalog.TagFieldArgs{
+//						FieldName:   pulumi.String("num_rows"),
+//						DoubleValue: pulumi.Float64(5),
+//					},
+//					&datacatalog.TagFieldArgs{
+//						FieldName: pulumi.String("pii_type"),
+//						EnumValue: pulumi.String("EMAIL"),
+//					},
+//				},
+//				Column: pulumi.String("address"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewTag(ctx, "second-tag", &datacatalog.TagArgs{
+//				Parent:   entry.ID(),
+//				Template: tagTemplate.ID(),
+//				Fields: datacatalog.TagFieldArray{
+//					&datacatalog.TagFieldArgs{
+//						FieldName:   pulumi.String("source"),
+//						StringValue: pulumi.String("my-string"),
+//					},
+//					&datacatalog.TagFieldArgs{
+//						FieldName: pulumi.String("pii_type"),
+//						EnumValue: pulumi.String("NONE"),
+//					},
+//				},
+//				Column: pulumi.String("first_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Tag can be imported using any of these accepted formats
+// # Tag can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
+//
+//	$ pulumi import gcp:datacatalog/tag:Tag default {{name}}
+//
 // ```
 type Tag struct {
 	pulumi.CustomResourceState
@@ -555,7 +568,7 @@ func (i *Tag) ToTagOutputWithContext(ctx context.Context) TagOutput {
 // TagArrayInput is an input type that accepts TagArray and TagArrayOutput values.
 // You can construct a concrete instance of `TagArrayInput` via:
 //
-//          TagArray{ TagArgs{...} }
+//	TagArray{ TagArgs{...} }
 type TagArrayInput interface {
 	pulumi.Input
 
@@ -580,7 +593,7 @@ func (i TagArray) ToTagArrayOutputWithContext(ctx context.Context) TagArrayOutpu
 // TagMapInput is an input type that accepts TagMap and TagMapOutput values.
 // You can construct a concrete instance of `TagMapInput` via:
 //
-//          TagMap{ "key": TagArgs{...} }
+//	TagMap{ "key": TagArgs{...} }
 type TagMapInput interface {
 	pulumi.Input
 

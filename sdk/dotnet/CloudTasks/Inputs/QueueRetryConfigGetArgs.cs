@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudTasks.Inputs
 {
 
-    public sealed class QueueRetryConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class QueueRetryConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of attempts per task.
@@ -63,5 +63,6 @@ namespace Pulumi.Gcp.CloudTasks.Inputs
         public QueueRetryConfigGetArgs()
         {
         }
+        public static new QueueRetryConfigGetArgs Empty => new QueueRetryConfigGetArgs();
     }
 }

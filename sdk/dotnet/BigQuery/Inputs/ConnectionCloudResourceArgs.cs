@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class ConnectionCloudResourceArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionCloudResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public ConnectionCloudResourceArgs()
         {
         }
+        public static new ConnectionCloudResourceArgs Empty => new ConnectionCloudResourceArgs();
     }
 }

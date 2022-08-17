@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
@@ -241,5 +241,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigArgs()
         {
         }
+        public static new ClusterNodeConfigArgs Empty => new ClusterNodeConfigArgs();
     }
 }

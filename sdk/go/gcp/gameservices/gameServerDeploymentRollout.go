@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+//   - [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
 // ### Game Service Deployment Rollout Basic
@@ -27,94 +27,103 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultGameServerDeployment, err := gameservices.NewGameServerDeployment(ctx, "defaultGameServerDeployment", &gameservices.GameServerDeploymentArgs{
-// 			DeploymentId: pulumi.String("tf-test-deployment"),
-// 			Description:  pulumi.String("a deployment description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"replicas":   1,
-// 			"scheduling": "Packed",
-// 			"template": map[string]interface{}{
-// 				"metadata": map[string]interface{}{
-// 					"name": "tf-test-game-server-template",
-// 				},
-// 				"spec": map[string]interface{}{
-// 					"ports": []map[string]interface{}{
-// 						map[string]interface{}{
-// 							"name":          "default",
-// 							"portPolicy":    "Dynamic",
-// 							"containerPort": 7654,
-// 							"protocol":      "UDP",
-// 						},
-// 					},
-// 					"template": map[string]interface{}{
-// 						"spec": map[string]interface{}{
-// 							"containers": []map[string]interface{}{
-// 								map[string]interface{}{
-// 									"name":  "simple-udp-server",
-// 									"image": "gcr.io/agones-images/udp-server:0.14",
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		defaultGameServerConfig, err := gameservices.NewGameServerConfig(ctx, "defaultGameServerConfig", &gameservices.GameServerConfigArgs{
-// 			ConfigId:     pulumi.String("tf-test-config"),
-// 			DeploymentId: defaultGameServerDeployment.DeploymentId,
-// 			Description:  pulumi.String("a config description"),
-// 			FleetConfigs: gameservices.GameServerConfigFleetConfigArray{
-// 				&gameservices.GameServerConfigFleetConfigArgs{
-// 					Name:      pulumi.String("some-non-guid"),
-// 					FleetSpec: pulumi.String(json0),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = gameservices.NewGameServerDeploymentRollout(ctx, "defaultGameServerDeploymentRollout", &gameservices.GameServerDeploymentRolloutArgs{
-// 			DeploymentId:            defaultGameServerDeployment.DeploymentId,
-// 			DefaultGameServerConfig: defaultGameServerConfig.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultGameServerDeployment, err := gameservices.NewGameServerDeployment(ctx, "defaultGameServerDeployment", &gameservices.GameServerDeploymentArgs{
+//				DeploymentId: pulumi.String("tf-test-deployment"),
+//				Description:  pulumi.String("a deployment description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"replicas":   1,
+//				"scheduling": "Packed",
+//				"template": map[string]interface{}{
+//					"metadata": map[string]interface{}{
+//						"name": "tf-test-game-server-template",
+//					},
+//					"spec": map[string]interface{}{
+//						"ports": []map[string]interface{}{
+//							map[string]interface{}{
+//								"name":          "default",
+//								"portPolicy":    "Dynamic",
+//								"containerPort": 7654,
+//								"protocol":      "UDP",
+//							},
+//						},
+//						"template": map[string]interface{}{
+//							"spec": map[string]interface{}{
+//								"containers": []map[string]interface{}{
+//									map[string]interface{}{
+//										"name":  "simple-udp-server",
+//										"image": "gcr.io/agones-images/udp-server:0.14",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultGameServerConfig, err := gameservices.NewGameServerConfig(ctx, "defaultGameServerConfig", &gameservices.GameServerConfigArgs{
+//				ConfigId:     pulumi.String("tf-test-config"),
+//				DeploymentId: defaultGameServerDeployment.DeploymentId,
+//				Description:  pulumi.String("a config description"),
+//				FleetConfigs: gameservices.GameServerConfigFleetConfigArray{
+//					&gameservices.GameServerConfigFleetConfigArgs{
+//						Name:      pulumi.String("some-non-guid"),
+//						FleetSpec: pulumi.String(json0),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gameservices.NewGameServerDeploymentRollout(ctx, "defaultGameServerDeploymentRollout", &gameservices.GameServerDeploymentRolloutArgs{
+//				DeploymentId:            defaultGameServerDeployment.DeploymentId,
+//				DefaultGameServerConfig: defaultGameServerConfig.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// GameServerDeploymentRollout can be imported using any of these accepted formats
+// # GameServerDeploymentRollout can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default projects/{{project}}/locations/global/gameServerDeployments/{{deployment_id}}/rollout
+//
+//	$ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default projects/{{project}}/locations/global/gameServerDeployments/{{deployment_id}}/rollout
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default {{project}}/{{deployment_id}}
+//
+//	$ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default {{project}}/{{deployment_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default {{deployment_id}}
+//
+//	$ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default {{deployment_id}}
+//
 // ```
 type GameServerDeploymentRollout struct {
 	pulumi.CustomResourceState
@@ -282,7 +291,7 @@ func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutputWithCon
 // GameServerDeploymentRolloutArrayInput is an input type that accepts GameServerDeploymentRolloutArray and GameServerDeploymentRolloutArrayOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutArrayInput` via:
 //
-//          GameServerDeploymentRolloutArray{ GameServerDeploymentRolloutArgs{...} }
+//	GameServerDeploymentRolloutArray{ GameServerDeploymentRolloutArgs{...} }
 type GameServerDeploymentRolloutArrayInput interface {
 	pulumi.Input
 
@@ -307,7 +316,7 @@ func (i GameServerDeploymentRolloutArray) ToGameServerDeploymentRolloutArrayOutp
 // GameServerDeploymentRolloutMapInput is an input type that accepts GameServerDeploymentRolloutMap and GameServerDeploymentRolloutMapOutput values.
 // You can construct a concrete instance of `GameServerDeploymentRolloutMapInput` via:
 //
-//          GameServerDeploymentRolloutMap{ "key": GameServerDeploymentRolloutArgs{...} }
+//	GameServerDeploymentRolloutMap{ "key": GameServerDeploymentRolloutArgs{...} }
 type GameServerDeploymentRolloutMapInput interface {
 	pulumi.Input
 

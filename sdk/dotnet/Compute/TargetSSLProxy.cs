@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/targetSSLProxy:TargetSSLProxy")]
-    public partial class TargetSSLProxy : Pulumi.CustomResource
+    public partial class TargetSSLProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A reference to the BackendService resource.
@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class TargetSSLProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetSSLProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A reference to the BackendService resource.
@@ -226,9 +226,10 @@ namespace Pulumi.Gcp.Compute
         public TargetSSLProxyArgs()
         {
         }
+        public static new TargetSSLProxyArgs Empty => new TargetSSLProxyArgs();
     }
 
-    public sealed class TargetSSLProxyState : Pulumi.ResourceArgs
+    public sealed class TargetSSLProxyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A reference to the BackendService resource.
@@ -313,5 +314,6 @@ namespace Pulumi.Gcp.Compute
         public TargetSSLProxyState()
         {
         }
+        public static new TargetSSLProxyState Empty => new TargetSSLProxyState();
     }
 }

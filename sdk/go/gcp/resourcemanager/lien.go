@@ -20,45 +20,50 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/resourcemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("staging-project"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = resourcemanager.NewLien(ctx, "lien", &resourcemanager.LienArgs{
-// 			Origin: pulumi.String("machine-readable-explanation"),
-// 			Parent: project.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("projects/%v", number), nil
-// 			}).(pulumi.StringOutput),
-// 			Reason: pulumi.String("This project is an important environment"),
-// 			Restrictions: pulumi.StringArray{
-// 				pulumi.String("resourcemanager.projects.delete"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("staging-project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewLien(ctx, "lien", &resourcemanager.LienArgs{
+//				Origin: pulumi.String("machine-readable-explanation"),
+//				Parent: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("projects/%v", number), nil
+//				}).(pulumi.StringOutput),
+//				Reason: pulumi.String("This project is an important environment"),
+//				Restrictions: pulumi.StringArray{
+//					pulumi.String("resourcemanager.projects.delete"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Lien can be imported using any of these accepted formats
+// # Lien can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
+//
+//	$ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
+//
 // ```
 type Lien struct {
 	pulumi.CustomResourceState
@@ -250,7 +255,7 @@ func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 // LienArrayInput is an input type that accepts LienArray and LienArrayOutput values.
 // You can construct a concrete instance of `LienArrayInput` via:
 //
-//          LienArray{ LienArgs{...} }
+//	LienArray{ LienArgs{...} }
 type LienArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +280,7 @@ func (i LienArray) ToLienArrayOutputWithContext(ctx context.Context) LienArrayOu
 // LienMapInput is an input type that accepts LienMap and LienMapOutput values.
 // You can construct a concrete instance of `LienMapInput` via:
 //
-//          LienMap{ "key": LienArgs{...} }
+//	LienMap{ "key": LienArgs{...} }
 type LienMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Schema used for writing the findings for Inspect jobs. This field is only used for
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs Empty => new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs();
     }
 }

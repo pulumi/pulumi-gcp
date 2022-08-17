@@ -73,15 +73,15 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
      * Port number of network endpoint.
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
     /**
      * @return Port number of network endpoint.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     /**
@@ -222,7 +222,7 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -284,7 +284,6 @@ public final class NetworkEndpointArgs extends com.pulumi.resources.ResourceArgs
         public NetworkEndpointArgs build() {
             $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
             $.networkEndpointGroup = Objects.requireNonNull($.networkEndpointGroup, "expected parameter 'networkEndpointGroup' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
             return $;
         }
     }

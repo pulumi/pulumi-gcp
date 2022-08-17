@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobQueryDefaultDatasetGetArgs : Pulumi.ResourceArgs
+    public sealed class JobQueryDefaultDatasetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the dataset containing this model.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobQueryDefaultDatasetGetArgs()
         {
         }
+        public static new JobQueryDefaultDatasetGetArgs Empty => new JobQueryDefaultDatasetGetArgs();
     }
 }

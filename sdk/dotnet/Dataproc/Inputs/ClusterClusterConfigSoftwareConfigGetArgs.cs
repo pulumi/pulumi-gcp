@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigSoftwareConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigSoftwareConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud Dataproc image version to use
@@ -77,5 +77,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigSoftwareConfigGetArgs()
         {
         }
+        public static new ClusterClusterConfigSoftwareConfigGetArgs Empty => new ClusterClusterConfigSoftwareConfigGetArgs();
     }
 }

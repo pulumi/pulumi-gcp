@@ -23,43 +23,42 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflowcx Version Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
-    ///         var agent = new Gcp.Diagflow.CxAgent("agent", new Gcp.Diagflow.CxAgentArgs
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
     ///         {
-    ///             DisplayName = "dialogflowcx-agent",
-    ///             Location = "global",
-    ///             DefaultLanguageCode = "en",
-    ///             SupportedLanguageCodes = 
-    ///             {
-    ///                 "fr",
-    ///                 "de",
-    ///                 "es",
-    ///             },
-    ///             TimeZone = "America/New_York",
-    ///             Description = "Example description.",
-    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///             EnableStackdriverLogging = true,
-    ///             EnableSpellCorrection = true,
-    ///             SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///             {
-    ///                 EnableSpeechAdaptation = true,
-    ///             },
-    ///         });
-    ///         var version1 = new Gcp.Diagflow.CxVersion("version1", new Gcp.Diagflow.CxVersionArgs
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
     ///         {
-    ///             Parent = agent.StartFlow,
-    ///             DisplayName = "1.0.0",
-    ///             Description = "version 1.0.0",
-    ///         });
-    ///     }
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var version1 = new Gcp.Diagflow.CxVersion("version1", new()
+    ///     {
+    ///         Parent = agent.StartFlow,
+    ///         DisplayName = "1.0.0",
+    ///         Description = "version 1.0.0",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +74,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/cxVersion:CxVersion")]
-    public partial class CxVersion : Pulumi.CustomResource
+    public partial class CxVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples:
@@ -167,7 +166,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class CxVersionArgs : Pulumi.ResourceArgs
+    public sealed class CxVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -191,9 +190,10 @@ namespace Pulumi.Gcp.Diagflow
         public CxVersionArgs()
         {
         }
+        public static new CxVersionArgs Empty => new CxVersionArgs();
     }
 
-    public sealed class CxVersionState : Pulumi.ResourceArgs
+    public sealed class CxVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples:
@@ -250,5 +250,6 @@ namespace Pulumi.Gcp.Diagflow
         public CxVersionState()
         {
         }
+        public static new CxVersionState Empty => new CxVersionState();
     }
 }

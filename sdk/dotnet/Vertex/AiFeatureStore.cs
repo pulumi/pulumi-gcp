@@ -14,32 +14,30 @@ namespace Pulumi.Gcp.Vertex
     /// ### Vertex Ai Featurestore
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new Gcp.Vertex.AiFeatureStoreArgs
+    ///         Labels = 
     ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Region = "us-central1",
-    ///             OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
-    ///             {
-    ///                 FixedNodeCount = 2,
-    ///             },
-    ///             ForceDestroy = true,
-    ///         }, new CustomResourceOptions
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
     ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             FixedNodeCount = 2,
+    ///         },
+    ///         ForceDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +61,7 @@ namespace Pulumi.Gcp.Vertex
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vertex/aiFeatureStore:AiFeatureStore")]
-    public partial class AiFeatureStore : Pulumi.CustomResource
+    public partial class AiFeatureStore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
@@ -167,7 +165,7 @@ namespace Pulumi.Gcp.Vertex
         }
     }
 
-    public sealed class AiFeatureStoreArgs : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -216,9 +214,10 @@ namespace Pulumi.Gcp.Vertex
         public AiFeatureStoreArgs()
         {
         }
+        public static new AiFeatureStoreArgs Empty => new AiFeatureStoreArgs();
     }
 
-    public sealed class AiFeatureStoreState : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
@@ -287,5 +286,6 @@ namespace Pulumi.Gcp.Vertex
         public AiFeatureStoreState()
         {
         }
+        public static new AiFeatureStoreState Empty => new AiFeatureStoreState();
     }
 }

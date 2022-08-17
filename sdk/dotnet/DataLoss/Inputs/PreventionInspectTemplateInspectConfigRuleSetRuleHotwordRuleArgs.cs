@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regular expression pattern defining what qualifies as a hotword.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs Empty => new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs();
     }
 }

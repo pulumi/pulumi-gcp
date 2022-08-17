@@ -15,29 +15,28 @@ namespace Pulumi.Gcp.BigQuery
     /// ## Example Usage
     /// ### Basic
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.BigQuery.Reservation("basic", new()
     ///     {
-    ///         var basic = new Gcp.BigQuery.Reservation("basic", new Gcp.BigQuery.ReservationArgs
-    ///         {
-    ///             Project = "my-project-name",
-    ///             Location = "us-central1",
-    ///             SlotCapacity = 0,
-    ///             IgnoreIdleSlots = false,
-    ///         });
-    ///         var primary = new Gcp.BigQuery.ReservationAssignment("primary", new Gcp.BigQuery.ReservationAssignmentArgs
-    ///         {
-    ///             Assignee = "projects/my-project-name",
-    ///             JobType = "PIPELINE",
-    ///             Reservation = basic.Id,
-    ///         });
-    ///     }
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         SlotCapacity = 0,
+    ///         IgnoreIdleSlots = false,
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.BigQuery.ReservationAssignment("primary", new()
+    ///     {
+    ///         Assignee = "projects/my-project-name",
+    ///         JobType = "PIPELINE",
+    ///         Reservation = basic.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +56,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/reservationAssignment:ReservationAssignment")]
-    public partial class ReservationAssignment : Pulumi.CustomResource
+    public partial class ReservationAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
@@ -146,7 +145,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class ReservationAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class ReservationAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
@@ -181,9 +180,10 @@ namespace Pulumi.Gcp.BigQuery
         public ReservationAssignmentArgs()
         {
         }
+        public static new ReservationAssignmentArgs Empty => new ReservationAssignmentArgs();
     }
 
-    public sealed class ReservationAssignmentState : Pulumi.ResourceArgs
+    public sealed class ReservationAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
@@ -231,5 +231,6 @@ namespace Pulumi.Gcp.BigQuery
         public ReservationAssignmentState()
         {
         }
+        public static new ReservationAssignmentState Empty => new ReservationAssignmentState();
     }
 }

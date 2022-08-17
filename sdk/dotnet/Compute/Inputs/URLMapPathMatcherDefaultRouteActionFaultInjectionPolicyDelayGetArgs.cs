@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the value of the fixed delay interval.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayGetArgs()
         {
         }
+        public static new URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayGetArgs Empty => new URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayGetArgs();
     }
 }

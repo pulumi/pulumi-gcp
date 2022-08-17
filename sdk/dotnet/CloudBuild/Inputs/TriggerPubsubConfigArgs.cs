@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerPubsubConfigArgs : Pulumi.ResourceArgs
+    public sealed class TriggerPubsubConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Service account that will make the push request.
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerPubsubConfigArgs()
         {
         }
+        public static new TriggerPubsubConfigArgs Empty => new TriggerPubsubConfigArgs();
     }
 }

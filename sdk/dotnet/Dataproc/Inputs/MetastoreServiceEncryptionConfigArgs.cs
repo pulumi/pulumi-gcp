@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreServiceEncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceEncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreServiceEncryptionConfigArgs()
         {
         }
+        public static new MetastoreServiceEncryptionConfigArgs Empty => new MetastoreServiceEncryptionConfigArgs();
     }
 }

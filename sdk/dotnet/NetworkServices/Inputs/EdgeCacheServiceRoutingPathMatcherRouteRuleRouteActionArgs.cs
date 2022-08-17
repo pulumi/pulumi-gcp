@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy to use for defining caching and signed request behaviour for requests that match this route.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs();
     }
 }

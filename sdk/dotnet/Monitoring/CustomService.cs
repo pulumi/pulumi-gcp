@@ -26,30 +26,28 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Monitoring Service Custom
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var custom = new Gcp.Monitoring.CustomService("custom", new()
     ///     {
-    ///         var custom = new Gcp.Monitoring.CustomService("custom", new Gcp.Monitoring.CustomServiceArgs
+    ///         DisplayName = "My Custom Service custom-srv",
+    ///         ServiceId = "custom-srv",
+    ///         Telemetry = new Gcp.Monitoring.Inputs.CustomServiceTelemetryArgs
     ///         {
-    ///             DisplayName = "My Custom Service custom-srv",
-    ///             ServiceId = "custom-srv",
-    ///             Telemetry = new Gcp.Monitoring.Inputs.CustomServiceTelemetryArgs
-    ///             {
-    ///                 ResourceName = "//product.googleapis.com/foo/foo/services/test",
-    ///             },
-    ///             UserLabels = 
-    ///             {
-    ///                 { "my_key", "my_value" },
-    ///                 { "my_other_key", "my_other_value" },
-    ///             },
-    ///         });
-    ///     }
+    ///             ResourceName = "//product.googleapis.com/foo/foo/services/test",
+    ///         },
+    ///         UserLabels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///             { "my_other_key", "my_other_value" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/customService:CustomService")]
-    public partial class CustomService : Pulumi.CustomResource
+    public partial class CustomService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name used for UI elements listing this Service.
@@ -151,7 +149,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class CustomServiceArgs : Pulumi.ResourceArgs
+    public sealed class CustomServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name used for UI elements listing this Service.
@@ -200,9 +198,10 @@ namespace Pulumi.Gcp.Monitoring
         public CustomServiceArgs()
         {
         }
+        public static new CustomServiceArgs Empty => new CustomServiceArgs();
     }
 
-    public sealed class CustomServiceState : Pulumi.ResourceArgs
+    public sealed class CustomServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name used for UI elements listing this Service.
@@ -257,5 +256,6 @@ namespace Pulumi.Gcp.Monitoring
         public CustomServiceState()
         {
         }
+        public static new CustomServiceState Empty => new CustomServiceState();
     }
 }

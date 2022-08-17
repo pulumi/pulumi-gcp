@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureSpecMulticlusteringressGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureSpecMulticlusteringressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureSpecMulticlusteringressGetArgs()
         {
         }
+        public static new FeatureSpecMulticlusteringressGetArgs Empty => new FeatureSpecMulticlusteringressGetArgs();
     }
 }

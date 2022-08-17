@@ -24,61 +24,70 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identityplatform.NewInboundSamlConfig(ctx, "samlConfig", &identityplatform.InboundSamlConfigArgs{
-// 			DisplayName: pulumi.String("Display Name"),
-// 			IdpConfig: &identityplatform.InboundSamlConfigIdpConfigArgs{
-// 				IdpEntityId: pulumi.String("tf-idp"),
-// 				SignRequest: pulumi.Bool(true),
-// 				SsoUrl:      pulumi.String("https://example.com"),
-// 				IdpCertificates: identityplatform.InboundSamlConfigIdpConfigIdpCertificateArray{
-// 					&identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs{
-// 						X509Certificate: readFileOrPanic("test-fixtures/rsa_cert.pem"),
-// 					},
-// 				},
-// 			},
-// 			SpConfig: &identityplatform.InboundSamlConfigSpConfigArgs{
-// 				SpEntityId:  pulumi.String("tf-sp"),
-// 				CallbackUri: pulumi.String("https://example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identityplatform.NewInboundSamlConfig(ctx, "samlConfig", &identityplatform.InboundSamlConfigArgs{
+//				DisplayName: pulumi.String("Display Name"),
+//				IdpConfig: &identityplatform.InboundSamlConfigIdpConfigArgs{
+//					IdpEntityId: pulumi.String("tf-idp"),
+//					SignRequest: pulumi.Bool(true),
+//					SsoUrl:      pulumi.String("https://example.com"),
+//					IdpCertificates: identityplatform.InboundSamlConfigIdpConfigIdpCertificateArray{
+//						&identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs{
+//							X509Certificate: readFileOrPanic("test-fixtures/rsa_cert.pem"),
+//						},
+//					},
+//				},
+//				SpConfig: &identityplatform.InboundSamlConfigSpConfigArgs{
+//					SpEntityId:  pulumi.String("tf-sp"),
+//					CallbackUri: pulumi.String("https://example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// InboundSamlConfig can be imported using any of these accepted formats
+// # InboundSamlConfig can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
+//
+//	$ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
+//
+//	$ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
+//
 // ```
 type InboundSamlConfig struct {
 	pulumi.CustomResourceState
@@ -255,7 +264,7 @@ func (i *InboundSamlConfig) ToInboundSamlConfigOutputWithContext(ctx context.Con
 // InboundSamlConfigArrayInput is an input type that accepts InboundSamlConfigArray and InboundSamlConfigArrayOutput values.
 // You can construct a concrete instance of `InboundSamlConfigArrayInput` via:
 //
-//          InboundSamlConfigArray{ InboundSamlConfigArgs{...} }
+//	InboundSamlConfigArray{ InboundSamlConfigArgs{...} }
 type InboundSamlConfigArrayInput interface {
 	pulumi.Input
 
@@ -280,7 +289,7 @@ func (i InboundSamlConfigArray) ToInboundSamlConfigArrayOutputWithContext(ctx co
 // InboundSamlConfigMapInput is an input type that accepts InboundSamlConfigMap and InboundSamlConfigMapOutput values.
 // You can construct a concrete instance of `InboundSamlConfigMapInput` via:
 //
-//          InboundSamlConfigMap{ "key": InboundSamlConfigArgs{...} }
+//	InboundSamlConfigMap{ "key": InboundSamlConfigArgs{...} }
 type InboundSamlConfigMapInput interface {
 	pulumi.Input
 

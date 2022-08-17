@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The OS short name
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs();
     }
 }

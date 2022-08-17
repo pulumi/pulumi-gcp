@@ -21,61 +21,57 @@ namespace Pulumi.Gcp.CloudTasks
     /// ### Queue Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.CloudTasks.Queue("default", new()
     ///     {
-    ///         var @default = new Gcp.CloudTasks.Queue("default", new Gcp.CloudTasks.QueueArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///     }
+    ///         Location = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Cloud Tasks Queue Advanced
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var advancedConfiguration = new Gcp.CloudTasks.Queue("advancedConfiguration", new()
     ///     {
-    ///         var advancedConfiguration = new Gcp.CloudTasks.Queue("advancedConfiguration", new Gcp.CloudTasks.QueueArgs
+    ///         AppEngineRoutingOverride = new Gcp.CloudTasks.Inputs.QueueAppEngineRoutingOverrideArgs
     ///         {
-    ///             AppEngineRoutingOverride = new Gcp.CloudTasks.Inputs.QueueAppEngineRoutingOverrideArgs
-    ///             {
-    ///                 Instance = "test",
-    ///                 Service = "worker",
-    ///                 Version = "1.0",
-    ///             },
-    ///             Location = "us-central1",
-    ///             RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
-    ///             {
-    ///                 MaxConcurrentDispatches = 3,
-    ///                 MaxDispatchesPerSecond = 2,
-    ///             },
-    ///             RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
-    ///             {
-    ///                 MaxAttempts = 5,
-    ///                 MaxBackoff = "3s",
-    ///                 MaxDoublings = 1,
-    ///                 MaxRetryDuration = "4s",
-    ///                 MinBackoff = "2s",
-    ///             },
-    ///             StackdriverLoggingConfig = new Gcp.CloudTasks.Inputs.QueueStackdriverLoggingConfigArgs
-    ///             {
-    ///                 SamplingRatio = 0.9,
-    ///             },
-    ///         });
-    ///     }
+    ///             Instance = "test",
+    ///             Service = "worker",
+    ///             Version = "1.0",
+    ///         },
+    ///         Location = "us-central1",
+    ///         RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
+    ///         {
+    ///             MaxConcurrentDispatches = 3,
+    ///             MaxDispatchesPerSecond = 2,
+    ///         },
+    ///         RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
+    ///         {
+    ///             MaxAttempts = 5,
+    ///             MaxBackoff = "3s",
+    ///             MaxDoublings = 1,
+    ///             MaxRetryDuration = "4s",
+    ///             MinBackoff = "2s",
+    ///         },
+    ///         StackdriverLoggingConfig = new Gcp.CloudTasks.Inputs.QueueStackdriverLoggingConfigArgs
+    ///         {
+    ///             SamplingRatio = 0.9,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +91,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudtasks/queue:Queue")]
-    public partial class Queue : Pulumi.CustomResource
+    public partial class Queue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Overrides for task-level appEngineRouting. These settings apply only
@@ -195,7 +191,7 @@ namespace Pulumi.Gcp.CloudTasks
         }
     }
 
-    public sealed class QueueArgs : Pulumi.ResourceArgs
+    public sealed class QueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Overrides for task-level appEngineRouting. These settings apply only
@@ -254,9 +250,10 @@ namespace Pulumi.Gcp.CloudTasks
         public QueueArgs()
         {
         }
+        public static new QueueArgs Empty => new QueueArgs();
     }
 
-    public sealed class QueueState : Pulumi.ResourceArgs
+    public sealed class QueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Overrides for task-level appEngineRouting. These settings apply only
@@ -315,5 +312,6 @@ namespace Pulumi.Gcp.CloudTasks
         public QueueState()
         {
         }
+        public static new QueueState Empty => new QueueState();
     }
 }

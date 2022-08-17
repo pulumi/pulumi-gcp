@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxIntentParameterArgs : Pulumi.ResourceArgs
+    public sealed class CxIntentParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity type of the parameter.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxIntentParameterArgs()
         {
         }
+        public static new CxIntentParameterArgs Empty => new CxIntentParameterArgs();
     }
 }

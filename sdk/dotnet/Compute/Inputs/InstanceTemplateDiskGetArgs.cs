@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not the disk should be auto-deleted.
@@ -126,5 +126,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateDiskGetArgs()
         {
         }
+        public static new InstanceTemplateDiskGetArgs Empty => new InstanceTemplateDiskGetArgs();
     }
 }

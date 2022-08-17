@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 {
 
-    public sealed class FunctionBuildConfigSourceRepoSourceArgs : Pulumi.ResourceArgs
+    public sealed class FunctionBuildConfigSourceRepoSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regex matching branches to build.
@@ -59,5 +59,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public FunctionBuildConfigSourceRepoSourceArgs()
         {
         }
+        public static new FunctionBuildConfigSourceRepoSourceArgs Empty => new FunctionBuildConfigSourceRepoSourceArgs();
     }
 }

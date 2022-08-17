@@ -20,39 +20,37 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Inbound Saml Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var samlConfig = new Gcp.IdentityPlatform.InboundSamlConfig("samlConfig", new()
     ///     {
-    ///         var samlConfig = new Gcp.IdentityPlatform.InboundSamlConfig("samlConfig", new Gcp.IdentityPlatform.InboundSamlConfigArgs
+    ///         DisplayName = "Display Name",
+    ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigArgs
     ///         {
-    ///             DisplayName = "Display Name",
-    ///             IdpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigArgs
+    ///             IdpEntityId = "tf-idp",
+    ///             SignRequest = true,
+    ///             SsoUrl = "https://example.com",
+    ///             IdpCertificates = new[]
     ///             {
-    ///                 IdpEntityId = "tf-idp",
-    ///                 SignRequest = true,
-    ///                 SsoUrl = "https://example.com",
-    ///                 IdpCertificates = 
+    ///                 new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
     ///                 {
-    ///                     new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
-    ///                     {
-    ///                         X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
-    ///                     },
+    ///                     X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
     ///                 },
     ///             },
-    ///             SpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigSpConfigArgs
-    ///             {
-    ///                 SpEntityId = "tf-sp",
-    ///                 CallbackUri = "https://example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         SpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigSpConfigArgs
+    ///         {
+    ///             SpEntityId = "tf-sp",
+    ///             CallbackUri = "https://example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +70,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/inboundSamlConfig:InboundSamlConfig")]
-    public partial class InboundSamlConfig : Pulumi.CustomResource
+    public partial class InboundSamlConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human friendly display name.
@@ -160,7 +158,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class InboundSamlConfigArgs : Pulumi.ResourceArgs
+    public sealed class InboundSamlConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human friendly display name.
@@ -207,9 +205,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public InboundSamlConfigArgs()
         {
         }
+        public static new InboundSamlConfigArgs Empty => new InboundSamlConfigArgs();
     }
 
-    public sealed class InboundSamlConfigState : Pulumi.ResourceArgs
+    public sealed class InboundSamlConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human friendly display name.
@@ -256,5 +255,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public InboundSamlConfigState()
         {
         }
+        public static new InboundSamlConfigState Empty => new InboundSamlConfigState();
     }
 }

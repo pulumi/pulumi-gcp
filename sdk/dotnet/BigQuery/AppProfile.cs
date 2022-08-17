@@ -20,144 +20,141 @@ namespace Pulumi.Gcp.BigQuery
     /// ### Bigtable App Profile Anycluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-1",
-    ///                     Zone = "us-central1-a",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-2",
-    ///                     Zone = "us-central1-b",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-3",
-    ///                     Zone = "us-central1-c",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
+    ///                 ClusterId = "cluster-1",
+    ///                 Zone = "us-central1-a",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
     ///             },
-    ///             DeletionProtection = true,
-    ///         });
-    ///         var ap = new Gcp.BigQuery.AppProfile("ap", new Gcp.BigQuery.AppProfileArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///             AppProfileId = "bt-profile",
-    ///             MultiClusterRoutingUseAny = true,
-    ///             IgnoreWarnings = true,
-    ///         });
-    ///     }
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "cluster-2",
+    ///                 Zone = "us-central1-b",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
+    ///             },
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "cluster-3",
+    ///                 Zone = "us-central1-c",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
     /// 
-    /// }
+    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         AppProfileId = "bt-profile",
+    ///         MultiClusterRoutingUseAny = true,
+    ///         IgnoreWarnings = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigtable App Profile Singlecluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
-    ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-1",
-    ///                     Zone = "us-central1-b",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
-    ///             },
-    ///             DeletionProtection = true,
-    ///         });
-    ///         var ap = new Gcp.BigQuery.AppProfile("ap", new Gcp.BigQuery.AppProfileArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///             AppProfileId = "bt-profile",
-    ///             SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
     ///                 ClusterId = "cluster-1",
-    ///                 AllowTransactionalWrites = true,
+    ///                 Zone = "us-central1-b",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
     ///             },
-    ///             IgnoreWarnings = true,
-    ///         });
-    ///     }
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
     /// 
-    /// }
+    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         AppProfileId = "bt-profile",
+    ///         SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
+    ///         {
+    ///             ClusterId = "cluster-1",
+    ///             AllowTransactionalWrites = true,
+    ///         },
+    ///         IgnoreWarnings = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigtable App Profile Multicluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-1",
-    ///                     Zone = "us-central1-a",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-2",
-    ///                     Zone = "us-central1-b",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cluster-3",
-    ///                     Zone = "us-central1-c",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
+    ///                 ClusterId = "cluster-1",
+    ///                 Zone = "us-central1-a",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
     ///             },
-    ///             DeletionProtection = true,
-    ///         });
-    ///         var ap = new Gcp.BigQuery.AppProfile("ap", new Gcp.BigQuery.AppProfileArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///             AppProfileId = "bt-profile",
-    ///             MultiClusterRoutingUseAny = true,
-    ///             MultiClusterRoutingClusterIds = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 "cluster-1",
-    ///                 "cluster-2",
+    ///                 ClusterId = "cluster-2",
+    ///                 Zone = "us-central1-b",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
     ///             },
-    ///             IgnoreWarnings = true,
-    ///         });
-    ///     }
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "cluster-3",
+    ///                 Zone = "us-central1-c",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
     /// 
-    /// }
+    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         AppProfileId = "bt-profile",
+    ///         MultiClusterRoutingUseAny = true,
+    ///         MultiClusterRoutingClusterIds = new[]
+    ///         {
+    ///             "cluster-1",
+    ///             "cluster-2",
+    ///         },
+    ///         IgnoreWarnings = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -177,7 +174,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/appProfile:AppProfile")]
-    public partial class AppProfile : Pulumi.CustomResource
+    public partial class AppProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -283,7 +280,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class AppProfileArgs : Pulumi.ResourceArgs
+    public sealed class AppProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -347,9 +344,10 @@ namespace Pulumi.Gcp.BigQuery
         public AppProfileArgs()
         {
         }
+        public static new AppProfileArgs Empty => new AppProfileArgs();
     }
 
-    public sealed class AppProfileState : Pulumi.ResourceArgs
+    public sealed class AppProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -420,5 +418,6 @@ namespace Pulumi.Gcp.BigQuery
         public AppProfileState()
         {
         }
+        public static new AppProfileState Empty => new AppProfileState();
     }
 }

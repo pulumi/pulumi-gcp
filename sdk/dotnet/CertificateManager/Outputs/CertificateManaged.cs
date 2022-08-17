@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class CertificateManaged
     {
         /// <summary>
+        /// -
+        /// Detailed state of the latest authorization attempt for each domain
+        /// specified for this Managed Certificate.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CertificateManagedAuthorizationAttemptInfo> AuthorizationAttemptInfos;
+        /// <summary>
         /// Authorizations that will be used for performing domain authorization
         /// </summary>
         public readonly ImmutableArray<string> DnsAuthorizations;
@@ -24,20 +31,32 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// -
-        /// State of the managed certificate resource.
+        /// Information about issues with provisioning this Managed Certificate.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CertificateManagedProvisioningIssue> ProvisioningIssues;
+        /// <summary>
+        /// -
+        /// State of the domain for managed certificate issuance.
         /// </summary>
         public readonly string? State;
 
         [OutputConstructor]
         private CertificateManaged(
+            ImmutableArray<Outputs.CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos,
+
             ImmutableArray<string> dnsAuthorizations,
 
             ImmutableArray<string> domains,
 
+            ImmutableArray<Outputs.CertificateManagedProvisioningIssue> provisioningIssues,
+
             string? state)
         {
+            AuthorizationAttemptInfos = authorizationAttemptInfos;
             DnsAuthorizations = dnsAuthorizations;
             Domains = domains;
+            ProvisioningIssues = provisioningIssues;
             State = state;
         }
     }

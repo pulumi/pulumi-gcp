@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketObjectCustomerEncryptionGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketObjectCustomerEncryptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Encryption algorithm. Default: AES256
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketObjectCustomerEncryptionGetArgs()
         {
         }
+        public static new BucketObjectCustomerEncryptionGetArgs Empty => new BucketObjectCustomerEncryptionGetArgs();
     }
 }

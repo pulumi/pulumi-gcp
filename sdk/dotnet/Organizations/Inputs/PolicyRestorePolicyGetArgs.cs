@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations.Inputs
 {
 
-    public sealed class PolicyRestorePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicyRestorePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// May only be set to true. If set, then the default Policy is restored.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Organizations.Inputs
         public PolicyRestorePolicyGetArgs()
         {
         }
+        public static new PolicyRestorePolicyGetArgs Empty => new PolicyRestorePolicyGetArgs();
     }
 }

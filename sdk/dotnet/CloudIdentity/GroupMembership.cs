@@ -28,103 +28,102 @@ namespace Pulumi.Gcp.CloudIdentity
     /// ### Cloud Identity Group Membership
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @group = new Gcp.CloudIdentity.Group("group", new()
     ///     {
-    ///         var @group = new Gcp.CloudIdentity.Group("group", new Gcp.CloudIdentity.GroupArgs
+    ///         DisplayName = "my-identity-group",
+    ///         Parent = "customers/A01b123xz",
+    ///         GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
     ///         {
-    ///             DisplayName = "my-identity-group",
-    ///             Parent = "customers/A01b123xz",
-    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
-    ///             {
-    ///                 Id = "my-identity-group@example.com",
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
-    ///             },
-    ///         });
-    ///         var child_group = new Gcp.CloudIdentity.Group("child-group", new Gcp.CloudIdentity.GroupArgs
+    ///             Id = "my-identity-group@example.com",
+    ///         },
+    ///         Labels = 
     ///         {
-    ///             DisplayName = "my-identity-group-child",
-    ///             Parent = "customers/A01b123xz",
-    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
-    ///             {
-    ///                 Id = "my-identity-group-child@example.com",
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
-    ///             },
-    ///         });
-    ///         var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new Gcp.CloudIdentity.GroupMembershipArgs
-    ///         {
-    ///             Group = @group.Id,
-    ///             PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
-    ///             {
-    ///                 Id = child_group.GroupKey.Apply(groupKey =&gt; groupKey.Id),
-    ///             },
-    ///             Roles = 
-    ///             {
-    ///                 new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
-    ///                 {
-    ///                     Name = "MEMBER",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var child_group = new Gcp.CloudIdentity.Group("child-group", new()
+    ///     {
+    ///         DisplayName = "my-identity-group-child",
+    ///         Parent = "customers/A01b123xz",
+    ///         GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
+    ///         {
+    ///             Id = "my-identity-group-child@example.com",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///         },
+    ///     });
+    /// 
+    ///     var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new()
+    ///     {
+    ///         Group = @group.Id,
+    ///         PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
+    ///         {
+    ///             Id = child_group.GroupKey.Apply(groupKey =&gt; groupKey.Id),
+    ///         },
+    ///         Roles = new[]
+    ///         {
+    ///             new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
+    ///             {
+    ///                 Name = "MEMBER",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Cloud Identity Group Membership User
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @group = new Gcp.CloudIdentity.Group("group", new()
     ///     {
-    ///         var @group = new Gcp.CloudIdentity.Group("group", new Gcp.CloudIdentity.GroupArgs
+    ///         DisplayName = "my-identity-group",
+    ///         Parent = "customers/A01b123xz",
+    ///         GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
     ///         {
-    ///             DisplayName = "my-identity-group",
-    ///             Parent = "customers/A01b123xz",
-    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
-    ///             {
-    ///                 Id = "my-identity-group@example.com",
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
-    ///             },
-    ///         });
-    ///         var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new Gcp.CloudIdentity.GroupMembershipArgs
+    ///             Id = "my-identity-group@example.com",
+    ///         },
+    ///         Labels = 
     ///         {
-    ///             Group = @group.Id,
-    ///             PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
-    ///             {
-    ///                 Id = "cloud_identity_user@example.com",
-    ///             },
-    ///             Roles = 
-    ///             {
-    ///                 new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
-    ///                 {
-    ///                     Name = "MEMBER",
-    ///                 },
-    ///                 new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
-    ///                 {
-    ///                     Name = "MANAGER",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new()
+    ///     {
+    ///         Group = @group.Id,
+    ///         PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
+    ///         {
+    ///             Id = "cloud_identity_user@example.com",
+    ///         },
+    ///         Roles = new[]
+    ///         {
+    ///             new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
+    ///             {
+    ///                 Name = "MEMBER",
+    ///             },
+    ///             new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
+    ///             {
+    ///                 Name = "MANAGER",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -136,7 +135,7 @@ namespace Pulumi.Gcp.CloudIdentity
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudidentity/groupMembership:GroupMembership")]
-    public partial class GroupMembership : Pulumi.CustomResource
+    public partial class GroupMembership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the Membership was created.
@@ -235,7 +234,7 @@ namespace Pulumi.Gcp.CloudIdentity
         }
     }
 
-    public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
+    public sealed class GroupMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Group to create this membership in.
@@ -274,9 +273,10 @@ namespace Pulumi.Gcp.CloudIdentity
         public GroupMembershipArgs()
         {
         }
+        public static new GroupMembershipArgs Empty => new GroupMembershipArgs();
     }
 
-    public sealed class GroupMembershipState : Pulumi.ResourceArgs
+    public sealed class GroupMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when the Membership was created.
@@ -340,5 +340,6 @@ namespace Pulumi.Gcp.CloudIdentity
         public GroupMembershipState()
         {
         }
+        public static new GroupMembershipState Empty => new GroupMembershipState();
     }
 }

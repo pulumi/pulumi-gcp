@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGuestAcceleratorGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGuestAcceleratorGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the guest accelerator cards exposed to this instance.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGuestAcceleratorGetArgs()
         {
         }
+        public static new InstanceGuestAcceleratorGetArgs Empty => new InstanceGuestAcceleratorGetArgs();
     }
 }

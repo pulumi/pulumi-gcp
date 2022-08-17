@@ -21,22 +21,20 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_exclusion = new Gcp.Logging.OrganizationExclusion("my-exclusion", new()
     ///     {
-    ///         var my_exclusion = new Gcp.Logging.OrganizationExclusion("my-exclusion", new Gcp.Logging.OrganizationExclusionArgs
-    ///         {
-    ///             Description = "Exclude GCE instance debug logs",
-    ///             Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
-    ///             OrgId = "123456789",
-    ///         });
-    ///     }
+    ///         Description = "Exclude GCE instance debug logs",
+    ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/organizationExclusion:OrganizationExclusion")]
-    public partial class OrganizationExclusion : Pulumi.CustomResource
+    public partial class OrganizationExclusion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description.
@@ -127,7 +125,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class OrganizationExclusionArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationExclusionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description.
@@ -165,9 +163,10 @@ namespace Pulumi.Gcp.Logging
         public OrganizationExclusionArgs()
         {
         }
+        public static new OrganizationExclusionArgs Empty => new OrganizationExclusionArgs();
     }
 
-    public sealed class OrganizationExclusionState : Pulumi.ResourceArgs
+    public sealed class OrganizationExclusionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description.
@@ -205,5 +204,6 @@ namespace Pulumi.Gcp.Logging
         public OrganizationExclusionState()
         {
         }
+        public static new OrganizationExclusionState Empty => new OrganizationExclusionState();
     }
 }

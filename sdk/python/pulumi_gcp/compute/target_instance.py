@@ -376,7 +376,7 @@ class TargetInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vmimage = gcp.compute.get_image(family="debian-9",
+        vmimage = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
             machine_type="e2-medium",
@@ -490,7 +490,7 @@ class TargetInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        vmimage = gcp.compute.get_image(family="debian-9",
+        vmimage = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
             machine_type="e2-medium",

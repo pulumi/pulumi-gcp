@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceIapArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceIapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth2 Client ID for IAP
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceIapArgs()
         {
         }
+        public static new RegionBackendServiceIapArgs Empty => new RegionBackendServiceIapArgs();
     }
 }

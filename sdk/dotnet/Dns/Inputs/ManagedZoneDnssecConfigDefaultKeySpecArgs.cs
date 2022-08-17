@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZoneDnssecConfigDefaultKeySpecArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneDnssecConfigDefaultKeySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String mnemonic specifying the DNSSEC algorithm of this key
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZoneDnssecConfigDefaultKeySpecArgs()
         {
         }
+        public static new ManagedZoneDnssecConfigDefaultKeySpecArgs Empty => new ManagedZoneDnssecConfigDefaultKeySpecArgs();
     }
 }

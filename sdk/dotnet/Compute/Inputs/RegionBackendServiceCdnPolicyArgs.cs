@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceCdnPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceCdnPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CacheKeyPolicy for this CdnPolicy.
@@ -89,5 +89,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceCdnPolicyArgs()
         {
         }
+        public static new RegionBackendServiceCdnPolicyArgs Empty => new RegionBackendServiceCdnPolicyArgs();
     }
 }

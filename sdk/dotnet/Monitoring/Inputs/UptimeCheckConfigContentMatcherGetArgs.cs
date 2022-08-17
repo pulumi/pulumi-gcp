@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class UptimeCheckConfigContentMatcherGetArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigContentMatcherGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String or regex content to match (max 1024 bytes)
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public UptimeCheckConfigContentMatcherGetArgs()
         {
         }
+        public static new UptimeCheckConfigContentMatcherGetArgs Empty => new UptimeCheckConfigContentMatcherGetArgs();
     }
 }

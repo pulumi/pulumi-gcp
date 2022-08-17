@@ -29,29 +29,27 @@ namespace Pulumi.Gcp.Compute
     /// ### Reservation Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var gceReservation = new Gcp.Compute.Reservation("gceReservation", new()
     ///     {
-    ///         var gceReservation = new Gcp.Compute.Reservation("gceReservation", new Gcp.Compute.ReservationArgs
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
-    ///             SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///             Count = 1,
+    ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
-    ///                 Count = 1,
-    ///                 InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
-    ///                 {
-    ///                     MachineType = "n2-standard-2",
-    ///                     MinCpuPlatform = "Intel Cascade Lake",
-    ///                 },
+    ///                 MachineType = "n2-standard-2",
+    ///                 MinCpuPlatform = "Intel Cascade Lake",
     ///             },
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///     }
+    ///         },
+    ///         Zone = "us-central1-a",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +73,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/reservation:Reservation")]
-    public partial class Reservation : Pulumi.CustomResource
+    public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
@@ -198,7 +196,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -256,9 +254,10 @@ namespace Pulumi.Gcp.Compute
         public ReservationArgs()
         {
         }
+        public static new ReservationArgs Empty => new ReservationArgs();
     }
 
-    public sealed class ReservationState : Pulumi.ResourceArgs
+    public sealed class ReservationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
@@ -340,5 +339,6 @@ namespace Pulumi.Gcp.Compute
         public ReservationState()
         {
         }
+        public static new ReservationState Empty => new ReservationState();
     }
 }

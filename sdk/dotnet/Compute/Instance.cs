@@ -18,69 +18,68 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new()
     ///     {
-    ///         var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "service_account_id",
-    ///             DisplayName = "Service Account",
-    ///         });
-    ///         var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             Zone = "us-central1-a",
-    ///             Tags = 
-    ///             {
-    ///                 "foo",
-    ///                 "bar",
-    ///             },
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = "debian-cloud/debian-9",
-    ///                 },
-    ///             },
-    ///             ScratchDisks = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceScratchDiskArgs
-    ///                 {
-    ///                     Interface = "SCSI",
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Metadata = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             MetadataStartupScript = "echo hi &gt; /test.txt",
-    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
-    ///             {
-    ///                 Email = defaultAccount.Email,
-    ///                 Scopes = 
-    ///                 {
-    ///                     "cloud-platform",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "service_account_id",
+    ///         DisplayName = "Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         ScratchDisks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceScratchDiskArgs
+    ///             {
+    ///                 Interface = "SCSI",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     ,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         MetadataStartupScript = "echo hi &gt; /test.txt",
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+    ///         {
+    ///             Email = defaultAccount.Email,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -102,7 +101,7 @@ namespace Pulumi.Gcp.Compute
     ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
     /// </summary>
     [GcpResourceType("gcp:compute/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
@@ -401,7 +400,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
@@ -659,9 +658,10 @@ namespace Pulumi.Gcp.Compute
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
@@ -961,5 +961,6 @@ namespace Pulumi.Gcp.Compute
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

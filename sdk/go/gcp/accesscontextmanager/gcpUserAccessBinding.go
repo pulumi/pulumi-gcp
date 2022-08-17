@@ -21,10 +21,12 @@ import (
 //
 // ## Import
 //
-// GcpUserAccessBinding can be imported using any of these accepted formats
+// # GcpUserAccessBinding can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}
+//
+//	$ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}
+//
 // ```
 type GcpUserAccessBinding struct {
 	pulumi.CustomResourceState
@@ -153,7 +155,7 @@ func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx conte
 // GcpUserAccessBindingArrayInput is an input type that accepts GcpUserAccessBindingArray and GcpUserAccessBindingArrayOutput values.
 // You can construct a concrete instance of `GcpUserAccessBindingArrayInput` via:
 //
-//          GcpUserAccessBindingArray{ GcpUserAccessBindingArgs{...} }
+//	GcpUserAccessBindingArray{ GcpUserAccessBindingArgs{...} }
 type GcpUserAccessBindingArrayInput interface {
 	pulumi.Input
 
@@ -178,7 +180,7 @@ func (i GcpUserAccessBindingArray) ToGcpUserAccessBindingArrayOutputWithContext(
 // GcpUserAccessBindingMapInput is an input type that accepts GcpUserAccessBindingMap and GcpUserAccessBindingMapOutput values.
 // You can construct a concrete instance of `GcpUserAccessBindingMapInput` via:
 //
-//          GcpUserAccessBindingMap{ "key": GcpUserAccessBindingArgs{...} }
+//	GcpUserAccessBindingMap{ "key": GcpUserAccessBindingArgs{...} }
 type GcpUserAccessBindingMapInput interface {
 	pulumi.Input
 

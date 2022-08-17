@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "gcp:activedirectory/domainTrust:DomainTrust":
 		r = &DomainTrust{}
+	case "gcp:activedirectory/peering:Peering":
+		r = &Peering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"activedirectory/domainTrust",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"activedirectory/peering",
 		&module{version},
 	)
 }

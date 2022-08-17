@@ -19,52 +19,53 @@ namespace Pulumi.Gcp.Compute
     /// ### Automatic Envoy Deployment
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
-    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
     ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var foobar = new Gcp.Compute.InstanceTemplate("foobar", new Gcp.Compute.InstanceTemplateArgs
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
     ///         {
-    ///             MachineType = "e2-medium",
-    ///             CanIpForward = false,
-    ///             Tags = 
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 "foo",
-    ///                 "bar",
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
     ///             },
-    ///             Disks = 
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-    ///                 {
-    ///                     SourceImage = myImage.Apply(myImage =&gt; myImage.SelfLink),
-    ///                     AutoDelete = true,
-    ///                     Boot = true,
-    ///                 },
+    ///                 Network = "default",
     ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                 },
-    ///             },
-    ///             Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
-    ///             {
-    ///                 Preemptible = false,
-    ///                 AutomaticRestart = true,
-    ///             },
-    ///             Metadata = 
-    ///             {
-    ///                 { "gce-software-declaration", @"{
+    ///         },
+    ///         Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///         {
+    ///             Preemptible = false,
+    ///             AutomaticRestart = true,
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "gce-software-declaration", @"{
     ///   ""softwareRecipes"": [{
     ///     ""name"": ""install-gce-service-proxy-agent"",
     ///     ""desired_state"": ""INSTALLED"",
@@ -76,7 +77,7 @@ namespace Pulumi.Gcp.Compute
     ///   }]
     /// }
     /// " },
-    ///                 { "gce-service-proxy", @"{
+    ///             { "gce-service-proxy", @"{
     ///   ""api-version"": ""0.2"",
     ///   ""proxy-spec"": {
     ///     ""proxy-port"": 15001,
@@ -93,25 +94,24 @@ namespace Pulumi.Gcp.Compute
     ///   }
     /// }
     /// " },
-    ///                 { "enable-guest-attributes", "true" },
-    ///                 { "enable-osconfig", "true" },
-    ///             },
-    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///             { "enable-guest-attributes", "true" },
+    ///             { "enable-osconfig", "true" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Email = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             Scopes = new[]
     ///             {
-    ///                 Email = @default.Apply(@default =&gt; @default.Email),
-    ///                 Scopes = 
-    ///                 {
-    ///                     "cloud-platform",
-    ///                 },
+    ///                 "cloud-platform",
     ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "gce-service-proxy", "on" },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "gce-service-proxy", "on" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Deploying the Latest Image
     /// 
@@ -131,34 +131,33 @@ namespace Pulumi.Gcp.Compute
     /// the template to use that specific image:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
-    ///         {
-    ///             NamePrefix = "instance-template-",
-    ///             MachineType = "e2-medium",
-    ///             Region = "us-central1",
-    ///             Disks = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-    ///                 {
-    ///                     SourceImage = google_compute_image.My_image.Self_link,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
     /// 
-    /// }
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new()
+    ///     {
+    ///         NamePrefix = "instance-template-",
+    ///         MachineType = "e2-medium",
+    ///         Region = "us-central1",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = google_compute_image.My_image.Self_link,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// To have instances update to the latest on every scaling event or instance re-creation,
@@ -166,29 +165,27 @@ namespace Pulumi.Gcp.Compute
     /// the image for the template to the family:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new()
     ///     {
-    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         Disks = new[]
     ///         {
-    ///             Disks = 
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-    ///                 {
-    ///                     SourceImage = "debian-cloud/debian-9",
-    ///                 },
+    ///                 SourceImage = "debian-cloud/debian-11",
     ///             },
-    ///             MachineType = "e2-medium",
-    ///             NamePrefix = "instance-template-",
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         },
+    ///         MachineType = "e2-medium",
+    ///         NamePrefix = "instance-template-",
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -210,7 +207,7 @@ namespace Pulumi.Gcp.Compute
     ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
     /// </summary>
     [GcpResourceType("gcp:compute/instanceTemplate:InstanceTemplate")]
-    public partial class InstanceTemplate : Pulumi.CustomResource
+    public partial class InstanceTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -447,7 +444,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InstanceTemplateArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -661,9 +658,10 @@ namespace Pulumi.Gcp.Compute
         public InstanceTemplateArgs()
         {
         }
+        public static new InstanceTemplateArgs Empty => new InstanceTemplateArgs();
     }
 
-    public sealed class InstanceTemplateState : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -895,5 +893,6 @@ namespace Pulumi.Gcp.Compute
         public InstanceTemplateState()
         {
         }
+        public static new InstanceTemplateState Empty => new InstanceTemplateState();
     }
 }

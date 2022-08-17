@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class ObjectAccessControlProjectTeamGetArgs : Pulumi.ResourceArgs
+    public sealed class ObjectAccessControlProjectTeamGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public ObjectAccessControlProjectTeamGetArgs()
         {
         }
+        public static new ObjectAccessControlProjectTeamGetArgs Empty => new ObjectAccessControlProjectTeamGetArgs();
     }
 }

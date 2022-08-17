@@ -15,84 +15,86 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// ## Example Usage
     /// ### Router_appliance
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/28",
-    ///             Region = "us-west1",
-    ///             Network = network.SelfLink,
-    ///         });
-    ///         var instance = new Gcp.Compute.Instance("instance", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             CanIpForward = true,
-    ///             Zone = "us-west1-a",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = "projects/debian-cloud/global/images/debian-10-buster-v20210817",
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Subnetwork = subnetwork.Name,
-    ///                     NetworkIp = "10.0.0.2",
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.InstanceNetworkInterfaceAccessConfigArgs
-    ///                         {
-    ///                             NetworkTier = "PREMIUM",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var basicHub = new Gcp.NetworkConnectivity.Hub("basicHub", new Gcp.NetworkConnectivity.HubArgs
-    ///         {
-    ///             Description = "A sample hub",
-    ///             Labels = 
-    ///             {
-    ///                 { "label-two", "value-one" },
-    ///             },
-    ///         });
-    ///         var primary = new Gcp.NetworkConnectivity.Spoke("primary", new Gcp.NetworkConnectivity.SpokeArgs
-    ///         {
-    ///             Location = "us-west1",
-    ///             Description = "A sample spoke with a linked routher appliance instance",
-    ///             Labels = 
-    ///             {
-    ///                 { "label-one", "value-one" },
-    ///             },
-    ///             Hub = basicHub.Id,
-    ///             LinkedRouterApplianceInstances = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesArgs
-    ///             {
-    ///                 Instances = 
-    ///                 {
-    ///                     new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs
-    ///                     {
-    ///                         VirtualMachine = instance.SelfLink,
-    ///                         IpAddress = "10.0.0.2",
-    ///                     },
-    ///                 },
-    ///                 SiteToSiteDataTransfer = true,
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/28",
+    ///         Region = "us-west1",
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Compute.Instance("instance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = true,
+    ///         Zone = "us-west1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "projects/debian-cloud/global/images/debian-10-buster-v20210817",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Subnetwork = subnetwork.Name,
+    ///                 NetworkIp = "10.0.0.2",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceAccessConfigArgs
+    ///                     {
+    ///                         NetworkTier = "PREMIUM",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basicHub", new()
+    ///     {
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Description = "A sample spoke with a linked routher appliance instance",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedRouterApplianceInstances = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesArgs
+    ///         {
+    ///             Instances = new[]
+    ///             {
+    ///                 new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs
+    ///                 {
+    ///                     VirtualMachine = instance.SelfLink,
+    ///                     IpAddress = "10.0.0.2",
+    ///                 },
+    ///             },
+    ///             SiteToSiteDataTransfer = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -112,7 +114,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkconnectivity/spoke:Spoke")]
-    public partial class Spoke : Pulumi.CustomResource
+    public partial class Spoke : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. The time the spoke was created.
@@ -237,7 +239,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
     }
 
-    public sealed class SpokeArgs : Pulumi.ResourceArgs
+    public sealed class SpokeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the spoke.
@@ -302,9 +304,10 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public SpokeArgs()
         {
         }
+        public static new SpokeArgs Empty => new SpokeArgs();
     }
 
-    public sealed class SpokeState : Pulumi.ResourceArgs
+    public sealed class SpokeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. The time the spoke was created.
@@ -394,5 +397,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public SpokeState()
         {
         }
+        public static new SpokeState Empty => new SpokeState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc.Inputs
 {
 
-    public sealed class TriggerTransportArgs : Pulumi.ResourceArgs
+    public sealed class TriggerTransportArgs : global::Pulumi.ResourceArgs
     {
         [Input("pubsubs")]
         private InputList<Inputs.TriggerTransportPubsubArgs>? _pubsubs;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public TriggerTransportArgs()
         {
         }
+        public static new TriggerTransportArgs Empty => new TriggerTransportArgs();
     }
 }

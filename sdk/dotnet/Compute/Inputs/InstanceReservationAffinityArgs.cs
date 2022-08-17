@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceReservationAffinityArgs : Pulumi.ResourceArgs
+    public sealed class InstanceReservationAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the label selector for the reservation to use..
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceReservationAffinityArgs()
         {
         }
+        public static new InstanceReservationAffinityArgs Empty => new InstanceReservationAffinityArgs();
     }
 }

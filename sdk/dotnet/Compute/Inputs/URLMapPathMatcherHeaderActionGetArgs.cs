@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherHeaderActionGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherHeaderActionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("requestHeadersToAdds")]
         private InputList<Inputs.URLMapPathMatcherHeaderActionRequestHeadersToAddGetArgs>? _requestHeadersToAdds;
@@ -67,5 +67,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherHeaderActionGetArgs()
         {
         }
+        public static new URLMapPathMatcherHeaderActionGetArgs Empty => new URLMapPathMatcherHeaderActionGetArgs();
     }
 }

@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.GetClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfig;
+import com.pulumi.gcp.container.outputs.GetClusterMeshCertificate;
 import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfig;
@@ -80,6 +81,7 @@ public final class GetClusterResult {
     private final List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
     private final List<GetClusterMasterAuth> masterAuths;
     private final String masterVersion;
+    private final List<GetClusterMeshCertificate> meshCertificates;
     private final String minMasterVersion;
     private final List<GetClusterMonitoringConfig> monitoringConfigs;
     private final String monitoringService;
@@ -145,6 +147,7 @@ public final class GetClusterResult {
         @CustomType.Parameter("masterAuthorizedNetworksConfigs") List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs,
         @CustomType.Parameter("masterAuths") List<GetClusterMasterAuth> masterAuths,
         @CustomType.Parameter("masterVersion") String masterVersion,
+        @CustomType.Parameter("meshCertificates") List<GetClusterMeshCertificate> meshCertificates,
         @CustomType.Parameter("minMasterVersion") String minMasterVersion,
         @CustomType.Parameter("monitoringConfigs") List<GetClusterMonitoringConfig> monitoringConfigs,
         @CustomType.Parameter("monitoringService") String monitoringService,
@@ -207,6 +210,7 @@ public final class GetClusterResult {
         this.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
         this.masterAuths = masterAuths;
         this.masterVersion = masterVersion;
+        this.meshCertificates = meshCertificates;
         this.minMasterVersion = minMasterVersion;
         this.monitoringConfigs = monitoringConfigs;
         this.monitoringService = monitoringService;
@@ -343,6 +347,9 @@ public final class GetClusterResult {
     public String masterVersion() {
         return this.masterVersion;
     }
+    public List<GetClusterMeshCertificate> meshCertificates() {
+        return this.meshCertificates;
+    }
     public String minMasterVersion() {
         return this.minMasterVersion;
     }
@@ -471,6 +478,7 @@ public final class GetClusterResult {
         private List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
         private List<GetClusterMasterAuth> masterAuths;
         private String masterVersion;
+        private List<GetClusterMeshCertificate> meshCertificates;
         private String minMasterVersion;
         private List<GetClusterMonitoringConfig> monitoringConfigs;
         private String monitoringService;
@@ -540,6 +548,7 @@ public final class GetClusterResult {
     	      this.masterAuthorizedNetworksConfigs = defaults.masterAuthorizedNetworksConfigs;
     	      this.masterAuths = defaults.masterAuths;
     	      this.masterVersion = defaults.masterVersion;
+    	      this.meshCertificates = defaults.meshCertificates;
     	      this.minMasterVersion = defaults.minMasterVersion;
     	      this.monitoringConfigs = defaults.monitoringConfigs;
     	      this.monitoringService = defaults.monitoringService;
@@ -751,6 +760,13 @@ public final class GetClusterResult {
             this.masterVersion = Objects.requireNonNull(masterVersion);
             return this;
         }
+        public Builder meshCertificates(List<GetClusterMeshCertificate> meshCertificates) {
+            this.meshCertificates = Objects.requireNonNull(meshCertificates);
+            return this;
+        }
+        public Builder meshCertificates(GetClusterMeshCertificate... meshCertificates) {
+            return meshCertificates(List.of(meshCertificates));
+        }
         public Builder minMasterVersion(String minMasterVersion) {
             this.minMasterVersion = Objects.requireNonNull(minMasterVersion);
             return this;
@@ -902,7 +918,7 @@ public final class GetClusterResult {
         public Builder workloadIdentityConfigs(GetClusterWorkloadIdentityConfig... workloadIdentityConfigs) {
             return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
         }        public GetClusterResult build() {
-            return new GetClusterResult(addonsConfigs, authenticatorGroupsConfigs, binaryAuthorizations, clusterAutoscalings, clusterIpv4Cidr, clusterTelemetries, confidentialNodes, databaseEncryptions, datapathProvider, defaultMaxPodsPerNode, defaultSnatStatuses, description, dnsConfigs, enableAutopilot, enableBinaryAuthorization, enableIntranodeVisibility, enableKubernetesAlpha, enableL4IlbSubsetting, enableLegacyAbac, enableShieldedNodes, enableTpu, endpoint, id, identityServiceConfigs, initialNodeCount, ipAllocationPolicies, labelFingerprint, location, loggingConfigs, loggingService, maintenancePolicies, masterAuthorizedNetworksConfigs, masterAuths, masterVersion, minMasterVersion, monitoringConfigs, monitoringService, name, network, networkPolicies, networkingMode, nodeConfigs, nodeLocations, nodePools, nodeVersion, notificationConfigs, operation, podSecurityPolicyConfigs, privateClusterConfigs, privateIpv6GoogleAccess, project, releaseChannels, removeDefaultNodePool, resourceLabels, resourceUsageExportConfigs, selfLink, servicesIpv4Cidr, subnetwork, tpuConfigs, tpuIpv4CidrBlock, verticalPodAutoscalings, workloadIdentityConfigs);
+            return new GetClusterResult(addonsConfigs, authenticatorGroupsConfigs, binaryAuthorizations, clusterAutoscalings, clusterIpv4Cidr, clusterTelemetries, confidentialNodes, databaseEncryptions, datapathProvider, defaultMaxPodsPerNode, defaultSnatStatuses, description, dnsConfigs, enableAutopilot, enableBinaryAuthorization, enableIntranodeVisibility, enableKubernetesAlpha, enableL4IlbSubsetting, enableLegacyAbac, enableShieldedNodes, enableTpu, endpoint, id, identityServiceConfigs, initialNodeCount, ipAllocationPolicies, labelFingerprint, location, loggingConfigs, loggingService, maintenancePolicies, masterAuthorizedNetworksConfigs, masterAuths, masterVersion, meshCertificates, minMasterVersion, monitoringConfigs, monitoringService, name, network, networkPolicies, networkingMode, nodeConfigs, nodeLocations, nodePools, nodeVersion, notificationConfigs, operation, podSecurityPolicyConfigs, privateClusterConfigs, privateIpv6GoogleAccess, project, releaseChannels, removeDefaultNodePool, resourceLabels, resourceUsageExportConfigs, selfLink, servicesIpv4Cidr, subnetwork, tpuConfigs, tpuIpv4CidrBlock, verticalPodAutoscalings, workloadIdentityConfigs);
         }
     }
 }

@@ -106,23 +106,31 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
      * 
      */
     @Import(name="diskAutoresize")
     private @Nullable Output<Boolean> diskAutoresize;
 
     /**
-     * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
      * 
      */
     public Optional<Output<Boolean>> diskAutoresize() {
         return Optional.ofNullable(this.diskAutoresize);
     }
 
+    /**
+     * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     @Import(name="diskAutoresizeLimit")
     private @Nullable Output<Integer> diskAutoresizeLimit;
 
+    /**
+     * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     public Optional<Output<Integer>> diskAutoresizeLimit() {
         return Optional.ofNullable(this.diskAutoresizeLimit);
     }
@@ -397,7 +405,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
          * 
          * @return builder
          * 
@@ -408,7 +416,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
          * 
          * @return builder
          * 
@@ -417,11 +425,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return diskAutoresize(Output.of(diskAutoresize));
         }
 
+        /**
+         * @param diskAutoresizeLimit The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskAutoresizeLimit(@Nullable Output<Integer> diskAutoresizeLimit) {
             $.diskAutoresizeLimit = diskAutoresizeLimit;
             return this;
         }
 
+        /**
+         * @param diskAutoresizeLimit The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskAutoresizeLimit(Integer diskAutoresizeLimit) {
             return diskAutoresizeLimit(Output.of(diskAutoresizeLimit));
         }

@@ -22,7 +22,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -125,6 +125,9 @@ class GetClusterResult:
         if master_version and not isinstance(master_version, str):
             raise TypeError("Expected argument 'master_version' to be a str")
         pulumi.set(__self__, "master_version", master_version)
+        if mesh_certificates and not isinstance(mesh_certificates, list):
+            raise TypeError("Expected argument 'mesh_certificates' to be a list")
+        pulumi.set(__self__, "mesh_certificates", mesh_certificates)
         if min_master_version and not isinstance(min_master_version, str):
             raise TypeError("Expected argument 'min_master_version' to be a str")
         pulumi.set(__self__, "min_master_version", min_master_version)
@@ -384,6 +387,11 @@ class GetClusterResult:
         return pulumi.get(self, "master_version")
 
     @property
+    @pulumi.getter(name="meshCertificates")
+    def mesh_certificates(self) -> Sequence['outputs.GetClusterMeshCertificateResult']:
+        return pulumi.get(self, "mesh_certificates")
+
+    @property
     @pulumi.getter(name="minMasterVersion")
     def min_master_version(self) -> str:
         return pulumi.get(self, "min_master_version")
@@ -564,6 +572,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             master_authorized_networks_configs=self.master_authorized_networks_configs,
             master_auths=self.master_auths,
             master_version=self.master_version,
+            mesh_certificates=self.mesh_certificates,
             min_master_version=self.min_master_version,
             monitoring_configs=self.monitoring_configs,
             monitoring_service=self.monitoring_service,
@@ -665,6 +674,7 @@ def get_cluster(location: Optional[str] = None,
         master_authorized_networks_configs=__ret__.master_authorized_networks_configs,
         master_auths=__ret__.master_auths,
         master_version=__ret__.master_version,
+        mesh_certificates=__ret__.mesh_certificates,
         min_master_version=__ret__.min_master_version,
         monitoring_configs=__ret__.monitoring_configs,
         monitoring_service=__ret__.monitoring_service,

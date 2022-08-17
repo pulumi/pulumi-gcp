@@ -7,10 +7,12 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./domain";
 export * from "./domainTrust";
+export * from "./peering";
 
 // Import resources to register:
 import { Domain } from "./domain";
 import { DomainTrust } from "./domainTrust";
+import { Peering } from "./peering";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,6 +22,8 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "gcp:activedirectory/domainTrust:DomainTrust":
                 return new DomainTrust(name, <any>undefined, { urn })
+            case "gcp:activedirectory/peering:Peering":
+                return new Peering(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -27,3 +31,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "activedirectory/domain", _module)
 pulumi.runtime.registerResourceModule("gcp", "activedirectory/domainTrust", _module)
+pulumi.runtime.registerResourceModule("gcp", "activedirectory/peering", _module)

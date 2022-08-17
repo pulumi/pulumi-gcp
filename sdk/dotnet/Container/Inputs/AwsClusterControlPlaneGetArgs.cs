@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterControlPlaneGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterControlPlaneGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication configuration for management of AWS resources.
@@ -117,5 +117,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterControlPlaneGetArgs()
         {
         }
+        public static new AwsClusterControlPlaneGetArgs Empty => new AwsClusterControlPlaneGetArgs();
     }
 }

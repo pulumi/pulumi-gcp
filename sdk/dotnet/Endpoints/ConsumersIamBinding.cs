@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Endpoints
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:endpoints/consumersIamBinding:ConsumersIamBinding")]
-    public partial class ConsumersIamBinding : Pulumi.CustomResource
+    public partial class ConsumersIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.ConsumersIamBindingCondition?> Condition { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.Endpoints
         }
     }
 
-    public sealed class ConsumersIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class ConsumersIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConsumersIamBindingConditionArgs>? Condition { get; set; }
@@ -147,9 +147,10 @@ namespace Pulumi.Gcp.Endpoints
         public ConsumersIamBindingArgs()
         {
         }
+        public static new ConsumersIamBindingArgs Empty => new ConsumersIamBindingArgs();
     }
 
-    public sealed class ConsumersIamBindingState : Pulumi.ResourceArgs
+    public sealed class ConsumersIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConsumersIamBindingConditionGetArgs>? Condition { get; set; }
@@ -185,5 +186,6 @@ namespace Pulumi.Gcp.Endpoints
         public ConsumersIamBindingState()
         {
         }
+        public static new ConsumersIamBindingState Empty => new ConsumersIamBindingState();
     }
 }

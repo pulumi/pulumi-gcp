@@ -22,22 +22,21 @@ namespace Pulumi.Gcp.PubSub
     /// ### Pubsub Lite Reservation Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var example = new Gcp.PubSub.LiteReservation("example", new Gcp.PubSub.LiteReservationArgs
-    ///         {
-    ///             Project = project.Apply(project =&gt; project.Number),
-    ///             ThroughputCapacity = 2,
-    ///         });
-    ///     }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    /// }
+    ///     var example = new Gcp.PubSub.LiteReservation("example", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         ThroughputCapacity = 2,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +60,7 @@ namespace Pulumi.Gcp.PubSub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/liteReservation:LiteReservation")]
-    public partial class LiteReservation : Pulumi.CustomResource
+    public partial class LiteReservation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the reservation.
@@ -134,7 +133,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class LiteReservationArgs : Pulumi.ResourceArgs
+    public sealed class LiteReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the reservation.
@@ -166,9 +165,10 @@ namespace Pulumi.Gcp.PubSub
         public LiteReservationArgs()
         {
         }
+        public static new LiteReservationArgs Empty => new LiteReservationArgs();
     }
 
-    public sealed class LiteReservationState : Pulumi.ResourceArgs
+    public sealed class LiteReservationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the reservation.
@@ -200,5 +200,6 @@ namespace Pulumi.Gcp.PubSub
         public LiteReservationState()
         {
         }
+        public static new LiteReservationState Empty => new LiteReservationState();
     }
 }

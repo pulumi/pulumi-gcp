@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyDocumentationGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyDocumentationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The text of the documentation, interpreted according to mimeType.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyDocumentationGetArgs()
         {
         }
+        public static new AlertPolicyDocumentationGetArgs Empty => new AlertPolicyDocumentationGetArgs();
     }
 }

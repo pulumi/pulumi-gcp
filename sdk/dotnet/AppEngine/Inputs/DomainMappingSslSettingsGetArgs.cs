@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class DomainMappingSslSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingSslSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public DomainMappingSslSettingsGetArgs()
         {
         }
+        public static new DomainMappingSslSettingsGetArgs Empty => new DomainMappingSslSettingsGetArgs();
     }
 }

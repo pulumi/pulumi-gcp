@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding")]
-    public partial class MetastoreFederationIamBinding : Pulumi.CustomResource
+    public partial class MetastoreFederationIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.MetastoreFederationIamBindingCondition?> Condition { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class MetastoreFederationIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.MetastoreFederationIamBindingConditionArgs>? Condition { get; set; }
@@ -159,9 +159,10 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationIamBindingArgs()
         {
         }
+        public static new MetastoreFederationIamBindingArgs Empty => new MetastoreFederationIamBindingArgs();
     }
 
-    public sealed class MetastoreFederationIamBindingState : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.MetastoreFederationIamBindingConditionGetArgs>? Condition { get; set; }
@@ -208,5 +209,6 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationIamBindingState()
         {
         }
+        public static new MetastoreFederationIamBindingState Empty => new MetastoreFederationIamBindingState();
     }
 }

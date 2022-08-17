@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterClusterAutoscalingGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Contains defaults for a node pool created by NAP.
@@ -53,5 +53,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterClusterAutoscalingGetArgs()
         {
         }
+        public static new ClusterClusterAutoscalingGetArgs Empty => new ClusterClusterAutoscalingGetArgs();
     }
 }

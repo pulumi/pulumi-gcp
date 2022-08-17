@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The service account e-mail address. If not given, the
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateServiceAccountArgs()
         {
         }
+        public static new InstanceTemplateServiceAccountArgs Empty => new InstanceTemplateServiceAccountArgs();
     }
 }

@@ -15,23 +15,22 @@ namespace Pulumi.Gcp.Iam
         /// Use this data source to get information about a Google IAM Role.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var roleinfo = Gcp.Iam.GetRule.Invoke(new()
         ///     {
-        ///         var roleinfo = Output.Create(Gcp.Iam.GetRule.InvokeAsync(new Gcp.Iam.GetRuleArgs
-        ///         {
-        ///             Name = "roles/compute.viewer",
-        ///         }));
-        ///         this.TheRolePermissions = roleinfo.Apply(roleinfo =&gt; roleinfo.IncludedPermissions);
-        ///     }
+        ///         Name = "roles/compute.viewer",
+        ///     });
         /// 
-        ///     [Output("theRolePermissions")]
-        ///     public Output&lt;string&gt; TheRolePermissions { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theRolePermissions"] = roleinfo.Apply(getRuleResult =&gt; getRuleResult.IncludedPermissions),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
@@ -41,23 +40,22 @@ namespace Pulumi.Gcp.Iam
         /// Use this data source to get information about a Google IAM Role.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var roleinfo = Gcp.Iam.GetRule.Invoke(new()
         ///     {
-        ///         var roleinfo = Output.Create(Gcp.Iam.GetRule.InvokeAsync(new Gcp.Iam.GetRuleArgs
-        ///         {
-        ///             Name = "roles/compute.viewer",
-        ///         }));
-        ///         this.TheRolePermissions = roleinfo.Apply(roleinfo =&gt; roleinfo.IncludedPermissions);
-        ///     }
+        ///         Name = "roles/compute.viewer",
+        ///     });
         /// 
-        ///     [Output("theRolePermissions")]
-        ///     public Output&lt;string&gt; TheRolePermissions { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theRolePermissions"] = roleinfo.Apply(getRuleResult =&gt; getRuleResult.IncludedPermissions),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetRuleResult> Invoke(GetRuleInvokeArgs args, InvokeOptions? options = null)
@@ -65,7 +63,7 @@ namespace Pulumi.Gcp.Iam
     }
 
 
-    public sealed class GetRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
@@ -76,9 +74,10 @@ namespace Pulumi.Gcp.Iam
         public GetRuleArgs()
         {
         }
+        public static new GetRuleArgs Empty => new GetRuleArgs();
     }
 
-    public sealed class GetRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
@@ -89,6 +88,7 @@ namespace Pulumi.Gcp.Iam
         public GetRuleInvokeArgs()
         {
         }
+        public static new GetRuleInvokeArgs Empty => new GetRuleInvokeArgs();
     }
 
 

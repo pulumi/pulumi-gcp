@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZoneServiceDirectoryConfigNamespaceArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneServiceDirectoryConfigNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fully qualified or partial URL of the service directory namespace that should be
@@ -25,5 +25,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZoneServiceDirectoryConfigNamespaceArgs()
         {
         }
+        public static new ManagedZoneServiceDirectoryConfigNamespaceArgs Empty => new ManagedZoneServiceDirectoryConfigNamespaceArgs();
     }
 }

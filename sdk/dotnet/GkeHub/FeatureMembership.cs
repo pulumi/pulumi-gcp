@@ -14,94 +14,93 @@ namespace Pulumi.Gcp.GkeHub
     /// ### Config Management
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
-    ///         var cluster = new Gcp.Container.Cluster("cluster", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             Location = "us-central1-a",
-    ///             InitialNodeCount = 1,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
-    ///         {
-    ///             MembershipId = "my-membership",
-    ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
-    ///             {
-    ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
-    ///                 {
-    ///                     ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var feature = new Gcp.GkeHub.Feature("feature", new Gcp.GkeHub.FeatureArgs
-    ///         {
-    ///             Location = "global",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new Gcp.GkeHub.FeatureMembershipArgs
-    ///         {
-    ///             Location = "global",
-    ///             Feature = feature.Name,
-    ///             Membership = membership.MembershipId,
-    ///             Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
-    ///             {
-    ///                 Version = "1.6.2",
-    ///                 ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
-    ///                 {
-    ///                     Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
-    ///                     {
-    ///                         SyncRepo = "https://github.com/hashicorp/terraform",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
+    ///         {
+    ///             Version = "1.6.2",
+    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
+    ///             {
+    ///                 Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
+    ///                 {
+    ///                     SyncRepo = "https://github.com/hashicorp/terraform",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Multi Cluster Service Discovery
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
-    ///         var feature = new Gcp.GkeHub.Feature("feature", new Gcp.GkeHub.FeatureArgs
+    ///         Location = "global",
+    ///         Labels = 
     ///         {
-    ///             Location = "global",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -121,7 +120,7 @@ namespace Pulumi.Gcp.GkeHub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gkehub/featureMembership:FeatureMembership")]
-    public partial class FeatureMembership : Pulumi.CustomResource
+    public partial class FeatureMembership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Config Management-specific spec. Structure is documented below.
@@ -197,7 +196,7 @@ namespace Pulumi.Gcp.GkeHub
         }
     }
 
-    public sealed class FeatureMembershipArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Config Management-specific spec. Structure is documented below.
@@ -232,9 +231,10 @@ namespace Pulumi.Gcp.GkeHub
         public FeatureMembershipArgs()
         {
         }
+        public static new FeatureMembershipArgs Empty => new FeatureMembershipArgs();
     }
 
-    public sealed class FeatureMembershipState : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Config Management-specific spec. Structure is documented below.
@@ -269,5 +269,6 @@ namespace Pulumi.Gcp.GkeHub
         public FeatureMembershipState()
         {
         }
+        public static new FeatureMembershipState Empty => new FeatureMembershipState();
     }
 }

@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
 // * How-to Guides
-//     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+//   - [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 //
 // > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 //
@@ -27,29 +27,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudbuild.NewTrigger(ctx, "filename-trigger", &cloudbuild.TriggerArgs{
-// 			Filename: pulumi.String("cloudbuild.yaml"),
-// 			Substitutions: pulumi.StringMap{
-// 				"_BAZ": pulumi.String("qux"),
-// 				"_FOO": pulumi.String("bar"),
-// 			},
-// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
-// 				BranchName: pulumi.String("main"),
-// 				RepoName:   pulumi.String("my-repo"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "filename-trigger", &cloudbuild.TriggerArgs{
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//				Substitutions: pulumi.StringMap{
+//					"_BAZ": pulumi.String("qux"),
+//					"_FOO": pulumi.String("bar"),
+//				},
+//				TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+//					BranchName: pulumi.String("main"),
+//					RepoName:   pulumi.String("my-repo"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloudbuild Trigger Service Account
 //
@@ -57,64 +60,67 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
-// 			AccountId: pulumi.String("my-service-account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		actAs, err := projects.NewIAMMember(ctx, "actAs", &projects.IAMMemberArgs{
-// 			Project: pulumi.String(project.ProjectId),
-// 			Role:    pulumi.String("roles/iam.serviceAccountUser"),
-// 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("serviceAccount:%v", email), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		logsWriter, err := projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
-// 			Project: pulumi.String(project.ProjectId),
-// 			Role:    pulumi.String("roles/logging.logWriter"),
-// 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("serviceAccount:%v", email), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudbuild.NewTrigger(ctx, "service-account-trigger", &cloudbuild.TriggerArgs{
-// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
-// 				BranchName: pulumi.String("main"),
-// 				RepoName:   pulumi.String("my-repo"),
-// 			},
-// 			ServiceAccount: cloudbuildServiceAccount.ID(),
-// 			Filename:       pulumi.String("cloudbuild.yaml"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			actAs,
-// 			logsWriter,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
+//				AccountId: pulumi.String("my-service-account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			actAs, err := projects.NewIAMMember(ctx, "actAs", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/iam.serviceAccountUser"),
+//				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			logsWriter, err := projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/logging.logWriter"),
+//				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewTrigger(ctx, "service-account-trigger", &cloudbuild.TriggerArgs{
+//				TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+//					BranchName: pulumi.String("main"),
+//					RepoName:   pulumi.String("my-repo"),
+//				},
+//				ServiceAccount: cloudbuildServiceAccount.ID(),
+//				Filename:       pulumi.String("cloudbuild.yaml"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				actAs,
+//				logsWriter,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloudbuild Trigger Include Build Logs
 //
@@ -122,31 +128,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudbuild.NewTrigger(ctx, "include-build-logs-trigger", &cloudbuild.TriggerArgs{
-// 			Filename: pulumi.String("cloudbuild.yaml"),
-// 			Github: &cloudbuild.TriggerGithubArgs{
-// 				Name:  pulumi.String("terraform-provider-google-beta"),
-// 				Owner: pulumi.String("hashicorp"),
-// 				Push: &cloudbuild.TriggerGithubPushArgs{
-// 					Branch: pulumi.String(fmt.Sprintf("^main$")),
-// 				},
-// 			},
-// 			IncludeBuildLogs: pulumi.String("INCLUDE_BUILD_LOGS_WITH_STATUS"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "include-build-logs-trigger", &cloudbuild.TriggerArgs{
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//				Github: &cloudbuild.TriggerGithubArgs{
+//					Name:  pulumi.String("terraform-provider-google-beta"),
+//					Owner: pulumi.String("hashicorp"),
+//					Push: &cloudbuild.TriggerGithubPushArgs{
+//						Branch: pulumi.String(fmt.Sprintf("^main$")),
+//					},
+//				},
+//				IncludeBuildLogs: pulumi.String("INCLUDE_BUILD_LOGS_WITH_STATUS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloudbuild Trigger Pubsub Config
 //
@@ -154,46 +163,49 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mytopic, err := pubsub.NewTopic(ctx, "mytopic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudbuild.NewTrigger(ctx, "pubsub-config-trigger", &cloudbuild.TriggerArgs{
-// 			Description: pulumi.String("acceptance test example pubsub build trigger"),
-// 			PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
-// 				Topic: mytopic.ID(),
-// 			},
-// 			SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
-// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
-// 				Ref:      pulumi.String("refs/heads/main"),
-// 				RepoType: pulumi.String("GITHUB"),
-// 			},
-// 			GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
-// 				Path:     pulumi.String("cloudbuild.yaml"),
-// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
-// 				Revision: pulumi.String("refs/heads/main"),
-// 				RepoType: pulumi.String("GITHUB"),
-// 			},
-// 			Substitutions: pulumi.StringMap{
-// 				"_ACTION": pulumi.String(fmt.Sprintf("$(body.message.data.action)")),
-// 			},
-// 			Filter: pulumi.String("_ACTION.matches('INSERT')"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mytopic, err := pubsub.NewTopic(ctx, "mytopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewTrigger(ctx, "pubsub-config-trigger", &cloudbuild.TriggerArgs{
+//				Description: pulumi.String("acceptance test example pubsub build trigger"),
+//				PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
+//					Topic: mytopic.ID(),
+//				},
+//				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
+//					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//					Ref:      pulumi.String("refs/heads/main"),
+//					RepoType: pulumi.String("GITHUB"),
+//				},
+//				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
+//					Path:     pulumi.String("cloudbuild.yaml"),
+//					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//					Revision: pulumi.String("refs/heads/main"),
+//					RepoType: pulumi.String("GITHUB"),
+//				},
+//				Substitutions: pulumi.StringMap{
+//					"_ACTION": pulumi.String(fmt.Sprintf("$(body.message.data.action)")),
+//				},
+//				Filter: pulumi.String("_ACTION.matches('INSERT')"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloudbuild Trigger Webhook Config
 //
@@ -201,86 +213,89 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		webhookTriggerSecretKey, err := secretmanager.NewSecret(ctx, "webhookTriggerSecretKey", &secretmanager.SecretArgs{
-// 			SecretId: pulumi.String("webhook_trigger-secret-key-1"),
-// 			Replication: &secretmanager.SecretReplicationArgs{
-// 				UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
-// 					Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
-// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
-// 							Location: pulumi.String("us-central1"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		webhookTriggerSecretKeyData, err := secretmanager.NewSecretVersion(ctx, "webhookTriggerSecretKeyData", &secretmanager.SecretVersionArgs{
-// 			Secret:     webhookTriggerSecretKey.ID(),
-// 			SecretData: pulumi.String("secretkeygoeshere"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/secretmanager.secretAccessor",
-// 					Members: []string{
-// 						fmt.Sprintf("serviceAccount:service-%v@gcp-sa-cloudbuild.iam.gserviceaccount.com", project.Number),
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
-// 			Project:    webhookTriggerSecretKey.Project,
-// 			SecretId:   webhookTriggerSecretKey.SecretId,
-// 			PolicyData: pulumi.String(secretAccessor.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudbuild.NewTrigger(ctx, "webhook-config-trigger", &cloudbuild.TriggerArgs{
-// 			Description: pulumi.String("acceptance test example webhook build trigger"),
-// 			WebhookConfig: &cloudbuild.TriggerWebhookConfigArgs{
-// 				Secret: webhookTriggerSecretKeyData.ID(),
-// 			},
-// 			SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
-// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
-// 				Ref:      pulumi.String("refs/heads/main"),
-// 				RepoType: pulumi.String("GITHUB"),
-// 			},
-// 			GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
-// 				Path:     pulumi.String("cloudbuild.yaml"),
-// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
-// 				Revision: pulumi.String("refs/heads/main"),
-// 				RepoType: pulumi.String("GITHUB"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			webhookTriggerSecretKey, err := secretmanager.NewSecret(ctx, "webhookTriggerSecretKey", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("webhook_trigger-secret-key-1"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			webhookTriggerSecretKeyData, err := secretmanager.NewSecretVersion(ctx, "webhookTriggerSecretKeyData", &secretmanager.SecretVersionArgs{
+//				Secret:     webhookTriggerSecretKey.ID(),
+//				SecretData: pulumi.String("secretkeygoeshere"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/secretmanager.secretAccessor",
+//						Members: []string{
+//							fmt.Sprintf("serviceAccount:service-%v@gcp-sa-cloudbuild.iam.gserviceaccount.com", project.Number),
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
+//				Project:    webhookTriggerSecretKey.Project,
+//				SecretId:   webhookTriggerSecretKey.SecretId,
+//				PolicyData: pulumi.String(secretAccessor.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewTrigger(ctx, "webhook-config-trigger", &cloudbuild.TriggerArgs{
+//				Description: pulumi.String("acceptance test example webhook build trigger"),
+//				WebhookConfig: &cloudbuild.TriggerWebhookConfigArgs{
+//					Secret: webhookTriggerSecretKeyData.ID(),
+//				},
+//				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
+//					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//					Ref:      pulumi.String("refs/heads/main"),
+//					RepoType: pulumi.String("GITHUB"),
+//				},
+//				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
+//					Path:     pulumi.String("cloudbuild.yaml"),
+//					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//					Revision: pulumi.String("refs/heads/main"),
+//					RepoType: pulumi.String("GITHUB"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloudbuild Trigger Manual
 //
@@ -288,50 +303,59 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudbuild.NewTrigger(ctx, "manual-trigger", &cloudbuild.TriggerArgs{
-// 			ApprovalConfig: &cloudbuild.TriggerApprovalConfigArgs{
-// 				ApprovalRequired: pulumi.Bool(true),
-// 			},
-// 			GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
-// 				Path:     pulumi.String("cloudbuild.yaml"),
-// 				RepoType: pulumi.String("GITHUB"),
-// 				Revision: pulumi.String("refs/heads/main"),
-// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
-// 			},
-// 			SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
-// 				Ref:      pulumi.String("refs/heads/main"),
-// 				RepoType: pulumi.String("GITHUB"),
-// 				Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "manual-trigger", &cloudbuild.TriggerArgs{
+//				ApprovalConfig: &cloudbuild.TriggerApprovalConfigArgs{
+//					ApprovalRequired: pulumi.Bool(true),
+//				},
+//				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
+//					Path:     pulumi.String("cloudbuild.yaml"),
+//					RepoType: pulumi.String("GITHUB"),
+//					Revision: pulumi.String("refs/heads/main"),
+//					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//				},
+//				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
+//					Ref:      pulumi.String("refs/heads/main"),
+//					RepoType: pulumi.String("GITHUB"),
+//					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Trigger can be imported using any of these accepted formats
+// # Trigger can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
+//
+//	$ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
+//
+//	$ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
+//
+//	$ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
+//
 // ```
 type Trigger struct {
 	pulumi.CustomResourceState
@@ -866,7 +890,7 @@ func (i *Trigger) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput 
 // TriggerArrayInput is an input type that accepts TriggerArray and TriggerArrayOutput values.
 // You can construct a concrete instance of `TriggerArrayInput` via:
 //
-//          TriggerArray{ TriggerArgs{...} }
+//	TriggerArray{ TriggerArgs{...} }
 type TriggerArrayInput interface {
 	pulumi.Input
 
@@ -891,7 +915,7 @@ func (i TriggerArray) ToTriggerArrayOutputWithContext(ctx context.Context) Trigg
 // TriggerMapInput is an input type that accepts TriggerMap and TriggerMapOutput values.
 // You can construct a concrete instance of `TriggerMapInput` via:
 //
-//          TriggerMap{ "key": TriggerArgs{...} }
+//	TriggerMap{ "key": TriggerArgs{...} }
 type TriggerMapInput interface {
 	pulumi.Input
 

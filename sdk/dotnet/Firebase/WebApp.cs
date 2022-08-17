@@ -27,78 +27,80 @@ namespace Pulumi.Gcp.Firebase
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
     ///     {
-    ///         var defaultProject = new Gcp.Organizations.Project("defaultProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "tf-test",
-    ///             OrgId = "123456789",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new Gcp.Firebase.ProjectArgs
-    ///         {
-    ///             ProjectID = defaultProject.ProjectId,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var basicWebApp = new Gcp.Firebase.WebApp("basicWebApp", new Gcp.Firebase.WebAppArgs
-    ///         {
-    ///             Project = defaultProject.ProjectId,
-    ///             DisplayName = "Display Name Basic",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultFirebase / projectProject,
-    ///             },
-    ///         });
-    ///         var basicWebAppConfig = Gcp.Firebase.GetWebAppConfig.Invoke(new Gcp.Firebase.GetWebAppConfigInvokeArgs
-    ///         {
-    ///             WebAppId = basicWebApp.AppId,
-    ///         });
-    ///         var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var defaultBucketObject = new Gcp.Storage.BucketObject("defaultBucketObject", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = defaultBucket.Name,
-    ///             Content = Output.Tuple(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, basicWebAppConfig["database_url"] ?? "", basicWebAppConfig["storage_bucket"] ?? "", basicWebAppConfig["messaging_sender_id"] ?? "", basicWebAppConfig["measurement_id"] ?? "").Apply(values =&gt;
-    ///             {
-    ///                 var appId = values.Item1;
-    ///                 var basicWebAppConfig = values.Item2;
-    ///                 var basicWebAppConfig1 = values.Item3;
-    ///                 var s = values.Item4;
-    ///                 var s1 = values.Item5;
-    ///                 var s2 = values.Item6;
-    ///                 var s3 = values.Item7;
-    ///                 return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "appId", appId },
-    ///                     { "apiKey", basicWebAppConfig.ApiKey },
-    ///                     { "authDomain", basicWebAppConfig1.AuthDomain },
-    ///                     { "databaseURL", s },
-    ///                     { "storageBucket", s1 },
-    ///                     { "messagingSenderId", s2 },
-    ///                     { "measurementId", s3 },
-    ///                 });
-    ///             }),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         ProjectId = "tf-test",
+    ///         OrgId = "123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
+    ///     {
+    ///         ProjectID = defaultProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var basicWebApp = new Gcp.Firebase.WebApp("basicWebApp", new()
+    ///     {
+    ///         Project = defaultProject.ProjectId,
+    ///         DisplayName = "Display Name Basic",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultFirebase / projectProject,
+    ///         },
+    ///     });
+    /// 
+    ///     var basicWebAppConfig = Gcp.Firebase.GetWebAppConfig.Invoke(new()
+    ///     {
+    ///         WebAppId = basicWebApp.AppId,
+    ///     });
+    /// 
+    ///     var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultBucketObject = new Gcp.Storage.BucketObject("defaultBucketObject", new()
+    ///     {
+    ///         Bucket = defaultBucket.Name,
+    ///         Content = Output.Tuple(basicWebApp.AppId, basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult), basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult), basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["database_url"] ?? "", basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["storage_bucket"] ?? "", basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["messaging_sender_id"] ?? "", basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["measurement_id"] ?? "").Apply(values =&gt;
+    ///         {
+    ///             var appId = values.Item1;
+    ///             var basicWebAppConfig = values.Item2;
+    ///             var basicWebAppConfig1 = values.Item3;
+    ///             var s = values.Item4;
+    ///             var s1 = values.Item5;
+    ///             var s2 = values.Item6;
+    ///             var s3 = values.Item7;
+    ///             return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["appId"] = appId,
+    ///                 ["apiKey"] = basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
+    ///                 ["authDomain"] = basicWebAppConfig1.AuthDomain,
+    ///                 ["databaseURL"] = s,
+    ///                 ["storageBucket"] = s1,
+    ///                 ["messagingSenderId"] = s2,
+    ///                 ["measurementId"] = s3,
+    ///             });
+    ///         }),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -118,7 +120,7 @@ namespace Pulumi.Gcp.Firebase
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebase/webApp:WebApp")]
-    public partial class WebApp : Pulumi.CustomResource
+    public partial class WebApp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
@@ -190,7 +192,7 @@ namespace Pulumi.Gcp.Firebase
         }
     }
 
-    public sealed class WebAppArgs : Pulumi.ResourceArgs
+    public sealed class WebAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-assigned display name of the App.
@@ -208,9 +210,10 @@ namespace Pulumi.Gcp.Firebase
         public WebAppArgs()
         {
         }
+        public static new WebAppArgs Empty => new WebAppArgs();
     }
 
-    public sealed class WebAppState : Pulumi.ResourceArgs
+    public sealed class WebAppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
@@ -241,5 +244,6 @@ namespace Pulumi.Gcp.Firebase
         public WebAppState()
         {
         }
+        public static new WebAppState Empty => new WebAppState();
     }
 }

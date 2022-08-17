@@ -21,7 +21,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
 // * How-to Guides
-//     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+//   - [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProject` and set `userProjectOverride` to true
@@ -36,22 +36,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
-// 			Parent: pulumi.String("organizations/123456789"),
-// 			Title:  pulumi.String("Org Access Policy"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+//				Parent: pulumi.String("organizations/123456789"),
+//				Title:  pulumi.String("Org Access Policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Access Context Manager Access Policy Scoped
 //
@@ -59,43 +62,48 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-// 			OrgId:     pulumi.String("123456789"),
-// 			ProjectId: pulumi.String("acm-test-proj-123"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
-// 			Parent: pulumi.String("organizations/123456789"),
-// 			Scopes: project.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("projects/%v", number), nil
-// 			}).(pulumi.StringOutput),
-// 			Title: pulumi.String("Scoped Access Policy"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				OrgId:     pulumi.String("123456789"),
+//				ProjectId: pulumi.String("acm-test-proj-123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+//				Parent: pulumi.String("organizations/123456789"),
+//				Scopes: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("projects/%v", number), nil
+//				}).(pulumi.StringOutput),
+//				Title: pulumi.String("Scoped Access Policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// AccessPolicy can be imported using any of these accepted formats
+// # AccessPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
+//
+//	$ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
+//
 // ```
 type AccessPolicy struct {
 	pulumi.CustomResourceState
@@ -237,7 +245,7 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 // AccessPolicyArrayInput is an input type that accepts AccessPolicyArray and AccessPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyArrayInput` via:
 //
-//          AccessPolicyArray{ AccessPolicyArgs{...} }
+//	AccessPolicyArray{ AccessPolicyArgs{...} }
 type AccessPolicyArrayInput interface {
 	pulumi.Input
 
@@ -262,7 +270,7 @@ func (i AccessPolicyArray) ToAccessPolicyArrayOutputWithContext(ctx context.Cont
 // AccessPolicyMapInput is an input type that accepts AccessPolicyMap and AccessPolicyMapOutput values.
 // You can construct a concrete instance of `AccessPolicyMapInput` via:
 //
-//          AccessPolicyMap{ "key": AccessPolicyArgs{...} }
+//	AccessPolicyMap{ "key": AccessPolicyArgs{...} }
 type AccessPolicyMapInput interface {
 	pulumi.Input
 

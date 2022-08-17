@@ -35,63 +35,61 @@ namespace Pulumi.Gcp.Compute
     /// ### Network Endpoint Group
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
     ///     {
-    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/16",
-    ///             Region = "us-central1",
-    ///             Network = defaultNetwork.Id,
-    ///         });
-    ///         var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new Gcp.Compute.NetworkEndpointGroupArgs
-    ///         {
-    ///             Network = defaultNetwork.Id,
-    ///             Subnetwork = defaultSubnetwork.Id,
-    ///             DefaultPort = 90,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DefaultPort = 90,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Network Endpoint Group Non Gcp
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new Gcp.Compute.NetworkEndpointGroupArgs
-    ///         {
-    ///             Network = @default.Id,
-    ///             DefaultPort = 90,
-    ///             Zone = "us-central1-a",
-    ///             NetworkEndpointType = "NON_GCP_PRIVATE_IP_PORT",
-    ///         });
-    ///         var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new Gcp.Compute.NetworkEndpointArgs
-    ///         {
-    ///             NetworkEndpointGroup = neg.Name,
-    ///             Port = neg.DefaultPort,
-    ///             IpAddress = "127.0.0.1",
-    ///         });
-    ///     }
+    ///     var @default = new Gcp.Compute.Network("default");
     /// 
-    /// }
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         DefaultPort = 90,
+    ///         Zone = "us-central1-a",
+    ///         NetworkEndpointType = "NON_GCP_PRIVATE_IP_PORT",
+    ///     });
+    /// 
+    ///     var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         Port = neg.DefaultPort,
+    ///         IpAddress = "127.0.0.1",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -115,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/networkEndpointGroup:NetworkEndpointGroup")]
-    public partial class NetworkEndpointGroup : Pulumi.CustomResource
+    public partial class NetworkEndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default port used if the port number is not specified in the
@@ -240,7 +238,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class NetworkEndpointGroupArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default port used if the port number is not specified in the
@@ -312,9 +310,10 @@ namespace Pulumi.Gcp.Compute
         public NetworkEndpointGroupArgs()
         {
         }
+        public static new NetworkEndpointGroupArgs Empty => new NetworkEndpointGroupArgs();
     }
 
-    public sealed class NetworkEndpointGroupState : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default port used if the port number is not specified in the
@@ -398,5 +397,6 @@ namespace Pulumi.Gcp.Compute
         public NetworkEndpointGroupState()
         {
         }
+        public static new NetworkEndpointGroupState Empty => new NetworkEndpointGroupState();
     }
 }

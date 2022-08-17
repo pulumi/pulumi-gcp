@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Project from which to list available zones. Defaults to project declared in the provider.
@@ -51,9 +51,10 @@ namespace Pulumi.Gcp.Compute
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Project from which to list available zones. Defaults to project declared in the provider.
@@ -77,6 +78,7 @@ namespace Pulumi.Gcp.Compute
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

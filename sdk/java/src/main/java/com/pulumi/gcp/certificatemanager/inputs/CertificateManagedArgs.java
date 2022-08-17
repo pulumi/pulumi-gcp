@@ -5,6 +5,8 @@ package com.pulumi.gcp.certificatemanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedAuthorizationAttemptInfoArgs;
+import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedProvisioningIssueArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +17,27 @@ import javax.annotation.Nullable;
 public final class CertificateManagedArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CertificateManagedArgs Empty = new CertificateManagedArgs();
+
+    /**
+     * - 
+     * Detailed state of the latest authorization attempt for each domain
+     * specified for this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="authorizationAttemptInfos")
+    private @Nullable Output<List<CertificateManagedAuthorizationAttemptInfoArgs>> authorizationAttemptInfos;
+
+    /**
+     * @return -
+     * Detailed state of the latest authorization attempt for each domain
+     * specified for this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CertificateManagedAuthorizationAttemptInfoArgs>>> authorizationAttemptInfos() {
+        return Optional.ofNullable(this.authorizationAttemptInfos);
+    }
 
     /**
      * Authorizations that will be used for performing domain authorization
@@ -50,7 +73,26 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
     /**
      * - 
-     * State of the managed certificate resource.
+     * Information about issues with provisioning this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="provisioningIssues")
+    private @Nullable Output<List<CertificateManagedProvisioningIssueArgs>> provisioningIssues;
+
+    /**
+     * @return -
+     * Information about issues with provisioning this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CertificateManagedProvisioningIssueArgs>>> provisioningIssues() {
+        return Optional.ofNullable(this.provisioningIssues);
+    }
+
+    /**
+     * - 
+     * State of the domain for managed certificate issuance.
      * 
      */
     @Import(name="state")
@@ -58,7 +100,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return -
-     * State of the managed certificate resource.
+     * State of the domain for managed certificate issuance.
      * 
      */
     public Optional<Output<String>> state() {
@@ -68,8 +110,10 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     private CertificateManagedArgs() {}
 
     private CertificateManagedArgs(CertificateManagedArgs $) {
+        this.authorizationAttemptInfos = $.authorizationAttemptInfos;
         this.dnsAuthorizations = $.dnsAuthorizations;
         this.domains = $.domains;
+        this.provisioningIssues = $.provisioningIssues;
         this.state = $.state;
     }
 
@@ -89,6 +133,46 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
         public Builder(CertificateManagedArgs defaults) {
             $ = new CertificateManagedArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authorizationAttemptInfos -
+         * Detailed state of the latest authorization attempt for each domain
+         * specified for this Managed Certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationAttemptInfos(@Nullable Output<List<CertificateManagedAuthorizationAttemptInfoArgs>> authorizationAttemptInfos) {
+            $.authorizationAttemptInfos = authorizationAttemptInfos;
+            return this;
+        }
+
+        /**
+         * @param authorizationAttemptInfos -
+         * Detailed state of the latest authorization attempt for each domain
+         * specified for this Managed Certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationAttemptInfos(List<CertificateManagedAuthorizationAttemptInfoArgs> authorizationAttemptInfos) {
+            return authorizationAttemptInfos(Output.of(authorizationAttemptInfos));
+        }
+
+        /**
+         * @param authorizationAttemptInfos -
+         * Detailed state of the latest authorization attempt for each domain
+         * specified for this Managed Certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationAttemptInfos(CertificateManagedAuthorizationAttemptInfoArgs... authorizationAttemptInfos) {
+            return authorizationAttemptInfos(List.of(authorizationAttemptInfos));
         }
 
         /**
@@ -157,8 +241,45 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param provisioningIssues -
+         * Information about issues with provisioning this Managed Certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningIssues(@Nullable Output<List<CertificateManagedProvisioningIssueArgs>> provisioningIssues) {
+            $.provisioningIssues = provisioningIssues;
+            return this;
+        }
+
+        /**
+         * @param provisioningIssues -
+         * Information about issues with provisioning this Managed Certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningIssues(List<CertificateManagedProvisioningIssueArgs> provisioningIssues) {
+            return provisioningIssues(Output.of(provisioningIssues));
+        }
+
+        /**
+         * @param provisioningIssues -
+         * Information about issues with provisioning this Managed Certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningIssues(CertificateManagedProvisioningIssueArgs... provisioningIssues) {
+            return provisioningIssues(List.of(provisioningIssues));
+        }
+
+        /**
          * @param state -
-         * State of the managed certificate resource.
+         * State of the domain for managed certificate issuance.
          * 
          * @return builder
          * 
@@ -170,7 +291,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param state -
-         * State of the managed certificate resource.
+         * State of the domain for managed certificate issuance.
          * 
          * @return builder
          * 

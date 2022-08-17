@@ -22,70 +22,68 @@ namespace Pulumi.Gcp.GkeHub
     /// ### Gkehub Membership Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             InitialNodeCount = 1,
-    ///             Location = "us-central1-a",
-    ///         });
-    ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
-    ///         {
-    ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
-    ///             {
-    ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
-    ///                 {
-    ///                     ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
-    ///                 },
-    ///             },
-    ///             MembershipId = "basic",
-    ///         });
-    ///     }
+    ///         InitialNodeCount = 1,
+    ///         Location = "us-central1-a",
+    ///     });
     /// 
-    /// }
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///         MembershipId = "basic",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Gkehub Membership Issuer
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
-    ///             Location = "us-central1-a",
-    ///             InitialNodeCount = 1,
-    ///             WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///             {
-    ///                 WorkloadPool = "my-project-name.svc.id.goog",
-    ///             },
-    ///         });
-    ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
-    ///         {
-    ///             MembershipId = "basic",
-    ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
-    ///             {
-    ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
-    ///                 {
-    ///                     ResourceLink = primary.Id,
-    ///                 },
-    ///             },
-    ///             Authority = new Gcp.GkeHub.Inputs.MembershipAuthorityArgs
-    ///             {
-    ///                 Issuer = primary.Id.Apply(id =&gt; $"https://container.googleapis.com/v1/{id}"),
-    ///             },
-    ///         });
-    ///     }
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "basic",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = primary.Id,
+    ///             },
+    ///         },
+    ///         Authority = new Gcp.GkeHub.Inputs.MembershipAuthorityArgs
+    ///         {
+    ///             Issuer = primary.Id.Apply(id =&gt; $"https://container.googleapis.com/v1/{id}"),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -93,11 +91,19 @@ namespace Pulumi.Gcp.GkeHub
     /// Membership can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/membership:Membership default {{name}}
+    ///  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gkehub/membership:Membership")]
-    public partial class Membership : Pulumi.CustomResource
+    public partial class Membership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authority encodes how Google will recognize identities from this Membership.
@@ -190,7 +196,7 @@ namespace Pulumi.Gcp.GkeHub
         }
     }
 
-    public sealed class MembershipArgs : Pulumi.ResourceArgs
+    public sealed class MembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authority encodes how Google will recognize identities from this Membership.
@@ -242,9 +248,10 @@ namespace Pulumi.Gcp.GkeHub
         public MembershipArgs()
         {
         }
+        public static new MembershipArgs Empty => new MembershipArgs();
     }
 
-    public sealed class MembershipState : Pulumi.ResourceArgs
+    public sealed class MembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authority encodes how Google will recognize identities from this Membership.
@@ -302,5 +309,6 @@ namespace Pulumi.Gcp.GkeHub
         public MembershipState()
         {
         }
+        public static new MembershipState Empty => new MembershipState();
     }
 }

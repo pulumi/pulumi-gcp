@@ -14,28 +14,26 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// ### Active Directory Domain Trust Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ad_domain_trust = new Gcp.ActiveDirectory.DomainTrust("ad-domain-trust", new()
     ///     {
-    ///         var ad_domain_trust = new Gcp.ActiveDirectory.DomainTrust("ad-domain-trust", new Gcp.ActiveDirectory.DomainTrustArgs
+    ///         Domain = "test-managed-ad.com",
+    ///         TargetDnsIpAddresses = new[]
     ///         {
-    ///             Domain = "test-managed-ad.com",
-    ///             TargetDnsIpAddresses = 
-    ///             {
-    ///                 "10.1.0.100",
-    ///             },
-    ///             TargetDomainName = "example-gcp.com",
-    ///             TrustDirection = "OUTBOUND",
-    ///             TrustHandshakeSecret = "Testing1!",
-    ///             TrustType = "FOREST",
-    ///         });
-    ///     }
+    ///             "10.1.0.100",
+    ///         },
+    ///         TargetDomainName = "example-gcp.com",
+    ///         TrustDirection = "OUTBOUND",
+    ///         TrustHandshakeSecret = "Testing1!",
+    ///         TrustType = "FOREST",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// ```
     /// </summary>
     [GcpResourceType("gcp:activedirectory/domainTrust:DomainTrust")]
-    public partial class DomainTrust : Pulumi.CustomResource
+    public partial class DomainTrust : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
@@ -154,7 +152,7 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
     }
 
-    public sealed class DomainTrustArgs : Pulumi.ResourceArgs
+    public sealed class DomainTrustArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
@@ -218,9 +216,10 @@ namespace Pulumi.Gcp.ActiveDirectory
         public DomainTrustArgs()
         {
         }
+        public static new DomainTrustArgs Empty => new DomainTrustArgs();
     }
 
-    public sealed class DomainTrustState : Pulumi.ResourceArgs
+    public sealed class DomainTrustState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
@@ -284,5 +283,6 @@ namespace Pulumi.Gcp.ActiveDirectory
         public DomainTrustState()
         {
         }
+        public static new DomainTrustState Empty => new DomainTrustState();
     }
 }

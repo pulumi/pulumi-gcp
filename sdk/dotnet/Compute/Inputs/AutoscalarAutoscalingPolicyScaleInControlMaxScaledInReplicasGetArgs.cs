@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fixed number of VM instances. This must be a positive
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasGetArgs()
         {
         }
+        public static new AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasGetArgs Empty => new AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasGetArgs();
     }
 }

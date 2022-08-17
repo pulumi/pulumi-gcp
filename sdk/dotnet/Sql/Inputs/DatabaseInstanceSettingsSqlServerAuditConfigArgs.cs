@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsSqlServerAuditConfigArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsSqlServerAuditConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the destination bucket (e.g., gs://mybucket).
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsSqlServerAuditConfigArgs()
         {
         }
+        public static new DatabaseInstanceSettingsSqlServerAuditConfigArgs Empty => new DatabaseInstanceSettingsSqlServerAuditConfigArgs();
     }
 }

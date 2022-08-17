@@ -26,7 +26,7 @@ type FeatureMembershipConfigmanagement struct {
 // FeatureMembershipConfigmanagementInput is an input type that accepts FeatureMembershipConfigmanagementArgs and FeatureMembershipConfigmanagementOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementInput` via:
 //
-//          FeatureMembershipConfigmanagementArgs{...}
+//	FeatureMembershipConfigmanagementArgs{...}
 type FeatureMembershipConfigmanagementInput interface {
 	pulumi.Input
 
@@ -70,11 +70,11 @@ func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanageme
 // FeatureMembershipConfigmanagementPtrInput is an input type that accepts FeatureMembershipConfigmanagementArgs, FeatureMembershipConfigmanagementPtr and FeatureMembershipConfigmanagementPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementArgs{...}
+//	        FeatureMembershipConfigmanagementArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementPtrInput interface {
 	pulumi.Input
 
@@ -239,7 +239,7 @@ type FeatureMembershipConfigmanagementBinauthz struct {
 // FeatureMembershipConfigmanagementBinauthzInput is an input type that accepts FeatureMembershipConfigmanagementBinauthzArgs and FeatureMembershipConfigmanagementBinauthzOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementBinauthzInput` via:
 //
-//          FeatureMembershipConfigmanagementBinauthzArgs{...}
+//	FeatureMembershipConfigmanagementBinauthzArgs{...}
 type FeatureMembershipConfigmanagementBinauthzInput interface {
 	pulumi.Input
 
@@ -275,11 +275,11 @@ func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfig
 // FeatureMembershipConfigmanagementBinauthzPtrInput is an input type that accepts FeatureMembershipConfigmanagementBinauthzArgs, FeatureMembershipConfigmanagementBinauthzPtr and FeatureMembershipConfigmanagementBinauthzPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementBinauthzPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementBinauthzArgs{...}
+//	        FeatureMembershipConfigmanagementBinauthzArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementBinauthzPtrInput interface {
 	pulumi.Input
 
@@ -381,7 +381,7 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 // FeatureMembershipConfigmanagementConfigSyncInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs and FeatureMembershipConfigmanagementConfigSyncOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncInput` via:
 //
-//          FeatureMembershipConfigmanagementConfigSyncArgs{...}
+//	FeatureMembershipConfigmanagementConfigSyncArgs{...}
 type FeatureMembershipConfigmanagementConfigSyncInput interface {
 	pulumi.Input
 
@@ -422,11 +422,11 @@ func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConf
 // FeatureMembershipConfigmanagementConfigSyncPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs, FeatureMembershipConfigmanagementConfigSyncPtr and FeatureMembershipConfigmanagementConfigSyncPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementConfigSyncArgs{...}
+//	        FeatureMembershipConfigmanagementConfigSyncArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementConfigSyncPtrInput interface {
 	pulumi.Input
 
@@ -571,7 +571,7 @@ type FeatureMembershipConfigmanagementConfigSyncGit struct {
 // FeatureMembershipConfigmanagementConfigSyncGitInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncGitArgs and FeatureMembershipConfigmanagementConfigSyncGitOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncGitInput` via:
 //
-//          FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
+//	FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
 type FeatureMembershipConfigmanagementConfigSyncGitInput interface {
 	pulumi.Input
 
@@ -621,11 +621,11 @@ func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipC
 // FeatureMembershipConfigmanagementConfigSyncGitPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncGitArgs, FeatureMembershipConfigmanagementConfigSyncGitPtr and FeatureMembershipConfigmanagementConfigSyncGitPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncGitPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
+//	        FeatureMembershipConfigmanagementConfigSyncGitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementConfigSyncGitPtrInput interface {
 	pulumi.Input
 
@@ -831,7 +831,7 @@ type FeatureMembershipConfigmanagementHierarchyController struct {
 // FeatureMembershipConfigmanagementHierarchyControllerInput is an input type that accepts FeatureMembershipConfigmanagementHierarchyControllerArgs and FeatureMembershipConfigmanagementHierarchyControllerOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementHierarchyControllerInput` via:
 //
-//          FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
+//	FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
 type FeatureMembershipConfigmanagementHierarchyControllerInput interface {
 	pulumi.Input
 
@@ -871,11 +871,11 @@ func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembe
 // FeatureMembershipConfigmanagementHierarchyControllerPtrInput is an input type that accepts FeatureMembershipConfigmanagementHierarchyControllerArgs, FeatureMembershipConfigmanagementHierarchyControllerPtr and FeatureMembershipConfigmanagementHierarchyControllerPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementHierarchyControllerPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
+//	        FeatureMembershipConfigmanagementHierarchyControllerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementHierarchyControllerPtrInput interface {
 	pulumi.Input
 
@@ -1004,9 +1004,11 @@ type FeatureMembershipConfigmanagementPolicyController struct {
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// Logs all denies and dry run failures.
-	LogDeniesEnabled *bool                                                        `pulumi:"logDeniesEnabled"`
-	Monitoring       *FeatureMembershipConfigmanagementPolicyControllerMonitoring `pulumi:"monitoring"`
-	MutationEnabled  *bool                                                        `pulumi:"mutationEnabled"`
+	LogDeniesEnabled *bool `pulumi:"logDeniesEnabled"`
+	// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+	Monitoring *FeatureMembershipConfigmanagementPolicyControllerMonitoring `pulumi:"monitoring"`
+	// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+	MutationEnabled *bool `pulumi:"mutationEnabled"`
 	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
 	ReferentialRulesEnabled *bool `pulumi:"referentialRulesEnabled"`
 	// Installs the default template library along with Policy Controller.
@@ -1016,7 +1018,7 @@ type FeatureMembershipConfigmanagementPolicyController struct {
 // FeatureMembershipConfigmanagementPolicyControllerInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerArgs and FeatureMembershipConfigmanagementPolicyControllerOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerInput` via:
 //
-//          FeatureMembershipConfigmanagementPolicyControllerArgs{...}
+//	FeatureMembershipConfigmanagementPolicyControllerArgs{...}
 type FeatureMembershipConfigmanagementPolicyControllerInput interface {
 	pulumi.Input
 
@@ -1032,9 +1034,11 @@ type FeatureMembershipConfigmanagementPolicyControllerArgs struct {
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
 	// Logs all denies and dry run failures.
-	LogDeniesEnabled pulumi.BoolPtrInput                                                 `pulumi:"logDeniesEnabled"`
-	Monitoring       FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput `pulumi:"monitoring"`
-	MutationEnabled  pulumi.BoolPtrInput                                                 `pulumi:"mutationEnabled"`
+	LogDeniesEnabled pulumi.BoolPtrInput `pulumi:"logDeniesEnabled"`
+	// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+	Monitoring FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput `pulumi:"monitoring"`
+	// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+	MutationEnabled pulumi.BoolPtrInput `pulumi:"mutationEnabled"`
 	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
 	ReferentialRulesEnabled pulumi.BoolPtrInput `pulumi:"referentialRulesEnabled"`
 	// Installs the default template library along with Policy Controller.
@@ -1064,11 +1068,11 @@ func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembersh
 // FeatureMembershipConfigmanagementPolicyControllerPtrInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerArgs, FeatureMembershipConfigmanagementPolicyControllerPtr and FeatureMembershipConfigmanagementPolicyControllerPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementPolicyControllerArgs{...}
+//	        FeatureMembershipConfigmanagementPolicyControllerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementPolicyControllerPtrInput interface {
 	pulumi.Input
 
@@ -1138,12 +1142,14 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) LogDeniesEnable
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.LogDeniesEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
 func (o FeatureMembershipConfigmanagementPolicyControllerOutput) Monitoring() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
 		return v.Monitoring
 	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
+// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
 func (o FeatureMembershipConfigmanagementPolicyControllerOutput) MutationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.MutationEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1222,6 +1228,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) LogDeniesEna
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Monitoring() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
 		if v == nil {
@@ -1231,6 +1238,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Monitoring()
 	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
+// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) MutationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
 		if v == nil {
@@ -1267,7 +1275,7 @@ type FeatureMembershipConfigmanagementPolicyControllerMonitoring struct {
 // FeatureMembershipConfigmanagementPolicyControllerMonitoringInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs and FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerMonitoringInput` via:
 //
-//          FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
+//	FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringInput interface {
 	pulumi.Input
 
@@ -1302,11 +1310,11 @@ func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatu
 // FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs, FeatureMembershipConfigmanagementPolicyControllerMonitoringPtr and FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput values.
 // You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput` via:
 //
-//          FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
+//	        FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput interface {
 	pulumi.Input
 
@@ -1401,7 +1409,7 @@ type FeatureResourceState struct {
 // FeatureResourceStateInput is an input type that accepts FeatureResourceStateArgs and FeatureResourceStateOutput values.
 // You can construct a concrete instance of `FeatureResourceStateInput` via:
 //
-//          FeatureResourceStateArgs{...}
+//	FeatureResourceStateArgs{...}
 type FeatureResourceStateInput interface {
 	pulumi.Input
 
@@ -1429,7 +1437,7 @@ func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx co
 // FeatureResourceStateArrayInput is an input type that accepts FeatureResourceStateArray and FeatureResourceStateArrayOutput values.
 // You can construct a concrete instance of `FeatureResourceStateArrayInput` via:
 //
-//          FeatureResourceStateArray{ FeatureResourceStateArgs{...} }
+//	FeatureResourceStateArray{ FeatureResourceStateArgs{...} }
 type FeatureResourceStateArrayInput interface {
 	pulumi.Input
 
@@ -1502,7 +1510,7 @@ type FeatureSpec struct {
 // FeatureSpecInput is an input type that accepts FeatureSpecArgs and FeatureSpecOutput values.
 // You can construct a concrete instance of `FeatureSpecInput` via:
 //
-//          FeatureSpecArgs{...}
+//	FeatureSpecArgs{...}
 type FeatureSpecInput interface {
 	pulumi.Input
 
@@ -1539,11 +1547,11 @@ func (i FeatureSpecArgs) ToFeatureSpecPtrOutputWithContext(ctx context.Context) 
 // FeatureSpecPtrInput is an input type that accepts FeatureSpecArgs, FeatureSpecPtr and FeatureSpecPtrOutput values.
 // You can construct a concrete instance of `FeatureSpecPtrInput` via:
 //
-//          FeatureSpecArgs{...}
+//	        FeatureSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureSpecPtrInput interface {
 	pulumi.Input
 
@@ -1642,7 +1650,7 @@ type FeatureSpecMulticlusteringress struct {
 // FeatureSpecMulticlusteringressInput is an input type that accepts FeatureSpecMulticlusteringressArgs and FeatureSpecMulticlusteringressOutput values.
 // You can construct a concrete instance of `FeatureSpecMulticlusteringressInput` via:
 //
-//          FeatureSpecMulticlusteringressArgs{...}
+//	FeatureSpecMulticlusteringressArgs{...}
 type FeatureSpecMulticlusteringressInput interface {
 	pulumi.Input
 
@@ -1678,11 +1686,11 @@ func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressPtrO
 // FeatureSpecMulticlusteringressPtrInput is an input type that accepts FeatureSpecMulticlusteringressArgs, FeatureSpecMulticlusteringressPtr and FeatureSpecMulticlusteringressPtrOutput values.
 // You can construct a concrete instance of `FeatureSpecMulticlusteringressPtrInput` via:
 //
-//          FeatureSpecMulticlusteringressArgs{...}
+//	        FeatureSpecMulticlusteringressArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FeatureSpecMulticlusteringressPtrInput interface {
 	pulumi.Input
 
@@ -1778,7 +1786,7 @@ type FeatureStateType struct {
 // FeatureStateTypeInput is an input type that accepts FeatureStateTypeArgs and FeatureStateTypeOutput values.
 // You can construct a concrete instance of `FeatureStateTypeInput` via:
 //
-//          FeatureStateTypeArgs{...}
+//	FeatureStateTypeArgs{...}
 type FeatureStateTypeInput interface {
 	pulumi.Input
 
@@ -1805,7 +1813,7 @@ func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Co
 // FeatureStateTypeArrayInput is an input type that accepts FeatureStateTypeArray and FeatureStateTypeArrayOutput values.
 // You can construct a concrete instance of `FeatureStateTypeArrayInput` via:
 //
-//          FeatureStateTypeArray{ FeatureStateTypeArgs{...} }
+//	FeatureStateTypeArray{ FeatureStateTypeArgs{...} }
 type FeatureStateTypeArrayInput interface {
 	pulumi.Input
 
@@ -1874,7 +1882,7 @@ type FeatureStateState struct {
 // FeatureStateStateInput is an input type that accepts FeatureStateStateArgs and FeatureStateStateOutput values.
 // You can construct a concrete instance of `FeatureStateStateInput` via:
 //
-//          FeatureStateStateArgs{...}
+//	FeatureStateStateArgs{...}
 type FeatureStateStateInput interface {
 	pulumi.Input
 
@@ -1903,7 +1911,7 @@ func (i FeatureStateStateArgs) ToFeatureStateStateOutputWithContext(ctx context.
 // FeatureStateStateArrayInput is an input type that accepts FeatureStateStateArray and FeatureStateStateArrayOutput values.
 // You can construct a concrete instance of `FeatureStateStateArrayInput` via:
 //
-//          FeatureStateStateArray{ FeatureStateStateArgs{...} }
+//	FeatureStateStateArray{ FeatureStateStateArgs{...} }
 type FeatureStateStateArrayInput interface {
 	pulumi.Input
 
@@ -1978,7 +1986,7 @@ type MembershipAuthority struct {
 // MembershipAuthorityInput is an input type that accepts MembershipAuthorityArgs and MembershipAuthorityOutput values.
 // You can construct a concrete instance of `MembershipAuthorityInput` via:
 //
-//          MembershipAuthorityArgs{...}
+//	MembershipAuthorityArgs{...}
 type MembershipAuthorityInput interface {
 	pulumi.Input
 
@@ -2013,11 +2021,11 @@ func (i MembershipAuthorityArgs) ToMembershipAuthorityPtrOutputWithContext(ctx c
 // MembershipAuthorityPtrInput is an input type that accepts MembershipAuthorityArgs, MembershipAuthorityPtr and MembershipAuthorityPtrOutput values.
 // You can construct a concrete instance of `MembershipAuthorityPtrInput` via:
 //
-//          MembershipAuthorityArgs{...}
+//	        MembershipAuthorityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MembershipAuthorityPtrInput interface {
 	pulumi.Input
 
@@ -2113,7 +2121,7 @@ type MembershipEndpoint struct {
 // MembershipEndpointInput is an input type that accepts MembershipEndpointArgs and MembershipEndpointOutput values.
 // You can construct a concrete instance of `MembershipEndpointInput` via:
 //
-//          MembershipEndpointArgs{...}
+//	MembershipEndpointArgs{...}
 type MembershipEndpointInput interface {
 	pulumi.Input
 
@@ -2150,11 +2158,11 @@ func (i MembershipEndpointArgs) ToMembershipEndpointPtrOutputWithContext(ctx con
 // MembershipEndpointPtrInput is an input type that accepts MembershipEndpointArgs, MembershipEndpointPtr and MembershipEndpointPtrOutput values.
 // You can construct a concrete instance of `MembershipEndpointPtrInput` via:
 //
-//          MembershipEndpointArgs{...}
+//	        MembershipEndpointArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MembershipEndpointPtrInput interface {
 	pulumi.Input
 
@@ -2252,7 +2260,7 @@ type MembershipEndpointGkeCluster struct {
 // MembershipEndpointGkeClusterInput is an input type that accepts MembershipEndpointGkeClusterArgs and MembershipEndpointGkeClusterOutput values.
 // You can construct a concrete instance of `MembershipEndpointGkeClusterInput` via:
 //
-//          MembershipEndpointGkeClusterArgs{...}
+//	MembershipEndpointGkeClusterArgs{...}
 type MembershipEndpointGkeClusterInput interface {
 	pulumi.Input
 
@@ -2287,11 +2295,11 @@ func (i MembershipEndpointGkeClusterArgs) ToMembershipEndpointGkeClusterPtrOutpu
 // MembershipEndpointGkeClusterPtrInput is an input type that accepts MembershipEndpointGkeClusterArgs, MembershipEndpointGkeClusterPtr and MembershipEndpointGkeClusterPtrOutput values.
 // You can construct a concrete instance of `MembershipEndpointGkeClusterPtrInput` via:
 //
-//          MembershipEndpointGkeClusterArgs{...}
+//	        MembershipEndpointGkeClusterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MembershipEndpointGkeClusterPtrInput interface {
 	pulumi.Input
 
@@ -2378,6 +2386,332 @@ func (o MembershipEndpointGkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type MembershipIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MembershipIamBindingConditionInput is an input type that accepts MembershipIamBindingConditionArgs and MembershipIamBindingConditionOutput values.
+// You can construct a concrete instance of `MembershipIamBindingConditionInput` via:
+//
+//	MembershipIamBindingConditionArgs{...}
+type MembershipIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToMembershipIamBindingConditionOutput() MembershipIamBindingConditionOutput
+	ToMembershipIamBindingConditionOutputWithContext(context.Context) MembershipIamBindingConditionOutput
+}
+
+type MembershipIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MembershipIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipIamBindingCondition)(nil)).Elem()
+}
+
+func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionOutput() MembershipIamBindingConditionOutput {
+	return i.ToMembershipIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionOutputWithContext(ctx context.Context) MembershipIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionOutput)
+}
+
+func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput {
+	return i.ToMembershipIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionPtrOutputWithContext(ctx context.Context) MembershipIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionOutput).ToMembershipIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// MembershipIamBindingConditionPtrInput is an input type that accepts MembershipIamBindingConditionArgs, MembershipIamBindingConditionPtr and MembershipIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `MembershipIamBindingConditionPtrInput` via:
+//
+//	        MembershipIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MembershipIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput
+	ToMembershipIamBindingConditionPtrOutputWithContext(context.Context) MembershipIamBindingConditionPtrOutput
+}
+
+type membershipIamBindingConditionPtrType MembershipIamBindingConditionArgs
+
+func MembershipIamBindingConditionPtr(v *MembershipIamBindingConditionArgs) MembershipIamBindingConditionPtrInput {
+	return (*membershipIamBindingConditionPtrType)(v)
+}
+
+func (*membershipIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipIamBindingCondition)(nil)).Elem()
+}
+
+func (i *membershipIamBindingConditionPtrType) ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput {
+	return i.ToMembershipIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *membershipIamBindingConditionPtrType) ToMembershipIamBindingConditionPtrOutputWithContext(ctx context.Context) MembershipIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionPtrOutput)
+}
+
+type MembershipIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (MembershipIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipIamBindingCondition)(nil)).Elem()
+}
+
+func (o MembershipIamBindingConditionOutput) ToMembershipIamBindingConditionOutput() MembershipIamBindingConditionOutput {
+	return o
+}
+
+func (o MembershipIamBindingConditionOutput) ToMembershipIamBindingConditionOutputWithContext(ctx context.Context) MembershipIamBindingConditionOutput {
+	return o
+}
+
+func (o MembershipIamBindingConditionOutput) ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput {
+	return o.ToMembershipIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipIamBindingConditionOutput) ToMembershipIamBindingConditionPtrOutputWithContext(ctx context.Context) MembershipIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipIamBindingCondition) *MembershipIamBindingCondition {
+		return &v
+	}).(MembershipIamBindingConditionPtrOutput)
+}
+
+func (o MembershipIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembershipIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MembershipIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MembershipIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MembershipIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipIamBindingCondition)(nil)).Elem()
+}
+
+func (o MembershipIamBindingConditionPtrOutput) ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MembershipIamBindingConditionPtrOutput) ToMembershipIamBindingConditionPtrOutputWithContext(ctx context.Context) MembershipIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MembershipIamBindingConditionPtrOutput) Elem() MembershipIamBindingConditionOutput {
+	return o.ApplyT(func(v *MembershipIamBindingCondition) MembershipIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipIamBindingCondition
+		return ret
+	}).(MembershipIamBindingConditionOutput)
+}
+
+func (o MembershipIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MembershipIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MembershipIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MembershipIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MembershipIamMemberConditionInput is an input type that accepts MembershipIamMemberConditionArgs and MembershipIamMemberConditionOutput values.
+// You can construct a concrete instance of `MembershipIamMemberConditionInput` via:
+//
+//	MembershipIamMemberConditionArgs{...}
+type MembershipIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToMembershipIamMemberConditionOutput() MembershipIamMemberConditionOutput
+	ToMembershipIamMemberConditionOutputWithContext(context.Context) MembershipIamMemberConditionOutput
+}
+
+type MembershipIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MembershipIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipIamMemberCondition)(nil)).Elem()
+}
+
+func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionOutput() MembershipIamMemberConditionOutput {
+	return i.ToMembershipIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionOutputWithContext(ctx context.Context) MembershipIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionOutput)
+}
+
+func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput {
+	return i.ToMembershipIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionPtrOutputWithContext(ctx context.Context) MembershipIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionOutput).ToMembershipIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// MembershipIamMemberConditionPtrInput is an input type that accepts MembershipIamMemberConditionArgs, MembershipIamMemberConditionPtr and MembershipIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `MembershipIamMemberConditionPtrInput` via:
+//
+//	        MembershipIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MembershipIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput
+	ToMembershipIamMemberConditionPtrOutputWithContext(context.Context) MembershipIamMemberConditionPtrOutput
+}
+
+type membershipIamMemberConditionPtrType MembershipIamMemberConditionArgs
+
+func MembershipIamMemberConditionPtr(v *MembershipIamMemberConditionArgs) MembershipIamMemberConditionPtrInput {
+	return (*membershipIamMemberConditionPtrType)(v)
+}
+
+func (*membershipIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipIamMemberCondition)(nil)).Elem()
+}
+
+func (i *membershipIamMemberConditionPtrType) ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput {
+	return i.ToMembershipIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *membershipIamMemberConditionPtrType) ToMembershipIamMemberConditionPtrOutputWithContext(ctx context.Context) MembershipIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionPtrOutput)
+}
+
+type MembershipIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (MembershipIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipIamMemberCondition)(nil)).Elem()
+}
+
+func (o MembershipIamMemberConditionOutput) ToMembershipIamMemberConditionOutput() MembershipIamMemberConditionOutput {
+	return o
+}
+
+func (o MembershipIamMemberConditionOutput) ToMembershipIamMemberConditionOutputWithContext(ctx context.Context) MembershipIamMemberConditionOutput {
+	return o
+}
+
+func (o MembershipIamMemberConditionOutput) ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput {
+	return o.ToMembershipIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipIamMemberConditionOutput) ToMembershipIamMemberConditionPtrOutputWithContext(ctx context.Context) MembershipIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipIamMemberCondition) *MembershipIamMemberCondition {
+		return &v
+	}).(MembershipIamMemberConditionPtrOutput)
+}
+
+func (o MembershipIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembershipIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MembershipIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MembershipIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MembershipIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipIamMemberCondition)(nil)).Elem()
+}
+
+func (o MembershipIamMemberConditionPtrOutput) ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MembershipIamMemberConditionPtrOutput) ToMembershipIamMemberConditionPtrOutputWithContext(ctx context.Context) MembershipIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MembershipIamMemberConditionPtrOutput) Elem() MembershipIamMemberConditionOutput {
+	return o.ApplyT(func(v *MembershipIamMemberCondition) MembershipIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipIamMemberCondition
+		return ret
+	}).(MembershipIamMemberConditionOutput)
+}
+
+func (o MembershipIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MembershipIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MembershipIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementInput)(nil)).Elem(), FeatureMembershipConfigmanagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementArgs{})
@@ -2409,6 +2743,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointGkeClusterInput)(nil)).Elem(), MembershipEndpointGkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointGkeClusterPtrInput)(nil)).Elem(), MembershipEndpointGkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamBindingConditionInput)(nil)).Elem(), MembershipIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamBindingConditionPtrInput)(nil)).Elem(), MembershipIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamMemberConditionInput)(nil)).Elem(), MembershipIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamMemberConditionPtrInput)(nil)).Elem(), MembershipIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzOutput{})
@@ -2439,4 +2777,8 @@ func init() {
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointGkeClusterOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointGkeClusterPtrOutput{})
+	pulumi.RegisterOutputType(MembershipIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(MembershipIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(MembershipIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(MembershipIamMemberConditionPtrOutput{})
 }

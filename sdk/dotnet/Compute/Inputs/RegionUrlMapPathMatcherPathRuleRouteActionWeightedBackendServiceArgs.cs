@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default RegionBackendService resource. Before
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs Empty => new RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ResponsePolicyRuleLocalDataGetArgs : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyRuleLocalDataGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("localDatas", required: true)]
         private InputList<Inputs.ResponsePolicyRuleLocalDataLocalDataGetArgs>? _localDatas;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ResponsePolicyRuleLocalDataGetArgs()
         {
         }
+        public static new ResponsePolicyRuleLocalDataGetArgs Empty => new ResponsePolicyRuleLocalDataGetArgs();
     }
 }

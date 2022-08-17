@@ -16,27 +16,25 @@ namespace Pulumi.Gcp.DataPlex
     /// ### Basic_lake
     /// A basic example of a dataplex lake
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.DataPlex.Lake("primary", new()
     ///     {
-    ///         var primary = new Gcp.DataPlex.Lake("primary", new Gcp.DataPlex.LakeArgs
+    ///         Description = "Lake for DCL",
+    ///         DisplayName = "Lake for DCL",
+    ///         Labels = 
     ///         {
-    ///             Description = "Lake for DCL",
-    ///             DisplayName = "Lake for DCL",
-    ///             Labels = 
-    ///             {
-    ///                 { "my-lake", "exists" },
-    ///             },
-    ///             Location = "us-west1",
-    ///             Project = "my-project-name",
-    ///         });
-    ///     }
+    ///             { "my-lake", "exists" },
+    ///         },
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.DataPlex
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataplex/lake:Lake")]
-    public partial class Lake : Pulumi.CustomResource
+    public partial class Lake : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. Aggregated status of the underlying assets of the lake.
@@ -188,7 +186,7 @@ namespace Pulumi.Gcp.DataPlex
         }
     }
 
-    public sealed class LakeArgs : Pulumi.ResourceArgs
+    public sealed class LakeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the lake.
@@ -241,9 +239,10 @@ namespace Pulumi.Gcp.DataPlex
         public LakeArgs()
         {
         }
+        public static new LakeArgs Empty => new LakeArgs();
     }
 
-    public sealed class LakeState : Pulumi.ResourceArgs
+    public sealed class LakeState : global::Pulumi.ResourceArgs
     {
         [Input("assetStatuses")]
         private InputList<Inputs.LakeAssetStatusGetArgs>? _assetStatuses;
@@ -352,5 +351,6 @@ namespace Pulumi.Gcp.DataPlex
         public LakeState()
         {
         }
+        public static new LakeState Empty => new LakeState();
     }
 }

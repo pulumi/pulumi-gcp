@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Filestore.Inputs
 {
 
-    public sealed class InstanceFileSharesArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFileSharesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// File share capacity in GiB. This must be at least 1024 GiB
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Filestore.Inputs
         public InstanceFileSharesArgs()
         {
         }
+        public static new InstanceFileSharesArgs Empty => new InstanceFileSharesArgs();
     }
 }

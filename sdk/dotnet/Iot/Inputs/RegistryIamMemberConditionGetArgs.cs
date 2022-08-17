@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iot.Inputs
 {
 
-    public sealed class RegistryIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class RegistryIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Iot.Inputs
         public RegistryIamMemberConditionGetArgs()
         {
         }
+        public static new RegistryIamMemberConditionGetArgs Empty => new RegistryIamMemberConditionGetArgs();
     }
 }

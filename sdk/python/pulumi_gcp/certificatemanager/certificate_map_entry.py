@@ -28,8 +28,7 @@ class CertificateMapEntryArgs:
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
-        :param pulumi.Input[str] description: CertificateMapEntry is a list of certificate configurations,
-               that have been issued for a particular hostname
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
                selecting a proper certificate.
@@ -37,7 +36,6 @@ class CertificateMapEntryArgs:
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
-               Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
                'projects/*/locations/*/certificateMaps/*/certificateMapEntries/*'
@@ -89,8 +87,7 @@ class CertificateMapEntryArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        CertificateMapEntry is a list of certificate configurations,
-        that have been issued for a particular hostname
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -131,7 +128,6 @@ class CertificateMapEntryArgs:
     def matcher(self) -> Optional[pulumi.Input[str]]:
         """
         A predefined matcher for particular cases, other than SNI selection
-        Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         """
         return pulumi.get(self, "matcher")
 
@@ -188,8 +184,7 @@ class _CertificateMapEntryState:
                Each certificate must match pattern projects/*/locations/*/certificates/*.
         :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] description: CertificateMapEntry is a list of certificate configurations,
-               that have been issued for a particular hostname
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
                selecting a proper certificate.
@@ -198,14 +193,12 @@ class _CertificateMapEntryState:
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
-               Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
                'projects/*/locations/*/certificateMaps/*/certificateMapEntries/*'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-               progress. Some frontends may serve this configuration.
+        :param pulumi.Input[str] state: A serving state of this Certificate Map Entry.
         :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -263,8 +256,7 @@ class _CertificateMapEntryState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        CertificateMapEntry is a list of certificate configurations,
-        that have been issued for a particular hostname
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -317,7 +309,6 @@ class _CertificateMapEntryState:
     def matcher(self) -> Optional[pulumi.Input[str]]:
         """
         A predefined matcher for particular cases, other than SNI selection
-        Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         """
         return pulumi.get(self, "matcher")
 
@@ -356,8 +347,7 @@ class _CertificateMapEntryState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-        progress. Some frontends may serve this configuration.
+        A serving state of this Certificate Map Entry.
         """
         return pulumi.get(self, "state")
 
@@ -463,8 +453,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificates: A set of Certificates defines for the given hostname.
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
-        :param pulumi.Input[str] description: CertificateMapEntry is a list of certificate configurations,
-               that have been issued for a particular hostname
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
                selecting a proper certificate.
@@ -473,7 +462,6 @@ class CertificateMapEntry(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
-               Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
                'projects/*/locations/*/certificateMaps/*/certificateMapEntries/*'
@@ -631,8 +619,7 @@ class CertificateMapEntry(pulumi.CustomResource):
                Each certificate must match pattern projects/*/locations/*/certificates/*.
         :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] description: CertificateMapEntry is a list of certificate configurations,
-               that have been issued for a particular hostname
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
                selecting a proper certificate.
@@ -641,14 +628,12 @@ class CertificateMapEntry(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
-               Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
                'projects/*/locations/*/certificateMaps/*/certificateMapEntries/*'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-               progress. Some frontends may serve this configuration.
+        :param pulumi.Input[str] state: A serving state of this Certificate Map Entry.
         :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -692,8 +677,7 @@ class CertificateMapEntry(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        CertificateMapEntry is a list of certificate configurations,
-        that have been issued for a particular hostname
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -730,7 +714,6 @@ class CertificateMapEntry(pulumi.CustomResource):
     def matcher(self) -> pulumi.Output[Optional[str]]:
         """
         A predefined matcher for particular cases, other than SNI selection
-        Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         """
         return pulumi.get(self, "matcher")
 
@@ -757,8 +740,7 @@ class CertificateMapEntry(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-        progress. Some frontends may serve this configuration.
+        A serving state of this Certificate Map Entry.
         """
         return pulumi.get(self, "state")
 

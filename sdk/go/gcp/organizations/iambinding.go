@@ -15,12 +15,14 @@ import (
 // an existing Google Cloud Platform Organization.
 //
 // > **Note:** This resource __must not__ be used in conjunction with
-//    `organizations.IAMMember` for the __same role__ or they will fight over
-//    what your policy should be.
+//
+//	`organizations.IAMMember` for the __same role__ or they will fight over
+//	what your policy should be.
 //
 // > **Note:** On create, this resource will overwrite members of any existing roles.
-//     Use `pulumi import` and inspect the `output to ensure
-//     your existing members are preserved.
+//
+//	Use `pulumi import` and inspect the `output to ensure
+//	your existing members are preserved.
 //
 // ## Example Usage
 //
@@ -28,25 +30,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewIAMBinding(ctx, "binding", &organizations.IAMBindingArgs{
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:alice@gmail.com"),
-// 			},
-// 			OrgId: pulumi.String("123456789"),
-// 			Role:  pulumi.String("roles/browser"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "binding", &organizations.IAMBindingArgs{
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:alice@gmail.com"),
+//				},
+//				OrgId: pulumi.String("123456789"),
+//				Role:  pulumi.String("roles/browser"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,10 +61,12 @@ import (
 // These bindings can be imported using the `org_id` and role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+//
+//	$ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMBinding struct {
@@ -198,7 +205,7 @@ func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindi
 // IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
 // You can construct a concrete instance of `IAMBindingArrayInput` via:
 //
-//          IAMBindingArray{ IAMBindingArgs{...} }
+//	IAMBindingArray{ IAMBindingArgs{...} }
 type IAMBindingArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +230,7 @@ func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context)
 // IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
 // You can construct a concrete instance of `IAMBindingMapInput` via:
 //
-//          IAMBindingMap{ "key": IAMBindingArgs{...} }
+//	IAMBindingMap{ "key": IAMBindingArgs{...} }
 type IAMBindingMapInput interface {
 	pulumi.Input
 

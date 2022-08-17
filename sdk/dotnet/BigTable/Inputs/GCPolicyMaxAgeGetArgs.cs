@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable.Inputs
 {
 
-    public sealed class GCPolicyMaxAgeGetArgs : Pulumi.ResourceArgs
+    public sealed class GCPolicyMaxAgeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of days before applying GC policy.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public GCPolicyMaxAgeGetArgs()
         {
         }
+        public static new GCPolicyMaxAgeGetArgs Empty => new GCPolicyMaxAgeGetArgs();
     }
 }

@@ -77,7 +77,7 @@ export class CertificateMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * One or more paragraphs of text description of a certificate map entry.
+     * A human-readable description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -149,7 +149,7 @@ export interface CertificateMapState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * One or more paragraphs of text description of a certificate map entry.
+     * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -182,7 +182,7 @@ export interface CertificateMapState {
  */
 export interface CertificateMapArgs {
     /**
-     * One or more paragraphs of text description of a certificate map entry.
+     * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
     /**

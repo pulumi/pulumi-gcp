@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+//   - [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 //
 // ## Example Usage
 // ### Os Config Guest Policies Basic
@@ -28,65 +28,68 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobar, err := compute.NewInstance(ctx, "foobar", &compute.InstanceArgs{
-// 			MachineType:  pulumi.String("e2-medium"),
-// 			Zone:         pulumi.String("us-central1-a"),
-// 			CanIpForward: pulumi.Bool(false),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String(myImage.SelfLink),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			Metadata: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
-// 			GuestPolicyId: pulumi.String("guest-policy"),
-// 			Assignment: &osconfig.GuestPoliciesAssignmentArgs{
-// 				Instances: pulumi.StringArray{
-// 					foobar.ID(),
-// 				},
-// 			},
-// 			Packages: osconfig.GuestPoliciesPackageArray{
-// 				&osconfig.GuestPoliciesPackageArgs{
-// 					Name:         pulumi.String("my-package"),
-// 					DesiredState: pulumi.String("UPDATED"),
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewInstance(ctx, "foobar", &compute.InstanceArgs{
+//				MachineType:  pulumi.String("e2-medium"),
+//				Zone:         pulumi.String("us-central1-a"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
+//				GuestPolicyId: pulumi.String("guest-policy"),
+//				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
+//					Instances: pulumi.StringArray{
+//						foobar.ID(),
+//					},
+//				},
+//				Packages: osconfig.GuestPoliciesPackageArray{
+//					&osconfig.GuestPoliciesPackageArgs{
+//						Name:         pulumi.String("my-package"),
+//						DesiredState: pulumi.String("UPDATED"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Os Config Guest Policies Packages
 //
@@ -94,75 +97,78 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
-// 			GuestPolicyId: pulumi.String("guest-policy"),
-// 			Assignment: &osconfig.GuestPoliciesAssignmentArgs{
-// 				GroupLabels: osconfig.GuestPoliciesAssignmentGroupLabelArray{
-// 					&osconfig.GuestPoliciesAssignmentGroupLabelArgs{
-// 						Labels: pulumi.StringMap{
-// 							"color": pulumi.String("red"),
-// 							"env":   pulumi.String("test"),
-// 						},
-// 					},
-// 					&osconfig.GuestPoliciesAssignmentGroupLabelArgs{
-// 						Labels: pulumi.StringMap{
-// 							"color": pulumi.String("blue"),
-// 							"env":   pulumi.String("test"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Packages: osconfig.GuestPoliciesPackageArray{
-// 				&osconfig.GuestPoliciesPackageArgs{
-// 					Name:         pulumi.String("my-package"),
-// 					DesiredState: pulumi.String("INSTALLED"),
-// 				},
-// 				&osconfig.GuestPoliciesPackageArgs{
-// 					Name:         pulumi.String("bad-package-1"),
-// 					DesiredState: pulumi.String("REMOVED"),
-// 				},
-// 				&osconfig.GuestPoliciesPackageArgs{
-// 					Name:         pulumi.String("bad-package-2"),
-// 					DesiredState: pulumi.String("REMOVED"),
-// 					Manager:      pulumi.String("APT"),
-// 				},
-// 			},
-// 			PackageRepositories: osconfig.GuestPoliciesPackageRepositoryArray{
-// 				&osconfig.GuestPoliciesPackageRepositoryArgs{
-// 					Apt: &osconfig.GuestPoliciesPackageRepositoryAptArgs{
-// 						Uri:          pulumi.String("https://packages.cloud.google.com/apt"),
-// 						ArchiveType:  pulumi.String("DEB"),
-// 						Distribution: pulumi.String("cloud-sdk-stretch"),
-// 						Components: pulumi.StringArray{
-// 							pulumi.String("main"),
-// 						},
-// 					},
-// 				},
-// 				&osconfig.GuestPoliciesPackageRepositoryArgs{
-// 					Yum: &osconfig.GuestPoliciesPackageRepositoryYumArgs{
-// 						Id:          pulumi.String("google-cloud-sdk"),
-// 						DisplayName: pulumi.String("Google Cloud SDK"),
-// 						BaseUrl:     pulumi.String("https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64"),
-// 						GpgKeys: pulumi.StringArray{
-// 							pulumi.String("https://packages.cloud.google.com/yum/doc/yum-key.gpg"),
-// 							pulumi.String("https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
+//				GuestPolicyId: pulumi.String("guest-policy"),
+//				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
+//					GroupLabels: osconfig.GuestPoliciesAssignmentGroupLabelArray{
+//						&osconfig.GuestPoliciesAssignmentGroupLabelArgs{
+//							Labels: pulumi.StringMap{
+//								"color": pulumi.String("red"),
+//								"env":   pulumi.String("test"),
+//							},
+//						},
+//						&osconfig.GuestPoliciesAssignmentGroupLabelArgs{
+//							Labels: pulumi.StringMap{
+//								"color": pulumi.String("blue"),
+//								"env":   pulumi.String("test"),
+//							},
+//						},
+//					},
+//				},
+//				Packages: osconfig.GuestPoliciesPackageArray{
+//					&osconfig.GuestPoliciesPackageArgs{
+//						Name:         pulumi.String("my-package"),
+//						DesiredState: pulumi.String("INSTALLED"),
+//					},
+//					&osconfig.GuestPoliciesPackageArgs{
+//						Name:         pulumi.String("bad-package-1"),
+//						DesiredState: pulumi.String("REMOVED"),
+//					},
+//					&osconfig.GuestPoliciesPackageArgs{
+//						Name:         pulumi.String("bad-package-2"),
+//						DesiredState: pulumi.String("REMOVED"),
+//						Manager:      pulumi.String("APT"),
+//					},
+//				},
+//				PackageRepositories: osconfig.GuestPoliciesPackageRepositoryArray{
+//					&osconfig.GuestPoliciesPackageRepositoryArgs{
+//						Apt: &osconfig.GuestPoliciesPackageRepositoryAptArgs{
+//							Uri:          pulumi.String("https://packages.cloud.google.com/apt"),
+//							ArchiveType:  pulumi.String("DEB"),
+//							Distribution: pulumi.String("cloud-sdk-stretch"),
+//							Components: pulumi.StringArray{
+//								pulumi.String("main"),
+//							},
+//						},
+//					},
+//					&osconfig.GuestPoliciesPackageRepositoryArgs{
+//						Yum: &osconfig.GuestPoliciesPackageRepositoryYumArgs{
+//							Id:          pulumi.String("google-cloud-sdk"),
+//							DisplayName: pulumi.String("Google Cloud SDK"),
+//							BaseUrl:     pulumi.String("https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64"),
+//							GpgKeys: pulumi.StringArray{
+//								pulumi.String("https://packages.cloud.google.com/yum/doc/yum-key.gpg"),
+//								pulumi.String("https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Os Config Guest Policies Recipes
 //
@@ -170,66 +176,75 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
-// 			GuestPolicyId: pulumi.String("guest-policy"),
-// 			Assignment: &osconfig.GuestPoliciesAssignmentArgs{
-// 				Zones: pulumi.StringArray{
-// 					pulumi.String("us-east1-b"),
-// 					pulumi.String("us-east1-d"),
-// 				},
-// 			},
-// 			Recipes: osconfig.GuestPoliciesRecipeArray{
-// 				&osconfig.GuestPoliciesRecipeArgs{
-// 					Name:         pulumi.String("guest-policy-recipe"),
-// 					DesiredState: pulumi.String("INSTALLED"),
-// 					Artifacts: osconfig.GuestPoliciesRecipeArtifactArray{
-// 						&osconfig.GuestPoliciesRecipeArtifactArgs{
-// 							Id: pulumi.String("guest-policy-artifact-id"),
-// 							Gcs: &osconfig.GuestPoliciesRecipeArtifactGcsArgs{
-// 								Bucket:     pulumi.String("my-bucket"),
-// 								Object:     pulumi.String("executable.msi"),
-// 								Generation: pulumi.Int(1546030865175603),
-// 							},
-// 						},
-// 					},
-// 					InstallSteps: osconfig.GuestPoliciesRecipeInstallStepArray{
-// 						&osconfig.GuestPoliciesRecipeInstallStepArgs{
-// 							MsiInstallation: &osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs{
-// 								ArtifactId: pulumi.String("guest-policy-artifact-id"),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := osconfig.NewGuestPolicies(ctx, "guestPolicies", &osconfig.GuestPoliciesArgs{
+//				GuestPolicyId: pulumi.String("guest-policy"),
+//				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
+//					Zones: pulumi.StringArray{
+//						pulumi.String("us-east1-b"),
+//						pulumi.String("us-east1-d"),
+//					},
+//				},
+//				Recipes: osconfig.GuestPoliciesRecipeArray{
+//					&osconfig.GuestPoliciesRecipeArgs{
+//						Name:         pulumi.String("guest-policy-recipe"),
+//						DesiredState: pulumi.String("INSTALLED"),
+//						Artifacts: osconfig.GuestPoliciesRecipeArtifactArray{
+//							&osconfig.GuestPoliciesRecipeArtifactArgs{
+//								Id: pulumi.String("guest-policy-artifact-id"),
+//								Gcs: &osconfig.GuestPoliciesRecipeArtifactGcsArgs{
+//									Bucket:     pulumi.String("my-bucket"),
+//									Object:     pulumi.String("executable.msi"),
+//									Generation: pulumi.Int(1546030865175603),
+//								},
+//							},
+//						},
+//						InstallSteps: osconfig.GuestPoliciesRecipeInstallStepArray{
+//							&osconfig.GuestPoliciesRecipeInstallStepArgs{
+//								MsiInstallation: &osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs{
+//									ArtifactId: pulumi.String("guest-policy-artifact-id"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// GuestPolicies can be imported using any of these accepted formats
+// # GuestPolicies can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
+//
+//	$ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
+//
+//	$ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
+//
+//	$ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
+//
 // ```
 type GuestPolicies struct {
 	pulumi.CustomResourceState
@@ -516,7 +531,7 @@ func (i *GuestPolicies) ToGuestPoliciesOutputWithContext(ctx context.Context) Gu
 // GuestPoliciesArrayInput is an input type that accepts GuestPoliciesArray and GuestPoliciesArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesArrayInput` via:
 //
-//          GuestPoliciesArray{ GuestPoliciesArgs{...} }
+//	GuestPoliciesArray{ GuestPoliciesArgs{...} }
 type GuestPoliciesArrayInput interface {
 	pulumi.Input
 
@@ -541,7 +556,7 @@ func (i GuestPoliciesArray) ToGuestPoliciesArrayOutputWithContext(ctx context.Co
 // GuestPoliciesMapInput is an input type that accepts GuestPoliciesMap and GuestPoliciesMapOutput values.
 // You can construct a concrete instance of `GuestPoliciesMapInput` via:
 //
-//          GuestPoliciesMap{ "key": GuestPoliciesArgs{...} }
+//	GuestPoliciesMap{ "key": GuestPoliciesArgs{...} }
 type GuestPoliciesMapInput interface {
 	pulumi.Input
 

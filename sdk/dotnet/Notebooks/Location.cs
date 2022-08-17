@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Notebooks
     /// ```
     /// </summary>
     [GcpResourceType("gcp:notebooks/location:Location")]
-    public partial class Location : Pulumi.CustomResource
+    public partial class Location : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the Location resource.
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class LocationArgs : Pulumi.ResourceArgs
+    public sealed class LocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the Location resource.
@@ -112,9 +112,10 @@ namespace Pulumi.Gcp.Notebooks
         public LocationArgs()
         {
         }
+        public static new LocationArgs Empty => new LocationArgs();
     }
 
-    public sealed class LocationState : Pulumi.ResourceArgs
+    public sealed class LocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the Location resource.
@@ -138,5 +139,6 @@ namespace Pulumi.Gcp.Notebooks
         public LocationState()
         {
         }
+        public static new LocationState Empty => new LocationState();
     }
 }

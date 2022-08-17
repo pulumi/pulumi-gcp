@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -134,5 +134,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildGetArgs()
         {
         }
+        public static new TriggerBuildGetArgs Empty => new TriggerBuildGetArgs();
     }
 }

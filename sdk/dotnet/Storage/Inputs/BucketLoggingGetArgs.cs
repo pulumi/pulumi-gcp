@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketLoggingGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketLoggingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bucket that will receive log objects.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public BucketLoggingGetArgs()
         {
         }
+        public static new BucketLoggingGetArgs Empty => new BucketLoggingGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs()
         {
         }
+        public static new TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs Empty => new TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs();
     }
 }

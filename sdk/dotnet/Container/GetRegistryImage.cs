@@ -21,23 +21,22 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var debian = Gcp.Container.GetRegistryImage.Invoke(new()
         ///     {
-        ///         var debian = Output.Create(Gcp.Container.GetRegistryImage.InvokeAsync(new Gcp.Container.GetRegistryImageArgs
-        ///         {
-        ///             Name = "debian",
-        ///         }));
-        ///         this.GcrLocation = debian.Apply(debian =&gt; debian.ImageUrl);
-        ///     }
+        ///         Name = "debian",
+        ///     });
         /// 
-        ///     [Output("gcrLocation")]
-        ///     public Output&lt;string&gt; GcrLocation { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcrLocation"] = debian.Apply(getRegistryImageResult =&gt; getRegistryImageResult.ImageUrl),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,23 +54,22 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var debian = Gcp.Container.GetRegistryImage.Invoke(new()
         ///     {
-        ///         var debian = Output.Create(Gcp.Container.GetRegistryImage.InvokeAsync(new Gcp.Container.GetRegistryImageArgs
-        ///         {
-        ///             Name = "debian",
-        ///         }));
-        ///         this.GcrLocation = debian.Apply(debian =&gt; debian.ImageUrl);
-        ///     }
+        ///         Name = "debian",
+        ///     });
         /// 
-        ///     [Output("gcrLocation")]
-        ///     public Output&lt;string&gt; GcrLocation { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcrLocation"] = debian.Apply(getRegistryImageResult =&gt; getRegistryImageResult.ImageUrl),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.Container
     }
 
 
-    public sealed class GetRegistryImageArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryImageArgs : global::Pulumi.InvokeArgs
     {
         [Input("digest")]
         public string? Digest { get; set; }
@@ -101,9 +99,10 @@ namespace Pulumi.Gcp.Container
         public GetRegistryImageArgs()
         {
         }
+        public static new GetRegistryImageArgs Empty => new GetRegistryImageArgs();
     }
 
-    public sealed class GetRegistryImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("digest")]
         public Input<string>? Digest { get; set; }
@@ -123,6 +122,7 @@ namespace Pulumi.Gcp.Container
         public GetRegistryImageInvokeArgs()
         {
         }
+        public static new GetRegistryImageInvokeArgs Empty => new GetRegistryImageInvokeArgs();
     }
 
 

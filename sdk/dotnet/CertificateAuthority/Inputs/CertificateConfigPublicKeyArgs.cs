@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateConfigPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class CertificateConfigPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format of the public key. Currently, only PEM format is supported.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateConfigPublicKeyArgs()
         {
         }
+        public static new CertificateConfigPublicKeyArgs Empty => new CertificateConfigPublicKeyArgs();
     }
 }

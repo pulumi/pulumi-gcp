@@ -18,7 +18,7 @@ type NodeNetworkEndpoint struct {
 // NodeNetworkEndpointInput is an input type that accepts NodeNetworkEndpointArgs and NodeNetworkEndpointOutput values.
 // You can construct a concrete instance of `NodeNetworkEndpointInput` via:
 //
-//          NodeNetworkEndpointArgs{...}
+//	NodeNetworkEndpointArgs{...}
 type NodeNetworkEndpointInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i NodeNetworkEndpointArgs) ToNodeNetworkEndpointOutputWithContext(ctx cont
 // NodeNetworkEndpointArrayInput is an input type that accepts NodeNetworkEndpointArray and NodeNetworkEndpointArrayOutput values.
 // You can construct a concrete instance of `NodeNetworkEndpointArrayInput` via:
 //
-//          NodeNetworkEndpointArray{ NodeNetworkEndpointArgs{...} }
+//	NodeNetworkEndpointArray{ NodeNetworkEndpointArgs{...} }
 type NodeNetworkEndpointArrayInput interface {
 	pulumi.Input
 
@@ -118,7 +118,7 @@ type NodeSchedulingConfig struct {
 // NodeSchedulingConfigInput is an input type that accepts NodeSchedulingConfigArgs and NodeSchedulingConfigOutput values.
 // You can construct a concrete instance of `NodeSchedulingConfigInput` via:
 //
-//          NodeSchedulingConfigArgs{...}
+//	NodeSchedulingConfigArgs{...}
 type NodeSchedulingConfigInput interface {
 	pulumi.Input
 
@@ -154,11 +154,11 @@ func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigPtrOutputWithContext(ctx
 // NodeSchedulingConfigPtrInput is an input type that accepts NodeSchedulingConfigArgs, NodeSchedulingConfigPtr and NodeSchedulingConfigPtrOutput values.
 // You can construct a concrete instance of `NodeSchedulingConfigPtrInput` via:
 //
-//          NodeSchedulingConfigArgs{...}
+//	        NodeSchedulingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NodeSchedulingConfigPtrInput interface {
 	pulumi.Input
 

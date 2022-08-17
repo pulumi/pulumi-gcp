@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
-// 			Bucket: "install_binaries",
-// 			Path:   "path/to/install_file.bin",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "vm", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
+//				Bucket: "install_binaries",
+//				Path:   "path/to/install_file.bin",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "vm", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Full Example
 //
@@ -48,39 +51,42 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
-// 			Bucket:      "fried_chicken",
-// 			Path:        "path/to/file",
-// 			ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
-// 			ContentType: pulumi.StringRef("text/plain"),
-// 			Duration:    pulumi.StringRef("2d"),
-// 			Credentials: pulumi.StringRef(readFileOrPanic("path/to/credentials.json")),
-// 			ExtensionHeaders: map[string]interface{}{
-// 				"x-goog-if-generation-match": "1",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
+//				Bucket:      "fried_chicken",
+//				Path:        "path/to/file",
+//				ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
+//				ContentType: pulumi.StringRef("text/plain"),
+//				Duration:    pulumi.StringRef("2d"),
+//				Credentials: pulumi.StringRef(readFileOrPanic("path/to/credentials.json")),
+//				ExtensionHeaders: map[string]interface{}{
+//					"x-goog-if-generation-match": "1",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
 	var rv GetObjectSignedUrlResult

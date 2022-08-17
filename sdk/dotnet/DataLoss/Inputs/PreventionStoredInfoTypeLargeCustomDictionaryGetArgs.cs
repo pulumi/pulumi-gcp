@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionStoredInfoTypeLargeCustomDictionaryGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionStoredInfoTypeLargeCustomDictionaryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field in a BigQuery table where each cell represents a dictionary phrase.
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionStoredInfoTypeLargeCustomDictionaryGetArgs()
         {
         }
+        public static new PreventionStoredInfoTypeLargeCustomDictionaryGetArgs Empty => new PreventionStoredInfoTypeLargeCustomDictionaryGetArgs();
     }
 }

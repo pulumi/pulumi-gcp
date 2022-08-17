@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionCertFingerprintArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionCertFingerprintArgs : global::Pulumi.ResourceArgs
     {
         [Input("sha256Hash")]
         public Input<string>? Sha256Hash { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionCertFingerprintArgs()
         {
         }
+        public static new CertificateCertificateDescriptionCertFingerprintArgs Empty => new CertificateCertificateDescriptionCertFingerprintArgs();
     }
 }

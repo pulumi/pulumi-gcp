@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyAlertStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyAlertStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If an alert policy that was active has no data for this long, any open incidents will close.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyAlertStrategyGetArgs()
         {
         }
+        public static new AlertPolicyAlertStrategyGetArgs Empty => new AlertPolicyAlertStrategyGetArgs();
     }
 }

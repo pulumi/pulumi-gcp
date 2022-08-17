@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.SecretManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qa = Gcp.SecretManager.GetSecret.Invoke(new()
         ///     {
-        ///         var qa = Output.Create(Gcp.SecretManager.GetSecret.InvokeAsync(new Gcp.SecretManager.GetSecretArgs
-        ///         {
-        ///             SecretId = "foobar",
-        ///         }));
-        ///     }
+        ///         SecretId = "foobar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.SecretManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qa = Gcp.SecretManager.GetSecret.Invoke(new()
         ///     {
-        ///         var qa = Output.Create(Gcp.SecretManager.GetSecret.InvokeAsync(new Gcp.SecretManager.GetSecretArgs
-        ///         {
-        ///             SecretId = "foobar",
-        ///         }));
-        ///     }
+        ///         SecretId = "foobar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.SecretManager
     }
 
 
-    public sealed class GetSecretArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -88,9 +84,10 @@ namespace Pulumi.Gcp.SecretManager
         public GetSecretArgs()
         {
         }
+        public static new GetSecretArgs Empty => new GetSecretArgs();
     }
 
-    public sealed class GetSecretInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -107,6 +104,7 @@ namespace Pulumi.Gcp.SecretManager
         public GetSecretInvokeArgs()
         {
         }
+        public static new GetSecretInvokeArgs Empty => new GetSecretInvokeArgs();
     }
 
 

@@ -22,7 +22,7 @@ class CertificateMapArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateMap resource.
-        :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map entry.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -42,7 +42,7 @@ class CertificateMapArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        One or more paragraphs of text description of a certificate map entry.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -103,7 +103,7 @@ class _CertificateMapState:
         Input properties used for looking up and filtering CertificateMap resources.
         :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map entry.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetArgs']]] gclb_targets: A list of target proxies that use this Certificate Map
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
@@ -145,7 +145,7 @@ class _CertificateMapState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        One or more paragraphs of text description of a certificate map entry.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -266,7 +266,7 @@ class CertificateMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map entry.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -377,7 +377,7 @@ class CertificateMap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map entry.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateMapGclbTargetArgs']]]] gclb_targets: A list of target proxies that use this Certificate Map
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
@@ -413,7 +413,7 @@ class CertificateMap(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        One or more paragraphs of text description of a certificate map entry.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 

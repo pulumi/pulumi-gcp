@@ -17,47 +17,44 @@ namespace Pulumi.Gcp.Container
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var registry = new Gcp.Container.Registry("registry", new()
     ///     {
-    ///         var registry = new Gcp.Container.Registry("registry", new Gcp.Container.RegistryArgs
-    ///         {
-    ///             Location = "EU",
-    ///             Project = "my-project",
-    ///         });
-    ///     }
+    ///         Location = "EU",
+    ///         Project = "my-project",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// The `id` field of the `gcp.container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var registry = new Gcp.Container.Registry("registry", new()
     ///     {
-    ///         var registry = new Gcp.Container.Registry("registry", new Gcp.Container.RegistryArgs
-    ///         {
-    ///             Project = "my-project",
-    ///             Location = "EU",
-    ///         });
-    ///         var viewer = new Gcp.Storage.BucketIAMMember("viewer", new Gcp.Storage.BucketIAMMemberArgs
-    ///         {
-    ///             Bucket = registry.Id,
-    ///             Role = "roles/storage.objectViewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = "my-project",
+    ///         Location = "EU",
+    ///     });
     /// 
-    /// }
+    ///     var viewer = new Gcp.Storage.BucketIAMMember("viewer", new()
+    ///     {
+    ///         Bucket = registry.Id,
+    ///         Role = "roles/storage.objectViewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +62,7 @@ namespace Pulumi.Gcp.Container
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:container/registry:Registry")]
-    public partial class Registry : Pulumi.CustomResource
+    public partial class Registry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The URI of the created resource.
@@ -129,7 +126,7 @@ namespace Pulumi.Gcp.Container
         }
     }
 
-    public sealed class RegistryArgs : Pulumi.ResourceArgs
+    public sealed class RegistryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
@@ -146,9 +143,10 @@ namespace Pulumi.Gcp.Container
         public RegistryArgs()
         {
         }
+        public static new RegistryArgs Empty => new RegistryArgs();
     }
 
-    public sealed class RegistryState : Pulumi.ResourceArgs
+    public sealed class RegistryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI of the created resource.
@@ -171,5 +169,6 @@ namespace Pulumi.Gcp.Container
         public RegistryState()
         {
         }
+        public static new RegistryState Empty => new RegistryState();
     }
 }

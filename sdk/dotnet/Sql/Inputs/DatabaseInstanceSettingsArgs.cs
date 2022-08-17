@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This specifies when the instance should be
@@ -51,11 +51,14 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        /// Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
         /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
 
+        /// <summary>
+        /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        /// </summary>
         [Input("diskAutoresizeLimit")]
         public Input<int>? DiskAutoresizeLimit { get; set; }
 
@@ -118,5 +121,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsArgs()
         {
         }
+        public static new DatabaseInstanceSettingsArgs Empty => new DatabaseInstanceSettingsArgs();
     }
 }

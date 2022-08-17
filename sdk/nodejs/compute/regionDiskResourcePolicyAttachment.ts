@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const disk = new gcp.compute.Disk("disk", {
- *     image: "debian-cloud/debian-9",
+ *     image: "debian-cloud/debian-11",
  *     size: 50,
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const myImage = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * ```

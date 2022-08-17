@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.versions)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+//   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
 // ### Dialogflowcx Version Full
@@ -27,56 +27,63 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
-// 			DisplayName:         pulumi.String("dialogflowcx-agent"),
-// 			Location:            pulumi.String("global"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			SupportedLanguageCodes: pulumi.StringArray{
-// 				pulumi.String("fr"),
-// 				pulumi.String("de"),
-// 				pulumi.String("es"),
-// 			},
-// 			TimeZone:                 pulumi.String("America/New_York"),
-// 			Description:              pulumi.String("Example description."),
-// 			AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-// 			EnableStackdriverLogging: pulumi.Bool(true),
-// 			EnableSpellCorrection:    pulumi.Bool(true),
-// 			SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
-// 				EnableSpeechAdaptation: pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewCxVersion(ctx, "version1", &diagflow.CxVersionArgs{
-// 			Parent:      agent.StartFlow,
-// 			DisplayName: pulumi.String("1.0.0"),
-// 			Description: pulumi.String("version 1.0.0"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxVersion(ctx, "version1", &diagflow.CxVersionArgs{
+//				Parent:      agent.StartFlow,
+//				DisplayName: pulumi.String("1.0.0"),
+//				Description: pulumi.String("version 1.0.0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Version can be imported using any of these accepted formats
+// # Version can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}
+//
+//	$ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/{{name}}
+//
+//	$ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/{{name}}
+//
 // ```
 type CxVersion struct {
 	pulumi.CustomResourceState
@@ -225,7 +232,7 @@ func (i *CxVersion) ToCxVersionOutputWithContext(ctx context.Context) CxVersionO
 // CxVersionArrayInput is an input type that accepts CxVersionArray and CxVersionArrayOutput values.
 // You can construct a concrete instance of `CxVersionArrayInput` via:
 //
-//          CxVersionArray{ CxVersionArgs{...} }
+//	CxVersionArray{ CxVersionArgs{...} }
 type CxVersionArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +257,7 @@ func (i CxVersionArray) ToCxVersionArrayOutputWithContext(ctx context.Context) C
 // CxVersionMapInput is an input type that accepts CxVersionMap and CxVersionMapOutput values.
 // You can construct a concrete instance of `CxVersionMapInput` via:
 //
-//          CxVersionMap{ "key": CxVersionArgs{...} }
+//	CxVersionMap{ "key": CxVersionArgs{...} }
 type CxVersionMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Memcache.Inputs
 {
 
-    public sealed class InstanceMaintenanceScheduleArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenanceScheduleArgs : global::Pulumi.ResourceArgs
     {
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public InstanceMaintenanceScheduleArgs()
         {
         }
+        public static new InstanceMaintenanceScheduleArgs Empty => new InstanceMaintenanceScheduleArgs();
     }
 }

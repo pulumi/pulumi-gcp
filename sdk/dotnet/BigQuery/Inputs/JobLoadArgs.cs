@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobLoadArgs : Pulumi.ResourceArgs
+    public sealed class JobLoadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
@@ -202,5 +202,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobLoadArgs()
         {
         }
+        public static new JobLoadArgs Empty => new JobLoadArgs();
     }
 }

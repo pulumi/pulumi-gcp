@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobScheduleScheduleStartDateArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobScheduleScheduleStartDateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobScheduleScheduleStartDateArgs()
         {
         }
+        public static new TransferJobScheduleScheduleStartDateArgs Empty => new TransferJobScheduleScheduleStartDateArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZoneForwardingConfigTargetNameServerArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneForwardingConfigTargetNameServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZoneForwardingConfigTargetNameServerArgs()
         {
         }
+        public static new ManagedZoneForwardingConfigTargetNameServerArgs Empty => new ManagedZoneForwardingConfigTargetNameServerArgs();
     }
 }

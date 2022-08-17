@@ -22,65 +22,66 @@ namespace Pulumi.Gcp.Memcache
     /// ### Memcache Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var memcacheNetwork = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
-    ///         var memcacheNetwork = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         Name = "test-network",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = memcacheNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     {
+    ///         Network = memcacheNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
     ///         {
-    ///             Name = "test-network",
-    ///         }));
-    ///         var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new Gcp.Compute.GlobalAddressArgs
+    ///             serviceRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Memcache.Instance("instance", new()
+    ///     {
+    ///         AuthorizedNetwork = privateServiceConnection.Network,
+    ///         NodeConfig = new Gcp.Memcache.Inputs.InstanceNodeConfigArgs
     ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = memcacheNetwork.Apply(memcacheNetwork =&gt; memcacheNetwork.Id),
-    ///         });
-    ///         var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///             CpuCount = 1,
+    ///             MemorySizeMb = 1024,
+    ///         },
+    ///         NodeCount = 1,
+    ///         MemcacheVersion = "MEMCACHE_1_5",
+    ///         MaintenancePolicy = new Gcp.Memcache.Inputs.InstanceMaintenancePolicyArgs
     ///         {
-    ///             Network = memcacheNetwork.Apply(memcacheNetwork =&gt; memcacheNetwork.Id),
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
+    ///             WeeklyMaintenanceWindows = new[]
     ///             {
-    ///                 serviceRange.Name,
-    ///             },
-    ///         });
-    ///         var instance = new Gcp.Memcache.Instance("instance", new Gcp.Memcache.InstanceArgs
-    ///         {
-    ///             AuthorizedNetwork = privateServiceConnection.Network,
-    ///             NodeConfig = new Gcp.Memcache.Inputs.InstanceNodeConfigArgs
-    ///             {
-    ///                 CpuCount = 1,
-    ///                 MemorySizeMb = 1024,
-    ///             },
-    ///             NodeCount = 1,
-    ///             MemcacheVersion = "MEMCACHE_1_5",
-    ///             MaintenancePolicy = new Gcp.Memcache.Inputs.InstanceMaintenancePolicyArgs
-    ///             {
-    ///                 WeeklyMaintenanceWindows = 
+    ///                 new Gcp.Memcache.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
     ///                 {
-    ///                     new Gcp.Memcache.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                     Day = "SATURDAY",
+    ///                     Duration = "14400s",
+    ///                     StartTime = new Gcp.Memcache.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
     ///                     {
-    ///                         Day = "SATURDAY",
-    ///                         Duration = "14400s",
-    ///                         StartTime = new Gcp.Memcache.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
-    ///                         {
-    ///                             Hours = 0,
-    ///                             Minutes = 30,
-    ///                             Seconds = 0,
-    ///                             Nanos = 0,
-    ///                         },
+    ///                         Hours = 0,
+    ///                         Minutes = 30,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -104,7 +105,7 @@ namespace Pulumi.Gcp.Memcache
     /// ```
     /// </summary>
     [GcpResourceType("gcp:memcache/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The full name of the GCE network to connect the instance to.  If not provided,
@@ -265,7 +266,7 @@ namespace Pulumi.Gcp.Memcache
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full name of the GCE network to connect the instance to.  If not provided,
@@ -364,9 +365,10 @@ namespace Pulumi.Gcp.Memcache
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full name of the GCE network to connect the instance to.  If not provided,
@@ -510,5 +512,6 @@ namespace Pulumi.Gcp.Memcache
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

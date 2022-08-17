@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapDefaultRouteActionCorsPolicyArgs : Pulumi.ResourceArgs
+    public sealed class URLMapDefaultRouteActionCorsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
@@ -98,5 +98,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapDefaultRouteActionCorsPolicyArgs()
         {
         }
+        public static new URLMapDefaultRouteActionCorsPolicyArgs Empty => new URLMapDefaultRouteActionCorsPolicyArgs();
     }
 }

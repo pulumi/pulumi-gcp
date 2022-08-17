@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
@@ -111,5 +111,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigArgs();
     }
 }

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Iam
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iam/denyPolicy:DenyPolicy")]
-    public partial class DenyPolicy : Pulumi.CustomResource
+    public partial class DenyPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The display name of the rule.
@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Iam
         }
     }
 
-    public sealed class DenyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DenyPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the rule.
@@ -134,9 +134,10 @@ namespace Pulumi.Gcp.Iam
         public DenyPolicyArgs()
         {
         }
+        public static new DenyPolicyArgs Empty => new DenyPolicyArgs();
     }
 
-    public sealed class DenyPolicyState : Pulumi.ResourceArgs
+    public sealed class DenyPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the rule.
@@ -178,5 +179,6 @@ namespace Pulumi.Gcp.Iam
         public DenyPolicyState()
         {
         }
+        public static new DenyPolicyState Empty => new DenyPolicyState();
     }
 }

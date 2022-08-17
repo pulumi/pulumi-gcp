@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateParameterValidationRegexArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateParameterValidationRegexArgs : global::Pulumi.ResourceArgs
     {
         [Input("regexes", required: true)]
         private InputList<string>? _regexes;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateParameterValidationRegexArgs()
         {
         }
+        public static new WorkflowTemplateParameterValidationRegexArgs Empty => new WorkflowTemplateParameterValidationRegexArgs();
     }
 }

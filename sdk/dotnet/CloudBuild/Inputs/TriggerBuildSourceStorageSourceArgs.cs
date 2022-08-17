@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildSourceStorageSourceArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildSourceStorageSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Google Cloud Storage bucket containing the source.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildSourceStorageSourceArgs()
         {
         }
+        public static new TriggerBuildSourceStorageSourceArgs Empty => new TriggerBuildSourceStorageSourceArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ArtifactRegistry.Inputs
 {
 
-    public sealed class RepositoryMavenConfigArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryMavenConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The repository with this flag will allow publishing the same
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public RepositoryMavenConfigArgs()
         {
         }
+        public static new RepositoryMavenConfigArgs Empty => new RepositoryMavenConfigArgs();
     }
 }

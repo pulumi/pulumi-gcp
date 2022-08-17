@@ -21,33 +21,33 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // A host project provides network resources to associated service projects.
+    ///     var host = new Gcp.Compute.SharedVPCHostProject("host", new()
     ///     {
-    ///         // A host project provides network resources to associated service projects.
-    ///         var host = new Gcp.Compute.SharedVPCHostProject("host", new Gcp.Compute.SharedVPCHostProjectArgs
-    ///         {
-    ///             Project = "host-project-id",
-    ///         });
-    ///         // A service project gains access to network resources provided by its
-    ///         // associated host project.
-    ///         var service1 = new Gcp.Compute.SharedVPCServiceProject("service1", new Gcp.Compute.SharedVPCServiceProjectArgs
-    ///         {
-    ///             HostProject = host.Project,
-    ///             ServiceProject = "service-project-id-1",
-    ///         });
-    ///         var service2 = new Gcp.Compute.SharedVPCServiceProject("service2", new Gcp.Compute.SharedVPCServiceProjectArgs
-    ///         {
-    ///             HostProject = host.Project,
-    ///             ServiceProject = "service-project-id-2",
-    ///         });
-    ///     }
+    ///         Project = "host-project-id",
+    ///     });
     /// 
-    /// }
+    ///     // A service project gains access to network resources provided by its
+    ///     // associated host project.
+    ///     var service1 = new Gcp.Compute.SharedVPCServiceProject("service1", new()
+    ///     {
+    ///         HostProject = host.Project,
+    ///         ServiceProject = "service-project-id-1",
+    ///     });
+    /// 
+    ///     var service2 = new Gcp.Compute.SharedVPCServiceProject("service2", new()
+    ///     {
+    ///         HostProject = host.Project,
+    ///         ServiceProject = "service-project-id-2",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/sharedVPCHostProject:SharedVPCHostProject")]
-    public partial class SharedVPCHostProject : Pulumi.CustomResource
+    public partial class SharedVPCHostProject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the project that will serve as a Shared VPC host project
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SharedVPCHostProjectArgs : Pulumi.ResourceArgs
+    public sealed class SharedVPCHostProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the project that will serve as a Shared VPC host project
@@ -122,9 +122,10 @@ namespace Pulumi.Gcp.Compute
         public SharedVPCHostProjectArgs()
         {
         }
+        public static new SharedVPCHostProjectArgs Empty => new SharedVPCHostProjectArgs();
     }
 
-    public sealed class SharedVPCHostProjectState : Pulumi.ResourceArgs
+    public sealed class SharedVPCHostProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the project that will serve as a Shared VPC host project
@@ -135,5 +136,6 @@ namespace Pulumi.Gcp.Compute
         public SharedVPCHostProjectState()
         {
         }
+        public static new SharedVPCHostProjectState Empty => new SharedVPCHostProjectState();
     }
 }

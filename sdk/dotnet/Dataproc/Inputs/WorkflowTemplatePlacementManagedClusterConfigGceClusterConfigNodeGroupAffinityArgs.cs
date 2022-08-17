@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs();
     }
 }

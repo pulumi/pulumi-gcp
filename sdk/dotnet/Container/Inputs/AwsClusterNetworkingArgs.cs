@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterNetworkingArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterNetworkingArgs : global::Pulumi.ResourceArgs
     {
         [Input("podAddressCidrBlocks", required: true)]
         private InputList<string>? _podAddressCidrBlocks;
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterNetworkingArgs()
         {
         }
+        public static new AwsClusterNetworkingArgs Empty => new AwsClusterNetworkingArgs();
     }
 }

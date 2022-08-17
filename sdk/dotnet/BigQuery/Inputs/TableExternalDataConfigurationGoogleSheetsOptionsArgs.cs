@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableExternalDataConfigurationGoogleSheetsOptionsArgs : Pulumi.ResourceArgs
+    public sealed class TableExternalDataConfigurationGoogleSheetsOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information required to partition based on ranges.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableExternalDataConfigurationGoogleSheetsOptionsArgs()
         {
         }
+        public static new TableExternalDataConfigurationGoogleSheetsOptionsArgs Empty => new TableExternalDataConfigurationGoogleSheetsOptionsArgs();
     }
 }

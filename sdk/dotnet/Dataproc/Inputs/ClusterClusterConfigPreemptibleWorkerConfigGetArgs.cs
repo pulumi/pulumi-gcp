@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigPreemptibleWorkerConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigPreemptibleWorkerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disk Config
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigPreemptibleWorkerConfigGetArgs()
         {
         }
+        public static new ClusterClusterConfigPreemptibleWorkerConfigGetArgs Empty => new ClusterClusterConfigPreemptibleWorkerConfigGetArgs();
     }
 }

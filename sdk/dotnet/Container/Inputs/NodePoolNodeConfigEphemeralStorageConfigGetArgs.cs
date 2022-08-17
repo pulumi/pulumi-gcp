@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigEphemeralStorageConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigEphemeralStorageConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("localSsdCount", required: true)]
         public Input<int> LocalSsdCount { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigEphemeralStorageConfigGetArgs()
         {
         }
+        public static new NodePoolNodeConfigEphemeralStorageConfigGetArgs Empty => new NodePoolNodeConfigEphemeralStorageConfigGetArgs();
     }
 }

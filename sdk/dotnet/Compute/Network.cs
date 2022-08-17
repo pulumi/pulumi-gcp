@@ -22,39 +22,33 @@ namespace Pulumi.Gcp.Compute
     /// ### Network Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork");
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Network Custom Mtu
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new()
     ///     {
-    ///         var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = true,
-    ///             Mtu = 1460,
-    ///             Project = "my-project-name",
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = true,
+    ///         Mtu = 1460,
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +68,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/network:Network")]
-    public partial class Network : Pulumi.CustomResource
+    public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When set to `true`, the network is created in "auto subnet mode" and
@@ -210,7 +204,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class NetworkArgs : Pulumi.ResourceArgs
+    public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When set to `true`, the network is created in "auto subnet mode" and
@@ -293,9 +287,10 @@ namespace Pulumi.Gcp.Compute
         public NetworkArgs()
         {
         }
+        public static new NetworkArgs Empty => new NetworkArgs();
     }
 
-    public sealed class NetworkState : Pulumi.ResourceArgs
+    public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When set to `true`, the network is created in "auto subnet mode" and
@@ -390,5 +385,6 @@ namespace Pulumi.Gcp.Compute
         public NetworkState()
         {
         }
+        public static new NetworkState Empty => new NetworkState();
     }
 }

@@ -20,20 +20,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_ssl_policy = Gcp.Compute.GetSSLPolicy.Invoke(new()
         ///     {
-        ///         var my_ssl_policy = Output.Create(Gcp.Compute.GetSSLPolicy.InvokeAsync(new Gcp.Compute.GetSSLPolicyArgs
-        ///         {
-        ///             Name = "production-ssl-policy",
-        ///         }));
-        ///     }
+        ///         Name = "production-ssl-policy",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,20 +48,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_ssl_policy = Gcp.Compute.GetSSLPolicy.Invoke(new()
         ///     {
-        ///         var my_ssl_policy = Output.Create(Gcp.Compute.GetSSLPolicy.InvokeAsync(new Gcp.Compute.GetSSLPolicyArgs
-        ///         {
-        ///             Name = "production-ssl-policy",
-        ///         }));
-        ///     }
+        ///         Name = "production-ssl-policy",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetSSLPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetSSLPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the SSL Policy.
@@ -91,9 +87,10 @@ namespace Pulumi.Gcp.Compute
         public GetSSLPolicyArgs()
         {
         }
+        public static new GetSSLPolicyArgs Empty => new GetSSLPolicyArgs();
     }
 
-    public sealed class GetSSLPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSSLPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the SSL Policy.
@@ -111,6 +108,7 @@ namespace Pulumi.Gcp.Compute
         public GetSSLPolicyInvokeArgs()
         {
         }
+        public static new GetSSLPolicyInvokeArgs Empty => new GetSSLPolicyInvokeArgs();
     }
 
 

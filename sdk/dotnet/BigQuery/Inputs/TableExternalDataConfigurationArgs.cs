@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableExternalDataConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class TableExternalDataConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - Let BigQuery try to autodetect the schema
@@ -119,5 +119,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableExternalDataConfigurationArgs()
         {
         }
+        public static new TableExternalDataConfigurationArgs Empty => new TableExternalDataConfigurationArgs();
     }
 }

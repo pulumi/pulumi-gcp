@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceMetadataArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -93,5 +93,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceMetadataArgs()
         {
         }
+        public static new ServiceMetadataArgs Empty => new ServiceMetadataArgs();
     }
 }

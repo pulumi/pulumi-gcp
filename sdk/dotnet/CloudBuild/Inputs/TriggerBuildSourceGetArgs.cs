@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Location of the source in a Google Cloud Source Repository.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildSourceGetArgs()
         {
         }
+        public static new TriggerBuildSourceGetArgs Empty => new TriggerBuildSourceGetArgs();
     }
 }

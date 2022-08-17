@@ -37,16 +37,14 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * A human-readable description of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return CertificateMapEntry is a list of certificate configurations,
-     * that have been issued for a particular hostname
+     * @return A human-readable description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -108,7 +106,6 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
 
     /**
      * A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      * 
      */
     @Import(name="matcher")
@@ -116,7 +113,6 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
 
     /**
      * @return A predefined matcher for particular cases, other than SNI selection
-     * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
      * 
      */
     public Optional<Output<String>> matcher() {
@@ -228,8 +224,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description CertificateMapEntry is a list of certificate configurations,
-         * that have been issued for a particular hostname
+         * @param description A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -240,8 +235,7 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description CertificateMapEntry is a list of certificate configurations,
-         * that have been issued for a particular hostname
+         * @param description A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -323,7 +317,6 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
 
         /**
          * @param matcher A predefined matcher for particular cases, other than SNI selection
-         * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
          * 
          * @return builder
          * 
@@ -335,7 +328,6 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
 
         /**
          * @param matcher A predefined matcher for particular cases, other than SNI selection
-         * Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
          * 
          * @return builder
          * 

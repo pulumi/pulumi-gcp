@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetAmountSpecifiedAmountArgs : Pulumi.ResourceArgs
+    public sealed class BudgetAmountSpecifiedAmountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The 3-letter currency code defined in ISO 4217.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetAmountSpecifiedAmountArgs()
         {
         }
+        public static new BudgetAmountSpecifiedAmountArgs Empty => new BudgetAmountSpecifiedAmountArgs();
     }
 }

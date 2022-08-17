@@ -27,38 +27,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/artifactregistry.reader",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = artifactregistry.NewRepositoryIamPolicy(ctx, "policy", &artifactregistry.RepositoryIamPolicyArgs{
-// 			Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
-// 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
-// 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/artifactregistry.reader",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = artifactregistry.NewRepositoryIamPolicy(ctx, "policy", &artifactregistry.RepositoryIamPolicyArgs{
+//				Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
+//				Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
+//				Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_artifact\_registry\_repository\_iam\_binding
@@ -67,27 +70,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
-// 			Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
-// 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
-// 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
-// 			Role:       pulumi.String("roles/artifactregistry.reader"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
+//				Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
+//				Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
+//				Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
+//				Role:       pulumi.String("roles/artifactregistry.reader"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_artifact\_registry\_repository\_iam\_member
@@ -96,25 +102,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := artifactregistry.NewRepositoryIamMember(ctx, "member", &artifactregistry.RepositoryIamMemberArgs{
-// 			Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
-// 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
-// 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
-// 			Role:       pulumi.String("roles/artifactregistry.reader"),
-// 			Member:     pulumi.String("user:jane@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepositoryIamMember(ctx, "member", &artifactregistry.RepositoryIamMemberArgs{
+//				Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
+//				Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
+//				Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
+//				Role:       pulumi.String("roles/artifactregistry.reader"),
+//				Member:     pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -122,22 +131,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
+//
+//	$ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
+//
+//	$ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor projects/{{project}}/locations/{{location}}/repositories/{{repository}}
+//
+//	$ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor projects/{{project}}/locations/{{location}}/repositories/{{repository}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type RepositoryIamPolicy struct {
@@ -283,7 +298,7 @@ func (i *RepositoryIamPolicy) ToRepositoryIamPolicyOutputWithContext(ctx context
 // RepositoryIamPolicyArrayInput is an input type that accepts RepositoryIamPolicyArray and RepositoryIamPolicyArrayOutput values.
 // You can construct a concrete instance of `RepositoryIamPolicyArrayInput` via:
 //
-//          RepositoryIamPolicyArray{ RepositoryIamPolicyArgs{...} }
+//	RepositoryIamPolicyArray{ RepositoryIamPolicyArgs{...} }
 type RepositoryIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -308,7 +323,7 @@ func (i RepositoryIamPolicyArray) ToRepositoryIamPolicyArrayOutputWithContext(ct
 // RepositoryIamPolicyMapInput is an input type that accepts RepositoryIamPolicyMap and RepositoryIamPolicyMapOutput values.
 // You can construct a concrete instance of `RepositoryIamPolicyMapInput` via:
 //
-//          RepositoryIamPolicyMap{ "key": RepositoryIamPolicyArgs{...} }
+//	RepositoryIamPolicyMap{ "key": RepositoryIamPolicyArgs{...} }
 type RepositoryIamPolicyMapInput interface {
 	pulumi.Input
 

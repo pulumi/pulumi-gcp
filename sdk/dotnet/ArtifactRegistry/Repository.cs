@@ -22,45 +22,41 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// ### Artifact Registry Repository Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
-    ///         var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new Gcp.ArtifactRegistry.RepositoryArgs
-    ///         {
-    ///             Description = "example docker repository",
-    ///             Format = "DOCKER",
-    ///             Location = "us-central1",
-    ///             RepositoryId = "my-repository",
-    ///         });
-    ///     }
+    ///         Description = "example docker repository",
+    ///         Format = "DOCKER",
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Artifact Registry Repository Cmek
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
-    ///         var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new Gcp.ArtifactRegistry.RepositoryArgs
-    ///         {
-    ///             Description = "example docker repository with cmek",
-    ///             Format = "DOCKER",
-    ///             KmsKeyName = "kms-key",
-    ///             Location = "us-central1",
-    ///             RepositoryId = "my-repository",
-    ///         });
-    ///     }
+    ///         Description = "example docker repository with cmek",
+    ///         Format = "DOCKER",
+    ///         KmsKeyName = "kms-key",
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +80,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// ```
     /// </summary>
     [GcpResourceType("gcp:artifactregistry/repository:Repository")]
-    public partial class Repository : Pulumi.CustomResource
+    public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the repository was created.
@@ -211,7 +207,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
     }
 
-    public sealed class RepositoryArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-provided description of the repository.
@@ -285,9 +281,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public RepositoryArgs()
         {
         }
+        public static new RepositoryArgs Empty => new RepositoryArgs();
     }
 
-    public sealed class RepositoryState : Pulumi.ResourceArgs
+    public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when the repository was created.
@@ -379,5 +376,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public RepositoryState()
         {
         }
+        public static new RepositoryState Empty => new RepositoryState();
     }
 }

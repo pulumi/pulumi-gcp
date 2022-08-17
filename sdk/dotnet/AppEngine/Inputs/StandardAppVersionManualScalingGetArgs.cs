@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionManualScalingGetArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionManualScalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of instances to assign to the service at the start.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionManualScalingGetArgs()
         {
         }
+        public static new StandardAppVersionManualScalingGetArgs Empty => new StandardAppVersionManualScalingGetArgs();
     }
 }

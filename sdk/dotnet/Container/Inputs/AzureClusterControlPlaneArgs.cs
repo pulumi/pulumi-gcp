@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterControlPlaneArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterControlPlaneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Configuration related to application-layer secrets encryption.
@@ -87,5 +87,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterControlPlaneArgs()
         {
         }
+        public static new AzureClusterControlPlaneArgs Empty => new AzureClusterControlPlaneArgs();
     }
 }

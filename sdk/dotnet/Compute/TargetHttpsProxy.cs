@@ -38,8 +38,16 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/targetHttpsProxy:TargetHttpsProxy")]
-    public partial class TargetHttpsProxy : Pulumi.CustomResource
+    public partial class TargetHttpsProxy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A reference to the CertificateMap resource uri that identifies a certificate map
+        /// associated with the given target proxy. This field can only be set for global target proxies.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        /// </summary>
+        [Output("certificateMap")]
+        public Output<string?> CertificateMap { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -169,8 +177,16 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class TargetHttpsProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetHttpsProxyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A reference to the CertificateMap resource uri that identifies a certificate map
+        /// associated with the given target proxy. This field can only be set for global target proxies.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        /// </summary>
+        [Input("certificateMap")]
+        public Input<string>? CertificateMap { get; set; }
+
         /// <summary>
         /// An optional description of this resource.
         /// </summary>
@@ -215,7 +231,7 @@ namespace Pulumi.Gcp.Compute
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }
 
-        [Input("sslCertificates", required: true)]
+        [Input("sslCertificates")]
         private InputList<string>? _sslCertificates;
 
         /// <summary>
@@ -247,10 +263,19 @@ namespace Pulumi.Gcp.Compute
         public TargetHttpsProxyArgs()
         {
         }
+        public static new TargetHttpsProxyArgs Empty => new TargetHttpsProxyArgs();
     }
 
-    public sealed class TargetHttpsProxyState : Pulumi.ResourceArgs
+    public sealed class TargetHttpsProxyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A reference to the CertificateMap resource uri that identifies a certificate map
+        /// associated with the given target proxy. This field can only be set for global target proxies.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        /// </summary>
+        [Input("certificateMap")]
+        public Input<string>? CertificateMap { get; set; }
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -345,5 +370,6 @@ namespace Pulumi.Gcp.Compute
         public TargetHttpsProxyState()
         {
         }
+        public static new TargetHttpsProxyState Empty => new TargetHttpsProxyState();
     }
 }

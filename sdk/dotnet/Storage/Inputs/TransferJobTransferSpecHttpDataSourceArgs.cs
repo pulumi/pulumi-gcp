@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecHttpDataSourceArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecHttpDataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecHttpDataSourceArgs()
         {
         }
+        public static new TransferJobTransferSpecHttpDataSourceArgs Empty => new TransferJobTransferSpecHttpDataSourceArgs();
     }
 }

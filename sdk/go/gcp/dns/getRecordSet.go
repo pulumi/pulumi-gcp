@@ -22,31 +22,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sample, err := dns.LookupManagedZone(ctx, &dns.LookupManagedZoneArgs{
-// 			Name: "sample-zone",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.LookupRecordSet(ctx, &dns.LookupRecordSetArgs{
-// 			ManagedZone: sample.Name,
-// 			Name:        fmt.Sprintf("my-record.%v", sample.DnsName),
-// 			Type:        "A",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sample, err := dns.LookupManagedZone(ctx, &dns.LookupManagedZoneArgs{
+//				Name: "sample-zone",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.LookupRecordSet(ctx, &dns.LookupRecordSetArgs{
+//				ManagedZone: sample.Name,
+//				Name:        fmt.Sprintf("my-record.%v", sample.DnsName),
+//				Type:        "A",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupRecordSet(ctx *pulumi.Context, args *LookupRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupRecordSetResult, error) {
 	var rv LookupRecordSetResult

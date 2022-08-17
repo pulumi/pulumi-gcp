@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options defining BigQuery table and row identifiers.
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigArgs Empty => new PreventionJobTriggerInspectJobStorageConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SubnetworkLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled.
@@ -67,5 +67,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SubnetworkLogConfigArgs()
         {
         }
+        public static new SubnetworkLogConfigArgs Empty => new SubnetworkLogConfigArgs();
     }
 }

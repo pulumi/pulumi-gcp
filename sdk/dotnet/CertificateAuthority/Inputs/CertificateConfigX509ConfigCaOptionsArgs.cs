@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateConfigX509ConfigCaOptionsArgs : Pulumi.ResourceArgs
+    public sealed class CertificateConfigX509ConfigCaOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, the "CA" in Basic Constraints extension will be set to true.
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateConfigX509ConfigCaOptionsArgs()
         {
         }
+        public static new CertificateConfigX509ConfigCaOptionsArgs Empty => new CertificateConfigX509ConfigCaOptionsArgs();
     }
 }

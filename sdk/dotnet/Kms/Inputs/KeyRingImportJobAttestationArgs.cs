@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class KeyRingImportJobAttestationArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingImportJobAttestationArgs : global::Pulumi.ResourceArgs
     {
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         public KeyRingImportJobAttestationArgs()
         {
         }
+        public static new KeyRingImportJobAttestationArgs Empty => new KeyRingImportJobAttestationArgs();
     }
 }

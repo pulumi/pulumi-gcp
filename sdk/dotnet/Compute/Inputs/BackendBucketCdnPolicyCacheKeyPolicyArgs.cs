@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendBucketCdnPolicyCacheKeyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketCdnPolicyCacheKeyPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("includeHttpHeaders")]
         private InputList<string>? _includeHttpHeaders;
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendBucketCdnPolicyCacheKeyPolicyArgs()
         {
         }
+        public static new BackendBucketCdnPolicyCacheKeyPolicyArgs Empty => new BackendBucketCdnPolicyCacheKeyPolicyArgs();
     }
 }

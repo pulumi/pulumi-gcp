@@ -22,21 +22,19 @@ namespace Pulumi.Gcp.Healthcare
     /// ### Healthcare Dataset Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Healthcare.Dataset("default", new()
     ///     {
-    ///         var @default = new Gcp.Healthcare.Dataset("default", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             TimeZone = "UTC",
-    ///         });
-    ///     }
+    ///         Location = "us-central1",
+    ///         TimeZone = "UTC",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/dataset:Dataset")]
-    public partial class Dataset : Pulumi.CustomResource
+    public partial class Dataset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The location for the Dataset.
@@ -135,7 +133,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class DatasetArgs : Pulumi.ResourceArgs
+    public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location for the Dataset.
@@ -167,9 +165,10 @@ namespace Pulumi.Gcp.Healthcare
         public DatasetArgs()
         {
         }
+        public static new DatasetArgs Empty => new DatasetArgs();
     }
 
-    public sealed class DatasetState : Pulumi.ResourceArgs
+    public sealed class DatasetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location for the Dataset.
@@ -207,5 +206,6 @@ namespace Pulumi.Gcp.Healthcare
         public DatasetState()
         {
         }
+        public static new DatasetState Empty => new DatasetState();
     }
 }

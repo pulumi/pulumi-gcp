@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigCustomInfoTypeGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigCustomInfoTypeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dictionary which defines the rule.
@@ -62,5 +62,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigCustomInfoTypeGetArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigCustomInfoTypeGetArgs Empty => new PreventionInspectTemplateInspectConfigCustomInfoTypeGetArgs();
     }
 }

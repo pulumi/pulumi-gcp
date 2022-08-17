@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedSuccessCodes")]
         private InputList<int>? _allowedSuccessCodes;
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs Empty => new PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs();
     }
 }

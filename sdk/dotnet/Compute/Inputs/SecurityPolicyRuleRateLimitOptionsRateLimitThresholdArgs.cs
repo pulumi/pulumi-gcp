@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of HTTP(S) requests for calculating the threshold.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs()
         {
         }
+        public static new SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs Empty => new SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs();
     }
 }

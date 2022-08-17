@@ -27,40 +27,39 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
     ///     {
-    ///         var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new Gcp.Compute.InstanceArgs
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-west1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
-    ///             MachineType = "e2-medium",
-    ///             Zone = "us-west1-a",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = "debian-cloud/debian-9",
-    ///                 },
+    ///                 Image = "debian-cloud/debian-11",
     ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultAttachedDisk = new Gcp.Compute.AttachedDisk("defaultAttachedDisk", new Gcp.Compute.AttachedDiskArgs
+    ///         },
+    ///         NetworkInterfaces = new[]
     ///         {
-    ///             Disk = google_compute_disk.Default.Id,
-    ///             Instance = defaultInstance.Id,
-    ///         });
-    ///     }
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var defaultAttachedDisk = new Gcp.Compute.AttachedDisk("defaultAttachedDisk", new()
+    ///     {
+    ///         Disk = google_compute_disk.Default.Id,
+    ///         Instance = defaultInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +75,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/attachedDisk:AttachedDisk")]
-    public partial class AttachedDisk : Pulumi.CustomResource
+    public partial class AttachedDisk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies a unique device name of your choice that is
@@ -169,7 +168,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class AttachedDiskArgs : Pulumi.ResourceArgs
+    public sealed class AttachedDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a unique device name of your choice that is
@@ -221,9 +220,10 @@ namespace Pulumi.Gcp.Compute
         public AttachedDiskArgs()
         {
         }
+        public static new AttachedDiskArgs Empty => new AttachedDiskArgs();
     }
 
-    public sealed class AttachedDiskState : Pulumi.ResourceArgs
+    public sealed class AttachedDiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a unique device name of your choice that is
@@ -275,5 +275,6 @@ namespace Pulumi.Gcp.Compute
         public AttachedDiskState()
         {
         }
+        public static new AttachedDiskState Empty => new AttachedDiskState();
     }
 }

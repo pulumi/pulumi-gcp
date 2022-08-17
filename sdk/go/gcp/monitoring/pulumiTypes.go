@@ -22,7 +22,7 @@ type AlertPolicyAlertStrategy struct {
 // AlertPolicyAlertStrategyInput is an input type that accepts AlertPolicyAlertStrategyArgs and AlertPolicyAlertStrategyOutput values.
 // You can construct a concrete instance of `AlertPolicyAlertStrategyInput` via:
 //
-//          AlertPolicyAlertStrategyArgs{...}
+//	AlertPolicyAlertStrategyArgs{...}
 type AlertPolicyAlertStrategyInput interface {
 	pulumi.Input
 
@@ -62,11 +62,11 @@ func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyPtrOutputWithCon
 // AlertPolicyAlertStrategyPtrInput is an input type that accepts AlertPolicyAlertStrategyArgs, AlertPolicyAlertStrategyPtr and AlertPolicyAlertStrategyPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyAlertStrategyPtrInput` via:
 //
-//          AlertPolicyAlertStrategyArgs{...}
+//	        AlertPolicyAlertStrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyAlertStrategyPtrInput interface {
 	pulumi.Input
 
@@ -184,7 +184,7 @@ type AlertPolicyAlertStrategyNotificationRateLimit struct {
 // AlertPolicyAlertStrategyNotificationRateLimitInput is an input type that accepts AlertPolicyAlertStrategyNotificationRateLimitArgs and AlertPolicyAlertStrategyNotificationRateLimitOutput values.
 // You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationRateLimitInput` via:
 //
-//          AlertPolicyAlertStrategyNotificationRateLimitArgs{...}
+//	AlertPolicyAlertStrategyNotificationRateLimitArgs{...}
 type AlertPolicyAlertStrategyNotificationRateLimitInput interface {
 	pulumi.Input
 
@@ -220,11 +220,11 @@ func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStr
 // AlertPolicyAlertStrategyNotificationRateLimitPtrInput is an input type that accepts AlertPolicyAlertStrategyNotificationRateLimitArgs, AlertPolicyAlertStrategyNotificationRateLimitPtr and AlertPolicyAlertStrategyNotificationRateLimitPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationRateLimitPtrInput` via:
 //
-//          AlertPolicyAlertStrategyNotificationRateLimitArgs{...}
+//	        AlertPolicyAlertStrategyNotificationRateLimitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyAlertStrategyNotificationRateLimitPtrInput interface {
 	pulumi.Input
 
@@ -348,7 +348,7 @@ type AlertPolicyCondition struct {
 // AlertPolicyConditionInput is an input type that accepts AlertPolicyConditionArgs and AlertPolicyConditionOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionInput` via:
 //
-//          AlertPolicyConditionArgs{...}
+//	AlertPolicyConditionArgs{...}
 type AlertPolicyConditionInput interface {
 	pulumi.Input
 
@@ -403,7 +403,7 @@ func (i AlertPolicyConditionArgs) ToAlertPolicyConditionOutputWithContext(ctx co
 // AlertPolicyConditionArrayInput is an input type that accepts AlertPolicyConditionArray and AlertPolicyConditionArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionArrayInput` via:
 //
-//          AlertPolicyConditionArray{ AlertPolicyConditionArgs{...} }
+//	AlertPolicyConditionArray{ AlertPolicyConditionArgs{...} }
 type AlertPolicyConditionArrayInput interface {
 	pulumi.Input
 
@@ -557,7 +557,7 @@ type AlertPolicyConditionConditionAbsent struct {
 // AlertPolicyConditionConditionAbsentInput is an input type that accepts AlertPolicyConditionConditionAbsentArgs and AlertPolicyConditionConditionAbsentOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentInput` via:
 //
-//          AlertPolicyConditionConditionAbsentArgs{...}
+//	AlertPolicyConditionConditionAbsentArgs{...}
 type AlertPolicyConditionConditionAbsentInput interface {
 	pulumi.Input
 
@@ -634,11 +634,11 @@ func (i AlertPolicyConditionConditionAbsentArgs) ToAlertPolicyConditionCondition
 // AlertPolicyConditionConditionAbsentPtrInput is an input type that accepts AlertPolicyConditionConditionAbsentArgs, AlertPolicyConditionConditionAbsentPtr and AlertPolicyConditionConditionAbsentPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentPtrInput` via:
 //
-//          AlertPolicyConditionConditionAbsentArgs{...}
+//	        AlertPolicyConditionConditionAbsentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionAbsentPtrInput interface {
 	pulumi.Input
 
@@ -931,7 +931,7 @@ type AlertPolicyConditionConditionAbsentAggregation struct {
 // AlertPolicyConditionConditionAbsentAggregationInput is an input type that accepts AlertPolicyConditionConditionAbsentAggregationArgs and AlertPolicyConditionConditionAbsentAggregationOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentAggregationInput` via:
 //
-//          AlertPolicyConditionConditionAbsentAggregationArgs{...}
+//	AlertPolicyConditionConditionAbsentAggregationArgs{...}
 type AlertPolicyConditionConditionAbsentAggregationInput interface {
 	pulumi.Input
 
@@ -1036,7 +1036,7 @@ func (i AlertPolicyConditionConditionAbsentAggregationArgs) ToAlertPolicyConditi
 // AlertPolicyConditionConditionAbsentAggregationArrayInput is an input type that accepts AlertPolicyConditionConditionAbsentAggregationArray and AlertPolicyConditionConditionAbsentAggregationArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentAggregationArrayInput` via:
 //
-//          AlertPolicyConditionConditionAbsentAggregationArray{ AlertPolicyConditionConditionAbsentAggregationArgs{...} }
+//	AlertPolicyConditionConditionAbsentAggregationArray{ AlertPolicyConditionConditionAbsentAggregationArgs{...} }
 type AlertPolicyConditionConditionAbsentAggregationArrayInput interface {
 	pulumi.Input
 
@@ -1197,7 +1197,7 @@ type AlertPolicyConditionConditionAbsentTrigger struct {
 // AlertPolicyConditionConditionAbsentTriggerInput is an input type that accepts AlertPolicyConditionConditionAbsentTriggerArgs and AlertPolicyConditionConditionAbsentTriggerOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentTriggerInput` via:
 //
-//          AlertPolicyConditionConditionAbsentTriggerArgs{...}
+//	AlertPolicyConditionConditionAbsentTriggerArgs{...}
 type AlertPolicyConditionConditionAbsentTriggerInput interface {
 	pulumi.Input
 
@@ -1239,11 +1239,11 @@ func (i AlertPolicyConditionConditionAbsentTriggerArgs) ToAlertPolicyConditionCo
 // AlertPolicyConditionConditionAbsentTriggerPtrInput is an input type that accepts AlertPolicyConditionConditionAbsentTriggerArgs, AlertPolicyConditionConditionAbsentTriggerPtr and AlertPolicyConditionConditionAbsentTriggerPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentTriggerPtrInput` via:
 //
-//          AlertPolicyConditionConditionAbsentTriggerArgs{...}
+//	        AlertPolicyConditionConditionAbsentTriggerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionAbsentTriggerPtrInput interface {
 	pulumi.Input
 
@@ -1371,7 +1371,7 @@ type AlertPolicyConditionConditionMatchedLog struct {
 // AlertPolicyConditionConditionMatchedLogInput is an input type that accepts AlertPolicyConditionConditionMatchedLogArgs and AlertPolicyConditionConditionMatchedLogOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionMatchedLogInput` via:
 //
-//          AlertPolicyConditionConditionMatchedLogArgs{...}
+//	AlertPolicyConditionConditionMatchedLogArgs{...}
 type AlertPolicyConditionConditionMatchedLogInput interface {
 	pulumi.Input
 
@@ -1415,11 +1415,11 @@ func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionCondi
 // AlertPolicyConditionConditionMatchedLogPtrInput is an input type that accepts AlertPolicyConditionConditionMatchedLogArgs, AlertPolicyConditionConditionMatchedLogPtr and AlertPolicyConditionConditionMatchedLogPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionMatchedLogPtrInput` via:
 //
-//          AlertPolicyConditionConditionMatchedLogArgs{...}
+//	        AlertPolicyConditionConditionMatchedLogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionMatchedLogPtrInput interface {
 	pulumi.Input
 
@@ -1574,7 +1574,7 @@ type AlertPolicyConditionConditionMonitoringQueryLanguage struct {
 // AlertPolicyConditionConditionMonitoringQueryLanguageInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageArgs and AlertPolicyConditionConditionMonitoringQueryLanguageOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguageInput` via:
 //
-//          AlertPolicyConditionConditionMonitoringQueryLanguageArgs{...}
+//	AlertPolicyConditionConditionMonitoringQueryLanguageArgs{...}
 type AlertPolicyConditionConditionMonitoringQueryLanguageInput interface {
 	pulumi.Input
 
@@ -1641,11 +1641,11 @@ func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyC
 // AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageArgs, AlertPolicyConditionConditionMonitoringQueryLanguagePtr and AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput` via:
 //
-//          AlertPolicyConditionConditionMonitoringQueryLanguageArgs{...}
+//	        AlertPolicyConditionConditionMonitoringQueryLanguageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionMonitoringQueryLanguagePtrInput interface {
 	pulumi.Input
 
@@ -1845,7 +1845,7 @@ type AlertPolicyConditionConditionMonitoringQueryLanguageTrigger struct {
 // AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs and AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput` via:
 //
-//          AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{...}
+//	AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{...}
 type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerInput interface {
 	pulumi.Input
 
@@ -1887,11 +1887,11 @@ func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlert
 // AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput is an input type that accepts AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs, AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtr and AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput` via:
 //
-//          AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{...}
+//	        AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrInput interface {
 	pulumi.Input
 
@@ -2104,7 +2104,7 @@ type AlertPolicyConditionConditionThreshold struct {
 // AlertPolicyConditionConditionThresholdInput is an input type that accepts AlertPolicyConditionConditionThresholdArgs and AlertPolicyConditionConditionThresholdOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdInput` via:
 //
-//          AlertPolicyConditionConditionThresholdArgs{...}
+//	AlertPolicyConditionConditionThresholdArgs{...}
 type AlertPolicyConditionConditionThresholdInput interface {
 	pulumi.Input
 
@@ -2233,11 +2233,11 @@ func (i AlertPolicyConditionConditionThresholdArgs) ToAlertPolicyConditionCondit
 // AlertPolicyConditionConditionThresholdPtrInput is an input type that accepts AlertPolicyConditionConditionThresholdArgs, AlertPolicyConditionConditionThresholdPtr and AlertPolicyConditionConditionThresholdPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdPtrInput` via:
 //
-//          AlertPolicyConditionConditionThresholdArgs{...}
+//	        AlertPolicyConditionConditionThresholdArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionThresholdPtrInput interface {
 	pulumi.Input
 
@@ -2691,7 +2691,7 @@ type AlertPolicyConditionConditionThresholdAggregation struct {
 // AlertPolicyConditionConditionThresholdAggregationInput is an input type that accepts AlertPolicyConditionConditionThresholdAggregationArgs and AlertPolicyConditionConditionThresholdAggregationOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdAggregationInput` via:
 //
-//          AlertPolicyConditionConditionThresholdAggregationArgs{...}
+//	AlertPolicyConditionConditionThresholdAggregationArgs{...}
 type AlertPolicyConditionConditionThresholdAggregationInput interface {
 	pulumi.Input
 
@@ -2796,7 +2796,7 @@ func (i AlertPolicyConditionConditionThresholdAggregationArgs) ToAlertPolicyCond
 // AlertPolicyConditionConditionThresholdAggregationArrayInput is an input type that accepts AlertPolicyConditionConditionThresholdAggregationArray and AlertPolicyConditionConditionThresholdAggregationArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdAggregationArrayInput` via:
 //
-//          AlertPolicyConditionConditionThresholdAggregationArray{ AlertPolicyConditionConditionThresholdAggregationArgs{...} }
+//	AlertPolicyConditionConditionThresholdAggregationArray{ AlertPolicyConditionConditionThresholdAggregationArgs{...} }
 type AlertPolicyConditionConditionThresholdAggregationArrayInput interface {
 	pulumi.Input
 
@@ -3028,7 +3028,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregation struct {
 // AlertPolicyConditionConditionThresholdDenominatorAggregationInput is an input type that accepts AlertPolicyConditionConditionThresholdDenominatorAggregationArgs and AlertPolicyConditionConditionThresholdDenominatorAggregationOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdDenominatorAggregationInput` via:
 //
-//          AlertPolicyConditionConditionThresholdDenominatorAggregationArgs{...}
+//	AlertPolicyConditionConditionThresholdDenominatorAggregationArgs{...}
 type AlertPolicyConditionConditionThresholdDenominatorAggregationInput interface {
 	pulumi.Input
 
@@ -3133,7 +3133,7 @@ func (i AlertPolicyConditionConditionThresholdDenominatorAggregationArgs) ToAler
 // AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput is an input type that accepts AlertPolicyConditionConditionThresholdDenominatorAggregationArray and AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput` via:
 //
-//          AlertPolicyConditionConditionThresholdDenominatorAggregationArray{ AlertPolicyConditionConditionThresholdDenominatorAggregationArgs{...} }
+//	AlertPolicyConditionConditionThresholdDenominatorAggregationArray{ AlertPolicyConditionConditionThresholdDenominatorAggregationArgs{...} }
 type AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput interface {
 	pulumi.Input
 
@@ -3298,7 +3298,7 @@ type AlertPolicyConditionConditionThresholdTrigger struct {
 // AlertPolicyConditionConditionThresholdTriggerInput is an input type that accepts AlertPolicyConditionConditionThresholdTriggerArgs and AlertPolicyConditionConditionThresholdTriggerOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdTriggerInput` via:
 //
-//          AlertPolicyConditionConditionThresholdTriggerArgs{...}
+//	AlertPolicyConditionConditionThresholdTriggerArgs{...}
 type AlertPolicyConditionConditionThresholdTriggerInput interface {
 	pulumi.Input
 
@@ -3340,11 +3340,11 @@ func (i AlertPolicyConditionConditionThresholdTriggerArgs) ToAlertPolicyConditio
 // AlertPolicyConditionConditionThresholdTriggerPtrInput is an input type that accepts AlertPolicyConditionConditionThresholdTriggerArgs, AlertPolicyConditionConditionThresholdTriggerPtr and AlertPolicyConditionConditionThresholdTriggerPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdTriggerPtrInput` via:
 //
-//          AlertPolicyConditionConditionThresholdTriggerArgs{...}
+//	        AlertPolicyConditionConditionThresholdTriggerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyConditionConditionThresholdTriggerPtrInput interface {
 	pulumi.Input
 
@@ -3464,7 +3464,7 @@ type AlertPolicyCreationRecord struct {
 // AlertPolicyCreationRecordInput is an input type that accepts AlertPolicyCreationRecordArgs and AlertPolicyCreationRecordOutput values.
 // You can construct a concrete instance of `AlertPolicyCreationRecordInput` via:
 //
-//          AlertPolicyCreationRecordArgs{...}
+//	AlertPolicyCreationRecordArgs{...}
 type AlertPolicyCreationRecordInput interface {
 	pulumi.Input
 
@@ -3492,7 +3492,7 @@ func (i AlertPolicyCreationRecordArgs) ToAlertPolicyCreationRecordOutputWithCont
 // AlertPolicyCreationRecordArrayInput is an input type that accepts AlertPolicyCreationRecordArray and AlertPolicyCreationRecordArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyCreationRecordArrayInput` via:
 //
-//          AlertPolicyCreationRecordArray{ AlertPolicyCreationRecordArgs{...} }
+//	AlertPolicyCreationRecordArray{ AlertPolicyCreationRecordArgs{...} }
 type AlertPolicyCreationRecordArrayInput interface {
 	pulumi.Input
 
@@ -3570,7 +3570,7 @@ type AlertPolicyDocumentation struct {
 // AlertPolicyDocumentationInput is an input type that accepts AlertPolicyDocumentationArgs and AlertPolicyDocumentationOutput values.
 // You can construct a concrete instance of `AlertPolicyDocumentationInput` via:
 //
-//          AlertPolicyDocumentationArgs{...}
+//	AlertPolicyDocumentationArgs{...}
 type AlertPolicyDocumentationInput interface {
 	pulumi.Input
 
@@ -3612,11 +3612,11 @@ func (i AlertPolicyDocumentationArgs) ToAlertPolicyDocumentationPtrOutputWithCon
 // AlertPolicyDocumentationPtrInput is an input type that accepts AlertPolicyDocumentationArgs, AlertPolicyDocumentationPtr and AlertPolicyDocumentationPtrOutput values.
 // You can construct a concrete instance of `AlertPolicyDocumentationPtrInput` via:
 //
-//          AlertPolicyDocumentationArgs{...}
+//	        AlertPolicyDocumentationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertPolicyDocumentationPtrInput interface {
 	pulumi.Input
 
@@ -3738,7 +3738,7 @@ type CustomServiceTelemetry struct {
 // CustomServiceTelemetryInput is an input type that accepts CustomServiceTelemetryArgs and CustomServiceTelemetryOutput values.
 // You can construct a concrete instance of `CustomServiceTelemetryInput` via:
 //
-//          CustomServiceTelemetryArgs{...}
+//	CustomServiceTelemetryArgs{...}
 type CustomServiceTelemetryInput interface {
 	pulumi.Input
 
@@ -3776,11 +3776,11 @@ func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryPtrOutputWithContext
 // CustomServiceTelemetryPtrInput is an input type that accepts CustomServiceTelemetryArgs, CustomServiceTelemetryPtr and CustomServiceTelemetryPtrOutput values.
 // You can construct a concrete instance of `CustomServiceTelemetryPtrInput` via:
 //
-//          CustomServiceTelemetryArgs{...}
+//	        CustomServiceTelemetryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomServiceTelemetryPtrInput interface {
 	pulumi.Input
 
@@ -3887,7 +3887,7 @@ type MetricDescriptorLabel struct {
 // MetricDescriptorLabelInput is an input type that accepts MetricDescriptorLabelArgs and MetricDescriptorLabelOutput values.
 // You can construct a concrete instance of `MetricDescriptorLabelInput` via:
 //
-//          MetricDescriptorLabelArgs{...}
+//	MetricDescriptorLabelArgs{...}
 type MetricDescriptorLabelInput interface {
 	pulumi.Input
 
@@ -3921,7 +3921,7 @@ func (i MetricDescriptorLabelArgs) ToMetricDescriptorLabelOutputWithContext(ctx 
 // MetricDescriptorLabelArrayInput is an input type that accepts MetricDescriptorLabelArray and MetricDescriptorLabelArrayOutput values.
 // You can construct a concrete instance of `MetricDescriptorLabelArrayInput` via:
 //
-//          MetricDescriptorLabelArray{ MetricDescriptorLabelArgs{...} }
+//	MetricDescriptorLabelArray{ MetricDescriptorLabelArgs{...} }
 type MetricDescriptorLabelArrayInput interface {
 	pulumi.Input
 
@@ -4004,7 +4004,7 @@ type MetricDescriptorMetadata struct {
 // MetricDescriptorMetadataInput is an input type that accepts MetricDescriptorMetadataArgs and MetricDescriptorMetadataOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetadataInput` via:
 //
-//          MetricDescriptorMetadataArgs{...}
+//	MetricDescriptorMetadataArgs{...}
 type MetricDescriptorMetadataInput interface {
 	pulumi.Input
 
@@ -4042,11 +4042,11 @@ func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutputWithCon
 // MetricDescriptorMetadataPtrInput is an input type that accepts MetricDescriptorMetadataArgs, MetricDescriptorMetadataPtr and MetricDescriptorMetadataPtrOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetadataPtrInput` via:
 //
-//          MetricDescriptorMetadataArgs{...}
+//	        MetricDescriptorMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricDescriptorMetadataPtrInput interface {
 	pulumi.Input
 
@@ -4165,7 +4165,7 @@ type NotificationChannelSensitiveLabels struct {
 // NotificationChannelSensitiveLabelsInput is an input type that accepts NotificationChannelSensitiveLabelsArgs and NotificationChannelSensitiveLabelsOutput values.
 // You can construct a concrete instance of `NotificationChannelSensitiveLabelsInput` via:
 //
-//          NotificationChannelSensitiveLabelsArgs{...}
+//	NotificationChannelSensitiveLabelsArgs{...}
 type NotificationChannelSensitiveLabelsInput interface {
 	pulumi.Input
 
@@ -4208,11 +4208,11 @@ func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLa
 // NotificationChannelSensitiveLabelsPtrInput is an input type that accepts NotificationChannelSensitiveLabelsArgs, NotificationChannelSensitiveLabelsPtr and NotificationChannelSensitiveLabelsPtrOutput values.
 // You can construct a concrete instance of `NotificationChannelSensitiveLabelsPtrInput` via:
 //
-//          NotificationChannelSensitiveLabelsArgs{...}
+//	        NotificationChannelSensitiveLabelsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NotificationChannelSensitiveLabelsPtrInput interface {
 	pulumi.Input
 
@@ -4370,7 +4370,7 @@ type SloBasicSli struct {
 // SloBasicSliInput is an input type that accepts SloBasicSliArgs and SloBasicSliOutput values.
 // You can construct a concrete instance of `SloBasicSliInput` via:
 //
-//          SloBasicSliArgs{...}
+//	SloBasicSliArgs{...}
 type SloBasicSliInput interface {
 	pulumi.Input
 
@@ -4431,11 +4431,11 @@ func (i SloBasicSliArgs) ToSloBasicSliPtrOutputWithContext(ctx context.Context) 
 // SloBasicSliPtrInput is an input type that accepts SloBasicSliArgs, SloBasicSliPtr and SloBasicSliPtrOutput values.
 // You can construct a concrete instance of `SloBasicSliPtrInput` via:
 //
-//          SloBasicSliArgs{...}
+//	        SloBasicSliArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloBasicSliPtrInput interface {
 	pulumi.Input
 
@@ -4626,7 +4626,7 @@ type SloBasicSliAvailability struct {
 // SloBasicSliAvailabilityInput is an input type that accepts SloBasicSliAvailabilityArgs and SloBasicSliAvailabilityOutput values.
 // You can construct a concrete instance of `SloBasicSliAvailabilityInput` via:
 //
-//          SloBasicSliAvailabilityArgs{...}
+//	SloBasicSliAvailabilityArgs{...}
 type SloBasicSliAvailabilityInput interface {
 	pulumi.Input
 
@@ -4662,11 +4662,11 @@ func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityPtrOutputWithConte
 // SloBasicSliAvailabilityPtrInput is an input type that accepts SloBasicSliAvailabilityArgs, SloBasicSliAvailabilityPtr and SloBasicSliAvailabilityPtrOutput values.
 // You can construct a concrete instance of `SloBasicSliAvailabilityPtrInput` via:
 //
-//          SloBasicSliAvailabilityArgs{...}
+//	        SloBasicSliAvailabilityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloBasicSliAvailabilityPtrInput interface {
 	pulumi.Input
 
@@ -4765,7 +4765,7 @@ type SloBasicSliLatency struct {
 // SloBasicSliLatencyInput is an input type that accepts SloBasicSliLatencyArgs and SloBasicSliLatencyOutput values.
 // You can construct a concrete instance of `SloBasicSliLatencyInput` via:
 //
-//          SloBasicSliLatencyArgs{...}
+//	SloBasicSliLatencyArgs{...}
 type SloBasicSliLatencyInput interface {
 	pulumi.Input
 
@@ -4803,11 +4803,11 @@ func (i SloBasicSliLatencyArgs) ToSloBasicSliLatencyPtrOutputWithContext(ctx con
 // SloBasicSliLatencyPtrInput is an input type that accepts SloBasicSliLatencyArgs, SloBasicSliLatencyPtr and SloBasicSliLatencyPtrOutput values.
 // You can construct a concrete instance of `SloBasicSliLatencyPtrInput` via:
 //
-//          SloBasicSliLatencyArgs{...}
+//	        SloBasicSliLatencyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloBasicSliLatencyPtrInput interface {
 	pulumi.Input
 
@@ -4920,7 +4920,7 @@ type SloRequestBasedSli struct {
 // SloRequestBasedSliInput is an input type that accepts SloRequestBasedSliArgs and SloRequestBasedSliOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliInput` via:
 //
-//          SloRequestBasedSliArgs{...}
+//	SloRequestBasedSliArgs{...}
 type SloRequestBasedSliInput interface {
 	pulumi.Input
 
@@ -4968,11 +4968,11 @@ func (i SloRequestBasedSliArgs) ToSloRequestBasedSliPtrOutputWithContext(ctx con
 // SloRequestBasedSliPtrInput is an input type that accepts SloRequestBasedSliArgs, SloRequestBasedSliPtr and SloRequestBasedSliPtrOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliPtrInput` via:
 //
-//          SloRequestBasedSliArgs{...}
+//	        SloRequestBasedSliArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloRequestBasedSliPtrInput interface {
 	pulumi.Input
 
@@ -5115,7 +5115,7 @@ type SloRequestBasedSliDistributionCut struct {
 // SloRequestBasedSliDistributionCutInput is an input type that accepts SloRequestBasedSliDistributionCutArgs and SloRequestBasedSliDistributionCutOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliDistributionCutInput` via:
 //
-//          SloRequestBasedSliDistributionCutArgs{...}
+//	SloRequestBasedSliDistributionCutArgs{...}
 type SloRequestBasedSliDistributionCutInput interface {
 	pulumi.Input
 
@@ -5162,11 +5162,11 @@ func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionC
 // SloRequestBasedSliDistributionCutPtrInput is an input type that accepts SloRequestBasedSliDistributionCutArgs, SloRequestBasedSliDistributionCutPtr and SloRequestBasedSliDistributionCutPtrOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliDistributionCutPtrInput` via:
 //
-//          SloRequestBasedSliDistributionCutArgs{...}
+//	        SloRequestBasedSliDistributionCutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloRequestBasedSliDistributionCutPtrInput interface {
 	pulumi.Input
 
@@ -5302,7 +5302,7 @@ type SloRequestBasedSliDistributionCutRange struct {
 // SloRequestBasedSliDistributionCutRangeInput is an input type that accepts SloRequestBasedSliDistributionCutRangeArgs and SloRequestBasedSliDistributionCutRangeOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliDistributionCutRangeInput` via:
 //
-//          SloRequestBasedSliDistributionCutRangeArgs{...}
+//	SloRequestBasedSliDistributionCutRangeArgs{...}
 type SloRequestBasedSliDistributionCutRangeInput interface {
 	pulumi.Input
 
@@ -5344,11 +5344,11 @@ func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistribu
 // SloRequestBasedSliDistributionCutRangePtrInput is an input type that accepts SloRequestBasedSliDistributionCutRangeArgs, SloRequestBasedSliDistributionCutRangePtr and SloRequestBasedSliDistributionCutRangePtrOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliDistributionCutRangePtrInput` via:
 //
-//          SloRequestBasedSliDistributionCutRangeArgs{...}
+//	        SloRequestBasedSliDistributionCutRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloRequestBasedSliDistributionCutRangePtrInput interface {
 	pulumi.Input
 
@@ -5489,7 +5489,7 @@ type SloRequestBasedSliGoodTotalRatio struct {
 // SloRequestBasedSliGoodTotalRatioInput is an input type that accepts SloRequestBasedSliGoodTotalRatioArgs and SloRequestBasedSliGoodTotalRatioOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliGoodTotalRatioInput` via:
 //
-//          SloRequestBasedSliGoodTotalRatioArgs{...}
+//	SloRequestBasedSliGoodTotalRatioArgs{...}
 type SloRequestBasedSliGoodTotalRatioInput interface {
 	pulumi.Input
 
@@ -5546,11 +5546,11 @@ func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatio
 // SloRequestBasedSliGoodTotalRatioPtrInput is an input type that accepts SloRequestBasedSliGoodTotalRatioArgs, SloRequestBasedSliGoodTotalRatioPtr and SloRequestBasedSliGoodTotalRatioPtrOutput values.
 // You can construct a concrete instance of `SloRequestBasedSliGoodTotalRatioPtrInput` via:
 //
-//          SloRequestBasedSliGoodTotalRatioArgs{...}
+//	        SloRequestBasedSliGoodTotalRatioArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloRequestBasedSliGoodTotalRatioPtrInput interface {
 	pulumi.Input
 
@@ -5743,7 +5743,7 @@ type SloWindowsBasedSli struct {
 // SloWindowsBasedSliInput is an input type that accepts SloWindowsBasedSliArgs and SloWindowsBasedSliOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliInput` via:
 //
-//          SloWindowsBasedSliArgs{...}
+//	SloWindowsBasedSliArgs{...}
 type SloWindowsBasedSliInput interface {
 	pulumi.Input
 
@@ -5811,11 +5811,11 @@ func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliPtrOutputWithContext(ctx con
 // SloWindowsBasedSliPtrInput is an input type that accepts SloWindowsBasedSliArgs, SloWindowsBasedSliPtr and SloWindowsBasedSliPtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliPtrInput` via:
 //
-//          SloWindowsBasedSliArgs{...}
+//	        SloWindowsBasedSliArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliPtrInput interface {
 	pulumi.Input
 
@@ -6030,7 +6030,7 @@ type SloWindowsBasedSliGoodTotalRatioThreshold struct {
 // SloWindowsBasedSliGoodTotalRatioThresholdInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdArgs and SloWindowsBasedSliGoodTotalRatioThresholdOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdInput interface {
 	pulumi.Input
 
@@ -6074,11 +6074,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodT
 // SloWindowsBasedSliGoodTotalRatioThresholdPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdArgs, SloWindowsBasedSliGoodTotalRatioThresholdPtr and SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdPtrInput interface {
 	pulumi.Input
 
@@ -6242,7 +6242,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance struct {
 // SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput interface {
 	pulumi.Input
 
@@ -6303,11 +6303,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloW
 // SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs, SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtr and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput interface {
 	pulumi.Input
 
@@ -6502,7 +6502,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability st
 // SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityInput interface {
 	pulumi.Input
 
@@ -6538,11 +6538,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
 // SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs, SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtr and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput interface {
 	pulumi.Input
 
@@ -6643,7 +6643,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency struct 
 // SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput interface {
 	pulumi.Input
 
@@ -6681,11 +6681,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs)
 // SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs, SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtr and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput interface {
 	pulumi.Input
 
@@ -6798,7 +6798,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformance struct {
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceInput interface {
 	pulumi.Input
 
@@ -6846,11 +6846,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBa
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput interface {
 	pulumi.Input
 
@@ -6997,7 +6997,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut struct 
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutInput interface {
 	pulumi.Input
 
@@ -7044,11 +7044,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs)
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput interface {
 	pulumi.Input
 
@@ -7188,7 +7188,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange st
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput interface {
 	pulumi.Input
 
@@ -7230,11 +7230,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput interface {
 	pulumi.Input
 
@@ -7379,7 +7379,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio struct {
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs{...}
+//	SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs{...}
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioInput interface {
 	pulumi.Input
 
@@ -7436,11 +7436,11 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) 
 // SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput` via:
 //
-//          SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs{...}
+//	        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput interface {
 	pulumi.Input
 
@@ -7621,7 +7621,7 @@ type SloWindowsBasedSliMetricMeanInRange struct {
 // SloWindowsBasedSliMetricMeanInRangeInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeArgs and SloWindowsBasedSliMetricMeanInRangeOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangeInput` via:
 //
-//          SloWindowsBasedSliMetricMeanInRangeArgs{...}
+//	SloWindowsBasedSliMetricMeanInRangeArgs{...}
 type SloWindowsBasedSliMetricMeanInRangeInput interface {
 	pulumi.Input
 
@@ -7671,11 +7671,11 @@ func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanI
 // SloWindowsBasedSliMetricMeanInRangePtrInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeArgs, SloWindowsBasedSliMetricMeanInRangePtr and SloWindowsBasedSliMetricMeanInRangePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangePtrInput` via:
 //
-//          SloWindowsBasedSliMetricMeanInRangeArgs{...}
+//	        SloWindowsBasedSliMetricMeanInRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliMetricMeanInRangePtrInput interface {
 	pulumi.Input
 
@@ -7817,7 +7817,7 @@ type SloWindowsBasedSliMetricMeanInRangeRange struct {
 // SloWindowsBasedSliMetricMeanInRangeRangeInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeRangeArgs and SloWindowsBasedSliMetricMeanInRangeRangeOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangeRangeInput` via:
 //
-//          SloWindowsBasedSliMetricMeanInRangeRangeArgs{...}
+//	SloWindowsBasedSliMetricMeanInRangeRangeArgs{...}
 type SloWindowsBasedSliMetricMeanInRangeRangeInput interface {
 	pulumi.Input
 
@@ -7859,11 +7859,11 @@ func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetric
 // SloWindowsBasedSliMetricMeanInRangeRangePtrInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeRangeArgs, SloWindowsBasedSliMetricMeanInRangeRangePtr and SloWindowsBasedSliMetricMeanInRangeRangePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangeRangePtrInput` via:
 //
-//          SloWindowsBasedSliMetricMeanInRangeRangeArgs{...}
+//	        SloWindowsBasedSliMetricMeanInRangeRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliMetricMeanInRangeRangePtrInput interface {
 	pulumi.Input
 
@@ -7997,7 +7997,7 @@ type SloWindowsBasedSliMetricSumInRange struct {
 // SloWindowsBasedSliMetricSumInRangeInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeArgs and SloWindowsBasedSliMetricSumInRangeOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangeInput` via:
 //
-//          SloWindowsBasedSliMetricSumInRangeArgs{...}
+//	SloWindowsBasedSliMetricSumInRangeArgs{...}
 type SloWindowsBasedSliMetricSumInRangeInput interface {
 	pulumi.Input
 
@@ -8047,11 +8047,11 @@ func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInR
 // SloWindowsBasedSliMetricSumInRangePtrInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeArgs, SloWindowsBasedSliMetricSumInRangePtr and SloWindowsBasedSliMetricSumInRangePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangePtrInput` via:
 //
-//          SloWindowsBasedSliMetricSumInRangeArgs{...}
+//	        SloWindowsBasedSliMetricSumInRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliMetricSumInRangePtrInput interface {
 	pulumi.Input
 
@@ -8193,7 +8193,7 @@ type SloWindowsBasedSliMetricSumInRangeRange struct {
 // SloWindowsBasedSliMetricSumInRangeRangeInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeRangeArgs and SloWindowsBasedSliMetricSumInRangeRangeOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangeRangeInput` via:
 //
-//          SloWindowsBasedSliMetricSumInRangeRangeArgs{...}
+//	SloWindowsBasedSliMetricSumInRangeRangeArgs{...}
 type SloWindowsBasedSliMetricSumInRangeRangeInput interface {
 	pulumi.Input
 
@@ -8235,11 +8235,11 @@ func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricS
 // SloWindowsBasedSliMetricSumInRangeRangePtrInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeRangeArgs, SloWindowsBasedSliMetricSumInRangeRangePtr and SloWindowsBasedSliMetricSumInRangeRangePtrOutput values.
 // You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangeRangePtrInput` via:
 //
-//          SloWindowsBasedSliMetricSumInRangeRangeArgs{...}
+//	        SloWindowsBasedSliMetricSumInRangeRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SloWindowsBasedSliMetricSumInRangeRangePtrInput interface {
 	pulumi.Input
 
@@ -8366,7 +8366,7 @@ type UptimeCheckConfigContentMatcher struct {
 // UptimeCheckConfigContentMatcherInput is an input type that accepts UptimeCheckConfigContentMatcherArgs and UptimeCheckConfigContentMatcherOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigContentMatcherInput` via:
 //
-//          UptimeCheckConfigContentMatcherArgs{...}
+//	UptimeCheckConfigContentMatcherArgs{...}
 type UptimeCheckConfigContentMatcherInput interface {
 	pulumi.Input
 
@@ -8401,7 +8401,7 @@ func (i UptimeCheckConfigContentMatcherArgs) ToUptimeCheckConfigContentMatcherOu
 // UptimeCheckConfigContentMatcherArrayInput is an input type that accepts UptimeCheckConfigContentMatcherArray and UptimeCheckConfigContentMatcherArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigContentMatcherArrayInput` via:
 //
-//          UptimeCheckConfigContentMatcherArray{ UptimeCheckConfigContentMatcherArgs{...} }
+//	UptimeCheckConfigContentMatcherArray{ UptimeCheckConfigContentMatcherArgs{...} }
 type UptimeCheckConfigContentMatcherArrayInput interface {
 	pulumi.Input
 
@@ -8489,7 +8489,7 @@ type UptimeCheckConfigContentMatcherJsonPathMatcher struct {
 // UptimeCheckConfigContentMatcherJsonPathMatcherInput is an input type that accepts UptimeCheckConfigContentMatcherJsonPathMatcherArgs and UptimeCheckConfigContentMatcherJsonPathMatcherOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigContentMatcherJsonPathMatcherInput` via:
 //
-//          UptimeCheckConfigContentMatcherJsonPathMatcherArgs{...}
+//	UptimeCheckConfigContentMatcherJsonPathMatcherArgs{...}
 type UptimeCheckConfigContentMatcherJsonPathMatcherInput interface {
 	pulumi.Input
 
@@ -8529,11 +8529,11 @@ func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigC
 // UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput is an input type that accepts UptimeCheckConfigContentMatcherJsonPathMatcherArgs, UptimeCheckConfigContentMatcherJsonPathMatcherPtr and UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput` via:
 //
-//          UptimeCheckConfigContentMatcherJsonPathMatcherArgs{...}
+//	        UptimeCheckConfigContentMatcherJsonPathMatcherArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput interface {
 	pulumi.Input
 
@@ -8671,7 +8671,7 @@ type UptimeCheckConfigHttpCheck struct {
 // UptimeCheckConfigHttpCheckInput is an input type that accepts UptimeCheckConfigHttpCheckArgs and UptimeCheckConfigHttpCheckOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigHttpCheckInput` via:
 //
-//          UptimeCheckConfigHttpCheckArgs{...}
+//	UptimeCheckConfigHttpCheckArgs{...}
 type UptimeCheckConfigHttpCheckInput interface {
 	pulumi.Input
 
@@ -8729,11 +8729,11 @@ func (i UptimeCheckConfigHttpCheckArgs) ToUptimeCheckConfigHttpCheckPtrOutputWit
 // UptimeCheckConfigHttpCheckPtrInput is an input type that accepts UptimeCheckConfigHttpCheckArgs, UptimeCheckConfigHttpCheckPtr and UptimeCheckConfigHttpCheckPtrOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigHttpCheckPtrInput` via:
 //
-//          UptimeCheckConfigHttpCheckArgs{...}
+//	        UptimeCheckConfigHttpCheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UptimeCheckConfigHttpCheckPtrInput interface {
 	pulumi.Input
 
@@ -8976,7 +8976,7 @@ type UptimeCheckConfigHttpCheckAuthInfo struct {
 // UptimeCheckConfigHttpCheckAuthInfoInput is an input type that accepts UptimeCheckConfigHttpCheckAuthInfoArgs and UptimeCheckConfigHttpCheckAuthInfoOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigHttpCheckAuthInfoInput` via:
 //
-//          UptimeCheckConfigHttpCheckAuthInfoArgs{...}
+//	UptimeCheckConfigHttpCheckAuthInfoArgs{...}
 type UptimeCheckConfigHttpCheckAuthInfoInput interface {
 	pulumi.Input
 
@@ -9015,11 +9015,11 @@ func (i UptimeCheckConfigHttpCheckAuthInfoArgs) ToUptimeCheckConfigHttpCheckAuth
 // UptimeCheckConfigHttpCheckAuthInfoPtrInput is an input type that accepts UptimeCheckConfigHttpCheckAuthInfoArgs, UptimeCheckConfigHttpCheckAuthInfoPtr and UptimeCheckConfigHttpCheckAuthInfoPtrOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigHttpCheckAuthInfoPtrInput` via:
 //
-//          UptimeCheckConfigHttpCheckAuthInfoArgs{...}
+//	        UptimeCheckConfigHttpCheckAuthInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UptimeCheckConfigHttpCheckAuthInfoPtrInput interface {
 	pulumi.Input
 
@@ -9135,7 +9135,7 @@ type UptimeCheckConfigMonitoredResource struct {
 // UptimeCheckConfigMonitoredResourceInput is an input type that accepts UptimeCheckConfigMonitoredResourceArgs and UptimeCheckConfigMonitoredResourceOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigMonitoredResourceInput` via:
 //
-//          UptimeCheckConfigMonitoredResourceArgs{...}
+//	UptimeCheckConfigMonitoredResourceArgs{...}
 type UptimeCheckConfigMonitoredResourceInput interface {
 	pulumi.Input
 
@@ -9173,11 +9173,11 @@ func (i UptimeCheckConfigMonitoredResourceArgs) ToUptimeCheckConfigMonitoredReso
 // UptimeCheckConfigMonitoredResourcePtrInput is an input type that accepts UptimeCheckConfigMonitoredResourceArgs, UptimeCheckConfigMonitoredResourcePtr and UptimeCheckConfigMonitoredResourcePtrOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigMonitoredResourcePtrInput` via:
 //
-//          UptimeCheckConfigMonitoredResourceArgs{...}
+//	        UptimeCheckConfigMonitoredResourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UptimeCheckConfigMonitoredResourcePtrInput interface {
 	pulumi.Input
 
@@ -9292,7 +9292,7 @@ type UptimeCheckConfigResourceGroup struct {
 // UptimeCheckConfigResourceGroupInput is an input type that accepts UptimeCheckConfigResourceGroupArgs and UptimeCheckConfigResourceGroupOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigResourceGroupInput` via:
 //
-//          UptimeCheckConfigResourceGroupArgs{...}
+//	UptimeCheckConfigResourceGroupArgs{...}
 type UptimeCheckConfigResourceGroupInput interface {
 	pulumi.Input
 
@@ -9331,11 +9331,11 @@ func (i UptimeCheckConfigResourceGroupArgs) ToUptimeCheckConfigResourceGroupPtrO
 // UptimeCheckConfigResourceGroupPtrInput is an input type that accepts UptimeCheckConfigResourceGroupArgs, UptimeCheckConfigResourceGroupPtr and UptimeCheckConfigResourceGroupPtrOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigResourceGroupPtrInput` via:
 //
-//          UptimeCheckConfigResourceGroupArgs{...}
+//	        UptimeCheckConfigResourceGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UptimeCheckConfigResourceGroupPtrInput interface {
 	pulumi.Input
 
@@ -9449,7 +9449,7 @@ type UptimeCheckConfigTcpCheck struct {
 // UptimeCheckConfigTcpCheckInput is an input type that accepts UptimeCheckConfigTcpCheckArgs and UptimeCheckConfigTcpCheckOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigTcpCheckInput` via:
 //
-//          UptimeCheckConfigTcpCheckArgs{...}
+//	UptimeCheckConfigTcpCheckArgs{...}
 type UptimeCheckConfigTcpCheckInput interface {
 	pulumi.Input
 
@@ -9485,11 +9485,11 @@ func (i UptimeCheckConfigTcpCheckArgs) ToUptimeCheckConfigTcpCheckPtrOutputWithC
 // UptimeCheckConfigTcpCheckPtrInput is an input type that accepts UptimeCheckConfigTcpCheckArgs, UptimeCheckConfigTcpCheckPtr and UptimeCheckConfigTcpCheckPtrOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigTcpCheckPtrInput` via:
 //
-//          UptimeCheckConfigTcpCheckArgs{...}
+//	        UptimeCheckConfigTcpCheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UptimeCheckConfigTcpCheckPtrInput interface {
 	pulumi.Input
 
@@ -9585,7 +9585,7 @@ type GetAppEngineServiceTelemetry struct {
 // GetAppEngineServiceTelemetryInput is an input type that accepts GetAppEngineServiceTelemetryArgs and GetAppEngineServiceTelemetryOutput values.
 // You can construct a concrete instance of `GetAppEngineServiceTelemetryInput` via:
 //
-//          GetAppEngineServiceTelemetryArgs{...}
+//	GetAppEngineServiceTelemetryArgs{...}
 type GetAppEngineServiceTelemetryInput interface {
 	pulumi.Input
 
@@ -9612,7 +9612,7 @@ func (i GetAppEngineServiceTelemetryArgs) ToGetAppEngineServiceTelemetryOutputWi
 // GetAppEngineServiceTelemetryArrayInput is an input type that accepts GetAppEngineServiceTelemetryArray and GetAppEngineServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetAppEngineServiceTelemetryArrayInput` via:
 //
-//          GetAppEngineServiceTelemetryArray{ GetAppEngineServiceTelemetryArgs{...} }
+//	GetAppEngineServiceTelemetryArray{ GetAppEngineServiceTelemetryArgs{...} }
 type GetAppEngineServiceTelemetryArrayInput interface {
 	pulumi.Input
 
@@ -9679,7 +9679,7 @@ type GetClusterIstioServiceTelemetry struct {
 // GetClusterIstioServiceTelemetryInput is an input type that accepts GetClusterIstioServiceTelemetryArgs and GetClusterIstioServiceTelemetryOutput values.
 // You can construct a concrete instance of `GetClusterIstioServiceTelemetryInput` via:
 //
-//          GetClusterIstioServiceTelemetryArgs{...}
+//	GetClusterIstioServiceTelemetryArgs{...}
 type GetClusterIstioServiceTelemetryInput interface {
 	pulumi.Input
 
@@ -9706,7 +9706,7 @@ func (i GetClusterIstioServiceTelemetryArgs) ToGetClusterIstioServiceTelemetryOu
 // GetClusterIstioServiceTelemetryArrayInput is an input type that accepts GetClusterIstioServiceTelemetryArray and GetClusterIstioServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetClusterIstioServiceTelemetryArrayInput` via:
 //
-//          GetClusterIstioServiceTelemetryArray{ GetClusterIstioServiceTelemetryArgs{...} }
+//	GetClusterIstioServiceTelemetryArray{ GetClusterIstioServiceTelemetryArgs{...} }
 type GetClusterIstioServiceTelemetryArrayInput interface {
 	pulumi.Input
 
@@ -9773,7 +9773,7 @@ type GetIstioCanonicalServiceTelemetry struct {
 // GetIstioCanonicalServiceTelemetryInput is an input type that accepts GetIstioCanonicalServiceTelemetryArgs and GetIstioCanonicalServiceTelemetryOutput values.
 // You can construct a concrete instance of `GetIstioCanonicalServiceTelemetryInput` via:
 //
-//          GetIstioCanonicalServiceTelemetryArgs{...}
+//	GetIstioCanonicalServiceTelemetryArgs{...}
 type GetIstioCanonicalServiceTelemetryInput interface {
 	pulumi.Input
 
@@ -9800,7 +9800,7 @@ func (i GetIstioCanonicalServiceTelemetryArgs) ToGetIstioCanonicalServiceTelemet
 // GetIstioCanonicalServiceTelemetryArrayInput is an input type that accepts GetIstioCanonicalServiceTelemetryArray and GetIstioCanonicalServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetIstioCanonicalServiceTelemetryArrayInput` via:
 //
-//          GetIstioCanonicalServiceTelemetryArray{ GetIstioCanonicalServiceTelemetryArgs{...} }
+//	GetIstioCanonicalServiceTelemetryArray{ GetIstioCanonicalServiceTelemetryArgs{...} }
 type GetIstioCanonicalServiceTelemetryArrayInput interface {
 	pulumi.Input
 
@@ -9867,7 +9867,7 @@ type GetMeshIstioServiceTelemetry struct {
 // GetMeshIstioServiceTelemetryInput is an input type that accepts GetMeshIstioServiceTelemetryArgs and GetMeshIstioServiceTelemetryOutput values.
 // You can construct a concrete instance of `GetMeshIstioServiceTelemetryInput` via:
 //
-//          GetMeshIstioServiceTelemetryArgs{...}
+//	GetMeshIstioServiceTelemetryArgs{...}
 type GetMeshIstioServiceTelemetryInput interface {
 	pulumi.Input
 
@@ -9894,7 +9894,7 @@ func (i GetMeshIstioServiceTelemetryArgs) ToGetMeshIstioServiceTelemetryOutputWi
 // GetMeshIstioServiceTelemetryArrayInput is an input type that accepts GetMeshIstioServiceTelemetryArray and GetMeshIstioServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetMeshIstioServiceTelemetryArrayInput` via:
 //
-//          GetMeshIstioServiceTelemetryArray{ GetMeshIstioServiceTelemetryArgs{...} }
+//	GetMeshIstioServiceTelemetryArray{ GetMeshIstioServiceTelemetryArgs{...} }
 type GetMeshIstioServiceTelemetryArrayInput interface {
 	pulumi.Input
 
@@ -9963,7 +9963,7 @@ type GetNotificationChannelSensitiveLabel struct {
 // GetNotificationChannelSensitiveLabelInput is an input type that accepts GetNotificationChannelSensitiveLabelArgs and GetNotificationChannelSensitiveLabelOutput values.
 // You can construct a concrete instance of `GetNotificationChannelSensitiveLabelInput` via:
 //
-//          GetNotificationChannelSensitiveLabelArgs{...}
+//	GetNotificationChannelSensitiveLabelArgs{...}
 type GetNotificationChannelSensitiveLabelInput interface {
 	pulumi.Input
 
@@ -9992,7 +9992,7 @@ func (i GetNotificationChannelSensitiveLabelArgs) ToGetNotificationChannelSensit
 // GetNotificationChannelSensitiveLabelArrayInput is an input type that accepts GetNotificationChannelSensitiveLabelArray and GetNotificationChannelSensitiveLabelArrayOutput values.
 // You can construct a concrete instance of `GetNotificationChannelSensitiveLabelArrayInput` via:
 //
-//          GetNotificationChannelSensitiveLabelArray{ GetNotificationChannelSensitiveLabelArgs{...} }
+//	GetNotificationChannelSensitiveLabelArray{ GetNotificationChannelSensitiveLabelArgs{...} }
 type GetNotificationChannelSensitiveLabelArrayInput interface {
 	pulumi.Input
 
@@ -10076,7 +10076,7 @@ type GetUptimeCheckIPsUptimeCheckIp struct {
 // GetUptimeCheckIPsUptimeCheckIpInput is an input type that accepts GetUptimeCheckIPsUptimeCheckIpArgs and GetUptimeCheckIPsUptimeCheckIpOutput values.
 // You can construct a concrete instance of `GetUptimeCheckIPsUptimeCheckIpInput` via:
 //
-//          GetUptimeCheckIPsUptimeCheckIpArgs{...}
+//	GetUptimeCheckIPsUptimeCheckIpArgs{...}
 type GetUptimeCheckIPsUptimeCheckIpInput interface {
 	pulumi.Input
 
@@ -10112,7 +10112,7 @@ func (i GetUptimeCheckIPsUptimeCheckIpArgs) ToGetUptimeCheckIPsUptimeCheckIpOutp
 // GetUptimeCheckIPsUptimeCheckIpArrayInput is an input type that accepts GetUptimeCheckIPsUptimeCheckIpArray and GetUptimeCheckIPsUptimeCheckIpArrayOutput values.
 // You can construct a concrete instance of `GetUptimeCheckIPsUptimeCheckIpArrayInput` via:
 //
-//          GetUptimeCheckIPsUptimeCheckIpArray{ GetUptimeCheckIPsUptimeCheckIpArgs{...} }
+//	GetUptimeCheckIPsUptimeCheckIpArray{ GetUptimeCheckIPsUptimeCheckIpArgs{...} }
 type GetUptimeCheckIPsUptimeCheckIpArrayInput interface {
 	pulumi.Input
 

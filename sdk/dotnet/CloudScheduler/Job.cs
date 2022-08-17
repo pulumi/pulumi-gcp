@@ -23,103 +23,99 @@ namespace Pulumi.Gcp.CloudScheduler
     /// ### Scheduler Job App Engine
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
     ///     {
-    ///         var job = new Gcp.CloudScheduler.Job("job", new Gcp.CloudScheduler.JobArgs
+    ///         AppEngineHttpTarget = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetArgs
     ///         {
-    ///             AppEngineHttpTarget = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetArgs
+    ///             AppEngineRouting = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetAppEngineRoutingArgs
     ///             {
-    ///                 AppEngineRouting = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetAppEngineRoutingArgs
-    ///                 {
-    ///                     Instance = "my-instance-001",
-    ///                     Service = "web",
-    ///                     Version = "prod",
-    ///                 },
-    ///                 HttpMethod = "POST",
-    ///                 RelativeUri = "/ping",
+    ///                 Instance = "my-instance-001",
+    ///                 Service = "web",
+    ///                 Version = "prod",
     ///             },
-    ///             AttemptDeadline = "320s",
-    ///             Description = "test app engine job",
-    ///             RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
-    ///             {
-    ///                 MaxDoublings = 2,
-    ///                 MaxRetryDuration = "10s",
-    ///                 MinBackoffDuration = "1s",
-    ///                 RetryCount = 3,
-    ///             },
-    ///             Schedule = "*/4 * * * *",
-    ///             TimeZone = "Europe/London",
-    ///         });
-    ///     }
+    ///             HttpMethod = "POST",
+    ///             RelativeUri = "/ping",
+    ///         },
+    ///         AttemptDeadline = "320s",
+    ///         Description = "test app engine job",
+    ///         RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
+    ///         {
+    ///             MaxDoublings = 2,
+    ///             MaxRetryDuration = "10s",
+    ///             MinBackoffDuration = "1s",
+    ///             RetryCount = 3,
+    ///         },
+    ///         Schedule = "*/4 * * * *",
+    ///         TimeZone = "Europe/London",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Scheduler Job Oauth
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
-    ///         var job = new Gcp.CloudScheduler.Job("job", new Gcp.CloudScheduler.JobArgs
-    ///         {
-    ///             Description = "test http job",
-    ///             Schedule = "*/8 * * * *",
-    ///             TimeZone = "America/New_York",
-    ///             AttemptDeadline = "320s",
-    ///             HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
-    ///             {
-    ///                 HttpMethod = "GET",
-    ///                 Uri = "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
-    ///                 OauthToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOauthTokenArgs
-    ///                 {
-    ///                     ServiceAccountEmail = @default.Apply(@default =&gt; @default.Email),
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
     /// 
-    /// }
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Description = "test http job",
+    ///         Schedule = "*/8 * * * *",
+    ///         TimeZone = "America/New_York",
+    ///         AttemptDeadline = "320s",
+    ///         HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "GET",
+    ///             Uri = "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
+    ///             OauthToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOauthTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Scheduler Job Oidc
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
-    ///         var job = new Gcp.CloudScheduler.Job("job", new Gcp.CloudScheduler.JobArgs
-    ///         {
-    ///             Description = "test http job",
-    ///             Schedule = "*/8 * * * *",
-    ///             TimeZone = "America/New_York",
-    ///             AttemptDeadline = "320s",
-    ///             HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
-    ///             {
-    ///                 HttpMethod = "GET",
-    ///                 Uri = "https://example.com/ping",
-    ///                 OidcToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOidcTokenArgs
-    ///                 {
-    ///                     ServiceAccountEmail = @default.Apply(@default =&gt; @default.Email),
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
     /// 
-    /// }
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Description = "test http job",
+    ///         Schedule = "*/8 * * * *",
+    ///         TimeZone = "America/New_York",
+    ///         AttemptDeadline = "320s",
+    ///         HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "GET",
+    ///             Uri = "https://example.com/ping",
+    ///             OidcToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOidcTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -143,7 +139,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudscheduler/job:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -190,6 +186,12 @@ namespace Pulumi.Gcp.CloudScheduler
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+        /// </summary>
+        [Output("paused")]
+        public Output<bool> Paused { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -225,6 +227,12 @@ namespace Pulumi.Gcp.CloudScheduler
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the job.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the time zone to be used in interpreting schedule.
@@ -277,7 +285,7 @@ namespace Pulumi.Gcp.CloudScheduler
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -322,6 +330,12 @@ namespace Pulumi.Gcp.CloudScheduler
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -370,9 +384,10 @@ namespace Pulumi.Gcp.CloudScheduler
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 
-    public sealed class JobState : Pulumi.ResourceArgs
+    public sealed class JobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -419,6 +434,12 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -456,6 +477,12 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
+        /// State of the job.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
         /// Specifies the time zone to be used in interpreting schedule.
         /// The value of this field must be a time zone name from the tz database.
         /// </summary>
@@ -465,5 +492,6 @@ namespace Pulumi.Gcp.CloudScheduler
         public JobState()
         {
         }
+        public static new JobState Empty => new JobState();
     }
 }

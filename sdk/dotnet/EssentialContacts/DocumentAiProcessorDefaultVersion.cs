@@ -16,27 +16,26 @@ namespace Pulumi.Gcp.EssentialContacts
     /// ### Documentai Default Version
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var processorDocumentAiProcessor = new Gcp.EssentialContacts.DocumentAiProcessor("processorDocumentAiProcessor", new()
     ///     {
-    ///         var processorDocumentAiProcessor = new Gcp.EssentialContacts.DocumentAiProcessor("processorDocumentAiProcessor", new Gcp.EssentialContacts.DocumentAiProcessorArgs
-    ///         {
-    ///             Location = "us",
-    ///             DisplayName = "test-processor",
-    ///             Type = "OCR_PROCESSOR",
-    ///         });
-    ///         var processorDocumentAiProcessorDefaultVersion = new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersionArgs
-    ///         {
-    ///             Processor = processorDocumentAiProcessor.Id,
-    ///             Version = processorDocumentAiProcessor.Id.Apply(id =&gt; $"{id}/processorVersions/pretrained-next"),
-    ///         });
-    ///     }
+    ///         Location = "us",
+    ///         DisplayName = "test-processor",
+    ///         Type = "OCR_PROCESSOR",
+    ///     });
     /// 
-    /// }
+    ///     var processorDocumentAiProcessorDefaultVersion = new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", new()
+    ///     {
+    ///         Processor = processorDocumentAiProcessor.Id,
+    ///         Version = processorDocumentAiProcessor.Id.Apply(id =&gt; $"{id}/processorVersions/pretrained-next"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +47,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// ```
     /// </summary>
     [GcpResourceType("gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion")]
-    public partial class DocumentAiProcessorDefaultVersion : Pulumi.CustomResource
+    public partial class DocumentAiProcessorDefaultVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The processor to set the version on.
@@ -106,7 +105,7 @@ namespace Pulumi.Gcp.EssentialContacts
         }
     }
 
-    public sealed class DocumentAiProcessorDefaultVersionArgs : Pulumi.ResourceArgs
+    public sealed class DocumentAiProcessorDefaultVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The processor to set the version on.
@@ -123,9 +122,10 @@ namespace Pulumi.Gcp.EssentialContacts
         public DocumentAiProcessorDefaultVersionArgs()
         {
         }
+        public static new DocumentAiProcessorDefaultVersionArgs Empty => new DocumentAiProcessorDefaultVersionArgs();
     }
 
-    public sealed class DocumentAiProcessorDefaultVersionState : Pulumi.ResourceArgs
+    public sealed class DocumentAiProcessorDefaultVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The processor to set the version on.
@@ -142,5 +142,6 @@ namespace Pulumi.Gcp.EssentialContacts
         public DocumentAiProcessorDefaultVersionState()
         {
         }
+        public static new DocumentAiProcessorDefaultVersionState Empty => new DocumentAiProcessorDefaultVersionState();
     }
 }

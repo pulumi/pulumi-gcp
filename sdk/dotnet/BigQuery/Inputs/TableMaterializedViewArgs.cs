@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableMaterializedViewArgs : Pulumi.ResourceArgs
+    public sealed class TableMaterializedViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableMaterializedViewArgs()
         {
         }
+        public static new TableMaterializedViewArgs Empty => new TableMaterializedViewArgs();
     }
 }

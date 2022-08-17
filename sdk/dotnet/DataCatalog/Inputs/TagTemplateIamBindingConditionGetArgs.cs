@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class TagTemplateIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class TagTemplateIamBindingConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public TagTemplateIamBindingConditionGetArgs()
         {
         }
+        public static new TagTemplateIamBindingConditionGetArgs Empty => new TagTemplateIamBindingConditionGetArgs();
     }
 }

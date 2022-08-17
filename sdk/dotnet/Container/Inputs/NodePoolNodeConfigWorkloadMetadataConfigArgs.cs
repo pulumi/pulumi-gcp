@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigWorkloadMetadataConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigWorkloadMetadataConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigWorkloadMetadataConfigArgs()
         {
         }
+        public static new NodePoolNodeConfigWorkloadMetadataConfigArgs Empty => new NodePoolNodeConfigWorkloadMetadataConfigArgs();
     }
 }

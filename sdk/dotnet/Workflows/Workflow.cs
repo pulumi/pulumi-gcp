@@ -22,24 +22,24 @@ namespace Pulumi.Gcp.Workflows
     /// ### Workflow Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var testAccount = new Gcp.ServiceAccount.Account("testAccount", new()
     ///     {
-    ///         var testAccount = new Gcp.ServiceAccount.Account("testAccount", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-account",
-    ///             DisplayName = "Test Service Account",
-    ///         });
-    ///         var example = new Gcp.Workflows.Workflow("example", new Gcp.Workflows.WorkflowArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Description = "Magic",
-    ///             ServiceAccount = testAccount.Id,
-    ///             SourceContents = @$"# This is a sample workflow, feel free to replace it with your source code
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Workflows.Workflow("example", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Description = "Magic",
+    ///         ServiceAccount = testAccount.Id,
+    ///         SourceContents = @$"# This is a sample workflow, feel free to replace it with your source code
     /// #
     /// # This workflow does the following:
     /// # - reads current time and date information from an external API and stores
@@ -65,10 +65,9 @@ namespace Pulumi.Gcp.Workflows
     /// - returnOutput:
     ///     return: {WikiResult.Body[1]}
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +75,7 @@ namespace Pulumi.Gcp.Workflows
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:workflows/workflow:Workflow")]
-    public partial class Workflow : Pulumi.CustomResource
+    public partial class Workflow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -200,7 +199,7 @@ namespace Pulumi.Gcp.Workflows
         }
     }
 
-    public sealed class WorkflowArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -263,9 +262,10 @@ namespace Pulumi.Gcp.Workflows
         public WorkflowArgs()
         {
         }
+        public static new WorkflowArgs Empty => new WorkflowArgs();
     }
 
-    public sealed class WorkflowState : Pulumi.ResourceArgs
+    public sealed class WorkflowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -354,5 +354,6 @@ namespace Pulumi.Gcp.Workflows
         public WorkflowState()
         {
         }
+        public static new WorkflowState Empty => new WorkflowState();
     }
 }

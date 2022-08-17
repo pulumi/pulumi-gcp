@@ -22,107 +22,103 @@ namespace Pulumi.Gcp.DataLoss
     /// ### Dlp Stored Info Type Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new Gcp.DataLoss.PreventionStoredInfoType("basic", new()
     ///     {
-    ///         var basic = new Gcp.DataLoss.PreventionStoredInfoType("basic", new Gcp.DataLoss.PreventionStoredInfoTypeArgs
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///         Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
     ///         {
-    ///             Description = "Description",
-    ///             DisplayName = "Displayname",
-    ///             Parent = "projects/my-project-name",
-    ///             Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
+    ///             GroupIndexes = new[]
     ///             {
-    ///                 GroupIndexes = 
-    ///                 {
-    ///                     2,
-    ///                 },
-    ///                 Pattern = "patient",
+    ///                 2,
     ///             },
-    ///         });
-    ///     }
+    ///             Pattern = "patient",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Dlp Stored Info Type Dictionary
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dictionary = new Gcp.DataLoss.PreventionStoredInfoType("dictionary", new()
     ///     {
-    ///         var dictionary = new Gcp.DataLoss.PreventionStoredInfoType("dictionary", new Gcp.DataLoss.PreventionStoredInfoTypeArgs
+    ///         Description = "Description",
+    ///         Dictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryArgs
     ///         {
-    ///             Description = "Description",
-    ///             Dictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryArgs
+    ///             WordList = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryWordListArgs
     ///             {
-    ///                 WordList = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryWordListArgs
+    ///                 Words = new[]
     ///                 {
-    ///                     Words = 
-    ///                     {
-    ///                         "word",
-    ///                         "word2",
-    ///                     },
+    ///                     "word",
+    ///                     "word2",
     ///                 },
     ///             },
-    ///             DisplayName = "Displayname",
-    ///             Parent = "projects/my-project-name",
-    ///         });
-    ///     }
+    ///         },
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Dlp Stored Info Type Large Custom Dictionary
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///             ForceDestroy = true,
-    ///         });
-    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("./test-fixtures/dlp/words.txt"),
-    ///         });
-    ///         var large = new Gcp.DataLoss.PreventionStoredInfoType("large", new Gcp.DataLoss.PreventionStoredInfoTypeArgs
-    ///         {
-    ///             Parent = "projects/my-project-name",
-    ///             Description = "Description",
-    ///             DisplayName = "Displayname",
-    ///             LargeCustomDictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryArgs
-    ///             {
-    ///                 CloudStorageFileSet = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs
-    ///                 {
-    ///                     Url = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
-    ///                     {
-    ///                         var bucketName = values.Item1;
-    ///                         var objectName = values.Item2;
-    ///                         return $"gs://{bucketName}/{objectName}";
-    ///                     }),
-    ///                 },
-    ///                 OutputPath = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs
-    ///                 {
-    ///                     Path = bucket.Name.Apply(name =&gt; $"gs://{name}/output/dictionary.txt"),
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///     });
     /// 
-    /// }
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/dlp/words.txt"),
+    ///     });
+    /// 
+    ///     var large = new Gcp.DataLoss.PreventionStoredInfoType("large", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         LargeCustomDictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryArgs
+    ///         {
+    ///             CloudStorageFileSet = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs
+    ///             {
+    ///                 Url = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"gs://{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///             OutputPath = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs
+    ///             {
+    ///                 Path = bucket.Name.Apply(name =&gt; $"gs://{name}/output/dictionary.txt"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -138,7 +134,7 @@ namespace Pulumi.Gcp.DataLoss
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType")]
-    public partial class PreventionStoredInfoType : Pulumi.CustomResource
+    public partial class PreventionStoredInfoType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the info type.
@@ -233,7 +229,7 @@ namespace Pulumi.Gcp.DataLoss
         }
     }
 
-    public sealed class PreventionStoredInfoTypeArgs : Pulumi.ResourceArgs
+    public sealed class PreventionStoredInfoTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the info type.
@@ -281,9 +277,10 @@ namespace Pulumi.Gcp.DataLoss
         public PreventionStoredInfoTypeArgs()
         {
         }
+        public static new PreventionStoredInfoTypeArgs Empty => new PreventionStoredInfoTypeArgs();
     }
 
-    public sealed class PreventionStoredInfoTypeState : Pulumi.ResourceArgs
+    public sealed class PreventionStoredInfoTypeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the info type.
@@ -337,5 +334,6 @@ namespace Pulumi.Gcp.DataLoss
         public PreventionStoredInfoTypeState()
         {
         }
+        public static new PreventionStoredInfoTypeState Empty => new PreventionStoredInfoTypeState();
     }
 }

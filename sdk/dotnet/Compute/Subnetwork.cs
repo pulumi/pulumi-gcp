@@ -44,149 +44,144 @@ namespace Pulumi.Gcp.Compute
     /// ### Subnetwork Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
-    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var network_with_private_secondary_ip_ranges = new Gcp.Compute.Subnetwork("network-with-private-secondary-ip-ranges", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.2.0.0/16",
-    ///             Region = "us-central1",
-    ///             Network = custom_test.Id,
-    ///             SecondaryIpRanges = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
-    ///                 {
-    ///                     RangeName = "tf-test-secondary-range-update1",
-    ///                     IpCidrRange = "192.168.10.0/24",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var network_with_private_secondary_ip_ranges = new Gcp.Compute.Subnetwork("network-with-private-secondary-ip-ranges", new()
+    ///     {
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = custom_test.Id,
+    ///         SecondaryIpRanges = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "tf-test-secondary-range-update1",
+    ///                 IpCidrRange = "192.168.10.0/24",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Subnetwork Logging Config
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
-    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var subnet_with_logging = new Gcp.Compute.Subnetwork("subnet-with-logging", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.2.0.0/16",
-    ///             Region = "us-central1",
-    ///             Network = custom_test.Id,
-    ///             LogConfig = new Gcp.Compute.Inputs.SubnetworkLogConfigArgs
-    ///             {
-    ///                 AggregationInterval = "INTERVAL_10_MIN",
-    ///                 FlowSampling = 0.5,
-    ///                 Metadata = "INCLUDE_ALL_METADATA",
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var subnet_with_logging = new Gcp.Compute.Subnetwork("subnet-with-logging", new()
+    ///     {
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = custom_test.Id,
+    ///         LogConfig = new Gcp.Compute.Inputs.SubnetworkLogConfigArgs
+    ///         {
+    ///             AggregationInterval = "INTERVAL_10_MIN",
+    ///             FlowSampling = 0.5,
+    ///             Metadata = "INCLUDE_ALL_METADATA",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Subnetwork Internal L7lb
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
-    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var network_for_l7lb = new Gcp.Compute.Subnetwork("network-for-l7lb", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/22",
-    ///             Region = "us-central1",
-    ///             Purpose = "INTERNAL_HTTPS_LOAD_BALANCER",
-    ///             Role = "ACTIVE",
-    ///             Network = custom_test.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var network_for_l7lb = new Gcp.Compute.Subnetwork("network-for-l7lb", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/22",
+    ///         Region = "us-central1",
+    ///         Purpose = "INTERNAL_HTTPS_LOAD_BALANCER",
+    ///         Role = "ACTIVE",
+    ///         Network = custom_test.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Subnetwork Ipv6
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
-    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var subnetwork_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-ipv6", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/22",
-    ///             Region = "us-west2",
-    ///             StackType = "IPV4_IPV6",
-    ///             Ipv6AccessType = "EXTERNAL",
-    ///             Network = custom_test.Id,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var subnetwork_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-ipv6", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/22",
+    ///         Region = "us-west2",
+    ///         StackType = "IPV4_IPV6",
+    ///         Ipv6AccessType = "EXTERNAL",
+    ///         Network = custom_test.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Subnetwork Internal Ipv6
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var custom_test = new Gcp.Compute.Network("custom-test", new()
     ///     {
-    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///             EnableUlaInternalIpv6 = true,
-    ///         });
-    ///         var subnetwork_internal_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-internal-ipv6", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/22",
-    ///             Region = "us-west2",
-    ///             StackType = "IPV4_IPV6",
-    ///             Ipv6AccessType = "INTERNAL",
-    ///             Network = custom_test.Id,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///         EnableUlaInternalIpv6 = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnetwork_internal_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-internal-ipv6", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/22",
+    ///         Region = "us-west2",
+    ///         StackType = "IPV4_IPV6",
+    ///         Ipv6AccessType = "INTERNAL",
+    ///         Network = custom_test.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -210,7 +205,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/subnetwork:Subnetwork")]
-    public partial class Subnetwork : Pulumi.CustomResource
+    public partial class Subnetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -410,7 +405,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SubnetworkArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when
@@ -539,9 +534,10 @@ namespace Pulumi.Gcp.Compute
         public SubnetworkArgs()
         {
         }
+        public static new SubnetworkArgs Empty => new SubnetworkArgs();
     }
 
-    public sealed class SubnetworkState : Pulumi.ResourceArgs
+    public sealed class SubnetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -706,5 +702,6 @@ namespace Pulumi.Gcp.Compute
         public SubnetworkState()
         {
         }
+        public static new SubnetworkState Empty => new SubnetworkState();
     }
 }

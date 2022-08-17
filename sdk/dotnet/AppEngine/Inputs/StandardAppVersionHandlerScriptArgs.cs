@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionHandlerScriptArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionHandlerScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to the script from the application root directory.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionHandlerScriptArgs()
         {
         }
+        public static new StandardAppVersionHandlerScriptArgs Empty => new StandardAppVersionHandlerScriptArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the value of the fixed delay interval.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs Empty => new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs();
     }
 }

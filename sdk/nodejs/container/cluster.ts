@@ -301,6 +301,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly masterVersion!: pulumi.Output<string>;
     /**
+     * Structure is documented below.
+     */
+    public readonly meshCertificates!: pulumi.Output<outputs.container.ClusterMeshCertificates>;
+    /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
      * current master version--use the read-only `masterVersion` field to obtain that.
@@ -523,6 +527,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["masterAuth"] = state ? state.masterAuth : undefined;
             resourceInputs["masterAuthorizedNetworksConfig"] = state ? state.masterAuthorizedNetworksConfig : undefined;
             resourceInputs["masterVersion"] = state ? state.masterVersion : undefined;
+            resourceInputs["meshCertificates"] = state ? state.meshCertificates : undefined;
             resourceInputs["minMasterVersion"] = state ? state.minMasterVersion : undefined;
             resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
             resourceInputs["monitoringService"] = state ? state.monitoringService : undefined;
@@ -583,6 +588,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["masterAuth"] = args ? args.masterAuth : undefined;
             resourceInputs["masterAuthorizedNetworksConfig"] = args ? args.masterAuthorizedNetworksConfig : undefined;
+            resourceInputs["meshCertificates"] = args ? args.meshCertificates : undefined;
             resourceInputs["minMasterVersion"] = args ? args.minMasterVersion : undefined;
             resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
             resourceInputs["monitoringService"] = args ? args.monitoringService : undefined;
@@ -813,6 +819,10 @@ export interface ClusterState {
      * has been updated by GKE.
      */
     masterVersion?: pulumi.Input<string>;
+    /**
+     * Structure is documented below.
+     */
+    meshCertificates?: pulumi.Input<inputs.container.ClusterMeshCertificates>;
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
@@ -1170,6 +1180,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.ClusterMasterAuthorizedNetworksConfig>;
+    /**
+     * Structure is documented below.
+     */
+    meshCertificates?: pulumi.Input<inputs.container.ClusterMeshCertificates>;
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the

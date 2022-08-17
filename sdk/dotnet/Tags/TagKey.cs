@@ -22,22 +22,20 @@ namespace Pulumi.Gcp.Tags
     /// ### Tag Key Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var key = new Gcp.Tags.TagKey("key", new()
     ///     {
-    ///         var key = new Gcp.Tags.TagKey("key", new Gcp.Tags.TagKeyArgs
-    ///         {
-    ///             Description = "For keyname resources.",
-    ///             Parent = "organizations/123456789",
-    ///             ShortName = "keyname",
-    ///         });
-    ///     }
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Tags
     /// ```
     /// </summary>
     [GcpResourceType("gcp:tags/tagKey:TagKey")]
-    public partial class TagKey : Pulumi.CustomResource
+    public partial class TagKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -144,7 +142,7 @@ namespace Pulumi.Gcp.Tags
         }
     }
 
-    public sealed class TagKeyArgs : Pulumi.ResourceArgs
+    public sealed class TagKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-assigned description of the TagKey. Must not exceed 256 characters.
@@ -168,9 +166,10 @@ namespace Pulumi.Gcp.Tags
         public TagKeyArgs()
         {
         }
+        public static new TagKeyArgs Empty => new TagKeyArgs();
     }
 
-    public sealed class TagKeyState : Pulumi.ResourceArgs
+    public sealed class TagKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -220,5 +219,6 @@ namespace Pulumi.Gcp.Tags
         public TagKeyState()
         {
         }
+        public static new TagKeyState Empty => new TagKeyState();
     }
 }

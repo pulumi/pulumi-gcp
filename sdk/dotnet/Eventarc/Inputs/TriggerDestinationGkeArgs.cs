@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc.Inputs
 {
 
-    public sealed class TriggerDestinationGkeArgs : Pulumi.ResourceArgs
+    public sealed class TriggerDestinationGkeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public TriggerDestinationGkeArgs()
         {
         }
+        public static new TriggerDestinationGkeArgs Empty => new TriggerDestinationGkeArgs();
     }
 }

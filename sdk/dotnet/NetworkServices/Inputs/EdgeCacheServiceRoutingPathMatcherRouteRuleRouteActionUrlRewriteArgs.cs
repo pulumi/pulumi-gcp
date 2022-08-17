@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tpu.Inputs
 {
 
-    public sealed class NodeSchedulingConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeSchedulingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the TPU instance is preemptible.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Tpu.Inputs
         public NodeSchedulingConfigArgs()
         {
         }
+        public static new NodeSchedulingConfigArgs Empty => new NodeSchedulingConfigArgs();
     }
 }

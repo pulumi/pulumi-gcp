@@ -13,22 +13,20 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_sink = new Gcp.Logging.ProjectSink("my-sink", new()
     ///     {
-    ///         var my_sink = new Gcp.Logging.ProjectSink("my-sink", new Gcp.Logging.ProjectSinkArgs
-    ///         {
-    ///             Destination = "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
-    ///             Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
-    ///             UniqueWriterIdentity = true,
-    ///         });
-    ///     }
+    ///         Destination = "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+    ///         Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
+    ///         UniqueWriterIdentity = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
@@ -37,98 +35,97 @@ namespace Pulumi.Gcp.Logging
     /// used with this provider.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Our logged compute instance
+    ///     var my_logged_instance = new Gcp.Compute.Instance("my-logged-instance", new()
     ///     {
-    ///         // Our logged compute instance
-    ///         var my_logged_instance = new Gcp.Compute.Instance("my-logged-instance", new Gcp.Compute.InstanceArgs
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///         {
-    ///             MachineType = "e2-medium",
-    ///             Zone = "us-central1-a",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
     ///                 {
-    ///                     Image = "debian-cloud/debian-9",
+    ///                     ,
     ///                 },
     ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         // A bucket to store logs in
-    ///         var log_bucket = new Gcp.Storage.Bucket("log-bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         // Our sink; this logs all activity related to our "my-logged-instance" instance
-    ///         var instance_sink = new Gcp.Logging.ProjectSink("instance-sink", new Gcp.Logging.ProjectSinkArgs
-    ///         {
-    ///             Description = "some explanation on what this is",
-    ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
-    ///             Filter = my_logged_instance.InstanceId.Apply(instanceId =&gt; $"resource.type = gce_instance AND resource.labels.instance_id = \"{instanceId}\""),
-    ///             UniqueWriterIdentity = true,
-    ///         });
-    ///         // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
-    ///         var log_writer = new Gcp.Projects.IAMBinding("log-writer", new Gcp.Projects.IAMBindingArgs
-    ///         {
-    ///             Project = "your-project-id",
-    ///             Role = "roles/storage.objectCreator",
-    ///             Members = 
-    ///             {
-    ///                 instance_sink.WriterIdentity,
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // A bucket to store logs in
+    ///     var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     // Our sink; this logs all activity related to our "my-logged-instance" instance
+    ///     var instance_sink = new Gcp.Logging.ProjectSink("instance-sink", new()
+    ///     {
+    ///         Description = "some explanation on what this is",
+    ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
+    ///         Filter = my_logged_instance.InstanceId.Apply(instanceId =&gt; $"resource.type = gce_instance AND resource.labels.instance_id = \"{instanceId}\""),
+    ///         UniqueWriterIdentity = true,
+    ///     });
+    /// 
+    ///     // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+    ///     var log_writer = new Gcp.Projects.IAMBinding("log-writer", new()
+    ///     {
+    ///         Project = "your-project-id",
+    ///         Role = "roles/storage.objectCreator",
+    ///         Members = new[]
+    ///         {
+    ///             instance_sink.WriterIdentity,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var log_bucket = new Gcp.Logging.ProjectSink("log-bucket", new()
     ///     {
-    ///         var log_bucket = new Gcp.Logging.ProjectSink("log-bucket", new Gcp.Logging.ProjectSinkArgs
+    ///         Destination = "logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
+    ///         Exclusions = new[]
     ///         {
-    ///             Destination = "logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
-    ///             Exclusions = 
+    ///             new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
     ///             {
-    ///                 new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
-    ///                 {
-    ///                     Description = "Exclude logs from namespace-1 in k8s",
-    ///                     Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" ",
-    ///                     Name = "nsexcllusion1",
-    ///                 },
-    ///                 new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
-    ///                 {
-    ///                     Description = "Exclude logs from namespace-2 in k8s",
-    ///                     Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" ",
-    ///                     Name = "nsexcllusion2",
-    ///                 },
+    ///                 Description = "Exclude logs from namespace-1 in k8s",
+    ///                 Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" ",
+    ///                 Name = "nsexcllusion1",
     ///             },
-    ///             UniqueWriterIdentity = true,
-    ///         });
-    ///     }
+    ///             new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
+    ///             {
+    ///                 Description = "Exclude logs from namespace-2 in k8s",
+    ///                 Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" ",
+    ///                 Name = "nsexcllusion2",
+    ///             },
+    ///         },
+    ///         UniqueWriterIdentity = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -140,7 +137,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/projectSink:ProjectSink")]
-    public partial class ProjectSink : Pulumi.CustomResource
+    public partial class ProjectSink : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -158,15 +155,12 @@ namespace Pulumi.Gcp.Logging
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
@@ -265,7 +259,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class ProjectSinkArgs : Pulumi.ResourceArgs
+    public sealed class ProjectSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -283,15 +277,12 @@ namespace Pulumi.Gcp.Logging
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
@@ -348,9 +339,10 @@ namespace Pulumi.Gcp.Logging
         public ProjectSinkArgs()
         {
         }
+        public static new ProjectSinkArgs Empty => new ProjectSinkArgs();
     }
 
-    public sealed class ProjectSinkState : Pulumi.ResourceArgs
+    public sealed class ProjectSinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -368,15 +360,12 @@ namespace Pulumi.Gcp.Logging
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
@@ -440,5 +429,6 @@ namespace Pulumi.Gcp.Logging
         public ProjectSinkState()
         {
         }
+        public static new ProjectSinkState Empty => new ProjectSinkState();
     }
 }

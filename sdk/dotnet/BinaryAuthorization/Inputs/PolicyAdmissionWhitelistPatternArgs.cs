@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 {
 
-    public sealed class PolicyAdmissionWhitelistPatternArgs : Pulumi.ResourceArgs
+    public sealed class PolicyAdmissionWhitelistPatternArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An image name pattern to whitelist, in the form
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         public PolicyAdmissionWhitelistPatternArgs()
         {
         }
+        public static new PolicyAdmissionWhitelistPatternArgs Empty => new PolicyAdmissionWhitelistPatternArgs();
     }
 }

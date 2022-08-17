@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 {
 
-    public sealed class FunctionBuildConfigSourceStorageSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionBuildConfigSourceStorageSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Google Cloud Storage bucket containing the source
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public FunctionBuildConfigSourceStorageSourceGetArgs()
         {
         }
+        public static new FunctionBuildConfigSourceStorageSourceGetArgs Empty => new FunctionBuildConfigSourceStorageSourceGetArgs();
     }
 }

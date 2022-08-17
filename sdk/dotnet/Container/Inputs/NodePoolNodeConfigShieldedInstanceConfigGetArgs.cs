@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigShieldedInstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigShieldedInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigShieldedInstanceConfigGetArgs()
         {
         }
+        public static new NodePoolNodeConfigShieldedInstanceConfigGetArgs Empty => new NodePoolNodeConfigShieldedInstanceConfigGetArgs();
     }
 }

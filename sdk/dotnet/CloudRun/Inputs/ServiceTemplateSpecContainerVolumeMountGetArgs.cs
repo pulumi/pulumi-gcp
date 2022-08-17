@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecContainerVolumeMountGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecContainerVolumeMountGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path within the container at which the volume should be mounted.  Must
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecContainerVolumeMountGetArgs()
         {
         }
+        public static new ServiceTemplateSpecContainerVolumeMountGetArgs Empty => new ServiceTemplateSpecContainerVolumeMountGetArgs();
     }
 }

@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy")]
-    public partial class ConfigIamPolicy : Pulumi.CustomResource
+    public partial class ConfigIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         }
     }
 
-    public sealed class ConfigIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ConfigIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -132,9 +132,10 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamPolicyArgs()
         {
         }
+        public static new ConfigIamPolicyArgs Empty => new ConfigIamPolicyArgs();
     }
 
-    public sealed class ConfigIamPolicyState : Pulumi.ResourceArgs
+    public sealed class ConfigIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -165,5 +166,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamPolicyState()
         {
         }
+        public static new ConfigIamPolicyState Empty => new ConfigIamPolicyState();
     }
 }

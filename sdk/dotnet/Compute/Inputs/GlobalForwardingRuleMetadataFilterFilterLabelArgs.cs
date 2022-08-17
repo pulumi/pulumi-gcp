@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class GlobalForwardingRuleMetadataFilterFilterLabelArgs : Pulumi.ResourceArgs
+    public sealed class GlobalForwardingRuleMetadataFilterFilterLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the metadata label. The length must be between
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public GlobalForwardingRuleMetadataFilterFilterLabelArgs()
         {
         }
+        public static new GlobalForwardingRuleMetadataFilterFilterLabelArgs Empty => new GlobalForwardingRuleMetadataFilterFilterLabelArgs();
     }
 }

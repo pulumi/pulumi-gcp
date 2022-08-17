@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies.policyTags)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
 // ### Data Catalog Taxonomies Policy Tag Basic
@@ -26,34 +26,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
-// 			Region:      pulumi.String("us"),
-// 			DisplayName: pulumi.String("taxonomy_display_name"),
-// 			Description: pulumi.String("A collection of policy tags"),
-// 			ActivatedPolicyTypes: pulumi.StringArray{
-// 				pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewPolicyTag(ctx, "basicPolicyTag", &datacatalog.PolicyTagArgs{
-// 			Taxonomy:    myTaxonomy.ID(),
-// 			DisplayName: pulumi.String("Low security"),
-// 			Description: pulumi.String("A policy tag normally associated with low security items"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
+//				Region:      pulumi.String("us"),
+//				DisplayName: pulumi.String("taxonomy_display_name"),
+//				Description: pulumi.String("A collection of policy tags"),
+//				ActivatedPolicyTypes: pulumi.StringArray{
+//					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewPolicyTag(ctx, "basicPolicyTag", &datacatalog.PolicyTagArgs{
+//				Taxonomy:    myTaxonomy.ID(),
+//				DisplayName: pulumi.String("Low security"),
+//				Description: pulumi.String("A policy tag normally associated with low security items"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Data Catalog Taxonomies Policy Tag Child Policies
 //
@@ -61,62 +64,67 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
-// 			Region:      pulumi.String("us"),
-// 			DisplayName: pulumi.String("taxonomy_display_name"),
-// 			Description: pulumi.String("A collection of policy tags"),
-// 			ActivatedPolicyTypes: pulumi.StringArray{
-// 				pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		parentPolicy, err := datacatalog.NewPolicyTag(ctx, "parentPolicy", &datacatalog.PolicyTagArgs{
-// 			Taxonomy:    myTaxonomy.ID(),
-// 			DisplayName: pulumi.String("High"),
-// 			Description: pulumi.String("A policy tag category used for high security access"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		childPolicy, err := datacatalog.NewPolicyTag(ctx, "childPolicy", &datacatalog.PolicyTagArgs{
-// 			Taxonomy:        myTaxonomy.ID(),
-// 			DisplayName:     pulumi.String("ssn"),
-// 			Description:     pulumi.String("A hash of the users ssn"),
-// 			ParentPolicyTag: parentPolicy.ID(),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = datacatalog.NewPolicyTag(ctx, "childPolicy2", &datacatalog.PolicyTagArgs{
-// 			Taxonomy:        myTaxonomy.ID(),
-// 			DisplayName:     pulumi.String("dob"),
-// 			Description:     pulumi.String("The users date of birth"),
-// 			ParentPolicyTag: parentPolicy.ID(),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-// 			childPolicy,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
+//				Region:      pulumi.String("us"),
+//				DisplayName: pulumi.String("taxonomy_display_name"),
+//				Description: pulumi.String("A collection of policy tags"),
+//				ActivatedPolicyTypes: pulumi.StringArray{
+//					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			parentPolicy, err := datacatalog.NewPolicyTag(ctx, "parentPolicy", &datacatalog.PolicyTagArgs{
+//				Taxonomy:    myTaxonomy.ID(),
+//				DisplayName: pulumi.String("High"),
+//				Description: pulumi.String("A policy tag category used for high security access"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			childPolicy, err := datacatalog.NewPolicyTag(ctx, "childPolicy", &datacatalog.PolicyTagArgs{
+//				Taxonomy:        myTaxonomy.ID(),
+//				DisplayName:     pulumi.String("ssn"),
+//				Description:     pulumi.String("A hash of the users ssn"),
+//				ParentPolicyTag: parentPolicy.ID(),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewPolicyTag(ctx, "childPolicy2", &datacatalog.PolicyTagArgs{
+//				Taxonomy:        myTaxonomy.ID(),
+//				DisplayName:     pulumi.String("dob"),
+//				Description:     pulumi.String("The users date of birth"),
+//				ParentPolicyTag: parentPolicy.ID(),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				childPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// PolicyTag can be imported using any of these accepted formats
+// # PolicyTag can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+//
+//	$ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+//
 // ```
 type PolicyTag struct {
 	pulumi.CustomResourceState
@@ -290,7 +298,7 @@ func (i *PolicyTag) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagO
 // PolicyTagArrayInput is an input type that accepts PolicyTagArray and PolicyTagArrayOutput values.
 // You can construct a concrete instance of `PolicyTagArrayInput` via:
 //
-//          PolicyTagArray{ PolicyTagArgs{...} }
+//	PolicyTagArray{ PolicyTagArgs{...} }
 type PolicyTagArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +323,7 @@ func (i PolicyTagArray) ToPolicyTagArrayOutputWithContext(ctx context.Context) P
 // PolicyTagMapInput is an input type that accepts PolicyTagMap and PolicyTagMapOutput values.
 // You can construct a concrete instance of `PolicyTagMapInput` via:
 //
-//          PolicyTagMap{ "key": PolicyTagArgs{...} }
+//	PolicyTagMap{ "key": PolicyTagArgs{...} }
 type PolicyTagMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The name of the repository.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperGetArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperGetArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperGetArgs();
     }
 }

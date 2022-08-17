@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If not empty, the ID of the namespace to which the entities belong.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdGetArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdGetArgs Empty => new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdGetArgs();
     }
 }

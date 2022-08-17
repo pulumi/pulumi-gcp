@@ -16,34 +16,33 @@ namespace Pulumi.Gcp.Endpoints
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ReadFileBase64(string path) {
     /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var openapiService = new Gcp.Endpoints.Service("openapiService", new()
     ///     {
-    ///         var openapiService = new Gcp.Endpoints.Service("openapiService", new Gcp.Endpoints.ServiceArgs
-    ///         {
-    ///             ServiceName = "api-name.endpoints.project-id.cloud.goog",
-    ///             Project = "project-id",
-    ///             OpenapiConfig = File.ReadAllText("openapi_spec.yml"),
-    ///         });
-    ///         var grpcService = new Gcp.Endpoints.Service("grpcService", new Gcp.Endpoints.ServiceArgs
-    ///         {
-    ///             ServiceName = "api-name.endpoints.project-id.cloud.goog",
-    ///             Project = "project-id",
-    ///             GrpcConfig = File.ReadAllText("service_spec.yml"),
-    ///             ProtocOutputBase64 = ReadFileBase64("compiled_descriptor_file.pb"),
-    ///         });
-    ///     }
+    ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
+    ///         Project = "project-id",
+    ///         OpenapiConfig = File.ReadAllText("openapi_spec.yml"),
+    ///     });
     /// 
-    /// }
+    ///     var grpcService = new Gcp.Endpoints.Service("grpcService", new()
+    ///     {
+    ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
+    ///         Project = "project-id",
+    ///         GrpcConfig = File.ReadAllText("service_spec.yml"),
+    ///         ProtocOutputBase64 = ReadFileBase64("compiled_descriptor_file.pb"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
@@ -53,7 +52,7 @@ namespace Pulumi.Gcp.Endpoints
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:endpoints/service:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of API objects.
@@ -157,7 +156,7 @@ namespace Pulumi.Gcp.Endpoints
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full text of the Service Config YAML file (Example located here). If provided, must also provide
@@ -195,9 +194,10 @@ namespace Pulumi.Gcp.Endpoints
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 
-    public sealed class ServiceState : Pulumi.ResourceArgs
+    public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         [Input("apis")]
         private InputList<Inputs.ServiceApiGetArgs>? _apis;
@@ -272,5 +272,6 @@ namespace Pulumi.Gcp.Endpoints
         public ServiceState()
         {
         }
+        public static new ServiceState Empty => new ServiceState();
     }
 }

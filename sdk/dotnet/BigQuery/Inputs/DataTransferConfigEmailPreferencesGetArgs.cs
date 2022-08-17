@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class DataTransferConfigEmailPreferencesGetArgs : Pulumi.ResourceArgs
+    public sealed class DataTransferConfigEmailPreferencesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, email notifications will be sent on transfer run failures.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public DataTransferConfigEmailPreferencesGetArgs()
         {
         }
+        public static new DataTransferConfigEmailPreferencesGetArgs Empty => new DataTransferConfigEmailPreferencesGetArgs();
     }
 }

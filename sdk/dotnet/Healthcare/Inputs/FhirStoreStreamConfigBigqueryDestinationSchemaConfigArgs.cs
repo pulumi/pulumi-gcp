@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs : Pulumi.ResourceArgs
+    public sealed class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs()
         {
         }
+        public static new FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs Empty => new FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs();
     }
 }

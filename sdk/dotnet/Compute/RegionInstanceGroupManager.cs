@@ -26,108 +26,105 @@ namespace Pulumi.Gcp.Compute
     /// ### With Top Level Instance Template (`Google` Provider)
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var autohealing = new Gcp.Compute.HealthCheck("autohealing", new()
     ///     {
-    ///         var autohealing = new Gcp.Compute.HealthCheck("autohealing", new Gcp.Compute.HealthCheckArgs
+    ///         CheckIntervalSec = 5,
+    ///         TimeoutSec = 5,
+    ///         HealthyThreshold = 2,
+    ///         UnhealthyThreshold = 10,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
     ///         {
-    ///             CheckIntervalSec = 5,
-    ///             TimeoutSec = 5,
-    ///             HealthyThreshold = 2,
-    ///             UnhealthyThreshold = 10,
-    ///             HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
-    ///             {
-    ///                 RequestPath = "/healthz",
-    ///                 Port = 8080,
-    ///             },
-    ///         });
-    ///         var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new Gcp.Compute.RegionInstanceGroupManagerArgs
-    ///         {
-    ///             BaseInstanceName = "app",
-    ///             Region = "us-central1",
-    ///             DistributionPolicyZones = 
-    ///             {
-    ///                 "us-central1-a",
-    ///                 "us-central1-f",
-    ///             },
-    ///             Versions = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
-    ///                 {
-    ///                     InstanceTemplate = google_compute_instance_template.Appserver.Id,
-    ///                 },
-    ///             },
-    ///             AllInstancesConfig = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAllInstancesConfigArgs
-    ///             {
-    ///                 Metadata = 
-    ///                 {
-    ///                     { "metadata_key", "metadata_value" },
-    ///                 },
-    ///                 Labels = 
-    ///                 {
-    ///                     { "label_key", "label_value" },
-    ///                 },
-    ///             },
-    ///             TargetPools = 
-    ///             {
-    ///                 google_compute_target_pool.Appserver.Id,
-    ///             },
-    ///             TargetSize = 2,
-    ///             NamedPorts = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerNamedPortArgs
-    ///                 {
-    ///                     Name = "custom",
-    ///                     Port = 8888,
-    ///                 },
-    ///             },
-    ///             AutoHealingPolicies = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs
-    ///             {
-    ///                 HealthCheck = autohealing.Id,
-    ///                 InitialDelaySec = 300,
-    ///             },
-    ///         });
-    ///     }
+    ///             RequestPath = "/healthz",
+    ///             Port = 8080,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new()
+    ///     {
+    ///         BaseInstanceName = "app",
+    ///         Region = "us-central1",
+    ///         DistributionPolicyZones = new[]
+    ///         {
+    ///             "us-central1-a",
+    ///             "us-central1-f",
+    ///         },
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Id,
+    ///             },
+    ///         },
+    ///         AllInstancesConfig = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAllInstancesConfigArgs
+    ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "metadata_key", "metadata_value" },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "label_key", "label_value" },
+    ///             },
+    ///         },
+    ///         TargetPools = new[]
+    ///         {
+    ///             google_compute_target_pool.Appserver.Id,
+    ///         },
+    ///         TargetSize = 2,
+    ///         NamedPorts = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerNamedPortArgs
+    ///             {
+    ///                 Name = "custom",
+    ///                 Port = 8888,
+    ///             },
+    ///         },
+    ///         AutoHealingPolicies = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs
+    ///         {
+    ///             HealthCheck = autohealing.Id,
+    ///             InitialDelaySec = 300,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### With Multiple Versions
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new()
     ///     {
-    ///         var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         BaseInstanceName = "app",
+    ///         Region = "us-central1",
+    ///         TargetSize = 5,
+    ///         Versions = new[]
     ///         {
-    ///             BaseInstanceName = "app",
-    ///             Region = "us-central1",
-    ///             TargetSize = 5,
-    ///             Versions = 
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Id,
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver_canary.Id,
+    ///                 TargetSize = new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionTargetSizeArgs
     ///                 {
-    ///                     InstanceTemplate = google_compute_instance_template.Appserver.Id,
-    ///                 },
-    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
-    ///                 {
-    ///                     InstanceTemplate = google_compute_instance_template.Appserver_canary.Id,
-    ///                     TargetSize = new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionTargetSizeArgs
-    ///                     {
-    ///                         Fixed = 1,
-    ///                     },
+    ///                     Fixed = 1,
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -139,7 +136,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")]
-    public partial class RegionInstanceGroupManager : Pulumi.CustomResource
+    public partial class RegionInstanceGroupManager : global::Pulumi.CustomResource
     {
         /// <summary>
         /// )
@@ -333,7 +330,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionInstanceGroupManagerArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// )
@@ -492,9 +489,10 @@ namespace Pulumi.Gcp.Compute
         public RegionInstanceGroupManagerArgs()
         {
         }
+        public static new RegionInstanceGroupManagerArgs Empty => new RegionInstanceGroupManagerArgs();
     }
 
-    public sealed class RegionInstanceGroupManagerState : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// )
@@ -683,5 +681,6 @@ namespace Pulumi.Gcp.Compute
         public RegionInstanceGroupManagerState()
         {
         }
+        public static new RegionInstanceGroupManagerState Empty => new RegionInstanceGroupManagerState();
     }
 }

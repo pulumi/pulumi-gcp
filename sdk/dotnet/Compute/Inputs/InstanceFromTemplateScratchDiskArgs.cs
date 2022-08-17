@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateScratchDiskArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateScratchDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("interface", required: true)]
         public Input<string> Interface { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateScratchDiskArgs()
         {
         }
+        public static new InstanceFromTemplateScratchDiskArgs Empty => new InstanceFromTemplateScratchDiskArgs();
     }
 }

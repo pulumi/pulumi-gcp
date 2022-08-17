@@ -33,32 +33,32 @@ namespace Pulumi.Gcp.Storage
     /// ### Storage Object Access Control Public Object
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("../static/img/header-logo.png"),
-    ///         });
-    ///         var publicRule = new Gcp.Storage.ObjectAccessControl("publicRule", new Gcp.Storage.ObjectAccessControlArgs
-    ///         {
-    ///             Object = @object.OutputName,
-    ///             Bucket = bucket.Name,
-    ///             Role = "READER",
-    ///             Entity = "allUsers",
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("../static/img/header-logo.png"),
+    ///     });
+    /// 
+    ///     var publicRule = new Gcp.Storage.ObjectAccessControl("publicRule", new()
+    ///     {
+    ///         Object = @object.OutputName,
+    ///         Bucket = bucket.Name,
+    ///         Role = "READER",
+    ///         Entity = "allUsers",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// </summary>
     [GcpResourceType("gcp:storage/objectAccessControl:ObjectAccessControl")]
-    public partial class ObjectAccessControl : Pulumi.CustomResource
+    public partial class ObjectAccessControl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket.
@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class ObjectAccessControlArgs : Pulumi.ResourceArgs
+    public sealed class ObjectAccessControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -217,9 +217,10 @@ namespace Pulumi.Gcp.Storage
         public ObjectAccessControlArgs()
         {
         }
+        public static new ObjectAccessControlArgs Empty => new ObjectAccessControlArgs();
     }
 
-    public sealed class ObjectAccessControlState : Pulumi.ResourceArgs
+    public sealed class ObjectAccessControlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -293,5 +294,6 @@ namespace Pulumi.Gcp.Storage
         public ObjectAccessControlState()
         {
         }
+        public static new ObjectAccessControlState Empty => new ObjectAccessControlState();
     }
 }

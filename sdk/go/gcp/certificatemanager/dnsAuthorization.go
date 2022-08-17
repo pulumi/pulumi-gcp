@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// DnsAuthorization represents a HTTP-reachable backend for an DnsAuthorization.
+// DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 //
 // > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 //
@@ -19,18 +19,24 @@ import (
 //
 // ## Import
 //
-// DnsAuthorization can be imported using any of these accepted formats
+// # DnsAuthorization can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+//
+//	$ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+//
 // ```
 type DnsAuthorization struct {
 	pulumi.CustomResourceState
@@ -44,7 +50,7 @@ type DnsAuthorization struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the DNS Authorization resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -96,7 +102,7 @@ type dnsAuthorizationState struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain *string `pulumi:"domain"`
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the DNS Authorization resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -117,7 +123,7 @@ type DnsAuthorizationState struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringPtrInput
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the DNS Authorization resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -139,7 +145,7 @@ type dnsAuthorizationArgs struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain string `pulumi:"domain"`
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the DNS Authorization resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -158,7 +164,7 @@ type DnsAuthorizationArgs struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringInput
-	// Set of label tags associated with the EdgeCache resource.
+	// Set of label tags associated with the DNS Authorization resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -195,7 +201,7 @@ func (i *DnsAuthorization) ToDnsAuthorizationOutputWithContext(ctx context.Conte
 // DnsAuthorizationArrayInput is an input type that accepts DnsAuthorizationArray and DnsAuthorizationArrayOutput values.
 // You can construct a concrete instance of `DnsAuthorizationArrayInput` via:
 //
-//          DnsAuthorizationArray{ DnsAuthorizationArgs{...} }
+//	DnsAuthorizationArray{ DnsAuthorizationArgs{...} }
 type DnsAuthorizationArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +226,7 @@ func (i DnsAuthorizationArray) ToDnsAuthorizationArrayOutputWithContext(ctx cont
 // DnsAuthorizationMapInput is an input type that accepts DnsAuthorizationMap and DnsAuthorizationMapOutput values.
 // You can construct a concrete instance of `DnsAuthorizationMapInput` via:
 //
-//          DnsAuthorizationMap{ "key": DnsAuthorizationArgs{...} }
+//	DnsAuthorizationMap{ "key": DnsAuthorizationArgs{...} }
 type DnsAuthorizationMapInput interface {
 	pulumi.Input
 
@@ -274,7 +280,7 @@ func (o DnsAuthorizationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Set of label tags associated with the EdgeCache resource.
+// Set of label tags associated with the DNS Authorization resource.
 func (o DnsAuthorizationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

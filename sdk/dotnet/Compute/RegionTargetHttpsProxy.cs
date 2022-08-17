@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy")]
-    public partial class RegionTargetHttpsProxy : Pulumi.CustomResource
+    public partial class RegionTargetHttpsProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionTargetHttpsProxyArgs : Pulumi.ResourceArgs
+    public sealed class RegionTargetHttpsProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -225,9 +225,10 @@ namespace Pulumi.Gcp.Compute
         public RegionTargetHttpsProxyArgs()
         {
         }
+        public static new RegionTargetHttpsProxyArgs Empty => new RegionTargetHttpsProxyArgs();
     }
 
-    public sealed class RegionTargetHttpsProxyState : Pulumi.ResourceArgs
+    public sealed class RegionTargetHttpsProxyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -310,5 +311,6 @@ namespace Pulumi.Gcp.Compute
         public RegionTargetHttpsProxyState()
         {
         }
+        public static new RegionTargetHttpsProxyState Empty => new RegionTargetHttpsProxyState();
     }
 }

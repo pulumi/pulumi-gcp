@@ -25,26 +25,25 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serviceAccount = Gcp.AccessApproval.GetProjectServiceAccount.Invoke(new()
         ///     {
-        ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetProjectServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetProjectServiceAccountArgs
-        ///         {
-        ///             ProjectId = "my-project",
-        ///         }));
-        ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///             Role = "roles/cloudkms.signerVerifier",
-        ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-        ///         });
-        ///     }
+        ///         ProjectId = "my-project",
+        ///     });
         /// 
-        /// }
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -66,26 +65,25 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serviceAccount = Gcp.AccessApproval.GetProjectServiceAccount.Invoke(new()
         ///     {
-        ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetProjectServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetProjectServiceAccountArgs
-        ///         {
-        ///             ProjectId = "my-project",
-        ///         }));
-        ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
-        ///         {
-        ///             CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///             Role = "roles/cloudkms.signerVerifier",
-        ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
-        ///         });
-        ///     }
+        ///         ProjectId = "my-project",
+        ///     });
         /// 
-        /// }
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +93,7 @@ namespace Pulumi.Gcp.AccessApproval
     }
 
 
-    public sealed class GetProjectServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID the service account was created for.
@@ -106,9 +104,10 @@ namespace Pulumi.Gcp.AccessApproval
         public GetProjectServiceAccountArgs()
         {
         }
+        public static new GetProjectServiceAccountArgs Empty => new GetProjectServiceAccountArgs();
     }
 
-    public sealed class GetProjectServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID the service account was created for.
@@ -119,6 +118,7 @@ namespace Pulumi.Gcp.AccessApproval
         public GetProjectServiceAccountInvokeArgs()
         {
         }
+        public static new GetProjectServiceAccountInvokeArgs Empty => new GetProjectServiceAccountInvokeArgs();
     }
 
 

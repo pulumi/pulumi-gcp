@@ -19,28 +19,27 @@ namespace Pulumi.Gcp.Composer
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Gcp.Composer.GetImageVersions.InvokeAsync());
-        ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
-        ///         {
-        ///             Region = "us-central1",
-        ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-        ///             {
-        ///                 SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-        ///                 {
-        ///                     ImageVersion = all.Apply(all =&gt; all.ImageVersions?[0]?.ImageVersionId),
-        ///                 },
-        ///             },
-        ///         });
-        ///     }
+        ///     var all = Gcp.Composer.GetImageVersions.Invoke();
         /// 
-        /// }
+        ///     var test = new Gcp.Composer.Environment("test", new()
+        ///     {
+        ///         Region = "us-central1",
+        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///         {
+        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+        ///             {
+        ///                 ImageVersion = all.Apply(getImageVersionsResult =&gt; getImageVersionsResult.ImageVersions[0]?.ImageVersionId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -56,28 +55,27 @@ namespace Pulumi.Gcp.Composer
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Gcp.Composer.GetImageVersions.InvokeAsync());
-        ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
-        ///         {
-        ///             Region = "us-central1",
-        ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-        ///             {
-        ///                 SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-        ///                 {
-        ///                     ImageVersion = all.Apply(all =&gt; all.ImageVersions?[0]?.ImageVersionId),
-        ///                 },
-        ///             },
-        ///         });
-        ///     }
+        ///     var all = Gcp.Composer.GetImageVersions.Invoke();
         /// 
-        /// }
+        ///     var test = new Gcp.Composer.Environment("test", new()
+        ///     {
+        ///         Region = "us-central1",
+        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///         {
+        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+        ///             {
+        ///                 ImageVersion = all.Apply(getImageVersionsResult =&gt; getImageVersionsResult.ImageVersions[0]?.ImageVersionId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -87,7 +85,7 @@ namespace Pulumi.Gcp.Composer
     }
 
 
-    public sealed class GetImageVersionsArgs : Pulumi.InvokeArgs
+    public sealed class GetImageVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the project to list versions in.
@@ -106,9 +104,10 @@ namespace Pulumi.Gcp.Composer
         public GetImageVersionsArgs()
         {
         }
+        public static new GetImageVersionsArgs Empty => new GetImageVersionsArgs();
     }
 
-    public sealed class GetImageVersionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the project to list versions in.
@@ -127,6 +126,7 @@ namespace Pulumi.Gcp.Composer
         public GetImageVersionsInvokeArgs()
         {
         }
+        public static new GetImageVersionsInvokeArgs Empty => new GetImageVersionsInvokeArgs();
     }
 
 

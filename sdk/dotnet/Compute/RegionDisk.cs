@@ -39,40 +39,40 @@ namespace Pulumi.Gcp.Compute
     /// ### Region Disk Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var disk = new Gcp.Compute.Disk("disk", new()
     ///     {
-    ///         var disk = new Gcp.Compute.Disk("disk", new Gcp.Compute.DiskArgs
-    ///         {
-    ///             Image = "debian-cloud/debian-9",
-    ///             Size = 50,
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new Gcp.Compute.SnapshotArgs
-    ///         {
-    ///             SourceDisk = disk.Name,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new Gcp.Compute.RegionDiskArgs
-    ///         {
-    ///             Snapshot = snapdisk.Id,
-    ///             Type = "pd-ssd",
-    ///             Region = "us-central1",
-    ///             PhysicalBlockSizeBytes = 4096,
-    ///             ReplicaZones = 
-    ///             {
-    ///                 "us-central1-a",
-    ///                 "us-central1-f",
-    ///             },
-    ///         });
-    ///     }
+    ///         Image = "debian-cloud/debian-11",
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
     /// 
-    /// }
+    ///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
+    ///     {
+    ///         SourceDisk = disk.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
+    ///     {
+    ///         Snapshot = snapdisk.Id,
+    ///         Type = "pd-ssd",
+    ///         Region = "us-central1",
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///         ReplicaZones = new[]
+    ///         {
+    ///             "us-central1-a",
+    ///             "us-central1-f",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionDisk:RegionDisk")]
-    public partial class RegionDisk : Pulumi.CustomResource
+    public partial class RegionDisk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RegionDiskArgs : Pulumi.ResourceArgs
+    public sealed class RegionDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when
@@ -433,9 +433,10 @@ namespace Pulumi.Gcp.Compute
         public RegionDiskArgs()
         {
         }
+        public static new RegionDiskArgs Empty => new RegionDiskArgs();
     }
 
-    public sealed class RegionDiskState : Pulumi.ResourceArgs
+    public sealed class RegionDiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -617,5 +618,6 @@ namespace Pulumi.Gcp.Compute
         public RegionDiskState()
         {
         }
+        public static new RegionDiskState Empty => new RegionDiskState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy.Inputs
 {
 
-    public sealed class DeliveryPipelineConditionTargetsPresentConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineConditionTargetsPresentConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("missingTargets")]
         private InputList<string>? _missingTargets;
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public DeliveryPipelineConditionTargetsPresentConditionGetArgs()
         {
         }
+        public static new DeliveryPipelineConditionTargetsPresentConditionGetArgs Empty => new DeliveryPipelineConditionTargetsPresentConditionGetArgs();
     }
 }

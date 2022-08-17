@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeUpdateStepFileExecGetArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeUpdateStepFileExecGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedExitCodes")]
         private InputList<int>? _allowedExitCodes;
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeUpdateStepFileExecGetArgs()
         {
         }
+        public static new GuestPoliciesRecipeUpdateStepFileExecGetArgs Empty => new GuestPoliciesRecipeUpdateStepFileExecGetArgs();
     }
 }

@@ -31,92 +31,90 @@ namespace Pulumi.Gcp.BigQuery
     /// ## google\_bigquery\_dataset\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var owner = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/bigquery.dataOwner",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/bigquery.dataOwner",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var datasetDataset = new Gcp.BigQuery.Dataset("datasetDataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///         });
-    ///         var datasetDatasetIamPolicy = new Gcp.BigQuery.DatasetIamPolicy("datasetDatasetIamPolicy", new Gcp.BigQuery.DatasetIamPolicyArgs
-    ///         {
-    ///             DatasetId = datasetDataset.DatasetId,
-    ///             PolicyData = owner.Apply(owner =&gt; owner.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("datasetDataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var datasetDatasetIamPolicy = new Gcp.BigQuery.DatasetIamPolicy("datasetDatasetIamPolicy", new()
+    ///     {
+    ///         DatasetId = datasetDataset.DatasetId,
+    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_bigquery\_dataset\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///         });
-    ///         var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new Gcp.BigQuery.DatasetIamBindingArgs
-    ///         {
-    ///             DatasetId = dataset.DatasetId,
-    ///             Role = "roles/bigquery.dataViewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         DatasetId = "example_dataset",
+    ///     });
     /// 
-    /// }
+    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_bigquery\_dataset\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///         });
-    ///         var editor = new Gcp.BigQuery.DatasetIamMember("editor", new Gcp.BigQuery.DatasetIamMemberArgs
-    ///         {
-    ///             DatasetId = dataset.DatasetId,
-    ///             Role = "roles/bigquery.dataEditor",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         DatasetId = "example_dataset",
+    ///     });
     /// 
-    /// }
+    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -150,7 +148,7 @@ namespace Pulumi.Gcp.BigQuery
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:bigquery/datasetIamPolicy:DatasetIamPolicy")]
-    public partial class DatasetIamPolicy : Pulumi.CustomResource
+    public partial class DatasetIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dataset ID.
@@ -222,7 +220,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class DatasetIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DatasetIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset ID.
@@ -247,9 +245,10 @@ namespace Pulumi.Gcp.BigQuery
         public DatasetIamPolicyArgs()
         {
         }
+        public static new DatasetIamPolicyArgs Empty => new DatasetIamPolicyArgs();
     }
 
-    public sealed class DatasetIamPolicyState : Pulumi.ResourceArgs
+    public sealed class DatasetIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset ID.
@@ -280,5 +279,6 @@ namespace Pulumi.Gcp.BigQuery
         public DatasetIamPolicyState()
         {
         }
+        public static new DatasetIamPolicyState Empty => new DatasetIamPolicyState();
     }
 }

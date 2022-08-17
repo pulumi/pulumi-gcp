@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 {
 
-    public sealed class SpokeLinkedVpnTunnelsArgs : Pulumi.ResourceArgs
+    public sealed class SpokeLinkedVpnTunnelsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         public SpokeLinkedVpnTunnelsArgs()
         {
         }
+        public static new SpokeLinkedVpnTunnelsArgs Empty => new SpokeLinkedVpnTunnelsArgs();
     }
 }

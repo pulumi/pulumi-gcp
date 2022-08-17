@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGroupManagerUpdatePolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
@@ -70,5 +70,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGroupManagerUpdatePolicyArgs()
         {
         }
+        public static new InstanceGroupManagerUpdatePolicyArgs Empty => new InstanceGroupManagerUpdatePolicyArgs();
     }
 }

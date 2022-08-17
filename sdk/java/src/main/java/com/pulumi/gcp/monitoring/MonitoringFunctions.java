@@ -1604,6 +1604,32 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     * 
+     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs() {
@@ -1614,6 +1640,32 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     * 
+     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain() {
@@ -1624,6 +1676,32 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     * 
+     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs(InvokeArgs args) {
@@ -1634,6 +1712,32 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     * 
+     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain(InvokeArgs args) {
@@ -1644,6 +1748,32 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     * 
+     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs(InvokeArgs args, InvokeOptions options) {
@@ -1654,6 +1784,32 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     * 
+     *         ctx.export(&#34;ipList&#34;, ips.applyValue(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain(InvokeArgs args, InvokeOptions options) {

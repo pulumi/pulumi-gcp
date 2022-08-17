@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterResourceUsageExportConfigBigqueryDestinationArgs : Pulumi.ResourceArgs
+    public sealed class ClusterResourceUsageExportConfigBigqueryDestinationArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterResourceUsageExportConfigBigqueryDestinationArgs()
         {
         }
+        public static new ClusterResourceUsageExportConfigBigqueryDestinationArgs Empty => new ClusterResourceUsageExportConfigBigqueryDestinationArgs();
     }
 }

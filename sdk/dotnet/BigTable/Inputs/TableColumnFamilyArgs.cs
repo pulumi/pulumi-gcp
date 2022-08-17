@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable.Inputs
 {
 
-    public sealed class TableColumnFamilyArgs : Pulumi.ResourceArgs
+    public sealed class TableColumnFamilyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the column family.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public TableColumnFamilyArgs()
         {
         }
+        public static new TableColumnFamilyArgs Empty => new TableColumnFamilyArgs();
     }
 }

@@ -40,7 +40,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
-    public readonly additionalExperiments!: pulumi.Output<string[] | undefined>;
+    public readonly additionalExperiments!: pulumi.Output<string[]>;
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */

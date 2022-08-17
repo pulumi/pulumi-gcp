@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleMatchConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatchConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("srcIpRanges", required: true)]
         private InputList<string>? _srcIpRanges;
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleMatchConfigArgs()
         {
         }
+        public static new SecurityPolicyRuleMatchConfigArgs Empty => new SecurityPolicyRuleMatchConfigArgs();
     }
 }

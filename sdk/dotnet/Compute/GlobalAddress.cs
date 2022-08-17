@@ -23,50 +23,45 @@ namespace Pulumi.Gcp.Compute
     /// ### Global Address Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Compute.GlobalAddress("default", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var @default = new Gcp.Compute.GlobalAddress("default");
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Global Address Private Services Connect
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var @default = new Gcp.Compute.GlobalAddress("default", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             AddressType = "INTERNAL",
-    ///             Purpose = "PRIVATE_SERVICE_CONNECT",
-    ///             Network = network.Id,
-    ///             Address = "100.100.100.105",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var @default = new Gcp.Compute.GlobalAddress("default", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = network.Id,
+    ///         Address = "100.100.100.105",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/globalAddress:GlobalAddress")]
-    public partial class GlobalAddress : Pulumi.CustomResource
+    public partial class GlobalAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IP address or beginning of the address range represented by this
@@ -232,7 +227,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class GlobalAddressArgs : Pulumi.ResourceArgs
+    public sealed class GlobalAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address or beginning of the address range represented by this
@@ -325,9 +320,10 @@ namespace Pulumi.Gcp.Compute
         public GlobalAddressArgs()
         {
         }
+        public static new GlobalAddressArgs Empty => new GlobalAddressArgs();
     }
 
-    public sealed class GlobalAddressState : Pulumi.ResourceArgs
+    public sealed class GlobalAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address or beginning of the address range represented by this
@@ -438,5 +434,6 @@ namespace Pulumi.Gcp.Compute
         public GlobalAddressState()
         {
         }
+        public static new GlobalAddressState Empty => new GlobalAddressState();
     }
 }

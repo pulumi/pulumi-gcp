@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class ApiKeyRestrictionsApiTargetGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiKeyRestrictionsApiTargetGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("methods")]
         private InputList<string>? _methods;
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Projects.Inputs
         public ApiKeyRestrictionsApiTargetGetArgs()
         {
         }
+        public static new ApiKeyRestrictionsApiTargetGetArgs Empty => new ApiKeyRestrictionsApiTargetGetArgs();
     }
 }

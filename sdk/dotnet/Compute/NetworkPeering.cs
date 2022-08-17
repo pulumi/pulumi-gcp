@@ -23,34 +23,35 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var other = new Gcp.Compute.Network("other", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var peering1 = new Gcp.Compute.NetworkPeering("peering1", new Gcp.Compute.NetworkPeeringArgs
-    ///         {
-    ///             Network = @default.SelfLink,
-    ///             PeerNetwork = other.SelfLink,
-    ///         });
-    ///         var peering2 = new Gcp.Compute.NetworkPeering("peering2", new Gcp.Compute.NetworkPeeringArgs
-    ///         {
-    ///             Network = other.SelfLink,
-    ///             PeerNetwork = @default.SelfLink,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var other = new Gcp.Compute.Network("other", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
+    ///     {
+    ///         Network = @default.SelfLink,
+    ///         PeerNetwork = other.SelfLink,
+    ///     });
+    /// 
+    ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
+    ///     {
+    ///         Network = other.SelfLink,
+    ///         PeerNetwork = @default.SelfLink,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +63,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/networkPeering:NetworkPeering")]
-    public partial class NetworkPeering : Pulumi.CustomResource
+    public partial class NetworkPeering : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to export the custom routes to the peer network. Defaults to `false`.
@@ -164,7 +165,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class NetworkPeeringArgs : Pulumi.ResourceArgs
+    public sealed class NetworkPeeringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to export the custom routes to the peer network. Defaults to `false`.
@@ -212,9 +213,10 @@ namespace Pulumi.Gcp.Compute
         public NetworkPeeringArgs()
         {
         }
+        public static new NetworkPeeringArgs Empty => new NetworkPeeringArgs();
     }
 
-    public sealed class NetworkPeeringState : Pulumi.ResourceArgs
+    public sealed class NetworkPeeringState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to export the custom routes to the peer network. Defaults to `false`.
@@ -275,5 +277,6 @@ namespace Pulumi.Gcp.Compute
         public NetworkPeeringState()
         {
         }
+        public static new NetworkPeeringState Empty => new NetworkPeeringState();
     }
 }

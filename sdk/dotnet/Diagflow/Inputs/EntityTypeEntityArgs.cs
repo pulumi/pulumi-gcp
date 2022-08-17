@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class EntityTypeEntityArgs : Pulumi.ResourceArgs
+    public sealed class EntityTypeEntityArgs : global::Pulumi.ResourceArgs
     {
         [Input("synonyms", required: true)]
         private InputList<string>? _synonyms;
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public EntityTypeEntityArgs()
         {
         }
+        public static new EntityTypeEntityArgs Empty => new EntityTypeEntityArgs();
     }
 }

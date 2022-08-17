@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner.Inputs
 {
 
-    public sealed class DatabaseEncryptionConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseEncryptionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Spanner.Inputs
         public DatabaseEncryptionConfigGetArgs()
         {
         }
+        public static new DatabaseEncryptionConfigGetArgs Empty => new DatabaseEncryptionConfigGetArgs();
     }
 }

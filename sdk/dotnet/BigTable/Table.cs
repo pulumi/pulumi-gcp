@@ -17,39 +17,38 @@ namespace Pulumi.Gcp.BigTable
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "tf-instance-cluster",
-    ///                     Zone = "us-central1-b",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
+    ///                 ClusterId = "tf-instance-cluster",
+    ///                 Zone = "us-central1-b",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
     ///             },
-    ///         });
-    ///         var table = new Gcp.BigTable.Table("table", new Gcp.BigTable.TableArgs
-    ///         {
-    ///             InstanceName = instance.Name,
-    ///             SplitKeys = 
-    ///             {
-    ///                 "a",
-    ///                 "b",
-    ///                 "c",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var table = new Gcp.BigTable.Table("table", new()
+    ///     {
+    ///         InstanceName = instance.Name,
+    ///         SplitKeys = new[]
+    ///         {
+    ///             "a",
+    ///             "b",
+    ///             "c",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.Gcp.BigTable
     ///  The following fields can't be read and will show diffs if set in config when imported- `split_keys`
     /// </summary>
     [GcpResourceType("gcp:bigtable/table:Table")]
-    public partial class Table : Pulumi.CustomResource
+    public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
@@ -150,7 +149,7 @@ namespace Pulumi.Gcp.BigTable
         }
     }
 
-    public sealed class TableArgs : Pulumi.ResourceArgs
+    public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         [Input("columnFamilies")]
         private InputList<Inputs.TableColumnFamilyArgs>? _columnFamilies;
@@ -200,9 +199,10 @@ namespace Pulumi.Gcp.BigTable
         public TableArgs()
         {
         }
+        public static new TableArgs Empty => new TableArgs();
     }
 
-    public sealed class TableState : Pulumi.ResourceArgs
+    public sealed class TableState : global::Pulumi.ResourceArgs
     {
         [Input("columnFamilies")]
         private InputList<Inputs.TableColumnFamilyGetArgs>? _columnFamilies;
@@ -252,5 +252,6 @@ namespace Pulumi.Gcp.BigTable
         public TableState()
         {
         }
+        public static new TableState Empty => new TableState();
     }
 }

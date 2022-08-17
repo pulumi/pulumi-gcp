@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.SecretManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var basic = Gcp.SecretManager.GetSecretVersion.Invoke(new()
         ///     {
-        ///         var basic = Output.Create(Gcp.SecretManager.GetSecretVersion.InvokeAsync(new Gcp.SecretManager.GetSecretVersionArgs
-        ///         {
-        ///             Secret = "my-secret",
-        ///         }));
-        ///     }
+        ///         Secret = "my-secret",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.SecretManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var basic = Gcp.SecretManager.GetSecretVersion.Invoke(new()
         ///     {
-        ///         var basic = Output.Create(Gcp.SecretManager.GetSecretVersion.InvokeAsync(new Gcp.SecretManager.GetSecretVersionArgs
-        ///         {
-        ///             Secret = "my-secret",
-        ///         }));
-        ///     }
+        ///         Secret = "my-secret",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.SecretManager
     }
 
 
-    public sealed class GetSecretVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project to get the secret version for. If it
@@ -96,9 +92,10 @@ namespace Pulumi.Gcp.SecretManager
         public GetSecretVersionArgs()
         {
         }
+        public static new GetSecretVersionArgs Empty => new GetSecretVersionArgs();
     }
 
-    public sealed class GetSecretVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project to get the secret version for. If it
@@ -123,6 +120,7 @@ namespace Pulumi.Gcp.SecretManager
         public GetSecretVersionInvokeArgs()
         {
         }
+        public static new GetSecretVersionInvokeArgs Empty => new GetSecretVersionInvokeArgs();
     }
 
 

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/uRLMap:URLMap")]
-    public partial class URLMap : Pulumi.CustomResource
+    public partial class URLMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -185,7 +185,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class URLMapArgs : Pulumi.ResourceArgs
+    public sealed class URLMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
@@ -287,9 +287,10 @@ namespace Pulumi.Gcp.Compute
         public URLMapArgs()
         {
         }
+        public static new URLMapArgs Empty => new URLMapArgs();
     }
 
-    public sealed class URLMapState : Pulumi.ResourceArgs
+    public sealed class URLMapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -415,5 +416,6 @@ namespace Pulumi.Gcp.Compute
         public URLMapState()
         {
         }
+        public static new URLMapState Empty => new URLMapState();
     }
 }

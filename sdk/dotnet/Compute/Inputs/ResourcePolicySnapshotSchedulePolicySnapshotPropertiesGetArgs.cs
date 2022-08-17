@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to perform a 'guest aware' snapshot.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs Empty => new ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs();
     }
 }

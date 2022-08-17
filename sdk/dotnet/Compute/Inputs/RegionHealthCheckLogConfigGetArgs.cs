@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionHealthCheckLogConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionHealthCheckLogConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not to export logs. This is false by default,
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionHealthCheckLogConfigGetArgs()
         {
         }
+        public static new RegionHealthCheckLogConfigGetArgs Empty => new RegionHealthCheckLogConfigGetArgs();
     }
 }

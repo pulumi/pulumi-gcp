@@ -14,44 +14,44 @@ namespace Pulumi.Gcp.CertificateManager
     /// ### Certificate Manager Certificate Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
     ///     {
-    ///         var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new Gcp.CertificateManager.DnsAuthorizationArgs
-    ///         {
-    ///             Description = "The default dnss",
-    ///             Domain = "subdomain.hashicorptest.com",
-    ///         });
-    ///         var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new Gcp.CertificateManager.DnsAuthorizationArgs
-    ///         {
-    ///             Description = "The default dnss",
-    ///             Domain = "subdomain2.hashicorptest.com",
-    ///         });
-    ///         var @default = new Gcp.CertificateManager.Certificate("default", new Gcp.CertificateManager.CertificateArgs
-    ///         {
-    ///             Description = "The default cert",
-    ///             Scope = "EDGE_CACHE",
-    ///             Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
-    ///             {
-    ///                 Domains = 
-    ///                 {
-    ///                     instance.Domain,
-    ///                     instance2.Domain,
-    ///                 },
-    ///                 DnsAuthorizations = 
-    ///                 {
-    ///                     instance.Id,
-    ///                     instance2.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
     /// 
-    /// }
+    ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain2.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Description = "The default cert",
+    ///         Scope = "EDGE_CACHE",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 instance.Domain,
+    ///                 instance2.Domain,
+    ///             },
+    ///             DnsAuthorizations = new[]
+    ///             {
+    ///                 instance.Id,
+    ///                 instance2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificatemanager/certificate:Certificate")]
-    public partial class Certificate : Pulumi.CustomResource
+    public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Set of label tags associated with the EdgeCache resource.
+        /// Set of label tags associated with the Certificate resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -111,13 +111,11 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// The scope of the certificate.
-        /// Certificates with default scope are served from core Google data centers.
+        /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
-        /// Certificates with scope EDGE_CACHE are special-purposed certificates,
+        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         /// served from non-core Google data centers.
         /// Currently allowed only for managed certificates.
-        /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `EDGE_CACHE`.
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
@@ -175,7 +173,7 @@ namespace Pulumi.Gcp.CertificateManager
         }
     }
 
-    public sealed class CertificateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -187,7 +185,7 @@ namespace Pulumi.Gcp.CertificateManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the EdgeCache resource.
+        /// Set of label tags associated with the Certificate resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -221,13 +219,11 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// The scope of the certificate.
-        /// Certificates with default scope are served from core Google data centers.
+        /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
-        /// Certificates with scope EDGE_CACHE are special-purposed certificates,
+        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         /// served from non-core Google data centers.
         /// Currently allowed only for managed certificates.
-        /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `EDGE_CACHE`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -244,9 +240,10 @@ namespace Pulumi.Gcp.CertificateManager
         public CertificateArgs()
         {
         }
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 
-    public sealed class CertificateState : Pulumi.ResourceArgs
+    public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -258,7 +255,7 @@ namespace Pulumi.Gcp.CertificateManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the EdgeCache resource.
+        /// Set of label tags associated with the Certificate resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -292,13 +289,11 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// The scope of the certificate.
-        /// Certificates with default scope are served from core Google data centers.
+        /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
-        /// Certificates with scope EDGE_CACHE are special-purposed certificates,
+        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         /// served from non-core Google data centers.
         /// Currently allowed only for managed certificates.
-        /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `EDGE_CACHE`.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -315,5 +310,6 @@ namespace Pulumi.Gcp.CertificateManager
         public CertificateState()
         {
         }
+        public static new CertificateState Empty => new CertificateState();
     }
 }

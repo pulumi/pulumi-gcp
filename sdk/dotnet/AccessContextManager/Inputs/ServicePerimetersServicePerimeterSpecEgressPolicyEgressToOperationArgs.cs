@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs : global::Pulumi.ResourceArgs
     {
         [Input("methodSelectors")]
         private InputList<Inputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs>? _methodSelectors;
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs()
         {
         }
+        public static new ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs Empty => new ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs();
     }
 }

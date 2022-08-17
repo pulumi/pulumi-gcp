@@ -19,17 +19,15 @@ namespace Pulumi.Gcp.Tpu
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
-        ///     }
+        ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -37,24 +35,23 @@ namespace Pulumi.Gcp.Tpu
         /// ### Configure Basic TPU Node With Available Version
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
-        ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
-        ///         {
-        ///             Zone = "us-central1-b",
-        ///             AcceleratorType = "v3-8",
-        ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
-        ///             CidrBlock = "10.2.0.0/29",
-        ///         });
-        ///     }
+        ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
         /// 
-        /// }
+        ///     var tpu = new Gcp.Tpu.Node("tpu", new()
+        ///     {
+        ///         Zone = "us-central1-b",
+        ///         AcceleratorType = "v3-8",
+        ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
+        ///         CidrBlock = "10.2.0.0/29",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -70,17 +67,15 @@ namespace Pulumi.Gcp.Tpu
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
-        ///     }
+        ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -88,24 +83,23 @@ namespace Pulumi.Gcp.Tpu
         /// ### Configure Basic TPU Node With Available Version
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
-        ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
-        ///         {
-        ///             Zone = "us-central1-b",
-        ///             AcceleratorType = "v3-8",
-        ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
-        ///             CidrBlock = "10.2.0.0/29",
-        ///         });
-        ///     }
+        ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
         /// 
-        /// }
+        ///     var tpu = new Gcp.Tpu.Node("tpu", new()
+        ///     {
+        ///         Zone = "us-central1-b",
+        ///         AcceleratorType = "v3-8",
+        ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
+        ///         CidrBlock = "10.2.0.0/29",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -115,7 +109,7 @@ namespace Pulumi.Gcp.Tpu
     }
 
 
-    public sealed class GetTensorflowVersionsArgs : Pulumi.InvokeArgs
+    public sealed class GetTensorflowVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project to list versions for. If it
@@ -134,9 +128,10 @@ namespace Pulumi.Gcp.Tpu
         public GetTensorflowVersionsArgs()
         {
         }
+        public static new GetTensorflowVersionsArgs Empty => new GetTensorflowVersionsArgs();
     }
 
-    public sealed class GetTensorflowVersionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTensorflowVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project to list versions for. If it
@@ -155,6 +150,7 @@ namespace Pulumi.Gcp.Tpu
         public GetTensorflowVersionsInvokeArgs()
         {
         }
+        public static new GetTensorflowVersionsInvokeArgs Empty => new GetTensorflowVersionsInvokeArgs();
     }
 
 

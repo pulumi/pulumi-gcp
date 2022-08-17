@@ -23,35 +23,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-// 			Description: pulumi.String("Example Resource"),
-// 			Parent:      pulumi.String("organizations/12345"),
-// 			ShortName:   pulumi.String("my-policy"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//				Description: pulumi.String("Example Resource"),
+//				Parent:      pulumi.String("organizations/12345"),
+//				ShortName:   pulumi.String("my-policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// FirewallPolicy can be imported using any of these accepted formats
+// # FirewallPolicy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
+//
+//	$ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
+//
+//	$ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
+//
 // ```
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
@@ -207,7 +214,7 @@ func (i *FirewallPolicy) ToFirewallPolicyOutputWithContext(ctx context.Context) 
 // FirewallPolicyArrayInput is an input type that accepts FirewallPolicyArray and FirewallPolicyArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyArrayInput` via:
 //
-//          FirewallPolicyArray{ FirewallPolicyArgs{...} }
+//	FirewallPolicyArray{ FirewallPolicyArgs{...} }
 type FirewallPolicyArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +239,7 @@ func (i FirewallPolicyArray) ToFirewallPolicyArrayOutputWithContext(ctx context.
 // FirewallPolicyMapInput is an input type that accepts FirewallPolicyMap and FirewallPolicyMapOutput values.
 // You can construct a concrete instance of `FirewallPolicyMapInput` via:
 //
-//          FirewallPolicyMap{ "key": FirewallPolicyArgs{...} }
+//	FirewallPolicyMap{ "key": FirewallPolicyArgs{...} }
 type FirewallPolicyMapInput interface {
 	pulumi.Input
 

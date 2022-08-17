@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMaintenancePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMaintenancePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time window specified for daily maintenance operations.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMaintenancePolicyGetArgs()
         {
         }
+        public static new ClusterMaintenancePolicyGetArgs Empty => new ClusterMaintenancePolicyGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class DatasetDefaultEncryptionConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class DatasetDefaultEncryptionConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the Cloud KMS encryption key that will be used to protect destination
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public DatasetDefaultEncryptionConfigurationGetArgs()
         {
         }
+        public static new DatasetDefaultEncryptionConfigurationGetArgs Empty => new DatasetDefaultEncryptionConfigurationGetArgs();
     }
 }

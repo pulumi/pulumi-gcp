@@ -26,80 +26,75 @@ namespace Pulumi.Gcp.Spanner
     /// ## google\_spanner\_instance\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var instance = new Gcp.Spanner.InstanceIAMPolicy("instance", new Gcp.Spanner.InstanceIAMPolicyArgs
-    ///         {
-    ///             Instance = "your-instance-name",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var instance = new Gcp.Spanner.InstanceIAMPolicy("instance", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_spanner\_instance\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Spanner.InstanceIAMBinding("instance", new()
     ///     {
-    ///         var instance = new Gcp.Spanner.InstanceIAMBinding("instance", new Gcp.Spanner.InstanceIAMBindingArgs
+    ///         Instance = "your-instance-name",
+    ///         Members = new[]
     ///         {
-    ///             Instance = "your-instance-name",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/compute.networkUser",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/compute.networkUser",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_spanner\_instance\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Spanner.InstanceIAMMember("instance", new()
     ///     {
-    ///         var instance = new Gcp.Spanner.InstanceIAMMember("instance", new Gcp.Spanner.InstanceIAMMemberArgs
-    ///         {
-    ///             Instance = "your-instance-name",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/compute.networkUser",
-    ///         });
-    ///     }
+    ///         Instance = "your-instance-name",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/compute.networkUser",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.Spanner
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:spanner/instanceIAMBinding:InstanceIAMBinding")]
-    public partial class InstanceIAMBinding : Pulumi.CustomResource
+    public partial class InstanceIAMBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.InstanceIAMBindingCondition?> Condition { get; private set; } = null!;
@@ -206,7 +201,7 @@ namespace Pulumi.Gcp.Spanner
         }
     }
 
-    public sealed class InstanceIAMBindingArgs : Pulumi.ResourceArgs
+    public sealed class InstanceIAMBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.InstanceIAMBindingConditionArgs>? Condition { get; set; }
@@ -243,9 +238,10 @@ namespace Pulumi.Gcp.Spanner
         public InstanceIAMBindingArgs()
         {
         }
+        public static new InstanceIAMBindingArgs Empty => new InstanceIAMBindingArgs();
     }
 
-    public sealed class InstanceIAMBindingState : Pulumi.ResourceArgs
+    public sealed class InstanceIAMBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.InstanceIAMBindingConditionGetArgs>? Condition { get; set; }
@@ -288,5 +284,6 @@ namespace Pulumi.Gcp.Spanner
         public InstanceIAMBindingState()
         {
         }
+        public static new InstanceIAMBindingState Empty => new InstanceIAMBindingState();
     }
 }

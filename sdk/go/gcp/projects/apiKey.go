@@ -19,48 +19,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("app"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
-// 			DisplayName: pulumi.String("sample-key"),
-// 			Project:     basic.Name,
-// 			Restrictions: &projects.ApiKeyRestrictionsArgs{
-// 				AndroidKeyRestrictions: &projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs{
-// 					AllowedApplications: projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray{
-// 						&projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs{
-// 							PackageName:     pulumi.String("com.example.app123"),
-// 							Sha1Fingerprint: pulumi.String("1699466a142d4682a5f91b50fdf400f2358e2b0b"),
-// 						},
-// 					},
-// 				},
-// 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
-// 					&projects.ApiKeyRestrictionsApiTargetArgs{
-// 						Service: pulumi.String("translate.googleapis.com"),
-// 						Methods: pulumi.StringArray{
-// 							pulumi.String("GET*"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("sample-key"),
+//				Project:     basic.Name,
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					AndroidKeyRestrictions: &projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs{
+//						AllowedApplications: projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray{
+//							&projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs{
+//								PackageName:     pulumi.String("com.example.app123"),
+//								Sha1Fingerprint: pulumi.String("1699466a142d4682a5f91b50fdf400f2358e2b0b"),
+//							},
+//						},
+//					},
+//					ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
+//						&projects.ApiKeyRestrictionsApiTargetArgs{
+//							Service: pulumi.String("translate.googleapis.com"),
+//							Methods: pulumi.StringArray{
+//								pulumi.String("GET*"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Basic_key
 // A basic example of a api keys key
@@ -68,45 +71,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("app"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
-// 			DisplayName: pulumi.String("sample-key"),
-// 			Project:     basic.Name,
-// 			Restrictions: &projects.ApiKeyRestrictionsArgs{
-// 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
-// 					&projects.ApiKeyRestrictionsApiTargetArgs{
-// 						Service: pulumi.String("translate.googleapis.com"),
-// 						Methods: pulumi.StringArray{
-// 							pulumi.String("GET*"),
-// 						},
-// 					},
-// 				},
-// 				BrowserKeyRestrictions: &projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs{
-// 					AllowedReferrers: pulumi.StringArray{
-// 						pulumi.String(".*"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("sample-key"),
+//				Project:     basic.Name,
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
+//						&projects.ApiKeyRestrictionsApiTargetArgs{
+//							Service: pulumi.String("translate.googleapis.com"),
+//							Methods: pulumi.StringArray{
+//								pulumi.String("GET*"),
+//							},
+//						},
+//					},
+//					BrowserKeyRestrictions: &projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs{
+//						AllowedReferrers: pulumi.StringArray{
+//							pulumi.String(".*"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Ios_key
 // A basic example of a ios api keys key
@@ -114,45 +120,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("app"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
-// 			DisplayName: pulumi.String("sample-key"),
-// 			Project:     basic.Name,
-// 			Restrictions: &projects.ApiKeyRestrictionsArgs{
-// 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
-// 					&projects.ApiKeyRestrictionsApiTargetArgs{
-// 						Service: pulumi.String("translate.googleapis.com"),
-// 						Methods: pulumi.StringArray{
-// 							pulumi.String("GET*"),
-// 						},
-// 					},
-// 				},
-// 				IosKeyRestrictions: &projects.ApiKeyRestrictionsIosKeyRestrictionsArgs{
-// 					AllowedBundleIds: pulumi.StringArray{
-// 						pulumi.String("com.google.app.macos"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("sample-key"),
+//				Project:     basic.Name,
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
+//						&projects.ApiKeyRestrictionsApiTargetArgs{
+//							Service: pulumi.String("translate.googleapis.com"),
+//							Methods: pulumi.StringArray{
+//								pulumi.String("GET*"),
+//							},
+//						},
+//					},
+//					IosKeyRestrictions: &projects.ApiKeyRestrictionsIosKeyRestrictionsArgs{
+//						AllowedBundleIds: pulumi.StringArray{
+//							pulumi.String("com.google.app.macos"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Minimal_key
 // A minimal example of a api keys key
@@ -160,30 +169,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("app"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
-// 			DisplayName: pulumi.String("sample-key"),
-// 			Project:     basic.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("sample-key"),
+//				Project:     basic.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Server_key
 // A basic example of a server api keys key
@@ -191,61 +203,70 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("app"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
-// 			DisplayName: pulumi.String("sample-key"),
-// 			Project:     basic.Name,
-// 			Restrictions: &projects.ApiKeyRestrictionsArgs{
-// 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
-// 					&projects.ApiKeyRestrictionsApiTargetArgs{
-// 						Service: pulumi.String("translate.googleapis.com"),
-// 						Methods: pulumi.StringArray{
-// 							pulumi.String("GET*"),
-// 						},
-// 					},
-// 				},
-// 				ServerKeyRestrictions: &projects.ApiKeyRestrictionsServerKeyRestrictionsArgs{
-// 					AllowedIps: pulumi.StringArray{
-// 						pulumi.String("127.0.0.1"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("app"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("sample-key"),
+//				Project:     basic.Name,
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
+//						&projects.ApiKeyRestrictionsApiTargetArgs{
+//							Service: pulumi.String("translate.googleapis.com"),
+//							Methods: pulumi.StringArray{
+//								pulumi.String("GET*"),
+//							},
+//						},
+//					},
+//					ServerKeyRestrictions: &projects.ApiKeyRestrictionsServerKeyRestrictionsArgs{
+//						AllowedIps: pulumi.StringArray{
+//							pulumi.String("127.0.0.1"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Key can be imported using any of these accepted formats
+// # Key can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}
+//
+//	$ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:projects/apiKey:ApiKey default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:projects/apiKey:ApiKey default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
+//
+//	$ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
+//
 // ```
 type ApiKey struct {
 	pulumi.CustomResourceState
@@ -378,7 +399,7 @@ func (i *ApiKey) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput {
 // ApiKeyArrayInput is an input type that accepts ApiKeyArray and ApiKeyArrayOutput values.
 // You can construct a concrete instance of `ApiKeyArrayInput` via:
 //
-//          ApiKeyArray{ ApiKeyArgs{...} }
+//	ApiKeyArray{ ApiKeyArgs{...} }
 type ApiKeyArrayInput interface {
 	pulumi.Input
 
@@ -403,7 +424,7 @@ func (i ApiKeyArray) ToApiKeyArrayOutputWithContext(ctx context.Context) ApiKeyA
 // ApiKeyMapInput is an input type that accepts ApiKeyMap and ApiKeyMapOutput values.
 // You can construct a concrete instance of `ApiKeyMapInput` via:
 //
-//          ApiKeyMap{ "key": ApiKeyArgs{...} }
+//	ApiKeyMap{ "key": ApiKeyArgs{...} }
 type ApiKeyMapInput interface {
 	pulumi.Input
 

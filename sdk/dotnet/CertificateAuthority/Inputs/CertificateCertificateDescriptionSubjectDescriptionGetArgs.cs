@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionSubjectDescriptionGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("hexSerialNumber")]
         public Input<string>? HexSerialNumber { get; set; }
@@ -58,5 +58,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionSubjectDescriptionGetArgs()
         {
         }
+        public static new CertificateCertificateDescriptionSubjectDescriptionGetArgs Empty => new CertificateCertificateDescriptionSubjectDescriptionGetArgs();
     }
 }

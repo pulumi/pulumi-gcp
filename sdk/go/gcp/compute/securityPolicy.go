@@ -20,48 +20,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
-// 			Rules: compute.SecurityPolicyRuleArray{
-// 				&compute.SecurityPolicyRuleArgs{
-// 					Action:      pulumi.String("deny(403)"),
-// 					Description: pulumi.String("Deny access to IPs in 9.9.9.0/24"),
-// 					Match: &compute.SecurityPolicyRuleMatchArgs{
-// 						Config: &compute.SecurityPolicyRuleMatchConfigArgs{
-// 							SrcIpRanges: pulumi.StringArray{
-// 								pulumi.String("9.9.9.0/24"),
-// 							},
-// 						},
-// 						VersionedExpr: pulumi.String("SRC_IPS_V1"),
-// 					},
-// 					Priority: pulumi.Int(1000),
-// 				},
-// 				&compute.SecurityPolicyRuleArgs{
-// 					Action:      pulumi.String("allow"),
-// 					Description: pulumi.String("default rule"),
-// 					Match: &compute.SecurityPolicyRuleMatchArgs{
-// 						Config: &compute.SecurityPolicyRuleMatchConfigArgs{
-// 							SrcIpRanges: pulumi.StringArray{
-// 								pulumi.String("*"),
-// 							},
-// 						},
-// 						VersionedExpr: pulumi.String("SRC_IPS_V1"),
-// 					},
-// 					Priority: pulumi.Int(2147483647),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Rules: compute.SecurityPolicyRuleArray{
+//					&compute.SecurityPolicyRuleArgs{
+//						Action:      pulumi.String("deny(403)"),
+//						Description: pulumi.String("Deny access to IPs in 9.9.9.0/24"),
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("9.9.9.0/24"),
+//								},
+//							},
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//						},
+//						Priority: pulumi.Int(1000),
+//					},
+//					&compute.SecurityPolicyRuleArgs{
+//						Action:      pulumi.String("allow"),
+//						Description: pulumi.String("default rule"),
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("*"),
+//								},
+//							},
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//						},
+//						Priority: pulumi.Int(2147483647),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
@@ -236,7 +239,7 @@ func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) 
 // SecurityPolicyArrayInput is an input type that accepts SecurityPolicyArray and SecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `SecurityPolicyArrayInput` via:
 //
-//          SecurityPolicyArray{ SecurityPolicyArgs{...} }
+//	SecurityPolicyArray{ SecurityPolicyArgs{...} }
 type SecurityPolicyArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +264,7 @@ func (i SecurityPolicyArray) ToSecurityPolicyArrayOutputWithContext(ctx context.
 // SecurityPolicyMapInput is an input type that accepts SecurityPolicyMap and SecurityPolicyMapOutput values.
 // You can construct a concrete instance of `SecurityPolicyMapInput` via:
 //
-//          SecurityPolicyMap{ "key": SecurityPolicyArgs{...} }
+//	SecurityPolicyMap{ "key": SecurityPolicyArgs{...} }
 type SecurityPolicyMapInput interface {
 	pulumi.Input
 

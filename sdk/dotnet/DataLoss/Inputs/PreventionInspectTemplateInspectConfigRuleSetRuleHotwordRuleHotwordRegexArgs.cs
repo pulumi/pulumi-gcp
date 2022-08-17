@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupIndexes")]
         private InputList<int>? _groupIndexes;
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs Empty => new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs();
     }
 }

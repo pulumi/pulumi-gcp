@@ -16,8 +16,8 @@ class NetworkEndpointArgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  network_endpoint_group: pulumi.Input[str],
-                 port: pulumi.Input[int],
                  instance: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -26,19 +26,20 @@ class NetworkEndpointArgs:
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
-        :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
                This is required for network endpoints of type GCE_VM_IP_PORT.
                The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
-        pulumi.set(__self__, "port", port)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if zone is not None:
@@ -72,18 +73,6 @@ class NetworkEndpointArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[int]:
-        """
-        Port number of network endpoint.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: pulumi.Input[int]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
     def instance(self) -> Optional[pulumi.Input[str]]:
         """
         The name for a specific VM instance that the IP address belongs to.
@@ -95,6 +84,18 @@ class NetworkEndpointArgs:
     @instance.setter
     def instance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number of network endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -268,7 +269,7 @@ class NetworkEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
@@ -358,7 +359,7 @@ class NetworkEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
@@ -445,8 +446,6 @@ class NetworkEndpoint(pulumi.CustomResource):
             if network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_group'")
             __props__.__dict__["network_endpoint_group"] = network_endpoint_group
-            if port is None and not opts.urn:
-                raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["zone"] = zone
@@ -527,7 +526,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[int]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         Port number of network endpoint.
         """

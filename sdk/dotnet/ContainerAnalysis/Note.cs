@@ -24,65 +24,61 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// ### Container Analysis Note Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
-    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
-    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
     ///             {
-    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///                 {
-    ///                     HumanReadableName = "Attestor Note",
-    ///                 },
+    ///                 HumanReadableName = "Attestor Note",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Container Analysis Note Attestation Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
     ///     {
-    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
     ///         {
-    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
     ///             {
-    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
-    ///                 {
-    ///                     HumanReadableName = "Attestor Note",
-    ///                 },
+    ///                 HumanReadableName = "Attestor Note",
     ///             },
-    ///             ExpirationTime = "2120-10-02T15:01:23.045123456Z",
-    ///             LongDescription = "a longer description of test note",
-    ///             RelatedUrls = 
+    ///         },
+    ///         ExpirationTime = "2120-10-02T15:01:23.045123456Z",
+    ///         LongDescription = "a longer description of test note",
+    ///         RelatedUrls = new[]
+    ///         {
+    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
     ///             {
-    ///                 new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
-    ///                 {
-    ///                     Label = "foo",
-    ///                     Url = "some.url",
-    ///                 },
-    ///                 new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
-    ///                 {
-    ///                     Url = "google.com",
-    ///                 },
+    ///                 Label = "foo",
+    ///                 Url = "some.url",
     ///             },
-    ///             ShortDescription = "test note",
-    ///         });
-    ///     }
+    ///             new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///             {
+    ///                 Url = "google.com",
+    ///             },
+    ///         },
+    ///         ShortDescription = "test note",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -102,7 +98,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// ```
     /// </summary>
     [GcpResourceType("gcp:containeranalysis/note:Note")]
-    public partial class Note : Pulumi.CustomResource
+    public partial class Note : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Note kind that represents a logical attestation "role" or "authority".
@@ -225,7 +221,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
         }
     }
 
-    public sealed class NoteArgs : Pulumi.ResourceArgs
+    public sealed class NoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Note kind that represents a logical attestation "role" or "authority".
@@ -301,9 +297,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public NoteArgs()
         {
         }
+        public static new NoteArgs Empty => new NoteArgs();
     }
 
-    public sealed class NoteState : Pulumi.ResourceArgs
+    public sealed class NoteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Note kind that represents a logical attestation "role" or "authority".
@@ -397,5 +394,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public NoteState()
         {
         }
+        public static new NoteState Empty => new NoteState();
     }
 }

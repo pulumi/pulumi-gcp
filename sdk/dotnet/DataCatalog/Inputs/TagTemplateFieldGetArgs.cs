@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class TagTemplateFieldGetArgs : Pulumi.ResourceArgs
+    public sealed class TagTemplateFieldGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description for this field.
@@ -61,5 +61,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public TagTemplateFieldGetArgs()
         {
         }
+        public static new TagTemplateFieldGetArgs Empty => new TagTemplateFieldGetArgs();
     }
 }

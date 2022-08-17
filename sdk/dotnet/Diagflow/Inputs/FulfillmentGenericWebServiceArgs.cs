@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class FulfillmentGenericWebServiceArgs : Pulumi.ResourceArgs
+    public sealed class FulfillmentGenericWebServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password for HTTP Basic authentication.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public FulfillmentGenericWebServiceArgs()
         {
         }
+        public static new FulfillmentGenericWebServiceArgs Empty => new FulfillmentGenericWebServiceArgs();
     }
 }

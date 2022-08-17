@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A duration string, e.g. 10s.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs()
         {
         }
+        public static new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs Empty => new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs();
     }
 }

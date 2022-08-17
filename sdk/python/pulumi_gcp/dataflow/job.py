@@ -962,7 +962,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalExperiments")
-    def additional_experiments(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def additional_experiments(self) -> pulumi.Output[Sequence[str]]:
         """
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """

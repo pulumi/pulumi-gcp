@@ -29,57 +29,58 @@ namespace Pulumi.Gcp.Kms
     /// ### Kms Secret Ciphertext Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyring.Id,
-    ///             RotationPeriod = "100000s",
-    ///         });
-    ///         var myPassword = new Gcp.Kms.SecretCiphertext("myPassword", new Gcp.Kms.SecretCiphertextArgs
-    ///         {
-    ///             CryptoKey = cryptokey.Id,
-    ///             Plaintext = "my-secret-password",
-    ///         });
-    ///         var instance = new Gcp.Compute.Instance("instance", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             Zone = "us-central1-a",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = "debian-cloud/debian-9",
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Metadata = 
-    ///             {
-    ///                 { "password", myPassword.Ciphertext },
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///     });
     /// 
-    /// }
+    ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         RotationPeriod = "100000s",
+    ///     });
+    /// 
+    ///     var myPassword = new Gcp.Kms.SecretCiphertext("myPassword", new()
+    ///     {
+    ///         CryptoKey = cryptokey.Id,
+    ///         Plaintext = "my-secret-password",
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Compute.Instance("instance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     ,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "password", myPassword.Ciphertext },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -87,7 +88,7 @@ namespace Pulumi.Gcp.Kms
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:kms/secretCiphertext:SecretCiphertext")]
-    public partial class SecretCiphertext : Pulumi.CustomResource
+    public partial class SecretCiphertext : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The additional authenticated data used for integrity checks during encryption and decryption.
@@ -160,7 +161,7 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
-    public sealed class SecretCiphertextArgs : Pulumi.ResourceArgs
+    public sealed class SecretCiphertextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The additional authenticated data used for integrity checks during encryption and decryption.
@@ -186,9 +187,10 @@ namespace Pulumi.Gcp.Kms
         public SecretCiphertextArgs()
         {
         }
+        public static new SecretCiphertextArgs Empty => new SecretCiphertextArgs();
     }
 
-    public sealed class SecretCiphertextState : Pulumi.ResourceArgs
+    public sealed class SecretCiphertextState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The additional authenticated data used for integrity checks during encryption and decryption.
@@ -220,5 +222,6 @@ namespace Pulumi.Gcp.Kms
         public SecretCiphertextState()
         {
         }
+        public static new SecretCiphertextState Empty => new SecretCiphertextState();
     }
 }

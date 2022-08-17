@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterVerticalPodAutoscalingArgs : Pulumi.ResourceArgs
+    public sealed class ClusterVerticalPodAutoscalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterVerticalPodAutoscalingArgs()
         {
         }
+        public static new ClusterVerticalPodAutoscalingArgs Empty => new ClusterVerticalPodAutoscalingArgs();
     }
 }

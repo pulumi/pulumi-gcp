@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs : global::Pulumi.ResourceArgs
     {
         [Input("obectIds")]
         private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>? _obectIds;
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs()
         {
         }
+        public static new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs Empty => new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs();
     }
 }

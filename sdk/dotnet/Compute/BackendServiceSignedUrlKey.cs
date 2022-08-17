@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey")]
-    public partial class BackendServiceSignedUrlKey : Pulumi.CustomResource
+    public partial class BackendServiceSignedUrlKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The backend service this signed URL key belongs.
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class BackendServiceSignedUrlKeyArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceSignedUrlKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backend service this signed URL key belongs.
@@ -133,9 +133,10 @@ namespace Pulumi.Gcp.Compute
         public BackendServiceSignedUrlKeyArgs()
         {
         }
+        public static new BackendServiceSignedUrlKeyArgs Empty => new BackendServiceSignedUrlKeyArgs();
     }
 
-    public sealed class BackendServiceSignedUrlKeyState : Pulumi.ResourceArgs
+    public sealed class BackendServiceSignedUrlKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backend service this signed URL key belongs.
@@ -167,5 +168,6 @@ namespace Pulumi.Gcp.Compute
         public BackendServiceSignedUrlKeyState()
         {
         }
+        public static new BackendServiceSignedUrlKeyState Empty => new BackendServiceSignedUrlKeyState();
     }
 }

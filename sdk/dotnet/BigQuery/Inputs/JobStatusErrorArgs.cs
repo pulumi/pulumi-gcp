@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobStatusErrorArgs : Pulumi.ResourceArgs
+    public sealed class JobStatusErrorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The geographic location of the job. The default value is US.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobStatusErrorArgs()
         {
         }
+        public static new JobStatusErrorArgs Empty => new JobStatusErrorArgs();
     }
 }

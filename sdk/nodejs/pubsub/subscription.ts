@@ -92,6 +92,51 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Pubsub Subscription Push Bq
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const project = gcp.organizations.getProject({});
+ * const viewer = new gcp.projects.IAMMember("viewer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.metadataViewer",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * const editor = new gcp.projects.IAMMember("editor", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.dataEditor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "example_dataset"});
+ * const testTable = new gcp.bigquery.Table("testTable", {
+ *     deletionProtection: false,
+ *     tableId: "example_table",
+ *     datasetId: testDataset.datasetId,
+ *     schema: `[
+ *   {
+ *     "name": "data",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The data"
+ *   }
+ * ]
+ * `,
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     bigqueryConfig: {
+ *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         viewer,
+ *         editor,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -155,6 +200,13 @@ export class Subscription extends pulumi.CustomResource {
      * will eventually redeliver the message.
      */
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
+    /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     */
+    public readonly bigqueryConfig!: pulumi.Output<outputs.pubsub.SubscriptionBigqueryConfig | undefined>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering
@@ -263,6 +315,7 @@ export class Subscription extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
             resourceInputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
+            resourceInputs["bigqueryConfig"] = state ? state.bigqueryConfig : undefined;
             resourceInputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = state ? state.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = state ? state.enableMessageOrdering : undefined;
@@ -282,6 +335,7 @@ export class Subscription extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topic'");
             }
             resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
+            resourceInputs["bigqueryConfig"] = args ? args.bigqueryConfig : undefined;
             resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
@@ -323,6 +377,13 @@ export interface SubscriptionState {
      * will eventually redeliver the message.
      */
     ackDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     */
+    bigqueryConfig?: pulumi.Input<inputs.pubsub.SubscriptionBigqueryConfig>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering
@@ -440,6 +501,13 @@ export interface SubscriptionArgs {
      * will eventually redeliver the message.
      */
     ackDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
+     * Either pushConfig or bigQueryConfig can be set, but not both.
+     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     */
+    bigqueryConfig?: pulumi.Input<inputs.pubsub.SubscriptionBigqueryConfig>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering

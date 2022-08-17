@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy.Inputs
 {
 
-    public sealed class DeliveryPipelineSerialPipelineGetArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineSerialPipelineGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("stages")]
         private InputList<Inputs.DeliveryPipelineSerialPipelineStageGetArgs>? _stages;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public DeliveryPipelineSerialPipelineGetArgs()
         {
         }
+        public static new DeliveryPipelineSerialPipelineGetArgs Empty => new DeliveryPipelineSerialPipelineGetArgs();
     }
 }

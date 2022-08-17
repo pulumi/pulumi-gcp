@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateManager.Inputs
 {
 
-    public sealed class CertificateMapGclbTargetIpConfigArgs : Pulumi.ResourceArgs
+    public sealed class CertificateMapGclbTargetIpConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         public CertificateMapGclbTargetIpConfigArgs()
         {
         }
+        public static new CertificateMapGclbTargetIpConfigArgs Empty => new CertificateMapGclbTargetIpConfigArgs();
     }
 }

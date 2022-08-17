@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class JobStatusGetArgs : Pulumi.ResourceArgs
+    public sealed class JobStatusGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("details")]
         public Input<string>? Details { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public JobStatusGetArgs()
         {
         }
+        public static new JobStatusGetArgs Empty => new JobStatusGetArgs();
     }
 }

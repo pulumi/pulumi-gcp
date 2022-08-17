@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Kms
     }
 
 
-    public sealed class GetKMSSecretCiphertextArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSSecretCiphertextArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the CryptoKey that will be used to
@@ -66,9 +66,10 @@ namespace Pulumi.Gcp.Kms
         public GetKMSSecretCiphertextArgs()
         {
         }
+        public static new GetKMSSecretCiphertextArgs Empty => new GetKMSSecretCiphertextArgs();
     }
 
-    public sealed class GetKMSSecretCiphertextInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSSecretCiphertextInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the CryptoKey that will be used to
@@ -87,6 +88,7 @@ namespace Pulumi.Gcp.Kms
         public GetKMSSecretCiphertextInvokeArgs()
         {
         }
+        public static new GetKMSSecretCiphertextInvokeArgs Empty => new GetKMSSecretCiphertextInvokeArgs();
     }
 
 

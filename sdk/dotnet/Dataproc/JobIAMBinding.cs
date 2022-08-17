@@ -23,82 +23,77 @@ namespace Pulumi.Gcp.Dataproc
     /// ## google\_dataproc\_job\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var editor = new Gcp.Dataproc.JobIAMPolicy("editor", new Gcp.Dataproc.JobIAMPolicyArgs
-    ///         {
-    ///             Project = "your-project",
-    ///             Region = "your-region",
-    ///             JobId = "your-dataproc-job",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var editor = new Gcp.Dataproc.JobIAMPolicy("editor", new()
+    ///     {
+    ///         Project = "your-project",
+    ///         Region = "your-region",
+    ///         JobId = "your-dataproc-job",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_job\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.Dataproc.JobIAMBinding("editor", new()
     ///     {
-    ///         var editor = new Gcp.Dataproc.JobIAMBinding("editor", new Gcp.Dataproc.JobIAMBindingArgs
+    ///         JobId = "your-dataproc-job",
+    ///         Members = new[]
     ///         {
-    ///             JobId = "your-dataproc-job",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_job\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.Dataproc.JobIAMMember("editor", new()
     ///     {
-    ///         var editor = new Gcp.Dataproc.JobIAMMember("editor", new Gcp.Dataproc.JobIAMMemberArgs
-    ///         {
-    ///             JobId = "your-dataproc-job",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         JobId = "your-dataproc-job",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -122,7 +117,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/jobIAMBinding:JobIAMBinding")]
-    public partial class JobIAMBinding : Pulumi.CustomResource
+    public partial class JobIAMBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.JobIAMBindingCondition?> Condition { get; private set; } = null!;
@@ -205,7 +200,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class JobIAMBindingArgs : Pulumi.ResourceArgs
+    public sealed class JobIAMBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.JobIAMBindingConditionArgs>? Condition { get; set; }
@@ -246,9 +241,10 @@ namespace Pulumi.Gcp.Dataproc
         public JobIAMBindingArgs()
         {
         }
+        public static new JobIAMBindingArgs Empty => new JobIAMBindingArgs();
     }
 
-    public sealed class JobIAMBindingState : Pulumi.ResourceArgs
+    public sealed class JobIAMBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.JobIAMBindingConditionGetArgs>? Condition { get; set; }
@@ -295,5 +291,6 @@ namespace Pulumi.Gcp.Dataproc
         public JobIAMBindingState()
         {
         }
+        public static new JobIAMBindingState Empty => new JobIAMBindingState();
     }
 }

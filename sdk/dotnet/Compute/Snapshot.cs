@@ -36,41 +36,41 @@ namespace Pulumi.Gcp.Compute
     /// ### Snapshot Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var debian = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var persistent = new Gcp.Compute.Disk("persistent", new Gcp.Compute.DiskArgs
-    ///         {
-    ///             Image = debian.Apply(debian =&gt; debian.SelfLink),
-    ///             Size = 10,
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var snapshot = new Gcp.Compute.Snapshot("snapshot", new Gcp.Compute.SnapshotArgs
-    ///         {
-    ///             SourceDisk = persistent.Id,
-    ///             Zone = "us-central1-a",
-    ///             Labels = 
-    ///             {
-    ///                 { "my_label", "value" },
-    ///             },
-    ///             StorageLocations = 
-    ///             {
-    ///                 "us-central1",
-    ///             },
-    ///         });
-    ///     }
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
     /// 
-    /// }
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
+    ///     {
+    ///         SourceDisk = persistent.Id,
+    ///         Zone = "us-central1-a",
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "value" },
+    ///         },
+    ///         StorageLocations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -330,9 +330,10 @@ namespace Pulumi.Gcp.Compute
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -466,5 +467,6 @@ namespace Pulumi.Gcp.Compute
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

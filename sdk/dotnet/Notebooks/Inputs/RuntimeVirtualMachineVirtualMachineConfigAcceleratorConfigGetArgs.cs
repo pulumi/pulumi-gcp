@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Count of cores of this accelerator.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigGetArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigGetArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigGetArgs();
     }
 }

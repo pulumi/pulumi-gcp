@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key may be used to sign certificates.
@@ -69,5 +69,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs()
         {
         }
+        public static new CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs Empty => new CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs();
     }
 }

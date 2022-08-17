@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
@@ -105,5 +105,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigGetArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigGetArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigGetArgs();
     }
 }

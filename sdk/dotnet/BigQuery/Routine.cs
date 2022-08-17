@@ -22,68 +22,66 @@ namespace Pulumi.Gcp.BigQuery
     /// ### Big Query Routine Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
-    ///         var test = new Gcp.BigQuery.Dataset("test", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "dataset_id",
-    ///         });
-    ///         var sproc = new Gcp.BigQuery.Routine("sproc", new Gcp.BigQuery.RoutineArgs
-    ///         {
-    ///             DatasetId = test.DatasetId,
-    ///             RoutineId = "routine_id",
-    ///             RoutineType = "PROCEDURE",
-    ///             Language = "SQL",
-    ///             DefinitionBody = "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
-    ///         });
-    ///     }
+    ///         DatasetId = "dataset_id",
+    ///     });
     /// 
-    /// }
+    ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "PROCEDURE",
+    ///         Language = "SQL",
+    ///         DefinitionBody = "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Big Query Routine Json
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
-    ///         var test = new Gcp.BigQuery.Dataset("test", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "dataset_id",
-    ///         });
-    ///         var sproc = new Gcp.BigQuery.Routine("sproc", new Gcp.BigQuery.RoutineArgs
-    ///         {
-    ///             DatasetId = test.DatasetId,
-    ///             RoutineId = "tf_test_routine_id",
-    ///             RoutineType = "SCALAR_FUNCTION",
-    ///             Language = "JAVASCRIPT",
-    ///             DefinitionBody = "CREATE FUNCTION multiplyInputs return x*y;",
-    ///             Arguments = 
-    ///             {
-    ///                 new Gcp.BigQuery.Inputs.RoutineArgumentArgs
-    ///                 {
-    ///                     Name = "x",
-    ///                     DataType = "{\"typeKind\" :  \"FLOAT64\"}",
-    ///                 },
-    ///                 new Gcp.BigQuery.Inputs.RoutineArgumentArgs
-    ///                 {
-    ///                     Name = "y",
-    ///                     DataType = "{\"typeKind\" :  \"FLOAT64\"}",
-    ///                 },
-    ///             },
-    ///             ReturnType = "{\"typeKind\" :  \"FLOAT64\"}",
-    ///         });
-    ///     }
+    ///         DatasetId = "dataset_id",
+    ///     });
     /// 
-    /// }
+    ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "tf_test_routine_id",
+    ///         RoutineType = "SCALAR_FUNCTION",
+    ///         Language = "JAVASCRIPT",
+    ///         DefinitionBody = "CREATE FUNCTION multiplyInputs return x*y;",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "x",
+    ///                 DataType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///             },
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "y",
+    ///                 DataType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///             },
+    ///         },
+    ///         ReturnType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Big Query Routine Tvf
     /// 
@@ -93,53 +91,50 @@ namespace Pulumi.Gcp.BigQuery
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
-    ///         var test = new Gcp.BigQuery.Dataset("test", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "dataset_id",
-    ///         });
-    ///         var sproc = new Gcp.BigQuery.Routine("sproc", new Gcp.BigQuery.RoutineArgs
-    ///         {
-    ///             DatasetId = test.DatasetId,
-    ///             RoutineId = "tf_test_routine_id",
-    ///             RoutineType = "TABLE_VALUED_FUNCTION",
-    ///             Language = "SQL",
-    ///             DefinitionBody = @"SELECT 1 + value AS value
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "tf_test_routine_id",
+    ///         RoutineType = "TABLE_VALUED_FUNCTION",
+    ///         Language = "SQL",
+    ///         DefinitionBody = @"SELECT 1 + value AS value
     /// ",
-    ///             Arguments = 
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
     ///             {
-    ///                 new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///                 Name = "value",
+    ///                 ArgumentKind = "FIXED_TYPE",
+    ///                 DataType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     Name = "value",
-    ///                     ArgumentKind = "FIXED_TYPE",
-    ///                     DataType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     ["typeKind"] = "INT64",
+    ///                 }),
+    ///             },
+    ///         },
+    ///         ReturnTableType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["columns"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "value",
+    ///                     ["type"] = new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         { "typeKind", "INT64" },
-    ///                     }),
+    ///                         ["typeKind"] = "INT64",
+    ///                     },
     ///                 },
     ///             },
-    ///             ReturnTableType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "columns", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "name", "value" },
-    ///                             { "type", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "typeKind", "INT64" },
-    ///                             } },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -159,7 +154,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/routine:Routine")]
-    public partial class Routine : Pulumi.CustomResource
+    public partial class Routine : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Input/output argument of a function or a stored procedure.
@@ -307,7 +302,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class RoutineArgs : Pulumi.ResourceArgs
+    public sealed class RoutineArgs : global::Pulumi.ResourceArgs
     {
         [Input("arguments")]
         private InputList<Inputs.RoutineArgumentArgs>? _arguments;
@@ -414,9 +409,10 @@ namespace Pulumi.Gcp.BigQuery
         public RoutineArgs()
         {
         }
+        public static new RoutineArgs Empty => new RoutineArgs();
     }
 
-    public sealed class RoutineState : Pulumi.ResourceArgs
+    public sealed class RoutineState : global::Pulumi.ResourceArgs
     {
         [Input("arguments")]
         private InputList<Inputs.RoutineArgumentGetArgs>? _arguments;
@@ -535,5 +531,6 @@ namespace Pulumi.Gcp.BigQuery
         public RoutineState()
         {
         }
+        public static new RoutineState Empty => new RoutineState();
     }
 }

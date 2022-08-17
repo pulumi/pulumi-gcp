@@ -23,39 +23,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := organizations.GetOrganization(ctx, &organizations.GetOrganizationArgs{
-// 			Organization: pulumi.StringRef("123456789"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = logging.NewOrganizationBucketConfig(ctx, "basic", &logging.OrganizationBucketConfigArgs{
-// 			Organization:  pulumi.String(_default.Organization),
-// 			Location:      pulumi.String("global"),
-// 			RetentionDays: pulumi.Int(30),
-// 			BucketId:      pulumi.String("_Default"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := organizations.GetOrganization(ctx, &organizations.GetOrganizationArgs{
+//				Organization: pulumi.StringRef("123456789"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewOrganizationBucketConfig(ctx, "basic", &logging.OrganizationBucketConfigArgs{
+//				Organization:  pulumi.String(_default.Organization),
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported using the following format
+// # This resource can be imported using the following format
 //
 // ```sh
-//  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
+//
+//	$ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
+//
 // ```
 type OrganizationBucketConfig struct {
 	pulumi.CustomResourceState
@@ -204,7 +209,7 @@ func (i *OrganizationBucketConfig) ToOrganizationBucketConfigOutputWithContext(c
 // OrganizationBucketConfigArrayInput is an input type that accepts OrganizationBucketConfigArray and OrganizationBucketConfigArrayOutput values.
 // You can construct a concrete instance of `OrganizationBucketConfigArrayInput` via:
 //
-//          OrganizationBucketConfigArray{ OrganizationBucketConfigArgs{...} }
+//	OrganizationBucketConfigArray{ OrganizationBucketConfigArgs{...} }
 type OrganizationBucketConfigArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +234,7 @@ func (i OrganizationBucketConfigArray) ToOrganizationBucketConfigArrayOutputWith
 // OrganizationBucketConfigMapInput is an input type that accepts OrganizationBucketConfigMap and OrganizationBucketConfigMapOutput values.
 // You can construct a concrete instance of `OrganizationBucketConfigMapInput` via:
 //
-//          OrganizationBucketConfigMap{ "key": OrganizationBucketConfigArgs{...} }
+//	OrganizationBucketConfigMap{ "key": OrganizationBucketConfigArgs{...} }
 type OrganizationBucketConfigMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class EntryBigqueryTableSpecViewSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class EntryBigqueryTableSpecViewSpecGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("viewQuery")]
         public Input<string>? ViewQuery { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public EntryBigqueryTableSpecViewSpecGetArgs()
         {
         }
+        public static new EntryBigqueryTableSpecViewSpecGetArgs Empty => new EntryBigqueryTableSpecViewSpecGetArgs();
     }
 }

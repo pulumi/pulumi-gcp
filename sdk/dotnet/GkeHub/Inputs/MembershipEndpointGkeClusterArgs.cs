@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class MembershipEndpointGkeClusterArgs : Pulumi.ResourceArgs
+    public sealed class MembershipEndpointGkeClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceLink", required: true)]
         public Input<string> ResourceLink { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public MembershipEndpointGkeClusterArgs()
         {
         }
+        public static new MembershipEndpointGkeClusterArgs Empty => new MembershipEndpointGkeClusterArgs();
     }
 }

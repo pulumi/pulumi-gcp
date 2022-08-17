@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionPerInstanceConfigPreservedStateDiskArgs : Pulumi.ResourceArgs
+    public sealed class RegionPerInstanceConfigPreservedStateDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionPerInstanceConfigPreservedStateDiskArgs()
         {
         }
+        public static new RegionPerInstanceConfigPreservedStateDiskArgs Empty => new RegionPerInstanceConfigPreservedStateDiskArgs();
     }
 }

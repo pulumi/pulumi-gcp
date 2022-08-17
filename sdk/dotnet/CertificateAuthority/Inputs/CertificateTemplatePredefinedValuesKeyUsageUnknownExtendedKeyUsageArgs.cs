@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs : global::Pulumi.ResourceArgs
     {
         [Input("objectIdPaths", required: true)]
         private InputList<int>? _objectIdPaths;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs()
         {
         }
+        public static new CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs Empty => new CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs();
     }
 }

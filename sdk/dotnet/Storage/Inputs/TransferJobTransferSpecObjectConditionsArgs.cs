@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecObjectConditionsArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecObjectConditionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludePrefixes")]
         private InputList<string>? _excludePrefixes;
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecObjectConditionsArgs()
         {
         }
+        public static new TransferJobTransferSpecObjectConditionsArgs Empty => new TransferJobTransferSpecObjectConditionsArgs();
     }
 }

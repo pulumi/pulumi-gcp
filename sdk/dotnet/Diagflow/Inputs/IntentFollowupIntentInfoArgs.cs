@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class IntentFollowupIntentInfoArgs : Pulumi.ResourceArgs
+    public sealed class IntentFollowupIntentInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("followupIntentName")]
         public Input<string>? FollowupIntentName { get; set; }
@@ -25,5 +25,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public IntentFollowupIntentInfoArgs()
         {
         }
+        public static new IntentFollowupIntentInfoArgs Empty => new IntentFollowupIntentInfoArgs();
     }
 }

@@ -8,12 +8,501 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'AssetDiscoverySpec',
+    'AssetDiscoverySpecCsvOptions',
+    'AssetDiscoverySpecJsonOptions',
+    'AssetDiscoveryStatus',
+    'AssetDiscoveryStatusStat',
+    'AssetResourceSpec',
+    'AssetResourceStatus',
+    'AssetSecurityStatus',
     'LakeAssetStatus',
     'LakeMetastore',
     'LakeMetastoreStatus',
+    'ZoneAssetStatus',
+    'ZoneDiscoverySpec',
+    'ZoneDiscoverySpecCsvOptions',
+    'ZoneDiscoverySpecJsonOptions',
+    'ZoneResourceSpec',
 ]
+
+@pulumi.output_type
+class AssetDiscoverySpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "csvOptions":
+            suggest = "csv_options"
+        elif key == "excludePatterns":
+            suggest = "exclude_patterns"
+        elif key == "includePatterns":
+            suggest = "include_patterns"
+        elif key == "jsonOptions":
+            suggest = "json_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetDiscoverySpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetDiscoverySpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetDiscoverySpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 csv_options: Optional['outputs.AssetDiscoverySpecCsvOptions'] = None,
+                 exclude_patterns: Optional[Sequence[str]] = None,
+                 include_patterns: Optional[Sequence[str]] = None,
+                 json_options: Optional['outputs.AssetDiscoverySpecJsonOptions'] = None,
+                 schedule: Optional[str] = None):
+        """
+        :param bool enabled: Required. Whether discovery is enabled.
+        :param 'AssetDiscoverySpecCsvOptionsArgs' csv_options: Optional. Configuration for CSV data.
+        :param Sequence[str] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        :param Sequence[str] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        :param 'AssetDiscoverySpecJsonOptionsArgs' json_options: Optional. Configuration for Json data.
+        :param str schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if csv_options is not None:
+            pulumi.set(__self__, "csv_options", csv_options)
+        if exclude_patterns is not None:
+            pulumi.set(__self__, "exclude_patterns", exclude_patterns)
+        if include_patterns is not None:
+            pulumi.set(__self__, "include_patterns", include_patterns)
+        if json_options is not None:
+            pulumi.set(__self__, "json_options", json_options)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Required. Whether discovery is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="csvOptions")
+    def csv_options(self) -> Optional['outputs.AssetDiscoverySpecCsvOptions']:
+        """
+        Optional. Configuration for CSV data.
+        """
+        return pulumi.get(self, "csv_options")
+
+    @property
+    @pulumi.getter(name="excludePatterns")
+    def exclude_patterns(self) -> Optional[Sequence[str]]:
+        """
+        Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "exclude_patterns")
+
+    @property
+    @pulumi.getter(name="includePatterns")
+    def include_patterns(self) -> Optional[Sequence[str]]:
+        """
+        Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "include_patterns")
+
+    @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> Optional['outputs.AssetDiscoverySpecJsonOptions']:
+        """
+        Optional. Configuration for Json data.
+        """
+        return pulumi.get(self, "json_options")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[str]:
+        """
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+        return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class AssetDiscoverySpecCsvOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableTypeInference":
+            suggest = "disable_type_inference"
+        elif key == "headerRows":
+            suggest = "header_rows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetDiscoverySpecCsvOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetDiscoverySpecCsvOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetDiscoverySpecCsvOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delimiter: Optional[str] = None,
+                 disable_type_inference: Optional[bool] = None,
+                 encoding: Optional[str] = None,
+                 header_rows: Optional[int] = None):
+        """
+        :param str delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
+        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
+        :param int header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+        if disable_type_inference is not None:
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if header_rows is not None:
+            pulumi.set(__self__, "header_rows", header_rows)
+
+    @property
+    @pulumi.getter
+    def delimiter(self) -> Optional[str]:
+        """
+        Optional. The delimiter being used to separate values. This defaults to ','.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @property
+    @pulumi.getter(name="disableTypeInference")
+    def disable_type_inference(self) -> Optional[bool]:
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        return pulumi.get(self, "disable_type_inference")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="headerRows")
+    def header_rows(self) -> Optional[int]:
+        """
+        Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        return pulumi.get(self, "header_rows")
+
+
+@pulumi.output_type
+class AssetDiscoverySpecJsonOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableTypeInference":
+            suggest = "disable_type_inference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetDiscoverySpecJsonOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetDiscoverySpecJsonOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetDiscoverySpecJsonOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_type_inference: Optional[bool] = None,
+                 encoding: Optional[str] = None):
+        """
+        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
+        """
+        if disable_type_inference is not None:
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter(name="disableTypeInference")
+    def disable_type_inference(self) -> Optional[bool]:
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        return pulumi.get(self, "disable_type_inference")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
+class AssetDiscoveryStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastRunDuration":
+            suggest = "last_run_duration"
+        elif key == "lastRunTime":
+            suggest = "last_run_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetDiscoveryStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetDiscoveryStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetDiscoveryStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_run_duration: Optional[str] = None,
+                 last_run_time: Optional[str] = None,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None,
+                 stats: Optional[Sequence['outputs.AssetDiscoveryStatusStat']] = None,
+                 update_time: Optional[str] = None):
+        if last_run_duration is not None:
+            pulumi.set(__self__, "last_run_duration", last_run_duration)
+        if last_run_time is not None:
+            pulumi.set(__self__, "last_run_time", last_run_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if stats is not None:
+            pulumi.set(__self__, "stats", stats)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="lastRunDuration")
+    def last_run_duration(self) -> Optional[str]:
+        return pulumi.get(self, "last_run_duration")
+
+    @property
+    @pulumi.getter(name="lastRunTime")
+    def last_run_time(self) -> Optional[str]:
+        return pulumi.get(self, "last_run_time")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def stats(self) -> Optional[Sequence['outputs.AssetDiscoveryStatusStat']]:
+        return pulumi.get(self, "stats")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AssetDiscoveryStatusStat(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataItems":
+            suggest = "data_items"
+        elif key == "dataSize":
+            suggest = "data_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetDiscoveryStatusStat. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetDiscoveryStatusStat.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetDiscoveryStatusStat.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_items: Optional[int] = None,
+                 data_size: Optional[int] = None,
+                 filesets: Optional[int] = None,
+                 tables: Optional[int] = None):
+        if data_items is not None:
+            pulumi.set(__self__, "data_items", data_items)
+        if data_size is not None:
+            pulumi.set(__self__, "data_size", data_size)
+        if filesets is not None:
+            pulumi.set(__self__, "filesets", filesets)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter(name="dataItems")
+    def data_items(self) -> Optional[int]:
+        return pulumi.get(self, "data_items")
+
+    @property
+    @pulumi.getter(name="dataSize")
+    def data_size(self) -> Optional[int]:
+        return pulumi.get(self, "data_size")
+
+    @property
+    @pulumi.getter
+    def filesets(self) -> Optional[int]:
+        return pulumi.get(self, "filesets")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[int]:
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class AssetResourceSpec(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 name: Optional[str] = None):
+        """
+        :param str type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+        :param str name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        """
+        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AssetResourceStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetResourceStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetResourceStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetResourceStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None,
+                 update_time: Optional[str] = None):
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AssetSecurityStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetSecurityStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetSecurityStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetSecurityStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None,
+                 update_time: Optional[str] = None):
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        return pulumi.get(self, "update_time")
+
 
 @pulumi.output_type
 class LakeAssetStatus(dict):
@@ -136,5 +625,313 @@ class LakeMetastoreStatus(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ZoneAssetStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeAssets":
+            suggest = "active_assets"
+        elif key == "securityPolicyApplyingAssets":
+            suggest = "security_policy_applying_assets"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneAssetStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneAssetStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneAssetStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_assets: Optional[int] = None,
+                 security_policy_applying_assets: Optional[int] = None,
+                 update_time: Optional[str] = None):
+        if active_assets is not None:
+            pulumi.set(__self__, "active_assets", active_assets)
+        if security_policy_applying_assets is not None:
+            pulumi.set(__self__, "security_policy_applying_assets", security_policy_applying_assets)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="activeAssets")
+    def active_assets(self) -> Optional[int]:
+        return pulumi.get(self, "active_assets")
+
+    @property
+    @pulumi.getter(name="securityPolicyApplyingAssets")
+    def security_policy_applying_assets(self) -> Optional[int]:
+        return pulumi.get(self, "security_policy_applying_assets")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ZoneDiscoverySpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "csvOptions":
+            suggest = "csv_options"
+        elif key == "excludePatterns":
+            suggest = "exclude_patterns"
+        elif key == "includePatterns":
+            suggest = "include_patterns"
+        elif key == "jsonOptions":
+            suggest = "json_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneDiscoverySpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneDiscoverySpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneDiscoverySpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 csv_options: Optional['outputs.ZoneDiscoverySpecCsvOptions'] = None,
+                 exclude_patterns: Optional[Sequence[str]] = None,
+                 include_patterns: Optional[Sequence[str]] = None,
+                 json_options: Optional['outputs.ZoneDiscoverySpecJsonOptions'] = None,
+                 schedule: Optional[str] = None):
+        """
+        :param bool enabled: Required. Whether discovery is enabled.
+        :param 'ZoneDiscoverySpecCsvOptionsArgs' csv_options: Optional. Configuration for CSV data.
+        :param Sequence[str] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        :param Sequence[str] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        :param 'ZoneDiscoverySpecJsonOptionsArgs' json_options: Optional. Configuration for Json data.
+        :param str schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if csv_options is not None:
+            pulumi.set(__self__, "csv_options", csv_options)
+        if exclude_patterns is not None:
+            pulumi.set(__self__, "exclude_patterns", exclude_patterns)
+        if include_patterns is not None:
+            pulumi.set(__self__, "include_patterns", include_patterns)
+        if json_options is not None:
+            pulumi.set(__self__, "json_options", json_options)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Required. Whether discovery is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="csvOptions")
+    def csv_options(self) -> Optional['outputs.ZoneDiscoverySpecCsvOptions']:
+        """
+        Optional. Configuration for CSV data.
+        """
+        return pulumi.get(self, "csv_options")
+
+    @property
+    @pulumi.getter(name="excludePatterns")
+    def exclude_patterns(self) -> Optional[Sequence[str]]:
+        """
+        Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "exclude_patterns")
+
+    @property
+    @pulumi.getter(name="includePatterns")
+    def include_patterns(self) -> Optional[Sequence[str]]:
+        """
+        Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "include_patterns")
+
+    @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> Optional['outputs.ZoneDiscoverySpecJsonOptions']:
+        """
+        Optional. Configuration for Json data.
+        """
+        return pulumi.get(self, "json_options")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[str]:
+        """
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+        return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class ZoneDiscoverySpecCsvOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableTypeInference":
+            suggest = "disable_type_inference"
+        elif key == "headerRows":
+            suggest = "header_rows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneDiscoverySpecCsvOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneDiscoverySpecCsvOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneDiscoverySpecCsvOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delimiter: Optional[str] = None,
+                 disable_type_inference: Optional[bool] = None,
+                 encoding: Optional[str] = None,
+                 header_rows: Optional[int] = None):
+        """
+        :param str delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
+        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
+        :param int header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+        if disable_type_inference is not None:
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if header_rows is not None:
+            pulumi.set(__self__, "header_rows", header_rows)
+
+    @property
+    @pulumi.getter
+    def delimiter(self) -> Optional[str]:
+        """
+        Optional. The delimiter being used to separate values. This defaults to ','.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @property
+    @pulumi.getter(name="disableTypeInference")
+    def disable_type_inference(self) -> Optional[bool]:
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        return pulumi.get(self, "disable_type_inference")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="headerRows")
+    def header_rows(self) -> Optional[int]:
+        """
+        Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        return pulumi.get(self, "header_rows")
+
+
+@pulumi.output_type
+class ZoneDiscoverySpecJsonOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableTypeInference":
+            suggest = "disable_type_inference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneDiscoverySpecJsonOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneDiscoverySpecJsonOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneDiscoverySpecJsonOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_type_inference: Optional[bool] = None,
+                 encoding: Optional[str] = None):
+        """
+        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
+        """
+        if disable_type_inference is not None:
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter(name="disableTypeInference")
+    def disable_type_inference(self) -> Optional[bool]:
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        return pulumi.get(self, "disable_type_inference")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
+class ZoneResourceSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "locationType":
+            suggest = "location_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneResourceSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneResourceSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneResourceSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 location_type: str):
+        """
+        :param str location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+        """
+        pulumi.set(__self__, "location_type", location_type)
+
+    @property
+    @pulumi.getter(name="locationType")
+    def location_type(self) -> str:
+        """
+        Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+        """
+        return pulumi.get(self, "location_type")
 
 

@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember")]
-    public partial class FunctionIamMember : Pulumi.CustomResource
+    public partial class FunctionIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         }
     }
 
-    public sealed class FunctionIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class FunctionIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -158,9 +158,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public FunctionIamMemberArgs()
         {
         }
+        public static new FunctionIamMemberArgs Empty => new FunctionIamMemberArgs();
     }
 
-    public sealed class FunctionIamMemberState : Pulumi.ResourceArgs
+    public sealed class FunctionIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -204,5 +205,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public FunctionIamMemberState()
         {
         }
+        public static new FunctionIamMemberState Empty => new FunctionIamMemberState();
     }
 }

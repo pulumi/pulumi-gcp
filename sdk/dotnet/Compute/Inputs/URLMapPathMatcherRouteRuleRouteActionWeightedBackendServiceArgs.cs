@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full or partial URL to the BackendService resource being mirrored to.
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs()
         {
         }
+        public static new URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs Empty => new URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs();
     }
 }

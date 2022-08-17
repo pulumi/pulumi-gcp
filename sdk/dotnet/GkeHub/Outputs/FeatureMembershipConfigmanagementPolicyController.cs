@@ -29,7 +29,13 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Logs all denies and dry run failures.
         /// </summary>
         public readonly bool? LogDeniesEnabled;
+        /// <summary>
+        /// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+        /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring? Monitoring;
+        /// <summary>
+        /// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        /// </summary>
         public readonly bool? MutationEnabled;
         /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.

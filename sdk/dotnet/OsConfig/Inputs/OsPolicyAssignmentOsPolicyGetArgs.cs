@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyGetArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyGetArgs Empty => new OsPolicyAssignmentOsPolicyGetArgs();
     }
 }

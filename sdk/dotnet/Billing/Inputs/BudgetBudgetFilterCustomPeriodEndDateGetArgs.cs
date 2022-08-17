@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetBudgetFilterCustomPeriodEndDateGetArgs : Pulumi.ResourceArgs
+    public sealed class BudgetBudgetFilterCustomPeriodEndDateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Day of a month. Must be from 1 to 31 and valid for the year and month.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetBudgetFilterCustomPeriodEndDateGetArgs()
         {
         }
+        public static new BudgetBudgetFilterCustomPeriodEndDateGetArgs Empty => new BudgetBudgetFilterCustomPeriodEndDateGetArgs();
     }
 }

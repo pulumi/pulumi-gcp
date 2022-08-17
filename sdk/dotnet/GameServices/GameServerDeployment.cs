@@ -22,21 +22,19 @@ namespace Pulumi.Gcp.GameServices
     /// ### Game Service Deployment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.GameServices.GameServerDeployment("default", new()
     ///     {
-    ///         var @default = new Gcp.GameServices.GameServerDeployment("default", new Gcp.GameServices.GameServerDeploymentArgs
-    ///         {
-    ///             DeploymentId = "tf-test-deployment",
-    ///             Description = "a deployment description",
-    ///         });
-    ///     }
+    ///         DeploymentId = "tf-test-deployment",
+    ///         Description = "a deployment description",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.GameServices
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gameservices/gameServerDeployment:GameServerDeployment")]
-    public partial class GameServerDeployment : Pulumi.CustomResource
+    public partial class GameServerDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A unique id for the deployment.
@@ -142,7 +140,7 @@ namespace Pulumi.Gcp.GameServices
         }
     }
 
-    public sealed class GameServerDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class GameServerDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique id for the deployment.
@@ -185,9 +183,10 @@ namespace Pulumi.Gcp.GameServices
         public GameServerDeploymentArgs()
         {
         }
+        public static new GameServerDeploymentArgs Empty => new GameServerDeploymentArgs();
     }
 
-    public sealed class GameServerDeploymentState : Pulumi.ResourceArgs
+    public sealed class GameServerDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique id for the deployment.
@@ -238,5 +237,6 @@ namespace Pulumi.Gcp.GameServices
         public GameServerDeploymentState()
         {
         }
+        public static new GameServerDeploymentState Empty => new GameServerDeploymentState();
     }
 }

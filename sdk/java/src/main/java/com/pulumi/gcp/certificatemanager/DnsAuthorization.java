@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * DnsAuthorization represents a HTTP-reachable backend for an DnsAuthorization.
+ * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  * 
  * &gt; **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
  * 
@@ -92,14 +92,14 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * Set of label tags associated with the EdgeCache resource.
+     * Set of label tags associated with the DNS Authorization resource.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the EdgeCache resource.
+     * @return Set of label tags associated with the DNS Authorization resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

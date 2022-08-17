@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RouterPeerAdvertisedIpRangeArgs : Pulumi.ResourceArgs
+    public sealed class RouterPeerAdvertisedIpRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified description for the IP range.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RouterPeerAdvertisedIpRangeArgs()
         {
         }
+        public static new RouterPeerAdvertisedIpRangeArgs Empty => new RouterPeerAdvertisedIpRangeArgs();
     }
 }

@@ -46,6 +46,7 @@ class ClusterArgs:
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
+                 mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
@@ -155,6 +156,7 @@ class ClusterArgs:
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
+        :param pulumi.Input['ClusterMeshCertificatesArgs'] mesh_certificates: Structure is documented below.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -305,6 +307,8 @@ class ClusterArgs:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
             pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if mesh_certificates is not None:
+            pulumi.set(__self__, "mesh_certificates", mesh_certificates)
         if min_master_version is not None:
             pulumi.set(__self__, "min_master_version", min_master_version)
         if monitoring_config is not None:
@@ -768,6 +772,18 @@ class ClusterArgs:
         pulumi.set(self, "master_authorized_networks_config", value)
 
     @property
+    @pulumi.getter(name="meshCertificates")
+    def mesh_certificates(self) -> Optional[pulumi.Input['ClusterMeshCertificatesArgs']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mesh_certificates")
+
+    @mesh_certificates.setter
+    def mesh_certificates(self, value: Optional[pulumi.Input['ClusterMeshCertificatesArgs']]):
+        pulumi.set(self, "mesh_certificates", value)
+
+    @property
     @pulumi.getter(name="minMasterVersion")
     def min_master_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1154,6 +1170,7 @@ class _ClusterState:
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
                  master_version: Optional[pulumi.Input[str]] = None,
+                 mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
@@ -1272,6 +1289,7 @@ class _ClusterState:
         :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may
                be different than the `min_master_version` set in the config if the master
                has been updated by GKE.
+        :param pulumi.Input['ClusterMeshCertificatesArgs'] mesh_certificates: Structure is documented below.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -1436,6 +1454,8 @@ class _ClusterState:
             pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         if master_version is not None:
             pulumi.set(__self__, "master_version", master_version)
+        if mesh_certificates is not None:
+            pulumi.set(__self__, "mesh_certificates", mesh_certificates)
         if min_master_version is not None:
             pulumi.set(__self__, "min_master_version", min_master_version)
         if monitoring_config is not None:
@@ -1945,6 +1965,18 @@ class _ClusterState:
         pulumi.set(self, "master_version", value)
 
     @property
+    @pulumi.getter(name="meshCertificates")
+    def mesh_certificates(self) -> Optional[pulumi.Input['ClusterMeshCertificatesArgs']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mesh_certificates")
+
+    @mesh_certificates.setter
+    def mesh_certificates(self, value: Optional[pulumi.Input['ClusterMeshCertificatesArgs']]):
+        pulumi.set(self, "mesh_certificates", value)
+
+    @property
     @pulumi.getter(name="minMasterVersion")
     def min_master_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2380,6 +2412,7 @@ class Cluster(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
+                 mesh_certificates: Optional[pulumi.Input[pulumi.InputType['ClusterMeshCertificatesArgs']]] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
@@ -2560,6 +2593,7 @@ class Cluster(pulumi.CustomResource):
                nested `cidr_blocks` attribute to disallow external access (except
                the cluster node IPs, which GKE automatically whitelists).
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterMeshCertificatesArgs']] mesh_certificates: Structure is documented below.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -2768,6 +2802,7 @@ class Cluster(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
+                 mesh_certificates: Optional[pulumi.Input[pulumi.InputType['ClusterMeshCertificatesArgs']]] = None,
                  min_master_version: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
@@ -2834,6 +2869,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
+            __props__.__dict__["mesh_certificates"] = mesh_certificates
             __props__.__dict__["min_master_version"] = min_master_version
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["monitoring_service"] = monitoring_service
@@ -2908,6 +2944,7 @@ class Cluster(pulumi.CustomResource):
             master_auth: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthArgs']]] = None,
             master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']]] = None,
             master_version: Optional[pulumi.Input[str]] = None,
+            mesh_certificates: Optional[pulumi.Input[pulumi.InputType['ClusterMeshCertificatesArgs']]] = None,
             min_master_version: Optional[pulumi.Input[str]] = None,
             monitoring_config: Optional[pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']]] = None,
             monitoring_service: Optional[pulumi.Input[str]] = None,
@@ -3031,6 +3068,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_version: The current version of the master in the cluster. This may
                be different than the `min_master_version` set in the config if the master
                has been updated by GKE.
+        :param pulumi.Input[pulumi.InputType['ClusterMeshCertificatesArgs']] mesh_certificates: Structure is documented below.
         :param pulumi.Input[str] min_master_version: The minimum version of the master. GKE
                will auto-update the master to new versions, so this does not guarantee the
                current master version--use the read-only `master_version` field to obtain that.
@@ -3163,6 +3201,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["master_auth"] = master_auth
         __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
         __props__.__dict__["master_version"] = master_version
+        __props__.__dict__["mesh_certificates"] = mesh_certificates
         __props__.__dict__["min_master_version"] = min_master_version
         __props__.__dict__["monitoring_config"] = monitoring_config
         __props__.__dict__["monitoring_service"] = monitoring_service
@@ -3511,6 +3550,14 @@ class Cluster(pulumi.CustomResource):
         has been updated by GKE.
         """
         return pulumi.get(self, "master_version")
+
+    @property
+    @pulumi.getter(name="meshCertificates")
+    def mesh_certificates(self) -> pulumi.Output['outputs.ClusterMeshCertificates']:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mesh_certificates")
 
     @property
     @pulumi.getter(name="minMasterVersion")

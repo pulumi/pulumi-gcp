@@ -299,7 +299,7 @@ class AttachedDisk(pulumi.CustomResource):
             zone="us-west1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-9",
+                    image="debian-cloud/debian-11",
                 ),
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
@@ -374,7 +374,7 @@ class AttachedDisk(pulumi.CustomResource):
             zone="us-west1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-9",
+                    image="debian-cloud/debian-11",
                 ),
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(

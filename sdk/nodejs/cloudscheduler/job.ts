@@ -170,6 +170,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     */
+    public readonly paused!: pulumi.Output<boolean>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -197,6 +201,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
+     * State of the job.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * Specifies the time zone to be used in interpreting schedule.
      * The value of this field must be a time zone name from the tz database.
      */
@@ -220,11 +228,13 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["httpTarget"] = state ? state.httpTarget : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pubsubTarget"] = state ? state.pubsubTarget : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["retryConfig"] = state ? state.retryConfig : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
@@ -233,12 +243,14 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
@@ -284,6 +296,10 @@ export interface JobState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -310,6 +326,10 @@ export interface JobState {
      * Describes the schedule on which the job will be executed.
      */
     schedule?: pulumi.Input<string>;
+    /**
+     * State of the job.
+     */
+    state?: pulumi.Input<string>;
     /**
      * Specifies the time zone to be used in interpreting schedule.
      * The value of this field must be a time zone name from the tz database.
@@ -355,6 +375,10 @@ export interface JobArgs {
      * The name of the job.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     */
+    paused?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

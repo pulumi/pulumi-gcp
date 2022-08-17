@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("bootDiskKmsKey")]
         public Input<string>? BootDiskKmsKey { get; set; }
@@ -120,5 +120,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigGetArgs()
         {
         }
+        public static new NodePoolNodeConfigGetArgs Empty => new NodePoolNodeConfigGetArgs();
     }
 }

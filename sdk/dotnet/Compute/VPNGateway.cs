@@ -24,67 +24,68 @@ namespace Pulumi.Gcp.Compute
     /// ### Target Vpn Gateway Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var network1 = new Gcp.Compute.Network("network1", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var targetGateway = new Gcp.Compute.VPNGateway("targetGateway", new Gcp.Compute.VPNGatewayArgs
-    ///         {
-    ///             Network = network1.Id,
-    ///         });
-    ///         var vpnStaticIp = new Gcp.Compute.Address("vpnStaticIp", new Gcp.Compute.AddressArgs
-    ///         {
-    ///         });
-    ///         var frEsp = new Gcp.Compute.ForwardingRule("frEsp", new Gcp.Compute.ForwardingRuleArgs
-    ///         {
-    ///             IpProtocol = "ESP",
-    ///             IpAddress = vpnStaticIp.IPAddress,
-    ///             Target = targetGateway.Id,
-    ///         });
-    ///         var frUdp500 = new Gcp.Compute.ForwardingRule("frUdp500", new Gcp.Compute.ForwardingRuleArgs
-    ///         {
-    ///             IpProtocol = "UDP",
-    ///             PortRange = "500",
-    ///             IpAddress = vpnStaticIp.IPAddress,
-    ///             Target = targetGateway.Id,
-    ///         });
-    ///         var frUdp4500 = new Gcp.Compute.ForwardingRule("frUdp4500", new Gcp.Compute.ForwardingRuleArgs
-    ///         {
-    ///             IpProtocol = "UDP",
-    ///             PortRange = "4500",
-    ///             IpAddress = vpnStaticIp.IPAddress,
-    ///             Target = targetGateway.Id,
-    ///         });
-    ///         var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new Gcp.Compute.VPNTunnelArgs
-    ///         {
-    ///             PeerIp = "15.0.0.120",
-    ///             SharedSecret = "a secret message",
-    ///             TargetVpnGateway = targetGateway.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 frEsp,
-    ///                 frUdp500,
-    ///                 frUdp4500,
-    ///             },
-    ///         });
-    ///         var route1 = new Gcp.Compute.Route("route1", new Gcp.Compute.RouteArgs
-    ///         {
-    ///             Network = network1.Name,
-    ///             DestRange = "15.0.0.0/24",
-    ///             Priority = 1000,
-    ///             NextHopVpnTunnel = tunnel1.Id,
-    ///         });
-    ///     }
+    ///     var network1 = new Gcp.Compute.Network("network1");
     /// 
-    /// }
+    ///     var targetGateway = new Gcp.Compute.VPNGateway("targetGateway", new()
+    ///     {
+    ///         Network = network1.Id,
+    ///     });
+    /// 
+    ///     var vpnStaticIp = new Gcp.Compute.Address("vpnStaticIp");
+    /// 
+    ///     var frEsp = new Gcp.Compute.ForwardingRule("frEsp", new()
+    ///     {
+    ///         IpProtocol = "ESP",
+    ///         IpAddress = vpnStaticIp.IPAddress,
+    ///         Target = targetGateway.Id,
+    ///     });
+    /// 
+    ///     var frUdp500 = new Gcp.Compute.ForwardingRule("frUdp500", new()
+    ///     {
+    ///         IpProtocol = "UDP",
+    ///         PortRange = "500",
+    ///         IpAddress = vpnStaticIp.IPAddress,
+    ///         Target = targetGateway.Id,
+    ///     });
+    /// 
+    ///     var frUdp4500 = new Gcp.Compute.ForwardingRule("frUdp4500", new()
+    ///     {
+    ///         IpProtocol = "UDP",
+    ///         PortRange = "4500",
+    ///         IpAddress = vpnStaticIp.IPAddress,
+    ///         Target = targetGateway.Id,
+    ///     });
+    /// 
+    ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
+    ///     {
+    ///         PeerIp = "15.0.0.120",
+    ///         SharedSecret = "a secret message",
+    ///         TargetVpnGateway = targetGateway.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             frEsp,
+    ///             frUdp500,
+    ///             frUdp4500,
+    ///         },
+    ///     });
+    /// 
+    ///     var route1 = new Gcp.Compute.Route("route1", new()
+    ///     {
+    ///         Network = network1.Name,
+    ///         DestRange = "15.0.0.0/24",
+    ///         Priority = 1000,
+    ///         NextHopVpnTunnel = tunnel1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -108,7 +109,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/vPNGateway:VPNGateway")]
-    public partial class VPNGateway : Pulumi.CustomResource
+    public partial class VPNGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -209,7 +210,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class VPNGatewayArgs : Pulumi.ResourceArgs
+    public sealed class VPNGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -251,9 +252,10 @@ namespace Pulumi.Gcp.Compute
         public VPNGatewayArgs()
         {
         }
+        public static new VPNGatewayArgs Empty => new VPNGatewayArgs();
     }
 
-    public sealed class VPNGatewayState : Pulumi.ResourceArgs
+    public sealed class VPNGatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -313,5 +315,6 @@ namespace Pulumi.Gcp.Compute
         public VPNGatewayState()
         {
         }
+        public static new VPNGatewayState Empty => new VPNGatewayState();
     }
 }

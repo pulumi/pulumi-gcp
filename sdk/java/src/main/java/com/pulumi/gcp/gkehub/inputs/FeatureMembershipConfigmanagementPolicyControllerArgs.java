@@ -78,16 +78,32 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
         return Optional.ofNullable(this.logDeniesEnabled);
     }
 
+    /**
+     * Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+     * 
+     */
     @Import(name="monitoring")
     private @Nullable Output<FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs> monitoring;
 
+    /**
+     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+     * 
+     */
     public Optional<Output<FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs>> monitoring() {
         return Optional.ofNullable(this.monitoring);
     }
 
+    /**
+     * Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+     * 
+     */
     @Import(name="mutationEnabled")
     private @Nullable Output<Boolean> mutationEnabled;
 
+    /**
+     * @return Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+     * 
+     */
     public Optional<Output<Boolean>> mutationEnabled() {
         return Optional.ofNullable(this.mutationEnabled);
     }
@@ -247,20 +263,44 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
             return logDeniesEnabled(Output.of(logDeniesEnabled));
         }
 
+        /**
+         * @param monitoring Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitoring(@Nullable Output<FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs> monitoring) {
             $.monitoring = monitoring;
             return this;
         }
 
+        /**
+         * @param monitoring Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+         * 
+         * @return builder
+         * 
+         */
         public Builder monitoring(FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs monitoring) {
             return monitoring(Output.of(monitoring));
         }
 
+        /**
+         * @param mutationEnabled Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mutationEnabled(@Nullable Output<Boolean> mutationEnabled) {
             $.mutationEnabled = mutationEnabled;
             return this;
         }
 
+        /**
+         * @param mutationEnabled Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mutationEnabled(Boolean mutationEnabled) {
             return mutationEnabled(Output.of(mutationEnabled));
         }

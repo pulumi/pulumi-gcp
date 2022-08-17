@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxVersionNluSettingArgs : Pulumi.ResourceArgs
+    public sealed class CxVersionNluSettingArgs : global::Pulumi.ResourceArgs
     {
         [Input("classificationThreshold")]
         public Input<double>? ClassificationThreshold { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxVersionNluSettingArgs()
         {
         }
+        public static new CxVersionNluSettingArgs Empty => new CxVersionNluSettingArgs();
     }
 }

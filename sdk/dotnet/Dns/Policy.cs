@@ -23,55 +23,55 @@ namespace Pulumi.Gcp.Dns
     /// ### Dns Policy Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
-    ///         var network_1 = new Gcp.Compute.Network("network-1", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var network_2 = new Gcp.Compute.Network("network-2", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var example_policy = new Gcp.Dns.Policy("example-policy", new Gcp.Dns.PolicyArgs
-    ///         {
-    ///             EnableInboundForwarding = true,
-    ///             EnableLogging = true,
-    ///             AlternativeNameServerConfig = new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigArgs
-    ///             {
-    ///                 TargetNameServers = 
-    ///                 {
-    ///                     new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs
-    ///                     {
-    ///                         Ipv4Address = "172.16.1.10",
-    ///                         ForwardingPath = "private",
-    ///                     },
-    ///                     new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs
-    ///                     {
-    ///                         Ipv4Address = "172.16.1.20",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Networks = 
-    ///             {
-    ///                 new Gcp.Dns.Inputs.PolicyNetworkArgs
-    ///                 {
-    ///                     NetworkUrl = network_1.Id,
-    ///                 },
-    ///                 new Gcp.Dns.Inputs.PolicyNetworkArgs
-    ///                 {
-    ///                     NetworkUrl = network_2.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var network_2 = new Gcp.Compute.Network("network-2", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var example_policy = new Gcp.Dns.Policy("example-policy", new()
+    ///     {
+    ///         EnableInboundForwarding = true,
+    ///         EnableLogging = true,
+    ///         AlternativeNameServerConfig = new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigArgs
+    ///         {
+    ///             TargetNameServers = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv4Address = "172.16.1.10",
+    ///                     ForwardingPath = "private",
+    ///                 },
+    ///                 new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv4Address = "172.16.1.20",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Dns.Inputs.PolicyNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_1.Id,
+    ///             },
+    ///             new Gcp.Dns.Inputs.PolicyNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Dns
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dns/policy:Policy")]
-    public partial class Policy : Pulumi.CustomResource
+    public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Sets an alternative name server for the associated networks.
@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.Dns
         }
     }
 
-    public sealed class PolicyArgs : Pulumi.ResourceArgs
+    public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets an alternative name server for the associated networks.
@@ -250,9 +250,10 @@ namespace Pulumi.Gcp.Dns
         public PolicyArgs()
         {
         }
+        public static new PolicyArgs Empty => new PolicyArgs();
     }
 
-    public sealed class PolicyState : Pulumi.ResourceArgs
+    public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets an alternative name server for the associated networks.
@@ -314,5 +315,6 @@ namespace Pulumi.Gcp.Dns
         public PolicyState()
         {
         }
+        public static new PolicyState Empty => new PolicyState();
     }
 }

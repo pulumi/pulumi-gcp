@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionEndpointsApiServiceArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionEndpointsApiServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
@@ -46,5 +46,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionEndpointsApiServiceArgs()
         {
         }
+        public static new FlexibleAppVersionEndpointsApiServiceArgs Empty => new FlexibleAppVersionEndpointsApiServiceArgs();
     }
 }

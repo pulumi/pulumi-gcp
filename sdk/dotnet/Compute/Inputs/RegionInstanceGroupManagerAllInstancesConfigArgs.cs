@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionInstanceGroupManagerAllInstancesConfigArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerAllInstancesConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionInstanceGroupManagerAllInstancesConfigArgs()
         {
         }
+        public static new RegionInstanceGroupManagerAllInstancesConfigArgs Empty => new RegionInstanceGroupManagerAllInstancesConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SourceRepo.Inputs
 {
 
-    public sealed class RepositoryPubsubConfigArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryPubsubConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format of the Cloud Pub/Sub messages.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.SourceRepo.Inputs
         public RepositoryPubsubConfigArgs()
         {
         }
+        public static new RepositoryPubsubConfigArgs Empty => new RepositoryPubsubConfigArgs();
     }
 }

@@ -19,33 +19,26 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
         ///     {
-        ///         var myCluster = Output.Create(Gcp.Container.GetCluster.InvokeAsync(new Gcp.Container.GetClusterArgs
-        ///         {
-        ///             Name = "my-cluster",
-        ///             Location = "us-east1-a",
-        ///         }));
-        ///         this.Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Endpoint);
-        ///         this.InstanceGroupUrls = myCluster.Apply(myCluster =&gt; myCluster.NodePools?[0]?.InstanceGroupUrls);
-        ///         this.NodeConfig = myCluster.Apply(myCluster =&gt; myCluster.NodeConfigs);
-        ///         this.NodePools = myCluster.Apply(myCluster =&gt; myCluster.NodePools);
-        ///     }
+        ///         Name = "my-cluster",
+        ///         Location = "us-east1-a",
+        ///     });
         /// 
-        ///     [Output("endpoint")]
-        ///     public Output&lt;string&gt; Endpoint { get; set; }
-        ///     [Output("instanceGroupUrls")]
-        ///     public Output&lt;string&gt; InstanceGroupUrls { get; set; }
-        ///     [Output("nodeConfig")]
-        ///     public Output&lt;string&gt; NodeConfig { get; set; }
-        ///     [Output("nodePools")]
-        ///     public Output&lt;string&gt; NodePools { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
+        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
+        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
+        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -61,33 +54,26 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
         ///     {
-        ///         var myCluster = Output.Create(Gcp.Container.GetCluster.InvokeAsync(new Gcp.Container.GetClusterArgs
-        ///         {
-        ///             Name = "my-cluster",
-        ///             Location = "us-east1-a",
-        ///         }));
-        ///         this.Endpoint = myCluster.Apply(myCluster =&gt; myCluster.Endpoint);
-        ///         this.InstanceGroupUrls = myCluster.Apply(myCluster =&gt; myCluster.NodePools?[0]?.InstanceGroupUrls);
-        ///         this.NodeConfig = myCluster.Apply(myCluster =&gt; myCluster.NodeConfigs);
-        ///         this.NodePools = myCluster.Apply(myCluster =&gt; myCluster.NodePools);
-        ///     }
+        ///         Name = "my-cluster",
+        ///         Location = "us-east1-a",
+        ///     });
         /// 
-        ///     [Output("endpoint")]
-        ///     public Output&lt;string&gt; Endpoint { get; set; }
-        ///     [Output("instanceGroupUrls")]
-        ///     public Output&lt;string&gt; InstanceGroupUrls { get; set; }
-        ///     [Output("nodeConfig")]
-        ///     public Output&lt;string&gt; NodeConfig { get; set; }
-        ///     [Output("nodePools")]
-        ///     public Output&lt;string&gt; NodePools { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
+        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
+        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
+        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -97,7 +83,7 @@ namespace Pulumi.Gcp.Container
     }
 
 
-    public sealed class GetClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location (zone or region) this cluster has been
@@ -123,9 +109,10 @@ namespace Pulumi.Gcp.Container
         public GetClusterArgs()
         {
         }
+        public static new GetClusterArgs Empty => new GetClusterArgs();
     }
 
-    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location (zone or region) this cluster has been
@@ -151,6 +138,7 @@ namespace Pulumi.Gcp.Container
         public GetClusterInvokeArgs()
         {
         }
+        public static new GetClusterInvokeArgs Empty => new GetClusterInvokeArgs();
     }
 
 
@@ -194,6 +182,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigResult> MasterAuthorizedNetworksConfigs;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthResult> MasterAuths;
         public readonly string MasterVersion;
+        public readonly ImmutableArray<Outputs.GetClusterMeshCertificateResult> MeshCertificates;
         public readonly string MinMasterVersion;
         public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigResult> MonitoringConfigs;
         public readonly string MonitoringService;
@@ -293,6 +282,8 @@ namespace Pulumi.Gcp.Container
 
             string masterVersion,
 
+            ImmutableArray<Outputs.GetClusterMeshCertificateResult> meshCertificates,
+
             string minMasterVersion,
 
             ImmutableArray<Outputs.GetClusterMonitoringConfigResult> monitoringConfigs,
@@ -383,6 +374,7 @@ namespace Pulumi.Gcp.Container
             MasterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             MasterAuths = masterAuths;
             MasterVersion = masterVersion;
+            MeshCertificates = meshCertificates;
             MinMasterVersion = minMasterVersion;
             MonitoringConfigs = monitoringConfigs;
             MonitoringService = monitoringService;

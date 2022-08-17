@@ -25,17 +25,15 @@ namespace Pulumi.Gcp.CloudRun
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var available = Output.Create(Gcp.CloudRun.GetLocations.InvokeAsync());
-        ///     }
+        ///     var available = Gcp.CloudRun.GetLocations.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -58,17 +56,15 @@ namespace Pulumi.Gcp.CloudRun
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var available = Output.Create(Gcp.CloudRun.GetLocations.InvokeAsync());
-        ///     }
+        ///     var available = Gcp.CloudRun.GetLocations.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -79,7 +75,7 @@ namespace Pulumi.Gcp.CloudRun
     }
 
 
-    public sealed class GetLocationsArgs : Pulumi.InvokeArgs
+    public sealed class GetLocationsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project to list versions for. If it
@@ -91,9 +87,10 @@ namespace Pulumi.Gcp.CloudRun
         public GetLocationsArgs()
         {
         }
+        public static new GetLocationsArgs Empty => new GetLocationsArgs();
     }
 
-    public sealed class GetLocationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLocationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project to list versions for. If it
@@ -105,6 +102,7 @@ namespace Pulumi.Gcp.CloudRun
         public GetLocationsInvokeArgs()
         {
         }
+        public static new GetLocationsInvokeArgs Empty => new GetLocationsInvokeArgs();
     }
 
 

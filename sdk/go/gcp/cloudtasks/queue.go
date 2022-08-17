@@ -25,21 +25,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudtasks.NewQueue(ctx, "default", &cloudtasks.QueueArgs{
-// 			Location: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudtasks.NewQueue(ctx, "default", &cloudtasks.QueueArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Cloud Tasks Queue Advanced
 //
@@ -47,56 +50,65 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudtasks.NewQueue(ctx, "advancedConfiguration", &cloudtasks.QueueArgs{
-// 			AppEngineRoutingOverride: &cloudtasks.QueueAppEngineRoutingOverrideArgs{
-// 				Instance: pulumi.String("test"),
-// 				Service:  pulumi.String("worker"),
-// 				Version:  pulumi.String("1.0"),
-// 			},
-// 			Location: pulumi.String("us-central1"),
-// 			RateLimits: &cloudtasks.QueueRateLimitsArgs{
-// 				MaxConcurrentDispatches: pulumi.Int(3),
-// 				MaxDispatchesPerSecond:  pulumi.Float64(2),
-// 			},
-// 			RetryConfig: &cloudtasks.QueueRetryConfigArgs{
-// 				MaxAttempts:      pulumi.Int(5),
-// 				MaxBackoff:       pulumi.String("3s"),
-// 				MaxDoublings:     pulumi.Int(1),
-// 				MaxRetryDuration: pulumi.String("4s"),
-// 				MinBackoff:       pulumi.String("2s"),
-// 			},
-// 			StackdriverLoggingConfig: &cloudtasks.QueueStackdriverLoggingConfigArgs{
-// 				SamplingRatio: pulumi.Float64(0.9),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudtasks.NewQueue(ctx, "advancedConfiguration", &cloudtasks.QueueArgs{
+//				AppEngineRoutingOverride: &cloudtasks.QueueAppEngineRoutingOverrideArgs{
+//					Instance: pulumi.String("test"),
+//					Service:  pulumi.String("worker"),
+//					Version:  pulumi.String("1.0"),
+//				},
+//				Location: pulumi.String("us-central1"),
+//				RateLimits: &cloudtasks.QueueRateLimitsArgs{
+//					MaxConcurrentDispatches: pulumi.Int(3),
+//					MaxDispatchesPerSecond:  pulumi.Float64(2),
+//				},
+//				RetryConfig: &cloudtasks.QueueRetryConfigArgs{
+//					MaxAttempts:      pulumi.Int(5),
+//					MaxBackoff:       pulumi.String("3s"),
+//					MaxDoublings:     pulumi.Int(1),
+//					MaxRetryDuration: pulumi.String("4s"),
+//					MinBackoff:       pulumi.String("2s"),
+//				},
+//				StackdriverLoggingConfig: &cloudtasks.QueueStackdriverLoggingConfigArgs{
+//					SamplingRatio: pulumi.Float64(0.9),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Queue can be imported using any of these accepted formats
+// # Queue can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
+//
+//	$ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
+//
+//	$ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
+//
+//	$ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
+//
 // ```
 type Queue struct {
 	pulumi.CustomResourceState
@@ -307,7 +319,7 @@ func (i *Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // QueueArrayInput is an input type that accepts QueueArray and QueueArrayOutput values.
 // You can construct a concrete instance of `QueueArrayInput` via:
 //
-//          QueueArray{ QueueArgs{...} }
+//	QueueArray{ QueueArgs{...} }
 type QueueArrayInput interface {
 	pulumi.Input
 
@@ -332,7 +344,7 @@ func (i QueueArray) ToQueueArrayOutputWithContext(ctx context.Context) QueueArra
 // QueueMapInput is an input type that accepts QueueMap and QueueMapOutput values.
 // You can construct a concrete instance of `QueueMapInput` via:
 //
-//          QueueMap{ "key": QueueArgs{...} }
+//	QueueMap{ "key": QueueArgs{...} }
 type QueueMapInput interface {
 	pulumi.Input
 
@@ -393,12 +405,12 @@ func (o QueueOutput) Project() pulumi.StringOutput {
 
 // Rate limits for task dispatches.
 // The queue's actual dispatch rate is the result of:
-// * Number of tasks in the queue
-// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
-// * System throttling due to 429 (Too Many Requests) or 503 (Service
-//   Unavailable) responses from the worker, high error rates, or to
-//   smooth sudden large traffic spikes.
-//   Structure is documented below.
+//   - Number of tasks in the queue
+//   - User-specified throttling: rateLimits, retryConfig, and the queue's state.
+//   - System throttling due to 429 (Too Many Requests) or 503 (Service
+//     Unavailable) responses from the worker, high error rates, or to
+//     smooth sudden large traffic spikes.
+//     Structure is documented below.
 func (o QueueOutput) RateLimits() QueueRateLimitsOutput {
 	return o.ApplyT(func(v *Queue) QueueRateLimitsOutput { return v.RateLimits }).(QueueRateLimitsOutput)
 }

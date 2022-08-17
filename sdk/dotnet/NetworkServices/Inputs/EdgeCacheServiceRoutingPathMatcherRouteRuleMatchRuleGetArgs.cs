@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
@@ -72,5 +72,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleGetArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleGetArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleGetArgs();
     }
 }

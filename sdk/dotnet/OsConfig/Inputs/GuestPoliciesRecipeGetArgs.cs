@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesRecipeGetArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesRecipeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("artifacts")]
         private InputList<Inputs.GuestPoliciesRecipeArtifactGetArgs>? _artifacts;
@@ -83,5 +83,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesRecipeGetArgs()
         {
         }
+        public static new GuestPoliciesRecipeGetArgs Empty => new GuestPoliciesRecipeGetArgs();
     }
 }

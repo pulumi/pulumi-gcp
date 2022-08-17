@@ -15,20 +15,18 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// Example creating a RuntimeConfig resource.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
     ///     {
-    ///         var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new Gcp.RuntimeConfig.ConfigArgs
-    ///         {
-    ///             Description = "Runtime configuration values for my service",
-    ///         });
-    ///     }
+    ///         Description = "Runtime configuration values for my service",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     ///  When importing using only the name, the provider project must be set.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/config:Config")]
-    public partial class Config : Pulumi.CustomResource
+    public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description to associate with the runtime
@@ -112,7 +110,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         }
     }
 
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description to associate with the runtime
@@ -137,9 +135,10 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 
-    public sealed class ConfigState : Pulumi.ResourceArgs
+    public sealed class ConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description to associate with the runtime
@@ -164,5 +163,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigState()
         {
         }
+        public static new ConfigState Empty => new ConfigState();
     }
 }

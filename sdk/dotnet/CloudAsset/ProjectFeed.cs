@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.CloudAsset
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudasset/projectFeed:ProjectFeed")]
-    public partial class ProjectFeed : Pulumi.CustomResource
+    public partial class ProjectFeed : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of the full names of the assets to receive updates. You must specify either or both of
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.CloudAsset
         }
     }
 
-    public sealed class ProjectFeedArgs : Pulumi.ResourceArgs
+    public sealed class ProjectFeedArgs : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -238,9 +238,10 @@ namespace Pulumi.Gcp.CloudAsset
         public ProjectFeedArgs()
         {
         }
+        public static new ProjectFeedArgs Empty => new ProjectFeedArgs();
     }
 
-    public sealed class ProjectFeedState : Pulumi.ResourceArgs
+    public sealed class ProjectFeedState : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -329,5 +330,6 @@ namespace Pulumi.Gcp.CloudAsset
         public ProjectFeedState()
         {
         }
+        public static new ProjectFeedState Empty => new ProjectFeedState();
     }
 }

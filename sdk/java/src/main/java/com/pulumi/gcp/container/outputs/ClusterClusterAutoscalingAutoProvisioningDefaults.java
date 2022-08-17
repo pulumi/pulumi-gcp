@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * 
+     */
+    private final @Nullable String bootDiskKmsKey;
+    /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
      * 
@@ -43,16 +48,25 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
 
     @CustomType.Constructor
     private ClusterClusterAutoscalingAutoProvisioningDefaults(
+        @CustomType.Parameter("bootDiskKmsKey") @Nullable String bootDiskKmsKey,
         @CustomType.Parameter("imageType") @Nullable String imageType,
         @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform,
         @CustomType.Parameter("oauthScopes") @Nullable List<String> oauthScopes,
         @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount) {
+        this.bootDiskKmsKey = bootDiskKmsKey;
         this.imageType = imageType;
         this.minCpuPlatform = minCpuPlatform;
         this.oauthScopes = oauthScopes;
         this.serviceAccount = serviceAccount;
     }
 
+    /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * 
+     */
+    public Optional<String> bootDiskKmsKey() {
+        return Optional.ofNullable(this.bootDiskKmsKey);
+    }
     /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
@@ -99,6 +113,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     }
 
     public static final class Builder {
+        private @Nullable String bootDiskKmsKey;
         private @Nullable String imageType;
         private @Nullable String minCpuPlatform;
         private @Nullable List<String> oauthScopes;
@@ -110,12 +125,17 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
 
         public Builder(ClusterClusterAutoscalingAutoProvisioningDefaults defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.imageType = defaults.imageType;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
+            this.bootDiskKmsKey = bootDiskKmsKey;
+            return this;
+        }
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
@@ -135,7 +155,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
             this.serviceAccount = serviceAccount;
             return this;
         }        public ClusterClusterAutoscalingAutoProvisioningDefaults build() {
-            return new ClusterClusterAutoscalingAutoProvisioningDefaults(imageType, minCpuPlatform, oauthScopes, serviceAccount);
+            return new ClusterClusterAutoscalingAutoProvisioningDefaults(bootDiskKmsKey, imageType, minCpuPlatform, oauthScopes, serviceAccount);
         }
     }
 }

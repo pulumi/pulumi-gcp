@@ -23,82 +23,77 @@ namespace Pulumi.Gcp.Dataproc
     /// ## google\_dataproc\_cluster\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var editor = new Gcp.Dataproc.ClusterIAMPolicy("editor", new Gcp.Dataproc.ClusterIAMPolicyArgs
-    ///         {
-    ///             Project = "your-project",
-    ///             Region = "your-region",
-    ///             Cluster = "your-dataproc-cluster",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var editor = new Gcp.Dataproc.ClusterIAMPolicy("editor", new()
+    ///     {
+    ///         Project = "your-project",
+    ///         Region = "your-region",
+    ///         Cluster = "your-dataproc-cluster",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_cluster\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.Dataproc.ClusterIAMBinding("editor", new()
     ///     {
-    ///         var editor = new Gcp.Dataproc.ClusterIAMBinding("editor", new Gcp.Dataproc.ClusterIAMBindingArgs
+    ///         Cluster = "your-dataproc-cluster",
+    ///         Members = new[]
     ///         {
-    ///             Cluster = "your-dataproc-cluster",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_dataproc\_cluster\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.Dataproc.ClusterIAMMember("editor", new()
     ///     {
-    ///         var editor = new Gcp.Dataproc.ClusterIAMMember("editor", new Gcp.Dataproc.ClusterIAMMemberArgs
-    ///         {
-    ///             Cluster = "your-dataproc-cluster",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         Cluster = "your-dataproc-cluster",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -122,7 +117,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy")]
-    public partial class ClusterIAMPolicy : Pulumi.CustomResource
+    public partial class ClusterIAMPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name or relative resource id of the cluster to manage IAM policies for.
@@ -200,7 +195,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class ClusterIAMPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterIAMPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name or relative resource id of the cluster to manage IAM policies for.
@@ -231,9 +226,10 @@ namespace Pulumi.Gcp.Dataproc
         public ClusterIAMPolicyArgs()
         {
         }
+        public static new ClusterIAMPolicyArgs Empty => new ClusterIAMPolicyArgs();
     }
 
-    public sealed class ClusterIAMPolicyState : Pulumi.ResourceArgs
+    public sealed class ClusterIAMPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name or relative resource id of the cluster to manage IAM policies for.
@@ -270,5 +266,6 @@ namespace Pulumi.Gcp.Dataproc
         public ClusterIAMPolicyState()
         {
         }
+        public static new ClusterIAMPolicyState Empty => new ClusterIAMPolicyState();
     }
 }

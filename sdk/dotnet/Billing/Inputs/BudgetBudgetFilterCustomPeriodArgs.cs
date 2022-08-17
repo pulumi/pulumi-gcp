@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetBudgetFilterCustomPeriodArgs : Pulumi.ResourceArgs
+    public sealed class BudgetBudgetFilterCustomPeriodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetBudgetFilterCustomPeriodArgs()
         {
         }
+        public static new BudgetBudgetFilterCustomPeriodArgs Empty => new BudgetBudgetFilterCustomPeriodArgs();
     }
 }

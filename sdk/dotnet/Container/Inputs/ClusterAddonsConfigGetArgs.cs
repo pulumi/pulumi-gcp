@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAddonsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAddonsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// . Structure is documented below.
@@ -101,5 +101,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAddonsConfigGetArgs()
         {
         }
+        public static new ClusterAddonsConfigGetArgs Empty => new ClusterAddonsConfigGetArgs();
     }
 }

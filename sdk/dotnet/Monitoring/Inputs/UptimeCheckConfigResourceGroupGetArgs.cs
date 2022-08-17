@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class UptimeCheckConfigResourceGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigResourceGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The group of resources being monitored. Should be the `name` of a group
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public UptimeCheckConfigResourceGroupGetArgs()
         {
         }
+        public static new UptimeCheckConfigResourceGroupGetArgs Empty => new UptimeCheckConfigResourceGroupGetArgs();
     }
 }

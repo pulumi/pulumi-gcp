@@ -19,20 +19,19 @@ namespace Pulumi.Gcp.Storage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Gcp.Storage.GetTransferProjectServieAccount.InvokeAsync());
-        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
-        ///     }
+        ///     var @default = Gcp.Storage.GetTransferProjectServieAccount.Invoke();
         /// 
-        ///     [Output("defaultAccount")]
-        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultAccount"] = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +47,19 @@ namespace Pulumi.Gcp.Storage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(Gcp.Storage.GetTransferProjectServieAccount.InvokeAsync());
-        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
-        ///     }
+        ///     var @default = Gcp.Storage.GetTransferProjectServieAccount.Invoke();
         /// 
-        ///     [Output("defaultAccount")]
-        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultAccount"] = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +69,7 @@ namespace Pulumi.Gcp.Storage
     }
 
 
-    public sealed class GetTransferProjectServieAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetTransferProjectServieAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID. If it is not provided, the provider project is used.
@@ -82,9 +80,10 @@ namespace Pulumi.Gcp.Storage
         public GetTransferProjectServieAccountArgs()
         {
         }
+        public static new GetTransferProjectServieAccountArgs Empty => new GetTransferProjectServieAccountArgs();
     }
 
-    public sealed class GetTransferProjectServieAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransferProjectServieAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID. If it is not provided, the provider project is used.
@@ -95,6 +94,7 @@ namespace Pulumi.Gcp.Storage
         public GetTransferProjectServieAccountInvokeArgs()
         {
         }
+        public static new GetTransferProjectServieAccountInvokeArgs Empty => new GetTransferProjectServieAccountInvokeArgs();
     }
 
 

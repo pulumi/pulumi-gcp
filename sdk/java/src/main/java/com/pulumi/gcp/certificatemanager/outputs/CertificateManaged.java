@@ -4,6 +4,8 @@
 package com.pulumi.gcp.certificatemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.certificatemanager.outputs.CertificateManagedAuthorizationAttemptInfo;
+import com.pulumi.gcp.certificatemanager.outputs.CertificateManagedProvisioningIssue;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +14,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateManaged {
+    /**
+     * @return -
+     * Detailed state of the latest authorization attempt for each domain
+     * specified for this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    private final @Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos;
     /**
      * @return Authorizations that will be used for performing domain authorization
      * 
@@ -25,21 +35,42 @@ public final class CertificateManaged {
     private final @Nullable List<String> domains;
     /**
      * @return -
-     * State of the managed certificate resource.
+     * Information about issues with provisioning this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    private final @Nullable List<CertificateManagedProvisioningIssue> provisioningIssues;
+    /**
+     * @return -
+     * State of the domain for managed certificate issuance.
      * 
      */
     private final @Nullable String state;
 
     @CustomType.Constructor
     private CertificateManaged(
+        @CustomType.Parameter("authorizationAttemptInfos") @Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos,
         @CustomType.Parameter("dnsAuthorizations") @Nullable List<String> dnsAuthorizations,
         @CustomType.Parameter("domains") @Nullable List<String> domains,
+        @CustomType.Parameter("provisioningIssues") @Nullable List<CertificateManagedProvisioningIssue> provisioningIssues,
         @CustomType.Parameter("state") @Nullable String state) {
+        this.authorizationAttemptInfos = authorizationAttemptInfos;
         this.dnsAuthorizations = dnsAuthorizations;
         this.domains = domains;
+        this.provisioningIssues = provisioningIssues;
         this.state = state;
     }
 
+    /**
+     * @return -
+     * Detailed state of the latest authorization attempt for each domain
+     * specified for this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    public List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos() {
+        return this.authorizationAttemptInfos == null ? List.of() : this.authorizationAttemptInfos;
+    }
     /**
      * @return Authorizations that will be used for performing domain authorization
      * 
@@ -57,7 +88,16 @@ public final class CertificateManaged {
     }
     /**
      * @return -
-     * State of the managed certificate resource.
+     * Information about issues with provisioning this Managed Certificate.
+     * Structure is documented below.
+     * 
+     */
+    public List<CertificateManagedProvisioningIssue> provisioningIssues() {
+        return this.provisioningIssues == null ? List.of() : this.provisioningIssues;
+    }
+    /**
+     * @return -
+     * State of the domain for managed certificate issuance.
      * 
      */
     public Optional<String> state() {
@@ -73,8 +113,10 @@ public final class CertificateManaged {
     }
 
     public static final class Builder {
+        private @Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos;
         private @Nullable List<String> dnsAuthorizations;
         private @Nullable List<String> domains;
+        private @Nullable List<CertificateManagedProvisioningIssue> provisioningIssues;
         private @Nullable String state;
 
         public Builder() {
@@ -83,11 +125,20 @@ public final class CertificateManaged {
 
         public Builder(CertificateManaged defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authorizationAttemptInfos = defaults.authorizationAttemptInfos;
     	      this.dnsAuthorizations = defaults.dnsAuthorizations;
     	      this.domains = defaults.domains;
+    	      this.provisioningIssues = defaults.provisioningIssues;
     	      this.state = defaults.state;
         }
 
+        public Builder authorizationAttemptInfos(@Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos) {
+            this.authorizationAttemptInfos = authorizationAttemptInfos;
+            return this;
+        }
+        public Builder authorizationAttemptInfos(CertificateManagedAuthorizationAttemptInfo... authorizationAttemptInfos) {
+            return authorizationAttemptInfos(List.of(authorizationAttemptInfos));
+        }
         public Builder dnsAuthorizations(@Nullable List<String> dnsAuthorizations) {
             this.dnsAuthorizations = dnsAuthorizations;
             return this;
@@ -102,11 +153,18 @@ public final class CertificateManaged {
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
+        public Builder provisioningIssues(@Nullable List<CertificateManagedProvisioningIssue> provisioningIssues) {
+            this.provisioningIssues = provisioningIssues;
+            return this;
+        }
+        public Builder provisioningIssues(CertificateManagedProvisioningIssue... provisioningIssues) {
+            return provisioningIssues(List.of(provisioningIssues));
+        }
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }        public CertificateManaged build() {
-            return new CertificateManaged(dnsAuthorizations, domains, state);
+            return new CertificateManaged(authorizationAttemptInfos, dnsAuthorizations, domains, provisioningIssues, state);
         }
     }
 }

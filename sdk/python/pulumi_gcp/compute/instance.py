@@ -1273,7 +1273,7 @@ class Instance(pulumi.CustomResource):
             ],
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-9",
+                    image="debian-cloud/debian-11",
                 ),
             ),
             scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
@@ -1410,7 +1410,7 @@ class Instance(pulumi.CustomResource):
             ],
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-9",
+                    image="debian-cloud/debian-11",
                 ),
             ),
             scratch_disks=[gcp.compute.InstanceScratchDiskArgs(

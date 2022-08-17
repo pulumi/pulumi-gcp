@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var gateway = Gcp.Compute.GetHcVpnGateway.Invoke(new()
         ///     {
-        ///         var gateway = Output.Create(Gcp.Compute.GetHcVpnGateway.InvokeAsync(new Gcp.Compute.GetHcVpnGatewayArgs
-        ///         {
-        ///             Name = "foobar",
-        ///         }));
-        ///     }
+        ///         Name = "foobar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var gateway = Gcp.Compute.GetHcVpnGateway.Invoke(new()
         ///     {
-        ///         var gateway = Output.Create(Gcp.Compute.GetHcVpnGateway.InvokeAsync(new Gcp.Compute.GetHcVpnGatewayArgs
-        ///         {
-        ///             Name = "foobar",
-        ///         }));
-        ///     }
+        ///         Name = "foobar",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetHcVpnGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetHcVpnGatewayArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the forwarding rule.
@@ -96,9 +92,10 @@ namespace Pulumi.Gcp.Compute
         public GetHcVpnGatewayArgs()
         {
         }
+        public static new GetHcVpnGatewayArgs Empty => new GetHcVpnGatewayArgs();
     }
 
-    public sealed class GetHcVpnGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHcVpnGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the forwarding rule.
@@ -123,6 +120,7 @@ namespace Pulumi.Gcp.Compute
         public GetHcVpnGatewayInvokeArgs()
         {
         }
+        public static new GetHcVpnGatewayInvokeArgs Empty => new GetHcVpnGatewayInvokeArgs();
     }
 
 

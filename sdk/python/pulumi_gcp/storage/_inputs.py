@@ -318,7 +318,9 @@ class BucketLifecycleRuleConditionArgs:
                  custom_time_before: Optional[pulumi.Input[str]] = None,
                  days_since_custom_time: Optional[pulumi.Input[int]] = None,
                  days_since_noncurrent_time: Optional[pulumi.Input[int]] = None,
+                 matches_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  matches_storage_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 matches_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  noncurrent_time_before: Optional[pulumi.Input[str]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
@@ -328,7 +330,9 @@ class BucketLifecycleRuleConditionArgs:
         :param pulumi.Input[str] custom_time_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
         :param pulumi.Input[int] days_since_custom_time: Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
         :param pulumi.Input[int] days_since_noncurrent_time: Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_suffixes: One or more matching name suffixes to satisfy this condition.
         :param pulumi.Input[str] noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         :param pulumi.Input[str] with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -343,8 +347,12 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "days_since_custom_time", days_since_custom_time)
         if days_since_noncurrent_time is not None:
             pulumi.set(__self__, "days_since_noncurrent_time", days_since_noncurrent_time)
+        if matches_prefixes is not None:
+            pulumi.set(__self__, "matches_prefixes", matches_prefixes)
         if matches_storage_classes is not None:
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
+        if matches_suffixes is not None:
+            pulumi.set(__self__, "matches_suffixes", matches_suffixes)
         if noncurrent_time_before is not None:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
@@ -413,6 +421,18 @@ class BucketLifecycleRuleConditionArgs:
         pulumi.set(self, "days_since_noncurrent_time", value)
 
     @property
+    @pulumi.getter(name="matchesPrefixes")
+    def matches_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more matching name prefixes to satisfy this condition.
+        """
+        return pulumi.get(self, "matches_prefixes")
+
+    @matches_prefixes.setter
+    def matches_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "matches_prefixes", value)
+
+    @property
     @pulumi.getter(name="matchesStorageClasses")
     def matches_storage_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -423,6 +443,18 @@ class BucketLifecycleRuleConditionArgs:
     @matches_storage_classes.setter
     def matches_storage_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "matches_storage_classes", value)
+
+    @property
+    @pulumi.getter(name="matchesSuffixes")
+    def matches_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more matching name suffixes to satisfy this condition.
+        """
+        return pulumi.get(self, "matches_suffixes")
+
+    @matches_suffixes.setter
+    def matches_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "matches_suffixes", value)
 
     @property
     @pulumi.getter(name="noncurrentTimeBefore")

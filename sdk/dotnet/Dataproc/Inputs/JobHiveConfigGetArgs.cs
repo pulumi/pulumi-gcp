@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class JobHiveConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class JobHiveConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
@@ -77,5 +77,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public JobHiveConfigGetArgs()
         {
         }
+        public static new JobHiveConfigGetArgs Empty => new JobHiveConfigGetArgs();
     }
 }

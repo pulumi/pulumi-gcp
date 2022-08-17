@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class FhirStoreStreamConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class FhirStoreStreamConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination BigQuery structure that contains both the dataset location and corresponding schema config.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public FhirStoreStreamConfigGetArgs()
         {
         }
+        public static new FhirStoreStreamConfigGetArgs Empty => new FhirStoreStreamConfigGetArgs();
     }
 }

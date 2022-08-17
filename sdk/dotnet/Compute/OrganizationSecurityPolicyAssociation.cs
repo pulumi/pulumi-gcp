@@ -22,77 +22,78 @@ namespace Pulumi.Gcp.Compute
     /// ### Organization Security Policy Association Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var securityPolicyTarget = new Gcp.Organizations.Folder("securityPolicyTarget", new()
     ///     {
-    ///         var securityPolicyTarget = new Gcp.Organizations.Folder("securityPolicyTarget", new Gcp.Organizations.FolderArgs
+    ///         DisplayName = "tf-test-secpol",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new()
+    ///     {
+    ///         DisplayName = "tf-test",
+    ///         Parent = securityPolicyTarget.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new()
+    ///     {
+    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         EnableLogging = true,
+    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
     ///         {
-    ///             DisplayName = "tf-test-secpol",
-    ///             Parent = "organizations/123456789",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new Gcp.Compute.OrganizationSecurityPolicyArgs
-    ///         {
-    ///             DisplayName = "tf-test",
-    ///             Parent = securityPolicyTarget.Name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new Gcp.Compute.OrganizationSecurityPolicyRuleArgs
-    ///         {
-    ///             PolicyId = policyOrganizationSecurityPolicy.Id,
-    ///             Action = "allow",
-    ///             Direction = "INGRESS",
-    ///             EnableLogging = true,
-    ///             Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///             Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
     ///             {
-    ///                 Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
+    ///                 SrcIpRanges = new[]
     ///                 {
-    ///                     SrcIpRanges = 
+    ///                     "192.168.0.0/16",
+    ///                     "10.0.0.0/8",
+    ///                 },
+    ///                 Layer4Configs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
     ///                     {
-    ///                         "192.168.0.0/16",
-    ///                         "10.0.0.0/8",
+    ///                         IpProtocol = "tcp",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "22",
+    ///                         },
     ///                     },
-    ///                     Layer4Configs = 
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
     ///                     {
-    ///                         new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "tcp",
-    ///                             Ports = 
-    ///                             {
-    ///                                 "22",
-    ///                             },
-    ///                         },
-    ///                         new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "icmp",
-    ///                         },
+    ///                         IpProtocol = "icmp",
     ///                     },
     ///                 },
     ///             },
-    ///             Priority = 100,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", new Gcp.Compute.OrganizationSecurityPolicyAssociationArgs
-    ///         {
-    ///             AttachmentId = policyOrganizationSecurityPolicy.Parent,
-    ///             PolicyId = policyOrganizationSecurityPolicy.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///         Priority = 100,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", new()
+    ///     {
+    ///         AttachmentId = policyOrganizationSecurityPolicy.Parent,
+    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -104,7 +105,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation")]
-    public partial class OrganizationSecurityPolicyAssociation : Pulumi.CustomResource
+    public partial class OrganizationSecurityPolicyAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource that the security policy is attached to.
@@ -174,7 +175,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class OrganizationSecurityPolicyAssociationArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource that the security policy is attached to.
@@ -197,9 +198,10 @@ namespace Pulumi.Gcp.Compute
         public OrganizationSecurityPolicyAssociationArgs()
         {
         }
+        public static new OrganizationSecurityPolicyAssociationArgs Empty => new OrganizationSecurityPolicyAssociationArgs();
     }
 
-    public sealed class OrganizationSecurityPolicyAssociationState : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource that the security policy is attached to.
@@ -228,5 +230,6 @@ namespace Pulumi.Gcp.Compute
         public OrganizationSecurityPolicyAssociationState()
         {
         }
+        public static new OrganizationSecurityPolicyAssociationState Empty => new OrganizationSecurityPolicyAssociationState();
     }
 }

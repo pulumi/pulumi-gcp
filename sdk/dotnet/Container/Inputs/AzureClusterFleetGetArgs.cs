@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterFleetGetArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterFleetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterFleetGetArgs()
         {
         }
+        public static new AzureClusterFleetGetArgs Empty => new AzureClusterFleetGetArgs();
     }
 }

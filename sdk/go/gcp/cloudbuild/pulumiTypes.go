@@ -19,7 +19,7 @@ type TriggerApprovalConfig struct {
 // TriggerApprovalConfigInput is an input type that accepts TriggerApprovalConfigArgs and TriggerApprovalConfigOutput values.
 // You can construct a concrete instance of `TriggerApprovalConfigInput` via:
 //
-//          TriggerApprovalConfigArgs{...}
+//	TriggerApprovalConfigArgs{...}
 type TriggerApprovalConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigPtrOutputWithContext(c
 // TriggerApprovalConfigPtrInput is an input type that accepts TriggerApprovalConfigArgs, TriggerApprovalConfigPtr and TriggerApprovalConfigPtrOutput values.
 // You can construct a concrete instance of `TriggerApprovalConfigPtrInput` via:
 //
-//          TriggerApprovalConfigArgs{...}
+//	        TriggerApprovalConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerApprovalConfigPtrInput interface {
 	pulumi.Input
 
@@ -198,7 +198,7 @@ type TriggerBuild struct {
 // TriggerBuildInput is an input type that accepts TriggerBuildArgs and TriggerBuildOutput values.
 // You can construct a concrete instance of `TriggerBuildInput` via:
 //
-//          TriggerBuildArgs{...}
+//	TriggerBuildArgs{...}
 type TriggerBuildInput interface {
 	pulumi.Input
 
@@ -273,11 +273,11 @@ func (i TriggerBuildArgs) ToTriggerBuildPtrOutputWithContext(ctx context.Context
 // TriggerBuildPtrInput is an input type that accepts TriggerBuildArgs, TriggerBuildPtr and TriggerBuildPtrOutput values.
 // You can construct a concrete instance of `TriggerBuildPtrInput` via:
 //
-//          TriggerBuildArgs{...}
+//	        TriggerBuildArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildPtrInput interface {
 	pulumi.Input
 
@@ -583,7 +583,7 @@ type TriggerBuildArtifacts struct {
 // TriggerBuildArtifactsInput is an input type that accepts TriggerBuildArtifactsArgs and TriggerBuildArtifactsOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsInput` via:
 //
-//          TriggerBuildArtifactsArgs{...}
+//	TriggerBuildArtifactsArgs{...}
 type TriggerBuildArtifactsInput interface {
 	pulumi.Input
 
@@ -629,11 +629,11 @@ func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsPtrOutputWithContext(c
 // TriggerBuildArtifactsPtrInput is an input type that accepts TriggerBuildArtifactsArgs, TriggerBuildArtifactsPtr and TriggerBuildArtifactsPtrOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsPtrInput` via:
 //
-//          TriggerBuildArtifactsArgs{...}
+//	        TriggerBuildArtifactsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildArtifactsPtrInput interface {
 	pulumi.Input
 
@@ -769,7 +769,7 @@ type TriggerBuildArtifactsObjects struct {
 // TriggerBuildArtifactsObjectsInput is an input type that accepts TriggerBuildArtifactsObjectsArgs and TriggerBuildArtifactsObjectsOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsObjectsInput` via:
 //
-//          TriggerBuildArtifactsObjectsArgs{...}
+//	TriggerBuildArtifactsObjectsArgs{...}
 type TriggerBuildArtifactsObjectsInput interface {
 	pulumi.Input
 
@@ -813,11 +813,11 @@ func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsPtrOutpu
 // TriggerBuildArtifactsObjectsPtrInput is an input type that accepts TriggerBuildArtifactsObjectsArgs, TriggerBuildArtifactsObjectsPtr and TriggerBuildArtifactsObjectsPtrOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsObjectsPtrInput` via:
 //
-//          TriggerBuildArtifactsObjectsArgs{...}
+//	        TriggerBuildArtifactsObjectsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildArtifactsObjectsPtrInput interface {
 	pulumi.Input
 
@@ -958,7 +958,7 @@ type TriggerBuildArtifactsObjectsTiming struct {
 // TriggerBuildArtifactsObjectsTimingInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArgs and TriggerBuildArtifactsObjectsTimingOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingInput` via:
 //
-//          TriggerBuildArtifactsObjectsTimingArgs{...}
+//	TriggerBuildArtifactsObjectsTimingArgs{...}
 type TriggerBuildArtifactsObjectsTimingInput interface {
 	pulumi.Input
 
@@ -992,7 +992,7 @@ func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTi
 // TriggerBuildArtifactsObjectsTimingArrayInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArray and TriggerBuildArtifactsObjectsTimingArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingArrayInput` via:
 //
-//          TriggerBuildArtifactsObjectsTimingArray{ TriggerBuildArtifactsObjectsTimingArgs{...} }
+//	TriggerBuildArtifactsObjectsTimingArray{ TriggerBuildArtifactsObjectsTimingArgs{...} }
 type TriggerBuildArtifactsObjectsTimingArrayInput interface {
 	pulumi.Input
 
@@ -1071,7 +1071,7 @@ type TriggerBuildAvailableSecrets struct {
 // TriggerBuildAvailableSecretsInput is an input type that accepts TriggerBuildAvailableSecretsArgs and TriggerBuildAvailableSecretsOutput values.
 // You can construct a concrete instance of `TriggerBuildAvailableSecretsInput` via:
 //
-//          TriggerBuildAvailableSecretsArgs{...}
+//	TriggerBuildAvailableSecretsArgs{...}
 type TriggerBuildAvailableSecretsInput interface {
 	pulumi.Input
 
@@ -1108,11 +1108,11 @@ func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsPtrOutpu
 // TriggerBuildAvailableSecretsPtrInput is an input type that accepts TriggerBuildAvailableSecretsArgs, TriggerBuildAvailableSecretsPtr and TriggerBuildAvailableSecretsPtrOutput values.
 // You can construct a concrete instance of `TriggerBuildAvailableSecretsPtrInput` via:
 //
-//          TriggerBuildAvailableSecretsArgs{...}
+//	        TriggerBuildAvailableSecretsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildAvailableSecretsPtrInput interface {
 	pulumi.Input
 
@@ -1218,7 +1218,7 @@ type TriggerBuildAvailableSecretsSecretManager struct {
 // TriggerBuildAvailableSecretsSecretManagerInput is an input type that accepts TriggerBuildAvailableSecretsSecretManagerArgs and TriggerBuildAvailableSecretsSecretManagerOutput values.
 // You can construct a concrete instance of `TriggerBuildAvailableSecretsSecretManagerInput` via:
 //
-//          TriggerBuildAvailableSecretsSecretManagerArgs{...}
+//	TriggerBuildAvailableSecretsSecretManagerArgs{...}
 type TriggerBuildAvailableSecretsSecretManagerInput interface {
 	pulumi.Input
 
@@ -1251,7 +1251,7 @@ func (i TriggerBuildAvailableSecretsSecretManagerArgs) ToTriggerBuildAvailableSe
 // TriggerBuildAvailableSecretsSecretManagerArrayInput is an input type that accepts TriggerBuildAvailableSecretsSecretManagerArray and TriggerBuildAvailableSecretsSecretManagerArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildAvailableSecretsSecretManagerArrayInput` via:
 //
-//          TriggerBuildAvailableSecretsSecretManagerArray{ TriggerBuildAvailableSecretsSecretManagerArgs{...} }
+//	TriggerBuildAvailableSecretsSecretManagerArray{ TriggerBuildAvailableSecretsSecretManagerArgs{...} }
 type TriggerBuildAvailableSecretsSecretManagerArrayInput interface {
 	pulumi.Input
 
@@ -1375,7 +1375,7 @@ type TriggerBuildOptions struct {
 // TriggerBuildOptionsInput is an input type that accepts TriggerBuildOptionsArgs and TriggerBuildOptionsOutput values.
 // You can construct a concrete instance of `TriggerBuildOptionsInput` via:
 //
-//          TriggerBuildOptionsArgs{...}
+//	TriggerBuildOptionsArgs{...}
 type TriggerBuildOptionsInput interface {
 	pulumi.Input
 
@@ -1458,11 +1458,11 @@ func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsPtrOutputWithContext(ctx c
 // TriggerBuildOptionsPtrInput is an input type that accepts TriggerBuildOptionsArgs, TriggerBuildOptionsPtr and TriggerBuildOptionsPtrOutput values.
 // You can construct a concrete instance of `TriggerBuildOptionsPtrInput` via:
 //
-//          TriggerBuildOptionsArgs{...}
+//	        TriggerBuildOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1780,7 +1780,7 @@ type TriggerBuildOptionsVolume struct {
 // TriggerBuildOptionsVolumeInput is an input type that accepts TriggerBuildOptionsVolumeArgs and TriggerBuildOptionsVolumeOutput values.
 // You can construct a concrete instance of `TriggerBuildOptionsVolumeInput` via:
 //
-//          TriggerBuildOptionsVolumeArgs{...}
+//	TriggerBuildOptionsVolumeArgs{...}
 type TriggerBuildOptionsVolumeInput interface {
 	pulumi.Input
 
@@ -1814,7 +1814,7 @@ func (i TriggerBuildOptionsVolumeArgs) ToTriggerBuildOptionsVolumeOutputWithCont
 // TriggerBuildOptionsVolumeArrayInput is an input type that accepts TriggerBuildOptionsVolumeArray and TriggerBuildOptionsVolumeArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildOptionsVolumeArrayInput` via:
 //
-//          TriggerBuildOptionsVolumeArray{ TriggerBuildOptionsVolumeArgs{...} }
+//	TriggerBuildOptionsVolumeArray{ TriggerBuildOptionsVolumeArgs{...} }
 type TriggerBuildOptionsVolumeArrayInput interface {
 	pulumi.Input
 
@@ -1896,7 +1896,7 @@ type TriggerBuildSecret struct {
 // TriggerBuildSecretInput is an input type that accepts TriggerBuildSecretArgs and TriggerBuildSecretOutput values.
 // You can construct a concrete instance of `TriggerBuildSecretInput` via:
 //
-//          TriggerBuildSecretArgs{...}
+//	TriggerBuildSecretArgs{...}
 type TriggerBuildSecretInput interface {
 	pulumi.Input
 
@@ -1928,7 +1928,7 @@ func (i TriggerBuildSecretArgs) ToTriggerBuildSecretOutputWithContext(ctx contex
 // TriggerBuildSecretArrayInput is an input type that accepts TriggerBuildSecretArray and TriggerBuildSecretArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildSecretArrayInput` via:
 //
-//          TriggerBuildSecretArray{ TriggerBuildSecretArgs{...} }
+//	TriggerBuildSecretArray{ TriggerBuildSecretArgs{...} }
 type TriggerBuildSecretArrayInput interface {
 	pulumi.Input
 
@@ -2008,7 +2008,7 @@ type TriggerBuildSource struct {
 // TriggerBuildSourceInput is an input type that accepts TriggerBuildSourceArgs and TriggerBuildSourceOutput values.
 // You can construct a concrete instance of `TriggerBuildSourceInput` via:
 //
-//          TriggerBuildSourceArgs{...}
+//	TriggerBuildSourceArgs{...}
 type TriggerBuildSourceInput interface {
 	pulumi.Input
 
@@ -2048,11 +2048,11 @@ func (i TriggerBuildSourceArgs) ToTriggerBuildSourcePtrOutputWithContext(ctx con
 // TriggerBuildSourcePtrInput is an input type that accepts TriggerBuildSourceArgs, TriggerBuildSourcePtr and TriggerBuildSourcePtrOutput values.
 // You can construct a concrete instance of `TriggerBuildSourcePtrInput` via:
 //
-//          TriggerBuildSourceArgs{...}
+//	        TriggerBuildSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildSourcePtrInput interface {
 	pulumi.Input
 
@@ -2195,7 +2195,7 @@ type TriggerBuildSourceRepoSource struct {
 // TriggerBuildSourceRepoSourceInput is an input type that accepts TriggerBuildSourceRepoSourceArgs and TriggerBuildSourceRepoSourceOutput values.
 // You can construct a concrete instance of `TriggerBuildSourceRepoSourceInput` via:
 //
-//          TriggerBuildSourceRepoSourceArgs{...}
+//	TriggerBuildSourceRepoSourceArgs{...}
 type TriggerBuildSourceRepoSourceInput interface {
 	pulumi.Input
 
@@ -2258,11 +2258,11 @@ func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourcePtrOutpu
 // TriggerBuildSourceRepoSourcePtrInput is an input type that accepts TriggerBuildSourceRepoSourceArgs, TriggerBuildSourceRepoSourcePtr and TriggerBuildSourceRepoSourcePtrOutput values.
 // You can construct a concrete instance of `TriggerBuildSourceRepoSourcePtrInput` via:
 //
-//          TriggerBuildSourceRepoSourceArgs{...}
+//	        TriggerBuildSourceRepoSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildSourceRepoSourcePtrInput interface {
 	pulumi.Input
 
@@ -2496,7 +2496,7 @@ type TriggerBuildSourceStorageSource struct {
 // TriggerBuildSourceStorageSourceInput is an input type that accepts TriggerBuildSourceStorageSourceArgs and TriggerBuildSourceStorageSourceOutput values.
 // You can construct a concrete instance of `TriggerBuildSourceStorageSourceInput` via:
 //
-//          TriggerBuildSourceStorageSourceArgs{...}
+//	TriggerBuildSourceStorageSourceArgs{...}
 type TriggerBuildSourceStorageSourceInput interface {
 	pulumi.Input
 
@@ -2538,11 +2538,11 @@ func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourcePt
 // TriggerBuildSourceStorageSourcePtrInput is an input type that accepts TriggerBuildSourceStorageSourceArgs, TriggerBuildSourceStorageSourcePtr and TriggerBuildSourceStorageSourcePtrOutput values.
 // You can construct a concrete instance of `TriggerBuildSourceStorageSourcePtrInput` via:
 //
-//          TriggerBuildSourceStorageSourceArgs{...}
+//	        TriggerBuildSourceStorageSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerBuildSourceStorageSourcePtrInput interface {
 	pulumi.Input
 
@@ -2730,7 +2730,7 @@ type TriggerBuildStep struct {
 // TriggerBuildStepInput is an input type that accepts TriggerBuildStepArgs and TriggerBuildStepOutput values.
 // You can construct a concrete instance of `TriggerBuildStepInput` via:
 //
-//          TriggerBuildStepArgs{...}
+//	TriggerBuildStepArgs{...}
 type TriggerBuildStepInput interface {
 	pulumi.Input
 
@@ -2815,7 +2815,7 @@ func (i TriggerBuildStepArgs) ToTriggerBuildStepOutputWithContext(ctx context.Co
 // TriggerBuildStepArrayInput is an input type that accepts TriggerBuildStepArray and TriggerBuildStepArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildStepArrayInput` via:
 //
-//          TriggerBuildStepArray{ TriggerBuildStepArgs{...} }
+//	TriggerBuildStepArray{ TriggerBuildStepArgs{...} }
 type TriggerBuildStepArrayInput interface {
 	pulumi.Input
 
@@ -2977,7 +2977,7 @@ type TriggerBuildStepVolume struct {
 // TriggerBuildStepVolumeInput is an input type that accepts TriggerBuildStepVolumeArgs and TriggerBuildStepVolumeOutput values.
 // You can construct a concrete instance of `TriggerBuildStepVolumeInput` via:
 //
-//          TriggerBuildStepVolumeArgs{...}
+//	TriggerBuildStepVolumeArgs{...}
 type TriggerBuildStepVolumeInput interface {
 	pulumi.Input
 
@@ -3011,7 +3011,7 @@ func (i TriggerBuildStepVolumeArgs) ToTriggerBuildStepVolumeOutputWithContext(ct
 // TriggerBuildStepVolumeArrayInput is an input type that accepts TriggerBuildStepVolumeArray and TriggerBuildStepVolumeArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildStepVolumeArrayInput` via:
 //
-//          TriggerBuildStepVolumeArray{ TriggerBuildStepVolumeArgs{...} }
+//	TriggerBuildStepVolumeArray{ TriggerBuildStepVolumeArgs{...} }
 type TriggerBuildStepVolumeArrayInput interface {
 	pulumi.Input
 
@@ -3101,7 +3101,7 @@ type TriggerGitFileSource struct {
 // TriggerGitFileSourceInput is an input type that accepts TriggerGitFileSourceArgs and TriggerGitFileSourceOutput values.
 // You can construct a concrete instance of `TriggerGitFileSourceInput` via:
 //
-//          TriggerGitFileSourceArgs{...}
+//	TriggerGitFileSourceArgs{...}
 type TriggerGitFileSourceInput interface {
 	pulumi.Input
 
@@ -3149,11 +3149,11 @@ func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourcePtrOutputWithContext(ctx
 // TriggerGitFileSourcePtrInput is an input type that accepts TriggerGitFileSourceArgs, TriggerGitFileSourcePtr and TriggerGitFileSourcePtrOutput values.
 // You can construct a concrete instance of `TriggerGitFileSourcePtrInput` via:
 //
-//          TriggerGitFileSourceArgs{...}
+//	        TriggerGitFileSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerGitFileSourcePtrInput interface {
 	pulumi.Input
 
@@ -3318,7 +3318,7 @@ type TriggerGithub struct {
 // TriggerGithubInput is an input type that accepts TriggerGithubArgs and TriggerGithubOutput values.
 // You can construct a concrete instance of `TriggerGithubInput` via:
 //
-//          TriggerGithubArgs{...}
+//	TriggerGithubArgs{...}
 type TriggerGithubInput interface {
 	pulumi.Input
 
@@ -3365,11 +3365,11 @@ func (i TriggerGithubArgs) ToTriggerGithubPtrOutputWithContext(ctx context.Conte
 // TriggerGithubPtrInput is an input type that accepts TriggerGithubArgs, TriggerGithubPtr and TriggerGithubPtrOutput values.
 // You can construct a concrete instance of `TriggerGithubPtrInput` via:
 //
-//          TriggerGithubArgs{...}
+//	        TriggerGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerGithubPtrInput interface {
 	pulumi.Input
 
@@ -3526,7 +3526,7 @@ type TriggerGithubPullRequest struct {
 // TriggerGithubPullRequestInput is an input type that accepts TriggerGithubPullRequestArgs and TriggerGithubPullRequestOutput values.
 // You can construct a concrete instance of `TriggerGithubPullRequestInput` via:
 //
-//          TriggerGithubPullRequestArgs{...}
+//	TriggerGithubPullRequestArgs{...}
 type TriggerGithubPullRequestInput interface {
 	pulumi.Input
 
@@ -3567,11 +3567,11 @@ func (i TriggerGithubPullRequestArgs) ToTriggerGithubPullRequestPtrOutputWithCon
 // TriggerGithubPullRequestPtrInput is an input type that accepts TriggerGithubPullRequestArgs, TriggerGithubPullRequestPtr and TriggerGithubPullRequestPtrOutput values.
 // You can construct a concrete instance of `TriggerGithubPullRequestPtrInput` via:
 //
-//          TriggerGithubPullRequestArgs{...}
+//	        TriggerGithubPullRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerGithubPullRequestPtrInput interface {
 	pulumi.Input
 
@@ -3704,7 +3704,7 @@ type TriggerGithubPush struct {
 // TriggerGithubPushInput is an input type that accepts TriggerGithubPushArgs and TriggerGithubPushOutput values.
 // You can construct a concrete instance of `TriggerGithubPushInput` via:
 //
-//          TriggerGithubPushArgs{...}
+//	TriggerGithubPushArgs{...}
 type TriggerGithubPushInput interface {
 	pulumi.Input
 
@@ -3744,11 +3744,11 @@ func (i TriggerGithubPushArgs) ToTriggerGithubPushPtrOutputWithContext(ctx conte
 // TriggerGithubPushPtrInput is an input type that accepts TriggerGithubPushArgs, TriggerGithubPushPtr and TriggerGithubPushPtrOutput values.
 // You can construct a concrete instance of `TriggerGithubPushPtrInput` via:
 //
-//          TriggerGithubPushArgs{...}
+//	        TriggerGithubPushArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerGithubPushPtrInput interface {
 	pulumi.Input
 
@@ -3884,7 +3884,7 @@ type TriggerPubsubConfig struct {
 // TriggerPubsubConfigInput is an input type that accepts TriggerPubsubConfigArgs and TriggerPubsubConfigOutput values.
 // You can construct a concrete instance of `TriggerPubsubConfigInput` via:
 //
-//          TriggerPubsubConfigArgs{...}
+//	TriggerPubsubConfigArgs{...}
 type TriggerPubsubConfigInput interface {
 	pulumi.Input
 
@@ -3929,11 +3929,11 @@ func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigPtrOutputWithContext(ctx c
 // TriggerPubsubConfigPtrInput is an input type that accepts TriggerPubsubConfigArgs, TriggerPubsubConfigPtr and TriggerPubsubConfigPtrOutput values.
 // You can construct a concrete instance of `TriggerPubsubConfigPtrInput` via:
 //
-//          TriggerPubsubConfigArgs{...}
+//	        TriggerPubsubConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerPubsubConfigPtrInput interface {
 	pulumi.Input
 
@@ -4087,7 +4087,7 @@ type TriggerSourceToBuild struct {
 // TriggerSourceToBuildInput is an input type that accepts TriggerSourceToBuildArgs and TriggerSourceToBuildOutput values.
 // You can construct a concrete instance of `TriggerSourceToBuildInput` via:
 //
-//          TriggerSourceToBuildArgs{...}
+//	TriggerSourceToBuildArgs{...}
 type TriggerSourceToBuildInput interface {
 	pulumi.Input
 
@@ -4129,11 +4129,11 @@ func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildPtrOutputWithContext(ctx
 // TriggerSourceToBuildPtrInput is an input type that accepts TriggerSourceToBuildArgs, TriggerSourceToBuildPtr and TriggerSourceToBuildPtrOutput values.
 // You can construct a concrete instance of `TriggerSourceToBuildPtrInput` via:
 //
-//          TriggerSourceToBuildArgs{...}
+//	        TriggerSourceToBuildArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerSourceToBuildPtrInput interface {
 	pulumi.Input
 
@@ -4289,7 +4289,7 @@ type TriggerTriggerTemplate struct {
 // TriggerTriggerTemplateInput is an input type that accepts TriggerTriggerTemplateArgs and TriggerTriggerTemplateOutput values.
 // You can construct a concrete instance of `TriggerTriggerTemplateInput` via:
 //
-//          TriggerTriggerTemplateArgs{...}
+//	TriggerTriggerTemplateArgs{...}
 type TriggerTriggerTemplateInput interface {
 	pulumi.Input
 
@@ -4350,11 +4350,11 @@ func (i TriggerTriggerTemplateArgs) ToTriggerTriggerTemplatePtrOutputWithContext
 // TriggerTriggerTemplatePtrInput is an input type that accepts TriggerTriggerTemplateArgs, TriggerTriggerTemplatePtr and TriggerTriggerTemplatePtrOutput values.
 // You can construct a concrete instance of `TriggerTriggerTemplatePtrInput` via:
 //
-//          TriggerTriggerTemplateArgs{...}
+//	        TriggerTriggerTemplateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerTriggerTemplatePtrInput interface {
 	pulumi.Input
 
@@ -4572,7 +4572,7 @@ type TriggerWebhookConfig struct {
 // TriggerWebhookConfigInput is an input type that accepts TriggerWebhookConfigArgs and TriggerWebhookConfigOutput values.
 // You can construct a concrete instance of `TriggerWebhookConfigInput` via:
 //
-//          TriggerWebhookConfigArgs{...}
+//	TriggerWebhookConfigArgs{...}
 type TriggerWebhookConfigInput interface {
 	pulumi.Input
 
@@ -4613,11 +4613,11 @@ func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigPtrOutputWithContext(ctx
 // TriggerWebhookConfigPtrInput is an input type that accepts TriggerWebhookConfigArgs, TriggerWebhookConfigPtr and TriggerWebhookConfigPtrOutput values.
 // You can construct a concrete instance of `TriggerWebhookConfigPtrInput` via:
 //
-//          TriggerWebhookConfigArgs{...}
+//	        TriggerWebhookConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerWebhookConfigPtrInput interface {
 	pulumi.Input
 
@@ -4735,7 +4735,7 @@ type WorkerPoolNetworkConfig struct {
 // WorkerPoolNetworkConfigInput is an input type that accepts WorkerPoolNetworkConfigArgs and WorkerPoolNetworkConfigOutput values.
 // You can construct a concrete instance of `WorkerPoolNetworkConfigInput` via:
 //
-//          WorkerPoolNetworkConfigArgs{...}
+//	WorkerPoolNetworkConfigArgs{...}
 type WorkerPoolNetworkConfigInput interface {
 	pulumi.Input
 
@@ -4771,11 +4771,11 @@ func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigPtrOutputWithConte
 // WorkerPoolNetworkConfigPtrInput is an input type that accepts WorkerPoolNetworkConfigArgs, WorkerPoolNetworkConfigPtr and WorkerPoolNetworkConfigPtrOutput values.
 // You can construct a concrete instance of `WorkerPoolNetworkConfigPtrInput` via:
 //
-//          WorkerPoolNetworkConfigArgs{...}
+//	        WorkerPoolNetworkConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkerPoolNetworkConfigPtrInput interface {
 	pulumi.Input
 
@@ -4876,7 +4876,7 @@ type WorkerPoolWorkerConfig struct {
 // WorkerPoolWorkerConfigInput is an input type that accepts WorkerPoolWorkerConfigArgs and WorkerPoolWorkerConfigOutput values.
 // You can construct a concrete instance of `WorkerPoolWorkerConfigInput` via:
 //
-//          WorkerPoolWorkerConfigArgs{...}
+//	WorkerPoolWorkerConfigArgs{...}
 type WorkerPoolWorkerConfigInput interface {
 	pulumi.Input
 
@@ -4916,11 +4916,11 @@ func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigPtrOutputWithContext
 // WorkerPoolWorkerConfigPtrInput is an input type that accepts WorkerPoolWorkerConfigArgs, WorkerPoolWorkerConfigPtr and WorkerPoolWorkerConfigPtrOutput values.
 // You can construct a concrete instance of `WorkerPoolWorkerConfigPtrInput` via:
 //
-//          WorkerPoolWorkerConfigArgs{...}
+//	        WorkerPoolWorkerConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkerPoolWorkerConfigPtrInput interface {
 	pulumi.Input
 

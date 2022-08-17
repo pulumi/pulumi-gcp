@@ -20,23 +20,21 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Default Supported Idp Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var idpConfig = new Gcp.IdentityPlatform.DefaultSupportedIdpConfig("idpConfig", new()
     ///     {
-    ///         var idpConfig = new Gcp.IdentityPlatform.DefaultSupportedIdpConfig("idpConfig", new Gcp.IdentityPlatform.DefaultSupportedIdpConfigArgs
-    ///         {
-    ///             ClientId = "client-id",
-    ///             ClientSecret = "secret",
-    ///             Enabled = true,
-    ///             IdpId = "playgames.google.com",
-    ///         });
-    ///     }
+    ///         ClientId = "client-id",
+    ///         ClientSecret = "secret",
+    ///         Enabled = true,
+    ///         IdpId = "playgames.google.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig")]
-    public partial class DefaultSupportedIdpConfig : Pulumi.CustomResource
+    public partial class DefaultSupportedIdpConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// OAuth client ID
@@ -149,7 +147,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class DefaultSupportedIdpConfigArgs : Pulumi.ResourceArgs
+    public sealed class DefaultSupportedIdpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth client ID
@@ -195,9 +193,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public DefaultSupportedIdpConfigArgs()
         {
         }
+        public static new DefaultSupportedIdpConfigArgs Empty => new DefaultSupportedIdpConfigArgs();
     }
 
-    public sealed class DefaultSupportedIdpConfigState : Pulumi.ResourceArgs
+    public sealed class DefaultSupportedIdpConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth client ID
@@ -249,5 +248,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public DefaultSupportedIdpConfigState()
         {
         }
+        public static new DefaultSupportedIdpConfigState Empty => new DefaultSupportedIdpConfigState();
     }
 }

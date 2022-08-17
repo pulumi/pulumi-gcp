@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/serviceAttachment:ServiceAttachment")]
-    public partial class ServiceAttachment : Pulumi.CustomResource
+    public partial class ServiceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An array of the consumer forwarding rules connected to this service attachment.
@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ServiceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The connection preference to use for this service attachment. Valid
@@ -298,9 +298,10 @@ namespace Pulumi.Gcp.Compute
         public ServiceAttachmentArgs()
         {
         }
+        public static new ServiceAttachmentArgs Empty => new ServiceAttachmentArgs();
     }
 
-    public sealed class ServiceAttachmentState : Pulumi.ResourceArgs
+    public sealed class ServiceAttachmentState : global::Pulumi.ResourceArgs
     {
         [Input("connectedEndpoints")]
         private InputList<Inputs.ServiceAttachmentConnectedEndpointGetArgs>? _connectedEndpoints;
@@ -435,5 +436,6 @@ namespace Pulumi.Gcp.Compute
         public ServiceAttachmentState()
         {
         }
+        public static new ServiceAttachmentState Empty => new ServiceAttachmentState();
     }
 }

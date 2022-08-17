@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .asset import *
 from .lake import *
+from .zone import *
 from ._inputs import *
 from . import outputs

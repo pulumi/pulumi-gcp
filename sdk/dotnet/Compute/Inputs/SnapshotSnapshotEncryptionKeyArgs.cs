@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SnapshotSnapshotEncryptionKeyArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotSnapshotEncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the encryption key that is stored in Google Cloud KMS.
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SnapshotSnapshotEncryptionKeyArgs()
         {
         }
+        public static new SnapshotSnapshotEncryptionKeyArgs Empty => new SnapshotSnapshotEncryptionKeyArgs();
     }
 }

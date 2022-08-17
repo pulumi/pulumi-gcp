@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("airflowUri")]
         public Input<string>? AirflowUri { get; set; }
@@ -60,5 +60,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigGetArgs()
         {
         }
+        public static new EnvironmentConfigGetArgs Empty => new EnvironmentConfigGetArgs();
     }
 }

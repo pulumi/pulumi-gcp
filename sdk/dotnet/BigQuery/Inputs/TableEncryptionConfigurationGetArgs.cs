@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class TableEncryptionConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class TableEncryptionConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The self link or full name of a key which should be used to
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public TableEncryptionConfigurationGetArgs()
         {
         }
+        public static new TableEncryptionConfigurationGetArgs Empty => new TableEncryptionConfigurationGetArgs();
     }
 }

@@ -25,107 +25,99 @@ namespace Pulumi.Gcp.Projects
     /// To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var serialPortPolicy = new Gcp.Projects.OrganizationPolicy("serialPortPolicy", new()
     ///     {
-    ///         var serialPortPolicy = new Gcp.Projects.OrganizationPolicy("serialPortPolicy", new Gcp.Projects.OrganizationPolicyArgs
+    ///         BooleanPolicy = new Gcp.Projects.Inputs.OrganizationPolicyBooleanPolicyArgs
     ///         {
-    ///             BooleanPolicy = new Gcp.Projects.Inputs.OrganizationPolicyBooleanPolicyArgs
-    ///             {
-    ///                 Enforced = true,
-    ///             },
-    ///             Constraint = "compute.disableSerialPortAccess",
-    ///             Project = "your-project-id",
-    ///         });
-    ///     }
+    ///             Enforced = true,
+    ///         },
+    ///         Constraint = "compute.disableSerialPortAccess",
+    ///         Project = "your-project-id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new()
     ///     {
-    ///         var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new Gcp.Projects.OrganizationPolicyArgs
+    ///         Constraint = "serviceuser.services",
+    ///         ListPolicy = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyArgs
     ///         {
-    ///             Constraint = "serviceuser.services",
-    ///             ListPolicy = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyArgs
+    ///             Allow = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyAllowArgs
     ///             {
-    ///                 Allow = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyAllowArgs
-    ///                 {
-    ///                     All = true,
-    ///                 },
+    ///                 All = true,
     ///             },
-    ///             Project = "your-project-id",
-    ///         });
-    ///     }
+    ///         },
+    ///         Project = "your-project-id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Or to deny some services, use the following instead:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new()
     ///     {
-    ///         var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new Gcp.Projects.OrganizationPolicyArgs
+    ///         Constraint = "serviceuser.services",
+    ///         ListPolicy = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyArgs
     ///         {
-    ///             Constraint = "serviceuser.services",
-    ///             ListPolicy = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyArgs
+    ///             Deny = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyDenyArgs
     ///             {
-    ///                 Deny = new Gcp.Projects.Inputs.OrganizationPolicyListPolicyDenyArgs
+    ///                 Values = new[]
     ///                 {
-    ///                     Values = 
-    ///                     {
-    ///                         "cloudresourcemanager.googleapis.com",
-    ///                     },
+    ///                     "cloudresourcemanager.googleapis.com",
     ///                 },
-    ///                 SuggestedValue = "compute.googleapis.com",
     ///             },
-    ///             Project = "your-project-id",
-    ///         });
-    ///     }
+    ///             SuggestedValue = "compute.googleapis.com",
+    ///         },
+    ///         Project = "your-project-id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// To restore the default project organization policy, use the following instead:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new()
     ///     {
-    ///         var servicesPolicy = new Gcp.Projects.OrganizationPolicy("servicesPolicy", new Gcp.Projects.OrganizationPolicyArgs
+    ///         Constraint = "serviceuser.services",
+    ///         Project = "your-project-id",
+    ///         RestorePolicy = new Gcp.Projects.Inputs.OrganizationPolicyRestorePolicyArgs
     ///         {
-    ///             Constraint = "serviceuser.services",
-    ///             Project = "your-project-id",
-    ///             RestorePolicy = new Gcp.Projects.Inputs.OrganizationPolicyRestorePolicyArgs
-    ///             {
-    ///                 Default = true,
-    ///             },
-    ///         });
-    ///     }
+    ///             Default = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -145,7 +137,7 @@ namespace Pulumi.Gcp.Projects
     /// ```
     /// </summary>
     [GcpResourceType("gcp:projects/organizationPolicy:OrganizationPolicy")]
-    public partial class OrganizationPolicy : Pulumi.CustomResource
+    public partial class OrganizationPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -239,7 +231,7 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
-    public sealed class OrganizationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -280,9 +272,10 @@ namespace Pulumi.Gcp.Projects
         public OrganizationPolicyArgs()
         {
         }
+        public static new OrganizationPolicyArgs Empty => new OrganizationPolicyArgs();
     }
 
-    public sealed class OrganizationPolicyState : Pulumi.ResourceArgs
+    public sealed class OrganizationPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -335,5 +328,6 @@ namespace Pulumi.Gcp.Projects
         public OrganizationPolicyState()
         {
         }
+        public static new OrganizationPolicyState Empty => new OrganizationPolicyState();
     }
 }

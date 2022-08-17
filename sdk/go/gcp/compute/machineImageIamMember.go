@@ -27,37 +27,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/compute.admin",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
-// 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-// 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-// 			PolicyData:   pulumi.String(admin.PolicyData),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
+//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
+//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -66,42 +69,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/compute.admin",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 					Condition: organizations.GetIAMPolicyBindingCondition{
-// 						Title:       "expires_after_2019_12_31",
-// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
-// 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-// 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-// 			PolicyData:   pulumi.String(admin.PolicyData),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: organizations.GetIAMPolicyBindingCondition{
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
+//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
+//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## google\_compute\_machine\_image\_iam\_binding
 //
@@ -109,26 +115,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewMachineImageIamBinding(ctx, "binding", &compute.MachineImageIamBindingArgs{
-// 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-// 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-// 			Role:         pulumi.String("roles/compute.admin"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewMachineImageIamBinding(ctx, "binding", &compute.MachineImageIamBindingArgs{
+//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
+//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Role:         pulumi.String("roles/compute.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -137,31 +146,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewMachineImageIamBinding(ctx, "binding", &compute.MachineImageIamBindingArgs{
-// 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-// 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-// 			Role:         pulumi.String("roles/compute.admin"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 			Condition: &compute.MachineImageIamBindingConditionArgs{
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewMachineImageIamBinding(ctx, "binding", &compute.MachineImageIamBindingArgs{
+//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
+//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Role:         pulumi.String("roles/compute.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &compute.MachineImageIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## google\_compute\_machine\_image\_iam\_member
 //
@@ -169,24 +181,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewMachineImageIamMember(ctx, "member", &compute.MachineImageIamMemberArgs{
-// 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-// 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-// 			Role:         pulumi.String("roles/compute.admin"),
-// 			Member:       pulumi.String("user:jane@example.com"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewMachineImageIamMember(ctx, "member", &compute.MachineImageIamMemberArgs{
+//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
+//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Role:         pulumi.String("roles/compute.admin"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -195,29 +210,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewMachineImageIamMember(ctx, "member", &compute.MachineImageIamMemberArgs{
-// 			Project:      pulumi.Any(google_compute_machine_image.Image.Project),
-// 			MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-// 			Role:         pulumi.String("roles/compute.admin"),
-// 			Member:       pulumi.String("user:jane@example.com"),
-// 			Condition: &compute.MachineImageIamMemberConditionArgs{
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewMachineImageIamMember(ctx, "member", &compute.MachineImageIamMemberArgs{
+//				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
+//				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
+//				Role:         pulumi.String("roles/compute.admin"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//				Condition: &compute.MachineImageIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -225,22 +243,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/machineImages/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
+//
+//	$ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
+//
+//	$ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor projects/{{project}}/global/machineImages/{{machine_image}}
+//
+//	$ pulumi import gcp:compute/machineImageIamMember:MachineImageIamMember editor projects/{{project}}/global/machineImages/{{machine_image}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type MachineImageIamMember struct {
@@ -399,7 +423,7 @@ func (i *MachineImageIamMember) ToMachineImageIamMemberOutputWithContext(ctx con
 // MachineImageIamMemberArrayInput is an input type that accepts MachineImageIamMemberArray and MachineImageIamMemberArrayOutput values.
 // You can construct a concrete instance of `MachineImageIamMemberArrayInput` via:
 //
-//          MachineImageIamMemberArray{ MachineImageIamMemberArgs{...} }
+//	MachineImageIamMemberArray{ MachineImageIamMemberArgs{...} }
 type MachineImageIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -424,7 +448,7 @@ func (i MachineImageIamMemberArray) ToMachineImageIamMemberArrayOutputWithContex
 // MachineImageIamMemberMapInput is an input type that accepts MachineImageIamMemberMap and MachineImageIamMemberMapOutput values.
 // You can construct a concrete instance of `MachineImageIamMemberMapInput` via:
 //
-//          MachineImageIamMemberMap{ "key": MachineImageIamMemberArgs{...} }
+//	MachineImageIamMemberMap{ "key": MachineImageIamMemberArgs{...} }
 type MachineImageIamMemberMapInput interface {
 	pulumi.Input
 

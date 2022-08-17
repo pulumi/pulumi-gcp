@@ -25,30 +25,30 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var central1b = Gcp.Container.GetEngineVersions.Invoke(new()
         ///     {
-        ///         var central1b = Output.Create(Gcp.Container.GetEngineVersions.InvokeAsync(new Gcp.Container.GetEngineVersionsArgs
-        ///         {
-        ///             Location = "us-central1-b",
-        ///             VersionPrefix = "1.12.",
-        ///         }));
-        ///         var foo = new Gcp.Container.Cluster("foo", new Gcp.Container.ClusterArgs
-        ///         {
-        ///             Location = "us-central1-b",
-        ///             NodeVersion = central1b.Apply(central1b =&gt; central1b.LatestNodeVersion),
-        ///             InitialNodeCount = 1,
-        ///         });
-        ///         this.StableChannelVersion = central1b.Apply(central1b =&gt; central1b.ReleaseChannelDefaultVersion?.STABLE);
-        ///     }
+        ///         Location = "us-central1-b",
+        ///         VersionPrefix = "1.12.",
+        ///     });
         /// 
-        ///     [Output("stableChannelVersion")]
-        ///     public Output&lt;string&gt; StableChannelVersion { get; set; }
-        /// }
+        ///     var foo = new Gcp.Container.Cluster("foo", new()
+        ///     {
+        ///         Location = "us-central1-b",
+        ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
+        ///         InitialNodeCount = 1,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stableChannelVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -70,30 +70,30 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var central1b = Gcp.Container.GetEngineVersions.Invoke(new()
         ///     {
-        ///         var central1b = Output.Create(Gcp.Container.GetEngineVersions.InvokeAsync(new Gcp.Container.GetEngineVersionsArgs
-        ///         {
-        ///             Location = "us-central1-b",
-        ///             VersionPrefix = "1.12.",
-        ///         }));
-        ///         var foo = new Gcp.Container.Cluster("foo", new Gcp.Container.ClusterArgs
-        ///         {
-        ///             Location = "us-central1-b",
-        ///             NodeVersion = central1b.Apply(central1b =&gt; central1b.LatestNodeVersion),
-        ///             InitialNodeCount = 1,
-        ///         });
-        ///         this.StableChannelVersion = central1b.Apply(central1b =&gt; central1b.ReleaseChannelDefaultVersion?.STABLE);
-        ///     }
+        ///         Location = "us-central1-b",
+        ///         VersionPrefix = "1.12.",
+        ///     });
         /// 
-        ///     [Output("stableChannelVersion")]
-        ///     public Output&lt;string&gt; StableChannelVersion { get; set; }
-        /// }
+        ///     var foo = new Gcp.Container.Cluster("foo", new()
+        ///     {
+        ///         Location = "us-central1-b",
+        ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
+        ///         InitialNodeCount = 1,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stableChannelVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Container
     }
 
 
-    public sealed class GetEngineVersionsArgs : Pulumi.InvokeArgs
+    public sealed class GetEngineVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location (region or zone) to list versions for.
@@ -135,9 +135,10 @@ namespace Pulumi.Gcp.Container
         public GetEngineVersionsArgs()
         {
         }
+        public static new GetEngineVersionsArgs Empty => new GetEngineVersionsArgs();
     }
 
-    public sealed class GetEngineVersionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEngineVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location (region or zone) to list versions for.
@@ -169,6 +170,7 @@ namespace Pulumi.Gcp.Container
         public GetEngineVersionsInvokeArgs()
         {
         }
+        public static new GetEngineVersionsInvokeArgs Empty => new GetEngineVersionsInvokeArgs();
     }
 
 

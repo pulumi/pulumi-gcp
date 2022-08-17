@@ -23,105 +23,102 @@ namespace Pulumi.Gcp.Healthcare
     /// ### Healthcare Fhir Store Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var @default = new Gcp.Healthcare.FhirStore("default", new Gcp.Healthcare.FhirStoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             Version = "R4",
-    ///             EnableUpdateCreate = false,
-    ///             DisableReferentialIntegrity = false,
-    ///             DisableResourceVersioning = false,
-    ///             EnableHistoryImport = false,
-    ///             NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
-    ///             {
-    ///                 PubsubTopic = topic.Id,
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "label1", "labelvalue1" },
-    ///             },
-    ///         });
-    ///     }
+    ///     var topic = new Gcp.PubSub.Topic("topic");
     /// 
-    /// }
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Healthcare Fhir Store Streaming Config
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new()
+    ///     {
+    ///         DatasetId = "bq_example_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DeleteContentsOnDestroy = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         Labels = 
     ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new Gcp.BigQuery.DatasetArgs
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         StreamConfigs = new[]
     ///         {
-    ///             DatasetId = "bq_example_dataset",
-    ///             FriendlyName = "test",
-    ///             Description = "This is a test description",
-    ///             Location = "US",
-    ///             DeleteContentsOnDestroy = true,
-    ///         });
-    ///         var @default = new Gcp.Healthcare.FhirStore("default", new Gcp.Healthcare.FhirStoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             Version = "R4",
-    ///             EnableUpdateCreate = false,
-    ///             DisableReferentialIntegrity = false,
-    ///             DisableResourceVersioning = false,
-    ///             EnableHistoryImport = false,
-    ///             Labels = 
+    ///             new Gcp.Healthcare.Inputs.FhirStoreStreamConfigArgs
     ///             {
-    ///                 { "label1", "labelvalue1" },
-    ///             },
-    ///             StreamConfigs = 
-    ///             {
-    ///                 new Gcp.Healthcare.Inputs.FhirStoreStreamConfigArgs
+    ///                 ResourceTypes = new[]
     ///                 {
-    ///                     ResourceTypes = 
+    ///                     "Observation",
+    ///                 },
+    ///                 BigqueryDestination = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationArgs
+    ///                 {
+    ///                     DatasetUri = Output.Tuple(bqDataset.Project, bqDataset.DatasetId).Apply(values =&gt;
     ///                     {
-    ///                         "Observation",
-    ///                     },
-    ///                     BigqueryDestination = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationArgs
+    ///                         var project = values.Item1;
+    ///                         var datasetId = values.Item2;
+    ///                         return $"bq://{project}.{datasetId}";
+    ///                     }),
+    ///                     SchemaConfig = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs
     ///                     {
-    ///                         DatasetUri = Output.Tuple(bqDataset.Project, bqDataset.DatasetId).Apply(values =&gt;
-    ///                         {
-    ///                             var project = values.Item1;
-    ///                             var datasetId = values.Item2;
-    ///                             return $"bq://{project}.{datasetId}";
-    ///                         }),
-    ///                         SchemaConfig = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs
-    ///                         {
-    ///                             RecursiveStructureDepth = 3,
-    ///                         },
+    ///                         RecursiveStructureDepth = 3,
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -137,7 +134,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/fhirStore:FhirStore")]
-    public partial class FhirStore : Pulumi.CustomResource
+    public partial class FhirStore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -287,7 +284,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class FhirStoreArgs : Pulumi.ResourceArgs
+    public sealed class FhirStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -402,9 +399,10 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreArgs()
         {
         }
+        public static new FhirStoreArgs Empty => new FhirStoreArgs();
     }
 
-    public sealed class FhirStoreState : Pulumi.ResourceArgs
+    public sealed class FhirStoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -525,5 +523,6 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreState()
         {
         }
+        public static new FhirStoreState Empty => new FhirStoreState();
     }
 }

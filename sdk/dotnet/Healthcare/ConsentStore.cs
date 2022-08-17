@@ -22,86 +22,85 @@ namespace Pulumi.Gcp.Healthcare
     /// ### Healthcare Consent Store Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///         });
-    ///     }
+    ///         Location = "us-central1",
+    ///     });
     /// 
-    /// }
+    ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Healthcare Consent Store Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             EnableConsentCreateOnUpdate = true,
-    ///             DefaultConsentTtl = "90000s",
-    ///             Labels = 
-    ///             {
-    ///                 { "label1", "labelvalue1" },
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "us-central1",
+    ///     });
     /// 
-    /// }
+    ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         EnableConsentCreateOnUpdate = true,
+    ///         DefaultConsentTtl = "90000s",
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Healthcare Consent Store Iam
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///         });
-    ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///         });
-    ///         var test_account = new Gcp.ServiceAccount.Account("test-account", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-account",
-    ///             DisplayName = "Test Service Account",
-    ///         });
-    ///         var test_iam = new Gcp.Healthcare.ConsentStoreIamMember("test-iam", new Gcp.Healthcare.ConsentStoreIamMemberArgs
-    ///         {
-    ///             Dataset = dataset.Id,
-    ///             ConsentStoreId = my_consent.Name,
-    ///             Role = "roles/editor",
-    ///             Member = test_account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         });
-    ///     }
+    ///         Location = "us-central1",
+    ///     });
     /// 
-    /// }
+    ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///     });
+    /// 
+    ///     var test_account = new Gcp.ServiceAccount.Account("test-account", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var test_iam = new Gcp.Healthcare.ConsentStoreIamMember("test-iam", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         ConsentStoreId = my_consent.Name,
+    ///         Role = "roles/editor",
+    ///         Member = test_account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -113,7 +112,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/consentStore:ConsentStore")]
-    public partial class ConsentStore : Pulumi.CustomResource
+    public partial class ConsentStore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -199,7 +198,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class ConsentStoreArgs : Pulumi.ResourceArgs
+    public sealed class ConsentStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -250,9 +249,10 @@ namespace Pulumi.Gcp.Healthcare
         public ConsentStoreArgs()
         {
         }
+        public static new ConsentStoreArgs Empty => new ConsentStoreArgs();
     }
 
-    public sealed class ConsentStoreState : Pulumi.ResourceArgs
+    public sealed class ConsentStoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -303,5 +303,6 @@ namespace Pulumi.Gcp.Healthcare
         public ConsentStoreState()
         {
         }
+        public static new ConsentStoreState Empty => new ConsentStoreState();
     }
 }

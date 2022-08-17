@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class ConsentStoreIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class ConsentStoreIamBindingConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public ConsentStoreIamBindingConditionGetArgs()
         {
         }
+        public static new ConsentStoreIamBindingConditionGetArgs Empty => new ConsentStoreIamBindingConditionGetArgs();
     }
 }

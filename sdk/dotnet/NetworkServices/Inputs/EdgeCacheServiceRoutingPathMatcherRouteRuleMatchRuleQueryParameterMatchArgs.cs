@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs Empty => new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs();
     }
 }

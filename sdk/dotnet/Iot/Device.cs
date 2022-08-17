@@ -22,66 +22,60 @@ namespace Pulumi.Gcp.Iot
     /// ### Cloudiot Device Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var registry = new Gcp.Iot.Registry("registry", new Gcp.Iot.RegistryArgs
-    ///         {
-    ///         });
-    ///         var test_device = new Gcp.Iot.Device("test-device", new Gcp.Iot.DeviceArgs
-    ///         {
-    ///             Registry = registry.Id,
-    ///         });
-    ///     }
+    ///     var registry = new Gcp.Iot.Registry("registry");
     /// 
-    /// }
+    ///     var test_device = new Gcp.Iot.Device("test-device", new()
+    ///     {
+    ///         Registry = registry.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Cloudiot Device Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var registry = new Gcp.Iot.Registry("registry");
+    /// 
+    ///     var test_device = new Gcp.Iot.Device("test-device", new()
     ///     {
-    ///         var registry = new Gcp.Iot.Registry("registry", new Gcp.Iot.RegistryArgs
+    ///         Registry = registry.Id,
+    ///         Credentials = new[]
     ///         {
-    ///         });
-    ///         var test_device = new Gcp.Iot.Device("test-device", new Gcp.Iot.DeviceArgs
-    ///         {
-    ///             Registry = registry.Id,
-    ///             Credentials = 
+    ///             new Gcp.Iot.Inputs.DeviceCredentialArgs
     ///             {
-    ///                 new Gcp.Iot.Inputs.DeviceCredentialArgs
+    ///                 PublicKey = new Gcp.Iot.Inputs.DeviceCredentialPublicKeyArgs
     ///                 {
-    ///                     PublicKey = new Gcp.Iot.Inputs.DeviceCredentialPublicKeyArgs
-    ///                     {
-    ///                         Format = "RSA_PEM",
-    ///                         Key = File.ReadAllText("test-fixtures/rsa_public.pem"),
-    ///                     },
+    ///                     Format = "RSA_PEM",
+    ///                     Key = File.ReadAllText("test-fixtures/rsa_public.pem"),
     ///                 },
     ///             },
-    ///             Blocked = false,
-    ///             LogLevel = "INFO",
-    ///             Metadata = 
-    ///             {
-    ///                 { "test_key_1", "test_value_1" },
-    ///             },
-    ///             GatewayConfig = new Gcp.Iot.Inputs.DeviceGatewayConfigArgs
-    ///             {
-    ///                 GatewayType = "NON_GATEWAY",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Blocked = false,
+    ///         LogLevel = "INFO",
+    ///         Metadata = 
+    ///         {
+    ///             { "test_key_1", "test_value_1" },
+    ///         },
+    ///         GatewayConfig = new Gcp.Iot.Inputs.DeviceGatewayConfigArgs
+    ///         {
+    ///             GatewayType = "NON_GATEWAY",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -93,7 +87,7 @@ namespace Pulumi.Gcp.Iot
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iot/device:Device")]
-    public partial class Device : Pulumi.CustomResource
+    public partial class Device : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If a device is blocked, connections or requests from this device will fail.
@@ -245,7 +239,7 @@ namespace Pulumi.Gcp.Iot
         }
     }
 
-    public sealed class DeviceArgs : Pulumi.ResourceArgs
+    public sealed class DeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If a device is blocked, connections or requests from this device will fail.
@@ -307,9 +301,10 @@ namespace Pulumi.Gcp.Iot
         public DeviceArgs()
         {
         }
+        public static new DeviceArgs Empty => new DeviceArgs();
     }
 
-    public sealed class DeviceState : Pulumi.ResourceArgs
+    public sealed class DeviceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If a device is blocked, connections or requests from this device will fail.
@@ -450,5 +445,6 @@ namespace Pulumi.Gcp.Iot
         public DeviceState()
         {
         }
+        public static new DeviceState Empty => new DeviceState();
     }
 }

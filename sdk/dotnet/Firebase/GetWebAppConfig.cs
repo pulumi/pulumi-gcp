@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Firebase
     }
 
 
-    public sealed class GetWebAppConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetWebAppConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
@@ -55,9 +55,10 @@ namespace Pulumi.Gcp.Firebase
         public GetWebAppConfigArgs()
         {
         }
+        public static new GetWebAppConfigArgs Empty => new GetWebAppConfigArgs();
     }
 
-    public sealed class GetWebAppConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWebAppConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
@@ -75,6 +76,7 @@ namespace Pulumi.Gcp.Firebase
         public GetWebAppConfigInvokeArgs()
         {
         }
+        public static new GetWebAppConfigInvokeArgs Empty => new GetWebAppConfigInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolNodeConfigTaintGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolNodeConfigTaintGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolNodeConfigTaintGetArgs()
         {
         }
+        public static new NodePoolNodeConfigTaintGetArgs Empty => new NodePoolNodeConfigTaintGetArgs();
     }
 }

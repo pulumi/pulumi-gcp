@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
 // ### Data Catalog Entry Group Basic
@@ -26,21 +26,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
-// 			EntryGroupId: pulumi.String("my_group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
+//				EntryGroupId: pulumi.String("my_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Data Catalog Entry Group Full
 //
@@ -48,31 +51,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
-// 			Description:  pulumi.String("example entry group"),
-// 			DisplayName:  pulumi.String("entry group"),
-// 			EntryGroupId: pulumi.String("my_group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
+//				Description:  pulumi.String("example entry group"),
+//				DisplayName:  pulumi.String("entry group"),
+//				EntryGroupId: pulumi.String("my_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// EntryGroup can be imported using any of these accepted formats
+// # EntryGroup can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+//
+//	$ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+//
 // ```
 type EntryGroup struct {
 	pulumi.CustomResourceState
@@ -222,7 +230,7 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 // EntryGroupArrayInput is an input type that accepts EntryGroupArray and EntryGroupArrayOutput values.
 // You can construct a concrete instance of `EntryGroupArrayInput` via:
 //
-//          EntryGroupArray{ EntryGroupArgs{...} }
+//	EntryGroupArray{ EntryGroupArgs{...} }
 type EntryGroupArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +255,7 @@ func (i EntryGroupArray) ToEntryGroupArrayOutputWithContext(ctx context.Context)
 // EntryGroupMapInput is an input type that accepts EntryGroupMap and EntryGroupMapOutput values.
 // You can construct a concrete instance of `EntryGroupMapInput` via:
 //
-//          EntryGroupMap{ "key": EntryGroupArgs{...} }
+//	EntryGroupMap{ "key": EntryGroupArgs{...} }
 type EntryGroupMapInput interface {
 	pulumi.Input
 

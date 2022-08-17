@@ -22,23 +22,22 @@ namespace Pulumi.Gcp.OsLogin
     /// ### Os Login Ssh Key Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var me = Output.Create(Gcp.Organizations.GetClientOpenIdUserInfo.InvokeAsync());
-    ///         var cache = new Gcp.OsLogin.SshPublicKey("cache", new Gcp.OsLogin.SshPublicKeyArgs
-    ///         {
-    ///             User = me.Apply(me =&gt; me.Email),
-    ///             Key = File.ReadAllText("path/to/id_rsa.pub"),
-    ///         });
-    ///     }
+    ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
     /// 
-    /// }
+    ///     var cache = new Gcp.OsLogin.SshPublicKey("cache", new()
+    ///     {
+    ///         User = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
+    ///         Key = File.ReadAllText("path/to/id_rsa.pub"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.Gcp.OsLogin
     /// ```
     /// </summary>
     [GcpResourceType("gcp:oslogin/sshPublicKey:SshPublicKey")]
-    public partial class SshPublicKey : Pulumi.CustomResource
+    public partial class SshPublicKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An expiration time in microseconds since epoch.
@@ -130,7 +129,7 @@ namespace Pulumi.Gcp.OsLogin
         }
     }
 
-    public sealed class SshPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class SshPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expiration time in microseconds since epoch.
@@ -159,9 +158,10 @@ namespace Pulumi.Gcp.OsLogin
         public SshPublicKeyArgs()
         {
         }
+        public static new SshPublicKeyArgs Empty => new SshPublicKeyArgs();
     }
 
-    public sealed class SshPublicKeyState : Pulumi.ResourceArgs
+    public sealed class SshPublicKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expiration time in microseconds since epoch.
@@ -196,5 +196,6 @@ namespace Pulumi.Gcp.OsLogin
         public SshPublicKeyState()
         {
         }
+        public static new SshPublicKeyState Empty => new SshPublicKeyState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc.Inputs
 {
 
-    public sealed class TriggerMatchingCriteriaGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerMatchingCriteriaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public TriggerMatchingCriteriaGetArgs()
         {
         }
+        public static new TriggerMatchingCriteriaGetArgs Empty => new TriggerMatchingCriteriaGetArgs();
     }
 }

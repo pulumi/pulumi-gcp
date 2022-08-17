@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
         ///     {
-        ///         var my_forwarding_rule = Output.Create(Gcp.Compute.GetForwardingRule.InvokeAsync(new Gcp.Compute.GetForwardingRuleArgs
-        ///         {
-        ///             Name = "forwarding-rule-us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "forwarding-rule-us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
         ///     {
-        ///         var my_forwarding_rule = Output.Create(Gcp.Compute.GetForwardingRule.InvokeAsync(new Gcp.Compute.GetForwardingRuleArgs
-        ///         {
-        ///             Name = "forwarding-rule-us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "forwarding-rule-us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetForwardingRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetForwardingRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the forwarding rule.
@@ -96,9 +92,10 @@ namespace Pulumi.Gcp.Compute
         public GetForwardingRuleArgs()
         {
         }
+        public static new GetForwardingRuleArgs Empty => new GetForwardingRuleArgs();
     }
 
-    public sealed class GetForwardingRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetForwardingRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the forwarding rule.
@@ -123,6 +120,7 @@ namespace Pulumi.Gcp.Compute
         public GetForwardingRuleInvokeArgs()
         {
         }
+        public static new GetForwardingRuleInvokeArgs Empty => new GetForwardingRuleInvokeArgs();
     }
 
 

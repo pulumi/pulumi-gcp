@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex.Inputs
 {
 
-    public sealed class AiMetadataStoreStateGetArgs : Pulumi.ResourceArgs
+    public sealed class AiMetadataStoreStateGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("diskUtilizationBytes")]
         public Input<string>? DiskUtilizationBytes { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public AiMetadataStoreStateGetArgs()
         {
         }
+        public static new AiMetadataStoreStateGetArgs Empty => new AiMetadataStoreStateGetArgs();
     }
 }

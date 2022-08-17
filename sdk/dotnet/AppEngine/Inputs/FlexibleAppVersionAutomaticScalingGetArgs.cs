@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionAutomaticScalingGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionAutomaticScalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time period that the Autoscaler should wait before it starts collecting information from a new instance.
@@ -94,5 +94,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionAutomaticScalingGetArgs()
         {
         }
+        public static new FlexibleAppVersionAutomaticScalingGetArgs Empty => new FlexibleAppVersionAutomaticScalingGetArgs();
     }
 }

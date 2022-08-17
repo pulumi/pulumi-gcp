@@ -14,99 +14,95 @@ namespace Pulumi.Gcp.GkeHub
     /// ### Multi Cluster Ingress
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
-    ///         var cluster = new Gcp.Container.Cluster("cluster", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             Location = "us-central1-a",
-    ///             InitialNodeCount = 1,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var membership = new Gcp.GkeHub.Membership("membership", new Gcp.GkeHub.MembershipArgs
-    ///         {
-    ///             MembershipId = "my-membership",
-    ///             Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
-    ///             {
-    ///                 GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
-    ///                 {
-    ///                     ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
-    ///                 },
-    ///             },
-    ///             Description = "Membership",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var feature = new Gcp.GkeHub.Feature("feature", new Gcp.GkeHub.FeatureArgs
-    ///         {
-    ///             Location = "global",
-    ///             Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
-    ///             {
-    ///                 Multiclusteringress = new Gcp.GkeHub.Inputs.FeatureSpecMulticlusteringressArgs
-    ///                 {
-    ///                     ConfigMembership = membership.Id,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///         Description = "Membership",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Multiclusteringress = new Gcp.GkeHub.Inputs.FeatureSpecMulticlusteringressArgs
+    ///             {
+    ///                 ConfigMembership = membership.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Multi Cluster Service Discovery
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
-    ///         var feature = new Gcp.GkeHub.Feature("feature", new Gcp.GkeHub.FeatureArgs
+    ///         Location = "global",
+    ///         Labels = 
     ///         {
-    ///             Location = "global",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Enable Anthos Service Mesh
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
-    ///         var feature = new Gcp.GkeHub.Feature("feature", new Gcp.GkeHub.FeatureArgs
-    ///         {
-    ///             Location = "global",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -126,7 +122,7 @@ namespace Pulumi.Gcp.GkeHub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gkehub/feature:Feature")]
-    public partial class Feature : Pulumi.CustomResource
+    public partial class Feature : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. When the Feature resource was created.
@@ -232,7 +228,7 @@ namespace Pulumi.Gcp.GkeHub
         }
     }
 
-    public sealed class FeatureArgs : Pulumi.ResourceArgs
+    public sealed class FeatureArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -273,9 +269,10 @@ namespace Pulumi.Gcp.GkeHub
         public FeatureArgs()
         {
         }
+        public static new FeatureArgs Empty => new FeatureArgs();
     }
 
-    public sealed class FeatureState : Pulumi.ResourceArgs
+    public sealed class FeatureState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. When the Feature resource was created.
@@ -358,5 +355,6 @@ namespace Pulumi.Gcp.GkeHub
         public FeatureState()
         {
         }
+        public static new FeatureState Empty => new FeatureState();
     }
 }

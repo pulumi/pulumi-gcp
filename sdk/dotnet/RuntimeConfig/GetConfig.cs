@@ -17,20 +17,18 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var run_service = Gcp.RuntimeConfig.GetConfig.Invoke(new()
         ///     {
-        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetConfig.InvokeAsync(new Gcp.RuntimeConfig.GetConfigArgs
-        ///         {
-        ///             Name = "my-service",
-        ///         }));
-        ///     }
+        ///         Name = "my-service",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -44,20 +42,18 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var run_service = Gcp.RuntimeConfig.GetConfig.Invoke(new()
         ///     {
-        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetConfig.InvokeAsync(new Gcp.RuntimeConfig.GetConfigArgs
-        ///         {
-        ///             Name = "my-service",
-        ///         }));
-        ///     }
+        ///         Name = "my-service",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -67,7 +63,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     }
 
 
-    public sealed class GetConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Runtime Configurator configuration.
@@ -85,9 +81,10 @@ namespace Pulumi.Gcp.RuntimeConfig
         public GetConfigArgs()
         {
         }
+        public static new GetConfigArgs Empty => new GetConfigArgs();
     }
 
-    public sealed class GetConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Runtime Configurator configuration.
@@ -105,6 +102,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         public GetConfigInvokeArgs()
         {
         }
+        public static new GetConfigInvokeArgs Empty => new GetConfigInvokeArgs();
     }
 
 

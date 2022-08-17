@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iot.Inputs
 {
 
-    public sealed class DeviceCredentialPublicKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class DeviceCredentialPublicKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format of the key.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Iot.Inputs
         public DeviceCredentialPublicKeyGetArgs()
         {
         }
+        public static new DeviceCredentialPublicKeyGetArgs Empty => new DeviceCredentialPublicKeyGetArgs();
     }
 }

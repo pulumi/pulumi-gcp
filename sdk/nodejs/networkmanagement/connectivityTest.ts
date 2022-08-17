@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * const vpc = new gcp.compute.Network("vpc", {});
  * const debian9 = gcp.compute.getImage({
- *     family: "debian-9",
+ *     family: "debian-11",
  *     project: "debian-cloud",
  * });
  * const source = new gcp.compute.Instance("source", {

@@ -14,111 +14,112 @@ namespace Pulumi.Gcp.BigQuery
     /// ### Bigquery Dataset Access Basic User
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
     ///     {
-    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///         });
-    ///         var bqowner = new Gcp.ServiceAccount.Account("bqowner", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "bqowner",
-    ///         });
-    ///         var access = new Gcp.BigQuery.DatasetAccess("access", new Gcp.BigQuery.DatasetAccessArgs
-    ///         {
-    ///             DatasetId = dataset.DatasetId,
-    ///             Role = "OWNER",
-    ///             UserByEmail = bqowner.Email,
-    ///         });
-    ///     }
+    ///         DatasetId = "example_dataset",
+    ///     });
     /// 
-    /// }
+    ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
+    ///     {
+    ///         AccountId = "bqowner",
+    ///     });
+    /// 
+    ///     var access = new Gcp.BigQuery.DatasetAccess("access", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "OWNER",
+    ///         UserByEmail = bqowner.Email,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigquery Dataset Access View
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @private = new Gcp.BigQuery.Dataset("private", new()
     ///     {
-    ///         var @private = new Gcp.BigQuery.Dataset("private", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset",
-    ///         });
-    ///         var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "example_dataset2",
-    ///         });
-    ///         var publicTable = new Gcp.BigQuery.Table("publicTable", new Gcp.BigQuery.TableArgs
-    ///         {
-    ///             DeletionProtection = false,
-    ///             DatasetId = publicDataset.DatasetId,
-    ///             TableId = "example_table",
-    ///             View = new Gcp.BigQuery.Inputs.TableViewArgs
-    ///             {
-    ///                 Query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-    ///                 UseLegacySql = false,
-    ///             },
-    ///         });
-    ///         var access = new Gcp.BigQuery.DatasetAccess("access", new Gcp.BigQuery.DatasetAccessArgs
-    ///         {
-    ///             DatasetId = @private.DatasetId,
-    ///             View = new Gcp.BigQuery.Inputs.DatasetAccessViewArgs
-    ///             {
-    ///                 ProjectId = publicTable.Project,
-    ///                 DatasetId = publicDataset.DatasetId,
-    ///                 TableId = publicTable.TableId,
-    ///             },
-    ///         });
-    ///     }
+    ///         DatasetId = "example_dataset",
+    ///     });
     /// 
-    /// }
+    ///     var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset2",
+    ///     });
+    /// 
+    ///     var publicTable = new Gcp.BigQuery.Table("publicTable", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = publicDataset.DatasetId,
+    ///         TableId = "example_table",
+    ///         View = new Gcp.BigQuery.Inputs.TableViewArgs
+    ///         {
+    ///             Query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+    ///             UseLegacySql = false,
+    ///         },
+    ///     });
+    /// 
+    ///     var access = new Gcp.BigQuery.DatasetAccess("access", new()
+    ///     {
+    ///         DatasetId = @private.DatasetId,
+    ///         View = new Gcp.BigQuery.Inputs.DatasetAccessViewArgs
+    ///         {
+    ///             ProjectId = publicTable.Project,
+    ///             DatasetId = publicDataset.DatasetId,
+    ///             TableId = publicTable.TableId,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Bigquery Dataset Access Authorized Dataset
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @private = new Gcp.BigQuery.Dataset("private", new()
     ///     {
-    ///         var @private = new Gcp.BigQuery.Dataset("private", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "private",
-    ///         });
-    ///         var @public = new Gcp.BigQuery.Dataset("public", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "public",
-    ///         });
-    ///         var access = new Gcp.BigQuery.DatasetAccess("access", new Gcp.BigQuery.DatasetAccessArgs
-    ///         {
-    ///             DatasetId = @private.DatasetId,
-    ///             AuthorizedDataset = new Gcp.BigQuery.Inputs.DatasetAccessAuthorizedDatasetArgs
-    ///             {
-    ///                 Dataset = new Gcp.BigQuery.Inputs.DatasetAccessAuthorizedDatasetDatasetArgs
-    ///                 {
-    ///                     ProjectId = @public.Project,
-    ///                     DatasetId = @public.DatasetId,
-    ///                 },
-    ///                 TargetTypes = 
-    ///                 {
-    ///                     "VIEWS",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         DatasetId = "private",
+    ///     });
     /// 
-    /// }
+    ///     var @public = new Gcp.BigQuery.Dataset("public", new()
+    ///     {
+    ///         DatasetId = "public",
+    ///     });
+    /// 
+    ///     var access = new Gcp.BigQuery.DatasetAccess("access", new()
+    ///     {
+    ///         DatasetId = @private.DatasetId,
+    ///         AuthorizedDataset = new Gcp.BigQuery.Inputs.DatasetAccessAuthorizedDatasetArgs
+    ///         {
+    ///             Dataset = new Gcp.BigQuery.Inputs.DatasetAccessAuthorizedDatasetDatasetArgs
+    ///             {
+    ///                 ProjectId = @public.Project,
+    ///                 DatasetId = @public.DatasetId,
+    ///             },
+    ///             TargetTypes = new[]
+    ///             {
+    ///                 "VIEWS",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -126,7 +127,7 @@ namespace Pulumi.Gcp.BigQuery
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:bigquery/datasetAccess:DatasetAccess")]
-    public partial class DatasetAccess : Pulumi.CustomResource
+    public partial class DatasetAccess : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
@@ -254,7 +255,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class DatasetAccessArgs : Pulumi.ResourceArgs
+    public sealed class DatasetAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset this entry applies to
@@ -334,9 +335,10 @@ namespace Pulumi.Gcp.BigQuery
         public DatasetAccessArgs()
         {
         }
+        public static new DatasetAccessArgs Empty => new DatasetAccessArgs();
     }
 
-    public sealed class DatasetAccessState : Pulumi.ResourceArgs
+    public sealed class DatasetAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
@@ -423,5 +425,6 @@ namespace Pulumi.Gcp.BigQuery
         public DatasetAccessState()
         {
         }
+        public static new DatasetAccessState Empty => new DatasetAccessState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigSecurityConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigSecurityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Kerberos Configuration
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigSecurityConfigArgs()
         {
         }
+        public static new ClusterClusterConfigSecurityConfigArgs Empty => new ClusterClusterConfigSecurityConfigArgs();
     }
 }

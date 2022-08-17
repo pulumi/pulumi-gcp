@@ -33,85 +33,80 @@ namespace Pulumi.Gcp.Compute
     /// ### Firewall Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var defaultFirewall = new Gcp.Compute.Firewall("defaultFirewall", new Gcp.Compute.FirewallArgs
-    ///         {
-    ///             Network = defaultNetwork.Name,
-    ///             Allows = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
-    ///                 {
-    ///                     Protocol = "icmp",
-    ///                 },
-    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
-    ///                 {
-    ///                     Protocol = "tcp",
-    ///                     Ports = 
-    ///                     {
-    ///                         "80",
-    ///                         "8080",
-    ///                         "1000-2000",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             SourceTags = 
-    ///             {
-    ///                 "web",
-    ///             },
-    ///         });
-    ///     }
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
-    /// }
+    ///     var defaultFirewall = new Gcp.Compute.Firewall("defaultFirewall", new()
+    ///     {
+    ///         Network = defaultNetwork.Name,
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "80",
+    ///                     "8080",
+    ///                     "1000-2000",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SourceTags = new[]
+    ///         {
+    ///             "web",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Firewall With Target Tags
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rules = new Gcp.Compute.Firewall("rules", new()
     ///     {
-    ///         var rules = new Gcp.Compute.Firewall("rules", new Gcp.Compute.FirewallArgs
+    ///         Allows = new[]
     ///         {
-    ///             Allows = 
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
     ///             {
-    ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///                 Ports = new[]
     ///                 {
-    ///                     Ports = 
-    ///                     {
-    ///                         "80",
-    ///                         "8080",
-    ///                         "1000-2000",
-    ///                     },
-    ///                     Protocol = "tcp",
+    ///                     "80",
+    ///                     "8080",
+    ///                     "1000-2000",
     ///                 },
+    ///                 Protocol = "tcp",
     ///             },
-    ///             Description = "Creates firewall rule targeting tagged instances",
-    ///             Network = "default",
-    ///             Project = "my-project-name",
-    ///             SourceTags = 
-    ///             {
-    ///                 "foo",
-    ///             },
-    ///             TargetTags = 
-    ///             {
-    ///                 "web",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Description = "Creates firewall rule targeting tagged instances",
+    ///         Network = "default",
+    ///         Project = "my-project-name",
+    ///         SourceTags = new[]
+    ///         {
+    ///             "foo",
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "web",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -131,7 +126,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/firewall:Firewall")]
-    public partial class Firewall : Pulumi.CustomResource
+    public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule
@@ -358,7 +353,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class FirewallArgs : Pulumi.ResourceArgs
+    public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
         [Input("allows")]
         private InputList<Inputs.FirewallAllowArgs>? _allows;
@@ -580,9 +575,10 @@ namespace Pulumi.Gcp.Compute
         public FirewallArgs()
         {
         }
+        public static new FirewallArgs Empty => new FirewallArgs();
     }
 
-    public sealed class FirewallState : Pulumi.ResourceArgs
+    public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
         [Input("allows")]
         private InputList<Inputs.FirewallAllowGetArgs>? _allows;
@@ -816,5 +812,6 @@ namespace Pulumi.Gcp.Compute
         public FirewallState()
         {
         }
+        public static new FirewallState Empty => new FirewallState();
     }
 }

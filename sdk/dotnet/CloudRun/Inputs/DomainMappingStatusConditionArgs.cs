@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class DomainMappingStatusConditionArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingStatusConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("message")]
         public Input<string>? Message { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public DomainMappingStatusConditionArgs()
         {
         }
+        public static new DomainMappingStatusConditionArgs Empty => new DomainMappingStatusConditionArgs();
     }
 }

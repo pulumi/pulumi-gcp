@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageGuestAcceleratorGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageGuestAcceleratorGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageGuestAcceleratorGetArgs()
         {
         }
+        public static new InstanceFromMachineImageGuestAcceleratorGetArgs Empty => new InstanceFromMachineImageGuestAcceleratorGetArgs();
     }
 }

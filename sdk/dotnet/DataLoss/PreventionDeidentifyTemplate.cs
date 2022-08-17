@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.DataLoss
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate")]
-    public partial class PreventionDeidentifyTemplate : Pulumi.CustomResource
+    public partial class PreventionDeidentifyTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration of the deidentify template
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.DataLoss
         }
     }
 
-    public sealed class PreventionDeidentifyTemplateArgs : Pulumi.ResourceArgs
+    public sealed class PreventionDeidentifyTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration of the deidentify template
@@ -148,9 +148,10 @@ namespace Pulumi.Gcp.DataLoss
         public PreventionDeidentifyTemplateArgs()
         {
         }
+        public static new PreventionDeidentifyTemplateArgs Empty => new PreventionDeidentifyTemplateArgs();
     }
 
-    public sealed class PreventionDeidentifyTemplateState : Pulumi.ResourceArgs
+    public sealed class PreventionDeidentifyTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration of the deidentify template
@@ -190,5 +191,6 @@ namespace Pulumi.Gcp.DataLoss
         public PreventionDeidentifyTemplateState()
         {
         }
+        public static new PreventionDeidentifyTemplateState Empty => new PreventionDeidentifyTemplateState();
     }
 }

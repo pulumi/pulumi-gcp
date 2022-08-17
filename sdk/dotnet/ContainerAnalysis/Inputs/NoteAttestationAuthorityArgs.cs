@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ContainerAnalysis.Inputs
 {
 
-    public sealed class NoteAttestationAuthorityArgs : Pulumi.ResourceArgs
+    public sealed class NoteAttestationAuthorityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This submessage provides human-readable hints about the purpose of
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         public NoteAttestationAuthorityArgs()
         {
         }
+        public static new NoteAttestationAuthorityArgs Empty => new NoteAttestationAuthorityArgs();
     }
 }

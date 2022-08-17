@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class AppProfileSingleClusterRoutingArgs : Pulumi.ResourceArgs
+    public sealed class AppProfileSingleClusterRoutingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public AppProfileSingleClusterRoutingArgs()
         {
         }
+        public static new AppProfileSingleClusterRoutingArgs Empty => new AppProfileSingleClusterRoutingArgs();
     }
 }

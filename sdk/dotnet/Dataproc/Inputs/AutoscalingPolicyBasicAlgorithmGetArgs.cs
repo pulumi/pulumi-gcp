@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class AutoscalingPolicyBasicAlgorithmGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyBasicAlgorithmGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Duration between scaling events. A scaling period starts after the
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public AutoscalingPolicyBasicAlgorithmGetArgs()
         {
         }
+        public static new AutoscalingPolicyBasicAlgorithmGetArgs Empty => new AutoscalingPolicyBasicAlgorithmGetArgs();
     }
 }

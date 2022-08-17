@@ -15,12 +15,14 @@ import (
 // an existing Google Cloud Platform folder.
 //
 // > **Note:** This resource _must not_ be used in conjunction with
-//    `folder.IAMPolicy` or they will fight over what your policy
-//    should be.
+//
+//	`folder.IAMPolicy` or they will fight over what your policy
+//	should be.
 //
 // > **Note:** On create, this resource will overwrite members of any existing roles.
-//     Use `pulumi import` and inspect the output to ensure
-//     your existing members are preserved.
+//
+//	Use `pulumi import` and inspect the output to ensure
+//	your existing members are preserved.
 //
 // ## Example Usage
 //
@@ -28,33 +30,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Department 1"),
-// 			Parent:      pulumi.String("organizations/1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
-// 			Folder: department1.Name,
-// 			Role:   pulumi.String("roles/editor"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:alice@gmail.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("Department 1"),
+//				Parent:      pulumi.String("organizations/1234567"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
+//				Folder: department1.Name,
+//				Role:   pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:alice@gmail.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,10 +69,12 @@ import (
 // These bindings can be imported using the `folder` and role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+//
+//	$ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMBinding struct {
@@ -236,7 +243,7 @@ func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindi
 // IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
 // You can construct a concrete instance of `IAMBindingArrayInput` via:
 //
-//          IAMBindingArray{ IAMBindingArgs{...} }
+//	IAMBindingArray{ IAMBindingArgs{...} }
 type IAMBindingArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +268,7 @@ func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context)
 // IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
 // You can construct a concrete instance of `IAMBindingMapInput` via:
 //
-//          IAMBindingMap{ "key": IAMBindingArgs{...} }
+//	IAMBindingMap{ "key": IAMBindingArgs{...} }
 type IAMBindingMapInput interface {
 	pulumi.Input
 

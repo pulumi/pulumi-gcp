@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateManager.Inputs
 {
 
-    public sealed class CertificateSelfManagedArgs : Pulumi.ResourceArgs
+    public sealed class CertificateSelfManagedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate chain in PEM-encoded form.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         public CertificateSelfManagedArgs()
         {
         }
+        public static new CertificateSelfManagedArgs Empty => new CertificateSelfManagedArgs();
     }
 }

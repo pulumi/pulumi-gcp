@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIssuancePolicyIdentityConstraintsArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIssuancePolicyIdentityConstraintsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
@@ -38,5 +38,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIssuancePolicyIdentityConstraintsArgs()
         {
         }
+        public static new CaPoolIssuancePolicyIdentityConstraintsArgs Empty => new CaPoolIssuancePolicyIdentityConstraintsArgs();
     }
 }

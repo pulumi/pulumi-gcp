@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/workflows/docs/reference/rest/v1/projects.locations.workflows)
 // * How-to Guides
-//     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
+//   - [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 //
 // ## Example Usage
 // ### Workflow Basic
@@ -25,27 +25,30 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workflows"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workflows"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("my-account"),
-// 			DisplayName: pulumi.String("Test Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
-// 			Region:         pulumi.String("us-central1"),
-// 			Description:    pulumi.String("Magic"),
-// 			ServiceAccount: testAccount.ID(),
-// 			SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow, feel free to replace it with your source code
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Description:    pulumi.String("Magic"),
+//				ServiceAccount: testAccount.ID(),
+//				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow, feel free to replace it with your source code
+//
 // #
 // # This workflow does the following:
 // # - reads current time and date information from an external API and stores
@@ -55,29 +58,32 @@ import (
 // # - returns the list of articles as an output of the workflow
 // # FYI, In terraform you need to escape the $$ or it will cause errors.
 //
-// - getCurrentTime:
+//   - getCurrentTime:
 //     call: http.get
 //     args:
-//         url: https://us-central1-workflowsample.cloudfunctions.net/datetime
+//     url: https://us-central1-workflowsample.cloudfunctions.net/datetime
 //     result: CurrentDateTime
-// - readWikipedia:
+//   - readWikipedia:
 //     call: http.get
 //     args:
-//         url: https://en.wikipedia.org/w/api.php
-//         query:
-//             action: opensearch
-//             search: %v
+//     url: https://en.wikipedia.org/w/api.php
+//     query:
+//     action: opensearch
+//     search: %v
 //     result: WikiResult
-// - returnOutput:
+//   - returnOutput:
 //     return: %v
+//
 // `, CurrentDateTime.Body.DayOfTheWeek, WikiResult.Body[1])),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -289,7 +295,7 @@ func (i *Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutp
 // WorkflowArrayInput is an input type that accepts WorkflowArray and WorkflowArrayOutput values.
 // You can construct a concrete instance of `WorkflowArrayInput` via:
 //
-//          WorkflowArray{ WorkflowArgs{...} }
+//	WorkflowArray{ WorkflowArgs{...} }
 type WorkflowArrayInput interface {
 	pulumi.Input
 
@@ -314,7 +320,7 @@ func (i WorkflowArray) ToWorkflowArrayOutputWithContext(ctx context.Context) Wor
 // WorkflowMapInput is an input type that accepts WorkflowMap and WorkflowMapOutput values.
 // You can construct a concrete instance of `WorkflowMapInput` via:
 //
-//          WorkflowMap{ "key": WorkflowArgs{...} }
+//	WorkflowMap{ "key": WorkflowArgs{...} }
 type WorkflowMapInput interface {
 	pulumi.Input
 

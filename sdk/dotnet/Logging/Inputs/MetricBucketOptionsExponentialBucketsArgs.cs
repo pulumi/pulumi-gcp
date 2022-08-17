@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class MetricBucketOptionsExponentialBucketsArgs : Pulumi.ResourceArgs
+    public sealed class MetricBucketOptionsExponentialBucketsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be greater than 1.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public MetricBucketOptionsExponentialBucketsArgs()
         {
         }
+        public static new MetricBucketOptionsExponentialBucketsArgs Empty => new MetricBucketOptionsExponentialBucketsArgs();
     }
 }

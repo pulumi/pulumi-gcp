@@ -48,10 +48,14 @@ public final class DatabaseInstanceSettings {
     private final @Nullable String collation;
     private final @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
     /**
-     * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
      * 
      */
     private final @Nullable Boolean diskAutoresize;
+    /**
+     * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     private final @Nullable Integer diskAutoresizeLimit;
     /**
      * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
@@ -166,12 +170,16 @@ public final class DatabaseInstanceSettings {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
     }
     /**
-     * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
      * 
      */
     public Optional<Boolean> diskAutoresize() {
         return Optional.ofNullable(this.diskAutoresize);
     }
+    /**
+     * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     public Optional<Integer> diskAutoresizeLimit() {
         return Optional.ofNullable(this.diskAutoresizeLimit);
     }

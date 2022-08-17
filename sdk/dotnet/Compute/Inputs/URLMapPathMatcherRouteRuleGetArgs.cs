@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherRouteRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherRouteRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
@@ -83,5 +83,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherRouteRuleGetArgs()
         {
         }
+        public static new URLMapPathMatcherRouteRuleGetArgs Empty => new URLMapPathMatcherRouteRuleGetArgs();
     }
 }

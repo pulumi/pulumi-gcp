@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceLogConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceLogConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable logging for traffic served by this service.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceLogConfigGetArgs()
         {
         }
+        public static new EdgeCacheServiceLogConfigGetArgs Empty => new EdgeCacheServiceLogConfigGetArgs();
     }
 }

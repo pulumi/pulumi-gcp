@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Endpoints.Inputs
 {
 
-    public sealed class ServiceApiMethodArgs : Pulumi.ResourceArgs
+    public sealed class ServiceApiMethodArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Endpoints.Inputs
         public ServiceApiMethodArgs()
         {
         }
+        public static new ServiceApiMethodArgs Empty => new ServiceApiMethodArgs();
     }
 }

@@ -27,97 +27,98 @@ namespace Pulumi.Gcp.Compute
     /// ### Target Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vmimage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var vmimage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var target_vm = new Gcp.Compute.Instance("target-vm", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             Zone = "us-central1-a",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = vmimage.Apply(vmimage =&gt; vmimage.SelfLink),
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var @default = new Gcp.Compute.TargetInstance("default", new Gcp.Compute.TargetInstanceArgs
-    ///         {
-    ///             Instance = target_vm.Id,
-    ///         });
-    ///     }
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
     /// 
-    /// }
+    ///     var target_vm = new Gcp.Compute.Instance("target-vm", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = vmimage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.TargetInstance("default", new()
+    ///     {
+    ///         Instance = target_vm.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Target Instance Custom Network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var target_vmNetwork = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
-    ///         var target_vmNetwork = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
-    ///         {
-    ///             Name = "default",
-    ///         }));
-    ///         var vmimage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-10",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var target_vmInstance = new Gcp.Compute.Instance("target-vmInstance", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             Zone = "us-central1-a",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = vmimage.Apply(vmimage =&gt; vmimage.SelfLink),
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Network = "default",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var customNetwork = new Gcp.Compute.TargetInstance("customNetwork", new Gcp.Compute.TargetInstanceArgs
-    ///         {
-    ///             Instance = target_vmInstance.Id,
-    ///             Network = target_vmNetwork.Apply(target_vmNetwork =&gt; target_vmNetwork.SelfLink),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Name = "default",
+    ///     });
     /// 
-    /// }
+    ///     var vmimage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-10",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var target_vmInstance = new Gcp.Compute.Instance("target-vmInstance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = vmimage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var customNetwork = new Gcp.Compute.TargetInstance("customNetwork", new()
+    ///     {
+    ///         Instance = target_vmInstance.Id,
+    ///         Network = target_vmNetwork.Apply(getNetworkResult =&gt; getNetworkResult).Apply(target_vmNetwork =&gt; target_vmNetwork.Apply(getNetworkResult =&gt; getNetworkResult.SelfLink)),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -141,7 +142,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/targetInstance:TargetInstance")]
-    public partial class TargetInstance : Pulumi.CustomResource
+    public partial class TargetInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -256,7 +257,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class TargetInstanceArgs : Pulumi.ResourceArgs
+    public sealed class TargetInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -318,9 +319,10 @@ namespace Pulumi.Gcp.Compute
         public TargetInstanceArgs()
         {
         }
+        public static new TargetInstanceArgs Empty => new TargetInstanceArgs();
     }
 
-    public sealed class TargetInstanceState : Pulumi.ResourceArgs
+    public sealed class TargetInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -394,5 +396,6 @@ namespace Pulumi.Gcp.Compute
         public TargetInstanceState()
         {
         }
+        public static new TargetInstanceState Empty => new TargetInstanceState();
     }
 }

@@ -22,76 +22,77 @@ namespace Pulumi.Gcp.Tpu
     /// ### TPU Node Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
-    ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
-    ///         {
-    ///             Zone = "us-central1-b",
-    ///             AcceleratorType = "v3-8",
-    ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
-    ///             CidrBlock = "10.2.0.0/29",
-    ///         });
-    ///     }
+    ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
     /// 
-    /// }
+    ///     var tpu = new Gcp.Tpu.Node("tpu", new()
+    ///     {
+    ///         Zone = "us-central1-b",
+    ///         AcceleratorType = "v3-8",
+    ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
+    ///         CidrBlock = "10.2.0.0/29",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### TPU Node Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
-    ///         var network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
-    ///         {
-    ///             Name = "default",
-    ///         }));
-    ///         var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = network.Apply(network =&gt; network.Id),
-    ///         });
-    ///         var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = network.Apply(network =&gt; network.Id),
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 serviceRange.Name,
-    ///             },
-    ///         });
-    ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
-    ///         {
-    ///             Zone = "us-central1-b",
-    ///             AcceleratorType = "v3-8",
-    ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
-    ///             Description = "Google Provider test TPU",
-    ///             UseServiceNetworking = true,
-    ///             Network = privateServiceConnection.Network,
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             SchedulingConfig = new Gcp.Tpu.Inputs.NodeSchedulingConfigArgs
-    ///             {
-    ///                 Preemptible = true,
-    ///             },
-    ///         });
-    ///     }
+    ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
     /// 
-    /// }
+    ///     var network = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "default",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     {
+    ///         Network = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             serviceRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var tpu = new Gcp.Tpu.Node("tpu", new()
+    ///     {
+    ///         Zone = "us-central1-b",
+    ///         AcceleratorType = "v3-8",
+    ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
+    ///         Description = "Google Provider test TPU",
+    ///         UseServiceNetworking = true,
+    ///         Network = privateServiceConnection.Network,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         SchedulingConfig = new Gcp.Tpu.Inputs.NodeSchedulingConfigArgs
+    ///         {
+    ///             Preemptible = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -115,7 +116,7 @@ namespace Pulumi.Gcp.Tpu
     /// ```
     /// </summary>
     [GcpResourceType("gcp:tpu/node:Node")]
-    public partial class Node : Pulumi.CustomResource
+    public partial class Node : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of hardware accelerators associated with this node.
@@ -256,7 +257,7 @@ namespace Pulumi.Gcp.Tpu
         }
     }
 
-    public sealed class NodeArgs : Pulumi.ResourceArgs
+    public sealed class NodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of hardware accelerators associated with this node.
@@ -348,9 +349,10 @@ namespace Pulumi.Gcp.Tpu
         public NodeArgs()
         {
         }
+        public static new NodeArgs Empty => new NodeArgs();
     }
 
-    public sealed class NodeState : Pulumi.ResourceArgs
+    public sealed class NodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of hardware accelerators associated with this node.
@@ -462,5 +464,6 @@ namespace Pulumi.Gcp.Tpu
         public NodeState()
         {
         }
+        public static new NodeState Empty => new NodeState();
     }
 }

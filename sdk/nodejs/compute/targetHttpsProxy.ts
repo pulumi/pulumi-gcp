@@ -61,6 +61,12 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
     }
 
     /**
+     * A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     */
+    public readonly certificateMap!: pulumi.Output<string | undefined>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -111,7 +117,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * connections between users and the load balancer. At least one SSL
      * certificate must be specified.
      */
-    public readonly sslCertificates!: pulumi.Output<string[]>;
+    public readonly sslCertificates!: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -137,6 +143,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetHttpsProxyState | undefined;
+            resourceInputs["certificateMap"] = state ? state.certificateMap : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -150,12 +157,10 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as TargetHttpsProxyArgs | undefined;
-            if ((!args || args.sslCertificates === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sslCertificates'");
-            }
             if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
+            resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -177,6 +182,12 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetHttpsProxy resources.
  */
 export interface TargetHttpsProxyState {
+    /**
+     * A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     */
+    certificateMap?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -247,6 +258,12 @@ export interface TargetHttpsProxyState {
  */
 export interface TargetHttpsProxyArgs {
     /**
+     * A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     */
+    certificateMap?: pulumi.Input<string>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
@@ -285,7 +302,7 @@ export interface TargetHttpsProxyArgs {
      * connections between users and the load balancer. At least one SSL
      * certificate must be specified.
      */
-    sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy

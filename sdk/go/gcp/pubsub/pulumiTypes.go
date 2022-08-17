@@ -19,7 +19,7 @@ type LiteSubscriptionDeliveryConfig struct {
 // LiteSubscriptionDeliveryConfigInput is an input type that accepts LiteSubscriptionDeliveryConfigArgs and LiteSubscriptionDeliveryConfigOutput values.
 // You can construct a concrete instance of `LiteSubscriptionDeliveryConfigInput` via:
 //
-//          LiteSubscriptionDeliveryConfigArgs{...}
+//	LiteSubscriptionDeliveryConfigArgs{...}
 type LiteSubscriptionDeliveryConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i LiteSubscriptionDeliveryConfigArgs) ToLiteSubscriptionDeliveryConfigPtrO
 // LiteSubscriptionDeliveryConfigPtrInput is an input type that accepts LiteSubscriptionDeliveryConfigArgs, LiteSubscriptionDeliveryConfigPtr and LiteSubscriptionDeliveryConfigPtrOutput values.
 // You can construct a concrete instance of `LiteSubscriptionDeliveryConfigPtrInput` via:
 //
-//          LiteSubscriptionDeliveryConfigArgs{...}
+//	        LiteSubscriptionDeliveryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LiteSubscriptionDeliveryConfigPtrInput interface {
 	pulumi.Input
 
@@ -162,7 +162,7 @@ type LiteTopicPartitionConfig struct {
 // LiteTopicPartitionConfigInput is an input type that accepts LiteTopicPartitionConfigArgs and LiteTopicPartitionConfigOutput values.
 // You can construct a concrete instance of `LiteTopicPartitionConfigInput` via:
 //
-//          LiteTopicPartitionConfigArgs{...}
+//	LiteTopicPartitionConfigArgs{...}
 type LiteTopicPartitionConfigInput interface {
 	pulumi.Input
 
@@ -201,11 +201,11 @@ func (i LiteTopicPartitionConfigArgs) ToLiteTopicPartitionConfigPtrOutputWithCon
 // LiteTopicPartitionConfigPtrInput is an input type that accepts LiteTopicPartitionConfigArgs, LiteTopicPartitionConfigPtr and LiteTopicPartitionConfigPtrOutput values.
 // You can construct a concrete instance of `LiteTopicPartitionConfigPtrInput` via:
 //
-//          LiteTopicPartitionConfigArgs{...}
+//	        LiteTopicPartitionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LiteTopicPartitionConfigPtrInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ type LiteTopicPartitionConfigCapacity struct {
 // LiteTopicPartitionConfigCapacityInput is an input type that accepts LiteTopicPartitionConfigCapacityArgs and LiteTopicPartitionConfigCapacityOutput values.
 // You can construct a concrete instance of `LiteTopicPartitionConfigCapacityInput` via:
 //
-//          LiteTopicPartitionConfigCapacityArgs{...}
+//	LiteTopicPartitionConfigCapacityArgs{...}
 type LiteTopicPartitionConfigCapacityInput interface {
 	pulumi.Input
 
@@ -359,11 +359,11 @@ func (i LiteTopicPartitionConfigCapacityArgs) ToLiteTopicPartitionConfigCapacity
 // LiteTopicPartitionConfigCapacityPtrInput is an input type that accepts LiteTopicPartitionConfigCapacityArgs, LiteTopicPartitionConfigCapacityPtr and LiteTopicPartitionConfigCapacityPtrOutput values.
 // You can construct a concrete instance of `LiteTopicPartitionConfigCapacityPtrInput` via:
 //
-//          LiteTopicPartitionConfigCapacityArgs{...}
+//	        LiteTopicPartitionConfigCapacityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LiteTopicPartitionConfigCapacityPtrInput interface {
 	pulumi.Input
 
@@ -475,7 +475,7 @@ type LiteTopicReservationConfig struct {
 // LiteTopicReservationConfigInput is an input type that accepts LiteTopicReservationConfigArgs and LiteTopicReservationConfigOutput values.
 // You can construct a concrete instance of `LiteTopicReservationConfigInput` via:
 //
-//          LiteTopicReservationConfigArgs{...}
+//	LiteTopicReservationConfigArgs{...}
 type LiteTopicReservationConfigInput interface {
 	pulumi.Input
 
@@ -511,11 +511,11 @@ func (i LiteTopicReservationConfigArgs) ToLiteTopicReservationConfigPtrOutputWit
 // LiteTopicReservationConfigPtrInput is an input type that accepts LiteTopicReservationConfigArgs, LiteTopicReservationConfigPtr and LiteTopicReservationConfigPtrOutput values.
 // You can construct a concrete instance of `LiteTopicReservationConfigPtrInput` via:
 //
-//          LiteTopicReservationConfigArgs{...}
+//	        LiteTopicReservationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LiteTopicReservationConfigPtrInput interface {
 	pulumi.Input
 
@@ -619,7 +619,7 @@ type LiteTopicRetentionConfig struct {
 // LiteTopicRetentionConfigInput is an input type that accepts LiteTopicRetentionConfigArgs and LiteTopicRetentionConfigOutput values.
 // You can construct a concrete instance of `LiteTopicRetentionConfigInput` via:
 //
-//          LiteTopicRetentionConfigArgs{...}
+//	LiteTopicRetentionConfigArgs{...}
 type LiteTopicRetentionConfigInput interface {
 	pulumi.Input
 
@@ -662,11 +662,11 @@ func (i LiteTopicRetentionConfigArgs) ToLiteTopicRetentionConfigPtrOutputWithCon
 // LiteTopicRetentionConfigPtrInput is an input type that accepts LiteTopicRetentionConfigArgs, LiteTopicRetentionConfigPtr and LiteTopicRetentionConfigPtrOutput values.
 // You can construct a concrete instance of `LiteTopicRetentionConfigPtrInput` via:
 //
-//          LiteTopicRetentionConfigArgs{...}
+//	        LiteTopicRetentionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LiteTopicRetentionConfigPtrInput interface {
 	pulumi.Input
 
@@ -780,6 +780,208 @@ func (o LiteTopicRetentionConfigPtrOutput) Period() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SubscriptionBigqueryConfig struct {
+	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+	Table string `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// SubscriptionBigqueryConfigInput is an input type that accepts SubscriptionBigqueryConfigArgs and SubscriptionBigqueryConfigOutput values.
+// You can construct a concrete instance of `SubscriptionBigqueryConfigInput` via:
+//
+//	SubscriptionBigqueryConfigArgs{...}
+type SubscriptionBigqueryConfigInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigqueryConfigOutput() SubscriptionBigqueryConfigOutput
+	ToSubscriptionBigqueryConfigOutputWithContext(context.Context) SubscriptionBigqueryConfigOutput
+}
+
+type SubscriptionBigqueryConfigArgs struct {
+	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+	Table pulumi.StringInput `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (SubscriptionBigqueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (i SubscriptionBigqueryConfigArgs) ToSubscriptionBigqueryConfigOutput() SubscriptionBigqueryConfigOutput {
+	return i.ToSubscriptionBigqueryConfigOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigqueryConfigArgs) ToSubscriptionBigqueryConfigOutputWithContext(ctx context.Context) SubscriptionBigqueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigqueryConfigOutput)
+}
+
+func (i SubscriptionBigqueryConfigArgs) ToSubscriptionBigqueryConfigPtrOutput() SubscriptionBigqueryConfigPtrOutput {
+	return i.ToSubscriptionBigqueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigqueryConfigArgs) ToSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigqueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigqueryConfigOutput).ToSubscriptionBigqueryConfigPtrOutputWithContext(ctx)
+}
+
+// SubscriptionBigqueryConfigPtrInput is an input type that accepts SubscriptionBigqueryConfigArgs, SubscriptionBigqueryConfigPtr and SubscriptionBigqueryConfigPtrOutput values.
+// You can construct a concrete instance of `SubscriptionBigqueryConfigPtrInput` via:
+//
+//	        SubscriptionBigqueryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionBigqueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigqueryConfigPtrOutput() SubscriptionBigqueryConfigPtrOutput
+	ToSubscriptionBigqueryConfigPtrOutputWithContext(context.Context) SubscriptionBigqueryConfigPtrOutput
+}
+
+type subscriptionBigqueryConfigPtrType SubscriptionBigqueryConfigArgs
+
+func SubscriptionBigqueryConfigPtr(v *SubscriptionBigqueryConfigArgs) SubscriptionBigqueryConfigPtrInput {
+	return (*subscriptionBigqueryConfigPtrType)(v)
+}
+
+func (*subscriptionBigqueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (i *subscriptionBigqueryConfigPtrType) ToSubscriptionBigqueryConfigPtrOutput() SubscriptionBigqueryConfigPtrOutput {
+	return i.ToSubscriptionBigqueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionBigqueryConfigPtrType) ToSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigqueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigqueryConfigPtrOutput)
+}
+
+type SubscriptionBigqueryConfigOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigqueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (o SubscriptionBigqueryConfigOutput) ToSubscriptionBigqueryConfigOutput() SubscriptionBigqueryConfigOutput {
+	return o
+}
+
+func (o SubscriptionBigqueryConfigOutput) ToSubscriptionBigqueryConfigOutputWithContext(ctx context.Context) SubscriptionBigqueryConfigOutput {
+	return o
+}
+
+func (o SubscriptionBigqueryConfigOutput) ToSubscriptionBigqueryConfigPtrOutput() SubscriptionBigqueryConfigPtrOutput {
+	return o.ToSubscriptionBigqueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionBigqueryConfigOutput) ToSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigqueryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionBigqueryConfig) *SubscriptionBigqueryConfig {
+		return &v
+	}).(SubscriptionBigqueryConfigPtrOutput)
+}
+
+// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+func (o SubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+func (o SubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+func (o SubscriptionBigqueryConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+func (o SubscriptionBigqueryConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type SubscriptionBigqueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigqueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (o SubscriptionBigqueryConfigPtrOutput) ToSubscriptionBigqueryConfigPtrOutput() SubscriptionBigqueryConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigqueryConfigPtrOutput) ToSubscriptionBigqueryConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigqueryConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigqueryConfigPtrOutput) Elem() SubscriptionBigqueryConfigOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) SubscriptionBigqueryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionBigqueryConfig
+		return ret
+	}).(SubscriptionBigqueryConfigOutput)
+}
+
+// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+func (o SubscriptionBigqueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropUnknownFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+func (o SubscriptionBigqueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+func (o SubscriptionBigqueryConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+func (o SubscriptionBigqueryConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SubscriptionDeadLetterPolicy struct {
 	// The name of the topic to which dead letter messages should be published.
 	// Format is `projects/{project}/topics/{topic}`.
@@ -805,7 +1007,7 @@ type SubscriptionDeadLetterPolicy struct {
 // SubscriptionDeadLetterPolicyInput is an input type that accepts SubscriptionDeadLetterPolicyArgs and SubscriptionDeadLetterPolicyOutput values.
 // You can construct a concrete instance of `SubscriptionDeadLetterPolicyInput` via:
 //
-//          SubscriptionDeadLetterPolicyArgs{...}
+//	SubscriptionDeadLetterPolicyArgs{...}
 type SubscriptionDeadLetterPolicyInput interface {
 	pulumi.Input
 
@@ -858,11 +1060,11 @@ func (i SubscriptionDeadLetterPolicyArgs) ToSubscriptionDeadLetterPolicyPtrOutpu
 // SubscriptionDeadLetterPolicyPtrInput is an input type that accepts SubscriptionDeadLetterPolicyArgs, SubscriptionDeadLetterPolicyPtr and SubscriptionDeadLetterPolicyPtrOutput values.
 // You can construct a concrete instance of `SubscriptionDeadLetterPolicyPtrInput` via:
 //
-//          SubscriptionDeadLetterPolicyArgs{...}
+//	        SubscriptionDeadLetterPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionDeadLetterPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1008,7 +1210,7 @@ type SubscriptionExpirationPolicy struct {
 // SubscriptionExpirationPolicyInput is an input type that accepts SubscriptionExpirationPolicyArgs and SubscriptionExpirationPolicyOutput values.
 // You can construct a concrete instance of `SubscriptionExpirationPolicyInput` via:
 //
-//          SubscriptionExpirationPolicyArgs{...}
+//	SubscriptionExpirationPolicyArgs{...}
 type SubscriptionExpirationPolicyInput interface {
 	pulumi.Input
 
@@ -1048,11 +1250,11 @@ func (i SubscriptionExpirationPolicyArgs) ToSubscriptionExpirationPolicyPtrOutpu
 // SubscriptionExpirationPolicyPtrInput is an input type that accepts SubscriptionExpirationPolicyArgs, SubscriptionExpirationPolicyPtr and SubscriptionExpirationPolicyPtrOutput values.
 // You can construct a concrete instance of `SubscriptionExpirationPolicyPtrInput` via:
 //
-//          SubscriptionExpirationPolicyArgs{...}
+//	        SubscriptionExpirationPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionExpirationPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1158,7 +1360,7 @@ type SubscriptionIAMBindingCondition struct {
 // SubscriptionIAMBindingConditionInput is an input type that accepts SubscriptionIAMBindingConditionArgs and SubscriptionIAMBindingConditionOutput values.
 // You can construct a concrete instance of `SubscriptionIAMBindingConditionInput` via:
 //
-//          SubscriptionIAMBindingConditionArgs{...}
+//	SubscriptionIAMBindingConditionArgs{...}
 type SubscriptionIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -1195,11 +1397,11 @@ func (i SubscriptionIAMBindingConditionArgs) ToSubscriptionIAMBindingConditionPt
 // SubscriptionIAMBindingConditionPtrInput is an input type that accepts SubscriptionIAMBindingConditionArgs, SubscriptionIAMBindingConditionPtr and SubscriptionIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `SubscriptionIAMBindingConditionPtrInput` via:
 //
-//          SubscriptionIAMBindingConditionArgs{...}
+//	        SubscriptionIAMBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1321,7 +1523,7 @@ type SubscriptionIAMMemberCondition struct {
 // SubscriptionIAMMemberConditionInput is an input type that accepts SubscriptionIAMMemberConditionArgs and SubscriptionIAMMemberConditionOutput values.
 // You can construct a concrete instance of `SubscriptionIAMMemberConditionInput` via:
 //
-//          SubscriptionIAMMemberConditionArgs{...}
+//	SubscriptionIAMMemberConditionArgs{...}
 type SubscriptionIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -1358,11 +1560,11 @@ func (i SubscriptionIAMMemberConditionArgs) ToSubscriptionIAMMemberConditionPtrO
 // SubscriptionIAMMemberConditionPtrInput is an input type that accepts SubscriptionIAMMemberConditionArgs, SubscriptionIAMMemberConditionPtr and SubscriptionIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `SubscriptionIAMMemberConditionPtrInput` via:
 //
-//          SubscriptionIAMMemberConditionArgs{...}
+//	        SubscriptionIAMMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1508,7 +1710,7 @@ type SubscriptionPushConfig struct {
 // SubscriptionPushConfigInput is an input type that accepts SubscriptionPushConfigArgs and SubscriptionPushConfigOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigInput` via:
 //
-//          SubscriptionPushConfigArgs{...}
+//	SubscriptionPushConfigArgs{...}
 type SubscriptionPushConfigInput interface {
 	pulumi.Input
 
@@ -1569,11 +1771,11 @@ func (i SubscriptionPushConfigArgs) ToSubscriptionPushConfigPtrOutputWithContext
 // SubscriptionPushConfigPtrInput is an input type that accepts SubscriptionPushConfigArgs, SubscriptionPushConfigPtr and SubscriptionPushConfigPtrOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigPtrInput` via:
 //
-//          SubscriptionPushConfigArgs{...}
+//	        SubscriptionPushConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionPushConfigPtrInput interface {
 	pulumi.Input
 
@@ -1752,7 +1954,7 @@ type SubscriptionPushConfigOidcToken struct {
 // SubscriptionPushConfigOidcTokenInput is an input type that accepts SubscriptionPushConfigOidcTokenArgs and SubscriptionPushConfigOidcTokenOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigOidcTokenInput` via:
 //
-//          SubscriptionPushConfigOidcTokenArgs{...}
+//	SubscriptionPushConfigOidcTokenArgs{...}
 type SubscriptionPushConfigOidcTokenInput interface {
 	pulumi.Input
 
@@ -1798,11 +2000,11 @@ func (i SubscriptionPushConfigOidcTokenArgs) ToSubscriptionPushConfigOidcTokenPt
 // SubscriptionPushConfigOidcTokenPtrInput is an input type that accepts SubscriptionPushConfigOidcTokenArgs, SubscriptionPushConfigOidcTokenPtr and SubscriptionPushConfigOidcTokenPtrOutput values.
 // You can construct a concrete instance of `SubscriptionPushConfigOidcTokenPtrInput` via:
 //
-//          SubscriptionPushConfigOidcTokenArgs{...}
+//	        SubscriptionPushConfigOidcTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionPushConfigOidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -1934,7 +2136,7 @@ type SubscriptionRetryPolicy struct {
 // SubscriptionRetryPolicyInput is an input type that accepts SubscriptionRetryPolicyArgs and SubscriptionRetryPolicyOutput values.
 // You can construct a concrete instance of `SubscriptionRetryPolicyInput` via:
 //
-//          SubscriptionRetryPolicyArgs{...}
+//	SubscriptionRetryPolicyArgs{...}
 type SubscriptionRetryPolicyInput interface {
 	pulumi.Input
 
@@ -1974,11 +2176,11 @@ func (i SubscriptionRetryPolicyArgs) ToSubscriptionRetryPolicyPtrOutputWithConte
 // SubscriptionRetryPolicyPtrInput is an input type that accepts SubscriptionRetryPolicyArgs, SubscriptionRetryPolicyPtr and SubscriptionRetryPolicyPtrOutput values.
 // You can construct a concrete instance of `SubscriptionRetryPolicyPtrInput` via:
 //
-//          SubscriptionRetryPolicyArgs{...}
+//	        SubscriptionRetryPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubscriptionRetryPolicyPtrInput interface {
 	pulumi.Input
 
@@ -2095,7 +2297,7 @@ type TopicIAMBindingCondition struct {
 // TopicIAMBindingConditionInput is an input type that accepts TopicIAMBindingConditionArgs and TopicIAMBindingConditionOutput values.
 // You can construct a concrete instance of `TopicIAMBindingConditionInput` via:
 //
-//          TopicIAMBindingConditionArgs{...}
+//	TopicIAMBindingConditionArgs{...}
 type TopicIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -2132,11 +2334,11 @@ func (i TopicIAMBindingConditionArgs) ToTopicIAMBindingConditionPtrOutputWithCon
 // TopicIAMBindingConditionPtrInput is an input type that accepts TopicIAMBindingConditionArgs, TopicIAMBindingConditionPtr and TopicIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `TopicIAMBindingConditionPtrInput` via:
 //
-//          TopicIAMBindingConditionArgs{...}
+//	        TopicIAMBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TopicIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -2258,7 +2460,7 @@ type TopicIAMMemberCondition struct {
 // TopicIAMMemberConditionInput is an input type that accepts TopicIAMMemberConditionArgs and TopicIAMMemberConditionOutput values.
 // You can construct a concrete instance of `TopicIAMMemberConditionInput` via:
 //
-//          TopicIAMMemberConditionArgs{...}
+//	TopicIAMMemberConditionArgs{...}
 type TopicIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -2295,11 +2497,11 @@ func (i TopicIAMMemberConditionArgs) ToTopicIAMMemberConditionPtrOutputWithConte
 // TopicIAMMemberConditionPtrInput is an input type that accepts TopicIAMMemberConditionArgs, TopicIAMMemberConditionPtr and TopicIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `TopicIAMMemberConditionPtrInput` via:
 //
-//          TopicIAMMemberConditionArgs{...}
+//	        TopicIAMMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TopicIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -2425,7 +2627,7 @@ type TopicMessageStoragePolicy struct {
 // TopicMessageStoragePolicyInput is an input type that accepts TopicMessageStoragePolicyArgs and TopicMessageStoragePolicyOutput values.
 // You can construct a concrete instance of `TopicMessageStoragePolicyInput` via:
 //
-//          TopicMessageStoragePolicyArgs{...}
+//	TopicMessageStoragePolicyArgs{...}
 type TopicMessageStoragePolicyInput interface {
 	pulumi.Input
 
@@ -2466,11 +2668,11 @@ func (i TopicMessageStoragePolicyArgs) ToTopicMessageStoragePolicyPtrOutputWithC
 // TopicMessageStoragePolicyPtrInput is an input type that accepts TopicMessageStoragePolicyArgs, TopicMessageStoragePolicyPtr and TopicMessageStoragePolicyPtrOutput values.
 // You can construct a concrete instance of `TopicMessageStoragePolicyPtrInput` via:
 //
-//          TopicMessageStoragePolicyArgs{...}
+//	        TopicMessageStoragePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TopicMessageStoragePolicyPtrInput interface {
 	pulumi.Input
 
@@ -2584,7 +2786,7 @@ type TopicSchemaSettings struct {
 // TopicSchemaSettingsInput is an input type that accepts TopicSchemaSettingsArgs and TopicSchemaSettingsOutput values.
 // You can construct a concrete instance of `TopicSchemaSettingsInput` via:
 //
-//          TopicSchemaSettingsArgs{...}
+//	TopicSchemaSettingsArgs{...}
 type TopicSchemaSettingsInput interface {
 	pulumi.Input
 
@@ -2627,11 +2829,11 @@ func (i TopicSchemaSettingsArgs) ToTopicSchemaSettingsPtrOutputWithContext(ctx c
 // TopicSchemaSettingsPtrInput is an input type that accepts TopicSchemaSettingsArgs, TopicSchemaSettingsPtr and TopicSchemaSettingsPtrOutput values.
 // You can construct a concrete instance of `TopicSchemaSettingsPtrInput` via:
 //
-//          TopicSchemaSettingsArgs{...}
+//	        TopicSchemaSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TopicSchemaSettingsPtrInput interface {
 	pulumi.Input
 
@@ -2752,7 +2954,7 @@ type GetTopicMessageStoragePolicy struct {
 // GetTopicMessageStoragePolicyInput is an input type that accepts GetTopicMessageStoragePolicyArgs and GetTopicMessageStoragePolicyOutput values.
 // You can construct a concrete instance of `GetTopicMessageStoragePolicyInput` via:
 //
-//          GetTopicMessageStoragePolicyArgs{...}
+//	GetTopicMessageStoragePolicyArgs{...}
 type GetTopicMessageStoragePolicyInput interface {
 	pulumi.Input
 
@@ -2779,7 +2981,7 @@ func (i GetTopicMessageStoragePolicyArgs) ToGetTopicMessageStoragePolicyOutputWi
 // GetTopicMessageStoragePolicyArrayInput is an input type that accepts GetTopicMessageStoragePolicyArray and GetTopicMessageStoragePolicyArrayOutput values.
 // You can construct a concrete instance of `GetTopicMessageStoragePolicyArrayInput` via:
 //
-//          GetTopicMessageStoragePolicyArray{ GetTopicMessageStoragePolicyArgs{...} }
+//	GetTopicMessageStoragePolicyArray{ GetTopicMessageStoragePolicyArgs{...} }
 type GetTopicMessageStoragePolicyArrayInput interface {
 	pulumi.Input
 
@@ -2847,7 +3049,7 @@ type GetTopicSchemaSetting struct {
 // GetTopicSchemaSettingInput is an input type that accepts GetTopicSchemaSettingArgs and GetTopicSchemaSettingOutput values.
 // You can construct a concrete instance of `GetTopicSchemaSettingInput` via:
 //
-//          GetTopicSchemaSettingArgs{...}
+//	GetTopicSchemaSettingArgs{...}
 type GetTopicSchemaSettingInput interface {
 	pulumi.Input
 
@@ -2875,7 +3077,7 @@ func (i GetTopicSchemaSettingArgs) ToGetTopicSchemaSettingOutputWithContext(ctx 
 // GetTopicSchemaSettingArrayInput is an input type that accepts GetTopicSchemaSettingArray and GetTopicSchemaSettingArrayOutput values.
 // You can construct a concrete instance of `GetTopicSchemaSettingArrayInput` via:
 //
-//          GetTopicSchemaSettingArray{ GetTopicSchemaSettingArgs{...} }
+//	GetTopicSchemaSettingArray{ GetTopicSchemaSettingArgs{...} }
 type GetTopicSchemaSettingArrayInput interface {
 	pulumi.Input
 
@@ -2950,6 +3152,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicReservationConfigPtrInput)(nil)).Elem(), LiteTopicReservationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicRetentionConfigInput)(nil)).Elem(), LiteTopicRetentionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicRetentionConfigPtrInput)(nil)).Elem(), LiteTopicRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigqueryConfigInput)(nil)).Elem(), SubscriptionBigqueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigqueryConfigPtrInput)(nil)).Elem(), SubscriptionBigqueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyPtrInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionExpirationPolicyInput)(nil)).Elem(), SubscriptionExpirationPolicyArgs{})
@@ -2986,6 +3190,8 @@ func init() {
 	pulumi.RegisterOutputType(LiteTopicReservationConfigPtrOutput{})
 	pulumi.RegisterOutputType(LiteTopicRetentionConfigOutput{})
 	pulumi.RegisterOutputType(LiteTopicRetentionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigqueryConfigOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigqueryConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyOutput{})

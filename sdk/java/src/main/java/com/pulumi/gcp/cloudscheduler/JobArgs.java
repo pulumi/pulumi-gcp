@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetArgs;
 import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 import com.pulumi.gcp.cloudscheduler.inputs.JobPubsubTargetArgs;
 import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -120,6 +121,21 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
     }
 
     /**
@@ -236,6 +252,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.httpTarget = $.httpTarget;
         this.name = $.name;
+        this.paused = $.paused;
         this.project = $.project;
         this.pubsubTarget = $.pubsubTarget;
         this.region = $.region;
@@ -393,6 +410,27 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param paused Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
+            return this;
+        }
+
+        /**
+         * @param paused Sets the job to a paused state. Jobs default to being enabled when this property is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
         }
 
         /**

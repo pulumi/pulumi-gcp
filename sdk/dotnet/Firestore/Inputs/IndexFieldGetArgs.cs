@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firestore.Inputs
 {
 
-    public sealed class IndexFieldGetArgs : Pulumi.ResourceArgs
+    public sealed class IndexFieldGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Firestore.Inputs
         public IndexFieldGetArgs()
         {
         }
+        public static new IndexFieldGetArgs Empty => new IndexFieldGetArgs();
     }
 }

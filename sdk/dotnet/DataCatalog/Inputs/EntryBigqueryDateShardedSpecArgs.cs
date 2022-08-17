@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class EntryBigqueryDateShardedSpecArgs : Pulumi.ResourceArgs
+    public sealed class EntryBigqueryDateShardedSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public EntryBigqueryDateShardedSpecArgs()
         {
         }
+        public static new EntryBigqueryDateShardedSpecArgs Empty => new EntryBigqueryDateShardedSpecArgs();
     }
 }

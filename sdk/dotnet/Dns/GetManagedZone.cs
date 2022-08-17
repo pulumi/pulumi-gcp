@@ -19,31 +19,30 @@ namespace Pulumi.Gcp.Dns
         /// [API](https://cloud.google.com/dns/api/v1/managedZones).
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var envDnsZone = Gcp.Dns.GetManagedZone.Invoke(new()
         ///     {
-        ///         var envDnsZone = Output.Create(Gcp.Dns.GetManagedZone.InvokeAsync(new Gcp.Dns.GetManagedZoneArgs
-        ///         {
-        ///             Name = "qa-zone",
-        ///         }));
-        ///         var dns = new Gcp.Dns.RecordSet("dns", new Gcp.Dns.RecordSetArgs
-        ///         {
-        ///             Name = envDnsZone.Apply(envDnsZone =&gt; $"my-address.{envDnsZone.DnsName}"),
-        ///             Type = "TXT",
-        ///             Ttl = 300,
-        ///             ManagedZone = envDnsZone.Apply(envDnsZone =&gt; envDnsZone.Name),
-        ///             Rrdatas = 
-        ///             {
-        ///                 "test",
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "qa-zone",
+        ///     });
         /// 
-        /// }
+        ///     var dns = new Gcp.Dns.RecordSet("dns", new()
+        ///     {
+        ///         Name = $"my-address.{envDnsZone.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "TXT",
+        ///         Ttl = 300,
+        ///         ManagedZone = envDnsZone.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Rrdatas = new[]
+        ///         {
+        ///             "test",
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
@@ -57,31 +56,30 @@ namespace Pulumi.Gcp.Dns
         /// [API](https://cloud.google.com/dns/api/v1/managedZones).
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var envDnsZone = Gcp.Dns.GetManagedZone.Invoke(new()
         ///     {
-        ///         var envDnsZone = Output.Create(Gcp.Dns.GetManagedZone.InvokeAsync(new Gcp.Dns.GetManagedZoneArgs
-        ///         {
-        ///             Name = "qa-zone",
-        ///         }));
-        ///         var dns = new Gcp.Dns.RecordSet("dns", new Gcp.Dns.RecordSetArgs
-        ///         {
-        ///             Name = envDnsZone.Apply(envDnsZone =&gt; $"my-address.{envDnsZone.DnsName}"),
-        ///             Type = "TXT",
-        ///             Ttl = 300,
-        ///             ManagedZone = envDnsZone.Apply(envDnsZone =&gt; envDnsZone.Name),
-        ///             Rrdatas = 
-        ///             {
-        ///                 "test",
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "qa-zone",
+        ///     });
         /// 
-        /// }
+        ///     var dns = new Gcp.Dns.RecordSet("dns", new()
+        ///     {
+        ///         Name = $"my-address.{envDnsZone.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "TXT",
+        ///         Ttl = 300,
+        ///         ManagedZone = envDnsZone.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Rrdatas = new[]
+        ///         {
+        ///             "test",
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
@@ -89,7 +87,7 @@ namespace Pulumi.Gcp.Dns
     }
 
 
-    public sealed class GetManagedZoneArgs : Pulumi.InvokeArgs
+    public sealed class GetManagedZoneArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A unique name for the resource.
@@ -106,9 +104,10 @@ namespace Pulumi.Gcp.Dns
         public GetManagedZoneArgs()
         {
         }
+        public static new GetManagedZoneArgs Empty => new GetManagedZoneArgs();
     }
 
-    public sealed class GetManagedZoneInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetManagedZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A unique name for the resource.
@@ -125,6 +124,7 @@ namespace Pulumi.Gcp.Dns
         public GetManagedZoneInvokeArgs()
         {
         }
+        public static new GetManagedZoneInvokeArgs Empty => new GetManagedZoneInvokeArgs();
     }
 
 

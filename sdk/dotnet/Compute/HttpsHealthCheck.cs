@@ -29,22 +29,20 @@ namespace Pulumi.Gcp.Compute
     /// ### Https Health Check Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.HttpsHealthCheck("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.HttpsHealthCheck("default", new Gcp.Compute.HttpsHealthCheckArgs
-    ///         {
-    ///             CheckIntervalSec = 1,
-    ///             RequestPath = "/health_check",
-    ///             TimeoutSec = 1,
-    ///         });
-    ///     }
+    ///         CheckIntervalSec = 1,
+    ///         RequestPath = "/health_check",
+    ///         TimeoutSec = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/httpsHealthCheck:HttpsHealthCheck")]
-    public partial class HttpsHealthCheck : Pulumi.CustomResource
+    public partial class HttpsHealthCheck : global::Pulumi.CustomResource
     {
         /// <summary>
         /// How often (in seconds) to send a health check. The default value is 5
@@ -199,7 +197,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class HttpsHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class HttpsHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How often (in seconds) to send a health check. The default value is 5
@@ -281,9 +279,10 @@ namespace Pulumi.Gcp.Compute
         public HttpsHealthCheckArgs()
         {
         }
+        public static new HttpsHealthCheckArgs Empty => new HttpsHealthCheckArgs();
     }
 
-    public sealed class HttpsHealthCheckState : Pulumi.ResourceArgs
+    public sealed class HttpsHealthCheckState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How often (in seconds) to send a health check. The default value is 5
@@ -377,5 +376,6 @@ namespace Pulumi.Gcp.Compute
         public HttpsHealthCheckState()
         {
         }
+        public static new HttpsHealthCheckState Empty => new HttpsHealthCheckState();
     }
 }

@@ -27,49 +27,54 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		other, err := compute.NewNetwork(ctx, "other", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
-// 			Network:     _default.SelfLink,
-// 			PeerNetwork: other.SelfLink,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
-// 			Network:     other.SelfLink,
-// 			PeerNetwork: _default.SelfLink,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			other, err := compute.NewNetwork(ctx, "other", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
+//				Network:     _default.SelfLink,
+//				PeerNetwork: other.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
+//				Network:     other.SelfLink,
+//				PeerNetwork: _default.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
+// # VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
 //
 // ```sh
-//  $ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
+//
+//	$ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
+//
 // ```
 type NetworkPeering struct {
 	pulumi.CustomResourceState
@@ -243,7 +248,7 @@ func (i *NetworkPeering) ToNetworkPeeringOutputWithContext(ctx context.Context) 
 // NetworkPeeringArrayInput is an input type that accepts NetworkPeeringArray and NetworkPeeringArrayOutput values.
 // You can construct a concrete instance of `NetworkPeeringArrayInput` via:
 //
-//          NetworkPeeringArray{ NetworkPeeringArgs{...} }
+//	NetworkPeeringArray{ NetworkPeeringArgs{...} }
 type NetworkPeeringArrayInput interface {
 	pulumi.Input
 
@@ -268,7 +273,7 @@ func (i NetworkPeeringArray) ToNetworkPeeringArrayOutputWithContext(ctx context.
 // NetworkPeeringMapInput is an input type that accepts NetworkPeeringMap and NetworkPeeringMapOutput values.
 // You can construct a concrete instance of `NetworkPeeringMapInput` via:
 //
-//          NetworkPeeringMap{ "key": NetworkPeeringArgs{...} }
+//	NetworkPeeringMap{ "key": NetworkPeeringArgs{...} }
 type NetworkPeeringMapInput interface {
 	pulumi.Input
 

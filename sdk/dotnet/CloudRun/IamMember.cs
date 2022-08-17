@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.CloudRun
     /// ## google\_cloud\_run\_service\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.CloudRun.IamPolicy("policy", new Gcp.CloudRun.IamPolicyArgs
-    ///         {
-    ///             Location = google_cloud_run_service.Default.Location,
-    ///             Project = google_cloud_run_service.Default.Project,
-    ///             Service = google_cloud_run_service.Default.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.CloudRun.IamPolicy("policy", new()
+    ///     {
+    ///         Location = google_cloud_run_service.Default.Location,
+    ///         Project = google_cloud_run_service.Default.Project,
+    ///         Service = google_cloud_run_service.Default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_cloud\_run\_service\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.CloudRun.IamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.CloudRun.IamBinding("binding", new Gcp.CloudRun.IamBindingArgs
+    ///         Location = google_cloud_run_service.Default.Location,
+    ///         Project = google_cloud_run_service.Default.Project,
+    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Location = google_cloud_run_service.Default.Location,
-    ///             Project = google_cloud_run_service.Default.Project,
-    ///             Service = google_cloud_run_service.Default.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_cloud\_run\_service\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.CloudRun.IamMember("member", new()
     ///     {
-    ///         var member = new Gcp.CloudRun.IamMember("member", new Gcp.CloudRun.IamMemberArgs
-    ///         {
-    ///             Location = google_cloud_run_service.Default.Location,
-    ///             Project = google_cloud_run_service.Default.Project,
-    ///             Service = google_cloud_run_service.Default.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Location = google_cloud_run_service.Default.Location,
+    ///         Project = google_cloud_run_service.Default.Project,
+    ///         Service = google_cloud_run_service.Default.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.CloudRun
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:cloudrun/iamMember:IamMember")]
-    public partial class IamMember : Pulumi.CustomResource
+    public partial class IamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.IamMemberCondition?> Condition { get; private set; } = null!;
@@ -215,7 +210,7 @@ namespace Pulumi.Gcp.CloudRun
         }
     }
 
-    public sealed class IamMemberArgs : Pulumi.ResourceArgs
+    public sealed class IamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.IamMemberConditionArgs>? Condition { get; set; }
@@ -253,9 +248,10 @@ namespace Pulumi.Gcp.CloudRun
         public IamMemberArgs()
         {
         }
+        public static new IamMemberArgs Empty => new IamMemberArgs();
     }
 
-    public sealed class IamMemberState : Pulumi.ResourceArgs
+    public sealed class IamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.IamMemberConditionGetArgs>? Condition { get; set; }
@@ -299,5 +295,6 @@ namespace Pulumi.Gcp.CloudRun
         public IamMemberState()
         {
         }
+        public static new IamMemberState Empty => new IamMemberState();
     }
 }

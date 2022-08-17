@@ -27,29 +27,28 @@ namespace Pulumi.Gcp.Compute
     /// ### Ssl Certificate Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.SSLCertificate("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.SSLCertificate("default", new Gcp.Compute.SSLCertificateArgs
-    ///         {
-    ///             NamePrefix = "my-certificate-",
-    ///             Description = "a description",
-    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///         });
-    ///     }
+    ///         NamePrefix = "my-certificate-",
+    ///         Description = "a description",
+    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Ssl Certificate Random Provider
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using System.Security.Cryptography;
     /// using System.Text;
@@ -57,35 +56,33 @@ namespace Pulumi.Gcp.Compute
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ComputeFileBase64Sha256(string path) {
     /// 		var fileData = Encoding.UTF8.GetBytes(File.ReadAllText(path));
     /// 		var hashData = SHA256.Create().ComputeHash(fileData);
     /// 		return Convert.ToBase64String(hashData);
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // You may also want to control name generation explicitly:
+    ///     var @default = new Gcp.Compute.SSLCertificate("default", new()
     ///     {
-    ///         // You may also want to control name generation explicitly:
-    ///         var @default = new Gcp.Compute.SSLCertificate("default", new Gcp.Compute.SSLCertificateArgs
-    ///         {
-    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///         });
-    ///         var certificate = new Random.RandomId("certificate", new Random.RandomIdArgs
-    ///         {
-    ///             ByteLength = 4,
-    ///             Prefix = "my-certificate-",
-    ///             Keepers = 
-    ///             {
-    ///                 { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
-    ///                 { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
-    ///             },
-    ///         });
-    ///     }
+    ///         PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///         Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///     });
     /// 
-    /// }
+    ///     var certificate = new Random.RandomId("certificate", new()
+    ///     {
+    ///         ByteLength = 4,
+    ///         Prefix = "my-certificate-",
+    ///         Keepers = 
+    ///         {
+    ///             { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
+    ///             { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -105,7 +102,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/sSLCertificate:SSLCertificate")]
-    public partial class SSLCertificate : Pulumi.CustomResource
+    public partial class SSLCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The certificate in PEM format.
@@ -217,7 +214,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SSLCertificateArgs : Pulumi.ResourceArgs
+    public sealed class SSLCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate in PEM format.
@@ -270,9 +267,10 @@ namespace Pulumi.Gcp.Compute
         public SSLCertificateArgs()
         {
         }
+        public static new SSLCertificateArgs Empty => new SSLCertificateArgs();
     }
 
-    public sealed class SSLCertificateState : Pulumi.ResourceArgs
+    public sealed class SSLCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate in PEM format.
@@ -343,5 +341,6 @@ namespace Pulumi.Gcp.Compute
         public SSLCertificateState()
         {
         }
+        public static new SSLCertificateState Empty => new SSLCertificateState();
     }
 }

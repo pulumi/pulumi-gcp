@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildAvailableSecretsArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildAvailableSecretsArgs : global::Pulumi.ResourceArgs
     {
         [Input("secretManagers", required: true)]
         private InputList<Inputs.TriggerBuildAvailableSecretsSecretManagerArgs>? _secretManagers;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildAvailableSecretsArgs()
         {
         }
+        public static new TriggerBuildAvailableSecretsArgs Empty => new TriggerBuildAvailableSecretsArgs();
     }
 }

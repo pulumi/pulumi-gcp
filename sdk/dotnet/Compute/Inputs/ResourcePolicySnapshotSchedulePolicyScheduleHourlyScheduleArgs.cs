@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of hours between snapshots.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs Empty => new ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs();
     }
 }

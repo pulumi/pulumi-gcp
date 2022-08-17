@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctions.Inputs
 {
 
-    public sealed class FunctionSecretVolumeGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionSecretVolumeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
         public FunctionSecretVolumeGetArgs()
         {
         }
+        public static new FunctionSecretVolumeGetArgs Empty => new FunctionSecretVolumeGetArgs();
     }
 }

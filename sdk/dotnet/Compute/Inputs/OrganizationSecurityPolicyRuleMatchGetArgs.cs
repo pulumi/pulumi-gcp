@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class OrganizationSecurityPolicyRuleMatchGetArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyRuleMatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration options for matching the rule.
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public OrganizationSecurityPolicyRuleMatchGetArgs()
         {
         }
+        public static new OrganizationSecurityPolicyRuleMatchGetArgs Empty => new OrganizationSecurityPolicyRuleMatchGetArgs();
     }
 }

@@ -20,20 +20,19 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ips = Output.Create(Gcp.Monitoring.GetUptimeCheckIPs.InvokeAsync());
-        ///         this.IpList = ips.Apply(ips =&gt; ips.UptimeCheckIps);
-        ///     }
+        ///     var ips = Gcp.Monitoring.GetUptimeCheckIPs.Invoke();
         /// 
-        ///     [Output("ipList")]
-        ///     public Output&lt;string&gt; IpList { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ipList"] = ips.Apply(getUptimeCheckIPsResult =&gt; getUptimeCheckIPsResult.UptimeCheckIps),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

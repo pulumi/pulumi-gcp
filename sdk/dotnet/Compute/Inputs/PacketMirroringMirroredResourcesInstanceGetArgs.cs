@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class PacketMirroringMirroredResourcesInstanceGetArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringMirroredResourcesInstanceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL of the instances where this rule should be active.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public PacketMirroringMirroredResourcesInstanceGetArgs()
         {
         }
+        public static new PacketMirroringMirroredResourcesInstanceGetArgs Empty => new PacketMirroringMirroredResourcesInstanceGetArgs();
     }
 }

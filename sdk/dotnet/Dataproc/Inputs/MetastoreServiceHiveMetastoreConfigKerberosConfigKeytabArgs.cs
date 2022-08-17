@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The relative resource name of a Secret Manager secret version, in the following form:
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs()
         {
         }
+        public static new MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs Empty => new MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs();
     }
 }

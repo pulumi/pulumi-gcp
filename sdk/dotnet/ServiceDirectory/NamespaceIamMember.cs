@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ## google\_service\_directory\_namespace\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.ServiceDirectory.NamespaceIamPolicy("policy", new Gcp.ServiceDirectory.NamespaceIamPolicyArgs
-    ///         {
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.ServiceDirectory.NamespaceIamPolicy("policy", new()
+    ///     {
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_service\_directory\_namespace\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.ServiceDirectory.NamespaceIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.ServiceDirectory.NamespaceIamBinding("binding", new Gcp.ServiceDirectory.NamespaceIamBindingArgs
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_service\_directory\_namespace\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.ServiceDirectory.NamespaceIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.ServiceDirectory.NamespaceIamMember("member", new Gcp.ServiceDirectory.NamespaceIamMemberArgs
-    ///         {
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:servicedirectory/namespaceIamMember:NamespaceIamMember")]
-    public partial class NamespaceIamMember : Pulumi.CustomResource
+    public partial class NamespaceIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.NamespaceIamMemberCondition?> Condition { get; private set; } = null!;
@@ -202,7 +197,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         }
     }
 
-    public sealed class NamespaceIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.NamespaceIamMemberConditionArgs>? Condition { get; set; }
@@ -227,9 +222,10 @@ namespace Pulumi.Gcp.ServiceDirectory
         public NamespaceIamMemberArgs()
         {
         }
+        public static new NamespaceIamMemberArgs Empty => new NamespaceIamMemberArgs();
     }
 
-    public sealed class NamespaceIamMemberState : Pulumi.ResourceArgs
+    public sealed class NamespaceIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.NamespaceIamMemberConditionGetArgs>? Condition { get; set; }
@@ -260,5 +256,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         public NamespaceIamMemberState()
         {
         }
+        public static new NamespaceIamMemberState Empty => new NamespaceIamMemberState();
     }
 }

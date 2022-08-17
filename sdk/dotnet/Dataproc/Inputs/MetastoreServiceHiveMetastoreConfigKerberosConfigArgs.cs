@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreServiceHiveMetastoreConfigKerberosConfigArgs()
         {
         }
+        public static new MetastoreServiceHiveMetastoreConfigKerberosConfigArgs Empty => new MetastoreServiceHiveMetastoreConfigKerberosConfigArgs();
     }
 }

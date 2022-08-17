@@ -19,21 +19,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_subnetwork = Gcp.Compute.GetSubnetwork.Invoke(new()
         ///     {
-        ///         var my_subnetwork = Output.Create(Gcp.Compute.GetSubnetwork.InvokeAsync(new Gcp.Compute.GetSubnetworkArgs
-        ///         {
-        ///             Name = "default-us-east1",
-        ///             Region = "us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "default-us-east1",
+        ///         Region = "us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_subnetwork = Gcp.Compute.GetSubnetwork.Invoke(new()
         ///     {
-        ///         var my_subnetwork = Output.Create(Gcp.Compute.GetSubnetwork.InvokeAsync(new Gcp.Compute.GetSubnetworkArgs
-        ///         {
-        ///             Name = "default-us-east1",
-        ///             Region = "us-east1",
-        ///         }));
-        ///     }
+        ///         Name = "default-us-east1",
+        ///         Region = "us-east1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetSubnetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the subnetwork. One of `name` or `self_link`
@@ -106,9 +102,10 @@ namespace Pulumi.Gcp.Compute
         public GetSubnetworkArgs()
         {
         }
+        public static new GetSubnetworkArgs Empty => new GetSubnetworkArgs();
     }
 
-    public sealed class GetSubnetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the subnetwork. One of `name` or `self_link`
@@ -141,6 +138,7 @@ namespace Pulumi.Gcp.Compute
         public GetSubnetworkInvokeArgs()
         {
         }
+        public static new GetSubnetworkInvokeArgs Empty => new GetSubnetworkInvokeArgs();
     }
 
 

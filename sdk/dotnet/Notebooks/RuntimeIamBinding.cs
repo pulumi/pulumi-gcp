@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.Notebooks
     /// ## google\_notebooks\_runtime\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Notebooks.RuntimeIamPolicy("policy", new Gcp.Notebooks.RuntimeIamPolicyArgs
-    ///         {
-    ///             Project = google_notebooks_runtime.Runtime.Project,
-    ///             Location = google_notebooks_runtime.Runtime.Location,
-    ///             RuntimeName = google_notebooks_runtime.Runtime.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Notebooks.RuntimeIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_notebooks_runtime.Runtime.Project,
+    ///         Location = google_notebooks_runtime.Runtime.Location,
+    ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_notebooks\_runtime\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Notebooks.RuntimeIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Notebooks.RuntimeIamBinding("binding", new Gcp.Notebooks.RuntimeIamBindingArgs
+    ///         Project = google_notebooks_runtime.Runtime.Project,
+    ///         Location = google_notebooks_runtime.Runtime.Location,
+    ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_notebooks_runtime.Runtime.Project,
-    ///             Location = google_notebooks_runtime.Runtime.Location,
-    ///             RuntimeName = google_notebooks_runtime.Runtime.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_notebooks\_runtime\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Notebooks.RuntimeIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Notebooks.RuntimeIamMember("member", new Gcp.Notebooks.RuntimeIamMemberArgs
-    ///         {
-    ///             Project = google_notebooks_runtime.Runtime.Project,
-    ///             Location = google_notebooks_runtime.Runtime.Location,
-    ///             RuntimeName = google_notebooks_runtime.Runtime.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_notebooks_runtime.Runtime.Project,
+    ///         Location = google_notebooks_runtime.Runtime.Location,
+    ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Notebooks
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:notebooks/runtimeIamBinding:RuntimeIamBinding")]
-    public partial class RuntimeIamBinding : Pulumi.CustomResource
+    public partial class RuntimeIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.RuntimeIamBindingCondition?> Condition { get; private set; } = null!;
@@ -215,7 +210,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class RuntimeIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.RuntimeIamBindingConditionArgs>? Condition { get; set; }
@@ -258,9 +253,10 @@ namespace Pulumi.Gcp.Notebooks
         public RuntimeIamBindingArgs()
         {
         }
+        public static new RuntimeIamBindingArgs Empty => new RuntimeIamBindingArgs();
     }
 
-    public sealed class RuntimeIamBindingState : Pulumi.ResourceArgs
+    public sealed class RuntimeIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.RuntimeIamBindingConditionGetArgs>? Condition { get; set; }
@@ -309,5 +305,6 @@ namespace Pulumi.Gcp.Notebooks
         public RuntimeIamBindingState()
         {
         }
+        public static new RuntimeIamBindingState Empty => new RuntimeIamBindingState();
     }
 }

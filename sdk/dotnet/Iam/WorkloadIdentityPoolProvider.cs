@@ -22,143 +22,139 @@ namespace Pulumi.Gcp.Iam
     /// ### Iam Workload Identity Pool Provider Aws Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
     ///     {
-    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///         });
-    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
-    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
-    ///             Aws = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderAwsArgs
-    ///             {
-    ///                 AccountId = "999999999999",
-    ///             },
-    ///         });
-    ///     }
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
     /// 
-    /// }
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         Aws = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderAwsArgs
+    ///         {
+    ///             AccountId = "999999999999",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Iam Workload Identity Pool Provider Aws Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
     ///     {
-    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///         });
-    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
-    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
-    ///             DisplayName = "Name of provider",
-    ///             Description = "AWS identity pool provider for automated test",
-    ///             Disabled = true,
-    ///             AttributeCondition = "attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"",
-    ///             AttributeMapping = 
-    ///             {
-    ///                 { "google.subject", "assertion.arn" },
-    ///                 { "attribute.aws_account", "assertion.account" },
-    ///                 { "attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"" },
-    ///             },
-    ///             Aws = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderAwsArgs
-    ///             {
-    ///                 AccountId = "999999999999",
-    ///             },
-    ///         });
-    ///     }
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
     /// 
-    /// }
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         DisplayName = "Name of provider",
+    ///         Description = "AWS identity pool provider for automated test",
+    ///         Disabled = true,
+    ///         AttributeCondition = "attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.arn" },
+    ///             { "attribute.aws_account", "assertion.account" },
+    ///             { "attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"" },
+    ///         },
+    ///         Aws = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderAwsArgs
+    ///         {
+    ///             AccountId = "999999999999",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Iam Workload Identity Pool Provider Oidc Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
     ///     {
-    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///         });
-    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
-    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
-    ///             AttributeMapping = 
-    ///             {
-    ///                 { "google.subject", "assertion.sub" },
-    ///             },
-    ///             Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
-    ///             {
-    ///                 IssuerUri = "https://sts.windows.net/azure-tenant-id",
-    ///             },
-    ///         });
-    ///     }
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
     /// 
-    /// }
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://sts.windows.net/azure-tenant-id",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Iam Workload Identity Pool Provider Oidc Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
     ///     {
-    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         DisplayName = "Name of provider",
+    ///         Description = "OIDC identity pool provider for automated test",
+    ///         Disabled = true,
+    ///         AttributeCondition = "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups",
+    ///         AttributeMapping = 
     ///         {
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///         });
-    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
-    ///         {
-    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
-    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
-    ///             DisplayName = "Name of provider",
-    ///             Description = "OIDC identity pool provider for automated test",
-    ///             Disabled = true,
-    ///             AttributeCondition = "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups",
-    ///             AttributeMapping = 
-    ///             {
-    ///                 { "google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub" },
-    ///                 { "attribute.tid", "assertion.tid" },
-    ///                 { "attribute.managed_identity_name", @"      {
+    ///             { "google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub" },
+    ///             { "attribute.tid", "assertion.tid" },
+    ///             { "attribute.managed_identity_name", @"      {
     ///         ""8bb39bdb-1cc5-4447-b7db-a19e920eb111"":""workload1"",
     ///         ""55d36609-9bcf-48e0-a366-a3cf19027d2a"":""workload2""
     ///       }[assertion.oid]
     /// " },
-    ///             },
-    ///             Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///         {
+    ///             AllowedAudiences = new[]
     ///             {
-    ///                 AllowedAudiences = 
-    ///                 {
-    ///                     "https://example.com/gcp-oidc-federation",
-    ///                     "example.com/gcp-oidc-federation",
-    ///                 },
-    ///                 IssuerUri = "https://sts.windows.net/azure-tenant-id",
+    ///                 "https://example.com/gcp-oidc-federation",
+    ///                 "example.com/gcp-oidc-federation",
     ///             },
-    ///         });
-    ///     }
+    ///             IssuerUri = "https://sts.windows.net/azure-tenant-id",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -178,7 +174,7 @@ namespace Pulumi.Gcp.Iam
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider")]
-    public partial class WorkloadIdentityPoolProvider : Pulumi.CustomResource
+    public partial class WorkloadIdentityPoolProvider : global::Pulumi.CustomResource
     {
         /// <summary>
         /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
@@ -194,15 +190,12 @@ namespace Pulumi.Gcp.Iam
         /// The following example shows how to only allow credentials with a mapped `google.groups`
         /// value of `admins`:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         [Output("attributeCondition")]
@@ -241,15 +234,12 @@ namespace Pulumi.Gcp.Iam
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// - If any custom attribute mappings are defined, they must include a mapping to the
         /// `google.subject` attribute.
@@ -258,15 +248,12 @@ namespace Pulumi.Gcp.Iam
         /// `google.subject` attribute. For example, the following maps the `sub` claim of the
         /// incoming credential to the `subject` attribute on a Google token.
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         [Output("attributeMapping")]
@@ -388,7 +375,7 @@ namespace Pulumi.Gcp.Iam
         }
     }
 
-    public sealed class WorkloadIdentityPoolProviderArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
@@ -404,15 +391,12 @@ namespace Pulumi.Gcp.Iam
         /// The following example shows how to only allow credentials with a mapped `google.groups`
         /// value of `admins`:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         [Input("attributeCondition")]
@@ -454,15 +438,12 @@ namespace Pulumi.Gcp.Iam
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// - If any custom attribute mappings are defined, they must include a mapping to the
         /// `google.subject` attribute.
@@ -471,15 +452,12 @@ namespace Pulumi.Gcp.Iam
         /// `google.subject` attribute. For example, the following maps the `sub` claim of the
         /// incoming credential to the `subject` attribute on a Google token.
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputMap<string> AttributeMapping
@@ -547,9 +525,10 @@ namespace Pulumi.Gcp.Iam
         public WorkloadIdentityPoolProviderArgs()
         {
         }
+        public static new WorkloadIdentityPoolProviderArgs Empty => new WorkloadIdentityPoolProviderArgs();
     }
 
-    public sealed class WorkloadIdentityPoolProviderState : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
@@ -565,15 +544,12 @@ namespace Pulumi.Gcp.Iam
         /// The following example shows how to only allow credentials with a mapped `google.groups`
         /// value of `admins`:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         [Input("attributeCondition")]
@@ -615,15 +591,12 @@ namespace Pulumi.Gcp.Iam
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// - If any custom attribute mappings are defined, they must include a mapping to the
         /// `google.subject` attribute.
@@ -632,15 +605,12 @@ namespace Pulumi.Gcp.Iam
         /// `google.subject` attribute. For example, the following maps the `sub` claim of the
         /// incoming credential to the `subject` attribute on a Google token.
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputMap<string> AttributeMapping
@@ -724,5 +694,6 @@ namespace Pulumi.Gcp.Iam
         public WorkloadIdentityPoolProviderState()
         {
         }
+        public static new WorkloadIdentityPoolProviderState Empty => new WorkloadIdentityPoolProviderState();
     }
 }

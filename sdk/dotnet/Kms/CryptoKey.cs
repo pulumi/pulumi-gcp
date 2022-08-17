@@ -30,52 +30,50 @@ namespace Pulumi.Gcp.Kms
     /// ### Kms Crypto Key Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var example_key = new Gcp.Kms.CryptoKey("example-key", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyring.Id,
-    ///             RotationPeriod = "100000s",
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///     });
     /// 
-    /// }
+    ///     var example_key = new Gcp.Kms.CryptoKey("example-key", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         RotationPeriod = "100000s",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Kms Crypto Key Asymmetric Sign
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var example_asymmetric_sign_key = new Gcp.Kms.CryptoKey("example-asymmetric-sign-key", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyring.Id,
-    ///             Purpose = "ASYMMETRIC_SIGN",
-    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
-    ///             {
-    ///                 Algorithm = "EC_SIGN_P384_SHA384",
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///     });
     /// 
-    /// }
+    ///     var example_asymmetric_sign_key = new Gcp.Kms.CryptoKey("example-asymmetric-sign-key", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         Purpose = "ASYMMETRIC_SIGN",
+    ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///         {
+    ///             Algorithm = "EC_SIGN_P384_SHA384",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +89,7 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// </summary>
     [GcpResourceType("gcp:kms/cryptoKey:CryptoKey")]
-    public partial class CryptoKey : Pulumi.CustomResource
+    public partial class CryptoKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -202,7 +200,7 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
-    public sealed class CryptoKeyArgs : Pulumi.ResourceArgs
+    public sealed class CryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -278,9 +276,10 @@ namespace Pulumi.Gcp.Kms
         public CryptoKeyArgs()
         {
         }
+        public static new CryptoKeyArgs Empty => new CryptoKeyArgs();
     }
 
-    public sealed class CryptoKeyState : Pulumi.ResourceArgs
+    public sealed class CryptoKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -356,5 +355,6 @@ namespace Pulumi.Gcp.Kms
         public CryptoKeyState()
         {
         }
+        public static new CryptoKeyState Empty => new CryptoKeyState();
     }
 }

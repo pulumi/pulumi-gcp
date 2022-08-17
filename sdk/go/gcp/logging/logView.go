@@ -19,40 +19,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-// 			Project:       pulumi.String("my-project-name"),
-// 			Location:      pulumi.String("global"),
-// 			RetentionDays: pulumi.Int(30),
-// 			BucketId:      pulumi.String("_Default"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = logging.NewLogView(ctx, "primary", &logging.LogViewArgs{
-// 			Bucket:      basic.ID(),
-// 			Description: pulumi.String("A logging view configured with Terraform"),
-// 			Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+//				Project:       pulumi.String("my-project-name"),
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewLogView(ctx, "primary", &logging.LogViewArgs{
+//				Bucket:      basic.ID(),
+//				Description: pulumi.String("A logging view configured with Terraform"),
+//				Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// LogView can be imported using any of these accepted formats
+// # LogView can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
+//
+//	$ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
+//
 // ```
 type LogView struct {
 	pulumi.CustomResourceState
@@ -205,7 +210,7 @@ func (i *LogView) ToLogViewOutputWithContext(ctx context.Context) LogViewOutput 
 // LogViewArrayInput is an input type that accepts LogViewArray and LogViewArrayOutput values.
 // You can construct a concrete instance of `LogViewArrayInput` via:
 //
-//          LogViewArray{ LogViewArgs{...} }
+//	LogViewArray{ LogViewArgs{...} }
 type LogViewArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +235,7 @@ func (i LogViewArray) ToLogViewArrayOutputWithContext(ctx context.Context) LogVi
 // LogViewMapInput is an input type that accepts LogViewMap and LogViewMapOutput values.
 // You can construct a concrete instance of `LogViewMapInput` via:
 //
-//          LogViewMap{ "key": LogViewArgs{...} }
+//	LogViewMap{ "key": LogViewArgs{...} }
 type LogViewMapInput interface {
 	pulumi.Input
 

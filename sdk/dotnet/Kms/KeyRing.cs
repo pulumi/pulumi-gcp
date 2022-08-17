@@ -26,20 +26,18 @@ namespace Pulumi.Gcp.Kms
     /// ### Kms Key Ring Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example_keyring = new Gcp.Kms.KeyRing("example-keyring", new()
     ///     {
-    ///         var example_keyring = new Gcp.Kms.KeyRing("example-keyring", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///         });
-    ///     }
+    ///         Location = "global",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// </summary>
     [GcpResourceType("gcp:kms/keyRing:KeyRing")]
-    public partial class KeyRing : Pulumi.CustomResource
+    public partial class KeyRing : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The location for the KeyRing.
@@ -125,7 +123,7 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
-    public sealed class KeyRingArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location for the KeyRing.
@@ -150,9 +148,10 @@ namespace Pulumi.Gcp.Kms
         public KeyRingArgs()
         {
         }
+        public static new KeyRingArgs Empty => new KeyRingArgs();
     }
 
-    public sealed class KeyRingState : Pulumi.ResourceArgs
+    public sealed class KeyRingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location for the KeyRing.
@@ -177,5 +176,6 @@ namespace Pulumi.Gcp.Kms
         public KeyRingState()
         {
         }
+        public static new KeyRingState Empty => new KeyRingState();
     }
 }

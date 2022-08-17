@@ -24,116 +24,110 @@ namespace Pulumi.Gcp.Logging
     /// ### Logging Metric Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
     ///     {
-    ///         var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new Gcp.Logging.MetricArgs
+    ///         BucketOptions = new Gcp.Logging.Inputs.MetricBucketOptionsArgs
     ///         {
-    ///             BucketOptions = new Gcp.Logging.Inputs.MetricBucketOptionsArgs
+    ///             LinearBuckets = new Gcp.Logging.Inputs.MetricBucketOptionsLinearBucketsArgs
     ///             {
-    ///                 LinearBuckets = new Gcp.Logging.Inputs.MetricBucketOptionsLinearBucketsArgs
+    ///                 NumFiniteBuckets = 3,
+    ///                 Offset = 1,
+    ///                 Width = 1,
+    ///             },
+    ///         },
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         LabelExtractors = 
+    ///         {
+    ///             { "mass", "EXTRACT(jsonPayload.request)" },
+    ///             { "sku", "EXTRACT(jsonPayload.id)" },
+    ///         },
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             DisplayName = "My metric",
+    ///             Labels = new[]
+    ///             {
+    ///                 new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
     ///                 {
-    ///                     NumFiniteBuckets = 3,
-    ///                     Offset = 1,
-    ///                     Width = 1,
+    ///                     Description = "amount of matter",
+    ///                     Key = "mass",
+    ///                     ValueType = "STRING",
+    ///                 },
+    ///                 new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                 {
+    ///                     Description = "Identifying number for item",
+    ///                     Key = "sku",
+    ///                     ValueType = "INT64",
     ///                 },
     ///             },
-    ///             Filter = "resource.type=gae_app AND severity&gt;=ERROR",
-    ///             LabelExtractors = 
-    ///             {
-    ///                 { "mass", "EXTRACT(jsonPayload.request)" },
-    ///                 { "sku", "EXTRACT(jsonPayload.id)" },
-    ///             },
-    ///             MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
-    ///             {
-    ///                 DisplayName = "My metric",
-    ///                 Labels = 
-    ///                 {
-    ///                     new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
-    ///                     {
-    ///                         Description = "amount of matter",
-    ///                         Key = "mass",
-    ///                         ValueType = "STRING",
-    ///                     },
-    ///                     new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
-    ///                     {
-    ///                         Description = "Identifying number for item",
-    ///                         Key = "sku",
-    ///                         ValueType = "INT64",
-    ///                     },
-    ///                 },
-    ///                 MetricKind = "DELTA",
-    ///                 Unit = "1",
-    ///                 ValueType = "DISTRIBUTION",
-    ///             },
-    ///             ValueExtractor = "EXTRACT(jsonPayload.request)",
-    ///         });
-    ///     }
+    ///             MetricKind = "DELTA",
+    ///             Unit = "1",
+    ///             ValueType = "DISTRIBUTION",
+    ///         },
+    ///         ValueExtractor = "EXTRACT(jsonPayload.request)",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Logging Metric Counter Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
     ///     {
-    ///         var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new Gcp.Logging.MetricArgs
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
     ///         {
-    ///             Filter = "resource.type=gae_app AND severity&gt;=ERROR",
-    ///             MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
-    ///             {
-    ///                 MetricKind = "DELTA",
-    ///                 ValueType = "INT64",
-    ///             },
-    ///         });
-    ///     }
+    ///             MetricKind = "DELTA",
+    ///             ValueType = "INT64",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Logging Metric Counter Labels
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
     ///     {
-    ///         var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new Gcp.Logging.MetricArgs
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         LabelExtractors = 
     ///         {
-    ///             Filter = "resource.type=gae_app AND severity&gt;=ERROR",
-    ///             LabelExtractors = 
+    ///             { "mass", "EXTRACT(jsonPayload.request)" },
+    ///         },
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             Labels = new[]
     ///             {
-    ///                 { "mass", "EXTRACT(jsonPayload.request)" },
-    ///             },
-    ///             MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
-    ///             {
-    ///                 Labels = 
+    ///                 new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
     ///                 {
-    ///                     new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
-    ///                     {
-    ///                         Description = "amount of matter",
-    ///                         Key = "mass",
-    ///                         ValueType = "STRING",
-    ///                     },
+    ///                     Description = "amount of matter",
+    ///                     Key = "mass",
+    ///                     ValueType = "STRING",
     ///                 },
-    ///                 MetricKind = "DELTA",
-    ///                 ValueType = "INT64",
     ///             },
-    ///         });
-    ///     }
+    ///             MetricKind = "DELTA",
+    ///             ValueType = "INT64",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -149,7 +143,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/metric:Metric")]
-    public partial class Metric : Pulumi.CustomResource
+    public partial class Metric : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
@@ -262,7 +256,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class MetricArgs : Pulumi.ResourceArgs
+    public sealed class MetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
@@ -340,9 +334,10 @@ namespace Pulumi.Gcp.Logging
         public MetricArgs()
         {
         }
+        public static new MetricArgs Empty => new MetricArgs();
     }
 
-    public sealed class MetricState : Pulumi.ResourceArgs
+    public sealed class MetricState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
@@ -420,5 +415,6 @@ namespace Pulumi.Gcp.Logging
         public MetricState()
         {
         }
+        public static new MetricState Empty => new MetricState();
     }
 }

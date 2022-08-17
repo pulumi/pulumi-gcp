@@ -22,28 +22,27 @@ namespace Pulumi.Gcp.Tags
     /// ### Tag Value Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var key = new Gcp.Tags.TagKey("key", new()
     ///     {
-    ///         var key = new Gcp.Tags.TagKey("key", new Gcp.Tags.TagKeyArgs
-    ///         {
-    ///             Description = "For keyname resources.",
-    ///             Parent = "organizations/123456789",
-    ///             ShortName = "keyname",
-    ///         });
-    ///         var @value = new Gcp.Tags.TagValue("value", new Gcp.Tags.TagValueArgs
-    ///         {
-    ///             Description = "For valuename resources.",
-    ///             Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
-    ///             ShortName = "valuename",
-    ///         });
-    ///     }
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///     });
     /// 
-    /// }
+    ///     var @value = new Gcp.Tags.TagValue("value", new()
+    ///     {
+    ///         Description = "For valuename resources.",
+    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +58,7 @@ namespace Pulumi.Gcp.Tags
     /// ```
     /// </summary>
     [GcpResourceType("gcp:tags/tagValue:TagValue")]
-    public partial class TagValue : Pulumi.CustomResource
+    public partial class TagValue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -150,7 +149,7 @@ namespace Pulumi.Gcp.Tags
         }
     }
 
-    public sealed class TagValueArgs : Pulumi.ResourceArgs
+    public sealed class TagValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-assigned description of the TagValue. Must not exceed 256 characters.
@@ -174,9 +173,10 @@ namespace Pulumi.Gcp.Tags
         public TagValueArgs()
         {
         }
+        public static new TagValueArgs Empty => new TagValueArgs();
     }
 
-    public sealed class TagValueState : Pulumi.ResourceArgs
+    public sealed class TagValueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -226,5 +226,6 @@ namespace Pulumi.Gcp.Tags
         public TagValueState()
         {
         }
+        public static new TagValueState Empty => new TagValueState();
     }
 }

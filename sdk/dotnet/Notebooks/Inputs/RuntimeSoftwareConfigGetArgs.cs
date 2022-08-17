@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeSoftwareConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeSoftwareConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify a custom Cloud Storage path where the GPU driver is stored.
@@ -45,6 +45,19 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
 
+        [Input("kernels")]
+        private InputList<Inputs.RuntimeSoftwareConfigKernelGetArgs>? _kernels;
+
+        /// <summary>
+        /// Use a list of container images to use as Kernels in the notebook instance.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RuntimeSoftwareConfigKernelGetArgs> Kernels
+        {
+            get => _kernels ?? (_kernels = new InputList<Inputs.RuntimeSoftwareConfigKernelGetArgs>());
+            set => _kernels = value;
+        }
+
         /// <summary>
         /// Cron expression in UTC timezone for schedule instance auto upgrade.
         /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -60,8 +73,23 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
 
+        /// <summary>
+        /// Behavior for the post startup script.
+        /// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+        /// </summary>
+        [Input("postStartupScriptBehavior")]
+        public Input<string>? PostStartupScriptBehavior { get; set; }
+
+        /// <summary>
+        /// -
+        /// Bool indicating whether an newer image is available in an image family.
+        /// </summary>
+        [Input("upgradeable")]
+        public Input<bool>? Upgradeable { get; set; }
+
         public RuntimeSoftwareConfigGetArgs()
         {
         }
+        public static new RuntimeSoftwareConfigGetArgs Empty => new RuntimeSoftwareConfigGetArgs();
     }
 }

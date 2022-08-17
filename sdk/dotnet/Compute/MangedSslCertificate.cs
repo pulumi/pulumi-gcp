@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     [Obsolete(@"gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")]
     [GcpResourceType("gcp:compute/mangedSslCertificate:MangedSslCertificate")]
-    public partial class MangedSslCertificate : Pulumi.CustomResource
+    public partial class MangedSslCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique identifier for the resource.
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class MangedSslCertificateArgs : Pulumi.ResourceArgs
+    public sealed class MangedSslCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier for the resource.
@@ -227,9 +227,10 @@ namespace Pulumi.Gcp.Compute
         public MangedSslCertificateArgs()
         {
         }
+        public static new MangedSslCertificateArgs Empty => new MangedSslCertificateArgs();
     }
 
-    public sealed class MangedSslCertificateState : Pulumi.ResourceArgs
+    public sealed class MangedSslCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier for the resource.
@@ -312,5 +313,6 @@ namespace Pulumi.Gcp.Compute
         public MangedSslCertificateState()
         {
         }
+        public static new MangedSslCertificateState Empty => new MangedSslCertificateState();
     }
 }

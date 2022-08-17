@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs : global::Pulumi.ResourceArgs
     {
         [Input("words", required: true)]
         private InputList<string>? _words;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs Empty => new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs();
     }
 }

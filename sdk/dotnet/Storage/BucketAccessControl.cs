@@ -37,26 +37,25 @@ namespace Pulumi.Gcp.Storage
     /// ### Storage Bucket Access Control Public Bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var publicRule = new Gcp.Storage.BucketAccessControl("publicRule", new Gcp.Storage.BucketAccessControlArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Role = "READER",
-    ///             Entity = "allUsers",
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var publicRule = new Gcp.Storage.BucketAccessControl("publicRule", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Role = "READER",
+    ///         Entity = "allUsers",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +67,7 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// </summary>
     [GcpResourceType("gcp:storage/bucketAccessControl:BucketAccessControl")]
-    public partial class BucketAccessControl : Pulumi.CustomResource
+    public partial class BucketAccessControl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket.
@@ -159,7 +158,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class BucketAccessControlArgs : Pulumi.ResourceArgs
+    public sealed class BucketAccessControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -197,9 +196,10 @@ namespace Pulumi.Gcp.Storage
         public BucketAccessControlArgs()
         {
         }
+        public static new BucketAccessControlArgs Empty => new BucketAccessControlArgs();
     }
 
-    public sealed class BucketAccessControlState : Pulumi.ResourceArgs
+    public sealed class BucketAccessControlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -249,5 +249,6 @@ namespace Pulumi.Gcp.Storage
         public BucketAccessControlState()
         {
         }
+        public static new BucketAccessControlState Empty => new BucketAccessControlState();
     }
 }

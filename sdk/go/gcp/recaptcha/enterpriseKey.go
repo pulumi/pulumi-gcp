@@ -20,32 +20,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
-// 			AndroidSettings: &recaptcha.EnterpriseKeyAndroidSettingsArgs{
-// 				AllowAllPackageNames: pulumi.Bool(true),
-// 				AllowedPackageNames:  pulumi.StringArray{},
-// 			},
-// 			DisplayName: pulumi.String("display-name-one"),
-// 			Labels: pulumi.StringMap{
-// 				"label-one": pulumi.String("value-one"),
-// 			},
-// 			Project: pulumi.String("my-project-name"),
-// 			TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
-// 				TestingScore: pulumi.Float64(0.8),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				AndroidSettings: &recaptcha.EnterpriseKeyAndroidSettingsArgs{
+//					AllowAllPackageNames: pulumi.Bool(true),
+//					AllowedPackageNames:  pulumi.StringArray{},
+//				},
+//				DisplayName: pulumi.String("display-name-one"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
+//					TestingScore: pulumi.Float64(0.8),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Ios_key
 // A basic test of recaptcha enterprise key that can be used by iOS apps
@@ -53,32 +56,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
-// 			DisplayName: pulumi.String("display-name-one"),
-// 			IosSettings: &recaptcha.EnterpriseKeyIosSettingsArgs{
-// 				AllowAllBundleIds: pulumi.Bool(true),
-// 				AllowedBundleIds:  pulumi.StringArray{},
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"label-one": pulumi.String("value-one"),
-// 			},
-// 			Project: pulumi.String("my-project-name"),
-// 			TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
-// 				TestingScore: pulumi.Float64(1),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name-one"),
+//				IosSettings: &recaptcha.EnterpriseKeyIosSettingsArgs{
+//					AllowAllBundleIds: pulumi.Bool(true),
+//					AllowedBundleIds:  pulumi.StringArray{},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
+//					TestingScore: pulumi.Float64(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Minimal_key
 // A minimal test of recaptcha enterprise key
@@ -86,27 +92,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
-// 			DisplayName: pulumi.String("display-name-one"),
-// 			Labels:      nil,
-// 			Project:     pulumi.String("my-project-name"),
-// 			WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
-// 				AllowAllDomains: pulumi.Bool(true),
-// 				IntegrationType: pulumi.String("SCORE"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name-one"),
+//				Labels:      nil,
+//				Project:     pulumi.String("my-project-name"),
+//				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					AllowAllDomains: pulumi.Bool(true),
+//					IntegrationType: pulumi.String("SCORE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Web_key
 // A basic test of recaptcha enterprise key that can be used by websites
@@ -114,35 +123,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
-// 			DisplayName: pulumi.String("display-name-one"),
-// 			Labels: pulumi.StringMap{
-// 				"label-one": pulumi.String("value-one"),
-// 			},
-// 			Project: pulumi.String("my-project-name"),
-// 			TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
-// 				TestingChallenge: pulumi.String("NOCAPTCHA"),
-// 				TestingScore:     pulumi.Float64(0.5),
-// 			},
-// 			WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
-// 				AllowAllDomains:             pulumi.Bool(true),
-// 				AllowedDomains:              pulumi.StringArray{},
-// 				ChallengeSecurityPreference: pulumi.String("USABILITY"),
-// 				IntegrationType:             pulumi.String("CHECKBOX"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name-one"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
+//					TestingChallenge: pulumi.String("NOCAPTCHA"),
+//					TestingScore:     pulumi.Float64(0.5),
+//				},
+//				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					AllowAllDomains:             pulumi.Bool(true),
+//					AllowedDomains:              pulumi.StringArray{},
+//					ChallengeSecurityPreference: pulumi.String("USABILITY"),
+//					IntegrationType:             pulumi.String("CHECKBOX"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Web_score_key
 // A basic test of recaptcha enterprise key with score integration type that can be used by websites
@@ -150,50 +162,59 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
-// 			DisplayName: pulumi.String("display-name-one"),
-// 			Labels: pulumi.StringMap{
-// 				"label-one": pulumi.String("value-one"),
-// 			},
-// 			Project: pulumi.String("my-project-name"),
-// 			TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
-// 				TestingScore: pulumi.Float64(0.5),
-// 			},
-// 			WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
-// 				AllowAllDomains: pulumi.Bool(true),
-// 				AllowAmpTraffic: pulumi.Bool(false),
-// 				AllowedDomains:  pulumi.StringArray{},
-// 				IntegrationType: pulumi.String("SCORE"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name-one"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
+//					TestingScore: pulumi.Float64(0.5),
+//				},
+//				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					AllowAllDomains: pulumi.Bool(true),
+//					AllowAmpTraffic: pulumi.Bool(false),
+//					AllowedDomains:  pulumi.StringArray{},
+//					IntegrationType: pulumi.String("SCORE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Key can be imported using any of these accepted formats
+// # Key can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
+//
+//	$ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
+//
+//	$ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
+//
 // ```
 type EnterpriseKey struct {
 	pulumi.CustomResourceState
@@ -356,7 +377,7 @@ func (i *EnterpriseKey) ToEnterpriseKeyOutputWithContext(ctx context.Context) En
 // EnterpriseKeyArrayInput is an input type that accepts EnterpriseKeyArray and EnterpriseKeyArrayOutput values.
 // You can construct a concrete instance of `EnterpriseKeyArrayInput` via:
 //
-//          EnterpriseKeyArray{ EnterpriseKeyArgs{...} }
+//	EnterpriseKeyArray{ EnterpriseKeyArgs{...} }
 type EnterpriseKeyArrayInput interface {
 	pulumi.Input
 
@@ -381,7 +402,7 @@ func (i EnterpriseKeyArray) ToEnterpriseKeyArrayOutputWithContext(ctx context.Co
 // EnterpriseKeyMapInput is an input type that accepts EnterpriseKeyMap and EnterpriseKeyMapOutput values.
 // You can construct a concrete instance of `EnterpriseKeyMapInput` via:
 //
-//          EnterpriseKeyMap{ "key": EnterpriseKeyArgs{...} }
+//	EnterpriseKeyMap{ "key": EnterpriseKeyArgs{...} }
 type EnterpriseKeyMapInput interface {
 	pulumi.Input
 

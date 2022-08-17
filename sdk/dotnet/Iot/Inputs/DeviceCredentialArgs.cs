@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iot.Inputs
 {
 
-    public sealed class DeviceCredentialArgs : Pulumi.ResourceArgs
+    public sealed class DeviceCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which this credential becomes invalid.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Iot.Inputs
         public DeviceCredentialArgs()
         {
         }
+        public static new DeviceCredentialArgs Empty => new DeviceCredentialArgs();
     }
 }

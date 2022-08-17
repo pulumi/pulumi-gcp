@@ -25,170 +25,168 @@ namespace Pulumi.Gcp.ServiceAccount
     /// ## google\_service\_account\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/iam.serviceAccountUser",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/iam.serviceAccountUser",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var sa = new Gcp.ServiceAccount.Account("sa", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-service-account",
-    ///             DisplayName = "A service account that only Jane can interact with",
-    ///         });
-    ///         var admin_account_iam = new Gcp.ServiceAccount.IAMPolicy("admin-account-iam", new Gcp.ServiceAccount.IAMPolicyArgs
-    ///         {
-    ///             ServiceAccountId = sa.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can interact with",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMPolicy("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_service\_account\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         var sa = new Gcp.ServiceAccount.Account("sa", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-service-account",
-    ///             DisplayName = "A service account that only Jane can use",
-    ///         });
-    ///         var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new Gcp.ServiceAccount.IAMBindingArgs
-    ///         {
-    ///             ServiceAccountId = sa.Name,
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can use",
+    ///     });
     /// 
-    /// }
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         var sa = new Gcp.ServiceAccount.Account("sa", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-service-account",
-    ///             DisplayName = "A service account that only Jane can use",
-    ///         });
-    ///         var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new Gcp.ServiceAccount.IAMBindingArgs
-    ///         {
-    ///             ServiceAccountId = sa.Name,
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can use",
+    ///     });
     /// 
-    /// }
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_service\_account\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
-    ///         var sa = new Gcp.ServiceAccount.Account("sa", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-service-account",
-    ///             DisplayName = "A service account that Jane can use",
-    ///         });
-    ///         var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new Gcp.ServiceAccount.IAMMemberArgs
-    ///         {
-    ///             ServiceAccountId = sa.Name,
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///         // Allow SA service account use the default GCE account
-    ///         var gce_default_account_iam = new Gcp.ServiceAccount.IAMMember("gce-default-account-iam", new Gcp.ServiceAccount.IAMMemberArgs
-    ///         {
-    ///             ServiceAccountId = @default.Apply(@default =&gt; @default.Name),
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         });
-    ///     }
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
     /// 
-    /// }
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    ///     // Allow SA service account use the default GCE account
+    ///     var gce_default_account_iam = new Gcp.ServiceAccount.IAMMember("gce-default-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Name)),
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         var sa = new Gcp.ServiceAccount.Account("sa", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-service-account",
-    ///             DisplayName = "A service account that Jane can use",
-    ///         });
-    ///         var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new Gcp.ServiceAccount.IAMMemberArgs
-    ///         {
-    ///             ServiceAccountId = sa.Name,
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             Member = "user:jane@example.com",
-    ///             Condition = new Gcp.ServiceAccount.Inputs.IAMMemberConditionArgs
-    ///             {
-    ///                 Title = "expires_after_2019_12_31",
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that Jane can use",
+    ///     });
     /// 
-    /// }
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -218,7 +216,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// ```
     /// </summary>
     [GcpResourceType("gcp:serviceAccount/iAMBinding:IAMBinding")]
-    public partial class IAMBinding : Pulumi.CustomResource
+    public partial class IAMBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -294,7 +292,7 @@ namespace Pulumi.Gcp.ServiceAccount
         }
     }
 
-    public sealed class IAMBindingArgs : Pulumi.ResourceArgs
+    public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -328,9 +326,10 @@ namespace Pulumi.Gcp.ServiceAccount
         public IAMBindingArgs()
         {
         }
+        public static new IAMBindingArgs Empty => new IAMBindingArgs();
     }
 
-    public sealed class IAMBindingState : Pulumi.ResourceArgs
+    public sealed class IAMBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -370,5 +369,6 @@ namespace Pulumi.Gcp.ServiceAccount
         public IAMBindingState()
         {
         }
+        public static new IAMBindingState Empty => new IAMBindingState();
     }
 }

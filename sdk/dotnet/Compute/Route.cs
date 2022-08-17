@@ -43,26 +43,23 @@ namespace Pulumi.Gcp.Compute
     /// ### Route Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var defaultRoute = new Gcp.Compute.Route("defaultRoute", new Gcp.Compute.RouteArgs
-    ///         {
-    ///             DestRange = "15.0.0.0/24",
-    ///             Network = defaultNetwork.Name,
-    ///             NextHopIp = "10.132.1.5",
-    ///             Priority = 100,
-    ///         });
-    ///     }
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
-    /// }
+    ///     var defaultRoute = new Gcp.Compute.Route("defaultRoute", new()
+    ///     {
+    ///         DestRange = "15.0.0.0/24",
+    ///         Network = defaultNetwork.Name,
+    ///         NextHopIp = "10.132.1.5",
+    ///         Priority = 100,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -82,7 +79,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/route:Route")]
-    public partial class Route : Pulumi.CustomResource
+    public partial class Route : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional description of this resource. Provide this property
@@ -257,7 +254,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RouteArgs : Pulumi.ResourceArgs
+    public sealed class RouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property
@@ -385,9 +382,10 @@ namespace Pulumi.Gcp.Compute
         public RouteArgs()
         {
         }
+        public static new RouteArgs Empty => new RouteArgs();
     }
 
-    public sealed class RouteState : Pulumi.ResourceArgs
+    public sealed class RouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property
@@ -527,5 +525,6 @@ namespace Pulumi.Gcp.Compute
         public RouteState()
         {
         }
+        public static new RouteState Empty => new RouteState();
     }
 }

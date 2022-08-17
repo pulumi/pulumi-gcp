@@ -32,7 +32,7 @@ type AccessApprovalSettingsEnrolledService struct {
 // AccessApprovalSettingsEnrolledServiceInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArgs and AccessApprovalSettingsEnrolledServiceOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceInput` via:
 //
-//          AccessApprovalSettingsEnrolledServiceArgs{...}
+//	AccessApprovalSettingsEnrolledServiceArgs{...}
 type AccessApprovalSettingsEnrolledServiceInput interface {
 	pulumi.Input
 
@@ -74,7 +74,7 @@ func (i AccessApprovalSettingsEnrolledServiceArgs) ToAccessApprovalSettingsEnrol
 // AccessApprovalSettingsEnrolledServiceArrayInput is an input type that accepts AccessApprovalSettingsEnrolledServiceArray and AccessApprovalSettingsEnrolledServiceArrayOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsEnrolledServiceArrayInput` via:
 //
-//          AccessApprovalSettingsEnrolledServiceArray{ AccessApprovalSettingsEnrolledServiceArgs{...} }
+//	AccessApprovalSettingsEnrolledServiceArray{ AccessApprovalSettingsEnrolledServiceArgs{...} }
 type AccessApprovalSettingsEnrolledServiceArrayInput interface {
 	pulumi.Input
 
@@ -161,7 +161,7 @@ type IAMBindingCondition struct {
 // IAMBindingConditionInput is an input type that accepts IAMBindingConditionArgs and IAMBindingConditionOutput values.
 // You can construct a concrete instance of `IAMBindingConditionInput` via:
 //
-//          IAMBindingConditionArgs{...}
+//	IAMBindingConditionArgs{...}
 type IAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -198,11 +198,11 @@ func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutputWithContext(ctx c
 // IAMBindingConditionPtrInput is an input type that accepts IAMBindingConditionArgs, IAMBindingConditionPtr and IAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `IAMBindingConditionPtrInput` via:
 //
-//          IAMBindingConditionArgs{...}
+//	        IAMBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -327,7 +327,7 @@ type IAMMemberCondition struct {
 // IAMMemberConditionInput is an input type that accepts IAMMemberConditionArgs and IAMMemberConditionOutput values.
 // You can construct a concrete instance of `IAMMemberConditionInput` via:
 //
-//          IAMMemberConditionArgs{...}
+//	IAMMemberConditionArgs{...}
 type IAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -367,11 +367,11 @@ func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutputWithContext(ctx con
 // IAMMemberConditionPtrInput is an input type that accepts IAMMemberConditionArgs, IAMMemberConditionPtr and IAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `IAMMemberConditionPtrInput` via:
 //
-//          IAMMemberConditionArgs{...}
+//	        IAMMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -505,7 +505,7 @@ type IamAuditConfigAuditLogConfig struct {
 // IamAuditConfigAuditLogConfigInput is an input type that accepts IamAuditConfigAuditLogConfigArgs and IamAuditConfigAuditLogConfigOutput values.
 // You can construct a concrete instance of `IamAuditConfigAuditLogConfigInput` via:
 //
-//          IamAuditConfigAuditLogConfigArgs{...}
+//	IamAuditConfigAuditLogConfigArgs{...}
 type IamAuditConfigAuditLogConfigInput interface {
 	pulumi.Input
 
@@ -540,7 +540,7 @@ func (i IamAuditConfigAuditLogConfigArgs) ToIamAuditConfigAuditLogConfigOutputWi
 // IamAuditConfigAuditLogConfigArrayInput is an input type that accepts IamAuditConfigAuditLogConfigArray and IamAuditConfigAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigAuditLogConfigArrayInput` via:
 //
-//          IamAuditConfigAuditLogConfigArray{ IamAuditConfigAuditLogConfigArgs{...} }
+//	IamAuditConfigAuditLogConfigArray{ IamAuditConfigAuditLogConfigArgs{...} }
 type IamAuditConfigAuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -619,7 +619,7 @@ type PolicyBooleanPolicy struct {
 // PolicyBooleanPolicyInput is an input type that accepts PolicyBooleanPolicyArgs and PolicyBooleanPolicyOutput values.
 // You can construct a concrete instance of `PolicyBooleanPolicyInput` via:
 //
-//          PolicyBooleanPolicyArgs{...}
+//	PolicyBooleanPolicyArgs{...}
 type PolicyBooleanPolicyInput interface {
 	pulumi.Input
 
@@ -655,11 +655,11 @@ func (i PolicyBooleanPolicyArgs) ToPolicyBooleanPolicyPtrOutputWithContext(ctx c
 // PolicyBooleanPolicyPtrInput is an input type that accepts PolicyBooleanPolicyArgs, PolicyBooleanPolicyPtr and PolicyBooleanPolicyPtrOutput values.
 // You can construct a concrete instance of `PolicyBooleanPolicyPtrInput` via:
 //
-//          PolicyBooleanPolicyArgs{...}
+//	        PolicyBooleanPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PolicyBooleanPolicyPtrInput interface {
 	pulumi.Input
 
@@ -762,7 +762,7 @@ type PolicyListPolicy struct {
 // PolicyListPolicyInput is an input type that accepts PolicyListPolicyArgs and PolicyListPolicyOutput values.
 // You can construct a concrete instance of `PolicyListPolicyInput` via:
 //
-//          PolicyListPolicyArgs{...}
+//	PolicyListPolicyArgs{...}
 type PolicyListPolicyInput interface {
 	pulumi.Input
 
@@ -804,11 +804,11 @@ func (i PolicyListPolicyArgs) ToPolicyListPolicyPtrOutputWithContext(ctx context
 // PolicyListPolicyPtrInput is an input type that accepts PolicyListPolicyArgs, PolicyListPolicyPtr and PolicyListPolicyPtrOutput values.
 // You can construct a concrete instance of `PolicyListPolicyPtrInput` via:
 //
-//          PolicyListPolicyArgs{...}
+//	        PolicyListPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PolicyListPolicyPtrInput interface {
 	pulumi.Input
 
@@ -952,7 +952,7 @@ type PolicyListPolicyAllow struct {
 // PolicyListPolicyAllowInput is an input type that accepts PolicyListPolicyAllowArgs and PolicyListPolicyAllowOutput values.
 // You can construct a concrete instance of `PolicyListPolicyAllowInput` via:
 //
-//          PolicyListPolicyAllowArgs{...}
+//	PolicyListPolicyAllowArgs{...}
 type PolicyListPolicyAllowInput interface {
 	pulumi.Input
 
@@ -990,11 +990,11 @@ func (i PolicyListPolicyAllowArgs) ToPolicyListPolicyAllowPtrOutputWithContext(c
 // PolicyListPolicyAllowPtrInput is an input type that accepts PolicyListPolicyAllowArgs, PolicyListPolicyAllowPtr and PolicyListPolicyAllowPtrOutput values.
 // You can construct a concrete instance of `PolicyListPolicyAllowPtrInput` via:
 //
-//          PolicyListPolicyAllowArgs{...}
+//	        PolicyListPolicyAllowArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PolicyListPolicyAllowPtrInput interface {
 	pulumi.Input
 
@@ -1108,7 +1108,7 @@ type PolicyListPolicyDeny struct {
 // PolicyListPolicyDenyInput is an input type that accepts PolicyListPolicyDenyArgs and PolicyListPolicyDenyOutput values.
 // You can construct a concrete instance of `PolicyListPolicyDenyInput` via:
 //
-//          PolicyListPolicyDenyArgs{...}
+//	PolicyListPolicyDenyArgs{...}
 type PolicyListPolicyDenyInput interface {
 	pulumi.Input
 
@@ -1146,11 +1146,11 @@ func (i PolicyListPolicyDenyArgs) ToPolicyListPolicyDenyPtrOutputWithContext(ctx
 // PolicyListPolicyDenyPtrInput is an input type that accepts PolicyListPolicyDenyArgs, PolicyListPolicyDenyPtr and PolicyListPolicyDenyPtrOutput values.
 // You can construct a concrete instance of `PolicyListPolicyDenyPtrInput` via:
 //
-//          PolicyListPolicyDenyArgs{...}
+//	        PolicyListPolicyDenyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PolicyListPolicyDenyPtrInput interface {
 	pulumi.Input
 
@@ -1262,7 +1262,7 @@ type PolicyRestorePolicy struct {
 // PolicyRestorePolicyInput is an input type that accepts PolicyRestorePolicyArgs and PolicyRestorePolicyOutput values.
 // You can construct a concrete instance of `PolicyRestorePolicyInput` via:
 //
-//          PolicyRestorePolicyArgs{...}
+//	PolicyRestorePolicyArgs{...}
 type PolicyRestorePolicyInput interface {
 	pulumi.Input
 
@@ -1298,11 +1298,11 @@ func (i PolicyRestorePolicyArgs) ToPolicyRestorePolicyPtrOutputWithContext(ctx c
 // PolicyRestorePolicyPtrInput is an input type that accepts PolicyRestorePolicyArgs, PolicyRestorePolicyPtr and PolicyRestorePolicyPtrOutput values.
 // You can construct a concrete instance of `PolicyRestorePolicyPtrInput` via:
 //
-//          PolicyRestorePolicyArgs{...}
+//	        PolicyRestorePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PolicyRestorePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1413,7 +1413,7 @@ type GetFoldersFolder struct {
 // GetFoldersFolderInput is an input type that accepts GetFoldersFolderArgs and GetFoldersFolderOutput values.
 // You can construct a concrete instance of `GetFoldersFolderInput` via:
 //
-//          GetFoldersFolderArgs{...}
+//	GetFoldersFolderArgs{...}
 type GetFoldersFolderInput interface {
 	pulumi.Input
 
@@ -1455,7 +1455,7 @@ func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Co
 // GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
 // You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
 //
-//          GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
+//	GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
 type GetFoldersFolderArrayInput interface {
 	pulumi.Input
 
@@ -1561,7 +1561,7 @@ type GetIAMPolicyAuditConfig struct {
 // GetIAMPolicyAuditConfigInput is an input type that accepts GetIAMPolicyAuditConfigArgs and GetIAMPolicyAuditConfigOutput values.
 // You can construct a concrete instance of `GetIAMPolicyAuditConfigInput` via:
 //
-//          GetIAMPolicyAuditConfigArgs{...}
+//	GetIAMPolicyAuditConfigArgs{...}
 type GetIAMPolicyAuditConfigInput interface {
 	pulumi.Input
 
@@ -1591,7 +1591,7 @@ func (i GetIAMPolicyAuditConfigArgs) ToGetIAMPolicyAuditConfigOutputWithContext(
 // GetIAMPolicyAuditConfigArrayInput is an input type that accepts GetIAMPolicyAuditConfigArray and GetIAMPolicyAuditConfigArrayOutput values.
 // You can construct a concrete instance of `GetIAMPolicyAuditConfigArrayInput` via:
 //
-//          GetIAMPolicyAuditConfigArray{ GetIAMPolicyAuditConfigArgs{...} }
+//	GetIAMPolicyAuditConfigArray{ GetIAMPolicyAuditConfigArgs{...} }
 type GetIAMPolicyAuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -1667,7 +1667,7 @@ type GetIAMPolicyAuditConfigAuditLogConfig struct {
 // GetIAMPolicyAuditConfigAuditLogConfigInput is an input type that accepts GetIAMPolicyAuditConfigAuditLogConfigArgs and GetIAMPolicyAuditConfigAuditLogConfigOutput values.
 // You can construct a concrete instance of `GetIAMPolicyAuditConfigAuditLogConfigInput` via:
 //
-//          GetIAMPolicyAuditConfigAuditLogConfigArgs{...}
+//	GetIAMPolicyAuditConfigAuditLogConfigArgs{...}
 type GetIAMPolicyAuditConfigAuditLogConfigInput interface {
 	pulumi.Input
 
@@ -1697,7 +1697,7 @@ func (i GetIAMPolicyAuditConfigAuditLogConfigArgs) ToGetIAMPolicyAuditConfigAudi
 // GetIAMPolicyAuditConfigAuditLogConfigArrayInput is an input type that accepts GetIAMPolicyAuditConfigAuditLogConfigArray and GetIAMPolicyAuditConfigAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GetIAMPolicyAuditConfigAuditLogConfigArrayInput` via:
 //
-//          GetIAMPolicyAuditConfigAuditLogConfigArray{ GetIAMPolicyAuditConfigAuditLogConfigArgs{...} }
+//	GetIAMPolicyAuditConfigAuditLogConfigArray{ GetIAMPolicyAuditConfigAuditLogConfigArgs{...} }
 type GetIAMPolicyAuditConfigAuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -1784,7 +1784,7 @@ type GetIAMPolicyBinding struct {
 // GetIAMPolicyBindingInput is an input type that accepts GetIAMPolicyBindingArgs and GetIAMPolicyBindingOutput values.
 // You can construct a concrete instance of `GetIAMPolicyBindingInput` via:
 //
-//          GetIAMPolicyBindingArgs{...}
+//	GetIAMPolicyBindingArgs{...}
 type GetIAMPolicyBindingInput interface {
 	pulumi.Input
 
@@ -1825,7 +1825,7 @@ func (i GetIAMPolicyBindingArgs) ToGetIAMPolicyBindingOutputWithContext(ctx cont
 // GetIAMPolicyBindingArrayInput is an input type that accepts GetIAMPolicyBindingArray and GetIAMPolicyBindingArrayOutput values.
 // You can construct a concrete instance of `GetIAMPolicyBindingArrayInput` via:
 //
-//          GetIAMPolicyBindingArray{ GetIAMPolicyBindingArgs{...} }
+//	GetIAMPolicyBindingArray{ GetIAMPolicyBindingArgs{...} }
 type GetIAMPolicyBindingArrayInput interface {
 	pulumi.Input
 
@@ -1917,7 +1917,7 @@ type GetIAMPolicyBindingCondition struct {
 // GetIAMPolicyBindingConditionInput is an input type that accepts GetIAMPolicyBindingConditionArgs and GetIAMPolicyBindingConditionOutput values.
 // You can construct a concrete instance of `GetIAMPolicyBindingConditionInput` via:
 //
-//          GetIAMPolicyBindingConditionArgs{...}
+//	GetIAMPolicyBindingConditionArgs{...}
 type GetIAMPolicyBindingConditionInput interface {
 	pulumi.Input
 
@@ -1957,11 +1957,11 @@ func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionPtrOutpu
 // GetIAMPolicyBindingConditionPtrInput is an input type that accepts GetIAMPolicyBindingConditionArgs, GetIAMPolicyBindingConditionPtr and GetIAMPolicyBindingConditionPtrOutput values.
 // You can construct a concrete instance of `GetIAMPolicyBindingConditionPtrInput` via:
 //
-//          GetIAMPolicyBindingConditionArgs{...}
+//	        GetIAMPolicyBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetIAMPolicyBindingConditionPtrInput interface {
 	pulumi.Input
 

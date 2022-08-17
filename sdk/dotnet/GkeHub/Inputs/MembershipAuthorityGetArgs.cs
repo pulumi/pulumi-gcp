@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class MembershipAuthorityGetArgs : Pulumi.ResourceArgs
+    public sealed class MembershipAuthorityGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("issuer", required: true)]
         public Input<string> Issuer { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public MembershipAuthorityGetArgs()
         {
         }
+        public static new MembershipAuthorityGetArgs Empty => new MembershipAuthorityGetArgs();
     }
 }

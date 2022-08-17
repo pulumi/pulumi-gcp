@@ -22,33 +22,31 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tpl = new Gcp.Compute.InstanceFromMachineImage("tpl", new()
     ///     {
-    ///         var tpl = new Gcp.Compute.InstanceFromMachineImage("tpl", new Gcp.Compute.InstanceFromMachineImageArgs
+    ///         Zone = "us-central1-a",
+    ///         SourceMachineImage = "projects/PROJECT-ID/global/machineImages/NAME",
+    ///         CanIpForward = false,
+    ///         Labels = 
     ///         {
-    ///             Zone = "us-central1-a",
-    ///             SourceMachineImage = "projects/PROJECT-ID/global/machineImages/NAME",
-    ///             CanIpForward = false,
-    ///             Labels = 
-    ///             {
-    ///                 { "my_key", "my_value" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             { "my_key", "my_value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage")]
-    public partial class InstanceFromMachineImage : Pulumi.CustomResource
+    public partial class InstanceFromMachineImage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features.
@@ -326,7 +324,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InstanceFromMachineImageArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features.
@@ -533,9 +531,10 @@ namespace Pulumi.Gcp.Compute
         public InstanceFromMachineImageArgs()
         {
         }
+        public static new InstanceFromMachineImageArgs Empty => new InstanceFromMachineImageArgs();
     }
 
-    public sealed class InstanceFromMachineImageState : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features.
@@ -820,5 +819,6 @@ namespace Pulumi.Gcp.Compute
         public InstanceFromMachineImageState()
         {
         }
+        public static new InstanceFromMachineImageState Empty => new InstanceFromMachineImageState();
     }
 }

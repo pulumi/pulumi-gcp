@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGroupManagerNamedPortGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerNamedPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - Version name.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGroupManagerNamedPortGetArgs()
         {
         }
+        public static new InstanceGroupManagerNamedPortGetArgs Empty => new InstanceGroupManagerNamedPortGetArgs();
     }
 }

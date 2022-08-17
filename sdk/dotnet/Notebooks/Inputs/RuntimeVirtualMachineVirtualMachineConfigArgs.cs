@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Compute Engine accelerator configuration for this runtime.
@@ -183,5 +183,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigArgs();
     }
 }

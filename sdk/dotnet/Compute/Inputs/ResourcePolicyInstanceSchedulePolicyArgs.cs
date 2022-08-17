@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicyInstanceSchedulePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyInstanceSchedulePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The expiration time of the schedule. The timestamp is an RFC3339 string.
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicyInstanceSchedulePolicyArgs()
         {
         }
+        public static new ResourcePolicyInstanceSchedulePolicyArgs Empty => new ResourcePolicyInstanceSchedulePolicyArgs();
     }
 }

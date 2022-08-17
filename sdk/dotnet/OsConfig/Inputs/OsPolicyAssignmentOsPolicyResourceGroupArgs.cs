@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("inventoryFilters")]
         private InputList<Inputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs>? _inventoryFilters;
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupArgs();
     }
 }

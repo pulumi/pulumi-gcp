@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.DataCatalog
     /// ## google\_data\_catalog\_tag\_template\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.DataCatalog.TagTemplateIamPolicy("policy", new Gcp.DataCatalog.TagTemplateIamPolicyArgs
-    ///         {
-    ///             TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.DataCatalog.TagTemplateIamPolicy("policy", new()
+    ///     {
+    ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_data\_catalog\_tag\_template\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.DataCatalog.TagTemplateIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.DataCatalog.TagTemplateIamBinding("binding", new Gcp.DataCatalog.TagTemplateIamBindingArgs
+    ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_data\_catalog\_tag\_template\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.DataCatalog.TagTemplateIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.DataCatalog.TagTemplateIamMember("member", new Gcp.DataCatalog.TagTemplateIamMemberArgs
-    ///         {
-    ///             TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -124,7 +119,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding")]
-    public partial class TagTemplateIamBinding : Pulumi.CustomResource
+    public partial class TagTemplateIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.TagTemplateIamBindingCondition?> Condition { get; private set; } = null!;
@@ -206,7 +201,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class TagTemplateIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class TagTemplateIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TagTemplateIamBindingConditionArgs>? Condition { get; set; }
@@ -246,9 +241,10 @@ namespace Pulumi.Gcp.DataCatalog
         public TagTemplateIamBindingArgs()
         {
         }
+        public static new TagTemplateIamBindingArgs Empty => new TagTemplateIamBindingArgs();
     }
 
-    public sealed class TagTemplateIamBindingState : Pulumi.ResourceArgs
+    public sealed class TagTemplateIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TagTemplateIamBindingConditionGetArgs>? Condition { get; set; }
@@ -294,5 +290,6 @@ namespace Pulumi.Gcp.DataCatalog
         public TagTemplateIamBindingState()
         {
         }
+        public static new TagTemplateIamBindingState Empty => new TagTemplateIamBindingState();
     }
 }

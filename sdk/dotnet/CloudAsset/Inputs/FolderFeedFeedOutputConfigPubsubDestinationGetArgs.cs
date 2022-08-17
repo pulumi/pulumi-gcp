@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudAsset.Inputs
 {
 
-    public sealed class FolderFeedFeedOutputConfigPubsubDestinationGetArgs : Pulumi.ResourceArgs
+    public sealed class FolderFeedFeedOutputConfigPubsubDestinationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination on Cloud Pubsub topic.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.CloudAsset.Inputs
         public FolderFeedFeedOutputConfigPubsubDestinationGetArgs()
         {
         }
+        public static new FolderFeedFeedOutputConfigPubsubDestinationGetArgs Empty => new FolderFeedFeedOutputConfigPubsubDestinationGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterLoggingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterLoggingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration of the logging components.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterLoggingConfigGetArgs()
         {
         }
+        public static new AzureClusterLoggingConfigGetArgs Empty => new AzureClusterLoggingConfigGetArgs();
     }
 }

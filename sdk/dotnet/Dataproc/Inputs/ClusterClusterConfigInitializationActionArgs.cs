@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigInitializationActionArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigInitializationActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The script to be executed during initialization of the cluster.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigInitializationActionArgs()
         {
         }
+        public static new ClusterClusterConfigInitializationActionArgs Empty => new ClusterClusterConfigInitializationActionArgs();
     }
 }

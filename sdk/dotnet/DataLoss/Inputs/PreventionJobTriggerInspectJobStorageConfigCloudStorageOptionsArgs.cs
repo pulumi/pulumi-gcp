@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
@@ -66,5 +66,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs Empty => new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs();
     }
 }

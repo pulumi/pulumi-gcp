@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionDeidentifyTemplateDeidentifyConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionDeidentifyTemplateDeidentifyConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies free-text based transformations to be applied to the dataset.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionDeidentifyTemplateDeidentifyConfigGetArgs()
         {
         }
+        public static new PreventionDeidentifyTemplateDeidentifyConfigGetArgs Empty => new PreventionDeidentifyTemplateDeidentifyConfigGetArgs();
     }
 }

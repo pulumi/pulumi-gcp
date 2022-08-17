@@ -16,45 +16,44 @@ namespace Pulumi.Gcp.Dataproc
     /// ### Dataproc Autoscaling Policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var asp = new Gcp.Dataproc.AutoscalingPolicy("asp", new()
     ///     {
-    ///         var asp = new Gcp.Dataproc.AutoscalingPolicy("asp", new Gcp.Dataproc.AutoscalingPolicyArgs
+    ///         PolicyId = "dataproc-policy",
+    ///         Location = "us-central1",
+    ///         WorkerConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyWorkerConfigArgs
     ///         {
-    ///             PolicyId = "dataproc-policy",
-    ///             Location = "us-central1",
-    ///             WorkerConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyWorkerConfigArgs
-    ///             {
-    ///                 MaxInstances = 3,
-    ///             },
-    ///             BasicAlgorithm = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmArgs
-    ///             {
-    ///                 YarnConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmYarnConfigArgs
-    ///                 {
-    ///                     GracefulDecommissionTimeout = "30s",
-    ///                     ScaleUpFactor = 0.5,
-    ///                     ScaleDownFactor = 0.5,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var basic = new Gcp.Dataproc.Cluster("basic", new Gcp.Dataproc.ClusterArgs
+    ///             MaxInstances = 3,
+    ///         },
+    ///         BasicAlgorithm = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmArgs
     ///         {
-    ///             Region = "us-central1",
-    ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///             YarnConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmYarnConfigArgs
     ///             {
-    ///                 AutoscalingConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigAutoscalingConfigArgs
-    ///                 {
-    ///                     PolicyUri = asp.Name,
-    ///                 },
+    ///                 GracefulDecommissionTimeout = "30s",
+    ///                 ScaleUpFactor = 0.5,
+    ///                 ScaleDownFactor = 0.5,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///         {
+    ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigAutoscalingConfigArgs
+    ///             {
+    ///                 PolicyUri = asp.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +73,7 @@ namespace Pulumi.Gcp.Dataproc
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy")]
-    public partial class AutoscalingPolicy : Pulumi.CustomResource
+    public partial class AutoscalingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Basic algorithm for autoscaling.
@@ -169,7 +168,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic algorithm for autoscaling.
@@ -217,9 +216,10 @@ namespace Pulumi.Gcp.Dataproc
         public AutoscalingPolicyArgs()
         {
         }
+        public static new AutoscalingPolicyArgs Empty => new AutoscalingPolicyArgs();
     }
 
-    public sealed class AutoscalingPolicyState : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic algorithm for autoscaling.
@@ -273,5 +273,6 @@ namespace Pulumi.Gcp.Dataproc
         public AutoscalingPolicyState()
         {
         }
+        public static new AutoscalingPolicyState Empty => new AutoscalingPolicyState();
     }
 }

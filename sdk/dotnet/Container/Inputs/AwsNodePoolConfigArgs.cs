@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsNodePoolConfigArgs : Pulumi.ResourceArgs
+    public sealed class AwsNodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ARN of the AWS KMS key used to encrypt node pool configuration.
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -111,5 +111,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsNodePoolConfigArgs()
         {
         }
+        public static new AwsNodePoolConfigArgs Empty => new AwsNodePoolConfigArgs();
     }
 }

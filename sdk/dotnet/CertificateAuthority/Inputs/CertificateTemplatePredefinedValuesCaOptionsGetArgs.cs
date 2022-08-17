@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateTemplatePredefinedValuesCaOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateTemplatePredefinedValuesCaOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateTemplatePredefinedValuesCaOptionsGetArgs()
         {
         }
+        public static new CertificateTemplatePredefinedValuesCaOptionsGetArgs Empty => new CertificateTemplatePredefinedValuesCaOptionsGetArgs();
     }
 }

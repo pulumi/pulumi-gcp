@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZoneServiceDirectoryConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneServiceDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The namespace associated with the zone.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZoneServiceDirectoryConfigArgs()
         {
         }
+        public static new ManagedZoneServiceDirectoryConfigArgs Empty => new ManagedZoneServiceDirectoryConfigArgs();
     }
 }

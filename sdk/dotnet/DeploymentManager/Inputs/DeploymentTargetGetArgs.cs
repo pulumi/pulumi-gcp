@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DeploymentManager.Inputs
 {
 
-    public sealed class DeploymentTargetGetArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The root configuration file to use for this deployment.
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.DeploymentManager.Inputs
         public DeploymentTargetGetArgs()
         {
         }
+        public static new DeploymentTargetGetArgs Empty => new DeploymentTargetGetArgs();
     }
 }

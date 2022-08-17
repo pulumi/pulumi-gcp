@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigGooGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigGooGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// goo update settings. Use this setting to override the default goo patch rules.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigGooGetArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigGooGetArgs Empty => new PatchDeploymentPatchConfigGooGetArgs();
     }
 }

@@ -23,33 +23,33 @@ namespace Pulumi.Gcp.AppEngine
     /// ### App Engine Firewall Rule Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "ae-project",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var app = new Gcp.AppEngine.Application("app", new Gcp.AppEngine.ApplicationArgs
-    ///         {
-    ///             Project = myProject.ProjectId,
-    ///             LocationId = "us-central",
-    ///         });
-    ///         var rule = new Gcp.AppEngine.FirewallRule("rule", new Gcp.AppEngine.FirewallRuleArgs
-    ///         {
-    ///             Project = app.Project,
-    ///             Priority = 1000,
-    ///             Action = "ALLOW",
-    ///             SourceRange = "*",
-    ///         });
-    ///     }
+    ///         ProjectId = "ae-project",
+    ///         OrgId = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var app = new Gcp.AppEngine.Application("app", new()
+    ///     {
+    ///         Project = myProject.ProjectId,
+    ///         LocationId = "us-central",
+    ///     });
+    /// 
+    ///     var rule = new Gcp.AppEngine.FirewallRule("rule", new()
+    ///     {
+    ///         Project = app.Project,
+    ///         Priority = 1000,
+    ///         Action = "ALLOW",
+    ///         SourceRange = "*",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.AppEngine
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/firewallRule:FirewallRule")]
-    public partial class FirewallRule : Pulumi.CustomResource
+    public partial class FirewallRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The action to take if this rule matches.
@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.AppEngine
         }
     }
 
-    public sealed class FirewallRuleArgs : Pulumi.ResourceArgs
+    public sealed class FirewallRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to take if this rule matches.
@@ -192,9 +192,10 @@ namespace Pulumi.Gcp.AppEngine
         public FirewallRuleArgs()
         {
         }
+        public static new FirewallRuleArgs Empty => new FirewallRuleArgs();
     }
 
-    public sealed class FirewallRuleState : Pulumi.ResourceArgs
+    public sealed class FirewallRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to take if this rule matches.
@@ -235,5 +236,6 @@ namespace Pulumi.Gcp.AppEngine
         public FirewallRuleState()
         {
         }
+        public static new FirewallRuleState Empty => new FirewallRuleState();
     }
 }

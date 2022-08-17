@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudScheduler.Inputs
 {
 
-    public sealed class JobPubsubTargetArgs : Pulumi.ResourceArgs
+    public sealed class JobPubsubTargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputMap<string>? _attributes;
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         public JobPubsubTargetArgs()
         {
         }
+        public static new JobPubsubTargetArgs Empty => new JobPubsubTargetArgs();
     }
 }

@@ -26,138 +26,219 @@ namespace Pulumi.Gcp.Notebooks
     /// ### Notebook Runtime Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var runtime = new Gcp.Notebooks.Runtime("runtime", new()
     ///     {
-    ///         var runtime = new Gcp.Notebooks.Runtime("runtime", new Gcp.Notebooks.RuntimeArgs
+    ///         AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
     ///         {
-    ///             AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
+    ///             AccessType = "SINGLE_USER",
+    ///             RuntimeOwner = "admin@hashicorptest.com",
+    ///         },
+    ///         Location = "us-central1",
+    ///         VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
+    ///         {
+    ///             VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
     ///             {
-    ///                 AccessType = "SINGLE_USER",
-    ///                 RuntimeOwner = "admin@hashicorptest.com",
-    ///             },
-    ///             Location = "us-central1",
-    ///             VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
-    ///             {
-    ///                 VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
+    ///                 DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
     ///                 {
-    ///                     DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+    ///                     InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
     ///                     {
-    ///                         InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
-    ///                         {
-    ///                             DiskSizeGb = 100,
-    ///                             DiskType = "PD_STANDARD",
-    ///                         },
+    ///                         DiskSizeGb = 100,
+    ///                         DiskType = "PD_STANDARD",
     ///                     },
-    ///                     MachineType = "n1-standard-4",
     ///                 },
+    ///                 MachineType = "n1-standard-4",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Notebook Runtime Basic Gpu
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var runtimeGpu = new Gcp.Notebooks.Runtime("runtimeGpu", new()
     ///     {
-    ///         var runtimeGpu = new Gcp.Notebooks.Runtime("runtimeGpu", new Gcp.Notebooks.RuntimeArgs
+    ///         AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
     ///         {
-    ///             AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
+    ///             AccessType = "SINGLE_USER",
+    ///             RuntimeOwner = "admin@hashicorptest.com",
+    ///         },
+    ///         Location = "us-central1",
+    ///         SoftwareConfig = new Gcp.Notebooks.Inputs.RuntimeSoftwareConfigArgs
+    ///         {
+    ///             InstallGpuDriver = true,
+    ///         },
+    ///         VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
+    ///         {
+    ///             VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
     ///             {
-    ///                 AccessType = "SINGLE_USER",
-    ///                 RuntimeOwner = "admin@hashicorptest.com",
-    ///             },
-    ///             Location = "us-central1",
-    ///             SoftwareConfig = new Gcp.Notebooks.Inputs.RuntimeSoftwareConfigArgs
-    ///             {
-    ///                 InstallGpuDriver = true,
-    ///             },
-    ///             VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
-    ///             {
-    ///                 VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
+    ///                 AcceleratorConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs
     ///                 {
-    ///                     AcceleratorConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs
-    ///                     {
-    ///                         CoreCount = 1,
-    ///                         Type = "NVIDIA_TESLA_V100",
-    ///                     },
-    ///                     DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
-    ///                     {
-    ///                         InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
-    ///                         {
-    ///                             DiskSizeGb = 100,
-    ///                             DiskType = "PD_STANDARD",
-    ///                         },
-    ///                     },
-    ///                     MachineType = "n1-standard-4",
+    ///                     CoreCount = 1,
+    ///                     Type = "NVIDIA_TESLA_V100",
     ///                 },
+    ///                 DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+    ///                 {
+    ///                     InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
+    ///                     {
+    ///                         DiskSizeGb = 100,
+    ///                         DiskType = "PD_STANDARD",
+    ///                     },
+    ///                 },
+    ///                 MachineType = "n1-standard-4",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Notebook Runtime Basic Container
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var runtimeContainer = new Gcp.Notebooks.Runtime("runtimeContainer", new()
     ///     {
-    ///         var runtimeContainer = new Gcp.Notebooks.Runtime("runtimeContainer", new Gcp.Notebooks.RuntimeArgs
+    ///         AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
     ///         {
-    ///             AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
+    ///             AccessType = "SINGLE_USER",
+    ///             RuntimeOwner = "admin@hashicorptest.com",
+    ///         },
+    ///         Location = "us-central1",
+    ///         VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
+    ///         {
+    ///             VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
     ///             {
-    ///                 AccessType = "SINGLE_USER",
-    ///                 RuntimeOwner = "admin@hashicorptest.com",
-    ///             },
-    ///             Location = "us-central1",
-    ///             VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
-    ///             {
-    ///                 VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
+    ///                 ContainerImages = new[]
     ///                 {
-    ///                     ContainerImages = 
+    ///                     new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs
     ///                     {
-    ///                         new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs
-    ///                         {
-    ///                             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
-    ///                             Tag = "latest",
-    ///                         },
-    ///                         new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs
-    ///                         {
-    ///                             Repository = "gcr.io/deeplearning-platform-release/beam-notebooks",
-    ///                             Tag = "latest",
-    ///                         },
+    ///                         Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///                         Tag = "latest",
     ///                     },
-    ///                     DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+    ///                     new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs
     ///                     {
-    ///                         InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
-    ///                         {
-    ///                             DiskSizeGb = 100,
-    ///                             DiskType = "PD_STANDARD",
-    ///                         },
+    ///                         Repository = "gcr.io/deeplearning-platform-release/beam-notebooks",
+    ///                         Tag = "latest",
     ///                     },
-    ///                     MachineType = "n1-standard-4",
+    ///                 },
+    ///                 DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+    ///                 {
+    ///                     InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
+    ///                     {
+    ///                         DiskSizeGb = 100,
+    ///                         DiskType = "PD_STANDARD",
+    ///                     },
+    ///                 },
+    ///                 MachineType = "n1-standard-4",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Notebook Runtime Kernels
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var runtimeContainer = new Gcp.Notebooks.Runtime("runtimeContainer", new()
+    ///     {
+    ///         AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
+    ///         {
+    ///             AccessType = "SINGLE_USER",
+    ///             RuntimeOwner = "admin@hashicorptest.com",
+    ///         },
+    ///         Location = "us-central1",
+    ///         SoftwareConfig = new Gcp.Notebooks.Inputs.RuntimeSoftwareConfigArgs
+    ///         {
+    ///             Kernels = new[]
+    ///             {
+    ///                 new Gcp.Notebooks.Inputs.RuntimeSoftwareConfigKernelArgs
+    ///                 {
+    ///                     Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///                     Tag = "latest",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
+    ///         {
+    ///             VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
+    ///             {
+    ///                 DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+    ///                 {
+    ///                     InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
+    ///                     {
+    ///                         DiskSizeGb = 100,
+    ///                         DiskType = "PD_STANDARD",
+    ///                     },
+    ///                 },
+    ///                 MachineType = "n1-standard-4",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
+    /// ```
+    /// ### Notebook Runtime Script
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var runtimeContainer = new Gcp.Notebooks.Runtime("runtimeContainer", new()
+    ///     {
+    ///         AccessConfig = new Gcp.Notebooks.Inputs.RuntimeAccessConfigArgs
+    ///         {
+    ///             AccessType = "SINGLE_USER",
+    ///             RuntimeOwner = "admin@hashicorptest.com",
+    ///         },
+    ///         Location = "us-central1",
+    ///         SoftwareConfig = new Gcp.Notebooks.Inputs.RuntimeSoftwareConfigArgs
+    ///         {
+    ///             PostStartupScriptBehavior = "RUN_EVERY_START",
+    ///         },
+    ///         VirtualMachine = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineArgs
+    ///         {
+    ///             VirtualMachineConfig = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigArgs
+    ///             {
+    ///                 DataDisk = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs
+    ///                 {
+    ///                     InitializeParams = new Gcp.Notebooks.Inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs
+    ///                     {
+    ///                         DiskSizeGb = 100,
+    ///                         DiskType = "PD_STANDARD",
+    ///                     },
+    ///                 },
+    ///                 MachineType = "n1-standard-4",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -177,7 +258,7 @@ namespace Pulumi.Gcp.Notebooks
     /// ```
     /// </summary>
     [GcpResourceType("gcp:notebooks/runtime:Runtime")]
-    public partial class Runtime : Pulumi.CustomResource
+    public partial class Runtime : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The config settings for accessing runtime.
@@ -282,7 +363,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class RuntimeArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The config settings for accessing runtime.
@@ -327,9 +408,10 @@ namespace Pulumi.Gcp.Notebooks
         public RuntimeArgs()
         {
         }
+        public static new RuntimeArgs Empty => new RuntimeArgs();
     }
 
-    public sealed class RuntimeState : Pulumi.ResourceArgs
+    public sealed class RuntimeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The config settings for accessing runtime.
@@ -399,5 +481,6 @@ namespace Pulumi.Gcp.Notebooks
         public RuntimeState()
         {
         }
+        public static new RuntimeState Empty => new RuntimeState();
     }
 }

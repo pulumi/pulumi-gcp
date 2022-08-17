@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Apigee.Inputs
 {
 
-    public sealed class EnvironmentIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentIamBindingConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Apigee.Inputs
         public EnvironmentIamBindingConditionGetArgs()
         {
         }
+        public static new EnvironmentIamBindingConditionGetArgs Empty => new EnvironmentIamBindingConditionGetArgs();
     }
 }

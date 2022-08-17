@@ -27,28 +27,27 @@ namespace Pulumi.Gcp.Organizations
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Top-level folder under an organization.
+    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
     ///     {
-    ///         // Top-level folder under an organization.
-    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Department 1",
-    ///             Parent = "organizations/1234567",
-    ///         });
-    ///         // Folder nested under another folder.
-    ///         var team_abc = new Gcp.Organizations.Folder("team-abc", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Team ABC",
-    ///             Parent = department1.Name,
-    ///         });
-    ///     }
+    ///         DisplayName = "Department 1",
+    ///         Parent = "organizations/1234567",
+    ///     });
     /// 
-    /// }
+    ///     // Folder nested under another folder.
+    ///     var team_abc = new Gcp.Organizations.Folder("team-abc", new()
+    ///     {
+    ///         DisplayName = "Team ABC",
+    ///         Parent = department1.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.Gcp.Organizations
     /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/folder:Folder")]
-    public partial class Folder : Pulumi.CustomResource
+    public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Timestamp when the Folder was created. Assigned by the server.
@@ -149,7 +148,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
-    public sealed class FolderArgs : Pulumi.ResourceArgs
+    public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The folder’s display name.
@@ -168,9 +167,10 @@ namespace Pulumi.Gcp.Organizations
         public FolderArgs()
         {
         }
+        public static new FolderArgs Empty => new FolderArgs();
     }
 
-    public sealed class FolderState : Pulumi.ResourceArgs
+    public sealed class FolderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timestamp when the Folder was created. Assigned by the server.
@@ -214,5 +214,6 @@ namespace Pulumi.Gcp.Organizations
         public FolderState()
         {
         }
+        public static new FolderState Empty => new FolderState();
     }
 }

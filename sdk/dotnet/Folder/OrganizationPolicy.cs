@@ -25,107 +25,99 @@ namespace Pulumi.Gcp.Folder
     /// To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var serialPortPolicy = new Gcp.Folder.OrganizationPolicy("serialPortPolicy", new()
     ///     {
-    ///         var serialPortPolicy = new Gcp.Folder.OrganizationPolicy("serialPortPolicy", new Gcp.Folder.OrganizationPolicyArgs
+    ///         BooleanPolicy = new Gcp.Folder.Inputs.OrganizationPolicyBooleanPolicyArgs
     ///         {
-    ///             BooleanPolicy = new Gcp.Folder.Inputs.OrganizationPolicyBooleanPolicyArgs
-    ///             {
-    ///                 Enforced = true,
-    ///             },
-    ///             Constraint = "compute.disableSerialPortAccess",
-    ///             Folder = "folders/123456789",
-    ///         });
-    ///     }
+    ///             Enforced = true,
+    ///         },
+    ///         Constraint = "compute.disableSerialPortAccess",
+    ///         Folder = "folders/123456789",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicesPolicy = new Gcp.Folder.OrganizationPolicy("servicesPolicy", new()
     ///     {
-    ///         var servicesPolicy = new Gcp.Folder.OrganizationPolicy("servicesPolicy", new Gcp.Folder.OrganizationPolicyArgs
+    ///         Constraint = "serviceuser.services",
+    ///         Folder = "folders/123456789",
+    ///         ListPolicy = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyArgs
     ///         {
-    ///             Constraint = "serviceuser.services",
-    ///             Folder = "folders/123456789",
-    ///             ListPolicy = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyArgs
+    ///             Allow = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyAllowArgs
     ///             {
-    ///                 Allow = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyAllowArgs
-    ///                 {
-    ///                     All = true,
-    ///                 },
+    ///                 All = true,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Or to deny some services, use the following instead:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicesPolicy = new Gcp.Folder.OrganizationPolicy("servicesPolicy", new()
     ///     {
-    ///         var servicesPolicy = new Gcp.Folder.OrganizationPolicy("servicesPolicy", new Gcp.Folder.OrganizationPolicyArgs
+    ///         Constraint = "serviceuser.services",
+    ///         Folder = "folders/123456789",
+    ///         ListPolicy = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyArgs
     ///         {
-    ///             Constraint = "serviceuser.services",
-    ///             Folder = "folders/123456789",
-    ///             ListPolicy = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyArgs
+    ///             Deny = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyDenyArgs
     ///             {
-    ///                 Deny = new Gcp.Folder.Inputs.OrganizationPolicyListPolicyDenyArgs
+    ///                 Values = new[]
     ///                 {
-    ///                     Values = 
-    ///                     {
-    ///                         "cloudresourcemanager.googleapis.com",
-    ///                     },
+    ///                     "cloudresourcemanager.googleapis.com",
     ///                 },
-    ///                 SuggestedValue = "compute.googleapis.com",
     ///             },
-    ///         });
-    ///     }
+    ///             SuggestedValue = "compute.googleapis.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// To restore the default folder organization policy, use the following instead:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicesPolicy = new Gcp.Folder.OrganizationPolicy("servicesPolicy", new()
     ///     {
-    ///         var servicesPolicy = new Gcp.Folder.OrganizationPolicy("servicesPolicy", new Gcp.Folder.OrganizationPolicyArgs
+    ///         Constraint = "serviceuser.services",
+    ///         Folder = "folders/123456789",
+    ///         RestorePolicy = new Gcp.Folder.Inputs.OrganizationPolicyRestorePolicyArgs
     ///         {
-    ///             Constraint = "serviceuser.services",
-    ///             Folder = "folders/123456789",
-    ///             RestorePolicy = new Gcp.Folder.Inputs.OrganizationPolicyRestorePolicyArgs
-    ///             {
-    ///                 Default = true,
-    ///             },
-    ///         });
-    ///     }
+    ///             Default = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -141,7 +133,7 @@ namespace Pulumi.Gcp.Folder
     /// ```
     /// </summary>
     [GcpResourceType("gcp:folder/organizationPolicy:OrganizationPolicy")]
-    public partial class OrganizationPolicy : Pulumi.CustomResource
+    public partial class OrganizationPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -236,7 +228,7 @@ namespace Pulumi.Gcp.Folder
         }
     }
 
-    public sealed class OrganizationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -278,9 +270,10 @@ namespace Pulumi.Gcp.Folder
         public OrganizationPolicyArgs()
         {
         }
+        public static new OrganizationPolicyArgs Empty => new OrganizationPolicyArgs();
     }
 
-    public sealed class OrganizationPolicyState : Pulumi.ResourceArgs
+    public sealed class OrganizationPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -334,5 +327,6 @@ namespace Pulumi.Gcp.Folder
         public OrganizationPolicyState()
         {
         }
+        public static new OrganizationPolicyState Empty => new OrganizationPolicyState();
     }
 }

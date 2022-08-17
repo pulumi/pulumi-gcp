@@ -121,6 +121,25 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
     }
 
     /**
+     * This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * &#34;default&#34; project network if unspecified.
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * &#34;default&#34; project network if unspecified.
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
      * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -205,6 +224,23 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.serverlessDeployment);
     }
 
+    /**
+     * This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     * 
+     */
+    @Import(name="subnetwork")
+    private @Nullable Output<String> subnetwork;
+
+    /**
+     * @return This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     * 
+     */
+    public Optional<Output<String>> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
+
     private RegionNetworkEndpointGroupArgs() {}
 
     private RegionNetworkEndpointGroupArgs(RegionNetworkEndpointGroupArgs $) {
@@ -213,11 +249,13 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
         this.cloudRun = $.cloudRun;
         this.description = $.description;
         this.name = $.name;
+        this.network = $.network;
         this.networkEndpointType = $.networkEndpointType;
         this.project = $.project;
         this.pscTargetService = $.pscTargetService;
         this.region = $.region;
         this.serverlessDeployment = $.serverlessDeployment;
+        this.subnetwork = $.subnetwork;
     }
 
     public static Builder builder() {
@@ -370,6 +408,31 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param network This field is only used for PSC.
+         * The URL of the network to which all network endpoints in the NEG belong. Uses
+         * &#34;default&#34; project network if unspecified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network This field is only used for PSC.
+         * The URL of the network to which all network endpoints in the NEG belong. Uses
+         * &#34;default&#34; project network if unspecified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
+        }
+
+        /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
          * Default value is `SERVERLESS`.
          * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -482,6 +545,29 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
          */
         public Builder serverlessDeployment(RegionNetworkEndpointGroupServerlessDeploymentArgs serverlessDeployment) {
             return serverlessDeployment(Output.of(serverlessDeployment));
+        }
+
+        /**
+         * @param subnetwork This field is only used for PSC.
+         * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(@Nullable Output<String> subnetwork) {
+            $.subnetwork = subnetwork;
+            return this;
+        }
+
+        /**
+         * @param subnetwork This field is only used for PSC.
+         * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(String subnetwork) {
+            return subnetwork(Output.of(subnetwork));
         }
 
         public RegionNetworkEndpointGroupArgs build() {

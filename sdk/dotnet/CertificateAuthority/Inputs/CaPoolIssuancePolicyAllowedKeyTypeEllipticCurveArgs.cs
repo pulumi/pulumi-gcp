@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm used.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs()
         {
         }
+        public static new CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs Empty => new CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs();
     }
 }

@@ -276,6 +276,98 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Region Network Endpoint Group Psc Service Attachment
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;europe-west4&#34;)
+ *             .network(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var pscSubnetwork = new Subnetwork(&#34;pscSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
+ *             .region(&#34;europe-west4&#34;)
+ *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *             .network(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(&#34;80&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;europe-west4&#34;)
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .region(&#34;europe-west4&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .backendService(defaultRegionBackendService.id())
+ *             .allPorts(true)
+ *             .network(defaultNetwork.name())
+ *             .subnetwork(defaultSubnetwork.name())
+ *             .build());
+ * 
+ *         var defaultServiceAttachment = new ServiceAttachment(&#34;defaultServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .region(&#34;europe-west4&#34;)
+ *             .description(&#34;A service attachment configured with Terraform&#34;)
+ *             .enableProxyProtocol(false)
+ *             .connectionPreference(&#34;ACCEPT_AUTOMATIC&#34;)
+ *             .natSubnets(pscSubnetwork.selfLink())
+ *             .targetService(defaultForwardingRule.selfLink())
+ *             .build());
+ * 
+ *         var pscNegServiceAttachment = new RegionNetworkEndpointGroup(&#34;pscNegServiceAttachment&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .region(&#34;europe-west4&#34;)
+ *             .networkEndpointType(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *             .pscTargetService(defaultServiceAttachment.selfLink())
+ *             .network(defaultNetwork.selfLink())
+ *             .subnetwork(defaultSubnetwork.selfLink())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -397,6 +489,24 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.name;
     }
     /**
+     * This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * &#34;default&#34; project network if unspecified.
+     * 
+     */
+    @Export(name="network", type=String.class, parameters={})
+    private Output</* @Nullable */ String> network;
+
+    /**
+     * @return This field is only used for PSC.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses
+     * &#34;default&#34; project network if unspecified.
+     * 
+     */
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
+    }
+    /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
      * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -489,6 +599,22 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<RegionNetworkEndpointGroupServerlessDeployment>> serverlessDeployment() {
         return Codegen.optional(this.serverlessDeployment);
+    }
+    /**
+     * This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     * 
+     */
+    @Export(name="subnetwork", type=String.class, parameters={})
+    private Output</* @Nullable */ String> subnetwork;
+
+    /**
+     * @return This field is only used for PSC.
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     * 
+     */
+    public Output<Optional<String>> subnetwork() {
+        return Codegen.optional(this.subnetwork);
     }
 
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Datastore.Inputs
 {
 
-    public sealed class DataStoreIndexPropertyArgs : Pulumi.ResourceArgs
+    public sealed class DataStoreIndexPropertyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The direction the index should optimize for sorting.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Datastore.Inputs
         public DataStoreIndexPropertyArgs()
         {
         }
+        public static new DataStoreIndexPropertyArgs Empty => new DataStoreIndexPropertyArgs();
     }
 }

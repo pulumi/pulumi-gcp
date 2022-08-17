@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The regex-filtered set of files to scan.
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs Empty => new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs();
     }
 }

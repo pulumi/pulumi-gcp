@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeAccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of access mode this instance. For valid values, see
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeAccessConfigArgs()
         {
         }
+        public static new RuntimeAccessConfigArgs Empty => new RuntimeAccessConfigArgs();
     }
 }

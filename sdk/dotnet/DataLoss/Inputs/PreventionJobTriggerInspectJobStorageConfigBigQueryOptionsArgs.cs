@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set of files to scan.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs Empty => new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs();
     }
 }

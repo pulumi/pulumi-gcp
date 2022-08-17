@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Brief description of the parameter. Must not exceed 1024 characters.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateParameterGetArgs()
         {
         }
+        public static new WorkflowTemplateParameterGetArgs Empty => new WorkflowTemplateParameterGetArgs();
     }
 }

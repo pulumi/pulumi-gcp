@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class InstanceReservationAffinityGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceReservationAffinityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of Compute Reservation.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public InstanceReservationAffinityGetArgs()
         {
         }
+        public static new InstanceReservationAffinityGetArgs Empty => new InstanceReservationAffinityGetArgs();
     }
 }

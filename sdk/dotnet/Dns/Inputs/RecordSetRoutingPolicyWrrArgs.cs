@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class RecordSetRoutingPolicyWrrArgs : Pulumi.ResourceArgs
+    public sealed class RecordSetRoutingPolicyWrrArgs : global::Pulumi.ResourceArgs
     {
         [Input("rrdatas", required: true)]
         private InputList<string>? _rrdatas;
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public RecordSetRoutingPolicyWrrArgs()
         {
         }
+        public static new RecordSetRoutingPolicyWrrArgs Empty => new RecordSetRoutingPolicyWrrArgs();
     }
 }

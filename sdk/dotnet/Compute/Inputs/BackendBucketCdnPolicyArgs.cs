@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendBucketCdnPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketCdnPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bypassCacheOnRequestHeaders")]
         private InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>? _bypassCacheOnRequestHeaders;
@@ -107,5 +107,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendBucketCdnPolicyArgs()
         {
         }
+        public static new BackendBucketCdnPolicyArgs Empty => new BackendBucketCdnPolicyArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionHealthCheckSslHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class RegionHealthCheckSslHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port number for the health check request.
@@ -72,5 +72,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionHealthCheckSslHealthCheckArgs()
         {
         }
+        public static new RegionHealthCheckSslHealthCheckArgs Empty => new RegionHealthCheckSslHealthCheckArgs();
     }
 }

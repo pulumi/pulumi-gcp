@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ML.Inputs
 {
 
-    public sealed class EngineModelDefaultVersionArgs : Pulumi.ResourceArgs
+    public sealed class EngineModelDefaultVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name specified for the version when it was created.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.ML.Inputs
         public EngineModelDefaultVersionArgs()
         {
         }
+        public static new EngineModelDefaultVersionArgs Empty => new EngineModelDefaultVersionArgs();
     }
 }

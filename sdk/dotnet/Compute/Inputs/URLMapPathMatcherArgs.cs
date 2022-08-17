@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
@@ -100,5 +100,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherArgs()
         {
         }
+        public static new URLMapPathMatcherArgs Empty => new URLMapPathMatcherArgs();
     }
 }

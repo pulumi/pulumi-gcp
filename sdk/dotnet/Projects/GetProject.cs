@@ -22,24 +22,23 @@ namespace Pulumi.Gcp.Projects
         /// ### Searching For Projects About To Be Deleted In An Org
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_org_projects = Gcp.Projects.GetProject.Invoke(new()
         ///     {
-        ///         var my_org_projects = Output.Create(Gcp.Projects.GetProject.InvokeAsync(new Gcp.Projects.GetProjectArgs
-        ///         {
-        ///             Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
-        ///         }));
-        ///         var deletion_candidate = my_org_projects.Apply(my_org_projects =&gt; Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
-        ///         {
-        ///             ProjectId = my_org_projects.Projects?[0]?.ProjectId,
-        ///         })));
-        ///     }
+        ///         Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
+        ///     });
         /// 
-        /// }
+        ///     var deletion_candidate = Gcp.Organizations.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = my_org_projects.Apply(getProjectResult =&gt; getProjectResult.Projects[0]?.ProjectId),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -58,24 +57,23 @@ namespace Pulumi.Gcp.Projects
         /// ### Searching For Projects About To Be Deleted In An Org
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_org_projects = Gcp.Projects.GetProject.Invoke(new()
         ///     {
-        ///         var my_org_projects = Output.Create(Gcp.Projects.GetProject.InvokeAsync(new Gcp.Projects.GetProjectArgs
-        ///         {
-        ///             Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
-        ///         }));
-        ///         var deletion_candidate = my_org_projects.Apply(my_org_projects =&gt; Output.Create(Gcp.Organizations.GetProject.InvokeAsync(new Gcp.Organizations.GetProjectArgs
-        ///         {
-        ///             ProjectId = my_org_projects.Projects?[0]?.ProjectId,
-        ///         })));
-        ///     }
+        ///         Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
+        ///     });
         /// 
-        /// }
+        ///     var deletion_candidate = Gcp.Organizations.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = my_org_projects.Apply(getProjectResult =&gt; getProjectResult.Projects[0]?.ProjectId),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +83,7 @@ namespace Pulumi.Gcp.Projects
     }
 
 
-    public sealed class GetProjectArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
@@ -96,9 +94,10 @@ namespace Pulumi.Gcp.Projects
         public GetProjectArgs()
         {
         }
+        public static new GetProjectArgs Empty => new GetProjectArgs();
     }
 
-    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
@@ -109,6 +108,7 @@ namespace Pulumi.Gcp.Projects
         public GetProjectInvokeArgs()
         {
         }
+        public static new GetProjectInvokeArgs Empty => new GetProjectInvokeArgs();
     }
 
 

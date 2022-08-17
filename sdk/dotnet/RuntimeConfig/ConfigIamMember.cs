@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/configIamMember:ConfigIamMember")]
-    public partial class ConfigIamMember : Pulumi.CustomResource
+    public partial class ConfigIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.ConfigIamMemberCondition?> Condition { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         }
     }
 
-    public sealed class ConfigIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class ConfigIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConfigIamMemberConditionArgs>? Condition { get; set; }
@@ -146,9 +146,10 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamMemberArgs()
         {
         }
+        public static new ConfigIamMemberArgs Empty => new ConfigIamMemberArgs();
     }
 
-    public sealed class ConfigIamMemberState : Pulumi.ResourceArgs
+    public sealed class ConfigIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConfigIamMemberConditionGetArgs>? Condition { get; set; }
@@ -186,5 +187,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamMemberState()
         {
         }
+        public static new ConfigIamMemberState Empty => new ConfigIamMemberState();
     }
 }

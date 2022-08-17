@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Dataproc
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy")]
-    public partial class MetastoreFederationIamPolicy : Pulumi.CustomResource
+    public partial class MetastoreFederationIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class MetastoreFederationIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("federationId", required: true)]
         public Input<string> FederationId { get; set; } = null!;
@@ -140,9 +140,10 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationIamPolicyArgs()
         {
         }
+        public static new MetastoreFederationIamPolicyArgs Empty => new MetastoreFederationIamPolicyArgs();
     }
 
-    public sealed class MetastoreFederationIamPolicyState : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -177,5 +178,6 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationIamPolicyState()
         {
         }
+        public static new MetastoreFederationIamPolicyState Empty => new MetastoreFederationIamPolicyState();
     }
 }

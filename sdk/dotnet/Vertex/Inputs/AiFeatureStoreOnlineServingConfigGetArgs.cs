@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex.Inputs
 {
 
-    public sealed class AiFeatureStoreOnlineServingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AiFeatureStoreOnlineServingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public AiFeatureStoreOnlineServingConfigGetArgs()
         {
         }
+        public static new AiFeatureStoreOnlineServingConfigGetArgs Empty => new AiFeatureStoreOnlineServingConfigGetArgs();
     }
 }

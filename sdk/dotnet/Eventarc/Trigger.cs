@@ -15,81 +15,79 @@ namespace Pulumi.Gcp.Eventarc
     /// ## Example Usage
     /// ### Basic
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
-    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         Location = "europe-west1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
     ///         {
-    ///             Location = "europe-west1",
-    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             Namespace = "my-project-name",
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
     ///             {
-    ///                 Namespace = "my-project-name",
-    ///             },
-    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
-    ///             {
-    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 Containers = new[]
     ///                 {
-    ///                     Containers = 
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                     {
-    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         Image = "gcr.io/cloudrun/hello",
+    ///                         Ports = new[]
     ///                         {
-    ///                             Image = "gcr.io/cloudrun/hello",
-    ///                             Ports = 
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerPortArgs
     ///                             {
-    ///                                 new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerPortArgs
-    ///                                 {
-    ///                                     ContainerPort = 8080,
-    ///                                 },
+    ///                                 ContainerPort = 8080,
     ///                             },
     ///                         },
     ///                     },
-    ///                     ContainerConcurrency = 50,
-    ///                     TimeoutSeconds = 100,
     ///                 },
+    ///                 ContainerConcurrency = 50,
+    ///                 TimeoutSeconds = 100,
     ///             },
-    ///             Traffics = 
-    ///             {
-    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
-    ///                 {
-    ///                     Percent = 100,
-    ///                     LatestRevision = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var primary = new Gcp.Eventarc.Trigger("primary", new Gcp.Eventarc.TriggerArgs
+    ///         },
+    ///         Traffics = new[]
     ///         {
-    ///             Location = "europe-west1",
-    ///             MatchingCriterias = 
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
     ///             {
-    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
-    ///                 {
-    ///                     Attribute = "type",
-    ///                     Value = "google.cloud.pubsub.topic.v1.messagePublished",
-    ///                 },
+    ///                 Percent = 100,
+    ///                 LatestRevision = true,
     ///             },
-    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
-    ///             {
-    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
-    ///                 {
-    ///                     Service = @default.Name,
-    ///                     Region = "europe-west1",
-    ///                 },
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///         var foo = new Gcp.PubSub.Topic("foo", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Eventarc.Trigger("primary", new()
+    ///     {
+    ///         Location = "europe-west1",
+    ///         MatchingCriterias = new[]
+    ///         {
+    ///             new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///             {
+    ///                 Attribute = "type",
+    ///                 Value = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///             },
+    ///         },
+    ///         Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///         {
+    ///             CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///             {
+    ///                 Service = @default.Name,
+    ///                 Region = "europe-west1",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var foo = new Gcp.PubSub.Topic("foo");
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -109,7 +107,7 @@ namespace Pulumi.Gcp.Eventarc
     /// ```
     /// </summary>
     [GcpResourceType("gcp:eventarc/trigger:Trigger")]
-    public partial class Trigger : Pulumi.CustomResource
+    public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. The creation time.
@@ -229,7 +227,7 @@ namespace Pulumi.Gcp.Eventarc
         }
     }
 
-    public sealed class TriggerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Destination specifies where the events should be sent to.
@@ -300,9 +298,10 @@ namespace Pulumi.Gcp.Eventarc
         public TriggerArgs()
         {
         }
+        public static new TriggerArgs Empty => new TriggerArgs();
     }
 
-    public sealed class TriggerState : Pulumi.ResourceArgs
+    public sealed class TriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. The creation time.
@@ -399,5 +398,6 @@ namespace Pulumi.Gcp.Eventarc
         public TriggerState()
         {
         }
+        public static new TriggerState Empty => new TriggerState();
     }
 }

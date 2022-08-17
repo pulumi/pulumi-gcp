@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class WorkerPoolWorkerConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkerPoolWorkerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public WorkerPoolWorkerConfigGetArgs()
         {
         }
+        public static new WorkerPoolWorkerConfigGetArgs Empty => new WorkerPoolWorkerConfigGetArgs();
     }
 }

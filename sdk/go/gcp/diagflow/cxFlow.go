@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+//   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
 // ### Dialogflowcx Flow Full
@@ -26,107 +26,114 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
-// 			DisplayName:         pulumi.String("dialogflowcx-agent"),
-// 			Location:            pulumi.String("global"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			SupportedLanguageCodes: pulumi.StringArray{
-// 				pulumi.String("fr"),
-// 				pulumi.String("de"),
-// 				pulumi.String("es"),
-// 			},
-// 			TimeZone:                 pulumi.String("America/New_York"),
-// 			Description:              pulumi.String("Example description."),
-// 			AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-// 			EnableStackdriverLogging: pulumi.Bool(true),
-// 			EnableSpellCorrection:    pulumi.Bool(true),
-// 			SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
-// 				EnableSpeechAdaptation: pulumi.Bool(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewCxFlow(ctx, "basicFlow", &diagflow.CxFlowArgs{
-// 			Parent:      agent.ID(),
-// 			DisplayName: pulumi.String("MyFlow"),
-// 			Description: pulumi.String("Test Flow"),
-// 			NluSettings: &diagflow.CxFlowNluSettingsArgs{
-// 				ClassificationThreshold: pulumi.Float64(0.3),
-// 				ModelType:               pulumi.String("MODEL_TYPE_STANDARD"),
-// 			},
-// 			EventHandlers: diagflow.CxFlowEventHandlerArray{
-// 				&diagflow.CxFlowEventHandlerArgs{
-// 					Event: pulumi.String("custom-event"),
-// 					TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
-// 						ReturnPartialResponses: pulumi.Bool(false),
-// 						Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
-// 							&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
-// 								Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
-// 									Texts: pulumi.StringArray{
-// 										pulumi.String("I didn't get that. Can you say it again?"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 				&diagflow.CxFlowEventHandlerArgs{
-// 					Event: pulumi.String("sys.no-match-default"),
-// 					TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
-// 						ReturnPartialResponses: pulumi.Bool(false),
-// 						Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
-// 							&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
-// 								Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
-// 									Texts: pulumi.StringArray{
-// 										pulumi.String("Sorry, could you say that again?"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 				&diagflow.CxFlowEventHandlerArgs{
-// 					Event: pulumi.String("sys.no-input-default"),
-// 					TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
-// 						ReturnPartialResponses: pulumi.Bool(false),
-// 						Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
-// 							&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
-// 								Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
-// 									Texts: pulumi.StringArray{
-// 										pulumi.String("One more time?"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxFlow(ctx, "basicFlow", &diagflow.CxFlowArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyFlow"),
+//				Description: pulumi.String("Test Flow"),
+//				NluSettings: &diagflow.CxFlowNluSettingsArgs{
+//					ClassificationThreshold: pulumi.Float64(0.3),
+//					ModelType:               pulumi.String("MODEL_TYPE_STANDARD"),
+//				},
+//				EventHandlers: diagflow.CxFlowEventHandlerArray{
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("custom-event"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(false),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("I didn't get that. Can you say it again?"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("sys.no-match-default"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(false),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("Sorry, could you say that again?"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("sys.no-input-default"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(false),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("One more time?"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Flow can be imported using any of these accepted formats
+// # Flow can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
+//
+//	$ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
+//
+//	$ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
+//
 // ```
 type CxFlow struct {
 	pulumi.CustomResourceState
@@ -376,7 +383,7 @@ func (i *CxFlow) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutput {
 // CxFlowArrayInput is an input type that accepts CxFlowArray and CxFlowArrayOutput values.
 // You can construct a concrete instance of `CxFlowArrayInput` via:
 //
-//          CxFlowArray{ CxFlowArgs{...} }
+//	CxFlowArray{ CxFlowArgs{...} }
 type CxFlowArrayInput interface {
 	pulumi.Input
 
@@ -401,7 +408,7 @@ func (i CxFlowArray) ToCxFlowArrayOutputWithContext(ctx context.Context) CxFlowA
 // CxFlowMapInput is an input type that accepts CxFlowMap and CxFlowMapOutput values.
 // You can construct a concrete instance of `CxFlowMapInput` via:
 //
-//          CxFlowMap{ "key": CxFlowArgs{...} }
+//	CxFlowMap{ "key": CxFlowArgs{...} }
 type CxFlowMapInput interface {
 	pulumi.Input
 

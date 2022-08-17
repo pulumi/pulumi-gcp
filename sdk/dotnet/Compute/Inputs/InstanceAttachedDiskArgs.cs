@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceAttachedDiskArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAttachedDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name with which the attached disk will be accessible
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceAttachedDiskArgs()
         {
         }
+        public static new InstanceAttachedDiskArgs Empty => new InstanceAttachedDiskArgs();
     }
 }

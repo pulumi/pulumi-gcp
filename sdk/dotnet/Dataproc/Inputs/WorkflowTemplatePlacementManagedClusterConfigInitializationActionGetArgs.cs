@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigInitializationActionGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigInitializationActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Cloud Storage URI of executable file.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigInitializationActionGetArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigInitializationActionGetArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigInitializationActionGetArgs();
     }
 }

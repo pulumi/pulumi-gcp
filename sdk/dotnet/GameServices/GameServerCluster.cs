@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.GameServices
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gameservices/gameServerCluster:GameServerCluster")]
-    public partial class GameServerCluster : Pulumi.CustomResource
+    public partial class GameServerCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The resource name of the game server cluster
@@ -137,7 +137,7 @@ namespace Pulumi.Gcp.GameServices
         }
     }
 
-    public sealed class GameServerClusterArgs : Pulumi.ResourceArgs
+    public sealed class GameServerClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The resource name of the game server cluster
@@ -194,9 +194,10 @@ namespace Pulumi.Gcp.GameServices
         public GameServerClusterArgs()
         {
         }
+        public static new GameServerClusterArgs Empty => new GameServerClusterArgs();
     }
 
-    public sealed class GameServerClusterState : Pulumi.ResourceArgs
+    public sealed class GameServerClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The resource name of the game server cluster
@@ -261,5 +262,6 @@ namespace Pulumi.Gcp.GameServices
         public GameServerClusterState()
         {
         }
+        public static new GameServerClusterState Empty => new GameServerClusterState();
     }
 }

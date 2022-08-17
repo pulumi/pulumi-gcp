@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class PacketMirroringMirroredResourcesArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringMirroredResourcesArgs : global::Pulumi.ResourceArgs
     {
         [Input("instances")]
         private InputList<Inputs.PacketMirroringMirroredResourcesInstanceArgs>? _instances;
@@ -53,5 +53,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public PacketMirroringMirroredResourcesArgs()
         {
         }
+        public static new PacketMirroringMirroredResourcesArgs Empty => new PacketMirroringMirroredResourcesArgs();
     }
 }

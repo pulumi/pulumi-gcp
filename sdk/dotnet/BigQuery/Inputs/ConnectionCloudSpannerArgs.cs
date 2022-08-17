@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class ConnectionCloudSpannerArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionCloudSpannerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Spanner database in the form `project/instance/database'
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public ConnectionCloudSpannerArgs()
         {
         }
+        public static new ConnectionCloudSpannerArgs Empty => new ConnectionCloudSpannerArgs();
     }
 }

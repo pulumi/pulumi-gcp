@@ -30,20 +30,19 @@ namespace Pulumi.Gcp.Organizations
         /// ### Exporting An Email
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var me = Output.Create(Gcp.Organizations.GetClientOpenIdUserInfo.InvokeAsync());
-        ///         this.My_email = me.Apply(me =&gt; me.Email);
-        ///     }
+        ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
         /// 
-        ///     [Output("my-email")]
-        ///     public Output&lt;string&gt; My_email { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["my-email"] = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

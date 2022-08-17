@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class EntryGcsFilesetSpecSampleGcsFileSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class EntryGcsFilesetSpecSampleGcsFileSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public EntryGcsFilesetSpecSampleGcsFileSpecGetArgs()
         {
         }
+        public static new EntryGcsFilesetSpecSampleGcsFileSpecGetArgs Empty => new EntryGcsFilesetSpecSampleGcsFileSpecGetArgs();
     }
 }

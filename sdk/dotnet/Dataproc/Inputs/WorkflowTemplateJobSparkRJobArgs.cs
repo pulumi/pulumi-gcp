@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateJobSparkRJobArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateJobSparkRJobArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -75,5 +75,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateJobSparkRJobArgs()
         {
         }
+        public static new WorkflowTemplateJobSparkRJobArgs Empty => new WorkflowTemplateJobSparkRJobArgs();
     }
 }

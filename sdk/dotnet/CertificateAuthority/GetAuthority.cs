@@ -19,25 +19,24 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Gcp.CertificateAuthority.GetAuthority.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Gcp.CertificateAuthority.GetAuthority.InvokeAsync(new Gcp.CertificateAuthority.GetAuthorityArgs
-        ///         {
-        ///             Location = "us-west1",
-        ///             Pool = "pool-name",
-        ///             CertificateAuthorityId = "ca-id",
-        ///         }));
-        ///         this.Csr = @default.Apply(@default =&gt; @default.PemCsr);
-        ///     }
+        ///         Location = "us-west1",
+        ///         Pool = "pool-name",
+        ///         CertificateAuthorityId = "ca-id",
+        ///     });
         /// 
-        ///     [Output("csr")]
-        ///     public Output&lt;string&gt; Csr { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["csr"] = @default.Apply(getAuthorityResult =&gt; getAuthorityResult).Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,25 +52,24 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Gcp.CertificateAuthority.GetAuthority.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Gcp.CertificateAuthority.GetAuthority.InvokeAsync(new Gcp.CertificateAuthority.GetAuthorityArgs
-        ///         {
-        ///             Location = "us-west1",
-        ///             Pool = "pool-name",
-        ///             CertificateAuthorityId = "ca-id",
-        ///         }));
-        ///         this.Csr = @default.Apply(@default =&gt; @default.PemCsr);
-        ///     }
+        ///         Location = "us-west1",
+        ///         Pool = "pool-name",
+        ///         CertificateAuthorityId = "ca-id",
+        ///     });
         /// 
-        ///     [Output("csr")]
-        ///     public Output&lt;string&gt; Csr { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["csr"] = @default.Apply(getAuthorityResult =&gt; getAuthorityResult).Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     }
 
 
-    public sealed class GetAuthorityArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthorityArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the certificate authority.
@@ -111,9 +109,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         public GetAuthorityArgs()
         {
         }
+        public static new GetAuthorityArgs Empty => new GetAuthorityArgs();
     }
 
-    public sealed class GetAuthorityInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthorityInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the certificate authority.
@@ -143,6 +142,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public GetAuthorityInvokeArgs()
         {
         }
+        public static new GetAuthorityInvokeArgs Empty => new GetAuthorityInvokeArgs();
     }
 
 

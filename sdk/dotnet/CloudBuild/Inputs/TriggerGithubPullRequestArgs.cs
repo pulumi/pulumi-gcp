@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerGithubPullRequestArgs : Pulumi.ResourceArgs
+    public sealed class TriggerGithubPullRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regex of branches to match.  Specify only one of branch or tag.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerGithubPullRequestArgs()
         {
         }
+        public static new TriggerGithubPullRequestArgs Empty => new TriggerGithubPullRequestArgs();
     }
 }

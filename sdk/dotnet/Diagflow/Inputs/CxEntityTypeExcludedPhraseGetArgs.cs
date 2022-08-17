@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxEntityTypeExcludedPhraseGetArgs : Pulumi.ResourceArgs
+    public sealed class CxEntityTypeExcludedPhraseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The word or phrase to be excluded.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxEntityTypeExcludedPhraseGetArgs()
         {
         }
+        public static new CxEntityTypeExcludedPhraseGetArgs Empty => new CxEntityTypeExcludedPhraseGetArgs();
     }
 }

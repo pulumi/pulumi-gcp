@@ -21,20 +21,18 @@ namespace Pulumi.Gcp.CloudIdentity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
         ///     {
-        ///         var members = Output.Create(Gcp.CloudIdentity.GetGroupMemberships.InvokeAsync(new Gcp.CloudIdentity.GetGroupMembershipsArgs
-        ///         {
-        ///             Group = "groups/123eab45c6defghi",
-        ///         }));
-        ///     }
+        ///         Group = "groups/123eab45c6defghi",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +50,18 @@ namespace Pulumi.Gcp.CloudIdentity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
         ///     {
-        ///         var members = Output.Create(Gcp.CloudIdentity.GetGroupMemberships.InvokeAsync(new Gcp.CloudIdentity.GetGroupMembershipsArgs
-        ///         {
-        ///             Group = "groups/123eab45c6defghi",
-        ///         }));
-        ///     }
+        ///         Group = "groups/123eab45c6defghi",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Gcp.CloudIdentity
     }
 
 
-    public sealed class GetGroupMembershipsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupMembershipsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -86,9 +82,10 @@ namespace Pulumi.Gcp.CloudIdentity
         public GetGroupMembershipsArgs()
         {
         }
+        public static new GetGroupMembershipsArgs Empty => new GetGroupMembershipsArgs();
     }
 
-    public sealed class GetGroupMembershipsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupMembershipsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -99,6 +96,7 @@ namespace Pulumi.Gcp.CloudIdentity
         public GetGroupMembershipsInvokeArgs()
         {
         }
+        public static new GetGroupMembershipsInvokeArgs Empty => new GetGroupMembershipsInvokeArgs();
     }
 
 

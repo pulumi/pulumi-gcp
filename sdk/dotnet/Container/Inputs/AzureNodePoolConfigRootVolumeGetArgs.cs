@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureNodePoolConfigRootVolumeGetArgs : Pulumi.ResourceArgs
+    public sealed class AzureNodePoolConfigRootVolumeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureNodePoolConfigRootVolumeGetArgs()
         {
         }
+        public static new AzureNodePoolConfigRootVolumeGetArgs Empty => new AzureNodePoolConfigRootVolumeGetArgs();
     }
 }

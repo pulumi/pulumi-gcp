@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateManager
 {
     /// <summary>
-    /// DnsAuthorization represents a HTTP-reachable backend for an DnsAuthorization.
+    /// DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
     /// 
     /// &gt; **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
     /// 
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificatemanager/dnsAuthorization:DnsAuthorization")]
-    public partial class DnsAuthorization : Pulumi.CustomResource
+    public partial class DnsAuthorization : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Set of label tags associated with the EdgeCache resource.
+        /// Set of label tags associated with the DNS Authorization resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.CertificateManager
         }
     }
 
-    public sealed class DnsAuthorizationArgs : Pulumi.ResourceArgs
+    public sealed class DnsAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.CertificateManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the EdgeCache resource.
+        /// Set of label tags associated with the DNS Authorization resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -167,9 +167,10 @@ namespace Pulumi.Gcp.CertificateManager
         public DnsAuthorizationArgs()
         {
         }
+        public static new DnsAuthorizationArgs Empty => new DnsAuthorizationArgs();
     }
 
-    public sealed class DnsAuthorizationState : Pulumi.ResourceArgs
+    public sealed class DnsAuthorizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -202,7 +203,7 @@ namespace Pulumi.Gcp.CertificateManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the EdgeCache resource.
+        /// Set of label tags associated with the DNS Authorization resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -228,5 +229,6 @@ namespace Pulumi.Gcp.CertificateManager
         public DnsAuthorizationState()
         {
         }
+        public static new DnsAuthorizationState Empty => new DnsAuthorizationState();
     }
 }

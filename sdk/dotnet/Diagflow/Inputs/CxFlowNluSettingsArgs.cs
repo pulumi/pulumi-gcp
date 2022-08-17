@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxFlowNluSettingsArgs : Pulumi.ResourceArgs
+    public sealed class CxFlowNluSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxFlowNluSettingsArgs()
         {
         }
+        public static new CxFlowNluSettingsArgs Empty => new CxFlowNluSettingsArgs();
     }
 }

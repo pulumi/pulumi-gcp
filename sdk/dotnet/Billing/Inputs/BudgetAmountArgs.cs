@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing.Inputs
 {
 
-    public sealed class BudgetAmountArgs : Pulumi.ResourceArgs
+    public sealed class BudgetAmountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configures a budget amount that is automatically set to 100% of
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         public BudgetAmountArgs()
         {
         }
+        public static new BudgetAmountArgs Empty => new BudgetAmountArgs();
     }
 }

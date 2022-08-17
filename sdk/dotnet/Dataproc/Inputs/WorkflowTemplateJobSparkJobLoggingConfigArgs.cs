@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateJobSparkJobLoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateJobSparkJobLoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("driverLogLevels")]
         private InputMap<string>? _driverLogLevels;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateJobSparkJobLoggingConfigArgs()
         {
         }
+        public static new WorkflowTemplateJobSparkJobLoggingConfigArgs Empty => new WorkflowTemplateJobSparkJobLoggingConfigArgs();
     }
 }

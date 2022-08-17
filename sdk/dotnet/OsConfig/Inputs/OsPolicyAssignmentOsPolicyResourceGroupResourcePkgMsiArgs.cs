@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("properties")]
         private InputList<string>? _properties;
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs();
     }
 }

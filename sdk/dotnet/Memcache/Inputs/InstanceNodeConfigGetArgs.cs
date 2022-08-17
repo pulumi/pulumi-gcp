@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Memcache.Inputs
 {
 
-    public sealed class InstanceNodeConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of CPUs per node.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public InstanceNodeConfigGetArgs()
         {
         }
+        public static new InstanceNodeConfigGetArgs Empty => new InstanceNodeConfigGetArgs();
     }
 }

@@ -19,68 +19,70 @@ namespace Pulumi.Gcp.CertificateManager
     /// ### Certificate Manager Certificate Map Entry Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var certificateMap = new Gcp.CertificateManager.CertificateMap("certificateMap", new()
     ///     {
-    ///         var certificateMap = new Gcp.CertificateManager.CertificateMap("certificateMap", new Gcp.CertificateManager.CertificateMapArgs
+    ///         Description = "My acceptance test certificate map",
+    ///         Labels = 
     ///         {
-    ///             Description = "My acceptance test certificate map",
-    ///             Labels = 
-    ///             {
-    ///                 { "terraform", "true" },
-    ///                 { "acc-test", "true" },
-    ///             },
-    ///         });
-    ///         var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new Gcp.CertificateManager.DnsAuthorizationArgs
-    ///         {
-    ///             Description = "The default dnss",
-    ///             Domain = "subdomain.hashicorptest.com",
-    ///         });
-    ///         var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new Gcp.CertificateManager.DnsAuthorizationArgs
-    ///         {
-    ///             Description = "The default dnss",
-    ///             Domain = "subdomain2.hashicorptest.com",
-    ///         });
-    ///         var certificate = new Gcp.CertificateManager.Certificate("certificate", new Gcp.CertificateManager.CertificateArgs
-    ///         {
-    ///             Description = "The default cert",
-    ///             Scope = "DEFAULT",
-    ///             Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
-    ///             {
-    ///                 Domains = 
-    ///                 {
-    ///                     instance.Domain,
-    ///                     instance2.Domain,
-    ///                 },
-    ///                 DnsAuthorizations = 
-    ///                 {
-    ///                     instance.Id,
-    ///                     instance2.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var @default = new Gcp.CertificateManager.CertificateMapEntry("default", new Gcp.CertificateManager.CertificateMapEntryArgs
-    ///         {
-    ///             Description = "My acceptance test certificate map entry",
-    ///             Map = certificateMap.Name,
-    ///             Labels = 
-    ///             {
-    ///                 { "terraform", "true" },
-    ///                 { "acc-test", "true" },
-    ///             },
-    ///             Certificates = 
-    ///             {
-    ///                 certificate.Id,
-    ///             },
-    ///             Matcher = "PRIMARY",
-    ///         });
-    ///     }
+    ///             { "terraform", "true" },
+    ///             { "acc-test", "true" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain2.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var certificate = new Gcp.CertificateManager.Certificate("certificate", new()
+    ///     {
+    ///         Description = "The default cert",
+    ///         Scope = "DEFAULT",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 instance.Domain,
+    ///                 instance2.Domain,
+    ///             },
+    ///             DnsAuthorizations = new[]
+    ///             {
+    ///                 instance.Id,
+    ///                 instance2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.CertificateMapEntry("default", new()
+    ///     {
+    ///         Description = "My acceptance test certificate map entry",
+    ///         Map = certificateMap.Name,
+    ///         Labels = 
+    ///         {
+    ///             { "terraform", "true" },
+    ///             { "acc-test", "true" },
+    ///         },
+    ///         Certificates = new[]
+    ///         {
+    ///             certificate.Id,
+    ///         },
+    ///         Matcher = "PRIMARY",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -100,7 +102,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry")]
-    public partial class CertificateMapEntry : Pulumi.CustomResource
+    public partial class CertificateMapEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A set of Certificates defines for the given hostname.
@@ -118,8 +120,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// CertificateMapEntry is a list of certificate configurations,
-        /// that have been issued for a particular hostname
+        /// A human-readable description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -148,7 +149,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A predefined matcher for particular cases, other than SNI selection
-        /// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         /// </summary>
         [Output("matcher")]
         public Output<string?> Matcher { get; private set; } = null!;
@@ -169,8 +169,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-        /// progress. Some frontends may serve this configuration.
+        /// A serving state of this Certificate Map Entry.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -226,7 +225,7 @@ namespace Pulumi.Gcp.CertificateManager
         }
     }
 
-    public sealed class CertificateMapEntryArgs : Pulumi.ResourceArgs
+    public sealed class CertificateMapEntryArgs : global::Pulumi.ResourceArgs
     {
         [Input("certificates", required: true)]
         private InputList<string>? _certificates;
@@ -243,8 +242,7 @@ namespace Pulumi.Gcp.CertificateManager
         }
 
         /// <summary>
-        /// CertificateMapEntry is a list of certificate configurations,
-        /// that have been issued for a particular hostname
+        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -279,7 +277,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A predefined matcher for particular cases, other than SNI selection
-        /// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         /// </summary>
         [Input("matcher")]
         public Input<string>? Matcher { get; set; }
@@ -302,9 +299,10 @@ namespace Pulumi.Gcp.CertificateManager
         public CertificateMapEntryArgs()
         {
         }
+        public static new CertificateMapEntryArgs Empty => new CertificateMapEntryArgs();
     }
 
-    public sealed class CertificateMapEntryState : Pulumi.ResourceArgs
+    public sealed class CertificateMapEntryState : global::Pulumi.ResourceArgs
     {
         [Input("certificates")]
         private InputList<string>? _certificates;
@@ -328,8 +326,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// CertificateMapEntry is a list of certificate configurations,
-        /// that have been issued for a particular hostname
+        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -364,7 +361,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A predefined matcher for particular cases, other than SNI selection
-        /// Possible values are `MATCHER_UNSPECIFIED` and `PRIMARY`.
         /// </summary>
         [Input("matcher")]
         public Input<string>? Matcher { get; set; }
@@ -385,8 +381,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A serving state of this Certificate Map Entry. The status is undefined. The configuration is serving. Update is in
-        /// progress. Some frontends may serve this configuration.
+        /// A serving state of this Certificate Map Entry.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -401,5 +396,6 @@ namespace Pulumi.Gcp.CertificateManager
         public CertificateMapEntryState()
         {
         }
+        public static new CertificateMapEntryState Empty => new CertificateMapEntryState();
     }
 }

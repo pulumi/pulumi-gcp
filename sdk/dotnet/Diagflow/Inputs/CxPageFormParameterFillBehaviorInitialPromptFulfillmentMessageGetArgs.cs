@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageGetArgs : Pulumi.ResourceArgs
+    public sealed class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A collection of text responses.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageGetArgs()
         {
         }
+        public static new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageGetArgs Empty => new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageGetArgs();
     }
 }

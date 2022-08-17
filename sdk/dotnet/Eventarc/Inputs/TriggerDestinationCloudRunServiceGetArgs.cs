@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc.Inputs
 {
 
-    public sealed class TriggerDestinationCloudRunServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerDestinationCloudRunServiceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public TriggerDestinationCloudRunServiceGetArgs()
         {
         }
+        public static new TriggerDestinationCloudRunServiceGetArgs Empty => new TriggerDestinationCloudRunServiceGetArgs();
     }
 }

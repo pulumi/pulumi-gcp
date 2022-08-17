@@ -31,7 +31,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
 // * How-to Guides
-//     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+//   - [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 //
 // > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
 // state as plain-text.
@@ -43,64 +43,75 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
-// 			Image: pulumi.String("debian-cloud/debian-9"),
-// 			Size:  pulumi.Int(50),
-// 			Type:  pulumi.String("pd-ssd"),
-// 			Zone:  pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
-// 			SourceDisk: disk.Name,
-// 			Zone:       pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
-// 			Snapshot:               snapdisk.ID(),
-// 			Type:                   pulumi.String("pd-ssd"),
-// 			Region:                 pulumi.String("us-central1"),
-// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
-// 			ReplicaZones: pulumi.StringArray{
-// 				pulumi.String("us-central1-a"),
-// 				pulumi.String("us-central1-f"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Image: pulumi.String("debian-cloud/debian-11"),
+//				Size:  pulumi.Int(50),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+//				SourceDisk: disk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				Snapshot:               snapdisk.ID(),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// RegionDisk can be imported using any of these accepted formats
+// # RegionDisk can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
+//
+//	$ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
+//
+//	$ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
+//
 // ```
 type RegionDisk struct {
 	pulumi.CustomResourceState
@@ -554,7 +565,7 @@ func (i *RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDi
 // RegionDiskArrayInput is an input type that accepts RegionDiskArray and RegionDiskArrayOutput values.
 // You can construct a concrete instance of `RegionDiskArrayInput` via:
 //
-//          RegionDiskArray{ RegionDiskArgs{...} }
+//	RegionDiskArray{ RegionDiskArgs{...} }
 type RegionDiskArrayInput interface {
 	pulumi.Input
 
@@ -579,7 +590,7 @@ func (i RegionDiskArray) ToRegionDiskArrayOutputWithContext(ctx context.Context)
 // RegionDiskMapInput is an input type that accepts RegionDiskMap and RegionDiskMapOutput values.
 // You can construct a concrete instance of `RegionDiskMapInput` via:
 //
-//          RegionDiskMap{ "key": RegionDiskArgs{...} }
+//	RegionDiskMap{ "key": RegionDiskArgs{...} }
 type RegionDiskMapInput interface {
 	pulumi.Input
 

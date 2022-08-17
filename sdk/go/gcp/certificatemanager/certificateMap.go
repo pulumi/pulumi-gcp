@@ -22,41 +22,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificatemanager.NewCertificateMap(ctx, "default", &certificatemanager.CertificateMapArgs{
-// 			Description: pulumi.String("My acceptance test certificate map"),
-// 			Labels: pulumi.StringMap{
-// 				"terraform": pulumi.String("true"),
-// 				"acc-test":  pulumi.String("true"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewCertificateMap(ctx, "default", &certificatemanager.CertificateMapArgs{
+//				Description: pulumi.String("My acceptance test certificate map"),
+//				Labels: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//					"acc-test":  pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// CertificateMap can be imported using any of these accepted formats
+// # CertificateMap can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
+//
+//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
+//
 // ```
 type CertificateMap struct {
 	pulumi.CustomResourceState
@@ -64,7 +73,7 @@ type CertificateMap struct {
 	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// One or more paragraphs of text description of a certificate map entry.
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A list of target proxies that use this Certificate Map
 	GclbTargets CertificateMapGclbTargetArrayOutput `pulumi:"gclbTargets"`
@@ -113,7 +122,7 @@ type certificateMapState struct {
 	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
-	// One or more paragraphs of text description of a certificate map entry.
+	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// A list of target proxies that use this Certificate Map
 	GclbTargets []CertificateMapGclbTarget `pulumi:"gclbTargets"`
@@ -134,7 +143,7 @@ type CertificateMapState struct {
 	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
-	// One or more paragraphs of text description of a certificate map entry.
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// A list of target proxies that use this Certificate Map
 	GclbTargets CertificateMapGclbTargetArrayInput
@@ -156,7 +165,7 @@ func (CertificateMapState) ElementType() reflect.Type {
 }
 
 type certificateMapArgs struct {
-	// One or more paragraphs of text description of a certificate map entry.
+	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Set of labels associated with a Certificate Map resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -170,7 +179,7 @@ type certificateMapArgs struct {
 
 // The set of arguments for constructing a CertificateMap resource.
 type CertificateMapArgs struct {
-	// One or more paragraphs of text description of a certificate map entry.
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Set of labels associated with a Certificate Map resource.
 	Labels pulumi.StringMapInput
@@ -208,7 +217,7 @@ func (i *CertificateMap) ToCertificateMapOutputWithContext(ctx context.Context) 
 // CertificateMapArrayInput is an input type that accepts CertificateMapArray and CertificateMapArrayOutput values.
 // You can construct a concrete instance of `CertificateMapArrayInput` via:
 //
-//          CertificateMapArray{ CertificateMapArgs{...} }
+//	CertificateMapArray{ CertificateMapArgs{...} }
 type CertificateMapArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +242,7 @@ func (i CertificateMapArray) ToCertificateMapArrayOutputWithContext(ctx context.
 // CertificateMapMapInput is an input type that accepts CertificateMapMap and CertificateMapMapOutput values.
 // You can construct a concrete instance of `CertificateMapMapInput` via:
 //
-//          CertificateMapMap{ "key": CertificateMapArgs{...} }
+//	CertificateMapMap{ "key": CertificateMapArgs{...} }
 type CertificateMapMapInput interface {
 	pulumi.Input
 
@@ -275,7 +284,7 @@ func (o CertificateMapOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// One or more paragraphs of text description of a certificate map entry.
+// A human-readable description of the resource.
 func (o CertificateMapOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

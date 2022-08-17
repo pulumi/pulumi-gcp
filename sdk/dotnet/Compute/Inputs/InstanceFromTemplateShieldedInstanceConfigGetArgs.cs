@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateShieldedInstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateShieldedInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateShieldedInstanceConfigGetArgs()
         {
         }
+        public static new InstanceFromTemplateShieldedInstanceConfigGetArgs Empty => new InstanceFromTemplateShieldedInstanceConfigGetArgs();
     }
 }

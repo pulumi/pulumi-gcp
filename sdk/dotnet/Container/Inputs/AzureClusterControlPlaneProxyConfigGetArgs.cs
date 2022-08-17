@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterControlPlaneProxyConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterControlPlaneProxyConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterControlPlaneProxyConfigGetArgs()
         {
         }
+        public static new AzureClusterControlPlaneProxyConfigGetArgs Empty => new AzureClusterControlPlaneProxyConfigGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Recaptcha.Inputs
 {
 
-    public sealed class EnterpriseKeyIosSettingsArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseKeyIosSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, it means allowed_bundle_ids will not be enforced.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
         public EnterpriseKeyIosSettingsArgs()
         {
         }
+        public static new EnterpriseKeyIosSettingsArgs Empty => new EnterpriseKeyIosSettingsArgs();
     }
 }

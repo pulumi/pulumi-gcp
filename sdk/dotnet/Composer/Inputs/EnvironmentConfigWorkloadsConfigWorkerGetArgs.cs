@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigWorkloadsConfigWorkerGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigWorkloadsConfigWorkerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigWorkloadsConfigWorkerGetArgs()
         {
         }
+        public static new EnvironmentConfigWorkloadsConfigWorkerGetArgs Empty => new EnvironmentConfigWorkloadsConfigWorkerGetArgs();
     }
 }

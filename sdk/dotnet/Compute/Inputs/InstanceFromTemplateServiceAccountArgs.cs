@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateServiceAccountArgs()
         {
         }
+        public static new InstanceFromTemplateServiceAccountArgs Empty => new InstanceFromTemplateServiceAccountArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class EnvironmentVmImageGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentVmImageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use this VM image family to find the image; the newest image in this family will be used.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public EnvironmentVmImageGetArgs()
         {
         }
+        public static new EnvironmentVmImageGetArgs Empty => new EnvironmentVmImageGetArgs();
     }
 }

@@ -22,21 +22,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var appserver = Gcp.Compute.GetInstance.Invoke(new()
         ///     {
-        ///         var appserver = Output.Create(Gcp.Compute.GetInstance.InvokeAsync(new Gcp.Compute.GetInstanceArgs
-        ///         {
-        ///             Name = "primary-application-server",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///     }
+        ///         Name = "primary-application-server",
+        ///         Zone = "us-central1-a",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,21 +53,19 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var appserver = Gcp.Compute.GetInstance.Invoke(new()
         ///     {
-        ///         var appserver = Output.Create(Gcp.Compute.GetInstance.InvokeAsync(new Gcp.Compute.GetInstanceArgs
-        ///         {
-        ///             Name = "primary-application-server",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///     }
+        ///         Name = "primary-application-server",
+        ///         Zone = "us-central1-a",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,7 +75,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance. One of `name` or `self_link` must be provided.
@@ -112,9 +108,10 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceArgs()
         {
         }
+        public static new GetInstanceArgs Empty => new GetInstanceArgs();
     }
 
-    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the instance. One of `name` or `self_link` must be provided.
@@ -147,6 +144,7 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceInvokeArgs()
         {
         }
+        public static new GetInstanceInvokeArgs Empty => new GetInstanceInvokeArgs();
     }
 
 
@@ -201,7 +199,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string LabelFingerprint;
         /// <summary>
-        /// A set of key/value label pairs assigned to the instance.
+        /// A set of key/value label pairs assigned to the disk.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>

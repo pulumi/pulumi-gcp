@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.PubSub
     /// ## google\_pubsub\_subscription\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var editor = new Gcp.PubSub.SubscriptionIAMPolicy("editor", new Gcp.PubSub.SubscriptionIAMPolicyArgs
-    ///         {
-    ///             Subscription = "your-subscription-name",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var editor = new Gcp.PubSub.SubscriptionIAMPolicy("editor", new()
+    ///     {
+    ///         Subscription = "your-subscription-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_pubsub\_subscription\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.PubSub.SubscriptionIAMBinding("editor", new()
     ///     {
-    ///         var editor = new Gcp.PubSub.SubscriptionIAMBinding("editor", new Gcp.PubSub.SubscriptionIAMBindingArgs
+    ///         Members = new[]
     ///         {
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///             Subscription = "your-subscription-name",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///         Subscription = "your-subscription-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_pubsub\_subscription\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.PubSub.SubscriptionIAMMember("editor", new()
     ///     {
-    ///         var editor = new Gcp.PubSub.SubscriptionIAMMember("editor", new Gcp.PubSub.SubscriptionIAMMemberArgs
-    ///         {
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///             Subscription = "your-subscription-name",
-    ///         });
-    ///     }
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///         Subscription = "your-subscription-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +115,7 @@ namespace Pulumi.Gcp.PubSub
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding")]
-    public partial class SubscriptionIAMBinding : Pulumi.CustomResource
+    public partial class SubscriptionIAMBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.SubscriptionIAMBindingCondition?> Condition { get; private set; } = null!;
@@ -199,7 +194,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class SubscriptionIAMBindingArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionIAMBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.SubscriptionIAMBindingConditionArgs>? Condition { get; set; }
@@ -236,9 +231,10 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionIAMBindingArgs()
         {
         }
+        public static new SubscriptionIAMBindingArgs Empty => new SubscriptionIAMBindingArgs();
     }
 
-    public sealed class SubscriptionIAMBindingState : Pulumi.ResourceArgs
+    public sealed class SubscriptionIAMBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.SubscriptionIAMBindingConditionGetArgs>? Condition { get; set; }
@@ -281,5 +277,6 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionIAMBindingState()
         {
         }
+        public static new SubscriptionIAMBindingState Empty => new SubscriptionIAMBindingState();
     }
 }

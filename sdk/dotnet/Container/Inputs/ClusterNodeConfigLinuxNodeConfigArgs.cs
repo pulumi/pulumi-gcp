@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigLinuxNodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigLinuxNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("sysctls", required: true)]
         private InputMap<string>? _sysctls;
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigLinuxNodeConfigArgs()
         {
         }
+        public static new ClusterNodeConfigLinuxNodeConfigArgs Empty => new ClusterNodeConfigLinuxNodeConfigArgs();
     }
 }

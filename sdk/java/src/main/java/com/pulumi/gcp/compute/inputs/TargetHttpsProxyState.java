@@ -19,6 +19,25 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     public static final TargetHttpsProxyState Empty = new TargetHttpsProxyState();
 
     /**
+     * A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     * 
+     */
+    @Import(name="certificateMap")
+    private @Nullable Output<String> certificateMap;
+
+    /**
+     * @return A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     * 
+     */
+    public Optional<Output<String>> certificateMap() {
+        return Optional.ofNullable(this.certificateMap);
+    }
+
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */
@@ -224,6 +243,7 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     private TargetHttpsProxyState() {}
 
     private TargetHttpsProxyState(TargetHttpsProxyState $) {
+        this.certificateMap = $.certificateMap;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.name = $.name;
@@ -253,6 +273,31 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
 
         public Builder(TargetHttpsProxyState defaults) {
             $ = new TargetHttpsProxyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param certificateMap A reference to the CertificateMap resource uri that identifies a certificate map
+         * associated with the given target proxy. This field can only be set for global target proxies.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateMap(@Nullable Output<String> certificateMap) {
+            $.certificateMap = certificateMap;
+            return this;
+        }
+
+        /**
+         * @param certificateMap A reference to the CertificateMap resource uri that identifies a certificate map
+         * associated with the given target proxy. This field can only be set for global target proxies.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateMap(String certificateMap) {
+            return certificateMap(Output.of(certificateMap));
         }
 
         /**

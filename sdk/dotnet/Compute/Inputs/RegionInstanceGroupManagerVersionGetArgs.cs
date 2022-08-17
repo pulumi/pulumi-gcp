@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionInstanceGroupManagerVersionGetArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerVersionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// - The full URL to an instance template from which all new instances of this version will be created.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionInstanceGroupManagerVersionGetArgs()
         {
         }
+        public static new RegionInstanceGroupManagerVersionGetArgs Empty => new RegionInstanceGroupManagerVersionGetArgs();
     }
 }

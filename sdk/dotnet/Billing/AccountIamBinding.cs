@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.Billing
     /// ## google\_billing\_account\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/billing.viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/billing.viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var editor = new Gcp.Billing.AccountIamPolicy("editor", new Gcp.Billing.AccountIamPolicyArgs
-    ///         {
-    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var editor = new Gcp.Billing.AccountIamPolicy("editor", new()
+    ///     {
+    ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_billing\_account\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.Billing.AccountIamBinding("editor", new()
     ///     {
-    ///         var editor = new Gcp.Billing.AccountIamBinding("editor", new Gcp.Billing.AccountIamBindingArgs
+    ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         Members = new[]
     ///         {
-    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/billing.viewer",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/billing.viewer",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_billing\_account\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var editor = new Gcp.Billing.AccountIamMember("editor", new()
     ///     {
-    ///         var editor = new Gcp.Billing.AccountIamMember("editor", new Gcp.Billing.AccountIamMemberArgs
-    ///         {
-    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/billing.viewer",
-    ///         });
-    ///     }
+    ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/billing.viewer",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +115,7 @@ namespace Pulumi.Gcp.Billing
     /// full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:billing/accountIamBinding:AccountIamBinding")]
-    public partial class AccountIamBinding : Pulumi.CustomResource
+    public partial class AccountIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The billing account id.
@@ -192,7 +187,7 @@ namespace Pulumi.Gcp.Billing
         }
     }
 
-    public sealed class AccountIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class AccountIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The billing account id.
@@ -222,9 +217,10 @@ namespace Pulumi.Gcp.Billing
         public AccountIamBindingArgs()
         {
         }
+        public static new AccountIamBindingArgs Empty => new AccountIamBindingArgs();
     }
 
-    public sealed class AccountIamBindingState : Pulumi.ResourceArgs
+    public sealed class AccountIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The billing account id.
@@ -260,5 +256,6 @@ namespace Pulumi.Gcp.Billing
         public AccountIamBindingState()
         {
         }
+        public static new AccountIamBindingState Empty => new AccountIamBindingState();
     }
 }

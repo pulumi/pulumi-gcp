@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class EnvironmentContainerImageArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentContainerImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to the container image repository.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public EnvironmentContainerImageArgs()
         {
         }
+        public static new EnvironmentContainerImageArgs Empty => new EnvironmentContainerImageArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionBasicScalingArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionBasicScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionBasicScalingArgs()
         {
         }
+        public static new StandardAppVersionBasicScalingArgs Empty => new StandardAppVersionBasicScalingArgs();
     }
 }

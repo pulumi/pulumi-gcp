@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudTasks.Inputs
 {
 
-    public sealed class QueueAppEngineRoutingOverrideGetArgs : Pulumi.ResourceArgs
+    public sealed class QueueAppEngineRoutingOverrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.CloudTasks.Inputs
         public QueueAppEngineRoutingOverrideGetArgs()
         {
         }
+        public static new QueueAppEngineRoutingOverrideGetArgs Empty => new QueueAppEngineRoutingOverrideGetArgs();
     }
 }

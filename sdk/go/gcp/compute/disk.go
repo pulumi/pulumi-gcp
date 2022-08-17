@@ -30,7 +30,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
 // * How-to Guides
-//     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+//   - [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 //
 // > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
 // state as plain-text.
@@ -42,47 +42,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
-// 			Image: pulumi.String("debian-8-jessie-v20170523"),
-// 			Labels: pulumi.StringMap{
-// 				"environment": pulumi.String("dev"),
-// 			},
-// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
-// 			Type:                   pulumi.String("pd-ssd"),
-// 			Zone:                   pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				Image: pulumi.String("debian-11-bullseye-v20220719"),
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Zone:                   pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Disk can be imported using any of these accepted formats
+// # Disk can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+//
+//	$ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/disk:Disk default {{name}}
+//
+//	$ pulumi import gcp:compute/disk:Disk default {{name}}
+//
 // ```
 type Disk struct {
 	pulumi.CustomResourceState
@@ -685,7 +696,7 @@ func (i *Disk) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
-//          DiskArray{ DiskArgs{...} }
+//	DiskArray{ DiskArgs{...} }
 type DiskArrayInput interface {
 	pulumi.Input
 
@@ -710,7 +721,7 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 // DiskMapInput is an input type that accepts DiskMap and DiskMapOutput values.
 // You can construct a concrete instance of `DiskMapInput` via:
 //
-//          DiskMap{ "key": DiskArgs{...} }
+//	DiskMap{ "key": DiskArgs{...} }
 type DiskMapInput interface {
 	pulumi.Input
 

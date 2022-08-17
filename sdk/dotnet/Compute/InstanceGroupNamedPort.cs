@@ -25,50 +25,52 @@ namespace Pulumi.Gcp.Compute
     /// ### Instance Group Named Port Gke
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var containerNetwork = new Gcp.Compute.Network("containerNetwork", new()
     ///     {
-    ///         var containerNetwork = new Gcp.Compute.Network("containerNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Network = containerNetwork.Name,
-    ///             IpCidrRange = "10.0.36.0/24",
-    ///         });
-    ///         var myCluster = new Gcp.Container.Cluster("myCluster", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             Location = "us-central1-a",
-    ///             InitialNodeCount = 1,
-    ///             Network = containerNetwork.Name,
-    ///             Subnetwork = containerSubnetwork.Name,
-    ///             IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
-    ///             {
-    ///                 ClusterIpv4CidrBlock = "/19",
-    ///                 ServicesIpv4CidrBlock = "/22",
-    ///             },
-    ///         });
-    ///         var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new Gcp.Compute.InstanceGroupNamedPortArgs
-    ///         {
-    ///             Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls?[0]),
-    ///             Zone = "us-central1-a",
-    ///             Port = 8080,
-    ///         });
-    ///         var myPorts = new Gcp.Compute.InstanceGroupNamedPort("myPorts", new Gcp.Compute.InstanceGroupNamedPortArgs
-    ///         {
-    ///             Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls?[0]),
-    ///             Zone = "us-central1-a",
-    ///             Port = 4443,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = containerNetwork.Name,
+    ///         IpCidrRange = "10.0.36.0/24",
+    ///     });
+    /// 
+    ///     var myCluster = new Gcp.Container.Cluster("myCluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         Network = containerNetwork.Name,
+    ///         Subnetwork = containerSubnetwork.Name,
+    ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///         {
+    ///             ClusterIpv4CidrBlock = "/19",
+    ///             ServicesIpv4CidrBlock = "/22",
+    ///         },
+    ///     });
+    /// 
+    ///     var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new()
+    ///     {
+    ///         Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls[0]),
+    ///         Zone = "us-central1-a",
+    ///         Port = 8080,
+    ///     });
+    /// 
+    ///     var myPorts = new Gcp.Compute.InstanceGroupNamedPort("myPorts", new()
+    ///     {
+    ///         Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls[0]),
+    ///         Zone = "us-central1-a",
+    ///         Port = 4443,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -92,7 +94,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort")]
-    public partial class InstanceGroupNamedPort : Pulumi.CustomResource
+    public partial class InstanceGroupNamedPort : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the instance group.
@@ -170,7 +172,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InstanceGroupNamedPortArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupNamedPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the instance group.
@@ -207,9 +209,10 @@ namespace Pulumi.Gcp.Compute
         public InstanceGroupNamedPortArgs()
         {
         }
+        public static new InstanceGroupNamedPortArgs Empty => new InstanceGroupNamedPortArgs();
     }
 
-    public sealed class InstanceGroupNamedPortState : Pulumi.ResourceArgs
+    public sealed class InstanceGroupNamedPortState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the instance group.
@@ -246,5 +249,6 @@ namespace Pulumi.Gcp.Compute
         public InstanceGroupNamedPortState()
         {
         }
+        public static new InstanceGroupNamedPortState Empty => new InstanceGroupNamedPortState();
     }
 }

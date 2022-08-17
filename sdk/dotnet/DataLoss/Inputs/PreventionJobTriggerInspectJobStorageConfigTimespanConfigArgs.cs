@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs Empty => new PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Memcache.Inputs
 {
 
-    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The day of week that maintenance updates occur.
@@ -45,5 +45,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs()
         {
         }
+        public static new InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs Empty => new InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs();
     }
 }

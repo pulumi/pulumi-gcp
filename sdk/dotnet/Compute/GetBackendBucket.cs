@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
         ///     {
-        ///         var my_backend_bucket = Output.Create(Gcp.Compute.GetBackendBucket.InvokeAsync(new Gcp.Compute.GetBackendBucketArgs
-        ///         {
-        ///             Name = "my-backend",
-        ///         }));
-        ///     }
+        ///         Name = "my-backend",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
         ///     {
-        ///         var my_backend_bucket = Output.Create(Gcp.Compute.GetBackendBucket.InvokeAsync(new Gcp.Compute.GetBackendBucketArgs
-        ///         {
-        ///             Name = "my-backend",
-        ///         }));
-        ///     }
+        ///         Name = "my-backend",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetBackendBucketArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendBucketArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the resource.
@@ -89,9 +85,10 @@ namespace Pulumi.Gcp.Compute
         public GetBackendBucketArgs()
         {
         }
+        public static new GetBackendBucketArgs Empty => new GetBackendBucketArgs();
     }
 
-    public sealed class GetBackendBucketInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of the resource.
@@ -109,6 +106,7 @@ namespace Pulumi.Gcp.Compute
         public GetBackendBucketInvokeArgs()
         {
         }
+        public static new GetBackendBucketInvokeArgs Empty => new GetBackendBucketInvokeArgs();
     }
 
 

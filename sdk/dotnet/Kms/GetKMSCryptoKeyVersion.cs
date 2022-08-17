@@ -24,30 +24,30 @@ namespace Pulumi.Gcp.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
         ///     {
-        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
-        ///         {
-        ///             Name = "my-key-ring",
-        ///             Location = "us-central1",
-        ///         }));
-        ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
-        ///         {
-        ///             Name = "my-crypto-key",
-        ///             KeyRing = myKeyRing.Id,
-        ///         })));
-        ///         var myCryptoKeyVersion = Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
-        ///         {
-        ///             CryptoKey = data.Google_kms_crypto_key.My_key.Id,
-        ///         }));
-        ///     }
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
         /// 
-        /// }
+        ///     var myCryptoKey = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
+        ///     });
+        /// 
+        ///     var myCryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+        ///     {
+        ///         CryptoKey = data.Google_kms_crypto_key.My_key.Id,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -68,30 +68,30 @@ namespace Pulumi.Gcp.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
         ///     {
-        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
-        ///         {
-        ///             Name = "my-key-ring",
-        ///             Location = "us-central1",
-        ///         }));
-        ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
-        ///         {
-        ///             Name = "my-crypto-key",
-        ///             KeyRing = myKeyRing.Id,
-        ///         })));
-        ///         var myCryptoKeyVersion = Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
-        ///         {
-        ///             CryptoKey = data.Google_kms_crypto_key.My_key.Id,
-        ///         }));
-        ///     }
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
         /// 
-        /// }
+        ///     var myCryptoKey = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
+        ///     });
+        /// 
+        ///     var myCryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+        ///     {
+        ///         CryptoKey = data.Google_kms_crypto_key.My_key.Id,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Kms
     }
 
 
-    public sealed class GetKMSCryptoKeyVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSCryptoKeyVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
@@ -119,9 +119,10 @@ namespace Pulumi.Gcp.Kms
         public GetKMSCryptoKeyVersionArgs()
         {
         }
+        public static new GetKMSCryptoKeyVersionArgs Empty => new GetKMSCryptoKeyVersionArgs();
     }
 
-    public sealed class GetKMSCryptoKeyVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSCryptoKeyVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
@@ -139,6 +140,7 @@ namespace Pulumi.Gcp.Kms
         public GetKMSCryptoKeyVersionInvokeArgs()
         {
         }
+        public static new GetKMSCryptoKeyVersionInvokeArgs Empty => new GetKMSCryptoKeyVersionInvokeArgs();
     }
 
 

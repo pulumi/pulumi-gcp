@@ -23,83 +23,78 @@ namespace Pulumi.Gcp.PubSub
     /// ## google\_pubsub\_topic\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.PubSub.TopicIAMPolicy("policy", new Gcp.PubSub.TopicIAMPolicyArgs
-    ///         {
-    ///             Project = google_pubsub_topic.Example.Project,
-    ///             Topic = google_pubsub_topic.Example.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.PubSub.TopicIAMPolicy("policy", new()
+    ///     {
+    ///         Project = google_pubsub_topic.Example.Project,
+    ///         Topic = google_pubsub_topic.Example.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_pubsub\_topic\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
+    ///         Project = google_pubsub_topic.Example.Project,
+    ///         Topic = google_pubsub_topic.Example.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_pubsub_topic.Example.Project,
-    ///             Topic = google_pubsub_topic.Example.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_pubsub\_topic\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.PubSub.TopicIAMMember("member", new()
     ///     {
-    ///         var member = new Gcp.PubSub.TopicIAMMember("member", new Gcp.PubSub.TopicIAMMemberArgs
-    ///         {
-    ///             Project = google_pubsub_topic.Example.Project,
-    ///             Topic = google_pubsub_topic.Example.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_pubsub_topic.Example.Project,
+    ///         Topic = google_pubsub_topic.Example.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.PubSub
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:pubsub/topicIAMMember:TopicIAMMember")]
-    public partial class TopicIAMMember : Pulumi.CustomResource
+    public partial class TopicIAMMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.TopicIAMMemberCondition?> Condition { get; private set; } = null!;
@@ -206,7 +201,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class TopicIAMMemberArgs : Pulumi.ResourceArgs
+    public sealed class TopicIAMMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TopicIAMMemberConditionArgs>? Condition { get; set; }
@@ -238,9 +233,10 @@ namespace Pulumi.Gcp.PubSub
         public TopicIAMMemberArgs()
         {
         }
+        public static new TopicIAMMemberArgs Empty => new TopicIAMMemberArgs();
     }
 
-    public sealed class TopicIAMMemberState : Pulumi.ResourceArgs
+    public sealed class TopicIAMMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.TopicIAMMemberConditionGetArgs>? Condition { get; set; }
@@ -278,5 +274,6 @@ namespace Pulumi.Gcp.PubSub
         public TopicIAMMemberState()
         {
         }
+        public static new TopicIAMMemberState Empty => new TopicIAMMemberState();
     }
 }

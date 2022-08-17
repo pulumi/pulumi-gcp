@@ -17,81 +17,82 @@ namespace Pulumi.Gcp.Compute
     /// ### Interconnect Attachment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new()
     ///     {
-    ///         var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var foobarRouter = new Gcp.Compute.Router("foobarRouter", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = foobarNetwork.Name,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///             {
-    ///                 Asn = 16550,
-    ///             },
-    ///         });
-    ///         var onPrem = new Gcp.Compute.InterconnectAttachment("onPrem", new Gcp.Compute.InterconnectAttachmentArgs
-    ///         {
-    ///             EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
-    ///             Type = "PARTNER",
-    ///             Router = foobarRouter.Id,
-    ///             Mtu = "1500",
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var foobarRouter = new Gcp.Compute.Router("foobarRouter", new()
+    ///     {
+    ///         Network = foobarNetwork.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var onPrem = new Gcp.Compute.InterconnectAttachment("onPrem", new()
+    ///     {
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = foobarRouter.Id,
+    ///         Mtu = "1500",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Compute Interconnect Attachment Ipsec Encryption
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var address = new Gcp.Compute.Address("address", new Gcp.Compute.AddressArgs
-    ///         {
-    ///             AddressType = "INTERNAL",
-    ///             Purpose = "IPSEC_INTERCONNECT",
-    ///             IPAddress = "192.168.1.0",
-    ///             PrefixLength = 29,
-    ///             Network = network.SelfLink,
-    ///         });
-    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = network.Name,
-    ///             EncryptedInterconnectRouter = true,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///             {
-    ///                 Asn = 16550,
-    ///             },
-    ///         });
-    ///         var ipsec_encrypted_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", new Gcp.Compute.InterconnectAttachmentArgs
-    ///         {
-    ///             EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
-    ///             Type = "PARTNER",
-    ///             Router = router.Id,
-    ///             Encryption = "IPSEC",
-    ///             IpsecInternalAddresses = 
-    ///             {
-    ///                 address.SelfLink,
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var address = new Gcp.Compute.Address("address", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "IPSEC_INTERCONNECT",
+    ///         IPAddress = "192.168.1.0",
+    ///         PrefixLength = 29,
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Network = network.Name,
+    ///         EncryptedInterconnectRouter = true,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var ipsec_encrypted_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", new()
+    ///     {
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = router.Id,
+    ///         Encryption = "IPSEC",
+    ///         IpsecInternalAddresses = new[]
+    ///         {
+    ///             address.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -115,7 +116,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/interconnectAttachment:InterconnectAttachment")]
-    public partial class InterconnectAttachment : Pulumi.CustomResource
+    public partial class InterconnectAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the VLAN attachment is enabled or disabled.  When using
@@ -368,7 +369,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class InterconnectAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InterconnectAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the VLAN attachment is enabled or disabled.  When using
@@ -534,9 +535,10 @@ namespace Pulumi.Gcp.Compute
         public InterconnectAttachmentArgs()
         {
         }
+        public static new InterconnectAttachmentArgs Empty => new InterconnectAttachmentArgs();
     }
 
-    public sealed class InterconnectAttachmentState : Pulumi.ResourceArgs
+    public sealed class InterconnectAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the VLAN attachment is enabled or disabled.  When using
@@ -766,5 +768,6 @@ namespace Pulumi.Gcp.Compute
         public InterconnectAttachmentState()
         {
         }
+        public static new InterconnectAttachmentState Empty => new InterconnectAttachmentState();
     }
 }

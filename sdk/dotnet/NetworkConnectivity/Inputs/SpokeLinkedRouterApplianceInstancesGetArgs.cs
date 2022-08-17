@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 {
 
-    public sealed class SpokeLinkedRouterApplianceInstancesGetArgs : Pulumi.ResourceArgs
+    public sealed class SpokeLinkedRouterApplianceInstancesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("instances", required: true)]
         private InputList<Inputs.SpokeLinkedRouterApplianceInstancesInstanceGetArgs>? _instances;
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         public SpokeLinkedRouterApplianceInstancesGetArgs()
         {
         }
+        public static new SpokeLinkedRouterApplianceInstancesGetArgs Empty => new SpokeLinkedRouterApplianceInstancesGetArgs();
     }
 }

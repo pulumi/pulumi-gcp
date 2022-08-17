@@ -26,29 +26,28 @@ namespace Pulumi.Gcp.Storage
     /// Example creating an ACL on a bucket with one owner, and one reader.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
     ///     {
-    ///         var image_store = new Gcp.Storage.Bucket("image-store", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var image_store_acl = new Gcp.Storage.BucketACL("image-store-acl", new Gcp.Storage.BucketACLArgs
-    ///         {
-    ///             Bucket = image_store.Name,
-    ///             RoleEntities = 
-    ///             {
-    ///                 "OWNER:user-my.email@gmail.com",
-    ///                 "READER:group-mygroup",
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "EU",
+    ///     });
     /// 
-    /// }
+    ///     var image_store_acl = new Gcp.Storage.BucketACL("image-store-acl", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         RoleEntities = new[]
+    ///         {
+    ///             "OWNER:user-my.email@gmail.com",
+    ///             "READER:group-mygroup",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.Gcp.Storage
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:storage/bucketACL:BucketACL")]
-    public partial class BucketACL : Pulumi.CustomResource
+    public partial class BucketACL : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket it applies to.
@@ -126,7 +125,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class BucketACLArgs : Pulumi.ResourceArgs
+    public sealed class BucketACLArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket it applies to.
@@ -161,9 +160,10 @@ namespace Pulumi.Gcp.Storage
         public BucketACLArgs()
         {
         }
+        public static new BucketACLArgs Empty => new BucketACLArgs();
     }
 
-    public sealed class BucketACLState : Pulumi.ResourceArgs
+    public sealed class BucketACLState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket it applies to.
@@ -198,5 +198,6 @@ namespace Pulumi.Gcp.Storage
         public BucketACLState()
         {
         }
+        public static new BucketACLState Empty => new BucketACLState();
     }
 }

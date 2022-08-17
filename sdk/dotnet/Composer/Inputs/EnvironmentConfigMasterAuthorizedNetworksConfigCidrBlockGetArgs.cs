@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs()
         {
         }
+        public static new EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs Empty => new EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs();
     }
 }

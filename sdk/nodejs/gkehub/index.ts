@@ -8,11 +8,17 @@ import * as utilities from "../utilities";
 export * from "./feature";
 export * from "./featureMembership";
 export * from "./membership";
+export * from "./membershipIamBinding";
+export * from "./membershipIamMember";
+export * from "./membershipIamPolicy";
 
 // Import resources to register:
 import { Feature } from "./feature";
 import { FeatureMembership } from "./featureMembership";
 import { Membership } from "./membership";
+import { MembershipIamBinding } from "./membershipIamBinding";
+import { MembershipIamMember } from "./membershipIamMember";
+import { MembershipIamPolicy } from "./membershipIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +30,12 @@ const _module = {
                 return new FeatureMembership(name, <any>undefined, { urn })
             case "gcp:gkehub/membership:Membership":
                 return new Membership(name, <any>undefined, { urn })
+            case "gcp:gkehub/membershipIamBinding:MembershipIamBinding":
+                return new MembershipIamBinding(name, <any>undefined, { urn })
+            case "gcp:gkehub/membershipIamMember:MembershipIamMember":
+                return new MembershipIamMember(name, <any>undefined, { urn })
+            case "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy":
+                return new MembershipIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -32,3 +44,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "gkehub/feature", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureMembership", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membership", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamPolicy", _module)

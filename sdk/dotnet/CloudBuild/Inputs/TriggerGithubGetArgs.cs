@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerGithubGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerGithubGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the volume to mount.
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerGithubGetArgs()
         {
         }
+        public static new TriggerGithubGetArgs Empty => new TriggerGithubGetArgs();
     }
 }

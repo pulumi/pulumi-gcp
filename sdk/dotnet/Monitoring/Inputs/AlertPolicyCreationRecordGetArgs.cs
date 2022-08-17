@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyCreationRecordGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyCreationRecordGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("mutateTime")]
         public Input<string>? MutateTime { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyCreationRecordGetArgs()
         {
         }
+        public static new AlertPolicyCreationRecordGetArgs Empty => new AlertPolicyCreationRecordGetArgs();
     }
 }

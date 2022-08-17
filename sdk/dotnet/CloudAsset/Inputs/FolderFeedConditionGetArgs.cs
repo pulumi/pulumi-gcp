@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudAsset.Inputs
 {
 
-    public sealed class FolderFeedConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class FolderFeedConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the expression. This is a longer text which describes the expression,
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.CloudAsset.Inputs
         public FolderFeedConditionGetArgs()
         {
         }
+        public static new FolderFeedConditionGetArgs Empty => new FolderFeedConditionGetArgs();
     }
 }

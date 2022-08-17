@@ -10,8 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateManager.Inputs
 {
 
-    public sealed class CertificateManagedGetArgs : Pulumi.ResourceArgs
+    public sealed class CertificateManagedGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authorizationAttemptInfos")]
+        private InputList<Inputs.CertificateManagedAuthorizationAttemptInfoGetArgs>? _authorizationAttemptInfos;
+
+        /// <summary>
+        /// -
+        /// Detailed state of the latest authorization attempt for each domain
+        /// specified for this Managed Certificate.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateManagedAuthorizationAttemptInfoGetArgs> AuthorizationAttemptInfos
+        {
+            get => _authorizationAttemptInfos ?? (_authorizationAttemptInfos = new InputList<Inputs.CertificateManagedAuthorizationAttemptInfoGetArgs>());
+            set => _authorizationAttemptInfos = value;
+        }
+
         [Input("dnsAuthorizations")]
         private InputList<string>? _dnsAuthorizations;
 
@@ -37,9 +52,23 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
             set => _domains = value;
         }
 
+        [Input("provisioningIssues")]
+        private InputList<Inputs.CertificateManagedProvisioningIssueGetArgs>? _provisioningIssues;
+
         /// <summary>
         /// -
-        /// State of the managed certificate resource.
+        /// Information about issues with provisioning this Managed Certificate.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateManagedProvisioningIssueGetArgs> ProvisioningIssues
+        {
+            get => _provisioningIssues ?? (_provisioningIssues = new InputList<Inputs.CertificateManagedProvisioningIssueGetArgs>());
+            set => _provisioningIssues = value;
+        }
+
+        /// <summary>
+        /// -
+        /// State of the domain for managed certificate issuance.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -47,5 +76,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         public CertificateManagedGetArgs()
         {
         }
+        public static new CertificateManagedGetArgs Empty => new CertificateManagedGetArgs();
     }
 }

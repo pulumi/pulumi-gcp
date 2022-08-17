@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Recaptcha.Inputs
 {
 
-    public sealed class EnterpriseKeyTestingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseKeyTestingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
         public EnterpriseKeyTestingOptionsArgs()
         {
         }
+        public static new EnterpriseKeyTestingOptionsArgs Empty => new EnterpriseKeyTestingOptionsArgs();
     }
 }

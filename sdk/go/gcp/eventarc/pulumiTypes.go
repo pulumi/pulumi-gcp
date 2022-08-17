@@ -24,7 +24,7 @@ type TriggerDestination struct {
 // TriggerDestinationInput is an input type that accepts TriggerDestinationArgs and TriggerDestinationOutput values.
 // You can construct a concrete instance of `TriggerDestinationInput` via:
 //
-//          TriggerDestinationArgs{...}
+//	TriggerDestinationArgs{...}
 type TriggerDestinationInput interface {
 	pulumi.Input
 
@@ -66,11 +66,11 @@ func (i TriggerDestinationArgs) ToTriggerDestinationPtrOutputWithContext(ctx con
 // TriggerDestinationPtrInput is an input type that accepts TriggerDestinationArgs, TriggerDestinationPtr and TriggerDestinationPtrOutput values.
 // You can construct a concrete instance of `TriggerDestinationPtrInput` via:
 //
-//          TriggerDestinationArgs{...}
+//	        TriggerDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerDestinationPtrInput interface {
 	pulumi.Input
 
@@ -216,7 +216,7 @@ type TriggerDestinationCloudRunService struct {
 // TriggerDestinationCloudRunServiceInput is an input type that accepts TriggerDestinationCloudRunServiceArgs and TriggerDestinationCloudRunServiceOutput values.
 // You can construct a concrete instance of `TriggerDestinationCloudRunServiceInput` via:
 //
-//          TriggerDestinationCloudRunServiceArgs{...}
+//	TriggerDestinationCloudRunServiceArgs{...}
 type TriggerDestinationCloudRunServiceInput interface {
 	pulumi.Input
 
@@ -256,11 +256,11 @@ func (i TriggerDestinationCloudRunServiceArgs) ToTriggerDestinationCloudRunServi
 // TriggerDestinationCloudRunServicePtrInput is an input type that accepts TriggerDestinationCloudRunServiceArgs, TriggerDestinationCloudRunServicePtr and TriggerDestinationCloudRunServicePtrOutput values.
 // You can construct a concrete instance of `TriggerDestinationCloudRunServicePtrInput` via:
 //
-//          TriggerDestinationCloudRunServiceArgs{...}
+//	        TriggerDestinationCloudRunServiceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerDestinationCloudRunServicePtrInput interface {
 	pulumi.Input
 
@@ -395,7 +395,7 @@ type TriggerDestinationGke struct {
 // TriggerDestinationGkeInput is an input type that accepts TriggerDestinationGkeArgs and TriggerDestinationGkeOutput values.
 // You can construct a concrete instance of `TriggerDestinationGkeInput` via:
 //
-//          TriggerDestinationGkeArgs{...}
+//	TriggerDestinationGkeArgs{...}
 type TriggerDestinationGkeInput interface {
 	pulumi.Input
 
@@ -439,11 +439,11 @@ func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkePtrOutputWithContext(c
 // TriggerDestinationGkePtrInput is an input type that accepts TriggerDestinationGkeArgs, TriggerDestinationGkePtr and TriggerDestinationGkePtrOutput values.
 // You can construct a concrete instance of `TriggerDestinationGkePtrInput` via:
 //
-//          TriggerDestinationGkeArgs{...}
+//	        TriggerDestinationGkeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TriggerDestinationGkePtrInput interface {
 	pulumi.Input
 
@@ -604,7 +604,7 @@ type TriggerMatchingCriteria struct {
 // TriggerMatchingCriteriaInput is an input type that accepts TriggerMatchingCriteriaArgs and TriggerMatchingCriteriaOutput values.
 // You can construct a concrete instance of `TriggerMatchingCriteriaInput` via:
 //
-//          TriggerMatchingCriteriaArgs{...}
+//	TriggerMatchingCriteriaArgs{...}
 type TriggerMatchingCriteriaInput interface {
 	pulumi.Input
 
@@ -636,7 +636,7 @@ func (i TriggerMatchingCriteriaArgs) ToTriggerMatchingCriteriaOutputWithContext(
 // TriggerMatchingCriteriaArrayInput is an input type that accepts TriggerMatchingCriteriaArray and TriggerMatchingCriteriaArrayOutput values.
 // You can construct a concrete instance of `TriggerMatchingCriteriaArrayInput` via:
 //
-//          TriggerMatchingCriteriaArray{ TriggerMatchingCriteriaArgs{...} }
+//	TriggerMatchingCriteriaArray{ TriggerMatchingCriteriaArgs{...} }
 type TriggerMatchingCriteriaArrayInput interface {
 	pulumi.Input
 
@@ -715,7 +715,7 @@ type TriggerTransport struct {
 // TriggerTransportInput is an input type that accepts TriggerTransportArgs and TriggerTransportOutput values.
 // You can construct a concrete instance of `TriggerTransportInput` via:
 //
-//          TriggerTransportArgs{...}
+//	TriggerTransportArgs{...}
 type TriggerTransportInput interface {
 	pulumi.Input
 
@@ -743,7 +743,7 @@ func (i TriggerTransportArgs) ToTriggerTransportOutputWithContext(ctx context.Co
 // TriggerTransportArrayInput is an input type that accepts TriggerTransportArray and TriggerTransportArrayOutput values.
 // You can construct a concrete instance of `TriggerTransportArrayInput` via:
 //
-//          TriggerTransportArray{ TriggerTransportArgs{...} }
+//	TriggerTransportArray{ TriggerTransportArgs{...} }
 type TriggerTransportArrayInput interface {
 	pulumi.Input
 
@@ -815,7 +815,7 @@ type TriggerTransportPubsub struct {
 // TriggerTransportPubsubInput is an input type that accepts TriggerTransportPubsubArgs and TriggerTransportPubsubOutput values.
 // You can construct a concrete instance of `TriggerTransportPubsubInput` via:
 //
-//          TriggerTransportPubsubArgs{...}
+//	TriggerTransportPubsubArgs{...}
 type TriggerTransportPubsubInput interface {
 	pulumi.Input
 
@@ -846,7 +846,7 @@ func (i TriggerTransportPubsubArgs) ToTriggerTransportPubsubOutputWithContext(ct
 // TriggerTransportPubsubArrayInput is an input type that accepts TriggerTransportPubsubArray and TriggerTransportPubsubArrayOutput values.
 // You can construct a concrete instance of `TriggerTransportPubsubArrayInput` via:
 //
-//          TriggerTransportPubsubArray{ TriggerTransportPubsubArgs{...} }
+//	TriggerTransportPubsubArray{ TriggerTransportPubsubArgs{...} }
 type TriggerTransportPubsubArrayInput interface {
 	pulumi.Input
 

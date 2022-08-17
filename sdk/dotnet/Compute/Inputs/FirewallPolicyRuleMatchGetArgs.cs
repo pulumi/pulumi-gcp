@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class FirewallPolicyRuleMatchGetArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyRuleMatchGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public FirewallPolicyRuleMatchGetArgs()
         {
         }
+        public static new FirewallPolicyRuleMatchGetArgs Empty => new FirewallPolicyRuleMatchGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class InstanceIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public InstanceIamMemberConditionGetArgs()
         {
         }
+        public static new InstanceIamMemberConditionGetArgs Empty => new InstanceIamMemberConditionGetArgs();
     }
 }

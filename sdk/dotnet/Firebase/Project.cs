@@ -26,31 +26,30 @@ namespace Pulumi.Gcp.Firebase
     /// ### Firebase Project Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
     ///     {
-    ///         var defaultProject = new Gcp.Organizations.Project("defaultProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "tf-test",
-    ///             OrgId = "123456789",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new Gcp.Firebase.ProjectArgs
-    ///         {
-    ///             ProjectID = defaultProject.ProjectId,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         ProjectId = "tf-test",
+    ///         OrgId = "123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
+    ///     {
+    ///         ProjectID = defaultProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +65,7 @@ namespace Pulumi.Gcp.Firebase
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebase/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The GCP project display name
@@ -131,7 +130,7 @@ namespace Pulumi.Gcp.Firebase
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -143,9 +142,10 @@ namespace Pulumi.Gcp.Firebase
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GCP project display name
@@ -169,5 +169,6 @@ namespace Pulumi.Gcp.Firebase
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

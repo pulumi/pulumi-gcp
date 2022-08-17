@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class NodeTemplateNodeTypeFlexibilityArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateNodeTypeFlexibilityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of virtual CPUs to use.
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public NodeTemplateNodeTypeFlexibilityArgs()
         {
         }
+        public static new NodeTemplateNodeTypeFlexibilityArgs Empty => new NodeTemplateNodeTypeFlexibilityArgs();
     }
 }

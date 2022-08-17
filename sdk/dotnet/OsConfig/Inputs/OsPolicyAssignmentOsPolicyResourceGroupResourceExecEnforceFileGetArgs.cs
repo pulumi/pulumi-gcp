@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGetArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGetArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGetArgs();
     }
 }

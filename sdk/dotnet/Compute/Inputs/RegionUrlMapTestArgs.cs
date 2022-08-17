@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapTestArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of this test case.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapTestArgs()
         {
         }
+        public static new RegionUrlMapTestArgs Empty => new RegionUrlMapTestArgs();
     }
 }

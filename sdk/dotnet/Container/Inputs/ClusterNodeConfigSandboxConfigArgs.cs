@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodeConfigSandboxConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodeConfigSandboxConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Which sandbox to use for pods in the node pool.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodeConfigSandboxConfigArgs()
         {
         }
+        public static new ClusterNodeConfigSandboxConfigArgs Empty => new ClusterNodeConfigSandboxConfigArgs();
     }
 }

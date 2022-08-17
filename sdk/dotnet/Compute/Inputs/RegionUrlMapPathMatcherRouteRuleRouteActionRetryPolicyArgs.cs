@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the allowed number retries. This number must be &gt; 0.
@@ -60,5 +60,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs Empty => new RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs();
     }
 }

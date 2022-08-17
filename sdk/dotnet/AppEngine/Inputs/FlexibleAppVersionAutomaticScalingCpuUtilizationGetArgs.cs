@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Period of time over which CPU utilization is calculated.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs()
         {
         }
+        public static new FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs Empty => new FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsActiveDirectoryConfigArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsActiveDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain name for the active directory (e.g., mydomain.com).
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsActiveDirectoryConfigArgs()
         {
         }
+        public static new DatabaseInstanceSettingsActiveDirectoryConfigArgs Empty => new DatabaseInstanceSettingsActiveDirectoryConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ContainerAnalysis.Inputs
 {
 
-    public sealed class NoteAttestationAuthorityHintArgs : Pulumi.ResourceArgs
+    public sealed class NoteAttestationAuthorityHintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human readable name of this Attestation Authority, for
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         public NoteAttestationAuthorityHintArgs()
         {
         }
+        public static new NoteAttestationAuthorityHintArgs Empty => new NoteAttestationAuthorityHintArgs();
     }
 }

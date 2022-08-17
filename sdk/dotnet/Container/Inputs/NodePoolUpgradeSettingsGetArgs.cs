@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolUpgradeSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolUpgradeSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of additional nodes that can be added to the node pool during
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolUpgradeSettingsGetArgs()
         {
         }
+        public static new NodePoolUpgradeSettingsGetArgs Empty => new NodePoolUpgradeSettingsGetArgs();
     }
 }

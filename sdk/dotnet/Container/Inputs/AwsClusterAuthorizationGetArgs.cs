@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterAuthorizationGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("adminUsers", required: true)]
         private InputList<Inputs.AwsClusterAuthorizationAdminUserGetArgs>? _adminUsers;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterAuthorizationGetArgs()
         {
         }
+        public static new AwsClusterAuthorizationGetArgs Empty => new AwsClusterAuthorizationGetArgs();
     }
 }

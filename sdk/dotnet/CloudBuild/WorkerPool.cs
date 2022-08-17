@@ -15,97 +15,97 @@ namespace Pulumi.Gcp.CloudBuild
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pool = new Gcp.CloudBuild.WorkerPool("pool", new()
     ///     {
-    ///         var pool = new Gcp.CloudBuild.WorkerPool("pool", new Gcp.CloudBuild.WorkerPoolArgs
+    ///         Location = "europe-west1",
+    ///         WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
     ///         {
-    ///             Location = "europe-west1",
-    ///             WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
-    ///             {
-    ///                 DiskSizeGb = 100,
-    ///                 MachineType = "e2-standard-4",
-    ///                 NoExternalIp = false,
-    ///             },
-    ///         });
-    ///     }
+    ///             DiskSizeGb = 100,
+    ///             MachineType = "e2-standard-4",
+    ///             NoExternalIp = false,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Network Config
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var servicenetworking = new Gcp.Projects.Service("servicenetworking", new()
     ///     {
-    ///         var servicenetworking = new Gcp.Projects.Service("servicenetworking", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             ServiceName = "servicenetworking.googleapis.com",
-    ///             DisableOnDestroy = false,
-    ///         });
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 servicenetworking,
-    ///             },
-    ///         });
-    ///         var workerRange = new Gcp.Compute.GlobalAddress("workerRange", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = network.Id,
-    ///         });
-    ///         var workerPoolConn = new Gcp.ServiceNetworking.Connection("workerPoolConn", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = network.Id,
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 workerRange.Name,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 servicenetworking,
-    ///             },
-    ///         });
-    ///         var pool = new Gcp.CloudBuild.WorkerPool("pool", new Gcp.CloudBuild.WorkerPoolArgs
-    ///         {
-    ///             Location = "europe-west1",
-    ///             WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
-    ///             {
-    ///                 DiskSizeGb = 100,
-    ///                 MachineType = "e2-standard-4",
-    ///                 NoExternalIp = false,
-    ///             },
-    ///             NetworkConfig = new Gcp.CloudBuild.Inputs.WorkerPoolNetworkConfigArgs
-    ///             {
-    ///                 PeeredNetwork = network.Id,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 workerPoolConn,
-    ///             },
-    ///         });
-    ///     }
+    ///         ServiceName = "servicenetworking.googleapis.com",
+    ///         DisableOnDestroy = false,
+    ///     });
     /// 
-    /// }
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             servicenetworking,
+    ///         },
+    ///     });
+    /// 
+    ///     var workerRange = new Gcp.Compute.GlobalAddress("workerRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var workerPoolConn = new Gcp.ServiceNetworking.Connection("workerPoolConn", new()
+    ///     {
+    ///         Network = network.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             workerRange.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             servicenetworking,
+    ///         },
+    ///     });
+    /// 
+    ///     var pool = new Gcp.CloudBuild.WorkerPool("pool", new()
+    ///     {
+    ///         Location = "europe-west1",
+    ///         WorkerConfig = new Gcp.CloudBuild.Inputs.WorkerPoolWorkerConfigArgs
+    ///         {
+    ///             DiskSizeGb = 100,
+    ///             MachineType = "e2-standard-4",
+    ///             NoExternalIp = false,
+    ///         },
+    ///         NetworkConfig = new Gcp.CloudBuild.Inputs.WorkerPoolNetworkConfigArgs
+    ///         {
+    ///             PeeredNetwork = network.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             workerPoolConn,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudbuild/workerPool:WorkerPool")]
-    public partial class WorkerPool : Pulumi.CustomResource
+    public partial class WorkerPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.CloudBuild
         }
     }
 
-    public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkerPoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -298,9 +298,10 @@ namespace Pulumi.Gcp.CloudBuild
         public WorkerPoolArgs()
         {
         }
+        public static new WorkerPoolArgs Empty => new WorkerPoolArgs();
     }
 
-    public sealed class WorkerPoolState : Pulumi.ResourceArgs
+    public sealed class WorkerPoolState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -384,5 +385,6 @@ namespace Pulumi.Gcp.CloudBuild
         public WorkerPoolState()
         {
         }
+        public static new WorkerPoolState Empty => new WorkerPoolState();
     }
 }

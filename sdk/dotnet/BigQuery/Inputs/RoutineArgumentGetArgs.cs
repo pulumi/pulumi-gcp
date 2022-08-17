@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class RoutineArgumentGetArgs : Pulumi.ResourceArgs
+    public sealed class RoutineArgumentGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to FIXED_TYPE.
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public RoutineArgumentGetArgs()
         {
         }
+        public static new RoutineArgumentGetArgs Empty => new RoutineArgumentGetArgs();
     }
 }

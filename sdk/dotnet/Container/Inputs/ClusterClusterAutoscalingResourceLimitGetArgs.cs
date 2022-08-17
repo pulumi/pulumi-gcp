@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterClusterAutoscalingResourceLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterAutoscalingResourceLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum amount of the resource in the cluster.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterClusterAutoscalingResourceLimitGetArgs()
         {
         }
+        public static new ClusterClusterAutoscalingResourceLimitGetArgs Empty => new ClusterClusterAutoscalingResourceLimitGetArgs();
     }
 }

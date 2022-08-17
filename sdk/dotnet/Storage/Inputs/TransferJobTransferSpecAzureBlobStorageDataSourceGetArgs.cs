@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Credentials used to authenticate API requests to Azure block.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs()
         {
         }
+        public static new TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs Empty => new TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs();
     }
 }

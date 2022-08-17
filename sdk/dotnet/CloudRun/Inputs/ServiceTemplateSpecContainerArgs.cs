@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class ServiceTemplateSpecContainerArgs : Pulumi.ResourceArgs
+    public sealed class ServiceTemplateSpecContainerArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -144,5 +144,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public ServiceTemplateSpecContainerArgs()
         {
         }
+        public static new ServiceTemplateSpecContainerArgs Empty => new ServiceTemplateSpecContainerArgs();
     }
 }

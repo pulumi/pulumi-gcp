@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromMachineImageAdvancedMachineFeaturesArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromMachineImageAdvancedMachineFeaturesArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableNestedVirtualization")]
         public Input<bool>? EnableNestedVirtualization { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromMachineImageAdvancedMachineFeaturesArgs()
         {
         }
+        public static new InstanceFromMachineImageAdvancedMachineFeaturesArgs Empty => new InstanceFromMachineImageAdvancedMachineFeaturesArgs();
     }
 }

@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/targetGrpcProxy:TargetGrpcProxy")]
-    public partial class TargetGrpcProxy : Pulumi.CustomResource
+    public partial class TargetGrpcProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class TargetGrpcProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetGrpcProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -214,9 +214,10 @@ namespace Pulumi.Gcp.Compute
         public TargetGrpcProxyArgs()
         {
         }
+        public static new TargetGrpcProxyArgs Empty => new TargetGrpcProxyArgs();
     }
 
-    public sealed class TargetGrpcProxyState : Pulumi.ResourceArgs
+    public sealed class TargetGrpcProxyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -296,5 +297,6 @@ namespace Pulumi.Gcp.Compute
         public TargetGrpcProxyState()
         {
         }
+        public static new TargetGrpcProxyState Empty => new TargetGrpcProxyState();
     }
 }

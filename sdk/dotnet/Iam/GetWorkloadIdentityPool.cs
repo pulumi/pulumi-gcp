@@ -19,20 +19,18 @@ namespace Pulumi.Gcp.Iam
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPool.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.Iam.GetWorkloadIdentityPool.InvokeAsync(new Gcp.Iam.GetWorkloadIdentityPoolArgs
-        ///         {
-        ///             WorkloadIdentityPoolId = "foo-pool",
-        ///         }));
-        ///     }
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Gcp.Iam
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPool.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Gcp.Iam.GetWorkloadIdentityPool.InvokeAsync(new Gcp.Iam.GetWorkloadIdentityPoolArgs
-        ///         {
-        ///             WorkloadIdentityPoolId = "foo-pool",
-        ///         }));
-        ///     }
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Iam
     }
 
 
-    public sealed class GetWorkloadIdentityPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadIdentityPoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project in which the resource belongs. If it
@@ -90,9 +86,10 @@ namespace Pulumi.Gcp.Iam
         public GetWorkloadIdentityPoolArgs()
         {
         }
+        public static new GetWorkloadIdentityPoolArgs Empty => new GetWorkloadIdentityPoolArgs();
     }
 
-    public sealed class GetWorkloadIdentityPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadIdentityPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project in which the resource belongs. If it
@@ -111,6 +108,7 @@ namespace Pulumi.Gcp.Iam
         public GetWorkloadIdentityPoolInvokeArgs()
         {
         }
+        public static new GetWorkloadIdentityPoolInvokeArgs Empty => new GetWorkloadIdentityPoolInvokeArgs();
     }
 
 

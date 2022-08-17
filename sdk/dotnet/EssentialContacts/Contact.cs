@@ -28,27 +28,26 @@ namespace Pulumi.Gcp.EssentialContacts
     /// ### Essential Contact
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var contact = new Gcp.EssentialContacts.Contact("contact", new Gcp.EssentialContacts.ContactArgs
-    ///         {
-    ///             Parent = project.Apply(project =&gt; project.Id),
-    ///             Email = "foo@bar.com",
-    ///             LanguageTag = "en-GB",
-    ///             NotificationCategorySubscriptions = 
-    ///             {
-    ///                 "ALL",
-    ///             },
-    ///         });
-    ///     }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    /// }
+    ///     var contact = new Gcp.EssentialContacts.Contact("contact", new()
+    ///     {
+    ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///         Email = "foo@bar.com",
+    ///         LanguageTag = "en-GB",
+    ///         NotificationCategorySubscriptions = new[]
+    ///         {
+    ///             "ALL",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +59,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// ```
     /// </summary>
     [GcpResourceType("gcp:essentialcontacts/contact:Contact")]
-    public partial class Contact : Pulumi.CustomResource
+    public partial class Contact : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The email address to send notifications to. This does not need to be a Google account.
@@ -136,7 +135,7 @@ namespace Pulumi.Gcp.EssentialContacts
         }
     }
 
-    public sealed class ContactArgs : Pulumi.ResourceArgs
+    public sealed class ContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email address to send notifications to. This does not need to be a Google account.
@@ -171,9 +170,10 @@ namespace Pulumi.Gcp.EssentialContacts
         public ContactArgs()
         {
         }
+        public static new ContactArgs Empty => new ContactArgs();
     }
 
-    public sealed class ContactState : Pulumi.ResourceArgs
+    public sealed class ContactState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email address to send notifications to. This does not need to be a Google account.
@@ -214,5 +214,6 @@ namespace Pulumi.Gcp.EssentialContacts
         public ContactState()
         {
         }
+        public static new ContactState Empty => new ContactState();
     }
 }

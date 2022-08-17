@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 {
 
-    public sealed class FunctionBuildConfigArgs : Pulumi.ResourceArgs
+    public sealed class FunctionBuildConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -71,5 +71,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public FunctionBuildConfigArgs()
         {
         }
+        public static new FunctionBuildConfigArgs Empty => new FunctionBuildConfigArgs();
     }
 }

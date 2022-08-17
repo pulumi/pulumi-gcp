@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AzureClusterAuthorizationAdminUserArgs : Pulumi.ResourceArgs
+    public sealed class AzureClusterAuthorizationAdminUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AzureClusterAuthorizationAdminUserArgs()
         {
         }
+        public static new AzureClusterAuthorizationAdminUserArgs Empty => new AzureClusterAuthorizationAdminUserArgs();
     }
 }

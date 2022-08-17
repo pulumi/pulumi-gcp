@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ReservationShareSettingsProjectMapGetArgs : Pulumi.ResourceArgs
+    public sealed class ReservationShareSettingsProjectMapGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier for this object. Format specified above.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ReservationShareSettingsProjectMapGetArgs()
         {
         }
+        public static new ReservationShareSettingsProjectMapGetArgs Empty => new ReservationShareSettingsProjectMapGetArgs();
     }
 }

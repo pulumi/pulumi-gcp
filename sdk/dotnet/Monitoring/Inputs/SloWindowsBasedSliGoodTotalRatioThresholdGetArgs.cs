@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdGetArgs : Pulumi.ResourceArgs
+    public sealed class SloWindowsBasedSliGoodTotalRatioThresholdGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic SLI to evaluate to judge window quality.
@@ -37,5 +37,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloWindowsBasedSliGoodTotalRatioThresholdGetArgs()
         {
         }
+        public static new SloWindowsBasedSliGoodTotalRatioThresholdGetArgs Empty => new SloWindowsBasedSliGoodTotalRatioThresholdGetArgs();
     }
 }

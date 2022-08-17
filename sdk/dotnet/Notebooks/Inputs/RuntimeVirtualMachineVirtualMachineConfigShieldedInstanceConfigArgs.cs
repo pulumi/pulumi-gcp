@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance has integrity monitoring enabled.
@@ -43,5 +43,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs()
         {
         }
+        public static new RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs Empty => new RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs();
     }
 }

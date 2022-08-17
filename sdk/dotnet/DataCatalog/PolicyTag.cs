@@ -22,98 +22,98 @@ namespace Pulumi.Gcp.DataCatalog
     /// ### Data Catalog Taxonomies Policy Tag Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new()
     ///     {
-    ///         var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new Gcp.DataCatalog.TaxonomyArgs
+    ///         Region = "us",
+    ///         DisplayName = "taxonomy_display_name",
+    ///         Description = "A collection of policy tags",
+    ///         ActivatedPolicyTypes = new[]
     ///         {
-    ///             Region = "us",
-    ///             DisplayName = "taxonomy_display_name",
-    ///             Description = "A collection of policy tags",
-    ///             ActivatedPolicyTypes = 
-    ///             {
-    ///                 "FINE_GRAINED_ACCESS_CONTROL",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var basicPolicyTag = new Gcp.DataCatalog.PolicyTag("basicPolicyTag", new Gcp.DataCatalog.PolicyTagArgs
-    ///         {
-    ///             Taxonomy = myTaxonomy.Id,
-    ///             DisplayName = "Low security",
-    ///             Description = "A policy tag normally associated with low security items",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             "FINE_GRAINED_ACCESS_CONTROL",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var basicPolicyTag = new Gcp.DataCatalog.PolicyTag("basicPolicyTag", new()
+    ///     {
+    ///         Taxonomy = myTaxonomy.Id,
+    ///         DisplayName = "Low security",
+    ///         Description = "A policy tag normally associated with low security items",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Data Catalog Taxonomies Policy Tag Child Policies
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new()
     ///     {
-    ///         var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new Gcp.DataCatalog.TaxonomyArgs
+    ///         Region = "us",
+    ///         DisplayName = "taxonomy_display_name",
+    ///         Description = "A collection of policy tags",
+    ///         ActivatedPolicyTypes = new[]
     ///         {
-    ///             Region = "us",
-    ///             DisplayName = "taxonomy_display_name",
-    ///             Description = "A collection of policy tags",
-    ///             ActivatedPolicyTypes = 
-    ///             {
-    ///                 "FINE_GRAINED_ACCESS_CONTROL",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var parentPolicy = new Gcp.DataCatalog.PolicyTag("parentPolicy", new Gcp.DataCatalog.PolicyTagArgs
-    ///         {
-    ///             Taxonomy = myTaxonomy.Id,
-    ///             DisplayName = "High",
-    ///             Description = "A policy tag category used for high security access",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var childPolicy = new Gcp.DataCatalog.PolicyTag("childPolicy", new Gcp.DataCatalog.PolicyTagArgs
-    ///         {
-    ///             Taxonomy = myTaxonomy.Id,
-    ///             DisplayName = "ssn",
-    ///             Description = "A hash of the users ssn",
-    ///             ParentPolicyTag = parentPolicy.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var childPolicy2 = new Gcp.DataCatalog.PolicyTag("childPolicy2", new Gcp.DataCatalog.PolicyTagArgs
-    ///         {
-    ///             Taxonomy = myTaxonomy.Id,
-    ///             DisplayName = "dob",
-    ///             Description = "The users date of birth",
-    ///             ParentPolicyTag = parentPolicy.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///             DependsOn = 
-    ///             {
-    ///                 childPolicy,
-    ///             },
-    ///         });
-    ///     }
+    ///             "FINE_GRAINED_ACCESS_CONTROL",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var parentPolicy = new Gcp.DataCatalog.PolicyTag("parentPolicy", new()
+    ///     {
+    ///         Taxonomy = myTaxonomy.Id,
+    ///         DisplayName = "High",
+    ///         Description = "A policy tag category used for high security access",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var childPolicy = new Gcp.DataCatalog.PolicyTag("childPolicy", new()
+    ///     {
+    ///         Taxonomy = myTaxonomy.Id,
+    ///         DisplayName = "ssn",
+    ///         Description = "A hash of the users ssn",
+    ///         ParentPolicyTag = parentPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var childPolicy2 = new Gcp.DataCatalog.PolicyTag("childPolicy2", new()
+    ///     {
+    ///         Taxonomy = myTaxonomy.Id,
+    ///         DisplayName = "dob",
+    ///         Description = "The users date of birth",
+    ///         ParentPolicyTag = parentPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             childPolicy,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// ```
     /// </summary>
     [GcpResourceType("gcp:datacatalog/policyTag:PolicyTag")]
-    public partial class PolicyTag : Pulumi.CustomResource
+    public partial class PolicyTag : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource names of child policy tags of this policy tag.
@@ -215,7 +215,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class PolicyTagArgs : Pulumi.ResourceArgs
+    public sealed class PolicyTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of this policy tag. It must: contain only unicode characters, tabs,
@@ -251,9 +251,10 @@ namespace Pulumi.Gcp.DataCatalog
         public PolicyTagArgs()
         {
         }
+        public static new PolicyTagArgs Empty => new PolicyTagArgs();
     }
 
-    public sealed class PolicyTagState : Pulumi.ResourceArgs
+    public sealed class PolicyTagState : global::Pulumi.ResourceArgs
     {
         [Input("childPolicyTags")]
         private InputList<string>? _childPolicyTags;
@@ -308,5 +309,6 @@ namespace Pulumi.Gcp.DataCatalog
         public PolicyTagState()
         {
         }
+        public static new PolicyTagState Empty => new PolicyTagState();
     }
 }

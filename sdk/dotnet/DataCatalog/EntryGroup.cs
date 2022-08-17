@@ -22,40 +22,36 @@ namespace Pulumi.Gcp.DataCatalog
     /// ### Data Catalog Entry Group Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new()
     ///     {
-    ///         var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///     }
+    ///         EntryGroupId = "my_group",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Data Catalog Entry Group Full
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new()
     ///     {
-    ///         var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             Description = "example entry group",
-    ///             DisplayName = "entry group",
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///     }
+    ///         Description = "example entry group",
+    ///         DisplayName = "entry group",
+    ///         EntryGroupId = "my_group",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +63,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// ```
     /// </summary>
     [GcpResourceType("gcp:datacatalog/entryGroup:EntryGroup")]
-    public partial class EntryGroup : Pulumi.CustomResource
+    public partial class EntryGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
@@ -152,7 +148,7 @@ namespace Pulumi.Gcp.DataCatalog
         }
     }
 
-    public sealed class EntryGroupArgs : Pulumi.ResourceArgs
+    public sealed class EntryGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
@@ -189,9 +185,10 @@ namespace Pulumi.Gcp.DataCatalog
         public EntryGroupArgs()
         {
         }
+        public static new EntryGroupArgs Empty => new EntryGroupArgs();
     }
 
-    public sealed class EntryGroupState : Pulumi.ResourceArgs
+    public sealed class EntryGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
@@ -235,5 +232,6 @@ namespace Pulumi.Gcp.DataCatalog
         public EntryGroupState()
         {
         }
+        public static new EntryGroupState Empty => new EntryGroupState();
     }
 }

@@ -26,83 +26,78 @@ namespace Pulumi.Gcp.Spanner
     /// ## google\_spanner\_database\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new Gcp.Spanner.DatabaseIAMPolicyArgs
-    ///         {
-    ///             Instance = "your-instance-name",
-    ///             Database = "your-database-name",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_spanner\_database\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var database = new Gcp.Spanner.DatabaseIAMBinding("database", new()
     ///     {
-    ///         var database = new Gcp.Spanner.DatabaseIAMBinding("database", new Gcp.Spanner.DatabaseIAMBindingArgs
+    ///         Database = "your-database-name",
+    ///         Instance = "your-instance-name",
+    ///         Members = new[]
     ///         {
-    ///             Database = "your-database-name",
-    ///             Instance = "your-instance-name",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/compute.networkUser",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/compute.networkUser",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_spanner\_database\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var database = new Gcp.Spanner.DatabaseIAMMember("database", new()
     ///     {
-    ///         var database = new Gcp.Spanner.DatabaseIAMMember("database", new Gcp.Spanner.DatabaseIAMMemberArgs
-    ///         {
-    ///             Database = "your-database-name",
-    ///             Instance = "your-instance-name",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/compute.networkUser",
-    ///         });
-    ///     }
+    ///         Database = "your-database-name",
+    ///         Instance = "your-instance-name",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/compute.networkUser",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Spanner
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:spanner/databaseIAMMember:DatabaseIAMMember")]
-    public partial class DatabaseIAMMember : Pulumi.CustomResource
+    public partial class DatabaseIAMMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.DatabaseIAMMemberCondition?> Condition { get; private set; } = null!;
@@ -215,7 +210,7 @@ namespace Pulumi.Gcp.Spanner
         }
     }
 
-    public sealed class DatabaseIAMMemberArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseIAMMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.DatabaseIAMMemberConditionArgs>? Condition { get; set; }
@@ -253,9 +248,10 @@ namespace Pulumi.Gcp.Spanner
         public DatabaseIAMMemberArgs()
         {
         }
+        public static new DatabaseIAMMemberArgs Empty => new DatabaseIAMMemberArgs();
     }
 
-    public sealed class DatabaseIAMMemberState : Pulumi.ResourceArgs
+    public sealed class DatabaseIAMMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.DatabaseIAMMemberConditionGetArgs>? Condition { get; set; }
@@ -299,5 +295,6 @@ namespace Pulumi.Gcp.Spanner
         public DatabaseIAMMemberState()
         {
         }
+        public static new DatabaseIAMMemberState Empty => new DatabaseIAMMemberState();
     }
 }

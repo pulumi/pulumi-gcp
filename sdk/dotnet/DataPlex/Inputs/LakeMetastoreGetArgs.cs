@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataPlex.Inputs
 {
 
-    public sealed class LakeMetastoreGetArgs : Pulumi.ResourceArgs
+    public sealed class LakeMetastoreGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public LakeMetastoreGetArgs()
         {
         }
+        public static new LakeMetastoreGetArgs Empty => new LakeMetastoreGetArgs();
     }
 }

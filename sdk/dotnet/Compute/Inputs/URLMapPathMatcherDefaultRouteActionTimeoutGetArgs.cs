@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherDefaultRouteActionTimeoutGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherDefaultRouteActionTimeoutGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherDefaultRouteActionTimeoutGetArgs()
         {
         }
+        public static new URLMapPathMatcherDefaultRouteActionTimeoutGetArgs Empty => new URLMapPathMatcherDefaultRouteActionTimeoutGetArgs();
     }
 }

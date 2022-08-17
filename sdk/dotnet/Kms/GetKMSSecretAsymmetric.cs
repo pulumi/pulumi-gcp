@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Kms
     }
 
 
-    public sealed class GetKMSSecretAsymmetricArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSSecretAsymmetricArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ciphertext to be decrypted, encoded in base64
@@ -118,9 +118,10 @@ namespace Pulumi.Gcp.Kms
         public GetKMSSecretAsymmetricArgs()
         {
         }
+        public static new GetKMSSecretAsymmetricArgs Empty => new GetKMSSecretAsymmetricArgs();
     }
 
-    public sealed class GetKMSSecretAsymmetricInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKMSSecretAsymmetricInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ciphertext to be decrypted, encoded in base64
@@ -145,6 +146,7 @@ namespace Pulumi.Gcp.Kms
         public GetKMSSecretAsymmetricInvokeArgs()
         {
         }
+        public static new GetKMSSecretAsymmetricInvokeArgs Empty => new GetKMSSecretAsymmetricInvokeArgs();
     }
 
 

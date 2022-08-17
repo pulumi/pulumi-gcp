@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicyGroupPlacementPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyGroupPlacementPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of availability domains instances will be spread across. If two instances are in different
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicyGroupPlacementPolicyArgs()
         {
         }
+        public static new ResourcePolicyGroupPlacementPolicyArgs Empty => new ResourcePolicyGroupPlacementPolicyArgs();
     }
 }

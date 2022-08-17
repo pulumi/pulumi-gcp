@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecGcsDataSourceArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecGcsDataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// S3 Bucket name.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecGcsDataSourceArgs()
         {
         }
+        public static new TransferJobTransferSpecGcsDataSourceArgs Empty => new TransferJobTransferSpecGcsDataSourceArgs();
     }
 }

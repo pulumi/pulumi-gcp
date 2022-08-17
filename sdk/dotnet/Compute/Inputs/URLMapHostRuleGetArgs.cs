@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapHostRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapHostRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of this test case.
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapHostRuleGetArgs()
         {
         }
+        public static new URLMapHostRuleGetArgs Empty => new URLMapHostRuleGetArgs();
     }
 }

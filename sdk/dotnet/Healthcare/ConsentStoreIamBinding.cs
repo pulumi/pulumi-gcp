@@ -23,83 +23,78 @@ namespace Pulumi.Gcp.Healthcare
     /// ## google\_healthcare\_consent\_store\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Healthcare.ConsentStoreIamPolicy("policy", new Gcp.Healthcare.ConsentStoreIamPolicyArgs
-    ///         {
-    ///             Dataset = google_healthcare_consent_store.My_consent.Dataset,
-    ///             ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Healthcare.ConsentStoreIamPolicy("policy", new()
+    ///     {
+    ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
+    ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_consent\_store\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Healthcare.ConsentStoreIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Healthcare.ConsentStoreIamBinding("binding", new Gcp.Healthcare.ConsentStoreIamBindingArgs
+    ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
+    ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Dataset = google_healthcare_consent_store.My_consent.Dataset,
-    ///             ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_consent\_store\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Healthcare.ConsentStoreIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Healthcare.ConsentStoreIamMember("member", new Gcp.Healthcare.ConsentStoreIamMemberArgs
-    ///         {
-    ///             Dataset = google_healthcare_consent_store.My_consent.Dataset,
-    ///             ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
+    ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -127,7 +122,7 @@ namespace Pulumi.Gcp.Healthcare
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding")]
-    public partial class ConsentStoreIamBinding : Pulumi.CustomResource
+    public partial class ConsentStoreIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.ConsentStoreIamBindingCondition?> Condition { get; private set; } = null!;
@@ -207,7 +202,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class ConsentStoreIamBindingArgs : Pulumi.ResourceArgs
+    public sealed class ConsentStoreIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConsentStoreIamBindingConditionArgs>? Condition { get; set; }
@@ -245,9 +240,10 @@ namespace Pulumi.Gcp.Healthcare
         public ConsentStoreIamBindingArgs()
         {
         }
+        public static new ConsentStoreIamBindingArgs Empty => new ConsentStoreIamBindingArgs();
     }
 
-    public sealed class ConsentStoreIamBindingState : Pulumi.ResourceArgs
+    public sealed class ConsentStoreIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.ConsentStoreIamBindingConditionGetArgs>? Condition { get; set; }
@@ -291,5 +287,6 @@ namespace Pulumi.Gcp.Healthcare
         public ConsentStoreIamBindingState()
         {
         }
+        public static new ConsentStoreIamBindingState Empty => new ConsentStoreIamBindingState();
     }
 }

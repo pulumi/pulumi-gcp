@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 {
 
-    public sealed class AttestorAttestationAuthorityNoteArgs : Pulumi.ResourceArgs
+    public sealed class AttestorAttestationAuthorityNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -61,5 +61,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         public AttestorAttestationAuthorityNoteArgs()
         {
         }
+        public static new AttestorAttestationAuthorityNoteArgs Empty => new AttestorAttestationAuthorityNoteArgs();
     }
 }

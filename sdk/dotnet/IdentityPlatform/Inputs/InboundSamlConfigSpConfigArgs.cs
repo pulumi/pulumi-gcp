@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.IdentityPlatform.Inputs
 {
 
-    public sealed class InboundSamlConfigSpConfigArgs : Pulumi.ResourceArgs
+    public sealed class InboundSamlConfigSpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Callback URI where responses from IDP are handled. Must start with `https://`.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
         public InboundSamlConfigSpConfigArgs()
         {
         }
+        public static new InboundSamlConfigSpConfigArgs Empty => new InboundSamlConfigSpConfigArgs();
     }
 }

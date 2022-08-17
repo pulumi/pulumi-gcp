@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ServiceAttachmentConnectedEndpointArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAttachmentConnectedEndpointArgs : global::Pulumi.ResourceArgs
     {
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ServiceAttachmentConnectedEndpointArgs()
         {
         }
+        public static new ServiceAttachmentConnectedEndpointArgs Empty => new ServiceAttachmentConnectedEndpointArgs();
     }
 }

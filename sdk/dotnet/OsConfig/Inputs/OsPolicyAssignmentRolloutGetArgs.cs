@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentRolloutGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentRolloutGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentRolloutGetArgs()
         {
         }
+        public static new OsPolicyAssignmentRolloutGetArgs Empty => new OsPolicyAssignmentRolloutGetArgs();
     }
 }

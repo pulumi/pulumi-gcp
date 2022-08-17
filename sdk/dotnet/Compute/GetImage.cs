@@ -20,32 +20,31 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
         ///     {
-        ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-        ///         {
-        ///             Family = "debian-9",
-        ///             Project = "debian-cloud",
-        ///         }));
-        ///         // ...
-        ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
-        ///         {
-        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-        ///             {
-        ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-        ///                 {
-        ///                     Image = myImage.Apply(myImage =&gt; myImage.SelfLink),
-        ///                 },
-        ///             },
-        ///         });
-        ///     }
+        ///         Family = "debian-11",
+        ///         Project = "debian-cloud",
+        ///     });
         /// 
-        /// }
+        ///     // ...
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///             {
+        ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -62,32 +61,31 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
         ///     {
-        ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-        ///         {
-        ///             Family = "debian-9",
-        ///             Project = "debian-cloud",
-        ///         }));
-        ///         // ...
-        ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
-        ///         {
-        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-        ///             {
-        ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-        ///                 {
-        ///                     Image = myImage.Apply(myImage =&gt; myImage.SelfLink),
-        ///                 },
-        ///             },
-        ///         });
-        ///     }
+        ///         Family = "debian-11",
+        ///         Project = "debian-cloud",
+        ///     });
         /// 
-        /// }
+        ///     // ...
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///             {
+        ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -97,7 +95,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetImageArgs : Pulumi.InvokeArgs
+    public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The family name of the image.
@@ -125,9 +123,10 @@ namespace Pulumi.Gcp.Compute
         public GetImageArgs()
         {
         }
+        public static new GetImageArgs Empty => new GetImageArgs();
     }
 
-    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The family name of the image.
@@ -155,6 +154,7 @@ namespace Pulumi.Gcp.Compute
         public GetImageInvokeArgs()
         {
         }
+        public static new GetImageInvokeArgs Empty => new GetImageInvokeArgs();
     }
 
 

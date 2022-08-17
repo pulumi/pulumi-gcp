@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityConfigSubjectConfigSubjectAltNameArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityConfigSubjectConfigSubjectAltNameArgs : global::Pulumi.ResourceArgs
     {
         [Input("dnsNames")]
         private InputList<string>? _dnsNames;
@@ -63,5 +63,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityConfigSubjectConfigSubjectAltNameArgs()
         {
         }
+        public static new AuthorityConfigSubjectConfigSubjectAltNameArgs Empty => new AuthorityConfigSubjectConfigSubjectAltNameArgs();
     }
 }

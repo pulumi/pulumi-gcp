@@ -1000,7 +1000,7 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.Disk("default",
-            image="debian-8-jessie-v20170523",
+            image="debian-11-bullseye-v20220719",
             labels={
                 "environment": "dev",
             },
@@ -1146,7 +1146,7 @@ class Disk(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.Disk("default",
-            image="debian-8-jessie-v20170523",
+            image="debian-11-bullseye-v20220719",
             labels={
                 "environment": "dev",
             },

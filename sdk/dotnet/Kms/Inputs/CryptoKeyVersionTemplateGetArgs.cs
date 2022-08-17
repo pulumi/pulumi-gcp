@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class CryptoKeyVersionTemplateGetArgs : Pulumi.ResourceArgs
+    public sealed class CryptoKeyVersionTemplateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm to use when creating a version based on this template.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         public CryptoKeyVersionTemplateGetArgs()
         {
         }
+        public static new CryptoKeyVersionTemplateGetArgs Empty => new CryptoKeyVersionTemplateGetArgs();
     }
 }

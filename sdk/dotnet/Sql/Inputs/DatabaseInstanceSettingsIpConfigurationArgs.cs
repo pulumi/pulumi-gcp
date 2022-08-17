@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceSettingsIpConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceSettingsIpConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -53,5 +53,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceSettingsIpConfigurationArgs()
         {
         }
+        public static new DatabaseInstanceSettingsIpConfigurationArgs Empty => new DatabaseInstanceSettingsIpConfigurationArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The autoscaling policy config associated with the cluster.
@@ -133,5 +133,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigArgs()
         {
         }
+        public static new ClusterClusterConfigArgs Empty => new ClusterClusterConfigArgs();
     }
 }

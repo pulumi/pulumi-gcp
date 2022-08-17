@@ -21,7 +21,7 @@ type EnvironmentContainerImage struct {
 // EnvironmentContainerImageInput is an input type that accepts EnvironmentContainerImageArgs and EnvironmentContainerImageOutput values.
 // You can construct a concrete instance of `EnvironmentContainerImageInput` via:
 //
-//          EnvironmentContainerImageArgs{...}
+//	EnvironmentContainerImageArgs{...}
 type EnvironmentContainerImageInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i EnvironmentContainerImageArgs) ToEnvironmentContainerImagePtrOutputWithC
 // EnvironmentContainerImagePtrInput is an input type that accepts EnvironmentContainerImageArgs, EnvironmentContainerImagePtr and EnvironmentContainerImagePtrOutput values.
 // You can construct a concrete instance of `EnvironmentContainerImagePtrInput` via:
 //
-//          EnvironmentContainerImageArgs{...}
+//	        EnvironmentContainerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnvironmentContainerImagePtrInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type EnvironmentVmImage struct {
 // EnvironmentVmImageInput is an input type that accepts EnvironmentVmImageArgs and EnvironmentVmImageOutput values.
 // You can construct a concrete instance of `EnvironmentVmImageInput` via:
 //
-//          EnvironmentVmImageArgs{...}
+//	EnvironmentVmImageArgs{...}
 type EnvironmentVmImageInput interface {
 	pulumi.Input
 
@@ -224,11 +224,11 @@ func (i EnvironmentVmImageArgs) ToEnvironmentVmImagePtrOutputWithContext(ctx con
 // EnvironmentVmImagePtrInput is an input type that accepts EnvironmentVmImageArgs, EnvironmentVmImagePtr and EnvironmentVmImagePtrOutput values.
 // You can construct a concrete instance of `EnvironmentVmImagePtrInput` via:
 //
-//          EnvironmentVmImageArgs{...}
+//	        EnvironmentVmImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnvironmentVmImagePtrInput interface {
 	pulumi.Input
 
@@ -360,7 +360,7 @@ type InstanceAcceleratorConfig struct {
 // InstanceAcceleratorConfigInput is an input type that accepts InstanceAcceleratorConfigArgs and InstanceAcceleratorConfigOutput values.
 // You can construct a concrete instance of `InstanceAcceleratorConfigInput` via:
 //
-//          InstanceAcceleratorConfigArgs{...}
+//	InstanceAcceleratorConfigArgs{...}
 type InstanceAcceleratorConfigInput interface {
 	pulumi.Input
 
@@ -399,11 +399,11 @@ func (i InstanceAcceleratorConfigArgs) ToInstanceAcceleratorConfigPtrOutputWithC
 // InstanceAcceleratorConfigPtrInput is an input type that accepts InstanceAcceleratorConfigArgs, InstanceAcceleratorConfigPtr and InstanceAcceleratorConfigPtrOutput values.
 // You can construct a concrete instance of `InstanceAcceleratorConfigPtrInput` via:
 //
-//          InstanceAcceleratorConfigArgs{...}
+//	        InstanceAcceleratorConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceAcceleratorConfigPtrInput interface {
 	pulumi.Input
 
@@ -520,7 +520,7 @@ type InstanceContainerImage struct {
 // InstanceContainerImageInput is an input type that accepts InstanceContainerImageArgs and InstanceContainerImageOutput values.
 // You can construct a concrete instance of `InstanceContainerImageInput` via:
 //
-//          InstanceContainerImageArgs{...}
+//	InstanceContainerImageArgs{...}
 type InstanceContainerImageInput interface {
 	pulumi.Input
 
@@ -559,11 +559,11 @@ func (i InstanceContainerImageArgs) ToInstanceContainerImagePtrOutputWithContext
 // InstanceContainerImagePtrInput is an input type that accepts InstanceContainerImageArgs, InstanceContainerImagePtr and InstanceContainerImagePtrOutput values.
 // You can construct a concrete instance of `InstanceContainerImagePtrInput` via:
 //
-//          InstanceContainerImageArgs{...}
+//	        InstanceContainerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceContainerImagePtrInput interface {
 	pulumi.Input
 
@@ -678,7 +678,7 @@ type InstanceIamBindingCondition struct {
 // InstanceIamBindingConditionInput is an input type that accepts InstanceIamBindingConditionArgs and InstanceIamBindingConditionOutput values.
 // You can construct a concrete instance of `InstanceIamBindingConditionInput` via:
 //
-//          InstanceIamBindingConditionArgs{...}
+//	InstanceIamBindingConditionArgs{...}
 type InstanceIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -715,11 +715,11 @@ func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutputW
 // InstanceIamBindingConditionPtrInput is an input type that accepts InstanceIamBindingConditionArgs, InstanceIamBindingConditionPtr and InstanceIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `InstanceIamBindingConditionPtrInput` via:
 //
-//          InstanceIamBindingConditionArgs{...}
+//	        InstanceIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -841,7 +841,7 @@ type InstanceIamMemberCondition struct {
 // InstanceIamMemberConditionInput is an input type that accepts InstanceIamMemberConditionArgs and InstanceIamMemberConditionOutput values.
 // You can construct a concrete instance of `InstanceIamMemberConditionInput` via:
 //
-//          InstanceIamMemberConditionArgs{...}
+//	InstanceIamMemberConditionArgs{...}
 type InstanceIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -878,11 +878,11 @@ func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutputWit
 // InstanceIamMemberConditionPtrInput is an input type that accepts InstanceIamMemberConditionArgs, InstanceIamMemberConditionPtr and InstanceIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `InstanceIamMemberConditionPtrInput` via:
 //
-//          InstanceIamMemberConditionArgs{...}
+//	        InstanceIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1008,7 +1008,7 @@ type InstanceReservationAffinity struct {
 // InstanceReservationAffinityInput is an input type that accepts InstanceReservationAffinityArgs and InstanceReservationAffinityOutput values.
 // You can construct a concrete instance of `InstanceReservationAffinityInput` via:
 //
-//          InstanceReservationAffinityArgs{...}
+//	InstanceReservationAffinityArgs{...}
 type InstanceReservationAffinityInput interface {
 	pulumi.Input
 
@@ -1049,11 +1049,11 @@ func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityPtrOutputW
 // InstanceReservationAffinityPtrInput is an input type that accepts InstanceReservationAffinityArgs, InstanceReservationAffinityPtr and InstanceReservationAffinityPtrOutput values.
 // You can construct a concrete instance of `InstanceReservationAffinityPtrInput` via:
 //
-//          InstanceReservationAffinityArgs{...}
+//	        InstanceReservationAffinityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceReservationAffinityPtrInput interface {
 	pulumi.Input
 
@@ -1193,7 +1193,7 @@ type InstanceShieldedInstanceConfig struct {
 // InstanceShieldedInstanceConfigInput is an input type that accepts InstanceShieldedInstanceConfigArgs and InstanceShieldedInstanceConfigOutput values.
 // You can construct a concrete instance of `InstanceShieldedInstanceConfigInput` via:
 //
-//          InstanceShieldedInstanceConfigArgs{...}
+//	InstanceShieldedInstanceConfigArgs{...}
 type InstanceShieldedInstanceConfigInput interface {
 	pulumi.Input
 
@@ -1240,11 +1240,11 @@ func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigPtrO
 // InstanceShieldedInstanceConfigPtrInput is an input type that accepts InstanceShieldedInstanceConfigArgs, InstanceShieldedInstanceConfigPtr and InstanceShieldedInstanceConfigPtrOutput values.
 // You can construct a concrete instance of `InstanceShieldedInstanceConfigPtrInput` via:
 //
-//          InstanceShieldedInstanceConfigArgs{...}
+//	        InstanceShieldedInstanceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceShieldedInstanceConfigPtrInput interface {
 	pulumi.Input
 
@@ -1390,7 +1390,7 @@ type InstanceVmImage struct {
 // InstanceVmImageInput is an input type that accepts InstanceVmImageArgs and InstanceVmImageOutput values.
 // You can construct a concrete instance of `InstanceVmImageInput` via:
 //
-//          InstanceVmImageArgs{...}
+//	InstanceVmImageArgs{...}
 type InstanceVmImageInput interface {
 	pulumi.Input
 
@@ -1431,11 +1431,11 @@ func (i InstanceVmImageArgs) ToInstanceVmImagePtrOutputWithContext(ctx context.C
 // InstanceVmImagePtrInput is an input type that accepts InstanceVmImageArgs, InstanceVmImagePtr and InstanceVmImagePtrOutput values.
 // You can construct a concrete instance of `InstanceVmImagePtrInput` via:
 //
-//          InstanceVmImageArgs{...}
+//	        InstanceVmImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceVmImagePtrInput interface {
 	pulumi.Input
 
@@ -1572,7 +1572,7 @@ type RuntimeAccessConfig struct {
 // RuntimeAccessConfigInput is an input type that accepts RuntimeAccessConfigArgs and RuntimeAccessConfigOutput values.
 // You can construct a concrete instance of `RuntimeAccessConfigInput` via:
 //
-//          RuntimeAccessConfigArgs{...}
+//	RuntimeAccessConfigArgs{...}
 type RuntimeAccessConfigInput interface {
 	pulumi.Input
 
@@ -1616,11 +1616,11 @@ func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigPtrOutputWithContext(ctx c
 // RuntimeAccessConfigPtrInput is an input type that accepts RuntimeAccessConfigArgs, RuntimeAccessConfigPtr and RuntimeAccessConfigPtrOutput values.
 // You can construct a concrete instance of `RuntimeAccessConfigPtrInput` via:
 //
-//          RuntimeAccessConfigArgs{...}
+//	        RuntimeAccessConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeAccessConfigPtrInput interface {
 	pulumi.Input
 
@@ -1756,7 +1756,7 @@ type RuntimeIamBindingCondition struct {
 // RuntimeIamBindingConditionInput is an input type that accepts RuntimeIamBindingConditionArgs and RuntimeIamBindingConditionOutput values.
 // You can construct a concrete instance of `RuntimeIamBindingConditionInput` via:
 //
-//          RuntimeIamBindingConditionArgs{...}
+//	RuntimeIamBindingConditionArgs{...}
 type RuntimeIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1793,11 +1793,11 @@ func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionPtrOutputWit
 // RuntimeIamBindingConditionPtrInput is an input type that accepts RuntimeIamBindingConditionArgs, RuntimeIamBindingConditionPtr and RuntimeIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `RuntimeIamBindingConditionPtrInput` via:
 //
-//          RuntimeIamBindingConditionArgs{...}
+//	        RuntimeIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1919,7 +1919,7 @@ type RuntimeIamMemberCondition struct {
 // RuntimeIamMemberConditionInput is an input type that accepts RuntimeIamMemberConditionArgs and RuntimeIamMemberConditionOutput values.
 // You can construct a concrete instance of `RuntimeIamMemberConditionInput` via:
 //
-//          RuntimeIamMemberConditionArgs{...}
+//	RuntimeIamMemberConditionArgs{...}
 type RuntimeIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1956,11 +1956,11 @@ func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionPtrOutputWithC
 // RuntimeIamMemberConditionPtrInput is an input type that accepts RuntimeIamMemberConditionArgs, RuntimeIamMemberConditionPtr and RuntimeIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `RuntimeIamMemberConditionPtrInput` via:
 //
-//          RuntimeIamMemberConditionArgs{...}
+//	        RuntimeIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -2080,7 +2080,7 @@ type RuntimeMetric struct {
 // RuntimeMetricInput is an input type that accepts RuntimeMetricArgs and RuntimeMetricOutput values.
 // You can construct a concrete instance of `RuntimeMetricInput` via:
 //
-//          RuntimeMetricArgs{...}
+//	RuntimeMetricArgs{...}
 type RuntimeMetricInput interface {
 	pulumi.Input
 
@@ -2107,7 +2107,7 @@ func (i RuntimeMetricArgs) ToRuntimeMetricOutputWithContext(ctx context.Context)
 // RuntimeMetricArrayInput is an input type that accepts RuntimeMetricArray and RuntimeMetricArrayOutput values.
 // You can construct a concrete instance of `RuntimeMetricArrayInput` via:
 //
-//          RuntimeMetricArray{ RuntimeMetricArgs{...} }
+//	RuntimeMetricArray{ RuntimeMetricArgs{...} }
 type RuntimeMetricArrayInput interface {
 	pulumi.Input
 
@@ -2181,6 +2181,9 @@ type RuntimeSoftwareConfig struct {
 	IdleShutdownTimeout *int `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	// Use a list of container images to use as Kernels in the notebook instance.
+	// Structure is documented below.
+	Kernels []RuntimeSoftwareConfigKernel `pulumi:"kernels"`
 	// Cron expression in UTC timezone for schedule instance auto upgrade.
 	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule *string `pulumi:"notebookUpgradeSchedule"`
@@ -2188,12 +2191,18 @@ type RuntimeSoftwareConfig struct {
 	// fully boots up. The path must be a URL or
 	// Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
+	// -
+	// Bool indicating whether an newer image is available in an image family.
+	Upgradeable *bool `pulumi:"upgradeable"`
 }
 
 // RuntimeSoftwareConfigInput is an input type that accepts RuntimeSoftwareConfigArgs and RuntimeSoftwareConfigOutput values.
 // You can construct a concrete instance of `RuntimeSoftwareConfigInput` via:
 //
-//          RuntimeSoftwareConfigArgs{...}
+//	RuntimeSoftwareConfigArgs{...}
 type RuntimeSoftwareConfigInput interface {
 	pulumi.Input
 
@@ -2215,6 +2224,9 @@ type RuntimeSoftwareConfigArgs struct {
 	IdleShutdownTimeout pulumi.IntPtrInput `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
+	// Use a list of container images to use as Kernels in the notebook instance.
+	// Structure is documented below.
+	Kernels RuntimeSoftwareConfigKernelArrayInput `pulumi:"kernels"`
 	// Cron expression in UTC timezone for schedule instance auto upgrade.
 	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule pulumi.StringPtrInput `pulumi:"notebookUpgradeSchedule"`
@@ -2222,6 +2234,12 @@ type RuntimeSoftwareConfigArgs struct {
 	// fully boots up. The path must be a URL or
 	// Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
+	// -
+	// Bool indicating whether an newer image is available in an image family.
+	Upgradeable pulumi.BoolPtrInput `pulumi:"upgradeable"`
 }
 
 func (RuntimeSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2247,11 +2265,11 @@ func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigPtrOutputWithContext(c
 // RuntimeSoftwareConfigPtrInput is an input type that accepts RuntimeSoftwareConfigArgs, RuntimeSoftwareConfigPtr and RuntimeSoftwareConfigPtrOutput values.
 // You can construct a concrete instance of `RuntimeSoftwareConfigPtrInput` via:
 //
-//          RuntimeSoftwareConfigArgs{...}
+//	        RuntimeSoftwareConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeSoftwareConfigPtrInput interface {
 	pulumi.Input
 
@@ -2329,6 +2347,12 @@ func (o RuntimeSoftwareConfigOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.InstallGpuDriver }).(pulumi.BoolPtrOutput)
 }
 
+// Use a list of container images to use as Kernels in the notebook instance.
+// Structure is documented below.
+func (o RuntimeSoftwareConfigOutput) Kernels() RuntimeSoftwareConfigKernelArrayOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) []RuntimeSoftwareConfigKernel { return v.Kernels }).(RuntimeSoftwareConfigKernelArrayOutput)
+}
+
 // Cron expression in UTC timezone for schedule instance auto upgrade.
 // Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
@@ -2340,6 +2364,18 @@ func (o RuntimeSoftwareConfigOutput) NotebookUpgradeSchedule() pulumi.StringPtrO
 // Cloud Storage path (gs://path-to-file/file-name).
 func (o RuntimeSoftwareConfigOutput) PostStartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
+}
+
+// Behavior for the post startup script.
+// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeSoftwareConfigOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScriptBehavior }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Bool indicating whether an newer image is available in an image family.
+func (o RuntimeSoftwareConfigOutput) Upgradeable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.Upgradeable }).(pulumi.BoolPtrOutput)
 }
 
 type RuntimeSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2419,6 +2455,17 @@ func (o RuntimeSoftwareConfigPtrOutput) InstallGpuDriver() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Use a list of container images to use as Kernels in the notebook instance.
+// Structure is documented below.
+func (o RuntimeSoftwareConfigPtrOutput) Kernels() RuntimeSoftwareConfigKernelArrayOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) []RuntimeSoftwareConfigKernel {
+		if v == nil {
+			return nil
+		}
+		return v.Kernels
+	}).(RuntimeSoftwareConfigKernelArrayOutput)
+}
+
 // Cron expression in UTC timezone for schedule instance auto upgrade.
 // Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigPtrOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
@@ -2442,6 +2489,137 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Behavior for the post startup script.
+// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeSoftwareConfigPtrOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Bool indicating whether an newer image is available in an image family.
+func (o RuntimeSoftwareConfigPtrOutput) Upgradeable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Upgradeable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RuntimeSoftwareConfigKernel struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository string `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// RuntimeSoftwareConfigKernelInput is an input type that accepts RuntimeSoftwareConfigKernelArgs and RuntimeSoftwareConfigKernelOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigKernelInput` via:
+//
+//	RuntimeSoftwareConfigKernelArgs{...}
+type RuntimeSoftwareConfigKernelInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigKernelOutput() RuntimeSoftwareConfigKernelOutput
+	ToRuntimeSoftwareConfigKernelOutputWithContext(context.Context) RuntimeSoftwareConfigKernelOutput
+}
+
+type RuntimeSoftwareConfigKernelArgs struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (RuntimeSoftwareConfigKernelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (i RuntimeSoftwareConfigKernelArgs) ToRuntimeSoftwareConfigKernelOutput() RuntimeSoftwareConfigKernelOutput {
+	return i.ToRuntimeSoftwareConfigKernelOutputWithContext(context.Background())
+}
+
+func (i RuntimeSoftwareConfigKernelArgs) ToRuntimeSoftwareConfigKernelOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigKernelOutput)
+}
+
+// RuntimeSoftwareConfigKernelArrayInput is an input type that accepts RuntimeSoftwareConfigKernelArray and RuntimeSoftwareConfigKernelArrayOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigKernelArrayInput` via:
+//
+//	RuntimeSoftwareConfigKernelArray{ RuntimeSoftwareConfigKernelArgs{...} }
+type RuntimeSoftwareConfigKernelArrayInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigKernelArrayOutput() RuntimeSoftwareConfigKernelArrayOutput
+	ToRuntimeSoftwareConfigKernelArrayOutputWithContext(context.Context) RuntimeSoftwareConfigKernelArrayOutput
+}
+
+type RuntimeSoftwareConfigKernelArray []RuntimeSoftwareConfigKernelInput
+
+func (RuntimeSoftwareConfigKernelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (i RuntimeSoftwareConfigKernelArray) ToRuntimeSoftwareConfigKernelArrayOutput() RuntimeSoftwareConfigKernelArrayOutput {
+	return i.ToRuntimeSoftwareConfigKernelArrayOutputWithContext(context.Background())
+}
+
+func (i RuntimeSoftwareConfigKernelArray) ToRuntimeSoftwareConfigKernelArrayOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigKernelArrayOutput)
+}
+
+type RuntimeSoftwareConfigKernelOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigKernelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigKernelOutput) ToRuntimeSoftwareConfigKernelOutput() RuntimeSoftwareConfigKernelOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigKernelOutput) ToRuntimeSoftwareConfigKernelOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelOutput {
+	return o
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o RuntimeSoftwareConfigKernelOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigKernel) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o RuntimeSoftwareConfigKernelOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigKernel) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeSoftwareConfigKernelArrayOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigKernelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) ToRuntimeSoftwareConfigKernelArrayOutput() RuntimeSoftwareConfigKernelArrayOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) ToRuntimeSoftwareConfigKernelArrayOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelArrayOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) Index(i pulumi.IntInput) RuntimeSoftwareConfigKernelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeSoftwareConfigKernel {
+		return vs[0].([]RuntimeSoftwareConfigKernel)[vs[1].(int)]
+	}).(RuntimeSoftwareConfigKernelOutput)
+}
+
 type RuntimeVirtualMachine struct {
 	// -
 	// The unique identifier of the Managed Compute Engine instance.
@@ -2457,7 +2635,7 @@ type RuntimeVirtualMachine struct {
 // RuntimeVirtualMachineInput is an input type that accepts RuntimeVirtualMachineArgs and RuntimeVirtualMachineOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineInput` via:
 //
-//          RuntimeVirtualMachineArgs{...}
+//	RuntimeVirtualMachineArgs{...}
 type RuntimeVirtualMachineInput interface {
 	pulumi.Input
 
@@ -2500,11 +2678,11 @@ func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachinePtrOutputWithContext(c
 // RuntimeVirtualMachinePtrInput is an input type that accepts RuntimeVirtualMachineArgs, RuntimeVirtualMachinePtr and RuntimeVirtualMachinePtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachinePtrInput` via:
 //
-//          RuntimeVirtualMachineArgs{...}
+//	        RuntimeVirtualMachineArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachinePtrInput interface {
 	pulumi.Input
 
@@ -2711,7 +2889,7 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 // RuntimeVirtualMachineVirtualMachineConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigArgs and RuntimeVirtualMachineVirtualMachineConfigOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigInput interface {
 	pulumi.Input
 
@@ -2819,11 +2997,11 @@ func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVi
 // RuntimeVirtualMachineVirtualMachineConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigArgs, RuntimeVirtualMachineVirtualMachineConfigPtr and RuntimeVirtualMachineVirtualMachineConfigPtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigPtrInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigArgs{...}
+//	        RuntimeVirtualMachineVirtualMachineConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachineVirtualMachineConfigPtrInput interface {
 	pulumi.Input
 
@@ -2947,16 +3125,16 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Metadata() pulumi.Strin
 // Cannot be specified with subnetwork. If neither `network` nor
 // `subnet` is specified, the "default" network of the project is
 // used, if it exists. A full URL or partial URI. Examples:
-// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//   regions/global/default`
-// * `projects/[projectId]/regions/global/default`
-//   Runtimes are managed resources inside Google Infrastructure.
-//   Runtimes support the following network configurations:
-// * Google Managed Network (Network & subnet are empty)
-// * Consumer Project VPC (network & subnet are required). Requires
-//   configuring Private Service Access.
-// * Shared VPC (network & subnet are required). Requires
-//   configuring Private Service Access.
+//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//     regions/global/default`
+//   - `projects/[projectId]/regions/global/default`
+//     Runtimes are managed resources inside Google Infrastructure.
+//     Runtimes support the following network configurations:
+//   - Google Managed Network (Network & subnet are empty)
+//   - Consumer Project VPC (network & subnet are required). Requires
+//     configuring Private Service Access.
+//   - Shared VPC (network & subnet are required). Requires
+//     configuring Private Service Access.
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -2985,9 +3163,9 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ShieldedInstanceConfig(
 // The Compute Engine subnetwork to be used for machine
 // communications. Cannot be specified with network. A full URL or
 // partial URI are valid. Examples:
-// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//   regions/us-east1/subnetworks/sub0`
-// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//     regions/us-east1/subnetworks/sub0`
+//   - `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Subnet }).(pulumi.StringPtrOutput)
 }
@@ -3140,16 +3318,16 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Metadata() pulumi.St
 // Cannot be specified with subnetwork. If neither `network` nor
 // `subnet` is specified, the "default" network of the project is
 // used, if it exists. A full URL or partial URI. Examples:
-// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//   regions/global/default`
-// * `projects/[projectId]/regions/global/default`
-//   Runtimes are managed resources inside Google Infrastructure.
-//   Runtimes support the following network configurations:
-// * Google Managed Network (Network & subnet are empty)
-// * Consumer Project VPC (network & subnet are required). Requires
-//   configuring Private Service Access.
-// * Shared VPC (network & subnet are required). Requires
-//   configuring Private Service Access.
+//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//     regions/global/default`
+//   - `projects/[projectId]/regions/global/default`
+//     Runtimes are managed resources inside Google Infrastructure.
+//     Runtimes support the following network configurations:
+//   - Google Managed Network (Network & subnet are empty)
+//   - Consumer Project VPC (network & subnet are required). Requires
+//     configuring Private Service Access.
+//   - Shared VPC (network & subnet are required). Requires
+//     configuring Private Service Access.
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
 		if v == nil {
@@ -3196,9 +3374,9 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ShieldedInstanceConf
 // The Compute Engine subnetwork to be used for machine
 // communications. Cannot be specified with network. A full URL or
 // partial URI are valid. Examples:
-// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//   regions/us-east1/subnetworks/sub0`
-// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
+//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
+//     regions/us-east1/subnetworks/sub0`
+//   - `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
 		if v == nil {
@@ -3243,7 +3421,7 @@ type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig struct {
 // RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs and RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigInput interface {
 	pulumi.Input
 
@@ -3283,11 +3461,11 @@ func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntim
 // RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs, RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtr and RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{...}
+//	        RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrInput interface {
 	pulumi.Input
 
@@ -3406,7 +3584,7 @@ type RuntimeVirtualMachineVirtualMachineConfigContainerImage struct {
 // RuntimeVirtualMachineVirtualMachineConfigContainerImageInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs and RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigContainerImageInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigContainerImageInput interface {
 	pulumi.Input
 
@@ -3437,7 +3615,7 @@ func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs) ToRuntimeVi
 // RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigContainerImageArray and RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigContainerImageArray{ RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{...} }
+//	RuntimeVirtualMachineVirtualMachineConfigContainerImageArray{ RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs{...} }
 type RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput interface {
 	pulumi.Input
 
@@ -3576,7 +3754,7 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDisk struct {
 // RuntimeVirtualMachineVirtualMachineConfigDataDiskInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs and RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskInput interface {
 	pulumi.Input
 
@@ -3676,11 +3854,11 @@ func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualM
 // RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs, RuntimeVirtualMachineVirtualMachineConfigDataDiskPtr and RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{...}
+//	        RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrInput interface {
 	pulumi.Input
 
@@ -3765,7 +3943,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) DeviceName() pu
 // system. Applicable only for bootable images. To see a list of
 // available features, read `https://cloud.google.com/compute/docs/
 // images/create-delete-deprecate-private-images#guest-os-features`
-// options. ``
+// options. “
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) GuestOsFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string { return v.GuestOsFeatures }).(pulumi.StringArrayOutput)
 }
@@ -3908,7 +4086,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) DeviceName()
 // system. Applicable only for bootable images. To see a list of
 // available features, read `https://cloud.google.com/compute/docs/
 // images/create-delete-deprecate-private-images#guest-os-features`
-// options. ``
+// options. “
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) GuestOsFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string {
 		if v == nil {
@@ -4047,7 +4225,7 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams struct {
 // RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs and RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsInput interface {
 	pulumi.Input
 
@@ -4102,11 +4280,11 @@ func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) T
 // RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs, RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtr and RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{...}
+//	        RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrInput interface {
 	pulumi.Input
 
@@ -4293,7 +4471,7 @@ type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig struct {
 // RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs and RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigInput interface {
 	pulumi.Input
 
@@ -4333,11 +4511,11 @@ func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntime
 // RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs, RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtr and RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{...}
+//	        RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -4456,7 +4634,7 @@ type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig struct {
 // RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs and RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{...}
+//	RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{...}
 type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigInput interface {
 	pulumi.Input
 
@@ -4506,11 +4684,11 @@ func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToR
 // RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs, RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtr and RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput` via:
 //
-//          RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{...}
+//	        RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput interface {
 	pulumi.Input
 
@@ -4682,6 +4860,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricArrayInput)(nil)).Elem(), RuntimeMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigPtrInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigKernelInput)(nil)).Elem(), RuntimeSoftwareConfigKernelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigKernelArrayInput)(nil)).Elem(), RuntimeSoftwareConfigKernelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineInput)(nil)).Elem(), RuntimeVirtualMachineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachinePtrInput)(nil)).Elem(), RuntimeVirtualMachineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigArgs{})
@@ -4726,6 +4906,8 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeMetricArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigKernelOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigKernelArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeVirtualMachineOutput{})
 	pulumi.RegisterOutputType(RuntimeVirtualMachinePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigOutput{})

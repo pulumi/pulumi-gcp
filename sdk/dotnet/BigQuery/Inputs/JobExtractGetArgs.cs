@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobExtractGetArgs : Pulumi.ResourceArgs
+    public sealed class JobExtractGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
@@ -75,5 +75,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobExtractGetArgs()
         {
         }
+        public static new JobExtractGetArgs Empty => new JobExtractGetArgs();
     }
 }

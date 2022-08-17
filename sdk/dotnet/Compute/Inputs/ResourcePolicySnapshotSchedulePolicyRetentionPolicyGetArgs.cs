@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum age of the snapshot that is allowed to be kept.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs Empty => new ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs();
     }
 }

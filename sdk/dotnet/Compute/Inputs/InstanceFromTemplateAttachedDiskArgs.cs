@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateAttachedDiskArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateAttachedDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateAttachedDiskArgs()
         {
         }
+        public static new InstanceFromTemplateAttachedDiskArgs Empty => new InstanceFromTemplateAttachedDiskArgs();
     }
 }

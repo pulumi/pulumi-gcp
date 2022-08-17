@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CaPoolIssuancePolicyAllowedKeyTypeRsaArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolIssuancePolicyAllowedKeyTypeRsaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CaPoolIssuancePolicyAllowedKeyTypeRsaArgs()
         {
         }
+        public static new CaPoolIssuancePolicyAllowedKeyTypeRsaArgs Empty => new CaPoolIssuancePolicyAllowedKeyTypeRsaArgs();
     }
 }

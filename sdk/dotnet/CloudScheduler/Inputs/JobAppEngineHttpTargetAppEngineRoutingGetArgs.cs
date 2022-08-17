@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudScheduler.Inputs
 {
 
-    public sealed class JobAppEngineHttpTargetAppEngineRoutingGetArgs : Pulumi.ResourceArgs
+    public sealed class JobAppEngineHttpTargetAppEngineRoutingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App instance.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         public JobAppEngineHttpTargetAppEngineRoutingGetArgs()
         {
         }
+        public static new JobAppEngineHttpTargetAppEngineRoutingGetArgs Empty => new JobAppEngineHttpTargetAppEngineRoutingGetArgs();
     }
 }

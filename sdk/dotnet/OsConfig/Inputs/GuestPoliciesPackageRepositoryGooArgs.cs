@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesPackageRepositoryGooArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesPackageRepositoryGooArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesPackageRepositoryGooArgs()
         {
         }
+        public static new GuestPoliciesPackageRepositoryGooArgs Empty => new GuestPoliciesPackageRepositoryGooArgs();
     }
 }

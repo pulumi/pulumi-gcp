@@ -23,20 +23,18 @@ namespace Pulumi.Gcp.Storage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_bucket = Gcp.Storage.GetBucket.Invoke(new()
         ///     {
-        ///         var my_bucket = Output.Create(Gcp.Storage.GetBucket.InvokeAsync(new Gcp.Storage.GetBucketArgs
-        ///         {
-        ///             Name = "my-bucket",
-        ///         }));
-        ///     }
+        ///         Name = "my-bucket",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -56,20 +54,18 @@ namespace Pulumi.Gcp.Storage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var my_bucket = Gcp.Storage.GetBucket.Invoke(new()
         ///     {
-        ///         var my_bucket = Output.Create(Gcp.Storage.GetBucket.InvokeAsync(new Gcp.Storage.GetBucketArgs
-        ///         {
-        ///             Name = "my-bucket",
-        ///         }));
-        ///     }
+        ///         Name = "my-bucket",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,7 +75,7 @@ namespace Pulumi.Gcp.Storage
     }
 
 
-    public sealed class GetBucketArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -90,9 +86,10 @@ namespace Pulumi.Gcp.Storage
         public GetBucketArgs()
         {
         }
+        public static new GetBucketArgs Empty => new GetBucketArgs();
     }
 
-    public sealed class GetBucketInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -103,6 +100,7 @@ namespace Pulumi.Gcp.Storage
         public GetBucketInvokeArgs()
         {
         }
+        public static new GetBucketInvokeArgs Empty => new GetBucketInvokeArgs();
     }
 
 

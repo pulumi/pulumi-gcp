@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class TopicMessageStoragePolicyArgs : Pulumi.ResourceArgs
+    public sealed class TopicMessageStoragePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedPersistenceRegions", required: true)]
         private InputList<string>? _allowedPersistenceRegions;
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public TopicMessageStoragePolicyArgs()
         {
         }
+        public static new TopicMessageStoragePolicyArgs Empty => new TopicMessageStoragePolicyArgs();
     }
 }

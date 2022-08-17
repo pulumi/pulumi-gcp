@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterReleaseChannelArgs : Pulumi.ResourceArgs
+    public sealed class ClusterReleaseChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The selected release channel.
@@ -26,5 +26,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterReleaseChannelArgs()
         {
         }
+        public static new ClusterReleaseChannelArgs Empty => new ClusterReleaseChannelArgs();
     }
 }

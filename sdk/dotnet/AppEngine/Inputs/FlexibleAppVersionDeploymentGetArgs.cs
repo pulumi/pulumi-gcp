@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionDeploymentGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionDeploymentGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
@@ -50,5 +50,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionDeploymentGetArgs()
         {
         }
+        public static new FlexibleAppVersionDeploymentGetArgs Empty => new FlexibleAppVersionDeploymentGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplateParameterValidationValuesGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateParameterValidationValuesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("values", required: true)]
         private InputList<string>? _values;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplateParameterValidationValuesGetArgs()
         {
         }
+        public static new WorkflowTemplateParameterValidationValuesGetArgs Empty => new WorkflowTemplateParameterValidationValuesGetArgs();
     }
 }

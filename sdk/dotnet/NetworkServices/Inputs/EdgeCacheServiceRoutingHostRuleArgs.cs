@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingHostRuleArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingHostRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -49,5 +49,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingHostRuleArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingHostRuleArgs Empty => new EdgeCacheServiceRoutingHostRuleArgs();
     }
 }

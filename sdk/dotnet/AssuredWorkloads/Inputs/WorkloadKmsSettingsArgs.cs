@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AssuredWorkloads.Inputs
 {
 
-    public sealed class WorkloadKmsSettingsArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadKmsSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.AssuredWorkloads.Inputs
         public WorkloadKmsSettingsArgs()
         {
         }
+        public static new WorkloadKmsSettingsArgs Empty => new WorkloadKmsSettingsArgs();
     }
 }

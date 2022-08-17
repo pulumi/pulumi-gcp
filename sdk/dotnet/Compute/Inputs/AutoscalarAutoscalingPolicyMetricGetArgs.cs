@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class AutoscalarAutoscalingPolicyMetricGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalarAutoscalingPolicyMetricGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A filter string to be used as the filter string for
@@ -88,5 +88,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public AutoscalarAutoscalingPolicyMetricGetArgs()
         {
         }
+        public static new AutoscalarAutoscalingPolicyMetricGetArgs Empty => new AutoscalarAutoscalingPolicyMetricGetArgs();
     }
 }

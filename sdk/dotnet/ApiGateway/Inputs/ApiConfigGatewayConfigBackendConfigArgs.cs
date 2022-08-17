@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway.Inputs
 {
 
-    public sealed class ApiConfigGatewayConfigBackendConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigGatewayConfigBackendConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
         public ApiConfigGatewayConfigBackendConfigArgs()
         {
         }
+        public static new ApiConfigGatewayConfigBackendConfigArgs Empty => new ApiConfigGatewayConfigBackendConfigArgs();
     }
 }

@@ -21,20 +21,18 @@ namespace Pulumi.Gcp.GameServices
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qa = Gcp.GameServices.GetGameServerDeploymentRollout.Invoke(new()
         ///     {
-        ///         var qa = Output.Create(Gcp.GameServices.GetGameServerDeploymentRollout.InvokeAsync(new Gcp.GameServices.GetGameServerDeploymentRolloutArgs
-        ///         {
-        ///             DeploymentId = "tf-test-deployment-s8sn12jt2c",
-        ///         }));
-        ///     }
+        ///         DeploymentId = "tf-test-deployment-s8sn12jt2c",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +50,18 @@ namespace Pulumi.Gcp.GameServices
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qa = Gcp.GameServices.GetGameServerDeploymentRollout.Invoke(new()
         ///     {
-        ///         var qa = Output.Create(Gcp.GameServices.GetGameServerDeploymentRollout.InvokeAsync(new Gcp.GameServices.GetGameServerDeploymentRolloutArgs
-        ///         {
-        ///             DeploymentId = "tf-test-deployment-s8sn12jt2c",
-        ///         }));
-        ///     }
+        ///         DeploymentId = "tf-test-deployment-s8sn12jt2c",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +71,7 @@ namespace Pulumi.Gcp.GameServices
     }
 
 
-    public sealed class GetGameServerDeploymentRolloutArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerDeploymentRolloutArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
@@ -86,9 +82,10 @@ namespace Pulumi.Gcp.GameServices
         public GetGameServerDeploymentRolloutArgs()
         {
         }
+        public static new GetGameServerDeploymentRolloutArgs Empty => new GetGameServerDeploymentRolloutArgs();
     }
 
-    public sealed class GetGameServerDeploymentRolloutInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerDeploymentRolloutInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The deployment to get the rollout state from. Only 1 rollout must be associated with each deployment.
@@ -99,6 +96,7 @@ namespace Pulumi.Gcp.GameServices
         public GetGameServerDeploymentRolloutInvokeArgs()
         {
         }
+        public static new GetGameServerDeploymentRolloutInvokeArgs Empty => new GetGameServerDeploymentRolloutInvokeArgs();
     }
 
 

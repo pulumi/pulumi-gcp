@@ -22,54 +22,55 @@ namespace Pulumi.Gcp.Apigee
     /// ### Apigee Environment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(Gcp.Organizations.GetClientConfig.InvokeAsync());
-    ///         var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = apigeeNetwork.Id,
-    ///         });
-    ///         var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = apigeeNetwork.Id,
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 apigeeRange.Name,
-    ///             },
-    ///         });
-    ///         var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new Gcp.Apigee.OrganizationArgs
-    ///         {
-    ///             AnalyticsRegion = "us-central1",
-    ///             ProjectId = current.Apply(current =&gt; current.Project),
-    ///             AuthorizedNetwork = apigeeNetwork.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 apigeeVpcConnection,
-    ///             },
-    ///         });
-    ///         var env = new Gcp.Apigee.Environment("env", new Gcp.Apigee.EnvironmentArgs
-    ///         {
-    ///             Description = "Apigee Environment",
-    ///             DisplayName = "environment-1",
-    ///             OrgId = apigeeOrg.Id,
-    ///         });
-    ///     }
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
     /// 
-    /// }
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeVpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var env = new Gcp.Apigee.Environment("env", new()
+    ///     {
+    ///         Description = "Apigee Environment",
+    ///         DisplayName = "environment-1",
+    ///         OrgId = apigeeOrg.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -85,7 +86,7 @@ namespace Pulumi.Gcp.Apigee
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigee/environment:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating
@@ -177,7 +178,7 @@ namespace Pulumi.Gcp.Apigee
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating
@@ -228,9 +229,10 @@ namespace Pulumi.Gcp.Apigee
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 
-    public sealed class EnvironmentState : Pulumi.ResourceArgs
+    public sealed class EnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating
@@ -281,5 +283,6 @@ namespace Pulumi.Gcp.Apigee
         public EnvironmentState()
         {
         }
+        public static new EnvironmentState Empty => new EnvironmentState();
     }
 }

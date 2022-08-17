@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The queryParameterMatch matches if the value of the parameter exactly matches
@@ -47,5 +47,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchGetArgs()
         {
         }
+        public static new URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchGetArgs Empty => new URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchGetArgs();
     }
 }

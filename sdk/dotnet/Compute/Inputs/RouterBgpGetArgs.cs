@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RouterBgpGetArgs : Pulumi.ResourceArgs
+    public sealed class RouterBgpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
@@ -76,5 +76,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RouterBgpGetArgs()
         {
         }
+        public static new RouterBgpGetArgs Empty => new RouterBgpGetArgs();
     }
 }

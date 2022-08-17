@@ -254,7 +254,7 @@ class GetInstanceResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A set of key/value label pairs assigned to the instance.
+        A set of key/value label pairs assigned to the disk.
         """
         return pulumi.get(self, "labels")
 

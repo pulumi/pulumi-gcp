@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class UptimeCheckConfigContentMatcherJsonPathMatcherArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigContentMatcherJsonPathMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options to perform JSONPath content matching.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public UptimeCheckConfigContentMatcherJsonPathMatcherArgs()
         {
         }
+        public static new UptimeCheckConfigContentMatcherJsonPathMatcherArgs Empty => new UptimeCheckConfigContentMatcherJsonPathMatcherArgs();
     }
 }

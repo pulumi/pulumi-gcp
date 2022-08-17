@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A day of the week.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthGetArgs()
         {
         }
+        public static new PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthGetArgs Empty => new PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthGetArgs();
     }
 }

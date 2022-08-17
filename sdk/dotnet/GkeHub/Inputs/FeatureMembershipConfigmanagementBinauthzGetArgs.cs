@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub.Inputs
 {
 
-    public sealed class FeatureMembershipConfigmanagementBinauthzGetArgs : Pulumi.ResourceArgs
+    public sealed class FeatureMembershipConfigmanagementBinauthzGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public FeatureMembershipConfigmanagementBinauthzGetArgs()
         {
         }
+        public static new FeatureMembershipConfigmanagementBinauthzGetArgs Empty => new FeatureMembershipConfigmanagementBinauthzGetArgs();
     }
 }

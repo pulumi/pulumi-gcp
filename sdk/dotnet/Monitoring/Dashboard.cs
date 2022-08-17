@@ -22,16 +22,15 @@ namespace Pulumi.Gcp.Monitoring
     /// ### Monitoring Dashboard Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dashboard = new Gcp.Monitoring.Dashboard("dashboard", new()
     ///     {
-    ///         var dashboard = new Gcp.Monitoring.Dashboard("dashboard", new Gcp.Monitoring.DashboardArgs
-    ///         {
-    ///             DashboardJson = @"{
+    ///         DashboardJson = @"{
     ///   ""displayName"": ""Demo Dashboard"",
     ///   ""gridLayout"": {
     ///     ""widgets"": [
@@ -44,24 +43,22 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// 
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Monitoring Dashboard GridLayout
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dashboard = new Gcp.Monitoring.Dashboard("dashboard", new()
     ///     {
-    ///         var dashboard = new Gcp.Monitoring.Dashboard("dashboard", new Gcp.Monitoring.DashboardArgs
-    ///         {
-    ///             DashboardJson = @"{
+    ///         DashboardJson = @"{
     ///   ""displayName"": ""Grid Layout Example"",
     ///   ""gridLayout"": {
     ///     ""columns"": ""2"",
@@ -122,10 +119,9 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// 
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -141,7 +137,7 @@ namespace Pulumi.Gcp.Monitoring
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/dashboard:Dashboard")]
-    public partial class Dashboard : Pulumi.CustomResource
+    public partial class Dashboard : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
@@ -201,7 +197,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
-    public sealed class DashboardArgs : Pulumi.ResourceArgs
+    public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
@@ -220,9 +216,10 @@ namespace Pulumi.Gcp.Monitoring
         public DashboardArgs()
         {
         }
+        public static new DashboardArgs Empty => new DashboardArgs();
     }
 
-    public sealed class DashboardState : Pulumi.ResourceArgs
+    public sealed class DashboardState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
@@ -241,5 +238,6 @@ namespace Pulumi.Gcp.Monitoring
         public DashboardState()
         {
         }
+        public static new DashboardState Empty => new DashboardState();
     }
 }

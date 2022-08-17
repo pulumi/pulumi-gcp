@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreServiceHiveMetastoreConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceHiveMetastoreConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("configOverrides")]
         private InputMap<string>? _configOverrides;
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreServiceHiveMetastoreConfigGetArgs()
         {
         }
+        public static new MetastoreServiceHiveMetastoreConfigGetArgs Empty => new MetastoreServiceHiveMetastoreConfigGetArgs();
     }
 }

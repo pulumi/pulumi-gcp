@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendServiceBackendGetArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceBackendGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the balancing mode for this backend.
@@ -129,5 +129,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendServiceBackendGetArgs()
         {
         }
+        public static new BackendServiceBackendGetArgs Empty => new BackendServiceBackendGetArgs();
     }
 }

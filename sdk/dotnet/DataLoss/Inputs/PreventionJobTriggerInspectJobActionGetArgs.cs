@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionJobTriggerInspectJobActionGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionJobTriggerInspectJobActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Schedule for triggered jobs
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionJobTriggerInspectJobActionGetArgs()
         {
         }
+        public static new PreventionJobTriggerInspectJobActionGetArgs Empty => new PreventionJobTriggerInspectJobActionGetArgs();
     }
 }

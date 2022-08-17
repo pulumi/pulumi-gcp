@@ -22,99 +22,107 @@ namespace Pulumi.Gcp.Apigee
     /// ### Apigee Instance Attachment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "tf-test",
-    ///             OrgId = "",
-    ///             BillingAccount = "",
-    ///         });
-    ///         var apigee = new Gcp.Projects.Service("apigee", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             Project = project.ProjectId,
-    ///             ServiceName = "apigee.googleapis.com",
-    ///         });
-    ///         var compute = new Gcp.Projects.Service("compute", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             Project = project.ProjectId,
-    ///             ServiceName = "compute.googleapis.com",
-    ///         });
-    ///         var servicenetworking = new Gcp.Projects.Service("servicenetworking", new Gcp.Projects.ServiceArgs
-    ///         {
-    ///             Project = project.ProjectId,
-    ///             ServiceName = "servicenetworking.googleapis.com",
-    ///         });
-    ///         var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             Project = project.ProjectId,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 compute,
-    ///             },
-    ///         });
-    ///         var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///             Purpose = "VPC_PEERING",
-    ///             AddressType = "INTERNAL",
-    ///             PrefixLength = 16,
-    ///             Network = apigeeNetwork.Id,
-    ///             Project = project.ProjectId,
-    ///         });
-    ///         var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
-    ///         {
-    ///             Network = apigeeNetwork.Id,
-    ///             Service = "servicenetworking.googleapis.com",
-    ///             ReservedPeeringRanges = 
-    ///             {
-    ///                 apigeeRange.Name,
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 servicenetworking,
-    ///             },
-    ///         });
-    ///         var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new Gcp.Apigee.OrganizationArgs
-    ///         {
-    ///             AnalyticsRegion = "us-central1",
-    ///             ProjectId = project.ProjectId,
-    ///             AuthorizedNetwork = apigeeNetwork.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 apigeeVpcConnection,
-    ///                 apigee,
-    ///             },
-    ///         });
-    ///         var apigeeIns = new Gcp.Apigee.Instance("apigeeIns", new Gcp.Apigee.InstanceArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             OrgId = apigeeOrg.Id,
-    ///         });
-    ///         var apigeeEnv = new Gcp.Apigee.Environment("apigeeEnv", new Gcp.Apigee.EnvironmentArgs
-    ///         {
-    ///             OrgId = apigeeOrg.Id,
-    ///             Description = "Apigee Environment",
-    ///             DisplayName = "environment-1",
-    ///         });
-    ///         var instanceAttachment = new Gcp.Apigee.InstanceAttachment("instanceAttachment", new Gcp.Apigee.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = google_apigee_instance.Apigee_instance.Id,
-    ///             Environment = apigeeEnv.Name,
-    ///         });
-    ///     }
+    ///         ProjectId = "tf-test",
+    ///         OrgId = "",
+    ///         BillingAccount = "",
+    ///     });
     /// 
-    /// }
+    ///     var apigee = new Gcp.Projects.Service("apigee", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "apigee.googleapis.com",
+    ///     });
+    /// 
+    ///     var compute = new Gcp.Projects.Service("compute", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///     });
+    /// 
+    ///     var servicenetworking = new Gcp.Projects.Service("servicenetworking", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "servicenetworking.googleapis.com",
+    ///     });
+    /// 
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             compute,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///         Project = project.ProjectId,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             servicenetworking,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = project.ProjectId,
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigee,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeIns = new Gcp.Apigee.Instance("apigeeIns", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         OrgId = apigeeOrg.Id,
+    ///     });
+    /// 
+    ///     var apigeeEnv = new Gcp.Apigee.Environment("apigeeEnv", new()
+    ///     {
+    ///         OrgId = apigeeOrg.Id,
+    ///         Description = "Apigee Environment",
+    ///         DisplayName = "environment-1",
+    ///     });
+    /// 
+    ///     var instanceAttachment = new Gcp.Apigee.InstanceAttachment("instanceAttachment", new()
+    ///     {
+    ///         InstanceId = google_apigee_instance.Apigee_instance.Id,
+    ///         Environment = apigeeEnv.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +138,7 @@ namespace Pulumi.Gcp.Apigee
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigee/instanceAttachment:InstanceAttachment")]
-    public partial class InstanceAttachment : Pulumi.CustomResource
+    public partial class InstanceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource ID of the environment.
@@ -195,7 +203,7 @@ namespace Pulumi.Gcp.Apigee
         }
     }
 
-    public sealed class InstanceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource ID of the environment.
@@ -213,9 +221,10 @@ namespace Pulumi.Gcp.Apigee
         public InstanceAttachmentArgs()
         {
         }
+        public static new InstanceAttachmentArgs Empty => new InstanceAttachmentArgs();
     }
 
-    public sealed class InstanceAttachmentState : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource ID of the environment.
@@ -239,5 +248,6 @@ namespace Pulumi.Gcp.Apigee
         public InstanceAttachmentState()
         {
         }
+        public static new InstanceAttachmentState Empty => new InstanceAttachmentState();
     }
 }

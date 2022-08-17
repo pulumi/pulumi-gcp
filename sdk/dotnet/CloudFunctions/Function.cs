@@ -26,96 +26,98 @@ namespace Pulumi.Gcp.CloudFunctions
     /// ### Public Function
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("./path/to/zip/file/which/contains/code"),
-    ///         });
-    ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
-    ///         {
-    ///             Description = "My function",
-    ///             Runtime = "nodejs16",
-    ///             AvailableMemoryMb = 128,
-    ///             SourceArchiveBucket = bucket.Name,
-    ///             SourceArchiveObject = archive.Name,
-    ///             TriggerHttp = true,
-    ///             EntryPoint = "helloGET",
-    ///         });
-    ///         // IAM entry for all users to invoke the function
-    ///         var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new Gcp.CloudFunctions.FunctionIamMemberArgs
-    ///         {
-    ///             Project = function.Project,
-    ///             Region = function.Region,
-    ///             CloudFunction = function.Name,
-    ///             Role = "roles/cloudfunctions.invoker",
-    ///             Member = "allUsers",
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var archive = new Gcp.Storage.BucketObject("archive", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./path/to/zip/file/which/contains/code"),
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctions.Function("function", new()
+    ///     {
+    ///         Description = "My function",
+    ///         Runtime = "nodejs16",
+    ///         AvailableMemoryMb = 128,
+    ///         SourceArchiveBucket = bucket.Name,
+    ///         SourceArchiveObject = archive.Name,
+    ///         TriggerHttp = true,
+    ///         EntryPoint = "helloGET",
+    ///     });
+    /// 
+    ///     // IAM entry for all users to invoke the function
+    ///     var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new()
+    ///     {
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
+    ///         Role = "roles/cloudfunctions.invoker",
+    ///         Member = "allUsers",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Single User
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var archive = new Gcp.Storage.BucketObject("archive", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             Source = new FileAsset("./path/to/zip/file/which/contains/code"),
-    ///         });
-    ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
-    ///         {
-    ///             Description = "My function",
-    ///             Runtime = "nodejs16",
-    ///             AvailableMemoryMb = 128,
-    ///             SourceArchiveBucket = bucket.Name,
-    ///             SourceArchiveObject = archive.Name,
-    ///             TriggerHttp = true,
-    ///             HttpsTriggerSecurityLevel = "SECURE_ALWAYS",
-    ///             Timeout = 60,
-    ///             EntryPoint = "helloGET",
-    ///             Labels = 
-    ///             {
-    ///                 { "my-label", "my-label-value" },
-    ///             },
-    ///             EnvironmentVariables = 
-    ///             {
-    ///                 { "MY_ENV_VAR", "my-env-var-value" },
-    ///             },
-    ///         });
-    ///         // IAM entry for a single user to invoke the function
-    ///         var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new Gcp.CloudFunctions.FunctionIamMemberArgs
-    ///         {
-    ///             Project = function.Project,
-    ///             Region = function.Region,
-    ///             CloudFunction = function.Name,
-    ///             Role = "roles/cloudfunctions.invoker",
-    ///             Member = "user:myFunctionInvoker@example.com",
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var archive = new Gcp.Storage.BucketObject("archive", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./path/to/zip/file/which/contains/code"),
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctions.Function("function", new()
+    ///     {
+    ///         Description = "My function",
+    ///         Runtime = "nodejs16",
+    ///         AvailableMemoryMb = 128,
+    ///         SourceArchiveBucket = bucket.Name,
+    ///         SourceArchiveObject = archive.Name,
+    ///         TriggerHttp = true,
+    ///         HttpsTriggerSecurityLevel = "SECURE_ALWAYS",
+    ///         Timeout = 60,
+    ///         EntryPoint = "helloGET",
+    ///         Labels = 
+    ///         {
+    ///             { "my-label", "my-label-value" },
+    ///         },
+    ///         EnvironmentVariables = 
+    ///         {
+    ///             { "MY_ENV_VAR", "my-env-var-value" },
+    ///         },
+    ///     });
+    /// 
+    ///     // IAM entry for a single user to invoke the function
+    ///     var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new()
+    ///     {
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
+    ///         Role = "roles/cloudfunctions.invoker",
+    ///         Member = "user:myFunctionInvoker@example.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -131,7 +133,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudfunctions/function:Function")]
-    public partial class Function : Pulumi.CustomResource
+    public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
@@ -354,7 +356,7 @@ namespace Pulumi.Gcp.CloudFunctions
         }
     }
 
-    public sealed class FunctionArgs : Pulumi.ResourceArgs
+    public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
@@ -566,9 +568,10 @@ namespace Pulumi.Gcp.CloudFunctions
         public FunctionArgs()
         {
         }
+        public static new FunctionArgs Empty => new FunctionArgs();
     }
 
-    public sealed class FunctionState : Pulumi.ResourceArgs
+    public sealed class FunctionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
@@ -780,5 +783,6 @@ namespace Pulumi.Gcp.CloudFunctions
         public FunctionState()
         {
         }
+        public static new FunctionState Empty => new FunctionState();
     }
 }

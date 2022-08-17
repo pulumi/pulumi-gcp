@@ -27,35 +27,35 @@ namespace Pulumi.Gcp.Storage
     /// Create an object ACL with one owner and one reader.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
     ///     {
-    ///         var image_store = new Gcp.Storage.Bucket("image-store", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var image = new Gcp.Storage.BucketObject("image", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = image_store.Name,
-    ///             Source = new FileAsset("image1.jpg"),
-    ///         });
-    ///         var image_store_acl = new Gcp.Storage.ObjectACL("image-store-acl", new Gcp.Storage.ObjectACLArgs
-    ///         {
-    ///             Bucket = image_store.Name,
-    ///             Object = image.OutputName,
-    ///             RoleEntities = 
-    ///             {
-    ///                 "OWNER:user-my.email@gmail.com",
-    ///                 "READER:group-mygroup",
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "EU",
+    ///     });
     /// 
-    /// }
+    ///     var image = new Gcp.Storage.BucketObject("image", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         Source = new FileAsset("image1.jpg"),
+    ///     });
+    /// 
+    ///     var image_store_acl = new Gcp.Storage.ObjectACL("image-store-acl", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         Object = image.OutputName,
+    ///         RoleEntities = new[]
+    ///         {
+    ///             "OWNER:user-my.email@gmail.com",
+    ///             "READER:group-mygroup",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Storage
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:storage/objectACL:ObjectACL")]
-    public partial class ObjectACL : Pulumi.CustomResource
+    public partial class ObjectACL : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket the object is stored in.
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class ObjectACLArgs : Pulumi.ResourceArgs
+    public sealed class ObjectACLArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket the object is stored in.
@@ -170,9 +170,10 @@ namespace Pulumi.Gcp.Storage
         public ObjectACLArgs()
         {
         }
+        public static new ObjectACLArgs Empty => new ObjectACLArgs();
     }
 
-    public sealed class ObjectACLState : Pulumi.ResourceArgs
+    public sealed class ObjectACLState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket the object is stored in.
@@ -208,5 +209,6 @@ namespace Pulumi.Gcp.Storage
         public ObjectACLState()
         {
         }
+        public static new ObjectACLState Empty => new ObjectACLState();
     }
 }

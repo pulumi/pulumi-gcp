@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigEncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigEncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigEncryptionConfigArgs()
         {
         }
+        public static new EnvironmentConfigEncryptionConfigArgs Empty => new EnvironmentConfigEncryptionConfigArgs();
     }
 }

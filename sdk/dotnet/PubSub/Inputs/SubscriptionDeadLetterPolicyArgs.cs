@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class SubscriptionDeadLetterPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionDeadLetterPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the topic to which dead letter messages should be published.
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public SubscriptionDeadLetterPolicyArgs()
         {
         }
+        public static new SubscriptionDeadLetterPolicyArgs Empty => new SubscriptionDeadLetterPolicyArgs();
     }
 }

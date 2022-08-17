@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class LiteTopicRetentionConfigArgs : Pulumi.ResourceArgs
+    public sealed class LiteTopicRetentionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The provisioned storage, in bytes, per partition. If the number of bytes stored
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public LiteTopicRetentionConfigArgs()
         {
         }
+        public static new LiteTopicRetentionConfigArgs Empty => new LiteTopicRetentionConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, enables CAAP for L7 DDoS detection.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs()
         {
         }
+        public static new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs Empty => new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs();
     }
 }

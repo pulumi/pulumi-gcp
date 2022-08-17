@@ -22,46 +22,45 @@ namespace Pulumi.Gcp.Compute
     /// ### Router Nat Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var net = new Gcp.Compute.Network("net", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var subnet = new Gcp.Compute.Subnetwork("subnet", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             Network = net.Id,
-    ///             IpCidrRange = "10.0.0.0/16",
-    ///             Region = "us-central1",
-    ///         });
-    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Region = subnet.Region,
-    ///             Network = net.Id,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///             {
-    ///                 Asn = 64514,
-    ///             },
-    ///         });
-    ///         var nat = new Gcp.Compute.RouterNat("nat", new Gcp.Compute.RouterNatArgs
-    ///         {
-    ///             Router = router.Name,
-    ///             Region = router.Region,
-    ///             NatIpAllocateOption = "AUTO_ONLY",
-    ///             SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
-    ///             LogConfig = new Gcp.Compute.Inputs.RouterNatLogConfigArgs
-    ///             {
-    ///                 Enable = true,
-    ///                 Filter = "ERRORS_ONLY",
-    ///             },
-    ///         });
-    ///     }
+    ///     var net = new Gcp.Compute.Network("net");
     /// 
-    /// }
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///         Network = net.Id,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///         },
+    ///     });
+    /// 
+    ///     var nat = new Gcp.Compute.RouterNat("nat", new()
+    ///     {
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         NatIpAllocateOption = "AUTO_ONLY",
+    ///         SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
+    ///         LogConfig = new Gcp.Compute.Inputs.RouterNatLogConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             Filter = "ERRORS_ONLY",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Router Nat Manual Ips
     /// 
@@ -71,55 +70,53 @@ namespace Pulumi.Gcp.Compute
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var net = new Gcp.Compute.Network("net");
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
     ///     {
-    ///         var net = new Gcp.Compute.Network("net", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var subnet = new Gcp.Compute.Subnetwork("subnet", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             Network = net.Id,
-    ///             IpCidrRange = "10.0.0.0/16",
-    ///             Region = "us-central1",
-    ///         });
-    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///         Network = net.Id,
+    ///     });
+    /// 
+    ///     var address = new List&lt;Gcp.Compute.Address&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         address.Add(new Gcp.Compute.Address($"address-{range.Value}", new()
     ///         {
     ///             Region = subnet.Region,
-    ///             Network = net.Id,
-    ///         });
-    ///         var address = new List&lt;Gcp.Compute.Address&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         }));
+    ///     }
+    ///     var natManual = new Gcp.Compute.RouterNat("natManual", new()
+    ///     {
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         NatIpAllocateOption = "MANUAL_ONLY",
+    ///         NatIps = address.Select(__item =&gt; __item.SelfLink).ToList(),
+    ///         SourceSubnetworkIpRangesToNat = "LIST_OF_SUBNETWORKS",
+    ///         Subnetworks = new[]
     ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             address.Add(new Gcp.Compute.Address($"address-{range.Value}", new Gcp.Compute.AddressArgs
+    ///             new Gcp.Compute.Inputs.RouterNatSubnetworkArgs
     ///             {
-    ///                 Region = subnet.Region,
-    ///             }));
-    ///         }
-    ///         var natManual = new Gcp.Compute.RouterNat("natManual", new Gcp.Compute.RouterNatArgs
-    ///         {
-    ///             Router = router.Name,
-    ///             Region = router.Region,
-    ///             NatIpAllocateOption = "MANUAL_ONLY",
-    ///             NatIps = address.Select(__item =&gt; __item.SelfLink).ToList(),
-    ///             SourceSubnetworkIpRangesToNat = "LIST_OF_SUBNETWORKS",
-    ///             Subnetworks = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.RouterNatSubnetworkArgs
+    ///                 Name = subnet.Id,
+    ///                 SourceIpRangesToNats = new[]
     ///                 {
-    ///                     Name = subnet.Id,
-    ///                     SourceIpRangesToNats = 
-    ///                     {
-    ///                         "ALL_IP_RANGES",
-    ///                     },
+    ///                     "ALL_IP_RANGES",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -143,7 +140,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/routerNat:RouterNat")]
-    public partial class RouterNat : Pulumi.CustomResource
+    public partial class RouterNat : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of URLs of the IP resources to be drained. These IPs must be
@@ -325,7 +322,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class RouterNatArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatArgs : global::Pulumi.ResourceArgs
     {
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
@@ -484,9 +481,10 @@ namespace Pulumi.Gcp.Compute
         public RouterNatArgs()
         {
         }
+        public static new RouterNatArgs Empty => new RouterNatArgs();
     }
 
-    public sealed class RouterNatState : Pulumi.ResourceArgs
+    public sealed class RouterNatState : global::Pulumi.ResourceArgs
     {
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
@@ -645,5 +643,6 @@ namespace Pulumi.Gcp.Compute
         public RouterNatState()
         {
         }
+        public static new RouterNatState Empty => new RouterNatState();
     }
 }

@@ -22,35 +22,35 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
     ///     {
-    ///         var log_bucket = new Gcp.Storage.Bucket("log-bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var my_sink = new Gcp.Logging.BillingAccountSink("my-sink", new Gcp.Logging.BillingAccountSinkArgs
-    ///         {
-    ///             Description = "some explanation on what this is",
-    ///             BillingAccount = "ABCDEF-012345-GHIJKL",
-    ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
-    ///         });
-    ///         var log_writer = new Gcp.Projects.IAMBinding("log-writer", new Gcp.Projects.IAMBindingArgs
-    ///         {
-    ///             Project = "your-project-id",
-    ///             Role = "roles/storage.objectCreator",
-    ///             Members = 
-    ///             {
-    ///                 my_sink.WriterIdentity,
-    ///             },
-    ///         });
-    ///     }
+    ///         Location = "US",
+    ///     });
     /// 
-    /// }
+    ///     var my_sink = new Gcp.Logging.BillingAccountSink("my-sink", new()
+    ///     {
+    ///         Description = "some explanation on what this is",
+    ///         BillingAccount = "ABCDEF-012345-GHIJKL",
+    ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
+    ///     });
+    /// 
+    ///     var log_writer = new Gcp.Projects.IAMBinding("log-writer", new()
+    ///     {
+    ///         Project = "your-project-id",
+    ///         Role = "roles/storage.objectCreator",
+    ///         Members = new[]
+    ///         {
+    ///             my_sink.WriterIdentity,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/billingAccountSink:BillingAccountSink")]
-    public partial class BillingAccountSink : Pulumi.CustomResource
+    public partial class BillingAccountSink : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -86,15 +86,12 @@ namespace Pulumi.Gcp.Logging
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
@@ -177,7 +174,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class BillingAccountSinkArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -201,15 +198,12 @@ namespace Pulumi.Gcp.Logging
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
@@ -250,9 +244,10 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountSinkArgs()
         {
         }
+        public static new BillingAccountSinkArgs Empty => new BillingAccountSinkArgs();
     }
 
-    public sealed class BillingAccountSinkState : Pulumi.ResourceArgs
+    public sealed class BillingAccountSinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -276,15 +271,12 @@ namespace Pulumi.Gcp.Logging
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
@@ -332,5 +324,6 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountSinkState()
         {
         }
+        public static new BillingAccountSinkState Empty => new BillingAccountSinkState();
     }
 }

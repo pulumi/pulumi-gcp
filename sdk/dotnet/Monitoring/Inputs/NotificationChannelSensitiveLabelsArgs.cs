@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class NotificationChannelSensitiveLabelsArgs : Pulumi.ResourceArgs
+    public sealed class NotificationChannelSensitiveLabelsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An authorization token for a notification channel. Channel types that support this field include: slack
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public NotificationChannelSensitiveLabelsArgs()
         {
         }
+        public static new NotificationChannelSensitiveLabelsArgs Empty => new NotificationChannelSensitiveLabelsArgs();
     }
 }

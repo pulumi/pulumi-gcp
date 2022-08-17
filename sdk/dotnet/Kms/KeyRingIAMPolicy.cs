@@ -23,185 +23,177 @@ namespace Pulumi.Gcp.Kms
     /// ## google\_kms\_key\_ring\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
     ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
-    ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new Gcp.Kms.KeyRingIAMPolicyArgs
-    ///         {
-    ///             KeyRingId = keyring.Id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     {
+    ///         KeyRingId = keyring.Id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
     ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
-    ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
-    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
-    ///                     {
-    ///                         Title = "expires_after_2019_12_31",
-    ///                         Description = "Expiring at midnight of 2019-12-31",
-    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                     },
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
     ///                 },
     ///             },
-    ///         }));
-    ///         var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new Gcp.Kms.KeyRingIAMPolicyArgs
-    ///         {
-    ///             KeyRingId = keyring.Id,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     {
+    ///         KeyRingId = keyring.Id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_kms\_key\_ring\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new Gcp.Kms.KeyRingIAMBindingArgs
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Members = new[]
     ///         {
-    ///             KeyRingId = "your-key-ring-id",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new Gcp.Kms.KeyRingIAMBindingArgs
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
     ///         {
-    ///             Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
-    ///             {
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                 Title = "expires_after_2019_12_31",
-    ///             },
-    ///             KeyRingId = "your-key-ring-id",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_kms\_key\_ring\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new Gcp.Kms.KeyRingIAMMemberArgs
-    ///         {
-    ///             KeyRingId = "your-key-ring-id",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// With IAM Conditions:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
     ///     {
-    ///         var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new Gcp.Kms.KeyRingIAMMemberArgs
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMMemberConditionArgs
     ///         {
-    ///             Condition = new Gcp.Kms.Inputs.KeyRingIAMMemberConditionArgs
-    ///             {
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                 Title = "expires_after_2019_12_31",
-    ///             },
-    ///             KeyRingId = "your-key-ring-id",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -231,7 +223,7 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// </summary>
     [GcpResourceType("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy")]
-    public partial class KeyRingIAMPolicy : Pulumi.CustomResource
+    public partial class KeyRingIAMPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the key ring's IAM policy.
@@ -299,7 +291,7 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
-    public sealed class KeyRingIAMPolicyArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingIAMPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key ring ID, in the form
@@ -320,9 +312,10 @@ namespace Pulumi.Gcp.Kms
         public KeyRingIAMPolicyArgs()
         {
         }
+        public static new KeyRingIAMPolicyArgs Empty => new KeyRingIAMPolicyArgs();
     }
 
-    public sealed class KeyRingIAMPolicyState : Pulumi.ResourceArgs
+    public sealed class KeyRingIAMPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the key ring's IAM policy.
@@ -349,5 +342,6 @@ namespace Pulumi.Gcp.Kms
         public KeyRingIAMPolicyState()
         {
         }
+        public static new KeyRingIAMPolicyState Empty => new KeyRingIAMPolicyState();
     }
 }

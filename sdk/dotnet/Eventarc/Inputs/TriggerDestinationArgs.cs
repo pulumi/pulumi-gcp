@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc.Inputs
 {
 
-    public sealed class TriggerDestinationArgs : Pulumi.ResourceArgs
+    public sealed class TriggerDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public TriggerDestinationArgs()
         {
         }
+        public static new TriggerDestinationArgs Empty => new TriggerDestinationArgs();
     }
 }

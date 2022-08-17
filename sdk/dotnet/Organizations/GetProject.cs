@@ -21,20 +21,19 @@ namespace Pulumi.Gcp.Organizations
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-        ///         this.ProjectNumber = project.Apply(project =&gt; project.Number);
-        ///     }
+        ///     var project = Gcp.Organizations.GetProject.Invoke();
         /// 
-        ///     [Output("projectNumber")]
-        ///     public Output&lt;string&gt; ProjectNumber { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNumber"] = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,20 +51,19 @@ namespace Pulumi.Gcp.Organizations
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-        ///         this.ProjectNumber = project.Apply(project =&gt; project.Number);
-        ///     }
+        ///     var project = Gcp.Organizations.GetProject.Invoke();
         /// 
-        ///     [Output("projectNumber")]
-        ///     public Output&lt;string&gt; ProjectNumber { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNumber"] = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,7 +73,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetProjectArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID. If it is not provided, the provider project is used.
@@ -86,9 +84,10 @@ namespace Pulumi.Gcp.Organizations
         public GetProjectArgs()
         {
         }
+        public static new GetProjectArgs Empty => new GetProjectArgs();
     }
 
-    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The project ID. If it is not provided, the provider project is used.
@@ -99,6 +98,7 @@ namespace Pulumi.Gcp.Organizations
         public GetProjectInvokeArgs()
         {
         }
+        public static new GetProjectInvokeArgs Empty => new GetProjectInvokeArgs();
     }
 
 

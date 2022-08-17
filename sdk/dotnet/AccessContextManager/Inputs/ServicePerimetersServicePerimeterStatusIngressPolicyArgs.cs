@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class ServicePerimetersServicePerimeterStatusIngressPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimetersServicePerimeterStatusIngressPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public ServicePerimetersServicePerimeterStatusIngressPolicyArgs()
         {
         }
+        public static new ServicePerimetersServicePerimeterStatusIngressPolicyArgs Empty => new ServicePerimetersServicePerimeterStatusIngressPolicyArgs();
     }
 }

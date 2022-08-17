@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class NodePoolManagementArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the nodes will be automatically repaired.
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public NodePoolManagementArgs()
         {
         }
+        public static new NodePoolManagementArgs Empty => new NodePoolManagementArgs();
     }
 }

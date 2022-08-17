@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 {
 
-    public sealed class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A PEM-encoded public key, as described in
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         public AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyGetArgs()
         {
         }
+        public static new AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyGetArgs Empty => new AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyGetArgs();
     }
 }

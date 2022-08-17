@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class UptimeCheckConfigTcpCheckArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigTcpCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public UptimeCheckConfigTcpCheckArgs()
         {
         }
+        public static new UptimeCheckConfigTcpCheckArgs Empty => new UptimeCheckConfigTcpCheckArgs();
     }
 }

@@ -20,20 +20,18 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.Compute.ProjectDefaultNetworkTier("default", new()
     ///     {
-    ///         var @default = new Gcp.Compute.ProjectDefaultNetworkTier("default", new Gcp.Compute.ProjectDefaultNetworkTierArgs
-    ///         {
-    ///             NetworkTier = "PREMIUM",
-    ///         });
-    ///     }
+    ///         NetworkTier = "PREMIUM",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier")]
-    public partial class ProjectDefaultNetworkTier : Pulumi.CustomResource
+    public partial class ProjectDefaultNetworkTier : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default network tier to be configured for the project.
@@ -105,7 +103,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ProjectDefaultNetworkTierArgs : Pulumi.ResourceArgs
+    public sealed class ProjectDefaultNetworkTierArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default network tier to be configured for the project.
@@ -124,9 +122,10 @@ namespace Pulumi.Gcp.Compute
         public ProjectDefaultNetworkTierArgs()
         {
         }
+        public static new ProjectDefaultNetworkTierArgs Empty => new ProjectDefaultNetworkTierArgs();
     }
 
-    public sealed class ProjectDefaultNetworkTierState : Pulumi.ResourceArgs
+    public sealed class ProjectDefaultNetworkTierState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default network tier to be configured for the project.
@@ -145,5 +144,6 @@ namespace Pulumi.Gcp.Compute
         public ProjectDefaultNetworkTierState()
         {
         }
+        public static new ProjectDefaultNetworkTierState Empty => new ProjectDefaultNetworkTierState();
     }
 }

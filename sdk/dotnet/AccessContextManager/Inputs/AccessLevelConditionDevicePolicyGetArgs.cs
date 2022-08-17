@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AccessContextManager.Inputs
 {
 
-    public sealed class AccessLevelConditionDevicePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelConditionDevicePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedDeviceManagementLevels")]
         private InputList<string>? _allowedDeviceManagementLevels;
@@ -76,5 +76,6 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public AccessLevelConditionDevicePolicyGetArgs()
         {
         }
+        public static new AccessLevelConditionDevicePolicyGetArgs Empty => new AccessLevelConditionDevicePolicyGetArgs();
     }
 }

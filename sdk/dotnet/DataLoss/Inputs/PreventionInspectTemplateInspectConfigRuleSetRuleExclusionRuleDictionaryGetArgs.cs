@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryGetArgs()
         {
         }
+        public static new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryGetArgs Empty => new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryGetArgs();
     }
 }

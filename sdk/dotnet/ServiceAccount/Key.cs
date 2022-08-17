@@ -14,26 +14,25 @@ namespace Pulumi.Gcp.ServiceAccount
     /// ### Creating A New Key
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
     ///     {
-    ///         var myaccount = new Gcp.ServiceAccount.Account("myaccount", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "myaccount",
-    ///             DisplayName = "My Service Account",
-    ///         });
-    ///         var mykey = new Gcp.ServiceAccount.Key("mykey", new Gcp.ServiceAccount.KeyArgs
-    ///         {
-    ///             ServiceAccountId = myaccount.Name,
-    ///             PublicKeyType = "TYPE_X509_PEM_FILE",
-    ///         });
-    ///     }
+    ///         AccountId = "myaccount",
+    ///         DisplayName = "My Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var mykey = new Gcp.ServiceAccount.Key("mykey", new()
+    ///     {
+    ///         ServiceAccountId = myaccount.Name,
+    ///         PublicKeyType = "TYPE_X509_PEM_FILE",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +40,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:serviceAccount/key:Key")]
-    public partial class Key : Pulumi.CustomResource
+    public partial class Key : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
@@ -163,7 +162,7 @@ namespace Pulumi.Gcp.ServiceAccount
         }
     }
 
-    public sealed class KeyArgs : Pulumi.ResourceArgs
+    public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("keepers")]
         private InputMap<object>? _keepers;
@@ -218,9 +217,10 @@ namespace Pulumi.Gcp.ServiceAccount
         public KeyArgs()
         {
         }
+        public static new KeyArgs Empty => new KeyArgs();
     }
 
-    public sealed class KeyState : Pulumi.ResourceArgs
+    public sealed class KeyState : global::Pulumi.ResourceArgs
     {
         [Input("keepers")]
         private InputMap<object>? _keepers;
@@ -307,5 +307,6 @@ namespace Pulumi.Gcp.ServiceAccount
         public KeyState()
         {
         }
+        public static new KeyState Empty => new KeyState();
     }
 }

@@ -25,107 +25,110 @@ namespace Pulumi.Gcp.Compute
     /// ### Ha Vpn Gateway Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new Gcp.Compute.Network("network1", new()
     ///     {
-    ///         var network1 = new Gcp.Compute.Network("network1", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var haGateway1 = new Gcp.Compute.HaVpnGateway("haGateway1", new Gcp.Compute.HaVpnGatewayArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Network = network1.Id,
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var haGateway1 = new Gcp.Compute.HaVpnGateway("haGateway1", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = network1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Compute Ha Vpn Gateway Encrypted Interconnect
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var address1 = new Gcp.Compute.Address("address1", new Gcp.Compute.AddressArgs
-    ///         {
-    ///             AddressType = "INTERNAL",
-    ///             Purpose = "IPSEC_INTERCONNECT",
-    ///             IPAddress = "192.168.1.0",
-    ///             PrefixLength = 29,
-    ///             Network = network.SelfLink,
-    ///         });
-    ///         var router = new Gcp.Compute.Router("router", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = network.Name,
-    ///             EncryptedInterconnectRouter = true,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///             {
-    ///                 Asn = 16550,
-    ///             },
-    ///         });
-    ///         var attachment1 = new Gcp.Compute.InterconnectAttachment("attachment1", new Gcp.Compute.InterconnectAttachmentArgs
-    ///         {
-    ///             EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
-    ///             Type = "PARTNER",
-    ///             Router = router.Id,
-    ///             Encryption = "IPSEC",
-    ///             IpsecInternalAddresses = 
-    ///             {
-    ///                 address1.SelfLink,
-    ///             },
-    ///         });
-    ///         var address2 = new Gcp.Compute.Address("address2", new Gcp.Compute.AddressArgs
-    ///         {
-    ///             AddressType = "INTERNAL",
-    ///             Purpose = "IPSEC_INTERCONNECT",
-    ///             IPAddress = "192.168.2.0",
-    ///             PrefixLength = 29,
-    ///             Network = network.SelfLink,
-    ///         });
-    ///         var attachment2 = new Gcp.Compute.InterconnectAttachment("attachment2", new Gcp.Compute.InterconnectAttachmentArgs
-    ///         {
-    ///             EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_2",
-    ///             Type = "PARTNER",
-    ///             Router = router.Id,
-    ///             Encryption = "IPSEC",
-    ///             IpsecInternalAddresses = 
-    ///             {
-    ///                 address2.SelfLink,
-    ///             },
-    ///         });
-    ///         var vpn_gateway = new Gcp.Compute.HaVpnGateway("vpn-gateway", new Gcp.Compute.HaVpnGatewayArgs
-    ///         {
-    ///             Network = network.Id,
-    ///             VpnInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.HaVpnGatewayVpnInterfaceArgs
-    ///                 {
-    ///                     Id = 0,
-    ///                     InterconnectAttachment = attachment1.SelfLink,
-    ///                 },
-    ///                 new Gcp.Compute.Inputs.HaVpnGatewayVpnInterfaceArgs
-    ///                 {
-    ///                     Id = 1,
-    ///                     InterconnectAttachment = attachment2.SelfLink,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AutoCreateSubnetworks = false,
+    ///     });
     /// 
-    /// }
+    ///     var address1 = new Gcp.Compute.Address("address1", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "IPSEC_INTERCONNECT",
+    ///         IPAddress = "192.168.1.0",
+    ///         PrefixLength = 29,
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Network = network.Name,
+    ///         EncryptedInterconnectRouter = true,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var attachment1 = new Gcp.Compute.InterconnectAttachment("attachment1", new()
+    ///     {
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = router.Id,
+    ///         Encryption = "IPSEC",
+    ///         IpsecInternalAddresses = new[]
+    ///         {
+    ///             address1.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    ///     var address2 = new Gcp.Compute.Address("address2", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "IPSEC_INTERCONNECT",
+    ///         IPAddress = "192.168.2.0",
+    ///         PrefixLength = 29,
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var attachment2 = new Gcp.Compute.InterconnectAttachment("attachment2", new()
+    ///     {
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_2",
+    ///         Type = "PARTNER",
+    ///         Router = router.Id,
+    ///         Encryption = "IPSEC",
+    ///         IpsecInternalAddresses = new[]
+    ///         {
+    ///             address2.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    ///     var vpn_gateway = new Gcp.Compute.HaVpnGateway("vpn-gateway", new()
+    ///     {
+    ///         Network = network.Id,
+    ///         VpnInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.HaVpnGatewayVpnInterfaceArgs
+    ///             {
+    ///                 Id = 0,
+    ///                 InterconnectAttachment = attachment1.SelfLink,
+    ///             },
+    ///             new Gcp.Compute.Inputs.HaVpnGatewayVpnInterfaceArgs
+    ///             {
+    ///                 Id = 1,
+    ///                 InterconnectAttachment = attachment2.SelfLink,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -149,7 +152,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/haVpnGateway:HaVpnGateway")]
-    public partial class HaVpnGateway : Pulumi.CustomResource
+    public partial class HaVpnGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional description of this resource.
@@ -245,7 +248,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class HaVpnGatewayArgs : Pulumi.ResourceArgs
+    public sealed class HaVpnGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -300,9 +303,10 @@ namespace Pulumi.Gcp.Compute
         public HaVpnGatewayArgs()
         {
         }
+        public static new HaVpnGatewayArgs Empty => new HaVpnGatewayArgs();
     }
 
-    public sealed class HaVpnGatewayState : Pulumi.ResourceArgs
+    public sealed class HaVpnGatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource.
@@ -363,5 +367,6 @@ namespace Pulumi.Gcp.Compute
         public HaVpnGatewayState()
         {
         }
+        public static new HaVpnGatewayState Empty => new HaVpnGatewayState();
     }
 }

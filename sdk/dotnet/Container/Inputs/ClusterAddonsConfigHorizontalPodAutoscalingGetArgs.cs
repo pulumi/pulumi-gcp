@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAddonsConfigHorizontalPodAutoscalingGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAddonsConfigHorizontalPodAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the Istio addon, which makes it easy to set up Istio for services in a
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAddonsConfigHorizontalPodAutoscalingGetArgs()
         {
         }
+        public static new ClusterAddonsConfigHorizontalPodAutoscalingGetArgs Empty => new ClusterAddonsConfigHorizontalPodAutoscalingGetArgs();
     }
 }

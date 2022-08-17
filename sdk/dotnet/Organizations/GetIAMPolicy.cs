@@ -18,64 +18,62 @@ namespace Pulumi.Gcp.Organizations
         /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
         ///     {
-        ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+        ///         AuditConfigs = new[]
         ///         {
-        ///             AuditConfigs = 
+        ///             new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigInputArgs
         ///             {
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigArgs
+        ///                 AuditLogConfigs = new[]
         ///                 {
-        ///                     AuditLogConfigs = 
+        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
+        ///                         ExemptedMembers = new[]
         ///                         {
-        ///                             ExemptedMembers = 
-        ///                             {
-        ///                                 "user:you@domain.com",
-        ///                             },
-        ///                             LogType = "DATA_READ",
+        ///                             "user:you@domain.com",
         ///                         },
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             LogType = "DATA_WRITE",
-        ///                         },
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             LogType = "ADMIN_READ",
-        ///                         },
+        ///                         LogType = "DATA_READ",
         ///                     },
-        ///                     Service = "cloudkms.googleapis.com",
+        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     {
+        ///                         LogType = "DATA_WRITE",
+        ///                     },
+        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     {
+        ///                         LogType = "ADMIN_READ",
+        ///                     },
         ///                 },
+        ///                 Service = "cloudkms.googleapis.com",
         ///             },
-        ///             Bindings = 
+        ///         },
+        ///         Bindings = new[]
+        ///         {
+        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
         ///             {
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+        ///                 Members = new[]
         ///                 {
-        ///                     Members = 
-        ///                     {
-        ///                         "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-        ///                     },
-        ///                     Role = "roles/compute.instanceAdmin",
+        ///                     "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
         ///                 },
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
-        ///                 {
-        ///                     Members = 
-        ///                     {
-        ///                         "user:alice@gmail.com",
-        ///                     },
-        ///                     Role = "roles/storage.objectViewer",
-        ///                 },
+        ///                 Role = "roles/compute.instanceAdmin",
         ///             },
-        ///         }));
-        ///     }
+        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+        ///             {
+        ///                 Members = new[]
+        ///                 {
+        ///                     "user:alice@gmail.com",
+        ///                 },
+        ///                 Role = "roles/storage.objectViewer",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// This data source is used to define IAM policies to apply to other resources.
@@ -92,64 +90,62 @@ namespace Pulumi.Gcp.Organizations
         /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
         ///     {
-        ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+        ///         AuditConfigs = new[]
         ///         {
-        ///             AuditConfigs = 
+        ///             new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigInputArgs
         ///             {
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigArgs
+        ///                 AuditLogConfigs = new[]
         ///                 {
-        ///                     AuditLogConfigs = 
+        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
+        ///                         ExemptedMembers = new[]
         ///                         {
-        ///                             ExemptedMembers = 
-        ///                             {
-        ///                                 "user:you@domain.com",
-        ///                             },
-        ///                             LogType = "DATA_READ",
+        ///                             "user:you@domain.com",
         ///                         },
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             LogType = "DATA_WRITE",
-        ///                         },
-        ///                         new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs
-        ///                         {
-        ///                             LogType = "ADMIN_READ",
-        ///                         },
+        ///                         LogType = "DATA_READ",
         ///                     },
-        ///                     Service = "cloudkms.googleapis.com",
+        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     {
+        ///                         LogType = "DATA_WRITE",
+        ///                     },
+        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     {
+        ///                         LogType = "ADMIN_READ",
+        ///                     },
         ///                 },
+        ///                 Service = "cloudkms.googleapis.com",
         ///             },
-        ///             Bindings = 
+        ///         },
+        ///         Bindings = new[]
+        ///         {
+        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
         ///             {
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+        ///                 Members = new[]
         ///                 {
-        ///                     Members = 
-        ///                     {
-        ///                         "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-        ///                     },
-        ///                     Role = "roles/compute.instanceAdmin",
+        ///                     "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
         ///                 },
-        ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
-        ///                 {
-        ///                     Members = 
-        ///                     {
-        ///                         "user:alice@gmail.com",
-        ///                     },
-        ///                     Role = "roles/storage.objectViewer",
-        ///                 },
+        ///                 Role = "roles/compute.instanceAdmin",
         ///             },
-        ///         }));
-        ///     }
+        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+        ///             {
+        ///                 Members = new[]
+        ///                 {
+        ///                     "user:alice@gmail.com",
+        ///                 },
+        ///                 Role = "roles/storage.objectViewer",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// This data source is used to define IAM policies to apply to other resources.
@@ -161,7 +157,7 @@ namespace Pulumi.Gcp.Organizations
     }
 
 
-    public sealed class GetIAMPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetIAMPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("auditConfigs")]
         private List<Inputs.GetIAMPolicyAuditConfigArgs>? _auditConfigs;
@@ -192,9 +188,10 @@ namespace Pulumi.Gcp.Organizations
         public GetIAMPolicyArgs()
         {
         }
+        public static new GetIAMPolicyArgs Empty => new GetIAMPolicyArgs();
     }
 
-    public sealed class GetIAMPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIAMPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GetIAMPolicyAuditConfigInputArgs>? _auditConfigs;
@@ -225,6 +222,7 @@ namespace Pulumi.Gcp.Organizations
         public GetIAMPolicyInvokeArgs()
         {
         }
+        public static new GetIAMPolicyInvokeArgs Empty => new GetIAMPolicyInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks.Inputs
 {
 
-    public sealed class InstanceAcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Count of cores of this accelerator.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public InstanceAcceleratorConfigArgs()
         {
         }
+        public static new InstanceAcceleratorConfigArgs Empty => new InstanceAcceleratorConfigArgs();
     }
 }

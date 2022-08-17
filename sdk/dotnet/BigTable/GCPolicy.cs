@@ -17,125 +17,124 @@ namespace Pulumi.Gcp.BigTable
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "tf-instance-cluster",
-    ///                     NumNodes = 3,
-    ///                     StorageType = "HDD",
-    ///                 },
+    ///                 ClusterId = "tf-instance-cluster",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
     ///             },
-    ///         });
-    ///         var table = new Gcp.BigTable.Table("table", new Gcp.BigTable.TableArgs
-    ///         {
-    ///             InstanceName = instance.Name,
-    ///             ColumnFamilies = 
-    ///             {
-    ///                 new Gcp.BigTable.Inputs.TableColumnFamilyArgs
-    ///                 {
-    ///                     Family = "name",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var policy = new Gcp.BigTable.GCPolicy("policy", new Gcp.BigTable.GCPolicyArgs
-    ///         {
-    ///             InstanceName = instance.Name,
-    ///             Table = table.Name,
-    ///             ColumnFamily = "name",
-    ///             MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
-    ///             {
-    ///                 Duration = "168h",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var table = new Gcp.BigTable.Table("table", new()
+    ///     {
+    ///         InstanceName = instance.Name,
+    ///         ColumnFamilies = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "name",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigTable.GCPolicy("policy", new()
+    ///     {
+    ///         InstanceName = instance.Name,
+    ///         Table = table.Name,
+    ///         ColumnFamily = "name",
+    ///         MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
+    ///         {
+    ///             Duration = "168h",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var policy = new Gcp.BigTable.GCPolicy("policy", new()
     ///     {
-    ///         var policy = new Gcp.BigTable.GCPolicy("policy", new Gcp.BigTable.GCPolicyArgs
+    ///         InstanceName = google_bigtable_instance.Instance.Name,
+    ///         Table = google_bigtable_table.Table.Name,
+    ///         ColumnFamily = "name",
+    ///         Mode = "UNION",
+    ///         MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
     ///         {
-    ///             InstanceName = google_bigtable_instance.Instance.Name,
-    ///             Table = google_bigtable_table.Table.Name,
-    ///             ColumnFamily = "name",
-    ///             Mode = "UNION",
-    ///             MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
+    ///             Duration = "168h",
+    ///         },
+    ///         MaxVersions = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.GCPolicyMaxVersionArgs
     ///             {
-    ///                 Duration = "168h",
+    ///                 Number = 10,
     ///             },
-    ///             MaxVersions = 
-    ///             {
-    ///                 new Gcp.BigTable.Inputs.GCPolicyMaxVersionArgs
-    ///                 {
-    ///                     Number = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// For complex, nested policies, an optional `gc_rules` field are supported. This field
     /// conflicts with `mode`, `max_age` and `max_version`. This field is a serialized JSON
     /// string. Example:
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
     ///     {
-    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         Clusters = new[]
     ///         {
-    ///             Clusters = 
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///                 {
-    ///                     ClusterId = "cid",
-    ///                     Zone = "us-central1-b",
-    ///                 },
+    ///                 ClusterId = "cid",
+    ///                 Zone = "us-central1-b",
     ///             },
-    ///             InstanceType = "DEVELOPMENT",
-    ///             DeletionProtection = false,
-    ///         });
-    ///         var table = new Gcp.BigTable.Table("table", new Gcp.BigTable.TableArgs
+    ///         },
+    ///         InstanceType = "DEVELOPMENT",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var table = new Gcp.BigTable.Table("table", new()
+    ///     {
+    ///         InstanceName = instance.Id,
+    ///         ColumnFamilies = new[]
     ///         {
-    ///             InstanceName = instance.Id,
-    ///             ColumnFamilies = 
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.TableColumnFamilyArgs
-    ///                 {
-    ///                     Family = "cf1",
-    ///                 },
+    ///                 Family = "cf1",
     ///             },
-    ///         });
-    ///         var policy = new Gcp.BigTable.GCPolicy("policy", new Gcp.BigTable.GCPolicyArgs
-    ///         {
-    ///             InstanceName = instance.Id,
-    ///             Table = table.Name,
-    ///             ColumnFamily = "cf1",
-    ///             GcRules = @"{
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigTable.GCPolicy("policy", new()
+    ///     {
+    ///         InstanceName = instance.Id,
+    ///         Table = table.Name,
+    ///         ColumnFamily = "cf1",
+    ///         GcRules = @"{
     ///   ""mode"": ""union"",
     ///   ""rules"": [
     ///     {
@@ -155,22 +154,18 @@ namespace Pulumi.Gcp.BigTable
     ///   ]
     /// }
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// This is equivalent to running the following `cbt` command:
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -178,7 +173,7 @@ namespace Pulumi.Gcp.BigTable
     /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:bigtable/gCPolicy:GCPolicy")]
-    public partial class GCPolicy : Pulumi.CustomResource
+    public partial class GCPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the column family.
@@ -272,7 +267,7 @@ namespace Pulumi.Gcp.BigTable
         }
     }
 
-    public sealed class GCPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GCPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the column family.
@@ -331,9 +326,10 @@ namespace Pulumi.Gcp.BigTable
         public GCPolicyArgs()
         {
         }
+        public static new GCPolicyArgs Empty => new GCPolicyArgs();
     }
 
-    public sealed class GCPolicyState : Pulumi.ResourceArgs
+    public sealed class GCPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the column family.
@@ -392,5 +388,6 @@ namespace Pulumi.Gcp.BigTable
         public GCPolicyState()
         {
         }
+        public static new GCPolicyState Empty => new GCPolicyState();
     }
 }

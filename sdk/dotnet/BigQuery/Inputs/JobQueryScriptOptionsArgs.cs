@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class JobQueryScriptOptionsArgs : Pulumi.ResourceArgs
+    public sealed class JobQueryScriptOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines which statement in the script represents the "key result",
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public JobQueryScriptOptionsArgs()
         {
         }
+        public static new JobQueryScriptOptionsArgs Empty => new JobQueryScriptOptionsArgs();
     }
 }

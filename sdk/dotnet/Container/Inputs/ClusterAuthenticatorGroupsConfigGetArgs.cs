@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterAuthenticatorGroupsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAuthenticatorGroupsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterAuthenticatorGroupsConfigGetArgs()
         {
         }
+        public static new ClusterAuthenticatorGroupsConfigGetArgs Empty => new ClusterAuthenticatorGroupsConfigGetArgs();
     }
 }

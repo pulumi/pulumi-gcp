@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class DomainMappingMetadataGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingMetadataGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -90,5 +90,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public DomainMappingMetadataGetArgs()
         {
         }
+        public static new DomainMappingMetadataGetArgs Empty => new DomainMappingMetadataGetArgs();
     }
 }

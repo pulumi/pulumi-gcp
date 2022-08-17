@@ -27,6 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureMembership{}
 	case "gcp:gkehub/membership:Membership":
 		r = &Membership{}
+	case "gcp:gkehub/membershipIamBinding:MembershipIamBinding":
+		r = &MembershipIamBinding{}
+	case "gcp:gkehub/membershipIamMember:MembershipIamMember":
+		r = &MembershipIamMember{}
+	case "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy":
+		r = &MembershipIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +59,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkehub/membership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/membershipIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/membershipIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/membershipIamPolicy",
 		&module{version},
 	)
 }

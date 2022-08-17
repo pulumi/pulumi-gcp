@@ -18,7 +18,7 @@ type AuthorityAccessUrl struct {
 // AuthorityAccessUrlInput is an input type that accepts AuthorityAccessUrlArgs and AuthorityAccessUrlOutput values.
 // You can construct a concrete instance of `AuthorityAccessUrlInput` via:
 //
-//          AuthorityAccessUrlArgs{...}
+//	AuthorityAccessUrlArgs{...}
 type AuthorityAccessUrlInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i AuthorityAccessUrlArgs) ToAuthorityAccessUrlOutputWithContext(ctx contex
 // AuthorityAccessUrlArrayInput is an input type that accepts AuthorityAccessUrlArray and AuthorityAccessUrlArrayOutput values.
 // You can construct a concrete instance of `AuthorityAccessUrlArrayInput` via:
 //
-//          AuthorityAccessUrlArray{ AuthorityAccessUrlArgs{...} }
+//	AuthorityAccessUrlArray{ AuthorityAccessUrlArgs{...} }
 type AuthorityAccessUrlArrayInput interface {
 	pulumi.Input
 
@@ -122,7 +122,7 @@ type AuthorityConfig struct {
 // AuthorityConfigInput is an input type that accepts AuthorityConfigArgs and AuthorityConfigOutput values.
 // You can construct a concrete instance of `AuthorityConfigInput` via:
 //
-//          AuthorityConfigArgs{...}
+//	AuthorityConfigArgs{...}
 type AuthorityConfigInput interface {
 	pulumi.Input
 
@@ -162,11 +162,11 @@ func (i AuthorityConfigArgs) ToAuthorityConfigPtrOutputWithContext(ctx context.C
 // AuthorityConfigPtrInput is an input type that accepts AuthorityConfigArgs, AuthorityConfigPtr and AuthorityConfigPtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigPtrInput` via:
 //
-//          AuthorityConfigArgs{...}
+//	        AuthorityConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigPtrInput interface {
 	pulumi.Input
 
@@ -286,7 +286,7 @@ type AuthorityConfigSubjectConfig struct {
 // AuthorityConfigSubjectConfigInput is an input type that accepts AuthorityConfigSubjectConfigArgs and AuthorityConfigSubjectConfigOutput values.
 // You can construct a concrete instance of `AuthorityConfigSubjectConfigInput` via:
 //
-//          AuthorityConfigSubjectConfigArgs{...}
+//	AuthorityConfigSubjectConfigArgs{...}
 type AuthorityConfigSubjectConfigInput interface {
 	pulumi.Input
 
@@ -326,11 +326,11 @@ func (i AuthorityConfigSubjectConfigArgs) ToAuthorityConfigSubjectConfigPtrOutpu
 // AuthorityConfigSubjectConfigPtrInput is an input type that accepts AuthorityConfigSubjectConfigArgs, AuthorityConfigSubjectConfigPtr and AuthorityConfigSubjectConfigPtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigSubjectConfigPtrInput` via:
 //
-//          AuthorityConfigSubjectConfigArgs{...}
+//	        AuthorityConfigSubjectConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigSubjectConfigPtrInput interface {
 	pulumi.Input
 
@@ -462,7 +462,7 @@ type AuthorityConfigSubjectConfigSubject struct {
 // AuthorityConfigSubjectConfigSubjectInput is an input type that accepts AuthorityConfigSubjectConfigSubjectArgs and AuthorityConfigSubjectConfigSubjectOutput values.
 // You can construct a concrete instance of `AuthorityConfigSubjectConfigSubjectInput` via:
 //
-//          AuthorityConfigSubjectConfigSubjectArgs{...}
+//	AuthorityConfigSubjectConfigSubjectArgs{...}
 type AuthorityConfigSubjectConfigSubjectInput interface {
 	pulumi.Input
 
@@ -512,11 +512,11 @@ func (i AuthorityConfigSubjectConfigSubjectArgs) ToAuthorityConfigSubjectConfigS
 // AuthorityConfigSubjectConfigSubjectPtrInput is an input type that accepts AuthorityConfigSubjectConfigSubjectArgs, AuthorityConfigSubjectConfigSubjectPtr and AuthorityConfigSubjectConfigSubjectPtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigSubjectConfigSubjectPtrInput` via:
 //
-//          AuthorityConfigSubjectConfigSubjectArgs{...}
+//	        AuthorityConfigSubjectConfigSubjectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigSubjectConfigSubjectPtrInput interface {
 	pulumi.Input
 
@@ -724,7 +724,7 @@ type AuthorityConfigSubjectConfigSubjectAltName struct {
 // AuthorityConfigSubjectConfigSubjectAltNameInput is an input type that accepts AuthorityConfigSubjectConfigSubjectAltNameArgs and AuthorityConfigSubjectConfigSubjectAltNameOutput values.
 // You can construct a concrete instance of `AuthorityConfigSubjectConfigSubjectAltNameInput` via:
 //
-//          AuthorityConfigSubjectConfigSubjectAltNameArgs{...}
+//	AuthorityConfigSubjectConfigSubjectAltNameArgs{...}
 type AuthorityConfigSubjectConfigSubjectAltNameInput interface {
 	pulumi.Input
 
@@ -766,11 +766,11 @@ func (i AuthorityConfigSubjectConfigSubjectAltNameArgs) ToAuthorityConfigSubject
 // AuthorityConfigSubjectConfigSubjectAltNamePtrInput is an input type that accepts AuthorityConfigSubjectConfigSubjectAltNameArgs, AuthorityConfigSubjectConfigSubjectAltNamePtr and AuthorityConfigSubjectConfigSubjectAltNamePtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigSubjectConfigSubjectAltNamePtrInput` via:
 //
-//          AuthorityConfigSubjectConfigSubjectAltNameArgs{...}
+//	        AuthorityConfigSubjectConfigSubjectAltNameArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigSubjectConfigSubjectAltNamePtrInput interface {
 	pulumi.Input
 
@@ -925,7 +925,7 @@ type AuthorityConfigX509Config struct {
 // AuthorityConfigX509ConfigInput is an input type that accepts AuthorityConfigX509ConfigArgs and AuthorityConfigX509ConfigOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigInput` via:
 //
-//          AuthorityConfigX509ConfigArgs{...}
+//	AuthorityConfigX509ConfigArgs{...}
 type AuthorityConfigX509ConfigInput interface {
 	pulumi.Input
 
@@ -974,11 +974,11 @@ func (i AuthorityConfigX509ConfigArgs) ToAuthorityConfigX509ConfigPtrOutputWithC
 // AuthorityConfigX509ConfigPtrInput is an input type that accepts AuthorityConfigX509ConfigArgs, AuthorityConfigX509ConfigPtr and AuthorityConfigX509ConfigPtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigPtrInput` via:
 //
-//          AuthorityConfigX509ConfigArgs{...}
+//	        AuthorityConfigX509ConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigX509ConfigPtrInput interface {
 	pulumi.Input
 
@@ -1153,7 +1153,7 @@ type AuthorityConfigX509ConfigAdditionalExtension struct {
 // AuthorityConfigX509ConfigAdditionalExtensionInput is an input type that accepts AuthorityConfigX509ConfigAdditionalExtensionArgs and AuthorityConfigX509ConfigAdditionalExtensionOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigAdditionalExtensionInput` via:
 //
-//          AuthorityConfigX509ConfigAdditionalExtensionArgs{...}
+//	AuthorityConfigX509ConfigAdditionalExtensionArgs{...}
 type AuthorityConfigX509ConfigAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -1187,7 +1187,7 @@ func (i AuthorityConfigX509ConfigAdditionalExtensionArgs) ToAuthorityConfigX509C
 // AuthorityConfigX509ConfigAdditionalExtensionArrayInput is an input type that accepts AuthorityConfigX509ConfigAdditionalExtensionArray and AuthorityConfigX509ConfigAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigAdditionalExtensionArrayInput` via:
 //
-//          AuthorityConfigX509ConfigAdditionalExtensionArray{ AuthorityConfigX509ConfigAdditionalExtensionArgs{...} }
+//	AuthorityConfigX509ConfigAdditionalExtensionArray{ AuthorityConfigX509ConfigAdditionalExtensionArgs{...} }
 type AuthorityConfigX509ConfigAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -1270,7 +1270,7 @@ type AuthorityConfigX509ConfigAdditionalExtensionObjectId struct {
 // AuthorityConfigX509ConfigAdditionalExtensionObjectIdInput is an input type that accepts AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs and AuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigAdditionalExtensionObjectIdInput` via:
 //
-//          AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
+//	AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
 type AuthorityConfigX509ConfigAdditionalExtensionObjectIdInput interface {
 	pulumi.Input
 
@@ -1332,7 +1332,7 @@ type AuthorityConfigX509ConfigCaOptions struct {
 // AuthorityConfigX509ConfigCaOptionsInput is an input type that accepts AuthorityConfigX509ConfigCaOptionsArgs and AuthorityConfigX509ConfigCaOptionsOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigCaOptionsInput` via:
 //
-//          AuthorityConfigX509ConfigCaOptionsArgs{...}
+//	AuthorityConfigX509ConfigCaOptionsArgs{...}
 type AuthorityConfigX509ConfigCaOptionsInput interface {
 	pulumi.Input
 
@@ -1378,11 +1378,11 @@ func (i AuthorityConfigX509ConfigCaOptionsArgs) ToAuthorityConfigX509ConfigCaOpt
 // AuthorityConfigX509ConfigCaOptionsPtrInput is an input type that accepts AuthorityConfigX509ConfigCaOptionsArgs, AuthorityConfigX509ConfigCaOptionsPtr and AuthorityConfigX509ConfigCaOptionsPtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigCaOptionsPtrInput` via:
 //
-//          AuthorityConfigX509ConfigCaOptionsArgs{...}
+//	        AuthorityConfigX509ConfigCaOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigX509ConfigCaOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1539,7 +1539,7 @@ type AuthorityConfigX509ConfigKeyUsage struct {
 // AuthorityConfigX509ConfigKeyUsageInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageArgs and AuthorityConfigX509ConfigKeyUsageOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageArgs{...}
+//	AuthorityConfigX509ConfigKeyUsageArgs{...}
 type AuthorityConfigX509ConfigKeyUsageInput interface {
 	pulumi.Input
 
@@ -1582,11 +1582,11 @@ func (i AuthorityConfigX509ConfigKeyUsageArgs) ToAuthorityConfigX509ConfigKeyUsa
 // AuthorityConfigX509ConfigKeyUsagePtrInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageArgs, AuthorityConfigX509ConfigKeyUsagePtr and AuthorityConfigX509ConfigKeyUsagePtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsagePtrInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageArgs{...}
+//	        AuthorityConfigX509ConfigKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigX509ConfigKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -1741,7 +1741,7 @@ type AuthorityConfigX509ConfigKeyUsageBaseKeyUsage struct {
 // AuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs and AuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
+//	AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
 type AuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -1793,11 +1793,11 @@ func (i AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToAuthorityConfigX509
 // AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs, AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtr and AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
+//	        AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigX509ConfigKeyUsageBaseKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -2024,7 +2024,7 @@ type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage struct {
 // AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs and AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
+//	AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
 type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -2070,11 +2070,11 @@ func (i AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToAuthorityConfig
 // AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs, AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtr and AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
+//	        AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -2246,7 +2246,7 @@ type AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage struct {
 // AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs and AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
 type AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -2274,7 +2274,7 @@ func (i AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs) ToAuthorit
 // AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray and AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -2343,7 +2343,7 @@ type AuthorityConfigX509ConfigPolicyId struct {
 // AuthorityConfigX509ConfigPolicyIdInput is an input type that accepts AuthorityConfigX509ConfigPolicyIdArgs and AuthorityConfigX509ConfigPolicyIdOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigPolicyIdInput` via:
 //
-//          AuthorityConfigX509ConfigPolicyIdArgs{...}
+//	AuthorityConfigX509ConfigPolicyIdArgs{...}
 type AuthorityConfigX509ConfigPolicyIdInput interface {
 	pulumi.Input
 
@@ -2371,7 +2371,7 @@ func (i AuthorityConfigX509ConfigPolicyIdArgs) ToAuthorityConfigX509ConfigPolicy
 // AuthorityConfigX509ConfigPolicyIdArrayInput is an input type that accepts AuthorityConfigX509ConfigPolicyIdArray and AuthorityConfigX509ConfigPolicyIdArrayOutput values.
 // You can construct a concrete instance of `AuthorityConfigX509ConfigPolicyIdArrayInput` via:
 //
-//          AuthorityConfigX509ConfigPolicyIdArray{ AuthorityConfigX509ConfigPolicyIdArgs{...} }
+//	AuthorityConfigX509ConfigPolicyIdArray{ AuthorityConfigX509ConfigPolicyIdArgs{...} }
 type AuthorityConfigX509ConfigPolicyIdArrayInput interface {
 	pulumi.Input
 
@@ -2445,7 +2445,7 @@ type AuthorityKeySpec struct {
 // AuthorityKeySpecInput is an input type that accepts AuthorityKeySpecArgs and AuthorityKeySpecOutput values.
 // You can construct a concrete instance of `AuthorityKeySpecInput` via:
 //
-//          AuthorityKeySpecArgs{...}
+//	AuthorityKeySpecArgs{...}
 type AuthorityKeySpecInput interface {
 	pulumi.Input
 
@@ -2486,11 +2486,11 @@ func (i AuthorityKeySpecArgs) ToAuthorityKeySpecPtrOutputWithContext(ctx context
 // AuthorityKeySpecPtrInput is an input type that accepts AuthorityKeySpecArgs, AuthorityKeySpecPtr and AuthorityKeySpecPtrOutput values.
 // You can construct a concrete instance of `AuthorityKeySpecPtrInput` via:
 //
-//          AuthorityKeySpecArgs{...}
+//	        AuthorityKeySpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthorityKeySpecPtrInput interface {
 	pulumi.Input
 
@@ -2615,7 +2615,7 @@ type AuthoritySubordinateConfig struct {
 // AuthoritySubordinateConfigInput is an input type that accepts AuthoritySubordinateConfigArgs and AuthoritySubordinateConfigOutput values.
 // You can construct a concrete instance of `AuthoritySubordinateConfigInput` via:
 //
-//          AuthoritySubordinateConfigArgs{...}
+//	AuthoritySubordinateConfigArgs{...}
 type AuthoritySubordinateConfigInput interface {
 	pulumi.Input
 
@@ -2658,11 +2658,11 @@ func (i AuthoritySubordinateConfigArgs) ToAuthoritySubordinateConfigPtrOutputWit
 // AuthoritySubordinateConfigPtrInput is an input type that accepts AuthoritySubordinateConfigArgs, AuthoritySubordinateConfigPtr and AuthoritySubordinateConfigPtrOutput values.
 // You can construct a concrete instance of `AuthoritySubordinateConfigPtrInput` via:
 //
-//          AuthoritySubordinateConfigArgs{...}
+//	        AuthoritySubordinateConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthoritySubordinateConfigPtrInput interface {
 	pulumi.Input
 
@@ -2784,7 +2784,7 @@ type AuthoritySubordinateConfigPemIssuerChain struct {
 // AuthoritySubordinateConfigPemIssuerChainInput is an input type that accepts AuthoritySubordinateConfigPemIssuerChainArgs and AuthoritySubordinateConfigPemIssuerChainOutput values.
 // You can construct a concrete instance of `AuthoritySubordinateConfigPemIssuerChainInput` via:
 //
-//          AuthoritySubordinateConfigPemIssuerChainArgs{...}
+//	AuthoritySubordinateConfigPemIssuerChainArgs{...}
 type AuthoritySubordinateConfigPemIssuerChainInput interface {
 	pulumi.Input
 
@@ -2820,11 +2820,11 @@ func (i AuthoritySubordinateConfigPemIssuerChainArgs) ToAuthoritySubordinateConf
 // AuthoritySubordinateConfigPemIssuerChainPtrInput is an input type that accepts AuthoritySubordinateConfigPemIssuerChainArgs, AuthoritySubordinateConfigPemIssuerChainPtr and AuthoritySubordinateConfigPemIssuerChainPtrOutput values.
 // You can construct a concrete instance of `AuthoritySubordinateConfigPemIssuerChainPtrInput` via:
 //
-//          AuthoritySubordinateConfigPemIssuerChainArgs{...}
+//	        AuthoritySubordinateConfigPemIssuerChainArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthoritySubordinateConfigPemIssuerChainPtrInput interface {
 	pulumi.Input
 
@@ -2925,7 +2925,7 @@ type CaPoolIamBindingCondition struct {
 // CaPoolIamBindingConditionInput is an input type that accepts CaPoolIamBindingConditionArgs and CaPoolIamBindingConditionOutput values.
 // You can construct a concrete instance of `CaPoolIamBindingConditionInput` via:
 //
-//          CaPoolIamBindingConditionArgs{...}
+//	CaPoolIamBindingConditionArgs{...}
 type CaPoolIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -2965,11 +2965,11 @@ func (i CaPoolIamBindingConditionArgs) ToCaPoolIamBindingConditionPtrOutputWithC
 // CaPoolIamBindingConditionPtrInput is an input type that accepts CaPoolIamBindingConditionArgs, CaPoolIamBindingConditionPtr and CaPoolIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `CaPoolIamBindingConditionPtrInput` via:
 //
-//          CaPoolIamBindingConditionArgs{...}
+//	        CaPoolIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -3100,7 +3100,7 @@ type CaPoolIamMemberCondition struct {
 // CaPoolIamMemberConditionInput is an input type that accepts CaPoolIamMemberConditionArgs and CaPoolIamMemberConditionOutput values.
 // You can construct a concrete instance of `CaPoolIamMemberConditionInput` via:
 //
-//          CaPoolIamMemberConditionArgs{...}
+//	CaPoolIamMemberConditionArgs{...}
 type CaPoolIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -3140,11 +3140,11 @@ func (i CaPoolIamMemberConditionArgs) ToCaPoolIamMemberConditionPtrOutputWithCon
 // CaPoolIamMemberConditionPtrInput is an input type that accepts CaPoolIamMemberConditionArgs, CaPoolIamMemberConditionPtr and CaPoolIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `CaPoolIamMemberConditionPtrInput` via:
 //
-//          CaPoolIamMemberConditionArgs{...}
+//	        CaPoolIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -3289,7 +3289,7 @@ type CaPoolIssuancePolicy struct {
 // CaPoolIssuancePolicyInput is an input type that accepts CaPoolIssuancePolicyArgs and CaPoolIssuancePolicyOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyInput` via:
 //
-//          CaPoolIssuancePolicyArgs{...}
+//	CaPoolIssuancePolicyArgs{...}
 type CaPoolIssuancePolicyInput interface {
 	pulumi.Input
 
@@ -3343,11 +3343,11 @@ func (i CaPoolIssuancePolicyArgs) ToCaPoolIssuancePolicyPtrOutputWithContext(ctx
 // CaPoolIssuancePolicyPtrInput is an input type that accepts CaPoolIssuancePolicyArgs, CaPoolIssuancePolicyPtr and CaPoolIssuancePolicyPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyPtrInput` via:
 //
-//          CaPoolIssuancePolicyArgs{...}
+//	        CaPoolIssuancePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyPtrInput interface {
 	pulumi.Input
 
@@ -3526,7 +3526,7 @@ type CaPoolIssuancePolicyAllowedIssuanceModes struct {
 // CaPoolIssuancePolicyAllowedIssuanceModesInput is an input type that accepts CaPoolIssuancePolicyAllowedIssuanceModesArgs and CaPoolIssuancePolicyAllowedIssuanceModesOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedIssuanceModesInput` via:
 //
-//          CaPoolIssuancePolicyAllowedIssuanceModesArgs{...}
+//	CaPoolIssuancePolicyAllowedIssuanceModesArgs{...}
 type CaPoolIssuancePolicyAllowedIssuanceModesInput interface {
 	pulumi.Input
 
@@ -3564,11 +3564,11 @@ func (i CaPoolIssuancePolicyAllowedIssuanceModesArgs) ToCaPoolIssuancePolicyAllo
 // CaPoolIssuancePolicyAllowedIssuanceModesPtrInput is an input type that accepts CaPoolIssuancePolicyAllowedIssuanceModesArgs, CaPoolIssuancePolicyAllowedIssuanceModesPtr and CaPoolIssuancePolicyAllowedIssuanceModesPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedIssuanceModesPtrInput` via:
 //
-//          CaPoolIssuancePolicyAllowedIssuanceModesArgs{...}
+//	        CaPoolIssuancePolicyAllowedIssuanceModesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyAllowedIssuanceModesPtrInput interface {
 	pulumi.Input
 
@@ -3684,7 +3684,7 @@ type CaPoolIssuancePolicyAllowedKeyType struct {
 // CaPoolIssuancePolicyAllowedKeyTypeInput is an input type that accepts CaPoolIssuancePolicyAllowedKeyTypeArgs and CaPoolIssuancePolicyAllowedKeyTypeOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedKeyTypeInput` via:
 //
-//          CaPoolIssuancePolicyAllowedKeyTypeArgs{...}
+//	CaPoolIssuancePolicyAllowedKeyTypeArgs{...}
 type CaPoolIssuancePolicyAllowedKeyTypeInput interface {
 	pulumi.Input
 
@@ -3716,7 +3716,7 @@ func (i CaPoolIssuancePolicyAllowedKeyTypeArgs) ToCaPoolIssuancePolicyAllowedKey
 // CaPoolIssuancePolicyAllowedKeyTypeArrayInput is an input type that accepts CaPoolIssuancePolicyAllowedKeyTypeArray and CaPoolIssuancePolicyAllowedKeyTypeArrayOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedKeyTypeArrayInput` via:
 //
-//          CaPoolIssuancePolicyAllowedKeyTypeArray{ CaPoolIssuancePolicyAllowedKeyTypeArgs{...} }
+//	CaPoolIssuancePolicyAllowedKeyTypeArray{ CaPoolIssuancePolicyAllowedKeyTypeArgs{...} }
 type CaPoolIssuancePolicyAllowedKeyTypeArrayInput interface {
 	pulumi.Input
 
@@ -3795,7 +3795,7 @@ type CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve struct {
 // CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveInput is an input type that accepts CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs and CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveInput` via:
 //
-//          CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs{...}
+//	CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs{...}
 type CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveInput interface {
 	pulumi.Input
 
@@ -3832,11 +3832,11 @@ func (i CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs) ToCaPoolIssuancePol
 // CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrInput is an input type that accepts CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs, CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtr and CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrInput` via:
 //
-//          CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs{...}
+//	        CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrInput interface {
 	pulumi.Input
 
@@ -3939,7 +3939,7 @@ type CaPoolIssuancePolicyAllowedKeyTypeRsa struct {
 // CaPoolIssuancePolicyAllowedKeyTypeRsaInput is an input type that accepts CaPoolIssuancePolicyAllowedKeyTypeRsaArgs and CaPoolIssuancePolicyAllowedKeyTypeRsaOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedKeyTypeRsaInput` via:
 //
-//          CaPoolIssuancePolicyAllowedKeyTypeRsaArgs{...}
+//	CaPoolIssuancePolicyAllowedKeyTypeRsaArgs{...}
 type CaPoolIssuancePolicyAllowedKeyTypeRsaInput interface {
 	pulumi.Input
 
@@ -3979,11 +3979,11 @@ func (i CaPoolIssuancePolicyAllowedKeyTypeRsaArgs) ToCaPoolIssuancePolicyAllowed
 // CaPoolIssuancePolicyAllowedKeyTypeRsaPtrInput is an input type that accepts CaPoolIssuancePolicyAllowedKeyTypeRsaArgs, CaPoolIssuancePolicyAllowedKeyTypeRsaPtr and CaPoolIssuancePolicyAllowedKeyTypeRsaPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyAllowedKeyTypeRsaPtrInput` via:
 //
-//          CaPoolIssuancePolicyAllowedKeyTypeRsaArgs{...}
+//	        CaPoolIssuancePolicyAllowedKeyTypeRsaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyAllowedKeyTypeRsaPtrInput interface {
 	pulumi.Input
 
@@ -4112,7 +4112,7 @@ type CaPoolIssuancePolicyBaselineValues struct {
 // CaPoolIssuancePolicyBaselineValuesInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesArgs and CaPoolIssuancePolicyBaselineValuesOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesArgs{...}
 type CaPoolIssuancePolicyBaselineValuesInput interface {
 	pulumi.Input
 
@@ -4161,11 +4161,11 @@ func (i CaPoolIssuancePolicyBaselineValuesArgs) ToCaPoolIssuancePolicyBaselineVa
 // CaPoolIssuancePolicyBaselineValuesPtrInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesArgs, CaPoolIssuancePolicyBaselineValuesPtr and CaPoolIssuancePolicyBaselineValuesPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesPtrInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesArgs{...}
+//	        CaPoolIssuancePolicyBaselineValuesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyBaselineValuesPtrInput interface {
 	pulumi.Input
 
@@ -4346,7 +4346,7 @@ type CaPoolIssuancePolicyBaselineValuesAdditionalExtension struct {
 // CaPoolIssuancePolicyBaselineValuesAdditionalExtensionInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs and CaPoolIssuancePolicyBaselineValuesAdditionalExtensionOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesAdditionalExtensionInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs{...}
 type CaPoolIssuancePolicyBaselineValuesAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -4380,7 +4380,7 @@ func (i CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs) ToCaPoolIssua
 // CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrayInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArray and CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrayInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArray{ CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs{...} }
+//	CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArray{ CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs{...} }
 type CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -4463,7 +4463,7 @@ type CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId struct {
 // CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs and CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs{...}
 type CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdInput interface {
 	pulumi.Input
 
@@ -4525,7 +4525,7 @@ type CaPoolIssuancePolicyBaselineValuesCaOptions struct {
 // CaPoolIssuancePolicyBaselineValuesCaOptionsInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesCaOptionsArgs and CaPoolIssuancePolicyBaselineValuesCaOptionsOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesCaOptionsInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{...}
 type CaPoolIssuancePolicyBaselineValuesCaOptionsInput interface {
 	pulumi.Input
 
@@ -4571,11 +4571,11 @@ func (i CaPoolIssuancePolicyBaselineValuesCaOptionsArgs) ToCaPoolIssuancePolicyB
 // CaPoolIssuancePolicyBaselineValuesCaOptionsPtrInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesCaOptionsArgs, CaPoolIssuancePolicyBaselineValuesCaOptionsPtr and CaPoolIssuancePolicyBaselineValuesCaOptionsPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesCaOptionsPtrInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{...}
+//	        CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyBaselineValuesCaOptionsPtrInput interface {
 	pulumi.Input
 
@@ -4732,7 +4732,7 @@ type CaPoolIssuancePolicyBaselineValuesKeyUsage struct {
 // CaPoolIssuancePolicyBaselineValuesKeyUsageInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageArgs and CaPoolIssuancePolicyBaselineValuesKeyUsageOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{...}
 type CaPoolIssuancePolicyBaselineValuesKeyUsageInput interface {
 	pulumi.Input
 
@@ -4775,11 +4775,11 @@ func (i CaPoolIssuancePolicyBaselineValuesKeyUsageArgs) ToCaPoolIssuancePolicyBa
 // CaPoolIssuancePolicyBaselineValuesKeyUsagePtrInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageArgs, CaPoolIssuancePolicyBaselineValuesKeyUsagePtr and CaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsagePtrInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{...}
+//	        CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyBaselineValuesKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -4934,7 +4934,7 @@ type CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage struct {
 // CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs and CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{...}
 type CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -4986,11 +4986,11 @@ func (i CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs) ToCaPoolIssu
 // CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs, CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtr and CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{...}
+//	        CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -5217,7 +5217,7 @@ type CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage struct {
 // CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs and CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{...}
 type CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -5263,11 +5263,11 @@ func (i CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs) ToCaPool
 // CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs, CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtr and CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{...}
+//	        CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -5439,7 +5439,7 @@ type CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage struct {
 // CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs and CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs{...}
 type CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -5467,7 +5467,7 @@ func (i CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs) T
 // CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArray and CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArray{ CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArray{ CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -5538,7 +5538,7 @@ type CaPoolIssuancePolicyBaselineValuesPolicyId struct {
 // CaPoolIssuancePolicyBaselineValuesPolicyIdInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesPolicyIdArgs and CaPoolIssuancePolicyBaselineValuesPolicyIdOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesPolicyIdInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{...}
+//	CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{...}
 type CaPoolIssuancePolicyBaselineValuesPolicyIdInput interface {
 	pulumi.Input
 
@@ -5566,7 +5566,7 @@ func (i CaPoolIssuancePolicyBaselineValuesPolicyIdArgs) ToCaPoolIssuancePolicyBa
 // CaPoolIssuancePolicyBaselineValuesPolicyIdArrayInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesPolicyIdArray and CaPoolIssuancePolicyBaselineValuesPolicyIdArrayOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesPolicyIdArrayInput` via:
 //
-//          CaPoolIssuancePolicyBaselineValuesPolicyIdArray{ CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{...} }
+//	CaPoolIssuancePolicyBaselineValuesPolicyIdArray{ CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{...} }
 type CaPoolIssuancePolicyBaselineValuesPolicyIdArrayInput interface {
 	pulumi.Input
 
@@ -5644,7 +5644,7 @@ type CaPoolIssuancePolicyIdentityConstraints struct {
 // CaPoolIssuancePolicyIdentityConstraintsInput is an input type that accepts CaPoolIssuancePolicyIdentityConstraintsArgs and CaPoolIssuancePolicyIdentityConstraintsOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyIdentityConstraintsInput` via:
 //
-//          CaPoolIssuancePolicyIdentityConstraintsArgs{...}
+//	CaPoolIssuancePolicyIdentityConstraintsArgs{...}
 type CaPoolIssuancePolicyIdentityConstraintsInput interface {
 	pulumi.Input
 
@@ -5689,11 +5689,11 @@ func (i CaPoolIssuancePolicyIdentityConstraintsArgs) ToCaPoolIssuancePolicyIdent
 // CaPoolIssuancePolicyIdentityConstraintsPtrInput is an input type that accepts CaPoolIssuancePolicyIdentityConstraintsArgs, CaPoolIssuancePolicyIdentityConstraintsPtr and CaPoolIssuancePolicyIdentityConstraintsPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyIdentityConstraintsPtrInput` via:
 //
-//          CaPoolIssuancePolicyIdentityConstraintsArgs{...}
+//	        CaPoolIssuancePolicyIdentityConstraintsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyIdentityConstraintsPtrInput interface {
 	pulumi.Input
 
@@ -5838,7 +5838,7 @@ type CaPoolIssuancePolicyIdentityConstraintsCelExpression struct {
 // CaPoolIssuancePolicyIdentityConstraintsCelExpressionInput is an input type that accepts CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs and CaPoolIssuancePolicyIdentityConstraintsCelExpressionOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyIdentityConstraintsCelExpressionInput` via:
 //
-//          CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{...}
+//	CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{...}
 type CaPoolIssuancePolicyIdentityConstraintsCelExpressionInput interface {
 	pulumi.Input
 
@@ -5880,11 +5880,11 @@ func (i CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs) ToCaPoolIssuan
 // CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrInput is an input type that accepts CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs, CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtr and CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput values.
 // You can construct a concrete instance of `CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrInput` via:
 //
-//          CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{...}
+//	        CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrInput interface {
 	pulumi.Input
 
@@ -6033,7 +6033,7 @@ type CaPoolPublishingOptions struct {
 // CaPoolPublishingOptionsInput is an input type that accepts CaPoolPublishingOptionsArgs and CaPoolPublishingOptionsOutput values.
 // You can construct a concrete instance of `CaPoolPublishingOptionsInput` via:
 //
-//          CaPoolPublishingOptionsArgs{...}
+//	CaPoolPublishingOptionsArgs{...}
 type CaPoolPublishingOptionsInput interface {
 	pulumi.Input
 
@@ -6076,11 +6076,11 @@ func (i CaPoolPublishingOptionsArgs) ToCaPoolPublishingOptionsPtrOutputWithConte
 // CaPoolPublishingOptionsPtrInput is an input type that accepts CaPoolPublishingOptionsArgs, CaPoolPublishingOptionsPtr and CaPoolPublishingOptionsPtrOutput values.
 // You can construct a concrete instance of `CaPoolPublishingOptionsPtrInput` via:
 //
-//          CaPoolPublishingOptionsArgs{...}
+//	        CaPoolPublishingOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaPoolPublishingOptionsPtrInput interface {
 	pulumi.Input
 
@@ -6212,7 +6212,7 @@ type CertificateCertificateDescription struct {
 // CertificateCertificateDescriptionInput is an input type that accepts CertificateCertificateDescriptionArgs and CertificateCertificateDescriptionOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionInput` via:
 //
-//          CertificateCertificateDescriptionArgs{...}
+//	CertificateCertificateDescriptionArgs{...}
 type CertificateCertificateDescriptionInput interface {
 	pulumi.Input
 
@@ -6250,7 +6250,7 @@ func (i CertificateCertificateDescriptionArgs) ToCertificateCertificateDescripti
 // CertificateCertificateDescriptionArrayInput is an input type that accepts CertificateCertificateDescriptionArray and CertificateCertificateDescriptionArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionArrayInput` via:
 //
-//          CertificateCertificateDescriptionArray{ CertificateCertificateDescriptionArgs{...} }
+//	CertificateCertificateDescriptionArray{ CertificateCertificateDescriptionArgs{...} }
 type CertificateCertificateDescriptionArrayInput interface {
 	pulumi.Input
 
@@ -6366,7 +6366,7 @@ type CertificateCertificateDescriptionAuthorityKeyId struct {
 // CertificateCertificateDescriptionAuthorityKeyIdInput is an input type that accepts CertificateCertificateDescriptionAuthorityKeyIdArgs and CertificateCertificateDescriptionAuthorityKeyIdOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionAuthorityKeyIdInput` via:
 //
-//          CertificateCertificateDescriptionAuthorityKeyIdArgs{...}
+//	CertificateCertificateDescriptionAuthorityKeyIdArgs{...}
 type CertificateCertificateDescriptionAuthorityKeyIdInput interface {
 	pulumi.Input
 
@@ -6393,7 +6393,7 @@ func (i CertificateCertificateDescriptionAuthorityKeyIdArgs) ToCertificateCertif
 // CertificateCertificateDescriptionAuthorityKeyIdArrayInput is an input type that accepts CertificateCertificateDescriptionAuthorityKeyIdArray and CertificateCertificateDescriptionAuthorityKeyIdArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionAuthorityKeyIdArrayInput` via:
 //
-//          CertificateCertificateDescriptionAuthorityKeyIdArray{ CertificateCertificateDescriptionAuthorityKeyIdArgs{...} }
+//	CertificateCertificateDescriptionAuthorityKeyIdArray{ CertificateCertificateDescriptionAuthorityKeyIdArgs{...} }
 type CertificateCertificateDescriptionAuthorityKeyIdArrayInput interface {
 	pulumi.Input
 
@@ -6460,7 +6460,7 @@ type CertificateCertificateDescriptionCertFingerprint struct {
 // CertificateCertificateDescriptionCertFingerprintInput is an input type that accepts CertificateCertificateDescriptionCertFingerprintArgs and CertificateCertificateDescriptionCertFingerprintOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionCertFingerprintInput` via:
 //
-//          CertificateCertificateDescriptionCertFingerprintArgs{...}
+//	CertificateCertificateDescriptionCertFingerprintArgs{...}
 type CertificateCertificateDescriptionCertFingerprintInput interface {
 	pulumi.Input
 
@@ -6487,7 +6487,7 @@ func (i CertificateCertificateDescriptionCertFingerprintArgs) ToCertificateCerti
 // CertificateCertificateDescriptionCertFingerprintArrayInput is an input type that accepts CertificateCertificateDescriptionCertFingerprintArray and CertificateCertificateDescriptionCertFingerprintArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionCertFingerprintArrayInput` via:
 //
-//          CertificateCertificateDescriptionCertFingerprintArray{ CertificateCertificateDescriptionCertFingerprintArgs{...} }
+//	CertificateCertificateDescriptionCertFingerprintArray{ CertificateCertificateDescriptionCertFingerprintArgs{...} }
 type CertificateCertificateDescriptionCertFingerprintArrayInput interface {
 	pulumi.Input
 
@@ -6556,7 +6556,7 @@ type CertificateCertificateDescriptionConfigValue struct {
 // CertificateCertificateDescriptionConfigValueInput is an input type that accepts CertificateCertificateDescriptionConfigValueArgs and CertificateCertificateDescriptionConfigValueOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueArgs{...}
+//	CertificateCertificateDescriptionConfigValueArgs{...}
 type CertificateCertificateDescriptionConfigValueInput interface {
 	pulumi.Input
 
@@ -6585,7 +6585,7 @@ func (i CertificateCertificateDescriptionConfigValueArgs) ToCertificateCertifica
 // CertificateCertificateDescriptionConfigValueArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueArray and CertificateCertificateDescriptionConfigValueArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueArray{ CertificateCertificateDescriptionConfigValueArgs{...} }
+//	CertificateCertificateDescriptionConfigValueArray{ CertificateCertificateDescriptionConfigValueArgs{...} }
 type CertificateCertificateDescriptionConfigValueArrayInput interface {
 	pulumi.Input
 
@@ -6664,7 +6664,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsage struct {
 // CertificateCertificateDescriptionConfigValueKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageArgs and CertificateCertificateDescriptionConfigValueKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageArgs{...}
+//	CertificateCertificateDescriptionConfigValueKeyUsageArgs{...}
 type CertificateCertificateDescriptionConfigValueKeyUsageInput interface {
 	pulumi.Input
 
@@ -6699,7 +6699,7 @@ func (i CertificateCertificateDescriptionConfigValueKeyUsageArgs) ToCertificateC
 // CertificateCertificateDescriptionConfigValueKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageArray and CertificateCertificateDescriptionConfigValueKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionConfigValueKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageArgs{...} }
 type CertificateCertificateDescriptionConfigValueKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -6786,7 +6786,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage struct {
 // CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs and CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs{...}
+//	CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs{...}
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -6813,7 +6813,7 @@ func (i CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs) To
 // CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArray and CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs{...} }
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -6899,7 +6899,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOpt
 // CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs and CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs{...}
+//	CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs{...}
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionInput interface {
 	pulumi.Input
 
@@ -6943,7 +6943,7 @@ func (i CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsage
 // CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArray and CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArray{ CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs{...} }
+//	CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArray{ CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs{...} }
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayInput interface {
 	pulumi.Input
 
@@ -7080,7 +7080,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage struct
 // CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs and CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs{...}
+//	CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs{...}
 type CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -7118,7 +7118,7 @@ func (i CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs
 // CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArray and CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArgs{...} }
 type CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -7223,7 +7223,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 // CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs and CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs{...}
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -7250,7 +7250,7 @@ func (i CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 // CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArray and CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArray{ CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -7320,7 +7320,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 // CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs and CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs{...}
+//	CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs{...}
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdInput interface {
 	pulumi.Input
 
@@ -7348,7 +7348,7 @@ func (i CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 // CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArray and CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayInput` via:
 //
-//          CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArray{ CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs{...} }
+//	CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArray{ CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs{...} }
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayInput interface {
 	pulumi.Input
 
@@ -7422,7 +7422,7 @@ type CertificateCertificateDescriptionPublicKey struct {
 // CertificateCertificateDescriptionPublicKeyInput is an input type that accepts CertificateCertificateDescriptionPublicKeyArgs and CertificateCertificateDescriptionPublicKeyOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionPublicKeyInput` via:
 //
-//          CertificateCertificateDescriptionPublicKeyArgs{...}
+//	CertificateCertificateDescriptionPublicKeyArgs{...}
 type CertificateCertificateDescriptionPublicKeyInput interface {
 	pulumi.Input
 
@@ -7453,7 +7453,7 @@ func (i CertificateCertificateDescriptionPublicKeyArgs) ToCertificateCertificate
 // CertificateCertificateDescriptionPublicKeyArrayInput is an input type that accepts CertificateCertificateDescriptionPublicKeyArray and CertificateCertificateDescriptionPublicKeyArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionPublicKeyArrayInput` via:
 //
-//          CertificateCertificateDescriptionPublicKeyArray{ CertificateCertificateDescriptionPublicKeyArgs{...} }
+//	CertificateCertificateDescriptionPublicKeyArray{ CertificateCertificateDescriptionPublicKeyArgs{...} }
 type CertificateCertificateDescriptionPublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -7539,7 +7539,7 @@ type CertificateCertificateDescriptionSubjectDescription struct {
 // CertificateCertificateDescriptionSubjectDescriptionInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionArgs and CertificateCertificateDescriptionSubjectDescriptionOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionArgs{...}
+//	CertificateCertificateDescriptionSubjectDescriptionArgs{...}
 type CertificateCertificateDescriptionSubjectDescriptionInput interface {
 	pulumi.Input
 
@@ -7578,7 +7578,7 @@ func (i CertificateCertificateDescriptionSubjectDescriptionArgs) ToCertificateCe
 // CertificateCertificateDescriptionSubjectDescriptionArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionArray and CertificateCertificateDescriptionSubjectDescriptionArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionArrayInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionArray{ CertificateCertificateDescriptionSubjectDescriptionArgs{...} }
+//	CertificateCertificateDescriptionSubjectDescriptionArray{ CertificateCertificateDescriptionSubjectDescriptionArgs{...} }
 type CertificateCertificateDescriptionSubjectDescriptionArrayInput interface {
 	pulumi.Input
 
@@ -7691,7 +7691,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubject struct {
 // CertificateCertificateDescriptionSubjectDescriptionSubjectInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectArgs{...}
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectArgs{...}
 type CertificateCertificateDescriptionSubjectDescriptionSubjectInput interface {
 	pulumi.Input
 
@@ -7733,7 +7733,7 @@ func (i CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) ToCertif
 // CertificateCertificateDescriptionSubjectDescriptionSubjectArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectArray and CertificateCertificateDescriptionSubjectDescriptionSubjectArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectArrayInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectArgs{...} }
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectArgs{...} }
 type CertificateCertificateDescriptionSubjectDescriptionSubjectArrayInput interface {
 	pulumi.Input
 
@@ -7846,7 +7846,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltName struct {
 // CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs{...}
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs{...}
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput interface {
 	pulumi.Input
 
@@ -7881,7 +7881,7 @@ func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) T
 // CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArray and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs{...} }
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs{...} }
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayInput interface {
 	pulumi.Input
 
@@ -7979,7 +7979,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan 
 // CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs{...}
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs{...}
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput interface {
 	pulumi.Input
 
@@ -8011,7 +8011,7 @@ func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 // CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs{...} }
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs{...} }
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput interface {
 	pulumi.Input
 
@@ -8096,7 +8096,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanO
 // CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs{...}
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs{...}
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput interface {
 	pulumi.Input
 
@@ -8124,7 +8124,7 @@ func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 // CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArray and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayInput` via:
 //
-//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs{...} }
+//	CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs{...} }
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayInput interface {
 	pulumi.Input
 
@@ -8194,7 +8194,7 @@ type CertificateCertificateDescriptionSubjectKeyId struct {
 // CertificateCertificateDescriptionSubjectKeyIdInput is an input type that accepts CertificateCertificateDescriptionSubjectKeyIdArgs and CertificateCertificateDescriptionSubjectKeyIdOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectKeyIdInput` via:
 //
-//          CertificateCertificateDescriptionSubjectKeyIdArgs{...}
+//	CertificateCertificateDescriptionSubjectKeyIdArgs{...}
 type CertificateCertificateDescriptionSubjectKeyIdInput interface {
 	pulumi.Input
 
@@ -8221,7 +8221,7 @@ func (i CertificateCertificateDescriptionSubjectKeyIdArgs) ToCertificateCertific
 // CertificateCertificateDescriptionSubjectKeyIdArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectKeyIdArray and CertificateCertificateDescriptionSubjectKeyIdArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionSubjectKeyIdArrayInput` via:
 //
-//          CertificateCertificateDescriptionSubjectKeyIdArray{ CertificateCertificateDescriptionSubjectKeyIdArgs{...} }
+//	CertificateCertificateDescriptionSubjectKeyIdArray{ CertificateCertificateDescriptionSubjectKeyIdArgs{...} }
 type CertificateCertificateDescriptionSubjectKeyIdArrayInput interface {
 	pulumi.Input
 
@@ -8302,7 +8302,7 @@ type CertificateCertificateDescriptionX509Description struct {
 // CertificateCertificateDescriptionX509DescriptionInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionArgs and CertificateCertificateDescriptionX509DescriptionOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionArgs{...}
 type CertificateCertificateDescriptionX509DescriptionInput interface {
 	pulumi.Input
 
@@ -8343,7 +8343,7 @@ func (i CertificateCertificateDescriptionX509DescriptionArgs) ToCertificateCerti
 // CertificateCertificateDescriptionX509DescriptionArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionArray and CertificateCertificateDescriptionX509DescriptionArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionArray{ CertificateCertificateDescriptionX509DescriptionArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionArray{ CertificateCertificateDescriptionX509DescriptionArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionArrayInput interface {
 	pulumi.Input
 
@@ -8451,7 +8451,7 @@ type CertificateCertificateDescriptionX509DescriptionAdditionalExtension struct 
 // CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{...}
 type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -8485,7 +8485,7 @@ func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs)
 // CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray{ CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray{ CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -8568,7 +8568,7 @@ type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId
 // CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{...}
 type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput interface {
 	pulumi.Input
 
@@ -8596,7 +8596,7 @@ func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjec
 // CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray{ CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray{ CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput interface {
 	pulumi.Input
 
@@ -8670,7 +8670,7 @@ type CertificateCertificateDescriptionX509DescriptionCaOption struct {
 // CertificateCertificateDescriptionX509DescriptionCaOptionInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionCaOptionArgs and CertificateCertificateDescriptionX509DescriptionCaOptionOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionCaOptionInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionCaOptionArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionCaOptionArgs{...}
 type CertificateCertificateDescriptionX509DescriptionCaOptionInput interface {
 	pulumi.Input
 
@@ -8701,7 +8701,7 @@ func (i CertificateCertificateDescriptionX509DescriptionCaOptionArgs) ToCertific
 // CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionCaOptionArray and CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionCaOptionArray{ CertificateCertificateDescriptionX509DescriptionCaOptionArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionCaOptionArray{ CertificateCertificateDescriptionX509DescriptionCaOptionArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput interface {
 	pulumi.Input
 
@@ -8783,7 +8783,7 @@ type CertificateCertificateDescriptionX509DescriptionKeyUsage struct {
 // CertificateCertificateDescriptionX509DescriptionKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{...}
 type CertificateCertificateDescriptionX509DescriptionKeyUsageInput interface {
 	pulumi.Input
 
@@ -8818,7 +8818,7 @@ func (i CertificateCertificateDescriptionX509DescriptionKeyUsageArgs) ToCertific
 // CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -8922,7 +8922,7 @@ type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage struct
 // CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{...}
 type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -8966,7 +8966,7 @@ func (i CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs
 // CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -9099,7 +9099,7 @@ type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage st
 // CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{...}
 type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -9137,7 +9137,7 @@ func (i CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage
 // CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -9243,7 +9243,7 @@ type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyU
 // CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{...}
 type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -9271,7 +9271,7 @@ func (i CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedK
 // CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -9342,7 +9342,7 @@ type CertificateCertificateDescriptionX509DescriptionPolicyId struct {
 // CertificateCertificateDescriptionX509DescriptionPolicyIdInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionPolicyIdArgs and CertificateCertificateDescriptionX509DescriptionPolicyIdOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionPolicyIdInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{...}
+//	CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{...}
 type CertificateCertificateDescriptionX509DescriptionPolicyIdInput interface {
 	pulumi.Input
 
@@ -9370,7 +9370,7 @@ func (i CertificateCertificateDescriptionX509DescriptionPolicyIdArgs) ToCertific
 // CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionPolicyIdArray and CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput values.
 // You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput` via:
 //
-//          CertificateCertificateDescriptionX509DescriptionPolicyIdArray{ CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{...} }
+//	CertificateCertificateDescriptionX509DescriptionPolicyIdArray{ CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{...} }
 type CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput interface {
 	pulumi.Input
 
@@ -9446,7 +9446,7 @@ type CertificateConfig struct {
 // CertificateConfigInput is an input type that accepts CertificateConfigArgs and CertificateConfigOutput values.
 // You can construct a concrete instance of `CertificateConfigInput` via:
 //
-//          CertificateConfigArgs{...}
+//	CertificateConfigArgs{...}
 type CertificateConfigInput interface {
 	pulumi.Input
 
@@ -9489,11 +9489,11 @@ func (i CertificateConfigArgs) ToCertificateConfigPtrOutputWithContext(ctx conte
 // CertificateConfigPtrInput is an input type that accepts CertificateConfigArgs, CertificateConfigPtr and CertificateConfigPtrOutput values.
 // You can construct a concrete instance of `CertificateConfigPtrInput` via:
 //
-//          CertificateConfigArgs{...}
+//	        CertificateConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigPtrInput interface {
 	pulumi.Input
 
@@ -9629,7 +9629,7 @@ type CertificateConfigPublicKey struct {
 // CertificateConfigPublicKeyInput is an input type that accepts CertificateConfigPublicKeyArgs and CertificateConfigPublicKeyOutput values.
 // You can construct a concrete instance of `CertificateConfigPublicKeyInput` via:
 //
-//          CertificateConfigPublicKeyArgs{...}
+//	CertificateConfigPublicKeyArgs{...}
 type CertificateConfigPublicKeyInput interface {
 	pulumi.Input
 
@@ -9668,11 +9668,11 @@ func (i CertificateConfigPublicKeyArgs) ToCertificateConfigPublicKeyPtrOutputWit
 // CertificateConfigPublicKeyPtrInput is an input type that accepts CertificateConfigPublicKeyArgs, CertificateConfigPublicKeyPtr and CertificateConfigPublicKeyPtrOutput values.
 // You can construct a concrete instance of `CertificateConfigPublicKeyPtrInput` via:
 //
-//          CertificateConfigPublicKeyArgs{...}
+//	        CertificateConfigPublicKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigPublicKeyPtrInput interface {
 	pulumi.Input
 
@@ -9790,7 +9790,7 @@ type CertificateConfigSubjectConfig struct {
 // CertificateConfigSubjectConfigInput is an input type that accepts CertificateConfigSubjectConfigArgs and CertificateConfigSubjectConfigOutput values.
 // You can construct a concrete instance of `CertificateConfigSubjectConfigInput` via:
 //
-//          CertificateConfigSubjectConfigArgs{...}
+//	CertificateConfigSubjectConfigArgs{...}
 type CertificateConfigSubjectConfigInput interface {
 	pulumi.Input
 
@@ -9830,11 +9830,11 @@ func (i CertificateConfigSubjectConfigArgs) ToCertificateConfigSubjectConfigPtrO
 // CertificateConfigSubjectConfigPtrInput is an input type that accepts CertificateConfigSubjectConfigArgs, CertificateConfigSubjectConfigPtr and CertificateConfigSubjectConfigPtrOutput values.
 // You can construct a concrete instance of `CertificateConfigSubjectConfigPtrInput` via:
 //
-//          CertificateConfigSubjectConfigArgs{...}
+//	        CertificateConfigSubjectConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigSubjectConfigPtrInput interface {
 	pulumi.Input
 
@@ -9966,7 +9966,7 @@ type CertificateConfigSubjectConfigSubject struct {
 // CertificateConfigSubjectConfigSubjectInput is an input type that accepts CertificateConfigSubjectConfigSubjectArgs and CertificateConfigSubjectConfigSubjectOutput values.
 // You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectInput` via:
 //
-//          CertificateConfigSubjectConfigSubjectArgs{...}
+//	CertificateConfigSubjectConfigSubjectArgs{...}
 type CertificateConfigSubjectConfigSubjectInput interface {
 	pulumi.Input
 
@@ -10016,11 +10016,11 @@ func (i CertificateConfigSubjectConfigSubjectArgs) ToCertificateConfigSubjectCon
 // CertificateConfigSubjectConfigSubjectPtrInput is an input type that accepts CertificateConfigSubjectConfigSubjectArgs, CertificateConfigSubjectConfigSubjectPtr and CertificateConfigSubjectConfigSubjectPtrOutput values.
 // You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectPtrInput` via:
 //
-//          CertificateConfigSubjectConfigSubjectArgs{...}
+//	        CertificateConfigSubjectConfigSubjectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigSubjectConfigSubjectPtrInput interface {
 	pulumi.Input
 
@@ -10228,7 +10228,7 @@ type CertificateConfigSubjectConfigSubjectAltName struct {
 // CertificateConfigSubjectConfigSubjectAltNameInput is an input type that accepts CertificateConfigSubjectConfigSubjectAltNameArgs and CertificateConfigSubjectConfigSubjectAltNameOutput values.
 // You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectAltNameInput` via:
 //
-//          CertificateConfigSubjectConfigSubjectAltNameArgs{...}
+//	CertificateConfigSubjectConfigSubjectAltNameArgs{...}
 type CertificateConfigSubjectConfigSubjectAltNameInput interface {
 	pulumi.Input
 
@@ -10270,11 +10270,11 @@ func (i CertificateConfigSubjectConfigSubjectAltNameArgs) ToCertificateConfigSub
 // CertificateConfigSubjectConfigSubjectAltNamePtrInput is an input type that accepts CertificateConfigSubjectConfigSubjectAltNameArgs, CertificateConfigSubjectConfigSubjectAltNamePtr and CertificateConfigSubjectConfigSubjectAltNamePtrOutput values.
 // You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectAltNamePtrInput` via:
 //
-//          CertificateConfigSubjectConfigSubjectAltNameArgs{...}
+//	        CertificateConfigSubjectConfigSubjectAltNameArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigSubjectConfigSubjectAltNamePtrInput interface {
 	pulumi.Input
 
@@ -10429,7 +10429,7 @@ type CertificateConfigX509Config struct {
 // CertificateConfigX509ConfigInput is an input type that accepts CertificateConfigX509ConfigArgs and CertificateConfigX509ConfigOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigInput` via:
 //
-//          CertificateConfigX509ConfigArgs{...}
+//	CertificateConfigX509ConfigArgs{...}
 type CertificateConfigX509ConfigInput interface {
 	pulumi.Input
 
@@ -10478,11 +10478,11 @@ func (i CertificateConfigX509ConfigArgs) ToCertificateConfigX509ConfigPtrOutputW
 // CertificateConfigX509ConfigPtrInput is an input type that accepts CertificateConfigX509ConfigArgs, CertificateConfigX509ConfigPtr and CertificateConfigX509ConfigPtrOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigPtrInput` via:
 //
-//          CertificateConfigX509ConfigArgs{...}
+//	        CertificateConfigX509ConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigX509ConfigPtrInput interface {
 	pulumi.Input
 
@@ -10657,7 +10657,7 @@ type CertificateConfigX509ConfigAdditionalExtension struct {
 // CertificateConfigX509ConfigAdditionalExtensionInput is an input type that accepts CertificateConfigX509ConfigAdditionalExtensionArgs and CertificateConfigX509ConfigAdditionalExtensionOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigAdditionalExtensionInput` via:
 //
-//          CertificateConfigX509ConfigAdditionalExtensionArgs{...}
+//	CertificateConfigX509ConfigAdditionalExtensionArgs{...}
 type CertificateConfigX509ConfigAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -10691,7 +10691,7 @@ func (i CertificateConfigX509ConfigAdditionalExtensionArgs) ToCertificateConfigX
 // CertificateConfigX509ConfigAdditionalExtensionArrayInput is an input type that accepts CertificateConfigX509ConfigAdditionalExtensionArray and CertificateConfigX509ConfigAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigAdditionalExtensionArrayInput` via:
 //
-//          CertificateConfigX509ConfigAdditionalExtensionArray{ CertificateConfigX509ConfigAdditionalExtensionArgs{...} }
+//	CertificateConfigX509ConfigAdditionalExtensionArray{ CertificateConfigX509ConfigAdditionalExtensionArgs{...} }
 type CertificateConfigX509ConfigAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -10774,7 +10774,7 @@ type CertificateConfigX509ConfigAdditionalExtensionObjectId struct {
 // CertificateConfigX509ConfigAdditionalExtensionObjectIdInput is an input type that accepts CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs and CertificateConfigX509ConfigAdditionalExtensionObjectIdOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigAdditionalExtensionObjectIdInput` via:
 //
-//          CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
+//	CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
 type CertificateConfigX509ConfigAdditionalExtensionObjectIdInput interface {
 	pulumi.Input
 
@@ -10836,7 +10836,7 @@ type CertificateConfigX509ConfigCaOptions struct {
 // CertificateConfigX509ConfigCaOptionsInput is an input type that accepts CertificateConfigX509ConfigCaOptionsArgs and CertificateConfigX509ConfigCaOptionsOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigCaOptionsInput` via:
 //
-//          CertificateConfigX509ConfigCaOptionsArgs{...}
+//	CertificateConfigX509ConfigCaOptionsArgs{...}
 type CertificateConfigX509ConfigCaOptionsInput interface {
 	pulumi.Input
 
@@ -10882,11 +10882,11 @@ func (i CertificateConfigX509ConfigCaOptionsArgs) ToCertificateConfigX509ConfigC
 // CertificateConfigX509ConfigCaOptionsPtrInput is an input type that accepts CertificateConfigX509ConfigCaOptionsArgs, CertificateConfigX509ConfigCaOptionsPtr and CertificateConfigX509ConfigCaOptionsPtrOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigCaOptionsPtrInput` via:
 //
-//          CertificateConfigX509ConfigCaOptionsArgs{...}
+//	        CertificateConfigX509ConfigCaOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigX509ConfigCaOptionsPtrInput interface {
 	pulumi.Input
 
@@ -11043,7 +11043,7 @@ type CertificateConfigX509ConfigKeyUsage struct {
 // CertificateConfigX509ConfigKeyUsageInput is an input type that accepts CertificateConfigX509ConfigKeyUsageArgs and CertificateConfigX509ConfigKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageArgs{...}
+//	CertificateConfigX509ConfigKeyUsageArgs{...}
 type CertificateConfigX509ConfigKeyUsageInput interface {
 	pulumi.Input
 
@@ -11086,11 +11086,11 @@ func (i CertificateConfigX509ConfigKeyUsageArgs) ToCertificateConfigX509ConfigKe
 // CertificateConfigX509ConfigKeyUsagePtrInput is an input type that accepts CertificateConfigX509ConfigKeyUsageArgs, CertificateConfigX509ConfigKeyUsagePtr and CertificateConfigX509ConfigKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsagePtrInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageArgs{...}
+//	        CertificateConfigX509ConfigKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigX509ConfigKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -11245,7 +11245,7 @@ type CertificateConfigX509ConfigKeyUsageBaseKeyUsage struct {
 // CertificateConfigX509ConfigKeyUsageBaseKeyUsageInput is an input type that accepts CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs and CertificateConfigX509ConfigKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageBaseKeyUsageInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
+//	CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
 type CertificateConfigX509ConfigKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -11297,11 +11297,11 @@ func (i CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToCertificateConfig
 // CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrInput is an input type that accepts CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs, CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtr and CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
+//	        CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigX509ConfigKeyUsageBaseKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -11528,7 +11528,7 @@ type CertificateConfigX509ConfigKeyUsageExtendedKeyUsage struct {
 // CertificateConfigX509ConfigKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs and CertificateConfigX509ConfigKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageExtendedKeyUsageInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
+//	CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
 type CertificateConfigX509ConfigKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -11574,11 +11574,11 @@ func (i CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToCertificateCo
 // CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput is an input type that accepts CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs, CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtr and CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
+//	        CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -11750,7 +11750,7 @@ type CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage struct {
 // CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs and CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
 type CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -11778,7 +11778,7 @@ func (i CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs) ToCertif
 // CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray and CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -11847,7 +11847,7 @@ type CertificateConfigX509ConfigPolicyId struct {
 // CertificateConfigX509ConfigPolicyIdInput is an input type that accepts CertificateConfigX509ConfigPolicyIdArgs and CertificateConfigX509ConfigPolicyIdOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigPolicyIdInput` via:
 //
-//          CertificateConfigX509ConfigPolicyIdArgs{...}
+//	CertificateConfigX509ConfigPolicyIdArgs{...}
 type CertificateConfigX509ConfigPolicyIdInput interface {
 	pulumi.Input
 
@@ -11875,7 +11875,7 @@ func (i CertificateConfigX509ConfigPolicyIdArgs) ToCertificateConfigX509ConfigPo
 // CertificateConfigX509ConfigPolicyIdArrayInput is an input type that accepts CertificateConfigX509ConfigPolicyIdArray and CertificateConfigX509ConfigPolicyIdArrayOutput values.
 // You can construct a concrete instance of `CertificateConfigX509ConfigPolicyIdArrayInput` via:
 //
-//          CertificateConfigX509ConfigPolicyIdArray{ CertificateConfigX509ConfigPolicyIdArgs{...} }
+//	CertificateConfigX509ConfigPolicyIdArray{ CertificateConfigX509ConfigPolicyIdArgs{...} }
 type CertificateConfigX509ConfigPolicyIdArrayInput interface {
 	pulumi.Input
 
@@ -11944,7 +11944,7 @@ type CertificateRevocationDetail struct {
 // CertificateRevocationDetailInput is an input type that accepts CertificateRevocationDetailArgs and CertificateRevocationDetailOutput values.
 // You can construct a concrete instance of `CertificateRevocationDetailInput` via:
 //
-//          CertificateRevocationDetailArgs{...}
+//	CertificateRevocationDetailArgs{...}
 type CertificateRevocationDetailInput interface {
 	pulumi.Input
 
@@ -11972,7 +11972,7 @@ func (i CertificateRevocationDetailArgs) ToCertificateRevocationDetailOutputWith
 // CertificateRevocationDetailArrayInput is an input type that accepts CertificateRevocationDetailArray and CertificateRevocationDetailArrayOutput values.
 // You can construct a concrete instance of `CertificateRevocationDetailArrayInput` via:
 //
-//          CertificateRevocationDetailArray{ CertificateRevocationDetailArgs{...} }
+//	CertificateRevocationDetailArray{ CertificateRevocationDetailArgs{...} }
 type CertificateRevocationDetailArrayInput interface {
 	pulumi.Input
 
@@ -12048,7 +12048,7 @@ type CertificateTemplateIamBindingCondition struct {
 // CertificateTemplateIamBindingConditionInput is an input type that accepts CertificateTemplateIamBindingConditionArgs and CertificateTemplateIamBindingConditionOutput values.
 // You can construct a concrete instance of `CertificateTemplateIamBindingConditionInput` via:
 //
-//          CertificateTemplateIamBindingConditionArgs{...}
+//	CertificateTemplateIamBindingConditionArgs{...}
 type CertificateTemplateIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -12088,11 +12088,11 @@ func (i CertificateTemplateIamBindingConditionArgs) ToCertificateTemplateIamBind
 // CertificateTemplateIamBindingConditionPtrInput is an input type that accepts CertificateTemplateIamBindingConditionArgs, CertificateTemplateIamBindingConditionPtr and CertificateTemplateIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplateIamBindingConditionPtrInput` via:
 //
-//          CertificateTemplateIamBindingConditionArgs{...}
+//	        CertificateTemplateIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplateIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -12223,7 +12223,7 @@ type CertificateTemplateIamMemberCondition struct {
 // CertificateTemplateIamMemberConditionInput is an input type that accepts CertificateTemplateIamMemberConditionArgs and CertificateTemplateIamMemberConditionOutput values.
 // You can construct a concrete instance of `CertificateTemplateIamMemberConditionInput` via:
 //
-//          CertificateTemplateIamMemberConditionArgs{...}
+//	CertificateTemplateIamMemberConditionArgs{...}
 type CertificateTemplateIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -12263,11 +12263,11 @@ func (i CertificateTemplateIamMemberConditionArgs) ToCertificateTemplateIamMembe
 // CertificateTemplateIamMemberConditionPtrInput is an input type that accepts CertificateTemplateIamMemberConditionArgs, CertificateTemplateIamMemberConditionPtr and CertificateTemplateIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplateIamMemberConditionPtrInput` via:
 //
-//          CertificateTemplateIamMemberConditionArgs{...}
+//	        CertificateTemplateIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplateIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -12398,7 +12398,7 @@ type CertificateTemplateIdentityConstraints struct {
 // CertificateTemplateIdentityConstraintsInput is an input type that accepts CertificateTemplateIdentityConstraintsArgs and CertificateTemplateIdentityConstraintsOutput values.
 // You can construct a concrete instance of `CertificateTemplateIdentityConstraintsInput` via:
 //
-//          CertificateTemplateIdentityConstraintsArgs{...}
+//	CertificateTemplateIdentityConstraintsArgs{...}
 type CertificateTemplateIdentityConstraintsInput interface {
 	pulumi.Input
 
@@ -12438,11 +12438,11 @@ func (i CertificateTemplateIdentityConstraintsArgs) ToCertificateTemplateIdentit
 // CertificateTemplateIdentityConstraintsPtrInput is an input type that accepts CertificateTemplateIdentityConstraintsArgs, CertificateTemplateIdentityConstraintsPtr and CertificateTemplateIdentityConstraintsPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplateIdentityConstraintsPtrInput` via:
 //
-//          CertificateTemplateIdentityConstraintsArgs{...}
+//	        CertificateTemplateIdentityConstraintsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplateIdentityConstraintsPtrInput interface {
 	pulumi.Input
 
@@ -12577,7 +12577,7 @@ type CertificateTemplateIdentityConstraintsCelExpression struct {
 // CertificateTemplateIdentityConstraintsCelExpressionInput is an input type that accepts CertificateTemplateIdentityConstraintsCelExpressionArgs and CertificateTemplateIdentityConstraintsCelExpressionOutput values.
 // You can construct a concrete instance of `CertificateTemplateIdentityConstraintsCelExpressionInput` via:
 //
-//          CertificateTemplateIdentityConstraintsCelExpressionArgs{...}
+//	CertificateTemplateIdentityConstraintsCelExpressionArgs{...}
 type CertificateTemplateIdentityConstraintsCelExpressionInput interface {
 	pulumi.Input
 
@@ -12619,11 +12619,11 @@ func (i CertificateTemplateIdentityConstraintsCelExpressionArgs) ToCertificateTe
 // CertificateTemplateIdentityConstraintsCelExpressionPtrInput is an input type that accepts CertificateTemplateIdentityConstraintsCelExpressionArgs, CertificateTemplateIdentityConstraintsCelExpressionPtr and CertificateTemplateIdentityConstraintsCelExpressionPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplateIdentityConstraintsCelExpressionPtrInput` via:
 //
-//          CertificateTemplateIdentityConstraintsCelExpressionArgs{...}
+//	        CertificateTemplateIdentityConstraintsCelExpressionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplateIdentityConstraintsCelExpressionPtrInput interface {
 	pulumi.Input
 
@@ -12767,7 +12767,7 @@ type CertificateTemplatePassthroughExtensions struct {
 // CertificateTemplatePassthroughExtensionsInput is an input type that accepts CertificateTemplatePassthroughExtensionsArgs and CertificateTemplatePassthroughExtensionsOutput values.
 // You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsInput` via:
 //
-//          CertificateTemplatePassthroughExtensionsArgs{...}
+//	CertificateTemplatePassthroughExtensionsArgs{...}
 type CertificateTemplatePassthroughExtensionsInput interface {
 	pulumi.Input
 
@@ -12805,11 +12805,11 @@ func (i CertificateTemplatePassthroughExtensionsArgs) ToCertificateTemplatePasst
 // CertificateTemplatePassthroughExtensionsPtrInput is an input type that accepts CertificateTemplatePassthroughExtensionsArgs, CertificateTemplatePassthroughExtensionsPtr and CertificateTemplatePassthroughExtensionsPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsPtrInput` via:
 //
-//          CertificateTemplatePassthroughExtensionsArgs{...}
+//	        CertificateTemplatePassthroughExtensionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplatePassthroughExtensionsPtrInput interface {
 	pulumi.Input
 
@@ -12923,7 +12923,7 @@ type CertificateTemplatePassthroughExtensionsAdditionalExtension struct {
 // CertificateTemplatePassthroughExtensionsAdditionalExtensionInput is an input type that accepts CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs and CertificateTemplatePassthroughExtensionsAdditionalExtensionOutput values.
 // You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsAdditionalExtensionInput` via:
 //
-//          CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{...}
+//	CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{...}
 type CertificateTemplatePassthroughExtensionsAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -12951,7 +12951,7 @@ func (i CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs) ToCerti
 // CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput is an input type that accepts CertificateTemplatePassthroughExtensionsAdditionalExtensionArray and CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput` via:
 //
-//          CertificateTemplatePassthroughExtensionsAdditionalExtensionArray{ CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{...} }
+//	CertificateTemplatePassthroughExtensionsAdditionalExtensionArray{ CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs{...} }
 type CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -13028,7 +13028,7 @@ type CertificateTemplatePredefinedValues struct {
 // CertificateTemplatePredefinedValuesInput is an input type that accepts CertificateTemplatePredefinedValuesArgs and CertificateTemplatePredefinedValuesOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesInput` via:
 //
-//          CertificateTemplatePredefinedValuesArgs{...}
+//	CertificateTemplatePredefinedValuesArgs{...}
 type CertificateTemplatePredefinedValuesInput interface {
 	pulumi.Input
 
@@ -13072,11 +13072,11 @@ func (i CertificateTemplatePredefinedValuesArgs) ToCertificateTemplatePredefined
 // CertificateTemplatePredefinedValuesPtrInput is an input type that accepts CertificateTemplatePredefinedValuesArgs, CertificateTemplatePredefinedValuesPtr and CertificateTemplatePredefinedValuesPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesPtrInput` via:
 //
-//          CertificateTemplatePredefinedValuesArgs{...}
+//	        CertificateTemplatePredefinedValuesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplatePredefinedValuesPtrInput interface {
 	pulumi.Input
 
@@ -13245,7 +13245,7 @@ type CertificateTemplatePredefinedValuesAdditionalExtension struct {
 // CertificateTemplatePredefinedValuesAdditionalExtensionInput is an input type that accepts CertificateTemplatePredefinedValuesAdditionalExtensionArgs and CertificateTemplatePredefinedValuesAdditionalExtensionOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesAdditionalExtensionInput` via:
 //
-//          CertificateTemplatePredefinedValuesAdditionalExtensionArgs{...}
+//	CertificateTemplatePredefinedValuesAdditionalExtensionArgs{...}
 type CertificateTemplatePredefinedValuesAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -13277,7 +13277,7 @@ func (i CertificateTemplatePredefinedValuesAdditionalExtensionArgs) ToCertificat
 // CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput is an input type that accepts CertificateTemplatePredefinedValuesAdditionalExtensionArray and CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput` via:
 //
-//          CertificateTemplatePredefinedValuesAdditionalExtensionArray{ CertificateTemplatePredefinedValuesAdditionalExtensionArgs{...} }
+//	CertificateTemplatePredefinedValuesAdditionalExtensionArray{ CertificateTemplatePredefinedValuesAdditionalExtensionArgs{...} }
 type CertificateTemplatePredefinedValuesAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -13358,7 +13358,7 @@ type CertificateTemplatePredefinedValuesAdditionalExtensionObjectId struct {
 // CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput is an input type that accepts CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs and CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput` via:
 //
-//          CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs{...}
+//	CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs{...}
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput interface {
 	pulumi.Input
 
@@ -13412,7 +13412,7 @@ type CertificateTemplatePredefinedValuesCaOptions struct {
 // CertificateTemplatePredefinedValuesCaOptionsInput is an input type that accepts CertificateTemplatePredefinedValuesCaOptionsArgs and CertificateTemplatePredefinedValuesCaOptionsOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesCaOptionsInput` via:
 //
-//          CertificateTemplatePredefinedValuesCaOptionsArgs{...}
+//	CertificateTemplatePredefinedValuesCaOptionsArgs{...}
 type CertificateTemplatePredefinedValuesCaOptionsInput interface {
 	pulumi.Input
 
@@ -13450,11 +13450,11 @@ func (i CertificateTemplatePredefinedValuesCaOptionsArgs) ToCertificateTemplateP
 // CertificateTemplatePredefinedValuesCaOptionsPtrInput is an input type that accepts CertificateTemplatePredefinedValuesCaOptionsArgs, CertificateTemplatePredefinedValuesCaOptionsPtr and CertificateTemplatePredefinedValuesCaOptionsPtrOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesCaOptionsPtrInput` via:
 //
-//          CertificateTemplatePredefinedValuesCaOptionsArgs{...}
+//	        CertificateTemplatePredefinedValuesCaOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplatePredefinedValuesCaOptionsPtrInput interface {
 	pulumi.Input
 
@@ -13570,7 +13570,7 @@ type CertificateTemplatePredefinedValuesKeyUsage struct {
 // CertificateTemplatePredefinedValuesKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageArgs{...}
+//	CertificateTemplatePredefinedValuesKeyUsageArgs{...}
 type CertificateTemplatePredefinedValuesKeyUsageInput interface {
 	pulumi.Input
 
@@ -13610,11 +13610,11 @@ func (i CertificateTemplatePredefinedValuesKeyUsageArgs) ToCertificateTemplatePr
 // CertificateTemplatePredefinedValuesKeyUsagePtrInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageArgs, CertificateTemplatePredefinedValuesKeyUsagePtr and CertificateTemplatePredefinedValuesKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsagePtrInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageArgs{...}
+//	        CertificateTemplatePredefinedValuesKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplatePredefinedValuesKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -13763,7 +13763,7 @@ type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage struct {
 // CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{...}
+//	CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{...}
 type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -13815,11 +13815,11 @@ func (i CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs) ToCertifica
 // CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs, CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtr and CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{...}
+//	        CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -14046,7 +14046,7 @@ type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage struct {
 // CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{...}
+//	CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{...}
 type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -14092,11 +14092,11 @@ func (i CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs) ToCerti
 // CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs, CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtr and CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{...}
+//	        CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsagePtrInput interface {
 	pulumi.Input
 
@@ -14268,7 +14268,7 @@ type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage struct {
 // CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs and CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{...}
 type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -14296,7 +14296,7 @@ func (i CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs) 
 // CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray and CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray{ CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray{ CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -14367,7 +14367,7 @@ type CertificateTemplatePredefinedValuesPolicyId struct {
 // CertificateTemplatePredefinedValuesPolicyIdInput is an input type that accepts CertificateTemplatePredefinedValuesPolicyIdArgs and CertificateTemplatePredefinedValuesPolicyIdOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesPolicyIdInput` via:
 //
-//          CertificateTemplatePredefinedValuesPolicyIdArgs{...}
+//	CertificateTemplatePredefinedValuesPolicyIdArgs{...}
 type CertificateTemplatePredefinedValuesPolicyIdInput interface {
 	pulumi.Input
 
@@ -14395,7 +14395,7 @@ func (i CertificateTemplatePredefinedValuesPolicyIdArgs) ToCertificateTemplatePr
 // CertificateTemplatePredefinedValuesPolicyIdArrayInput is an input type that accepts CertificateTemplatePredefinedValuesPolicyIdArray and CertificateTemplatePredefinedValuesPolicyIdArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplatePredefinedValuesPolicyIdArrayInput` via:
 //
-//          CertificateTemplatePredefinedValuesPolicyIdArray{ CertificateTemplatePredefinedValuesPolicyIdArgs{...} }
+//	CertificateTemplatePredefinedValuesPolicyIdArray{ CertificateTemplatePredefinedValuesPolicyIdArgs{...} }
 type CertificateTemplatePredefinedValuesPolicyIdArrayInput interface {
 	pulumi.Input
 
@@ -14464,7 +14464,7 @@ type GetAuthorityAccessUrl struct {
 // GetAuthorityAccessUrlInput is an input type that accepts GetAuthorityAccessUrlArgs and GetAuthorityAccessUrlOutput values.
 // You can construct a concrete instance of `GetAuthorityAccessUrlInput` via:
 //
-//          GetAuthorityAccessUrlArgs{...}
+//	GetAuthorityAccessUrlArgs{...}
 type GetAuthorityAccessUrlInput interface {
 	pulumi.Input
 
@@ -14492,7 +14492,7 @@ func (i GetAuthorityAccessUrlArgs) ToGetAuthorityAccessUrlOutputWithContext(ctx 
 // GetAuthorityAccessUrlArrayInput is an input type that accepts GetAuthorityAccessUrlArray and GetAuthorityAccessUrlArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityAccessUrlArrayInput` via:
 //
-//          GetAuthorityAccessUrlArray{ GetAuthorityAccessUrlArgs{...} }
+//	GetAuthorityAccessUrlArray{ GetAuthorityAccessUrlArgs{...} }
 type GetAuthorityAccessUrlArrayInput interface {
 	pulumi.Input
 
@@ -14564,7 +14564,7 @@ type GetAuthorityConfig struct {
 // GetAuthorityConfigInput is an input type that accepts GetAuthorityConfigArgs and GetAuthorityConfigOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigInput` via:
 //
-//          GetAuthorityConfigArgs{...}
+//	GetAuthorityConfigArgs{...}
 type GetAuthorityConfigInput interface {
 	pulumi.Input
 
@@ -14592,7 +14592,7 @@ func (i GetAuthorityConfigArgs) ToGetAuthorityConfigOutputWithContext(ctx contex
 // GetAuthorityConfigArrayInput is an input type that accepts GetAuthorityConfigArray and GetAuthorityConfigArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigArrayInput` via:
 //
-//          GetAuthorityConfigArray{ GetAuthorityConfigArgs{...} }
+//	GetAuthorityConfigArray{ GetAuthorityConfigArgs{...} }
 type GetAuthorityConfigArrayInput interface {
 	pulumi.Input
 
@@ -14664,7 +14664,7 @@ type GetAuthorityConfigSubjectConfig struct {
 // GetAuthorityConfigSubjectConfigInput is an input type that accepts GetAuthorityConfigSubjectConfigArgs and GetAuthorityConfigSubjectConfigOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigSubjectConfigInput` via:
 //
-//          GetAuthorityConfigSubjectConfigArgs{...}
+//	GetAuthorityConfigSubjectConfigArgs{...}
 type GetAuthorityConfigSubjectConfigInput interface {
 	pulumi.Input
 
@@ -14692,7 +14692,7 @@ func (i GetAuthorityConfigSubjectConfigArgs) ToGetAuthorityConfigSubjectConfigOu
 // GetAuthorityConfigSubjectConfigArrayInput is an input type that accepts GetAuthorityConfigSubjectConfigArray and GetAuthorityConfigSubjectConfigArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigSubjectConfigArrayInput` via:
 //
-//          GetAuthorityConfigSubjectConfigArray{ GetAuthorityConfigSubjectConfigArgs{...} }
+//	GetAuthorityConfigSubjectConfigArray{ GetAuthorityConfigSubjectConfigArgs{...} }
 type GetAuthorityConfigSubjectConfigArrayInput interface {
 	pulumi.Input
 
@@ -14772,7 +14772,7 @@ type GetAuthorityConfigSubjectConfigSubject struct {
 // GetAuthorityConfigSubjectConfigSubjectInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectArgs and GetAuthorityConfigSubjectConfigSubjectOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectInput` via:
 //
-//          GetAuthorityConfigSubjectConfigSubjectArgs{...}
+//	GetAuthorityConfigSubjectConfigSubjectArgs{...}
 type GetAuthorityConfigSubjectConfigSubjectInput interface {
 	pulumi.Input
 
@@ -14806,7 +14806,7 @@ func (i GetAuthorityConfigSubjectConfigSubjectArgs) ToGetAuthorityConfigSubjectC
 // GetAuthorityConfigSubjectConfigSubjectArrayInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectArray and GetAuthorityConfigSubjectConfigSubjectArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectArrayInput` via:
 //
-//          GetAuthorityConfigSubjectConfigSubjectArray{ GetAuthorityConfigSubjectConfigSubjectArgs{...} }
+//	GetAuthorityConfigSubjectConfigSubjectArray{ GetAuthorityConfigSubjectConfigSubjectArgs{...} }
 type GetAuthorityConfigSubjectConfigSubjectArrayInput interface {
 	pulumi.Input
 
@@ -14904,7 +14904,7 @@ type GetAuthorityConfigSubjectConfigSubjectAltName struct {
 // GetAuthorityConfigSubjectConfigSubjectAltNameInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectAltNameArgs and GetAuthorityConfigSubjectConfigSubjectAltNameOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectAltNameInput` via:
 //
-//          GetAuthorityConfigSubjectConfigSubjectAltNameArgs{...}
+//	GetAuthorityConfigSubjectConfigSubjectAltNameArgs{...}
 type GetAuthorityConfigSubjectConfigSubjectAltNameInput interface {
 	pulumi.Input
 
@@ -14934,7 +14934,7 @@ func (i GetAuthorityConfigSubjectConfigSubjectAltNameArgs) ToGetAuthorityConfigS
 // GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectAltNameArray and GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput` via:
 //
-//          GetAuthorityConfigSubjectConfigSubjectAltNameArray{ GetAuthorityConfigSubjectConfigSubjectAltNameArgs{...} }
+//	GetAuthorityConfigSubjectConfigSubjectAltNameArray{ GetAuthorityConfigSubjectConfigSubjectAltNameArgs{...} }
 type GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput interface {
 	pulumi.Input
 
@@ -15017,7 +15017,7 @@ type GetAuthorityConfigX509Config struct {
 // GetAuthorityConfigX509ConfigInput is an input type that accepts GetAuthorityConfigX509ConfigArgs and GetAuthorityConfigX509ConfigOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigInput` via:
 //
-//          GetAuthorityConfigX509ConfigArgs{...}
+//	GetAuthorityConfigX509ConfigArgs{...}
 type GetAuthorityConfigX509ConfigInput interface {
 	pulumi.Input
 
@@ -15048,7 +15048,7 @@ func (i GetAuthorityConfigX509ConfigArgs) ToGetAuthorityConfigX509ConfigOutputWi
 // GetAuthorityConfigX509ConfigArrayInput is an input type that accepts GetAuthorityConfigX509ConfigArray and GetAuthorityConfigX509ConfigArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigArray{ GetAuthorityConfigX509ConfigArgs{...} }
+//	GetAuthorityConfigX509ConfigArray{ GetAuthorityConfigX509ConfigArgs{...} }
 type GetAuthorityConfigX509ConfigArrayInput interface {
 	pulumi.Input
 
@@ -15135,7 +15135,7 @@ type GetAuthorityConfigX509ConfigAdditionalExtension struct {
 // GetAuthorityConfigX509ConfigAdditionalExtensionInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionArgs and GetAuthorityConfigX509ConfigAdditionalExtensionOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionInput` via:
 //
-//          GetAuthorityConfigX509ConfigAdditionalExtensionArgs{...}
+//	GetAuthorityConfigX509ConfigAdditionalExtensionArgs{...}
 type GetAuthorityConfigX509ConfigAdditionalExtensionInput interface {
 	pulumi.Input
 
@@ -15164,7 +15164,7 @@ func (i GetAuthorityConfigX509ConfigAdditionalExtensionArgs) ToGetAuthorityConfi
 // GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionArray and GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigAdditionalExtensionArray{ GetAuthorityConfigX509ConfigAdditionalExtensionArgs{...} }
+//	GetAuthorityConfigX509ConfigAdditionalExtensionArray{ GetAuthorityConfigX509ConfigAdditionalExtensionArgs{...} }
 type GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput interface {
 	pulumi.Input
 
@@ -15241,7 +15241,7 @@ type GetAuthorityConfigX509ConfigAdditionalExtensionObjectId struct {
 // GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs and GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput` via:
 //
-//          GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
+//	GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
 type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput interface {
 	pulumi.Input
 
@@ -15268,7 +15268,7 @@ func (i GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs) ToGetAuthor
 // GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray and GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray{ GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...} }
+//	GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray{ GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...} }
 type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput interface {
 	pulumi.Input
 
@@ -15338,7 +15338,7 @@ type GetAuthorityConfigX509ConfigCaOption struct {
 // GetAuthorityConfigX509ConfigCaOptionInput is an input type that accepts GetAuthorityConfigX509ConfigCaOptionArgs and GetAuthorityConfigX509ConfigCaOptionOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigCaOptionInput` via:
 //
-//          GetAuthorityConfigX509ConfigCaOptionArgs{...}
+//	GetAuthorityConfigX509ConfigCaOptionArgs{...}
 type GetAuthorityConfigX509ConfigCaOptionInput interface {
 	pulumi.Input
 
@@ -15368,7 +15368,7 @@ func (i GetAuthorityConfigX509ConfigCaOptionArgs) ToGetAuthorityConfigX509Config
 // GetAuthorityConfigX509ConfigCaOptionArrayInput is an input type that accepts GetAuthorityConfigX509ConfigCaOptionArray and GetAuthorityConfigX509ConfigCaOptionArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigCaOptionArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigCaOptionArray{ GetAuthorityConfigX509ConfigCaOptionArgs{...} }
+//	GetAuthorityConfigX509ConfigCaOptionArray{ GetAuthorityConfigX509ConfigCaOptionArgs{...} }
 type GetAuthorityConfigX509ConfigCaOptionArrayInput interface {
 	pulumi.Input
 
@@ -15449,7 +15449,7 @@ type GetAuthorityConfigX509ConfigKeyUsage struct {
 // GetAuthorityConfigX509ConfigKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageArgs{...}
+//	GetAuthorityConfigX509ConfigKeyUsageArgs{...}
 type GetAuthorityConfigX509ConfigKeyUsageInput interface {
 	pulumi.Input
 
@@ -15478,7 +15478,7 @@ func (i GetAuthorityConfigX509ConfigKeyUsageArgs) ToGetAuthorityConfigX509Config
 // GetAuthorityConfigX509ConfigKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageArgs{...} }
+//	GetAuthorityConfigX509ConfigKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageArgs{...} }
 type GetAuthorityConfigX509ConfigKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -15567,7 +15567,7 @@ type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage struct {
 // GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
+//	GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
 type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput interface {
 	pulumi.Input
 
@@ -15602,7 +15602,7 @@ func (i GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToGetAuthorityConf
 // GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...} }
+//	GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...} }
 type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -15706,7 +15706,7 @@ type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage struct {
 // GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
+//	GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
 type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -15738,7 +15738,7 @@ func (i GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToGetAuthority
 // GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...} }
+//	GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...} }
 type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -15825,7 +15825,7 @@ type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage struct {
 // GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
+//	GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
 type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput interface {
 	pulumi.Input
 
@@ -15852,7 +15852,7 @@ func (i GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs) ToGetAu
 // GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
+//	GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
 type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput interface {
 	pulumi.Input
 
@@ -15919,7 +15919,7 @@ type GetAuthorityConfigX509ConfigPolicyId struct {
 // GetAuthorityConfigX509ConfigPolicyIdInput is an input type that accepts GetAuthorityConfigX509ConfigPolicyIdArgs and GetAuthorityConfigX509ConfigPolicyIdOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigPolicyIdInput` via:
 //
-//          GetAuthorityConfigX509ConfigPolicyIdArgs{...}
+//	GetAuthorityConfigX509ConfigPolicyIdArgs{...}
 type GetAuthorityConfigX509ConfigPolicyIdInput interface {
 	pulumi.Input
 
@@ -15946,7 +15946,7 @@ func (i GetAuthorityConfigX509ConfigPolicyIdArgs) ToGetAuthorityConfigX509Config
 // GetAuthorityConfigX509ConfigPolicyIdArrayInput is an input type that accepts GetAuthorityConfigX509ConfigPolicyIdArray and GetAuthorityConfigX509ConfigPolicyIdArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityConfigX509ConfigPolicyIdArrayInput` via:
 //
-//          GetAuthorityConfigX509ConfigPolicyIdArray{ GetAuthorityConfigX509ConfigPolicyIdArgs{...} }
+//	GetAuthorityConfigX509ConfigPolicyIdArray{ GetAuthorityConfigX509ConfigPolicyIdArgs{...} }
 type GetAuthorityConfigX509ConfigPolicyIdArrayInput interface {
 	pulumi.Input
 
@@ -16014,7 +16014,7 @@ type GetAuthorityKeySpec struct {
 // GetAuthorityKeySpecInput is an input type that accepts GetAuthorityKeySpecArgs and GetAuthorityKeySpecOutput values.
 // You can construct a concrete instance of `GetAuthorityKeySpecInput` via:
 //
-//          GetAuthorityKeySpecArgs{...}
+//	GetAuthorityKeySpecArgs{...}
 type GetAuthorityKeySpecInput interface {
 	pulumi.Input
 
@@ -16042,7 +16042,7 @@ func (i GetAuthorityKeySpecArgs) ToGetAuthorityKeySpecOutputWithContext(ctx cont
 // GetAuthorityKeySpecArrayInput is an input type that accepts GetAuthorityKeySpecArray and GetAuthorityKeySpecArrayOutput values.
 // You can construct a concrete instance of `GetAuthorityKeySpecArrayInput` via:
 //
-//          GetAuthorityKeySpecArray{ GetAuthorityKeySpecArgs{...} }
+//	GetAuthorityKeySpecArray{ GetAuthorityKeySpecArgs{...} }
 type GetAuthorityKeySpecArrayInput interface {
 	pulumi.Input
 
@@ -16114,7 +16114,7 @@ type GetAuthoritySubordinateConfig struct {
 // GetAuthoritySubordinateConfigInput is an input type that accepts GetAuthoritySubordinateConfigArgs and GetAuthoritySubordinateConfigOutput values.
 // You can construct a concrete instance of `GetAuthoritySubordinateConfigInput` via:
 //
-//          GetAuthoritySubordinateConfigArgs{...}
+//	GetAuthoritySubordinateConfigArgs{...}
 type GetAuthoritySubordinateConfigInput interface {
 	pulumi.Input
 
@@ -16142,7 +16142,7 @@ func (i GetAuthoritySubordinateConfigArgs) ToGetAuthoritySubordinateConfigOutput
 // GetAuthoritySubordinateConfigArrayInput is an input type that accepts GetAuthoritySubordinateConfigArray and GetAuthoritySubordinateConfigArrayOutput values.
 // You can construct a concrete instance of `GetAuthoritySubordinateConfigArrayInput` via:
 //
-//          GetAuthoritySubordinateConfigArray{ GetAuthoritySubordinateConfigArgs{...} }
+//	GetAuthoritySubordinateConfigArray{ GetAuthoritySubordinateConfigArgs{...} }
 type GetAuthoritySubordinateConfigArrayInput interface {
 	pulumi.Input
 
@@ -16215,7 +16215,7 @@ type GetAuthoritySubordinateConfigPemIssuerChain struct {
 // GetAuthoritySubordinateConfigPemIssuerChainInput is an input type that accepts GetAuthoritySubordinateConfigPemIssuerChainArgs and GetAuthoritySubordinateConfigPemIssuerChainOutput values.
 // You can construct a concrete instance of `GetAuthoritySubordinateConfigPemIssuerChainInput` via:
 //
-//          GetAuthoritySubordinateConfigPemIssuerChainArgs{...}
+//	GetAuthoritySubordinateConfigPemIssuerChainArgs{...}
 type GetAuthoritySubordinateConfigPemIssuerChainInput interface {
 	pulumi.Input
 
@@ -16242,7 +16242,7 @@ func (i GetAuthoritySubordinateConfigPemIssuerChainArgs) ToGetAuthoritySubordina
 // GetAuthoritySubordinateConfigPemIssuerChainArrayInput is an input type that accepts GetAuthoritySubordinateConfigPemIssuerChainArray and GetAuthoritySubordinateConfigPemIssuerChainArrayOutput values.
 // You can construct a concrete instance of `GetAuthoritySubordinateConfigPemIssuerChainArrayInput` via:
 //
-//          GetAuthoritySubordinateConfigPemIssuerChainArray{ GetAuthoritySubordinateConfigPemIssuerChainArgs{...} }
+//	GetAuthoritySubordinateConfigPemIssuerChainArray{ GetAuthoritySubordinateConfigPemIssuerChainArgs{...} }
 type GetAuthoritySubordinateConfigPemIssuerChainArrayInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class ConnectionAwsAccessRoleGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionAwsAccessRoleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public ConnectionAwsAccessRoleGetArgs()
         {
         }
+        public static new ConnectionAwsAccessRoleGetArgs Empty => new ConnectionAwsAccessRoleGetArgs();
     }
 }

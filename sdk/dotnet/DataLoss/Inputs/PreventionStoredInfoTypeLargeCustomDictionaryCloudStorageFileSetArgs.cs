@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The url, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard in the path is allowed.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs()
         {
         }
+        public static new PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs Empty => new PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs();
     }
 }

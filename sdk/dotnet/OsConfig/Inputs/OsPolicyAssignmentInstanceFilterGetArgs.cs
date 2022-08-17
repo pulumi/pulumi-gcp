@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentInstanceFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentInstanceFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target all VMs in the project. If true, no other criteria is permitted.
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentInstanceFilterGetArgs()
         {
         }
+        public static new OsPolicyAssignmentInstanceFilterGetArgs Empty => new OsPolicyAssignmentInstanceFilterGetArgs();
     }
 }

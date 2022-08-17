@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/backendBucketIamMember:BackendBucketIamMember")]
-    public partial class BackendBucketIamMember : Pulumi.CustomResource
+    public partial class BackendBucketIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.BackendBucketIamMemberCondition?> Condition { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class BackendBucketIamMemberArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.BackendBucketIamMemberConditionArgs>? Condition { get; set; }
@@ -146,9 +146,10 @@ namespace Pulumi.Gcp.Compute
         public BackendBucketIamMemberArgs()
         {
         }
+        public static new BackendBucketIamMemberArgs Empty => new BackendBucketIamMemberArgs();
     }
 
-    public sealed class BackendBucketIamMemberState : Pulumi.ResourceArgs
+    public sealed class BackendBucketIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
         public Input<Inputs.BackendBucketIamMemberConditionGetArgs>? Condition { get; set; }
@@ -186,5 +187,6 @@ namespace Pulumi.Gcp.Compute
         public BackendBucketIamMemberState()
         {
         }
+        public static new BackendBucketIamMemberState Empty => new BackendBucketIamMemberState();
     }
 }

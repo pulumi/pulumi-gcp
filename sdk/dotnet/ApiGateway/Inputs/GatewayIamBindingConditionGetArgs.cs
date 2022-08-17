@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway.Inputs
 {
 
-    public sealed class GatewayIamBindingConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class GatewayIamBindingConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
         public GatewayIamBindingConditionGetArgs()
         {
         }
+        public static new GatewayIamBindingConditionGetArgs Empty => new GatewayIamBindingConditionGetArgs();
     }
 }

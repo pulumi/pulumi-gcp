@@ -24,29 +24,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myKeyRing, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
-// 			Name:     "my-key-ring",
-// 			Location: "us-central1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
-// 			Name:    "my-crypto-key",
-// 			KeyRing: myKeyRing.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myKeyRing, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
+//				Name:     "my-key-ring",
+//				Location: "us-central1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
+//				Name:    "my-crypto-key",
+//				KeyRing: myKeyRing.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs, opts ...pulumi.InvokeOption) (*GetKMSCryptoKeyResult, error) {
 	var rv GetKMSCryptoKeyResult

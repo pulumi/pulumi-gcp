@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetRegionsArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Project from which to list available regions. Defaults to project declared in the provider.
@@ -45,9 +45,10 @@ namespace Pulumi.Gcp.Compute
         public GetRegionsArgs()
         {
         }
+        public static new GetRegionsArgs Empty => new GetRegionsArgs();
     }
 
-    public sealed class GetRegionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Project from which to list available regions. Defaults to project declared in the provider.
@@ -65,6 +66,7 @@ namespace Pulumi.Gcp.Compute
         public GetRegionsInvokeArgs()
         {
         }
+        public static new GetRegionsInvokeArgs Empty => new GetRegionsInvokeArgs();
     }
 
 

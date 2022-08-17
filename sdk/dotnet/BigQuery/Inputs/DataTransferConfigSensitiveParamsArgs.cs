@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class DataTransferConfigSensitiveParamsArgs : Pulumi.ResourceArgs
+    public sealed class DataTransferConfigSensitiveParamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Secret Access Key of the AWS account transferring data from.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public DataTransferConfigSensitiveParamsArgs()
         {
         }
+        public static new DataTransferConfigSensitiveParamsArgs Empty => new DataTransferConfigSensitiveParamsArgs();
     }
 }

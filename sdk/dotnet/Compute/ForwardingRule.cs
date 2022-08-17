@@ -24,24 +24,21 @@ namespace Pulumi.Gcp.Compute
     /// ### Forwarding Rule Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool", new Gcp.Compute.TargetPoolArgs
-    ///         {
-    ///         });
-    ///         var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new Gcp.Compute.ForwardingRuleArgs
-    ///         {
-    ///             Target = defaultTargetPool.Id,
-    ///             PortRange = "80",
-    ///         });
-    ///     }
+    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool");
     /// 
-    /// }
+    ///     var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new()
+    ///     {
+    ///         Target = defaultTargetPool.Id,
+    ///         PortRange = "80",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/forwardingRule:ForwardingRule")]
-    public partial class ForwardingRule : Pulumi.CustomResource
+    public partial class ForwardingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This field can be used with internal load balancer or network load balancer
@@ -361,7 +358,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class ForwardingRuleArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field can be used with internal load balancer or network load balancer
@@ -596,9 +593,10 @@ namespace Pulumi.Gcp.Compute
         public ForwardingRuleArgs()
         {
         }
+        public static new ForwardingRuleArgs Empty => new ForwardingRuleArgs();
     }
 
-    public sealed class ForwardingRuleState : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field can be used with internal load balancer or network load balancer
@@ -871,5 +869,6 @@ namespace Pulumi.Gcp.Compute
         public ForwardingRuleState()
         {
         }
+        public static new ForwardingRuleState Empty => new ForwardingRuleState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SecurityPolicyRuleMatchGetArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration options available when specifying `versioned_expr`.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public SecurityPolicyRuleMatchGetArgs()
         {
         }
+        public static new SecurityPolicyRuleMatchGetArgs Empty => new SecurityPolicyRuleMatchGetArgs();
     }
 }

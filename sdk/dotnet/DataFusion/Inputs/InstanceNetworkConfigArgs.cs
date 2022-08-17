@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataFusion.Inputs
 {
 
-    public sealed class InstanceNetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP range in CIDR notation to use for the managed Data Fusion instance
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.DataFusion.Inputs
         public InstanceNetworkConfigArgs()
         {
         }
+        public static new InstanceNetworkConfigArgs Empty => new InstanceNetworkConfigArgs();
     }
 }

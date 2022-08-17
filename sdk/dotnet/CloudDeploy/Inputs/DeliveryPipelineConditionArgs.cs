@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy.Inputs
 {
 
-    public sealed class DeliveryPipelineConditionArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("pipelineReadyConditions")]
         private InputList<Inputs.DeliveryPipelineConditionPipelineReadyConditionArgs>? _pipelineReadyConditions;
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public DeliveryPipelineConditionArgs()
         {
         }
+        public static new DeliveryPipelineConditionArgs Empty => new DeliveryPipelineConditionArgs();
     }
 }

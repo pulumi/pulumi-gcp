@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentRolloutGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentRolloutGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentRolloutGetArgs()
         {
         }
+        public static new PatchDeploymentRolloutGetArgs Empty => new PatchDeploymentRolloutGetArgs();
     }
 }

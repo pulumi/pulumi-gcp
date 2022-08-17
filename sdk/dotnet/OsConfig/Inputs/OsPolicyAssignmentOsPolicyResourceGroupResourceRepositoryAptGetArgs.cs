@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptGetArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptGetArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptGetArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptGetArgs();
     }
 }

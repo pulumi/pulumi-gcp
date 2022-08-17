@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Size in GB of the boot disk (default is 500GB).
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigGetArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigGetArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigGetArgs();
     }
 }

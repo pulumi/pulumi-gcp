@@ -21,37 +21,36 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ranges = Gcp.Compute.GetLBIPRanges.Invoke();
+        /// 
+        ///     var lb = new Gcp.Compute.Firewall("lb", new()
         ///     {
-        ///         var ranges = Output.Create(Gcp.Compute.GetLBIPRanges.InvokeAsync());
-        ///         var lb = new Gcp.Compute.Firewall("lb", new Gcp.Compute.FirewallArgs
+        ///         Network = google_compute_network.Main.Name,
+        ///         Allows = new[]
         ///         {
-        ///             Network = google_compute_network.Main.Name,
-        ///             Allows = 
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
         ///             {
-        ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///                 Protocol = "tcp",
+        ///                 Ports = new[]
         ///                 {
-        ///                     Protocol = "tcp",
-        ///                     Ports = 
-        ///                     {
-        ///                         "80",
-        ///                     },
+        ///                     "80",
         ///                 },
         ///             },
-        ///             SourceRanges = ranges.Apply(ranges =&gt; ranges.Networks),
-        ///             TargetTags = 
-        ///             {
-        ///                 "InstanceBehindLoadBalancer",
-        ///             },
-        ///         });
-        ///     }
+        ///         },
+        ///         SourceRanges = ranges.Apply(getLBIPRangesResult =&gt; getLBIPRangesResult.Networks),
+        ///         TargetTags = new[]
+        ///         {
+        ///             "InstanceBehindLoadBalancer",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

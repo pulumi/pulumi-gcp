@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class RecordSetRoutingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RecordSetRoutingPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("geos")]
         private InputList<Inputs.RecordSetRoutingPolicyGeoArgs>? _geos;
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public RecordSetRoutingPolicyArgs()
         {
         }
+        public static new RecordSetRoutingPolicyArgs Empty => new RecordSetRoutingPolicyArgs();
     }
 }

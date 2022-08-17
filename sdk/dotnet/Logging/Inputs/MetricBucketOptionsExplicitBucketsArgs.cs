@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging.Inputs
 {
 
-    public sealed class MetricBucketOptionsExplicitBucketsArgs : Pulumi.ResourceArgs
+    public sealed class MetricBucketOptionsExplicitBucketsArgs : global::Pulumi.ResourceArgs
     {
         [Input("bounds", required: true)]
         private InputList<double>? _bounds;
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.Logging.Inputs
         public MetricBucketOptionsExplicitBucketsArgs()
         {
         }
+        public static new MetricBucketOptionsExplicitBucketsArgs Empty => new MetricBucketOptionsExplicitBucketsArgs();
     }
 }

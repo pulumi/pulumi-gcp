@@ -16,62 +16,58 @@ namespace Pulumi.Gcp.Firebaserules
     /// ### Basic_ruleset
     /// Creates a basic Firestore ruleset
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Firebaserules.Ruleset("primary", new()
     ///     {
-    ///         var primary = new Gcp.Firebaserules.Ruleset("primary", new Gcp.Firebaserules.RulesetArgs
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
-    ///             Project = "my-project-name",
-    ///             Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///             Files = new[]
     ///             {
-    ///                 Files = 
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
-    ///                     new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                     {
-    ///                         Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                         Fingerprint = "",
-    ///                         Name = "firestore.rules",
-    ///                     },
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Fingerprint = "",
+    ///                     Name = "firestore.rules",
     ///                 },
-    ///                 Language = "",
     ///             },
-    ///         });
-    ///     }
+    ///             Language = "",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Minimal_ruleset
     /// Creates a minimal Firestore ruleset
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.Firebaserules.Ruleset("primary", new()
     ///     {
-    ///         var primary = new Gcp.Firebaserules.Ruleset("primary", new Gcp.Firebaserules.RulesetArgs
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
-    ///             Project = "my-project-name",
-    ///             Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///             Files = new[]
     ///             {
-    ///                 Files = 
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
-    ///                     new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                     {
-    ///                         Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                         Name = "firestore.rules",
-    ///                     },
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Name = "firestore.rules",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +87,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebaserules/ruleset:Ruleset")]
-    public partial class Ruleset : Pulumi.CustomResource
+    public partial class Ruleset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Output only. Time the `Ruleset` was created.
@@ -167,7 +163,7 @@ namespace Pulumi.Gcp.Firebaserules
         }
     }
 
-    public sealed class RulesetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The project for the resource
@@ -184,9 +180,10 @@ namespace Pulumi.Gcp.Firebaserules
         public RulesetArgs()
         {
         }
+        public static new RulesetArgs Empty => new RulesetArgs();
     }
 
-    public sealed class RulesetState : Pulumi.ResourceArgs
+    public sealed class RulesetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Output only. Time the `Ruleset` was created.
@@ -227,5 +224,6 @@ namespace Pulumi.Gcp.Firebaserules
         public RulesetState()
         {
         }
+        public static new RulesetState Empty => new RulesetState();
     }
 }

@@ -18,42 +18,42 @@ namespace Pulumi.Gcp.Container
     /// ### Using A Separately Managed Node Pool (Recommended)
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "service-account-id",
-    ///             DisplayName = "Service Account",
-    ///         });
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             RemoveDefaultNodePool = true,
-    ///             InitialNodeCount = 1,
-    ///         });
-    ///         var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new Gcp.Container.NodePoolArgs
-    ///         {
-    ///             Cluster = primary.Id,
-    ///             NodeCount = 1,
-    ///             NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
-    ///             {
-    ///                 Preemptible = true,
-    ///                 MachineType = "e2-medium",
-    ///                 ServiceAccount = @default.Email,
-    ///                 OauthScopes = 
-    ///                 {
-    ///                     "https://www.googleapis.com/auth/cloud-platform",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
     /// 
-    /// }
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RemoveDefaultNodePool = true,
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new()
+    ///     {
+    ///         Cluster = primary.Id,
+    ///         NodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
+    ///         {
+    ///             Preemptible = true,
+    ///             MachineType = "e2-medium",
+    ///             ServiceAccount = @default.Email,
+    ///             OauthScopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Container
     /// ```
     /// </summary>
     [GcpResourceType("gcp:container/nodePool:NodePool")]
-    public partial class NodePool : Pulumi.CustomResource
+    public partial class NodePool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration required by cluster autoscaler to adjust
@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Container
         }
     }
 
-    public sealed class NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration required by cluster autoscaler to adjust
@@ -391,9 +391,10 @@ namespace Pulumi.Gcp.Container
         public NodePoolArgs()
         {
         }
+        public static new NodePoolArgs Empty => new NodePoolArgs();
     }
 
-    public sealed class NodePoolState : Pulumi.ResourceArgs
+    public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration required by cluster autoscaler to adjust
@@ -556,5 +557,6 @@ namespace Pulumi.Gcp.Container
         public NodePoolState()
         {
         }
+        public static new NodePoolState Empty => new NodePoolState();
     }
 }

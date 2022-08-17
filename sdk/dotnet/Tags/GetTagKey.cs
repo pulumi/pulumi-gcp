@@ -19,21 +19,19 @@ namespace Pulumi.Gcp.Tags
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
         ///     {
-        ///         var environmentTagKey = Output.Create(Gcp.Tags.GetTagKey.InvokeAsync(new Gcp.Tags.GetTagKeyArgs
-        ///         {
-        ///             Parent = "organizations/12345",
-        ///             ShortName = "environment",
-        ///         }));
-        ///     }
+        ///         Parent = "organizations/12345",
+        ///         ShortName = "environment",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Gcp.Tags
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
         ///     {
-        ///         var environmentTagKey = Output.Create(Gcp.Tags.GetTagKey.InvokeAsync(new Gcp.Tags.GetTagKeyArgs
-        ///         {
-        ///             Parent = "organizations/12345",
-        ///             ShortName = "environment",
-        ///         }));
-        ///     }
+        ///         Parent = "organizations/12345",
+        ///         ShortName = "environment",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,7 +69,7 @@ namespace Pulumi.Gcp.Tags
     }
 
 
-    public sealed class GetTagKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetTagKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The resource name of the parent organization in format `organizations/{org_id}`.
@@ -90,9 +86,10 @@ namespace Pulumi.Gcp.Tags
         public GetTagKeyArgs()
         {
         }
+        public static new GetTagKeyArgs Empty => new GetTagKeyArgs();
     }
 
-    public sealed class GetTagKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The resource name of the parent organization in format `organizations/{org_id}`.
@@ -109,6 +106,7 @@ namespace Pulumi.Gcp.Tags
         public GetTagKeyInvokeArgs()
         {
         }
+        public static new GetTagKeyInvokeArgs Empty => new GetTagKeyInvokeArgs();
     }
 
 

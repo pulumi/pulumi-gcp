@@ -14,48 +14,47 @@ namespace Pulumi.Gcp.Dataproc
     /// ### Dataproc Metastore Federation Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("defaultMetastoreService", new()
     ///     {
-    ///         var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("defaultMetastoreService", new Gcp.Dataproc.MetastoreServiceArgs
+    ///         ServiceId = "fed",
+    ///         Location = "us-central1",
+    ///         Tier = "DEVELOPER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
     ///         {
-    ///             ServiceId = "fed",
-    ///             Location = "us-central1",
-    ///             Tier = "DEVELOPER",
-    ///             HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
-    ///             {
-    ///                 Version = "3.1.2",
-    ///                 EndpointProtocol = "GRPC",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var defaultMetastoreFederation = new Gcp.Dataproc.MetastoreFederation("defaultMetastoreFederation", new Gcp.Dataproc.MetastoreFederationArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             FederationId = "fed",
     ///             Version = "3.1.2",
-    ///             BackendMetastores = 
-    ///             {
-    ///                 new Gcp.Dataproc.Inputs.MetastoreFederationBackendMetastoreArgs
-    ///                 {
-    ///                     Rank = "1",
-    ///                     Name = defaultMetastoreService.Id,
-    ///                     MetastoreType = "DATAPROC_METASTORE",
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///             EndpointProtocol = "GRPC",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var defaultMetastoreFederation = new Gcp.Dataproc.MetastoreFederation("defaultMetastoreFederation", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         FederationId = "fed",
+    ///         Version = "3.1.2",
+    ///         BackendMetastores = new[]
+    ///         {
+    ///             new Gcp.Dataproc.Inputs.MetastoreFederationBackendMetastoreArgs
+    ///             {
+    ///                 Rank = "1",
+    ///                 Name = defaultMetastoreService.Id,
+    ///                 MetastoreType = "DATAPROC_METASTORE",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +74,7 @@ namespace Pulumi.Gcp.Dataproc
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataproc/metastoreFederation:MetastoreFederation")]
-    public partial class MetastoreFederation : Pulumi.CustomResource
+    public partial class MetastoreFederation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
@@ -191,7 +190,7 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
-    public sealed class MetastoreFederationArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationArgs : global::Pulumi.ResourceArgs
     {
         [Input("backendMetastores", required: true)]
         private InputList<Inputs.MetastoreFederationBackendMetastoreArgs>? _backendMetastores;
@@ -248,9 +247,10 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationArgs()
         {
         }
+        public static new MetastoreFederationArgs Empty => new MetastoreFederationArgs();
     }
 
-    public sealed class MetastoreFederationState : Pulumi.ResourceArgs
+    public sealed class MetastoreFederationState : global::Pulumi.ResourceArgs
     {
         [Input("backendMetastores")]
         private InputList<Inputs.MetastoreFederationBackendMetastoreGetArgs>? _backendMetastores;
@@ -337,5 +337,6 @@ namespace Pulumi.Gcp.Dataproc
         public MetastoreFederationState()
         {
         }
+        public static new MetastoreFederationState Empty => new MetastoreFederationState();
     }
 }

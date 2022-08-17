@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionDeploymentZipArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionDeploymentZipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// files count
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionDeploymentZipArgs()
         {
         }
+        public static new FlexibleAppVersionDeploymentZipArgs Empty => new FlexibleAppVersionDeploymentZipArgs();
     }
 }

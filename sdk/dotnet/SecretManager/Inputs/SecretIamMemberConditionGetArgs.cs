@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager.Inputs
 {
 
-    public sealed class SecretIamMemberConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public SecretIamMemberConditionGetArgs()
         {
         }
+        public static new SecretIamMemberConditionGetArgs Empty => new SecretIamMemberConditionGetArgs();
     }
 }

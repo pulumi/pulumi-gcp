@@ -23,86 +23,81 @@ namespace Pulumi.Gcp.Notebooks
     /// ## google\_notebooks\_instance\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Notebooks.InstanceIamPolicy("policy", new Gcp.Notebooks.InstanceIamPolicyArgs
-    ///         {
-    ///             Project = google_notebooks_instance.Instance.Project,
-    ///             Location = google_notebooks_instance.Instance.Location,
-    ///             InstanceName = google_notebooks_instance.Instance.Name,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Notebooks.InstanceIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_notebooks_instance.Instance.Project,
+    ///         Location = google_notebooks_instance.Instance.Location,
+    ///         InstanceName = google_notebooks_instance.Instance.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_notebooks\_instance\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Notebooks.InstanceIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Notebooks.InstanceIamBinding("binding", new Gcp.Notebooks.InstanceIamBindingArgs
+    ///         Project = google_notebooks_instance.Instance.Project,
+    ///         Location = google_notebooks_instance.Instance.Location,
+    ///         InstanceName = google_notebooks_instance.Instance.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_notebooks_instance.Instance.Project,
-    ///             Location = google_notebooks_instance.Instance.Location,
-    ///             InstanceName = google_notebooks_instance.Instance.Name,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_notebooks\_instance\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Notebooks.InstanceIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Notebooks.InstanceIamMember("member", new Gcp.Notebooks.InstanceIamMemberArgs
-    ///         {
-    ///             Project = google_notebooks_instance.Instance.Project,
-    ///             Location = google_notebooks_instance.Instance.Location,
-    ///             InstanceName = google_notebooks_instance.Instance.Name,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_notebooks_instance.Instance.Project,
+    ///         Location = google_notebooks_instance.Instance.Location,
+    ///         InstanceName = google_notebooks_instance.Instance.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -130,7 +125,7 @@ namespace Pulumi.Gcp.Notebooks
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:notebooks/instanceIamPolicy:InstanceIamPolicy")]
-    public partial class InstanceIamPolicy : Pulumi.CustomResource
+    public partial class InstanceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -208,7 +203,7 @@ namespace Pulumi.Gcp.Notebooks
         }
     }
 
-    public sealed class InstanceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -239,9 +234,10 @@ namespace Pulumi.Gcp.Notebooks
         public InstanceIamPolicyArgs()
         {
         }
+        public static new InstanceIamPolicyArgs Empty => new InstanceIamPolicyArgs();
     }
 
-    public sealed class InstanceIamPolicyState : Pulumi.ResourceArgs
+    public sealed class InstanceIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -278,5 +274,6 @@ namespace Pulumi.Gcp.Notebooks
         public InstanceIamPolicyState()
         {
         }
+        public static new InstanceIamPolicyState Empty => new InstanceIamPolicyState();
     }
 }

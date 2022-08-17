@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// </summary>
     [GcpResourceType("gcp:kms/keyRingImportJob:KeyRingImportJob")]
-    public partial class KeyRingImportJob : Pulumi.CustomResource
+    public partial class KeyRingImportJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
-    public sealed class KeyRingImportJobArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingImportJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
@@ -175,9 +175,10 @@ namespace Pulumi.Gcp.Kms
         public KeyRingImportJobArgs()
         {
         }
+        public static new KeyRingImportJobArgs Empty => new KeyRingImportJobArgs();
     }
 
-    public sealed class KeyRingImportJobState : Pulumi.ResourceArgs
+    public sealed class KeyRingImportJobState : global::Pulumi.ResourceArgs
     {
         [Input("attestations")]
         private InputList<Inputs.KeyRingImportJobAttestationGetArgs>? _attestations;
@@ -254,5 +255,6 @@ namespace Pulumi.Gcp.Kms
         public KeyRingImportJobState()
         {
         }
+        public static new KeyRingImportJobState Empty => new KeyRingImportJobState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class MetastoreServiceIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreServiceIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public MetastoreServiceIamMemberConditionArgs()
         {
         }
+        public static new MetastoreServiceIamMemberConditionArgs Empty => new MetastoreServiceIamMemberConditionArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudAsset.Inputs
 {
 
-    public sealed class OrganizationFeedFeedOutputConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationFeedFeedOutputConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination on Cloud Pubsub.
@@ -22,5 +22,6 @@ namespace Pulumi.Gcp.CloudAsset.Inputs
         public OrganizationFeedFeedOutputConfigGetArgs()
         {
         }
+        public static new OrganizationFeedFeedOutputConfigGetArgs Empty => new OrganizationFeedFeedOutputConfigGetArgs();
     }
 }

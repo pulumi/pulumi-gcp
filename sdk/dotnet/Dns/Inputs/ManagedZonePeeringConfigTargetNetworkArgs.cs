@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class ManagedZonePeeringConfigTargetNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePeeringConfigTargetNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id or fully qualified URL of the VPC network to forward queries to.
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public ManagedZonePeeringConfigTargetNetworkArgs()
         {
         }
+        public static new ManagedZonePeeringConfigTargetNetworkArgs Empty => new ManagedZonePeeringConfigTargetNetworkArgs();
     }
 }

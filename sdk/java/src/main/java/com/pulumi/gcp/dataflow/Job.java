@@ -32,14 +32,14 @@ public class Job extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="additionalExperiments", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> additionalExperiments;
+    private Output<List<String>> additionalExperiments;
 
     /**
      * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
      * 
      */
-    public Output<Optional<List<String>>> additionalExperiments() {
-        return Codegen.optional(this.additionalExperiments);
+    public Output<List<String>> additionalExperiments() {
+        return this.additionalExperiments;
     }
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.

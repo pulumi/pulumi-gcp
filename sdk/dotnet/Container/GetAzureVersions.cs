@@ -19,24 +19,23 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var central1b = Gcp.Container.GetAzureVersions.Invoke(new()
         ///     {
-        ///         var central1b = Output.Create(Gcp.Container.GetAzureVersions.InvokeAsync(new Gcp.Container.GetAzureVersionsArgs
-        ///         {
-        ///             Location = "us-west1",
-        ///             Project = "my-project",
-        ///         }));
-        ///         this.FirstAvailableVersion = data.Google_container_azure_versions.Versions.Valid_versions[0];
-        ///     }
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
         /// 
-        ///     [Output("firstAvailableVersion")]
-        ///     public Output&lt;string&gt; FirstAvailableVersion { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = data.Google_container_azure_versions.Versions.Valid_versions[0],
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,24 +51,23 @@ namespace Pulumi.Gcp.Container
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var central1b = Gcp.Container.GetAzureVersions.Invoke(new()
         ///     {
-        ///         var central1b = Output.Create(Gcp.Container.GetAzureVersions.InvokeAsync(new Gcp.Container.GetAzureVersionsArgs
-        ///         {
-        ///             Location = "us-west1",
-        ///             Project = "my-project",
-        ///         }));
-        ///         this.FirstAvailableVersion = data.Google_container_azure_versions.Versions.Valid_versions[0];
-        ///     }
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
         /// 
-        ///     [Output("firstAvailableVersion")]
-        ///     public Output&lt;string&gt; FirstAvailableVersion { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = data.Google_container_azure_versions.Versions.Valid_versions[0],
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,7 +77,7 @@ namespace Pulumi.Gcp.Container
     }
 
 
-    public sealed class GetAzureVersionsArgs : Pulumi.InvokeArgs
+    public sealed class GetAzureVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location to list versions for.
@@ -97,9 +95,10 @@ namespace Pulumi.Gcp.Container
         public GetAzureVersionsArgs()
         {
         }
+        public static new GetAzureVersionsArgs Empty => new GetAzureVersionsArgs();
     }
 
-    public sealed class GetAzureVersionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAzureVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The location to list versions for.
@@ -117,6 +116,7 @@ namespace Pulumi.Gcp.Container
         public GetAzureVersionsInvokeArgs()
         {
         }
+        public static new GetAzureVersionsInvokeArgs Empty => new GetAzureVersionsInvokeArgs();
     }
 
 

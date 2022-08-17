@@ -13,11 +13,11 @@ import (
 // ## +---
 //
 // subcategory: "Cloud Bigtable"
-// layout: "google"
 // page_title: "Google: bigtable.Instance"
-// sidebar_current: "docs-google-bigtable-instance"
 // description: |-
-//   Creates a Google Bigtable instance.
+//
+//	Creates a Google Bigtable instance.
+//
 // ---
 //
 // # bigtable.Instance
@@ -26,7 +26,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/bigtable/docs)
+//   - [Official Documentation](https://cloud.google.com/bigtable/docs)
 //
 // ## Example Usage
 // ### Simple Instance
@@ -35,30 +35,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
-// 			Clusters: bigtable.InstanceClusterArray{
-// 				&bigtable.InstanceClusterArgs{
-// 					ClusterId:   pulumi.String("tf-instance-cluster"),
-// 					NumNodes:    pulumi.Int(1),
-// 					StorageType: pulumi.String("HDD"),
-// 				},
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"my-label": pulumi.String("prod-label"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("tf-instance-cluster"),
+//						NumNodes:    pulumi.Int(1),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"my-label": pulumi.String("prod-label"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Replicated Instance
 //
@@ -66,57 +69,66 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
-// 			Clusters: bigtable.InstanceClusterArray{
-// 				&bigtable.InstanceClusterArgs{
-// 					ClusterId:   pulumi.String("tf-instance-cluster1"),
-// 					NumNodes:    pulumi.Int(1),
-// 					StorageType: pulumi.String("HDD"),
-// 					Zone:        pulumi.String("us-central1-c"),
-// 				},
-// 				&bigtable.InstanceClusterArgs{
-// 					AutoscalingConfig: &bigtable.InstanceClusterAutoscalingConfigArgs{
-// 						CpuTarget: pulumi.Int(50),
-// 						MaxNodes:  pulumi.Int(3),
-// 						MinNodes:  pulumi.Int(1),
-// 					},
-// 					ClusterId:   pulumi.String("tf-instance-cluster2"),
-// 					StorageType: pulumi.String("HDD"),
-// 					Zone:        pulumi.String("us-central1-b"),
-// 				},
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"my-label": pulumi.String("prod-label"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("tf-instance-cluster1"),
+//						NumNodes:    pulumi.Int(1),
+//						StorageType: pulumi.String("HDD"),
+//						Zone:        pulumi.String("us-central1-c"),
+//					},
+//					&bigtable.InstanceClusterArgs{
+//						AutoscalingConfig: &bigtable.InstanceClusterAutoscalingConfigArgs{
+//							CpuTarget: pulumi.Int(50),
+//							MaxNodes:  pulumi.Int(3),
+//							MinNodes:  pulumi.Int(1),
+//						},
+//						ClusterId:   pulumi.String("tf-instance-cluster2"),
+//						StorageType: pulumi.String("HDD"),
+//						Zone:        pulumi.String("us-central1-b"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"my-label": pulumi.String("prod-label"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Bigtable Instances can be imported using any of these accepted formats
+// # Bigtable Instances can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}
+//
+//	$ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/instance:Instance default {{name}}
+//
+//	$ pulumi import gcp:bigtable/instance:Instance default {{name}}
+//
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
@@ -309,7 +321,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -334,7 +346,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

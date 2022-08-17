@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildOptionsArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
@@ -136,5 +136,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildOptionsArgs()
         {
         }
+        public static new TriggerBuildOptionsArgs Empty => new TriggerBuildOptionsArgs();
     }
 }

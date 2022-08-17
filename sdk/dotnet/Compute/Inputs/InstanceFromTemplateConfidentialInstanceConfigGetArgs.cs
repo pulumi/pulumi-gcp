@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceFromTemplateConfidentialInstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceFromTemplateConfidentialInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableConfidentialCompute", required: true)]
         public Input<bool> EnableConfidentialCompute { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceFromTemplateConfidentialInstanceConfigGetArgs()
         {
         }
+        public static new InstanceFromTemplateConfidentialInstanceConfigGetArgs Empty => new InstanceFromTemplateConfidentialInstanceConfigGetArgs();
     }
 }

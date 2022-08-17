@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildArtifactsObjectsTimingGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildArtifactsObjectsTimingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// End of time span.
@@ -31,5 +31,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildArtifactsObjectsTimingGetArgs()
         {
         }
+        public static new TriggerBuildArtifactsObjectsTimingGetArgs Empty => new TriggerBuildArtifactsObjectsTimingGetArgs();
     }
 }

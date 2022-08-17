@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices.Inputs
 {
 
-    public sealed class EdgeCacheServiceRoutingPathMatcherGetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceRoutingPathMatcherGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of the resource.
@@ -40,5 +40,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public EdgeCacheServiceRoutingPathMatcherGetArgs()
         {
         }
+        public static new EdgeCacheServiceRoutingPathMatcherGetArgs Empty => new EdgeCacheServiceRoutingPathMatcherGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
@@ -29,5 +29,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs()
         {
         }
+        public static new RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs Empty => new RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs();
     }
 }

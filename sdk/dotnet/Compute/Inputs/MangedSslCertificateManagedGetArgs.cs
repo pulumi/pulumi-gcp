@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class MangedSslCertificateManagedGetArgs : Pulumi.ResourceArgs
+    public sealed class MangedSslCertificateManagedGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("domains", required: true)]
         private InputList<string>? _domains;
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public MangedSslCertificateManagedGetArgs()
         {
         }
+        public static new MangedSslCertificateManagedGetArgs Empty => new MangedSslCertificateManagedGetArgs();
     }
 }

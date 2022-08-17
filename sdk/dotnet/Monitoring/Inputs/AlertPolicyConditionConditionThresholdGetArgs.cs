@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionConditionThresholdGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionConditionThresholdGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregations")]
         private InputList<Inputs.AlertPolicyConditionConditionThresholdAggregationGetArgs>? _aggregations;
@@ -158,5 +158,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionConditionThresholdGetArgs()
         {
         }
+        public static new AlertPolicyConditionConditionThresholdGetArgs Empty => new AlertPolicyConditionConditionThresholdGetArgs();
     }
 }

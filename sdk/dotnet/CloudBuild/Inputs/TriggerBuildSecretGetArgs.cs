@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildSecretGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildSecretGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud KMS key name to use to decrypt these envs.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildSecretGetArgs()
         {
         }
+        public static new TriggerBuildSecretGetArgs Empty => new TriggerBuildSecretGetArgs();
     }
 }

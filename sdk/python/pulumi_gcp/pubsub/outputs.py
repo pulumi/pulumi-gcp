@@ -16,6 +16,7 @@ __all__ = [
     'LiteTopicPartitionConfigCapacity',
     'LiteTopicReservationConfig',
     'LiteTopicRetentionConfig',
+    'SubscriptionBigqueryConfig',
     'SubscriptionDeadLetterPolicy',
     'SubscriptionExpirationPolicy',
     'SubscriptionIAMBindingCondition',
@@ -239,6 +240,85 @@ class LiteTopicRetentionConfig(dict):
         Example: "3.5s".
         """
         return pulumi.get(self, "period")
+
+
+@pulumi.output_type
+class SubscriptionBigqueryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dropUnknownFields":
+            suggest = "drop_unknown_fields"
+        elif key == "useTopicSchema":
+            suggest = "use_topic_schema"
+        elif key == "writeMetadata":
+            suggest = "write_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionBigqueryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionBigqueryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionBigqueryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 drop_unknown_fields: Optional[bool] = None,
+                 use_topic_schema: Optional[bool] = None,
+                 write_metadata: Optional[bool] = None):
+        """
+        :param str table: The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+        :param bool drop_unknown_fields: When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+               Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        :param bool use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+               The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+        """
+        pulumi.set(__self__, "table", table)
+        if drop_unknown_fields is not None:
+            pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
+        if use_topic_schema is not None:
+            pulumi.set(__self__, "use_topic_schema", use_topic_schema)
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="dropUnknownFields")
+    def drop_unknown_fields(self) -> Optional[bool]:
+        """
+        When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+        Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        """
+        return pulumi.get(self, "drop_unknown_fields")
+
+    @property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> Optional[bool]:
+        """
+        When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        """
+        return pulumi.get(self, "use_topic_schema")
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[bool]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+        The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+        """
+        return pulumi.get(self, "write_metadata")
 
 
 @pulumi.output_type

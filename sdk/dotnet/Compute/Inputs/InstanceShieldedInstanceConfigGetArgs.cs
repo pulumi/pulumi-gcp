@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceShieldedInstanceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceShieldedInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
@@ -36,5 +36,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceShieldedInstanceConfigGetArgs()
         {
         }
+        public static new InstanceShieldedInstanceConfigGetArgs Empty => new InstanceShieldedInstanceConfigGetArgs();
     }
 }

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.ServiceAccount
     }
 
 
-    public sealed class GetAccountAccessTokenArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAccessTokenArgs : global::Pulumi.InvokeArgs
     {
         [Input("delegates")]
         private List<string>? _delegates;
@@ -72,9 +72,10 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountAccessTokenArgs()
         {
         }
+        public static new GetAccountAccessTokenArgs Empty => new GetAccountAccessTokenArgs();
     }
 
-    public sealed class GetAccountAccessTokenInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAccessTokenInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("delegates")]
         private InputList<string>? _delegates;
@@ -115,6 +116,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public GetAccountAccessTokenInvokeArgs()
         {
         }
+        public static new GetAccountAccessTokenInvokeArgs Empty => new GetAccountAccessTokenInvokeArgs();
     }
 
 

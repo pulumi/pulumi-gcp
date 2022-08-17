@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildArtifactsGetArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildArtifactsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("images")]
         private InputList<string>? _images;
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildArtifactsGetArgs()
         {
         }
+        public static new TriggerBuildArtifactsGetArgs Empty => new TriggerBuildArtifactsGetArgs();
     }
 }

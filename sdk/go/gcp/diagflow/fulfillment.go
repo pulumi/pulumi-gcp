@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
+//   - [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 //
 // ## Example Usage
 // ### Dialogflow Fulfillment Basic
@@ -26,48 +26,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
-// 			DisplayName:         pulumi.String("example_agent"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			TimeZone:            pulumi.String("America/New_York"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewFulfillment(ctx, "basicFulfillment", &diagflow.FulfillmentArgs{
-// 			DisplayName: pulumi.String("basic-fulfillment"),
-// 			Enabled:     pulumi.Bool(true),
-// 			GenericWebService: &diagflow.FulfillmentGenericWebServiceArgs{
-// 				Uri:      pulumi.String("https://google.com"),
-// 				Username: pulumi.String("admin"),
-// 				Password: pulumi.String("password"),
-// 				RequestHeaders: pulumi.StringMap{
-// 					"name": pulumi.String("wrench"),
-// 				},
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			basicAgent,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+//				DisplayName:         pulumi.String("example_agent"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				TimeZone:            pulumi.String("America/New_York"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewFulfillment(ctx, "basicFulfillment", &diagflow.FulfillmentArgs{
+//				DisplayName: pulumi.String("basic-fulfillment"),
+//				Enabled:     pulumi.Bool(true),
+//				GenericWebService: &diagflow.FulfillmentGenericWebServiceArgs{
+//					Uri:      pulumi.String("https://google.com"),
+//					Username: pulumi.String("admin"),
+//					Password: pulumi.String("password"),
+//					RequestHeaders: pulumi.StringMap{
+//						"name": pulumi.String("wrench"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicAgent,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Fulfillment can be imported using any of these accepted formats
+// # Fulfillment can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
+//
+//	$ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
+//
 // ```
 type Fulfillment struct {
 	pulumi.CustomResourceState
@@ -222,7 +227,7 @@ func (i *Fulfillment) ToFulfillmentOutputWithContext(ctx context.Context) Fulfil
 // FulfillmentArrayInput is an input type that accepts FulfillmentArray and FulfillmentArrayOutput values.
 // You can construct a concrete instance of `FulfillmentArrayInput` via:
 //
-//          FulfillmentArray{ FulfillmentArgs{...} }
+//	FulfillmentArray{ FulfillmentArgs{...} }
 type FulfillmentArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +252,7 @@ func (i FulfillmentArray) ToFulfillmentArrayOutputWithContext(ctx context.Contex
 // FulfillmentMapInput is an input type that accepts FulfillmentMap and FulfillmentMapOutput values.
 // You can construct a concrete instance of `FulfillmentMapInput` via:
 //
-//          FulfillmentMap{ "key": FulfillmentArgs{...} }
+//	FulfillmentMap{ "key": FulfillmentArgs{...} }
 type FulfillmentMapInput interface {
 	pulumi.Input
 

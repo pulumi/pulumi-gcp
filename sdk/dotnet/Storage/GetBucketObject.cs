@@ -25,21 +25,19 @@ namespace Pulumi.Gcp.Storage
         /// Example picture stored within a folder.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var picture = Gcp.Storage.GetBucketObject.Invoke(new()
         ///     {
-        ///         var picture = Output.Create(Gcp.Storage.GetBucketObject.InvokeAsync(new Gcp.Storage.GetBucketObjectArgs
-        ///         {
-        ///             Bucket = "image-store",
-        ///             Name = "folder/butterfly01.jpg",
-        ///         }));
-        ///     }
+        ///         Bucket = "image-store",
+        ///         Name = "folder/butterfly01.jpg",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -61,21 +59,19 @@ namespace Pulumi.Gcp.Storage
         /// Example picture stored within a folder.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var picture = Gcp.Storage.GetBucketObject.Invoke(new()
         ///     {
-        ///         var picture = Output.Create(Gcp.Storage.GetBucketObject.InvokeAsync(new Gcp.Storage.GetBucketObjectArgs
-        ///         {
-        ///             Bucket = "image-store",
-        ///             Name = "folder/butterfly01.jpg",
-        ///         }));
-        ///     }
+        ///         Bucket = "image-store",
+        ///         Name = "folder/butterfly01.jpg",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +81,7 @@ namespace Pulumi.Gcp.Storage
     }
 
 
-    public sealed class GetBucketObjectArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketObjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -102,9 +98,10 @@ namespace Pulumi.Gcp.Storage
         public GetBucketObjectArgs()
         {
         }
+        public static new GetBucketObjectArgs Empty => new GetBucketObjectArgs();
     }
 
-    public sealed class GetBucketObjectInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketObjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the containing bucket.
@@ -121,6 +118,7 @@ namespace Pulumi.Gcp.Storage
         public GetBucketObjectInvokeArgs()
         {
         }
+        public static new GetBucketObjectInvokeArgs Empty => new GetBucketObjectInvokeArgs();
     }
 
 

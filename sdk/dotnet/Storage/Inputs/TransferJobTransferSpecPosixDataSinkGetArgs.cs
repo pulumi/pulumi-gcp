@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class TransferJobTransferSpecPosixDataSinkGetArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobTransferSpecPosixDataSinkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Root directory path to the filesystem.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public TransferJobTransferSpecPosixDataSinkGetArgs()
         {
         }
+        public static new TransferJobTransferSpecPosixDataSinkGetArgs Empty => new TransferJobTransferSpecPosixDataSinkGetArgs();
     }
 }

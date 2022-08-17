@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolNetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolNetworkConfigArgs()
         {
         }
+        public static new ClusterNodePoolNetworkConfigArgs Empty => new ClusterNodePoolNetworkConfigArgs();
     }
 }

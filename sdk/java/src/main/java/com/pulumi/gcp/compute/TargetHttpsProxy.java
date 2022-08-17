@@ -125,6 +125,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/targetHttpsProxy:TargetHttpsProxy")
 public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
     /**
+     * A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     * 
+     */
+    @Export(name="certificateMap", type=String.class, parameters={})
+    private Output</* @Nullable */ String> certificateMap;
+
+    /**
+     * @return A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     * 
+     */
+    public Output<Optional<String>> certificateMap() {
+        return Codegen.optional(this.certificateMap);
+    }
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */
@@ -271,7 +289,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sslCertificates", type=List.class, parameters={String.class})
-    private Output<List<String>> sslCertificates;
+    private Output</* @Nullable */ List<String>> sslCertificates;
 
     /**
      * @return A list of SslCertificate resources that are used to authenticate
@@ -279,8 +297,8 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * certificate must be specified.
      * 
      */
-    public Output<List<String>> sslCertificates() {
-        return this.sslCertificates;
+    public Output<Optional<List<String>>> sslCertificates() {
+        return Codegen.optional(this.sslCertificates);
     }
     /**
      * A reference to the SslPolicy resource that will be associated with

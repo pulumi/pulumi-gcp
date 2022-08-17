@@ -22,23 +22,21 @@ namespace Pulumi.Gcp.GameServices
     /// ### Game Service Realm Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new Gcp.GameServices.Realm("default", new()
     ///     {
-    ///         var @default = new Gcp.GameServices.Realm("default", new Gcp.GameServices.RealmArgs
-    ///         {
-    ///             Description = "one of the nine",
-    ///             Location = "global",
-    ///             RealmId = "tf-test-realm",
-    ///             TimeZone = "EST",
-    ///         });
-    ///     }
+    ///         Description = "one of the nine",
+    ///         Location = "global",
+    ///         RealmId = "tf-test-realm",
+    ///         TimeZone = "EST",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.Gcp.GameServices
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gameservices/realm:Realm")]
-    public partial class Realm : Pulumi.CustomResource
+    public partial class Realm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human readable description of the realm.
@@ -156,7 +154,7 @@ namespace Pulumi.Gcp.GameServices
         }
     }
 
-    public sealed class RealmArgs : Pulumi.ResourceArgs
+    public sealed class RealmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable description of the realm.
@@ -206,9 +204,10 @@ namespace Pulumi.Gcp.GameServices
         public RealmArgs()
         {
         }
+        public static new RealmArgs Empty => new RealmArgs();
     }
 
-    public sealed class RealmState : Pulumi.ResourceArgs
+    public sealed class RealmState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable description of the realm.
@@ -271,5 +270,6 @@ namespace Pulumi.Gcp.GameServices
         public RealmState()
         {
         }
+        public static new RealmState Empty => new RealmState();
     }
 }

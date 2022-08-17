@@ -22,81 +22,90 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultAccount, err := serviceAccount.NewAccount(ctx, "defaultAccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("service_account_id"),
-// 			DisplayName: pulumi.String("Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			ScratchDisks: compute.InstanceScratchDiskArray{
-// 				&compute.InstanceScratchDiskArgs{
-// 					Interface: pulumi.String("SCSI"),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-// 						nil,
-// 					},
-// 				},
-// 			},
-// 			Metadata: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
-// 			ServiceAccount: &compute.InstanceServiceAccountArgs{
-// 				Email: defaultAccount.Email,
-// 				Scopes: pulumi.StringArray{
-// 					pulumi.String("cloud-platform"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := serviceAccount.NewAccount(ctx, "defaultAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("service_account_id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//				ScratchDisks: compute.InstanceScratchDiskArray{
+//					&compute.InstanceScratchDiskArgs{
+//						Interface: pulumi.String("SCSI"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//					},
+//				},
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
+//				ServiceAccount: &compute.InstanceServiceAccountArgs{
+//					Email: defaultAccount.Email,
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Instances can be imported using any of these accepted formats
+// # Instances can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
+//
+//	$ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/instance:Instance default {{name}}
+//
+//	$ pulumi import gcp:compute/instance:Instance default {{name}}
+//
 // ```
 //
-//  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
+//	[custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -699,7 +708,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -724,7 +733,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 

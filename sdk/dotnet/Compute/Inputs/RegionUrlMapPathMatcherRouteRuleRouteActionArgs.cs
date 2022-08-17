@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specification for allowing client side cross-origin requests. Please see W3C
@@ -91,5 +91,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionUrlMapPathMatcherRouteRuleRouteActionArgs()
         {
         }
+        public static new RegionUrlMapPathMatcherRouteRuleRouteActionArgs Empty => new RegionUrlMapPathMatcherRouteRuleRouteActionArgs();
     }
 }

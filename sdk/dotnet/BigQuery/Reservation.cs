@@ -22,22 +22,20 @@ namespace Pulumi.Gcp.BigQuery
     /// ### Bigquery Reservation Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var reservation = new Gcp.BigQuery.Reservation("reservation", new()
     ///     {
-    ///         var reservation = new Gcp.BigQuery.Reservation("reservation", new Gcp.BigQuery.ReservationArgs
-    ///         {
-    ///             IgnoreIdleSlots = false,
-    ///             Location = "asia-northeast1",
-    ///             SlotCapacity = 0,
-    ///         });
-    ///     }
+    ///         IgnoreIdleSlots = false,
+    ///         Location = "asia-northeast1",
+    ///         SlotCapacity = 0,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/reservation:Reservation")]
-    public partial class Reservation : Pulumi.CustomResource
+    public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
@@ -138,7 +136,7 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
-    public sealed class ReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
@@ -178,9 +176,10 @@ namespace Pulumi.Gcp.BigQuery
         public ReservationArgs()
         {
         }
+        public static new ReservationArgs Empty => new ReservationArgs();
     }
 
-    public sealed class ReservationState : Pulumi.ResourceArgs
+    public sealed class ReservationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
@@ -220,5 +219,6 @@ namespace Pulumi.Gcp.BigQuery
         public ReservationState()
         {
         }
+        public static new ReservationState Empty => new ReservationState();
     }
 }

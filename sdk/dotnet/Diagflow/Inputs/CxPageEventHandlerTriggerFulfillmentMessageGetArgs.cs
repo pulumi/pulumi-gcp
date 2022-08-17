@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxPageEventHandlerTriggerFulfillmentMessageGetArgs : Pulumi.ResourceArgs
+    public sealed class CxPageEventHandlerTriggerFulfillmentMessageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A collection of text responses.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxPageEventHandlerTriggerFulfillmentMessageGetArgs()
         {
         }
+        public static new CxPageEventHandlerTriggerFulfillmentMessageGetArgs Empty => new CxPageEventHandlerTriggerFulfillmentMessageGetArgs();
     }
 }

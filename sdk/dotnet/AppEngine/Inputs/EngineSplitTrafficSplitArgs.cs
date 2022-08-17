@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class EngineSplitTrafficSplitArgs : Pulumi.ResourceArgs
+    public sealed class EngineSplitTrafficSplitArgs : global::Pulumi.ResourceArgs
     {
         [Input("allocations", required: true)]
         private InputMap<string>? _allocations;
@@ -34,5 +34,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public EngineSplitTrafficSplitArgs()
         {
         }
+        public static new EngineSplitTrafficSplitArgs Empty => new EngineSplitTrafficSplitArgs();
     }
 }

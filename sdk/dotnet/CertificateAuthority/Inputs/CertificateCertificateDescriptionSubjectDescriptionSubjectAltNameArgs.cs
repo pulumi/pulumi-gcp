@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs : Pulumi.ResourceArgs
+    public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs : global::Pulumi.ResourceArgs
     {
         [Input("customSans")]
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>? _customSans;
@@ -71,5 +71,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs()
         {
         }
+        public static new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs Empty => new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs();
     }
 }

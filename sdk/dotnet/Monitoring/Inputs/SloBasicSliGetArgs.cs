@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class SloBasicSliGetArgs : Pulumi.ResourceArgs
+    public sealed class SloBasicSliGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Availability based SLI, dervied from count of requests made to this service that return successfully.
@@ -80,5 +80,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public SloBasicSliGetArgs()
         {
         }
+        public static new SloBasicSliGetArgs Empty => new SloBasicSliGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -51,5 +51,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs()
         {
         }
+        public static new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs Empty => new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs();
     }
 }

@@ -19,29 +19,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myCert = Gcp.Compute.GetCertificate.Invoke(new()
         ///     {
-        ///         var myCert = Output.Create(Gcp.Compute.GetCertificate.InvokeAsync(new Gcp.Compute.GetCertificateArgs
-        ///         {
-        ///             Name = "my-cert",
-        ///         }));
-        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
-        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
-        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
-        ///     }
+        ///         Name = "my-cert",
+        ///     });
         /// 
-        ///     [Output("certificate")]
-        ///     public Output&lt;string&gt; Certificate { get; set; }
-        ///     [Output("certificateId")]
-        ///     public Output&lt;string&gt; CertificateId { get; set; }
-        ///     [Output("selfLink")]
-        ///     public Output&lt;string&gt; SelfLink { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificate"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.Certificate),
+        ///         ["certificateId"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.CertificateId),
+        ///         ["selfLink"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.SelfLink),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -57,29 +52,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myCert = Gcp.Compute.GetCertificate.Invoke(new()
         ///     {
-        ///         var myCert = Output.Create(Gcp.Compute.GetCertificate.InvokeAsync(new Gcp.Compute.GetCertificateArgs
-        ///         {
-        ///             Name = "my-cert",
-        ///         }));
-        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
-        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
-        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
-        ///     }
+        ///         Name = "my-cert",
+        ///     });
         /// 
-        ///     [Output("certificate")]
-        ///     public Output&lt;string&gt; Certificate { get; set; }
-        ///     [Output("certificateId")]
-        ///     public Output&lt;string&gt; CertificateId { get; set; }
-        ///     [Output("selfLink")]
-        ///     public Output&lt;string&gt; SelfLink { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificate"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.Certificate),
+        ///         ["certificateId"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.CertificateId),
+        ///         ["selfLink"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.SelfLink),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -89,7 +79,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the certificate.
@@ -107,9 +97,10 @@ namespace Pulumi.Gcp.Compute
         public GetCertificateArgs()
         {
         }
+        public static new GetCertificateArgs Empty => new GetCertificateArgs();
     }
 
-    public sealed class GetCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the certificate.
@@ -127,6 +118,7 @@ namespace Pulumi.Gcp.Compute
         public GetCertificateInvokeArgs()
         {
         }
+        public static new GetCertificateInvokeArgs Empty => new GetCertificateInvokeArgs();
     }
 
 

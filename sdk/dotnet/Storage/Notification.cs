@@ -30,56 +30,56 @@ namespace Pulumi.Gcp.Storage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
-    ///         {
-    ///             Topic = topic.Id,
-    ///             Role = "roles/pubsub.publisher",
-    ///             Members = 
-    ///             {
-    ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-    ///             },
-    ///         });
-    ///         // End enabling notifications
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "US",
-    ///         });
-    ///         var notification = new Gcp.Storage.Notification("notification", new Gcp.Storage.NotificationArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             PayloadFormat = "JSON_API_V1",
-    ///             Topic = topic.Id,
-    ///             EventTypes = 
-    ///             {
-    ///                 "OBJECT_FINALIZE",
-    ///                 "OBJECT_METADATA_UPDATE",
-    ///             },
-    ///             CustomAttributes = 
-    ///             {
-    ///                 { "new-attribute", "new-attribute-value" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 binding,
-    ///             },
-    ///         });
-    ///         // Enable notifications by giving the correct IAM permission to the unique service account.
-    ///     }
+    ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
     /// 
-    /// }
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     {
+    ///         Topic = topic.Id,
+    ///         Role = "roles/pubsub.publisher",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
+    ///         },
+    ///     });
+    /// 
+    ///     // End enabling notifications
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var notification = new Gcp.Storage.Notification("notification", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         PayloadFormat = "JSON_API_V1",
+    ///         Topic = topic.Id,
+    ///         EventTypes = new[]
+    ///         {
+    ///             "OBJECT_FINALIZE",
+    ///             "OBJECT_METADATA_UPDATE",
+    ///         },
+    ///         CustomAttributes = 
+    ///         {
+    ///             { "new-attribute", "new-attribute-value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             binding,
+    ///         },
+    ///     });
+    /// 
+    ///     // Enable notifications by giving the correct IAM permission to the unique service account.
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// </summary>
     [GcpResourceType("gcp:storage/notification:Notification")]
-    public partial class Notification : Pulumi.CustomResource
+    public partial class Notification : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bucket.
@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
-    public sealed class NotificationArgs : Pulumi.ResourceArgs
+    public sealed class NotificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -244,9 +244,10 @@ namespace Pulumi.Gcp.Storage
         public NotificationArgs()
         {
         }
+        public static new NotificationArgs Empty => new NotificationArgs();
     }
 
-    public sealed class NotificationState : Pulumi.ResourceArgs
+    public sealed class NotificationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -314,5 +315,6 @@ namespace Pulumi.Gcp.Storage
         public NotificationState()
         {
         }
+        public static new NotificationState Empty => new NotificationState();
     }
 }

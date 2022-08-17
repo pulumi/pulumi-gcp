@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Kerberos related configuration.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs();
     }
 }

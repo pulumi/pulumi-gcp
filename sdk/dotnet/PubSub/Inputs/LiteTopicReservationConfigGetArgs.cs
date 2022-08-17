@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class LiteTopicReservationConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class LiteTopicReservationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Reservation to use for this topic's throughput capacity.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public LiteTopicReservationConfigGetArgs()
         {
         }
+        public static new LiteTopicReservationConfigGetArgs Empty => new LiteTopicReservationConfigGetArgs();
     }
 }

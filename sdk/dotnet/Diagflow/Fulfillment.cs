@@ -22,43 +22,42 @@ namespace Pulumi.Gcp.Diagflow
     /// ### Dialogflow Fulfillment Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
     ///     {
-    ///         var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new Gcp.Diagflow.AgentArgs
-    ///         {
-    ///             DisplayName = "example_agent",
-    ///             DefaultLanguageCode = "en",
-    ///             TimeZone = "America/New_York",
-    ///         });
-    ///         var basicFulfillment = new Gcp.Diagflow.Fulfillment("basicFulfillment", new Gcp.Diagflow.FulfillmentArgs
-    ///         {
-    ///             DisplayName = "basic-fulfillment",
-    ///             Enabled = true,
-    ///             GenericWebService = new Gcp.Diagflow.Inputs.FulfillmentGenericWebServiceArgs
-    ///             {
-    ///                 Uri = "https://google.com",
-    ///                 Username = "admin",
-    ///                 Password = "password",
-    ///                 RequestHeaders = 
-    ///                 {
-    ///                     { "name", "wrench" },
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 basicAgent,
-    ///             },
-    ///         });
-    ///     }
+    ///         DisplayName = "example_agent",
+    ///         DefaultLanguageCode = "en",
+    ///         TimeZone = "America/New_York",
+    ///     });
     /// 
-    /// }
+    ///     var basicFulfillment = new Gcp.Diagflow.Fulfillment("basicFulfillment", new()
+    ///     {
+    ///         DisplayName = "basic-fulfillment",
+    ///         Enabled = true,
+    ///         GenericWebService = new Gcp.Diagflow.Inputs.FulfillmentGenericWebServiceArgs
+    ///         {
+    ///             Uri = "https://google.com",
+    ///             Username = "admin",
+    ///             Password = "password",
+    ///             RequestHeaders = 
+    ///             {
+    ///                 { "name", "wrench" },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             basicAgent,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +69,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/fulfillment:Fulfillment")]
-    public partial class Fulfillment : Pulumi.CustomResource
+    public partial class Fulfillment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent.
@@ -156,7 +155,7 @@ namespace Pulumi.Gcp.Diagflow
         }
     }
 
-    public sealed class FulfillmentArgs : Pulumi.ResourceArgs
+    public sealed class FulfillmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent.
@@ -200,9 +199,10 @@ namespace Pulumi.Gcp.Diagflow
         public FulfillmentArgs()
         {
         }
+        public static new FulfillmentArgs Empty => new FulfillmentArgs();
     }
 
-    public sealed class FulfillmentState : Pulumi.ResourceArgs
+    public sealed class FulfillmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent.
@@ -253,5 +253,6 @@ namespace Pulumi.Gcp.Diagflow
         public FulfillmentState()
         {
         }
+        public static new FulfillmentState Empty => new FulfillmentState();
     }
 }

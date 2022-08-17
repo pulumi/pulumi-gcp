@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudTasks.Inputs
 {
 
-    public sealed class QueueRateLimitsArgs : Pulumi.ResourceArgs
+    public sealed class QueueRateLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// -
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.CloudTasks.Inputs
         public QueueRateLimitsArgs()
         {
         }
+        public static new QueueRateLimitsArgs Empty => new QueueRateLimitsArgs();
     }
 }

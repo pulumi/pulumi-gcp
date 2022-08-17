@@ -20,23 +20,21 @@ namespace Pulumi.Gcp.Sql
     /// ### Sql Source Representation Instance Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new()
     ///     {
-    ///         var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new Gcp.Sql.SourceRepresentationInstanceArgs
-    ///         {
-    ///             DatabaseVersion = "MYSQL_8_0",
-    ///             Host = "10.20.30.40",
-    ///             Port = 3306,
-    ///             Region = "us-central1",
-    ///         });
-    ///     }
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Host = "10.20.30.40",
+    ///         Port = 3306,
+    ///         Region = "us-central1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance")]
-    public partial class SourceRepresentationInstance : Pulumi.CustomResource
+    public partial class SourceRepresentationInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The MySQL version running on your source database server.
@@ -142,7 +140,7 @@ namespace Pulumi.Gcp.Sql
         }
     }
 
-    public sealed class SourceRepresentationInstanceArgs : Pulumi.ResourceArgs
+    public sealed class SourceRepresentationInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The MySQL version running on your source database server.
@@ -187,9 +185,10 @@ namespace Pulumi.Gcp.Sql
         public SourceRepresentationInstanceArgs()
         {
         }
+        public static new SourceRepresentationInstanceArgs Empty => new SourceRepresentationInstanceArgs();
     }
 
-    public sealed class SourceRepresentationInstanceState : Pulumi.ResourceArgs
+    public sealed class SourceRepresentationInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The MySQL version running on your source database server.
@@ -234,5 +233,6 @@ namespace Pulumi.Gcp.Sql
         public SourceRepresentationInstanceState()
         {
         }
+        public static new SourceRepresentationInstanceState Empty => new SourceRepresentationInstanceState();
     }
 }

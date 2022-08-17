@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -41,5 +41,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs Empty => new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs();
     }
 }

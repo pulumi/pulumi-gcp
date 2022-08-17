@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectGetArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket of the Cloud Storage object.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectGetArgs()
         {
         }
+        public static new PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectGetArgs Empty => new PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectGetArgs();
     }
 }

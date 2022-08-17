@@ -22,22 +22,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewProjectMetadataItem(ctx, "default", &compute.ProjectMetadataItemArgs{
-// 			Key:   pulumi.String("my_metadata"),
-// 			Value: pulumi.String("my_value"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewProjectMetadataItem(ctx, "default", &compute.ProjectMetadataItemArgs{
+//				Key:   pulumi.String("my_metadata"),
+//				Value: pulumi.String("my_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // Project metadata items can be imported using the `key`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default my_metadata
+//
+//	$ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default my_metadata
+//
 // ```
 type ProjectMetadataItem struct {
 	pulumi.CustomResourceState
@@ -164,7 +169,7 @@ func (i *ProjectMetadataItem) ToProjectMetadataItemOutputWithContext(ctx context
 // ProjectMetadataItemArrayInput is an input type that accepts ProjectMetadataItemArray and ProjectMetadataItemArrayOutput values.
 // You can construct a concrete instance of `ProjectMetadataItemArrayInput` via:
 //
-//          ProjectMetadataItemArray{ ProjectMetadataItemArgs{...} }
+//	ProjectMetadataItemArray{ ProjectMetadataItemArgs{...} }
 type ProjectMetadataItemArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +194,7 @@ func (i ProjectMetadataItemArray) ToProjectMetadataItemArrayOutputWithContext(ct
 // ProjectMetadataItemMapInput is an input type that accepts ProjectMetadataItemMap and ProjectMetadataItemMapOutput values.
 // You can construct a concrete instance of `ProjectMetadataItemMapInput` via:
 //
-//          ProjectMetadataItemMap{ "key": ProjectMetadataItemArgs{...} }
+//	ProjectMetadataItemMap{ "key": ProjectMetadataItemArgs{...} }
 type ProjectMetadataItemMapInput interface {
 	pulumi.Input
 

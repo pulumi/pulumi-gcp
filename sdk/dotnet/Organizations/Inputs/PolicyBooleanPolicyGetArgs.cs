@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations.Inputs
 {
 
-    public sealed class PolicyBooleanPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class PolicyBooleanPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, then the Policy is enforced. If false, then any configuration is acceptable.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Organizations.Inputs
         public PolicyBooleanPolicyGetArgs()
         {
         }
+        public static new PolicyBooleanPolicyGetArgs Empty => new PolicyBooleanPolicyGetArgs();
     }
 }

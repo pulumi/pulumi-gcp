@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class MetricDescriptorLabelArgs : Pulumi.ResourceArgs
+    public sealed class MetricDescriptorLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description for the label.
@@ -35,5 +35,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public MetricDescriptorLabelArgs()
         {
         }
+        public static new MetricDescriptorLabelArgs Empty => new MetricDescriptorLabelArgs();
     }
 }

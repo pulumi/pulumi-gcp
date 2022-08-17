@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Diagflow.Inputs
 {
 
-    public sealed class CxFlowTransitionRouteGetArgs : Pulumi.ResourceArgs
+    public sealed class CxFlowTransitionRouteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The condition to evaluate against form parameters or session parameters.
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public CxFlowTransitionRouteGetArgs()
         {
         }
+        public static new CxFlowTransitionRouteGetArgs Empty => new CxFlowTransitionRouteGetArgs();
     }
 }

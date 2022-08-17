@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tags.Inputs
 {
 
-    public sealed class TagValueIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class TagValueIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Tags.Inputs
         public TagValueIamMemberConditionArgs()
         {
         }
+        public static new TagValueIamMemberConditionArgs Empty => new TagValueIamMemberConditionArgs();
     }
 }

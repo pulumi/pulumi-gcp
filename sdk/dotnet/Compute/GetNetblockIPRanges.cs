@@ -20,65 +20,58 @@ namespace Pulumi.Gcp.Compute
         /// ### Cloud Ranges
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var netblock = Output.Create(Gcp.Compute.GetNetblockIPRanges.InvokeAsync());
-        ///         this.CidrBlocks = netblock.Apply(netblock =&gt; netblock.CidrBlocks);
-        ///         this.CidrBlocksIpv4 = netblock.Apply(netblock =&gt; netblock.CidrBlocksIpv4s);
-        ///         this.CidrBlocksIpv6 = netblock.Apply(netblock =&gt; netblock.CidrBlocksIpv6s);
-        ///     }
+        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
         /// 
-        ///     [Output("cidrBlocks")]
-        ///     public Output&lt;string&gt; CidrBlocks { get; set; }
-        ///     [Output("cidrBlocksIpv4")]
-        ///     public Output&lt;string&gt; CidrBlocksIpv4 { get; set; }
-        ///     [Output("cidrBlocksIpv6")]
-        ///     public Output&lt;string&gt; CidrBlocksIpv6 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
+        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
+        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
         /// ### Allow Health Checks
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
         ///     {
-        ///         var legacy_hcs = Output.Create(Gcp.Compute.GetNetblockIPRanges.InvokeAsync(new Gcp.Compute.GetNetblockIPRangesArgs
+        ///         RangeType = "legacy-health-checkers",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Network("default");
+        /// 
+        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
+        ///     {
+        ///         Network = @default.Name,
+        ///         Allows = new[]
         ///         {
-        ///             RangeType = "legacy-health-checkers",
-        ///         }));
-        ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
-        ///         {
-        ///         });
-        ///         var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new Gcp.Compute.FirewallArgs
-        ///         {
-        ///             Network = @default.Name,
-        ///             Allows = 
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
         ///             {
-        ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///                 Protocol = "tcp",
+        ///                 Ports = new[]
         ///                 {
-        ///                     Protocol = "tcp",
-        ///                     Ports = 
-        ///                     {
-        ///                         "80",
-        ///                     },
+        ///                     "80",
         ///                 },
         ///             },
-        ///             SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.CidrBlocksIpv4s),
-        ///         });
-        ///     }
+        ///         },
+        ///         SourceRanges = legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult).Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,65 +88,58 @@ namespace Pulumi.Gcp.Compute
         /// ### Cloud Ranges
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var netblock = Output.Create(Gcp.Compute.GetNetblockIPRanges.InvokeAsync());
-        ///         this.CidrBlocks = netblock.Apply(netblock =&gt; netblock.CidrBlocks);
-        ///         this.CidrBlocksIpv4 = netblock.Apply(netblock =&gt; netblock.CidrBlocksIpv4s);
-        ///         this.CidrBlocksIpv6 = netblock.Apply(netblock =&gt; netblock.CidrBlocksIpv6s);
-        ///     }
+        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
         /// 
-        ///     [Output("cidrBlocks")]
-        ///     public Output&lt;string&gt; CidrBlocks { get; set; }
-        ///     [Output("cidrBlocksIpv4")]
-        ///     public Output&lt;string&gt; CidrBlocksIpv4 { get; set; }
-        ///     [Output("cidrBlocksIpv6")]
-        ///     public Output&lt;string&gt; CidrBlocksIpv6 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
+        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
+        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
         /// ### Allow Health Checks
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
         ///     {
-        ///         var legacy_hcs = Output.Create(Gcp.Compute.GetNetblockIPRanges.InvokeAsync(new Gcp.Compute.GetNetblockIPRangesArgs
+        ///         RangeType = "legacy-health-checkers",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Network("default");
+        /// 
+        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
+        ///     {
+        ///         Network = @default.Name,
+        ///         Allows = new[]
         ///         {
-        ///             RangeType = "legacy-health-checkers",
-        ///         }));
-        ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
-        ///         {
-        ///         });
-        ///         var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new Gcp.Compute.FirewallArgs
-        ///         {
-        ///             Network = @default.Name,
-        ///             Allows = 
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
         ///             {
-        ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///                 Protocol = "tcp",
+        ///                 Ports = new[]
         ///                 {
-        ///                     Protocol = "tcp",
-        ///                     Ports = 
-        ///                     {
-        ///                         "80",
-        ///                     },
+        ///                     "80",
         ///                 },
         ///             },
-        ///             SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.CidrBlocksIpv4s),
-        ///         });
-        ///     }
+        ///         },
+        ///         SourceRanges = legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult).Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -163,7 +149,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetNetblockIPRangesArgs : Pulumi.InvokeArgs
+    public sealed class GetNetblockIPRangesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of range for which to provide results.
@@ -174,9 +160,10 @@ namespace Pulumi.Gcp.Compute
         public GetNetblockIPRangesArgs()
         {
         }
+        public static new GetNetblockIPRangesArgs Empty => new GetNetblockIPRangesArgs();
     }
 
-    public sealed class GetNetblockIPRangesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetblockIPRangesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of range for which to provide results.
@@ -187,6 +174,7 @@ namespace Pulumi.Gcp.Compute
         public GetNetblockIPRangesInvokeArgs()
         {
         }
+        public static new GetNetblockIPRangesInvokeArgs Empty => new GetNetblockIPRangesInvokeArgs();
     }
 
 

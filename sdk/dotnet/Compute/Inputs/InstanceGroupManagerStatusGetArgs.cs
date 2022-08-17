@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceGroupManagerStatusGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerStatusGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allInstancesConfigs")]
         private InputList<Inputs.InstanceGroupManagerStatusAllInstancesConfigGetArgs>? _allInstancesConfigs;
@@ -60,5 +60,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceGroupManagerStatusGetArgs()
         {
         }
+        public static new InstanceGroupManagerStatusGetArgs Empty => new InstanceGroupManagerStatusGetArgs();
     }
 }

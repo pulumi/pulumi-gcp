@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery.Inputs
 {
 
-    public sealed class DataTransferConfigScheduleOptionsArgs : Pulumi.ResourceArgs
+    public sealed class DataTransferConfigScheduleOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, automatic scheduling of data transfer runs for this
@@ -44,5 +44,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public DataTransferConfigScheduleOptionsArgs()
         {
         }
+        public static new DataTransferConfigScheduleOptionsArgs Empty => new DataTransferConfigScheduleOptionsArgs();
     }
 }

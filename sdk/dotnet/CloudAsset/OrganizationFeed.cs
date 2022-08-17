@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.CloudAsset
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudasset/organizationFeed:OrganizationFeed")]
-    public partial class OrganizationFeed : Pulumi.CustomResource
+    public partial class OrganizationFeed : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of the full names of the assets to receive updates. You must specify either or both of
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.CloudAsset
         }
     }
 
-    public sealed class OrganizationFeedArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationFeedArgs : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -230,9 +230,10 @@ namespace Pulumi.Gcp.CloudAsset
         public OrganizationFeedArgs()
         {
         }
+        public static new OrganizationFeedArgs Empty => new OrganizationFeedArgs();
     }
 
-    public sealed class OrganizationFeedState : Pulumi.ResourceArgs
+    public sealed class OrganizationFeedState : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -319,5 +320,6 @@ namespace Pulumi.Gcp.CloudAsset
         public OrganizationFeedState()
         {
         }
+        public static new OrganizationFeedState Empty => new OrganizationFeedState();
     }
 }

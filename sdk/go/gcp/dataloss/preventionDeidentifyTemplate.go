@@ -17,20 +17,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.deidentifyTemplates)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
+//   - [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// DeidentifyTemplate can be imported using any of these accepted formats
+// # DeidentifyTemplate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
+//
+//	$ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
+//
+//	$ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
+//
 // ```
 type PreventionDeidentifyTemplate struct {
 	pulumi.CustomResourceState
@@ -185,7 +189,7 @@ func (i *PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutputWithC
 // PreventionDeidentifyTemplateArrayInput is an input type that accepts PreventionDeidentifyTemplateArray and PreventionDeidentifyTemplateArrayOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateArrayInput` via:
 //
-//          PreventionDeidentifyTemplateArray{ PreventionDeidentifyTemplateArgs{...} }
+//	PreventionDeidentifyTemplateArray{ PreventionDeidentifyTemplateArgs{...} }
 type PreventionDeidentifyTemplateArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +214,7 @@ func (i PreventionDeidentifyTemplateArray) ToPreventionDeidentifyTemplateArrayOu
 // PreventionDeidentifyTemplateMapInput is an input type that accepts PreventionDeidentifyTemplateMap and PreventionDeidentifyTemplateMapOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateMapInput` via:
 //
-//          PreventionDeidentifyTemplateMap{ "key": PreventionDeidentifyTemplateArgs{...} }
+//	PreventionDeidentifyTemplateMap{ "key": PreventionDeidentifyTemplateArgs{...} }
 type PreventionDeidentifyTemplateMapInput interface {
 	pulumi.Input
 

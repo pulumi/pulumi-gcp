@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class StandardAppVersionAutomaticScalingGetArgs : Pulumi.ResourceArgs
+    public sealed class StandardAppVersionAutomaticScalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
@@ -55,5 +55,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public StandardAppVersionAutomaticScalingGetArgs()
         {
         }
+        public static new StandardAppVersionAutomaticScalingGetArgs Empty => new StandardAppVersionAutomaticScalingGetArgs();
     }
 }

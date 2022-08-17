@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class KeyRingIAMBindingConditionArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingIAMBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         public KeyRingIAMBindingConditionArgs()
         {
         }
+        public static new KeyRingIAMBindingConditionArgs Empty => new KeyRingIAMBindingConditionArgs();
     }
 }

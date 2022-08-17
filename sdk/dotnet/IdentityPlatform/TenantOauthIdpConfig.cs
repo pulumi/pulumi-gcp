@@ -20,29 +20,28 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ### Identity Platform Tenant Oauth Idp Config Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
     ///     {
-    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
-    ///         {
-    ///             DisplayName = "tenant",
-    ///         });
-    ///         var tenantOauthIdpConfig = new Gcp.IdentityPlatform.TenantOauthIdpConfig("tenantOauthIdpConfig", new Gcp.IdentityPlatform.TenantOauthIdpConfigArgs
-    ///         {
-    ///             Tenant = tenant.Name,
-    ///             DisplayName = "Display Name",
-    ///             ClientId = "client-id",
-    ///             Issuer = "issuer",
-    ///             Enabled = true,
-    ///             ClientSecret = "secret",
-    ///         });
-    ///     }
+    ///         DisplayName = "tenant",
+    ///     });
     /// 
-    /// }
+    ///     var tenantOauthIdpConfig = new Gcp.IdentityPlatform.TenantOauthIdpConfig("tenantOauthIdpConfig", new()
+    ///     {
+    ///         Tenant = tenant.Name,
+    ///         DisplayName = "Display Name",
+    ///         ClientId = "client-id",
+    ///         Issuer = "issuer",
+    ///         Enabled = true,
+    ///         ClientSecret = "secret",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +61,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// ```
     /// </summary>
     [GcpResourceType("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig")]
-    public partial class TenantOauthIdpConfig : Pulumi.CustomResource
+    public partial class TenantOauthIdpConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The client id of an OAuth client.
@@ -157,7 +156,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         }
     }
 
-    public sealed class TenantOauthIdpConfigArgs : Pulumi.ResourceArgs
+    public sealed class TenantOauthIdpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client id of an OAuth client.
@@ -211,9 +210,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantOauthIdpConfigArgs()
         {
         }
+        public static new TenantOauthIdpConfigArgs Empty => new TenantOauthIdpConfigArgs();
     }
 
-    public sealed class TenantOauthIdpConfigState : Pulumi.ResourceArgs
+    public sealed class TenantOauthIdpConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client id of an OAuth client.
@@ -267,5 +267,6 @@ namespace Pulumi.Gcp.IdentityPlatform
         public TenantOauthIdpConfigState()
         {
         }
+        public static new TenantOauthIdpConfigState Empty => new TenantOauthIdpConfigState();
     }
 }

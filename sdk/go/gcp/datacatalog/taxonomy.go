@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
 // ### Data Catalog Taxonomy Basic
@@ -26,34 +26,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datacatalog.NewTaxonomy(ctx, "basicTaxonomy", &datacatalog.TaxonomyArgs{
-// 			Region:      pulumi.String("us"),
-// 			DisplayName: pulumi.String("my_display_name"),
-// 			Description: pulumi.String("A collection of policy tags"),
-// 			ActivatedPolicyTypes: pulumi.StringArray{
-// 				pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.NewTaxonomy(ctx, "basicTaxonomy", &datacatalog.TaxonomyArgs{
+//				Region:      pulumi.String("us"),
+//				DisplayName: pulumi.String("my_display_name"),
+//				Description: pulumi.String("A collection of policy tags"),
+//				ActivatedPolicyTypes: pulumi.StringArray{
+//					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Taxonomy can be imported using any of these accepted formats
+// # Taxonomy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
+//
+//	$ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
+//
 // ```
 type Taxonomy struct {
 	pulumi.CustomResourceState
@@ -230,7 +235,7 @@ func (i *Taxonomy) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutp
 // TaxonomyArrayInput is an input type that accepts TaxonomyArray and TaxonomyArrayOutput values.
 // You can construct a concrete instance of `TaxonomyArrayInput` via:
 //
-//          TaxonomyArray{ TaxonomyArgs{...} }
+//	TaxonomyArray{ TaxonomyArgs{...} }
 type TaxonomyArrayInput interface {
 	pulumi.Input
 
@@ -255,7 +260,7 @@ func (i TaxonomyArray) ToTaxonomyArrayOutputWithContext(ctx context.Context) Tax
 // TaxonomyMapInput is an input type that accepts TaxonomyMap and TaxonomyMapOutput values.
 // You can construct a concrete instance of `TaxonomyMapInput` via:
 //
-//          TaxonomyMap{ "key": TaxonomyArgs{...} }
+//	TaxonomyMap{ "key": TaxonomyArgs{...} }
 type TaxonomyMapInput interface {
 	pulumi.Input
 

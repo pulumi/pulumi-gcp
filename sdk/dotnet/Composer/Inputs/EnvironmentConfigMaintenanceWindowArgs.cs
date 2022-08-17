@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer.Inputs
 {
 
-    public sealed class EnvironmentConfigMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Composer.Inputs
         public EnvironmentConfigMaintenanceWindowArgs()
         {
         }
+        public static new EnvironmentConfigMaintenanceWindowArgs Empty => new EnvironmentConfigMaintenanceWindowArgs();
     }
 }

@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.outputs.ClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthorizedNetworksConfig;
+import com.pulumi.gcp.container.outputs.ClusterMeshCertificates;
 import com.pulumi.gcp.container.outputs.ClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.ClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfig;
@@ -794,6 +795,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> masterVersion() {
         return this.masterVersion;
+    }
+    /**
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="meshCertificates", type=ClusterMeshCertificates.class, parameters={})
+    private Output<ClusterMeshCertificates> meshCertificates;
+
+    /**
+     * @return Structure is documented below.
+     * 
+     */
+    public Output<ClusterMeshCertificates> meshCertificates() {
+        return this.meshCertificates;
     }
     /**
      * The minimum version of the master. GKE

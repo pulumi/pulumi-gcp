@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class BackendServiceCircuitBreakersConnectTimeoutArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceCircuitBreakersConnectTimeoutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution. Durations
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public BackendServiceCircuitBreakersConnectTimeoutArgs()
         {
         }
+        public static new BackendServiceCircuitBreakersConnectTimeoutArgs Empty => new BackendServiceCircuitBreakersConnectTimeoutArgs();
     }
 }

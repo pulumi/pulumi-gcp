@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog.Inputs
 {
 
-    public sealed class EntryGroupIamMemberConditionArgs : Pulumi.ResourceArgs
+    public sealed class EntryGroupIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public EntryGroupIamMemberConditionArgs()
         {
         }
+        public static new EntryGroupIamMemberConditionArgs Empty => new EntryGroupIamMemberConditionArgs();
     }
 }

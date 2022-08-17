@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OrgPolicy.Inputs
 {
 
-    public sealed class PolicySpecRuleConditionArgs : Pulumi.ResourceArgs
+    public sealed class PolicySpecRuleConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         public PolicySpecRuleConditionArgs()
         {
         }
+        public static new PolicySpecRuleConditionArgs Empty => new PolicySpecRuleConditionArgs();
     }
 }

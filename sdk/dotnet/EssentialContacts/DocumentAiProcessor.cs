@@ -22,22 +22,20 @@ namespace Pulumi.Gcp.EssentialContacts
     /// ### Documentai Processor
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var processor = new Gcp.EssentialContacts.DocumentAiProcessor("processor", new()
     ///     {
-    ///         var processor = new Gcp.EssentialContacts.DocumentAiProcessor("processor", new Gcp.EssentialContacts.DocumentAiProcessorArgs
-    ///         {
-    ///             DisplayName = "test-processor",
-    ///             Location = "us",
-    ///             Type = "OCR_PROCESSOR",
-    ///         });
-    ///     }
+    ///         DisplayName = "test-processor",
+    ///         Location = "us",
+    ///         Type = "OCR_PROCESSOR",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// ```
     /// </summary>
     [GcpResourceType("gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor")]
-    public partial class DocumentAiProcessor : Pulumi.CustomResource
+    public partial class DocumentAiProcessor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The display name. Must be unique.
@@ -140,7 +138,7 @@ namespace Pulumi.Gcp.EssentialContacts
         }
     }
 
-    public sealed class DocumentAiProcessorArgs : Pulumi.ResourceArgs
+    public sealed class DocumentAiProcessorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name. Must be unique.
@@ -176,9 +174,10 @@ namespace Pulumi.Gcp.EssentialContacts
         public DocumentAiProcessorArgs()
         {
         }
+        public static new DocumentAiProcessorArgs Empty => new DocumentAiProcessorArgs();
     }
 
-    public sealed class DocumentAiProcessorState : Pulumi.ResourceArgs
+    public sealed class DocumentAiProcessorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name. Must be unique.
@@ -220,5 +219,6 @@ namespace Pulumi.Gcp.EssentialContacts
         public DocumentAiProcessorState()
         {
         }
+        public static new DocumentAiProcessorState Empty => new DocumentAiProcessorState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A condition that checks that a time series
@@ -68,5 +68,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionGetArgs()
         {
         }
+        public static new AlertPolicyConditionGetArgs Empty => new AlertPolicyConditionGetArgs();
     }
 }

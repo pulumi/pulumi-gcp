@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerBuildArtifactsObjectsArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBuildArtifactsObjectsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
@@ -49,5 +49,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerBuildArtifactsObjectsArgs()
         {
         }
+        public static new TriggerBuildArtifactsObjectsArgs Empty => new TriggerBuildArtifactsObjectsArgs();
     }
 }

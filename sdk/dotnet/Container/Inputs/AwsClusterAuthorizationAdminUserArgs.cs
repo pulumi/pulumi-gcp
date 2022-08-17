@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class AwsClusterAuthorizationAdminUserArgs : Pulumi.ResourceArgs
+    public sealed class AwsClusterAuthorizationAdminUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public AwsClusterAuthorizationAdminUserArgs()
         {
         }
+        public static new AwsClusterAuthorizationAdminUserArgs Empty => new AwsClusterAuthorizationAdminUserArgs();
     }
 }

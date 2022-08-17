@@ -35,38 +35,38 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ### Access Context Manager Service Perimeter Resource Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
     ///     {
-    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
-    ///         {
-    ///             Parent = "organizations/123456789",
-    ///             Title = "my policy",
-    ///         });
-    ///         var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resourceServicePerimeter", new Gcp.AccessContextManager.ServicePerimeterArgs
-    ///         {
-    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///             Title = "restrict_all",
-    ///             Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
-    ///             {
-    ///                 RestrictedServices = 
-    ///                 {
-    ///                     "storage.googleapis.com",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var service_perimeter_resourceServicePerimeterResource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", new Gcp.AccessContextManager.ServicePerimeterResourceArgs
-    ///         {
-    ///             PerimeterName = service_perimeter_resourceServicePerimeter.Name,
-    ///             Resource = "projects/987654321",
-    ///         });
-    ///     }
+    ///         Parent = "organizations/123456789",
+    ///         Title = "my policy",
+    ///     });
     /// 
-    /// }
+    ///     var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resourceServicePerimeter", new()
+    ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Title = "restrict_all",
+    ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///         {
+    ///             RestrictedServices = new[]
+    ///             {
+    ///                 "storage.googleapis.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var service_perimeter_resourceServicePerimeterResource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", new()
+    ///     {
+    ///         PerimeterName = service_perimeter_resourceServicePerimeter.Name,
+    ///         Resource = "projects/987654321",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// ```
     /// </summary>
     [GcpResourceType("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource")]
-    public partial class ServicePerimeterResource : Pulumi.CustomResource
+    public partial class ServicePerimeterResource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.AccessContextManager
         }
     }
 
-    public sealed class ServicePerimeterResourceArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimeterResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
@@ -157,9 +157,10 @@ namespace Pulumi.Gcp.AccessContextManager
         public ServicePerimeterResourceArgs()
         {
         }
+        public static new ServicePerimeterResourceArgs Empty => new ServicePerimeterResourceArgs();
     }
 
-    public sealed class ServicePerimeterResourceState : Pulumi.ResourceArgs
+    public sealed class ServicePerimeterResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
@@ -178,5 +179,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public ServicePerimeterResourceState()
         {
         }
+        public static new ServicePerimeterResourceState Empty => new ServicePerimeterResourceState();
     }
 }

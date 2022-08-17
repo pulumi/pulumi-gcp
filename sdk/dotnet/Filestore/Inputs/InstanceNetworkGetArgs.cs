@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Filestore.Inputs
 {
 
-    public sealed class InstanceNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The network connect mode of the Filestore instance.
@@ -66,5 +66,6 @@ namespace Pulumi.Gcp.Filestore.Inputs
         public InstanceNetworkGetArgs()
         {
         }
+        public static new InstanceNetworkGetArgs Empty => new InstanceNetworkGetArgs();
     }
 }

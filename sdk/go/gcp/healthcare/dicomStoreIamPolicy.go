@@ -27,36 +27,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/editor",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = healthcare.NewDicomStoreIamPolicy(ctx, "dicomStore", &healthcare.DicomStoreIamPolicyArgs{
-// 			DicomStoreId: pulumi.String("your-dicom-store-id"),
-// 			PolicyData:   pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewDicomStoreIamPolicy(ctx, "dicomStore", &healthcare.DicomStoreIamPolicyArgs{
+//				DicomStoreId: pulumi.String("your-dicom-store-id"),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_healthcare\_dicom\_store\_iam\_binding
@@ -65,25 +68,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := healthcare.NewDicomStoreIamBinding(ctx, "dicomStore", &healthcare.DicomStoreIamBindingArgs{
-// 			DicomStoreId: pulumi.String("your-dicom-store-id"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 			Role: pulumi.String("roles/editor"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewDicomStoreIamBinding(ctx, "dicomStore", &healthcare.DicomStoreIamBindingArgs{
+//				DicomStoreId: pulumi.String("your-dicom-store-id"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Role: pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_healthcare\_dicom\_store\_iam\_member
@@ -92,23 +98,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := healthcare.NewDicomStoreIamMember(ctx, "dicomStore", &healthcare.DicomStoreIamMemberArgs{
-// 			DicomStoreId: pulumi.String("your-dicom-store-id"),
-// 			Member:       pulumi.String("user:jane@example.com"),
-// 			Role:         pulumi.String("roles/editor"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewDicomStoreIamMember(ctx, "dicomStore", &healthcare.DicomStoreIamMemberArgs{
+//				DicomStoreId: pulumi.String("your-dicom-store-id"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//				Role:         pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -118,23 +127,29 @@ import (
 // This member resource can be imported using the `dicom_store_id`, role, and account e.g.
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer user:foo@example.com"
+//
+//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer user:foo@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
 //
 // This binding resource can be imported using the `dicom_store_id` and role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer"
+//
+//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question.
+//	IAM policy imports use the identifier of the resource in question.
 //
 // This policy resource can be imported using the `dicom_store_id`, role, and account e.g.
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
+//
+//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
+//
 // ```
 type DicomStoreIamPolicy struct {
 	pulumi.CustomResourceState
@@ -264,7 +279,7 @@ func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutputWithContext(ctx context
 // DicomStoreIamPolicyArrayInput is an input type that accepts DicomStoreIamPolicyArray and DicomStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DicomStoreIamPolicyArrayInput` via:
 //
-//          DicomStoreIamPolicyArray{ DicomStoreIamPolicyArgs{...} }
+//	DicomStoreIamPolicyArray{ DicomStoreIamPolicyArgs{...} }
 type DicomStoreIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +304,7 @@ func (i DicomStoreIamPolicyArray) ToDicomStoreIamPolicyArrayOutputWithContext(ct
 // DicomStoreIamPolicyMapInput is an input type that accepts DicomStoreIamPolicyMap and DicomStoreIamPolicyMapOutput values.
 // You can construct a concrete instance of `DicomStoreIamPolicyMapInput` via:
 //
-//          DicomStoreIamPolicyMap{ "key": DicomStoreIamPolicyArgs{...} }
+//	DicomStoreIamPolicyMap{ "key": DicomStoreIamPolicyArgs{...} }
 type DicomStoreIamPolicyMapInput interface {
 	pulumi.Input
 

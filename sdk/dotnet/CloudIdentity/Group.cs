@@ -28,30 +28,28 @@ namespace Pulumi.Gcp.CloudIdentity
     /// ### Cloud Identity Groups Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloudIdentityGroupBasic", new()
     ///     {
-    ///         var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloudIdentityGroupBasic", new Gcp.CloudIdentity.GroupArgs
+    ///         DisplayName = "my-identity-group",
+    ///         GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
     ///         {
-    ///             DisplayName = "my-identity-group",
-    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
-    ///             {
-    ///                 Id = "my-identity-group@example.com",
-    ///             },
-    ///             InitialGroupConfig = "WITH_INITIAL_OWNER",
-    ///             Labels = 
-    ///             {
-    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
-    ///             },
-    ///             Parent = "customers/A01b123xz",
-    ///         });
-    ///     }
+    ///             Id = "my-identity-group@example.com",
+    ///         },
+    ///         InitialGroupConfig = "WITH_INITIAL_OWNER",
+    ///         Labels = 
+    ///         {
+    ///             { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///         },
+    ///         Parent = "customers/A01b123xz",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +61,7 @@ namespace Pulumi.Gcp.CloudIdentity
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudidentity/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the Group was created.
@@ -176,7 +174,7 @@ namespace Pulumi.Gcp.CloudIdentity
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An extended description to help users determine the purpose of a Group.
@@ -236,9 +234,10 @@ namespace Pulumi.Gcp.CloudIdentity
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when the Group was created.
@@ -316,5 +315,6 @@ namespace Pulumi.Gcp.CloudIdentity
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

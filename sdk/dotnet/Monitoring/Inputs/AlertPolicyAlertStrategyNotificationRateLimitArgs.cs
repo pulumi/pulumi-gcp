@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyAlertStrategyNotificationRateLimitArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyAlertStrategyNotificationRateLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Not more than one notification per period.
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyAlertStrategyNotificationRateLimitArgs()
         {
         }
+        public static new AlertPolicyAlertStrategyNotificationRateLimitArgs Empty => new AlertPolicyAlertStrategyNotificationRateLimitArgs();
     }
 }

@@ -371,7 +371,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
             machine_type="e2-medium",
@@ -407,7 +407,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         default = gcp.compute.Disk("default",
             type="pd-ssd",
             zone=google_compute_instance_group_manager["igm"]["zone"],
-            image="debian-8-jessie-v20170523",
+            image="debian-11-bullseye-v20220719",
             physical_block_size_bytes=4096)
         with_disk = gcp.compute.PerInstanceConfig("withDisk",
             zone=google_compute_instance_group_manager["igm"]["zone"],
@@ -493,7 +493,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_image = gcp.compute.get_image(family="debian-9",
+        my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         igm_basic = gcp.compute.InstanceTemplate("igm-basic",
             machine_type="e2-medium",
@@ -529,7 +529,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         default = gcp.compute.Disk("default",
             type="pd-ssd",
             zone=google_compute_instance_group_manager["igm"]["zone"],
-            image="debian-8-jessie-v20170523",
+            image="debian-11-bullseye-v20220719",
             physical_block_size_bytes=4096)
         with_disk = gcp.compute.PerInstanceConfig("withDisk",
             zone=google_compute_instance_group_manager["igm"]["zone"],

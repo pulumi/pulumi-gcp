@@ -193,7 +193,7 @@ class SecretCiphertext(pulumi.CustomResource):
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-9",
+                    image="debian-cloud/debian-11",
                 ),
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
@@ -259,7 +259,7 @@ class SecretCiphertext(pulumi.CustomResource):
             zone="us-central1-a",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-9",
+                    image="debian-cloud/debian-11",
                 ),
             ),
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(

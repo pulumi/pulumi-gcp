@@ -26,67 +26,70 @@ namespace Pulumi.Gcp.Compute
     /// ### Network Endpoint
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
     ///     {
-    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
-    ///         {
-    ///             Family = "debian-9",
-    ///             Project = "debian-cloud",
-    ///         }));
-    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.1/16",
-    ///             Region = "us-central1",
-    ///             Network = defaultNetwork.Id,
-    ///         });
-    ///         var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new Gcp.Compute.InstanceArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///             {
-    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///                 {
-    ///                     Image = myImage.Apply(myImage =&gt; myImage.SelfLink),
-    ///                 },
-    ///             },
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     Subnetwork = defaultSubnetwork.Id,
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new Gcp.Compute.NetworkEndpointArgs
-    ///         {
-    ///             NetworkEndpointGroup = google_compute_network_endpoint_group.Neg.Name,
-    ///             Instance = endpoint_instance.Name,
-    ///             Port = google_compute_network_endpoint_group.Neg.Default_port,
-    ///             IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
-    ///         });
-    ///         var @group = new Gcp.Compute.NetworkEndpointGroup("group", new Gcp.Compute.NetworkEndpointGroupArgs
-    ///         {
-    ///             Network = defaultNetwork.Id,
-    ///             Subnetwork = defaultSubnetwork.Id,
-    ///             DefaultPort = 90,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///     }
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.1/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     ,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new()
+    ///     {
+    ///         NetworkEndpointGroup = google_compute_network_endpoint_group.Neg.Name,
+    ///         Instance = endpoint_instance.Name,
+    ///         Port = google_compute_network_endpoint_group.Neg.Default_port,
+    ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
+    ///     });
+    /// 
+    ///     var @group = new Gcp.Compute.NetworkEndpointGroup("group", new()
+    ///     {
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DefaultPort = 90,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -110,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/networkEndpoint:NetworkEndpoint")]
-    public partial class NetworkEndpoint : Pulumi.CustomResource
+    public partial class NetworkEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name for a specific VM instance that the IP address belongs to.
@@ -138,7 +141,7 @@ namespace Pulumi.Gcp.Compute
         /// Port number of network endpoint.
         /// </summary>
         [Output("port")]
-        public Output<int> Port { get; private set; } = null!;
+        public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -197,7 +200,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class NetworkEndpointArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name for a specific VM instance that the IP address belongs to.
@@ -224,8 +227,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Port number of network endpoint.
         /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -243,9 +246,10 @@ namespace Pulumi.Gcp.Compute
         public NetworkEndpointArgs()
         {
         }
+        public static new NetworkEndpointArgs Empty => new NetworkEndpointArgs();
     }
 
-    public sealed class NetworkEndpointState : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name for a specific VM instance that the IP address belongs to.
@@ -291,5 +295,6 @@ namespace Pulumi.Gcp.Compute
         public NetworkEndpointState()
         {
         }
+        public static new NetworkEndpointState Empty => new NetworkEndpointState();
     }
 }

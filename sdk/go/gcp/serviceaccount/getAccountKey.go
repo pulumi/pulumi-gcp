@@ -18,31 +18,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
-// 			AccountId: pulumi.String("dev-foo-account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		mykeyKey, err := serviceAccount.NewKey(ctx, "mykeyKey", &serviceAccount.KeyArgs{
-// 			ServiceAccountId: myaccount.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_ = serviceAccount.GetAccountKeyOutput(ctx, serviceaccount.GetAccountKeyOutputArgs{
-// 			Name:          mykeyKey.Name,
-// 			PublicKeyType: pulumi.String("TYPE_X509_PEM_FILE"),
-// 		}, nil)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+//				AccountId: pulumi.String("dev-foo-account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mykeyKey, err := serviceAccount.NewKey(ctx, "mykeyKey", &serviceAccount.KeyArgs{
+//				ServiceAccountId: myaccount.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = serviceAccount.GetAccountKeyOutput(ctx, serviceaccount.GetAccountKeyOutputArgs{
+//				Name:          mykeyKey.Name,
+//				PublicKeyType: pulumi.String("TYPE_X509_PEM_FILE"),
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs, opts ...pulumi.InvokeOption) (*GetAccountKeyResult, error) {
 	var rv GetAccountKeyResult

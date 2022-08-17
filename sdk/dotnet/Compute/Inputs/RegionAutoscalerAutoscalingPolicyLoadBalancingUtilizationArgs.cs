@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fraction of backend capacity utilization (set in HTTP(s) load
@@ -23,5 +23,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs()
         {
         }
+        public static new RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs Empty => new RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs();
     }
 }

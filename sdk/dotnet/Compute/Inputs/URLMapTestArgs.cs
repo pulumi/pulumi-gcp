@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapTestArgs : Pulumi.ResourceArgs
+    public sealed class URLMapTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of this test case.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapTestArgs()
         {
         }
+        public static new URLMapTestArgs Empty => new URLMapTestArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterNodePoolUpgradeSettingsGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterNodePoolUpgradeSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxSurge", required: true)]
         public Input<int> MaxSurge { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterNodePoolUpgradeSettingsGetArgs()
         {
         }
+        public static new ClusterNodePoolUpgradeSettingsGetArgs Empty => new ClusterNodePoolUpgradeSettingsGetArgs();
     }
 }

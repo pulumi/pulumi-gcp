@@ -16,50 +16,48 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// ### Basic_workload
     /// A basic test of a assuredworkloads api
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var primary = new Gcp.AssuredWorkloads.Workload("primary", new()
     ///     {
-    ///         var primary = new Gcp.AssuredWorkloads.Workload("primary", new Gcp.AssuredWorkloads.WorkloadArgs
+    ///         BillingAccount = "billingAccounts/000000-0000000-0000000-000000",
+    ///         ComplianceRegime = "FEDRAMP_MODERATE",
+    ///         DisplayName = "Workload Example",
+    ///         KmsSettings = new Gcp.AssuredWorkloads.Inputs.WorkloadKmsSettingsArgs
     ///         {
-    ///             BillingAccount = "billingAccounts/000000-0000000-0000000-000000",
-    ///             ComplianceRegime = "FEDRAMP_MODERATE",
-    ///             DisplayName = "Workload Example",
-    ///             KmsSettings = new Gcp.AssuredWorkloads.Inputs.WorkloadKmsSettingsArgs
+    ///             NextRotationTime = "9999-10-02T15:01:23Z",
+    ///             RotationPeriod = "10368000s",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Location = "us-west1",
+    ///         Organization = "123456789",
+    ///         ProvisionedResourcesParent = "folders/519620126891",
+    ///         ResourceSettings = new[]
+    ///         {
+    ///             new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
     ///             {
-    ///                 NextRotationTime = "9999-10-02T15:01:23Z",
-    ///                 RotationPeriod = "10368000s",
+    ///                 ResourceType = "CONSUMER_PROJECT",
     ///             },
-    ///             Labels = 
+    ///             new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
     ///             {
-    ///                 { "label-one", "value-one" },
+    ///                 ResourceType = "ENCRYPTION_KEYS_PROJECT",
     ///             },
-    ///             Location = "us-west1",
-    ///             Organization = "123456789",
-    ///             ProvisionedResourcesParent = "folders/519620126891",
-    ///             ResourceSettings = 
+    ///             new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
     ///             {
-    ///                 new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
-    ///                 {
-    ///                     ResourceType = "CONSUMER_PROJECT",
-    ///                 },
-    ///                 new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
-    ///                 {
-    ///                     ResourceType = "ENCRYPTION_KEYS_PROJECT",
-    ///                 },
-    ///                 new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
-    ///                 {
-    ///                     ResourceId = "ring",
-    ///                     ResourceType = "KEYRING",
-    ///                 },
+    ///                 ResourceId = "ring",
+    ///                 ResourceType = "KEYRING",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +73,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// ```
     /// </summary>
     [GcpResourceType("gcp:assuredworkloads/workload:Workload")]
-    public partial class Workload : Pulumi.CustomResource
+    public partial class Workload : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
@@ -194,7 +192,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         }
     }
 
-    public sealed class WorkloadArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
@@ -265,9 +263,10 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public WorkloadArgs()
         {
         }
+        public static new WorkloadArgs Empty => new WorkloadArgs();
     }
 
-    public sealed class WorkloadState : Pulumi.ResourceArgs
+    public sealed class WorkloadState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
@@ -363,5 +362,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public WorkloadState()
         {
         }
+        public static new WorkloadState Empty => new WorkloadState();
     }
 }

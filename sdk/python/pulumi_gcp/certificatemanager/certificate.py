@@ -26,7 +26,7 @@ class CertificateArgs:
         """
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
         :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -37,13 +37,11 @@ class CertificateArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
-               Certificates with default scope are served from core Google data centers.
+               DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               Certificates with scope EDGE_CACHE are special-purposed certificates,
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
                Currently allowed only for managed certificates.
-               Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `EDGE_CACHE`.
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -80,7 +78,7 @@ class CertificateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
+        Set of label tags associated with the Certificate resource.
         """
         return pulumi.get(self, "labels")
 
@@ -135,13 +133,11 @@ class CertificateArgs:
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
         The scope of the certificate.
-        Certificates with default scope are served from core Google data centers.
+        DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
-        Certificates with scope EDGE_CACHE are special-purposed certificates,
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         served from non-core Google data centers.
         Currently allowed only for managed certificates.
-        Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `EDGE_CACHE`.
         """
         return pulumi.get(self, "scope")
 
@@ -178,7 +174,7 @@ class _CertificateState:
         """
         Input properties used for looking up and filtering Certificate resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
         :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -189,13 +185,11 @@ class _CertificateState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
-               Certificates with default scope are served from core Google data centers.
+               DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               Certificates with scope EDGE_CACHE are special-purposed certificates,
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
                Currently allowed only for managed certificates.
-               Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `EDGE_CACHE`.
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -232,7 +226,7 @@ class _CertificateState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
+        Set of label tags associated with the Certificate resource.
         """
         return pulumi.get(self, "labels")
 
@@ -287,13 +281,11 @@ class _CertificateState:
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
         The scope of the certificate.
-        Certificates with default scope are served from core Google data centers.
+        DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
-        Certificates with scope EDGE_CACHE are special-purposed certificates,
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         served from non-core Google data centers.
         Currently allowed only for managed certificates.
-        Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `EDGE_CACHE`.
         """
         return pulumi.get(self, "scope")
 
@@ -378,7 +370,7 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
         :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -389,13 +381,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
-               Certificates with default scope are served from core Google data centers.
+               DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               Certificates with scope EDGE_CACHE are special-purposed certificates,
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
                Currently allowed only for managed certificates.
-               Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `EDGE_CACHE`.
         :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -515,7 +505,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
         :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -526,13 +516,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
-               Certificates with default scope are served from core Google data centers.
+               DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               Certificates with scope EDGE_CACHE are special-purposed certificates,
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
                Currently allowed only for managed certificates.
-               Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `EDGE_CACHE`.
         :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -563,7 +551,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
+        Set of label tags associated with the Certificate resource.
         """
         return pulumi.get(self, "labels")
 
@@ -602,13 +590,11 @@ class Certificate(pulumi.CustomResource):
     def scope(self) -> pulumi.Output[Optional[str]]:
         """
         The scope of the certificate.
-        Certificates with default scope are served from core Google data centers.
+        DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
-        Certificates with scope EDGE_CACHE are special-purposed certificates,
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         served from non-core Google data centers.
         Currently allowed only for managed certificates.
-        Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `EDGE_CACHE`.
         """
         return pulumi.get(self, "scope")
 

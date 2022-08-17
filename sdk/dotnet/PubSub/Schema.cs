@@ -23,16 +23,15 @@ namespace Pulumi.Gcp.PubSub
     /// ### Pubsub Schema Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Gcp.PubSub.Schema("example", new()
     ///     {
-    ///         var example = new Gcp.PubSub.Schema("example", new Gcp.PubSub.SchemaArgs
-    ///         {
-    ///             Definition = @"{
+    ///         Definition = @"{
     ///   ""type"" : ""record"",
     ///   ""name"" : ""Avro"",
     ///   ""fields"" : [
@@ -48,50 +47,48 @@ namespace Pulumi.Gcp.PubSub
     /// }
     /// 
     /// ",
-    ///             Type = "AVRO",
-    ///         });
-    ///     }
+    ///         Type = "AVRO",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Pubsub Schema Protobuf
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new()
     ///     {
-    ///         var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new Gcp.PubSub.SchemaArgs
-    ///         {
-    ///             Type = "PROTOCOL_BUFFER",
-    ///             Definition = @"syntax = ""proto3"";
+    ///         Type = "PROTOCOL_BUFFER",
+    ///         Definition = @"syntax = ""proto3"";
     /// message Results {
     /// string message_request = 1;
     /// string message_response = 2;
     /// string timestamp_request = 3;
     /// string timestamp_response = 4;
     /// }",
-    ///         });
-    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///             SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
-    ///             {
-    ///                 Schema = "projects/my-project-name/schemas/example",
-    ///                 Encoding = "JSON",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleSchema,
-    ///             },
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     {
+    ///         SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
+    ///         {
+    ///             Schema = "projects/my-project-name/schemas/example",
+    ///             Encoding = "JSON",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             exampleSchema,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -111,7 +108,7 @@ namespace Pulumi.Gcp.PubSub
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/schema:Schema")]
-    public partial class Schema : Pulumi.CustomResource
+    public partial class Schema : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The definition of the schema.
@@ -186,7 +183,7 @@ namespace Pulumi.Gcp.PubSub
         }
     }
 
-    public sealed class SchemaArgs : Pulumi.ResourceArgs
+    public sealed class SchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The definition of the schema.
@@ -220,9 +217,10 @@ namespace Pulumi.Gcp.PubSub
         public SchemaArgs()
         {
         }
+        public static new SchemaArgs Empty => new SchemaArgs();
     }
 
-    public sealed class SchemaState : Pulumi.ResourceArgs
+    public sealed class SchemaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The definition of the schema.
@@ -256,5 +254,6 @@ namespace Pulumi.Gcp.PubSub
         public SchemaState()
         {
         }
+        public static new SchemaState Empty => new SchemaState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.AppEngine.Inputs
 {
 
-    public sealed class FlexibleAppVersionNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class FlexibleAppVersionNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("forwardedPorts")]
         private InputList<string>? _forwardedPorts;
@@ -55,5 +55,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public FlexibleAppVersionNetworkGetArgs()
         {
         }
+        public static new FlexibleAppVersionNetworkGetArgs Empty => new FlexibleAppVersionNetworkGetArgs();
     }
 }

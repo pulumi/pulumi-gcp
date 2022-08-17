@@ -20,25 +20,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serial = Gcp.Compute.GetInstanceSerialPort.Invoke(new()
         ///     {
-        ///         var serial = Output.Create(Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
-        ///         {
-        ///             Instance = "my-instance",
-        ///             Zone = "us-central1-a",
-        ///             Port = 1,
-        ///         }));
-        ///         this.SerialOut = serial.Apply(serial =&gt; serial.Contents);
-        ///     }
+        ///         Instance = "my-instance",
+        ///         Zone = "us-central1-a",
+        ///         Port = 1,
+        ///     });
         /// 
-        ///     [Output("serialOut")]
-        ///     public Output&lt;string&gt; SerialOut { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serialOut"] = serial.Apply(getInstanceSerialPortResult =&gt; getInstanceSerialPortResult.Contents),
+        ///     };
+        /// });
         /// ```
         /// 
         /// Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
@@ -49,71 +48,65 @@ namespace Pulumi.Gcp.Compute
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var windows = new Gcp.Compute.Instance("windows", new()
         ///     {
-        ///         var windows = new Gcp.Compute.Instance("windows", new Gcp.Compute.InstanceArgs
+        ///         MachineType = "e2-medium",
+        ///         Zone = "us-central1-a",
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
         ///         {
-        ///             MachineType = "e2-medium",
-        ///             Zone = "us-central1-a",
-        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
         ///             {
-        ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-        ///                 {
-        ///                     Image = "windows-cloud/windows-2019",
-        ///                 },
+        ///                 Image = "windows-cloud/windows-2019",
         ///             },
-        ///             NetworkInterfaces = 
-        ///             {
-        ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-        ///                 {
-        ///                     Network = "default",
-        ///                     AccessConfigs = 
-        ///                     {
-        ///                         ,
-        ///                     },
-        ///                 },
-        ///             },
-        ///             Metadata = 
-        ///             {
-        ///                 { "serial-port-logging-enable", "TRUE" },
-        ///                 { "windows-keys", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-        ///                 {
-        ///                     { "email", "example.user@example.com" },
-        ///                     { "expireOn", "2020-04-14T01:37:19Z" },
-        ///                     { "exponent", "AQAB" },
-        ///                     { "modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==" },
-        ///                     { "userName", "example-user" },
-        ///                 }) },
-        ///             },
-        ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
-        ///             {
-        ///                 Scopes = 
-        ///                 {
-        ///                     "userinfo-email",
-        ///                     "compute-ro",
-        ///                     "storage-ro",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var serial = Output.Tuple(windows.Name, windows.Zone).Apply(values =&gt;
+        ///         },
+        ///         NetworkInterfaces = new[]
         ///         {
-        ///             var name = values.Item1;
-        ///             var zone = values.Item2;
-        ///             return Gcp.Compute.GetInstanceSerialPort.Invoke(new Gcp.Compute.GetInstanceSerialPortInvokeArgs
+        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
         ///             {
-        ///                 Instance = name,
-        ///                 Zone = zone,
-        ///                 Port = 4,
-        ///             });
-        ///         });
-        ///         this.SerialOut = serial.Apply(serial =&gt; serial.Contents);
-        ///     }
+        ///                 Network = "default",
+        ///                 AccessConfigs = new[]
+        ///                 {
+        ///                     ,
+        ///                 },
+        ///             },
+        ///         },
+        ///         Metadata = 
+        ///         {
+        ///             { "serial-port-logging-enable", "TRUE" },
+        ///             { "windows-keys", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["email"] = "example.user@example.com",
+        ///                 ["expireOn"] = "2020-04-14T01:37:19Z",
+        ///                 ["exponent"] = "AQAB",
+        ///                 ["modulus"] = "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+        ///                 ["userName"] = "example-user",
+        ///             }) },
+        ///         },
+        ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+        ///         {
+        ///             Scopes = new[]
+        ///             {
+        ///                 "userinfo-email",
+        ///                 "compute-ro",
+        ///                 "storage-ro",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("serialOut")]
-        ///     public Output&lt;string&gt; SerialOut { get; set; }
-        /// }
+        ///     var serial = Gcp.Compute.GetInstanceSerialPort.Invoke(new()
+        ///     {
+        ///         Instance = windows.Name,
+        ///         Zone = windows.Zone,
+        ///         Port = 4,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serialOut"] = serial.Apply(getInstanceSerialPortResult =&gt; getInstanceSerialPortResult.Contents),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -130,25 +123,24 @@ namespace Pulumi.Gcp.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var serial = Gcp.Compute.GetInstanceSerialPort.Invoke(new()
         ///     {
-        ///         var serial = Output.Create(Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
-        ///         {
-        ///             Instance = "my-instance",
-        ///             Zone = "us-central1-a",
-        ///             Port = 1,
-        ///         }));
-        ///         this.SerialOut = serial.Apply(serial =&gt; serial.Contents);
-        ///     }
+        ///         Instance = "my-instance",
+        ///         Zone = "us-central1-a",
+        ///         Port = 1,
+        ///     });
         /// 
-        ///     [Output("serialOut")]
-        ///     public Output&lt;string&gt; SerialOut { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serialOut"] = serial.Apply(getInstanceSerialPortResult =&gt; getInstanceSerialPortResult.Contents),
+        ///     };
+        /// });
         /// ```
         /// 
         /// Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
@@ -159,71 +151,65 @@ namespace Pulumi.Gcp.Compute
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var windows = new Gcp.Compute.Instance("windows", new()
         ///     {
-        ///         var windows = new Gcp.Compute.Instance("windows", new Gcp.Compute.InstanceArgs
+        ///         MachineType = "e2-medium",
+        ///         Zone = "us-central1-a",
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
         ///         {
-        ///             MachineType = "e2-medium",
-        ///             Zone = "us-central1-a",
-        ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
         ///             {
-        ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-        ///                 {
-        ///                     Image = "windows-cloud/windows-2019",
-        ///                 },
+        ///                 Image = "windows-cloud/windows-2019",
         ///             },
-        ///             NetworkInterfaces = 
-        ///             {
-        ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-        ///                 {
-        ///                     Network = "default",
-        ///                     AccessConfigs = 
-        ///                     {
-        ///                         ,
-        ///                     },
-        ///                 },
-        ///             },
-        ///             Metadata = 
-        ///             {
-        ///                 { "serial-port-logging-enable", "TRUE" },
-        ///                 { "windows-keys", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-        ///                 {
-        ///                     { "email", "example.user@example.com" },
-        ///                     { "expireOn", "2020-04-14T01:37:19Z" },
-        ///                     { "exponent", "AQAB" },
-        ///                     { "modulus", "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==" },
-        ///                     { "userName", "example-user" },
-        ///                 }) },
-        ///             },
-        ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
-        ///             {
-        ///                 Scopes = 
-        ///                 {
-        ///                     "userinfo-email",
-        ///                     "compute-ro",
-        ///                     "storage-ro",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var serial = Output.Tuple(windows.Name, windows.Zone).Apply(values =&gt;
+        ///         },
+        ///         NetworkInterfaces = new[]
         ///         {
-        ///             var name = values.Item1;
-        ///             var zone = values.Item2;
-        ///             return Gcp.Compute.GetInstanceSerialPort.Invoke(new Gcp.Compute.GetInstanceSerialPortInvokeArgs
+        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
         ///             {
-        ///                 Instance = name,
-        ///                 Zone = zone,
-        ///                 Port = 4,
-        ///             });
-        ///         });
-        ///         this.SerialOut = serial.Apply(serial =&gt; serial.Contents);
-        ///     }
+        ///                 Network = "default",
+        ///                 AccessConfigs = new[]
+        ///                 {
+        ///                     ,
+        ///                 },
+        ///             },
+        ///         },
+        ///         Metadata = 
+        ///         {
+        ///             { "serial-port-logging-enable", "TRUE" },
+        ///             { "windows-keys", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["email"] = "example.user@example.com",
+        ///                 ["expireOn"] = "2020-04-14T01:37:19Z",
+        ///                 ["exponent"] = "AQAB",
+        ///                 ["modulus"] = "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+        ///                 ["userName"] = "example-user",
+        ///             }) },
+        ///         },
+        ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+        ///         {
+        ///             Scopes = new[]
+        ///             {
+        ///                 "userinfo-email",
+        ///                 "compute-ro",
+        ///                 "storage-ro",
+        ///             },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("serialOut")]
-        ///     public Output&lt;string&gt; SerialOut { get; set; }
-        /// }
+        ///     var serial = Gcp.Compute.GetInstanceSerialPort.Invoke(new()
+        ///     {
+        ///         Instance = windows.Name,
+        ///         Zone = windows.Zone,
+        ///         Port = 4,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serialOut"] = serial.Apply(getInstanceSerialPortResult =&gt; getInstanceSerialPortResult.Contents),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -233,7 +219,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetInstanceSerialPortArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceSerialPortArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Compute Instance to read output from.
@@ -264,9 +250,10 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceSerialPortArgs()
         {
         }
+        public static new GetInstanceSerialPortArgs Empty => new GetInstanceSerialPortArgs();
     }
 
-    public sealed class GetInstanceSerialPortInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceSerialPortInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Compute Instance to read output from.
@@ -297,6 +284,7 @@ namespace Pulumi.Gcp.Compute
         public GetInstanceSerialPortInvokeArgs()
         {
         }
+        public static new GetInstanceSerialPortInvokeArgs Empty => new GetInstanceSerialPortInvokeArgs();
     }
 
 

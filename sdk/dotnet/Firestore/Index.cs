@@ -30,34 +30,32 @@ namespace Pulumi.Gcp.Firestore
     /// ### Firestore Index Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
     ///     {
-    ///         var my_index = new Gcp.Firestore.Index("my-index", new Gcp.Firestore.IndexArgs
+    ///         Collection = "chatrooms",
+    ///         Fields = new[]
     ///         {
-    ///             Collection = "chatrooms",
-    ///             Fields = 
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
     ///             {
-    ///                 new Gcp.Firestore.Inputs.IndexFieldArgs
-    ///                 {
-    ///                     FieldPath = "name",
-    ///                     Order = "ASCENDING",
-    ///                 },
-    ///                 new Gcp.Firestore.Inputs.IndexFieldArgs
-    ///                 {
-    ///                     FieldPath = "description",
-    ///                     Order = "DESCENDING",
-    ///                 },
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
     ///             },
-    ///             Project = "my-project-name",
-    ///         });
-    ///     }
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +67,7 @@ namespace Pulumi.Gcp.Firestore
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firestore/index:Index")]
-    public partial class Index : Pulumi.CustomResource
+    public partial class Index : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The collection being indexed.
@@ -161,7 +159,7 @@ namespace Pulumi.Gcp.Firestore
         }
     }
 
-    public sealed class IndexArgs : Pulumi.ResourceArgs
+    public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collection being indexed.
@@ -211,9 +209,10 @@ namespace Pulumi.Gcp.Firestore
         public IndexArgs()
         {
         }
+        public static new IndexArgs Empty => new IndexArgs();
     }
 
-    public sealed class IndexState : Pulumi.ResourceArgs
+    public sealed class IndexState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collection being indexed.
@@ -270,5 +269,6 @@ namespace Pulumi.Gcp.Firestore
         public IndexState()
         {
         }
+        public static new IndexState Empty => new IndexState();
     }
 }

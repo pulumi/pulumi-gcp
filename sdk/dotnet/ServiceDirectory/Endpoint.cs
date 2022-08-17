@@ -22,105 +22,107 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ### Service Directory Endpoint Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
     ///     {
-    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
-    ///         {
-    ///             NamespaceId = "example-namespace",
-    ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
-    ///         {
-    ///             ServiceId = "example-service",
-    ///             Namespace = exampleNamespace.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new Gcp.ServiceDirectory.EndpointArgs
-    ///         {
-    ///             EndpointId = "example-endpoint",
-    ///             Service = exampleService.Id,
-    ///             Metadata = 
-    ///             {
-    ///                 { "stage", "prod" },
-    ///                 { "region", "us-central1" },
-    ///             },
-    ///             Address = "1.2.3.4",
-    ///             Port = 5353,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///         NamespaceId = "example-namespace",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
-    /// }
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     {
+    ///         ServiceId = "example-service",
+    ///         Namespace = exampleNamespace.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new()
+    ///     {
+    ///         EndpointId = "example-endpoint",
+    ///         Service = exampleService.Id,
+    ///         Metadata = 
+    ///         {
+    ///             { "stage", "prod" },
+    ///             { "region", "us-central1" },
+    ///         },
+    ///         Address = "1.2.3.4",
+    ///         Port = 5353,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Service Directory Endpoint With Network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
-    ///         var exampleNetwork = new Gcp.Compute.Network("exampleNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
-    ///         {
-    ///             NamespaceId = "example-namespace",
-    ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
-    ///         {
-    ///             ServiceId = "example-service",
-    ///             Namespace = exampleNamespace.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new Gcp.ServiceDirectory.EndpointArgs
-    ///         {
-    ///             EndpointId = "example-endpoint",
-    ///             Service = exampleService.Id,
-    ///             Metadata = 
-    ///             {
-    ///                 { "stage", "prod" },
-    ///                 { "region", "us-central1" },
-    ///             },
-    ///             Network = Output.Tuple(project, exampleNetwork.Name).Apply(values =&gt;
-    ///             {
-    ///                 var project = values.Item1;
-    ///                 var name = values.Item2;
-    ///                 return $"projects/{project.Number}/locations/global/networks/{name}";
-    ///             }),
-    ///             Address = "1.2.3.4",
-    ///             Port = 5353,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    /// }
+    ///     var exampleNetwork = new Gcp.Compute.Network("exampleNetwork", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
+    ///     {
+    ///         NamespaceId = "example-namespace",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     {
+    ///         ServiceId = "example-service",
+    ///         Namespace = exampleNamespace.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new()
+    ///     {
+    ///         EndpointId = "example-endpoint",
+    ///         Service = exampleService.Id,
+    ///         Metadata = 
+    ///         {
+    ///             { "stage", "prod" },
+    ///             { "region", "us-central1" },
+    ///         },
+    ///         Network = Output.Tuple(project.Apply(getProjectResult =&gt; getProjectResult), exampleNetwork.Name).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var name = values.Item2;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/networks/{name}";
+    ///         }),
+    ///         Address = "1.2.3.4",
+    ///         Port = 5353,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -140,7 +142,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ```
     /// </summary>
     [GcpResourceType("gcp:servicedirectory/endpoint:Endpoint")]
-    public partial class Endpoint : Pulumi.CustomResource
+    public partial class Endpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// IPv4 or IPv6 address of the endpoint.
@@ -233,7 +235,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         }
     }
 
-    public sealed class EndpointArgs : Pulumi.ResourceArgs
+    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IPv4 or IPv6 address of the endpoint.
@@ -285,9 +287,10 @@ namespace Pulumi.Gcp.ServiceDirectory
         public EndpointArgs()
         {
         }
+        public static new EndpointArgs Empty => new EndpointArgs();
     }
 
-    public sealed class EndpointState : Pulumi.ResourceArgs
+    public sealed class EndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IPv4 or IPv6 address of the endpoint.
@@ -345,5 +348,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         public EndpointState()
         {
         }
+        public static new EndpointState Empty => new EndpointState();
     }
 }

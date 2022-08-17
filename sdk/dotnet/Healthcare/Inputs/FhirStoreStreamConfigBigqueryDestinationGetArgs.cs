@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare.Inputs
 {
 
-    public sealed class FhirStoreStreamConfigBigqueryDestinationGetArgs : Pulumi.ResourceArgs
+    public sealed class FhirStoreStreamConfigBigqueryDestinationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public FhirStoreStreamConfigBigqueryDestinationGetArgs()
         {
         }
+        public static new FhirStoreStreamConfigBigqueryDestinationGetArgs Empty => new FhirStoreStreamConfigBigqueryDestinationGetArgs();
     }
 }

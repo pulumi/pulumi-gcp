@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql.Inputs
 {
 
-    public sealed class DatabaseInstanceReplicaConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseInstanceReplicaConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PEM representation of the trusted CA's x509
@@ -88,5 +88,6 @@ namespace Pulumi.Gcp.Sql.Inputs
         public DatabaseInstanceReplicaConfigurationGetArgs()
         {
         }
+        public static new DatabaseInstanceReplicaConfigurationGetArgs Empty => new DatabaseInstanceReplicaConfigurationGetArgs();
     }
 }

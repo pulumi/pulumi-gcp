@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class InstanceTemplateNetworkInterfaceAccessConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateNetworkInterfaceAccessConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address that will be 1:1 mapped to the instance's
@@ -32,5 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public InstanceTemplateNetworkInterfaceAccessConfigGetArgs()
         {
         }
+        public static new InstanceTemplateNetworkInterfaceAccessConfigGetArgs Empty => new InstanceTemplateNetworkInterfaceAccessConfigGetArgs();
     }
 }

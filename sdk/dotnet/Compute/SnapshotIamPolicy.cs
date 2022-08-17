@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.Compute
     /// ## google\_compute\_snapshot\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/viewer",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var policy = new Gcp.Compute.SnapshotIamPolicy("policy", new Gcp.Compute.SnapshotIamPolicyArgs
-    ///         {
-    ///             Project = google_compute_snapshot.Snapshot.Project,
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var policy = new Gcp.Compute.SnapshotIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_compute_snapshot.Snapshot.Project,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_compute\_snapshot\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var binding = new Gcp.Compute.SnapshotIamBinding("binding", new()
     ///     {
-    ///         var binding = new Gcp.Compute.SnapshotIamBinding("binding", new Gcp.Compute.SnapshotIamBindingArgs
+    ///         Project = google_compute_snapshot.Snapshot.Project,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             Project = google_compute_snapshot.Snapshot.Project,
-    ///             Role = "roles/viewer",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_compute\_snapshot\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member = new Gcp.Compute.SnapshotIamMember("member", new()
     ///     {
-    ///         var member = new Gcp.Compute.SnapshotIamMember("member", new Gcp.Compute.SnapshotIamMemberArgs
-    ///         {
-    ///             Project = google_compute_snapshot.Snapshot.Project,
-    ///             Role = "roles/viewer",
-    ///             Member = "user:jane@example.com",
-    ///         });
-    ///     }
+    ///         Project = google_compute_snapshot.Snapshot.Project,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -124,7 +119,7 @@ namespace Pulumi.Gcp.Compute
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/snapshotIamPolicy:SnapshotIamPolicy")]
-    public partial class SnapshotIamPolicy : Pulumi.CustomResource
+    public partial class SnapshotIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -196,7 +191,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
-    public sealed class SnapshotIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -221,9 +216,10 @@ namespace Pulumi.Gcp.Compute
         public SnapshotIamPolicyArgs()
         {
         }
+        public static new SnapshotIamPolicyArgs Empty => new SnapshotIamPolicyArgs();
     }
 
-    public sealed class SnapshotIamPolicyState : Pulumi.ResourceArgs
+    public sealed class SnapshotIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -254,5 +250,6 @@ namespace Pulumi.Gcp.Compute
         public SnapshotIamPolicyState()
         {
         }
+        public static new SnapshotIamPolicyState Empty => new SnapshotIamPolicyState();
     }
 }

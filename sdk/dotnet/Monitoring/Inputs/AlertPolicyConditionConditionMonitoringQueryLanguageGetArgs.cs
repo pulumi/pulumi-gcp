@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring.Inputs
 {
 
-    public sealed class AlertPolicyConditionConditionMonitoringQueryLanguageGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConditionConditionMonitoringQueryLanguageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of time that a time series must
@@ -64,5 +64,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public AlertPolicyConditionConditionMonitoringQueryLanguageGetArgs()
         {
         }
+        public static new AlertPolicyConditionConditionMonitoringQueryLanguageGetArgs Empty => new AlertPolicyConditionConditionMonitoringQueryLanguageGetArgs();
     }
 }

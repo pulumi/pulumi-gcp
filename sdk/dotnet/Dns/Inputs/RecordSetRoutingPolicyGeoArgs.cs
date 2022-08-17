@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns.Inputs
 {
 
-    public sealed class RecordSetRoutingPolicyGeoArgs : Pulumi.ResourceArgs
+    public sealed class RecordSetRoutingPolicyGeoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location name defined in Google Cloud.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.Dns.Inputs
         public RecordSetRoutingPolicyGeoArgs()
         {
         }
+        public static new RecordSetRoutingPolicyGeoArgs Empty => new RecordSetRoutingPolicyGeoArgs();
     }
 }

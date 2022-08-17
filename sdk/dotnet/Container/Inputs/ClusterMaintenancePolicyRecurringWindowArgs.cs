@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMaintenancePolicyRecurringWindowArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMaintenancePolicyRecurringWindowArgs : global::Pulumi.ResourceArgs
     {
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMaintenancePolicyRecurringWindowArgs()
         {
         }
+        public static new ClusterMaintenancePolicyRecurringWindowArgs Empty => new ClusterMaintenancePolicyRecurringWindowArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterLabels", required: true)]
         private InputList<Inputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelGetArgs>? _filterLabels;
@@ -42,5 +42,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public URLMapPathMatcherRouteRuleMatchRuleMetadataFilterGetArgs()
         {
         }
+        public static new URLMapPathMatcherRouteRuleMatchRuleMetadataFilterGetArgs Empty => new URLMapPathMatcherRouteRuleMatchRuleMetadataFilterGetArgs();
     }
 }

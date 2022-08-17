@@ -24,33 +24,32 @@ namespace Pulumi.Gcp.Spanner
     /// ### Spanner Database Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var main = new Gcp.Spanner.Instance("main", new()
     ///     {
-    ///         var main = new Gcp.Spanner.Instance("main", new Gcp.Spanner.InstanceArgs
-    ///         {
-    ///             Config = "regional-europe-west1",
-    ///             DisplayName = "main-instance",
-    ///             NumNodes = 1,
-    ///         });
-    ///         var database = new Gcp.Spanner.Database("database", new Gcp.Spanner.DatabaseArgs
-    ///         {
-    ///             Instance = main.Name,
-    ///             VersionRetentionPeriod = "3d",
-    ///             Ddls = 
-    ///             {
-    ///                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
-    ///                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
-    ///             },
-    ///             DeletionProtection = false,
-    ///         });
-    ///     }
+    ///         Config = "regional-europe-west1",
+    ///         DisplayName = "main-instance",
+    ///         NumNodes = 1,
+    ///     });
     /// 
-    /// }
+    ///     var database = new Gcp.Spanner.Database("database", new()
+    ///     {
+    ///         Instance = main.Name,
+    ///         VersionRetentionPeriod = "3d",
+    ///         Ddls = new[]
+    ///         {
+    ///             "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+    ///             "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +73,7 @@ namespace Pulumi.Gcp.Spanner
     /// ```
     /// </summary>
     [GcpResourceType("gcp:spanner/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dialect of the Cloud Spanner Database.
@@ -187,7 +186,7 @@ namespace Pulumi.Gcp.Spanner
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dialect of the Cloud Spanner Database.
@@ -259,9 +258,10 @@ namespace Pulumi.Gcp.Spanner
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dialect of the Cloud Spanner Database.
@@ -339,5 +339,6 @@ namespace Pulumi.Gcp.Spanner
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

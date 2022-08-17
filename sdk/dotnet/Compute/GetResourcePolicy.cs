@@ -15,21 +15,19 @@ namespace Pulumi.Gcp.Compute
         /// Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var daily = Gcp.Compute.GetResourcePolicy.Invoke(new()
         ///     {
-        ///         var daily = Output.Create(Gcp.Compute.GetResourcePolicy.InvokeAsync(new Gcp.Compute.GetResourcePolicyArgs
-        ///         {
-        ///             Name = "daily",
-        ///             Region = "us-central1",
-        ///         }));
-        ///     }
+        ///         Name = "daily",
+        ///         Region = "us-central1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Task<GetResourcePolicyResult> InvokeAsync(GetResourcePolicyArgs args, InvokeOptions? options = null)
@@ -39,21 +37,19 @@ namespace Pulumi.Gcp.Compute
         /// Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var daily = Gcp.Compute.GetResourcePolicy.Invoke(new()
         ///     {
-        ///         var daily = Output.Create(Gcp.Compute.GetResourcePolicy.InvokeAsync(new Gcp.Compute.GetResourcePolicyArgs
-        ///         {
-        ///             Name = "daily",
-        ///             Region = "us-central1",
-        ///         }));
-        ///     }
+        ///         Name = "daily",
+        ///         Region = "us-central1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Output<GetResourcePolicyResult> Invoke(GetResourcePolicyInvokeArgs args, InvokeOptions? options = null)
@@ -61,7 +57,7 @@ namespace Pulumi.Gcp.Compute
     }
 
 
-    public sealed class GetResourcePolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Resource Policy.
@@ -84,9 +80,10 @@ namespace Pulumi.Gcp.Compute
         public GetResourcePolicyArgs()
         {
         }
+        public static new GetResourcePolicyArgs Empty => new GetResourcePolicyArgs();
     }
 
-    public sealed class GetResourcePolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the Resource Policy.
@@ -109,6 +106,7 @@ namespace Pulumi.Gcp.Compute
         public GetResourcePolicyInvokeArgs()
         {
         }
+        public static new GetResourcePolicyInvokeArgs Empty => new GetResourcePolicyInvokeArgs();
     }
 
 

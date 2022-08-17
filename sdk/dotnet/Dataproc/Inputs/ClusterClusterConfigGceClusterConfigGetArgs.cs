@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class ClusterClusterConfigGceClusterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterClusterConfigGceClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// By default, clusters are not restricted to internal IP addresses,
@@ -107,5 +107,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public ClusterClusterConfigGceClusterConfigGetArgs()
         {
         }
+        public static new ClusterClusterConfigGceClusterConfigGetArgs Empty => new ClusterClusterConfigGceClusterConfigGetArgs();
     }
 }

@@ -15,7 +15,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.exclusions)
 // * How-to Guides
-//     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+//   - [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 //
 // > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
 //
@@ -25,22 +25,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := logging.NewProjectExclusion(ctx, "my-exclusion", &logging.ProjectExclusionArgs{
-// 			Description: pulumi.String("Exclude GCE instance debug logs"),
-// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectExclusion(ctx, "my-exclusion", &logging.ProjectExclusionArgs{
+//				Description: pulumi.String("Exclude GCE instance debug logs"),
+//				Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Project-level logging exclusions can be imported using their URI, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:logging/projectExclusion:ProjectExclusion my_exclusion projects/my-project/exclusions/my-exclusion
+//
+//	$ pulumi import gcp:logging/projectExclusion:ProjectExclusion my_exclusion projects/my-project/exclusions/my-exclusion
+//
 // ```
 type ProjectExclusion struct {
 	pulumi.CustomResourceState
@@ -199,7 +204,7 @@ func (i *ProjectExclusion) ToProjectExclusionOutputWithContext(ctx context.Conte
 // ProjectExclusionArrayInput is an input type that accepts ProjectExclusionArray and ProjectExclusionArrayOutput values.
 // You can construct a concrete instance of `ProjectExclusionArrayInput` via:
 //
-//          ProjectExclusionArray{ ProjectExclusionArgs{...} }
+//	ProjectExclusionArray{ ProjectExclusionArgs{...} }
 type ProjectExclusionArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +229,7 @@ func (i ProjectExclusionArray) ToProjectExclusionArrayOutputWithContext(ctx cont
 // ProjectExclusionMapInput is an input type that accepts ProjectExclusionMap and ProjectExclusionMapOutput values.
 // You can construct a concrete instance of `ProjectExclusionMapInput` via:
 //
-//          ProjectExclusionMap{ "key": ProjectExclusionArgs{...} }
+//	ProjectExclusionMap{ "key": ProjectExclusionArgs{...} }
 type ProjectExclusionMapInput interface {
 	pulumi.Input
 

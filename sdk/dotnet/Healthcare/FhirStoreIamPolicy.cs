@@ -23,80 +23,75 @@ namespace Pulumi.Gcp.Healthcare
     /// ## google\_healthcare\_fhir\_store\_iam\_policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         Bindings = new[]
     ///         {
-    ///             Bindings = 
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
     ///                 {
-    ///                     Role = "roles/editor",
-    ///                     Members = 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     },
+    ///                     "user:jane@example.com",
     ///                 },
     ///             },
-    ///         }));
-    ///         var fhirStore = new Gcp.Healthcare.FhirStoreIamPolicy("fhirStore", new Gcp.Healthcare.FhirStoreIamPolicyArgs
-    ///         {
-    ///             FhirStoreId = "your-fhir-store-id",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamPolicy("fhirStore", new()
+    ///     {
+    ///         FhirStoreId = "your-fhir-store-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_fhir\_store\_iam\_binding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamBinding("fhirStore", new()
     ///     {
-    ///         var fhirStore = new Gcp.Healthcare.FhirStoreIamBinding("fhirStore", new Gcp.Healthcare.FhirStoreIamBindingArgs
+    ///         FhirStoreId = "your-fhir-store-id",
+    ///         Members = new[]
     ///         {
-    ///             FhirStoreId = "your-fhir-store-id",
-    ///             Members = 
-    ///             {
-    ///                 "user:jane@example.com",
-    ///             },
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## google\_healthcare\_fhir\_store\_iam\_member
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fhirStore = new Gcp.Healthcare.FhirStoreIamMember("fhirStore", new()
     ///     {
-    ///         var fhirStore = new Gcp.Healthcare.FhirStoreIamMember("fhirStore", new Gcp.Healthcare.FhirStoreIamMemberArgs
-    ///         {
-    ///             FhirStoreId = "your-fhir-store-id",
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/editor",
-    ///         });
-    ///     }
+    ///         FhirStoreId = "your-fhir-store-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -126,7 +121,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy")]
-    public partial class FhirStoreIamPolicy : Pulumi.CustomResource
+    public partial class FhirStoreIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the FHIR store's IAM policy.
@@ -194,7 +189,7 @@ namespace Pulumi.Gcp.Healthcare
         }
     }
 
-    public sealed class FhirStoreIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FhirStoreIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The FHIR store ID, in the form
@@ -215,9 +210,10 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreIamPolicyArgs()
         {
         }
+        public static new FhirStoreIamPolicyArgs Empty => new FhirStoreIamPolicyArgs();
     }
 
-    public sealed class FhirStoreIamPolicyState : Pulumi.ResourceArgs
+    public sealed class FhirStoreIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the FHIR store's IAM policy.
@@ -244,5 +240,6 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreIamPolicyState()
         {
         }
+        public static new FhirStoreIamPolicyState Empty => new FhirStoreIamPolicyState();
     }
 }

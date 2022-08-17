@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc.Inputs
 {
 
-    public sealed class WorkflowTemplatePlacementManagedClusterArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementManagedClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
@@ -39,5 +39,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public WorkflowTemplatePlacementManagedClusterArgs()
         {
         }
+        public static new WorkflowTemplatePlacementManagedClusterArgs Empty => new WorkflowTemplatePlacementManagedClusterArgs();
     }
 }

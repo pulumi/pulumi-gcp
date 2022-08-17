@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class ReservationSpecificReservationInstancePropertiesArgs : Pulumi.ResourceArgs
+    public sealed class ReservationSpecificReservationInstancePropertiesArgs : global::Pulumi.ResourceArgs
     {
         [Input("guestAccelerators")]
         private InputList<Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs>? _guestAccelerators;
@@ -57,5 +57,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public ReservationSpecificReservationInstancePropertiesArgs()
         {
         }
+        public static new ReservationSpecificReservationInstancePropertiesArgs Empty => new ReservationSpecificReservationInstancePropertiesArgs();
     }
 }

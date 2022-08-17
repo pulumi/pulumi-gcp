@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority.Inputs
 {
 
-    public sealed class AuthorityKeySpecGetArgs : Pulumi.ResourceArgs
+    public sealed class AuthorityKeySpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public AuthorityKeySpecGetArgs()
         {
         }
+        public static new AuthorityKeySpecGetArgs Empty => new AuthorityKeySpecGetArgs();
     }
 }

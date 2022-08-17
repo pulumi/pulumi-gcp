@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss.Inputs
 {
 
-    public sealed class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableGetArgs : Pulumi.ResourceArgs
+    public sealed class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataset ID of the table.
@@ -33,5 +33,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableGetArgs()
         {
         }
+        public static new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableGetArgs Empty => new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container.Inputs
 {
 
-    public sealed class ClusterMasterAuthorizedNetworksConfigCidrBlockArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMasterAuthorizedNetworksConfigCidrBlockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// External network that can access Kubernetes master through HTTPS.
@@ -28,5 +28,6 @@ namespace Pulumi.Gcp.Container.Inputs
         public ClusterMasterAuthorizedNetworksConfigCidrBlockArgs()
         {
         }
+        public static new ClusterMasterAuthorizedNetworksConfigCidrBlockArgs Empty => new ClusterMasterAuthorizedNetworksConfigCidrBlockArgs();
     }
 }

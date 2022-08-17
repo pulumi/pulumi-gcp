@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudRun.Inputs
 {
 
-    public sealed class DomainMappingStatusResourceRecordArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingStatusResourceRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
@@ -27,5 +27,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public DomainMappingStatusResourceRecordArgs()
         {
         }
+        public static new DomainMappingStatusResourceRecordArgs Empty => new DomainMappingStatusResourceRecordArgs();
     }
 }

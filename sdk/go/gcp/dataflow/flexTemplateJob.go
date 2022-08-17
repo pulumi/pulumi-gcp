@@ -260,7 +260,7 @@ func (i *FlexTemplateJob) ToFlexTemplateJobOutputWithContext(ctx context.Context
 // FlexTemplateJobArrayInput is an input type that accepts FlexTemplateJobArray and FlexTemplateJobArrayOutput values.
 // You can construct a concrete instance of `FlexTemplateJobArrayInput` via:
 //
-//          FlexTemplateJobArray{ FlexTemplateJobArgs{...} }
+//	FlexTemplateJobArray{ FlexTemplateJobArgs{...} }
 type FlexTemplateJobArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +285,7 @@ func (i FlexTemplateJobArray) ToFlexTemplateJobArrayOutputWithContext(ctx contex
 // FlexTemplateJobMapInput is an input type that accepts FlexTemplateJobMap and FlexTemplateJobMapOutput values.
 // You can construct a concrete instance of `FlexTemplateJobMapInput` via:
 //
-//          FlexTemplateJobMap{ "key": FlexTemplateJobArgs{...} }
+//	FlexTemplateJobMap{ "key": FlexTemplateJobArgs{...} }
 type FlexTemplateJobMapInput interface {
 	pulumi.Input
 

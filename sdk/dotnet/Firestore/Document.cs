@@ -29,58 +29,56 @@ namespace Pulumi.Gcp.Firestore
     /// ### Firestore Document Basic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
     ///     {
-    ///         var mydoc = new Gcp.Firestore.Document("mydoc", new Gcp.Firestore.DocumentArgs
-    ///         {
-    ///             Collection = "somenewcollection",
-    ///             DocumentId = "my-doc",
-    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
-    ///             Project = "my-project-name",
-    ///         });
-    ///     }
+    ///         Collection = "somenewcollection",
+    ///         DocumentId = "my-doc",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Firestore Document Nested Document
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
     ///     {
-    ///         var mydoc = new Gcp.Firestore.Document("mydoc", new Gcp.Firestore.DocumentArgs
-    ///         {
-    ///             Collection = "somenewcollection",
-    ///             DocumentId = "my-doc",
-    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
-    ///             Project = "my-project-name",
-    ///         });
-    ///         var subDocument = new Gcp.Firestore.Document("subDocument", new Gcp.Firestore.DocumentArgs
-    ///         {
-    ///             Collection = mydoc.Path.Apply(path =&gt; $"{path}/subdocs"),
-    ///             DocumentId = "bitcoinkey",
-    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
-    ///             Project = "my-project-name",
-    ///         });
-    ///         var subSubDocument = new Gcp.Firestore.Document("subSubDocument", new Gcp.Firestore.DocumentArgs
-    ///         {
-    ///             Collection = subDocument.Path.Apply(path =&gt; $"{path}/subsubdocs"),
-    ///             DocumentId = "asecret",
-    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
-    ///             Project = "my-project-name",
-    ///         });
-    ///     }
+    ///         Collection = "somenewcollection",
+    ///         DocumentId = "my-doc",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///         Project = "my-project-name",
+    ///     });
     /// 
-    /// }
+    ///     var subDocument = new Gcp.Firestore.Document("subDocument", new()
+    ///     {
+    ///         Collection = mydoc.Path.Apply(path =&gt; $"{path}/subdocs"),
+    ///         DocumentId = "bitcoinkey",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var subSubDocument = new Gcp.Firestore.Document("subSubDocument", new()
+    ///     {
+    ///         Collection = subDocument.Path.Apply(path =&gt; $"{path}/subsubdocs"),
+    ///         DocumentId = "asecret",
+    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -92,7 +90,7 @@ namespace Pulumi.Gcp.Firestore
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firestore/document:Document")]
-    public partial class Document : Pulumi.CustomResource
+    public partial class Document : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
@@ -194,7 +192,7 @@ namespace Pulumi.Gcp.Firestore
         }
     }
 
-    public sealed class DocumentArgs : Pulumi.ResourceArgs
+    public sealed class DocumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
@@ -230,9 +228,10 @@ namespace Pulumi.Gcp.Firestore
         public DocumentArgs()
         {
         }
+        public static new DocumentArgs Empty => new DocumentArgs();
     }
 
-    public sealed class DocumentState : Pulumi.ResourceArgs
+    public sealed class DocumentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
@@ -293,5 +292,6 @@ namespace Pulumi.Gcp.Firestore
         public DocumentState()
         {
         }
+        public static new DocumentState Empty => new DocumentState();
     }
 }

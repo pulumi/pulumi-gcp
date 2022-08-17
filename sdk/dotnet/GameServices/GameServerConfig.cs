@@ -27,113 +27,109 @@ namespace Pulumi.Gcp.GameServices
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultGameServerDeployment = new Gcp.GameServices.GameServerDeployment("defaultGameServerDeployment", new()
     ///     {
-    ///         var defaultGameServerDeployment = new Gcp.GameServices.GameServerDeployment("defaultGameServerDeployment", new Gcp.GameServices.GameServerDeploymentArgs
+    ///         DeploymentId = "tf-test-deployment",
+    ///         Description = "a deployment description",
+    ///     });
+    /// 
+    ///     var defaultGameServerConfig = new Gcp.GameServices.GameServerConfig("defaultGameServerConfig", new()
+    ///     {
+    ///         ConfigId = "tf-test-config",
+    ///         DeploymentId = defaultGameServerDeployment.DeploymentId,
+    ///         Description = "a config description",
+    ///         FleetConfigs = new[]
     ///         {
-    ///             DeploymentId = "tf-test-deployment",
-    ///             Description = "a deployment description",
-    ///         });
-    ///         var defaultGameServerConfig = new Gcp.GameServices.GameServerConfig("defaultGameServerConfig", new Gcp.GameServices.GameServerConfigArgs
-    ///         {
-    ///             ConfigId = "tf-test-config",
-    ///             DeploymentId = defaultGameServerDeployment.DeploymentId,
-    ///             Description = "a config description",
-    ///             FleetConfigs = 
+    ///             new Gcp.GameServices.Inputs.GameServerConfigFleetConfigArgs
     ///             {
-    ///                 new Gcp.GameServices.Inputs.GameServerConfigFleetConfigArgs
+    ///                 Name = "something-unique",
+    ///                 FleetSpec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     Name = "something-unique",
-    ///                     FleetSpec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     ["replicas"] = 1,
+    ///                     ["scheduling"] = "Packed",
+    ///                     ["template"] = new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         { "replicas", 1 },
-    ///                         { "scheduling", "Packed" },
-    ///                         { "template", new Dictionary&lt;string, object?&gt;
+    ///                         ["metadata"] = new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             { "metadata", new Dictionary&lt;string, object?&gt;
+    ///                             ["name"] = "tf-test-game-server-template",
+    ///                         },
+    ///                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["ports"] = new[]
     ///                             {
-    ///                                 { "name", "tf-test-game-server-template" },
-    ///                             } },
-    ///                             { "spec", new Dictionary&lt;string, object?&gt;
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["name"] = "default",
+    ///                                     ["portPolicy"] = "Dynamic",
+    ///                                     ["containerPort"] = 7654,
+    ///                                     ["protocol"] = "UDP",
+    ///                                 },
+    ///                             },
+    ///                             ["template"] = new Dictionary&lt;string, object?&gt;
     ///                             {
-    ///                                 { "ports", new[]
+    ///                                 ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["containers"] = new[]
     ///                                     {
     ///                                         new Dictionary&lt;string, object?&gt;
     ///                                         {
-    ///                                             { "name", "default" },
-    ///                                             { "portPolicy", "Dynamic" },
-    ///                                             { "containerPort", 7654 },
-    ///                                             { "protocol", "UDP" },
+    ///                                             ["name"] = "simple-udp-server",
+    ///                                             ["image"] = "gcr.io/agones-images/udp-server:0.14",
     ///                                         },
-    ///                                     }
-    ///                                  },
-    ///                                 { "template", new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     { "spec", new Dictionary&lt;string, object?&gt;
-    ///                                     {
-    ///                                         { "containers", new[]
-    ///                                             {
-    ///                                                 new Dictionary&lt;string, object?&gt;
-    ///                                                 {
-    ///                                                     { "name", "simple-udp-server" },
-    ///                                                     { "image", "gcr.io/agones-images/udp-server:0.14" },
-    ///                                                 },
-    ///                                             }
-    ///                                          },
-    ///                                     } },
-    ///                                 } },
-    ///                             } },
-    ///                         } },
-    ///                     }),
-    ///                 },
-    ///             },
-    ///             ScalingConfigs = 
-    ///             {
-    ///                 new Gcp.GameServices.Inputs.GameServerConfigScalingConfigArgs
-    ///                 {
-    ///                     Name = "scaling-config-name",
-    ///                     FleetAutoscalerSpec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         { "policy", new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "type", "Webhook" },
-    ///                             { "webhook", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "service", new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     { "name", "autoscaler-webhook-service" },
-    ///                                     { "namespace", "default" },
-    ///                                     { "path", "scale" },
-    ///                                 } },
-    ///                             } },
-    ///                         } },
-    ///                     }),
-    ///                     Selectors = 
-    ///                     {
-    ///                         new Gcp.GameServices.Inputs.GameServerConfigScalingConfigSelectorArgs
-    ///                         {
-    ///                             Labels = 
-    ///                             {
-    ///                                 { "one", "two" },
+    ///                                     },
+    ///                                 },
     ///                             },
     ///                         },
     ///                     },
-    ///                     Schedules = 
+    ///                 }),
+    ///             },
+    ///         },
+    ///         ScalingConfigs = new[]
+    ///         {
+    ///             new Gcp.GameServices.Inputs.GameServerConfigScalingConfigArgs
+    ///             {
+    ///                 Name = "scaling-config-name",
+    ///                 FleetAutoscalerSpec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["policy"] = new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         new Gcp.GameServices.Inputs.GameServerConfigScalingConfigScheduleArgs
+    ///                         ["type"] = "Webhook",
+    ///                         ["webhook"] = new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             CronJobDuration = "3.500s",
-    ///                             CronSpec = "0 0 * * 0",
+    ///                             ["service"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "autoscaler-webhook-service",
+    ///                                 ["namespace"] = "default",
+    ///                                 ["path"] = "scale",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 }),
+    ///                 Selectors = new[]
+    ///                 {
+    ///                     new Gcp.GameServices.Inputs.GameServerConfigScalingConfigSelectorArgs
+    ///                     {
+    ///                         Labels = 
+    ///                         {
+    ///                             { "one", "two" },
     ///                         },
     ///                     },
     ///                 },
+    ///                 Schedules = new[]
+    ///                 {
+    ///                     new Gcp.GameServices.Inputs.GameServerConfigScalingConfigScheduleArgs
+    ///                     {
+    ///                         CronJobDuration = "3.500s",
+    ///                         CronSpec = "0 0 * * 0",
+    ///                     },
+    ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -153,7 +149,7 @@ namespace Pulumi.Gcp.GameServices
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gameservices/gameServerConfig:GameServerConfig")]
-    public partial class GameServerConfig : Pulumi.CustomResource
+    public partial class GameServerConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A unique id for the deployment config.
@@ -257,7 +253,7 @@ namespace Pulumi.Gcp.GameServices
         }
     }
 
-    public sealed class GameServerConfigArgs : Pulumi.ResourceArgs
+    public sealed class GameServerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique id for the deployment config.
@@ -332,9 +328,10 @@ namespace Pulumi.Gcp.GameServices
         public GameServerConfigArgs()
         {
         }
+        public static new GameServerConfigArgs Empty => new GameServerConfigArgs();
     }
 
-    public sealed class GameServerConfigState : Pulumi.ResourceArgs
+    public sealed class GameServerConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique id for the deployment config.
@@ -415,5 +412,6 @@ namespace Pulumi.Gcp.GameServices
         public GameServerConfigState()
         {
         }
+        public static new GameServerConfigState Empty => new GameServerConfigState();
     }
 }

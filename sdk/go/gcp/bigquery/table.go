@@ -25,75 +25,80 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultDataset, err := bigquery.NewDataset(ctx, "defaultDataset", &bigquery.DatasetArgs{
-// 			DatasetId:                pulumi.String("foo"),
-// 			FriendlyName:             pulumi.String("test"),
-// 			Description:              pulumi.String("This is a test description"),
-// 			Location:                 pulumi.String("EU"),
-// 			DefaultTableExpirationMs: pulumi.Int(3600000),
-// 			Labels: pulumi.StringMap{
-// 				"env": pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewTable(ctx, "defaultTable", &bigquery.TableArgs{
-// 			DatasetId: defaultDataset.DatasetId,
-// 			TableId:   pulumi.String("bar"),
-// 			TimePartitioning: &bigquery.TableTimePartitioningArgs{
-// 				Type: pulumi.String("DAY"),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"env": pulumi.String("default"),
-// 			},
-// 			Schema: pulumi.String(fmt.Sprintf(`[
-//   {
-//     "name": "permalink",
-//     "type": "STRING",
-//     "mode": "NULLABLE",
-//     "description": "The Permalink"
-//   },
-//   {
-//     "name": "state",
-//     "type": "STRING",
-//     "mode": "NULLABLE",
-//     "description": "State where the head office is located"
-//   }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultDataset, err := bigquery.NewDataset(ctx, "defaultDataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("foo"),
+//				FriendlyName:             pulumi.String("test"),
+//				Description:              pulumi.String("This is a test description"),
+//				Location:                 pulumi.String("EU"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewTable(ctx, "defaultTable", &bigquery.TableArgs{
+//				DatasetId: defaultDataset.DatasetId,
+//				TableId:   pulumi.String("bar"),
+//				TimePartitioning: &bigquery.TableTimePartitioningArgs{
+//					Type: pulumi.String("DAY"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("default"),
+//				},
+//				Schema: pulumi.String(fmt.Sprintf(`[
+//	  {
+//	    "name": "permalink",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "The Permalink"
+//	  },
+//	  {
+//	    "name": "state",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "State where the head office is located"
+//	  }
+//
 // ]
 // `)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewTable(ctx, "sheet", &bigquery.TableArgs{
-// 			DatasetId: defaultDataset.DatasetId,
-// 			TableId:   pulumi.String("sheet"),
-// 			ExternalDataConfiguration: &bigquery.TableExternalDataConfigurationArgs{
-// 				Autodetect:   pulumi.Bool(true),
-// 				SourceFormat: pulumi.String("GOOGLE_SHEETS"),
-// 				GoogleSheetsOptions: &bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs{
-// 					SkipLeadingRows: pulumi.Int(1),
-// 				},
-// 				SourceUris: pulumi.StringArray{
-// 					pulumi.String("https://docs.google.com/spreadsheets/d/123456789012345"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewTable(ctx, "sheet", &bigquery.TableArgs{
+//				DatasetId: defaultDataset.DatasetId,
+//				TableId:   pulumi.String("sheet"),
+//				ExternalDataConfiguration: &bigquery.TableExternalDataConfigurationArgs{
+//					Autodetect:   pulumi.Bool(true),
+//					SourceFormat: pulumi.String("GOOGLE_SHEETS"),
+//					GoogleSheetsOptions: &bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs{
+//						SkipLeadingRows: pulumi.Int(1),
+//					},
+//					SourceUris: pulumi.StringArray{
+//						pulumi.String("https://docs.google.com/spreadsheets/d/123456789012345"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -101,7 +106,9 @@ import (
 // BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+//
+//	$ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+//
 // ```
 type Table struct {
 	pulumi.CustomResourceState
@@ -542,7 +549,7 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 // TableArrayInput is an input type that accepts TableArray and TableArrayOutput values.
 // You can construct a concrete instance of `TableArrayInput` via:
 //
-//          TableArray{ TableArgs{...} }
+//	TableArray{ TableArgs{...} }
 type TableArrayInput interface {
 	pulumi.Input
 
@@ -567,7 +574,7 @@ func (i TableArray) ToTableArrayOutputWithContext(ctx context.Context) TableArra
 // TableMapInput is an input type that accepts TableMap and TableMapOutput values.
 // You can construct a concrete instance of `TableMapInput` via:
 //
-//          TableMap{ "key": TableArgs{...} }
+//	TableMap{ "key": TableArgs{...} }
 type TableMapInput interface {
 	pulumi.Input
 

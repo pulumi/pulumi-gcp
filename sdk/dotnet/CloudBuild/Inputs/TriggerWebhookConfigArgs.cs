@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuild.Inputs
 {
 
-    public sealed class TriggerWebhookConfigArgs : Pulumi.ResourceArgs
+    public sealed class TriggerWebhookConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Secrets to decrypt using Cloud Key Management Service.
@@ -30,5 +30,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public TriggerWebhookConfigArgs()
         {
         }
+        public static new TriggerWebhookConfigArgs Empty => new TriggerWebhookConfigArgs();
     }
 }

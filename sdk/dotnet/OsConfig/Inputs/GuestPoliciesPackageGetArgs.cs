@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OsConfig.Inputs
 {
 
-    public sealed class GuestPoliciesPackageGetArgs : Pulumi.ResourceArgs
+    public sealed class GuestPoliciesPackageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default is INSTALLED. The desired state the agent should maintain for this recipe.
@@ -48,5 +48,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public GuestPoliciesPackageGetArgs()
         {
         }
+        public static new GuestPoliciesPackageGetArgs Empty => new GuestPoliciesPackageGetArgs();
     }
 }

@@ -18,78 +18,87 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewResponsePolicy(ctx, "response-policy", &dns.ResponsePolicyArgs{
-// 			ResponsePolicyName: pulumi.String("example-response-policy"),
-// 			Networks: dns.ResponsePolicyNetworkArray{
-// 				&dns.ResponsePolicyNetworkArgs{
-// 					NetworkUrl: network_1.ID(),
-// 				},
-// 				&dns.ResponsePolicyNetworkArgs{
-// 					NetworkUrl: network_2.ID(),
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewResponsePolicyRule(ctx, "example-response-policy-rule", &dns.ResponsePolicyRuleArgs{
-// 			ResponsePolicy: response_policy.ResponsePolicyName,
-// 			RuleName:       pulumi.String("example-rule"),
-// 			DnsName:        pulumi.String("dns.example.com."),
-// 			LocalData: &dns.ResponsePolicyRuleLocalDataArgs{
-// 				LocalDatas: dns.ResponsePolicyRuleLocalDataLocalDataArray{
-// 					&dns.ResponsePolicyRuleLocalDataLocalDataArgs{
-// 						Name: pulumi.String("dns.example.com."),
-// 						Type: pulumi.String("A"),
-// 						Ttl:  pulumi.Int(300),
-// 						Rrdatas: pulumi.StringArray{
-// 							pulumi.String("192.0.2.91"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewResponsePolicy(ctx, "response-policy", &dns.ResponsePolicyArgs{
+//				ResponsePolicyName: pulumi.String("example-response-policy"),
+//				Networks: dns.ResponsePolicyNetworkArray{
+//					&dns.ResponsePolicyNetworkArgs{
+//						NetworkUrl: network_1.ID(),
+//					},
+//					&dns.ResponsePolicyNetworkArgs{
+//						NetworkUrl: network_2.ID(),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewResponsePolicyRule(ctx, "example-response-policy-rule", &dns.ResponsePolicyRuleArgs{
+//				ResponsePolicy: response_policy.ResponsePolicyName,
+//				RuleName:       pulumi.String("example-rule"),
+//				DnsName:        pulumi.String("dns.example.com."),
+//				LocalData: &dns.ResponsePolicyRuleLocalDataArgs{
+//					LocalDatas: dns.ResponsePolicyRuleLocalDataLocalDataArray{
+//						&dns.ResponsePolicyRuleLocalDataLocalDataArgs{
+//							Name: pulumi.String("dns.example.com."),
+//							Type: pulumi.String("A"),
+//							Ttl:  pulumi.Int(300),
+//							Rrdatas: pulumi.StringArray{
+//								pulumi.String("192.0.2.91"),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// ResponsePolicyRule can be imported using any of these accepted formats
+// # ResponsePolicyRule can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
+//
+//	$ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
+//
+//	$ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
+//
+//	$ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
+//
 // ```
 type ResponsePolicyRule struct {
 	pulumi.CustomResourceState
@@ -241,7 +250,7 @@ func (i *ResponsePolicyRule) ToResponsePolicyRuleOutputWithContext(ctx context.C
 // ResponsePolicyRuleArrayInput is an input type that accepts ResponsePolicyRuleArray and ResponsePolicyRuleArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyRuleArrayInput` via:
 //
-//          ResponsePolicyRuleArray{ ResponsePolicyRuleArgs{...} }
+//	ResponsePolicyRuleArray{ ResponsePolicyRuleArgs{...} }
 type ResponsePolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +275,7 @@ func (i ResponsePolicyRuleArray) ToResponsePolicyRuleArrayOutputWithContext(ctx 
 // ResponsePolicyRuleMapInput is an input type that accepts ResponsePolicyRuleMap and ResponsePolicyRuleMapOutput values.
 // You can construct a concrete instance of `ResponsePolicyRuleMapInput` via:
 //
-//          ResponsePolicyRuleMap{ "key": ResponsePolicyRuleArgs{...} }
+//	ResponsePolicyRuleMap{ "key": ResponsePolicyRuleArgs{...} }
 type ResponsePolicyRuleMapInput interface {
 	pulumi.Input
 

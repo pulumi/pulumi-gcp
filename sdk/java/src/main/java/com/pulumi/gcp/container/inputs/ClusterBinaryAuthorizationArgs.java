@@ -42,14 +42,18 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Mode of operation for Binary Authorization policy evaluation.
+     * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+     * deprecated `enable_binary_authorization` parameter being set to `true`.
      * 
      */
     @Import(name="evaluationMode")
     private @Nullable Output<String> evaluationMode;
 
     /**
-     * @return Mode of operation for Binary Authorization policy evaluation.
+     * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+     * deprecated `enable_binary_authorization` parameter being set to `true`.
      * 
      */
     public Optional<Output<String>> evaluationMode() {
@@ -113,7 +117,9 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation.
+         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+         * deprecated `enable_binary_authorization` parameter being set to `true`.
          * 
          * @return builder
          * 
@@ -124,7 +130,9 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation.
+         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+         * deprecated `enable_binary_authorization` parameter being set to `true`.
          * 
          * @return builder
          * 

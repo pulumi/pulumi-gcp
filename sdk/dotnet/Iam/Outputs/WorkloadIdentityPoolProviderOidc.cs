@@ -22,15 +22,12 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         /// For example:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///     }
-        /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public readonly ImmutableArray<string> AllowedAudiences;

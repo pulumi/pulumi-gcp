@@ -19,27 +19,26 @@ namespace Pulumi.Gcp.Logging
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = Gcp.Organizations.GetOrganization.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(Gcp.Organizations.GetOrganization.InvokeAsync(new Gcp.Organizations.GetOrganizationArgs
-    ///         {
-    ///             Organization = "123456789",
-    ///         }));
-    ///         var basic = new Gcp.Logging.OrganizationBucketConfig("basic", new Gcp.Logging.OrganizationBucketConfigArgs
-    ///         {
-    ///             Organization = @default.Apply(@default =&gt; @default.Organization),
-    ///             Location = "global",
-    ///             RetentionDays = 30,
-    ///             BucketId = "_Default",
-    ///         });
-    ///     }
+    ///         Organization = "123456789",
+    ///     });
     /// 
-    /// }
+    ///     var basic = new Gcp.Logging.OrganizationBucketConfig("basic", new()
+    ///     {
+    ///         Organization = @default.Apply(getOrganizationResult =&gt; getOrganizationResult).Apply(@default =&gt; @default.Apply(getOrganizationResult =&gt; getOrganizationResult.Organization)),
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +50,7 @@ namespace Pulumi.Gcp.Logging
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/organizationBucketConfig:OrganizationBucketConfig")]
-    public partial class OrganizationBucketConfig : Pulumi.CustomResource
+    public partial class OrganizationBucketConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -139,7 +138,7 @@ namespace Pulumi.Gcp.Logging
         }
     }
 
-    public sealed class OrganizationBucketConfigArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationBucketConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -174,9 +173,10 @@ namespace Pulumi.Gcp.Logging
         public OrganizationBucketConfigArgs()
         {
         }
+        public static new OrganizationBucketConfigArgs Empty => new OrganizationBucketConfigArgs();
     }
 
-    public sealed class OrganizationBucketConfigState : Pulumi.ResourceArgs
+    public sealed class OrganizationBucketConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -223,5 +223,6 @@ namespace Pulumi.Gcp.Logging
         public OrganizationBucketConfigState()
         {
         }
+        public static new OrganizationBucketConfigState Empty => new OrganizationBucketConfigState();
     }
 }
