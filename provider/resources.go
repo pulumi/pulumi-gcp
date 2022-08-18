@@ -178,7 +178,6 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 
 	// explicitly check to make sure that the user has a project available before we do
 	// anything with the provider
-
 	project := stringValue(vars, "project", []string{"GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT",
 		"GCLOUD_PROJECT",
 		"CLOUDSDK_CORE_PROJECT"})
@@ -198,7 +197,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	config := google.Config{
 		AccessToken:               stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
 		Credentials:               stringValue(vars, "credentials", []string{"GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON"}),
-		ImpersonateServiceAccount: stringValue(vars, "", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+		ImpersonateServiceAccount: stringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
 		Project:                   project,
 		Region: stringValue(vars, "region", []string{"GOOGLE_REGION",
 			"GCLOUD_REGION",
@@ -208,20 +207,15 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 			"CLOUDSDK_COMPUTE_ZONE"}),
 	}
 
-	// we need to catch the default gcloud config
+	// validate the gcloud config
 	err := config.LoadAndValidate(context.Background())
 	if err != nil {
-		// TODO: parse other errors too?
-		return fmt.Errorf("failed to load application default credentials.\n" +
-			"To use your gcloud credentials, run:\n" +
+		return fmt.Errorf("failed to load application credentials.\n" +
+			"To use your default gcloud credentials, run:\n" +
 			"\t`gcloud auth application-default login`\n" +
 			"See https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.")
-
 	}
-	fmt.Println("and the error WAS nil, wtf GUINEVERE")
-
 	return nil
-
 }
 
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
