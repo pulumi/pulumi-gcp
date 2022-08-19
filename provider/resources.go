@@ -178,33 +178,37 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 
 	// explicitly check to make sure that the user has a project available before we do
 	// anything with the provider
-	project := stringValue(vars, "project", []string{"GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT",
+	project := stringValue(vars, "project", []string{
+		"GOOGLE_PROJECT",
+		"GOOGLE_CLOUD_PROJECT",
 		"GCLOUD_PROJECT",
-		"CLOUDSDK_CORE_PROJECT"})
+		"CLOUDSDK_CORE_PROJECT",
+	})
 	if project == "" {
 		return fmt.Errorf("unable to find required configuration setting: GCP Project\n" +
 			"Set the GCP Project by using:\n" +
 			"\t`pulumi config set gcp:project <project>`")
 	}
 
-	// check if skipCredentialsValidation is True, if yes, exit early
-	if val, ok := vars["skipCredentialsValidation"]; ok {
-		if val.IsBool() {
-			return nil
-		}
-	}
-
 	config := google.Config{
-		AccessToken:               stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
-		Credentials:               stringValue(vars, "credentials", []string{"GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON"}),
+		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+		Credentials: stringValue(vars, "credentials", []string{
+			"GOOGLE_CREDENTIALS",
+			"GOOGLE_CLOUD_KEYFILE_JSON",
+			"GCLOUD_KEYFILE_JSON",
+		}),
 		ImpersonateServiceAccount: stringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
 		Project:                   project,
-		Region: stringValue(vars, "region", []string{"GOOGLE_REGION",
+		Region: stringValue(vars, "region", []string{
+			"GOOGLE_REGION",
 			"GCLOUD_REGION",
-			"CLOUDSDK_COMPUTE_REGION"}),
-		Zone: stringValue(vars, "zone", []string{"GOOGLE_ZONE",
+			"CLOUDSDK_COMPUTE_REGION",
+		}),
+		Zone: stringValue(vars, "zone", []string{
+			"GOOGLE_ZONE",
 			"GCLOUD_ZONE",
-			"CLOUDSDK_COMPUTE_ZONE"}),
+			"CLOUDSDK_COMPUTE_ZONE",
+		}),
 	}
 
 	// validate the gcloud config
