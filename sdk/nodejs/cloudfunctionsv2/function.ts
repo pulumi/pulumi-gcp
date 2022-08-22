@@ -6,6 +6,12 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * A Cloud Function that contains user computation executed in response to an event.
+ *
+ * To get more information about function, see:
+ *
+ * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
+ *
  * ## Example Usage
  * ### Cloudfunctions2 Basic Gcs
  *
@@ -17,21 +23,15 @@ import * as utilities from "../utilities";
  * const source_bucket = new gcp.storage.Bucket("source-bucket", {
  *     location: "US",
  *     uniformBucketLevelAccess: true,
- * }, {
- *     provider: google_beta,
  * });
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: source_bucket.name,
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
- * }, {
- *     provider: google_beta,
  * });
  * // Add path to the zipped function source code
  * const trigger_bucket = new gcp.storage.Bucket("trigger-bucket", {
  *     location: "us-central1",
  *     uniformBucketLevelAccess: true,
- * }, {
- *     provider: google_beta,
  * });
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
@@ -40,36 +40,26 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/pubsub.publisher",
  *     member: gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`),
- * }, {
- *     provider: google_beta,
  * });
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "test-sa",
+ *     accountId: "sa",
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
- * }, {
- *     provider: google_beta,
  * });
  * // Permissions on the service account used by the function and Eventarc trigger
  * const invoking = new gcp.projects.IAMMember("invoking", {
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     location: "us-central1",
@@ -110,7 +100,6 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [
  *         event_receiving,
  *         artifactregistry_reader,
@@ -131,21 +120,15 @@ import * as utilities from "../utilities";
  * const source_bucket = new gcp.storage.Bucket("source-bucket", {
  *     location: "US",
  *     uniformBucketLevelAccess: true,
- * }, {
- *     provider: google_beta,
  * });
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: source_bucket.name,
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
- * }, {
- *     provider: google_beta,
  * });
  * // Add path to the zipped function source code
  * const account = new gcp.serviceaccount.Account("account", {
  *     accountId: "gcf-sa",
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
- * }, {
- *     provider: google_beta,
  * });
  * // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
  * // Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
@@ -153,30 +136,22 @@ import * as utilities from "../utilities";
  * const audit_log_bucket = new gcp.storage.Bucket("audit-log-bucket", {
  *     location: "us-central1",
  *     uniformBucketLevelAccess: true,
- * }, {
- *     provider: google_beta,
  * });
  * // Permissions on the service account used by the function and Eventarc trigger
  * const invoking = new gcp.projects.IAMMember("invoking", {
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     location: "us-central1",
@@ -228,7 +203,6 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [
  *         event_receiving,
  *         artifactregistry_reader,

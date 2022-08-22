@@ -11,6 +11,7 @@ import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsInsightsConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsIpConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsLocationPreference;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsMaintenanceWindow;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsPasswordValidationPolicy;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsSqlServerAuditConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -71,6 +72,7 @@ public final class DatabaseInstanceSettings {
     private final @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
     private final @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
     private final @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
+    private final @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
     /**
      * @return Pricing plan for this instance, can only be `PER_USE`.
      * 
@@ -107,6 +109,7 @@ public final class DatabaseInstanceSettings {
         @CustomType.Parameter("ipConfiguration") @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration,
         @CustomType.Parameter("locationPreference") @Nullable DatabaseInstanceSettingsLocationPreference locationPreference,
         @CustomType.Parameter("maintenanceWindow") @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow,
+        @CustomType.Parameter("passwordValidationPolicy") @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy,
         @CustomType.Parameter("pricingPlan") @Nullable String pricingPlan,
         @CustomType.Parameter("sqlServerAuditConfig") @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig,
         @CustomType.Parameter("tier") String tier,
@@ -126,6 +129,7 @@ public final class DatabaseInstanceSettings {
         this.ipConfiguration = ipConfiguration;
         this.locationPreference = locationPreference;
         this.maintenanceWindow = maintenanceWindow;
+        this.passwordValidationPolicy = passwordValidationPolicy;
         this.pricingPlan = pricingPlan;
         this.sqlServerAuditConfig = sqlServerAuditConfig;
         this.tier = tier;
@@ -209,6 +213,9 @@ public final class DatabaseInstanceSettings {
     public Optional<DatabaseInstanceSettingsMaintenanceWindow> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
+    public Optional<DatabaseInstanceSettingsPasswordValidationPolicy> passwordValidationPolicy() {
+        return Optional.ofNullable(this.passwordValidationPolicy);
+    }
     /**
      * @return Pricing plan for this instance, can only be `PER_USE`.
      * 
@@ -262,6 +269,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
         private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
         private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
+        private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
         private @Nullable String pricingPlan;
         private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
         private String tier;
@@ -288,6 +296,7 @@ public final class DatabaseInstanceSettings {
     	      this.ipConfiguration = defaults.ipConfiguration;
     	      this.locationPreference = defaults.locationPreference;
     	      this.maintenanceWindow = defaults.maintenanceWindow;
+    	      this.passwordValidationPolicy = defaults.passwordValidationPolicy;
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.sqlServerAuditConfig = defaults.sqlServerAuditConfig;
     	      this.tier = defaults.tier;
@@ -354,6 +363,10 @@ public final class DatabaseInstanceSettings {
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
+        public Builder passwordValidationPolicy(@Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy) {
+            this.passwordValidationPolicy = passwordValidationPolicy;
+            return this;
+        }
         public Builder pricingPlan(@Nullable String pricingPlan) {
             this.pricingPlan = pricingPlan;
             return this;
@@ -374,7 +387,7 @@ public final class DatabaseInstanceSettings {
             this.version = version;
             return this;
         }        public DatabaseInstanceSettings build() {
-            return new DatabaseInstanceSettings(activationPolicy, activeDirectoryConfig, availabilityType, backupConfiguration, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfig, ipConfiguration, locationPreference, maintenanceWindow, pricingPlan, sqlServerAuditConfig, tier, userLabels, version);
+            return new DatabaseInstanceSettings(activationPolicy, activeDirectoryConfig, availabilityType, backupConfiguration, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfig, ipConfiguration, locationPreference, maintenanceWindow, passwordValidationPolicy, pricingPlan, sqlServerAuditConfig, tier, userLabels, version);
         }
     }
 }

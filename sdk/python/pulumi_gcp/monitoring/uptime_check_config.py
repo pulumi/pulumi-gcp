@@ -504,6 +504,50 @@ class UptimeCheckConfig(pulumi.CustomResource):
             ),
             timeout="60s")
         ```
+        ### Uptime Check Config Status Code
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        status_code = gcp.monitoring.UptimeCheckConfig("statusCode",
+            checker_type="STATIC_IP_CHECKERS",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="\\"example\\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="http-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                accepted_response_status_codes=[
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_class="STATUS_CLASS_2XX",
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=301,
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=302,
+                    ),
+                ],
+                body="Zm9vJTI1M0RiYXI=",
+                content_type="URL_ENCODED",
+                path="some-path",
+                port=8010,
+                request_method="POST",
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
         ### Uptime Check Config Https
 
         ```python
@@ -622,6 +666,50 @@ class UptimeCheckConfig(pulumi.CustomResource):
             )],
             display_name="http-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                body="Zm9vJTI1M0RiYXI=",
+                content_type="URL_ENCODED",
+                path="some-path",
+                port=8010,
+                request_method="POST",
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Config Status Code
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        status_code = gcp.monitoring.UptimeCheckConfig("statusCode",
+            checker_type="STATIC_IP_CHECKERS",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="\\"example\\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="http-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                accepted_response_status_codes=[
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_class="STATUS_CLASS_2XX",
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=301,
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=302,
+                    ),
+                ],
                 body="Zm9vJTI1M0RiYXI=",
                 content_type="URL_ENCODED",
                 path="some-path",

@@ -980,11 +980,12 @@ type DatabaseInstanceSettings struct {
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
 	DiskSize *int `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
-	DiskType           *string                                     `pulumi:"diskType"`
-	InsightsConfig     *DatabaseInstanceSettingsInsightsConfig     `pulumi:"insightsConfig"`
-	IpConfiguration    *DatabaseInstanceSettingsIpConfiguration    `pulumi:"ipConfiguration"`
-	LocationPreference *DatabaseInstanceSettingsLocationPreference `pulumi:"locationPreference"`
-	MaintenanceWindow  *DatabaseInstanceSettingsMaintenanceWindow  `pulumi:"maintenanceWindow"`
+	DiskType                 *string                                           `pulumi:"diskType"`
+	InsightsConfig           *DatabaseInstanceSettingsInsightsConfig           `pulumi:"insightsConfig"`
+	IpConfiguration          *DatabaseInstanceSettingsIpConfiguration          `pulumi:"ipConfiguration"`
+	LocationPreference       *DatabaseInstanceSettingsLocationPreference       `pulumi:"locationPreference"`
+	MaintenanceWindow        *DatabaseInstanceSettingsMaintenanceWindow        `pulumi:"maintenanceWindow"`
+	PasswordValidationPolicy *DatabaseInstanceSettingsPasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan          *string                                       `pulumi:"pricingPlan"`
 	SqlServerAuditConfig *DatabaseInstanceSettingsSqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
@@ -1031,11 +1032,12 @@ type DatabaseInstanceSettingsArgs struct {
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
-	DiskType           pulumi.StringPtrInput                              `pulumi:"diskType"`
-	InsightsConfig     DatabaseInstanceSettingsInsightsConfigPtrInput     `pulumi:"insightsConfig"`
-	IpConfiguration    DatabaseInstanceSettingsIpConfigurationPtrInput    `pulumi:"ipConfiguration"`
-	LocationPreference DatabaseInstanceSettingsLocationPreferencePtrInput `pulumi:"locationPreference"`
-	MaintenanceWindow  DatabaseInstanceSettingsMaintenanceWindowPtrInput  `pulumi:"maintenanceWindow"`
+	DiskType                 pulumi.StringPtrInput                                    `pulumi:"diskType"`
+	InsightsConfig           DatabaseInstanceSettingsInsightsConfigPtrInput           `pulumi:"insightsConfig"`
+	IpConfiguration          DatabaseInstanceSettingsIpConfigurationPtrInput          `pulumi:"ipConfiguration"`
+	LocationPreference       DatabaseInstanceSettingsLocationPreferencePtrInput       `pulumi:"locationPreference"`
+	MaintenanceWindow        DatabaseInstanceSettingsMaintenanceWindowPtrInput        `pulumi:"maintenanceWindow"`
+	PasswordValidationPolicy DatabaseInstanceSettingsPasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
 	// Pricing plan for this instance, can only be `PER_USE`.
 	PricingPlan          pulumi.StringPtrInput                                `pulumi:"pricingPlan"`
 	SqlServerAuditConfig DatabaseInstanceSettingsSqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
@@ -1200,6 +1202,12 @@ func (o DatabaseInstanceSettingsOutput) MaintenanceWindow() DatabaseInstanceSett
 	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow {
 		return v.MaintenanceWindow
 	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) PasswordValidationPolicy() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsPasswordValidationPolicy {
+		return v.PasswordValidationPolicy
+	}).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
 }
 
 // Pricing plan for this instance, can only be `PER_USE`.
@@ -1390,6 +1398,15 @@ func (o DatabaseInstanceSettingsPtrOutput) MaintenanceWindow() DatabaseInstanceS
 		}
 		return v.MaintenanceWindow
 	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) PasswordValidationPolicy() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsPasswordValidationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordValidationPolicy
+	}).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
 }
 
 // Pricing plan for this instance, can only be `PER_USE`.
@@ -3035,6 +3052,238 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatabaseInstanceSettingsPasswordValidationPolicy struct {
+	// Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+	Complexity *string `pulumi:"complexity"`
+	// Prevents the use of the username in the password.
+	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
+	// Enables or disable the password validation policy.
+	EnablePasswordPolicy bool `pulumi:"enablePasswordPolicy"`
+	// Specifies the minimum number of characters that the password must have.
+	MinLength *int `pulumi:"minLength"`
+	// Specifies the minimum duration after which you can change the password.
+	PasswordChangeInterval *string `pulumi:"passwordChangeInterval"`
+	// Specifies the number of previous passwords that you can't reuse.
+	ReuseInterval *int `pulumi:"reuseInterval"`
+}
+
+// DatabaseInstanceSettingsPasswordValidationPolicyInput is an input type that accepts DatabaseInstanceSettingsPasswordValidationPolicyArgs and DatabaseInstanceSettingsPasswordValidationPolicyOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsPasswordValidationPolicyInput` via:
+//
+//	DatabaseInstanceSettingsPasswordValidationPolicyArgs{...}
+type DatabaseInstanceSettingsPasswordValidationPolicyInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsPasswordValidationPolicyOutput() DatabaseInstanceSettingsPasswordValidationPolicyOutput
+	ToDatabaseInstanceSettingsPasswordValidationPolicyOutputWithContext(context.Context) DatabaseInstanceSettingsPasswordValidationPolicyOutput
+}
+
+type DatabaseInstanceSettingsPasswordValidationPolicyArgs struct {
+	// Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+	Complexity pulumi.StringPtrInput `pulumi:"complexity"`
+	// Prevents the use of the username in the password.
+	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
+	// Enables or disable the password validation policy.
+	EnablePasswordPolicy pulumi.BoolInput `pulumi:"enablePasswordPolicy"`
+	// Specifies the minimum number of characters that the password must have.
+	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
+	// Specifies the minimum duration after which you can change the password.
+	PasswordChangeInterval pulumi.StringPtrInput `pulumi:"passwordChangeInterval"`
+	// Specifies the number of previous passwords that you can't reuse.
+	ReuseInterval pulumi.IntPtrInput `pulumi:"reuseInterval"`
+}
+
+func (DatabaseInstanceSettingsPasswordValidationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToDatabaseInstanceSettingsPasswordValidationPolicyOutput() DatabaseInstanceSettingsPasswordValidationPolicyOutput {
+	return i.ToDatabaseInstanceSettingsPasswordValidationPolicyOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToDatabaseInstanceSettingsPasswordValidationPolicyOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPasswordValidationPolicyOutput)
+}
+
+func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutput() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return i.ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsPasswordValidationPolicyArgs) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPasswordValidationPolicyOutput).ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsPasswordValidationPolicyPtrInput is an input type that accepts DatabaseInstanceSettingsPasswordValidationPolicyArgs, DatabaseInstanceSettingsPasswordValidationPolicyPtr and DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsPasswordValidationPolicyPtrInput` via:
+//
+//	        DatabaseInstanceSettingsPasswordValidationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsPasswordValidationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutput() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput
+	ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(context.Context) DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput
+}
+
+type databaseInstanceSettingsPasswordValidationPolicyPtrType DatabaseInstanceSettingsPasswordValidationPolicyArgs
+
+func DatabaseInstanceSettingsPasswordValidationPolicyPtr(v *DatabaseInstanceSettingsPasswordValidationPolicyArgs) DatabaseInstanceSettingsPasswordValidationPolicyPtrInput {
+	return (*databaseInstanceSettingsPasswordValidationPolicyPtrType)(v)
+}
+
+func (*databaseInstanceSettingsPasswordValidationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsPasswordValidationPolicyPtrType) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutput() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return i.ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsPasswordValidationPolicyPtrType) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
+}
+
+type DatabaseInstanceSettingsPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsPasswordValidationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyOutput() DatabaseInstanceSettingsPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutput() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return o.ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsPasswordValidationPolicy) *DatabaseInstanceSettingsPasswordValidationPolicy {
+		return &v
+	}).(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput)
+}
+
+// Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) Complexity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) *string { return v.Complexity }).(pulumi.StringPtrOutput)
+}
+
+// Prevents the use of the username in the password.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) *bool { return v.DisallowUsernameSubstring }).(pulumi.BoolPtrOutput)
+}
+
+// Enables or disable the password validation policy.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) EnablePasswordPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) bool { return v.EnablePasswordPolicy }).(pulumi.BoolOutput)
+}
+
+// Specifies the minimum number of characters that the password must have.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the minimum duration after which you can change the password.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) *string { return v.PasswordChangeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of previous passwords that you can't reuse.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyOutput) ReuseInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPasswordValidationPolicy) *int { return v.ReuseInterval }).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutput() DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ToDatabaseInstanceSettingsPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) Elem() DatabaseInstanceSettingsPasswordValidationPolicyOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) DatabaseInstanceSettingsPasswordValidationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsPasswordValidationPolicy
+		return ret
+	}).(DatabaseInstanceSettingsPasswordValidationPolicyOutput)
+}
+
+// Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) Complexity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Complexity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prevents the use of the username in the password.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisallowUsernameSubstring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables or disable the password validation policy.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) EnablePasswordPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnablePasswordPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the minimum number of characters that the password must have.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the minimum duration after which you can change the password.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordChangeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of previous passwords that you can't reuse.
+func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ReuseInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPasswordValidationPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReuseInterval
+	}).(pulumi.IntPtrOutput)
+}
+
 type DatabaseInstanceSettingsSqlServerAuditConfig struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
 	Bucket string `pulumi:"bucket"`
@@ -4085,25 +4334,26 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDatabaseInstanceSetting struct {
-	ActivationPolicy       string                                            `pulumi:"activationPolicy"`
-	ActiveDirectoryConfigs []GetDatabaseInstanceSettingActiveDirectoryConfig `pulumi:"activeDirectoryConfigs"`
-	AvailabilityType       string                                            `pulumi:"availabilityType"`
-	BackupConfigurations   []GetDatabaseInstanceSettingBackupConfiguration   `pulumi:"backupConfigurations"`
-	Collation              string                                            `pulumi:"collation"`
-	DatabaseFlags          []GetDatabaseInstanceSettingDatabaseFlag          `pulumi:"databaseFlags"`
-	DiskAutoresize         bool                                              `pulumi:"diskAutoresize"`
-	DiskAutoresizeLimit    int                                               `pulumi:"diskAutoresizeLimit"`
-	DiskSize               int                                               `pulumi:"diskSize"`
-	DiskType               string                                            `pulumi:"diskType"`
-	InsightsConfigs        []GetDatabaseInstanceSettingInsightsConfig        `pulumi:"insightsConfigs"`
-	IpConfigurations       []GetDatabaseInstanceSettingIpConfiguration       `pulumi:"ipConfigurations"`
-	LocationPreferences    []GetDatabaseInstanceSettingLocationPreference    `pulumi:"locationPreferences"`
-	MaintenanceWindows     []GetDatabaseInstanceSettingMaintenanceWindow     `pulumi:"maintenanceWindows"`
-	PricingPlan            string                                            `pulumi:"pricingPlan"`
-	SqlServerAuditConfigs  []GetDatabaseInstanceSettingSqlServerAuditConfig  `pulumi:"sqlServerAuditConfigs"`
-	Tier                   string                                            `pulumi:"tier"`
-	UserLabels             map[string]string                                 `pulumi:"userLabels"`
-	Version                int                                               `pulumi:"version"`
+	ActivationPolicy           string                                               `pulumi:"activationPolicy"`
+	ActiveDirectoryConfigs     []GetDatabaseInstanceSettingActiveDirectoryConfig    `pulumi:"activeDirectoryConfigs"`
+	AvailabilityType           string                                               `pulumi:"availabilityType"`
+	BackupConfigurations       []GetDatabaseInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
+	Collation                  string                                               `pulumi:"collation"`
+	DatabaseFlags              []GetDatabaseInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
+	DiskAutoresize             bool                                                 `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit        int                                                  `pulumi:"diskAutoresizeLimit"`
+	DiskSize                   int                                                  `pulumi:"diskSize"`
+	DiskType                   string                                               `pulumi:"diskType"`
+	InsightsConfigs            []GetDatabaseInstanceSettingInsightsConfig           `pulumi:"insightsConfigs"`
+	IpConfigurations           []GetDatabaseInstanceSettingIpConfiguration          `pulumi:"ipConfigurations"`
+	LocationPreferences        []GetDatabaseInstanceSettingLocationPreference       `pulumi:"locationPreferences"`
+	MaintenanceWindows         []GetDatabaseInstanceSettingMaintenanceWindow        `pulumi:"maintenanceWindows"`
+	PasswordValidationPolicies []GetDatabaseInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
+	PricingPlan                string                                               `pulumi:"pricingPlan"`
+	SqlServerAuditConfigs      []GetDatabaseInstanceSettingSqlServerAuditConfig     `pulumi:"sqlServerAuditConfigs"`
+	Tier                       string                                               `pulumi:"tier"`
+	UserLabels                 map[string]string                                    `pulumi:"userLabels"`
+	Version                    int                                                  `pulumi:"version"`
 }
 
 // GetDatabaseInstanceSettingInput is an input type that accepts GetDatabaseInstanceSettingArgs and GetDatabaseInstanceSettingOutput values.
@@ -4118,25 +4368,26 @@ type GetDatabaseInstanceSettingInput interface {
 }
 
 type GetDatabaseInstanceSettingArgs struct {
-	ActivationPolicy       pulumi.StringInput                                        `pulumi:"activationPolicy"`
-	ActiveDirectoryConfigs GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput `pulumi:"activeDirectoryConfigs"`
-	AvailabilityType       pulumi.StringInput                                        `pulumi:"availabilityType"`
-	BackupConfigurations   GetDatabaseInstanceSettingBackupConfigurationArrayInput   `pulumi:"backupConfigurations"`
-	Collation              pulumi.StringInput                                        `pulumi:"collation"`
-	DatabaseFlags          GetDatabaseInstanceSettingDatabaseFlagArrayInput          `pulumi:"databaseFlags"`
-	DiskAutoresize         pulumi.BoolInput                                          `pulumi:"diskAutoresize"`
-	DiskAutoresizeLimit    pulumi.IntInput                                           `pulumi:"diskAutoresizeLimit"`
-	DiskSize               pulumi.IntInput                                           `pulumi:"diskSize"`
-	DiskType               pulumi.StringInput                                        `pulumi:"diskType"`
-	InsightsConfigs        GetDatabaseInstanceSettingInsightsConfigArrayInput        `pulumi:"insightsConfigs"`
-	IpConfigurations       GetDatabaseInstanceSettingIpConfigurationArrayInput       `pulumi:"ipConfigurations"`
-	LocationPreferences    GetDatabaseInstanceSettingLocationPreferenceArrayInput    `pulumi:"locationPreferences"`
-	MaintenanceWindows     GetDatabaseInstanceSettingMaintenanceWindowArrayInput     `pulumi:"maintenanceWindows"`
-	PricingPlan            pulumi.StringInput                                        `pulumi:"pricingPlan"`
-	SqlServerAuditConfigs  GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput  `pulumi:"sqlServerAuditConfigs"`
-	Tier                   pulumi.StringInput                                        `pulumi:"tier"`
-	UserLabels             pulumi.StringMapInput                                     `pulumi:"userLabels"`
-	Version                pulumi.IntInput                                           `pulumi:"version"`
+	ActivationPolicy           pulumi.StringInput                                           `pulumi:"activationPolicy"`
+	ActiveDirectoryConfigs     GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput    `pulumi:"activeDirectoryConfigs"`
+	AvailabilityType           pulumi.StringInput                                           `pulumi:"availabilityType"`
+	BackupConfigurations       GetDatabaseInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
+	Collation                  pulumi.StringInput                                           `pulumi:"collation"`
+	DatabaseFlags              GetDatabaseInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
+	DiskAutoresize             pulumi.BoolInput                                             `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit        pulumi.IntInput                                              `pulumi:"diskAutoresizeLimit"`
+	DiskSize                   pulumi.IntInput                                              `pulumi:"diskSize"`
+	DiskType                   pulumi.StringInput                                           `pulumi:"diskType"`
+	InsightsConfigs            GetDatabaseInstanceSettingInsightsConfigArrayInput           `pulumi:"insightsConfigs"`
+	IpConfigurations           GetDatabaseInstanceSettingIpConfigurationArrayInput          `pulumi:"ipConfigurations"`
+	LocationPreferences        GetDatabaseInstanceSettingLocationPreferenceArrayInput       `pulumi:"locationPreferences"`
+	MaintenanceWindows         GetDatabaseInstanceSettingMaintenanceWindowArrayInput        `pulumi:"maintenanceWindows"`
+	PasswordValidationPolicies GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
+	PricingPlan                pulumi.StringInput                                           `pulumi:"pricingPlan"`
+	SqlServerAuditConfigs      GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput     `pulumi:"sqlServerAuditConfigs"`
+	Tier                       pulumi.StringInput                                           `pulumi:"tier"`
+	UserLabels                 pulumi.StringMapInput                                        `pulumi:"userLabels"`
+	Version                    pulumi.IntInput                                              `pulumi:"version"`
 }
 
 func (GetDatabaseInstanceSettingArgs) ElementType() reflect.Type {
@@ -4256,6 +4507,12 @@ func (o GetDatabaseInstanceSettingOutput) MaintenanceWindows() GetDatabaseInstan
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingMaintenanceWindow {
 		return v.MaintenanceWindows
 	}).(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) PasswordValidationPolicies() GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingPasswordValidationPolicy {
+		return v.PasswordValidationPolicies
+	}).(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
@@ -5286,6 +5543,130 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) Index(i pulumi.I
 	}).(GetDatabaseInstanceSettingMaintenanceWindowOutput)
 }
 
+type GetDatabaseInstanceSettingPasswordValidationPolicy struct {
+	Complexity                string `pulumi:"complexity"`
+	DisallowUsernameSubstring bool   `pulumi:"disallowUsernameSubstring"`
+	EnablePasswordPolicy      bool   `pulumi:"enablePasswordPolicy"`
+	MinLength                 int    `pulumi:"minLength"`
+	PasswordChangeInterval    string `pulumi:"passwordChangeInterval"`
+	ReuseInterval             int    `pulumi:"reuseInterval"`
+}
+
+// GetDatabaseInstanceSettingPasswordValidationPolicyInput is an input type that accepts GetDatabaseInstanceSettingPasswordValidationPolicyArgs and GetDatabaseInstanceSettingPasswordValidationPolicyOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingPasswordValidationPolicyInput` via:
+//
+//	GetDatabaseInstanceSettingPasswordValidationPolicyArgs{...}
+type GetDatabaseInstanceSettingPasswordValidationPolicyInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingPasswordValidationPolicyOutput() GetDatabaseInstanceSettingPasswordValidationPolicyOutput
+	ToGetDatabaseInstanceSettingPasswordValidationPolicyOutputWithContext(context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyOutput
+}
+
+type GetDatabaseInstanceSettingPasswordValidationPolicyArgs struct {
+	Complexity                pulumi.StringInput `pulumi:"complexity"`
+	DisallowUsernameSubstring pulumi.BoolInput   `pulumi:"disallowUsernameSubstring"`
+	EnablePasswordPolicy      pulumi.BoolInput   `pulumi:"enablePasswordPolicy"`
+	MinLength                 pulumi.IntInput    `pulumi:"minLength"`
+	PasswordChangeInterval    pulumi.StringInput `pulumi:"passwordChangeInterval"`
+	ReuseInterval             pulumi.IntInput    `pulumi:"reuseInterval"`
+}
+
+func (GetDatabaseInstanceSettingPasswordValidationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingPasswordValidationPolicyArgs) ToGetDatabaseInstanceSettingPasswordValidationPolicyOutput() GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
+	return i.ToGetDatabaseInstanceSettingPasswordValidationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingPasswordValidationPolicyArgs) ToGetDatabaseInstanceSettingPasswordValidationPolicyOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingPasswordValidationPolicyOutput)
+}
+
+// GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput is an input type that accepts GetDatabaseInstanceSettingPasswordValidationPolicyArray and GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput` via:
+//
+//	GetDatabaseInstanceSettingPasswordValidationPolicyArray{ GetDatabaseInstanceSettingPasswordValidationPolicyArgs{...} }
+type GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput() GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput
+	ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput
+}
+
+type GetDatabaseInstanceSettingPasswordValidationPolicyArray []GetDatabaseInstanceSettingPasswordValidationPolicyInput
+
+func (GetDatabaseInstanceSettingPasswordValidationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingPasswordValidationPolicyArray) ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput() GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput {
+	return i.ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingPasswordValidationPolicyArray) ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput)
+}
+
+type GetDatabaseInstanceSettingPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseInstanceSettingPasswordValidationPolicyOutput() GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseInstanceSettingPasswordValidationPolicyOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) Complexity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPasswordValidationPolicy) string { return v.Complexity }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) DisallowUsernameSubstring() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPasswordValidationPolicy) bool { return v.DisallowUsernameSubstring }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) EnablePasswordPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPasswordValidationPolicy) bool { return v.EnablePasswordPolicy }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPasswordValidationPolicy) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) PasswordChangeInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPasswordValidationPolicy) string { return v.PasswordChangeInterval }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyOutput) ReuseInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPasswordValidationPolicy) int { return v.ReuseInterval }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput() GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) ToGetDatabaseInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingPasswordValidationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingPasswordValidationPolicy {
+		return vs[0].([]GetDatabaseInstanceSettingPasswordValidationPolicy)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingPasswordValidationPolicyOutput)
+}
+
 type GetDatabaseInstanceSettingSqlServerAuditConfig struct {
 	Bucket            string `pulumi:"bucket"`
 	RetentionInterval string `pulumi:"retentionInterval"`
@@ -5423,6 +5804,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferencePtrInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowPtrInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyPtrInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
@@ -5459,6 +5842,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingLocationPreferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
@@ -5491,6 +5876,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferencePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput{})
 	pulumi.RegisterOutputType(UserSqlServerUserDetailsOutput{})
@@ -5527,6 +5914,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingLocationPreferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput{})
 }

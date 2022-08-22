@@ -143,6 +143,7 @@ namespace Pulumi.Gcp.Dns
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int ManagedZoneId;
         public readonly string Name;
         /// <summary>
         /// The list of nameservers that will be authoritative for this
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.Dns
 
             string id,
 
+            int managedZoneId,
+
             string name,
 
             ImmutableArray<string> nameServers,
@@ -176,6 +179,7 @@ namespace Pulumi.Gcp.Dns
             Description = description;
             DnsName = dnsName;
             Id = id;
+            ManagedZoneId = managedZoneId;
             Name = name;
             NameServers = nameServers;
             Project = project;

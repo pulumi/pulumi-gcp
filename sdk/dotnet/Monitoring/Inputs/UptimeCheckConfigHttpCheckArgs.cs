@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class UptimeCheckConfigHttpCheckArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acceptedResponseStatusCodes")]
+        private InputList<Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs>? _acceptedResponseStatusCodes;
+
+        /// <summary>
+        /// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs> AcceptedResponseStatusCodes
+        {
+            get => _acceptedResponseStatusCodes ?? (_acceptedResponseStatusCodes = new InputList<Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs>());
+            set => _acceptedResponseStatusCodes = value;
+        }
+
         /// <summary>
         /// The authentication information. Optional when creating an HTTP check; defaults to empty.
         /// Structure is documented below.

@@ -21,7 +21,7 @@ class GetManagedZoneResult:
     """
     A collection of values returned by getManagedZone.
     """
-    def __init__(__self__, description=None, dns_name=None, id=None, name=None, name_servers=None, project=None, visibility=None):
+    def __init__(__self__, description=None, dns_name=None, id=None, managed_zone_id=None, name=None, name_servers=None, project=None, visibility=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -31,6 +31,9 @@ class GetManagedZoneResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if managed_zone_id and not isinstance(managed_zone_id, int):
+            raise TypeError("Expected argument 'managed_zone_id' to be a int")
+        pulumi.set(__self__, "managed_zone_id", managed_zone_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -67,6 +70,11 @@ class GetManagedZoneResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="managedZoneId")
+    def managed_zone_id(self) -> int:
+        return pulumi.get(self, "managed_zone_id")
 
     @property
     @pulumi.getter
@@ -107,6 +115,7 @@ class AwaitableGetManagedZoneResult(GetManagedZoneResult):
             description=self.description,
             dns_name=self.dns_name,
             id=self.id,
+            managed_zone_id=self.managed_zone_id,
             name=self.name,
             name_servers=self.name_servers,
             project=self.project,
@@ -150,6 +159,7 @@ def get_managed_zone(name: Optional[str] = None,
         description=__ret__.description,
         dns_name=__ret__.dns_name,
         id=__ret__.id,
+        managed_zone_id=__ret__.managed_zone_id,
         name=__ret__.name,
         name_servers=__ret__.name_servers,
         project=__ret__.project,

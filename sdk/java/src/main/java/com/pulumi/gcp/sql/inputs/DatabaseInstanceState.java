@@ -293,14 +293,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * Initial root password. Required for MS SQL Server.
      * 
      */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
     /**
-     * @return Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * @return Initial root password. Required for MS SQL Server.
      * 
      */
     public Optional<Output<String>> rootPassword() {
@@ -766,7 +766,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rootPassword Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+         * @param rootPassword Initial root password. Required for MS SQL Server.
          * 
          * @return builder
          * 
@@ -777,7 +777,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rootPassword Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+         * @param rootPassword Initial root password. Required for MS SQL Server.
          * 
          * @return builder
          * 

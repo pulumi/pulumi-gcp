@@ -142,6 +142,10 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
     /**
+     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    public readonly metadataIntegration!: pulumi.Output<outputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
+    /**
      * The relative resource name of the metastore service.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -210,6 +214,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
+            resourceInputs["metadataIntegration"] = state ? state.metadataIntegration : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
@@ -231,6 +236,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -294,6 +300,10 @@ export interface MetastoreServiceState {
      * Structure is documented below.
      */
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
+    /**
+     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
     /**
      * The relative resource name of the metastore service.
      */
@@ -380,6 +390,10 @@ export interface MetastoreServiceArgs {
      * Structure is documented below.
      */
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
+    /**
+     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".

@@ -23132,9 +23132,10 @@ export namespace dataproc {
     }
 
     export interface MetastoreServiceHiveMetastoreConfig {
+        auxiliaryVersions?: outputs.dataproc.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion[];
         /**
-         * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-         * The mappings override system defaults (some keys cannot be overridden)
+         * A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+         * If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
          */
         configOverrides: {[key: string]: string};
         endpointProtocol?: string;
@@ -23144,7 +23145,23 @@ export namespace dataproc {
          */
         kerberosConfig?: outputs.dataproc.MetastoreServiceHiveMetastoreConfigKerberosConfig;
         /**
-         * The Hive metastore schema version.
+         * The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+         */
+        version: string;
+    }
+
+    export interface MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+        /**
+         * A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+         * If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+         */
+        configOverrides?: {[key: string]: string};
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        key: string;
+        /**
+         * The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
          */
         version: string;
     }
@@ -23195,6 +23212,21 @@ export namespace dataproc {
          * The hour of day (0-23) when the window starts.
          */
         hourOfDay: number;
+    }
+
+    export interface MetastoreServiceMetadataIntegration {
+        /**
+         * The integration config for the Data Catalog service.
+         * Structure is documented below.
+         */
+        dataCatalogConfig: outputs.dataproc.MetastoreServiceMetadataIntegrationDataCatalogConfig;
+    }
+
+    export interface MetastoreServiceMetadataIntegrationDataCatalogConfig {
+        /**
+         * Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+         */
+        enabled: boolean;
     }
 
     export interface WorkflowTemplateJob {
@@ -28395,6 +28427,11 @@ export namespace monitoring {
 
     export interface UptimeCheckConfigHttpCheck {
         /**
+         * If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+         * Structure is documented below.
+         */
+        acceptedResponseStatusCodes?: outputs.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode[];
+        /**
          * The authentication information. Optional when creating an HTTP check; defaults to empty.
          * Structure is documented below.
          */
@@ -28438,6 +28475,18 @@ export namespace monitoring {
          * Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
          */
         validateSsl?: boolean;
+    }
+
+    export interface UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
+        /**
+         * A class of status codes to accept.
+         * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+         */
+        statusClass?: string;
+        /**
+         * A status code to accept.
+         */
+        statusValue?: number;
     }
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {
@@ -32869,6 +32918,7 @@ export namespace sql {
         ipConfiguration: outputs.sql.DatabaseInstanceSettingsIpConfiguration;
         locationPreference: outputs.sql.DatabaseInstanceSettingsLocationPreference;
         maintenanceWindow?: outputs.sql.DatabaseInstanceSettingsMaintenanceWindow;
+        passwordValidationPolicy?: outputs.sql.DatabaseInstanceSettingsPasswordValidationPolicy;
         /**
          * Pricing plan for this instance, can only be `PER_USE`.
          */
@@ -33049,6 +33099,33 @@ export namespace sql {
         updateTrack?: string;
     }
 
+    export interface DatabaseInstanceSettingsPasswordValidationPolicy {
+        /**
+         * Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+         */
+        complexity?: string;
+        /**
+         * Prevents the use of the username in the password.
+         */
+        disallowUsernameSubstring?: boolean;
+        /**
+         * Enables or disable the password validation policy.
+         */
+        enablePasswordPolicy: boolean;
+        /**
+         * Specifies the minimum number of characters that the password must have.
+         */
+        minLength?: number;
+        /**
+         * Specifies the minimum duration after which you can change the password.
+         */
+        passwordChangeInterval?: string;
+        /**
+         * Specifies the number of previous passwords that you can't reuse.
+         */
+        reuseInterval?: number;
+    }
+
     export interface DatabaseInstanceSettingsSqlServerAuditConfig {
         /**
          * The name of the destination bucket (e.g., gs://mybucket).
@@ -33145,6 +33222,7 @@ export namespace sql {
         ipConfigurations: outputs.sql.GetDatabaseInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstanceSettingLocationPreference[];
         maintenanceWindows: outputs.sql.GetDatabaseInstanceSettingMaintenanceWindow[];
+        passwordValidationPolicies: outputs.sql.GetDatabaseInstanceSettingPasswordValidationPolicy[];
         pricingPlan: string;
         sqlServerAuditConfigs: outputs.sql.GetDatabaseInstanceSettingSqlServerAuditConfig[];
         tier: string;
@@ -33213,6 +33291,15 @@ export namespace sql {
         day: number;
         hour: number;
         updateTrack: string;
+    }
+
+    export interface GetDatabaseInstanceSettingPasswordValidationPolicy {
+        complexity: string;
+        disallowUsernameSubstring: boolean;
+        enablePasswordPolicy: boolean;
+        minLength: number;
+        passwordChangeInterval: string;
+        reuseInterval: number;
     }
 
     export interface GetDatabaseInstanceSettingSqlServerAuditConfig {

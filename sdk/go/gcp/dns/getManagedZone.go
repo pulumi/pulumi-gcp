@@ -77,8 +77,9 @@ type LookupManagedZoneResult struct {
 	// The fully qualified DNS name of this zone, e.g. `example.io.`.
 	DnsName string `pulumi:"dnsName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id            string `pulumi:"id"`
+	ManagedZoneId int    `pulumi:"managedZoneId"`
+	Name          string `pulumi:"name"`
 	// The list of nameservers that will be authoritative for this
 	// domain. Use NS records to redirect from your DNS provider to these names,
 	// thus making Google Cloud DNS authoritative for this zone.
@@ -142,6 +143,10 @@ func (o LookupManagedZoneResultOutput) DnsName() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupManagedZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupManagedZoneResultOutput) ManagedZoneId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) int { return v.ManagedZoneId }).(pulumi.IntOutput)
 }
 
 func (o LookupManagedZoneResultOutput) Name() pulumi.StringOutput {

@@ -8642,6 +8642,9 @@ func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) JsonPath() pulu
 }
 
 type UptimeCheckConfigHttpCheck struct {
+	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+	// Structure is documented below.
+	AcceptedResponseStatusCodes []UptimeCheckConfigHttpCheckAcceptedResponseStatusCode `pulumi:"acceptedResponseStatusCodes"`
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	// Structure is documented below.
 	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
@@ -8680,6 +8683,9 @@ type UptimeCheckConfigHttpCheckInput interface {
 }
 
 type UptimeCheckConfigHttpCheckArgs struct {
+	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+	// Structure is documented below.
+	AcceptedResponseStatusCodes UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput `pulumi:"acceptedResponseStatusCodes"`
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	// Structure is documented below.
 	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
@@ -8783,6 +8789,14 @@ func (o UptimeCheckConfigHttpCheckOutput) ToUptimeCheckConfigHttpCheckPtrOutputW
 	}).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 
+// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+// Structure is documented below.
+func (o UptimeCheckConfigHttpCheckOutput) AcceptedResponseStatusCodes() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) []UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
+		return v.AcceptedResponseStatusCodes
+	}).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput)
+}
+
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
 // Structure is documented below.
 func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
@@ -8859,6 +8873,17 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Elem() UptimeCheckConfigHttpCheckOu
 		var ret UptimeCheckConfigHttpCheck
 		return ret
 	}).(UptimeCheckConfigHttpCheckOutput)
+}
+
+// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+// Structure is documented below.
+func (o UptimeCheckConfigHttpCheckPtrOutput) AcceptedResponseStatusCodes() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) []UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedResponseStatusCodes
+	}).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput)
 }
 
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -8963,6 +8988,115 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput 
 		}
 		return v.ValidateSsl
 	}).(pulumi.BoolPtrOutput)
+}
+
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCode struct {
+	// A class of status codes to accept.
+	// Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+	StatusClass *string `pulumi:"statusClass"`
+	// A status code to accept.
+	StatusValue *int `pulumi:"statusValue"`
+}
+
+// UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeInput is an input type that accepts UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs and UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeInput` via:
+//
+//	UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{...}
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput
+	ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutputWithContext(context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput
+}
+
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs struct {
+	// A class of status codes to accept.
+	// Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+	StatusClass pulumi.StringPtrInput `pulumi:"statusClass"`
+	// A status code to accept.
+	StatusValue pulumi.IntPtrInput `pulumi:"statusValue"`
+}
+
+func (UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigHttpCheckAcceptedResponseStatusCode)(nil)).Elem()
+}
+
+func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
+	return i.ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput)
+}
+
+// UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput is an input type that accepts UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray and UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput` via:
+//
+//	UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray{ UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{...} }
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput
+	ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutputWithContext(context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput
+}
+
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray []UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeInput
+
+func (UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode)(nil)).Elem()
+}
+
+func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
+	return i.ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput)
+}
+
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigHttpCheckAcceptedResponseStatusCode)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
+	return o
+}
+
+// A class of status codes to accept.
+// Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) StatusClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAcceptedResponseStatusCode) *string { return v.StatusClass }).(pulumi.StringPtrOutput)
+}
+
+// A status code to accept.
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) StatusValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAcceptedResponseStatusCode) *int { return v.StatusValue }).(pulumi.IntPtrOutput)
+}
+
+type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput() UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
+	return o
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
+		return vs[0].([]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode)[vs[1].(int)]
+	}).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput)
 }
 
 type UptimeCheckConfigHttpCheckAuthInfo struct {
@@ -10272,6 +10406,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput)(nil)).Elem(), UptimeCheckConfigContentMatcherJsonPathMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckInput)(nil)).Elem(), UptimeCheckConfigHttpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckPtrInput)(nil)).Elem(), UptimeCheckConfigHttpCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeInput)(nil)).Elem(), UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput)(nil)).Elem(), UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckAuthInfoInput)(nil)).Elem(), UptimeCheckConfigHttpCheckAuthInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckAuthInfoPtrInput)(nil)).Elem(), UptimeCheckConfigHttpCheckAuthInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigMonitoredResourceInput)(nil)).Elem(), UptimeCheckConfigMonitoredResourceArgs{})
@@ -10376,6 +10512,8 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckAuthInfoOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckAuthInfoPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigMonitoredResourceOutput{})

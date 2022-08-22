@@ -22,7 +22,11 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * This resource does not support import.
+ * Dataflow jobs can be imported using the job `id` e.g.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:dataflow/job:Job example 2022-07-31_06_25_42-11926927532632678660
+ * ```
  * 
  */
 @ResourceType(type="gcp:dataflow/job:Job")

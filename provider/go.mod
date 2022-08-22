@@ -10,7 +10,7 @@ require (
 
 replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220725190814-23001ad6ec03
-	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220817175318-01557d7f68e5
+	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220822220347-bc9bc2fbfd4f
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220505152158-f39f71e6c8f3
 )

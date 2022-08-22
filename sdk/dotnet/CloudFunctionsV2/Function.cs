@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudFunctionsV2
 {
     /// <summary>
+    /// A Cloud Function that contains user computation executed in response to an event.
+    /// 
+    /// To get more information about function, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
+    /// 
     /// ## Example Usage
     /// ### Cloudfunctions2 Basic Gcs
     /// 
@@ -25,18 +31,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     {
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
     ///         Bucket = source_bucket.Name,
     ///         Source = new FileAsset("function-source.zip"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Add path to the zipped function source code
@@ -44,9 +44,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     {
     ///         Location = "us-central1",
     ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
@@ -58,18 +55,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/pubsub.publisher",
     ///         Member = $"serviceAccount:{gcsAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.EmailAddress)}",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var account = new Gcp.ServiceAccount.Account("account", new()
     ///     {
-    ///         AccountId = "test-sa",
+    ///         AccountId = "sa",
     ///         DisplayName = "Test Service Account - used for both the cloud function and eventarc trigger in the test",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Permissions on the service account used by the function and Eventarc trigger
@@ -78,9 +69,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/run.invoker",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
@@ -88,9 +76,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
@@ -98,9 +83,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
@@ -155,7 +137,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             event_receiving,
@@ -183,18 +164,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     {
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
     ///         Bucket = source_bucket.Name,
     ///         Source = new FileAsset("function-source.zip"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Add path to the zipped function source code
@@ -202,9 +177,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     {
     ///         AccountId = "gcf-sa",
     ///         DisplayName = "Test Service Account - used for both the cloud function and eventarc trigger in the test",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
@@ -214,9 +186,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     {
     ///         Location = "us-central1",
     ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Permissions on the service account used by the function and Eventarc trigger
@@ -225,9 +194,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/run.invoker",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
@@ -235,9 +201,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
@@ -245,9 +208,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
@@ -313,7 +273,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             event_receiving,

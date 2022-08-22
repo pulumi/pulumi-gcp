@@ -5,8 +5,10 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigKerberosConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,17 +19,24 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
 
     public static final MetastoreServiceHiveMetastoreConfigArgs Empty = new MetastoreServiceHiveMetastoreConfigArgs();
 
+    @Import(name="auxiliaryVersions")
+    private @Nullable Output<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>> auxiliaryVersions;
+
+    public Optional<Output<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>>> auxiliaryVersions() {
+        return Optional.ofNullable(this.auxiliaryVersions);
+    }
+
     /**
-     * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-     * The mappings override system defaults (some keys cannot be overridden)
+     * A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
+     * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
      * 
      */
     @Import(name="configOverrides")
     private @Nullable Output<Map<String,String>> configOverrides;
 
     /**
-     * @return A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-     * The mappings override system defaults (some keys cannot be overridden)
+     * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
+     * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
      * 
      */
     public Optional<Output<Map<String,String>>> configOverrides() {
@@ -59,14 +68,14 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
     }
 
     /**
-     * The Hive metastore schema version.
+     * The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return The Hive metastore schema version.
+     * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
      * 
      */
     public Output<String> version() {
@@ -76,6 +85,7 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
     private MetastoreServiceHiveMetastoreConfigArgs() {}
 
     private MetastoreServiceHiveMetastoreConfigArgs(MetastoreServiceHiveMetastoreConfigArgs $) {
+        this.auxiliaryVersions = $.auxiliaryVersions;
         this.configOverrides = $.configOverrides;
         this.endpointProtocol = $.endpointProtocol;
         this.kerberosConfig = $.kerberosConfig;
@@ -100,9 +110,22 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
             $ = new MetastoreServiceHiveMetastoreConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder auxiliaryVersions(@Nullable Output<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>> auxiliaryVersions) {
+            $.auxiliaryVersions = auxiliaryVersions;
+            return this;
+        }
+
+        public Builder auxiliaryVersions(List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs> auxiliaryVersions) {
+            return auxiliaryVersions(Output.of(auxiliaryVersions));
+        }
+
+        public Builder auxiliaryVersions(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs... auxiliaryVersions) {
+            return auxiliaryVersions(List.of(auxiliaryVersions));
+        }
+
         /**
-         * @param configOverrides A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-         * The mappings override system defaults (some keys cannot be overridden)
+         * @param configOverrides A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
+         * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
          * 
          * @return builder
          * 
@@ -113,8 +136,8 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param configOverrides A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-         * The mappings override system defaults (some keys cannot be overridden)
+         * @param configOverrides A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
+         * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
          * 
          * @return builder
          * 
@@ -156,7 +179,7 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param version The Hive metastore schema version.
+         * @param version The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
          * 
          * @return builder
          * 
@@ -167,7 +190,7 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param version The Hive metastore schema version.
+         * @param version The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
          * 
          * @return builder
          * 

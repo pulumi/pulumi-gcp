@@ -76,6 +76,70 @@ import (
 //	}
 //
 // ```
+// ### Uptime Check Config Status Code
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewUptimeCheckConfig(ctx, "statusCode", &monitoring.UptimeCheckConfigArgs{
+//				CheckerType: pulumi.String("STATIC_IP_CHECKERS"),
+//				ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+//					&monitoring.UptimeCheckConfigContentMatcherArgs{
+//						Content: pulumi.String("\"example\""),
+//						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+//							JsonMatcher: pulumi.String("EXACT_MATCH"),
+//							JsonPath:    pulumi.String(fmt.Sprintf("$.path")),
+//						},
+//						Matcher: pulumi.String("MATCHES_JSON_PATH"),
+//					},
+//				},
+//				DisplayName: pulumi.String("http-uptime-check"),
+//				HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+//					AcceptedResponseStatusCodes: monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray{
+//						&monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{
+//							StatusClass: pulumi.String("STATUS_CLASS_2XX"),
+//						},
+//						&monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{
+//							StatusValue: pulumi.Int(301),
+//						},
+//						&monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{
+//							StatusValue: pulumi.Int(302),
+//						},
+//					},
+//					Body:          pulumi.String("Zm9vJTI1M0RiYXI="),
+//					ContentType:   pulumi.String("URL_ENCODED"),
+//					Path:          pulumi.String("some-path"),
+//					Port:          pulumi.Int(8010),
+//					RequestMethod: pulumi.String("POST"),
+//				},
+//				MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+//					Labels: pulumi.StringMap{
+//						"host":      pulumi.String("192.168.1.1"),
+//						"projectId": pulumi.String("my-project-name"),
+//					},
+//					Type: pulumi.String("uptime_url"),
+//				},
+//				Timeout: pulumi.String("60s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Uptime Check Config Https
 //
 // ```go

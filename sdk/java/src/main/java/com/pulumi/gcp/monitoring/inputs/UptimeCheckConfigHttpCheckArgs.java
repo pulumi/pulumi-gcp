@@ -5,10 +5,12 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAuthInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +20,23 @@ import javax.annotation.Nullable;
 public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final UptimeCheckConfigHttpCheckArgs Empty = new UptimeCheckConfigHttpCheckArgs();
+
+    /**
+     * If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="acceptedResponseStatusCodes")
+    private @Nullable Output<List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs>> acceptedResponseStatusCodes;
+
+    /**
+     * @return If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs>>> acceptedResponseStatusCodes() {
+        return Optional.ofNullable(this.acceptedResponseStatusCodes);
+    }
 
     /**
      * The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -180,6 +199,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
     private UptimeCheckConfigHttpCheckArgs() {}
 
     private UptimeCheckConfigHttpCheckArgs(UptimeCheckConfigHttpCheckArgs $) {
+        this.acceptedResponseStatusCodes = $.acceptedResponseStatusCodes;
         this.authInfo = $.authInfo;
         this.body = $.body;
         this.contentType = $.contentType;
@@ -208,6 +228,40 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
         public Builder(UptimeCheckConfigHttpCheckArgs defaults) {
             $ = new UptimeCheckConfigHttpCheckArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceptedResponseStatusCodes If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceptedResponseStatusCodes(@Nullable Output<List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs>> acceptedResponseStatusCodes) {
+            $.acceptedResponseStatusCodes = acceptedResponseStatusCodes;
+            return this;
+        }
+
+        /**
+         * @param acceptedResponseStatusCodes If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceptedResponseStatusCodes(List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs> acceptedResponseStatusCodes) {
+            return acceptedResponseStatusCodes(Output.of(acceptedResponseStatusCodes));
+        }
+
+        /**
+         * @param acceptedResponseStatusCodes If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceptedResponseStatusCodes(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs... acceptedResponseStatusCodes) {
+            return acceptedResponseStatusCodes(List.of(acceptedResponseStatusCodes));
         }
 
         /**

@@ -7,7 +7,11 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * This resource does not support import.
+ * Dataflow jobs can be imported using the job `id` e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataflow/job:Job example 2022-07-31_06_25_42-11926927532632678660
+ * ```
  */
 export class Job extends pulumi.CustomResource {
     /**

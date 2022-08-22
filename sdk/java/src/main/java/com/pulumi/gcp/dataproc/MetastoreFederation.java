@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultMetastoreService = new MetastoreService(&#34;defaultMetastoreService&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;fed&#34;)
+ *             .serviceId(&#34;fed-1&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;DEVELOPER&#34;)
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultMetastoreFederation = new MetastoreFederation(&#34;defaultMetastoreFederation&#34;, MetastoreFederationArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .federationId(&#34;fed&#34;)
+ *             .federationId(&#34;fed-1&#34;)
  *             .version(&#34;3.1.2&#34;)
  *             .backendMetastores(MetastoreFederationBackendMetastoreArgs.builder()
  *                 .rank(&#34;1&#34;)

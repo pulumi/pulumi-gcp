@@ -19,6 +19,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Cloud Function that contains user computation executed in response to an event.
+ * 
+ * To get more information about function, see:
+ * 
+ * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
+ * 
  * ## Example Usage
  * ### Cloudfunctions2 Basic Gcs
  * ```java
@@ -62,23 +68,17 @@ import javax.annotation.Nullable;
  *         var source_bucket = new Bucket(&#34;source-bucket&#34;, BucketArgs.builder()        
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
  *             .bucket(source_bucket.name())
  *             .source(new FileAsset(&#34;function-source.zip&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var trigger_bucket = new Bucket(&#34;trigger-bucket&#34;, BucketArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
@@ -86,40 +86,30 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/pubsub.publisher&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;test-sa&#34;)
+ *             .accountId(&#34;sa&#34;)
  *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -156,7 +146,6 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(                
  *                     event_receiving,
  *                     artifactregistry_reader)
@@ -205,54 +194,40 @@ import javax.annotation.Nullable;
  *         var source_bucket = new Bucket(&#34;source-bucket&#34;, BucketArgs.builder()        
  *             .location(&#34;US&#34;)
  *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
  *             .bucket(source_bucket.name())
  *             .source(new FileAsset(&#34;function-source.zip&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
  *             .accountId(&#34;gcf-sa&#34;)
  *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var audit_log_bucket = new Bucket(&#34;audit-log-bucket&#34;, BucketArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .uniformBucketLevelAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -299,7 +274,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(                
  *                     event_receiving,
  *                     artifactregistry_reader)

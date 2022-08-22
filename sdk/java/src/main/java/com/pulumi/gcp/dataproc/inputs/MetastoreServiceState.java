@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMetadataIntegrationArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -156,6 +157,21 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<MetastoreServiceMaintenanceWindowArgs>> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
+    }
+
+    /**
+     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * 
+     */
+    @Import(name="metadataIntegration")
+    private @Nullable Output<MetastoreServiceMetadataIntegrationArgs> metadataIntegration;
+
+    /**
+     * @return The setting that defines how metastore metadata should be integrated with external services and systems.
+     * 
+     */
+    public Optional<Output<MetastoreServiceMetadataIntegrationArgs>> metadataIntegration() {
+        return Optional.ofNullable(this.metadataIntegration);
     }
 
     /**
@@ -333,6 +349,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.labels = $.labels;
         this.location = $.location;
         this.maintenanceWindow = $.maintenanceWindow;
+        this.metadataIntegration = $.metadataIntegration;
         this.name = $.name;
         this.network = $.network;
         this.port = $.port;
@@ -547,6 +564,27 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder maintenanceWindow(MetastoreServiceMaintenanceWindowArgs maintenanceWindow) {
             return maintenanceWindow(Output.of(maintenanceWindow));
+        }
+
+        /**
+         * @param metadataIntegration The setting that defines how metastore metadata should be integrated with external services and systems.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataIntegration(@Nullable Output<MetastoreServiceMetadataIntegrationArgs> metadataIntegration) {
+            $.metadataIntegration = metadataIntegration;
+            return this;
+        }
+
+        /**
+         * @param metadataIntegration The setting that defines how metastore metadata should be integrated with external services and systems.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataIntegration(MetastoreServiceMetadataIntegrationArgs metadataIntegration) {
+            return metadataIntegration(Output.of(metadataIntegration));
         }
 
         /**

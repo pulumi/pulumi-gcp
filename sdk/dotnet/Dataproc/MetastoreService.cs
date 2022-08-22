@@ -161,6 +161,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.MetastoreServiceMaintenanceWindow?> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
+        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        [Output("metadataIntegration")]
+        public Output<Outputs.MetastoreServiceMetadataIntegration?> MetadataIntegration { get; private set; } = null!;
+
+        /// <summary>
         /// The relative resource name of the metastore service.
         /// </summary>
         [Output("name")]
@@ -325,6 +331,12 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.MetastoreServiceMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
+        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        [Input("metadataIntegration")]
+        public Input<Inputs.MetastoreServiceMetadataIntegrationArgs>? MetadataIntegration { get; set; }
+
+        /// <summary>
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
         /// </summary>
@@ -437,6 +449,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.MetastoreServiceMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
+
+        /// <summary>
+        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        [Input("metadataIntegration")]
+        public Input<Inputs.MetastoreServiceMetadataIntegrationGetArgs>? MetadataIntegration { get; set; }
 
         /// <summary>
         /// The relative resource name of the metastore service.
