@@ -86,6 +86,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("maintenanceWindow")]
         public Input<Inputs.DatabaseInstanceSettingsMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
+        [Input("passwordValidationPolicy")]
+        public Input<Inputs.DatabaseInstanceSettingsPasswordValidationPolicyGetArgs>? PasswordValidationPolicy { get; set; }
+
         /// <summary>
         /// Pricing plan for this instance, can only be `PER_USE`.
         /// </summary>

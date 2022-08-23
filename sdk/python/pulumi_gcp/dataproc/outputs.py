@@ -63,11 +63,14 @@ __all__ = [
     'MetastoreFederationIamMemberCondition',
     'MetastoreServiceEncryptionConfig',
     'MetastoreServiceHiveMetastoreConfig',
+    'MetastoreServiceHiveMetastoreConfigAuxiliaryVersion',
     'MetastoreServiceHiveMetastoreConfigKerberosConfig',
     'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab',
     'MetastoreServiceIamBindingCondition',
     'MetastoreServiceIamMemberCondition',
     'MetastoreServiceMaintenanceWindow',
+    'MetastoreServiceMetadataIntegration',
+    'MetastoreServiceMetadataIntegrationDataCatalogConfig',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
     'WorkflowTemplateJobHadoopJobLoggingConfig',
@@ -3821,7 +3824,9 @@ class MetastoreServiceHiveMetastoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configOverrides":
+        if key == "auxiliaryVersions":
+            suggest = "auxiliary_versions"
+        elif key == "configOverrides":
             suggest = "config_overrides"
         elif key == "endpointProtocol":
             suggest = "endpoint_protocol"
@@ -3841,17 +3846,20 @@ class MetastoreServiceHiveMetastoreConfig(dict):
 
     def __init__(__self__, *,
                  version: str,
+                 auxiliary_versions: Optional[Sequence['outputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion']] = None,
                  config_overrides: Optional[Mapping[str, str]] = None,
                  endpoint_protocol: Optional[str] = None,
                  kerberos_config: Optional['outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig'] = None):
         """
-        :param str version: The Hive metastore schema version.
-        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-               The mappings override system defaults (some keys cannot be overridden)
+        :param str version: The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+               If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
         :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
                Structure is documented below.
         """
         pulumi.set(__self__, "version", version)
+        if auxiliary_versions is not None:
+            pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
         if config_overrides is not None:
             pulumi.set(__self__, "config_overrides", config_overrides)
         if endpoint_protocol is not None:
@@ -3863,16 +3871,21 @@ class MetastoreServiceHiveMetastoreConfig(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The Hive metastore schema version.
+        The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
         """
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="auxiliaryVersions")
+    def auxiliary_versions(self) -> Optional[Sequence['outputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion']]:
+        return pulumi.get(self, "auxiliary_versions")
 
     @property
     @pulumi.getter(name="configOverrides")
     def config_overrides(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-        The mappings override system defaults (some keys cannot be overridden)
+        A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+        If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
         """
         return pulumi.get(self, "config_overrides")
 
@@ -3889,6 +3902,66 @@ class MetastoreServiceHiveMetastoreConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "kerberos_config")
+
+
+@pulumi.output_type
+class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configOverrides":
+            suggest = "config_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceHiveMetastoreConfigAuxiliaryVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceHiveMetastoreConfigAuxiliaryVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceHiveMetastoreConfigAuxiliaryVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 version: str,
+                 config_overrides: Optional[Mapping[str, str]] = None):
+        """
+        :param str key: The identifier for this object. Format specified above.
+        :param str version: The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+               If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+        if config_overrides is not None:
+            pulumi.set(__self__, "config_overrides", config_overrides)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+        If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        """
+        return pulumi.get(self, "config_overrides")
 
 
 @pulumi.output_type
@@ -4089,6 +4162,61 @@ class MetastoreServiceMaintenanceWindow(dict):
         The hour of day (0-23) when the window starts.
         """
         return pulumi.get(self, "hour_of_day")
+
+
+@pulumi.output_type
+class MetastoreServiceMetadataIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCatalogConfig":
+            suggest = "data_catalog_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceMetadataIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceMetadataIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceMetadataIntegration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_catalog_config: 'outputs.MetastoreServiceMetadataIntegrationDataCatalogConfig'):
+        """
+        :param 'MetastoreServiceMetadataIntegrationDataCatalogConfigArgs' data_catalog_config: The integration config for the Data Catalog service.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "data_catalog_config", data_catalog_config)
+
+    @property
+    @pulumi.getter(name="dataCatalogConfig")
+    def data_catalog_config(self) -> 'outputs.MetastoreServiceMetadataIntegrationDataCatalogConfig':
+        """
+        The integration config for the Data Catalog service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_catalog_config")
+
+
+@pulumi.output_type
+class MetastoreServiceMetadataIntegrationDataCatalogConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

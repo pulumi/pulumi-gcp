@@ -4,8 +4,10 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,9 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetastoreServiceHiveMetastoreConfig {
+    private final @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
     /**
-     * @return A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-     * The mappings override system defaults (some keys cannot be overridden)
+     * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
+     * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
      * 
      */
     private final @Nullable Map<String,String> configOverrides;
@@ -27,26 +30,31 @@ public final class MetastoreServiceHiveMetastoreConfig {
      */
     private final @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig;
     /**
-     * @return The Hive metastore schema version.
+     * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
      * 
      */
     private final String version;
 
     @CustomType.Constructor
     private MetastoreServiceHiveMetastoreConfig(
+        @CustomType.Parameter("auxiliaryVersions") @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions,
         @CustomType.Parameter("configOverrides") @Nullable Map<String,String> configOverrides,
         @CustomType.Parameter("endpointProtocol") @Nullable String endpointProtocol,
         @CustomType.Parameter("kerberosConfig") @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig,
         @CustomType.Parameter("version") String version) {
+        this.auxiliaryVersions = auxiliaryVersions;
         this.configOverrides = configOverrides;
         this.endpointProtocol = endpointProtocol;
         this.kerberosConfig = kerberosConfig;
         this.version = version;
     }
 
+    public List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions() {
+        return this.auxiliaryVersions == null ? List.of() : this.auxiliaryVersions;
+    }
     /**
-     * @return A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-     * The mappings override system defaults (some keys cannot be overridden)
+     * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
+     * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
      * 
      */
     public Map<String,String> configOverrides() {
@@ -64,7 +72,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
         return Optional.ofNullable(this.kerberosConfig);
     }
     /**
-     * @return The Hive metastore schema version.
+     * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
      * 
      */
     public String version() {
@@ -80,6 +88,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
     }
 
     public static final class Builder {
+        private @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
         private @Nullable Map<String,String> configOverrides;
         private @Nullable String endpointProtocol;
         private @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig;
@@ -91,12 +100,20 @@ public final class MetastoreServiceHiveMetastoreConfig {
 
         public Builder(MetastoreServiceHiveMetastoreConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.auxiliaryVersions = defaults.auxiliaryVersions;
     	      this.configOverrides = defaults.configOverrides;
     	      this.endpointProtocol = defaults.endpointProtocol;
     	      this.kerberosConfig = defaults.kerberosConfig;
     	      this.version = defaults.version;
         }
 
+        public Builder auxiliaryVersions(@Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions) {
+            this.auxiliaryVersions = auxiliaryVersions;
+            return this;
+        }
+        public Builder auxiliaryVersions(MetastoreServiceHiveMetastoreConfigAuxiliaryVersion... auxiliaryVersions) {
+            return auxiliaryVersions(List.of(auxiliaryVersions));
+        }
         public Builder configOverrides(@Nullable Map<String,String> configOverrides) {
             this.configOverrides = configOverrides;
             return this;
@@ -113,7 +130,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
             this.version = Objects.requireNonNull(version);
             return this;
         }        public MetastoreServiceHiveMetastoreConfig build() {
-            return new MetastoreServiceHiveMetastoreConfig(configOverrides, endpointProtocol, kerberosConfig, version);
+            return new MetastoreServiceHiveMetastoreConfig(auxiliaryVersions, configOverrides, endpointProtocol, kerberosConfig, version);
         }
     }
 }

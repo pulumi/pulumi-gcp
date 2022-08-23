@@ -90,6 +90,73 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Uptime Check Config Status Code
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
+ * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var statusCode = new UptimeCheckConfig(&#34;statusCode&#34;, UptimeCheckConfigArgs.builder()        
+ *             .checkerType(&#34;STATIC_IP_CHECKERS&#34;)
+ *             .contentMatchers(UptimeCheckConfigContentMatcherArgs.builder()
+ *                 .content(&#34;\&#34;example\&#34;&#34;)
+ *                 .jsonPathMatcher(UptimeCheckConfigContentMatcherJsonPathMatcherArgs.builder()
+ *                     .jsonMatcher(&#34;EXACT_MATCH&#34;)
+ *                     .jsonPath(&#34;$.path&#34;)
+ *                     .build())
+ *                 .matcher(&#34;MATCHES_JSON_PATH&#34;)
+ *                 .build())
+ *             .displayName(&#34;http-uptime-check&#34;)
+ *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
+ *                 .acceptedResponseStatusCodes(                
+ *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
+ *                         .statusClass(&#34;STATUS_CLASS_2XX&#34;)
+ *                         .build(),
+ *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
+ *                         .statusValue(301)
+ *                         .build(),
+ *                     UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs.builder()
+ *                         .statusValue(302)
+ *                         .build())
+ *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
+ *                 .contentType(&#34;URL_ENCODED&#34;)
+ *                 .path(&#34;some-path&#34;)
+ *                 .port(&#34;8010&#34;)
+ *                 .requestMethod(&#34;POST&#34;)
+ *                 .build())
+ *             .monitoredResource(UptimeCheckConfigMonitoredResourceArgs.builder()
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry(&#34;host&#34;, &#34;192.168.1.1&#34;),
+ *                     Map.entry(&#34;projectId&#34;, &#34;my-project-name&#34;)
+ *                 ))
+ *                 .type(&#34;uptime_url&#34;)
+ *                 .build())
+ *             .timeout(&#34;60s&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Uptime Check Config Https
  * ```java
  * package generated_program;

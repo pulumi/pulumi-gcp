@@ -203,7 +203,7 @@ type DatabaseInstance struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
-	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
 	// The URI of the created resource.
 	SelfLink      pulumi.StringOutput                     `pulumi:"selfLink"`
@@ -303,7 +303,7 @@ type databaseInstanceState struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
-	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The URI of the created resource.
 	SelfLink      *string                        `pulumi:"selfLink"`
@@ -372,7 +372,7 @@ type DatabaseInstanceState struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
-	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink      pulumi.StringPtrInput
@@ -435,7 +435,7 @@ type databaseInstanceArgs struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
-	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
@@ -489,7 +489,7 @@ type DatabaseInstanceArgs struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
-	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrInput
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
@@ -683,7 +683,7 @@ func (o DatabaseInstanceOutput) RestoreBackupContext() DatabaseInstanceRestoreBa
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceRestoreBackupContextPtrOutput { return v.RestoreBackupContext }).(DatabaseInstanceRestoreBackupContextPtrOutput)
 }
 
-// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+// Initial root password. Required for MS SQL Server.
 func (o DatabaseInstanceOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.RootPassword }).(pulumi.StringPtrOutput)
 }

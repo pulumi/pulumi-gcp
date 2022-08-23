@@ -72,6 +72,8 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * The limit on the metric, e.g. `/project/region`.
+     * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+     * E.g. use `/project/user` instead of `1/{project}/{user}`.
      */
     public readonly limit!: pulumi.Output<string>;
     /**
@@ -160,6 +162,8 @@ export interface ConsumerQuotaOverrideState {
     force?: pulumi.Input<boolean>;
     /**
      * The limit on the metric, e.g. `/project/region`.
+     * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+     * E.g. use `/project/user` instead of `1/{project}/{user}`.
      */
     limit?: pulumi.Input<string>;
     /**
@@ -200,6 +204,8 @@ export interface ConsumerQuotaOverrideArgs {
     force?: pulumi.Input<boolean>;
     /**
      * The limit on the metric, e.g. `/project/region`.
+     * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+     * E.g. use `/project/user` instead of `1/{project}/{user}`.
      */
     limit: pulumi.Input<string>;
     /**

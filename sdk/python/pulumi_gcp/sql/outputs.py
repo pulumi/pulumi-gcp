@@ -26,6 +26,7 @@ __all__ = [
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
     'DatabaseInstanceSettingsLocationPreference',
     'DatabaseInstanceSettingsMaintenanceWindow',
+    'DatabaseInstanceSettingsPasswordValidationPolicy',
     'DatabaseInstanceSettingsSqlServerAuditConfig',
     'UserSqlServerUserDetails',
     'GetCaCertsCertResult',
@@ -44,6 +45,7 @@ __all__ = [
     'GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult',
     'GetDatabaseInstanceSettingLocationPreferenceResult',
     'GetDatabaseInstanceSettingMaintenanceWindowResult',
+    'GetDatabaseInstanceSettingPasswordValidationPolicyResult',
     'GetDatabaseInstanceSettingSqlServerAuditConfigResult',
 ]
 
@@ -516,6 +518,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "location_preference"
         elif key == "maintenanceWindow":
             suggest = "maintenance_window"
+        elif key == "passwordValidationPolicy":
+            suggest = "password_validation_policy"
         elif key == "pricingPlan":
             suggest = "pricing_plan"
         elif key == "sqlServerAuditConfig":
@@ -550,6 +554,7 @@ class DatabaseInstanceSettings(dict):
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
                  maintenance_window: Optional['outputs.DatabaseInstanceSettingsMaintenanceWindow'] = None,
+                 password_validation_policy: Optional['outputs.DatabaseInstanceSettingsPasswordValidationPolicy'] = None,
                  pricing_plan: Optional[str] = None,
                  sql_server_audit_config: Optional['outputs.DatabaseInstanceSettingsSqlServerAuditConfig'] = None,
                  user_labels: Optional[Mapping[str, str]] = None,
@@ -603,6 +608,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "location_preference", location_preference)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if password_validation_policy is not None:
+            pulumi.set(__self__, "password_validation_policy", password_validation_policy)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if sql_server_audit_config is not None:
@@ -718,6 +725,11 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional['outputs.DatabaseInstanceSettingsMaintenanceWindow']:
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="passwordValidationPolicy")
+    def password_validation_policy(self) -> Optional['outputs.DatabaseInstanceSettingsPasswordValidationPolicy']:
+        return pulumi.get(self, "password_validation_policy")
 
     @property
     @pulumi.getter(name="pricingPlan")
@@ -1342,6 +1354,109 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
 
 
 @pulumi.output_type
+class DatabaseInstanceSettingsPasswordValidationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablePasswordPolicy":
+            suggest = "enable_password_policy"
+        elif key == "disallowUsernameSubstring":
+            suggest = "disallow_username_substring"
+        elif key == "minLength":
+            suggest = "min_length"
+        elif key == "passwordChangeInterval":
+            suggest = "password_change_interval"
+        elif key == "reuseInterval":
+            suggest = "reuse_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsPasswordValidationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsPasswordValidationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsPasswordValidationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_password_policy: bool,
+                 complexity: Optional[str] = None,
+                 disallow_username_substring: Optional[bool] = None,
+                 min_length: Optional[int] = None,
+                 password_change_interval: Optional[str] = None,
+                 reuse_interval: Optional[int] = None):
+        """
+        :param bool enable_password_policy: Enables or disable the password validation policy.
+        :param str complexity: Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+        :param bool disallow_username_substring: Prevents the use of the username in the password.
+        :param int min_length: Specifies the minimum number of characters that the password must have.
+        :param str password_change_interval: Specifies the minimum duration after which you can change the password.
+        :param int reuse_interval: Specifies the number of previous passwords that you can't reuse.
+        """
+        pulumi.set(__self__, "enable_password_policy", enable_password_policy)
+        if complexity is not None:
+            pulumi.set(__self__, "complexity", complexity)
+        if disallow_username_substring is not None:
+            pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if password_change_interval is not None:
+            pulumi.set(__self__, "password_change_interval", password_change_interval)
+        if reuse_interval is not None:
+            pulumi.set(__self__, "reuse_interval", reuse_interval)
+
+    @property
+    @pulumi.getter(name="enablePasswordPolicy")
+    def enable_password_policy(self) -> bool:
+        """
+        Enables or disable the password validation policy.
+        """
+        return pulumi.get(self, "enable_password_policy")
+
+    @property
+    @pulumi.getter
+    def complexity(self) -> Optional[str]:
+        """
+        Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+        """
+        return pulumi.get(self, "complexity")
+
+    @property
+    @pulumi.getter(name="disallowUsernameSubstring")
+    def disallow_username_substring(self) -> Optional[bool]:
+        """
+        Prevents the use of the username in the password.
+        """
+        return pulumi.get(self, "disallow_username_substring")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[int]:
+        """
+        Specifies the minimum number of characters that the password must have.
+        """
+        return pulumi.get(self, "min_length")
+
+    @property
+    @pulumi.getter(name="passwordChangeInterval")
+    def password_change_interval(self) -> Optional[str]:
+        """
+        Specifies the minimum duration after which you can change the password.
+        """
+        return pulumi.get(self, "password_change_interval")
+
+    @property
+    @pulumi.getter(name="reuseInterval")
+    def reuse_interval(self) -> Optional[int]:
+        """
+        Specifies the number of previous passwords that you can't reuse.
+        """
+        return pulumi.get(self, "reuse_interval")
+
+
+@pulumi.output_type
 class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1725,6 +1840,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
                  location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
                  maintenance_windows: Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
+                 password_validation_policies: Sequence['outputs.GetDatabaseInstanceSettingPasswordValidationPolicyResult'],
                  pricing_plan: str,
                  sql_server_audit_configs: Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult'],
                  tier: str,
@@ -1744,6 +1860,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "ip_configurations", ip_configurations)
         pulumi.set(__self__, "location_preferences", location_preferences)
         pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        pulumi.set(__self__, "password_validation_policies", password_validation_policies)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
         pulumi.set(__self__, "sql_server_audit_configs", sql_server_audit_configs)
         pulumi.set(__self__, "tier", tier)
@@ -1819,6 +1936,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="maintenanceWindows")
     def maintenance_windows(self) -> Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult']:
         return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter(name="passwordValidationPolicies")
+    def password_validation_policies(self) -> Sequence['outputs.GetDatabaseInstanceSettingPasswordValidationPolicyResult']:
+        return pulumi.get(self, "password_validation_policies")
 
     @property
     @pulumi.getter(name="pricingPlan")
@@ -2111,6 +2233,53 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
         return pulumi.get(self, "update_track")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
+    def __init__(__self__, *,
+                 complexity: str,
+                 disallow_username_substring: bool,
+                 enable_password_policy: bool,
+                 min_length: int,
+                 password_change_interval: str,
+                 reuse_interval: int):
+        pulumi.set(__self__, "complexity", complexity)
+        pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
+        pulumi.set(__self__, "enable_password_policy", enable_password_policy)
+        pulumi.set(__self__, "min_length", min_length)
+        pulumi.set(__self__, "password_change_interval", password_change_interval)
+        pulumi.set(__self__, "reuse_interval", reuse_interval)
+
+    @property
+    @pulumi.getter
+    def complexity(self) -> str:
+        return pulumi.get(self, "complexity")
+
+    @property
+    @pulumi.getter(name="disallowUsernameSubstring")
+    def disallow_username_substring(self) -> bool:
+        return pulumi.get(self, "disallow_username_substring")
+
+    @property
+    @pulumi.getter(name="enablePasswordPolicy")
+    def enable_password_policy(self) -> bool:
+        return pulumi.get(self, "enable_password_policy")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> int:
+        return pulumi.get(self, "min_length")
+
+    @property
+    @pulumi.getter(name="passwordChangeInterval")
+    def password_change_interval(self) -> str:
+        return pulumi.get(self, "password_change_interval")
+
+    @property
+    @pulumi.getter(name="reuseInterval")
+    def reuse_interval(self) -> int:
+        return pulumi.get(self, "reuse_interval")
 
 
 @pulumi.output_type

@@ -4,10 +4,12 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckAuthInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +17,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UptimeCheckConfigHttpCheck {
+    /**
+     * @return If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+     * Structure is documented below.
+     * 
+     */
+    private final @Nullable List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes;
     /**
      * @return The authentication information. Optional when creating an HTTP check; defaults to empty.
      * Structure is documented below.
@@ -72,6 +80,7 @@ public final class UptimeCheckConfigHttpCheck {
 
     @CustomType.Constructor
     private UptimeCheckConfigHttpCheck(
+        @CustomType.Parameter("acceptedResponseStatusCodes") @Nullable List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes,
         @CustomType.Parameter("authInfo") @Nullable UptimeCheckConfigHttpCheckAuthInfo authInfo,
         @CustomType.Parameter("body") @Nullable String body,
         @CustomType.Parameter("contentType") @Nullable String contentType,
@@ -82,6 +91,7 @@ public final class UptimeCheckConfigHttpCheck {
         @CustomType.Parameter("requestMethod") @Nullable String requestMethod,
         @CustomType.Parameter("useSsl") @Nullable Boolean useSsl,
         @CustomType.Parameter("validateSsl") @Nullable Boolean validateSsl) {
+        this.acceptedResponseStatusCodes = acceptedResponseStatusCodes;
         this.authInfo = authInfo;
         this.body = body;
         this.contentType = contentType;
@@ -94,6 +104,14 @@ public final class UptimeCheckConfigHttpCheck {
         this.validateSsl = validateSsl;
     }
 
+    /**
+     * @return If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+     * Structure is documented below.
+     * 
+     */
+    public List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes() {
+        return this.acceptedResponseStatusCodes == null ? List.of() : this.acceptedResponseStatusCodes;
+    }
     /**
      * @return The authentication information. Optional when creating an HTTP check; defaults to empty.
      * Structure is documented below.
@@ -178,6 +196,7 @@ public final class UptimeCheckConfigHttpCheck {
     }
 
     public static final class Builder {
+        private @Nullable List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes;
         private @Nullable UptimeCheckConfigHttpCheckAuthInfo authInfo;
         private @Nullable String body;
         private @Nullable String contentType;
@@ -195,6 +214,7 @@ public final class UptimeCheckConfigHttpCheck {
 
         public Builder(UptimeCheckConfigHttpCheck defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceptedResponseStatusCodes = defaults.acceptedResponseStatusCodes;
     	      this.authInfo = defaults.authInfo;
     	      this.body = defaults.body;
     	      this.contentType = defaults.contentType;
@@ -207,6 +227,13 @@ public final class UptimeCheckConfigHttpCheck {
     	      this.validateSsl = defaults.validateSsl;
         }
 
+        public Builder acceptedResponseStatusCodes(@Nullable List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes) {
+            this.acceptedResponseStatusCodes = acceptedResponseStatusCodes;
+            return this;
+        }
+        public Builder acceptedResponseStatusCodes(UptimeCheckConfigHttpCheckAcceptedResponseStatusCode... acceptedResponseStatusCodes) {
+            return acceptedResponseStatusCodes(List.of(acceptedResponseStatusCodes));
+        }
         public Builder authInfo(@Nullable UptimeCheckConfigHttpCheckAuthInfo authInfo) {
             this.authInfo = authInfo;
             return this;
@@ -247,7 +274,7 @@ public final class UptimeCheckConfigHttpCheck {
             this.validateSsl = validateSsl;
             return this;
         }        public UptimeCheckConfigHttpCheck build() {
-            return new UptimeCheckConfigHttpCheck(authInfo, body, contentType, headers, maskHeaders, path, port, requestMethod, useSsl, validateSsl);
+            return new UptimeCheckConfigHttpCheck(acceptedResponseStatusCodes, authInfo, body, contentType, headers, maskHeaders, path, port, requestMethod, useSsl, validateSsl);
         }
     }
 }

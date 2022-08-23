@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsInsightsConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsLocationPreferenceArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsMaintenanceWindowArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsPasswordValidationPolicyArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsSqlServerAuditConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -193,6 +194,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.maintenanceWindow);
     }
 
+    @Import(name="passwordValidationPolicy")
+    private @Nullable Output<DatabaseInstanceSettingsPasswordValidationPolicyArgs> passwordValidationPolicy;
+
+    public Optional<Output<DatabaseInstanceSettingsPasswordValidationPolicyArgs>> passwordValidationPolicy() {
+        return Optional.ofNullable(this.passwordValidationPolicy);
+    }
+
     /**
      * Pricing plan for this instance, can only be `PER_USE`.
      * 
@@ -273,6 +281,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.ipConfiguration = $.ipConfiguration;
         this.locationPreference = $.locationPreference;
         this.maintenanceWindow = $.maintenanceWindow;
+        this.passwordValidationPolicy = $.passwordValidationPolicy;
         this.pricingPlan = $.pricingPlan;
         this.sqlServerAuditConfig = $.sqlServerAuditConfig;
         this.tier = $.tier;
@@ -522,6 +531,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         public Builder maintenanceWindow(DatabaseInstanceSettingsMaintenanceWindowArgs maintenanceWindow) {
             return maintenanceWindow(Output.of(maintenanceWindow));
+        }
+
+        public Builder passwordValidationPolicy(@Nullable Output<DatabaseInstanceSettingsPasswordValidationPolicyArgs> passwordValidationPolicy) {
+            $.passwordValidationPolicy = passwordValidationPolicy;
+            return this;
+        }
+
+        public Builder passwordValidationPolicy(DatabaseInstanceSettingsPasswordValidationPolicyArgs passwordValidationPolicy) {
+            return passwordValidationPolicy(Output.of(passwordValidationPolicy));
         }
 
         /**

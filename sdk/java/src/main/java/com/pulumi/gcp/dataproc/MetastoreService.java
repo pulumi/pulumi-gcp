@@ -13,6 +13,7 @@ import com.pulumi.gcp.dataproc.inputs.MetastoreServiceState;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceEncryptionConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMaintenanceWindow;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMetadataIntegration;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -269,6 +270,20 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<MetastoreServiceMaintenanceWindow>> maintenanceWindow() {
         return Codegen.optional(this.maintenanceWindow);
+    }
+    /**
+     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * 
+     */
+    @Export(name="metadataIntegration", type=MetastoreServiceMetadataIntegration.class, parameters={})
+    private Output</* @Nullable */ MetastoreServiceMetadataIntegration> metadataIntegration;
+
+    /**
+     * @return The setting that defines how metastore metadata should be integrated with external services and systems.
+     * 
+     */
+    public Output<Optional<MetastoreServiceMetadataIntegration>> metadataIntegration() {
+        return Codegen.optional(this.metadataIntegration);
     }
     /**
      * The relative resource name of the metastore service.

@@ -9985,14 +9985,15 @@ func (o MetastoreServiceEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutp
 }
 
 type MetastoreServiceHiveMetastoreConfig struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-	// The mappings override system defaults (some keys cannot be overridden)
+	AuxiliaryVersions []MetastoreServiceHiveMetastoreConfigAuxiliaryVersion `pulumi:"auxiliaryVersions"`
+	// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+	// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
 	ConfigOverrides  map[string]string `pulumi:"configOverrides"`
 	EndpointProtocol *string           `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 	// Structure is documented below.
 	KerberosConfig *MetastoreServiceHiveMetastoreConfigKerberosConfig `pulumi:"kerberosConfig"`
-	// The Hive metastore schema version.
+	// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
 	Version string `pulumi:"version"`
 }
 
@@ -10008,14 +10009,15 @@ type MetastoreServiceHiveMetastoreConfigInput interface {
 }
 
 type MetastoreServiceHiveMetastoreConfigArgs struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-	// The mappings override system defaults (some keys cannot be overridden)
+	AuxiliaryVersions MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput `pulumi:"auxiliaryVersions"`
+	// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+	// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
 	ConfigOverrides  pulumi.StringMapInput `pulumi:"configOverrides"`
 	EndpointProtocol pulumi.StringPtrInput `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 	// Structure is documented below.
 	KerberosConfig MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput `pulumi:"kerberosConfig"`
-	// The Hive metastore schema version.
+	// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -10096,8 +10098,14 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetasto
 	}).(MetastoreServiceHiveMetastoreConfigPtrOutput)
 }
 
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-// The mappings override system defaults (some keys cannot be overridden)
+func (o MetastoreServiceHiveMetastoreConfigOutput) AuxiliaryVersions() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) []MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+		return v.AuxiliaryVersions
+	}).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput)
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
 func (o MetastoreServiceHiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
@@ -10114,7 +10122,7 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) KerberosConfig() MetastoreSer
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
 }
 
-// The Hive metastore schema version.
+// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
 func (o MetastoreServiceHiveMetastoreConfigOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -10143,8 +10151,17 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Elem() MetastoreServiceHiv
 	}).(MetastoreServiceHiveMetastoreConfigOutput)
 }
 
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-// The mappings override system defaults (some keys cannot be overridden)
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) AuxiliaryVersions() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) []MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryVersions
+	}).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput)
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) map[string]string {
 		if v == nil {
@@ -10174,7 +10191,7 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) KerberosConfig() Metastore
 	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
 }
 
-// The Hive metastore schema version.
+// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) *string {
 		if v == nil {
@@ -10182,6 +10199,126 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Version() pulumi.StringPtr
 		}
 		return &v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersion struct {
+	// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+	// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+	Version string `pulumi:"version"`
+}
+
+// MetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput is an input type that accepts MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs and MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput` via:
+//
+//	MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs{...}
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput
+	ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput
+}
+
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs struct {
+	// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+	// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput)
+}
+
+// MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput is an input type that accepts MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray and MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput` via:
+//
+//	MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray{ MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs{...} }
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput
+	ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput
+}
+
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray []MetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput
+
+func (MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return o
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigAuxiliaryVersion) map[string]string {
+		return v.ConfigOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigAuxiliaryVersion) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigAuxiliaryVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) Index(i pulumi.IntInput) MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+		return vs[0].([]MetastoreServiceHiveMetastoreConfigAuxiliaryVersion)[vs[1].(int)]
+	}).(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput)
 }
 
 type MetastoreServiceHiveMetastoreConfigKerberosConfig struct {
@@ -10990,6 +11127,286 @@ func (o MetastoreServiceMaintenanceWindowPtrOutput) HourOfDay() pulumi.IntPtrOut
 		}
 		return &v.HourOfDay
 	}).(pulumi.IntPtrOutput)
+}
+
+type MetastoreServiceMetadataIntegration struct {
+	// The integration config for the Data Catalog service.
+	// Structure is documented below.
+	DataCatalogConfig MetastoreServiceMetadataIntegrationDataCatalogConfig `pulumi:"dataCatalogConfig"`
+}
+
+// MetastoreServiceMetadataIntegrationInput is an input type that accepts MetastoreServiceMetadataIntegrationArgs and MetastoreServiceMetadataIntegrationOutput values.
+// You can construct a concrete instance of `MetastoreServiceMetadataIntegrationInput` via:
+//
+//	MetastoreServiceMetadataIntegrationArgs{...}
+type MetastoreServiceMetadataIntegrationInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceMetadataIntegrationOutput() MetastoreServiceMetadataIntegrationOutput
+	ToMetastoreServiceMetadataIntegrationOutputWithContext(context.Context) MetastoreServiceMetadataIntegrationOutput
+}
+
+type MetastoreServiceMetadataIntegrationArgs struct {
+	// The integration config for the Data Catalog service.
+	// Structure is documented below.
+	DataCatalogConfig MetastoreServiceMetadataIntegrationDataCatalogConfigInput `pulumi:"dataCatalogConfig"`
+}
+
+func (MetastoreServiceMetadataIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (i MetastoreServiceMetadataIntegrationArgs) ToMetastoreServiceMetadataIntegrationOutput() MetastoreServiceMetadataIntegrationOutput {
+	return i.ToMetastoreServiceMetadataIntegrationOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceMetadataIntegrationArgs) ToMetastoreServiceMetadataIntegrationOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationOutput)
+}
+
+func (i MetastoreServiceMetadataIntegrationArgs) ToMetastoreServiceMetadataIntegrationPtrOutput() MetastoreServiceMetadataIntegrationPtrOutput {
+	return i.ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceMetadataIntegrationArgs) ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationOutput).ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceMetadataIntegrationPtrInput is an input type that accepts MetastoreServiceMetadataIntegrationArgs, MetastoreServiceMetadataIntegrationPtr and MetastoreServiceMetadataIntegrationPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceMetadataIntegrationPtrInput` via:
+//
+//	        MetastoreServiceMetadataIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceMetadataIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceMetadataIntegrationPtrOutput() MetastoreServiceMetadataIntegrationPtrOutput
+	ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(context.Context) MetastoreServiceMetadataIntegrationPtrOutput
+}
+
+type metastoreServiceMetadataIntegrationPtrType MetastoreServiceMetadataIntegrationArgs
+
+func MetastoreServiceMetadataIntegrationPtr(v *MetastoreServiceMetadataIntegrationArgs) MetastoreServiceMetadataIntegrationPtrInput {
+	return (*metastoreServiceMetadataIntegrationPtrType)(v)
+}
+
+func (*metastoreServiceMetadataIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (i *metastoreServiceMetadataIntegrationPtrType) ToMetastoreServiceMetadataIntegrationPtrOutput() MetastoreServiceMetadataIntegrationPtrOutput {
+	return i.ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceMetadataIntegrationPtrType) ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationPtrOutput)
+}
+
+type MetastoreServiceMetadataIntegrationOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceMetadataIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (o MetastoreServiceMetadataIntegrationOutput) ToMetastoreServiceMetadataIntegrationOutput() MetastoreServiceMetadataIntegrationOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationOutput) ToMetastoreServiceMetadataIntegrationOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationOutput) ToMetastoreServiceMetadataIntegrationPtrOutput() MetastoreServiceMetadataIntegrationPtrOutput {
+	return o.ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceMetadataIntegrationOutput) ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceMetadataIntegration) *MetastoreServiceMetadataIntegration {
+		return &v
+	}).(MetastoreServiceMetadataIntegrationPtrOutput)
+}
+
+// The integration config for the Data Catalog service.
+// Structure is documented below.
+func (o MetastoreServiceMetadataIntegrationOutput) DataCatalogConfig() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return o.ApplyT(func(v MetastoreServiceMetadataIntegration) MetastoreServiceMetadataIntegrationDataCatalogConfig {
+		return v.DataCatalogConfig
+	}).(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput)
+}
+
+type MetastoreServiceMetadataIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceMetadataIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (o MetastoreServiceMetadataIntegrationPtrOutput) ToMetastoreServiceMetadataIntegrationPtrOutput() MetastoreServiceMetadataIntegrationPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationPtrOutput) ToMetastoreServiceMetadataIntegrationPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationPtrOutput) Elem() MetastoreServiceMetadataIntegrationOutput {
+	return o.ApplyT(func(v *MetastoreServiceMetadataIntegration) MetastoreServiceMetadataIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceMetadataIntegration
+		return ret
+	}).(MetastoreServiceMetadataIntegrationOutput)
+}
+
+// The integration config for the Data Catalog service.
+// Structure is documented below.
+func (o MetastoreServiceMetadataIntegrationPtrOutput) DataCatalogConfig() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceMetadataIntegration) *MetastoreServiceMetadataIntegrationDataCatalogConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.DataCatalogConfig
+	}).(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput)
+}
+
+type MetastoreServiceMetadataIntegrationDataCatalogConfig struct {
+	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// MetastoreServiceMetadataIntegrationDataCatalogConfigInput is an input type that accepts MetastoreServiceMetadataIntegrationDataCatalogConfigArgs and MetastoreServiceMetadataIntegrationDataCatalogConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceMetadataIntegrationDataCatalogConfigInput` via:
+//
+//	MetastoreServiceMetadataIntegrationDataCatalogConfigArgs{...}
+type MetastoreServiceMetadataIntegrationDataCatalogConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput
+	ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigOutput
+}
+
+type MetastoreServiceMetadataIntegrationDataCatalogConfigArgs struct {
+	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return i.ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput)
+}
+
+func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return i.ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput).ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceMetadataIntegrationDataCatalogConfigPtrInput is an input type that accepts MetastoreServiceMetadataIntegrationDataCatalogConfigArgs, MetastoreServiceMetadataIntegrationDataCatalogConfigPtr and MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceMetadataIntegrationDataCatalogConfigPtrInput` via:
+//
+//	        MetastoreServiceMetadataIntegrationDataCatalogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceMetadataIntegrationDataCatalogConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput
+	ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput
+}
+
+type metastoreServiceMetadataIntegrationDataCatalogConfigPtrType MetastoreServiceMetadataIntegrationDataCatalogConfigArgs
+
+func MetastoreServiceMetadataIntegrationDataCatalogConfigPtr(v *MetastoreServiceMetadataIntegrationDataCatalogConfigArgs) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrInput {
+	return (*metastoreServiceMetadataIntegrationDataCatalogConfigPtrType)(v)
+}
+
+func (*metastoreServiceMetadataIntegrationDataCatalogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceMetadataIntegrationDataCatalogConfigPtrType) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return i.ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceMetadataIntegrationDataCatalogConfigPtrType) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput)
+}
+
+type MetastoreServiceMetadataIntegrationDataCatalogConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return o.ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceMetadataIntegrationDataCatalogConfig) *MetastoreServiceMetadataIntegrationDataCatalogConfig {
+		return &v
+	}).(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput)
+}
+
+// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetastoreServiceMetadataIntegrationDataCatalogConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput() MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) ToMetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) Elem() MetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceMetadataIntegrationDataCatalogConfig) MetastoreServiceMetadataIntegrationDataCatalogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceMetadataIntegrationDataCatalogConfig
+		return ret
+	}).(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput)
+}
+
+// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceMetadataIntegrationDataCatalogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type WorkflowTemplateJob struct {
@@ -21211,6 +21628,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceEncryptionConfigPtrInput)(nil)).Elem(), MetastoreServiceEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigPtrInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{})
@@ -21221,6 +21640,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceIamMemberConditionPtrInput)(nil)).Elem(), MetastoreServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMaintenanceWindowInput)(nil)).Elem(), MetastoreServiceMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMaintenanceWindowPtrInput)(nil)).Elem(), MetastoreServiceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationPtrInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationDataCatalogConfigInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationDataCatalogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationDataCatalogConfigPtrInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationDataCatalogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobArrayInput)(nil)).Elem(), WorkflowTemplateJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobHadoopJobInput)(nil)).Elem(), WorkflowTemplateJobHadoopJobArgs{})
@@ -21435,6 +21858,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput{})
@@ -21445,6 +21870,10 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobOutput{})

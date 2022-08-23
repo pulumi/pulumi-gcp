@@ -17,7 +17,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_service\_account\_iam\_policy
+ * ## Example Usage
+ * ### Service Account IAM Policy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,8 +39,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- *
- * ## google\_service\_account\_iam\_binding
+ * ### Service Account IAM Binging
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,8 +55,7 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- *
- * With IAM Conditions:
+ * ### Service Account IAM Binding With IAM Conditions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -77,8 +76,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * ## google\_service\_account\_iam\_member
+ * ### Service Account IAM Member
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,8 +99,7 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
  * });
  * ```
- *
- * With IAM Conditions:
+ * ### Service Account IAM Member With IAM Conditions:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

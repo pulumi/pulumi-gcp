@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly Outputs.DatabaseInstanceSettingsIpConfiguration? IpConfiguration;
         public readonly Outputs.DatabaseInstanceSettingsLocationPreference? LocationPreference;
         public readonly Outputs.DatabaseInstanceSettingsMaintenanceWindow? MaintenanceWindow;
+        public readonly Outputs.DatabaseInstanceSettingsPasswordValidationPolicy? PasswordValidationPolicy;
         /// <summary>
         /// Pricing plan for this instance, can only be `PER_USE`.
         /// </summary>
@@ -101,6 +102,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             Outputs.DatabaseInstanceSettingsMaintenanceWindow? maintenanceWindow,
 
+            Outputs.DatabaseInstanceSettingsPasswordValidationPolicy? passwordValidationPolicy,
+
             string? pricingPlan,
 
             Outputs.DatabaseInstanceSettingsSqlServerAuditConfig? sqlServerAuditConfig,
@@ -125,6 +128,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             IpConfiguration = ipConfiguration;
             LocationPreference = locationPreference;
             MaintenanceWindow = maintenanceWindow;
+            PasswordValidationPolicy = passwordValidationPolicy;
             PricingPlan = pricingPlan;
             SqlServerAuditConfig = sqlServerAuditConfig;
             Tier = tier;

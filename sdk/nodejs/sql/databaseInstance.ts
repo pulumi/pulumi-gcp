@@ -208,7 +208,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly restoreBackupContext!: pulumi.Output<outputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
     /**
-     * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * Initial root password. Required for MS SQL Server.
      */
     public readonly rootPassword!: pulumi.Output<string | undefined>;
     /**
@@ -379,7 +379,7 @@ export interface DatabaseInstanceState {
      */
     restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
     /**
-     * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * Initial root password. Required for MS SQL Server.
      */
     rootPassword?: pulumi.Input<string>;
     /**
@@ -469,7 +469,7 @@ export interface DatabaseInstanceArgs {
      */
     restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
     /**
-     * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * Initial root password. Required for MS SQL Server.
      */
     rootPassword?: pulumi.Input<string>;
     /**

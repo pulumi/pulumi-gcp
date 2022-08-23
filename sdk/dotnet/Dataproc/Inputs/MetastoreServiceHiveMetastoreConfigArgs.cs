@@ -12,12 +12,20 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class MetastoreServiceHiveMetastoreConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("auxiliaryVersions")]
+        private InputList<Inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>? _auxiliaryVersions;
+        public InputList<Inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs> AuxiliaryVersions
+        {
+            get => _auxiliaryVersions ?? (_auxiliaryVersions = new InputList<Inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>());
+            set => _auxiliaryVersions = value;
+        }
+
         [Input("configOverrides")]
         private InputMap<string>? _configOverrides;
 
         /// <summary>
-        /// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
-        /// The mappings override system defaults (some keys cannot be overridden)
+        /// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+        /// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
         /// </summary>
         public InputMap<string> ConfigOverrides
         {
@@ -36,7 +44,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.MetastoreServiceHiveMetastoreConfigKerberosConfigArgs>? KerberosConfig { get; set; }
 
         /// <summary>
-        /// The Hive metastore schema version.
+        /// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

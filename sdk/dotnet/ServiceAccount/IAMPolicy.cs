@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// &gt; **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_service\_account\_iam\_policy
+    /// ## Example Usage
+    /// ### Service Account IAM Policy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,8 +61,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
-    /// 
-    /// ## google\_service\_account\_iam\_binding
+    /// ### Service Account IAM Binging
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -88,8 +88,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
-    /// 
-    /// With IAM Conditions:
+    /// ### Service Account IAM Binding With IAM Conditions:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -122,8 +121,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
-    /// 
-    /// ## google\_service\_account\_iam\_member
+    /// ### Service Account IAM Member
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -157,8 +155,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
-    /// 
-    /// With IAM Conditions:
+    /// ### Service Account IAM Member With IAM Conditions:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -130,7 +130,8 @@ class IAMPolicy(pulumi.CustomResource):
 
         > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_account\\_iam\\_policy
+        ## Example Usage
+        ### Service Account IAM Policy
 
         ```python
         import pulumi
@@ -147,8 +148,7 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             policy_data=admin.policy_data)
         ```
-
-        ## google\\_service\\_account\\_iam\\_binding
+        ### Service Account IAM Binging
 
         ```python
         import pulumi
@@ -162,8 +162,7 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"])
         ```
-
-        With IAM Conditions:
+        ### Service Account IAM Binding With IAM Conditions:
 
         ```python
         import pulumi
@@ -182,8 +181,7 @@ class IAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-
-        ## google\\_service\\_account\\_iam\\_member
+        ### Service Account IAM Member
 
         ```python
         import pulumi
@@ -203,8 +201,7 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-
-        With IAM Conditions:
+        ### Service Account IAM Member With IAM Conditions:
 
         ```python
         import pulumi
@@ -275,7 +272,8 @@ class IAMPolicy(pulumi.CustomResource):
 
         > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_account\\_iam\\_policy
+        ## Example Usage
+        ### Service Account IAM Policy
 
         ```python
         import pulumi
@@ -292,8 +290,7 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             policy_data=admin.policy_data)
         ```
-
-        ## google\\_service\\_account\\_iam\\_binding
+        ### Service Account IAM Binging
 
         ```python
         import pulumi
@@ -307,8 +304,7 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"])
         ```
-
-        With IAM Conditions:
+        ### Service Account IAM Binding With IAM Conditions:
 
         ```python
         import pulumi
@@ -327,8 +323,7 @@ class IAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-
-        ## google\\_service\\_account\\_iam\\_member
+        ### Service Account IAM Member
 
         ```python
         import pulumi
@@ -348,8 +343,7 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-
-        With IAM Conditions:
+        ### Service Account IAM Member With IAM Conditions:
 
         ```python
         import pulumi

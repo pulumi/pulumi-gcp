@@ -424,14 +424,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.restoreBackupContext);
     }
     /**
-     * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * Initial root password. Required for MS SQL Server.
      * 
      */
     @Export(name="rootPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> rootPassword;
 
     /**
-     * @return Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+     * @return Initial root password. Required for MS SQL Server.
      * 
      */
     public Output<Optional<String>> rootPassword() {

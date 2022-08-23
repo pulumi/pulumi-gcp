@@ -69,6 +69,7 @@ export interface GetManagedZoneResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly managedZoneId: number;
     readonly name: string;
     /**
      * The list of nameservers that will be authoritative for this

@@ -65,7 +65,7 @@ class DatabaseInstanceArgs:
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
-        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server.
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
@@ -242,7 +242,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        Initial root password. Required for MS SQL Server.
         """
         return pulumi.get(self, "root_password")
 
@@ -329,7 +329,7 @@ class _DatabaseInstanceState:
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
-        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
                instance.
@@ -584,7 +584,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        Initial root password. Required for MS SQL Server.
         """
         return pulumi.get(self, "root_password")
 
@@ -775,7 +775,7 @@ class DatabaseInstance(pulumi.CustomResource):
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
-        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
@@ -1000,7 +1000,7 @@ class DatabaseInstance(pulumi.CustomResource):
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
-        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
                instance.
@@ -1180,7 +1180,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> pulumi.Output[Optional[str]]:
         """
-        Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        Initial root password. Required for MS SQL Server.
         """
         return pulumi.get(self, "root_password")
 

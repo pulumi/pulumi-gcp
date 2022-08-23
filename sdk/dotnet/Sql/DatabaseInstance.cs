@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.Sql
         public Output<Outputs.DatabaseInstanceRestoreBackupContext?> RestoreBackupContext { get; private set; } = null!;
 
         /// <summary>
-        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server.
         /// </summary>
         [Output("rootPassword")]
         public Output<string?> RootPassword { get; private set; } = null!;
@@ -411,7 +411,7 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceRestoreBackupContextArgs>? RestoreBackupContext { get; set; }
 
         /// <summary>
-        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
@@ -550,7 +550,7 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceRestoreBackupContextGetArgs>? RestoreBackupContext { get; set; }
 
         /// <summary>
-        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }

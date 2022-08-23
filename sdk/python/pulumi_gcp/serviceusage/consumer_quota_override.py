@@ -24,6 +24,8 @@ class ConsumerQuotaOverrideArgs:
         """
         The set of arguments for constructing a ConsumerQuotaOverride resource.
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
+               > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+               E.g. use `/project/user` instead of `1/{project}/{user}`.
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
@@ -49,6 +51,8 @@ class ConsumerQuotaOverrideArgs:
     def limit(self) -> pulumi.Input[str]:
         """
         The limit on the metric, e.g. `/project/region`.
+        > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+        E.g. use `/project/user` instead of `1/{project}/{user}`.
         """
         return pulumi.get(self, "limit")
 
@@ -148,6 +152,8 @@ class _ConsumerQuotaOverrideState:
         :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
+               > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+               E.g. use `/project/user` instead of `1/{project}/{user}`.
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] name: The server-generated name of the quota override.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
@@ -202,6 +208,8 @@ class _ConsumerQuotaOverrideState:
     def limit(self) -> Optional[pulumi.Input[str]]:
         """
         The limit on the metric, e.g. `/project/region`.
+        > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+        E.g. use `/project/user` instead of `1/{project}/{user}`.
         """
         return pulumi.get(self, "limit")
 
@@ -319,6 +327,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
+               > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+               E.g. use `/project/user` instead of `1/{project}/{user}`.
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -436,6 +446,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
                If `force` is `true`, that safety check is ignored.
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
+               > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+               E.g. use `/project/user` instead of `1/{project}/{user}`.
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] name: The server-generated name of the quota override.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
@@ -479,6 +491,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     def limit(self) -> pulumi.Output[str]:
         """
         The limit on the metric, e.g. `/project/region`.
+        > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
+        E.g. use `/project/user` instead of `1/{project}/{user}`.
         """
         return pulumi.get(self, "limit")
 

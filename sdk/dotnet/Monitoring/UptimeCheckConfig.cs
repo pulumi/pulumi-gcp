@@ -70,6 +70,69 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// ### Uptime Check Config Status Code
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var statusCode = new Gcp.Monitoring.UptimeCheckConfig("statusCode", new()
+    ///     {
+    ///         CheckerType = "STATIC_IP_CHECKERS",
+    ///         ContentMatchers = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///             {
+    ///                 Content = "\"example\"",
+    ///                 JsonPathMatcher = new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs
+    ///                 {
+    ///                     JsonMatcher = "EXACT_MATCH",
+    ///                     JsonPath = "$.path",
+    ///                 },
+    ///                 Matcher = "MATCHES_JSON_PATH",
+    ///             },
+    ///         },
+    ///         DisplayName = "http-uptime-check",
+    ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///         {
+    ///             AcceptedResponseStatusCodes = new[]
+    ///             {
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs
+    ///                 {
+    ///                     StatusClass = "STATUS_CLASS_2XX",
+    ///                 },
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs
+    ///                 {
+    ///                     StatusValue = 301,
+    ///                 },
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs
+    ///                 {
+    ///                     StatusValue = 302,
+    ///                 },
+    ///             },
+    ///             Body = "Zm9vJTI1M0RiYXI=",
+    ///             ContentType = "URL_ENCODED",
+    ///             Path = "some-path",
+    ///             Port = 8010,
+    ///             RequestMethod = "POST",
+    ///         },
+    ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///         {
+    ///             Labels = 
+    ///             {
+    ///                 { "host", "192.168.1.1" },
+    ///                 { "projectId", "my-project-name" },
+    ///             },
+    ///             Type = "uptime_url",
+    ///         },
+    ///         Timeout = "60s",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Uptime Check Config Https
     /// 
     /// ```csharp

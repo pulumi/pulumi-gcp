@@ -11,6 +11,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingInsightsConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingLocationPreference;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingMaintenanceWindow;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingPasswordValidationPolicy;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingSqlServerAuditConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -35,6 +36,7 @@ public final class GetDatabaseInstanceSetting {
     private final List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
     private final List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
     private final List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
+    private final List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
     private final String pricingPlan;
     private final List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
     private final String tier;
@@ -57,6 +59,7 @@ public final class GetDatabaseInstanceSetting {
         @CustomType.Parameter("ipConfigurations") List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations,
         @CustomType.Parameter("locationPreferences") List<GetDatabaseInstanceSettingLocationPreference> locationPreferences,
         @CustomType.Parameter("maintenanceWindows") List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows,
+        @CustomType.Parameter("passwordValidationPolicies") List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies,
         @CustomType.Parameter("pricingPlan") String pricingPlan,
         @CustomType.Parameter("sqlServerAuditConfigs") List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs,
         @CustomType.Parameter("tier") String tier,
@@ -76,6 +79,7 @@ public final class GetDatabaseInstanceSetting {
         this.ipConfigurations = ipConfigurations;
         this.locationPreferences = locationPreferences;
         this.maintenanceWindows = maintenanceWindows;
+        this.passwordValidationPolicies = passwordValidationPolicies;
         this.pricingPlan = pricingPlan;
         this.sqlServerAuditConfigs = sqlServerAuditConfigs;
         this.tier = tier;
@@ -125,6 +129,9 @@ public final class GetDatabaseInstanceSetting {
     public List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows() {
         return this.maintenanceWindows;
     }
+    public List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies() {
+        return this.passwordValidationPolicies;
+    }
     public String pricingPlan() {
         return this.pricingPlan;
     }
@@ -164,6 +171,7 @@ public final class GetDatabaseInstanceSetting {
         private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
         private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
         private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
+        private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
         private String pricingPlan;
         private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
         private String tier;
@@ -190,6 +198,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.ipConfigurations = defaults.ipConfigurations;
     	      this.locationPreferences = defaults.locationPreferences;
     	      this.maintenanceWindows = defaults.maintenanceWindows;
+    	      this.passwordValidationPolicies = defaults.passwordValidationPolicies;
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.sqlServerAuditConfigs = defaults.sqlServerAuditConfigs;
     	      this.tier = defaults.tier;
@@ -274,6 +283,13 @@ public final class GetDatabaseInstanceSetting {
         public Builder maintenanceWindows(GetDatabaseInstanceSettingMaintenanceWindow... maintenanceWindows) {
             return maintenanceWindows(List.of(maintenanceWindows));
         }
+        public Builder passwordValidationPolicies(List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies) {
+            this.passwordValidationPolicies = Objects.requireNonNull(passwordValidationPolicies);
+            return this;
+        }
+        public Builder passwordValidationPolicies(GetDatabaseInstanceSettingPasswordValidationPolicy... passwordValidationPolicies) {
+            return passwordValidationPolicies(List.of(passwordValidationPolicies));
+        }
         public Builder pricingPlan(String pricingPlan) {
             this.pricingPlan = Objects.requireNonNull(pricingPlan);
             return this;
@@ -297,7 +313,7 @@ public final class GetDatabaseInstanceSetting {
             this.version = Objects.requireNonNull(version);
             return this;
         }        public GetDatabaseInstanceSetting build() {
-            return new GetDatabaseInstanceSetting(activationPolicy, activeDirectoryConfigs, availabilityType, backupConfigurations, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfigs, ipConfigurations, locationPreferences, maintenanceWindows, pricingPlan, sqlServerAuditConfigs, tier, userLabels, version);
+            return new GetDatabaseInstanceSetting(activationPolicy, activeDirectoryConfigs, availabilityType, backupConfigurations, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfigs, ipConfigurations, locationPreferences, maintenanceWindows, passwordValidationPolicies, pricingPlan, sqlServerAuditConfigs, tier, userLabels, version);
         }
     }
 }

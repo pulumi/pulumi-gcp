@@ -53,6 +53,7 @@ __all__ = [
     'UptimeCheckConfigContentMatcher',
     'UptimeCheckConfigContentMatcherJsonPathMatcher',
     'UptimeCheckConfigHttpCheck',
+    'UptimeCheckConfigHttpCheckAcceptedResponseStatusCode',
     'UptimeCheckConfigHttpCheckAuthInfo',
     'UptimeCheckConfigMonitoredResource',
     'UptimeCheckConfigResourceGroup',
@@ -3337,7 +3338,9 @@ class UptimeCheckConfigHttpCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authInfo":
+        if key == "acceptedResponseStatusCodes":
+            suggest = "accepted_response_status_codes"
+        elif key == "authInfo":
             suggest = "auth_info"
         elif key == "contentType":
             suggest = "content_type"
@@ -3362,6 +3365,7 @@ class UptimeCheckConfigHttpCheck(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accepted_response_status_codes: Optional[Sequence['outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode']] = None,
                  auth_info: Optional['outputs.UptimeCheckConfigHttpCheckAuthInfo'] = None,
                  body: Optional[str] = None,
                  content_type: Optional[str] = None,
@@ -3373,6 +3377,8 @@ class UptimeCheckConfigHttpCheck(dict):
                  use_ssl: Optional[bool] = None,
                  validate_ssl: Optional[bool] = None):
         """
+        :param Sequence['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs'] accepted_response_status_codes: If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+               Structure is documented below.
         :param 'UptimeCheckConfigHttpCheckAuthInfoArgs' auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
                Structure is documented below.
         :param str body: The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
@@ -3388,6 +3394,8 @@ class UptimeCheckConfigHttpCheck(dict):
         :param bool use_ssl: If true, use HTTPS instead of HTTP to run the check.
         :param bool validate_ssl: Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
         """
+        if accepted_response_status_codes is not None:
+            pulumi.set(__self__, "accepted_response_status_codes", accepted_response_status_codes)
         if auth_info is not None:
             pulumi.set(__self__, "auth_info", auth_info)
         if body is not None:
@@ -3408,6 +3416,15 @@ class UptimeCheckConfigHttpCheck(dict):
             pulumi.set(__self__, "use_ssl", use_ssl)
         if validate_ssl is not None:
             pulumi.set(__self__, "validate_ssl", validate_ssl)
+
+    @property
+    @pulumi.getter(name="acceptedResponseStatusCodes")
+    def accepted_response_status_codes(self) -> Optional[Sequence['outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode']]:
+        """
+        If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accepted_response_status_codes")
 
     @property
     @pulumi.getter(name="authInfo")
@@ -3492,6 +3509,58 @@ class UptimeCheckConfigHttpCheck(dict):
         Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
         """
         return pulumi.get(self, "validate_ssl")
+
+
+@pulumi.output_type
+class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusClass":
+            suggest = "status_class"
+        elif key == "statusValue":
+            suggest = "status_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigHttpCheckAcceptedResponseStatusCode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigHttpCheckAcceptedResponseStatusCode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigHttpCheckAcceptedResponseStatusCode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 status_class: Optional[str] = None,
+                 status_value: Optional[int] = None):
+        """
+        :param str status_class: A class of status codes to accept.
+               Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+        :param int status_value: A status code to accept.
+        """
+        if status_class is not None:
+            pulumi.set(__self__, "status_class", status_class)
+        if status_value is not None:
+            pulumi.set(__self__, "status_value", status_value)
+
+    @property
+    @pulumi.getter(name="statusClass")
+    def status_class(self) -> Optional[str]:
+        """
+        A class of status codes to accept.
+        Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+        """
+        return pulumi.get(self, "status_class")
+
+    @property
+    @pulumi.getter(name="statusValue")
+    def status_value(self) -> Optional[int]:
+        """
+        A status code to accept.
+        """
+        return pulumi.get(self, "status_value")
 
 
 @pulumi.output_type

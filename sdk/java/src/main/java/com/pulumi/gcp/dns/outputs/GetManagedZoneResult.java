@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,7 @@ public final class GetManagedZoneResult {
      * 
      */
     private final String id;
+    private final Integer managedZoneId;
     private final String name;
     /**
      * @return The list of nameservers that will be authoritative for this
@@ -48,6 +50,7 @@ public final class GetManagedZoneResult {
         @CustomType.Parameter("description") String description,
         @CustomType.Parameter("dnsName") String dnsName,
         @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("managedZoneId") Integer managedZoneId,
         @CustomType.Parameter("name") String name,
         @CustomType.Parameter("nameServers") List<String> nameServers,
         @CustomType.Parameter("project") @Nullable String project,
@@ -55,6 +58,7 @@ public final class GetManagedZoneResult {
         this.description = description;
         this.dnsName = dnsName;
         this.id = id;
+        this.managedZoneId = managedZoneId;
         this.name = name;
         this.nameServers = nameServers;
         this.project = project;
@@ -81,6 +85,9 @@ public final class GetManagedZoneResult {
      */
     public String id() {
         return this.id;
+    }
+    public Integer managedZoneId() {
+        return this.managedZoneId;
     }
     public String name() {
         return this.name;
@@ -118,6 +125,7 @@ public final class GetManagedZoneResult {
         private String description;
         private String dnsName;
         private String id;
+        private Integer managedZoneId;
         private String name;
         private List<String> nameServers;
         private @Nullable String project;
@@ -132,6 +140,7 @@ public final class GetManagedZoneResult {
     	      this.description = defaults.description;
     	      this.dnsName = defaults.dnsName;
     	      this.id = defaults.id;
+    	      this.managedZoneId = defaults.managedZoneId;
     	      this.name = defaults.name;
     	      this.nameServers = defaults.nameServers;
     	      this.project = defaults.project;
@@ -148,6 +157,10 @@ public final class GetManagedZoneResult {
         }
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        public Builder managedZoneId(Integer managedZoneId) {
+            this.managedZoneId = Objects.requireNonNull(managedZoneId);
             return this;
         }
         public Builder name(String name) {
@@ -169,7 +182,7 @@ public final class GetManagedZoneResult {
             this.visibility = Objects.requireNonNull(visibility);
             return this;
         }        public GetManagedZoneResult build() {
-            return new GetManagedZoneResult(description, dnsName, id, name, nameServers, project, visibility);
+            return new GetManagedZoneResult(description, dnsName, id, managedZoneId, name, nameServers, project, visibility);
         }
     }
 }

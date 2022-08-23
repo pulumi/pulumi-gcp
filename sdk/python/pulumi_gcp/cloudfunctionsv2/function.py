@@ -376,6 +376,12 @@ class Function(pulumi.CustomResource):
                  service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
                  __props__=None):
         """
+        A Cloud Function that contains user computation executed in response to an event.
+
+        To get more information about function, see:
+
+        * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
+
         ## Example Usage
         ### Cloudfunctions2 Basic Gcs
 
@@ -386,45 +392,37 @@ class Function(pulumi.CustomResource):
         # [START functions_v2_basic_gcs]
         source_bucket = gcp.storage.Bucket("source-bucket",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
             bucket=source_bucket.name,
-            source=pulumi.FileAsset("function-source.zip"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            source=pulumi.FileAsset("function-source.zip"))
         # Add path to the zipped function source code
         trigger_bucket = gcp.storage.Bucket("trigger-bucket",
             location="us-central1",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         gcs_account = gcp.storage.get_project_service_account()
         # To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
         # (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
         gcs_pubsub_publishing = gcp.projects.IAMMember("gcs-pubsub-publishing",
             project="my-project-name",
             role="roles/pubsub.publisher",
-            member=f"serviceAccount:{gcs_account.email_address}",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=f"serviceAccount:{gcs_account.email_address}")
         account = gcp.service_account.Account("account",
-            account_id="test-sa",
-            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            account_id="sa",
+            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -463,8 +461,7 @@ class Function(pulumi.CustomResource):
                     value=trigger_bucket.name,
                 )],
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -482,40 +479,33 @@ class Function(pulumi.CustomResource):
         # https://cloud.google.com/eventarc/docs/path-patterns
         source_bucket = gcp.storage.Bucket("source-bucket",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
             bucket=source_bucket.name,
-            source=pulumi.FileAsset("function-source.zip"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            source=pulumi.FileAsset("function-source.zip"))
         # Add path to the zipped function source code
         account = gcp.service_account.Account("account",
             account_id="gcf-sa",
-            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
         # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
         # google_cloudfunctions2_function below (Audit Log events have path pattern support)
         audit_log_bucket = gcp.storage.Bucket("audit-log-bucket",
             location="us-central1",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -565,8 +555,7 @@ class Function(pulumi.CustomResource):
                     ),
                 ],
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -613,6 +602,12 @@ class Function(pulumi.CustomResource):
                  args: Optional[FunctionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Cloud Function that contains user computation executed in response to an event.
+
+        To get more information about function, see:
+
+        * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
+
         ## Example Usage
         ### Cloudfunctions2 Basic Gcs
 
@@ -623,45 +618,37 @@ class Function(pulumi.CustomResource):
         # [START functions_v2_basic_gcs]
         source_bucket = gcp.storage.Bucket("source-bucket",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
             bucket=source_bucket.name,
-            source=pulumi.FileAsset("function-source.zip"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            source=pulumi.FileAsset("function-source.zip"))
         # Add path to the zipped function source code
         trigger_bucket = gcp.storage.Bucket("trigger-bucket",
             location="us-central1",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         gcs_account = gcp.storage.get_project_service_account()
         # To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
         # (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
         gcs_pubsub_publishing = gcp.projects.IAMMember("gcs-pubsub-publishing",
             project="my-project-name",
             role="roles/pubsub.publisher",
-            member=f"serviceAccount:{gcs_account.email_address}",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=f"serviceAccount:{gcs_account.email_address}")
         account = gcp.service_account.Account("account",
-            account_id="test-sa",
-            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            account_id="sa",
+            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -700,8 +687,7 @@ class Function(pulumi.CustomResource):
                     value=trigger_bucket.name,
                 )],
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -719,40 +705,33 @@ class Function(pulumi.CustomResource):
         # https://cloud.google.com/eventarc/docs/path-patterns
         source_bucket = gcp.storage.Bucket("source-bucket",
             location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
             bucket=source_bucket.name,
-            source=pulumi.FileAsset("function-source.zip"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            source=pulumi.FileAsset("function-source.zip"))
         # Add path to the zipped function source code
         account = gcp.service_account.Account("account",
             account_id="gcf-sa",
-            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
         # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
         # google_cloudfunctions2_function below (Audit Log events have path pattern support)
         audit_log_bucket = gcp.storage.Bucket("audit-log-bucket",
             location="us-central1",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            uniform_bucket_level_access=True)
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -802,8 +781,7 @@ class Function(pulumi.CustomResource):
                     ),
                 ],
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))

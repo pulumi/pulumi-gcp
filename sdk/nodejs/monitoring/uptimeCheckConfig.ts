@@ -52,6 +52,51 @@ import * as utilities from "../utilities";
  *     timeout: "60s",
  * });
  * ```
+ * ### Uptime Check Config Status Code
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const statusCode = new gcp.monitoring.UptimeCheckConfig("status_code", {
+ *     checkerType: "STATIC_IP_CHECKERS",
+ *     contentMatchers: [{
+ *         content: "\"example\"",
+ *         jsonPathMatcher: {
+ *             jsonMatcher: "EXACT_MATCH",
+ *             jsonPath: "$.path",
+ *         },
+ *         matcher: "MATCHES_JSON_PATH",
+ *     }],
+ *     displayName: "http-uptime-check",
+ *     httpCheck: {
+ *         acceptedResponseStatusCodes: [
+ *             {
+ *                 statusClass: "STATUS_CLASS_2XX",
+ *             },
+ *             {
+ *                 statusValue: 301,
+ *             },
+ *             {
+ *                 statusValue: 302,
+ *             },
+ *         ],
+ *         body: "Zm9vJTI1M0RiYXI=",
+ *         contentType: "URL_ENCODED",
+ *         path: "some-path",
+ *         port: 8010,
+ *         requestMethod: "POST",
+ *     },
+ *     monitoredResource: {
+ *         labels: {
+ *             host: "192.168.1.1",
+ *             project_id: "my-project-name",
+ *         },
+ *         type: "uptime_url",
+ *     },
+ *     timeout: "60s",
+ * });
+ * ```
  * ### Uptime Check Config Https
  *
  * ```typescript

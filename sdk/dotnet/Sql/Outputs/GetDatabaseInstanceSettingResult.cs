@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationResult> IpConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> LocationPreferences;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingPasswordValidationPolicyResult> PasswordValidationPolicies;
         public readonly string PricingPlan;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> SqlServerAuditConfigs;
         public readonly string Tier;
@@ -63,6 +64,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingMaintenanceWindowResult> maintenanceWindows,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingPasswordValidationPolicyResult> passwordValidationPolicies,
+
             string pricingPlan,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> sqlServerAuditConfigs,
@@ -87,6 +90,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             IpConfigurations = ipConfigurations;
             LocationPreferences = locationPreferences;
             MaintenanceWindows = maintenanceWindows;
+            PasswordValidationPolicies = passwordValidationPolicies;
             PricingPlan = pricingPlan;
             SqlServerAuditConfigs = sqlServerAuditConfigs;
             Tier = tier;

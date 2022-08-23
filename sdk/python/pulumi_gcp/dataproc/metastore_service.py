@@ -23,6 +23,7 @@ class MetastoreServiceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
+                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class MetastoreServiceArgs:
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
+        :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
@@ -72,6 +74,8 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "location", location)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if metadata_integration is not None:
+            pulumi.set(__self__, "metadata_integration", metadata_integration)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if port is not None:
@@ -179,6 +183,18 @@ class MetastoreServiceArgs:
         pulumi.set(self, "maintenance_window", value)
 
     @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
+        """
+        The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
+
+    @metadata_integration.setter
+    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]):
+        pulumi.set(self, "metadata_integration", value)
+
+    @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
@@ -255,6 +271,7 @@ class _MetastoreServiceState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
+                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -284,6 +301,7 @@ class _MetastoreServiceState:
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
+        :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -318,6 +336,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "location", location)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if metadata_integration is not None:
+            pulumi.set(__self__, "metadata_integration", metadata_integration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -443,6 +463,18 @@ class _MetastoreServiceState:
     @maintenance_window.setter
     def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
+        """
+        The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
+
+    @metadata_integration.setter
+    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]):
+        pulumi.set(self, "metadata_integration", value)
 
     @property
     @pulumi.getter
@@ -583,6 +615,7 @@ class MetastoreService(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
+                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -669,6 +702,7 @@ class MetastoreService(pulumi.CustomResource):
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
@@ -772,6 +806,7 @@ class MetastoreService(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
+                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -793,6 +828,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_window"] = maintenance_window
+            __props__.__dict__["metadata_integration"] = metadata_integration
             __props__.__dict__["network"] = network
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
@@ -825,6 +861,7 @@ class MetastoreService(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
+            metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
@@ -859,6 +896,7 @@ class MetastoreService(pulumi.CustomResource):
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -889,6 +927,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["maintenance_window"] = maintenance_window
+        __props__.__dict__["metadata_integration"] = metadata_integration
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["port"] = port
@@ -973,6 +1012,14 @@ class MetastoreService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> pulumi.Output[Optional['outputs.MetastoreServiceMetadataIntegration']]:
+        """
+        The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
 
     @property
     @pulumi.getter

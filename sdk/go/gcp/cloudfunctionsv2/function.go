@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Cloud Function that contains user computation executed in response to an event.
+//
+// To get more information about function, see:
+//
+// * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
+//
 // ## Example Usage
 // ### Cloudfunctions2 Basic Gcs
 //
@@ -33,21 +39,21 @@ import (
 //			_, err := storage.NewBucket(ctx, "source-bucket", &storage.BucketArgs{
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
 //				Bucket: source_bucket.Name,
 //				Source: pulumi.NewFileAsset("function-source.zip"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = storage.NewBucket(ctx, "trigger-bucket", &storage.BucketArgs{
 //				Location:                 pulumi.String("us-central1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -59,14 +65,14 @@ import (
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/pubsub.publisher"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("test-sa"),
+//				AccountId:   pulumi.String("sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -76,7 +82,7 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -86,7 +92,7 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -96,7 +102,7 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -140,7 +146,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				event_receiving,
 //				artifactregistry_reader,
 //			}))
@@ -174,28 +180,28 @@ import (
 //			_, err := storage.NewBucket(ctx, "source-bucket", &storage.BucketArgs{
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
 //				Bucket: source_bucket.Name,
 //				Source: pulumi.NewFileAsset("function-source.zip"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
 //				AccountId:   pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = storage.NewBucket(ctx, "audit-log-bucket", &storage.BucketArgs{
 //				Location:                 pulumi.String("us-central1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -205,7 +211,7 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -215,7 +221,7 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -225,7 +231,7 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -280,7 +286,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				event_receiving,
 //				artifactregistry_reader,
 //			}))
