@@ -3,7 +3,9 @@
 package gcp
 
 import (
+	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 	"unicode"
@@ -11,6 +13,7 @@ import (
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -156,6 +159,69 @@ func boolRef(b bool) *bool {
 	return &b
 }
 
+// stringValue gets a string value from a property map if present, else ""
+func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
+	val, ok := vars[prop]
+	if ok && val.IsString() {
+		return val.StringValue()
+	}
+	for _, env := range envs {
+		val, ok := os.LookupEnv(env)
+		if ok {
+			return val
+		}
+	}
+	return ""
+}
+
+func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
+
+	// explicitly check to make sure that the user has a project available before we do
+	// anything with the provider
+	project := stringValue(vars, "project", []string{
+		"GOOGLE_PROJECT",
+		"GOOGLE_CLOUD_PROJECT",
+		"GCLOUD_PROJECT",
+		"CLOUDSDK_CORE_PROJECT",
+	})
+	if project == "" {
+		return fmt.Errorf("unable to find required configuration setting: GCP Project\n" +
+			"Set the GCP Project by using:\n" +
+			"\t`pulumi config set gcp:project <project>`")
+	}
+
+	config := google.Config{
+		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+		Credentials: stringValue(vars, "credentials", []string{
+			"GOOGLE_CREDENTIALS",
+			"GOOGLE_CLOUD_KEYFILE_JSON",
+			"GCLOUD_KEYFILE_JSON",
+		}),
+		ImpersonateServiceAccount: stringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+		Project:                   project,
+		Region: stringValue(vars, "region", []string{
+			"GOOGLE_REGION",
+			"GCLOUD_REGION",
+			"CLOUDSDK_COMPUTE_REGION",
+		}),
+		Zone: stringValue(vars, "zone", []string{
+			"GOOGLE_ZONE",
+			"GCLOUD_ZONE",
+			"CLOUDSDK_COMPUTE_ZONE",
+		}),
+	}
+
+	// validate the gcloud config
+	err := config.LoadAndValidate(context.Background())
+	if err != nil {
+		return fmt.Errorf("failed to load application credentials.\n" +
+			"To use your default gcloud credentials, run:\n" +
+			"\t`gcloud auth application-default login`\n" +
+			"See https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.")
+	}
+	return nil
+}
+
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(google.Provider())
@@ -205,6 +271,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
 			"google_dataproc_metastore_service",
 		},
+		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager
 			"google_access_context_manager_access_level": {
