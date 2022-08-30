@@ -16,29 +16,20 @@ public final class DatabaseInstanceRestoreBackupContext {
      * @return The ID of the backup run to restore from.
      * 
      */
-    private final Integer backupRunId;
+    private Integer backupRunId;
     /**
      * @return The ID of the instance that the backup was taken from. If left empty,
      * this instance&#39;s ID will be used.
      * 
      */
-    private final @Nullable String instanceId;
+    private @Nullable String instanceId;
     /**
      * @return The full project ID of the source instance.`
      * 
      */
-    private final @Nullable String project;
+    private @Nullable String project;
 
-    @CustomType.Constructor
-    private DatabaseInstanceRestoreBackupContext(
-        @CustomType.Parameter("backupRunId") Integer backupRunId,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("project") @Nullable String project) {
-        this.backupRunId = backupRunId;
-        this.instanceId = instanceId;
-        this.project = project;
-    }
-
+    private DatabaseInstanceRestoreBackupContext() {}
     /**
      * @return The ID of the backup run to restore from.
      * 
@@ -69,16 +60,12 @@ public final class DatabaseInstanceRestoreBackupContext {
     public static Builder builder(DatabaseInstanceRestoreBackupContext defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer backupRunId;
         private @Nullable String instanceId;
         private @Nullable String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceRestoreBackupContext defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupRunId = defaults.backupRunId;
@@ -86,19 +73,27 @@ public final class DatabaseInstanceRestoreBackupContext {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder backupRunId(Integer backupRunId) {
             this.backupRunId = Objects.requireNonNull(backupRunId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }        public DatabaseInstanceRestoreBackupContext build() {
-            return new DatabaseInstanceRestoreBackupContext(backupRunId, instanceId, project);
+        }
+        public DatabaseInstanceRestoreBackupContext build() {
+            final var o = new DatabaseInstanceRestoreBackupContext();
+            o.backupRunId = backupRunId;
+            o.instanceId = instanceId;
+            o.project = project;
+            return o;
         }
     }
 }

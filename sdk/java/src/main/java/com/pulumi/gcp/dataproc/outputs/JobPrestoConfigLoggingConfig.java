@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobPrestoConfigLoggingConfig {
-    private final Map<String,String> driverLogLevels;
+    private Map<String,String> driverLogLevels;
 
-    @CustomType.Constructor
-    private JobPrestoConfigLoggingConfig(@CustomType.Parameter("driverLogLevels") Map<String,String> driverLogLevels) {
-        this.driverLogLevels = driverLogLevels;
-    }
-
+    private JobPrestoConfigLoggingConfig() {}
     public Map<String,String> driverLogLevels() {
         return this.driverLogLevels;
     }
@@ -28,24 +24,24 @@ public final class JobPrestoConfigLoggingConfig {
     public static Builder builder(JobPrestoConfigLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> driverLogLevels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPrestoConfigLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.driverLogLevels = defaults.driverLogLevels;
         }
 
+        @CustomType.Setter
         public Builder driverLogLevels(Map<String,String> driverLogLevels) {
             this.driverLogLevels = Objects.requireNonNull(driverLogLevels);
             return this;
-        }        public JobPrestoConfigLoggingConfig build() {
-            return new JobPrestoConfigLoggingConfig(driverLogLevels);
+        }
+        public JobPrestoConfigLoggingConfig build() {
+            final var o = new JobPrestoConfigLoggingConfig();
+            o.driverLogLevels = driverLogLevels;
+            return o;
         }
     }
 }

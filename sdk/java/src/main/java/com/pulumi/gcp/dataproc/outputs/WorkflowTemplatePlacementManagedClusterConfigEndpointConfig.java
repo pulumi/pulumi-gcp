@@ -17,22 +17,15 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
      * @return Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
      * 
      */
-    private final @Nullable Boolean enableHttpPortAccess;
+    private @Nullable Boolean enableHttpPortAccess;
     /**
      * @return -
      * Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
      * 
      */
-    private final @Nullable Map<String,String> httpPorts;
+    private @Nullable Map<String,String> httpPorts;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(
-        @CustomType.Parameter("enableHttpPortAccess") @Nullable Boolean enableHttpPortAccess,
-        @CustomType.Parameter("httpPorts") @Nullable Map<String,String> httpPorts) {
-        this.enableHttpPortAccess = enableHttpPortAccess;
-        this.httpPorts = httpPorts;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigEndpointConfig() {}
     /**
      * @return Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
      * 
@@ -56,30 +49,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigEndpointConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableHttpPortAccess;
         private @Nullable Map<String,String> httpPorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigEndpointConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableHttpPortAccess = defaults.enableHttpPortAccess;
     	      this.httpPorts = defaults.httpPorts;
         }
 
+        @CustomType.Setter
         public Builder enableHttpPortAccess(@Nullable Boolean enableHttpPortAccess) {
             this.enableHttpPortAccess = enableHttpPortAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder httpPorts(@Nullable Map<String,String> httpPorts) {
             this.httpPorts = httpPorts;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigEndpointConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(enableHttpPortAccess, httpPorts);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigEndpointConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigEndpointConfig();
+            o.enableHttpPortAccess = enableHttpPortAccess;
+            o.httpPorts = httpPorts;
+            return o;
         }
     }
 }

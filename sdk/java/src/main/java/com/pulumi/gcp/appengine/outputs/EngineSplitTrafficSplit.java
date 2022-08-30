@@ -16,22 +16,15 @@ public final class EngineSplitTrafficSplit {
      * @return Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
      * 
      */
-    private final Map<String,String> allocations;
+    private Map<String,String> allocations;
     /**
      * @return Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
      * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
      * 
      */
-    private final @Nullable String shardBy;
+    private @Nullable String shardBy;
 
-    @CustomType.Constructor
-    private EngineSplitTrafficSplit(
-        @CustomType.Parameter("allocations") Map<String,String> allocations,
-        @CustomType.Parameter("shardBy") @Nullable String shardBy) {
-        this.allocations = allocations;
-        this.shardBy = shardBy;
-    }
-
+    private EngineSplitTrafficSplit() {}
     /**
      * @return Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
      * 
@@ -55,30 +48,32 @@ public final class EngineSplitTrafficSplit {
     public static Builder builder(EngineSplitTrafficSplit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> allocations;
         private @Nullable String shardBy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EngineSplitTrafficSplit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocations = defaults.allocations;
     	      this.shardBy = defaults.shardBy;
         }
 
+        @CustomType.Setter
         public Builder allocations(Map<String,String> allocations) {
             this.allocations = Objects.requireNonNull(allocations);
             return this;
         }
+        @CustomType.Setter
         public Builder shardBy(@Nullable String shardBy) {
             this.shardBy = shardBy;
             return this;
-        }        public EngineSplitTrafficSplit build() {
-            return new EngineSplitTrafficSplit(allocations, shardBy);
+        }
+        public EngineSplitTrafficSplit build() {
+            final var o = new EngineSplitTrafficSplit();
+            o.allocations = allocations;
+            o.shardBy = shardBy;
+            return o;
         }
     }
 }

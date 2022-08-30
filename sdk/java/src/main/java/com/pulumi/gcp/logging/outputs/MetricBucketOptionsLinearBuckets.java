@@ -16,28 +16,19 @@ public final class MetricBucketOptionsLinearBuckets {
      * @return Must be greater than 0.
      * 
      */
-    private final @Nullable Integer numFiniteBuckets;
+    private @Nullable Integer numFiniteBuckets;
     /**
      * @return Lower bound of the first bucket.
      * 
      */
-    private final @Nullable Double offset;
+    private @Nullable Double offset;
     /**
      * @return Must be greater than 0.
      * 
      */
-    private final @Nullable Double width;
+    private @Nullable Double width;
 
-    @CustomType.Constructor
-    private MetricBucketOptionsLinearBuckets(
-        @CustomType.Parameter("numFiniteBuckets") @Nullable Integer numFiniteBuckets,
-        @CustomType.Parameter("offset") @Nullable Double offset,
-        @CustomType.Parameter("width") @Nullable Double width) {
-        this.numFiniteBuckets = numFiniteBuckets;
-        this.offset = offset;
-        this.width = width;
-    }
-
+    private MetricBucketOptionsLinearBuckets() {}
     /**
      * @return Must be greater than 0.
      * 
@@ -67,16 +58,12 @@ public final class MetricBucketOptionsLinearBuckets {
     public static Builder builder(MetricBucketOptionsLinearBuckets defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer numFiniteBuckets;
         private @Nullable Double offset;
         private @Nullable Double width;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricBucketOptionsLinearBuckets defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.numFiniteBuckets = defaults.numFiniteBuckets;
@@ -84,19 +71,27 @@ public final class MetricBucketOptionsLinearBuckets {
     	      this.width = defaults.width;
         }
 
+        @CustomType.Setter
         public Builder numFiniteBuckets(@Nullable Integer numFiniteBuckets) {
             this.numFiniteBuckets = numFiniteBuckets;
             return this;
         }
+        @CustomType.Setter
         public Builder offset(@Nullable Double offset) {
             this.offset = offset;
             return this;
         }
+        @CustomType.Setter
         public Builder width(@Nullable Double width) {
             this.width = width;
             return this;
-        }        public MetricBucketOptionsLinearBuckets build() {
-            return new MetricBucketOptionsLinearBuckets(numFiniteBuckets, offset, width);
+        }
+        public MetricBucketOptionsLinearBuckets build() {
+            final var o = new MetricBucketOptionsLinearBuckets();
+            o.numFiniteBuckets = numFiniteBuckets;
+            o.offset = offset;
+            o.width = width;
+            return o;
         }
     }
 }

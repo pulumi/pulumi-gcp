@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
-    private final String schedule;
+    private String schedule;
 
-    @CustomType.Constructor
-    private GetResourcePolicyInstanceSchedulePolicyVmStartSchedule(@CustomType.Parameter("schedule") String schedule) {
-        this.schedule = schedule;
-    }
-
+    private GetResourcePolicyInstanceSchedulePolicyVmStartSchedule() {}
     public String schedule() {
         return this.schedule;
     }
@@ -27,24 +23,24 @@ public final class GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
     public static Builder builder(GetResourcePolicyInstanceSchedulePolicyVmStartSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String schedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicyInstanceSchedulePolicyVmStartSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
-        }        public GetResourcePolicyInstanceSchedulePolicyVmStartSchedule build() {
-            return new GetResourcePolicyInstanceSchedulePolicyVmStartSchedule(schedule);
+        }
+        public GetResourcePolicyInstanceSchedulePolicyVmStartSchedule build() {
+            final var o = new GetResourcePolicyInstanceSchedulePolicyVmStartSchedule();
+            o.schedule = schedule;
+            return o;
         }
     }
 }

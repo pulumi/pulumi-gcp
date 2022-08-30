@@ -16,28 +16,19 @@ public final class RegionInstanceGroupManagerVersion {
      * @return - The full URL to an instance template from which all new instances of this version will be created.
      * 
      */
-    private final String instanceTemplate;
+    private String instanceTemplate;
     /**
      * @return - Version name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
      */
-    private final @Nullable RegionInstanceGroupManagerVersionTargetSize targetSize;
+    private @Nullable RegionInstanceGroupManagerVersionTargetSize targetSize;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerVersion(
-        @CustomType.Parameter("instanceTemplate") String instanceTemplate,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("targetSize") @Nullable RegionInstanceGroupManagerVersionTargetSize targetSize) {
-        this.instanceTemplate = instanceTemplate;
-        this.name = name;
-        this.targetSize = targetSize;
-    }
-
+    private RegionInstanceGroupManagerVersion() {}
     /**
      * @return - The full URL to an instance template from which all new instances of this version will be created.
      * 
@@ -67,16 +58,12 @@ public final class RegionInstanceGroupManagerVersion {
     public static Builder builder(RegionInstanceGroupManagerVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instanceTemplate;
         private @Nullable String name;
         private @Nullable RegionInstanceGroupManagerVersionTargetSize targetSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceTemplate = defaults.instanceTemplate;
@@ -84,19 +71,27 @@ public final class RegionInstanceGroupManagerVersion {
     	      this.targetSize = defaults.targetSize;
         }
 
+        @CustomType.Setter
         public Builder instanceTemplate(String instanceTemplate) {
             this.instanceTemplate = Objects.requireNonNull(instanceTemplate);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder targetSize(@Nullable RegionInstanceGroupManagerVersionTargetSize targetSize) {
             this.targetSize = targetSize;
             return this;
-        }        public RegionInstanceGroupManagerVersion build() {
-            return new RegionInstanceGroupManagerVersion(instanceTemplate, name, targetSize);
+        }
+        public RegionInstanceGroupManagerVersion build() {
+            final var o = new RegionInstanceGroupManagerVersion();
+            o.instanceTemplate = instanceTemplate;
+            o.name = name;
+            o.targetSize = targetSize;
+            return o;
         }
     }
 }

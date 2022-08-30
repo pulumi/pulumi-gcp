@@ -17,22 +17,15 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath;
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath;
     /**
      * @return List of words or phrases to search for.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList wordList;
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList wordList;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(
-        @CustomType.Parameter("cloudStoragePath") @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath,
-        @CustomType.Parameter("wordList") @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList wordList) {
-        this.cloudStoragePath = cloudStoragePath;
-        this.wordList = wordList;
-    }
-
+    private PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary() {}
     /**
      * @return Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
     public static Builder builder(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList wordList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudStoragePath = defaults.cloudStoragePath;
     	      this.wordList = defaults.wordList;
         }
 
+        @CustomType.Setter
         public Builder cloudStoragePath(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath) {
             this.cloudStoragePath = cloudStoragePath;
             return this;
         }
+        @CustomType.Setter
         public Builder wordList(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList wordList) {
             this.wordList = wordList;
             return this;
-        }        public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary build() {
-            return new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(cloudStoragePath, wordList);
+        }
+        public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary build() {
+            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary();
+            o.cloudStoragePath = cloudStoragePath;
+            o.wordList = wordList;
+            return o;
         }
     }
 }

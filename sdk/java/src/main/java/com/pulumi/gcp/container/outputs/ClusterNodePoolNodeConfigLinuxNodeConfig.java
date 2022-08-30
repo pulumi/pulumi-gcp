@@ -16,13 +16,9 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
      * `net.core.wmem_max`, to a string value.
      * 
      */
-    private final Map<String,String> sysctls;
+    private Map<String,String> sysctls;
 
-    @CustomType.Constructor
-    private ClusterNodePoolNodeConfigLinuxNodeConfig(@CustomType.Parameter("sysctls") Map<String,String> sysctls) {
-        this.sysctls = sysctls;
-    }
-
+    private ClusterNodePoolNodeConfigLinuxNodeConfig() {}
     /**
      * @return The Linux kernel parameters to be applied to the nodes
      * and all pods running on the nodes. Specified as a map from the key, such as
@@ -40,24 +36,24 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     public static Builder builder(ClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> sysctls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sysctls = defaults.sysctls;
         }
 
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             this.sysctls = Objects.requireNonNull(sysctls);
             return this;
-        }        public ClusterNodePoolNodeConfigLinuxNodeConfig build() {
-            return new ClusterNodePoolNodeConfigLinuxNodeConfig(sysctls);
+        }
+        public ClusterNodePoolNodeConfigLinuxNodeConfig build() {
+            final var o = new ClusterNodePoolNodeConfigLinuxNodeConfig();
+            o.sysctls = sysctls;
+            return o;
         }
     }
 }

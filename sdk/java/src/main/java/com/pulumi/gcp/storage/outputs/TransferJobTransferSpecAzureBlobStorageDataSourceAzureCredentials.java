@@ -13,13 +13,9 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
      * @return Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
      * 
      */
-    private final String sasToken;
+    private String sasToken;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(@CustomType.Parameter("sasToken") String sasToken) {
-        this.sasToken = sasToken;
-    }
-
+    private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials() {}
     /**
      * @return Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
      * 
@@ -35,24 +31,24 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
     public static Builder builder(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String sasToken;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sasToken = defaults.sasToken;
         }
 
+        @CustomType.Setter
         public Builder sasToken(String sasToken) {
             this.sasToken = Objects.requireNonNull(sasToken);
             return this;
-        }        public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials build() {
-            return new TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(sasToken);
+        }
+        public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials build() {
+            final var o = new TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials();
+            o.sasToken = sasToken;
+            return o;
         }
     }
 }

@@ -15,24 +15,15 @@ public final class GetFoldersResult {
      * @return A list of projects matching the provided filter. Structure is defined below.
      * 
      */
-    private final List<GetFoldersFolder> folders;
+    private List<GetFoldersFolder> folders;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String parentId;
+    private String id;
+    private String parentId;
 
-    @CustomType.Constructor
-    private GetFoldersResult(
-        @CustomType.Parameter("folders") List<GetFoldersFolder> folders,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parentId") String parentId) {
-        this.folders = folders;
-        this.id = id;
-        this.parentId = parentId;
-    }
-
+    private GetFoldersResult() {}
     /**
      * @return A list of projects matching the provided filter. Structure is defined below.
      * 
@@ -58,16 +49,12 @@ public final class GetFoldersResult {
     public static Builder builder(GetFoldersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetFoldersFolder> folders;
         private String id;
         private String parentId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFoldersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.folders = defaults.folders;
@@ -75,6 +62,7 @@ public final class GetFoldersResult {
     	      this.parentId = defaults.parentId;
         }
 
+        @CustomType.Setter
         public Builder folders(List<GetFoldersFolder> folders) {
             this.folders = Objects.requireNonNull(folders);
             return this;
@@ -82,15 +70,22 @@ public final class GetFoldersResult {
         public Builder folders(GetFoldersFolder... folders) {
             return folders(List.of(folders));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parentId(String parentId) {
             this.parentId = Objects.requireNonNull(parentId);
             return this;
-        }        public GetFoldersResult build() {
-            return new GetFoldersResult(folders, id, parentId);
+        }
+        public GetFoldersResult build() {
+            final var o = new GetFoldersResult();
+            o.folders = folders;
+            o.id = id;
+            o.parentId = parentId;
+            return o;
         }
     }
 }

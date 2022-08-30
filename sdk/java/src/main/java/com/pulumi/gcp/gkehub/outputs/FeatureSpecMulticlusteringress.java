@@ -13,13 +13,9 @@ public final class FeatureSpecMulticlusteringress {
      * @return Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
      * 
      */
-    private final String configMembership;
+    private String configMembership;
 
-    @CustomType.Constructor
-    private FeatureSpecMulticlusteringress(@CustomType.Parameter("configMembership") String configMembership) {
-        this.configMembership = configMembership;
-    }
-
+    private FeatureSpecMulticlusteringress() {}
     /**
      * @return Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
      * 
@@ -35,24 +31,24 @@ public final class FeatureSpecMulticlusteringress {
     public static Builder builder(FeatureSpecMulticlusteringress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String configMembership;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureSpecMulticlusteringress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configMembership = defaults.configMembership;
         }
 
+        @CustomType.Setter
         public Builder configMembership(String configMembership) {
             this.configMembership = Objects.requireNonNull(configMembership);
             return this;
-        }        public FeatureSpecMulticlusteringress build() {
-            return new FeatureSpecMulticlusteringress(configMembership);
+        }
+        public FeatureSpecMulticlusteringress build() {
+            final var o = new FeatureSpecMulticlusteringress();
+            o.configMembership = configMembership;
+            return o;
         }
     }
 }

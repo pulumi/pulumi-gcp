@@ -16,58 +16,41 @@ public final class FunctionBuildConfigSourceRepoSource {
      * @return Regex matching branches to build.
      * 
      */
-    private final @Nullable String branchName;
+    private @Nullable String branchName;
     /**
      * @return Regex matching tags to build.
      * 
      */
-    private final @Nullable String commitSha;
+    private @Nullable String commitSha;
     /**
      * @return Directory, relative to the source root, in which to run the build.
      * 
      */
-    private final @Nullable String dir;
+    private @Nullable String dir;
     /**
      * @return Only trigger a build if the revision regex does
      * NOT match the revision regex.
      * 
      */
-    private final @Nullable Boolean invertRegex;
+    private @Nullable Boolean invertRegex;
     /**
      * @return ID of the project that owns the Cloud Source Repository. If omitted, the
      * project ID requesting the build is assumed.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return Name of the Cloud Source Repository.
      * 
      */
-    private final @Nullable String repoName;
+    private @Nullable String repoName;
     /**
      * @return Regex matching tags to build.
      * 
      */
-    private final @Nullable String tagName;
+    private @Nullable String tagName;
 
-    @CustomType.Constructor
-    private FunctionBuildConfigSourceRepoSource(
-        @CustomType.Parameter("branchName") @Nullable String branchName,
-        @CustomType.Parameter("commitSha") @Nullable String commitSha,
-        @CustomType.Parameter("dir") @Nullable String dir,
-        @CustomType.Parameter("invertRegex") @Nullable Boolean invertRegex,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("repoName") @Nullable String repoName,
-        @CustomType.Parameter("tagName") @Nullable String tagName) {
-        this.branchName = branchName;
-        this.commitSha = commitSha;
-        this.dir = dir;
-        this.invertRegex = invertRegex;
-        this.projectId = projectId;
-        this.repoName = repoName;
-        this.tagName = tagName;
-    }
-
+    private FunctionBuildConfigSourceRepoSource() {}
     /**
      * @return Regex matching branches to build.
      * 
@@ -127,7 +110,7 @@ public final class FunctionBuildConfigSourceRepoSource {
     public static Builder builder(FunctionBuildConfigSourceRepoSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String branchName;
         private @Nullable String commitSha;
@@ -136,11 +119,7 @@ public final class FunctionBuildConfigSourceRepoSource {
         private @Nullable String projectId;
         private @Nullable String repoName;
         private @Nullable String tagName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionBuildConfigSourceRepoSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branchName = defaults.branchName;
@@ -152,35 +131,51 @@ public final class FunctionBuildConfigSourceRepoSource {
     	      this.tagName = defaults.tagName;
         }
 
+        @CustomType.Setter
         public Builder branchName(@Nullable String branchName) {
             this.branchName = branchName;
             return this;
         }
+        @CustomType.Setter
         public Builder commitSha(@Nullable String commitSha) {
             this.commitSha = commitSha;
             return this;
         }
+        @CustomType.Setter
         public Builder dir(@Nullable String dir) {
             this.dir = dir;
             return this;
         }
+        @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
             this.invertRegex = invertRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
             this.repoName = repoName;
             return this;
         }
+        @CustomType.Setter
         public Builder tagName(@Nullable String tagName) {
             this.tagName = tagName;
             return this;
-        }        public FunctionBuildConfigSourceRepoSource build() {
-            return new FunctionBuildConfigSourceRepoSource(branchName, commitSha, dir, invertRegex, projectId, repoName, tagName);
+        }
+        public FunctionBuildConfigSourceRepoSource build() {
+            final var o = new FunctionBuildConfigSourceRepoSource();
+            o.branchName = branchName;
+            o.commitSha = commitSha;
+            o.dir = dir;
+            o.invertRegex = invertRegex;
+            o.projectId = projectId;
+            o.repoName = repoName;
+            o.tagName = tagName;
+            return o;
         }
     }
 }

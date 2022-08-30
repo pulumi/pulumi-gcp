@@ -17,7 +17,7 @@ public final class RegionNetworkEndpointGroupCloudRun {
      * Example value: &#34;default&#34;, &#34;my-service&#34;.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return Cloud Run tag represents the &#34;named-revision&#34; to provide
      * additional fine-grained traffic routing information.
@@ -25,7 +25,7 @@ public final class RegionNetworkEndpointGroupCloudRun {
      * Example value: &#34;revision-0010&#34;.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
     /**
      * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
      * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
@@ -33,18 +33,9 @@ public final class RegionNetworkEndpointGroupCloudRun {
      * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
      * 
      */
-    private final @Nullable String urlMask;
+    private @Nullable String urlMask;
 
-    @CustomType.Constructor
-    private RegionNetworkEndpointGroupCloudRun(
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("tag") @Nullable String tag,
-        @CustomType.Parameter("urlMask") @Nullable String urlMask) {
-        this.service = service;
-        this.tag = tag;
-        this.urlMask = urlMask;
-    }
-
+    private RegionNetworkEndpointGroupCloudRun() {}
     /**
      * @return Optional serving service.
      * The service name must be 1-63 characters long, and comply with RFC1035.
@@ -82,16 +73,12 @@ public final class RegionNetworkEndpointGroupCloudRun {
     public static Builder builder(RegionNetworkEndpointGroupCloudRun defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String service;
         private @Nullable String tag;
         private @Nullable String urlMask;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionNetworkEndpointGroupCloudRun defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.service = defaults.service;
@@ -99,19 +86,27 @@ public final class RegionNetworkEndpointGroupCloudRun {
     	      this.urlMask = defaults.urlMask;
         }
 
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
+        @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
             this.urlMask = urlMask;
             return this;
-        }        public RegionNetworkEndpointGroupCloudRun build() {
-            return new RegionNetworkEndpointGroupCloudRun(service, tag, urlMask);
+        }
+        public RegionNetworkEndpointGroupCloudRun build() {
+            final var o = new RegionNetworkEndpointGroupCloudRun();
+            o.service = service;
+            o.tag = tag;
+            o.urlMask = urlMask;
+            return o;
         }
     }
 }

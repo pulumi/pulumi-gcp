@@ -17,13 +17,9 @@ public final class ManagedZoneForwardingConfig {
      * Structure is documented below.
      * 
      */
-    private final List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers;
+    private List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers;
 
-    @CustomType.Constructor
-    private ManagedZoneForwardingConfig(@CustomType.Parameter("targetNameServers") List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers) {
-        this.targetNameServers = targetNameServers;
-    }
-
+    private ManagedZoneForwardingConfig() {}
     /**
      * @return List of target name servers to forward to. Cloud DNS will
      * select the best available name server if more than
@@ -42,27 +38,27 @@ public final class ManagedZoneForwardingConfig {
     public static Builder builder(ManagedZoneForwardingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZoneForwardingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetNameServers = defaults.targetNameServers;
         }
 
+        @CustomType.Setter
         public Builder targetNameServers(List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers) {
             this.targetNameServers = Objects.requireNonNull(targetNameServers);
             return this;
         }
         public Builder targetNameServers(ManagedZoneForwardingConfigTargetNameServer... targetNameServers) {
             return targetNameServers(List.of(targetNameServers));
-        }        public ManagedZoneForwardingConfig build() {
-            return new ManagedZoneForwardingConfig(targetNameServers);
+        }
+        public ManagedZoneForwardingConfig build() {
+            final var o = new ManagedZoneForwardingConfig();
+            o.targetNameServers = targetNameServers;
+            return o;
         }
     }
 }

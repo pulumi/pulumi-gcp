@@ -15,21 +15,14 @@ public final class SecurityPolicyRuleRedirectOptions {
      * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
      * 
      */
-    private final @Nullable String target;
+    private @Nullable String target;
     /**
      * @return Type of redirect action.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private SecurityPolicyRuleRedirectOptions(
-        @CustomType.Parameter("target") @Nullable String target,
-        @CustomType.Parameter("type") String type) {
-        this.target = target;
-        this.type = type;
-    }
-
+    private SecurityPolicyRuleRedirectOptions() {}
     /**
      * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
      * 
@@ -52,30 +45,32 @@ public final class SecurityPolicyRuleRedirectOptions {
     public static Builder builder(SecurityPolicyRuleRedirectOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String target;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRuleRedirectOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.target = defaults.target;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder target(@Nullable String target) {
             this.target = target;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public SecurityPolicyRuleRedirectOptions build() {
-            return new SecurityPolicyRuleRedirectOptions(target, type);
+        }
+        public SecurityPolicyRuleRedirectOptions build() {
+            final var o = new SecurityPolicyRuleRedirectOptions();
+            o.target = target;
+            o.type = type;
+            return o;
         }
     }
 }

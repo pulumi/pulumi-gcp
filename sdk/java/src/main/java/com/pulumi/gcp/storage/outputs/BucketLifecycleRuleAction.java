@@ -15,21 +15,14 @@ public final class BucketLifecycleRuleAction {
      * @return The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      * 
      */
-    private final @Nullable String storageClass;
+    private @Nullable String storageClass;
     /**
      * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private BucketLifecycleRuleAction(
-        @CustomType.Parameter("storageClass") @Nullable String storageClass,
-        @CustomType.Parameter("type") String type) {
-        this.storageClass = storageClass;
-        this.type = type;
-    }
-
+    private BucketLifecycleRuleAction() {}
     /**
      * @return The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      * 
@@ -52,30 +45,32 @@ public final class BucketLifecycleRuleAction {
     public static Builder builder(BucketLifecycleRuleAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String storageClass;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLifecycleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.storageClass = defaults.storageClass;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder storageClass(@Nullable String storageClass) {
             this.storageClass = storageClass;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public BucketLifecycleRuleAction build() {
-            return new BucketLifecycleRuleAction(storageClass, type);
+        }
+        public BucketLifecycleRuleAction build() {
+            final var o = new BucketLifecycleRuleAction();
+            o.storageClass = storageClass;
+            o.type = type;
+            return o;
         }
     }
 }

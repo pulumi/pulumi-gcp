@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateRevocationDetail {
-    private final @Nullable String revocationState;
-    private final @Nullable String revocationTime;
+    private @Nullable String revocationState;
+    private @Nullable String revocationTime;
 
-    @CustomType.Constructor
-    private CertificateRevocationDetail(
-        @CustomType.Parameter("revocationState") @Nullable String revocationState,
-        @CustomType.Parameter("revocationTime") @Nullable String revocationTime) {
-        this.revocationState = revocationState;
-        this.revocationTime = revocationTime;
-    }
-
+    private CertificateRevocationDetail() {}
     public Optional<String> revocationState() {
         return Optional.ofNullable(this.revocationState);
     }
@@ -36,30 +29,32 @@ public final class CertificateRevocationDetail {
     public static Builder builder(CertificateRevocationDetail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String revocationState;
         private @Nullable String revocationTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateRevocationDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.revocationState = defaults.revocationState;
     	      this.revocationTime = defaults.revocationTime;
         }
 
+        @CustomType.Setter
         public Builder revocationState(@Nullable String revocationState) {
             this.revocationState = revocationState;
             return this;
         }
+        @CustomType.Setter
         public Builder revocationTime(@Nullable String revocationTime) {
             this.revocationTime = revocationTime;
             return this;
-        }        public CertificateRevocationDetail build() {
-            return new CertificateRevocationDetail(revocationState, revocationTime);
+        }
+        public CertificateRevocationDetail build() {
+            final var o = new CertificateRevocationDetail();
+            o.revocationState = revocationState;
+            o.revocationTime = revocationTime;
+            return o;
         }
     }
 }

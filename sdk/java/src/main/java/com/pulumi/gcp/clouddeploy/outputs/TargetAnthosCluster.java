@@ -15,13 +15,9 @@ public final class TargetAnthosCluster {
      * @return Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
      * 
      */
-    private final @Nullable String membership;
+    private @Nullable String membership;
 
-    @CustomType.Constructor
-    private TargetAnthosCluster(@CustomType.Parameter("membership") @Nullable String membership) {
-        this.membership = membership;
-    }
-
+    private TargetAnthosCluster() {}
     /**
      * @return Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
      * 
@@ -37,24 +33,24 @@ public final class TargetAnthosCluster {
     public static Builder builder(TargetAnthosCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String membership;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TargetAnthosCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.membership = defaults.membership;
         }
 
+        @CustomType.Setter
         public Builder membership(@Nullable String membership) {
             this.membership = membership;
             return this;
-        }        public TargetAnthosCluster build() {
-            return new TargetAnthosCluster(membership);
+        }
+        public TargetAnthosCluster build() {
+            final var o = new TargetAnthosCluster();
+            o.membership = membership;
+            return o;
         }
     }
 }

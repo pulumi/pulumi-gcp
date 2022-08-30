@@ -18,31 +18,22 @@ public final class PreventionStoredInfoTypeLargeCustomDictionary {
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField bigQueryField;
+    private @Nullable PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField bigQueryField;
     /**
      * @return Set of files containing newline-delimited lists of dictionary phrases.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet cloudStorageFileSet;
+    private @Nullable PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet cloudStorageFileSet;
     /**
      * @return Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API.
      * If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
      * Structure is documented below.
      * 
      */
-    private final PreventionStoredInfoTypeLargeCustomDictionaryOutputPath outputPath;
+    private PreventionStoredInfoTypeLargeCustomDictionaryOutputPath outputPath;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeLargeCustomDictionary(
-        @CustomType.Parameter("bigQueryField") @Nullable PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField bigQueryField,
-        @CustomType.Parameter("cloudStorageFileSet") @Nullable PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet cloudStorageFileSet,
-        @CustomType.Parameter("outputPath") PreventionStoredInfoTypeLargeCustomDictionaryOutputPath outputPath) {
-        this.bigQueryField = bigQueryField;
-        this.cloudStorageFileSet = cloudStorageFileSet;
-        this.outputPath = outputPath;
-    }
-
+    private PreventionStoredInfoTypeLargeCustomDictionary() {}
     /**
      * @return Field in a BigQuery table where each cell represents a dictionary phrase.
      * Structure is documented below.
@@ -76,16 +67,12 @@ public final class PreventionStoredInfoTypeLargeCustomDictionary {
     public static Builder builder(PreventionStoredInfoTypeLargeCustomDictionary defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField bigQueryField;
         private @Nullable PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet cloudStorageFileSet;
         private PreventionStoredInfoTypeLargeCustomDictionaryOutputPath outputPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeLargeCustomDictionary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigQueryField = defaults.bigQueryField;
@@ -93,19 +80,27 @@ public final class PreventionStoredInfoTypeLargeCustomDictionary {
     	      this.outputPath = defaults.outputPath;
         }
 
+        @CustomType.Setter
         public Builder bigQueryField(@Nullable PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField bigQueryField) {
             this.bigQueryField = bigQueryField;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudStorageFileSet(@Nullable PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet cloudStorageFileSet) {
             this.cloudStorageFileSet = cloudStorageFileSet;
             return this;
         }
+        @CustomType.Setter
         public Builder outputPath(PreventionStoredInfoTypeLargeCustomDictionaryOutputPath outputPath) {
             this.outputPath = Objects.requireNonNull(outputPath);
             return this;
-        }        public PreventionStoredInfoTypeLargeCustomDictionary build() {
-            return new PreventionStoredInfoTypeLargeCustomDictionary(bigQueryField, cloudStorageFileSet, outputPath);
+        }
+        public PreventionStoredInfoTypeLargeCustomDictionary build() {
+            final var o = new PreventionStoredInfoTypeLargeCustomDictionary();
+            o.bigQueryField = bigQueryField;
+            o.cloudStorageFileSet = cloudStorageFileSet;
+            o.outputPath = outputPath;
+            return o;
         }
     }
 }

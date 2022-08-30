@@ -56,6 +56,7 @@ class ClusterArgs:
                  networking_mode: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
@@ -195,6 +196,9 @@ class ClusterArgs:
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+        :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+               [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+               [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -327,6 +331,8 @@ class ClusterArgs:
             pulumi.set(__self__, "node_config", node_config)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
+        if node_pool_auto_config is not None:
+            pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
         if node_version is not None:
@@ -921,6 +927,20 @@ class ClusterArgs:
         pulumi.set(self, "node_locations", value)
 
     @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]:
+        """
+        ) Node pool configs that apply to auto-provisioned node pools in
+        [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+        [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
+
+    @node_pool_auto_config.setter
+    def node_pool_auto_config(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]):
+        pulumi.set(self, "node_pool_auto_config", value)
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
@@ -1180,6 +1200,7 @@ class _ClusterState:
                  networking_mode: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
@@ -1328,6 +1349,9 @@ class _ClusterState:
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+        :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+               [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+               [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1474,6 +1498,8 @@ class _ClusterState:
             pulumi.set(__self__, "node_config", node_config)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
+        if node_pool_auto_config is not None:
+            pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
         if node_version is not None:
@@ -2114,6 +2140,20 @@ class _ClusterState:
         pulumi.set(self, "node_locations", value)
 
     @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]:
+        """
+        ) Node pool configs that apply to auto-provisioned node pools in
+        [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+        [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
+
+    @node_pool_auto_config.setter
+    def node_pool_auto_config(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]):
+        pulumi.set(self, "node_pool_auto_config", value)
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
@@ -2422,6 +2462,7 @@ class Cluster(pulumi.CustomResource):
                  networking_mode: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
@@ -2632,6 +2673,9 @@ class Cluster(pulumi.CustomResource):
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+               [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+               [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -2812,6 +2856,7 @@ class Cluster(pulumi.CustomResource):
                  networking_mode: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
@@ -2879,6 +2924,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["networking_mode"] = networking_mode
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_locations"] = node_locations
+            __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["node_version"] = node_version
             __props__.__dict__["notification_config"] = notification_config
@@ -2954,6 +3000,7 @@ class Cluster(pulumi.CustomResource):
             networking_mode: Optional[pulumi.Input[str]] = None,
             node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']]] = None,
             node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
             node_version: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
@@ -3107,6 +3154,9 @@ class Cluster(pulumi.CustomResource):
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+               [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+               [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -3211,6 +3261,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["networking_mode"] = networking_mode
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["node_locations"] = node_locations
+        __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
         __props__.__dict__["node_pools"] = node_pools
         __props__.__dict__["node_version"] = node_version
         __props__.__dict__["notification_config"] = notification_config
@@ -3659,6 +3710,16 @@ class Cluster(pulumi.CustomResource):
         a zonal cluster, omit the cluster's zone.
         """
         return pulumi.get(self, "node_locations")
+
+    @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> pulumi.Output[Optional['outputs.ClusterNodePoolAutoConfig']]:
+        """
+        ) Node pool configs that apply to auto-provisioned node pools in
+        [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+        [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
 
     @property
     @pulumi.getter(name="nodePools")

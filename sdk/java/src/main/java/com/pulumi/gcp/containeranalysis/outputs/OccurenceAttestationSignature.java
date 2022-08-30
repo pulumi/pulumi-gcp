@@ -24,7 +24,7 @@ public final class OccurenceAttestationSignature {
      * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
      * 
      */
-    private final String publicKeyId;
+    private String publicKeyId;
     /**
      * @return The content of the signature, an opaque bytestring.
      * The payload that this signature verifies MUST be
@@ -35,16 +35,9 @@ public final class OccurenceAttestationSignature {
      * unambiguously computed to derive the payload.
      * 
      */
-    private final @Nullable String signature;
+    private @Nullable String signature;
 
-    @CustomType.Constructor
-    private OccurenceAttestationSignature(
-        @CustomType.Parameter("publicKeyId") String publicKeyId,
-        @CustomType.Parameter("signature") @Nullable String signature) {
-        this.publicKeyId = publicKeyId;
-        this.signature = signature;
-    }
-
+    private OccurenceAttestationSignature() {}
     /**
      * @return The identifier for the public key that verifies this
      * signature. MUST be an RFC3986 conformant
@@ -82,30 +75,32 @@ public final class OccurenceAttestationSignature {
     public static Builder builder(OccurenceAttestationSignature defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String publicKeyId;
         private @Nullable String signature;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OccurenceAttestationSignature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicKeyId = defaults.publicKeyId;
     	      this.signature = defaults.signature;
         }
 
+        @CustomType.Setter
         public Builder publicKeyId(String publicKeyId) {
             this.publicKeyId = Objects.requireNonNull(publicKeyId);
             return this;
         }
+        @CustomType.Setter
         public Builder signature(@Nullable String signature) {
             this.signature = signature;
             return this;
-        }        public OccurenceAttestationSignature build() {
-            return new OccurenceAttestationSignature(publicKeyId, signature);
+        }
+        public OccurenceAttestationSignature build() {
+            final var o = new OccurenceAttestationSignature();
+            o.publicKeyId = publicKeyId;
+            o.signature = signature;
+            return o;
         }
     }
 }

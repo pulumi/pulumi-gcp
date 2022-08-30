@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppEngineServiceTelemetry {
-    private final String resourceName;
+    private String resourceName;
 
-    @CustomType.Constructor
-    private GetAppEngineServiceTelemetry(@CustomType.Parameter("resourceName") String resourceName) {
-        this.resourceName = resourceName;
-    }
-
+    private GetAppEngineServiceTelemetry() {}
     public String resourceName() {
         return this.resourceName;
     }
@@ -27,24 +23,24 @@ public final class GetAppEngineServiceTelemetry {
     public static Builder builder(GetAppEngineServiceTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppEngineServiceTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceName = defaults.resourceName;
         }
 
+        @CustomType.Setter
         public Builder resourceName(String resourceName) {
             this.resourceName = Objects.requireNonNull(resourceName);
             return this;
-        }        public GetAppEngineServiceTelemetry build() {
-            return new GetAppEngineServiceTelemetry(resourceName);
+        }
+        public GetAppEngineServiceTelemetry build() {
+            final var o = new GetAppEngineServiceTelemetry();
+            o.resourceName = resourceName;
+            return o;
         }
     }
 }

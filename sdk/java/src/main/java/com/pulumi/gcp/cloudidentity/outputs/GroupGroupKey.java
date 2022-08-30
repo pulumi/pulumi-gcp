@@ -20,7 +20,7 @@ public final class GroupGroupKey {
      * Must be unique within a namespace.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The namespace in which the entity exists.
      * If not specified, the EntityKey represents a Google-managed entity
@@ -30,16 +30,9 @@ public final class GroupGroupKey {
      * and must be in the form of `identitysources/{identity_source_id}`.
      * 
      */
-    private final @Nullable String namespace;
+    private @Nullable String namespace;
 
-    @CustomType.Constructor
-    private GroupGroupKey(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namespace") @Nullable String namespace) {
-        this.id = id;
-        this.namespace = namespace;
-    }
-
+    private GroupGroupKey() {}
     /**
      * @return The ID of the entity.
      * For Google-managed entities, the id must be the email address of an existing
@@ -72,30 +65,32 @@ public final class GroupGroupKey {
     public static Builder builder(GroupGroupKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String namespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GroupGroupKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
-        }        public GroupGroupKey build() {
-            return new GroupGroupKey(id, namespace);
+        }
+        public GroupGroupKey build() {
+            final var o = new GroupGroupKey();
+            o.id = id;
+            o.namespace = namespace;
+            return o;
         }
     }
 }

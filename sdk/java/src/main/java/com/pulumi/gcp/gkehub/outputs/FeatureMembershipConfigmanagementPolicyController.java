@@ -18,63 +18,44 @@ public final class FeatureMembershipConfigmanagementPolicyController {
      * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
      * 
      */
-    private final @Nullable String auditIntervalSeconds;
+    private @Nullable String auditIntervalSeconds;
     /**
      * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
      * 
      */
-    private final @Nullable List<String> exemptableNamespaces;
+    private @Nullable List<String> exemptableNamespaces;
     /**
      * @return Logs all denies and dry run failures.
      * 
      */
-    private final @Nullable Boolean logDeniesEnabled;
+    private @Nullable Boolean logDeniesEnabled;
     /**
      * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
      * 
      */
-    private final @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring;
+    private @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring;
     /**
      * @return Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
      * 
      */
-    private final @Nullable Boolean mutationEnabled;
+    private @Nullable Boolean mutationEnabled;
     /**
      * @return Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
      * 
      */
-    private final @Nullable Boolean referentialRulesEnabled;
+    private @Nullable Boolean referentialRulesEnabled;
     /**
      * @return Installs the default template library along with Policy Controller.
      * 
      */
-    private final @Nullable Boolean templateLibraryInstalled;
+    private @Nullable Boolean templateLibraryInstalled;
 
-    @CustomType.Constructor
-    private FeatureMembershipConfigmanagementPolicyController(
-        @CustomType.Parameter("auditIntervalSeconds") @Nullable String auditIntervalSeconds,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("exemptableNamespaces") @Nullable List<String> exemptableNamespaces,
-        @CustomType.Parameter("logDeniesEnabled") @Nullable Boolean logDeniesEnabled,
-        @CustomType.Parameter("monitoring") @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring,
-        @CustomType.Parameter("mutationEnabled") @Nullable Boolean mutationEnabled,
-        @CustomType.Parameter("referentialRulesEnabled") @Nullable Boolean referentialRulesEnabled,
-        @CustomType.Parameter("templateLibraryInstalled") @Nullable Boolean templateLibraryInstalled) {
-        this.auditIntervalSeconds = auditIntervalSeconds;
-        this.enabled = enabled;
-        this.exemptableNamespaces = exemptableNamespaces;
-        this.logDeniesEnabled = logDeniesEnabled;
-        this.monitoring = monitoring;
-        this.mutationEnabled = mutationEnabled;
-        this.referentialRulesEnabled = referentialRulesEnabled;
-        this.templateLibraryInstalled = templateLibraryInstalled;
-    }
-
+    private FeatureMembershipConfigmanagementPolicyController() {}
     /**
      * @return Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
      * 
@@ -139,7 +120,7 @@ public final class FeatureMembershipConfigmanagementPolicyController {
     public static Builder builder(FeatureMembershipConfigmanagementPolicyController defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String auditIntervalSeconds;
         private @Nullable Boolean enabled;
@@ -149,11 +130,7 @@ public final class FeatureMembershipConfigmanagementPolicyController {
         private @Nullable Boolean mutationEnabled;
         private @Nullable Boolean referentialRulesEnabled;
         private @Nullable Boolean templateLibraryInstalled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureMembershipConfigmanagementPolicyController defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditIntervalSeconds = defaults.auditIntervalSeconds;
@@ -166,14 +143,17 @@ public final class FeatureMembershipConfigmanagementPolicyController {
     	      this.templateLibraryInstalled = defaults.templateLibraryInstalled;
         }
 
+        @CustomType.Setter
         public Builder auditIntervalSeconds(@Nullable String auditIntervalSeconds) {
             this.auditIntervalSeconds = auditIntervalSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder exemptableNamespaces(@Nullable List<String> exemptableNamespaces) {
             this.exemptableNamespaces = exemptableNamespaces;
             return this;
@@ -181,27 +161,42 @@ public final class FeatureMembershipConfigmanagementPolicyController {
         public Builder exemptableNamespaces(String... exemptableNamespaces) {
             return exemptableNamespaces(List.of(exemptableNamespaces));
         }
+        @CustomType.Setter
         public Builder logDeniesEnabled(@Nullable Boolean logDeniesEnabled) {
             this.logDeniesEnabled = logDeniesEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(@Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring) {
             this.monitoring = monitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder mutationEnabled(@Nullable Boolean mutationEnabled) {
             this.mutationEnabled = mutationEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder referentialRulesEnabled(@Nullable Boolean referentialRulesEnabled) {
             this.referentialRulesEnabled = referentialRulesEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder templateLibraryInstalled(@Nullable Boolean templateLibraryInstalled) {
             this.templateLibraryInstalled = templateLibraryInstalled;
             return this;
-        }        public FeatureMembershipConfigmanagementPolicyController build() {
-            return new FeatureMembershipConfigmanagementPolicyController(auditIntervalSeconds, enabled, exemptableNamespaces, logDeniesEnabled, monitoring, mutationEnabled, referentialRulesEnabled, templateLibraryInstalled);
+        }
+        public FeatureMembershipConfigmanagementPolicyController build() {
+            final var o = new FeatureMembershipConfigmanagementPolicyController();
+            o.auditIntervalSeconds = auditIntervalSeconds;
+            o.enabled = enabled;
+            o.exemptableNamespaces = exemptableNamespaces;
+            o.logDeniesEnabled = logDeniesEnabled;
+            o.monitoring = monitoring;
+            o.mutationEnabled = mutationEnabled;
+            o.referentialRulesEnabled = referentialRulesEnabled;
+            o.templateLibraryInstalled = templateLibraryInstalled;
+            return o;
         }
     }
 }

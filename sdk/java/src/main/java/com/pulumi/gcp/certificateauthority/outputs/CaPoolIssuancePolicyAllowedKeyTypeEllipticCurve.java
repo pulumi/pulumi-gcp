@@ -14,13 +14,9 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
      * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
      * 
      */
-    private final String signatureAlgorithm;
+    private String signatureAlgorithm;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(@CustomType.Parameter("signatureAlgorithm") String signatureAlgorithm) {
-        this.signatureAlgorithm = signatureAlgorithm;
-    }
-
+    private CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve() {}
     /**
      * @return The algorithm used.
      * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
@@ -37,24 +33,24 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
     public static Builder builder(CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String signatureAlgorithm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.signatureAlgorithm = defaults.signatureAlgorithm;
         }
 
+        @CustomType.Setter
         public Builder signatureAlgorithm(String signatureAlgorithm) {
             this.signatureAlgorithm = Objects.requireNonNull(signatureAlgorithm);
             return this;
-        }        public CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve build() {
-            return new CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(signatureAlgorithm);
+        }
+        public CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve build() {
+            final var o = new CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve();
+            o.signatureAlgorithm = signatureAlgorithm;
+            return o;
         }
     }
 }

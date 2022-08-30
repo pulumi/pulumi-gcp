@@ -15,48 +15,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationChannelResult {
-    private final String description;
-    private final @Nullable String displayName;
-    private final Boolean enabled;
+    private String description;
+    private @Nullable String displayName;
+    private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Map<String,String> labels;
-    private final String name;
-    private final @Nullable String project;
-    private final List<GetNotificationChannelSensitiveLabel> sensitiveLabels;
-    private final @Nullable String type;
-    private final @Nullable Map<String,String> userLabels;
-    private final String verificationStatus;
+    private String id;
+    private @Nullable Map<String,String> labels;
+    private String name;
+    private @Nullable String project;
+    private List<GetNotificationChannelSensitiveLabel> sensitiveLabels;
+    private @Nullable String type;
+    private @Nullable Map<String,String> userLabels;
+    private String verificationStatus;
 
-    @CustomType.Constructor
-    private GetNotificationChannelResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("sensitiveLabels") List<GetNotificationChannelSensitiveLabel> sensitiveLabels,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("userLabels") @Nullable Map<String,String> userLabels,
-        @CustomType.Parameter("verificationStatus") String verificationStatus) {
-        this.description = description;
-        this.displayName = displayName;
-        this.enabled = enabled;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.project = project;
-        this.sensitiveLabels = sensitiveLabels;
-        this.type = type;
-        this.userLabels = userLabels;
-        this.verificationStatus = verificationStatus;
-    }
-
+    private GetNotificationChannelResult() {}
     public String description() {
         return this.description;
     }
@@ -102,7 +77,7 @@ public final class GetNotificationChannelResult {
     public static Builder builder(GetNotificationChannelResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private @Nullable String displayName;
@@ -115,11 +90,7 @@ public final class GetNotificationChannelResult {
         private @Nullable String type;
         private @Nullable Map<String,String> userLabels;
         private String verificationStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotificationChannelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -135,34 +106,42 @@ public final class GetNotificationChannelResult {
     	      this.verificationStatus = defaults.verificationStatus;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder sensitiveLabels(List<GetNotificationChannelSensitiveLabel> sensitiveLabels) {
             this.sensitiveLabels = Objects.requireNonNull(sensitiveLabels);
             return this;
@@ -170,19 +149,35 @@ public final class GetNotificationChannelResult {
         public Builder sensitiveLabels(GetNotificationChannelSensitiveLabel... sensitiveLabels) {
             return sensitiveLabels(List.of(sensitiveLabels));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder userLabels(@Nullable Map<String,String> userLabels) {
             this.userLabels = userLabels;
             return this;
         }
+        @CustomType.Setter
         public Builder verificationStatus(String verificationStatus) {
             this.verificationStatus = Objects.requireNonNull(verificationStatus);
             return this;
-        }        public GetNotificationChannelResult build() {
-            return new GetNotificationChannelResult(description, displayName, enabled, id, labels, name, project, sensitiveLabels, type, userLabels, verificationStatus);
+        }
+        public GetNotificationChannelResult build() {
+            final var o = new GetNotificationChannelResult();
+            o.description = description;
+            o.displayName = displayName;
+            o.enabled = enabled;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.project = project;
+            o.sensitiveLabels = sensitiveLabels;
+            o.type = type;
+            o.userLabels = userLabels;
+            o.verificationStatus = verificationStatus;
+            return o;
         }
     }
 }

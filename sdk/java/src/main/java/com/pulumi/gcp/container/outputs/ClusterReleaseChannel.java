@@ -18,13 +18,9 @@ public final class ClusterReleaseChannel {
      * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
      * 
      */
-    private final String channel;
+    private String channel;
 
-    @CustomType.Constructor
-    private ClusterReleaseChannel(@CustomType.Parameter("channel") String channel) {
-        this.channel = channel;
-    }
-
+    private ClusterReleaseChannel() {}
     /**
      * @return The selected release channel.
      * Accepted values are:
@@ -45,24 +41,24 @@ public final class ClusterReleaseChannel {
     public static Builder builder(ClusterReleaseChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String channel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterReleaseChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channel = defaults.channel;
         }
 
+        @CustomType.Setter
         public Builder channel(String channel) {
             this.channel = Objects.requireNonNull(channel);
             return this;
-        }        public ClusterReleaseChannel build() {
-            return new ClusterReleaseChannel(channel);
+        }
+        public ClusterReleaseChannel build() {
+            final var o = new ClusterReleaseChannel();
+            o.channel = channel;
+            return o;
         }
     }
 }

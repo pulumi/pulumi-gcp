@@ -19,35 +19,24 @@ public final class CxFlowTransitionRouteTriggerFulfillment {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CxFlowTransitionRouteTriggerFulfillmentMessage> messages;
+    private @Nullable List<CxFlowTransitionRouteTriggerFulfillmentMessage> messages;
     /**
      * @return Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
      * 
      */
-    private final @Nullable Boolean returnPartialResponses;
+    private @Nullable Boolean returnPartialResponses;
     /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
     /**
      * @return The webhook to call. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
      * 
      */
-    private final @Nullable String webhook;
+    private @Nullable String webhook;
 
-    @CustomType.Constructor
-    private CxFlowTransitionRouteTriggerFulfillment(
-        @CustomType.Parameter("messages") @Nullable List<CxFlowTransitionRouteTriggerFulfillmentMessage> messages,
-        @CustomType.Parameter("returnPartialResponses") @Nullable Boolean returnPartialResponses,
-        @CustomType.Parameter("tag") @Nullable String tag,
-        @CustomType.Parameter("webhook") @Nullable String webhook) {
-        this.messages = messages;
-        this.returnPartialResponses = returnPartialResponses;
-        this.tag = tag;
-        this.webhook = webhook;
-    }
-
+    private CxFlowTransitionRouteTriggerFulfillment() {}
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -85,17 +74,13 @@ public final class CxFlowTransitionRouteTriggerFulfillment {
     public static Builder builder(CxFlowTransitionRouteTriggerFulfillment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CxFlowTransitionRouteTriggerFulfillmentMessage> messages;
         private @Nullable Boolean returnPartialResponses;
         private @Nullable String tag;
         private @Nullable String webhook;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxFlowTransitionRouteTriggerFulfillment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.messages = defaults.messages;
@@ -104,6 +89,7 @@ public final class CxFlowTransitionRouteTriggerFulfillment {
     	      this.webhook = defaults.webhook;
         }
 
+        @CustomType.Setter
         public Builder messages(@Nullable List<CxFlowTransitionRouteTriggerFulfillmentMessage> messages) {
             this.messages = messages;
             return this;
@@ -111,19 +97,28 @@ public final class CxFlowTransitionRouteTriggerFulfillment {
         public Builder messages(CxFlowTransitionRouteTriggerFulfillmentMessage... messages) {
             return messages(List.of(messages));
         }
+        @CustomType.Setter
         public Builder returnPartialResponses(@Nullable Boolean returnPartialResponses) {
             this.returnPartialResponses = returnPartialResponses;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
+        @CustomType.Setter
         public Builder webhook(@Nullable String webhook) {
             this.webhook = webhook;
             return this;
-        }        public CxFlowTransitionRouteTriggerFulfillment build() {
-            return new CxFlowTransitionRouteTriggerFulfillment(messages, returnPartialResponses, tag, webhook);
+        }
+        public CxFlowTransitionRouteTriggerFulfillment build() {
+            final var o = new CxFlowTransitionRouteTriggerFulfillment();
+            o.messages = messages;
+            o.returnPartialResponses = returnPartialResponses;
+            o.tag = tag;
+            o.webhook = webhook;
+            return o;
         }
     }
 }

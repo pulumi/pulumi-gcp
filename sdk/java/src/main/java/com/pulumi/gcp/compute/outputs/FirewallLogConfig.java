@@ -14,13 +14,9 @@ public final class FirewallLogConfig {
      * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
      * 
      */
-    private final String metadata;
+    private String metadata;
 
-    @CustomType.Constructor
-    private FirewallLogConfig(@CustomType.Parameter("metadata") String metadata) {
-        this.metadata = metadata;
-    }
-
+    private FirewallLogConfig() {}
     /**
      * @return This field denotes whether to include or exclude metadata for firewall logs.
      * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
@@ -37,24 +33,24 @@ public final class FirewallLogConfig {
     public static Builder builder(FirewallLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String metadata;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metadata = defaults.metadata;
         }
 
+        @CustomType.Setter
         public Builder metadata(String metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
-        }        public FirewallLogConfig build() {
-            return new FirewallLogConfig(metadata);
+        }
+        public FirewallLogConfig build() {
+            final var o = new FirewallLogConfig();
+            o.metadata = metadata;
+            return o;
         }
     }
 }

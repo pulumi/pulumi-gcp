@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
-    private final List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
-    private final Boolean enabled;
+    private List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigMasterAuthorizedNetworksConfig(
-        @CustomType.Parameter("cidrBlocks") List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks,
-        @CustomType.Parameter("enabled") Boolean enabled) {
-        this.cidrBlocks = cidrBlocks;
-        this.enabled = enabled;
-    }
-
+    private GetEnvironmentConfigMasterAuthorizedNetworksConfig() {}
     public List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
     }
@@ -36,21 +29,18 @@ public final class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
     public static Builder builder(GetEnvironmentConfigMasterAuthorizedNetworksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder cidrBlocks(List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
             this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
             return this;
@@ -58,11 +48,16 @@ public final class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
         public Builder cidrBlocks(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetEnvironmentConfigMasterAuthorizedNetworksConfig build() {
-            return new GetEnvironmentConfigMasterAuthorizedNetworksConfig(cidrBlocks, enabled);
+        }
+        public GetEnvironmentConfigMasterAuthorizedNetworksConfig build() {
+            final var o = new GetEnvironmentConfigMasterAuthorizedNetworksConfig();
+            o.cidrBlocks = cidrBlocks;
+            o.enabled = enabled;
+            return o;
         }
     }
 }

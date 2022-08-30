@@ -13,44 +13,27 @@ public final class GetAddressResult {
      * @return The IP of the created resource.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String project;
-    private final String region;
+    private String id;
+    private String name;
+    private String project;
+    private String region;
     /**
      * @return The URI of the created resource.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
     /**
      * @return Indicates if the address is used. Possible values are: RESERVED or IN_USE.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetAddressResult(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("status") String status) {
-        this.address = address;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.region = region;
-        this.selfLink = selfLink;
-        this.status = status;
-    }
-
+    private GetAddressResult() {}
     /**
      * @return The IP of the created resource.
      * 
@@ -96,7 +79,7 @@ public final class GetAddressResult {
     public static Builder builder(GetAddressResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private String id;
@@ -105,11 +88,7 @@ public final class GetAddressResult {
         private String region;
         private String selfLink;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAddressResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -121,35 +100,51 @@ public final class GetAddressResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetAddressResult build() {
-            return new GetAddressResult(address, id, name, project, region, selfLink, status);
+        }
+        public GetAddressResult build() {
+            final var o = new GetAddressResult();
+            o.address = address;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.region = region;
+            o.selfLink = selfLink;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -164,6 +164,15 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
+     * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     */
+    public readonly retention!: pulumi.Output<string | undefined>;
+    /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.
@@ -203,6 +212,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = state ? state.runtimeDatabaseEncryptionKeyName : undefined;
             resourceInputs["runtimeType"] = state ? state.runtimeType : undefined;
             resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
@@ -217,6 +227,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
             resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
             resourceInputs["caCertificate"] = undefined /*out*/;
@@ -268,6 +279,15 @@ export interface OrganizationState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     */
+    retention?: pulumi.Input<string>;
+    /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.
@@ -317,6 +337,15 @@ export interface OrganizationArgs {
      * The project ID associated with the Apigee organization.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     */
+    retention?: pulumi.Input<string>;
     /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.

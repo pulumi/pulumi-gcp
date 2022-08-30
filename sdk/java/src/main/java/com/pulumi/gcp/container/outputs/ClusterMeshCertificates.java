@@ -13,13 +13,9 @@ public final class ClusterMeshCertificates {
      * @return Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
      * 
      */
-    private final Boolean enableCertificates;
+    private Boolean enableCertificates;
 
-    @CustomType.Constructor
-    private ClusterMeshCertificates(@CustomType.Parameter("enableCertificates") Boolean enableCertificates) {
-        this.enableCertificates = enableCertificates;
-    }
-
+    private ClusterMeshCertificates() {}
     /**
      * @return Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
      * 
@@ -35,24 +31,24 @@ public final class ClusterMeshCertificates {
     public static Builder builder(ClusterMeshCertificates defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableCertificates;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMeshCertificates defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableCertificates = defaults.enableCertificates;
         }
 
+        @CustomType.Setter
         public Builder enableCertificates(Boolean enableCertificates) {
             this.enableCertificates = Objects.requireNonNull(enableCertificates);
             return this;
-        }        public ClusterMeshCertificates build() {
-            return new ClusterMeshCertificates(enableCertificates);
+        }
+        public ClusterMeshCertificates build() {
+            final var o = new ClusterMeshCertificates();
+            o.enableCertificates = enableCertificates;
+            return o;
         }
     }
 }

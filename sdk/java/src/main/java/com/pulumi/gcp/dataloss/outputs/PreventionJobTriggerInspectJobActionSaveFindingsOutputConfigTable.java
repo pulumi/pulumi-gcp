@@ -15,29 +15,20 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
      * @return Dataset ID of the table.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The Google Cloud Platform project ID of the project containing the table.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return Name of the table. If is not set a new one will be generated for you with the following format:
      * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
      * 
      */
-    private final @Nullable String tableId;
+    private @Nullable String tableId;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("tableId") @Nullable String tableId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-        this.tableId = tableId;
-    }
-
+    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable() {}
     /**
      * @return Dataset ID of the table.
      * 
@@ -68,16 +59,12 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
     public static Builder builder(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private String projectId;
         private @Nullable String tableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
@@ -85,19 +72,27 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
     	      this.tableId = defaults.tableId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder tableId(@Nullable String tableId) {
             this.tableId = tableId;
             return this;
-        }        public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable build() {
-            return new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(datasetId, projectId, tableId);
+        }
+        public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable build() {
+            final var o = new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            o.tableId = tableId;
+            return o;
         }
     }
 }

@@ -16,22 +16,15 @@ public final class EdgeCacheServiceLogConfig {
      * @return Specifies whether to enable logging for traffic served by this service.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return Configures the sampling rate of requests, where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0, and the value of the field must be in [0, 1].
      * This field can only be specified if logging is enabled for this service.
      * 
      */
-    private final @Nullable Double sampleRate;
+    private @Nullable Double sampleRate;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceLogConfig(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("sampleRate") @Nullable Double sampleRate) {
-        this.enable = enable;
-        this.sampleRate = sampleRate;
-    }
-
+    private EdgeCacheServiceLogConfig() {}
     /**
      * @return Specifies whether to enable logging for traffic served by this service.
      * 
@@ -55,30 +48,32 @@ public final class EdgeCacheServiceLogConfig {
     public static Builder builder(EdgeCacheServiceLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable Double sampleRate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.sampleRate = defaults.sampleRate;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder sampleRate(@Nullable Double sampleRate) {
             this.sampleRate = sampleRate;
             return this;
-        }        public EdgeCacheServiceLogConfig build() {
-            return new EdgeCacheServiceLogConfig(enable, sampleRate);
+        }
+        public EdgeCacheServiceLogConfig build() {
+            final var o = new EdgeCacheServiceLogConfig();
+            o.enable = enable;
+            o.sampleRate = sampleRate;
+            return o;
         }
     }
 }

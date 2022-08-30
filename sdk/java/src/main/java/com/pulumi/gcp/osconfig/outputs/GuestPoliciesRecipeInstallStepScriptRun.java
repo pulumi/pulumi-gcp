@@ -17,30 +17,21 @@ public final class GuestPoliciesRecipeInstallStepScriptRun {
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
      */
-    private final @Nullable List<Integer> allowedExitCodes;
+    private @Nullable List<Integer> allowedExitCodes;
     /**
      * @return The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
      * which likely only succeed for scripts with shebang lines.
      * Possible values are `SHELL` and `POWERSHELL`.
      * 
      */
-    private final @Nullable String interpreter;
+    private @Nullable String interpreter;
     /**
      * @return The shell script to be executed.
      * 
      */
-    private final String script;
+    private String script;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeInstallStepScriptRun(
-        @CustomType.Parameter("allowedExitCodes") @Nullable List<Integer> allowedExitCodes,
-        @CustomType.Parameter("interpreter") @Nullable String interpreter,
-        @CustomType.Parameter("script") String script) {
-        this.allowedExitCodes = allowedExitCodes;
-        this.interpreter = interpreter;
-        this.script = script;
-    }
-
+    private GuestPoliciesRecipeInstallStepScriptRun() {}
     /**
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
@@ -72,16 +63,12 @@ public final class GuestPoliciesRecipeInstallStepScriptRun {
     public static Builder builder(GuestPoliciesRecipeInstallStepScriptRun defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> allowedExitCodes;
         private @Nullable String interpreter;
         private String script;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeInstallStepScriptRun defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedExitCodes = defaults.allowedExitCodes;
@@ -89,6 +76,7 @@ public final class GuestPoliciesRecipeInstallStepScriptRun {
     	      this.script = defaults.script;
         }
 
+        @CustomType.Setter
         public Builder allowedExitCodes(@Nullable List<Integer> allowedExitCodes) {
             this.allowedExitCodes = allowedExitCodes;
             return this;
@@ -96,15 +84,22 @@ public final class GuestPoliciesRecipeInstallStepScriptRun {
         public Builder allowedExitCodes(Integer... allowedExitCodes) {
             return allowedExitCodes(List.of(allowedExitCodes));
         }
+        @CustomType.Setter
         public Builder interpreter(@Nullable String interpreter) {
             this.interpreter = interpreter;
             return this;
         }
+        @CustomType.Setter
         public Builder script(String script) {
             this.script = Objects.requireNonNull(script);
             return this;
-        }        public GuestPoliciesRecipeInstallStepScriptRun build() {
-            return new GuestPoliciesRecipeInstallStepScriptRun(allowedExitCodes, interpreter, script);
+        }
+        public GuestPoliciesRecipeInstallStepScriptRun build() {
+            final var o = new GuestPoliciesRecipeInstallStepScriptRun();
+            o.allowedExitCodes = allowedExitCodes;
+            o.interpreter = interpreter;
+            o.script = script;
+            return o;
         }
     }
 }

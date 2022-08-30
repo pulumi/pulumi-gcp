@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyRestorePolicy {
-    private final Boolean default_;
+    private Boolean default_;
 
-    @CustomType.Constructor
-    private GetOrganizationPolicyRestorePolicy(@CustomType.Parameter("default") Boolean default_) {
-        this.default_ = default_;
-    }
-
+    private GetOrganizationPolicyRestorePolicy() {}
     public Boolean default_() {
         return this.default_;
     }
@@ -27,24 +23,24 @@ public final class GetOrganizationPolicyRestorePolicy {
     public static Builder builder(GetOrganizationPolicyRestorePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean default_;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationPolicyRestorePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
-        }        public GetOrganizationPolicyRestorePolicy build() {
-            return new GetOrganizationPolicyRestorePolicy(default_);
+        }
+        public GetOrganizationPolicyRestorePolicy build() {
+            final var o = new GetOrganizationPolicyRestorePolicy();
+            o.default_ = default_;
+            return o;
         }
     }
 }

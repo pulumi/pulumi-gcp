@@ -18,25 +18,25 @@ public final class TableExternalDataConfigurationCsvOptions {
      * that are missing trailing optional columns.
      * 
      */
-    private final @Nullable Boolean allowJaggedRows;
+    private @Nullable Boolean allowJaggedRows;
     /**
      * @return Indicates if BigQuery should allow
      * quoted data sections that contain newline characters in a CSV file.
      * The default value is false.
      * 
      */
-    private final @Nullable Boolean allowQuotedNewlines;
+    private @Nullable Boolean allowQuotedNewlines;
     /**
      * @return The character encoding of the data. The supported
      * values are UTF-8 or ISO-8859-1.
      * 
      */
-    private final @Nullable String encoding;
+    private @Nullable String encoding;
     /**
      * @return The separator for fields in a CSV file.
      * 
      */
-    private final @Nullable String fieldDelimiter;
+    private @Nullable String fieldDelimiter;
     /**
      * @return The value that is used to quote data sections in a
      * CSV file. If your data does not contain quoted sections, set the
@@ -47,31 +47,16 @@ public final class TableExternalDataConfigurationCsvOptions {
      * explicitly set.
      * 
      */
-    private final String quote;
+    private String quote;
     /**
      * @return The number of rows at the top of the sheet
      * that BigQuery will skip when reading the data. At least one of `range` or
      * `skip_leading_rows` must be set.
      * 
      */
-    private final @Nullable Integer skipLeadingRows;
+    private @Nullable Integer skipLeadingRows;
 
-    @CustomType.Constructor
-    private TableExternalDataConfigurationCsvOptions(
-        @CustomType.Parameter("allowJaggedRows") @Nullable Boolean allowJaggedRows,
-        @CustomType.Parameter("allowQuotedNewlines") @Nullable Boolean allowQuotedNewlines,
-        @CustomType.Parameter("encoding") @Nullable String encoding,
-        @CustomType.Parameter("fieldDelimiter") @Nullable String fieldDelimiter,
-        @CustomType.Parameter("quote") String quote,
-        @CustomType.Parameter("skipLeadingRows") @Nullable Integer skipLeadingRows) {
-        this.allowJaggedRows = allowJaggedRows;
-        this.allowQuotedNewlines = allowQuotedNewlines;
-        this.encoding = encoding;
-        this.fieldDelimiter = fieldDelimiter;
-        this.quote = quote;
-        this.skipLeadingRows = skipLeadingRows;
-    }
-
+    private TableExternalDataConfigurationCsvOptions() {}
     /**
      * @return Indicates if BigQuery should accept rows
      * that are missing trailing optional columns.
@@ -134,7 +119,7 @@ public final class TableExternalDataConfigurationCsvOptions {
     public static Builder builder(TableExternalDataConfigurationCsvOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowJaggedRows;
         private @Nullable Boolean allowQuotedNewlines;
@@ -142,11 +127,7 @@ public final class TableExternalDataConfigurationCsvOptions {
         private @Nullable String fieldDelimiter;
         private String quote;
         private @Nullable Integer skipLeadingRows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableExternalDataConfigurationCsvOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowJaggedRows = defaults.allowJaggedRows;
@@ -157,31 +138,45 @@ public final class TableExternalDataConfigurationCsvOptions {
     	      this.skipLeadingRows = defaults.skipLeadingRows;
         }
 
+        @CustomType.Setter
         public Builder allowJaggedRows(@Nullable Boolean allowJaggedRows) {
             this.allowJaggedRows = allowJaggedRows;
             return this;
         }
+        @CustomType.Setter
         public Builder allowQuotedNewlines(@Nullable Boolean allowQuotedNewlines) {
             this.allowQuotedNewlines = allowQuotedNewlines;
             return this;
         }
+        @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
             this.encoding = encoding;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldDelimiter(@Nullable String fieldDelimiter) {
             this.fieldDelimiter = fieldDelimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder quote(String quote) {
             this.quote = Objects.requireNonNull(quote);
             return this;
         }
+        @CustomType.Setter
         public Builder skipLeadingRows(@Nullable Integer skipLeadingRows) {
             this.skipLeadingRows = skipLeadingRows;
             return this;
-        }        public TableExternalDataConfigurationCsvOptions build() {
-            return new TableExternalDataConfigurationCsvOptions(allowJaggedRows, allowQuotedNewlines, encoding, fieldDelimiter, quote, skipLeadingRows);
+        }
+        public TableExternalDataConfigurationCsvOptions build() {
+            final var o = new TableExternalDataConfigurationCsvOptions();
+            o.allowJaggedRows = allowJaggedRows;
+            o.allowQuotedNewlines = allowQuotedNewlines;
+            o.encoding = encoding;
+            o.fieldDelimiter = fieldDelimiter;
+            o.quote = quote;
+            o.skipLeadingRows = skipLeadingRows;
+            return o;
         }
     }
 }

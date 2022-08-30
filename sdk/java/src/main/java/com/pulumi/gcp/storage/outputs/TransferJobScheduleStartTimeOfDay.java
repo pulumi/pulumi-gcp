@@ -13,35 +13,24 @@ public final class TransferJobScheduleStartTimeOfDay {
      * @return Hours of day in 24 hour format. Should be from 0 to 23
      * 
      */
-    private final Integer hours;
+    private Integer hours;
     /**
      * @return Minutes of hour of day. Must be from 0 to 59.
      * 
      */
-    private final Integer minutes;
+    private Integer minutes;
     /**
      * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
      * 
      */
-    private final Integer nanos;
+    private Integer nanos;
     /**
      * @return Seconds of minutes of the time. Must normally be from 0 to 59.
      * 
      */
-    private final Integer seconds;
+    private Integer seconds;
 
-    @CustomType.Constructor
-    private TransferJobScheduleStartTimeOfDay(
-        @CustomType.Parameter("hours") Integer hours,
-        @CustomType.Parameter("minutes") Integer minutes,
-        @CustomType.Parameter("nanos") Integer nanos,
-        @CustomType.Parameter("seconds") Integer seconds) {
-        this.hours = hours;
-        this.minutes = minutes;
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private TransferJobScheduleStartTimeOfDay() {}
     /**
      * @return Hours of day in 24 hour format. Should be from 0 to 23
      * 
@@ -78,17 +67,13 @@ public final class TransferJobScheduleStartTimeOfDay {
     public static Builder builder(TransferJobScheduleStartTimeOfDay defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer hours;
         private Integer minutes;
         private Integer nanos;
         private Integer seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobScheduleStartTimeOfDay defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hours = defaults.hours;
@@ -97,23 +82,33 @@ public final class TransferJobScheduleStartTimeOfDay {
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder hours(Integer hours) {
             this.hours = Objects.requireNonNull(hours);
             return this;
         }
+        @CustomType.Setter
         public Builder minutes(Integer minutes) {
             this.minutes = Objects.requireNonNull(minutes);
             return this;
         }
+        @CustomType.Setter
         public Builder nanos(Integer nanos) {
             this.nanos = Objects.requireNonNull(nanos);
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(Integer seconds) {
             this.seconds = Objects.requireNonNull(seconds);
             return this;
-        }        public TransferJobScheduleStartTimeOfDay build() {
-            return new TransferJobScheduleStartTimeOfDay(hours, minutes, nanos, seconds);
+        }
+        public TransferJobScheduleStartTimeOfDay build() {
+            final var o = new TransferJobScheduleStartTimeOfDay();
+            o.hours = hours;
+            o.minutes = minutes;
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

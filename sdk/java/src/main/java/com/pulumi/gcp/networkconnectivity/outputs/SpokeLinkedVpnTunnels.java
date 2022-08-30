@@ -15,21 +15,14 @@ public final class SpokeLinkedVpnTunnels {
      * @return A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
      * 
      */
-    private final Boolean siteToSiteDataTransfer;
+    private Boolean siteToSiteDataTransfer;
     /**
      * @return The URIs of linked VPN tunnel resources.
      * 
      */
-    private final List<String> uris;
+    private List<String> uris;
 
-    @CustomType.Constructor
-    private SpokeLinkedVpnTunnels(
-        @CustomType.Parameter("siteToSiteDataTransfer") Boolean siteToSiteDataTransfer,
-        @CustomType.Parameter("uris") List<String> uris) {
-        this.siteToSiteDataTransfer = siteToSiteDataTransfer;
-        this.uris = uris;
-    }
-
+    private SpokeLinkedVpnTunnels() {}
     /**
      * @return A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
      * 
@@ -52,33 +45,35 @@ public final class SpokeLinkedVpnTunnels {
     public static Builder builder(SpokeLinkedVpnTunnels defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean siteToSiteDataTransfer;
         private List<String> uris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpokeLinkedVpnTunnels defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.siteToSiteDataTransfer = defaults.siteToSiteDataTransfer;
     	      this.uris = defaults.uris;
         }
 
+        @CustomType.Setter
         public Builder siteToSiteDataTransfer(Boolean siteToSiteDataTransfer) {
             this.siteToSiteDataTransfer = Objects.requireNonNull(siteToSiteDataTransfer);
             return this;
         }
+        @CustomType.Setter
         public Builder uris(List<String> uris) {
             this.uris = Objects.requireNonNull(uris);
             return this;
         }
         public Builder uris(String... uris) {
             return uris(List.of(uris));
-        }        public SpokeLinkedVpnTunnels build() {
-            return new SpokeLinkedVpnTunnels(siteToSiteDataTransfer, uris);
+        }
+        public SpokeLinkedVpnTunnels build() {
+            final var o = new SpokeLinkedVpnTunnels();
+            o.siteToSiteDataTransfer = siteToSiteDataTransfer;
+            o.uris = uris;
+            return o;
         }
     }
 }

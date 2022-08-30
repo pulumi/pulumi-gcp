@@ -22,96 +22,69 @@ public final class FlexibleAppVersionAutomaticScaling {
      * during which the collected usage would not be reliable. Default: 120s
      * 
      */
-    private final @Nullable String coolDownPeriod;
+    private @Nullable String coolDownPeriod;
     /**
      * @return Target scaling by CPU usage.
      * Structure is documented below.
      * 
      */
-    private final FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization;
+    private FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization;
     /**
      * @return Target scaling by disk usage.
      * Structure is documented below.
      * 
      */
-    private final @Nullable FlexibleAppVersionAutomaticScalingDiskUtilization diskUtilization;
+    private @Nullable FlexibleAppVersionAutomaticScalingDiskUtilization diskUtilization;
     /**
      * @return Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
      * Defaults to a runtime-specific value.
      * 
      */
-    private final @Nullable Integer maxConcurrentRequests;
+    private @Nullable Integer maxConcurrentRequests;
     /**
      * @return Maximum number of idle instances that should be maintained for this version.
      * 
      */
-    private final @Nullable Integer maxIdleInstances;
+    private @Nullable Integer maxIdleInstances;
     /**
      * @return Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
      * 
      */
-    private final @Nullable String maxPendingLatency;
+    private @Nullable String maxPendingLatency;
     /**
      * @return Maximum number of instances that should be started to handle requests for this version. Default: 20
      * 
      */
-    private final @Nullable Integer maxTotalInstances;
+    private @Nullable Integer maxTotalInstances;
     /**
      * @return Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
      * 
      */
-    private final @Nullable Integer minIdleInstances;
+    private @Nullable Integer minIdleInstances;
     /**
      * @return Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
      * 
      */
-    private final @Nullable String minPendingLatency;
+    private @Nullable String minPendingLatency;
     /**
      * @return Minimum number of running instances that should be maintained for this version. Default: 2
      * 
      */
-    private final @Nullable Integer minTotalInstances;
+    private @Nullable Integer minTotalInstances;
     /**
      * @return Target scaling by network usage.
      * Structure is documented below.
      * 
      */
-    private final @Nullable FlexibleAppVersionAutomaticScalingNetworkUtilization networkUtilization;
+    private @Nullable FlexibleAppVersionAutomaticScalingNetworkUtilization networkUtilization;
     /**
      * @return Target scaling by request utilization.
      * Structure is documented below.
      * 
      */
-    private final @Nullable FlexibleAppVersionAutomaticScalingRequestUtilization requestUtilization;
+    private @Nullable FlexibleAppVersionAutomaticScalingRequestUtilization requestUtilization;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionAutomaticScaling(
-        @CustomType.Parameter("coolDownPeriod") @Nullable String coolDownPeriod,
-        @CustomType.Parameter("cpuUtilization") FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization,
-        @CustomType.Parameter("diskUtilization") @Nullable FlexibleAppVersionAutomaticScalingDiskUtilization diskUtilization,
-        @CustomType.Parameter("maxConcurrentRequests") @Nullable Integer maxConcurrentRequests,
-        @CustomType.Parameter("maxIdleInstances") @Nullable Integer maxIdleInstances,
-        @CustomType.Parameter("maxPendingLatency") @Nullable String maxPendingLatency,
-        @CustomType.Parameter("maxTotalInstances") @Nullable Integer maxTotalInstances,
-        @CustomType.Parameter("minIdleInstances") @Nullable Integer minIdleInstances,
-        @CustomType.Parameter("minPendingLatency") @Nullable String minPendingLatency,
-        @CustomType.Parameter("minTotalInstances") @Nullable Integer minTotalInstances,
-        @CustomType.Parameter("networkUtilization") @Nullable FlexibleAppVersionAutomaticScalingNetworkUtilization networkUtilization,
-        @CustomType.Parameter("requestUtilization") @Nullable FlexibleAppVersionAutomaticScalingRequestUtilization requestUtilization) {
-        this.coolDownPeriod = coolDownPeriod;
-        this.cpuUtilization = cpuUtilization;
-        this.diskUtilization = diskUtilization;
-        this.maxConcurrentRequests = maxConcurrentRequests;
-        this.maxIdleInstances = maxIdleInstances;
-        this.maxPendingLatency = maxPendingLatency;
-        this.maxTotalInstances = maxTotalInstances;
-        this.minIdleInstances = minIdleInstances;
-        this.minPendingLatency = minPendingLatency;
-        this.minTotalInstances = minTotalInstances;
-        this.networkUtilization = networkUtilization;
-        this.requestUtilization = requestUtilization;
-    }
-
+    private FlexibleAppVersionAutomaticScaling() {}
     /**
      * @return The time period that the Autoscaler should wait before it starts collecting information from a new instance.
      * This prevents the autoscaler from collecting information when the instance is initializing,
@@ -211,7 +184,7 @@ public final class FlexibleAppVersionAutomaticScaling {
     public static Builder builder(FlexibleAppVersionAutomaticScaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String coolDownPeriod;
         private FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization;
@@ -225,11 +198,7 @@ public final class FlexibleAppVersionAutomaticScaling {
         private @Nullable Integer minTotalInstances;
         private @Nullable FlexibleAppVersionAutomaticScalingNetworkUtilization networkUtilization;
         private @Nullable FlexibleAppVersionAutomaticScalingRequestUtilization requestUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionAutomaticScaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coolDownPeriod = defaults.coolDownPeriod;
@@ -246,55 +215,81 @@ public final class FlexibleAppVersionAutomaticScaling {
     	      this.requestUtilization = defaults.requestUtilization;
         }
 
+        @CustomType.Setter
         public Builder coolDownPeriod(@Nullable String coolDownPeriod) {
             this.coolDownPeriod = coolDownPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuUtilization(FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization) {
             this.cpuUtilization = Objects.requireNonNull(cpuUtilization);
             return this;
         }
+        @CustomType.Setter
         public Builder diskUtilization(@Nullable FlexibleAppVersionAutomaticScalingDiskUtilization diskUtilization) {
             this.diskUtilization = diskUtilization;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConcurrentRequests(@Nullable Integer maxConcurrentRequests) {
             this.maxConcurrentRequests = maxConcurrentRequests;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIdleInstances(@Nullable Integer maxIdleInstances) {
             this.maxIdleInstances = maxIdleInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPendingLatency(@Nullable String maxPendingLatency) {
             this.maxPendingLatency = maxPendingLatency;
             return this;
         }
+        @CustomType.Setter
         public Builder maxTotalInstances(@Nullable Integer maxTotalInstances) {
             this.maxTotalInstances = maxTotalInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder minIdleInstances(@Nullable Integer minIdleInstances) {
             this.minIdleInstances = minIdleInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder minPendingLatency(@Nullable String minPendingLatency) {
             this.minPendingLatency = minPendingLatency;
             return this;
         }
+        @CustomType.Setter
         public Builder minTotalInstances(@Nullable Integer minTotalInstances) {
             this.minTotalInstances = minTotalInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder networkUtilization(@Nullable FlexibleAppVersionAutomaticScalingNetworkUtilization networkUtilization) {
             this.networkUtilization = networkUtilization;
             return this;
         }
+        @CustomType.Setter
         public Builder requestUtilization(@Nullable FlexibleAppVersionAutomaticScalingRequestUtilization requestUtilization) {
             this.requestUtilization = requestUtilization;
             return this;
-        }        public FlexibleAppVersionAutomaticScaling build() {
-            return new FlexibleAppVersionAutomaticScaling(coolDownPeriod, cpuUtilization, diskUtilization, maxConcurrentRequests, maxIdleInstances, maxPendingLatency, maxTotalInstances, minIdleInstances, minPendingLatency, minTotalInstances, networkUtilization, requestUtilization);
+        }
+        public FlexibleAppVersionAutomaticScaling build() {
+            final var o = new FlexibleAppVersionAutomaticScaling();
+            o.coolDownPeriod = coolDownPeriod;
+            o.cpuUtilization = cpuUtilization;
+            o.diskUtilization = diskUtilization;
+            o.maxConcurrentRequests = maxConcurrentRequests;
+            o.maxIdleInstances = maxIdleInstances;
+            o.maxPendingLatency = maxPendingLatency;
+            o.maxTotalInstances = maxTotalInstances;
+            o.minIdleInstances = minIdleInstances;
+            o.minPendingLatency = minPendingLatency;
+            o.minTotalInstances = minTotalInstances;
+            o.networkUtilization = networkUtilization;
+            o.requestUtilization = requestUtilization;
+            return o;
         }
     }
 }

@@ -19,43 +19,43 @@ public final class GetInstanceTemplateDisk {
      * This defaults to true.
      * 
      */
-    private final Boolean autoDelete;
+    private Boolean autoDelete;
     /**
      * @return Indicates that this is a boot disk.
      * 
      */
-    private final Boolean boot;
+    private Boolean boot;
     /**
      * @return A unique device name that is reflected into the
      * /dev/  tree of a Linux operating system running within the instance. If not
      * specified, the server chooses a default device name to apply to this disk.
      * 
      */
-    private final String deviceName;
+    private String deviceName;
     /**
      * @return Encrypts or decrypts a disk using a customer-supplied encryption key.
      * 
      */
-    private final List<GetInstanceTemplateDiskDiskEncryptionKey> diskEncryptionKeys;
+    private List<GetInstanceTemplateDiskDiskEncryptionKey> diskEncryptionKeys;
     /**
      * @return Name of the disk. When not provided, this defaults
      * to the name of the instance.
      * 
      */
-    private final String diskName;
+    private String diskName;
     /**
      * @return The size of the image in gigabytes. If not
      * specified, it will inherit the size of its base image. For SCRATCH disks,
      * the size must be exactly 375GB.
      * 
      */
-    private final Integer diskSizeGb;
+    private Integer diskSizeGb;
     /**
      * @return The GCE disk type. Such as `&#34;pd-ssd&#34;`, `&#34;local-ssd&#34;`,
      * `&#34;pd-balanced&#34;` or `&#34;pd-standard&#34;`.
      * 
      */
-    private final String diskType;
+    private String diskType;
     /**
      * @return Specifies the disk interface to use for attaching this disk,
      * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
@@ -63,28 +63,28 @@ public final class GetInstanceTemplateDisk {
      * than SCSI. Local SSDs can use either NVME or SCSI.
      * 
      */
-    private final String interface_;
+    private String interface_;
     /**
      * @return (Optional) A set of ket/value label pairs to assign to disk created from
      * this template
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return The mode in which to attach this disk, either READ_WRITE
      * or READ_ONLY. If you are attaching or creating a boot disk, this must
      * read-write mode.
      * 
      */
-    private final String mode;
-    private final List<String> resourcePolicies;
+    private String mode;
+    private List<String> resourcePolicies;
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
      * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
-    private final String source;
+    private String source;
     /**
      * @return The image from which to
      * initialize this disk. This can be one of: the image&#39;s `self_link`,
@@ -95,45 +95,14 @@ public final class GetInstanceTemplateDisk {
      * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
-    private final String sourceImage;
+    private String sourceImage;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateDisk(
-        @CustomType.Parameter("autoDelete") Boolean autoDelete,
-        @CustomType.Parameter("boot") Boolean boot,
-        @CustomType.Parameter("deviceName") String deviceName,
-        @CustomType.Parameter("diskEncryptionKeys") List<GetInstanceTemplateDiskDiskEncryptionKey> diskEncryptionKeys,
-        @CustomType.Parameter("diskName") String diskName,
-        @CustomType.Parameter("diskSizeGb") Integer diskSizeGb,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("interface") String interface_,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("resourcePolicies") List<String> resourcePolicies,
-        @CustomType.Parameter("source") String source,
-        @CustomType.Parameter("sourceImage") String sourceImage,
-        @CustomType.Parameter("type") String type) {
-        this.autoDelete = autoDelete;
-        this.boot = boot;
-        this.deviceName = deviceName;
-        this.diskEncryptionKeys = diskEncryptionKeys;
-        this.diskName = diskName;
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.interface_ = interface_;
-        this.labels = labels;
-        this.mode = mode;
-        this.resourcePolicies = resourcePolicies;
-        this.source = source;
-        this.sourceImage = sourceImage;
-        this.type = type;
-    }
-
+    private GetInstanceTemplateDisk() {}
     /**
      * @return Whether or not the disk should be auto-deleted.
      * This defaults to true.
@@ -257,7 +226,7 @@ public final class GetInstanceTemplateDisk {
     public static Builder builder(GetInstanceTemplateDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autoDelete;
         private Boolean boot;
@@ -273,11 +242,7 @@ public final class GetInstanceTemplateDisk {
         private String source;
         private String sourceImage;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDelete = defaults.autoDelete;
@@ -296,18 +261,22 @@ public final class GetInstanceTemplateDisk {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder autoDelete(Boolean autoDelete) {
             this.autoDelete = Objects.requireNonNull(autoDelete);
             return this;
         }
+        @CustomType.Setter
         public Builder boot(Boolean boot) {
             this.boot = Objects.requireNonNull(boot);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(String deviceName) {
             this.deviceName = Objects.requireNonNull(deviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeys(List<GetInstanceTemplateDiskDiskEncryptionKey> diskEncryptionKeys) {
             this.diskEncryptionKeys = Objects.requireNonNull(diskEncryptionKeys);
             return this;
@@ -315,30 +284,37 @@ public final class GetInstanceTemplateDisk {
         public Builder diskEncryptionKeys(GetInstanceTemplateDiskDiskEncryptionKey... diskEncryptionKeys) {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
         }
+        @CustomType.Setter
         public Builder diskName(String diskName) {
             this.diskName = Objects.requireNonNull(diskName);
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
             return this;
@@ -346,19 +322,38 @@ public final class GetInstanceTemplateDisk {
         public Builder resourcePolicies(String... resourcePolicies) {
             return resourcePolicies(List.of(resourcePolicies));
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceImage(String sourceImage) {
             this.sourceImage = Objects.requireNonNull(sourceImage);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetInstanceTemplateDisk build() {
-            return new GetInstanceTemplateDisk(autoDelete, boot, deviceName, diskEncryptionKeys, diskName, diskSizeGb, diskType, interface_, labels, mode, resourcePolicies, source, sourceImage, type);
+        }
+        public GetInstanceTemplateDisk build() {
+            final var o = new GetInstanceTemplateDisk();
+            o.autoDelete = autoDelete;
+            o.boot = boot;
+            o.deviceName = deviceName;
+            o.diskEncryptionKeys = diskEncryptionKeys;
+            o.diskName = diskName;
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.interface_ = interface_;
+            o.labels = labels;
+            o.mode = mode;
+            o.resourcePolicies = resourcePolicies;
+            o.source = source;
+            o.sourceImage = sourceImage;
+            o.type = type;
+            return o;
         }
     }
 }

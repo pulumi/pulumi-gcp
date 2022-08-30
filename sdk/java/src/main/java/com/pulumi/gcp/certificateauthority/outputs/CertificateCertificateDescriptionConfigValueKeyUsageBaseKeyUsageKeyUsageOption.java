@@ -15,70 +15,49 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
      * @return The key may be used to sign certificates.
      * 
      */
-    private final @Nullable Boolean certSign;
+    private @Nullable Boolean certSign;
     /**
      * @return The key may be used for cryptographic commitments. Note that this may also be referred to as &#34;non-repudiation&#34;.
      * 
      */
-    private final @Nullable Boolean contentCommitment;
+    private @Nullable Boolean contentCommitment;
     /**
      * @return The key may be used sign certificate revocation lists.
      * 
      */
-    private final @Nullable Boolean crlSign;
+    private @Nullable Boolean crlSign;
     /**
      * @return The key may be used to encipher data.
      * 
      */
-    private final @Nullable Boolean dataEncipherment;
+    private @Nullable Boolean dataEncipherment;
     /**
      * @return The key may be used to decipher only.
      * 
      */
-    private final @Nullable Boolean decipherOnly;
+    private @Nullable Boolean decipherOnly;
     /**
      * @return The key may be used for digital signatures.
      * 
      */
-    private final @Nullable Boolean digitalSignature;
+    private @Nullable Boolean digitalSignature;
     /**
      * @return The key may be used to encipher only.
      * 
      */
-    private final @Nullable Boolean encipherOnly;
+    private @Nullable Boolean encipherOnly;
     /**
      * @return The key may be used in a key agreement protocol.
      * 
      */
-    private final @Nullable Boolean keyAgreement;
+    private @Nullable Boolean keyAgreement;
     /**
      * @return The key may be used to encipher other keys.
      * 
      */
-    private final @Nullable Boolean keyEncipherment;
+    private @Nullable Boolean keyEncipherment;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption(
-        @CustomType.Parameter("certSign") @Nullable Boolean certSign,
-        @CustomType.Parameter("contentCommitment") @Nullable Boolean contentCommitment,
-        @CustomType.Parameter("crlSign") @Nullable Boolean crlSign,
-        @CustomType.Parameter("dataEncipherment") @Nullable Boolean dataEncipherment,
-        @CustomType.Parameter("decipherOnly") @Nullable Boolean decipherOnly,
-        @CustomType.Parameter("digitalSignature") @Nullable Boolean digitalSignature,
-        @CustomType.Parameter("encipherOnly") @Nullable Boolean encipherOnly,
-        @CustomType.Parameter("keyAgreement") @Nullable Boolean keyAgreement,
-        @CustomType.Parameter("keyEncipherment") @Nullable Boolean keyEncipherment) {
-        this.certSign = certSign;
-        this.contentCommitment = contentCommitment;
-        this.crlSign = crlSign;
-        this.dataEncipherment = dataEncipherment;
-        this.decipherOnly = decipherOnly;
-        this.digitalSignature = digitalSignature;
-        this.encipherOnly = encipherOnly;
-        this.keyAgreement = keyAgreement;
-        this.keyEncipherment = keyEncipherment;
-    }
-
+    private CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption() {}
     /**
      * @return The key may be used to sign certificates.
      * 
@@ -150,7 +129,7 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
     public static Builder builder(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean certSign;
         private @Nullable Boolean contentCommitment;
@@ -161,11 +140,7 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
         private @Nullable Boolean encipherOnly;
         private @Nullable Boolean keyAgreement;
         private @Nullable Boolean keyEncipherment;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certSign = defaults.certSign;
@@ -179,43 +154,63 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
     	      this.keyEncipherment = defaults.keyEncipherment;
         }
 
+        @CustomType.Setter
         public Builder certSign(@Nullable Boolean certSign) {
             this.certSign = certSign;
             return this;
         }
+        @CustomType.Setter
         public Builder contentCommitment(@Nullable Boolean contentCommitment) {
             this.contentCommitment = contentCommitment;
             return this;
         }
+        @CustomType.Setter
         public Builder crlSign(@Nullable Boolean crlSign) {
             this.crlSign = crlSign;
             return this;
         }
+        @CustomType.Setter
         public Builder dataEncipherment(@Nullable Boolean dataEncipherment) {
             this.dataEncipherment = dataEncipherment;
             return this;
         }
+        @CustomType.Setter
         public Builder decipherOnly(@Nullable Boolean decipherOnly) {
             this.decipherOnly = decipherOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder digitalSignature(@Nullable Boolean digitalSignature) {
             this.digitalSignature = digitalSignature;
             return this;
         }
+        @CustomType.Setter
         public Builder encipherOnly(@Nullable Boolean encipherOnly) {
             this.encipherOnly = encipherOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder keyAgreement(@Nullable Boolean keyAgreement) {
             this.keyAgreement = keyAgreement;
             return this;
         }
+        @CustomType.Setter
         public Builder keyEncipherment(@Nullable Boolean keyEncipherment) {
             this.keyEncipherment = keyEncipherment;
             return this;
-        }        public CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption build() {
-            return new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption(certSign, contentCommitment, crlSign, dataEncipherment, decipherOnly, digitalSignature, encipherOnly, keyAgreement, keyEncipherment);
+        }
+        public CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption build() {
+            final var o = new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption();
+            o.certSign = certSign;
+            o.contentCommitment = contentCommitment;
+            o.crlSign = crlSign;
+            o.dataEncipherment = dataEncipherment;
+            o.decipherOnly = decipherOnly;
+            o.digitalSignature = digitalSignature;
+            o.encipherOnly = encipherOnly;
+            o.keyAgreement = keyAgreement;
+            o.keyEncipherment = keyEncipherment;
+            return o;
         }
     }
 }

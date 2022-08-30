@@ -17,23 +17,16 @@ public final class ServicePerimeterStatusEgressPolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom;
+    private @Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom;
     /**
      * @return Defines the conditions on the `ApiOperation` and destination resources that
      * cause this `EgressPolicy` to apply.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo;
+    private @Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo;
 
-    @CustomType.Constructor
-    private ServicePerimeterStatusEgressPolicy(
-        @CustomType.Parameter("egressFrom") @Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom,
-        @CustomType.Parameter("egressTo") @Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo) {
-        this.egressFrom = egressFrom;
-        this.egressTo = egressTo;
-    }
-
+    private ServicePerimeterStatusEgressPolicy() {}
     /**
      * @return Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.
@@ -59,30 +52,32 @@ public final class ServicePerimeterStatusEgressPolicy {
     public static Builder builder(ServicePerimeterStatusEgressPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom;
         private @Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimeterStatusEgressPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.egressFrom = defaults.egressFrom;
     	      this.egressTo = defaults.egressTo;
         }
 
+        @CustomType.Setter
         public Builder egressFrom(@Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom) {
             this.egressFrom = egressFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder egressTo(@Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo) {
             this.egressTo = egressTo;
             return this;
-        }        public ServicePerimeterStatusEgressPolicy build() {
-            return new ServicePerimeterStatusEgressPolicy(egressFrom, egressTo);
+        }
+        public ServicePerimeterStatusEgressPolicy build() {
+            final var o = new ServicePerimeterStatusEgressPolicy();
+            o.egressFrom = egressFrom;
+            o.egressTo = egressTo;
+            return o;
         }
     }
 }

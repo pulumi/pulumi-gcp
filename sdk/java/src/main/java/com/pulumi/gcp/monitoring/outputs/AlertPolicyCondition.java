@@ -21,27 +21,27 @@ public final class AlertPolicyCondition {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionAbsent conditionAbsent;
+    private @Nullable AlertPolicyConditionConditionAbsent conditionAbsent;
     /**
      * @return A condition that checks for log messages matching given constraints.
      * If set, no other conditions can be present.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog;
+    private @Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog;
     /**
      * @return A Monitoring Query Language query that outputs a boolean stream
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage;
+    private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage;
     /**
      * @return A condition that compares a time series against a
      * threshold.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionThreshold conditionThreshold;
+    private @Nullable AlertPolicyConditionConditionThreshold conditionThreshold;
     /**
      * @return A short name or phrase used to identify the
      * condition in dashboards, notifications, and
@@ -50,7 +50,7 @@ public final class AlertPolicyCondition {
      * policy.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return -
      * The unique resource name for this condition.
@@ -61,24 +61,9 @@ public final class AlertPolicyCondition {
      * policy.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private AlertPolicyCondition(
-        @CustomType.Parameter("conditionAbsent") @Nullable AlertPolicyConditionConditionAbsent conditionAbsent,
-        @CustomType.Parameter("conditionMatchedLog") @Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog,
-        @CustomType.Parameter("conditionMonitoringQueryLanguage") @Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage,
-        @CustomType.Parameter("conditionThreshold") @Nullable AlertPolicyConditionConditionThreshold conditionThreshold,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.conditionAbsent = conditionAbsent;
-        this.conditionMatchedLog = conditionMatchedLog;
-        this.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
-        this.conditionThreshold = conditionThreshold;
-        this.displayName = displayName;
-        this.name = name;
-    }
-
+    private AlertPolicyCondition() {}
     /**
      * @return A condition that checks that a time series
      * continues to receive new data points.
@@ -146,7 +131,7 @@ public final class AlertPolicyCondition {
     public static Builder builder(AlertPolicyCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AlertPolicyConditionConditionAbsent conditionAbsent;
         private @Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog;
@@ -154,11 +139,7 @@ public final class AlertPolicyCondition {
         private @Nullable AlertPolicyConditionConditionThreshold conditionThreshold;
         private String displayName;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditionAbsent = defaults.conditionAbsent;
@@ -169,31 +150,45 @@ public final class AlertPolicyCondition {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder conditionAbsent(@Nullable AlertPolicyConditionConditionAbsent conditionAbsent) {
             this.conditionAbsent = conditionAbsent;
             return this;
         }
+        @CustomType.Setter
         public Builder conditionMatchedLog(@Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog) {
             this.conditionMatchedLog = conditionMatchedLog;
             return this;
         }
+        @CustomType.Setter
         public Builder conditionMonitoringQueryLanguage(@Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage) {
             this.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
             return this;
         }
+        @CustomType.Setter
         public Builder conditionThreshold(@Nullable AlertPolicyConditionConditionThreshold conditionThreshold) {
             this.conditionThreshold = conditionThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public AlertPolicyCondition build() {
-            return new AlertPolicyCondition(conditionAbsent, conditionMatchedLog, conditionMonitoringQueryLanguage, conditionThreshold, displayName, name);
+        }
+        public AlertPolicyCondition build() {
+            final var o = new AlertPolicyCondition();
+            o.conditionAbsent = conditionAbsent;
+            o.conditionMatchedLog = conditionMatchedLog;
+            o.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
+            o.conditionThreshold = conditionThreshold;
+            o.displayName = displayName;
+            o.name = name;
+            return o;
         }
     }
 }

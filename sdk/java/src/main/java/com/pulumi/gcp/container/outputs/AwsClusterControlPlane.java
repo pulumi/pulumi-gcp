@@ -25,105 +25,74 @@ public final class AwsClusterControlPlane {
      * @return Authentication configuration for management of AWS resources.
      * 
      */
-    private final AwsClusterControlPlaneAwsServicesAuthentication awsServicesAuthentication;
+    private AwsClusterControlPlaneAwsServicesAuthentication awsServicesAuthentication;
     /**
      * @return The ARN of the AWS KMS key used to encrypt cluster configuration.
      * 
      */
-    private final AwsClusterControlPlaneConfigEncryption configEncryption;
+    private AwsClusterControlPlaneConfigEncryption configEncryption;
     /**
      * @return The ARN of the AWS KMS key used to encrypt cluster secrets.
      * 
      */
-    private final AwsClusterControlPlaneDatabaseEncryption databaseEncryption;
+    private AwsClusterControlPlaneDatabaseEncryption databaseEncryption;
     /**
      * @return The name of the AWS IAM instance pofile to assign to each control plane replica.
      * 
      */
-    private final String iamInstanceProfile;
+    private String iamInstanceProfile;
     /**
      * @return (Beta only) Details of placement information for an instance.
      * 
      */
-    private final @Nullable AwsClusterControlPlaneInstancePlacement instancePlacement;
+    private @Nullable AwsClusterControlPlaneInstancePlacement instancePlacement;
     /**
      * @return Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
      * 
      */
-    private final @Nullable String instanceType;
+    private @Nullable String instanceType;
     /**
      * @return Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster&#39;s etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
      * 
      */
-    private final @Nullable AwsClusterControlPlaneMainVolume mainVolume;
+    private @Nullable AwsClusterControlPlaneMainVolume mainVolume;
     /**
      * @return Proxy configuration for outbound HTTP(S) traffic.
      * 
      */
-    private final @Nullable AwsClusterControlPlaneProxyConfig proxyConfig;
+    private @Nullable AwsClusterControlPlaneProxyConfig proxyConfig;
     /**
      * @return Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
      * 
      */
-    private final @Nullable AwsClusterControlPlaneRootVolume rootVolume;
+    private @Nullable AwsClusterControlPlaneRootVolume rootVolume;
     /**
      * @return Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
      * 
      */
-    private final @Nullable List<String> securityGroupIds;
+    private @Nullable List<String> securityGroupIds;
     /**
      * @return Optional. SSH configuration for how to access the underlying control plane machines.
      * 
      */
-    private final @Nullable AwsClusterControlPlaneSshConfig sshConfig;
+    private @Nullable AwsClusterControlPlaneSshConfig sshConfig;
     /**
      * @return The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
      * 
      */
-    private final List<String> subnetIds;
+    private List<String> subnetIds;
     /**
      * @return Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
-    private final @Nullable Map<String,String> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private AwsClusterControlPlane(
-        @CustomType.Parameter("awsServicesAuthentication") AwsClusterControlPlaneAwsServicesAuthentication awsServicesAuthentication,
-        @CustomType.Parameter("configEncryption") AwsClusterControlPlaneConfigEncryption configEncryption,
-        @CustomType.Parameter("databaseEncryption") AwsClusterControlPlaneDatabaseEncryption databaseEncryption,
-        @CustomType.Parameter("iamInstanceProfile") String iamInstanceProfile,
-        @CustomType.Parameter("instancePlacement") @Nullable AwsClusterControlPlaneInstancePlacement instancePlacement,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("mainVolume") @Nullable AwsClusterControlPlaneMainVolume mainVolume,
-        @CustomType.Parameter("proxyConfig") @Nullable AwsClusterControlPlaneProxyConfig proxyConfig,
-        @CustomType.Parameter("rootVolume") @Nullable AwsClusterControlPlaneRootVolume rootVolume,
-        @CustomType.Parameter("securityGroupIds") @Nullable List<String> securityGroupIds,
-        @CustomType.Parameter("sshConfig") @Nullable AwsClusterControlPlaneSshConfig sshConfig,
-        @CustomType.Parameter("subnetIds") List<String> subnetIds,
-        @CustomType.Parameter("tags") @Nullable Map<String,String> tags,
-        @CustomType.Parameter("version") String version) {
-        this.awsServicesAuthentication = awsServicesAuthentication;
-        this.configEncryption = configEncryption;
-        this.databaseEncryption = databaseEncryption;
-        this.iamInstanceProfile = iamInstanceProfile;
-        this.instancePlacement = instancePlacement;
-        this.instanceType = instanceType;
-        this.mainVolume = mainVolume;
-        this.proxyConfig = proxyConfig;
-        this.rootVolume = rootVolume;
-        this.securityGroupIds = securityGroupIds;
-        this.sshConfig = sshConfig;
-        this.subnetIds = subnetIds;
-        this.tags = tags;
-        this.version = version;
-    }
-
+    private AwsClusterControlPlane() {}
     /**
      * @return Authentication configuration for management of AWS resources.
      * 
@@ -230,7 +199,7 @@ public final class AwsClusterControlPlane {
     public static Builder builder(AwsClusterControlPlane defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private AwsClusterControlPlaneAwsServicesAuthentication awsServicesAuthentication;
         private AwsClusterControlPlaneConfigEncryption configEncryption;
@@ -246,11 +215,7 @@ public final class AwsClusterControlPlane {
         private List<String> subnetIds;
         private @Nullable Map<String,String> tags;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsServicesAuthentication = defaults.awsServicesAuthentication;
@@ -269,42 +234,52 @@ public final class AwsClusterControlPlane {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthentication awsServicesAuthentication) {
             this.awsServicesAuthentication = Objects.requireNonNull(awsServicesAuthentication);
             return this;
         }
+        @CustomType.Setter
         public Builder configEncryption(AwsClusterControlPlaneConfigEncryption configEncryption) {
             this.configEncryption = Objects.requireNonNull(configEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder databaseEncryption(AwsClusterControlPlaneDatabaseEncryption databaseEncryption) {
             this.databaseEncryption = Objects.requireNonNull(databaseEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder iamInstanceProfile(String iamInstanceProfile) {
             this.iamInstanceProfile = Objects.requireNonNull(iamInstanceProfile);
             return this;
         }
+        @CustomType.Setter
         public Builder instancePlacement(@Nullable AwsClusterControlPlaneInstancePlacement instancePlacement) {
             this.instancePlacement = instancePlacement;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder mainVolume(@Nullable AwsClusterControlPlaneMainVolume mainVolume) {
             this.mainVolume = mainVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyConfig(@Nullable AwsClusterControlPlaneProxyConfig proxyConfig) {
             this.proxyConfig = proxyConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder rootVolume(@Nullable AwsClusterControlPlaneRootVolume rootVolume) {
             this.rootVolume = rootVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
             this.securityGroupIds = securityGroupIds;
             return this;
@@ -312,10 +287,12 @@ public final class AwsClusterControlPlane {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
+        @CustomType.Setter
         public Builder sshConfig(@Nullable AwsClusterControlPlaneSshConfig sshConfig) {
             this.sshConfig = sshConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetIds(List<String> subnetIds) {
             this.subnetIds = Objects.requireNonNull(subnetIds);
             return this;
@@ -323,15 +300,33 @@ public final class AwsClusterControlPlane {
         public Builder subnetIds(String... subnetIds) {
             return subnetIds(List.of(subnetIds));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public AwsClusterControlPlane build() {
-            return new AwsClusterControlPlane(awsServicesAuthentication, configEncryption, databaseEncryption, iamInstanceProfile, instancePlacement, instanceType, mainVolume, proxyConfig, rootVolume, securityGroupIds, sshConfig, subnetIds, tags, version);
+        }
+        public AwsClusterControlPlane build() {
+            final var o = new AwsClusterControlPlane();
+            o.awsServicesAuthentication = awsServicesAuthentication;
+            o.configEncryption = configEncryption;
+            o.databaseEncryption = databaseEncryption;
+            o.iamInstanceProfile = iamInstanceProfile;
+            o.instancePlacement = instancePlacement;
+            o.instanceType = instanceType;
+            o.mainVolume = mainVolume;
+            o.proxyConfig = proxyConfig;
+            o.rootVolume = rootVolume;
+            o.securityGroupIds = securityGroupIds;
+            o.sshConfig = sshConfig;
+            o.subnetIds = subnetIds;
+            o.tags = tags;
+            o.version = version;
+            return o;
         }
     }
 }

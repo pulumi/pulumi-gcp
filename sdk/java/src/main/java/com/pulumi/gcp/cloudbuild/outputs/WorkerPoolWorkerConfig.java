@@ -17,28 +17,19 @@ public final class WorkerPoolWorkerConfig {
      * @return Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
      * 
      */
-    private final @Nullable Integer diskSizeGb;
+    private @Nullable Integer diskSizeGb;
     /**
      * @return Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
      * 
      */
-    private final @Nullable String machineType;
+    private @Nullable String machineType;
     /**
      * @return If true, workers are created without any public address, which prevents network egress to public IPs.
      * 
      */
-    private final @Nullable Boolean noExternalIp;
+    private @Nullable Boolean noExternalIp;
 
-    @CustomType.Constructor
-    private WorkerPoolWorkerConfig(
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("noExternalIp") @Nullable Boolean noExternalIp) {
-        this.diskSizeGb = diskSizeGb;
-        this.machineType = machineType;
-        this.noExternalIp = noExternalIp;
-    }
-
+    private WorkerPoolWorkerConfig() {}
     /**
      * @return Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
      * 
@@ -68,16 +59,12 @@ public final class WorkerPoolWorkerConfig {
     public static Builder builder(WorkerPoolWorkerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskSizeGb;
         private @Nullable String machineType;
         private @Nullable Boolean noExternalIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkerPoolWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskSizeGb = defaults.diskSizeGb;
@@ -85,19 +72,27 @@ public final class WorkerPoolWorkerConfig {
     	      this.noExternalIp = defaults.noExternalIp;
         }
 
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder noExternalIp(@Nullable Boolean noExternalIp) {
             this.noExternalIp = noExternalIp;
             return this;
-        }        public WorkerPoolWorkerConfig build() {
-            return new WorkerPoolWorkerConfig(diskSizeGb, machineType, noExternalIp);
+        }
+        public WorkerPoolWorkerConfig build() {
+            final var o = new WorkerPoolWorkerConfig();
+            o.diskSizeGb = diskSizeGb;
+            o.machineType = machineType;
+            o.noExternalIp = noExternalIp;
+            return o;
         }
     }
 }

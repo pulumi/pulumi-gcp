@@ -13,13 +13,9 @@ public final class AwsClusterControlPlaneSshConfig {
      * @return The name of the EC2 key pair used to login into cluster machines.
      * 
      */
-    private final String ec2KeyPair;
+    private String ec2KeyPair;
 
-    @CustomType.Constructor
-    private AwsClusterControlPlaneSshConfig(@CustomType.Parameter("ec2KeyPair") String ec2KeyPair) {
-        this.ec2KeyPair = ec2KeyPair;
-    }
-
+    private AwsClusterControlPlaneSshConfig() {}
     /**
      * @return The name of the EC2 key pair used to login into cluster machines.
      * 
@@ -35,24 +31,24 @@ public final class AwsClusterControlPlaneSshConfig {
     public static Builder builder(AwsClusterControlPlaneSshConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ec2KeyPair;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterControlPlaneSshConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ec2KeyPair = defaults.ec2KeyPair;
         }
 
+        @CustomType.Setter
         public Builder ec2KeyPair(String ec2KeyPair) {
             this.ec2KeyPair = Objects.requireNonNull(ec2KeyPair);
             return this;
-        }        public AwsClusterControlPlaneSshConfig build() {
-            return new AwsClusterControlPlaneSshConfig(ec2KeyPair);
+        }
+        public AwsClusterControlPlaneSshConfig build() {
+            final var o = new AwsClusterControlPlaneSshConfig();
+            o.ec2KeyPair = ec2KeyPair;
+            return o;
         }
     }
 }

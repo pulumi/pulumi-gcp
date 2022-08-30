@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureResourceState {
-    private final @Nullable Boolean hasResources;
-    private final @Nullable String state;
+    private @Nullable Boolean hasResources;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private FeatureResourceState(
-        @CustomType.Parameter("hasResources") @Nullable Boolean hasResources,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.hasResources = hasResources;
-        this.state = state;
-    }
-
+    private FeatureResourceState() {}
     public Optional<Boolean> hasResources() {
         return Optional.ofNullable(this.hasResources);
     }
@@ -37,30 +30,32 @@ public final class FeatureResourceState {
     public static Builder builder(FeatureResourceState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean hasResources;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureResourceState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hasResources = defaults.hasResources;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder hasResources(@Nullable Boolean hasResources) {
             this.hasResources = hasResources;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public FeatureResourceState build() {
-            return new FeatureResourceState(hasResources, state);
+        }
+        public FeatureResourceState build() {
+            final var o = new FeatureResourceState();
+            o.hasResources = hasResources;
+            o.state = state;
+            return o;
         }
     }
 }

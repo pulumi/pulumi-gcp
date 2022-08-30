@@ -22,7 +22,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotal
      * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
      * 
      */
-    private final @Nullable String badServiceFilter;
+    private @Nullable String badServiceFilter;
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * quantifying good service provided. Exactly two of
@@ -32,7 +32,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotal
      * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
      * 
      */
-    private final @Nullable String goodServiceFilter;
+    private @Nullable String goodServiceFilter;
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * quantifying total demanded service. Exactly two of
@@ -42,18 +42,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotal
      * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
      * 
      */
-    private final @Nullable String totalServiceFilter;
+    private @Nullable String totalServiceFilter;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(
-        @CustomType.Parameter("badServiceFilter") @Nullable String badServiceFilter,
-        @CustomType.Parameter("goodServiceFilter") @Nullable String goodServiceFilter,
-        @CustomType.Parameter("totalServiceFilter") @Nullable String totalServiceFilter) {
-        this.badServiceFilter = badServiceFilter;
-        this.goodServiceFilter = goodServiceFilter;
-        this.totalServiceFilter = totalServiceFilter;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio() {}
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * quantifying bad service provided, either demanded service that
@@ -100,16 +91,12 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotal
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String badServiceFilter;
         private @Nullable String goodServiceFilter;
         private @Nullable String totalServiceFilter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.badServiceFilter = defaults.badServiceFilter;
@@ -117,19 +104,27 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotal
     	      this.totalServiceFilter = defaults.totalServiceFilter;
         }
 
+        @CustomType.Setter
         public Builder badServiceFilter(@Nullable String badServiceFilter) {
             this.badServiceFilter = badServiceFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder goodServiceFilter(@Nullable String goodServiceFilter) {
             this.goodServiceFilter = goodServiceFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder totalServiceFilter(@Nullable String totalServiceFilter) {
             this.totalServiceFilter = totalServiceFilter;
             return this;
-        }        public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio build() {
-            return new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio(badServiceFilter, goodServiceFilter, totalServiceFilter);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio();
+            o.badServiceFilter = badServiceFilter;
+            o.goodServiceFilter = goodServiceFilter;
+            o.totalServiceFilter = totalServiceFilter;
+            return o;
         }
     }
 }

@@ -16,7 +16,7 @@ public final class SubnetworkSecondaryIpRange {
      * secondary IP ranges within a network. Only IPv4 is supported.
      * 
      */
-    private final String ipCidrRange;
+    private String ipCidrRange;
     /**
      * @return The name associated with this subnetwork secondary range, used
      * when adding an alias IP range to a VM instance. The name must
@@ -24,16 +24,9 @@ public final class SubnetworkSecondaryIpRange {
      * must be unique within the subnetwork.
      * 
      */
-    private final String rangeName;
+    private String rangeName;
 
-    @CustomType.Constructor
-    private SubnetworkSecondaryIpRange(
-        @CustomType.Parameter("ipCidrRange") String ipCidrRange,
-        @CustomType.Parameter("rangeName") String rangeName) {
-        this.ipCidrRange = ipCidrRange;
-        this.rangeName = rangeName;
-    }
-
+    private SubnetworkSecondaryIpRange() {}
     /**
      * @return The range of IP addresses belonging to this subnetwork secondary
      * range. Provide this property when you create the subnetwork.
@@ -62,30 +55,32 @@ public final class SubnetworkSecondaryIpRange {
     public static Builder builder(SubnetworkSecondaryIpRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipCidrRange;
         private String rangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubnetworkSecondaryIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.rangeName = defaults.rangeName;
         }
 
+        @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
             this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
             return this;
         }
+        @CustomType.Setter
         public Builder rangeName(String rangeName) {
             this.rangeName = Objects.requireNonNull(rangeName);
             return this;
-        }        public SubnetworkSecondaryIpRange build() {
-            return new SubnetworkSecondaryIpRange(ipCidrRange, rangeName);
+        }
+        public SubnetworkSecondaryIpRange build() {
+            final var o = new SubnetworkSecondaryIpRange();
+            o.ipCidrRange = ipCidrRange;
+            o.rangeName = rangeName;
+            return o;
         }
     }
 }

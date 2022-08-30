@@ -15,22 +15,15 @@ public final class BucketLogging {
      * @return The bucket that will receive log objects.
      * 
      */
-    private final String logBucket;
+    private String logBucket;
     /**
      * @return The object prefix for log objects. If it&#39;s not provided,
      * by default GCS sets this to this bucket&#39;s name.
      * 
      */
-    private final @Nullable String logObjectPrefix;
+    private @Nullable String logObjectPrefix;
 
-    @CustomType.Constructor
-    private BucketLogging(
-        @CustomType.Parameter("logBucket") String logBucket,
-        @CustomType.Parameter("logObjectPrefix") @Nullable String logObjectPrefix) {
-        this.logBucket = logBucket;
-        this.logObjectPrefix = logObjectPrefix;
-    }
-
+    private BucketLogging() {}
     /**
      * @return The bucket that will receive log objects.
      * 
@@ -54,30 +47,32 @@ public final class BucketLogging {
     public static Builder builder(BucketLogging defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String logBucket;
         private @Nullable String logObjectPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLogging defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logBucket = defaults.logBucket;
     	      this.logObjectPrefix = defaults.logObjectPrefix;
         }
 
+        @CustomType.Setter
         public Builder logBucket(String logBucket) {
             this.logBucket = Objects.requireNonNull(logBucket);
             return this;
         }
+        @CustomType.Setter
         public Builder logObjectPrefix(@Nullable String logObjectPrefix) {
             this.logObjectPrefix = logObjectPrefix;
             return this;
-        }        public BucketLogging build() {
-            return new BucketLogging(logBucket, logObjectPrefix);
+        }
+        public BucketLogging build() {
+            final var o = new BucketLogging();
+            o.logBucket = logBucket;
+            o.logObjectPrefix = logObjectPrefix;
+            return o;
         }
     }
 }

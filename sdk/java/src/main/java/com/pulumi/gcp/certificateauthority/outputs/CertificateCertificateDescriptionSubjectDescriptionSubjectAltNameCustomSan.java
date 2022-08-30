@@ -19,24 +19,15 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
      * handle this extension, the client should consider this to be an error).
      * 
      */
-    private final @Nullable Boolean critical;
-    private final @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds;
+    private @Nullable Boolean critical;
+    private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds;
     /**
      * @return The value of this X.509 extension. A base64-encoded string.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(
-        @CustomType.Parameter("critical") @Nullable Boolean critical,
-        @CustomType.Parameter("obectIds") @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.critical = critical;
-        this.obectIds = obectIds;
-        this.value = value;
-    }
-
+    private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan() {}
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
@@ -63,16 +54,12 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public static Builder builder(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean critical;
         private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -80,10 +67,12 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable Boolean critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder obectIds(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds) {
             this.obectIds = obectIds;
             return this;
@@ -91,11 +80,17 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         public Builder obectIds(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId... obectIds) {
             return obectIds(List.of(obectIds));
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan build() {
-            return new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(critical, obectIds, value);
+        }
+        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan build() {
+            final var o = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan();
+            o.critical = critical;
+            o.obectIds = obectIds;
+            o.value = value;
+            return o;
         }
     }
 }

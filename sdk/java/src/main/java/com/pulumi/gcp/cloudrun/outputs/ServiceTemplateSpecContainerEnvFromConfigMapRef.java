@@ -17,21 +17,14 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRef {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference localObjectReference;
+    private @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference localObjectReference;
     /**
      * @return Specify whether the Secret must be defined
      * 
      */
-    private final @Nullable Boolean optional;
+    private @Nullable Boolean optional;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnvFromConfigMapRef(
-        @CustomType.Parameter("localObjectReference") @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference localObjectReference,
-        @CustomType.Parameter("optional") @Nullable Boolean optional) {
-        this.localObjectReference = localObjectReference;
-        this.optional = optional;
-    }
-
+    private ServiceTemplateSpecContainerEnvFromConfigMapRef() {}
     /**
      * @return The Secret to select from.
      * Structure is documented below.
@@ -55,30 +48,32 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRef {
     public static Builder builder(ServiceTemplateSpecContainerEnvFromConfigMapRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference localObjectReference;
         private @Nullable Boolean optional;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnvFromConfigMapRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localObjectReference = defaults.localObjectReference;
     	      this.optional = defaults.optional;
         }
 
+        @CustomType.Setter
         public Builder localObjectReference(@Nullable ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference localObjectReference) {
             this.localObjectReference = localObjectReference;
             return this;
         }
+        @CustomType.Setter
         public Builder optional(@Nullable Boolean optional) {
             this.optional = optional;
             return this;
-        }        public ServiceTemplateSpecContainerEnvFromConfigMapRef build() {
-            return new ServiceTemplateSpecContainerEnvFromConfigMapRef(localObjectReference, optional);
+        }
+        public ServiceTemplateSpecContainerEnvFromConfigMapRef build() {
+            final var o = new ServiceTemplateSpecContainerEnvFromConfigMapRef();
+            o.localObjectReference = localObjectReference;
+            o.optional = optional;
+            return o;
         }
     }
 }

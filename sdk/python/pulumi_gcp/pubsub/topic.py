@@ -37,7 +37,7 @@ class TopicArgs:
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 7 days or less than 10 minutes.
+               Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -101,7 +101,7 @@ class TopicArgs:
         For instance, it allows any attached subscription to seek to a timestamp
         that is up to messageRetentionDuration in the past. If this field is not
         set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 7 days or less than 10 minutes.
+        Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -187,7 +187,7 @@ class _TopicState:
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 7 days or less than 10 minutes.
+               Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -251,7 +251,7 @@ class _TopicState:
         For instance, it allows any attached subscription to seek to a timestamp
         that is up to messageRetentionDuration in the past. If this field is not
         set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 7 days or less than 10 minutes.
+        Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -431,7 +431,7 @@ class Topic(pulumi.CustomResource):
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 7 days or less than 10 minutes.
+               Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -613,7 +613,7 @@ class Topic(pulumi.CustomResource):
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 7 days or less than 10 minutes.
+               Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -667,7 +667,7 @@ class Topic(pulumi.CustomResource):
         For instance, it allows any attached subscription to seek to a timestamp
         that is up to messageRetentionDuration in the past. If this field is not
         set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 7 days or less than 10 minutes.
+        Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 

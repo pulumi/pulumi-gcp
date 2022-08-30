@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
-    private final Integer hours;
-    private final Integer minutes;
-    private final Integer nanos;
-    private final Integer seconds;
+    private Integer hours;
+    private Integer minutes;
+    private Integer nanos;
+    private Integer seconds;
 
-    @CustomType.Constructor
-    private GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(
-        @CustomType.Parameter("hours") Integer hours,
-        @CustomType.Parameter("minutes") Integer minutes,
-        @CustomType.Parameter("nanos") Integer nanos,
-        @CustomType.Parameter("seconds") Integer seconds) {
-        this.hours = hours;
-        this.minutes = minutes;
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime() {}
     public Integer hours() {
         return this.hours;
     }
@@ -46,17 +35,13 @@ public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime 
     public static Builder builder(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer hours;
         private Integer minutes;
         private Integer nanos;
         private Integer seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hours = defaults.hours;
@@ -65,23 +50,33 @@ public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime 
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder hours(Integer hours) {
             this.hours = Objects.requireNonNull(hours);
             return this;
         }
+        @CustomType.Setter
         public Builder minutes(Integer minutes) {
             this.minutes = Objects.requireNonNull(minutes);
             return this;
         }
+        @CustomType.Setter
         public Builder nanos(Integer nanos) {
             this.nanos = Objects.requireNonNull(nanos);
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(Integer seconds) {
             this.seconds = Objects.requireNonNull(seconds);
             return this;
-        }        public GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime build() {
-            return new GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime(hours, minutes, nanos, seconds);
+        }
+        public GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime build() {
+            final var o = new GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime();
+            o.hours = hours;
+            o.minutes = minutes;
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

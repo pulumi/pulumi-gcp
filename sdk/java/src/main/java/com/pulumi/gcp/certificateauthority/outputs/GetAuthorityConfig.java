@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfig {
-    private final List<GetAuthorityConfigSubjectConfig> subjectConfigs;
-    private final List<GetAuthorityConfigX509Config> x509Configs;
+    private List<GetAuthorityConfigSubjectConfig> subjectConfigs;
+    private List<GetAuthorityConfigX509Config> x509Configs;
 
-    @CustomType.Constructor
-    private GetAuthorityConfig(
-        @CustomType.Parameter("subjectConfigs") List<GetAuthorityConfigSubjectConfig> subjectConfigs,
-        @CustomType.Parameter("x509Configs") List<GetAuthorityConfigX509Config> x509Configs) {
-        this.subjectConfigs = subjectConfigs;
-        this.x509Configs = x509Configs;
-    }
-
+    private GetAuthorityConfig() {}
     public List<GetAuthorityConfigSubjectConfig> subjectConfigs() {
         return this.subjectConfigs;
     }
@@ -36,21 +29,18 @@ public final class GetAuthorityConfig {
     public static Builder builder(GetAuthorityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAuthorityConfigSubjectConfig> subjectConfigs;
         private List<GetAuthorityConfigX509Config> x509Configs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subjectConfigs = defaults.subjectConfigs;
     	      this.x509Configs = defaults.x509Configs;
         }
 
+        @CustomType.Setter
         public Builder subjectConfigs(List<GetAuthorityConfigSubjectConfig> subjectConfigs) {
             this.subjectConfigs = Objects.requireNonNull(subjectConfigs);
             return this;
@@ -58,14 +48,19 @@ public final class GetAuthorityConfig {
         public Builder subjectConfigs(GetAuthorityConfigSubjectConfig... subjectConfigs) {
             return subjectConfigs(List.of(subjectConfigs));
         }
+        @CustomType.Setter
         public Builder x509Configs(List<GetAuthorityConfigX509Config> x509Configs) {
             this.x509Configs = Objects.requireNonNull(x509Configs);
             return this;
         }
         public Builder x509Configs(GetAuthorityConfigX509Config... x509Configs) {
             return x509Configs(List.of(x509Configs));
-        }        public GetAuthorityConfig build() {
-            return new GetAuthorityConfig(subjectConfigs, x509Configs);
+        }
+        public GetAuthorityConfig build() {
+            final var o = new GetAuthorityConfig();
+            o.subjectConfigs = subjectConfigs;
+            o.x509Configs = x509Configs;
+            return o;
         }
     }
 }

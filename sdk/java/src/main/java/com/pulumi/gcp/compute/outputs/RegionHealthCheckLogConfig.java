@@ -16,13 +16,9 @@ public final class RegionHealthCheckLogConfig {
      * which means no health check logging will be done.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
 
-    @CustomType.Constructor
-    private RegionHealthCheckLogConfig(@CustomType.Parameter("enable") @Nullable Boolean enable) {
-        this.enable = enable;
-    }
-
+    private RegionHealthCheckLogConfig() {}
     /**
      * @return Indicates whether or not to export logs. This is false by default,
      * which means no health check logging will be done.
@@ -39,24 +35,24 @@ public final class RegionHealthCheckLogConfig {
     public static Builder builder(RegionHealthCheckLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionHealthCheckLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
-        }        public RegionHealthCheckLogConfig build() {
-            return new RegionHealthCheckLogConfig(enable);
+        }
+        public RegionHealthCheckLogConfig build() {
+            final var o = new RegionHealthCheckLogConfig();
+            o.enable = enable;
+            return o;
         }
     }
 }

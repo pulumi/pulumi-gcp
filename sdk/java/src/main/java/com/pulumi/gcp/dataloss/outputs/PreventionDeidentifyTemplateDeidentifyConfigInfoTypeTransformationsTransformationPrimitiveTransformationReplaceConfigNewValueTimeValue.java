@@ -15,35 +15,24 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * @return Hours of day in 24 hour format. Should be from 0 to 23.
      * 
      */
-    private final @Nullable Integer hours;
+    private @Nullable Integer hours;
     /**
      * @return Minutes of hour of day. Must be from 0 to 59.
      * 
      */
-    private final @Nullable Integer minutes;
+    private @Nullable Integer minutes;
     /**
      * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
      * 
      */
-    private final @Nullable Integer nanos;
+    private @Nullable Integer nanos;
     /**
      * @return Seconds of minutes of the time. Must normally be from 0 to 59.
      * 
      */
-    private final @Nullable Integer seconds;
+    private @Nullable Integer seconds;
 
-    @CustomType.Constructor
-    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(
-        @CustomType.Parameter("hours") @Nullable Integer hours,
-        @CustomType.Parameter("minutes") @Nullable Integer minutes,
-        @CustomType.Parameter("nanos") @Nullable Integer nanos,
-        @CustomType.Parameter("seconds") @Nullable Integer seconds) {
-        this.hours = hours;
-        this.minutes = minutes;
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue() {}
     /**
      * @return Hours of day in 24 hour format. Should be from 0 to 23.
      * 
@@ -80,17 +69,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static Builder builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer hours;
         private @Nullable Integer minutes;
         private @Nullable Integer nanos;
         private @Nullable Integer seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hours = defaults.hours;
@@ -99,23 +84,33 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder hours(@Nullable Integer hours) {
             this.hours = hours;
             return this;
         }
+        @CustomType.Setter
         public Builder minutes(@Nullable Integer minutes) {
             this.minutes = minutes;
             return this;
         }
+        @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
             this.nanos = nanos;
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(@Nullable Integer seconds) {
             this.seconds = seconds;
             return this;
-        }        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue build() {
-            return new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(hours, minutes, nanos, seconds);
+        }
+        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue build() {
+            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue();
+            o.hours = hours;
+            o.minutes = minutes;
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

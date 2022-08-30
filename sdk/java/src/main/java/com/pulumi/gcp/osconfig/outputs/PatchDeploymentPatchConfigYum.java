@@ -17,37 +17,26 @@ public final class PatchDeploymentPatchConfigYum {
      * @return List of KBs to exclude from update.
      * 
      */
-    private final @Nullable List<String> excludes;
+    private @Nullable List<String> excludes;
     /**
      * @return An exclusive list of packages to be updated. These are the only packages that will be updated.
      * If these packages are not installed, they will be ignored. This field cannot be specified with
      * any other patch configuration fields.
      * 
      */
-    private final @Nullable List<String> exclusivePackages;
+    private @Nullable List<String> exclusivePackages;
     /**
      * @return Will cause patch to run yum update-minimal instead.
      * 
      */
-    private final @Nullable Boolean minimal;
+    private @Nullable Boolean minimal;
     /**
      * @return Adds the --security flag to yum update. Not supported on all platforms.
      * 
      */
-    private final @Nullable Boolean security;
+    private @Nullable Boolean security;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigYum(
-        @CustomType.Parameter("excludes") @Nullable List<String> excludes,
-        @CustomType.Parameter("exclusivePackages") @Nullable List<String> exclusivePackages,
-        @CustomType.Parameter("minimal") @Nullable Boolean minimal,
-        @CustomType.Parameter("security") @Nullable Boolean security) {
-        this.excludes = excludes;
-        this.exclusivePackages = exclusivePackages;
-        this.minimal = minimal;
-        this.security = security;
-    }
-
+    private PatchDeploymentPatchConfigYum() {}
     /**
      * @return List of KBs to exclude from update.
      * 
@@ -86,17 +75,13 @@ public final class PatchDeploymentPatchConfigYum {
     public static Builder builder(PatchDeploymentPatchConfigYum defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludes;
         private @Nullable List<String> exclusivePackages;
         private @Nullable Boolean minimal;
         private @Nullable Boolean security;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigYum defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludes = defaults.excludes;
@@ -105,6 +90,7 @@ public final class PatchDeploymentPatchConfigYum {
     	      this.security = defaults.security;
         }
 
+        @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
             this.excludes = excludes;
             return this;
@@ -112,6 +98,7 @@ public final class PatchDeploymentPatchConfigYum {
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
+        @CustomType.Setter
         public Builder exclusivePackages(@Nullable List<String> exclusivePackages) {
             this.exclusivePackages = exclusivePackages;
             return this;
@@ -119,15 +106,23 @@ public final class PatchDeploymentPatchConfigYum {
         public Builder exclusivePackages(String... exclusivePackages) {
             return exclusivePackages(List.of(exclusivePackages));
         }
+        @CustomType.Setter
         public Builder minimal(@Nullable Boolean minimal) {
             this.minimal = minimal;
             return this;
         }
+        @CustomType.Setter
         public Builder security(@Nullable Boolean security) {
             this.security = security;
             return this;
-        }        public PatchDeploymentPatchConfigYum build() {
-            return new PatchDeploymentPatchConfigYum(excludes, exclusivePackages, minimal, security);
+        }
+        public PatchDeploymentPatchConfigYum build() {
+            final var o = new PatchDeploymentPatchConfigYum();
+            o.excludes = excludes;
+            o.exclusivePackages = exclusivePackages;
+            o.minimal = minimal;
+            o.security = security;
+            return o;
         }
     }
 }

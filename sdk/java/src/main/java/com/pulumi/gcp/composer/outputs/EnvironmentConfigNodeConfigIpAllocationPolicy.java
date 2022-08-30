@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigNodeConfigIpAllocationPolicy {
-    private final @Nullable String clusterIpv4CidrBlock;
-    private final @Nullable String clusterSecondaryRangeName;
-    private final @Nullable String servicesIpv4CidrBlock;
-    private final @Nullable String servicesSecondaryRangeName;
-    private final @Nullable Boolean useIpAliases;
+    private @Nullable String clusterIpv4CidrBlock;
+    private @Nullable String clusterSecondaryRangeName;
+    private @Nullable String servicesIpv4CidrBlock;
+    private @Nullable String servicesSecondaryRangeName;
+    private @Nullable Boolean useIpAliases;
 
-    @CustomType.Constructor
-    private EnvironmentConfigNodeConfigIpAllocationPolicy(
-        @CustomType.Parameter("clusterIpv4CidrBlock") @Nullable String clusterIpv4CidrBlock,
-        @CustomType.Parameter("clusterSecondaryRangeName") @Nullable String clusterSecondaryRangeName,
-        @CustomType.Parameter("servicesIpv4CidrBlock") @Nullable String servicesIpv4CidrBlock,
-        @CustomType.Parameter("servicesSecondaryRangeName") @Nullable String servicesSecondaryRangeName,
-        @CustomType.Parameter("useIpAliases") @Nullable Boolean useIpAliases) {
-        this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-        this.clusterSecondaryRangeName = clusterSecondaryRangeName;
-        this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-        this.servicesSecondaryRangeName = servicesSecondaryRangeName;
-        this.useIpAliases = useIpAliases;
-    }
-
+    private EnvironmentConfigNodeConfigIpAllocationPolicy() {}
     public Optional<String> clusterIpv4CidrBlock() {
         return Optional.ofNullable(this.clusterIpv4CidrBlock);
     }
@@ -55,18 +42,14 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicy {
     public static Builder builder(EnvironmentConfigNodeConfigIpAllocationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
         private @Nullable String servicesIpv4CidrBlock;
         private @Nullable String servicesSecondaryRangeName;
         private @Nullable Boolean useIpAliases;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigNodeConfigIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
@@ -76,27 +59,39 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicy {
     	      this.useIpAliases = defaults.useIpAliases;
         }
 
+        @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSecondaryRangeName(@Nullable String clusterSecondaryRangeName) {
             this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesIpv4CidrBlock(@Nullable String servicesIpv4CidrBlock) {
             this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesSecondaryRangeName(@Nullable String servicesSecondaryRangeName) {
             this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
+        @CustomType.Setter
         public Builder useIpAliases(@Nullable Boolean useIpAliases) {
             this.useIpAliases = useIpAliases;
             return this;
-        }        public EnvironmentConfigNodeConfigIpAllocationPolicy build() {
-            return new EnvironmentConfigNodeConfigIpAllocationPolicy(clusterIpv4CidrBlock, clusterSecondaryRangeName, servicesIpv4CidrBlock, servicesSecondaryRangeName, useIpAliases);
+        }
+        public EnvironmentConfigNodeConfigIpAllocationPolicy build() {
+            final var o = new EnvironmentConfigNodeConfigIpAllocationPolicy();
+            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            o.useIpAliases = useIpAliases;
+            return o;
         }
     }
 }

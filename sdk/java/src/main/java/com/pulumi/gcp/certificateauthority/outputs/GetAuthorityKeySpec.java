@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityKeySpec {
-    private final String algorithm;
-    private final String cloudKmsKeyVersion;
+    private String algorithm;
+    private String cloudKmsKeyVersion;
 
-    @CustomType.Constructor
-    private GetAuthorityKeySpec(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("cloudKmsKeyVersion") String cloudKmsKeyVersion) {
-        this.algorithm = algorithm;
-        this.cloudKmsKeyVersion = cloudKmsKeyVersion;
-    }
-
+    private GetAuthorityKeySpec() {}
     public String algorithm() {
         return this.algorithm;
     }
@@ -34,30 +27,32 @@ public final class GetAuthorityKeySpec {
     public static Builder builder(GetAuthorityKeySpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private String cloudKmsKeyVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityKeySpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.cloudKmsKeyVersion = defaults.cloudKmsKeyVersion;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudKmsKeyVersion(String cloudKmsKeyVersion) {
             this.cloudKmsKeyVersion = Objects.requireNonNull(cloudKmsKeyVersion);
             return this;
-        }        public GetAuthorityKeySpec build() {
-            return new GetAuthorityKeySpec(algorithm, cloudKmsKeyVersion);
+        }
+        public GetAuthorityKeySpec build() {
+            final var o = new GetAuthorityKeySpec();
+            o.algorithm = algorithm;
+            o.cloudKmsKeyVersion = cloudKmsKeyVersion;
+            return o;
         }
     }
 }

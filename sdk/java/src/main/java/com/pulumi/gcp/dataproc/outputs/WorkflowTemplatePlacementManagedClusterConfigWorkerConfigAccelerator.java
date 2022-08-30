@@ -16,21 +16,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcce
      * @return The number of the accelerator cards of this type exposed to this instance.
      * 
      */
-    private final @Nullable Integer acceleratorCount;
+    private @Nullable Integer acceleratorCount;
     /**
      * @return Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
      * 
      */
-    private final @Nullable String acceleratorType;
+    private @Nullable String acceleratorType;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(
-        @CustomType.Parameter("acceleratorCount") @Nullable Integer acceleratorCount,
-        @CustomType.Parameter("acceleratorType") @Nullable String acceleratorType) {
-        this.acceleratorCount = acceleratorCount;
-        this.acceleratorType = acceleratorType;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator() {}
     /**
      * @return The number of the accelerator cards of this type exposed to this instance.
      * 
@@ -53,30 +46,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcce
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer acceleratorCount;
         private @Nullable String acceleratorType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorCount = defaults.acceleratorCount;
     	      this.acceleratorType = defaults.acceleratorType;
         }
 
+        @CustomType.Setter
         public Builder acceleratorCount(@Nullable Integer acceleratorCount) {
             this.acceleratorCount = acceleratorCount;
             return this;
         }
+        @CustomType.Setter
         public Builder acceleratorType(@Nullable String acceleratorType) {
             this.acceleratorType = acceleratorType;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(acceleratorCount, acceleratorType);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator();
+            o.acceleratorCount = acceleratorCount;
+            o.acceleratorType = acceleratorType;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class ClusterAddonsConfigDnsCacheConfig {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterAddonsConfigDnsCacheConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClusterAddonsConfigDnsCacheConfig() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -37,24 +33,24 @@ public final class ClusterAddonsConfigDnsCacheConfig {
     public static Builder builder(ClusterAddonsConfigDnsCacheConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAddonsConfigDnsCacheConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public ClusterAddonsConfigDnsCacheConfig build() {
-            return new ClusterAddonsConfigDnsCacheConfig(enabled);
+        }
+        public ClusterAddonsConfigDnsCacheConfig build() {
+            final var o = new ClusterAddonsConfigDnsCacheConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

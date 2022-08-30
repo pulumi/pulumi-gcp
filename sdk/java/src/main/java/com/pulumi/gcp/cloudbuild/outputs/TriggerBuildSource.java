@@ -17,22 +17,15 @@ public final class TriggerBuildSource {
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildSourceRepoSource repoSource;
+    private @Nullable TriggerBuildSourceRepoSource repoSource;
     /**
      * @return Location of the source in an archive file in Google Cloud Storage.
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildSourceStorageSource storageSource;
+    private @Nullable TriggerBuildSourceStorageSource storageSource;
 
-    @CustomType.Constructor
-    private TriggerBuildSource(
-        @CustomType.Parameter("repoSource") @Nullable TriggerBuildSourceRepoSource repoSource,
-        @CustomType.Parameter("storageSource") @Nullable TriggerBuildSourceStorageSource storageSource) {
-        this.repoSource = repoSource;
-        this.storageSource = storageSource;
-    }
-
+    private TriggerBuildSource() {}
     /**
      * @return Location of the source in a Google Cloud Source Repository.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class TriggerBuildSource {
     public static Builder builder(TriggerBuildSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable TriggerBuildSourceRepoSource repoSource;
         private @Nullable TriggerBuildSourceStorageSource storageSource;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.repoSource = defaults.repoSource;
     	      this.storageSource = defaults.storageSource;
         }
 
+        @CustomType.Setter
         public Builder repoSource(@Nullable TriggerBuildSourceRepoSource repoSource) {
             this.repoSource = repoSource;
             return this;
         }
+        @CustomType.Setter
         public Builder storageSource(@Nullable TriggerBuildSourceStorageSource storageSource) {
             this.storageSource = storageSource;
             return this;
-        }        public TriggerBuildSource build() {
-            return new TriggerBuildSource(repoSource, storageSource);
+        }
+        public TriggerBuildSource build() {
+            final var o = new TriggerBuildSource();
+            o.repoSource = repoSource;
+            o.storageSource = storageSource;
+            return o;
         }
     }
 }

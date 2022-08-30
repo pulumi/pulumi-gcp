@@ -15,23 +15,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
      * and 599 inclusive.
      * 
      */
-    private final Integer httpStatus;
+    private Integer httpStatus;
     /**
      * @return The percentage of traffic (connections/operations/requests) on which delay will
      * be introduced as part of fault injection. The value must be between 0.0 and
      * 100.0 inclusive.
      * 
      */
-    private final Double percentage;
+    private Double percentage;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(
-        @CustomType.Parameter("httpStatus") Integer httpStatus,
-        @CustomType.Parameter("percentage") Double percentage) {
-        this.httpStatus = httpStatus;
-        this.percentage = percentage;
-    }
-
+    private RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort() {}
     /**
      * @return The HTTP status code used to abort the request. The value must be between 200
      * and 599 inclusive.
@@ -57,30 +50,32 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
     public static Builder builder(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer httpStatus;
         private Double percentage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpStatus = defaults.httpStatus;
     	      this.percentage = defaults.percentage;
         }
 
+        @CustomType.Setter
         public Builder httpStatus(Integer httpStatus) {
             this.httpStatus = Objects.requireNonNull(httpStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder percentage(Double percentage) {
             this.percentage = Objects.requireNonNull(percentage);
             return this;
-        }        public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort build() {
-            return new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(httpStatus, percentage);
+        }
+        public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort build() {
+            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort();
+            o.httpStatus = httpStatus;
+            o.percentage = percentage;
+            return o;
         }
     }
 }

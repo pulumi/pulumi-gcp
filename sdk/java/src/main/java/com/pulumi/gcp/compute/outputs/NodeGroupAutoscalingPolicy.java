@@ -17,13 +17,13 @@ public final class NodeGroupAutoscalingPolicy {
      * to 100 and greater than or equal to min-nodes.
      * 
      */
-    private final @Nullable Integer maxNodes;
+    private @Nullable Integer maxNodes;
     /**
      * @return Minimum size of the node group. Must be less
      * than or equal to max-nodes. The default value is 0.
      * 
      */
-    private final @Nullable Integer minNodes;
+    private @Nullable Integer minNodes;
     /**
      * @return The autoscaling mode. Set to one of the following:
      * - OFF: Disables the autoscaler.
@@ -34,18 +34,9 @@ public final class NodeGroupAutoscalingPolicy {
      *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
 
-    @CustomType.Constructor
-    private NodeGroupAutoscalingPolicy(
-        @CustomType.Parameter("maxNodes") @Nullable Integer maxNodes,
-        @CustomType.Parameter("minNodes") @Nullable Integer minNodes,
-        @CustomType.Parameter("mode") @Nullable String mode) {
-        this.maxNodes = maxNodes;
-        this.minNodes = minNodes;
-        this.mode = mode;
-    }
-
+    private NodeGroupAutoscalingPolicy() {}
     /**
      * @return Maximum size of the node group. Set to a value less than or equal
      * to 100 and greater than or equal to min-nodes.
@@ -83,16 +74,12 @@ public final class NodeGroupAutoscalingPolicy {
     public static Builder builder(NodeGroupAutoscalingPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxNodes;
         private @Nullable Integer minNodes;
         private @Nullable String mode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeGroupAutoscalingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxNodes = defaults.maxNodes;
@@ -100,19 +87,27 @@ public final class NodeGroupAutoscalingPolicy {
     	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
         public Builder maxNodes(@Nullable Integer maxNodes) {
             this.maxNodes = maxNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder minNodes(@Nullable Integer minNodes) {
             this.minNodes = minNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
-        }        public NodeGroupAutoscalingPolicy build() {
-            return new NodeGroupAutoscalingPolicy(maxNodes, minNodes, mode);
+        }
+        public NodeGroupAutoscalingPolicy build() {
+            final var o = new NodeGroupAutoscalingPolicy();
+            o.maxNodes = maxNodes;
+            o.minNodes = minNodes;
+            o.mode = mode;
+            return o;
         }
     }
 }

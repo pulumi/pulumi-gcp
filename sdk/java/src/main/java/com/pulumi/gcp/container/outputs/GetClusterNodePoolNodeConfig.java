@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGuestAcceler
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGvnic;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigTaint;
@@ -23,86 +24,34 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfig {
-    private final String bootDiskKmsKey;
-    private final Integer diskSizeGb;
-    private final String diskType;
-    private final List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
-    private final List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs;
-    private final List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
-    private final List<GetClusterNodePoolNodeConfigGvnic> gvnics;
-    private final String imageType;
-    private final List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs;
-    private final Map<String,String> labels;
-    private final List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs;
-    private final Integer localSsdCount;
-    private final String machineType;
-    private final Map<String,String> metadata;
-    private final String minCpuPlatform;
-    private final String nodeGroup;
-    private final List<String> oauthScopes;
-    private final Boolean preemptible;
-    private final List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs;
-    private final String serviceAccount;
-    private final List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
-    private final Boolean spot;
-    private final List<String> tags;
-    private final List<GetClusterNodePoolNodeConfigTaint> taints;
-    private final List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
+    private String bootDiskKmsKey;
+    private Integer diskSizeGb;
+    private String diskType;
+    private List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
+    private List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs;
+    private List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
+    private List<GetClusterNodePoolNodeConfigGvnic> gvnics;
+    private String imageType;
+    private List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs;
+    private Map<String,String> labels;
+    private List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs;
+    private Integer localSsdCount;
+    private String machineType;
+    private Map<String,String> metadata;
+    private String minCpuPlatform;
+    private String nodeGroup;
+    private List<String> oauthScopes;
+    private Boolean preemptible;
+    private List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities;
+    private List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs;
+    private String serviceAccount;
+    private List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
+    private Boolean spot;
+    private List<String> tags;
+    private List<GetClusterNodePoolNodeConfigTaint> taints;
+    private List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfig(
-        @CustomType.Parameter("bootDiskKmsKey") String bootDiskKmsKey,
-        @CustomType.Parameter("diskSizeGb") Integer diskSizeGb,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("ephemeralStorageConfigs") List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs,
-        @CustomType.Parameter("gcfsConfigs") List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs,
-        @CustomType.Parameter("guestAccelerators") List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators,
-        @CustomType.Parameter("gvnics") List<GetClusterNodePoolNodeConfigGvnic> gvnics,
-        @CustomType.Parameter("imageType") String imageType,
-        @CustomType.Parameter("kubeletConfigs") List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("linuxNodeConfigs") List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs,
-        @CustomType.Parameter("localSsdCount") Integer localSsdCount,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("metadata") Map<String,String> metadata,
-        @CustomType.Parameter("minCpuPlatform") String minCpuPlatform,
-        @CustomType.Parameter("nodeGroup") String nodeGroup,
-        @CustomType.Parameter("oauthScopes") List<String> oauthScopes,
-        @CustomType.Parameter("preemptible") Boolean preemptible,
-        @CustomType.Parameter("sandboxConfigs") List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs,
-        @CustomType.Parameter("serviceAccount") String serviceAccount,
-        @CustomType.Parameter("shieldedInstanceConfigs") List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs,
-        @CustomType.Parameter("spot") Boolean spot,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("taints") List<GetClusterNodePoolNodeConfigTaint> taints,
-        @CustomType.Parameter("workloadMetadataConfigs") List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs) {
-        this.bootDiskKmsKey = bootDiskKmsKey;
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.ephemeralStorageConfigs = ephemeralStorageConfigs;
-        this.gcfsConfigs = gcfsConfigs;
-        this.guestAccelerators = guestAccelerators;
-        this.gvnics = gvnics;
-        this.imageType = imageType;
-        this.kubeletConfigs = kubeletConfigs;
-        this.labels = labels;
-        this.linuxNodeConfigs = linuxNodeConfigs;
-        this.localSsdCount = localSsdCount;
-        this.machineType = machineType;
-        this.metadata = metadata;
-        this.minCpuPlatform = minCpuPlatform;
-        this.nodeGroup = nodeGroup;
-        this.oauthScopes = oauthScopes;
-        this.preemptible = preemptible;
-        this.sandboxConfigs = sandboxConfigs;
-        this.serviceAccount = serviceAccount;
-        this.shieldedInstanceConfigs = shieldedInstanceConfigs;
-        this.spot = spot;
-        this.tags = tags;
-        this.taints = taints;
-        this.workloadMetadataConfigs = workloadMetadataConfigs;
-    }
-
+    private GetClusterNodePoolNodeConfig() {}
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
     }
@@ -157,6 +106,9 @@ public final class GetClusterNodePoolNodeConfig {
     public Boolean preemptible() {
         return this.preemptible;
     }
+    public List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities() {
+        return this.reservationAffinities;
+    }
     public List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs() {
         return this.sandboxConfigs;
     }
@@ -186,7 +138,7 @@ public final class GetClusterNodePoolNodeConfig {
     public static Builder builder(GetClusterNodePoolNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bootDiskKmsKey;
         private Integer diskSizeGb;
@@ -206,6 +158,7 @@ public final class GetClusterNodePoolNodeConfig {
         private String nodeGroup;
         private List<String> oauthScopes;
         private Boolean preemptible;
+        private List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities;
         private List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs;
         private String serviceAccount;
         private List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
@@ -213,11 +166,7 @@ public final class GetClusterNodePoolNodeConfig {
         private List<String> tags;
         private List<GetClusterNodePoolNodeConfigTaint> taints;
         private List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
@@ -238,6 +187,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.nodeGroup = defaults.nodeGroup;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
+    	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.sandboxConfigs = defaults.sandboxConfigs;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
@@ -247,18 +197,22 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.workloadMetadataConfigs = defaults.workloadMetadataConfigs;
         }
 
+        @CustomType.Setter
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder ephemeralStorageConfigs(List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs) {
             this.ephemeralStorageConfigs = Objects.requireNonNull(ephemeralStorageConfigs);
             return this;
@@ -266,6 +220,7 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder ephemeralStorageConfigs(GetClusterNodePoolNodeConfigEphemeralStorageConfig... ephemeralStorageConfigs) {
             return ephemeralStorageConfigs(List.of(ephemeralStorageConfigs));
         }
+        @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs) {
             this.gcfsConfigs = Objects.requireNonNull(gcfsConfigs);
             return this;
@@ -273,6 +228,7 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder gcfsConfigs(GetClusterNodePoolNodeConfigGcfsConfig... gcfsConfigs) {
             return gcfsConfigs(List.of(gcfsConfigs));
         }
+        @CustomType.Setter
         public Builder guestAccelerators(List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators) {
             this.guestAccelerators = Objects.requireNonNull(guestAccelerators);
             return this;
@@ -280,6 +236,7 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder guestAccelerators(GetClusterNodePoolNodeConfigGuestAccelerator... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
+        @CustomType.Setter
         public Builder gvnics(List<GetClusterNodePoolNodeConfigGvnic> gvnics) {
             this.gvnics = Objects.requireNonNull(gvnics);
             return this;
@@ -287,10 +244,12 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder gvnics(GetClusterNodePoolNodeConfigGvnic... gvnics) {
             return gvnics(List.of(gvnics));
         }
+        @CustomType.Setter
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeletConfigs(List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs) {
             this.kubeletConfigs = Objects.requireNonNull(kubeletConfigs);
             return this;
@@ -298,10 +257,12 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder kubeletConfigs(GetClusterNodePoolNodeConfigKubeletConfig... kubeletConfigs) {
             return kubeletConfigs(List.of(kubeletConfigs));
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder linuxNodeConfigs(List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs) {
             this.linuxNodeConfigs = Objects.requireNonNull(linuxNodeConfigs);
             return this;
@@ -309,26 +270,32 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder linuxNodeConfigs(GetClusterNodePoolNodeConfigLinuxNodeConfig... linuxNodeConfigs) {
             return linuxNodeConfigs(List.of(linuxNodeConfigs));
         }
+        @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
             this.localSsdCount = Objects.requireNonNull(localSsdCount);
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
             this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroup(String nodeGroup) {
             this.nodeGroup = Objects.requireNonNull(nodeGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
             this.oauthScopes = Objects.requireNonNull(oauthScopes);
             return this;
@@ -336,10 +303,20 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
             this.preemptible = Objects.requireNonNull(preemptible);
             return this;
         }
+        @CustomType.Setter
+        public Builder reservationAffinities(List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities) {
+            this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
+            return this;
+        }
+        public Builder reservationAffinities(GetClusterNodePoolNodeConfigReservationAffinity... reservationAffinities) {
+            return reservationAffinities(List.of(reservationAffinities));
+        }
+        @CustomType.Setter
         public Builder sandboxConfigs(List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs) {
             this.sandboxConfigs = Objects.requireNonNull(sandboxConfigs);
             return this;
@@ -347,10 +324,12 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder sandboxConfigs(GetClusterNodePoolNodeConfigSandboxConfig... sandboxConfigs) {
             return sandboxConfigs(List.of(sandboxConfigs));
         }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs) {
             this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
             return this;
@@ -358,10 +337,12 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder shieldedInstanceConfigs(GetClusterNodePoolNodeConfigShieldedInstanceConfig... shieldedInstanceConfigs) {
             return shieldedInstanceConfigs(List.of(shieldedInstanceConfigs));
         }
+        @CustomType.Setter
         public Builder spot(Boolean spot) {
             this.spot = Objects.requireNonNull(spot);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -369,6 +350,7 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder taints(List<GetClusterNodePoolNodeConfigTaint> taints) {
             this.taints = Objects.requireNonNull(taints);
             return this;
@@ -376,14 +358,43 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder taints(GetClusterNodePoolNodeConfigTaint... taints) {
             return taints(List.of(taints));
         }
+        @CustomType.Setter
         public Builder workloadMetadataConfigs(List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs) {
             this.workloadMetadataConfigs = Objects.requireNonNull(workloadMetadataConfigs);
             return this;
         }
         public Builder workloadMetadataConfigs(GetClusterNodePoolNodeConfigWorkloadMetadataConfig... workloadMetadataConfigs) {
             return workloadMetadataConfigs(List.of(workloadMetadataConfigs));
-        }        public GetClusterNodePoolNodeConfig build() {
-            return new GetClusterNodePoolNodeConfig(bootDiskKmsKey, diskSizeGb, diskType, ephemeralStorageConfigs, gcfsConfigs, guestAccelerators, gvnics, imageType, kubeletConfigs, labels, linuxNodeConfigs, localSsdCount, machineType, metadata, minCpuPlatform, nodeGroup, oauthScopes, preemptible, sandboxConfigs, serviceAccount, shieldedInstanceConfigs, spot, tags, taints, workloadMetadataConfigs);
+        }
+        public GetClusterNodePoolNodeConfig build() {
+            final var o = new GetClusterNodePoolNodeConfig();
+            o.bootDiskKmsKey = bootDiskKmsKey;
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.ephemeralStorageConfigs = ephemeralStorageConfigs;
+            o.gcfsConfigs = gcfsConfigs;
+            o.guestAccelerators = guestAccelerators;
+            o.gvnics = gvnics;
+            o.imageType = imageType;
+            o.kubeletConfigs = kubeletConfigs;
+            o.labels = labels;
+            o.linuxNodeConfigs = linuxNodeConfigs;
+            o.localSsdCount = localSsdCount;
+            o.machineType = machineType;
+            o.metadata = metadata;
+            o.minCpuPlatform = minCpuPlatform;
+            o.nodeGroup = nodeGroup;
+            o.oauthScopes = oauthScopes;
+            o.preemptible = preemptible;
+            o.reservationAffinities = reservationAffinities;
+            o.sandboxConfigs = sandboxConfigs;
+            o.serviceAccount = serviceAccount;
+            o.shieldedInstanceConfigs = shieldedInstanceConfigs;
+            o.spot = spot;
+            o.tags = tags;
+            o.taints = taints;
+            o.workloadMetadataConfigs = workloadMetadataConfigs;
+            return o;
         }
     }
 }

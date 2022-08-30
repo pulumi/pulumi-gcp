@@ -16,13 +16,13 @@ public final class PolicyDefaultAdmissionRule {
      * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
      * 
      */
-    private final String enforcementMode;
+    private String enforcementMode;
     /**
      * @return How this admission rule will be evaluated.
      * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
      * 
      */
-    private final String evaluationMode;
+    private String evaluationMode;
     /**
      * @return The resource names of the attestors that must attest to a
      * container image. If the attestor is in a different project from the
@@ -34,18 +34,9 @@ public final class PolicyDefaultAdmissionRule {
      * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
      * 
      */
-    private final @Nullable List<String> requireAttestationsBies;
+    private @Nullable List<String> requireAttestationsBies;
 
-    @CustomType.Constructor
-    private PolicyDefaultAdmissionRule(
-        @CustomType.Parameter("enforcementMode") String enforcementMode,
-        @CustomType.Parameter("evaluationMode") String evaluationMode,
-        @CustomType.Parameter("requireAttestationsBies") @Nullable List<String> requireAttestationsBies) {
-        this.enforcementMode = enforcementMode;
-        this.evaluationMode = evaluationMode;
-        this.requireAttestationsBies = requireAttestationsBies;
-    }
-
+    private PolicyDefaultAdmissionRule() {}
     /**
      * @return The action when a pod creation is denied by the admission rule.
      * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
@@ -84,16 +75,12 @@ public final class PolicyDefaultAdmissionRule {
     public static Builder builder(PolicyDefaultAdmissionRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String enforcementMode;
         private String evaluationMode;
         private @Nullable List<String> requireAttestationsBies;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyDefaultAdmissionRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enforcementMode = defaults.enforcementMode;
@@ -101,22 +88,30 @@ public final class PolicyDefaultAdmissionRule {
     	      this.requireAttestationsBies = defaults.requireAttestationsBies;
         }
 
+        @CustomType.Setter
         public Builder enforcementMode(String enforcementMode) {
             this.enforcementMode = Objects.requireNonNull(enforcementMode);
             return this;
         }
+        @CustomType.Setter
         public Builder evaluationMode(String evaluationMode) {
             this.evaluationMode = Objects.requireNonNull(evaluationMode);
             return this;
         }
+        @CustomType.Setter
         public Builder requireAttestationsBies(@Nullable List<String> requireAttestationsBies) {
             this.requireAttestationsBies = requireAttestationsBies;
             return this;
         }
         public Builder requireAttestationsBies(String... requireAttestationsBies) {
             return requireAttestationsBies(List.of(requireAttestationsBies));
-        }        public PolicyDefaultAdmissionRule build() {
-            return new PolicyDefaultAdmissionRule(enforcementMode, evaluationMode, requireAttestationsBies);
+        }
+        public PolicyDefaultAdmissionRule build() {
+            final var o = new PolicyDefaultAdmissionRule();
+            o.enforcementMode = enforcementMode;
+            o.evaluationMode = evaluationMode;
+            o.requireAttestationsBies = requireAttestationsBies;
+            return o;
         }
     }
 }

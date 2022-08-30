@@ -15,13 +15,9 @@ public final class StandardAppVersionManualScaling {
      * Modules API set_num_instances() you must use `lifecycle.ignore_changes = [&#34;manual_scaling&#34;[0].instances]` to prevent drift detection.
      * 
      */
-    private final Integer instances;
+    private Integer instances;
 
-    @CustomType.Constructor
-    private StandardAppVersionManualScaling(@CustomType.Parameter("instances") Integer instances) {
-        this.instances = instances;
-    }
-
+    private StandardAppVersionManualScaling() {}
     /**
      * @return Number of instances to assign to the service at the start.
      * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
@@ -39,24 +35,24 @@ public final class StandardAppVersionManualScaling {
     public static Builder builder(StandardAppVersionManualScaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer instances;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionManualScaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instances = defaults.instances;
         }
 
+        @CustomType.Setter
         public Builder instances(Integer instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
-        }        public StandardAppVersionManualScaling build() {
-            return new StandardAppVersionManualScaling(instances);
+        }
+        public StandardAppVersionManualScaling build() {
+            final var o = new StandardAppVersionManualScaling();
+            o.instances = instances;
+            return o;
         }
     }
 }

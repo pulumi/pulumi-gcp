@@ -13,13 +13,9 @@ public final class DicomStoreStreamConfigBigqueryDestination {
      * @return a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
      * 
      */
-    private final String tableUri;
+    private String tableUri;
 
-    @CustomType.Constructor
-    private DicomStoreStreamConfigBigqueryDestination(@CustomType.Parameter("tableUri") String tableUri) {
-        this.tableUri = tableUri;
-    }
-
+    private DicomStoreStreamConfigBigqueryDestination() {}
     /**
      * @return a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
      * 
@@ -35,24 +31,24 @@ public final class DicomStoreStreamConfigBigqueryDestination {
     public static Builder builder(DicomStoreStreamConfigBigqueryDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String tableUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DicomStoreStreamConfigBigqueryDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tableUri = defaults.tableUri;
         }
 
+        @CustomType.Setter
         public Builder tableUri(String tableUri) {
             this.tableUri = Objects.requireNonNull(tableUri);
             return this;
-        }        public DicomStoreStreamConfigBigqueryDestination build() {
-            return new DicomStoreStreamConfigBigqueryDestination(tableUri);
+        }
+        public DicomStoreStreamConfigBigqueryDestination build() {
+            final var o = new DicomStoreStreamConfigBigqueryDestination();
+            o.tableUri = tableUri;
+            return o;
         }
     }
 }

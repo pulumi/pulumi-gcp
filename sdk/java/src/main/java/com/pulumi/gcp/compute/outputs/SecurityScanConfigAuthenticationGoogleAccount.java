@@ -15,21 +15,14 @@ public final class SecurityScanConfigAuthenticationGoogleAccount {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return The user name of the custom account.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private SecurityScanConfigAuthenticationGoogleAccount(
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("username") String username) {
-        this.password = password;
-        this.username = username;
-    }
-
+    private SecurityScanConfigAuthenticationGoogleAccount() {}
     /**
      * @return The password of the custom account. The credential is stored encrypted
      * in GCP.
@@ -54,30 +47,32 @@ public final class SecurityScanConfigAuthenticationGoogleAccount {
     public static Builder builder(SecurityScanConfigAuthenticationGoogleAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityScanConfigAuthenticationGoogleAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public SecurityScanConfigAuthenticationGoogleAccount build() {
-            return new SecurityScanConfigAuthenticationGoogleAccount(password, username);
+        }
+        public SecurityScanConfigAuthenticationGoogleAccount build() {
+            final var o = new SecurityScanConfigAuthenticationGoogleAccount();
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

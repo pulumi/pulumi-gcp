@@ -20,7 +20,7 @@ public final class DomainMappingSslSettings {
      * Example: 12345.
      * 
      */
-    private final @Nullable String certificateId;
+    private @Nullable String certificateId;
     /**
      * @return -
      * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
@@ -30,25 +30,16 @@ public final class DomainMappingSslSettings {
      * `certificateId` field with an update request.
      * 
      */
-    private final @Nullable String pendingManagedCertificateId;
+    private @Nullable String pendingManagedCertificateId;
     /**
      * @return SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
      * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
      * Possible values are `AUTOMATIC` and `MANUAL`.
      * 
      */
-    private final String sslManagementType;
+    private String sslManagementType;
 
-    @CustomType.Constructor
-    private DomainMappingSslSettings(
-        @CustomType.Parameter("certificateId") @Nullable String certificateId,
-        @CustomType.Parameter("pendingManagedCertificateId") @Nullable String pendingManagedCertificateId,
-        @CustomType.Parameter("sslManagementType") String sslManagementType) {
-        this.certificateId = certificateId;
-        this.pendingManagedCertificateId = pendingManagedCertificateId;
-        this.sslManagementType = sslManagementType;
-    }
-
+    private DomainMappingSslSettings() {}
     /**
      * @return ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
      * remove SSL support.
@@ -90,16 +81,12 @@ public final class DomainMappingSslSettings {
     public static Builder builder(DomainMappingSslSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificateId;
         private @Nullable String pendingManagedCertificateId;
         private String sslManagementType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainMappingSslSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateId = defaults.certificateId;
@@ -107,19 +94,27 @@ public final class DomainMappingSslSettings {
     	      this.sslManagementType = defaults.sslManagementType;
         }
 
+        @CustomType.Setter
         public Builder certificateId(@Nullable String certificateId) {
             this.certificateId = certificateId;
             return this;
         }
+        @CustomType.Setter
         public Builder pendingManagedCertificateId(@Nullable String pendingManagedCertificateId) {
             this.pendingManagedCertificateId = pendingManagedCertificateId;
             return this;
         }
+        @CustomType.Setter
         public Builder sslManagementType(String sslManagementType) {
             this.sslManagementType = Objects.requireNonNull(sslManagementType);
             return this;
-        }        public DomainMappingSslSettings build() {
-            return new DomainMappingSslSettings(certificateId, pendingManagedCertificateId, sslManagementType);
+        }
+        public DomainMappingSslSettings build() {
+            final var o = new DomainMappingSslSettings();
+            o.certificateId = certificateId;
+            o.pendingManagedCertificateId = pendingManagedCertificateId;
+            o.sslManagementType = sslManagementType;
+            return o;
         }
     }
 }

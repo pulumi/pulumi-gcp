@@ -18,21 +18,14 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
      * Possible values are `default` and `private`.
      * 
      */
-    private final @Nullable String forwardingPath;
+    private @Nullable String forwardingPath;
     /**
      * @return IPv4 address of a target name server.
      * 
      */
-    private final String ipv4Address;
+    private String ipv4Address;
 
-    @CustomType.Constructor
-    private ManagedZoneForwardingConfigTargetNameServer(
-        @CustomType.Parameter("forwardingPath") @Nullable String forwardingPath,
-        @CustomType.Parameter("ipv4Address") String ipv4Address) {
-        this.forwardingPath = forwardingPath;
-        this.ipv4Address = ipv4Address;
-    }
-
+    private ManagedZoneForwardingConfigTargetNameServer() {}
     /**
      * @return Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
      * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
@@ -58,30 +51,32 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
     public static Builder builder(ManagedZoneForwardingConfigTargetNameServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String forwardingPath;
         private String ipv4Address;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZoneForwardingConfigTargetNameServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardingPath = defaults.forwardingPath;
     	      this.ipv4Address = defaults.ipv4Address;
         }
 
+        @CustomType.Setter
         public Builder forwardingPath(@Nullable String forwardingPath) {
             this.forwardingPath = forwardingPath;
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4Address(String ipv4Address) {
             this.ipv4Address = Objects.requireNonNull(ipv4Address);
             return this;
-        }        public ManagedZoneForwardingConfigTargetNameServer build() {
-            return new ManagedZoneForwardingConfigTargetNameServer(forwardingPath, ipv4Address);
+        }
+        public ManagedZoneForwardingConfigTargetNameServer build() {
+            final var o = new ManagedZoneForwardingConfigTargetNameServer();
+            o.forwardingPath = forwardingPath;
+            o.ipv4Address = ipv4Address;
+            return o;
         }
     }
 }

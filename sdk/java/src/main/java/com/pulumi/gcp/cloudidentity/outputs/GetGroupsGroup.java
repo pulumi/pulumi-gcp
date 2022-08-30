@@ -12,42 +12,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsGroup {
-    private final String createTime;
-    private final String description;
-    private final String displayName;
-    private final List<GetGroupsGroupGroupKey> groupKeys;
-    private final String initialGroupConfig;
-    private final Map<String,String> labels;
-    private final String name;
+    private String createTime;
+    private String description;
+    private String displayName;
+    private List<GetGroupsGroupGroupKey> groupKeys;
+    private String initialGroupConfig;
+    private Map<String,String> labels;
+    private String name;
     /**
      * @return The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
      * 
      */
-    private final String parent;
-    private final String updateTime;
+    private String parent;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetGroupsGroup(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("groupKeys") List<GetGroupsGroupGroupKey> groupKeys,
-        @CustomType.Parameter("initialGroupConfig") String initialGroupConfig,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("parent") String parent,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.createTime = createTime;
-        this.description = description;
-        this.displayName = displayName;
-        this.groupKeys = groupKeys;
-        this.initialGroupConfig = initialGroupConfig;
-        this.labels = labels;
-        this.name = name;
-        this.parent = parent;
-        this.updateTime = updateTime;
-    }
-
+    private GetGroupsGroup() {}
     public String createTime() {
         return this.createTime;
     }
@@ -87,7 +66,7 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -98,11 +77,7 @@ public final class GetGroupsGroup {
         private String name;
         private String parent;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -116,18 +91,22 @@ public final class GetGroupsGroup {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder groupKeys(List<GetGroupsGroupGroupKey> groupKeys) {
             this.groupKeys = Objects.requireNonNull(groupKeys);
             return this;
@@ -135,27 +114,43 @@ public final class GetGroupsGroup {
         public Builder groupKeys(GetGroupsGroupGroupKey... groupKeys) {
             return groupKeys(List.of(groupKeys));
         }
+        @CustomType.Setter
         public Builder initialGroupConfig(String initialGroupConfig) {
             this.initialGroupConfig = Objects.requireNonNull(initialGroupConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetGroupsGroup build() {
-            return new GetGroupsGroup(createTime, description, displayName, groupKeys, initialGroupConfig, labels, name, parent, updateTime);
+        }
+        public GetGroupsGroup build() {
+            final var o = new GetGroupsGroup();
+            o.createTime = createTime;
+            o.description = description;
+            o.displayName = displayName;
+            o.groupKeys = groupKeys;
+            o.initialGroupConfig = initialGroupConfig;
+            o.labels = labels;
+            o.name = name;
+            o.parent = parent;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

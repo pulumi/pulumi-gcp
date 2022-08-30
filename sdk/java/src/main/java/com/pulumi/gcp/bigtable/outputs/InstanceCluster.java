@@ -17,54 +17,39 @@ public final class InstanceCluster {
      * @return Autoscaling config for the cluster, contains the following arguments:
      * 
      */
-    private final @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
+    private @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
     /**
      * @return The ID of the Cloud Bigtable cluster.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
      * 
      */
-    private final @Nullable String kmsKeyName;
+    private @Nullable String kmsKeyName;
     /**
      * @return The number of nodes in your Cloud Bigtable cluster.
      * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
      * for a `DEVELOPMENT` instance.
      * 
      */
-    private final @Nullable Integer numNodes;
+    private @Nullable Integer numNodes;
     /**
      * @return The storage type to use. One of `&#34;SSD&#34;` or
      * `&#34;HDD&#34;`. Defaults to `&#34;SSD&#34;`.
      * 
      */
-    private final @Nullable String storageType;
+    private @Nullable String storageType;
     /**
      * @return The zone to create the Cloud Bigtable cluster in. If it not
      * specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
      * Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private InstanceCluster(
-        @CustomType.Parameter("autoscalingConfig") @Nullable InstanceClusterAutoscalingConfig autoscalingConfig,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("kmsKeyName") @Nullable String kmsKeyName,
-        @CustomType.Parameter("numNodes") @Nullable Integer numNodes,
-        @CustomType.Parameter("storageType") @Nullable String storageType,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.autoscalingConfig = autoscalingConfig;
-        this.clusterId = clusterId;
-        this.kmsKeyName = kmsKeyName;
-        this.numNodes = numNodes;
-        this.storageType = storageType;
-        this.zone = zone;
-    }
-
+    private InstanceCluster() {}
     /**
      * @return Autoscaling config for the cluster, contains the following arguments:
      * 
@@ -120,7 +105,7 @@ public final class InstanceCluster {
     public static Builder builder(InstanceCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
         private String clusterId;
@@ -128,11 +113,7 @@ public final class InstanceCluster {
         private @Nullable Integer numNodes;
         private @Nullable String storageType;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingConfig = defaults.autoscalingConfig;
@@ -143,31 +124,45 @@ public final class InstanceCluster {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder autoscalingConfig(@Nullable InstanceClusterAutoscalingConfig autoscalingConfig) {
             this.autoscalingConfig = autoscalingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
             this.kmsKeyName = kmsKeyName;
             return this;
         }
+        @CustomType.Setter
         public Builder numNodes(@Nullable Integer numNodes) {
             this.numNodes = numNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
             this.storageType = storageType;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public InstanceCluster build() {
-            return new InstanceCluster(autoscalingConfig, clusterId, kmsKeyName, numNodes, storageType, zone);
+        }
+        public InstanceCluster build() {
+            final var o = new InstanceCluster();
+            o.autoscalingConfig = autoscalingConfig;
+            o.clusterId = clusterId;
+            o.kmsKeyName = kmsKeyName;
+            o.numNodes = numNodes;
+            o.storageType = storageType;
+            o.zone = zone;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class TriggerBuildAvailableSecretsSecretManager {
      * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
      * 
      */
-    private final String env;
+    private String env;
     /**
      * @return Resource name of the SecretVersion. In format: projects/*{@literal /}secrets/*{@literal /}versions/*
      * 
      */
-    private final String versionName;
+    private String versionName;
 
-    @CustomType.Constructor
-    private TriggerBuildAvailableSecretsSecretManager(
-        @CustomType.Parameter("env") String env,
-        @CustomType.Parameter("versionName") String versionName) {
-        this.env = env;
-        this.versionName = versionName;
-    }
-
+    private TriggerBuildAvailableSecretsSecretManager() {}
     /**
      * @return A list of global environment variable definitions that will exist for all build steps
      * in this build. If a variable is defined in both globally and in a build step,
@@ -56,30 +49,32 @@ public final class TriggerBuildAvailableSecretsSecretManager {
     public static Builder builder(TriggerBuildAvailableSecretsSecretManager defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String env;
         private String versionName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildAvailableSecretsSecretManager defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.env = defaults.env;
     	      this.versionName = defaults.versionName;
         }
 
+        @CustomType.Setter
         public Builder env(String env) {
             this.env = Objects.requireNonNull(env);
             return this;
         }
+        @CustomType.Setter
         public Builder versionName(String versionName) {
             this.versionName = Objects.requireNonNull(versionName);
             return this;
-        }        public TriggerBuildAvailableSecretsSecretManager build() {
-            return new TriggerBuildAvailableSecretsSecretManager(env, versionName);
+        }
+        public TriggerBuildAvailableSecretsSecretManager build() {
+            final var o = new TriggerBuildAvailableSecretsSecretManager();
+            o.env = env;
+            o.versionName = versionName;
+            return o;
         }
     }
 }

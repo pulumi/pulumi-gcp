@@ -13,13 +13,9 @@ public final class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
      * @return The full or partial URL to the BackendService resource being mirrored to.
      * 
      */
-    private final String backendService;
+    private String backendService;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(@CustomType.Parameter("backendService") String backendService) {
-        this.backendService = backendService;
-    }
-
+    private URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy() {}
     /**
      * @return The full or partial URL to the BackendService resource being mirrored to.
      * 
@@ -35,24 +31,24 @@ public final class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
     public static Builder builder(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
         }
 
+        @CustomType.Setter
         public Builder backendService(String backendService) {
             this.backendService = Objects.requireNonNull(backendService);
             return this;
-        }        public URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy build() {
-            return new URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(backendService);
+        }
+        public URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy build() {
+            final var o = new URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy();
+            o.backendService = backendService;
+            return o;
         }
     }
 }

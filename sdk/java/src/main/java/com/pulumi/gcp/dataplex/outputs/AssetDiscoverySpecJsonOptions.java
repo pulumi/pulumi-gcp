@@ -16,21 +16,14 @@ public final class AssetDiscoverySpecJsonOptions {
      * @return Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
      * 
      */
-    private final @Nullable Boolean disableTypeInference;
+    private @Nullable Boolean disableTypeInference;
     /**
      * @return Optional. The character encoding of the data. The default is UTF-8.
      * 
      */
-    private final @Nullable String encoding;
+    private @Nullable String encoding;
 
-    @CustomType.Constructor
-    private AssetDiscoverySpecJsonOptions(
-        @CustomType.Parameter("disableTypeInference") @Nullable Boolean disableTypeInference,
-        @CustomType.Parameter("encoding") @Nullable String encoding) {
-        this.disableTypeInference = disableTypeInference;
-        this.encoding = encoding;
-    }
-
+    private AssetDiscoverySpecJsonOptions() {}
     /**
      * @return Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
      * 
@@ -53,30 +46,32 @@ public final class AssetDiscoverySpecJsonOptions {
     public static Builder builder(AssetDiscoverySpecJsonOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableTypeInference;
         private @Nullable String encoding;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AssetDiscoverySpecJsonOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableTypeInference = defaults.disableTypeInference;
     	      this.encoding = defaults.encoding;
         }
 
+        @CustomType.Setter
         public Builder disableTypeInference(@Nullable Boolean disableTypeInference) {
             this.disableTypeInference = disableTypeInference;
             return this;
         }
+        @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
             this.encoding = encoding;
             return this;
-        }        public AssetDiscoverySpecJsonOptions build() {
-            return new AssetDiscoverySpecJsonOptions(disableTypeInference, encoding);
+        }
+        public AssetDiscoverySpecJsonOptions build() {
+            final var o = new AssetDiscoverySpecJsonOptions();
+            o.disableTypeInference = disableTypeInference;
+            o.encoding = encoding;
+            return o;
         }
     }
 }

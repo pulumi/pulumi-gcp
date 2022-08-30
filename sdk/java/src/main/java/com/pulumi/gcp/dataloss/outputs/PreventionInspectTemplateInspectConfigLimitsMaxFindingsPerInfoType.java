@@ -18,21 +18,14 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      * Structure is documented below.
      * 
      */
-    private final PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
+    private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
     /**
      * @return Max findings limit for the given infoType.
      * 
      */
-    private final Integer maxFindings;
+    private Integer maxFindings;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(
-        @CustomType.Parameter("infoType") PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType,
-        @CustomType.Parameter("maxFindings") Integer maxFindings) {
-        this.infoType = infoType;
-        this.maxFindings = maxFindings;
-    }
-
+    private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType() {}
     /**
      * @return CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
      * infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
@@ -59,30 +52,32 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
     public static Builder builder(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType;
         private Integer maxFindings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.infoType = defaults.infoType;
     	      this.maxFindings = defaults.maxFindings;
         }
 
+        @CustomType.Setter
         public Builder infoType(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType) {
             this.infoType = Objects.requireNonNull(infoType);
             return this;
         }
+        @CustomType.Setter
         public Builder maxFindings(Integer maxFindings) {
             this.maxFindings = Objects.requireNonNull(maxFindings);
             return this;
-        }        public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType build() {
-            return new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(infoType, maxFindings);
+        }
+        public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType build() {
+            final var o = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType();
+            o.infoType = infoType;
+            o.maxFindings = maxFindings;
+            return o;
         }
     }
 }

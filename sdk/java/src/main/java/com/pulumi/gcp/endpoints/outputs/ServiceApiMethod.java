@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceApiMethod {
-    private final @Nullable String name;
-    private final @Nullable String requestType;
-    private final @Nullable String responseType;
-    private final @Nullable String syntax;
+    private @Nullable String name;
+    private @Nullable String requestType;
+    private @Nullable String responseType;
+    private @Nullable String syntax;
 
-    @CustomType.Constructor
-    private ServiceApiMethod(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("requestType") @Nullable String requestType,
-        @CustomType.Parameter("responseType") @Nullable String responseType,
-        @CustomType.Parameter("syntax") @Nullable String syntax) {
-        this.name = name;
-        this.requestType = requestType;
-        this.responseType = responseType;
-        this.syntax = syntax;
-    }
-
+    private ServiceApiMethod() {}
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -48,17 +37,13 @@ public final class ServiceApiMethod {
     public static Builder builder(ServiceApiMethod defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String requestType;
         private @Nullable String responseType;
         private @Nullable String syntax;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceApiMethod defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -67,23 +52,33 @@ public final class ServiceApiMethod {
     	      this.syntax = defaults.syntax;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder requestType(@Nullable String requestType) {
             this.requestType = requestType;
             return this;
         }
+        @CustomType.Setter
         public Builder responseType(@Nullable String responseType) {
             this.responseType = responseType;
             return this;
         }
+        @CustomType.Setter
         public Builder syntax(@Nullable String syntax) {
             this.syntax = syntax;
             return this;
-        }        public ServiceApiMethod build() {
-            return new ServiceApiMethod(name, requestType, responseType, syntax);
+        }
+        public ServiceApiMethod build() {
+            final var o = new ServiceApiMethod();
+            o.name = name;
+            o.requestType = requestType;
+            o.responseType = responseType;
+            o.syntax = syntax;
+            return o;
         }
     }
 }

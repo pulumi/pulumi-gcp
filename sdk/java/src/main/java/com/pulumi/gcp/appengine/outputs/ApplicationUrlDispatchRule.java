@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationUrlDispatchRule {
-    private final @Nullable String domain;
-    private final @Nullable String path;
-    private final @Nullable String service;
+    private @Nullable String domain;
+    private @Nullable String path;
+    private @Nullable String service;
 
-    @CustomType.Constructor
-    private ApplicationUrlDispatchRule(
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("service") @Nullable String service) {
-        this.domain = domain;
-        this.path = path;
-        this.service = service;
-    }
-
+    private ApplicationUrlDispatchRule() {}
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -42,16 +33,12 @@ public final class ApplicationUrlDispatchRule {
     public static Builder builder(ApplicationUrlDispatchRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String domain;
         private @Nullable String path;
         private @Nullable String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationUrlDispatchRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -59,19 +46,27 @@ public final class ApplicationUrlDispatchRule {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
-        }        public ApplicationUrlDispatchRule build() {
-            return new ApplicationUrlDispatchRule(domain, path, service);
+        }
+        public ApplicationUrlDispatchRule build() {
+            final var o = new ApplicationUrlDispatchRule();
+            o.domain = domain;
+            o.path = path;
+            o.service = service;
+            return o;
         }
     }
 }

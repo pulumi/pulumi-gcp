@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingMaintenanceWindow {
-    private final Integer day;
-    private final Integer hour;
-    private final String updateTrack;
+    private Integer day;
+    private Integer hour;
+    private String updateTrack;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingMaintenanceWindow(
-        @CustomType.Parameter("day") Integer day,
-        @CustomType.Parameter("hour") Integer hour,
-        @CustomType.Parameter("updateTrack") String updateTrack) {
-        this.day = day;
-        this.hour = hour;
-        this.updateTrack = updateTrack;
-    }
-
+    private GetDatabaseInstanceSettingMaintenanceWindow() {}
     public Integer day() {
         return this.day;
     }
@@ -41,16 +32,12 @@ public final class GetDatabaseInstanceSettingMaintenanceWindow {
     public static Builder builder(GetDatabaseInstanceSettingMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer day;
         private Integer hour;
         private String updateTrack;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -58,19 +45,27 @@ public final class GetDatabaseInstanceSettingMaintenanceWindow {
     	      this.updateTrack = defaults.updateTrack;
         }
 
+        @CustomType.Setter
         public Builder day(Integer day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder hour(Integer hour) {
             this.hour = Objects.requireNonNull(hour);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTrack(String updateTrack) {
             this.updateTrack = Objects.requireNonNull(updateTrack);
             return this;
-        }        public GetDatabaseInstanceSettingMaintenanceWindow build() {
-            return new GetDatabaseInstanceSettingMaintenanceWindow(day, hour, updateTrack);
+        }
+        public GetDatabaseInstanceSettingMaintenanceWindow build() {
+            final var o = new GetDatabaseInstanceSettingMaintenanceWindow();
+            o.day = day;
+            o.hour = hour;
+            o.updateTrack = updateTrack;
+            return o;
         }
     }
 }

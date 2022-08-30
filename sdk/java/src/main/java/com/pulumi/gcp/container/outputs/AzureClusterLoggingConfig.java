@@ -15,13 +15,9 @@ public final class AzureClusterLoggingConfig {
      * @return Configuration of the logging components.
      * 
      */
-    private final @Nullable AzureClusterLoggingConfigComponentConfig componentConfig;
+    private @Nullable AzureClusterLoggingConfigComponentConfig componentConfig;
 
-    @CustomType.Constructor
-    private AzureClusterLoggingConfig(@CustomType.Parameter("componentConfig") @Nullable AzureClusterLoggingConfigComponentConfig componentConfig) {
-        this.componentConfig = componentConfig;
-    }
-
+    private AzureClusterLoggingConfig() {}
     /**
      * @return Configuration of the logging components.
      * 
@@ -37,24 +33,24 @@ public final class AzureClusterLoggingConfig {
     public static Builder builder(AzureClusterLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AzureClusterLoggingConfigComponentConfig componentConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.componentConfig = defaults.componentConfig;
         }
 
+        @CustomType.Setter
         public Builder componentConfig(@Nullable AzureClusterLoggingConfigComponentConfig componentConfig) {
             this.componentConfig = componentConfig;
             return this;
-        }        public AzureClusterLoggingConfig build() {
-            return new AzureClusterLoggingConfig(componentConfig);
+        }
+        public AzureClusterLoggingConfig build() {
+            final var o = new AzureClusterLoggingConfig();
+            o.componentConfig = componentConfig;
+            return o;
         }
     }
 }

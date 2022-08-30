@@ -19,38 +19,27 @@ public final class TriggerGithub {
      * Each named volume must be used by at least two build steps.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Owner of the repository. For example: The owner for
      * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
      * 
      */
-    private final @Nullable String owner;
+    private @Nullable String owner;
     /**
      * @return filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerGithubPullRequest pullRequest;
+    private @Nullable TriggerGithubPullRequest pullRequest;
     /**
      * @return filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerGithubPush push;
+    private @Nullable TriggerGithubPush push;
 
-    @CustomType.Constructor
-    private TriggerGithub(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("owner") @Nullable String owner,
-        @CustomType.Parameter("pullRequest") @Nullable TriggerGithubPullRequest pullRequest,
-        @CustomType.Parameter("push") @Nullable TriggerGithubPush push) {
-        this.name = name;
-        this.owner = owner;
-        this.pullRequest = pullRequest;
-        this.push = push;
-    }
-
+    private TriggerGithub() {}
     /**
      * @return Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
@@ -92,17 +81,13 @@ public final class TriggerGithub {
     public static Builder builder(TriggerGithub defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String owner;
         private @Nullable TriggerGithubPullRequest pullRequest;
         private @Nullable TriggerGithubPush push;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerGithub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -111,23 +96,33 @@ public final class TriggerGithub {
     	      this.push = defaults.push;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder owner(@Nullable String owner) {
             this.owner = owner;
             return this;
         }
+        @CustomType.Setter
         public Builder pullRequest(@Nullable TriggerGithubPullRequest pullRequest) {
             this.pullRequest = pullRequest;
             return this;
         }
+        @CustomType.Setter
         public Builder push(@Nullable TriggerGithubPush push) {
             this.push = push;
             return this;
-        }        public TriggerGithub build() {
-            return new TriggerGithub(name, owner, pullRequest, push);
+        }
+        public TriggerGithub build() {
+            final var o = new TriggerGithub();
+            o.name = name;
+            o.owner = owner;
+            o.pullRequest = pullRequest;
+            o.push = push;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class Batching {
-    private final @Nullable Boolean enableBatching;
-    private final @Nullable String sendAfter;
+    private @Nullable Boolean enableBatching;
+    private @Nullable String sendAfter;
 
-    @CustomType.Constructor
-    private Batching(
-        @CustomType.Parameter("enableBatching") @Nullable Boolean enableBatching,
-        @CustomType.Parameter("sendAfter") @Nullable String sendAfter) {
-        this.enableBatching = enableBatching;
-        this.sendAfter = sendAfter;
-    }
-
+    private Batching() {}
     public Optional<Boolean> enableBatching() {
         return Optional.ofNullable(this.enableBatching);
     }
@@ -37,30 +30,32 @@ public final class Batching {
     public static Builder builder(Batching defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableBatching;
         private @Nullable String sendAfter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(Batching defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableBatching = defaults.enableBatching;
     	      this.sendAfter = defaults.sendAfter;
         }
 
+        @CustomType.Setter
         public Builder enableBatching(@Nullable Boolean enableBatching) {
             this.enableBatching = enableBatching;
             return this;
         }
+        @CustomType.Setter
         public Builder sendAfter(@Nullable String sendAfter) {
             this.sendAfter = sendAfter;
             return this;
-        }        public Batching build() {
-            return new Batching(enableBatching, sendAfter);
+        }
+        public Batching build() {
+            final var o = new Batching();
+            o.enableBatching = enableBatching;
+            o.sendAfter = sendAfter;
+            return o;
         }
     }
 }

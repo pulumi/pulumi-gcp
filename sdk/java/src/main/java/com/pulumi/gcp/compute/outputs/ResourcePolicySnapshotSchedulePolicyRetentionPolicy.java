@@ -16,7 +16,7 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
      * @return Maximum age of the snapshot that is allowed to be kept.
      * 
      */
-    private final Integer maxRetentionDays;
+    private Integer maxRetentionDays;
     /**
      * @return Specifies the behavior to apply to scheduled snapshots when
      * the source disk is deleted.
@@ -24,16 +24,9 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
      * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
      * 
      */
-    private final @Nullable String onSourceDiskDelete;
+    private @Nullable String onSourceDiskDelete;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-        @CustomType.Parameter("maxRetentionDays") Integer maxRetentionDays,
-        @CustomType.Parameter("onSourceDiskDelete") @Nullable String onSourceDiskDelete) {
-        this.maxRetentionDays = maxRetentionDays;
-        this.onSourceDiskDelete = onSourceDiskDelete;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicyRetentionPolicy() {}
     /**
      * @return Maximum age of the snapshot that is allowed to be kept.
      * 
@@ -59,30 +52,32 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
     public static Builder builder(ResourcePolicySnapshotSchedulePolicyRetentionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxRetentionDays;
         private @Nullable String onSourceDiskDelete;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicyRetentionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxRetentionDays = defaults.maxRetentionDays;
     	      this.onSourceDiskDelete = defaults.onSourceDiskDelete;
         }
 
+        @CustomType.Setter
         public Builder maxRetentionDays(Integer maxRetentionDays) {
             this.maxRetentionDays = Objects.requireNonNull(maxRetentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder onSourceDiskDelete(@Nullable String onSourceDiskDelete) {
             this.onSourceDiskDelete = onSourceDiskDelete;
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicyRetentionPolicy build() {
-            return new ResourcePolicySnapshotSchedulePolicyRetentionPolicy(maxRetentionDays, onSourceDiskDelete);
+        }
+        public ResourcePolicySnapshotSchedulePolicyRetentionPolicy build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicyRetentionPolicy();
+            o.maxRetentionDays = maxRetentionDays;
+            o.onSourceDiskDelete = onSourceDiskDelete;
+            return o;
         }
     }
 }

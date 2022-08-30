@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ManagedZonePrivateVisibilityConfig {
-    private final List<ManagedZonePrivateVisibilityConfigNetwork> networks;
+    private List<ManagedZonePrivateVisibilityConfigNetwork> networks;
 
-    @CustomType.Constructor
-    private ManagedZonePrivateVisibilityConfig(@CustomType.Parameter("networks") List<ManagedZonePrivateVisibilityConfigNetwork> networks) {
-        this.networks = networks;
-    }
-
+    private ManagedZonePrivateVisibilityConfig() {}
     public List<ManagedZonePrivateVisibilityConfigNetwork> networks() {
         return this.networks;
     }
@@ -28,27 +24,27 @@ public final class ManagedZonePrivateVisibilityConfig {
     public static Builder builder(ManagedZonePrivateVisibilityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ManagedZonePrivateVisibilityConfigNetwork> networks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZonePrivateVisibilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networks = defaults.networks;
         }
 
+        @CustomType.Setter
         public Builder networks(List<ManagedZonePrivateVisibilityConfigNetwork> networks) {
             this.networks = Objects.requireNonNull(networks);
             return this;
         }
         public Builder networks(ManagedZonePrivateVisibilityConfigNetwork... networks) {
             return networks(List.of(networks));
-        }        public ManagedZonePrivateVisibilityConfig build() {
-            return new ManagedZonePrivateVisibilityConfig(networks);
+        }
+        public ManagedZonePrivateVisibilityConfig build() {
+            final var o = new ManagedZonePrivateVisibilityConfig();
+            o.networks = networks;
+            return o;
         }
     }
 }

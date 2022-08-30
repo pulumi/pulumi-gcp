@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigScheduler {
-    private final Integer count;
-    private final Double cpu;
-    private final Double memoryGb;
-    private final Double storageGb;
+    private Integer count;
+    private Double cpu;
+    private Double memoryGb;
+    private Double storageGb;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigWorkloadsConfigScheduler(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("cpu") Double cpu,
-        @CustomType.Parameter("memoryGb") Double memoryGb,
-        @CustomType.Parameter("storageGb") Double storageGb) {
-        this.count = count;
-        this.cpu = cpu;
-        this.memoryGb = memoryGb;
-        this.storageGb = storageGb;
-    }
-
+    private GetEnvironmentConfigWorkloadsConfigScheduler() {}
     public Integer count() {
         return this.count;
     }
@@ -47,17 +36,13 @@ public final class GetEnvironmentConfigWorkloadsConfigScheduler {
     public static Builder builder(GetEnvironmentConfigWorkloadsConfigScheduler defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private Double cpu;
         private Double memoryGb;
         private Double storageGb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfigScheduler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -66,23 +51,33 @@ public final class GetEnvironmentConfigWorkloadsConfigScheduler {
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder cpu(Double cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
+        @CustomType.Setter
         public Builder memoryGb(Double memoryGb) {
             this.memoryGb = Objects.requireNonNull(memoryGb);
             return this;
         }
+        @CustomType.Setter
         public Builder storageGb(Double storageGb) {
             this.storageGb = Objects.requireNonNull(storageGb);
             return this;
-        }        public GetEnvironmentConfigWorkloadsConfigScheduler build() {
-            return new GetEnvironmentConfigWorkloadsConfigScheduler(count, cpu, memoryGb, storageGb);
+        }
+        public GetEnvironmentConfigWorkloadsConfigScheduler build() {
+            final var o = new GetEnvironmentConfigWorkloadsConfigScheduler();
+            o.count = count;
+            o.cpu = cpu;
+            o.memoryGb = memoryGb;
+            o.storageGb = storageGb;
+            return o;
         }
     }
 }

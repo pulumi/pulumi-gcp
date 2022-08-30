@@ -15,22 +15,15 @@ public final class CertificateSelfManaged {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String certificatePem;
+    private String certificatePem;
     /**
      * @return The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String privateKeyPem;
+    private String privateKeyPem;
 
-    @CustomType.Constructor
-    private CertificateSelfManaged(
-        @CustomType.Parameter("certificatePem") String certificatePem,
-        @CustomType.Parameter("privateKeyPem") String privateKeyPem) {
-        this.certificatePem = certificatePem;
-        this.privateKeyPem = privateKeyPem;
-    }
-
+    private CertificateSelfManaged() {}
     /**
      * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
@@ -56,30 +49,32 @@ public final class CertificateSelfManaged {
     public static Builder builder(CertificateSelfManaged defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certificatePem;
         private String privateKeyPem;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateSelfManaged defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificatePem = defaults.certificatePem;
     	      this.privateKeyPem = defaults.privateKeyPem;
         }
 
+        @CustomType.Setter
         public Builder certificatePem(String certificatePem) {
             this.certificatePem = Objects.requireNonNull(certificatePem);
             return this;
         }
+        @CustomType.Setter
         public Builder privateKeyPem(String privateKeyPem) {
             this.privateKeyPem = Objects.requireNonNull(privateKeyPem);
             return this;
-        }        public CertificateSelfManaged build() {
-            return new CertificateSelfManaged(certificatePem, privateKeyPem);
+        }
+        public CertificateSelfManaged build() {
+            final var o = new CertificateSelfManaged();
+            o.certificatePem = certificatePem;
+            o.privateKeyPem = privateKeyPem;
+            return o;
         }
     }
 }

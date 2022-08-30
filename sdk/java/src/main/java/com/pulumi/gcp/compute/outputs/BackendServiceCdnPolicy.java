@@ -21,47 +21,47 @@ public final class BackendServiceCdnPolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy;
+    private @Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy;
     /**
      * @return Specifies the cache setting for all responses from this backend.
      * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
      * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
      * 
      */
-    private final @Nullable String cacheMode;
+    private @Nullable String cacheMode;
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin.
      * 
      */
-    private final @Nullable Integer clientTtl;
+    private @Nullable Integer clientTtl;
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses
      * that do not have an existing valid TTL (max-age or s-max-age).
      * 
      */
-    private final @Nullable Integer defaultTtl;
+    private @Nullable Integer defaultTtl;
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin.
      * 
      */
-    private final @Nullable Integer maxTtl;
+    private @Nullable Integer maxTtl;
     /**
      * @return Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
      * 
      */
-    private final @Nullable Boolean negativeCaching;
+    private @Nullable Boolean negativeCaching;
     /**
      * @return Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
      * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN&#39;s default cache TTLs.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
+    private @Nullable List<BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
     /**
      * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
-    private final @Nullable Integer serveWhileStale;
+    private @Nullable Integer serveWhileStale;
     /**
      * @return Maximum number of seconds the response to a signed URL request
      * will be considered fresh, defaults to 1hr (3600s). After this
@@ -74,30 +74,9 @@ public final class BackendServiceCdnPolicy {
      * responses will not be altered.
      * 
      */
-    private final @Nullable Integer signedUrlCacheMaxAgeSec;
+    private @Nullable Integer signedUrlCacheMaxAgeSec;
 
-    @CustomType.Constructor
-    private BackendServiceCdnPolicy(
-        @CustomType.Parameter("cacheKeyPolicy") @Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy,
-        @CustomType.Parameter("cacheMode") @Nullable String cacheMode,
-        @CustomType.Parameter("clientTtl") @Nullable Integer clientTtl,
-        @CustomType.Parameter("defaultTtl") @Nullable Integer defaultTtl,
-        @CustomType.Parameter("maxTtl") @Nullable Integer maxTtl,
-        @CustomType.Parameter("negativeCaching") @Nullable Boolean negativeCaching,
-        @CustomType.Parameter("negativeCachingPolicies") @Nullable List<BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies,
-        @CustomType.Parameter("serveWhileStale") @Nullable Integer serveWhileStale,
-        @CustomType.Parameter("signedUrlCacheMaxAgeSec") @Nullable Integer signedUrlCacheMaxAgeSec) {
-        this.cacheKeyPolicy = cacheKeyPolicy;
-        this.cacheMode = cacheMode;
-        this.clientTtl = clientTtl;
-        this.defaultTtl = defaultTtl;
-        this.maxTtl = maxTtl;
-        this.negativeCaching = negativeCaching;
-        this.negativeCachingPolicies = negativeCachingPolicies;
-        this.serveWhileStale = serveWhileStale;
-        this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
-    }
-
+    private BackendServiceCdnPolicy() {}
     /**
      * @return The CacheKeyPolicy for this CdnPolicy.
      * Structure is documented below.
@@ -183,7 +162,7 @@ public final class BackendServiceCdnPolicy {
     public static Builder builder(BackendServiceCdnPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy;
         private @Nullable String cacheMode;
@@ -194,11 +173,7 @@ public final class BackendServiceCdnPolicy {
         private @Nullable List<BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
         private @Nullable Integer serveWhileStale;
         private @Nullable Integer signedUrlCacheMaxAgeSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServiceCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cacheKeyPolicy = defaults.cacheKeyPolicy;
@@ -212,30 +187,37 @@ public final class BackendServiceCdnPolicy {
     	      this.signedUrlCacheMaxAgeSec = defaults.signedUrlCacheMaxAgeSec;
         }
 
+        @CustomType.Setter
         public Builder cacheKeyPolicy(@Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
             this.cacheKeyPolicy = cacheKeyPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder cacheMode(@Nullable String cacheMode) {
             this.cacheMode = cacheMode;
             return this;
         }
+        @CustomType.Setter
         public Builder clientTtl(@Nullable Integer clientTtl) {
             this.clientTtl = clientTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultTtl(@Nullable Integer defaultTtl) {
             this.defaultTtl = defaultTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder maxTtl(@Nullable Integer maxTtl) {
             this.maxTtl = maxTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder negativeCaching(@Nullable Boolean negativeCaching) {
             this.negativeCaching = negativeCaching;
             return this;
         }
+        @CustomType.Setter
         public Builder negativeCachingPolicies(@Nullable List<BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies) {
             this.negativeCachingPolicies = negativeCachingPolicies;
             return this;
@@ -243,15 +225,28 @@ public final class BackendServiceCdnPolicy {
         public Builder negativeCachingPolicies(BackendServiceCdnPolicyNegativeCachingPolicy... negativeCachingPolicies) {
             return negativeCachingPolicies(List.of(negativeCachingPolicies));
         }
+        @CustomType.Setter
         public Builder serveWhileStale(@Nullable Integer serveWhileStale) {
             this.serveWhileStale = serveWhileStale;
             return this;
         }
+        @CustomType.Setter
         public Builder signedUrlCacheMaxAgeSec(@Nullable Integer signedUrlCacheMaxAgeSec) {
             this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
             return this;
-        }        public BackendServiceCdnPolicy build() {
-            return new BackendServiceCdnPolicy(cacheKeyPolicy, cacheMode, clientTtl, defaultTtl, maxTtl, negativeCaching, negativeCachingPolicies, serveWhileStale, signedUrlCacheMaxAgeSec);
+        }
+        public BackendServiceCdnPolicy build() {
+            final var o = new BackendServiceCdnPolicy();
+            o.cacheKeyPolicy = cacheKeyPolicy;
+            o.cacheMode = cacheMode;
+            o.clientTtl = clientTtl;
+            o.defaultTtl = defaultTtl;
+            o.maxTtl = maxTtl;
+            o.negativeCaching = negativeCaching;
+            o.negativeCachingPolicies = negativeCachingPolicies;
+            o.serveWhileStale = serveWhileStale;
+            o.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
+            return o;
         }
     }
 }

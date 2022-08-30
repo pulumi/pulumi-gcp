@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFrom {
-    private final List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves;
-    private final String prefix;
-    private final List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves;
+    private List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves;
+    private String prefix;
+    private List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnvFrom(
-        @CustomType.Parameter("configMapReves") List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves,
-        @CustomType.Parameter("prefix") String prefix,
-        @CustomType.Parameter("secretReves") List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves) {
-        this.configMapReves = configMapReves;
-        this.prefix = prefix;
-        this.secretReves = secretReves;
-    }
-
+    private GetServiceTemplateSpecContainerEnvFrom() {}
     public List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves() {
         return this.configMapReves;
     }
@@ -43,16 +34,12 @@ public final class GetServiceTemplateSpecContainerEnvFrom {
     public static Builder builder(GetServiceTemplateSpecContainerEnvFrom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves;
         private String prefix;
         private List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnvFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configMapReves = defaults.configMapReves;
@@ -60,6 +47,7 @@ public final class GetServiceTemplateSpecContainerEnvFrom {
     	      this.secretReves = defaults.secretReves;
         }
 
+        @CustomType.Setter
         public Builder configMapReves(List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves) {
             this.configMapReves = Objects.requireNonNull(configMapReves);
             return this;
@@ -67,18 +55,25 @@ public final class GetServiceTemplateSpecContainerEnvFrom {
         public Builder configMapReves(GetServiceTemplateSpecContainerEnvFromConfigMapRef... configMapReves) {
             return configMapReves(List.of(configMapReves));
         }
+        @CustomType.Setter
         public Builder prefix(String prefix) {
             this.prefix = Objects.requireNonNull(prefix);
             return this;
         }
+        @CustomType.Setter
         public Builder secretReves(List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves) {
             this.secretReves = Objects.requireNonNull(secretReves);
             return this;
         }
         public Builder secretReves(GetServiceTemplateSpecContainerEnvFromSecretRef... secretReves) {
             return secretReves(List.of(secretReves));
-        }        public GetServiceTemplateSpecContainerEnvFrom build() {
-            return new GetServiceTemplateSpecContainerEnvFrom(configMapReves, prefix, secretReves);
+        }
+        public GetServiceTemplateSpecContainerEnvFrom build() {
+            final var o = new GetServiceTemplateSpecContainerEnvFrom();
+            o.configMapReves = configMapReves;
+            o.prefix = prefix;
+            o.secretReves = secretReves;
+            return o;
         }
     }
 }

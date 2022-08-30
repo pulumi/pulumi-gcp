@@ -13,21 +13,14 @@ public final class DatasetAccessDatasetDataset {
      * @return The ID of the dataset containing this table.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The ID of the project containing this table.
      * 
      */
-    private final String projectId;
+    private String projectId;
 
-    @CustomType.Constructor
-    private DatasetAccessDatasetDataset(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("projectId") String projectId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-    }
-
+    private DatasetAccessDatasetDataset() {}
     /**
      * @return The ID of the dataset containing this table.
      * 
@@ -50,30 +43,32 @@ public final class DatasetAccessDatasetDataset {
     public static Builder builder(DatasetAccessDatasetDataset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatasetAccessDatasetDataset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public DatasetAccessDatasetDataset build() {
-            return new DatasetAccessDatasetDataset(datasetId, projectId);
+        }
+        public DatasetAccessDatasetDataset build() {
+            final var o = new DatasetAccessDatasetDataset();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

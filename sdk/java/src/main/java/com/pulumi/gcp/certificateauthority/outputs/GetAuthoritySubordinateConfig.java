@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthoritySubordinateConfig {
-    private final String certificateAuthority;
-    private final List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains;
+    private String certificateAuthority;
+    private List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains;
 
-    @CustomType.Constructor
-    private GetAuthoritySubordinateConfig(
-        @CustomType.Parameter("certificateAuthority") String certificateAuthority,
-        @CustomType.Parameter("pemIssuerChains") List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains) {
-        this.certificateAuthority = certificateAuthority;
-        this.pemIssuerChains = pemIssuerChains;
-    }
-
+    private GetAuthoritySubordinateConfig() {}
     public String certificateAuthority() {
         return this.certificateAuthority;
     }
@@ -36,33 +29,35 @@ public final class GetAuthoritySubordinateConfig {
     public static Builder builder(GetAuthoritySubordinateConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certificateAuthority;
         private List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthoritySubordinateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateAuthority = defaults.certificateAuthority;
     	      this.pemIssuerChains = defaults.pemIssuerChains;
         }
 
+        @CustomType.Setter
         public Builder certificateAuthority(String certificateAuthority) {
             this.certificateAuthority = Objects.requireNonNull(certificateAuthority);
             return this;
         }
+        @CustomType.Setter
         public Builder pemIssuerChains(List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains) {
             this.pemIssuerChains = Objects.requireNonNull(pemIssuerChains);
             return this;
         }
         public Builder pemIssuerChains(GetAuthoritySubordinateConfigPemIssuerChain... pemIssuerChains) {
             return pemIssuerChains(List.of(pemIssuerChains));
-        }        public GetAuthoritySubordinateConfig build() {
-            return new GetAuthoritySubordinateConfig(certificateAuthority, pemIssuerChains);
+        }
+        public GetAuthoritySubordinateConfig build() {
+            final var o = new GetAuthoritySubordinateConfig();
+            o.certificateAuthority = certificateAuthority;
+            o.pemIssuerChains = pemIssuerChains;
+            return o;
         }
     }
 }

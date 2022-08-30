@@ -20,20 +20,20 @@ public final class RegionHealthCheckGrpcHealthCheck {
      *   The grpcServiceName can only be ASCII.
      * 
      */
-    private final @Nullable String grpcServiceName;
+    private @Nullable String grpcServiceName;
     /**
      * @return The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
      * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
      * 
      */
-    private final @Nullable String portName;
+    private @Nullable String portName;
     /**
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
@@ -48,20 +48,9 @@ public final class RegionHealthCheckGrpcHealthCheck {
      *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
-    private final @Nullable String portSpecification;
+    private @Nullable String portSpecification;
 
-    @CustomType.Constructor
-    private RegionHealthCheckGrpcHealthCheck(
-        @CustomType.Parameter("grpcServiceName") @Nullable String grpcServiceName,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("portName") @Nullable String portName,
-        @CustomType.Parameter("portSpecification") @Nullable String portSpecification) {
-        this.grpcServiceName = grpcServiceName;
-        this.port = port;
-        this.portName = portName;
-        this.portSpecification = portSpecification;
-    }
-
+    private RegionHealthCheckGrpcHealthCheck() {}
     /**
      * @return The gRPC service name for the health check.
      * The value of grpcServiceName has the following meanings by convention:
@@ -115,17 +104,13 @@ public final class RegionHealthCheckGrpcHealthCheck {
     public static Builder builder(RegionHealthCheckGrpcHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String grpcServiceName;
         private @Nullable Integer port;
         private @Nullable String portName;
         private @Nullable String portSpecification;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionHealthCheckGrpcHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.grpcServiceName = defaults.grpcServiceName;
@@ -134,23 +119,33 @@ public final class RegionHealthCheckGrpcHealthCheck {
     	      this.portSpecification = defaults.portSpecification;
         }
 
+        @CustomType.Setter
         public Builder grpcServiceName(@Nullable String grpcServiceName) {
             this.grpcServiceName = grpcServiceName;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder portName(@Nullable String portName) {
             this.portName = portName;
             return this;
         }
+        @CustomType.Setter
         public Builder portSpecification(@Nullable String portSpecification) {
             this.portSpecification = portSpecification;
             return this;
-        }        public RegionHealthCheckGrpcHealthCheck build() {
-            return new RegionHealthCheckGrpcHealthCheck(grpcServiceName, port, portName, portSpecification);
+        }
+        public RegionHealthCheckGrpcHealthCheck build() {
+            final var o = new RegionHealthCheckGrpcHealthCheck();
+            o.grpcServiceName = grpcServiceName;
+            o.port = port;
+            o.portName = portName;
+            o.portSpecification = portSpecification;
+            return o;
         }
     }
 }

@@ -22,16 +22,16 @@ public final class DenyPolicyRuleDenyRuleArgs extends com.pulumi.resources.Resou
      * Structure is documented below.
      * 
      */
-    @Import(name="denialCondition", required=true)
-    private Output<DenyPolicyRuleDenyRuleDenialConditionArgs> denialCondition;
+    @Import(name="denialCondition")
+    private @Nullable Output<DenyPolicyRuleDenyRuleDenialConditionArgs> denialCondition;
 
     /**
      * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
      * Structure is documented below.
      * 
      */
-    public Output<DenyPolicyRuleDenyRuleDenialConditionArgs> denialCondition() {
-        return this.denialCondition;
+    public Optional<Output<DenyPolicyRuleDenyRuleDenialConditionArgs>> denialCondition() {
+        return Optional.ofNullable(this.denialCondition);
     }
 
     /**
@@ -137,7 +137,7 @@ public final class DenyPolicyRuleDenyRuleArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder denialCondition(Output<DenyPolicyRuleDenyRuleDenialConditionArgs> denialCondition) {
+        public Builder denialCondition(@Nullable Output<DenyPolicyRuleDenyRuleDenialConditionArgs> denialCondition) {
             $.denialCondition = denialCondition;
             return this;
         }
@@ -290,7 +290,6 @@ public final class DenyPolicyRuleDenyRuleArgs extends com.pulumi.resources.Resou
         }
 
         public DenyPolicyRuleDenyRuleArgs build() {
-            $.denialCondition = Objects.requireNonNull($.denialCondition, "expected parameter 'denialCondition' to be non-null");
             return $;
         }
     }

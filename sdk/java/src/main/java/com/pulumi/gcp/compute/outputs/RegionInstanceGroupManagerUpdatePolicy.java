@@ -16,78 +16,55 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
      * @return - The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
      * 
      */
-    private final @Nullable String instanceRedistributionType;
+    private @Nullable String instanceRedistributionType;
     /**
      * @return , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
      * 
      */
-    private final @Nullable Integer maxSurgeFixed;
+    private @Nullable Integer maxSurgeFixed;
     /**
      * @return , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
      * 
      */
-    private final @Nullable Integer maxSurgePercent;
+    private @Nullable Integer maxSurgePercent;
     /**
      * @return , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
      * 
      */
-    private final @Nullable Integer maxUnavailableFixed;
+    private @Nullable Integer maxUnavailableFixed;
     /**
      * @return , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
      * 
      */
-    private final @Nullable Integer maxUnavailablePercent;
+    private @Nullable Integer maxUnavailablePercent;
     /**
      * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
-    private final @Nullable Integer minReadySec;
+    private @Nullable Integer minReadySec;
     /**
      * @return - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
      * 
      */
-    private final String minimalAction;
+    private String minimalAction;
     /**
      * @return - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
      * 
      */
-    private final @Nullable String mostDisruptiveAllowedAction;
+    private @Nullable String mostDisruptiveAllowedAction;
     /**
      * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
      * ***
      * 
      */
-    private final @Nullable String replacementMethod;
+    private @Nullable String replacementMethod;
     /**
      * @return - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerUpdatePolicy(
-        @CustomType.Parameter("instanceRedistributionType") @Nullable String instanceRedistributionType,
-        @CustomType.Parameter("maxSurgeFixed") @Nullable Integer maxSurgeFixed,
-        @CustomType.Parameter("maxSurgePercent") @Nullable Integer maxSurgePercent,
-        @CustomType.Parameter("maxUnavailableFixed") @Nullable Integer maxUnavailableFixed,
-        @CustomType.Parameter("maxUnavailablePercent") @Nullable Integer maxUnavailablePercent,
-        @CustomType.Parameter("minReadySec") @Nullable Integer minReadySec,
-        @CustomType.Parameter("minimalAction") String minimalAction,
-        @CustomType.Parameter("mostDisruptiveAllowedAction") @Nullable String mostDisruptiveAllowedAction,
-        @CustomType.Parameter("replacementMethod") @Nullable String replacementMethod,
-        @CustomType.Parameter("type") String type) {
-        this.instanceRedistributionType = instanceRedistributionType;
-        this.maxSurgeFixed = maxSurgeFixed;
-        this.maxSurgePercent = maxSurgePercent;
-        this.maxUnavailableFixed = maxUnavailableFixed;
-        this.maxUnavailablePercent = maxUnavailablePercent;
-        this.minReadySec = minReadySec;
-        this.minimalAction = minimalAction;
-        this.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
-        this.replacementMethod = replacementMethod;
-        this.type = type;
-    }
-
+    private RegionInstanceGroupManagerUpdatePolicy() {}
     /**
      * @return - The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
      * 
@@ -167,7 +144,7 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     public static Builder builder(RegionInstanceGroupManagerUpdatePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instanceRedistributionType;
         private @Nullable Integer maxSurgeFixed;
@@ -179,11 +156,7 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
         private @Nullable String mostDisruptiveAllowedAction;
         private @Nullable String replacementMethod;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerUpdatePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceRedistributionType = defaults.instanceRedistributionType;
@@ -198,47 +171,69 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder instanceRedistributionType(@Nullable String instanceRedistributionType) {
             this.instanceRedistributionType = instanceRedistributionType;
             return this;
         }
+        @CustomType.Setter
         public Builder maxSurgeFixed(@Nullable Integer maxSurgeFixed) {
             this.maxSurgeFixed = maxSurgeFixed;
             return this;
         }
+        @CustomType.Setter
         public Builder maxSurgePercent(@Nullable Integer maxSurgePercent) {
             this.maxSurgePercent = maxSurgePercent;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailableFixed(@Nullable Integer maxUnavailableFixed) {
             this.maxUnavailableFixed = maxUnavailableFixed;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailablePercent(@Nullable Integer maxUnavailablePercent) {
             this.maxUnavailablePercent = maxUnavailablePercent;
             return this;
         }
+        @CustomType.Setter
         public Builder minReadySec(@Nullable Integer minReadySec) {
             this.minReadySec = minReadySec;
             return this;
         }
+        @CustomType.Setter
         public Builder minimalAction(String minimalAction) {
             this.minimalAction = Objects.requireNonNull(minimalAction);
             return this;
         }
+        @CustomType.Setter
         public Builder mostDisruptiveAllowedAction(@Nullable String mostDisruptiveAllowedAction) {
             this.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
             return this;
         }
+        @CustomType.Setter
         public Builder replacementMethod(@Nullable String replacementMethod) {
             this.replacementMethod = replacementMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public RegionInstanceGroupManagerUpdatePolicy build() {
-            return new RegionInstanceGroupManagerUpdatePolicy(instanceRedistributionType, maxSurgeFixed, maxSurgePercent, maxUnavailableFixed, maxUnavailablePercent, minReadySec, minimalAction, mostDisruptiveAllowedAction, replacementMethod, type);
+        }
+        public RegionInstanceGroupManagerUpdatePolicy build() {
+            final var o = new RegionInstanceGroupManagerUpdatePolicy();
+            o.instanceRedistributionType = instanceRedistributionType;
+            o.maxSurgeFixed = maxSurgeFixed;
+            o.maxSurgePercent = maxSurgePercent;
+            o.maxUnavailableFixed = maxUnavailableFixed;
+            o.maxUnavailablePercent = maxUnavailablePercent;
+            o.minReadySec = minReadySec;
+            o.minimalAction = minimalAction;
+            o.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
+            o.replacementMethod = replacementMethod;
+            o.type = type;
+            return o;
         }
     }
 }

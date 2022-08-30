@@ -18,7 +18,7 @@ public final class JobAppEngineHttpTarget {
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting;
+    private @Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting;
     /**
      * @return HTTP request body.
      * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
@@ -26,18 +26,18 @@ public final class JobAppEngineHttpTarget {
      * A base64-encoded string.
      * 
      */
-    private final @Nullable String body;
+    private @Nullable String body;
     /**
      * @return This map contains the header field names and values.
      * Repeated headers are not supported, but a header value can contain commas.
      * 
      */
-    private final @Nullable Map<String,String> headers;
+    private @Nullable Map<String,String> headers;
     /**
      * @return Which HTTP method to use for the request.
      * 
      */
-    private final @Nullable String httpMethod;
+    private @Nullable String httpMethod;
     /**
      * @return The relative URI.
      * The relative URL must begin with &#34;/&#34; and must be a valid HTTP relative URL.
@@ -46,22 +46,9 @@ public final class JobAppEngineHttpTarget {
      * No spaces are allowed, and the maximum length allowed is 2083 characters
      * 
      */
-    private final String relativeUri;
+    private String relativeUri;
 
-    @CustomType.Constructor
-    private JobAppEngineHttpTarget(
-        @CustomType.Parameter("appEngineRouting") @Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting,
-        @CustomType.Parameter("body") @Nullable String body,
-        @CustomType.Parameter("headers") @Nullable Map<String,String> headers,
-        @CustomType.Parameter("httpMethod") @Nullable String httpMethod,
-        @CustomType.Parameter("relativeUri") String relativeUri) {
-        this.appEngineRouting = appEngineRouting;
-        this.body = body;
-        this.headers = headers;
-        this.httpMethod = httpMethod;
-        this.relativeUri = relativeUri;
-    }
-
+    private JobAppEngineHttpTarget() {}
     /**
      * @return App Engine Routing setting for the job.
      * Structure is documented below.
@@ -114,18 +101,14 @@ public final class JobAppEngineHttpTarget {
     public static Builder builder(JobAppEngineHttpTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting;
         private @Nullable String body;
         private @Nullable Map<String,String> headers;
         private @Nullable String httpMethod;
         private String relativeUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobAppEngineHttpTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appEngineRouting = defaults.appEngineRouting;
@@ -135,27 +118,39 @@ public final class JobAppEngineHttpTarget {
     	      this.relativeUri = defaults.relativeUri;
         }
 
+        @CustomType.Setter
         public Builder appEngineRouting(@Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting) {
             this.appEngineRouting = appEngineRouting;
             return this;
         }
+        @CustomType.Setter
         public Builder body(@Nullable String body) {
             this.body = body;
             return this;
         }
+        @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
             this.headers = headers;
             return this;
         }
+        @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
             this.httpMethod = httpMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder relativeUri(String relativeUri) {
             this.relativeUri = Objects.requireNonNull(relativeUri);
             return this;
-        }        public JobAppEngineHttpTarget build() {
-            return new JobAppEngineHttpTarget(appEngineRouting, body, headers, httpMethod, relativeUri);
+        }
+        public JobAppEngineHttpTarget build() {
+            final var o = new JobAppEngineHttpTarget();
+            o.appEngineRouting = appEngineRouting;
+            o.body = body;
+            o.headers = headers;
+            o.httpMethod = httpMethod;
+            o.relativeUri = relativeUri;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
      * @return What to run to bring this resource into the desired state. An exit code of 100 indicates &#34;success&#34;, any other exit code indicates a failure running enforce.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce enforce;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce enforce;
     /**
      * @return Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates a failure running validate.
      * 
      */
-    private final OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate;
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceExec(
-        @CustomType.Parameter("enforce") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce enforce,
-        @CustomType.Parameter("validate") OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate) {
-        this.enforce = enforce;
-        this.validate = validate;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceExec() {}
     /**
      * @return What to run to bring this resource into the desired state. An exit code of 100 indicates &#34;success&#34;, any other exit code indicates a failure running enforce.
      * 
@@ -53,30 +46,32 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceExec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce enforce;
         private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceExec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enforce = defaults.enforce;
     	      this.validate = defaults.validate;
         }
 
+        @CustomType.Setter
         public Builder enforce(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce enforce) {
             this.enforce = enforce;
             return this;
         }
+        @CustomType.Setter
         public Builder validate(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate) {
             this.validate = Objects.requireNonNull(validate);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceExec build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceExec(enforce, validate);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceExec build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExec();
+            o.enforce = enforce;
+            o.validate = validate;
+            return o;
         }
     }
 }

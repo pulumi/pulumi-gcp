@@ -16,46 +16,33 @@ public final class CxPageEventHandler {
      * @return The name of the event to handle.
      * 
      */
-    private final @Nullable String event;
+    private @Nullable String event;
     /**
      * @return -
      * The unique identifier of this event handler.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The target flow to transition to.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
-    private final @Nullable String targetFlow;
+    private @Nullable String targetFlow;
     /**
      * @return The target page to transition to.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
-    private final @Nullable String targetPage;
+    private @Nullable String targetPage;
     /**
      * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
      * Structure is documented below.
      * 
      */
-    private final @Nullable CxPageEventHandlerTriggerFulfillment triggerFulfillment;
+    private @Nullable CxPageEventHandlerTriggerFulfillment triggerFulfillment;
 
-    @CustomType.Constructor
-    private CxPageEventHandler(
-        @CustomType.Parameter("event") @Nullable String event,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("targetFlow") @Nullable String targetFlow,
-        @CustomType.Parameter("targetPage") @Nullable String targetPage,
-        @CustomType.Parameter("triggerFulfillment") @Nullable CxPageEventHandlerTriggerFulfillment triggerFulfillment) {
-        this.event = event;
-        this.name = name;
-        this.targetFlow = targetFlow;
-        this.targetPage = targetPage;
-        this.triggerFulfillment = triggerFulfillment;
-    }
-
+    private CxPageEventHandler() {}
     /**
      * @return The name of the event to handle.
      * 
@@ -103,18 +90,14 @@ public final class CxPageEventHandler {
     public static Builder builder(CxPageEventHandler defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String event;
         private @Nullable String name;
         private @Nullable String targetFlow;
         private @Nullable String targetPage;
         private @Nullable CxPageEventHandlerTriggerFulfillment triggerFulfillment;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageEventHandler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.event = defaults.event;
@@ -124,27 +107,39 @@ public final class CxPageEventHandler {
     	      this.triggerFulfillment = defaults.triggerFulfillment;
         }
 
+        @CustomType.Setter
         public Builder event(@Nullable String event) {
             this.event = event;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder targetFlow(@Nullable String targetFlow) {
             this.targetFlow = targetFlow;
             return this;
         }
+        @CustomType.Setter
         public Builder targetPage(@Nullable String targetPage) {
             this.targetPage = targetPage;
             return this;
         }
+        @CustomType.Setter
         public Builder triggerFulfillment(@Nullable CxPageEventHandlerTriggerFulfillment triggerFulfillment) {
             this.triggerFulfillment = triggerFulfillment;
             return this;
-        }        public CxPageEventHandler build() {
-            return new CxPageEventHandler(event, name, targetFlow, targetPage, triggerFulfillment);
+        }
+        public CxPageEventHandler build() {
+            final var o = new CxPageEventHandler();
+            o.event = event;
+            o.name = name;
+            o.targetFlow = targetFlow;
+            o.targetPage = targetPage;
+            o.triggerFulfillment = triggerFulfillment;
+            return o;
         }
     }
 }

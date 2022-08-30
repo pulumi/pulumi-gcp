@@ -19,49 +19,34 @@ public final class AzureNodePoolConfig {
      * @return (Beta only) The OS image type to use on node pool instances.
      * 
      */
-    private final @Nullable String imageType;
+    private @Nullable String imageType;
     /**
      * @return Proxy configuration for outbound HTTP(S) traffic.
      * 
      */
-    private final @Nullable AzureNodePoolConfigProxyConfig proxyConfig;
+    private @Nullable AzureNodePoolConfigProxyConfig proxyConfig;
     /**
      * @return Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
      * 
      */
-    private final @Nullable AzureNodePoolConfigRootVolume rootVolume;
+    private @Nullable AzureNodePoolConfigRootVolume rootVolume;
     /**
      * @return SSH configuration for how to access the node pool machines.
      * 
      */
-    private final AzureNodePoolConfigSshConfig sshConfig;
+    private AzureNodePoolConfigSshConfig sshConfig;
     /**
      * @return Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
-    private final @Nullable Map<String,String> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
      * 
      */
-    private final @Nullable String vmSize;
+    private @Nullable String vmSize;
 
-    @CustomType.Constructor
-    private AzureNodePoolConfig(
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("proxyConfig") @Nullable AzureNodePoolConfigProxyConfig proxyConfig,
-        @CustomType.Parameter("rootVolume") @Nullable AzureNodePoolConfigRootVolume rootVolume,
-        @CustomType.Parameter("sshConfig") AzureNodePoolConfigSshConfig sshConfig,
-        @CustomType.Parameter("tags") @Nullable Map<String,String> tags,
-        @CustomType.Parameter("vmSize") @Nullable String vmSize) {
-        this.imageType = imageType;
-        this.proxyConfig = proxyConfig;
-        this.rootVolume = rootVolume;
-        this.sshConfig = sshConfig;
-        this.tags = tags;
-        this.vmSize = vmSize;
-    }
-
+    private AzureNodePoolConfig() {}
     /**
      * @return (Beta only) The OS image type to use on node pool instances.
      * 
@@ -112,7 +97,7 @@ public final class AzureNodePoolConfig {
     public static Builder builder(AzureNodePoolConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String imageType;
         private @Nullable AzureNodePoolConfigProxyConfig proxyConfig;
@@ -120,11 +105,7 @@ public final class AzureNodePoolConfig {
         private AzureNodePoolConfigSshConfig sshConfig;
         private @Nullable Map<String,String> tags;
         private @Nullable String vmSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureNodePoolConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageType = defaults.imageType;
@@ -135,31 +116,45 @@ public final class AzureNodePoolConfig {
     	      this.vmSize = defaults.vmSize;
         }
 
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyConfig(@Nullable AzureNodePoolConfigProxyConfig proxyConfig) {
             this.proxyConfig = proxyConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder rootVolume(@Nullable AzureNodePoolConfigRootVolume rootVolume) {
             this.rootVolume = rootVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder sshConfig(AzureNodePoolConfigSshConfig sshConfig) {
             this.sshConfig = Objects.requireNonNull(sshConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vmSize(@Nullable String vmSize) {
             this.vmSize = vmSize;
             return this;
-        }        public AzureNodePoolConfig build() {
-            return new AzureNodePoolConfig(imageType, proxyConfig, rootVolume, sshConfig, tags, vmSize);
+        }
+        public AzureNodePoolConfig build() {
+            final var o = new AzureNodePoolConfig();
+            o.imageType = imageType;
+            o.proxyConfig = proxyConfig;
+            o.rootVolume = rootVolume;
+            o.sshConfig = sshConfig;
+            o.tags = tags;
+            o.vmSize = vmSize;
+            return o;
         }
     }
 }

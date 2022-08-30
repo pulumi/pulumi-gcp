@@ -17,21 +17,14 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
      * is &#39;COUNT&#39;, we will retain this many backups.
      * 
      */
-    private final Integer retainedBackups;
+    private Integer retainedBackups;
     /**
      * @return The unit that &#39;retained_backups&#39; represents. Defaults to `COUNT`.
      * 
      */
-    private final @Nullable String retentionUnit;
+    private @Nullable String retentionUnit;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(
-        @CustomType.Parameter("retainedBackups") Integer retainedBackups,
-        @CustomType.Parameter("retentionUnit") @Nullable String retentionUnit) {
-        this.retainedBackups = retainedBackups;
-        this.retentionUnit = retentionUnit;
-    }
-
+    private DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings() {}
     /**
      * @return Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
      * is &#39;COUNT&#39;, we will retain this many backups.
@@ -55,30 +48,32 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
     public static Builder builder(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer retainedBackups;
         private @Nullable String retentionUnit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retainedBackups = defaults.retainedBackups;
     	      this.retentionUnit = defaults.retentionUnit;
         }
 
+        @CustomType.Setter
         public Builder retainedBackups(Integer retainedBackups) {
             this.retainedBackups = Objects.requireNonNull(retainedBackups);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionUnit(@Nullable String retentionUnit) {
             this.retentionUnit = retentionUnit;
             return this;
-        }        public DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings build() {
-            return new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(retainedBackups, retentionUnit);
+        }
+        public DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings build() {
+            final var o = new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings();
+            o.retainedBackups = retainedBackups;
+            o.retentionUnit = retentionUnit;
+            return o;
         }
     }
 }

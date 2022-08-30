@@ -15,21 +15,14 @@ public final class MetastoreServiceMaintenanceWindow {
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
-    private final String dayOfWeek;
+    private String dayOfWeek;
     /**
      * @return The hour of day (0-23) when the window starts.
      * 
      */
-    private final Integer hourOfDay;
+    private Integer hourOfDay;
 
-    @CustomType.Constructor
-    private MetastoreServiceMaintenanceWindow(
-        @CustomType.Parameter("dayOfWeek") String dayOfWeek,
-        @CustomType.Parameter("hourOfDay") Integer hourOfDay) {
-        this.dayOfWeek = dayOfWeek;
-        this.hourOfDay = hourOfDay;
-    }
-
+    private MetastoreServiceMaintenanceWindow() {}
     /**
      * @return The day of week, when the window starts.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
@@ -53,30 +46,32 @@ public final class MetastoreServiceMaintenanceWindow {
     public static Builder builder(MetastoreServiceMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dayOfWeek;
         private Integer hourOfDay;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeek = defaults.dayOfWeek;
     	      this.hourOfDay = defaults.hourOfDay;
         }
 
+        @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
             this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
             return this;
         }
+        @CustomType.Setter
         public Builder hourOfDay(Integer hourOfDay) {
             this.hourOfDay = Objects.requireNonNull(hourOfDay);
             return this;
-        }        public MetastoreServiceMaintenanceWindow build() {
-            return new MetastoreServiceMaintenanceWindow(dayOfWeek, hourOfDay);
+        }
+        public MetastoreServiceMaintenanceWindow build() {
+            final var o = new MetastoreServiceMaintenanceWindow();
+            o.dayOfWeek = dayOfWeek;
+            o.hourOfDay = hourOfDay;
+            return o;
         }
     }
 }

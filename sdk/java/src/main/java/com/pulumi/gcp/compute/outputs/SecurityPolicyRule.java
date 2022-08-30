@@ -25,59 +25,42 @@ public final class SecurityPolicyRule {
      * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      * 
      */
-    private final String action;
+    private String action;
     /**
      * @return An optional description of this rule. Max size is 64.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
      * 
      */
-    private final SecurityPolicyRuleMatch match;
+    private SecurityPolicyRuleMatch match;
     /**
      * @return When set to true, the `action` specified above is not enforced.
      * Stackdriver logs for requests that trigger a preview action are annotated as such.
      * 
      */
-    private final @Nullable Boolean preview;
+    private @Nullable Boolean preview;
     /**
      * @return An unique positive integer indicating the priority of evaluation for a rule.
      * Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
-    private final @Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions;
+    private @Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions;
     /**
      * @return Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
-    private final @Nullable SecurityPolicyRuleRedirectOptions redirectOptions;
+    private @Nullable SecurityPolicyRuleRedirectOptions redirectOptions;
 
-    @CustomType.Constructor
-    private SecurityPolicyRule(
-        @CustomType.Parameter("action") String action,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("match") SecurityPolicyRuleMatch match,
-        @CustomType.Parameter("preview") @Nullable Boolean preview,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("rateLimitOptions") @Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions,
-        @CustomType.Parameter("redirectOptions") @Nullable SecurityPolicyRuleRedirectOptions redirectOptions) {
-        this.action = action;
-        this.description = description;
-        this.match = match;
-        this.preview = preview;
-        this.priority = priority;
-        this.rateLimitOptions = rateLimitOptions;
-        this.redirectOptions = redirectOptions;
-    }
-
+    private SecurityPolicyRule() {}
     /**
      * @return Action to take when `match` matches the request. Valid values:
      * * allow: allow access to target.
@@ -143,7 +126,7 @@ public final class SecurityPolicyRule {
     public static Builder builder(SecurityPolicyRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String action;
         private @Nullable String description;
@@ -152,11 +135,7 @@ public final class SecurityPolicyRule {
         private Integer priority;
         private @Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions;
         private @Nullable SecurityPolicyRuleRedirectOptions redirectOptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
@@ -168,35 +147,51 @@ public final class SecurityPolicyRule {
     	      this.redirectOptions = defaults.redirectOptions;
         }
 
+        @CustomType.Setter
         public Builder action(String action) {
             this.action = Objects.requireNonNull(action);
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder match(SecurityPolicyRuleMatch match) {
             this.match = Objects.requireNonNull(match);
             return this;
         }
+        @CustomType.Setter
         public Builder preview(@Nullable Boolean preview) {
             this.preview = preview;
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder rateLimitOptions(@Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions) {
             this.rateLimitOptions = rateLimitOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectOptions(@Nullable SecurityPolicyRuleRedirectOptions redirectOptions) {
             this.redirectOptions = redirectOptions;
             return this;
-        }        public SecurityPolicyRule build() {
-            return new SecurityPolicyRule(action, description, match, preview, priority, rateLimitOptions, redirectOptions);
+        }
+        public SecurityPolicyRule build() {
+            final var o = new SecurityPolicyRule();
+            o.action = action;
+            o.description = description;
+            o.match = match;
+            o.preview = preview;
+            o.priority = priority;
+            o.rateLimitOptions = rateLimitOptions;
+            o.redirectOptions = redirectOptions;
+            return o;
         }
     }
 }

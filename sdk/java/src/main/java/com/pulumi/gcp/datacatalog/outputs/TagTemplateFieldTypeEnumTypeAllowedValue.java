@@ -13,13 +13,9 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValue {
      * @return The display name for this template.
      * 
      */
-    private final String displayName;
+    private String displayName;
 
-    @CustomType.Constructor
-    private TagTemplateFieldTypeEnumTypeAllowedValue(@CustomType.Parameter("displayName") String displayName) {
-        this.displayName = displayName;
-    }
-
+    private TagTemplateFieldTypeEnumTypeAllowedValue() {}
     /**
      * @return The display name for this template.
      * 
@@ -35,24 +31,24 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValue {
     public static Builder builder(TagTemplateFieldTypeEnumTypeAllowedValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TagTemplateFieldTypeEnumTypeAllowedValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
         }
 
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
-        }        public TagTemplateFieldTypeEnumTypeAllowedValue build() {
-            return new TagTemplateFieldTypeEnumTypeAllowedValue(displayName);
+        }
+        public TagTemplateFieldTypeEnumTypeAllowedValue build() {
+            final var o = new TagTemplateFieldTypeEnumTypeAllowedValue();
+            o.displayName = displayName;
+            return o;
         }
     }
 }

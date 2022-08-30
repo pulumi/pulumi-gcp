@@ -15,13 +15,9 @@ public final class SloBasicSliAvailability {
      * @return Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private SloBasicSliAvailability(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private SloBasicSliAvailability() {}
     /**
      * @return Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
      * 
@@ -37,24 +33,24 @@ public final class SloBasicSliAvailability {
     public static Builder builder(SloBasicSliAvailability defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloBasicSliAvailability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public SloBasicSliAvailability build() {
-            return new SloBasicSliAvailability(enabled);
+        }
+        public SloBasicSliAvailability build() {
+            final var o = new SloBasicSliAvailability();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

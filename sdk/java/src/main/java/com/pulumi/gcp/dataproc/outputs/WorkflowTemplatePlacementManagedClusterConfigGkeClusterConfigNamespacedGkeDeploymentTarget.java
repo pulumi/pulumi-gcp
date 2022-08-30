@@ -15,21 +15,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
      * @return Optional. A namespace within the GKE cluster to deploy into.
      * 
      */
-    private final @Nullable String clusterNamespace;
+    private @Nullable String clusterNamespace;
     /**
      * @return Optional. The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
      * 
      */
-    private final @Nullable String targetGkeCluster;
+    private @Nullable String targetGkeCluster;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget(
-        @CustomType.Parameter("clusterNamespace") @Nullable String clusterNamespace,
-        @CustomType.Parameter("targetGkeCluster") @Nullable String targetGkeCluster) {
-        this.clusterNamespace = clusterNamespace;
-        this.targetGkeCluster = targetGkeCluster;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget() {}
     /**
      * @return Optional. A namespace within the GKE cluster to deploy into.
      * 
@@ -52,30 +45,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterNamespace;
         private @Nullable String targetGkeCluster;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterNamespace = defaults.clusterNamespace;
     	      this.targetGkeCluster = defaults.targetGkeCluster;
         }
 
+        @CustomType.Setter
         public Builder clusterNamespace(@Nullable String clusterNamespace) {
             this.clusterNamespace = clusterNamespace;
             return this;
         }
+        @CustomType.Setter
         public Builder targetGkeCluster(@Nullable String targetGkeCluster) {
             this.targetGkeCluster = targetGkeCluster;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget(clusterNamespace, targetGkeCluster);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget();
+            o.clusterNamespace = clusterNamespace;
+            o.targetGkeCluster = targetGkeCluster;
+            return o;
         }
     }
 }

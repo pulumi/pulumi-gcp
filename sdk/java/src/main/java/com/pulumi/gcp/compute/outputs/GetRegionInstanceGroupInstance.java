@@ -15,28 +15,19 @@ public final class GetRegionInstanceGroupInstance {
      * @return URL to the instance.
      * 
      */
-    private final String instance;
+    private String instance;
     /**
      * @return List of named ports in the group, as a list of resources, each containing:
      * 
      */
-    private final List<GetRegionInstanceGroupInstanceNamedPort> namedPorts;
+    private List<GetRegionInstanceGroupInstanceNamedPort> namedPorts;
     /**
      * @return String description of current state of the instance.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetRegionInstanceGroupInstance(
-        @CustomType.Parameter("instance") String instance,
-        @CustomType.Parameter("namedPorts") List<GetRegionInstanceGroupInstanceNamedPort> namedPorts,
-        @CustomType.Parameter("status") String status) {
-        this.instance = instance;
-        this.namedPorts = namedPorts;
-        this.status = status;
-    }
-
+    private GetRegionInstanceGroupInstance() {}
     /**
      * @return URL to the instance.
      * 
@@ -66,16 +57,12 @@ public final class GetRegionInstanceGroupInstance {
     public static Builder builder(GetRegionInstanceGroupInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instance;
         private List<GetRegionInstanceGroupInstanceNamedPort> namedPorts;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionInstanceGroupInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instance = defaults.instance;
@@ -83,10 +70,12 @@ public final class GetRegionInstanceGroupInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder instance(String instance) {
             this.instance = Objects.requireNonNull(instance);
             return this;
         }
+        @CustomType.Setter
         public Builder namedPorts(List<GetRegionInstanceGroupInstanceNamedPort> namedPorts) {
             this.namedPorts = Objects.requireNonNull(namedPorts);
             return this;
@@ -94,11 +83,17 @@ public final class GetRegionInstanceGroupInstance {
         public Builder namedPorts(GetRegionInstanceGroupInstanceNamedPort... namedPorts) {
             return namedPorts(List.of(namedPorts));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetRegionInstanceGroupInstance build() {
-            return new GetRegionInstanceGroupInstance(instance, namedPorts, status);
+        }
+        public GetRegionInstanceGroupInstance build() {
+            final var o = new GetRegionInstanceGroupInstance();
+            o.instance = instance;
+            o.namedPorts = namedPorts;
+            o.status = status;
+            return o;
         }
     }
 }

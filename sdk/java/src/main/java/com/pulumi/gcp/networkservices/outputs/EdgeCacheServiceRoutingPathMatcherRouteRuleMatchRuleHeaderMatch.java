@@ -16,51 +16,36 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
      * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
      * 
      */
-    private final @Nullable String exactMatch;
+    private @Nullable String exactMatch;
     /**
      * @return Headers to remove from the response prior to sending it back to the client.
      * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
      * 
      */
-    private final String headerName;
+    private String headerName;
     /**
      * @return If set to false (default), the headerMatch is considered a match if the match criteria above are met.
      * If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
      * 
      */
-    private final @Nullable Boolean invertMatch;
+    private @Nullable Boolean invertMatch;
     /**
      * @return The value of the header must start with the contents of prefixMatch.
      * 
      */
-    private final @Nullable String prefixMatch;
+    private @Nullable String prefixMatch;
     /**
      * @return Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
      * 
      */
-    private final @Nullable Boolean presentMatch;
+    private @Nullable Boolean presentMatch;
     /**
      * @return The value of the header must end with the contents of suffixMatch.
      * 
      */
-    private final @Nullable String suffixMatch;
+    private @Nullable String suffixMatch;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(
-        @CustomType.Parameter("exactMatch") @Nullable String exactMatch,
-        @CustomType.Parameter("headerName") String headerName,
-        @CustomType.Parameter("invertMatch") @Nullable Boolean invertMatch,
-        @CustomType.Parameter("prefixMatch") @Nullable String prefixMatch,
-        @CustomType.Parameter("presentMatch") @Nullable Boolean presentMatch,
-        @CustomType.Parameter("suffixMatch") @Nullable String suffixMatch) {
-        this.exactMatch = exactMatch;
-        this.headerName = headerName;
-        this.invertMatch = invertMatch;
-        this.prefixMatch = prefixMatch;
-        this.presentMatch = presentMatch;
-        this.suffixMatch = suffixMatch;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch() {}
     /**
      * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
      * 
@@ -113,7 +98,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String exactMatch;
         private String headerName;
@@ -121,11 +106,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         private @Nullable String prefixMatch;
         private @Nullable Boolean presentMatch;
         private @Nullable String suffixMatch;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exactMatch = defaults.exactMatch;
@@ -136,31 +117,45 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
     	      this.suffixMatch = defaults.suffixMatch;
         }
 
+        @CustomType.Setter
         public Builder exactMatch(@Nullable String exactMatch) {
             this.exactMatch = exactMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder headerName(String headerName) {
             this.headerName = Objects.requireNonNull(headerName);
             return this;
         }
+        @CustomType.Setter
         public Builder invertMatch(@Nullable Boolean invertMatch) {
             this.invertMatch = invertMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
             this.prefixMatch = prefixMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder presentMatch(@Nullable Boolean presentMatch) {
             this.presentMatch = presentMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder suffixMatch(@Nullable String suffixMatch) {
             this.suffixMatch = suffixMatch;
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(exactMatch, headerName, invertMatch, prefixMatch, presentMatch, suffixMatch);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch();
+            o.exactMatch = exactMatch;
+            o.headerName = headerName;
+            o.invertMatch = invertMatch;
+            o.prefixMatch = prefixMatch;
+            o.presentMatch = presentMatch;
+            o.suffixMatch = suffixMatch;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
      * @return Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
      * 
      */
-    private final @Nullable Integer maxInstances;
+    private @Nullable Integer maxInstances;
     /**
      * @return Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
      * 
      */
-    private final @Nullable Integer minInstances;
+    private @Nullable Integer minInstances;
     /**
      * @return Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
      * 
      */
-    private final @Nullable Double targetCpuUtilization;
+    private @Nullable Double targetCpuUtilization;
     /**
      * @return Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
      * 
      */
-    private final @Nullable Double targetThroughputUtilization;
+    private @Nullable Double targetThroughputUtilization;
 
-    @CustomType.Constructor
-    private StandardAppVersionAutomaticScalingStandardSchedulerSettings(
-        @CustomType.Parameter("maxInstances") @Nullable Integer maxInstances,
-        @CustomType.Parameter("minInstances") @Nullable Integer minInstances,
-        @CustomType.Parameter("targetCpuUtilization") @Nullable Double targetCpuUtilization,
-        @CustomType.Parameter("targetThroughputUtilization") @Nullable Double targetThroughputUtilization) {
-        this.maxInstances = maxInstances;
-        this.minInstances = minInstances;
-        this.targetCpuUtilization = targetCpuUtilization;
-        this.targetThroughputUtilization = targetThroughputUtilization;
-    }
-
+    private StandardAppVersionAutomaticScalingStandardSchedulerSettings() {}
     /**
      * @return Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
      * 
@@ -81,17 +70,13 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
     public static Builder builder(StandardAppVersionAutomaticScalingStandardSchedulerSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxInstances;
         private @Nullable Integer minInstances;
         private @Nullable Double targetCpuUtilization;
         private @Nullable Double targetThroughputUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionAutomaticScalingStandardSchedulerSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxInstances = defaults.maxInstances;
@@ -100,23 +85,33 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
     	      this.targetThroughputUtilization = defaults.targetThroughputUtilization;
         }
 
+        @CustomType.Setter
         public Builder maxInstances(@Nullable Integer maxInstances) {
             this.maxInstances = maxInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder minInstances(@Nullable Integer minInstances) {
             this.minInstances = minInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder targetCpuUtilization(@Nullable Double targetCpuUtilization) {
             this.targetCpuUtilization = targetCpuUtilization;
             return this;
         }
+        @CustomType.Setter
         public Builder targetThroughputUtilization(@Nullable Double targetThroughputUtilization) {
             this.targetThroughputUtilization = targetThroughputUtilization;
             return this;
-        }        public StandardAppVersionAutomaticScalingStandardSchedulerSettings build() {
-            return new StandardAppVersionAutomaticScalingStandardSchedulerSettings(maxInstances, minInstances, targetCpuUtilization, targetThroughputUtilization);
+        }
+        public StandardAppVersionAutomaticScalingStandardSchedulerSettings build() {
+            final var o = new StandardAppVersionAutomaticScalingStandardSchedulerSettings();
+            o.maxInstances = maxInstances;
+            o.minInstances = minInstances;
+            o.targetCpuUtilization = targetCpuUtilization;
+            o.targetThroughputUtilization = targetThroughputUtilization;
+            return o;
         }
     }
 }

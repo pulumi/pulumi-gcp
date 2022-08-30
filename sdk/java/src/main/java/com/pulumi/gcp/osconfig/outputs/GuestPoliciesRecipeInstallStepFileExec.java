@@ -16,35 +16,24 @@ public final class GuestPoliciesRecipeInstallStepFileExec {
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
      */
-    private final @Nullable String allowedExitCodes;
+    private @Nullable String allowedExitCodes;
     /**
      * @return Arguments to be passed to the provided executable.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final @Nullable String artifactId;
+    private @Nullable String artifactId;
     /**
      * @return The absolute path of the file on the local filesystem.
      * 
      */
-    private final @Nullable String localPath;
+    private @Nullable String localPath;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeInstallStepFileExec(
-        @CustomType.Parameter("allowedExitCodes") @Nullable String allowedExitCodes,
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("artifactId") @Nullable String artifactId,
-        @CustomType.Parameter("localPath") @Nullable String localPath) {
-        this.allowedExitCodes = allowedExitCodes;
-        this.args = args;
-        this.artifactId = artifactId;
-        this.localPath = localPath;
-    }
-
+    private GuestPoliciesRecipeInstallStepFileExec() {}
     /**
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
@@ -81,17 +70,13 @@ public final class GuestPoliciesRecipeInstallStepFileExec {
     public static Builder builder(GuestPoliciesRecipeInstallStepFileExec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowedExitCodes;
         private @Nullable List<String> args;
         private @Nullable String artifactId;
         private @Nullable String localPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeInstallStepFileExec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedExitCodes = defaults.allowedExitCodes;
@@ -100,10 +85,12 @@ public final class GuestPoliciesRecipeInstallStepFileExec {
     	      this.localPath = defaults.localPath;
         }
 
+        @CustomType.Setter
         public Builder allowedExitCodes(@Nullable String allowedExitCodes) {
             this.allowedExitCodes = allowedExitCodes;
             return this;
         }
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -111,15 +98,23 @@ public final class GuestPoliciesRecipeInstallStepFileExec {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder artifactId(@Nullable String artifactId) {
             this.artifactId = artifactId;
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
             this.localPath = localPath;
             return this;
-        }        public GuestPoliciesRecipeInstallStepFileExec build() {
-            return new GuestPoliciesRecipeInstallStepFileExec(allowedExitCodes, args, artifactId, localPath);
+        }
+        public GuestPoliciesRecipeInstallStepFileExec build() {
+            final var o = new GuestPoliciesRecipeInstallStepFileExec();
+            o.allowedExitCodes = allowedExitCodes;
+            o.args = args;
+            o.artifactId = artifactId;
+            o.localPath = localPath;
+            return o;
         }
     }
 }

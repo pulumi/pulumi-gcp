@@ -14,13 +14,9 @@ public final class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKey
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
      */
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage() {}
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
@@ -36,27 +32,27 @@ public final class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKey
     public static Builder builder(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage build() {
-            return new CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(objectIdPaths);
+        }
+        public CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage build() {
+            final var o = new CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

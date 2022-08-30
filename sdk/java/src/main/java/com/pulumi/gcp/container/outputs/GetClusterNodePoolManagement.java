@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolManagement {
-    private final Boolean autoRepair;
-    private final Boolean autoUpgrade;
+    private Boolean autoRepair;
+    private Boolean autoUpgrade;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolManagement(
-        @CustomType.Parameter("autoRepair") Boolean autoRepair,
-        @CustomType.Parameter("autoUpgrade") Boolean autoUpgrade) {
-        this.autoRepair = autoRepair;
-        this.autoUpgrade = autoUpgrade;
-    }
-
+    private GetClusterNodePoolManagement() {}
     public Boolean autoRepair() {
         return this.autoRepair;
     }
@@ -34,30 +27,32 @@ public final class GetClusterNodePoolManagement {
     public static Builder builder(GetClusterNodePoolManagement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autoRepair;
         private Boolean autoUpgrade;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolManagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRepair = defaults.autoRepair;
     	      this.autoUpgrade = defaults.autoUpgrade;
         }
 
+        @CustomType.Setter
         public Builder autoRepair(Boolean autoRepair) {
             this.autoRepair = Objects.requireNonNull(autoRepair);
             return this;
         }
+        @CustomType.Setter
         public Builder autoUpgrade(Boolean autoUpgrade) {
             this.autoUpgrade = Objects.requireNonNull(autoUpgrade);
             return this;
-        }        public GetClusterNodePoolManagement build() {
-            return new GetClusterNodePoolManagement(autoRepair, autoUpgrade);
+        }
+        public GetClusterNodePoolManagement build() {
+            final var o = new GetClusterNodePoolManagement();
+            o.autoRepair = autoRepair;
+            o.autoUpgrade = autoUpgrade;
+            return o;
         }
     }
 }

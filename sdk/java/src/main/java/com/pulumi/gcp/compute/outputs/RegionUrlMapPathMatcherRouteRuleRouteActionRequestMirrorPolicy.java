@@ -15,13 +15,9 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolic
      * headerActions specified as part of this backendServiceWeight.
      * 
      */
-    private final String backendService;
+    private String backendService;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(@CustomType.Parameter("backendService") String backendService) {
-        this.backendService = backendService;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy() {}
     /**
      * @return The default RegionBackendService resource. Before
      * forwarding the request to backendService, the loadbalancer applies any relevant
@@ -39,24 +35,24 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolic
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
         }
 
+        @CustomType.Setter
         public Builder backendService(String backendService) {
             this.backendService = Objects.requireNonNull(backendService);
             return this;
-        }        public RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy build() {
-            return new RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(backendService);
+        }
+        public RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy();
+            o.backendService = backendService;
+            return o;
         }
     }
 }

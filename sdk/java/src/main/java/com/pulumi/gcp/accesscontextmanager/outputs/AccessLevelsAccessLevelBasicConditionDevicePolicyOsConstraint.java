@@ -17,22 +17,15 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
      * Format: &#34;major.minor.patch&#34; such as &#34;10.5.301&#34;, &#34;9.2.1&#34;.
      * 
      */
-    private final @Nullable String minimumVersion;
+    private @Nullable String minimumVersion;
     /**
      * @return The operating system type of the device.
      * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
      * 
      */
-    private final String osType;
+    private String osType;
 
-    @CustomType.Constructor
-    private AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(
-        @CustomType.Parameter("minimumVersion") @Nullable String minimumVersion,
-        @CustomType.Parameter("osType") String osType) {
-        this.minimumVersion = minimumVersion;
-        this.osType = osType;
-    }
-
+    private AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint() {}
     /**
      * @return The minimum allowed OS version. If not set, any version
      * of this OS satisfies the constraint.
@@ -58,30 +51,32 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
     public static Builder builder(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String minimumVersion;
         private String osType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.minimumVersion = defaults.minimumVersion;
     	      this.osType = defaults.osType;
         }
 
+        @CustomType.Setter
         public Builder minimumVersion(@Nullable String minimumVersion) {
             this.minimumVersion = minimumVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder osType(String osType) {
             this.osType = Objects.requireNonNull(osType);
             return this;
-        }        public AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint build() {
-            return new AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(minimumVersion, osType);
+        }
+        public AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint build() {
+            final var o = new AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint();
+            o.minimumVersion = minimumVersion;
+            o.osType = osType;
+            return o;
         }
     }
 }

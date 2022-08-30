@@ -10,26 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
-    private final String bootDiskKmsKey;
-    private final String imageType;
-    private final String minCpuPlatform;
-    private final List<String> oauthScopes;
-    private final String serviceAccount;
+    private String bootDiskKmsKey;
+    private String imageType;
+    private String minCpuPlatform;
+    private List<String> oauthScopes;
+    private String serviceAccount;
 
-    @CustomType.Constructor
-    private GetClusterClusterAutoscalingAutoProvisioningDefault(
-        @CustomType.Parameter("bootDiskKmsKey") String bootDiskKmsKey,
-        @CustomType.Parameter("imageType") String imageType,
-        @CustomType.Parameter("minCpuPlatform") String minCpuPlatform,
-        @CustomType.Parameter("oauthScopes") List<String> oauthScopes,
-        @CustomType.Parameter("serviceAccount") String serviceAccount) {
-        this.bootDiskKmsKey = bootDiskKmsKey;
-        this.imageType = imageType;
-        this.minCpuPlatform = minCpuPlatform;
-        this.oauthScopes = oauthScopes;
-        this.serviceAccount = serviceAccount;
-    }
-
+    private GetClusterClusterAutoscalingAutoProvisioningDefault() {}
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
     }
@@ -53,18 +40,14 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     public static Builder builder(GetClusterClusterAutoscalingAutoProvisioningDefault defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bootDiskKmsKey;
         private String imageType;
         private String minCpuPlatform;
         private List<String> oauthScopes;
         private String serviceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterAutoscalingAutoProvisioningDefault defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
@@ -74,18 +57,22 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        @CustomType.Setter
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
             this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
             this.oauthScopes = Objects.requireNonNull(oauthScopes);
             return this;
@@ -93,11 +80,19 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
-        }        public GetClusterClusterAutoscalingAutoProvisioningDefault build() {
-            return new GetClusterClusterAutoscalingAutoProvisioningDefault(bootDiskKmsKey, imageType, minCpuPlatform, oauthScopes, serviceAccount);
+        }
+        public GetClusterClusterAutoscalingAutoProvisioningDefault build() {
+            final var o = new GetClusterClusterAutoscalingAutoProvisioningDefault();
+            o.bootDiskKmsKey = bootDiskKmsKey;
+            o.imageType = imageType;
+            o.minCpuPlatform = minCpuPlatform;
+            o.oauthScopes = oauthScopes;
+            o.serviceAccount = serviceAccount;
+            return o;
         }
     }
 }

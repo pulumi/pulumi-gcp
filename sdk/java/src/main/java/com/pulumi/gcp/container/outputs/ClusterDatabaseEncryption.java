@@ -15,21 +15,14 @@ public final class ClusterDatabaseEncryption {
      * @return the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
      * 
      */
-    private final @Nullable String keyName;
+    private @Nullable String keyName;
     /**
      * @return `ENCRYPTED` or `DECRYPTED`
      * 
      */
-    private final String state;
+    private String state;
 
-    @CustomType.Constructor
-    private ClusterDatabaseEncryption(
-        @CustomType.Parameter("keyName") @Nullable String keyName,
-        @CustomType.Parameter("state") String state) {
-        this.keyName = keyName;
-        this.state = state;
-    }
-
+    private ClusterDatabaseEncryption() {}
     /**
      * @return the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
      * 
@@ -52,30 +45,32 @@ public final class ClusterDatabaseEncryption {
     public static Builder builder(ClusterDatabaseEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String keyName;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterDatabaseEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyName = defaults.keyName;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder keyName(@Nullable String keyName) {
             this.keyName = keyName;
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public ClusterDatabaseEncryption build() {
-            return new ClusterDatabaseEncryption(keyName, state);
+        }
+        public ClusterDatabaseEncryption build() {
+            final var o = new ClusterDatabaseEncryption();
+            o.keyName = keyName;
+            o.state = state;
+            return o;
         }
     }
 }

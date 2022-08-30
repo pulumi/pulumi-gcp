@@ -101,11 +101,14 @@ __all__ = [
     'ClusterNodeConfigGvnic',
     'ClusterNodeConfigKubeletConfig',
     'ClusterNodeConfigLinuxNodeConfig',
+    'ClusterNodeConfigReservationAffinity',
     'ClusterNodeConfigSandboxConfig',
     'ClusterNodeConfigShieldedInstanceConfig',
     'ClusterNodeConfigTaint',
     'ClusterNodeConfigWorkloadMetadataConfig',
     'ClusterNodePool',
+    'ClusterNodePoolAutoConfig',
+    'ClusterNodePoolAutoConfigNetworkTags',
     'ClusterNodePoolAutoscaling',
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
@@ -116,6 +119,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigGvnic',
     'ClusterNodePoolNodeConfigKubeletConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
+    'ClusterNodePoolNodeConfigReservationAffinity',
     'ClusterNodePoolNodeConfigSandboxConfig',
     'ClusterNodePoolNodeConfigShieldedInstanceConfig',
     'ClusterNodePoolNodeConfigTaint',
@@ -143,6 +147,7 @@ __all__ = [
     'NodePoolNodeConfigGvnic',
     'NodePoolNodeConfigKubeletConfig',
     'NodePoolNodeConfigLinuxNodeConfig',
+    'NodePoolNodeConfigReservationAffinity',
     'NodePoolNodeConfigSandboxConfig',
     'NodePoolNodeConfigShieldedInstanceConfig',
     'NodePoolNodeConfigTaint',
@@ -194,11 +199,14 @@ __all__ = [
     'GetClusterNodeConfigGvnicResult',
     'GetClusterNodeConfigKubeletConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
+    'GetClusterNodeConfigReservationAffinityResult',
     'GetClusterNodeConfigSandboxConfigResult',
     'GetClusterNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodeConfigTaintResult',
     'GetClusterNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolResult',
+    'GetClusterNodePoolAutoConfigResult',
+    'GetClusterNodePoolAutoConfigNetworkTagResult',
     'GetClusterNodePoolAutoscalingResult',
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
@@ -209,6 +217,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigGvnicResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
+    'GetClusterNodePoolNodeConfigReservationAffinityResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
     'GetClusterNodePoolNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodePoolNodeConfigTaintResult',
@@ -1180,7 +1189,7 @@ class AwsNodePoolConfig(dict):
         :param str image_type: (Beta only) The OS image type to use on node pool instances.
         :param 'AwsNodePoolConfigInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
-        :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param 'AwsNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AwsNodePoolConfigRootVolumeArgs' root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param Sequence[str] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
@@ -1255,7 +1264,7 @@ class AwsNodePoolConfig(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
 
@@ -4306,6 +4315,8 @@ class ClusterNodeConfig(dict):
             suggest = "node_group"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -4345,6 +4356,7 @@ class ClusterNodeConfig(dict):
                  node_group: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
+                 reservation_affinity: Optional['outputs.ClusterNodeConfigReservationAffinity'] = None,
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodeConfigShieldedInstanceConfig'] = None,
@@ -4402,14 +4414,14 @@ class ClusterNodeConfig(dict):
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
+        :param 'ClusterNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
-        :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
-               valid sources or targets for network firewalls.
+        :param Sequence[str] tags: ) - List of network tags applied to auto-provisioned node pools.
         :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
@@ -4457,6 +4469,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -4648,6 +4662,14 @@ class ClusterNodeConfig(dict):
         return pulumi.get(self, "preemptible")
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.ClusterNodeConfigReservationAffinity']:
+        """
+        The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
         return pulumi.get(self, "sandbox_config")
@@ -4683,8 +4705,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        The list of instance tags applied to all nodes. Tags are used to identify
-        valid sources or targets for network firewalls.
+        ) - List of network tags applied to auto-provisioned node pools.
         """
         return pulumi.get(self, "tags")
 
@@ -4944,6 +4965,67 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodeConfigReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str consume_reservation_type: The type of reservation consumption
+               Accepted values are:
+        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        :param Sequence[str] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+        """
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        """
+        The type of reservation consumption
+        Accepted values are:
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class ClusterNodeConfigSandboxConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5038,7 +5120,7 @@ class ClusterNodeConfigTaint(dict):
                  value: str):
         """
         :param str effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        :param str key: Key for taint.
+        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         :param str value: Value for taint.
         """
         pulumi.set(__self__, "effect", effect)
@@ -5057,7 +5139,7 @@ class ClusterNodeConfigTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Key for taint.
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         """
         return pulumi.get(self, "key")
 
@@ -5309,6 +5391,61 @@ class ClusterNodePool(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolAutoConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkTags":
+            suggest = "network_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolAutoConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolAutoConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolAutoConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None):
+        """
+        :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: ) - The network tag config for the cluster's automatically provisioned node pools.
+        """
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional['outputs.ClusterNodePoolAutoConfigNetworkTags']:
+        """
+        ) - The network tag config for the cluster's automatically provisioned node pools.
+        """
+        return pulumi.get(self, "network_tags")
+
+
+@pulumi.output_type
+class ClusterNodePoolAutoConfigNetworkTags(dict):
+    def __init__(__self__, *,
+                 tags: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] tags: ) - List of network tags applied to auto-provisioned node pools.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        """
+        ) - List of network tags applied to auto-provisioned node pools.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class ClusterNodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5482,6 +5619,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "node_group"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -5521,6 +5660,7 @@ class ClusterNodePoolNodeConfig(dict):
                  node_group: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
+                 reservation_affinity: Optional['outputs.ClusterNodePoolNodeConfigReservationAffinity'] = None,
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig'] = None,
@@ -5578,14 +5718,14 @@ class ClusterNodePoolNodeConfig(dict):
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
+        :param 'ClusterNodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
-        :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
-               valid sources or targets for network firewalls.
+        :param Sequence[str] tags: ) - List of network tags applied to auto-provisioned node pools.
         :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
@@ -5633,6 +5773,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -5824,6 +5966,14 @@ class ClusterNodePoolNodeConfig(dict):
         return pulumi.get(self, "preemptible")
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.ClusterNodePoolNodeConfigReservationAffinity']:
+        """
+        The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
         return pulumi.get(self, "sandbox_config")
@@ -5859,8 +6009,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        The list of instance tags applied to all nodes. Tags are used to identify
-        valid sources or targets for network firewalls.
+        ) - List of network tags applied to auto-provisioned node pools.
         """
         return pulumi.get(self, "tags")
 
@@ -6120,6 +6269,67 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeConfigReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str consume_reservation_type: The type of reservation consumption
+               Accepted values are:
+        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        :param Sequence[str] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+        """
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        """
+        The type of reservation consumption
+        Accepted values are:
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class ClusterNodePoolNodeConfigSandboxConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6214,7 +6424,7 @@ class ClusterNodePoolNodeConfigTaint(dict):
                  value: str):
         """
         :param str effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        :param str key: Key for taint.
+        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         :param str value: Value for taint.
         """
         pulumi.set(__self__, "effect", effect)
@@ -6233,7 +6443,7 @@ class ClusterNodePoolNodeConfigTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Key for taint.
+        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         """
         return pulumi.get(self, "key")
 
@@ -6988,6 +7198,8 @@ class NodePoolNodeConfig(dict):
             suggest = "node_group"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -7027,6 +7239,7 @@ class NodePoolNodeConfig(dict):
                  node_group: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
+                 reservation_affinity: Optional['outputs.NodePoolNodeConfigReservationAffinity'] = None,
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig'] = None,
@@ -7070,6 +7283,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -7174,6 +7389,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.NodePoolNodeConfigReservationAffinity']:
+        return pulumi.get(self, "reservation_affinity")
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -7377,6 +7597,51 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -8335,6 +8600,7 @@ class GetClusterNodeConfigResult(dict):
                  node_group: str,
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
+                 reservation_affinities: Sequence['outputs.GetClusterNodeConfigReservationAffinityResult'],
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult'],
@@ -8360,6 +8626,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "node_group", node_group)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
+        pulumi.set(__self__, "reservation_affinities", reservation_affinities)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
@@ -8457,6 +8724,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter
     def preemptible(self) -> bool:
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="reservationAffinities")
+    def reservation_affinities(self) -> Sequence['outputs.GetClusterNodeConfigReservationAffinityResult']:
+        return pulumi.get(self, "reservation_affinities")
 
     @property
     @pulumi.getter(name="sandboxConfigs")
@@ -8592,6 +8864,32 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigReservationAffinityResult(dict):
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -8780,6 +9078,30 @@ class GetClusterNodePoolResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodePoolAutoConfigResult(dict):
+    def __init__(__self__, *,
+                 network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult']):
+        pulumi.set(__self__, "network_tags", network_tags)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult']:
+        return pulumi.get(self, "network_tags")
+
+
+@pulumi.output_type
+class GetClusterNodePoolAutoConfigNetworkTagResult(dict):
+    def __init__(__self__, *,
+                 tags: Sequence[str]):
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class GetClusterNodePoolAutoscalingResult(dict):
     def __init__(__self__, *,
                  max_node_count: int,
@@ -8864,6 +9186,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  node_group: str,
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
+                 reservation_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult'],
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult'],
@@ -8889,6 +9212,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "node_group", node_group)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
+        pulumi.set(__self__, "reservation_affinities", reservation_affinities)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
@@ -8986,6 +9310,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter
     def preemptible(self) -> bool:
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="reservationAffinities")
+    def reservation_affinities(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult']:
+        return pulumi.get(self, "reservation_affinities")
 
     @property
     @pulumi.getter(name="sandboxConfigs")
@@ -9121,6 +9450,32 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigReservationAffinityResult(dict):
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

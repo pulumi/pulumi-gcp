@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageServiceAccount {
-    private final @Nullable String email;
-    private final List<String> scopes;
+    private @Nullable String email;
+    private List<String> scopes;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageServiceAccount(
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("scopes") List<String> scopes) {
-        this.email = email;
-        this.scopes = scopes;
-    }
-
+    private InstanceFromMachineImageServiceAccount() {}
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
@@ -37,33 +30,35 @@ public final class InstanceFromMachineImageServiceAccount {
     public static Builder builder(InstanceFromMachineImageServiceAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String email;
         private List<String> scopes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageServiceAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
         }
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
-        }        public InstanceFromMachineImageServiceAccount build() {
-            return new InstanceFromMachineImageServiceAccount(email, scopes);
+        }
+        public InstanceFromMachineImageServiceAccount build() {
+            final var o = new InstanceFromMachineImageServiceAccount();
+            o.email = email;
+            o.scopes = scopes;
+            return o;
         }
     }
 }

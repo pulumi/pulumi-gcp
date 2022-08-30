@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterWorkloadIdentityConfig {
-    private final String workloadPool;
+    private String workloadPool;
 
-    @CustomType.Constructor
-    private GetClusterWorkloadIdentityConfig(@CustomType.Parameter("workloadPool") String workloadPool) {
-        this.workloadPool = workloadPool;
-    }
-
+    private GetClusterWorkloadIdentityConfig() {}
     public String workloadPool() {
         return this.workloadPool;
     }
@@ -27,24 +23,24 @@ public final class GetClusterWorkloadIdentityConfig {
     public static Builder builder(GetClusterWorkloadIdentityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String workloadPool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterWorkloadIdentityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.workloadPool = defaults.workloadPool;
         }
 
+        @CustomType.Setter
         public Builder workloadPool(String workloadPool) {
             this.workloadPool = Objects.requireNonNull(workloadPool);
             return this;
-        }        public GetClusterWorkloadIdentityConfig build() {
-            return new GetClusterWorkloadIdentityConfig(workloadPool);
+        }
+        public GetClusterWorkloadIdentityConfig build() {
+            final var o = new GetClusterWorkloadIdentityConfig();
+            o.workloadPool = workloadPool;
+            return o;
         }
     }
 }

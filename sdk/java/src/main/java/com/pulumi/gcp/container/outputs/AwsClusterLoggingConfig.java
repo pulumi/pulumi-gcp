@@ -15,13 +15,9 @@ public final class AwsClusterLoggingConfig {
      * @return Configuration of the logging components.
      * 
      */
-    private final @Nullable AwsClusterLoggingConfigComponentConfig componentConfig;
+    private @Nullable AwsClusterLoggingConfigComponentConfig componentConfig;
 
-    @CustomType.Constructor
-    private AwsClusterLoggingConfig(@CustomType.Parameter("componentConfig") @Nullable AwsClusterLoggingConfigComponentConfig componentConfig) {
-        this.componentConfig = componentConfig;
-    }
-
+    private AwsClusterLoggingConfig() {}
     /**
      * @return Configuration of the logging components.
      * 
@@ -37,24 +33,24 @@ public final class AwsClusterLoggingConfig {
     public static Builder builder(AwsClusterLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AwsClusterLoggingConfigComponentConfig componentConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.componentConfig = defaults.componentConfig;
         }
 
+        @CustomType.Setter
         public Builder componentConfig(@Nullable AwsClusterLoggingConfigComponentConfig componentConfig) {
             this.componentConfig = componentConfig;
             return this;
-        }        public AwsClusterLoggingConfig build() {
-            return new AwsClusterLoggingConfig(componentConfig);
+        }
+        public AwsClusterLoggingConfig build() {
+            final var o = new AwsClusterLoggingConfig();
+            o.componentConfig = componentConfig;
+            return o;
         }
     }
 }

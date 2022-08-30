@@ -13,13 +13,9 @@ public final class WorkloadIdentityPoolProviderAws {
      * @return The AWS account ID.
      * 
      */
-    private final String accountId;
+    private String accountId;
 
-    @CustomType.Constructor
-    private WorkloadIdentityPoolProviderAws(@CustomType.Parameter("accountId") String accountId) {
-        this.accountId = accountId;
-    }
-
+    private WorkloadIdentityPoolProviderAws() {}
     /**
      * @return The AWS account ID.
      * 
@@ -35,24 +31,24 @@ public final class WorkloadIdentityPoolProviderAws {
     public static Builder builder(WorkloadIdentityPoolProviderAws defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkloadIdentityPoolProviderAws defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
-        }        public WorkloadIdentityPoolProviderAws build() {
-            return new WorkloadIdentityPoolProviderAws(accountId);
+        }
+        public WorkloadIdentityPoolProviderAws build() {
+            final var o = new WorkloadIdentityPoolProviderAws();
+            o.accountId = accountId;
+            return o;
         }
     }
 }

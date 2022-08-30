@@ -14,21 +14,14 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
-    private final String day;
+    private String day;
     /**
      * @return The start time of the schedule. The timestamp is an RFC3339 string.
      * 
      */
-    private final String startTime;
+    private String startTime;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.day = day;
-        this.startTime = startTime;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek() {}
     /**
      * @return The day of the week to create the snapshot. e.g. MONDAY
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
@@ -52,30 +45,32 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
     public static Builder builder(ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek build() {
-            return new ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(day, startTime);
+        }
+        public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek();
+            o.day = day;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

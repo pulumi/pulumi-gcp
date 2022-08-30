@@ -13,13 +13,9 @@ public final class AzureNodePoolConfigSshConfig {
      * @return The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
      * 
      */
-    private final String authorizedKey;
+    private String authorizedKey;
 
-    @CustomType.Constructor
-    private AzureNodePoolConfigSshConfig(@CustomType.Parameter("authorizedKey") String authorizedKey) {
-        this.authorizedKey = authorizedKey;
-    }
-
+    private AzureNodePoolConfigSshConfig() {}
     /**
      * @return The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
      * 
@@ -35,24 +31,24 @@ public final class AzureNodePoolConfigSshConfig {
     public static Builder builder(AzureNodePoolConfigSshConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authorizedKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureNodePoolConfigSshConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedKey = defaults.authorizedKey;
         }
 
+        @CustomType.Setter
         public Builder authorizedKey(String authorizedKey) {
             this.authorizedKey = Objects.requireNonNull(authorizedKey);
             return this;
-        }        public AzureNodePoolConfigSshConfig build() {
-            return new AzureNodePoolConfigSshConfig(authorizedKey);
+        }
+        public AzureNodePoolConfigSshConfig build() {
+            final var o = new AzureNodePoolConfigSshConfig();
+            o.authorizedKey = authorizedKey;
+            return o;
         }
     }
 }

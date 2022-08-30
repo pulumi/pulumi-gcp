@@ -16,38 +16,27 @@ public final class QueueAppEngineRoutingOverride {
      * The host that the task is sent to.
      * 
      */
-    private final @Nullable String host;
+    private @Nullable String host;
     /**
      * @return App instance.
      * By default, the task is sent to an instance which is available when the task is attempted.
      * 
      */
-    private final @Nullable String instance;
+    private @Nullable String instance;
     /**
      * @return App service.
      * By default, the task is sent to the service which is the default service when the task is attempted.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return App version.
      * By default, the task is sent to the version which is the default version when the task is attempted.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private QueueAppEngineRoutingOverride(
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("instance") @Nullable String instance,
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.host = host;
-        this.instance = instance;
-        this.service = service;
-        this.version = version;
-    }
-
+    private QueueAppEngineRoutingOverride() {}
     /**
      * @return -
      * The host that the task is sent to.
@@ -88,17 +77,13 @@ public final class QueueAppEngineRoutingOverride {
     public static Builder builder(QueueAppEngineRoutingOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
         private @Nullable String instance;
         private @Nullable String service;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(QueueAppEngineRoutingOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -107,23 +92,33 @@ public final class QueueAppEngineRoutingOverride {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder instance(@Nullable String instance) {
             this.instance = instance;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public QueueAppEngineRoutingOverride build() {
-            return new QueueAppEngineRoutingOverride(host, instance, service, version);
+        }
+        public QueueAppEngineRoutingOverride build() {
+            final var o = new QueueAppEngineRoutingOverride();
+            o.host = host;
+            o.instance = instance;
+            o.service = service;
+            o.version = version;
+            return o;
         }
     }
 }

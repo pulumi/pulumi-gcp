@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNode {
-    private final String id;
-    private final String zone;
+    private String id;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetInstanceNode(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("zone") String zone) {
-        this.id = id;
-        this.zone = zone;
-    }
-
+    private GetInstanceNode() {}
     public String id() {
         return this.id;
     }
@@ -34,30 +27,32 @@ public final class GetInstanceNode {
     public static Builder builder(GetInstanceNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetInstanceNode build() {
-            return new GetInstanceNode(id, zone);
+        }
+        public GetInstanceNode build() {
+            final var o = new GetInstanceNode();
+            o.id = id;
+            o.zone = zone;
+            return o;
         }
     }
 }

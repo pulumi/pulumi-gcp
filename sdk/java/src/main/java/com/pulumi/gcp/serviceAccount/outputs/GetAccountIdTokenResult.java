@@ -13,37 +13,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountIdTokenResult {
-    private final @Nullable List<String> delegates;
+    private @Nullable List<String> delegates;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The `id_token` representing the new generated identity.
      * 
      */
-    private final String idToken;
-    private final @Nullable Boolean includeEmail;
-    private final String targetAudience;
-    private final @Nullable String targetServiceAccount;
+    private String idToken;
+    private @Nullable Boolean includeEmail;
+    private String targetAudience;
+    private @Nullable String targetServiceAccount;
 
-    @CustomType.Constructor
-    private GetAccountIdTokenResult(
-        @CustomType.Parameter("delegates") @Nullable List<String> delegates,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("idToken") String idToken,
-        @CustomType.Parameter("includeEmail") @Nullable Boolean includeEmail,
-        @CustomType.Parameter("targetAudience") String targetAudience,
-        @CustomType.Parameter("targetServiceAccount") @Nullable String targetServiceAccount) {
-        this.delegates = delegates;
-        this.id = id;
-        this.idToken = idToken;
-        this.includeEmail = includeEmail;
-        this.targetAudience = targetAudience;
-        this.targetServiceAccount = targetServiceAccount;
-    }
-
+    private GetAccountIdTokenResult() {}
     public List<String> delegates() {
         return this.delegates == null ? List.of() : this.delegates;
     }
@@ -78,7 +63,7 @@ public final class GetAccountIdTokenResult {
     public static Builder builder(GetAccountIdTokenResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> delegates;
         private String id;
@@ -86,11 +71,7 @@ public final class GetAccountIdTokenResult {
         private @Nullable Boolean includeEmail;
         private String targetAudience;
         private @Nullable String targetServiceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountIdTokenResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegates = defaults.delegates;
@@ -101,6 +82,7 @@ public final class GetAccountIdTokenResult {
     	      this.targetServiceAccount = defaults.targetServiceAccount;
         }
 
+        @CustomType.Setter
         public Builder delegates(@Nullable List<String> delegates) {
             this.delegates = delegates;
             return this;
@@ -108,27 +90,40 @@ public final class GetAccountIdTokenResult {
         public Builder delegates(String... delegates) {
             return delegates(List.of(delegates));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder idToken(String idToken) {
             this.idToken = Objects.requireNonNull(idToken);
             return this;
         }
+        @CustomType.Setter
         public Builder includeEmail(@Nullable Boolean includeEmail) {
             this.includeEmail = includeEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder targetAudience(String targetAudience) {
             this.targetAudience = Objects.requireNonNull(targetAudience);
             return this;
         }
+        @CustomType.Setter
         public Builder targetServiceAccount(@Nullable String targetServiceAccount) {
             this.targetServiceAccount = targetServiceAccount;
             return this;
-        }        public GetAccountIdTokenResult build() {
-            return new GetAccountIdTokenResult(delegates, id, idToken, includeEmail, targetAudience, targetServiceAccount);
+        }
+        public GetAccountIdTokenResult build() {
+            final var o = new GetAccountIdTokenResult();
+            o.delegates = delegates;
+            o.id = id;
+            o.idToken = idToken;
+            o.includeEmail = includeEmail;
+            o.targetAudience = targetAudience;
+            o.targetServiceAccount = targetServiceAccount;
+            return o;
         }
     }
 }

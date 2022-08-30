@@ -15,28 +15,19 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
      * @return Defines whether instances have integrity monitoring enabled.
      * 
      */
-    private final @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableIntegrityMonitoring;
     /**
      * @return Defines whether instances have Secure Boot enabled.
      * 
      */
-    private final @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableSecureBoot;
     /**
      * @return Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
      * 
      */
-    private final @Nullable Boolean enableVtpm;
+    private @Nullable Boolean enableVtpm;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot,
-        @CustomType.Parameter("enableVtpm") @Nullable Boolean enableVtpm) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-        this.enableVtpm = enableVtpm;
-    }
-
+    private ClusterClusterConfigGceClusterConfigShieldedInstanceConfig() {}
     /**
      * @return Defines whether instances have integrity monitoring enabled.
      * 
@@ -66,16 +57,12 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
     public static Builder builder(ClusterClusterConfigGceClusterConfigShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
         private @Nullable Boolean enableVtpm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigGceClusterConfigShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
@@ -83,19 +70,27 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
     	      this.enableVtpm = defaults.enableVtpm;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }
+        @CustomType.Setter
         public Builder enableVtpm(@Nullable Boolean enableVtpm) {
             this.enableVtpm = enableVtpm;
             return this;
-        }        public ClusterClusterConfigGceClusterConfigShieldedInstanceConfig build() {
-            return new ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot, enableVtpm);
+        }
+        public ClusterClusterConfigGceClusterConfigShieldedInstanceConfig build() {
+            final var o = new ClusterClusterConfigGceClusterConfigShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            o.enableVtpm = enableVtpm;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterMasterAuthClientCertificateConfig {
-    private final Boolean issueClientCertificate;
+    private Boolean issueClientCertificate;
 
-    @CustomType.Constructor
-    private ClusterMasterAuthClientCertificateConfig(@CustomType.Parameter("issueClientCertificate") Boolean issueClientCertificate) {
-        this.issueClientCertificate = issueClientCertificate;
-    }
-
+    private ClusterMasterAuthClientCertificateConfig() {}
     public Boolean issueClientCertificate() {
         return this.issueClientCertificate;
     }
@@ -27,24 +23,24 @@ public final class ClusterMasterAuthClientCertificateConfig {
     public static Builder builder(ClusterMasterAuthClientCertificateConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean issueClientCertificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMasterAuthClientCertificateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.issueClientCertificate = defaults.issueClientCertificate;
         }
 
+        @CustomType.Setter
         public Builder issueClientCertificate(Boolean issueClientCertificate) {
             this.issueClientCertificate = Objects.requireNonNull(issueClientCertificate);
             return this;
-        }        public ClusterMasterAuthClientCertificateConfig build() {
-            return new ClusterMasterAuthClientCertificateConfig(issueClientCertificate);
+        }
+        public ClusterMasterAuthClientCertificateConfig build() {
+            final var o = new ClusterMasterAuthClientCertificateConfig();
+            o.issueClientCertificate = issueClientCertificate;
+            return o;
         }
     }
 }

@@ -18,7 +18,7 @@ public final class DomainMappingSpec {
      * Possible values are `NONE` and `AUTOMATIC`.
      * 
      */
-    private final @Nullable String certificateMode;
+    private @Nullable String certificateMode;
     /**
      * @return If set, the mapping will override any mapping set before this spec was set.
      * It is recommended that the user leaves this empty to receive an error
@@ -26,24 +26,15 @@ public final class DomainMappingSpec {
      * has given such a warning.
      * 
      */
-    private final @Nullable Boolean forceOverride;
+    private @Nullable Boolean forceOverride;
     /**
      * @return The name of the Cloud Run Service that this DomainMapping applies to.
      * The route must exist.
      * 
      */
-    private final String routeName;
+    private String routeName;
 
-    @CustomType.Constructor
-    private DomainMappingSpec(
-        @CustomType.Parameter("certificateMode") @Nullable String certificateMode,
-        @CustomType.Parameter("forceOverride") @Nullable Boolean forceOverride,
-        @CustomType.Parameter("routeName") String routeName) {
-        this.certificateMode = certificateMode;
-        this.forceOverride = forceOverride;
-        this.routeName = routeName;
-    }
-
+    private DomainMappingSpec() {}
     /**
      * @return The mode of the certificate.
      * Default value is `AUTOMATIC`.
@@ -79,16 +70,12 @@ public final class DomainMappingSpec {
     public static Builder builder(DomainMappingSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificateMode;
         private @Nullable Boolean forceOverride;
         private String routeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainMappingSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateMode = defaults.certificateMode;
@@ -96,19 +83,27 @@ public final class DomainMappingSpec {
     	      this.routeName = defaults.routeName;
         }
 
+        @CustomType.Setter
         public Builder certificateMode(@Nullable String certificateMode) {
             this.certificateMode = certificateMode;
             return this;
         }
+        @CustomType.Setter
         public Builder forceOverride(@Nullable Boolean forceOverride) {
             this.forceOverride = forceOverride;
             return this;
         }
+        @CustomType.Setter
         public Builder routeName(String routeName) {
             this.routeName = Objects.requireNonNull(routeName);
             return this;
-        }        public DomainMappingSpec build() {
-            return new DomainMappingSpec(certificateMode, forceOverride, routeName);
+        }
+        public DomainMappingSpec build() {
+            final var o = new DomainMappingSpec();
+            o.certificateMode = certificateMode;
+            o.forceOverride = forceOverride;
+            o.routeName = routeName;
+            return o;
         }
     }
 }

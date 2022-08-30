@@ -13,21 +13,14 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatc
      * @return The end of the range (exclusive).
      * 
      */
-    private final Integer rangeEnd;
+    private Integer rangeEnd;
     /**
      * @return The start of the range (inclusive).
      * 
      */
-    private final Integer rangeStart;
+    private Integer rangeStart;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(
-        @CustomType.Parameter("rangeEnd") Integer rangeEnd,
-        @CustomType.Parameter("rangeStart") Integer rangeStart) {
-        this.rangeEnd = rangeEnd;
-        this.rangeStart = rangeStart;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch() {}
     /**
      * @return The end of the range (exclusive).
      * 
@@ -50,30 +43,32 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatc
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer rangeEnd;
         private Integer rangeStart;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rangeEnd = defaults.rangeEnd;
     	      this.rangeStart = defaults.rangeStart;
         }
 
+        @CustomType.Setter
         public Builder rangeEnd(Integer rangeEnd) {
             this.rangeEnd = Objects.requireNonNull(rangeEnd);
             return this;
         }
+        @CustomType.Setter
         public Builder rangeStart(Integer rangeStart) {
             this.rangeStart = Objects.requireNonNull(rangeStart);
             return this;
-        }        public RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch build() {
-            return new RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(rangeEnd, rangeStart);
+        }
+        public RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch();
+            o.rangeEnd = rangeEnd;
+            o.rangeStart = rangeStart;
+            return o;
         }
     }
 }

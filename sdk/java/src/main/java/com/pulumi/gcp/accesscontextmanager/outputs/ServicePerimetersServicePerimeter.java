@@ -19,20 +19,20 @@ public final class ServicePerimetersServicePerimeter {
      * Time the AccessPolicy was created in UTC.
      * 
      */
-    private final @Nullable String createTime;
+    private @Nullable String createTime;
     /**
      * @return Description of the ServicePerimeter and its use. Does not affect
      * behavior.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Specifies the type of the Perimeter. There are two types: regular and
      * bridge. Regular Service Perimeter contains resources, access levels,
@@ -52,7 +52,7 @@ public final class ServicePerimetersServicePerimeter {
      * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
      * 
      */
-    private final @Nullable String perimeterType;
+    private @Nullable String perimeterType;
     /**
      * @return Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
@@ -61,7 +61,7 @@ public final class ServicePerimetersServicePerimeter {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimetersServicePerimeterSpec spec;
+    private @Nullable ServicePerimetersServicePerimeterSpec spec;
     /**
      * @return ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
@@ -69,18 +69,18 @@ public final class ServicePerimetersServicePerimeter {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimetersServicePerimeterStatus status;
+    private @Nullable ServicePerimetersServicePerimeterStatus status;
     /**
      * @return Human readable title. Must be unique within the Policy.
      * 
      */
-    private final String title;
+    private String title;
     /**
      * @return -
      * Time the AccessPolicy was updated in UTC.
      * 
      */
-    private final @Nullable String updateTime;
+    private @Nullable String updateTime;
     /**
      * @return Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
      * for all Service Perimeters, and that spec is identical to the status for those
@@ -93,30 +93,9 @@ public final class ServicePerimetersServicePerimeter {
      * bet set to True if any of the fields in the spec are set to non-default values.
      * 
      */
-    private final @Nullable Boolean useExplicitDryRunSpec;
+    private @Nullable Boolean useExplicitDryRunSpec;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeter(
-        @CustomType.Parameter("createTime") @Nullable String createTime,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("perimeterType") @Nullable String perimeterType,
-        @CustomType.Parameter("spec") @Nullable ServicePerimetersServicePerimeterSpec spec,
-        @CustomType.Parameter("status") @Nullable ServicePerimetersServicePerimeterStatus status,
-        @CustomType.Parameter("title") String title,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime,
-        @CustomType.Parameter("useExplicitDryRunSpec") @Nullable Boolean useExplicitDryRunSpec) {
-        this.createTime = createTime;
-        this.description = description;
-        this.name = name;
-        this.perimeterType = perimeterType;
-        this.spec = spec;
-        this.status = status;
-        this.title = title;
-        this.updateTime = updateTime;
-        this.useExplicitDryRunSpec = useExplicitDryRunSpec;
-    }
-
+    private ServicePerimetersServicePerimeter() {}
     /**
      * @return -
      * Time the AccessPolicy was created in UTC.
@@ -223,7 +202,7 @@ public final class ServicePerimetersServicePerimeter {
     public static Builder builder(ServicePerimetersServicePerimeter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createTime;
         private @Nullable String description;
@@ -234,11 +213,7 @@ public final class ServicePerimetersServicePerimeter {
         private String title;
         private @Nullable String updateTime;
         private @Nullable Boolean useExplicitDryRunSpec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -252,43 +227,63 @@ public final class ServicePerimetersServicePerimeter {
     	      this.useExplicitDryRunSpec = defaults.useExplicitDryRunSpec;
         }
 
+        @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
             this.createTime = createTime;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder perimeterType(@Nullable String perimeterType) {
             this.perimeterType = perimeterType;
             return this;
         }
+        @CustomType.Setter
         public Builder spec(@Nullable ServicePerimetersServicePerimeterSpec spec) {
             this.spec = spec;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable ServicePerimetersServicePerimeterStatus status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
         }
+        @CustomType.Setter
         public Builder useExplicitDryRunSpec(@Nullable Boolean useExplicitDryRunSpec) {
             this.useExplicitDryRunSpec = useExplicitDryRunSpec;
             return this;
-        }        public ServicePerimetersServicePerimeter build() {
-            return new ServicePerimetersServicePerimeter(createTime, description, name, perimeterType, spec, status, title, updateTime, useExplicitDryRunSpec);
+        }
+        public ServicePerimetersServicePerimeter build() {
+            final var o = new ServicePerimetersServicePerimeter();
+            o.createTime = createTime;
+            o.description = description;
+            o.name = name;
+            o.perimeterType = perimeterType;
+            o.spec = spec;
+            o.status = status;
+            o.title = title;
+            o.updateTime = updateTime;
+            o.useExplicitDryRunSpec = useExplicitDryRunSpec;
+            return o;
         }
     }
 }

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryTableSpecTableSpec {
-    private final @Nullable String groupedEntry;
+    private @Nullable String groupedEntry;
 
-    @CustomType.Constructor
-    private EntryBigqueryTableSpecTableSpec(@CustomType.Parameter("groupedEntry") @Nullable String groupedEntry) {
-        this.groupedEntry = groupedEntry;
-    }
-
+    private EntryBigqueryTableSpecTableSpec() {}
     public Optional<String> groupedEntry() {
         return Optional.ofNullable(this.groupedEntry);
     }
@@ -29,24 +25,24 @@ public final class EntryBigqueryTableSpecTableSpec {
     public static Builder builder(EntryBigqueryTableSpecTableSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String groupedEntry;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntryBigqueryTableSpecTableSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupedEntry = defaults.groupedEntry;
         }
 
+        @CustomType.Setter
         public Builder groupedEntry(@Nullable String groupedEntry) {
             this.groupedEntry = groupedEntry;
             return this;
-        }        public EntryBigqueryTableSpecTableSpec build() {
-            return new EntryBigqueryTableSpecTableSpec(groupedEntry);
+        }
+        public EntryBigqueryTableSpecTableSpec build() {
+            final var o = new EntryBigqueryTableSpecTableSpec();
+            o.groupedEntry = groupedEntry;
+            return o;
         }
     }
 }

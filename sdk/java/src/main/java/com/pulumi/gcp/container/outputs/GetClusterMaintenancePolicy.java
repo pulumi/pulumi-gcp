@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMaintenancePolicy {
-    private final List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
-    private final List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
-    private final List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows;
+    private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
+    private List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+    private List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows;
 
-    @CustomType.Constructor
-    private GetClusterMaintenancePolicy(
-        @CustomType.Parameter("dailyMaintenanceWindows") List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows,
-        @CustomType.Parameter("maintenanceExclusions") List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions,
-        @CustomType.Parameter("recurringWindows") List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows) {
-        this.dailyMaintenanceWindows = dailyMaintenanceWindows;
-        this.maintenanceExclusions = maintenanceExclusions;
-        this.recurringWindows = recurringWindows;
-    }
-
+    private GetClusterMaintenancePolicy() {}
     public List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows() {
         return this.dailyMaintenanceWindows;
     }
@@ -43,16 +34,12 @@ public final class GetClusterMaintenancePolicy {
     public static Builder builder(GetClusterMaintenancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
         private List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
         private List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dailyMaintenanceWindows = defaults.dailyMaintenanceWindows;
@@ -60,6 +47,7 @@ public final class GetClusterMaintenancePolicy {
     	      this.recurringWindows = defaults.recurringWindows;
         }
 
+        @CustomType.Setter
         public Builder dailyMaintenanceWindows(List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows) {
             this.dailyMaintenanceWindows = Objects.requireNonNull(dailyMaintenanceWindows);
             return this;
@@ -67,6 +55,7 @@ public final class GetClusterMaintenancePolicy {
         public Builder dailyMaintenanceWindows(GetClusterMaintenancePolicyDailyMaintenanceWindow... dailyMaintenanceWindows) {
             return dailyMaintenanceWindows(List.of(dailyMaintenanceWindows));
         }
+        @CustomType.Setter
         public Builder maintenanceExclusions(List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions) {
             this.maintenanceExclusions = Objects.requireNonNull(maintenanceExclusions);
             return this;
@@ -74,14 +63,20 @@ public final class GetClusterMaintenancePolicy {
         public Builder maintenanceExclusions(GetClusterMaintenancePolicyMaintenanceExclusion... maintenanceExclusions) {
             return maintenanceExclusions(List.of(maintenanceExclusions));
         }
+        @CustomType.Setter
         public Builder recurringWindows(List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows) {
             this.recurringWindows = Objects.requireNonNull(recurringWindows);
             return this;
         }
         public Builder recurringWindows(GetClusterMaintenancePolicyRecurringWindow... recurringWindows) {
             return recurringWindows(List.of(recurringWindows));
-        }        public GetClusterMaintenancePolicy build() {
-            return new GetClusterMaintenancePolicy(dailyMaintenanceWindows, maintenanceExclusions, recurringWindows);
+        }
+        public GetClusterMaintenancePolicy build() {
+            final var o = new GetClusterMaintenancePolicy();
+            o.dailyMaintenanceWindows = dailyMaintenanceWindows;
+            o.maintenanceExclusions = maintenanceExclusions;
+            o.recurringWindows = recurringWindows;
+            return o;
         }
     }
 }

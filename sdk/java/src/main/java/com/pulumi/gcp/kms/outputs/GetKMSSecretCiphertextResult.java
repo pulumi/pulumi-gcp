@@ -13,27 +13,16 @@ public final class GetKMSSecretCiphertextResult {
      * @return Contains the result of encrypting the provided plaintext, encoded in base64.
      * 
      */
-    private final String ciphertext;
-    private final String cryptoKey;
+    private String ciphertext;
+    private String cryptoKey;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String plaintext;
+    private String id;
+    private String plaintext;
 
-    @CustomType.Constructor
-    private GetKMSSecretCiphertextResult(
-        @CustomType.Parameter("ciphertext") String ciphertext,
-        @CustomType.Parameter("cryptoKey") String cryptoKey,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("plaintext") String plaintext) {
-        this.ciphertext = ciphertext;
-        this.cryptoKey = cryptoKey;
-        this.id = id;
-        this.plaintext = plaintext;
-    }
-
+    private GetKMSSecretCiphertextResult() {}
     /**
      * @return Contains the result of encrypting the provided plaintext, encoded in base64.
      * 
@@ -62,17 +51,13 @@ public final class GetKMSSecretCiphertextResult {
     public static Builder builder(GetKMSSecretCiphertextResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ciphertext;
         private String cryptoKey;
         private String id;
         private String plaintext;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSSecretCiphertextResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ciphertext = defaults.ciphertext;
@@ -81,23 +66,33 @@ public final class GetKMSSecretCiphertextResult {
     	      this.plaintext = defaults.plaintext;
         }
 
+        @CustomType.Setter
         public Builder ciphertext(String ciphertext) {
             this.ciphertext = Objects.requireNonNull(ciphertext);
             return this;
         }
+        @CustomType.Setter
         public Builder cryptoKey(String cryptoKey) {
             this.cryptoKey = Objects.requireNonNull(cryptoKey);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder plaintext(String plaintext) {
             this.plaintext = Objects.requireNonNull(plaintext);
             return this;
-        }        public GetKMSSecretCiphertextResult build() {
-            return new GetKMSSecretCiphertextResult(ciphertext, cryptoKey, id, plaintext);
+        }
+        public GetKMSSecretCiphertextResult build() {
+            final var o = new GetKMSSecretCiphertextResult();
+            o.ciphertext = ciphertext;
+            o.cryptoKey = cryptoKey;
+            o.id = id;
+            o.plaintext = plaintext;
+            return o;
         }
     }
 }

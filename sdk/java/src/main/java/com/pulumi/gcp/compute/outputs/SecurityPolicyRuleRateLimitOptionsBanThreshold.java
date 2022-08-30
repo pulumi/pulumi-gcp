@@ -13,21 +13,14 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
      * @return Number of HTTP(S) requests for calculating the threshold.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return Interval over which the threshold is computed.
      * 
      */
-    private final Integer intervalSec;
+    private Integer intervalSec;
 
-    @CustomType.Constructor
-    private SecurityPolicyRuleRateLimitOptionsBanThreshold(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("intervalSec") Integer intervalSec) {
-        this.count = count;
-        this.intervalSec = intervalSec;
-    }
-
+    private SecurityPolicyRuleRateLimitOptionsBanThreshold() {}
     /**
      * @return Number of HTTP(S) requests for calculating the threshold.
      * 
@@ -50,30 +43,32 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
     public static Builder builder(SecurityPolicyRuleRateLimitOptionsBanThreshold defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private Integer intervalSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRuleRateLimitOptionsBanThreshold defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.intervalSec = defaults.intervalSec;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder intervalSec(Integer intervalSec) {
             this.intervalSec = Objects.requireNonNull(intervalSec);
             return this;
-        }        public SecurityPolicyRuleRateLimitOptionsBanThreshold build() {
-            return new SecurityPolicyRuleRateLimitOptionsBanThreshold(count, intervalSec);
+        }
+        public SecurityPolicyRuleRateLimitOptionsBanThreshold build() {
+            final var o = new SecurityPolicyRuleRateLimitOptionsBanThreshold();
+            o.count = count;
+            o.intervalSec = intervalSec;
+            return o;
         }
     }
 }

@@ -16,30 +16,21 @@ public final class InstanceNetworkInterfaceAccessConfig {
      * network ip. If not given, one will be generated.
      * 
      */
-    private final @Nullable String natIp;
+    private @Nullable String natIp;
     /**
      * @return The service-level to be provided for IPv6 traffic when the
      * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
      * 
      */
-    private final @Nullable String networkTier;
+    private @Nullable String networkTier;
     /**
      * @return The domain name to be used when creating DNSv6
      * records for the external IPv6 ranges..
      * 
      */
-    private final @Nullable String publicPtrDomainName;
+    private @Nullable String publicPtrDomainName;
 
-    @CustomType.Constructor
-    private InstanceNetworkInterfaceAccessConfig(
-        @CustomType.Parameter("natIp") @Nullable String natIp,
-        @CustomType.Parameter("networkTier") @Nullable String networkTier,
-        @CustomType.Parameter("publicPtrDomainName") @Nullable String publicPtrDomainName) {
-        this.natIp = natIp;
-        this.networkTier = networkTier;
-        this.publicPtrDomainName = publicPtrDomainName;
-    }
-
+    private InstanceNetworkInterfaceAccessConfig() {}
     /**
      * @return The IP address that will be 1:1 mapped to the instance&#39;s
      * network ip. If not given, one will be generated.
@@ -72,16 +63,12 @@ public final class InstanceNetworkInterfaceAccessConfig {
     public static Builder builder(InstanceNetworkInterfaceAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String natIp;
         private @Nullable String networkTier;
         private @Nullable String publicPtrDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
@@ -89,19 +76,27 @@ public final class InstanceNetworkInterfaceAccessConfig {
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
 
+        @CustomType.Setter
         public Builder natIp(@Nullable String natIp) {
             this.natIp = natIp;
             return this;
         }
+        @CustomType.Setter
         public Builder networkTier(@Nullable String networkTier) {
             this.networkTier = networkTier;
             return this;
         }
+        @CustomType.Setter
         public Builder publicPtrDomainName(@Nullable String publicPtrDomainName) {
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
-        }        public InstanceNetworkInterfaceAccessConfig build() {
-            return new InstanceNetworkInterfaceAccessConfig(natIp, networkTier, publicPtrDomainName);
+        }
+        public InstanceNetworkInterfaceAccessConfig build() {
+            final var o = new InstanceNetworkInterfaceAccessConfig();
+            o.natIp = natIp;
+            o.networkTier = networkTier;
+            o.publicPtrDomainName = publicPtrDomainName;
+            return o;
         }
     }
 }

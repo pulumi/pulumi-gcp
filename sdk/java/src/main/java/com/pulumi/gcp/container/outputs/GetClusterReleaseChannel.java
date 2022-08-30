@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterReleaseChannel {
-    private final String channel;
+    private String channel;
 
-    @CustomType.Constructor
-    private GetClusterReleaseChannel(@CustomType.Parameter("channel") String channel) {
-        this.channel = channel;
-    }
-
+    private GetClusterReleaseChannel() {}
     public String channel() {
         return this.channel;
     }
@@ -27,24 +23,24 @@ public final class GetClusterReleaseChannel {
     public static Builder builder(GetClusterReleaseChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String channel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterReleaseChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channel = defaults.channel;
         }
 
+        @CustomType.Setter
         public Builder channel(String channel) {
             this.channel = Objects.requireNonNull(channel);
             return this;
-        }        public GetClusterReleaseChannel build() {
-            return new GetClusterReleaseChannel(channel);
+        }
+        public GetClusterReleaseChannel build() {
+            final var o = new GetClusterReleaseChannel();
+            o.channel = channel;
+            return o;
         }
     }
 }

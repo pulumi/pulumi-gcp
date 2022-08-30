@@ -18,13 +18,13 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
      * @return Specifies the allowed number retries. This number must be &gt; 0.
      * 
      */
-    private final Integer numRetries;
+    private Integer numRetries;
     /**
      * @return Specifies a non-zero timeout per retry attempt.
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout;
+    private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout;
     /**
      * @return Specifies one or more conditions when this retry rule applies. Valid values are:
      * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
@@ -49,18 +49,9 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
      *   the gRPC status code in the response header is set to unavailable
      * 
      */
-    private final @Nullable List<String> retryConditions;
+    private @Nullable List<String> retryConditions;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(
-        @CustomType.Parameter("numRetries") Integer numRetries,
-        @CustomType.Parameter("perTryTimeout") @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout,
-        @CustomType.Parameter("retryConditions") @Nullable List<String> retryConditions) {
-        this.numRetries = numRetries;
-        this.perTryTimeout = perTryTimeout;
-        this.retryConditions = retryConditions;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy() {}
     /**
      * @return Specifies the allowed number retries. This number must be &gt; 0.
      * 
@@ -111,16 +102,12 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer numRetries;
         private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout;
         private @Nullable List<String> retryConditions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.numRetries = defaults.numRetries;
@@ -128,22 +115,30 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
     	      this.retryConditions = defaults.retryConditions;
         }
 
+        @CustomType.Setter
         public Builder numRetries(Integer numRetries) {
             this.numRetries = Objects.requireNonNull(numRetries);
             return this;
         }
+        @CustomType.Setter
         public Builder perTryTimeout(@Nullable RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout) {
             this.perTryTimeout = perTryTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder retryConditions(@Nullable List<String> retryConditions) {
             this.retryConditions = retryConditions;
             return this;
         }
         public Builder retryConditions(String... retryConditions) {
             return retryConditions(List.of(retryConditions));
-        }        public RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy build() {
-            return new RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(numRetries, perTryTimeout, retryConditions);
+        }
+        public RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy();
+            o.numRetries = numRetries;
+            o.perTryTimeout = perTryTimeout;
+            o.retryConditions = retryConditions;
+            return o;
         }
     }
 }

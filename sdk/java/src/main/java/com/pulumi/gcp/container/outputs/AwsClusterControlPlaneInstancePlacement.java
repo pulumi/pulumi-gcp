@@ -15,13 +15,9 @@ public final class AwsClusterControlPlaneInstancePlacement {
      * @return The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
      * 
      */
-    private final @Nullable String tenancy;
+    private @Nullable String tenancy;
 
-    @CustomType.Constructor
-    private AwsClusterControlPlaneInstancePlacement(@CustomType.Parameter("tenancy") @Nullable String tenancy) {
-        this.tenancy = tenancy;
-    }
-
+    private AwsClusterControlPlaneInstancePlacement() {}
     /**
      * @return The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
      * 
@@ -37,24 +33,24 @@ public final class AwsClusterControlPlaneInstancePlacement {
     public static Builder builder(AwsClusterControlPlaneInstancePlacement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String tenancy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterControlPlaneInstancePlacement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tenancy = defaults.tenancy;
         }
 
+        @CustomType.Setter
         public Builder tenancy(@Nullable String tenancy) {
             this.tenancy = tenancy;
             return this;
-        }        public AwsClusterControlPlaneInstancePlacement build() {
-            return new AwsClusterControlPlaneInstancePlacement(tenancy);
+        }
+        public AwsClusterControlPlaneInstancePlacement build() {
+            final var o = new AwsClusterControlPlaneInstancePlacement();
+            o.tenancy = tenancy;
+            return o;
         }
     }
 }

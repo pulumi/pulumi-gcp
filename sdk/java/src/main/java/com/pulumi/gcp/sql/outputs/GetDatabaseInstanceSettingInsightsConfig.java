@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingInsightsConfig {
-    private final Boolean queryInsightsEnabled;
-    private final Integer queryStringLength;
-    private final Boolean recordApplicationTags;
-    private final Boolean recordClientAddress;
+    private Boolean queryInsightsEnabled;
+    private Integer queryStringLength;
+    private Boolean recordApplicationTags;
+    private Boolean recordClientAddress;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingInsightsConfig(
-        @CustomType.Parameter("queryInsightsEnabled") Boolean queryInsightsEnabled,
-        @CustomType.Parameter("queryStringLength") Integer queryStringLength,
-        @CustomType.Parameter("recordApplicationTags") Boolean recordApplicationTags,
-        @CustomType.Parameter("recordClientAddress") Boolean recordClientAddress) {
-        this.queryInsightsEnabled = queryInsightsEnabled;
-        this.queryStringLength = queryStringLength;
-        this.recordApplicationTags = recordApplicationTags;
-        this.recordClientAddress = recordClientAddress;
-    }
-
+    private GetDatabaseInstanceSettingInsightsConfig() {}
     public Boolean queryInsightsEnabled() {
         return this.queryInsightsEnabled;
     }
@@ -47,17 +36,13 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
     public static Builder builder(GetDatabaseInstanceSettingInsightsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean queryInsightsEnabled;
         private Integer queryStringLength;
         private Boolean recordApplicationTags;
         private Boolean recordClientAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingInsightsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryInsightsEnabled = defaults.queryInsightsEnabled;
@@ -66,23 +51,33 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
     	      this.recordClientAddress = defaults.recordClientAddress;
         }
 
+        @CustomType.Setter
         public Builder queryInsightsEnabled(Boolean queryInsightsEnabled) {
             this.queryInsightsEnabled = Objects.requireNonNull(queryInsightsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder queryStringLength(Integer queryStringLength) {
             this.queryStringLength = Objects.requireNonNull(queryStringLength);
             return this;
         }
+        @CustomType.Setter
         public Builder recordApplicationTags(Boolean recordApplicationTags) {
             this.recordApplicationTags = Objects.requireNonNull(recordApplicationTags);
             return this;
         }
+        @CustomType.Setter
         public Builder recordClientAddress(Boolean recordClientAddress) {
             this.recordClientAddress = Objects.requireNonNull(recordClientAddress);
             return this;
-        }        public GetDatabaseInstanceSettingInsightsConfig build() {
-            return new GetDatabaseInstanceSettingInsightsConfig(queryInsightsEnabled, queryStringLength, recordApplicationTags, recordClientAddress);
+        }
+        public GetDatabaseInstanceSettingInsightsConfig build() {
+            final var o = new GetDatabaseInstanceSettingInsightsConfig();
+            o.queryInsightsEnabled = queryInsightsEnabled;
+            o.queryStringLength = queryStringLength;
+            o.recordApplicationTags = recordApplicationTags;
+            o.recordClientAddress = recordClientAddress;
+            return o;
         }
     }
 }

@@ -22,6 +22,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicInstance = new gcp.datafusion.Instance("basic_instance", {
+ *     // Mark for testing to avoid service networking connection usage that is not cleaned up
+ *     options: {
+ *         prober_test_run: "true",
+ *     },
  *     region: "us-central1",
  *     type: "BASIC",
  * });
@@ -49,6 +53,9 @@ import * as utilities from "../utilities";
  *     },
  *     version: "6.3.0",
  *     dataprocServiceAccount: _default.then(_default => _default.email),
+ *     options: {
+ *         prober_test_run: "true",
+ *     },
  * });
  * ```
  *

@@ -16,22 +16,15 @@ public final class DeviceCredential {
      * @return The time at which this credential becomes invalid.
      * 
      */
-    private final @Nullable String expirationTime;
+    private @Nullable String expirationTime;
     /**
      * @return A public key used to verify the signature of JSON Web Tokens (JWTs).
      * Structure is documented below.
      * 
      */
-    private final DeviceCredentialPublicKey publicKey;
+    private DeviceCredentialPublicKey publicKey;
 
-    @CustomType.Constructor
-    private DeviceCredential(
-        @CustomType.Parameter("expirationTime") @Nullable String expirationTime,
-        @CustomType.Parameter("publicKey") DeviceCredentialPublicKey publicKey) {
-        this.expirationTime = expirationTime;
-        this.publicKey = publicKey;
-    }
-
+    private DeviceCredential() {}
     /**
      * @return The time at which this credential becomes invalid.
      * 
@@ -55,30 +48,32 @@ public final class DeviceCredential {
     public static Builder builder(DeviceCredential defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expirationTime;
         private DeviceCredentialPublicKey publicKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeviceCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationTime = defaults.expirationTime;
     	      this.publicKey = defaults.publicKey;
         }
 
+        @CustomType.Setter
         public Builder expirationTime(@Nullable String expirationTime) {
             this.expirationTime = expirationTime;
             return this;
         }
+        @CustomType.Setter
         public Builder publicKey(DeviceCredentialPublicKey publicKey) {
             this.publicKey = Objects.requireNonNull(publicKey);
             return this;
-        }        public DeviceCredential build() {
-            return new DeviceCredential(expirationTime, publicKey);
+        }
+        public DeviceCredential build() {
+            final var o = new DeviceCredential();
+            o.expirationTime = expirationTime;
+            o.publicKey = publicKey;
+            return o;
         }
     }
 }

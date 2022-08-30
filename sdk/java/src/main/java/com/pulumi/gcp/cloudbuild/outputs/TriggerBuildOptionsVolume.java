@@ -17,23 +17,16 @@ public final class TriggerBuildOptionsVolume {
      * Each named volume must be used by at least two build steps.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Path at which to mount the volume.
      * Paths must be absolute and cannot conflict with other volume paths on the same
      * build step or with certain reserved volume paths.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private TriggerBuildOptionsVolume(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.name = name;
-        this.path = path;
-    }
-
+    private TriggerBuildOptionsVolume() {}
     /**
      * @return Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
@@ -60,30 +53,32 @@ public final class TriggerBuildOptionsVolume {
     public static Builder builder(TriggerBuildOptionsVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildOptionsVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public TriggerBuildOptionsVolume build() {
-            return new TriggerBuildOptionsVolume(name, path);
+        }
+        public TriggerBuildOptionsVolume build() {
+            final var o = new TriggerBuildOptionsVolume();
+            o.name = name;
+            o.path = path;
+            return o;
         }
     }
 }

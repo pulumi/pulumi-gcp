@@ -17,36 +17,25 @@ public final class CxIntentParameter {
      * Format: projects/-/locations/-/agents/-/entityTypes/&lt;System Entity Type ID&gt; for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt; for developer entity types.
      * 
      */
-    private final String entityType;
+    private String entityType;
     /**
      * @return The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates whether the parameter represents a list of values.
      * 
      */
-    private final @Nullable Boolean isList;
+    private @Nullable Boolean isList;
     /**
      * @return Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
      * Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
      * 
      */
-    private final @Nullable Boolean redact;
+    private @Nullable Boolean redact;
 
-    @CustomType.Constructor
-    private CxIntentParameter(
-        @CustomType.Parameter("entityType") String entityType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isList") @Nullable Boolean isList,
-        @CustomType.Parameter("redact") @Nullable Boolean redact) {
-        this.entityType = entityType;
-        this.id = id;
-        this.isList = isList;
-        this.redact = redact;
-    }
-
+    private CxIntentParameter() {}
     /**
      * @return The entity type of the parameter.
      * Format: projects/-/locations/-/agents/-/entityTypes/&lt;System Entity Type ID&gt; for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt; for developer entity types.
@@ -85,17 +74,13 @@ public final class CxIntentParameter {
     public static Builder builder(CxIntentParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String entityType;
         private String id;
         private @Nullable Boolean isList;
         private @Nullable Boolean redact;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxIntentParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityType = defaults.entityType;
@@ -104,23 +89,33 @@ public final class CxIntentParameter {
     	      this.redact = defaults.redact;
         }
 
+        @CustomType.Setter
         public Builder entityType(String entityType) {
             this.entityType = Objects.requireNonNull(entityType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isList(@Nullable Boolean isList) {
             this.isList = isList;
             return this;
         }
+        @CustomType.Setter
         public Builder redact(@Nullable Boolean redact) {
             this.redact = redact;
             return this;
-        }        public CxIntentParameter build() {
-            return new CxIntentParameter(entityType, id, isList, redact);
+        }
+        public CxIntentParameter build() {
+            final var o = new CxIntentParameter();
+            o.entityType = entityType;
+            o.id = id;
+            o.isList = isList;
+            o.redact = redact;
+            return o;
         }
     }
 }

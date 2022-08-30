@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyGroupPlacementPolicy {
-    private final Integer availabilityDomainCount;
-    private final String collocation;
-    private final Integer vmCount;
+    private Integer availabilityDomainCount;
+    private String collocation;
+    private Integer vmCount;
 
-    @CustomType.Constructor
-    private GetResourcePolicyGroupPlacementPolicy(
-        @CustomType.Parameter("availabilityDomainCount") Integer availabilityDomainCount,
-        @CustomType.Parameter("collocation") String collocation,
-        @CustomType.Parameter("vmCount") Integer vmCount) {
-        this.availabilityDomainCount = availabilityDomainCount;
-        this.collocation = collocation;
-        this.vmCount = vmCount;
-    }
-
+    private GetResourcePolicyGroupPlacementPolicy() {}
     public Integer availabilityDomainCount() {
         return this.availabilityDomainCount;
     }
@@ -41,16 +32,12 @@ public final class GetResourcePolicyGroupPlacementPolicy {
     public static Builder builder(GetResourcePolicyGroupPlacementPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer availabilityDomainCount;
         private String collocation;
         private Integer vmCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicyGroupPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityDomainCount = defaults.availabilityDomainCount;
@@ -58,19 +45,27 @@ public final class GetResourcePolicyGroupPlacementPolicy {
     	      this.vmCount = defaults.vmCount;
         }
 
+        @CustomType.Setter
         public Builder availabilityDomainCount(Integer availabilityDomainCount) {
             this.availabilityDomainCount = Objects.requireNonNull(availabilityDomainCount);
             return this;
         }
+        @CustomType.Setter
         public Builder collocation(String collocation) {
             this.collocation = Objects.requireNonNull(collocation);
             return this;
         }
+        @CustomType.Setter
         public Builder vmCount(Integer vmCount) {
             this.vmCount = Objects.requireNonNull(vmCount);
             return this;
-        }        public GetResourcePolicyGroupPlacementPolicy build() {
-            return new GetResourcePolicyGroupPlacementPolicy(availabilityDomainCount, collocation, vmCount);
+        }
+        public GetResourcePolicyGroupPlacementPolicy build() {
+            final var o = new GetResourcePolicyGroupPlacementPolicy();
+            o.availabilityDomainCount = availabilityDomainCount;
+            o.collocation = collocation;
+            o.vmCount = vmCount;
+            return o;
         }
     }
 }

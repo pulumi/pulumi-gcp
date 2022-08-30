@@ -15,21 +15,14 @@ public final class MetricDescriptorMetadata {
      * @return The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&amp;_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
      * 
      */
-    private final @Nullable String ingestDelay;
+    private @Nullable String ingestDelay;
     /**
      * @return The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&amp;_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
      * 
      */
-    private final @Nullable String samplePeriod;
+    private @Nullable String samplePeriod;
 
-    @CustomType.Constructor
-    private MetricDescriptorMetadata(
-        @CustomType.Parameter("ingestDelay") @Nullable String ingestDelay,
-        @CustomType.Parameter("samplePeriod") @Nullable String samplePeriod) {
-        this.ingestDelay = ingestDelay;
-        this.samplePeriod = samplePeriod;
-    }
-
+    private MetricDescriptorMetadata() {}
     /**
      * @return The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&amp;_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
      * 
@@ -52,30 +45,32 @@ public final class MetricDescriptorMetadata {
     public static Builder builder(MetricDescriptorMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ingestDelay;
         private @Nullable String samplePeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricDescriptorMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ingestDelay = defaults.ingestDelay;
     	      this.samplePeriod = defaults.samplePeriod;
         }
 
+        @CustomType.Setter
         public Builder ingestDelay(@Nullable String ingestDelay) {
             this.ingestDelay = ingestDelay;
             return this;
         }
+        @CustomType.Setter
         public Builder samplePeriod(@Nullable String samplePeriod) {
             this.samplePeriod = samplePeriod;
             return this;
-        }        public MetricDescriptorMetadata build() {
-            return new MetricDescriptorMetadata(ingestDelay, samplePeriod);
+        }
+        public MetricDescriptorMetadata build() {
+            final var o = new MetricDescriptorMetadata();
+            o.ingestDelay = ingestDelay;
+            o.samplePeriod = samplePeriod;
+            return o;
         }
     }
 }

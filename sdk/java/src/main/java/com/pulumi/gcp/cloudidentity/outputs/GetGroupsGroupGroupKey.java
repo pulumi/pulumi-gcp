@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsGroupGroupKey {
-    private final String id;
-    private final String namespace;
+    private String id;
+    private String namespace;
 
-    @CustomType.Constructor
-    private GetGroupsGroupGroupKey(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namespace") String namespace) {
-        this.id = id;
-        this.namespace = namespace;
-    }
-
+    private GetGroupsGroupGroupKey() {}
     public String id() {
         return this.id;
     }
@@ -34,30 +27,32 @@ public final class GetGroupsGroupGroupKey {
     public static Builder builder(GetGroupsGroupGroupKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String namespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsGroupGroupKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
-        }        public GetGroupsGroupGroupKey build() {
-            return new GetGroupsGroupGroupKey(id, namespace);
+        }
+        public GetGroupsGroupGroupKey build() {
+            final var o = new GetGroupsGroupGroupKey();
+            o.id = id;
+            o.namespace = namespace;
+            return o;
         }
     }
 }

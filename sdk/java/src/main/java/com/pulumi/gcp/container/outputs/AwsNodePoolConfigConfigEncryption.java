@@ -13,13 +13,9 @@ public final class AwsNodePoolConfigConfigEncryption {
      * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
      * 
      */
-    private final String kmsKeyArn;
+    private String kmsKeyArn;
 
-    @CustomType.Constructor
-    private AwsNodePoolConfigConfigEncryption(@CustomType.Parameter("kmsKeyArn") String kmsKeyArn) {
-        this.kmsKeyArn = kmsKeyArn;
-    }
-
+    private AwsNodePoolConfigConfigEncryption() {}
     /**
      * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
      * 
@@ -35,24 +31,24 @@ public final class AwsNodePoolConfigConfigEncryption {
     public static Builder builder(AwsNodePoolConfigConfigEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyArn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolConfigConfigEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyArn = defaults.kmsKeyArn;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyArn(String kmsKeyArn) {
             this.kmsKeyArn = Objects.requireNonNull(kmsKeyArn);
             return this;
-        }        public AwsNodePoolConfigConfigEncryption build() {
-            return new AwsNodePoolConfigConfigEncryption(kmsKeyArn);
+        }
+        public AwsNodePoolConfigConfigEncryption build() {
+            final var o = new AwsNodePoolConfigConfigEncryption();
+            o.kmsKeyArn = kmsKeyArn;
+            return o;
         }
     }
 }

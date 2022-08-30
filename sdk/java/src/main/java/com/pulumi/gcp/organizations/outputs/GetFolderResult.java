@@ -16,65 +16,42 @@ public final class GetFolderResult {
      * @return Timestamp when the Organization was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The folder&#39;s display name.
      * 
      */
-    private final String displayName;
-    private final String folder;
-    private final String folderId;
+    private String displayName;
+    private String folder;
+    private String folderId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Folder&#39;s current lifecycle state.
      * 
      */
-    private final String lifecycleState;
-    private final @Nullable Boolean lookupOrganization;
+    private String lifecycleState;
+    private @Nullable Boolean lookupOrganization;
     /**
      * @return The resource name of the Folder in the form `folders/{folder_id}`.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
      * 
      */
-    private final String organization;
+    private String organization;
     /**
      * @return The resource name of the parent Folder or Organization.
      * 
      */
-    private final String parent;
+    private String parent;
 
-    @CustomType.Constructor
-    private GetFolderResult(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("folder") String folder,
-        @CustomType.Parameter("folderId") String folderId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lifecycleState") String lifecycleState,
-        @CustomType.Parameter("lookupOrganization") @Nullable Boolean lookupOrganization,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("organization") String organization,
-        @CustomType.Parameter("parent") String parent) {
-        this.createTime = createTime;
-        this.displayName = displayName;
-        this.folder = folder;
-        this.folderId = folderId;
-        this.id = id;
-        this.lifecycleState = lifecycleState;
-        this.lookupOrganization = lookupOrganization;
-        this.name = name;
-        this.organization = organization;
-        this.parent = parent;
-    }
-
+    private GetFolderResult() {}
     /**
      * @return Timestamp when the Organization was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -141,7 +118,7 @@ public final class GetFolderResult {
     public static Builder builder(GetFolderResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String displayName;
@@ -153,11 +130,7 @@ public final class GetFolderResult {
         private String name;
         private String organization;
         private String parent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFolderResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -172,47 +145,69 @@ public final class GetFolderResult {
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder folder(String folder) {
             this.folder = Objects.requireNonNull(folder);
             return this;
         }
+        @CustomType.Setter
         public Builder folderId(String folderId) {
             this.folderId = Objects.requireNonNull(folderId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
             this.lifecycleState = Objects.requireNonNull(lifecycleState);
             return this;
         }
+        @CustomType.Setter
         public Builder lookupOrganization(@Nullable Boolean lookupOrganization) {
             this.lookupOrganization = lookupOrganization;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder organization(String organization) {
             this.organization = Objects.requireNonNull(organization);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
-        }        public GetFolderResult build() {
-            return new GetFolderResult(createTime, displayName, folder, folderId, id, lifecycleState, lookupOrganization, name, organization, parent);
+        }
+        public GetFolderResult build() {
+            final var o = new GetFolderResult();
+            o.createTime = createTime;
+            o.displayName = displayName;
+            o.folder = folder;
+            o.folderId = folderId;
+            o.id = id;
+            o.lifecycleState = lifecycleState;
+            o.lookupOrganization = lookupOrganization;
+            o.name = name;
+            o.organization = organization;
+            o.parent = parent;
+            return o;
         }
     }
 }

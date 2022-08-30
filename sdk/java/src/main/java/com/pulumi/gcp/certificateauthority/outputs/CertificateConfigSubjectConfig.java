@@ -17,22 +17,15 @@ public final class CertificateConfigSubjectConfig {
      * Structure is documented below.
      * 
      */
-    private final CertificateConfigSubjectConfigSubject subject;
+    private CertificateConfigSubjectConfigSubject subject;
     /**
      * @return The subject alternative name fields.
      * Structure is documented below.
      * 
      */
-    private final @Nullable CertificateConfigSubjectConfigSubjectAltName subjectAltName;
+    private @Nullable CertificateConfigSubjectConfigSubjectAltName subjectAltName;
 
-    @CustomType.Constructor
-    private CertificateConfigSubjectConfig(
-        @CustomType.Parameter("subject") CertificateConfigSubjectConfigSubject subject,
-        @CustomType.Parameter("subjectAltName") @Nullable CertificateConfigSubjectConfigSubjectAltName subjectAltName) {
-        this.subject = subject;
-        this.subjectAltName = subjectAltName;
-    }
-
+    private CertificateConfigSubjectConfig() {}
     /**
      * @return Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class CertificateConfigSubjectConfig {
     public static Builder builder(CertificateConfigSubjectConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private CertificateConfigSubjectConfigSubject subject;
         private @Nullable CertificateConfigSubjectConfigSubjectAltName subjectAltName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfigSubjectConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subject = defaults.subject;
     	      this.subjectAltName = defaults.subjectAltName;
         }
 
+        @CustomType.Setter
         public Builder subject(CertificateConfigSubjectConfigSubject subject) {
             this.subject = Objects.requireNonNull(subject);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectAltName(@Nullable CertificateConfigSubjectConfigSubjectAltName subjectAltName) {
             this.subjectAltName = subjectAltName;
             return this;
-        }        public CertificateConfigSubjectConfig build() {
-            return new CertificateConfigSubjectConfig(subject, subjectAltName);
+        }
+        public CertificateConfigSubjectConfig build() {
+            final var o = new CertificateConfigSubjectConfig();
+            o.subject = subject;
+            o.subjectAltName = subjectAltName;
+            return o;
         }
     }
 }

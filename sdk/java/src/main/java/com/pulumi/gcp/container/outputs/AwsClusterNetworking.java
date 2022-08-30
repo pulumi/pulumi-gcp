@@ -14,28 +14,19 @@ public final class AwsClusterNetworking {
      * @return All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
      */
-    private final List<String> podAddressCidrBlocks;
+    private List<String> podAddressCidrBlocks;
     /**
      * @return All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
      */
-    private final List<String> serviceAddressCidrBlocks;
+    private List<String> serviceAddressCidrBlocks;
     /**
      * @return The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private AwsClusterNetworking(
-        @CustomType.Parameter("podAddressCidrBlocks") List<String> podAddressCidrBlocks,
-        @CustomType.Parameter("serviceAddressCidrBlocks") List<String> serviceAddressCidrBlocks,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.podAddressCidrBlocks = podAddressCidrBlocks;
-        this.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
-        this.vpcId = vpcId;
-    }
-
+    private AwsClusterNetworking() {}
     /**
      * @return All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
@@ -65,16 +56,12 @@ public final class AwsClusterNetworking {
     public static Builder builder(AwsClusterNetworking defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> podAddressCidrBlocks;
         private List<String> serviceAddressCidrBlocks;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterNetworking defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.podAddressCidrBlocks = defaults.podAddressCidrBlocks;
@@ -82,6 +69,7 @@ public final class AwsClusterNetworking {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
             this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
             return this;
@@ -89,6 +77,7 @@ public final class AwsClusterNetworking {
         public Builder podAddressCidrBlocks(String... podAddressCidrBlocks) {
             return podAddressCidrBlocks(List.of(podAddressCidrBlocks));
         }
+        @CustomType.Setter
         public Builder serviceAddressCidrBlocks(List<String> serviceAddressCidrBlocks) {
             this.serviceAddressCidrBlocks = Objects.requireNonNull(serviceAddressCidrBlocks);
             return this;
@@ -96,11 +85,17 @@ public final class AwsClusterNetworking {
         public Builder serviceAddressCidrBlocks(String... serviceAddressCidrBlocks) {
             return serviceAddressCidrBlocks(List.of(serviceAddressCidrBlocks));
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public AwsClusterNetworking build() {
-            return new AwsClusterNetworking(podAddressCidrBlocks, serviceAddressCidrBlocks, vpcId);
+        }
+        public AwsClusterNetworking build() {
+            final var o = new AwsClusterNetworking();
+            o.podAddressCidrBlocks = podAddressCidrBlocks;
+            o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

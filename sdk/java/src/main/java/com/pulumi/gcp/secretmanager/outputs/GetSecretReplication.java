@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplication {
-    private final Boolean automatic;
-    private final List<GetSecretReplicationUserManaged> userManageds;
+    private Boolean automatic;
+    private List<GetSecretReplicationUserManaged> userManageds;
 
-    @CustomType.Constructor
-    private GetSecretReplication(
-        @CustomType.Parameter("automatic") Boolean automatic,
-        @CustomType.Parameter("userManageds") List<GetSecretReplicationUserManaged> userManageds) {
-        this.automatic = automatic;
-        this.userManageds = userManageds;
-    }
-
+    private GetSecretReplication() {}
     public Boolean automatic() {
         return this.automatic;
     }
@@ -36,33 +29,35 @@ public final class GetSecretReplication {
     public static Builder builder(GetSecretReplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean automatic;
         private List<GetSecretReplicationUserManaged> userManageds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretReplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automatic = defaults.automatic;
     	      this.userManageds = defaults.userManageds;
         }
 
+        @CustomType.Setter
         public Builder automatic(Boolean automatic) {
             this.automatic = Objects.requireNonNull(automatic);
             return this;
         }
+        @CustomType.Setter
         public Builder userManageds(List<GetSecretReplicationUserManaged> userManageds) {
             this.userManageds = Objects.requireNonNull(userManageds);
             return this;
         }
         public Builder userManageds(GetSecretReplicationUserManaged... userManageds) {
             return userManageds(List.of(userManageds));
-        }        public GetSecretReplication build() {
-            return new GetSecretReplication(automatic, userManageds);
+        }
+        public GetSecretReplication build() {
+            final var o = new GetSecretReplication();
+            o.automatic = automatic;
+            o.userManageds = userManageds;
+            return o;
         }
     }
 }

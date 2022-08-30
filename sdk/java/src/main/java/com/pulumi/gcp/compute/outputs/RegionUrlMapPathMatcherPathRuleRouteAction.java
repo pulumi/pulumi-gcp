@@ -24,7 +24,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy;
     /**
      * @return The specification for fault injection introduced into traffic to test the
      * resiliency of clients to backend service failure. As part of fault injection,
@@ -36,7 +36,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
     /**
      * @return Specifies the policy on how requests intended for the route&#39;s backends are
      * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
@@ -45,13 +45,13 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy requestMirrorPolicy;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy requestMirrorPolicy;
     /**
      * @return Specifies the retry policy associated with this route.
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy retryPolicy;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy retryPolicy;
     /**
      * @return Specifies the timeout for the selected route. Timeout is computed from the time
      * the request is has been fully processed (i.e. end-of-stream) up until the
@@ -60,14 +60,14 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteActionTimeout timeout;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionTimeout timeout;
     /**
      * @return The spec to modify the URL of the request, prior to forwarding the request to
      * the matched service
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite;
     /**
      * @return A list of weighted backend services to send traffic to when a route match
      * occurs. The weights determine the fraction of traffic that flows to their
@@ -80,26 +80,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices;
+    private @Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRuleRouteAction(
-        @CustomType.Parameter("corsPolicy") @Nullable RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy,
-        @CustomType.Parameter("faultInjectionPolicy") @Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy,
-        @CustomType.Parameter("requestMirrorPolicy") @Nullable RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy requestMirrorPolicy,
-        @CustomType.Parameter("retryPolicy") @Nullable RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy retryPolicy,
-        @CustomType.Parameter("timeout") @Nullable RegionUrlMapPathMatcherPathRuleRouteActionTimeout timeout,
-        @CustomType.Parameter("urlRewrite") @Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite,
-        @CustomType.Parameter("weightedBackendServices") @Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices) {
-        this.corsPolicy = corsPolicy;
-        this.faultInjectionPolicy = faultInjectionPolicy;
-        this.requestMirrorPolicy = requestMirrorPolicy;
-        this.retryPolicy = retryPolicy;
-        this.timeout = timeout;
-        this.urlRewrite = urlRewrite;
-        this.weightedBackendServices = weightedBackendServices;
-    }
-
+    private RegionUrlMapPathMatcherPathRuleRouteAction() {}
     /**
      * @return The specification for allowing client side cross-origin requests. Please see W3C
      * Recommendation for Cross Origin Resource Sharing
@@ -185,7 +168,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
     public static Builder builder(RegionUrlMapPathMatcherPathRuleRouteAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy;
         private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
@@ -194,11 +177,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
         private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionTimeout timeout;
         private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite;
         private @Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRuleRouteAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.corsPolicy = defaults.corsPolicy;
@@ -210,38 +189,54 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
     	      this.weightedBackendServices = defaults.weightedBackendServices;
         }
 
+        @CustomType.Setter
         public Builder corsPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy) {
             this.corsPolicy = corsPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy) {
             this.faultInjectionPolicy = faultInjectionPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder requestMirrorPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy requestMirrorPolicy) {
             this.requestMirrorPolicy = requestMirrorPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder retryPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy retryPolicy) {
             this.retryPolicy = retryPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionTimeout timeout) {
             this.timeout = timeout;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRewrite(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite) {
             this.urlRewrite = urlRewrite;
             return this;
         }
+        @CustomType.Setter
         public Builder weightedBackendServices(@Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices) {
             this.weightedBackendServices = weightedBackendServices;
             return this;
         }
         public Builder weightedBackendServices(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService... weightedBackendServices) {
             return weightedBackendServices(List.of(weightedBackendServices));
-        }        public RegionUrlMapPathMatcherPathRuleRouteAction build() {
-            return new RegionUrlMapPathMatcherPathRuleRouteAction(corsPolicy, faultInjectionPolicy, requestMirrorPolicy, retryPolicy, timeout, urlRewrite, weightedBackendServices);
+        }
+        public RegionUrlMapPathMatcherPathRuleRouteAction build() {
+            final var o = new RegionUrlMapPathMatcherPathRuleRouteAction();
+            o.corsPolicy = corsPolicy;
+            o.faultInjectionPolicy = faultInjectionPolicy;
+            o.requestMirrorPolicy = requestMirrorPolicy;
+            o.retryPolicy = retryPolicy;
+            o.timeout = timeout;
+            o.urlRewrite = urlRewrite;
+            o.weightedBackendServices = weightedBackendServices;
+            return o;
         }
     }
 }

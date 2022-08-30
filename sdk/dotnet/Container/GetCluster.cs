@@ -192,6 +192,7 @@ namespace Pulumi.Gcp.Container
         public readonly string NetworkingMode;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigResult> NodeConfigs;
         public readonly ImmutableArray<string> NodeLocations;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigResult> NodePoolAutoConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolResult> NodePools;
         public readonly string NodeVersion;
         public readonly ImmutableArray<Outputs.GetClusterNotificationConfigResult> NotificationConfigs;
@@ -302,6 +303,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<string> nodeLocations,
 
+            ImmutableArray<Outputs.GetClusterNodePoolAutoConfigResult> nodePoolAutoConfigs,
+
             ImmutableArray<Outputs.GetClusterNodePoolResult> nodePools,
 
             string nodeVersion,
@@ -384,6 +387,7 @@ namespace Pulumi.Gcp.Container
             NetworkingMode = networkingMode;
             NodeConfigs = nodeConfigs;
             NodeLocations = nodeLocations;
+            NodePoolAutoConfigs = nodePoolAutoConfigs;
             NodePools = nodePools;
             NodeVersion = nodeVersion;
             NotificationConfigs = notificationConfigs;

@@ -14,13 +14,9 @@ public final class ApiKeyRestrictionsIosKeyRestrictions {
      * @return A list of bundle IDs that are allowed when making API calls with this key.
      * 
      */
-    private final List<String> allowedBundleIds;
+    private List<String> allowedBundleIds;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictionsIosKeyRestrictions(@CustomType.Parameter("allowedBundleIds") List<String> allowedBundleIds) {
-        this.allowedBundleIds = allowedBundleIds;
-    }
-
+    private ApiKeyRestrictionsIosKeyRestrictions() {}
     /**
      * @return A list of bundle IDs that are allowed when making API calls with this key.
      * 
@@ -36,27 +32,27 @@ public final class ApiKeyRestrictionsIosKeyRestrictions {
     public static Builder builder(ApiKeyRestrictionsIosKeyRestrictions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedBundleIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictionsIosKeyRestrictions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedBundleIds = defaults.allowedBundleIds;
         }
 
+        @CustomType.Setter
         public Builder allowedBundleIds(List<String> allowedBundleIds) {
             this.allowedBundleIds = Objects.requireNonNull(allowedBundleIds);
             return this;
         }
         public Builder allowedBundleIds(String... allowedBundleIds) {
             return allowedBundleIds(List.of(allowedBundleIds));
-        }        public ApiKeyRestrictionsIosKeyRestrictions build() {
-            return new ApiKeyRestrictionsIosKeyRestrictions(allowedBundleIds);
+        }
+        public ApiKeyRestrictionsIosKeyRestrictions build() {
+            final var o = new ApiKeyRestrictionsIosKeyRestrictions();
+            o.allowedBundleIds = allowedBundleIds;
+            return o;
         }
     }
 }

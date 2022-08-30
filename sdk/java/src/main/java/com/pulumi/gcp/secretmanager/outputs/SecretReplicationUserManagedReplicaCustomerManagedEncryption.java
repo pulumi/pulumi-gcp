@@ -13,13 +13,9 @@ public final class SecretReplicationUserManagedReplicaCustomerManagedEncryption 
      * @return Describes the Cloud KMS encryption key that will be used to protect destination secret.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
 
-    @CustomType.Constructor
-    private SecretReplicationUserManagedReplicaCustomerManagedEncryption(@CustomType.Parameter("kmsKeyName") String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private SecretReplicationUserManagedReplicaCustomerManagedEncryption() {}
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect destination secret.
      * 
@@ -35,24 +31,24 @@ public final class SecretReplicationUserManagedReplicaCustomerManagedEncryption 
     public static Builder builder(SecretReplicationUserManagedReplicaCustomerManagedEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecretReplicationUserManagedReplicaCustomerManagedEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
-        }        public SecretReplicationUserManagedReplicaCustomerManagedEncryption build() {
-            return new SecretReplicationUserManagedReplicaCustomerManagedEncryption(kmsKeyName);
+        }
+        public SecretReplicationUserManagedReplicaCustomerManagedEncryption build() {
+            final var o = new SecretReplicationUserManagedReplicaCustomerManagedEncryption();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

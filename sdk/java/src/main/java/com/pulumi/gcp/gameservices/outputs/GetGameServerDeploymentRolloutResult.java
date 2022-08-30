@@ -11,38 +11,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGameServerDeploymentRolloutResult {
-    private final String defaultGameServerConfig;
-    private final String deploymentId;
-    private final List<GetGameServerDeploymentRolloutGameServerConfigOverride> gameServerConfigOverrides;
+    private String defaultGameServerConfig;
+    private String deploymentId;
+    private List<GetGameServerDeploymentRolloutGameServerConfigOverride> gameServerConfigOverrides;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
+    private String id;
+    private String name;
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
      */
-    private final String project;
+    private String project;
 
-    @CustomType.Constructor
-    private GetGameServerDeploymentRolloutResult(
-        @CustomType.Parameter("defaultGameServerConfig") String defaultGameServerConfig,
-        @CustomType.Parameter("deploymentId") String deploymentId,
-        @CustomType.Parameter("gameServerConfigOverrides") List<GetGameServerDeploymentRolloutGameServerConfigOverride> gameServerConfigOverrides,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project) {
-        this.defaultGameServerConfig = defaultGameServerConfig;
-        this.deploymentId = deploymentId;
-        this.gameServerConfigOverrides = gameServerConfigOverrides;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-    }
-
+    private GetGameServerDeploymentRolloutResult() {}
     public String defaultGameServerConfig() {
         return this.defaultGameServerConfig;
     }
@@ -78,7 +63,7 @@ public final class GetGameServerDeploymentRolloutResult {
     public static Builder builder(GetGameServerDeploymentRolloutResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultGameServerConfig;
         private String deploymentId;
@@ -86,11 +71,7 @@ public final class GetGameServerDeploymentRolloutResult {
         private String id;
         private String name;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGameServerDeploymentRolloutResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultGameServerConfig = defaults.defaultGameServerConfig;
@@ -101,14 +82,17 @@ public final class GetGameServerDeploymentRolloutResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder defaultGameServerConfig(String defaultGameServerConfig) {
             this.defaultGameServerConfig = Objects.requireNonNull(defaultGameServerConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder deploymentId(String deploymentId) {
             this.deploymentId = Objects.requireNonNull(deploymentId);
             return this;
         }
+        @CustomType.Setter
         public Builder gameServerConfigOverrides(List<GetGameServerDeploymentRolloutGameServerConfigOverride> gameServerConfigOverrides) {
             this.gameServerConfigOverrides = Objects.requireNonNull(gameServerConfigOverrides);
             return this;
@@ -116,19 +100,30 @@ public final class GetGameServerDeploymentRolloutResult {
         public Builder gameServerConfigOverrides(GetGameServerDeploymentRolloutGameServerConfigOverride... gameServerConfigOverrides) {
             return gameServerConfigOverrides(List.of(gameServerConfigOverrides));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public GetGameServerDeploymentRolloutResult build() {
-            return new GetGameServerDeploymentRolloutResult(defaultGameServerConfig, deploymentId, gameServerConfigOverrides, id, name, project);
+        }
+        public GetGameServerDeploymentRolloutResult build() {
+            final var o = new GetGameServerDeploymentRolloutResult();
+            o.defaultGameServerConfig = defaultGameServerConfig;
+            o.deploymentId = deploymentId;
+            o.gameServerConfigOverrides = gameServerConfigOverrides;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            return o;
         }
     }
 }

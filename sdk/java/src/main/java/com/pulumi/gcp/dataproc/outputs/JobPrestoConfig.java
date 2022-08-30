@@ -19,54 +19,37 @@ public final class JobPrestoConfig {
      * @return Presto client tags to attach to this query.
      * 
      */
-    private final @Nullable List<String> clientTags;
+    private @Nullable List<String> clientTags;
     /**
      * @return Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
      */
-    private final @Nullable Boolean continueOnFailure;
-    private final @Nullable JobPrestoConfigLoggingConfig loggingConfig;
+    private @Nullable Boolean continueOnFailure;
+    private @Nullable JobPrestoConfigLoggingConfig loggingConfig;
     /**
      * @return The format in which query output will be displayed. See the Presto documentation for supported output formats.
      * 
      */
-    private final @Nullable String outputFormat;
+    private @Nullable String outputFormat;
     /**
      * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return The HCFS URI of the script that contains SQL queries.
      * Conflicts with `query_list`
      * 
      */
-    private final @Nullable String queryFileUri;
+    private @Nullable String queryFileUri;
     /**
      * @return The list of SQL queries or statements to execute as part of the job.
      * Conflicts with `query_file_uri`
      * 
      */
-    private final @Nullable List<String> queryLists;
+    private @Nullable List<String> queryLists;
 
-    @CustomType.Constructor
-    private JobPrestoConfig(
-        @CustomType.Parameter("clientTags") @Nullable List<String> clientTags,
-        @CustomType.Parameter("continueOnFailure") @Nullable Boolean continueOnFailure,
-        @CustomType.Parameter("loggingConfig") @Nullable JobPrestoConfigLoggingConfig loggingConfig,
-        @CustomType.Parameter("outputFormat") @Nullable String outputFormat,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("queryFileUri") @Nullable String queryFileUri,
-        @CustomType.Parameter("queryLists") @Nullable List<String> queryLists) {
-        this.clientTags = clientTags;
-        this.continueOnFailure = continueOnFailure;
-        this.loggingConfig = loggingConfig;
-        this.outputFormat = outputFormat;
-        this.properties = properties;
-        this.queryFileUri = queryFileUri;
-        this.queryLists = queryLists;
-    }
-
+    private JobPrestoConfig() {}
     /**
      * @return Presto client tags to attach to this query.
      * 
@@ -122,7 +105,7 @@ public final class JobPrestoConfig {
     public static Builder builder(JobPrestoConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> clientTags;
         private @Nullable Boolean continueOnFailure;
@@ -131,11 +114,7 @@ public final class JobPrestoConfig {
         private @Nullable Map<String,String> properties;
         private @Nullable String queryFileUri;
         private @Nullable List<String> queryLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPrestoConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientTags = defaults.clientTags;
@@ -147,6 +126,7 @@ public final class JobPrestoConfig {
     	      this.queryLists = defaults.queryLists;
         }
 
+        @CustomType.Setter
         public Builder clientTags(@Nullable List<String> clientTags) {
             this.clientTags = clientTags;
             return this;
@@ -154,34 +134,49 @@ public final class JobPrestoConfig {
         public Builder clientTags(String... clientTags) {
             return clientTags(List.of(clientTags));
         }
+        @CustomType.Setter
         public Builder continueOnFailure(@Nullable Boolean continueOnFailure) {
             this.continueOnFailure = continueOnFailure;
             return this;
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable JobPrestoConfigLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFormat(@Nullable String outputFormat) {
             this.outputFormat = outputFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
             this.queryFileUri = queryFileUri;
             return this;
         }
+        @CustomType.Setter
         public Builder queryLists(@Nullable List<String> queryLists) {
             this.queryLists = queryLists;
             return this;
         }
         public Builder queryLists(String... queryLists) {
             return queryLists(List.of(queryLists));
-        }        public JobPrestoConfig build() {
-            return new JobPrestoConfig(clientTags, continueOnFailure, loggingConfig, outputFormat, properties, queryFileUri, queryLists);
+        }
+        public JobPrestoConfig build() {
+            final var o = new JobPrestoConfig();
+            o.clientTags = clientTags;
+            o.continueOnFailure = continueOnFailure;
+            o.loggingConfig = loggingConfig;
+            o.outputFormat = outputFormat;
+            o.properties = properties;
+            o.queryFileUri = queryFileUri;
+            o.queryLists = queryLists;
+            return o;
         }
     }
 }

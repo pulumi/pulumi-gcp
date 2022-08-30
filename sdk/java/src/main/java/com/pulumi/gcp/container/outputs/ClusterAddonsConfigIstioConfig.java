@@ -16,22 +16,15 @@ public final class ClusterAddonsConfigIstioConfig {
      * @return The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
      * 
      */
-    private final @Nullable String auth;
+    private @Nullable String auth;
     /**
      * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
      * cluster. It is disabled by default. Set `disabled = false` to enable.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private ClusterAddonsConfigIstioConfig(
-        @CustomType.Parameter("auth") @Nullable String auth,
-        @CustomType.Parameter("disabled") Boolean disabled) {
-        this.auth = auth;
-        this.disabled = disabled;
-    }
-
+    private ClusterAddonsConfigIstioConfig() {}
     /**
      * @return The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
      * 
@@ -55,30 +48,32 @@ public final class ClusterAddonsConfigIstioConfig {
     public static Builder builder(ClusterAddonsConfigIstioConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String auth;
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAddonsConfigIstioConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auth = defaults.auth;
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder auth(@Nullable String auth) {
             this.auth = auth;
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public ClusterAddonsConfigIstioConfig build() {
-            return new ClusterAddonsConfigIstioConfig(auth, disabled);
+        }
+        public ClusterAddonsConfigIstioConfig build() {
+            final var o = new ClusterAddonsConfigIstioConfig();
+            o.auth = auth;
+            o.disabled = disabled;
+            return o;
         }
     }
 }

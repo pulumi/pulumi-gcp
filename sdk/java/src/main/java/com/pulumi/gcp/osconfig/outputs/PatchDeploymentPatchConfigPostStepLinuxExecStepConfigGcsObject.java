@@ -13,28 +13,19 @@ public final class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjec
      * @return Bucket of the Cloud Storage object.
      * 
      */
-    private final String bucket;
+    private String bucket;
     /**
      * @return Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
      * 
      */
-    private final String generationNumber;
+    private String generationNumber;
     /**
      * @return Name of the Cloud Storage object.
      * 
      */
-    private final String object;
+    private String object;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("generationNumber") String generationNumber,
-        @CustomType.Parameter("object") String object) {
-        this.bucket = bucket;
-        this.generationNumber = generationNumber;
-        this.object = object;
-    }
-
+    private PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject() {}
     /**
      * @return Bucket of the Cloud Storage object.
      * 
@@ -64,16 +55,12 @@ public final class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjec
     public static Builder builder(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private String generationNumber;
         private String object;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -81,19 +68,27 @@ public final class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjec
     	      this.object = defaults.object;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder generationNumber(String generationNumber) {
             this.generationNumber = Objects.requireNonNull(generationNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder object(String object) {
             this.object = Objects.requireNonNull(object);
             return this;
-        }        public PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject build() {
-            return new PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject(bucket, generationNumber, object);
+        }
+        public PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject build() {
+            final var o = new PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject();
+            o.bucket = bucket;
+            o.generationNumber = generationNumber;
+            o.object = object;
+            return o;
         }
     }
 }

@@ -25,7 +25,7 @@ public final class JobQuery {
      * However, you must still set destinationTable when result size exceeds the allowed maximum response size.
      * 
      */
-    private final @Nullable Boolean allowLargeResults;
+    private @Nullable Boolean allowLargeResults;
     /**
      * @return Specifies whether the job is allowed to create new tables. The following values are supported:
      * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -35,61 +35,61 @@ public final class JobQuery {
      * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
      * 
      */
-    private final @Nullable String createDisposition;
+    private @Nullable String createDisposition;
     /**
      * @return Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobQueryDefaultDataset defaultDataset;
+    private @Nullable JobQueryDefaultDataset defaultDataset;
     /**
      * @return Custom encryption configuration (e.g., Cloud KMS keys)
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobQueryDestinationEncryptionConfiguration destinationEncryptionConfiguration;
+    private @Nullable JobQueryDestinationEncryptionConfiguration destinationEncryptionConfiguration;
     /**
      * @return The destination table.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobQueryDestinationTable destinationTable;
+    private @Nullable JobQueryDestinationTable destinationTable;
     /**
      * @return If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
      * allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
      * 
      */
-    private final @Nullable Boolean flattenResults;
+    private @Nullable Boolean flattenResults;
     /**
      * @return Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
      * If unspecified, this will be set to your project default.
      * 
      */
-    private final @Nullable Integer maximumBillingTier;
+    private @Nullable Integer maximumBillingTier;
     /**
      * @return Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
      * If unspecified, this will be set to your project default.
      * 
      */
-    private final @Nullable String maximumBytesBilled;
+    private @Nullable String maximumBytesBilled;
     /**
      * @return Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
      * 
      */
-    private final @Nullable String parameterMode;
+    private @Nullable String parameterMode;
     /**
      * @return Specifies a priority for the query.
      * Default value is `INTERACTIVE`.
      * Possible values are `INTERACTIVE` and `BATCH`.
      * 
      */
-    private final @Nullable String priority;
+    private @Nullable String priority;
     /**
      * @return Configures a query job.
      * Structure is documented below.
      * 
      */
-    private final String query;
+    private String query;
     /**
      * @return Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
      * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -99,32 +99,32 @@ public final class JobQuery {
      * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
      * 
      */
-    private final @Nullable List<String> schemaUpdateOptions;
+    private @Nullable List<String> schemaUpdateOptions;
     /**
      * @return Options controlling the execution of scripts.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobQueryScriptOptions scriptOptions;
+    private @Nullable JobQueryScriptOptions scriptOptions;
     /**
      * @return Specifies whether to use BigQuery&#39;s legacy SQL dialect for this query. The default value is true.
      * If set to false, the query will use BigQuery&#39;s standard SQL.
      * 
      */
-    private final @Nullable Boolean useLegacySql;
+    private @Nullable Boolean useLegacySql;
     /**
      * @return Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
      * tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
      * The default value is true.
      * 
      */
-    private final @Nullable Boolean useQueryCache;
+    private @Nullable Boolean useQueryCache;
     /**
      * @return Describes user-defined function resources used in the query.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<JobQueryUserDefinedFunctionResource> userDefinedFunctionResources;
+    private @Nullable List<JobQueryUserDefinedFunctionResource> userDefinedFunctionResources;
     /**
      * @return Specifies the action that occurs if the destination table already exists. The following values are supported:
      * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -136,46 +136,9 @@ public final class JobQuery {
      * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
      * 
      */
-    private final @Nullable String writeDisposition;
+    private @Nullable String writeDisposition;
 
-    @CustomType.Constructor
-    private JobQuery(
-        @CustomType.Parameter("allowLargeResults") @Nullable Boolean allowLargeResults,
-        @CustomType.Parameter("createDisposition") @Nullable String createDisposition,
-        @CustomType.Parameter("defaultDataset") @Nullable JobQueryDefaultDataset defaultDataset,
-        @CustomType.Parameter("destinationEncryptionConfiguration") @Nullable JobQueryDestinationEncryptionConfiguration destinationEncryptionConfiguration,
-        @CustomType.Parameter("destinationTable") @Nullable JobQueryDestinationTable destinationTable,
-        @CustomType.Parameter("flattenResults") @Nullable Boolean flattenResults,
-        @CustomType.Parameter("maximumBillingTier") @Nullable Integer maximumBillingTier,
-        @CustomType.Parameter("maximumBytesBilled") @Nullable String maximumBytesBilled,
-        @CustomType.Parameter("parameterMode") @Nullable String parameterMode,
-        @CustomType.Parameter("priority") @Nullable String priority,
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("schemaUpdateOptions") @Nullable List<String> schemaUpdateOptions,
-        @CustomType.Parameter("scriptOptions") @Nullable JobQueryScriptOptions scriptOptions,
-        @CustomType.Parameter("useLegacySql") @Nullable Boolean useLegacySql,
-        @CustomType.Parameter("useQueryCache") @Nullable Boolean useQueryCache,
-        @CustomType.Parameter("userDefinedFunctionResources") @Nullable List<JobQueryUserDefinedFunctionResource> userDefinedFunctionResources,
-        @CustomType.Parameter("writeDisposition") @Nullable String writeDisposition) {
-        this.allowLargeResults = allowLargeResults;
-        this.createDisposition = createDisposition;
-        this.defaultDataset = defaultDataset;
-        this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
-        this.destinationTable = destinationTable;
-        this.flattenResults = flattenResults;
-        this.maximumBillingTier = maximumBillingTier;
-        this.maximumBytesBilled = maximumBytesBilled;
-        this.parameterMode = parameterMode;
-        this.priority = priority;
-        this.query = query;
-        this.schemaUpdateOptions = schemaUpdateOptions;
-        this.scriptOptions = scriptOptions;
-        this.useLegacySql = useLegacySql;
-        this.useQueryCache = useQueryCache;
-        this.userDefinedFunctionResources = userDefinedFunctionResources;
-        this.writeDisposition = writeDisposition;
-    }
-
+    private JobQuery() {}
     /**
      * @return If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
      * Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
@@ -336,7 +299,7 @@ public final class JobQuery {
     public static Builder builder(JobQuery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowLargeResults;
         private @Nullable String createDisposition;
@@ -355,11 +318,7 @@ public final class JobQuery {
         private @Nullable Boolean useQueryCache;
         private @Nullable List<JobQueryUserDefinedFunctionResource> userDefinedFunctionResources;
         private @Nullable String writeDisposition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowLargeResults = defaults.allowLargeResults;
@@ -381,50 +340,62 @@ public final class JobQuery {
     	      this.writeDisposition = defaults.writeDisposition;
         }
 
+        @CustomType.Setter
         public Builder allowLargeResults(@Nullable Boolean allowLargeResults) {
             this.allowLargeResults = allowLargeResults;
             return this;
         }
+        @CustomType.Setter
         public Builder createDisposition(@Nullable String createDisposition) {
             this.createDisposition = createDisposition;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultDataset(@Nullable JobQueryDefaultDataset defaultDataset) {
             this.defaultDataset = defaultDataset;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEncryptionConfiguration(@Nullable JobQueryDestinationEncryptionConfiguration destinationEncryptionConfiguration) {
             this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationTable(@Nullable JobQueryDestinationTable destinationTable) {
             this.destinationTable = destinationTable;
             return this;
         }
+        @CustomType.Setter
         public Builder flattenResults(@Nullable Boolean flattenResults) {
             this.flattenResults = flattenResults;
             return this;
         }
+        @CustomType.Setter
         public Builder maximumBillingTier(@Nullable Integer maximumBillingTier) {
             this.maximumBillingTier = maximumBillingTier;
             return this;
         }
+        @CustomType.Setter
         public Builder maximumBytesBilled(@Nullable String maximumBytesBilled) {
             this.maximumBytesBilled = maximumBytesBilled;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterMode(@Nullable String parameterMode) {
             this.parameterMode = parameterMode;
             return this;
         }
+        @CustomType.Setter
         public Builder priority(@Nullable String priority) {
             this.priority = priority;
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder schemaUpdateOptions(@Nullable List<String> schemaUpdateOptions) {
             this.schemaUpdateOptions = schemaUpdateOptions;
             return this;
@@ -432,18 +403,22 @@ public final class JobQuery {
         public Builder schemaUpdateOptions(String... schemaUpdateOptions) {
             return schemaUpdateOptions(List.of(schemaUpdateOptions));
         }
+        @CustomType.Setter
         public Builder scriptOptions(@Nullable JobQueryScriptOptions scriptOptions) {
             this.scriptOptions = scriptOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder useLegacySql(@Nullable Boolean useLegacySql) {
             this.useLegacySql = useLegacySql;
             return this;
         }
+        @CustomType.Setter
         public Builder useQueryCache(@Nullable Boolean useQueryCache) {
             this.useQueryCache = useQueryCache;
             return this;
         }
+        @CustomType.Setter
         public Builder userDefinedFunctionResources(@Nullable List<JobQueryUserDefinedFunctionResource> userDefinedFunctionResources) {
             this.userDefinedFunctionResources = userDefinedFunctionResources;
             return this;
@@ -451,11 +426,31 @@ public final class JobQuery {
         public Builder userDefinedFunctionResources(JobQueryUserDefinedFunctionResource... userDefinedFunctionResources) {
             return userDefinedFunctionResources(List.of(userDefinedFunctionResources));
         }
+        @CustomType.Setter
         public Builder writeDisposition(@Nullable String writeDisposition) {
             this.writeDisposition = writeDisposition;
             return this;
-        }        public JobQuery build() {
-            return new JobQuery(allowLargeResults, createDisposition, defaultDataset, destinationEncryptionConfiguration, destinationTable, flattenResults, maximumBillingTier, maximumBytesBilled, parameterMode, priority, query, schemaUpdateOptions, scriptOptions, useLegacySql, useQueryCache, userDefinedFunctionResources, writeDisposition);
+        }
+        public JobQuery build() {
+            final var o = new JobQuery();
+            o.allowLargeResults = allowLargeResults;
+            o.createDisposition = createDisposition;
+            o.defaultDataset = defaultDataset;
+            o.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
+            o.destinationTable = destinationTable;
+            o.flattenResults = flattenResults;
+            o.maximumBillingTier = maximumBillingTier;
+            o.maximumBytesBilled = maximumBytesBilled;
+            o.parameterMode = parameterMode;
+            o.priority = priority;
+            o.query = query;
+            o.schemaUpdateOptions = schemaUpdateOptions;
+            o.scriptOptions = scriptOptions;
+            o.useLegacySql = useLegacySql;
+            o.useQueryCache = useQueryCache;
+            o.userDefinedFunctionResources = userDefinedFunctionResources;
+            o.writeDisposition = writeDisposition;
+            return o;
         }
     }
 }

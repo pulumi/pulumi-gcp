@@ -13,21 +13,14 @@ public final class AzureNodePoolAutoscaling {
      * @return Maximum number of nodes in the node pool. Must be &gt;= min_node_count.
      * 
      */
-    private final Integer maxNodeCount;
+    private Integer maxNodeCount;
     /**
      * @return Minimum number of nodes in the node pool. Must be &gt;= 1 and &lt;= max_node_count.
      * 
      */
-    private final Integer minNodeCount;
+    private Integer minNodeCount;
 
-    @CustomType.Constructor
-    private AzureNodePoolAutoscaling(
-        @CustomType.Parameter("maxNodeCount") Integer maxNodeCount,
-        @CustomType.Parameter("minNodeCount") Integer minNodeCount) {
-        this.maxNodeCount = maxNodeCount;
-        this.minNodeCount = minNodeCount;
-    }
-
+    private AzureNodePoolAutoscaling() {}
     /**
      * @return Maximum number of nodes in the node pool. Must be &gt;= min_node_count.
      * 
@@ -50,30 +43,32 @@ public final class AzureNodePoolAutoscaling {
     public static Builder builder(AzureNodePoolAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxNodeCount;
         private Integer minNodeCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureNodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxNodeCount = defaults.maxNodeCount;
     	      this.minNodeCount = defaults.minNodeCount;
         }
 
+        @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
             this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCount(Integer minNodeCount) {
             this.minNodeCount = Objects.requireNonNull(minNodeCount);
             return this;
-        }        public AzureNodePoolAutoscaling build() {
-            return new AzureNodePoolAutoscaling(maxNodeCount, minNodeCount);
+        }
+        public AzureNodePoolAutoscaling build() {
+            final var o = new AzureNodePoolAutoscaling();
+            o.maxNodeCount = maxNodeCount;
+            o.minNodeCount = minNodeCount;
+            return o;
         }
     }
 }

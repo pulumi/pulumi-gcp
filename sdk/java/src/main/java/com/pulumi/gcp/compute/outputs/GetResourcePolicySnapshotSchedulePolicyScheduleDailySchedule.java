@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
-    private final Integer daysInCycle;
-    private final String startTime;
+    private Integer daysInCycle;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(
-        @CustomType.Parameter("daysInCycle") Integer daysInCycle,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.daysInCycle = daysInCycle;
-        this.startTime = startTime;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule() {}
     public Integer daysInCycle() {
         return this.daysInCycle;
     }
@@ -35,30 +28,32 @@ public final class GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule 
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer daysInCycle;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.daysInCycle = defaults.daysInCycle;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder daysInCycle(Integer daysInCycle) {
             this.daysInCycle = Objects.requireNonNull(daysInCycle);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule build() {
-            return new GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(daysInCycle, startTime);
+        }
+        public GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule();
+            o.daysInCycle = daysInCycle;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

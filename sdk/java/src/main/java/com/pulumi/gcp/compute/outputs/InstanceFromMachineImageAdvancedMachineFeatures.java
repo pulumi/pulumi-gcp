@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageAdvancedMachineFeatures {
-    private final @Nullable Boolean enableNestedVirtualization;
-    private final @Nullable Integer threadsPerCore;
+    private @Nullable Boolean enableNestedVirtualization;
+    private @Nullable Integer threadsPerCore;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageAdvancedMachineFeatures(
-        @CustomType.Parameter("enableNestedVirtualization") @Nullable Boolean enableNestedVirtualization,
-        @CustomType.Parameter("threadsPerCore") @Nullable Integer threadsPerCore) {
-        this.enableNestedVirtualization = enableNestedVirtualization;
-        this.threadsPerCore = threadsPerCore;
-    }
-
+    private InstanceFromMachineImageAdvancedMachineFeatures() {}
     public Optional<Boolean> enableNestedVirtualization() {
         return Optional.ofNullable(this.enableNestedVirtualization);
     }
@@ -37,30 +30,32 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
     public static Builder builder(InstanceFromMachineImageAdvancedMachineFeatures defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
         private @Nullable Integer threadsPerCore;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
         }
 
+        @CustomType.Setter
         public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
             this.enableNestedVirtualization = enableNestedVirtualization;
             return this;
         }
+        @CustomType.Setter
         public Builder threadsPerCore(@Nullable Integer threadsPerCore) {
             this.threadsPerCore = threadsPerCore;
             return this;
-        }        public InstanceFromMachineImageAdvancedMachineFeatures build() {
-            return new InstanceFromMachineImageAdvancedMachineFeatures(enableNestedVirtualization, threadsPerCore);
+        }
+        public InstanceFromMachineImageAdvancedMachineFeatures build() {
+            final var o = new InstanceFromMachineImageAdvancedMachineFeatures();
+            o.enableNestedVirtualization = enableNestedVirtualization;
+            o.threadsPerCore = threadsPerCore;
+            return o;
         }
     }
 }

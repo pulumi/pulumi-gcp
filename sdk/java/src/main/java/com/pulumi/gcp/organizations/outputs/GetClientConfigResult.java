@@ -13,42 +13,29 @@ public final class GetClientConfigResult {
      * @return The OAuth2 access token used by the client to authenticate against the Google Cloud API.
      * 
      */
-    private final String accessToken;
+    private String accessToken;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the project to apply any resources to.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return The region to operate under.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The zone to operate under.
      * 
      */
-    private final String zone;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetClientConfigResult(
-        @CustomType.Parameter("accessToken") String accessToken,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("zone") String zone) {
-        this.accessToken = accessToken;
-        this.id = id;
-        this.project = project;
-        this.region = region;
-        this.zone = zone;
-    }
-
+    private GetClientConfigResult() {}
     /**
      * @return The OAuth2 access token used by the client to authenticate against the Google Cloud API.
      * 
@@ -92,18 +79,14 @@ public final class GetClientConfigResult {
     public static Builder builder(GetClientConfigResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessToken;
         private String id;
         private String project;
         private String region;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessToken = defaults.accessToken;
@@ -113,27 +96,39 @@ public final class GetClientConfigResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder accessToken(String accessToken) {
             this.accessToken = Objects.requireNonNull(accessToken);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetClientConfigResult build() {
-            return new GetClientConfigResult(accessToken, id, project, region, zone);
+        }
+        public GetClientConfigResult build() {
+            final var o = new GetClientConfigResult();
+            o.accessToken = accessToken;
+            o.id = id;
+            o.project = project;
+            o.region = region;
+            o.zone = zone;
+            return o;
         }
     }
 }

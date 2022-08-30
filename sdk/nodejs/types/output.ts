@@ -18442,7 +18442,7 @@ export namespace container {
          */
         instanceType: string;
         /**
-         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: {[key: string]: string};
         /**
@@ -19347,6 +19347,10 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: boolean;
+        /**
+         * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+         */
+        reservationAffinity?: outputs.container.ClusterNodeConfigReservationAffinity;
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -19364,8 +19368,7 @@ export namespace container {
          */
         spot?: boolean;
         /**
-         * The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * ) - List of network tags applied to auto-provisioned node pools.
          */
         tags?: string[];
         /**
@@ -19454,6 +19457,22 @@ export namespace container {
         sysctls: {[key: string]: string};
     }
 
+    export interface ClusterNodeConfigReservationAffinity {
+        /**
+         * The type of reservation consumption
+         * Accepted values are:
+         */
+        consumeReservationType: string;
+        /**
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+         */
+        key?: string;
+        /**
+         * The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+         */
+        values?: string[];
+    }
+
     export interface ClusterNodeConfigSandboxConfig {
         /**
          * Which sandbox to use for pods in the node pool.
@@ -19479,7 +19498,7 @@ export namespace container {
          */
         effect: string;
         /**
-         * Key for taint.
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
          */
         key: string;
         /**
@@ -19544,6 +19563,20 @@ export namespace container {
         placementPolicy?: outputs.container.ClusterNodePoolPlacementPolicy;
         upgradeSettings: outputs.container.ClusterNodePoolUpgradeSettings;
         version: string;
+    }
+
+    export interface ClusterNodePoolAutoConfig {
+        /**
+         * ) - The network tag config for the cluster's automatically provisioned node pools.
+         */
+        networkTags?: outputs.container.ClusterNodePoolAutoConfigNetworkTags;
+    }
+
+    export interface ClusterNodePoolAutoConfigNetworkTags {
+        /**
+         * ) - List of network tags applied to auto-provisioned node pools.
+         */
+        tags?: string[];
     }
 
     export interface ClusterNodePoolAutoscaling {
@@ -19675,6 +19708,10 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: boolean;
+        /**
+         * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+         */
+        reservationAffinity?: outputs.container.ClusterNodePoolNodeConfigReservationAffinity;
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -19692,8 +19729,7 @@ export namespace container {
          */
         spot?: boolean;
         /**
-         * The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * ) - List of network tags applied to auto-provisioned node pools.
          */
         tags?: string[];
         /**
@@ -19782,6 +19818,22 @@ export namespace container {
         sysctls: {[key: string]: string};
     }
 
+    export interface ClusterNodePoolNodeConfigReservationAffinity {
+        /**
+         * The type of reservation consumption
+         * Accepted values are:
+         */
+        consumeReservationType: string;
+        /**
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+         */
+        key?: string;
+        /**
+         * The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+         */
+        values?: string[];
+    }
+
     export interface ClusterNodePoolNodeConfigSandboxConfig {
         /**
          * Which sandbox to use for pods in the node pool.
@@ -19807,7 +19859,7 @@ export namespace container {
          */
         effect: string;
         /**
-         * Key for taint.
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
          */
         key: string;
         /**
@@ -20193,6 +20245,7 @@ export namespace container {
         nodeGroup: string;
         oauthScopes: string[];
         preemptible: boolean;
+        reservationAffinities: outputs.container.GetClusterNodeConfigReservationAffinity[];
         sandboxConfigs: outputs.container.GetClusterNodeConfigSandboxConfig[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterNodeConfigShieldedInstanceConfig[];
@@ -20228,6 +20281,12 @@ export namespace container {
 
     export interface GetClusterNodeConfigLinuxNodeConfig {
         sysctls: {[key: string]: string};
+    }
+
+    export interface GetClusterNodeConfigReservationAffinity {
+        consumeReservationType: string;
+        key: string;
+        values: string[];
     }
 
     export interface GetClusterNodeConfigSandboxConfig {
@@ -20270,6 +20329,14 @@ export namespace container {
         version: string;
     }
 
+    export interface GetClusterNodePoolAutoConfig {
+        networkTags: outputs.container.GetClusterNodePoolAutoConfigNetworkTag[];
+    }
+
+    export interface GetClusterNodePoolAutoConfigNetworkTag {
+        tags: string[];
+    }
+
     export interface GetClusterNodePoolAutoscaling {
         maxNodeCount: number;
         minNodeCount: number;
@@ -20305,6 +20372,7 @@ export namespace container {
         nodeGroup: string;
         oauthScopes: string[];
         preemptible: boolean;
+        reservationAffinities: outputs.container.GetClusterNodePoolNodeConfigReservationAffinity[];
         sandboxConfigs: outputs.container.GetClusterNodePoolNodeConfigSandboxConfig[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterNodePoolNodeConfigShieldedInstanceConfig[];
@@ -20340,6 +20408,12 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigLinuxNodeConfig {
         sysctls: {[key: string]: string};
+    }
+
+    export interface GetClusterNodePoolNodeConfigReservationAffinity {
+        consumeReservationType: string;
+        key: string;
+        values: string[];
     }
 
     export interface GetClusterNodePoolNodeConfigSandboxConfig {
@@ -20473,6 +20547,7 @@ export namespace container {
         nodeGroup?: string;
         oauthScopes: string[];
         preemptible?: boolean;
+        reservationAffinity?: outputs.container.NodePoolNodeConfigReservationAffinity;
         sandboxConfig?: outputs.container.NodePoolNodeConfigSandboxConfig;
         serviceAccount: string;
         shieldedInstanceConfig: outputs.container.NodePoolNodeConfigShieldedInstanceConfig;
@@ -20513,6 +20588,12 @@ export namespace container {
 
     export interface NodePoolNodeConfigLinuxNodeConfig {
         sysctls: {[key: string]: string};
+    }
+
+    export interface NodePoolNodeConfigReservationAffinity {
+        consumeReservationType: string;
+        key?: string;
+        values?: string[];
     }
 
     export interface NodePoolNodeConfigSandboxConfig {
@@ -21987,7 +22068,7 @@ export namespace dataplex {
         /**
          * Optional. Configuration for CSV data.
          */
-        csvOptions?: outputs.dataplex.AssetDiscoverySpecCsvOptions;
+        csvOptions: outputs.dataplex.AssetDiscoverySpecCsvOptions;
         /**
          * Required. Whether discovery is enabled.
          */
@@ -22003,7 +22084,7 @@ export namespace dataplex {
         /**
          * Optional. Configuration for Json data.
          */
-        jsonOptions?: outputs.dataplex.AssetDiscoverySpecJsonOptions;
+        jsonOptions: outputs.dataplex.AssetDiscoverySpecJsonOptions;
         /**
          * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
          */
@@ -22109,7 +22190,7 @@ export namespace dataplex {
         /**
          * Optional. Configuration for CSV data.
          */
-        csvOptions?: outputs.dataplex.ZoneDiscoverySpecCsvOptions;
+        csvOptions: outputs.dataplex.ZoneDiscoverySpecCsvOptions;
         /**
          * Required. Whether discovery is enabled.
          */
@@ -22125,7 +22206,7 @@ export namespace dataplex {
         /**
          * Optional. Configuration for Json data.
          */
-        jsonOptions?: outputs.dataplex.ZoneDiscoverySpecJsonOptions;
+        jsonOptions: outputs.dataplex.ZoneDiscoverySpecJsonOptions;
         /**
          * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
          */
@@ -26189,7 +26270,7 @@ export namespace iam {
          * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
          * Structure is documented below.
          */
-        denialCondition: outputs.iam.DenyPolicyRuleDenyRuleDenialCondition;
+        denialCondition?: outputs.iam.DenyPolicyRuleDenyRuleDenialCondition;
         /**
          * The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
          * where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
@@ -32090,7 +32171,7 @@ export namespace pubsub {
          */
         dropUnknownFields?: boolean;
         /**
-         * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+         * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
          */
         table: string;
         /**

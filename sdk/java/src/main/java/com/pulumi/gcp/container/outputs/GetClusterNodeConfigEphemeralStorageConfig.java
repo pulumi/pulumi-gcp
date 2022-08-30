@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigEphemeralStorageConfig {
-    private final Integer localSsdCount;
+    private Integer localSsdCount;
 
-    @CustomType.Constructor
-    private GetClusterNodeConfigEphemeralStorageConfig(@CustomType.Parameter("localSsdCount") Integer localSsdCount) {
-        this.localSsdCount = localSsdCount;
-    }
-
+    private GetClusterNodeConfigEphemeralStorageConfig() {}
     public Integer localSsdCount() {
         return this.localSsdCount;
     }
@@ -27,24 +23,24 @@ public final class GetClusterNodeConfigEphemeralStorageConfig {
     public static Builder builder(GetClusterNodeConfigEphemeralStorageConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer localSsdCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodeConfigEphemeralStorageConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localSsdCount = defaults.localSsdCount;
         }
 
+        @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
             this.localSsdCount = Objects.requireNonNull(localSsdCount);
             return this;
-        }        public GetClusterNodeConfigEphemeralStorageConfig build() {
-            return new GetClusterNodeConfigEphemeralStorageConfig(localSsdCount);
+        }
+        public GetClusterNodeConfigEphemeralStorageConfig build() {
+            final var o = new GetClusterNodeConfigEphemeralStorageConfig();
+            o.localSsdCount = localSsdCount;
+            return o;
         }
     }
 }

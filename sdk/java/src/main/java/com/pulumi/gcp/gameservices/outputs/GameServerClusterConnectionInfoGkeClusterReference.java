@@ -20,13 +20,9 @@ public final class GameServerClusterConnectionInfoGkeClusterReference {
      *   GKE cluster.
      * 
      */
-    private final String cluster;
+    private String cluster;
 
-    @CustomType.Constructor
-    private GameServerClusterConnectionInfoGkeClusterReference(@CustomType.Parameter("cluster") String cluster) {
-        this.cluster = cluster;
-    }
-
+    private GameServerClusterConnectionInfoGkeClusterReference() {}
     /**
      * @return The full or partial name of a GKE cluster, using one of the following
      * forms:
@@ -49,24 +45,24 @@ public final class GameServerClusterConnectionInfoGkeClusterReference {
     public static Builder builder(GameServerClusterConnectionInfoGkeClusterReference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cluster;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerClusterConnectionInfoGkeClusterReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
         }
 
+        @CustomType.Setter
         public Builder cluster(String cluster) {
             this.cluster = Objects.requireNonNull(cluster);
             return this;
-        }        public GameServerClusterConnectionInfoGkeClusterReference build() {
-            return new GameServerClusterConnectionInfoGkeClusterReference(cluster);
+        }
+        public GameServerClusterConnectionInfoGkeClusterReference build() {
+            final var o = new GameServerClusterConnectionInfoGkeClusterReference();
+            o.cluster = cluster;
+            return o;
         }
     }
 }

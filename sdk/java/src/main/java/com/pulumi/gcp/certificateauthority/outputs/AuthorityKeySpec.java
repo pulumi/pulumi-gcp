@@ -17,22 +17,15 @@ public final class AuthorityKeySpec {
      * Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
      * 
      */
-    private final @Nullable String algorithm;
+    private @Nullable String algorithm;
     /**
      * @return The resource name for an existing Cloud KMS CryptoKeyVersion in the format
      * `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`.
      * 
      */
-    private final @Nullable String cloudKmsKeyVersion;
+    private @Nullable String cloudKmsKeyVersion;
 
-    @CustomType.Constructor
-    private AuthorityKeySpec(
-        @CustomType.Parameter("algorithm") @Nullable String algorithm,
-        @CustomType.Parameter("cloudKmsKeyVersion") @Nullable String cloudKmsKeyVersion) {
-        this.algorithm = algorithm;
-        this.cloudKmsKeyVersion = cloudKmsKeyVersion;
-    }
-
+    private AuthorityKeySpec() {}
     /**
      * @return The algorithm to use for creating a managed Cloud KMS key for a for a simplified
      * experience. All managed keys will be have their ProtectionLevel as HSM.
@@ -58,30 +51,32 @@ public final class AuthorityKeySpec {
     public static Builder builder(AuthorityKeySpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String algorithm;
         private @Nullable String cloudKmsKeyVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthorityKeySpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.cloudKmsKeyVersion = defaults.cloudKmsKeyVersion;
         }
 
+        @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
             this.algorithm = algorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudKmsKeyVersion(@Nullable String cloudKmsKeyVersion) {
             this.cloudKmsKeyVersion = cloudKmsKeyVersion;
             return this;
-        }        public AuthorityKeySpec build() {
-            return new AuthorityKeySpec(algorithm, cloudKmsKeyVersion);
+        }
+        public AuthorityKeySpec build() {
+            final var o = new AuthorityKeySpec();
+            o.algorithm = algorithm;
+            o.cloudKmsKeyVersion = cloudKmsKeyVersion;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class ApiConfigOpenapiDocument {
      * Structure is documented below.
      * 
      */
-    private final ApiConfigOpenapiDocumentDocument document;
+    private ApiConfigOpenapiDocumentDocument document;
 
-    @CustomType.Constructor
-    private ApiConfigOpenapiDocument(@CustomType.Parameter("document") ApiConfigOpenapiDocumentDocument document) {
-        this.document = document;
-    }
-
+    private ApiConfigOpenapiDocument() {}
     /**
      * @return The OpenAPI Specification document file.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class ApiConfigOpenapiDocument {
     public static Builder builder(ApiConfigOpenapiDocument defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ApiConfigOpenapiDocumentDocument document;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiConfigOpenapiDocument defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.document = defaults.document;
         }
 
+        @CustomType.Setter
         public Builder document(ApiConfigOpenapiDocumentDocument document) {
             this.document = Objects.requireNonNull(document);
             return this;
-        }        public ApiConfigOpenapiDocument build() {
-            return new ApiConfigOpenapiDocument(document);
+        }
+        public ApiConfigOpenapiDocument build() {
+            final var o = new ApiConfigOpenapiDocument();
+            o.document = document;
+            return o;
         }
     }
 }

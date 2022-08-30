@@ -23,79 +23,52 @@ public final class GetInstanceTemplateNetworkInterface {
      * on that network). This block can be repeated multiple times. Structure documented below.
      * 
      */
-    private final List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
+    private List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
      * array of alias IP ranges for this network interface. Can only be specified for network
      * interfaces on subnet-mode networks. Structure documented below.
      * 
      */
-    private final List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
-    private final List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
-    private final String ipv6AccessType;
+    private List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    private List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
+    private String ipv6AccessType;
     /**
      * @return The name of the instance template. One of `name` or `filter` must be provided.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The name or self_link of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
      * 
      */
-    private final String networkIp;
-    private final String nicType;
-    private final Integer queueCount;
-    private final String stackType;
+    private String networkIp;
+    private String nicType;
+    private Integer queueCount;
+    private String stackType;
     /**
      * @return the name of the subnetwork to attach this interface
      * to. The subnetwork must exist in the same `region` this instance will be
      * created in. Either `network` or `subnetwork` must be provided.
      * 
      */
-    private final String subnetwork;
+    private String subnetwork;
     /**
      * @return The ID of the project in which the subnetwork belongs.
      * If it is not provided, the provider project is used.
      * 
      */
-    private final String subnetworkProject;
+    private String subnetworkProject;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateNetworkInterface(
-        @CustomType.Parameter("accessConfigs") List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs,
-        @CustomType.Parameter("aliasIpRanges") List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges,
-        @CustomType.Parameter("ipv6AccessConfigs") List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
-        @CustomType.Parameter("ipv6AccessType") String ipv6AccessType,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("networkIp") String networkIp,
-        @CustomType.Parameter("nicType") String nicType,
-        @CustomType.Parameter("queueCount") Integer queueCount,
-        @CustomType.Parameter("stackType") String stackType,
-        @CustomType.Parameter("subnetwork") String subnetwork,
-        @CustomType.Parameter("subnetworkProject") String subnetworkProject) {
-        this.accessConfigs = accessConfigs;
-        this.aliasIpRanges = aliasIpRanges;
-        this.ipv6AccessConfigs = ipv6AccessConfigs;
-        this.ipv6AccessType = ipv6AccessType;
-        this.name = name;
-        this.network = network;
-        this.networkIp = networkIp;
-        this.nicType = nicType;
-        this.queueCount = queueCount;
-        this.stackType = stackType;
-        this.subnetwork = subnetwork;
-        this.subnetworkProject = subnetworkProject;
-    }
-
+    private GetInstanceTemplateNetworkInterface() {}
     /**
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Omit to ensure that the instance
@@ -181,7 +154,7 @@ public final class GetInstanceTemplateNetworkInterface {
     public static Builder builder(GetInstanceTemplateNetworkInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
@@ -195,11 +168,7 @@ public final class GetInstanceTemplateNetworkInterface {
         private String stackType;
         private String subnetwork;
         private String subnetworkProject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
@@ -216,6 +185,7 @@ public final class GetInstanceTemplateNetworkInterface {
     	      this.subnetworkProject = defaults.subnetworkProject;
         }
 
+        @CustomType.Setter
         public Builder accessConfigs(List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs) {
             this.accessConfigs = Objects.requireNonNull(accessConfigs);
             return this;
@@ -223,6 +193,7 @@ public final class GetInstanceTemplateNetworkInterface {
         public Builder accessConfigs(GetInstanceTemplateNetworkInterfaceAccessConfig... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
+        @CustomType.Setter
         public Builder aliasIpRanges(List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges) {
             this.aliasIpRanges = Objects.requireNonNull(aliasIpRanges);
             return this;
@@ -230,6 +201,7 @@ public final class GetInstanceTemplateNetworkInterface {
         public Builder aliasIpRanges(GetInstanceTemplateNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
+        @CustomType.Setter
         public Builder ipv6AccessConfigs(List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
             this.ipv6AccessConfigs = Objects.requireNonNull(ipv6AccessConfigs);
             return this;
@@ -237,43 +209,66 @@ public final class GetInstanceTemplateNetworkInterface {
         public Builder ipv6AccessConfigs(GetInstanceTemplateNetworkInterfaceIpv6AccessConfig... ipv6AccessConfigs) {
             return ipv6AccessConfigs(List.of(ipv6AccessConfigs));
         }
+        @CustomType.Setter
         public Builder ipv6AccessType(String ipv6AccessType) {
             this.ipv6AccessType = Objects.requireNonNull(ipv6AccessType);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder networkIp(String networkIp) {
             this.networkIp = Objects.requireNonNull(networkIp);
             return this;
         }
+        @CustomType.Setter
         public Builder nicType(String nicType) {
             this.nicType = Objects.requireNonNull(nicType);
             return this;
         }
+        @CustomType.Setter
         public Builder queueCount(Integer queueCount) {
             this.queueCount = Objects.requireNonNull(queueCount);
             return this;
         }
+        @CustomType.Setter
         public Builder stackType(String stackType) {
             this.stackType = Objects.requireNonNull(stackType);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             this.subnetwork = Objects.requireNonNull(subnetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworkProject(String subnetworkProject) {
             this.subnetworkProject = Objects.requireNonNull(subnetworkProject);
             return this;
-        }        public GetInstanceTemplateNetworkInterface build() {
-            return new GetInstanceTemplateNetworkInterface(accessConfigs, aliasIpRanges, ipv6AccessConfigs, ipv6AccessType, name, network, networkIp, nicType, queueCount, stackType, subnetwork, subnetworkProject);
+        }
+        public GetInstanceTemplateNetworkInterface build() {
+            final var o = new GetInstanceTemplateNetworkInterface();
+            o.accessConfigs = accessConfigs;
+            o.aliasIpRanges = aliasIpRanges;
+            o.ipv6AccessConfigs = ipv6AccessConfigs;
+            o.ipv6AccessType = ipv6AccessType;
+            o.name = name;
+            o.network = network;
+            o.networkIp = networkIp;
+            o.nicType = nicType;
+            o.queueCount = queueCount;
+            o.stackType = stackType;
+            o.subnetwork = subnetwork;
+            o.subnetworkProject = subnetworkProject;
+            return o;
         }
     }
 }

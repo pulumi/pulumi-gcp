@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigShieldedInstanceConfig {
-    private final Boolean enableIntegrityMonitoring;
-    private final Boolean enableSecureBoot;
+    private Boolean enableIntegrityMonitoring;
+    private Boolean enableSecureBoot;
 
-    @CustomType.Constructor
-    private GetClusterNodeConfigShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") Boolean enableSecureBoot) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-    }
-
+    private GetClusterNodeConfigShieldedInstanceConfig() {}
     public Boolean enableIntegrityMonitoring() {
         return this.enableIntegrityMonitoring;
     }
@@ -34,30 +27,32 @@ public final class GetClusterNodeConfigShieldedInstanceConfig {
     public static Builder builder(GetClusterNodeConfigShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableIntegrityMonitoring;
         private Boolean enableSecureBoot;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodeConfigShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
     	      this.enableSecureBoot = defaults.enableSecureBoot;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = Objects.requireNonNull(enableIntegrityMonitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
             this.enableSecureBoot = Objects.requireNonNull(enableSecureBoot);
             return this;
-        }        public GetClusterNodeConfigShieldedInstanceConfig build() {
-            return new GetClusterNodeConfigShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot);
+        }
+        public GetClusterNodeConfigShieldedInstanceConfig build() {
+            final var o = new GetClusterNodeConfigShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            return o;
         }
     }
 }

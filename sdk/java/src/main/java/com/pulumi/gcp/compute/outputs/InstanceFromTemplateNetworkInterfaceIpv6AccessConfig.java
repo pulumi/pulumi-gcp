@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
-    private final @Nullable String externalIpv6;
-    private final @Nullable String externalIpv6PrefixLength;
-    private final String networkTier;
-    private final @Nullable String publicPtrDomainName;
+    private @Nullable String externalIpv6;
+    private @Nullable String externalIpv6PrefixLength;
+    private String networkTier;
+    private @Nullable String publicPtrDomainName;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(
-        @CustomType.Parameter("externalIpv6") @Nullable String externalIpv6,
-        @CustomType.Parameter("externalIpv6PrefixLength") @Nullable String externalIpv6PrefixLength,
-        @CustomType.Parameter("networkTier") String networkTier,
-        @CustomType.Parameter("publicPtrDomainName") @Nullable String publicPtrDomainName) {
-        this.externalIpv6 = externalIpv6;
-        this.externalIpv6PrefixLength = externalIpv6PrefixLength;
-        this.networkTier = networkTier;
-        this.publicPtrDomainName = publicPtrDomainName;
-    }
-
+    private InstanceFromTemplateNetworkInterfaceIpv6AccessConfig() {}
     public Optional<String> externalIpv6() {
         return Optional.ofNullable(this.externalIpv6);
     }
@@ -48,17 +37,13 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
     public static Builder builder(InstanceFromTemplateNetworkInterfaceIpv6AccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String externalIpv6;
         private @Nullable String externalIpv6PrefixLength;
         private String networkTier;
         private @Nullable String publicPtrDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateNetworkInterfaceIpv6AccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalIpv6 = defaults.externalIpv6;
@@ -67,23 +52,33 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
 
+        @CustomType.Setter
         public Builder externalIpv6(@Nullable String externalIpv6) {
             this.externalIpv6 = externalIpv6;
             return this;
         }
+        @CustomType.Setter
         public Builder externalIpv6PrefixLength(@Nullable String externalIpv6PrefixLength) {
             this.externalIpv6PrefixLength = externalIpv6PrefixLength;
             return this;
         }
+        @CustomType.Setter
         public Builder networkTier(String networkTier) {
             this.networkTier = Objects.requireNonNull(networkTier);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPtrDomainName(@Nullable String publicPtrDomainName) {
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
-        }        public InstanceFromTemplateNetworkInterfaceIpv6AccessConfig build() {
-            return new InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(externalIpv6, externalIpv6PrefixLength, networkTier, publicPtrDomainName);
+        }
+        public InstanceFromTemplateNetworkInterfaceIpv6AccessConfig build() {
+            final var o = new InstanceFromTemplateNetworkInterfaceIpv6AccessConfig();
+            o.externalIpv6 = externalIpv6;
+            o.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            o.networkTier = networkTier;
+            o.publicPtrDomainName = publicPtrDomainName;
+            return o;
         }
     }
 }

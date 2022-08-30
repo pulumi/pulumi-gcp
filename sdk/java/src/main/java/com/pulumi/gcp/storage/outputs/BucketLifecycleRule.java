@@ -14,21 +14,14 @@ public final class BucketLifecycleRule {
      * @return The Lifecycle Rule&#39;s action configuration. A single block of this type is supported. Structure is documented below.
      * 
      */
-    private final BucketLifecycleRuleAction action;
+    private BucketLifecycleRuleAction action;
     /**
      * @return The Lifecycle Rule&#39;s condition configuration. A single block of this type is supported. Structure is documented below.
      * 
      */
-    private final BucketLifecycleRuleCondition condition;
+    private BucketLifecycleRuleCondition condition;
 
-    @CustomType.Constructor
-    private BucketLifecycleRule(
-        @CustomType.Parameter("action") BucketLifecycleRuleAction action,
-        @CustomType.Parameter("condition") BucketLifecycleRuleCondition condition) {
-        this.action = action;
-        this.condition = condition;
-    }
-
+    private BucketLifecycleRule() {}
     /**
      * @return The Lifecycle Rule&#39;s action configuration. A single block of this type is supported. Structure is documented below.
      * 
@@ -51,30 +44,32 @@ public final class BucketLifecycleRule {
     public static Builder builder(BucketLifecycleRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private BucketLifecycleRuleAction action;
         private BucketLifecycleRuleCondition condition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLifecycleRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.condition = defaults.condition;
         }
 
+        @CustomType.Setter
         public Builder action(BucketLifecycleRuleAction action) {
             this.action = Objects.requireNonNull(action);
             return this;
         }
+        @CustomType.Setter
         public Builder condition(BucketLifecycleRuleCondition condition) {
             this.condition = Objects.requireNonNull(condition);
             return this;
-        }        public BucketLifecycleRule build() {
-            return new BucketLifecycleRule(action, condition);
+        }
+        public BucketLifecycleRule build() {
+            final var o = new BucketLifecycleRule();
+            o.action = action;
+            o.condition = condition;
+            return o;
         }
     }
 }

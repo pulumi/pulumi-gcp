@@ -15,21 +15,14 @@ public final class PatchDeploymentRolloutDisruptionBudget {
      * @return Specifies a fixed value.
      * 
      */
-    private final @Nullable Integer fixed;
+    private @Nullable Integer fixed;
     /**
      * @return Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
      * 
      */
-    private final @Nullable Integer percentage;
+    private @Nullable Integer percentage;
 
-    @CustomType.Constructor
-    private PatchDeploymentRolloutDisruptionBudget(
-        @CustomType.Parameter("fixed") @Nullable Integer fixed,
-        @CustomType.Parameter("percentage") @Nullable Integer percentage) {
-        this.fixed = fixed;
-        this.percentage = percentage;
-    }
-
+    private PatchDeploymentRolloutDisruptionBudget() {}
     /**
      * @return Specifies a fixed value.
      * 
@@ -52,30 +45,32 @@ public final class PatchDeploymentRolloutDisruptionBudget {
     public static Builder builder(PatchDeploymentRolloutDisruptionBudget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer fixed;
         private @Nullable Integer percentage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentRolloutDisruptionBudget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixed = defaults.fixed;
     	      this.percentage = defaults.percentage;
         }
 
+        @CustomType.Setter
         public Builder fixed(@Nullable Integer fixed) {
             this.fixed = fixed;
             return this;
         }
+        @CustomType.Setter
         public Builder percentage(@Nullable Integer percentage) {
             this.percentage = percentage;
             return this;
-        }        public PatchDeploymentRolloutDisruptionBudget build() {
-            return new PatchDeploymentRolloutDisruptionBudget(fixed, percentage);
+        }
+        public PatchDeploymentRolloutDisruptionBudget build() {
+            final var o = new PatchDeploymentRolloutDisruptionBudget();
+            o.fixed = fixed;
+            o.percentage = percentage;
+            return o;
         }
     }
 }

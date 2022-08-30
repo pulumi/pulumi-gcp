@@ -18,63 +18,46 @@ public final class StandardAppVersionHandler {
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
-    private final @Nullable String authFailAction;
+    private @Nullable String authFailAction;
     /**
      * @return Methods to restrict access to a URL based on login status.
      * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
      * 
      */
-    private final @Nullable String login;
+    private @Nullable String login;
     /**
      * @return 30x code to use when performing redirects for the secure field.
      * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
      * 
      */
-    private final @Nullable String redirectHttpResponseCode;
+    private @Nullable String redirectHttpResponseCode;
     /**
      * @return Executes a script to handle the requests that match this URL pattern.
      * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
      * Structure is documented below.
      * 
      */
-    private final @Nullable StandardAppVersionHandlerScript script;
+    private @Nullable StandardAppVersionHandlerScript script;
     /**
      * @return Security (HTTPS) enforcement for this URL.
      * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
      * 
      */
-    private final @Nullable String securityLevel;
+    private @Nullable String securityLevel;
     /**
      * @return Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
      * Structure is documented below.
      * 
      */
-    private final @Nullable StandardAppVersionHandlerStaticFiles staticFiles;
+    private @Nullable StandardAppVersionHandlerStaticFiles staticFiles;
     /**
      * @return URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
      * All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
      * 
      */
-    private final @Nullable String urlRegex;
+    private @Nullable String urlRegex;
 
-    @CustomType.Constructor
-    private StandardAppVersionHandler(
-        @CustomType.Parameter("authFailAction") @Nullable String authFailAction,
-        @CustomType.Parameter("login") @Nullable String login,
-        @CustomType.Parameter("redirectHttpResponseCode") @Nullable String redirectHttpResponseCode,
-        @CustomType.Parameter("script") @Nullable StandardAppVersionHandlerScript script,
-        @CustomType.Parameter("securityLevel") @Nullable String securityLevel,
-        @CustomType.Parameter("staticFiles") @Nullable StandardAppVersionHandlerStaticFiles staticFiles,
-        @CustomType.Parameter("urlRegex") @Nullable String urlRegex) {
-        this.authFailAction = authFailAction;
-        this.login = login;
-        this.redirectHttpResponseCode = redirectHttpResponseCode;
-        this.script = script;
-        this.securityLevel = securityLevel;
-        this.staticFiles = staticFiles;
-        this.urlRegex = urlRegex;
-    }
-
+    private StandardAppVersionHandler() {}
     /**
      * @return Actions to take when the user is not logged in.
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
@@ -140,7 +123,7 @@ public final class StandardAppVersionHandler {
     public static Builder builder(StandardAppVersionHandler defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authFailAction;
         private @Nullable String login;
@@ -149,11 +132,7 @@ public final class StandardAppVersionHandler {
         private @Nullable String securityLevel;
         private @Nullable StandardAppVersionHandlerStaticFiles staticFiles;
         private @Nullable String urlRegex;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionHandler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authFailAction = defaults.authFailAction;
@@ -165,35 +144,51 @@ public final class StandardAppVersionHandler {
     	      this.urlRegex = defaults.urlRegex;
         }
 
+        @CustomType.Setter
         public Builder authFailAction(@Nullable String authFailAction) {
             this.authFailAction = authFailAction;
             return this;
         }
+        @CustomType.Setter
         public Builder login(@Nullable String login) {
             this.login = login;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectHttpResponseCode(@Nullable String redirectHttpResponseCode) {
             this.redirectHttpResponseCode = redirectHttpResponseCode;
             return this;
         }
+        @CustomType.Setter
         public Builder script(@Nullable StandardAppVersionHandlerScript script) {
             this.script = script;
             return this;
         }
+        @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
             this.securityLevel = securityLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder staticFiles(@Nullable StandardAppVersionHandlerStaticFiles staticFiles) {
             this.staticFiles = staticFiles;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRegex(@Nullable String urlRegex) {
             this.urlRegex = urlRegex;
             return this;
-        }        public StandardAppVersionHandler build() {
-            return new StandardAppVersionHandler(authFailAction, login, redirectHttpResponseCode, script, securityLevel, staticFiles, urlRegex);
+        }
+        public StandardAppVersionHandler build() {
+            final var o = new StandardAppVersionHandler();
+            o.authFailAction = authFailAction;
+            o.login = login;
+            o.redirectHttpResponseCode = redirectHttpResponseCode;
+            o.script = script;
+            o.securityLevel = securityLevel;
+            o.staticFiles = staticFiles;
+            o.urlRegex = urlRegex;
+            return o;
         }
     }
 }

@@ -17,7 +17,7 @@ public final class FunctionEventTriggerEventFilter {
      * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s `event_type` attribute.
      * 
      */
-    private final String attribute;
+    private String attribute;
     /**
      * @return Optional. The operator used for matching the events with the value of
      * the filter. If not specified, only events that have an exact key-value
@@ -26,24 +26,15 @@ public final class FunctionEventTriggerEventFilter {
      * [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)&#39;
      * 
      */
-    private final @Nullable String operator;
+    private @Nullable String operator;
     /**
      * @return Required. The value for the attribute.
      * If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private FunctionEventTriggerEventFilter(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("operator") @Nullable String operator,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.operator = operator;
-        this.value = value;
-    }
-
+    private FunctionEventTriggerEventFilter() {}
     /**
      * @return &#39;Required. The name of a CloudEvents attribute.
      * Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
@@ -80,16 +71,12 @@ public final class FunctionEventTriggerEventFilter {
     public static Builder builder(FunctionEventTriggerEventFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private @Nullable String operator;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionEventTriggerEventFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -97,19 +84,27 @@ public final class FunctionEventTriggerEventFilter {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
             this.operator = operator;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public FunctionEventTriggerEventFilter build() {
-            return new FunctionEventTriggerEventFilter(attribute, operator, value);
+        }
+        public FunctionEventTriggerEventFilter build() {
+            final var o = new FunctionEventTriggerEventFilter();
+            o.attribute = attribute;
+            o.operator = operator;
+            o.value = value;
+            return o;
         }
     }
 }

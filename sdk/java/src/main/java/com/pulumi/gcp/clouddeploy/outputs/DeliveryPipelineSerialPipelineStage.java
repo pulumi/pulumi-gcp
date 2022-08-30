@@ -16,21 +16,14 @@ public final class DeliveryPipelineSerialPipelineStage {
      * @return Skaffold profiles to use when rendering the manifest for this stage&#39;s `Target`.
      * 
      */
-    private final @Nullable List<String> profiles;
+    private @Nullable List<String> profiles;
     /**
      * @return The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
      * 
      */
-    private final @Nullable String targetId;
+    private @Nullable String targetId;
 
-    @CustomType.Constructor
-    private DeliveryPipelineSerialPipelineStage(
-        @CustomType.Parameter("profiles") @Nullable List<String> profiles,
-        @CustomType.Parameter("targetId") @Nullable String targetId) {
-        this.profiles = profiles;
-        this.targetId = targetId;
-    }
-
+    private DeliveryPipelineSerialPipelineStage() {}
     /**
      * @return Skaffold profiles to use when rendering the manifest for this stage&#39;s `Target`.
      * 
@@ -53,21 +46,18 @@ public final class DeliveryPipelineSerialPipelineStage {
     public static Builder builder(DeliveryPipelineSerialPipelineStage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> profiles;
         private @Nullable String targetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.profiles = defaults.profiles;
     	      this.targetId = defaults.targetId;
         }
 
+        @CustomType.Setter
         public Builder profiles(@Nullable List<String> profiles) {
             this.profiles = profiles;
             return this;
@@ -75,11 +65,16 @@ public final class DeliveryPipelineSerialPipelineStage {
         public Builder profiles(String... profiles) {
             return profiles(List.of(profiles));
         }
+        @CustomType.Setter
         public Builder targetId(@Nullable String targetId) {
             this.targetId = targetId;
             return this;
-        }        public DeliveryPipelineSerialPipelineStage build() {
-            return new DeliveryPipelineSerialPipelineStage(profiles, targetId);
+        }
+        public DeliveryPipelineSerialPipelineStage build() {
+            final var o = new DeliveryPipelineSerialPipelineStage();
+            o.profiles = profiles;
+            o.targetId = targetId;
+            return o;
         }
     }
 }

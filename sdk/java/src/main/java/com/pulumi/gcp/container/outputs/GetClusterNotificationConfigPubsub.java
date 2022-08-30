@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNotificationConfigPubsub {
-    private final Boolean enabled;
-    private final String topic;
+    private Boolean enabled;
+    private String topic;
 
-    @CustomType.Constructor
-    private GetClusterNotificationConfigPubsub(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("topic") String topic) {
-        this.enabled = enabled;
-        this.topic = topic;
-    }
-
+    private GetClusterNotificationConfigPubsub() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -35,30 +28,32 @@ public final class GetClusterNotificationConfigPubsub {
     public static Builder builder(GetClusterNotificationConfigPubsub defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNotificationConfigPubsub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }        public GetClusterNotificationConfigPubsub build() {
-            return new GetClusterNotificationConfigPubsub(enabled, topic);
+        }
+        public GetClusterNotificationConfigPubsub build() {
+            final var o = new GetClusterNotificationConfigPubsub();
+            o.enabled = enabled;
+            o.topic = topic;
+            return o;
         }
     }
 }

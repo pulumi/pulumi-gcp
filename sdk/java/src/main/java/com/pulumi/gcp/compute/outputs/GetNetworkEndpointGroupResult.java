@@ -16,68 +16,43 @@ public final class GetNetworkEndpointGroupResult {
      * @return The NEG default port.
      * 
      */
-    private final Integer defaultPort;
+    private Integer defaultPort;
     /**
      * @return The NEG description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String name;
+    private String id;
+    private @Nullable String name;
     /**
      * @return The network to which all network endpoints in the NEG belong.
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return Type of network endpoints in this network endpoint group.
      * 
      */
-    private final String networkEndpointType;
-    private final @Nullable String project;
-    private final @Nullable String selfLink;
+    private String networkEndpointType;
+    private @Nullable String project;
+    private @Nullable String selfLink;
     /**
      * @return Number of network endpoints in the network endpoint group.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return subnetwork to which all network endpoints in the NEG belong.
      * 
      */
-    private final String subnetwork;
-    private final @Nullable String zone;
+    private String subnetwork;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private GetNetworkEndpointGroupResult(
-        @CustomType.Parameter("defaultPort") Integer defaultPort,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("networkEndpointType") String networkEndpointType,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("selfLink") @Nullable String selfLink,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("subnetwork") String subnetwork,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.defaultPort = defaultPort;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.network = network;
-        this.networkEndpointType = networkEndpointType;
-        this.project = project;
-        this.selfLink = selfLink;
-        this.size = size;
-        this.subnetwork = subnetwork;
-        this.zone = zone;
-    }
-
+    private GetNetworkEndpointGroupResult() {}
     /**
      * @return The NEG default port.
      * 
@@ -147,7 +122,7 @@ public final class GetNetworkEndpointGroupResult {
     public static Builder builder(GetNetworkEndpointGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer defaultPort;
         private String description;
@@ -160,11 +135,7 @@ public final class GetNetworkEndpointGroupResult {
         private Integer size;
         private String subnetwork;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkEndpointGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultPort = defaults.defaultPort;
@@ -180,51 +151,75 @@ public final class GetNetworkEndpointGroupResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder defaultPort(Integer defaultPort) {
             this.defaultPort = Objects.requireNonNull(defaultPort);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder networkEndpointType(String networkEndpointType) {
             this.networkEndpointType = Objects.requireNonNull(networkEndpointType);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
             this.selfLink = selfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             this.subnetwork = Objects.requireNonNull(subnetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public GetNetworkEndpointGroupResult build() {
-            return new GetNetworkEndpointGroupResult(defaultPort, description, id, name, network, networkEndpointType, project, selfLink, size, subnetwork, zone);
+        }
+        public GetNetworkEndpointGroupResult build() {
+            final var o = new GetNetworkEndpointGroupResult();
+            o.defaultPort = defaultPort;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.network = network;
+            o.networkEndpointType = networkEndpointType;
+            o.project = project;
+            o.selfLink = selfLink;
+            o.size = size;
+            o.subnetwork = subnetwork;
+            o.zone = zone;
+            return o;
         }
     }
 }

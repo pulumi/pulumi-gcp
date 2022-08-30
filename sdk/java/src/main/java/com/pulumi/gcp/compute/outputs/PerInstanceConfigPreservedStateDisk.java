@@ -21,38 +21,27 @@ public final class PerInstanceConfigPreservedStateDisk {
      * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
      * 
      */
-    private final @Nullable String deleteRule;
+    private @Nullable String deleteRule;
     /**
      * @return A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
      * 
      */
-    private final String deviceName;
+    private String deviceName;
     /**
      * @return The mode of the disk.
      * Default value is `READ_WRITE`.
      * Possible values are `READ_ONLY` and `READ_WRITE`.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return The URI of an existing persistent disk to attach under the specified device-name in the format
      * `projects/project-id/zones/zone/disks/disk-name`.
      * 
      */
-    private final String source;
+    private String source;
 
-    @CustomType.Constructor
-    private PerInstanceConfigPreservedStateDisk(
-        @CustomType.Parameter("deleteRule") @Nullable String deleteRule,
-        @CustomType.Parameter("deviceName") String deviceName,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("source") String source) {
-        this.deleteRule = deleteRule;
-        this.deviceName = deviceName;
-        this.mode = mode;
-        this.source = source;
-    }
-
+    private PerInstanceConfigPreservedStateDisk() {}
     /**
      * @return A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
      * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
@@ -98,17 +87,13 @@ public final class PerInstanceConfigPreservedStateDisk {
     public static Builder builder(PerInstanceConfigPreservedStateDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String deleteRule;
         private String deviceName;
         private @Nullable String mode;
         private String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PerInstanceConfigPreservedStateDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteRule = defaults.deleteRule;
@@ -117,23 +102,33 @@ public final class PerInstanceConfigPreservedStateDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder deleteRule(@Nullable String deleteRule) {
             this.deleteRule = deleteRule;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(String deviceName) {
             this.deviceName = Objects.requireNonNull(deviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public PerInstanceConfigPreservedStateDisk build() {
-            return new PerInstanceConfigPreservedStateDisk(deleteRule, deviceName, mode, source);
+        }
+        public PerInstanceConfigPreservedStateDisk build() {
+            final var o = new PerInstanceConfigPreservedStateDisk();
+            o.deleteRule = deleteRule;
+            o.deviceName = deviceName;
+            o.mode = mode;
+            o.source = source;
+            return o;
         }
     }
 }

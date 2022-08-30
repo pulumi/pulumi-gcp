@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceState {
-    private final @Nullable String binaryData;
-    private final @Nullable String updateTime;
+    private @Nullable String binaryData;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private DeviceState(
-        @CustomType.Parameter("binaryData") @Nullable String binaryData,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.binaryData = binaryData;
-        this.updateTime = updateTime;
-    }
-
+    private DeviceState() {}
     public Optional<String> binaryData() {
         return Optional.ofNullable(this.binaryData);
     }
@@ -36,30 +29,32 @@ public final class DeviceState {
     public static Builder builder(DeviceState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String binaryData;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeviceState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.binaryData = defaults.binaryData;
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder binaryData(@Nullable String binaryData) {
             this.binaryData = binaryData;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public DeviceState build() {
-            return new DeviceState(binaryData, updateTime);
+        }
+        public DeviceState build() {
+            final var o = new DeviceState();
+            o.binaryData = binaryData;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

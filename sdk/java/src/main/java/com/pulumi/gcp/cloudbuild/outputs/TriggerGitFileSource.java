@@ -17,39 +17,28 @@ public final class TriggerGitFileSource {
      * build step or with certain reserved volume paths.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
      * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
      * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
      * 
      */
-    private final String repoType;
+    private String repoType;
     /**
      * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
      * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
      * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
      * 
      */
-    private final @Nullable String revision;
+    private @Nullable String revision;
     /**
      * @return The URI of the repo (required).
      * 
      */
-    private final @Nullable String uri;
+    private @Nullable String uri;
 
-    @CustomType.Constructor
-    private TriggerGitFileSource(
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("repoType") String repoType,
-        @CustomType.Parameter("revision") @Nullable String revision,
-        @CustomType.Parameter("uri") @Nullable String uri) {
-        this.path = path;
-        this.repoType = repoType;
-        this.revision = revision;
-        this.uri = uri;
-    }
-
+    private TriggerGitFileSource() {}
     /**
      * @return Path at which to mount the volume.
      * Paths must be absolute and cannot conflict with other volume paths on the same
@@ -92,17 +81,13 @@ public final class TriggerGitFileSource {
     public static Builder builder(TriggerGitFileSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
         private String repoType;
         private @Nullable String revision;
         private @Nullable String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerGitFileSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
@@ -111,23 +96,33 @@ public final class TriggerGitFileSource {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder repoType(String repoType) {
             this.repoType = Objects.requireNonNull(repoType);
             return this;
         }
+        @CustomType.Setter
         public Builder revision(@Nullable String revision) {
             this.revision = revision;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(@Nullable String uri) {
             this.uri = uri;
             return this;
-        }        public TriggerGitFileSource build() {
-            return new TriggerGitFileSource(path, repoType, revision, uri);
+        }
+        public TriggerGitFileSource build() {
+            final var o = new TriggerGitFileSource();
+            o.path = path;
+            o.repoType = repoType;
+            o.revision = revision;
+            o.uri = uri;
+            return o;
         }
     }
 }

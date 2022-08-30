@@ -17,22 +17,15 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort 
      * The value must be between 200 and 599 inclusive.
      * 
      */
-    private final @Nullable Integer httpStatus;
+    private @Nullable Integer httpStatus;
     /**
      * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
-    private final @Nullable Double percentage;
+    private @Nullable Double percentage;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(
-        @CustomType.Parameter("httpStatus") @Nullable Integer httpStatus,
-        @CustomType.Parameter("percentage") @Nullable Double percentage) {
-        this.httpStatus = httpStatus;
-        this.percentage = percentage;
-    }
-
+    private URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort() {}
     /**
      * @return The HTTP status code used to abort the request.
      * The value must be between 200 and 599 inclusive.
@@ -57,30 +50,32 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort 
     public static Builder builder(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer httpStatus;
         private @Nullable Double percentage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpStatus = defaults.httpStatus;
     	      this.percentage = defaults.percentage;
         }
 
+        @CustomType.Setter
         public Builder httpStatus(@Nullable Integer httpStatus) {
             this.httpStatus = httpStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder percentage(@Nullable Double percentage) {
             this.percentage = percentage;
             return this;
-        }        public URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort build() {
-            return new URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(httpStatus, percentage);
+        }
+        public URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort build() {
+            final var o = new URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort();
+            o.httpStatus = httpStatus;
+            o.percentage = percentage;
+            return o;
         }
     }
 }

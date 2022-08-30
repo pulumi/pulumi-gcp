@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIstioCanonicalServiceTelemetry {
-    private final String resourceName;
+    private String resourceName;
 
-    @CustomType.Constructor
-    private GetIstioCanonicalServiceTelemetry(@CustomType.Parameter("resourceName") String resourceName) {
-        this.resourceName = resourceName;
-    }
-
+    private GetIstioCanonicalServiceTelemetry() {}
     public String resourceName() {
         return this.resourceName;
     }
@@ -27,24 +23,24 @@ public final class GetIstioCanonicalServiceTelemetry {
     public static Builder builder(GetIstioCanonicalServiceTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIstioCanonicalServiceTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceName = defaults.resourceName;
         }
 
+        @CustomType.Setter
         public Builder resourceName(String resourceName) {
             this.resourceName = Objects.requireNonNull(resourceName);
             return this;
-        }        public GetIstioCanonicalServiceTelemetry build() {
-            return new GetIstioCanonicalServiceTelemetry(resourceName);
+        }
+        public GetIstioCanonicalServiceTelemetry build() {
+            final var o = new GetIstioCanonicalServiceTelemetry();
+            o.resourceName = resourceName;
+            return o;
         }
     }
 }

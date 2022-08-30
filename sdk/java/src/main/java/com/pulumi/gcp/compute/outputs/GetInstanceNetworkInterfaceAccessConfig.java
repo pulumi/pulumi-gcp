@@ -14,28 +14,19 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
      * network ip.
      * 
      */
-    private final String natIp;
+    private String natIp;
     /**
      * @return The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
      * 
      */
-    private final String networkTier;
+    private String networkTier;
     /**
      * @return The DNS domain name for the public PTR record.
      * 
      */
-    private final String publicPtrDomainName;
+    private String publicPtrDomainName;
 
-    @CustomType.Constructor
-    private GetInstanceNetworkInterfaceAccessConfig(
-        @CustomType.Parameter("natIp") String natIp,
-        @CustomType.Parameter("networkTier") String networkTier,
-        @CustomType.Parameter("publicPtrDomainName") String publicPtrDomainName) {
-        this.natIp = natIp;
-        this.networkTier = networkTier;
-        this.publicPtrDomainName = publicPtrDomainName;
-    }
-
+    private GetInstanceNetworkInterfaceAccessConfig() {}
     /**
      * @return The IP address that is be 1:1 mapped to the instance&#39;s
      * network ip.
@@ -66,16 +57,12 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
     public static Builder builder(GetInstanceNetworkInterfaceAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String natIp;
         private String networkTier;
         private String publicPtrDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
@@ -83,19 +70,27 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
 
+        @CustomType.Setter
         public Builder natIp(String natIp) {
             this.natIp = Objects.requireNonNull(natIp);
             return this;
         }
+        @CustomType.Setter
         public Builder networkTier(String networkTier) {
             this.networkTier = Objects.requireNonNull(networkTier);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
             return this;
-        }        public GetInstanceNetworkInterfaceAccessConfig build() {
-            return new GetInstanceNetworkInterfaceAccessConfig(natIp, networkTier, publicPtrDomainName);
+        }
+        public GetInstanceNetworkInterfaceAccessConfig build() {
+            final var o = new GetInstanceNetworkInterfaceAccessConfig();
+            o.natIp = natIp;
+            o.networkTier = networkTier;
+            o.publicPtrDomainName = publicPtrDomainName;
+            return o;
         }
     }
 }

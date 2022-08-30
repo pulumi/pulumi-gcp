@@ -22,14 +22,14 @@ public final class QueueRetryConfig {
      * -1 indicates unlimited attempts.
      * 
      */
-    private final @Nullable Integer maxAttempts;
+    private @Nullable Integer maxAttempts;
     /**
      * @return A task will be scheduled for retry between minBackoff and
      * maxBackoff duration after it fails, if the queue&#39;s RetryConfig
      * specifies that the task should be retried.
      * 
      */
-    private final @Nullable String maxBackoff;
+    private @Nullable String maxBackoff;
     /**
      * @return The time between retries will double maxDoublings times.
      * A task&#39;s retry interval starts at minBackoff, then doubles maxDoublings times,
@@ -37,7 +37,7 @@ public final class QueueRetryConfig {
      * up to maxAttempts times.
      * 
      */
-    private final @Nullable Integer maxDoublings;
+    private @Nullable Integer maxDoublings;
     /**
      * @return If positive, maxRetryDuration specifies the time limit for
      * retrying a failed task, measured from when the task was first
@@ -47,29 +47,16 @@ public final class QueueRetryConfig {
      * If zero, then the task age is unlimited.
      * 
      */
-    private final @Nullable String maxRetryDuration;
+    private @Nullable String maxRetryDuration;
     /**
      * @return A task will be scheduled for retry between minBackoff and
      * maxBackoff duration after it fails, if the queue&#39;s RetryConfig
      * specifies that the task should be retried.
      * 
      */
-    private final @Nullable String minBackoff;
+    private @Nullable String minBackoff;
 
-    @CustomType.Constructor
-    private QueueRetryConfig(
-        @CustomType.Parameter("maxAttempts") @Nullable Integer maxAttempts,
-        @CustomType.Parameter("maxBackoff") @Nullable String maxBackoff,
-        @CustomType.Parameter("maxDoublings") @Nullable Integer maxDoublings,
-        @CustomType.Parameter("maxRetryDuration") @Nullable String maxRetryDuration,
-        @CustomType.Parameter("minBackoff") @Nullable String minBackoff) {
-        this.maxAttempts = maxAttempts;
-        this.maxBackoff = maxBackoff;
-        this.maxDoublings = maxDoublings;
-        this.maxRetryDuration = maxRetryDuration;
-        this.minBackoff = minBackoff;
-    }
-
+    private QueueRetryConfig() {}
     /**
      * @return Number of attempts per task.
      * Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -131,18 +118,14 @@ public final class QueueRetryConfig {
     public static Builder builder(QueueRetryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxAttempts;
         private @Nullable String maxBackoff;
         private @Nullable Integer maxDoublings;
         private @Nullable String maxRetryDuration;
         private @Nullable String minBackoff;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(QueueRetryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxAttempts = defaults.maxAttempts;
@@ -152,27 +135,39 @@ public final class QueueRetryConfig {
     	      this.minBackoff = defaults.minBackoff;
         }
 
+        @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
             this.maxAttempts = maxAttempts;
             return this;
         }
+        @CustomType.Setter
         public Builder maxBackoff(@Nullable String maxBackoff) {
             this.maxBackoff = maxBackoff;
             return this;
         }
+        @CustomType.Setter
         public Builder maxDoublings(@Nullable Integer maxDoublings) {
             this.maxDoublings = maxDoublings;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRetryDuration(@Nullable String maxRetryDuration) {
             this.maxRetryDuration = maxRetryDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder minBackoff(@Nullable String minBackoff) {
             this.minBackoff = minBackoff;
             return this;
-        }        public QueueRetryConfig build() {
-            return new QueueRetryConfig(maxAttempts, maxBackoff, maxDoublings, maxRetryDuration, minBackoff);
+        }
+        public QueueRetryConfig build() {
+            final var o = new QueueRetryConfig();
+            o.maxAttempts = maxAttempts;
+            o.maxBackoff = maxBackoff;
+            o.maxDoublings = maxDoublings;
+            o.maxRetryDuration = maxRetryDuration;
+            o.minBackoff = minBackoff;
+            return o;
         }
     }
 }

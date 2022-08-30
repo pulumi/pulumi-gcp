@@ -16,21 +16,14 @@ public final class StandardAppVersionDeploymentZip {
      * @return files count
      * 
      */
-    private final @Nullable Integer filesCount;
+    private @Nullable Integer filesCount;
     /**
      * @return Source URL
      * 
      */
-    private final String sourceUrl;
+    private String sourceUrl;
 
-    @CustomType.Constructor
-    private StandardAppVersionDeploymentZip(
-        @CustomType.Parameter("filesCount") @Nullable Integer filesCount,
-        @CustomType.Parameter("sourceUrl") String sourceUrl) {
-        this.filesCount = filesCount;
-        this.sourceUrl = sourceUrl;
-    }
-
+    private StandardAppVersionDeploymentZip() {}
     /**
      * @return files count
      * 
@@ -53,30 +46,32 @@ public final class StandardAppVersionDeploymentZip {
     public static Builder builder(StandardAppVersionDeploymentZip defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer filesCount;
         private String sourceUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionDeploymentZip defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filesCount = defaults.filesCount;
     	      this.sourceUrl = defaults.sourceUrl;
         }
 
+        @CustomType.Setter
         public Builder filesCount(@Nullable Integer filesCount) {
             this.filesCount = filesCount;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceUrl(String sourceUrl) {
             this.sourceUrl = Objects.requireNonNull(sourceUrl);
             return this;
-        }        public StandardAppVersionDeploymentZip build() {
-            return new StandardAppVersionDeploymentZip(filesCount, sourceUrl);
+        }
+        public StandardAppVersionDeploymentZip build() {
+            final var o = new StandardAppVersionDeploymentZip();
+            o.filesCount = filesCount;
+            o.sourceUrl = sourceUrl;
+            return o;
         }
     }
 }

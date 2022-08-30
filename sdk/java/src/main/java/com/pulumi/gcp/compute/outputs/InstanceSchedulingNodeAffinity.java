@@ -14,29 +14,20 @@ public final class InstanceSchedulingNodeAffinity {
      * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The operator. Can be `IN` for node-affinities
      * or `NOT_IN` for anti-affinities.
      * 
      */
-    private final String operator;
+    private String operator;
     /**
      * @return Corresponds to the label values of a reservation resource.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private InstanceSchedulingNodeAffinity(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.operator = operator;
-        this.values = values;
-    }
-
+    private InstanceSchedulingNodeAffinity() {}
     /**
      * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
      * 
@@ -67,16 +58,12 @@ public final class InstanceSchedulingNodeAffinity {
     public static Builder builder(InstanceSchedulingNodeAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String operator;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceSchedulingNodeAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -84,22 +71,30 @@ public final class InstanceSchedulingNodeAffinity {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public InstanceSchedulingNodeAffinity build() {
-            return new InstanceSchedulingNodeAffinity(key, operator, values);
+        }
+        public InstanceSchedulingNodeAffinity build() {
+            final var o = new InstanceSchedulingNodeAffinity();
+            o.key = key;
+            o.operator = operator;
+            o.values = values;
+            return o;
         }
     }
 }

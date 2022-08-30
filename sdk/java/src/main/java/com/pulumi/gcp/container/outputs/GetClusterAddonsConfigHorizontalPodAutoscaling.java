@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfigHorizontalPodAutoscaling {
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfigHorizontalPodAutoscaling(@CustomType.Parameter("disabled") Boolean disabled) {
-        this.disabled = disabled;
-    }
-
+    private GetClusterAddonsConfigHorizontalPodAutoscaling() {}
     public Boolean disabled() {
         return this.disabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterAddonsConfigHorizontalPodAutoscaling {
     public static Builder builder(GetClusterAddonsConfigHorizontalPodAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfigHorizontalPodAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public GetClusterAddonsConfigHorizontalPodAutoscaling build() {
-            return new GetClusterAddonsConfigHorizontalPodAutoscaling(disabled);
+        }
+        public GetClusterAddonsConfigHorizontalPodAutoscaling build() {
+            final var o = new GetClusterAddonsConfigHorizontalPodAutoscaling();
+            o.disabled = disabled;
+            return o;
         }
     }
 }

@@ -16,28 +16,19 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
      */
-    private final @Nullable List<Integer> allowedExitCodes;
+    private @Nullable List<Integer> allowedExitCodes;
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final String artifactId;
+    private String artifactId;
     /**
      * @return The flags to use when installing the MSI. Defaults to the install flag.
      * 
      */
-    private final @Nullable List<String> flags;
+    private @Nullable List<String> flags;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeUpdateStepMsiInstallation(
-        @CustomType.Parameter("allowedExitCodes") @Nullable List<Integer> allowedExitCodes,
-        @CustomType.Parameter("artifactId") String artifactId,
-        @CustomType.Parameter("flags") @Nullable List<String> flags) {
-        this.allowedExitCodes = allowedExitCodes;
-        this.artifactId = artifactId;
-        this.flags = flags;
-    }
-
+    private GuestPoliciesRecipeUpdateStepMsiInstallation() {}
     /**
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
@@ -67,16 +58,12 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
     public static Builder builder(GuestPoliciesRecipeUpdateStepMsiInstallation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> allowedExitCodes;
         private String artifactId;
         private @Nullable List<String> flags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeUpdateStepMsiInstallation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedExitCodes = defaults.allowedExitCodes;
@@ -84,6 +71,7 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
     	      this.flags = defaults.flags;
         }
 
+        @CustomType.Setter
         public Builder allowedExitCodes(@Nullable List<Integer> allowedExitCodes) {
             this.allowedExitCodes = allowedExitCodes;
             return this;
@@ -91,18 +79,25 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
         public Builder allowedExitCodes(Integer... allowedExitCodes) {
             return allowedExitCodes(List.of(allowedExitCodes));
         }
+        @CustomType.Setter
         public Builder artifactId(String artifactId) {
             this.artifactId = Objects.requireNonNull(artifactId);
             return this;
         }
+        @CustomType.Setter
         public Builder flags(@Nullable List<String> flags) {
             this.flags = flags;
             return this;
         }
         public Builder flags(String... flags) {
             return flags(List.of(flags));
-        }        public GuestPoliciesRecipeUpdateStepMsiInstallation build() {
-            return new GuestPoliciesRecipeUpdateStepMsiInstallation(allowedExitCodes, artifactId, flags);
+        }
+        public GuestPoliciesRecipeUpdateStepMsiInstallation build() {
+            final var o = new GuestPoliciesRecipeUpdateStepMsiInstallation();
+            o.allowedExitCodes = allowedExitCodes;
+            o.artifactId = artifactId;
+            o.flags = flags;
+            return o;
         }
     }
 }

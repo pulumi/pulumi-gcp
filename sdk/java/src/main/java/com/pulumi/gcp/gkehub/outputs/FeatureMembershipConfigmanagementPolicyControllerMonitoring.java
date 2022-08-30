@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
-    private final @Nullable List<String> backends;
+    private @Nullable List<String> backends;
 
-    @CustomType.Constructor
-    private FeatureMembershipConfigmanagementPolicyControllerMonitoring(@CustomType.Parameter("backends") @Nullable List<String> backends) {
-        this.backends = backends;
-    }
-
+    private FeatureMembershipConfigmanagementPolicyControllerMonitoring() {}
     public List<String> backends() {
         return this.backends == null ? List.of() : this.backends;
     }
@@ -29,27 +25,27 @@ public final class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
     public static Builder builder(FeatureMembershipConfigmanagementPolicyControllerMonitoring defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> backends;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureMembershipConfigmanagementPolicyControllerMonitoring defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backends = defaults.backends;
         }
 
+        @CustomType.Setter
         public Builder backends(@Nullable List<String> backends) {
             this.backends = backends;
             return this;
         }
         public Builder backends(String... backends) {
             return backends(List.of(backends));
-        }        public FeatureMembershipConfigmanagementPolicyControllerMonitoring build() {
-            return new FeatureMembershipConfigmanagementPolicyControllerMonitoring(backends);
+        }
+        public FeatureMembershipConfigmanagementPolicyControllerMonitoring build() {
+            final var o = new FeatureMembershipConfigmanagementPolicyControllerMonitoring();
+            o.backends = backends;
+            return o;
         }
     }
 }

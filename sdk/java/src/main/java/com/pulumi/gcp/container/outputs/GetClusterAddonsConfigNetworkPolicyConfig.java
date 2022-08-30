@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfigNetworkPolicyConfig {
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfigNetworkPolicyConfig(@CustomType.Parameter("disabled") Boolean disabled) {
-        this.disabled = disabled;
-    }
-
+    private GetClusterAddonsConfigNetworkPolicyConfig() {}
     public Boolean disabled() {
         return this.disabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterAddonsConfigNetworkPolicyConfig {
     public static Builder builder(GetClusterAddonsConfigNetworkPolicyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfigNetworkPolicyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public GetClusterAddonsConfigNetworkPolicyConfig build() {
-            return new GetClusterAddonsConfigNetworkPolicyConfig(disabled);
+        }
+        public GetClusterAddonsConfigNetworkPolicyConfig build() {
+            final var o = new GetClusterAddonsConfigNetworkPolicyConfig();
+            o.disabled = disabled;
+            return o;
         }
     }
 }

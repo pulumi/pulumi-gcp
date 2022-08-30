@@ -18,22 +18,15 @@ public final class AutoscalingPolicyBasicAlgorithm {
      * Bounds: [2m, 1d]. Default: 2m.
      * 
      */
-    private final @Nullable String cooldownPeriod;
+    private @Nullable String cooldownPeriod;
     /**
      * @return YARN autoscaling configuration.
      * Structure is documented below.
      * 
      */
-    private final AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig;
+    private AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig;
 
-    @CustomType.Constructor
-    private AutoscalingPolicyBasicAlgorithm(
-        @CustomType.Parameter("cooldownPeriod") @Nullable String cooldownPeriod,
-        @CustomType.Parameter("yarnConfig") AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig) {
-        this.cooldownPeriod = cooldownPeriod;
-        this.yarnConfig = yarnConfig;
-    }
-
+    private AutoscalingPolicyBasicAlgorithm() {}
     /**
      * @return Duration between scaling events. A scaling period starts after the
      * update operation from the previous event has completed.
@@ -59,30 +52,32 @@ public final class AutoscalingPolicyBasicAlgorithm {
     public static Builder builder(AutoscalingPolicyBasicAlgorithm defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cooldownPeriod;
         private AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalingPolicyBasicAlgorithm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cooldownPeriod = defaults.cooldownPeriod;
     	      this.yarnConfig = defaults.yarnConfig;
         }
 
+        @CustomType.Setter
         public Builder cooldownPeriod(@Nullable String cooldownPeriod) {
             this.cooldownPeriod = cooldownPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder yarnConfig(AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig) {
             this.yarnConfig = Objects.requireNonNull(yarnConfig);
             return this;
-        }        public AutoscalingPolicyBasicAlgorithm build() {
-            return new AutoscalingPolicyBasicAlgorithm(cooldownPeriod, yarnConfig);
+        }
+        public AutoscalingPolicyBasicAlgorithm build() {
+            final var o = new AutoscalingPolicyBasicAlgorithm();
+            o.cooldownPeriod = cooldownPeriod;
+            o.yarnConfig = yarnConfig;
+            return o;
         }
     }
 }

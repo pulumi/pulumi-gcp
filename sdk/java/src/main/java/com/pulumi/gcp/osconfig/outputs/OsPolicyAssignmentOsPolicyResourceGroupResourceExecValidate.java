@@ -17,42 +17,29 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
      * @return Optional arguments to pass to the source during execution.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return A remote or local source.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file;
     /**
      * @return Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
      * 
      */
-    private final String interpreter;
+    private String interpreter;
     /**
      * @return Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
      * 
      */
-    private final @Nullable String outputFilePath;
+    private @Nullable String outputFilePath;
     /**
      * @return An inline script. The size of the script is limited to 1024 characters.
      * 
      */
-    private final @Nullable String script;
+    private @Nullable String script;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("file") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file,
-        @CustomType.Parameter("interpreter") String interpreter,
-        @CustomType.Parameter("outputFilePath") @Nullable String outputFilePath,
-        @CustomType.Parameter("script") @Nullable String script) {
-        this.args = args;
-        this.file = file;
-        this.interpreter = interpreter;
-        this.outputFilePath = outputFilePath;
-        this.script = script;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate() {}
     /**
      * @return Optional arguments to pass to the source during execution.
      * 
@@ -96,18 +83,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file;
         private String interpreter;
         private @Nullable String outputFilePath;
         private @Nullable String script;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -117,6 +100,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
     	      this.script = defaults.script;
         }
 
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -124,23 +108,34 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder file(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file) {
             this.file = file;
             return this;
         }
+        @CustomType.Setter
         public Builder interpreter(String interpreter) {
             this.interpreter = Objects.requireNonNull(interpreter);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFilePath(@Nullable String outputFilePath) {
             this.outputFilePath = outputFilePath;
             return this;
         }
+        @CustomType.Setter
         public Builder script(@Nullable String script) {
             this.script = script;
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate(args, file, interpreter, outputFilePath, script);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate();
+            o.args = args;
+            o.file = file;
+            o.interpreter = interpreter;
+            o.outputFilePath = outputFilePath;
+            o.script = script;
+            return o;
         }
     }
 }

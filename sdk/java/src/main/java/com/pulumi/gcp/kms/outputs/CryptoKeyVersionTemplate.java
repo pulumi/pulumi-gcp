@@ -16,21 +16,14 @@ public final class CryptoKeyVersionTemplate {
      * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
      * 
      */
-    private final String algorithm;
+    private String algorithm;
     /**
      * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
      * 
      */
-    private final @Nullable String protectionLevel;
+    private @Nullable String protectionLevel;
 
-    @CustomType.Constructor
-    private CryptoKeyVersionTemplate(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("protectionLevel") @Nullable String protectionLevel) {
-        this.algorithm = algorithm;
-        this.protectionLevel = protectionLevel;
-    }
-
+    private CryptoKeyVersionTemplate() {}
     /**
      * @return The algorithm to use when creating a version based on this template.
      * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
@@ -54,30 +47,32 @@ public final class CryptoKeyVersionTemplate {
     public static Builder builder(CryptoKeyVersionTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private @Nullable String protectionLevel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CryptoKeyVersionTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.protectionLevel = defaults.protectionLevel;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder protectionLevel(@Nullable String protectionLevel) {
             this.protectionLevel = protectionLevel;
             return this;
-        }        public CryptoKeyVersionTemplate build() {
-            return new CryptoKeyVersionTemplate(algorithm, protectionLevel);
+        }
+        public CryptoKeyVersionTemplate build() {
+            final var o = new CryptoKeyVersionTemplate();
+            o.algorithm = algorithm;
+            o.protectionLevel = protectionLevel;
+            return o;
         }
     }
 }

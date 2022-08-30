@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMonitoringConfig {
-    private final List<String> enableComponents;
-    private final List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses;
+    private List<String> enableComponents;
+    private List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses;
 
-    @CustomType.Constructor
-    private GetClusterMonitoringConfig(
-        @CustomType.Parameter("enableComponents") List<String> enableComponents,
-        @CustomType.Parameter("managedPrometheuses") List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses) {
-        this.enableComponents = enableComponents;
-        this.managedPrometheuses = managedPrometheuses;
-    }
-
+    private GetClusterMonitoringConfig() {}
     public List<String> enableComponents() {
         return this.enableComponents;
     }
@@ -36,21 +29,18 @@ public final class GetClusterMonitoringConfig {
     public static Builder builder(GetClusterMonitoringConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> enableComponents;
         private List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMonitoringConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableComponents = defaults.enableComponents;
     	      this.managedPrometheuses = defaults.managedPrometheuses;
         }
 
+        @CustomType.Setter
         public Builder enableComponents(List<String> enableComponents) {
             this.enableComponents = Objects.requireNonNull(enableComponents);
             return this;
@@ -58,14 +48,19 @@ public final class GetClusterMonitoringConfig {
         public Builder enableComponents(String... enableComponents) {
             return enableComponents(List.of(enableComponents));
         }
+        @CustomType.Setter
         public Builder managedPrometheuses(List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses) {
             this.managedPrometheuses = Objects.requireNonNull(managedPrometheuses);
             return this;
         }
         public Builder managedPrometheuses(GetClusterMonitoringConfigManagedPrometheus... managedPrometheuses) {
             return managedPrometheuses(List.of(managedPrometheuses));
-        }        public GetClusterMonitoringConfig build() {
-            return new GetClusterMonitoringConfig(enableComponents, managedPrometheuses);
+        }
+        public GetClusterMonitoringConfig build() {
+            final var o = new GetClusterMonitoringConfig();
+            o.enableComponents = enableComponents;
+            o.managedPrometheuses = managedPrometheuses;
+            return o;
         }
     }
 }

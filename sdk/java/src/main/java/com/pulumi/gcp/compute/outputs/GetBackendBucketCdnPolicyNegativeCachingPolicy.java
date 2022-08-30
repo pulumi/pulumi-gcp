@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicyNegativeCachingPolicy {
-    private final Integer code;
-    private final Integer ttl;
+    private Integer code;
+    private Integer ttl;
 
-    @CustomType.Constructor
-    private GetBackendBucketCdnPolicyNegativeCachingPolicy(
-        @CustomType.Parameter("code") Integer code,
-        @CustomType.Parameter("ttl") Integer ttl) {
-        this.code = code;
-        this.ttl = ttl;
-    }
-
+    private GetBackendBucketCdnPolicyNegativeCachingPolicy() {}
     public Integer code() {
         return this.code;
     }
@@ -34,30 +27,32 @@ public final class GetBackendBucketCdnPolicyNegativeCachingPolicy {
     public static Builder builder(GetBackendBucketCdnPolicyNegativeCachingPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer code;
         private Integer ttl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendBucketCdnPolicyNegativeCachingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
         public Builder code(Integer code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
-        }        public GetBackendBucketCdnPolicyNegativeCachingPolicy build() {
-            return new GetBackendBucketCdnPolicyNegativeCachingPolicy(code, ttl);
+        }
+        public GetBackendBucketCdnPolicyNegativeCachingPolicy build() {
+            final var o = new GetBackendBucketCdnPolicyNegativeCachingPolicy();
+            o.code = code;
+            o.ttl = ttl;
+            return o;
         }
     }
 }

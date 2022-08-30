@@ -18,65 +18,42 @@ public final class GetInstanceGroupResult {
      * @return Textual description of the instance group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return List of instances in the group.
      * 
      */
-    private final List<String> instances;
-    private final @Nullable String name;
+    private List<String> instances;
+    private @Nullable String name;
     /**
      * @return List of named ports in the group.
      * 
      */
-    private final List<GetInstanceGroupNamedPort> namedPorts;
+    private List<GetInstanceGroupNamedPort> namedPorts;
     /**
      * @return The URL of the network the instance group is in.
      * 
      */
-    private final String network;
-    private final String project;
+    private String network;
+    private String project;
     /**
      * @return The URI of the resource.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
     /**
      * @return The number of instances in the group.
      * 
      */
-    private final Integer size;
-    private final String zone;
+    private Integer size;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetInstanceGroupResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instances") List<String> instances,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("namedPorts") List<GetInstanceGroupNamedPort> namedPorts,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("zone") String zone) {
-        this.description = description;
-        this.id = id;
-        this.instances = instances;
-        this.name = name;
-        this.namedPorts = namedPorts;
-        this.network = network;
-        this.project = project;
-        this.selfLink = selfLink;
-        this.size = size;
-        this.zone = zone;
-    }
-
+    private GetInstanceGroupResult() {}
     /**
      * @return Textual description of the instance group.
      * 
@@ -143,7 +120,7 @@ public final class GetInstanceGroupResult {
     public static Builder builder(GetInstanceGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -155,11 +132,7 @@ public final class GetInstanceGroupResult {
         private String selfLink;
         private Integer size;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -174,14 +147,17 @@ public final class GetInstanceGroupResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<String> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -189,10 +165,12 @@ public final class GetInstanceGroupResult {
         public Builder instances(String... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder namedPorts(List<GetInstanceGroupNamedPort> namedPorts) {
             this.namedPorts = Objects.requireNonNull(namedPorts);
             return this;
@@ -200,27 +178,44 @@ public final class GetInstanceGroupResult {
         public Builder namedPorts(GetInstanceGroupNamedPort... namedPorts) {
             return namedPorts(List.of(namedPorts));
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetInstanceGroupResult build() {
-            return new GetInstanceGroupResult(description, id, instances, name, namedPorts, network, project, selfLink, size, zone);
+        }
+        public GetInstanceGroupResult build() {
+            final var o = new GetInstanceGroupResult();
+            o.description = description;
+            o.id = id;
+            o.instances = instances;
+            o.name = name;
+            o.namedPorts = namedPorts;
+            o.network = network;
+            o.project = project;
+            o.selfLink = selfLink;
+            o.size = size;
+            o.zone = zone;
+            return o;
         }
     }
 }

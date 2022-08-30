@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterPodSecurityPolicyConfig {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterPodSecurityPolicyConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClusterPodSecurityPolicyConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterPodSecurityPolicyConfig {
     public static Builder builder(GetClusterPodSecurityPolicyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterPodSecurityPolicyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClusterPodSecurityPolicyConfig build() {
-            return new GetClusterPodSecurityPolicyConfig(enabled);
+        }
+        public GetClusterPodSecurityPolicyConfig build() {
+            final var o = new GetClusterPodSecurityPolicyConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

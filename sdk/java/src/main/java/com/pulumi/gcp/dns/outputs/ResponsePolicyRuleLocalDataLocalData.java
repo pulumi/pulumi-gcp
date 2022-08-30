@@ -17,37 +17,26 @@ public final class ResponsePolicyRuleLocalDataLocalData {
      * @return For example, www.example.com.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
      * 
      */
-    private final @Nullable List<String> rrdatas;
+    private @Nullable List<String> rrdatas;
     /**
      * @return Number of seconds that this ResourceRecordSet can be cached by
      * resolvers.
      * 
      */
-    private final @Nullable Integer ttl;
+    private @Nullable Integer ttl;
     /**
      * @return One of valid DNS resource types.
      * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ResponsePolicyRuleLocalDataLocalData(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("rrdatas") @Nullable List<String> rrdatas,
-        @CustomType.Parameter("ttl") @Nullable Integer ttl,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.rrdatas = rrdatas;
-        this.ttl = ttl;
-        this.type = type;
-    }
-
+    private ResponsePolicyRuleLocalDataLocalData() {}
     /**
      * @return For example, www.example.com.
      * 
@@ -86,17 +75,13 @@ public final class ResponsePolicyRuleLocalDataLocalData {
     public static Builder builder(ResponsePolicyRuleLocalDataLocalData defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private @Nullable List<String> rrdatas;
         private @Nullable Integer ttl;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResponsePolicyRuleLocalDataLocalData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -105,10 +90,12 @@ public final class ResponsePolicyRuleLocalDataLocalData {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder rrdatas(@Nullable List<String> rrdatas) {
             this.rrdatas = rrdatas;
             return this;
@@ -116,15 +103,23 @@ public final class ResponsePolicyRuleLocalDataLocalData {
         public Builder rrdatas(String... rrdatas) {
             return rrdatas(List.of(rrdatas));
         }
+        @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
             this.ttl = ttl;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ResponsePolicyRuleLocalDataLocalData build() {
-            return new ResponsePolicyRuleLocalDataLocalData(name, rrdatas, ttl, type);
+        }
+        public ResponsePolicyRuleLocalDataLocalData build() {
+            final var o = new ResponsePolicyRuleLocalDataLocalData();
+            o.name = name;
+            o.rrdatas = rrdatas;
+            o.ttl = ttl;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
      * @return Credentials used to authenticate API requests to Azure block.
      * 
      */
-    private final TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
+    private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
     /**
      * @return The container to transfer from the Azure Storage account.`
      * 
      */
-    private final String container;
+    private String container;
     /**
      * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return The name of the Azure Storage account.
      * 
      */
-    private final String storageAccount;
+    private String storageAccount;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecAzureBlobStorageDataSource(
-        @CustomType.Parameter("azureCredentials") TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials,
-        @CustomType.Parameter("container") String container,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("storageAccount") String storageAccount) {
-        this.azureCredentials = azureCredentials;
-        this.container = container;
-        this.path = path;
-        this.storageAccount = storageAccount;
-    }
-
+    private TransferJobTransferSpecAzureBlobStorageDataSource() {}
     /**
      * @return Credentials used to authenticate API requests to Azure block.
      * 
@@ -81,17 +70,13 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
     public static Builder builder(TransferJobTransferSpecAzureBlobStorageDataSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
         private String container;
         private @Nullable String path;
         private String storageAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecAzureBlobStorageDataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.azureCredentials = defaults.azureCredentials;
@@ -100,23 +85,33 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
     	      this.storageAccount = defaults.storageAccount;
         }
 
+        @CustomType.Setter
         public Builder azureCredentials(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials) {
             this.azureCredentials = Objects.requireNonNull(azureCredentials);
             return this;
         }
+        @CustomType.Setter
         public Builder container(String container) {
             this.container = Objects.requireNonNull(container);
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder storageAccount(String storageAccount) {
             this.storageAccount = Objects.requireNonNull(storageAccount);
             return this;
-        }        public TransferJobTransferSpecAzureBlobStorageDataSource build() {
-            return new TransferJobTransferSpecAzureBlobStorageDataSource(azureCredentials, container, path, storageAccount);
+        }
+        public TransferJobTransferSpecAzureBlobStorageDataSource build() {
+            final var o = new TransferJobTransferSpecAzureBlobStorageDataSource();
+            o.azureCredentials = azureCredentials;
+            o.container = container;
+            o.path = path;
+            o.storageAccount = storageAccount;
+            return o;
         }
     }
 }

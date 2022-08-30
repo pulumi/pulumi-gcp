@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionSecretEnvironmentVariable {
-    private final String key;
-    private final String projectId;
-    private final String secret;
-    private final String version;
+    private String key;
+    private String projectId;
+    private String secret;
+    private String version;
 
-    @CustomType.Constructor
-    private GetFunctionSecretEnvironmentVariable(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("secret") String secret,
-        @CustomType.Parameter("version") String version) {
-        this.key = key;
-        this.projectId = projectId;
-        this.secret = secret;
-        this.version = version;
-    }
-
+    private GetFunctionSecretEnvironmentVariable() {}
     public String key() {
         return this.key;
     }
@@ -46,17 +35,13 @@ public final class GetFunctionSecretEnvironmentVariable {
     public static Builder builder(GetFunctionSecretEnvironmentVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String projectId;
         private String secret;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionSecretEnvironmentVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -65,23 +50,33 @@ public final class GetFunctionSecretEnvironmentVariable {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetFunctionSecretEnvironmentVariable build() {
-            return new GetFunctionSecretEnvironmentVariable(key, projectId, secret, version);
+        }
+        public GetFunctionSecretEnvironmentVariable build() {
+            final var o = new GetFunctionSecretEnvironmentVariable();
+            o.key = key;
+            o.projectId = projectId;
+            o.secret = secret;
+            o.version = version;
+            return o;
         }
     }
 }

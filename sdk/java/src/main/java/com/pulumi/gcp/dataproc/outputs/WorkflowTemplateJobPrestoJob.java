@@ -20,56 +20,39 @@ public final class WorkflowTemplateJobPrestoJob {
      * @return Optional. Presto client tags to attach to this query
      * 
      */
-    private final @Nullable List<String> clientTags;
+    private @Nullable List<String> clientTags;
     /**
      * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
-    private final @Nullable Boolean continueOnFailure;
+    private @Nullable Boolean continueOnFailure;
     /**
      * @return Optional. The runtime log config for job execution.
      * 
      */
-    private final @Nullable WorkflowTemplateJobPrestoJobLoggingConfig loggingConfig;
+    private @Nullable WorkflowTemplateJobPrestoJobLoggingConfig loggingConfig;
     /**
      * @return Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
      * 
      */
-    private final @Nullable String outputFormat;
+    private @Nullable String outputFormat;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return The HCFS URI of the script that contains SQL queries.
      * 
      */
-    private final @Nullable String queryFileUri;
+    private @Nullable String queryFileUri;
     /**
      * @return A list of queries.
      * 
      */
-    private final @Nullable WorkflowTemplateJobPrestoJobQueryList queryList;
+    private @Nullable WorkflowTemplateJobPrestoJobQueryList queryList;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobPrestoJob(
-        @CustomType.Parameter("clientTags") @Nullable List<String> clientTags,
-        @CustomType.Parameter("continueOnFailure") @Nullable Boolean continueOnFailure,
-        @CustomType.Parameter("loggingConfig") @Nullable WorkflowTemplateJobPrestoJobLoggingConfig loggingConfig,
-        @CustomType.Parameter("outputFormat") @Nullable String outputFormat,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("queryFileUri") @Nullable String queryFileUri,
-        @CustomType.Parameter("queryList") @Nullable WorkflowTemplateJobPrestoJobQueryList queryList) {
-        this.clientTags = clientTags;
-        this.continueOnFailure = continueOnFailure;
-        this.loggingConfig = loggingConfig;
-        this.outputFormat = outputFormat;
-        this.properties = properties;
-        this.queryFileUri = queryFileUri;
-        this.queryList = queryList;
-    }
-
+    private WorkflowTemplateJobPrestoJob() {}
     /**
      * @return Optional. Presto client tags to attach to this query
      * 
@@ -127,7 +110,7 @@ public final class WorkflowTemplateJobPrestoJob {
     public static Builder builder(WorkflowTemplateJobPrestoJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> clientTags;
         private @Nullable Boolean continueOnFailure;
@@ -136,11 +119,7 @@ public final class WorkflowTemplateJobPrestoJob {
         private @Nullable Map<String,String> properties;
         private @Nullable String queryFileUri;
         private @Nullable WorkflowTemplateJobPrestoJobQueryList queryList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobPrestoJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientTags = defaults.clientTags;
@@ -152,6 +131,7 @@ public final class WorkflowTemplateJobPrestoJob {
     	      this.queryList = defaults.queryList;
         }
 
+        @CustomType.Setter
         public Builder clientTags(@Nullable List<String> clientTags) {
             this.clientTags = clientTags;
             return this;
@@ -159,31 +139,46 @@ public final class WorkflowTemplateJobPrestoJob {
         public Builder clientTags(String... clientTags) {
             return clientTags(List.of(clientTags));
         }
+        @CustomType.Setter
         public Builder continueOnFailure(@Nullable Boolean continueOnFailure) {
             this.continueOnFailure = continueOnFailure;
             return this;
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobPrestoJobLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFormat(@Nullable String outputFormat) {
             this.outputFormat = outputFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
             this.queryFileUri = queryFileUri;
             return this;
         }
+        @CustomType.Setter
         public Builder queryList(@Nullable WorkflowTemplateJobPrestoJobQueryList queryList) {
             this.queryList = queryList;
             return this;
-        }        public WorkflowTemplateJobPrestoJob build() {
-            return new WorkflowTemplateJobPrestoJob(clientTags, continueOnFailure, loggingConfig, outputFormat, properties, queryFileUri, queryList);
+        }
+        public WorkflowTemplateJobPrestoJob build() {
+            final var o = new WorkflowTemplateJobPrestoJob();
+            o.clientTags = clientTags;
+            o.continueOnFailure = continueOnFailure;
+            o.loggingConfig = loggingConfig;
+            o.outputFormat = outputFormat;
+            o.properties = properties;
+            o.queryFileUri = queryFileUri;
+            o.queryList = queryList;
+            return o;
         }
     }
 }

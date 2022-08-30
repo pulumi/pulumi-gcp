@@ -13,47 +13,28 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipsMembership {
-    private final String createTime;
+    private String createTime;
     /**
      * @return The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
      * 
      */
-    private final String group;
-    private final List<GetGroupMembershipsMembershipMemberKey> memberKeys;
+    private String group;
+    private List<GetGroupMembershipsMembershipMemberKey> memberKeys;
     /**
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
      */
-    private final String name;
-    private final List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys;
+    private String name;
+    private List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys;
     /**
      * @return The MembershipRoles that apply to the Membership. Structure is documented below.
      * 
      */
-    private final List<GetGroupMembershipsMembershipRole> roles;
-    private final String type;
-    private final String updateTime;
+    private List<GetGroupMembershipsMembershipRole> roles;
+    private String type;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetGroupMembershipsMembership(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("memberKeys") List<GetGroupMembershipsMembershipMemberKey> memberKeys,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("preferredMemberKeys") List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys,
-        @CustomType.Parameter("roles") List<GetGroupMembershipsMembershipRole> roles,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.createTime = createTime;
-        this.group = group;
-        this.memberKeys = memberKeys;
-        this.name = name;
-        this.preferredMemberKeys = preferredMemberKeys;
-        this.roles = roles;
-        this.type = type;
-        this.updateTime = updateTime;
-    }
-
+    private GetGroupMembershipsMembership() {}
     public String createTime() {
         return this.createTime;
     }
@@ -98,7 +79,7 @@ public final class GetGroupMembershipsMembership {
     public static Builder builder(GetGroupMembershipsMembership defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String group;
@@ -108,11 +89,7 @@ public final class GetGroupMembershipsMembership {
         private List<GetGroupMembershipsMembershipRole> roles;
         private String type;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMembershipsMembership defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -125,14 +102,17 @@ public final class GetGroupMembershipsMembership {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder memberKeys(List<GetGroupMembershipsMembershipMemberKey> memberKeys) {
             this.memberKeys = Objects.requireNonNull(memberKeys);
             return this;
@@ -140,10 +120,12 @@ public final class GetGroupMembershipsMembership {
         public Builder memberKeys(GetGroupMembershipsMembershipMemberKey... memberKeys) {
             return memberKeys(List.of(memberKeys));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder preferredMemberKeys(List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys) {
             this.preferredMemberKeys = Objects.requireNonNull(preferredMemberKeys);
             return this;
@@ -151,6 +133,7 @@ public final class GetGroupMembershipsMembership {
         public Builder preferredMemberKeys(GetGroupMembershipsMembershipPreferredMemberKey... preferredMemberKeys) {
             return preferredMemberKeys(List.of(preferredMemberKeys));
         }
+        @CustomType.Setter
         public Builder roles(List<GetGroupMembershipsMembershipRole> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
@@ -158,15 +141,27 @@ public final class GetGroupMembershipsMembership {
         public Builder roles(GetGroupMembershipsMembershipRole... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetGroupMembershipsMembership build() {
-            return new GetGroupMembershipsMembership(createTime, group, memberKeys, name, preferredMemberKeys, roles, type, updateTime);
+        }
+        public GetGroupMembershipsMembership build() {
+            final var o = new GetGroupMembershipsMembership();
+            o.createTime = createTime;
+            o.group = group;
+            o.memberKeys = memberKeys;
+            o.name = name;
+            o.preferredMemberKeys = preferredMemberKeys;
+            o.roles = roles;
+            o.type = type;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

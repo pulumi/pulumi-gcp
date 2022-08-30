@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureState {
-    private final @Nullable List<FeatureStateState> states;
+    private @Nullable List<FeatureStateState> states;
 
-    @CustomType.Constructor
-    private FeatureState(@CustomType.Parameter("states") @Nullable List<FeatureStateState> states) {
-        this.states = states;
-    }
-
+    private FeatureState() {}
     public List<FeatureStateState> states() {
         return this.states == null ? List.of() : this.states;
     }
@@ -29,27 +25,27 @@ public final class FeatureState {
     public static Builder builder(FeatureState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<FeatureStateState> states;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.states = defaults.states;
         }
 
+        @CustomType.Setter
         public Builder states(@Nullable List<FeatureStateState> states) {
             this.states = states;
             return this;
         }
         public Builder states(FeatureStateState... states) {
             return states(List.of(states));
-        }        public FeatureState build() {
-            return new FeatureState(states);
+        }
+        public FeatureState build() {
+            final var o = new FeatureState();
+            o.states = states;
+            return o;
         }
     }
 }

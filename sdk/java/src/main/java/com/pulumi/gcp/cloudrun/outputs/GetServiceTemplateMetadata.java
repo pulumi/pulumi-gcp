@@ -11,39 +11,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateMetadata {
-    private final Map<String,String> annotations;
-    private final Integer generation;
-    private final Map<String,String> labels;
+    private Map<String,String> annotations;
+    private Integer generation;
+    private Map<String,String> labels;
     /**
      * @return The name of the Cloud Run Service.
      * 
      */
-    private final String name;
-    private final String namespace;
-    private final String resourceVersion;
-    private final String selfLink;
-    private final String uid;
+    private String name;
+    private String namespace;
+    private String resourceVersion;
+    private String selfLink;
+    private String uid;
 
-    @CustomType.Constructor
-    private GetServiceTemplateMetadata(
-        @CustomType.Parameter("annotations") Map<String,String> annotations,
-        @CustomType.Parameter("generation") Integer generation,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("resourceVersion") String resourceVersion,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("uid") String uid) {
-        this.annotations = annotations;
-        this.generation = generation;
-        this.labels = labels;
-        this.name = name;
-        this.namespace = namespace;
-        this.resourceVersion = resourceVersion;
-        this.selfLink = selfLink;
-        this.uid = uid;
-    }
-
+    private GetServiceTemplateMetadata() {}
     public Map<String,String> annotations() {
         return this.annotations;
     }
@@ -80,7 +61,7 @@ public final class GetServiceTemplateMetadata {
     public static Builder builder(GetServiceTemplateMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotations;
         private Integer generation;
@@ -90,11 +71,7 @@ public final class GetServiceTemplateMetadata {
         private String resourceVersion;
         private String selfLink;
         private String uid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -107,39 +84,57 @@ public final class GetServiceTemplateMetadata {
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             this.resourceVersion = Objects.requireNonNull(resourceVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder uid(String uid) {
             this.uid = Objects.requireNonNull(uid);
             return this;
-        }        public GetServiceTemplateMetadata build() {
-            return new GetServiceTemplateMetadata(annotations, generation, labels, name, namespace, resourceVersion, selfLink, uid);
+        }
+        public GetServiceTemplateMetadata build() {
+            final var o = new GetServiceTemplateMetadata();
+            o.annotations = annotations;
+            o.generation = generation;
+            o.labels = labels;
+            o.name = name;
+            o.namespace = namespace;
+            o.resourceVersion = resourceVersion;
+            o.selfLink = selfLink;
+            o.uid = uid;
+            return o;
         }
     }
 }

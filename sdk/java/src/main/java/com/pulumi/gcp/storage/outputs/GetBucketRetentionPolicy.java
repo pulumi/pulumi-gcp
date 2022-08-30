@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketRetentionPolicy {
-    private final Boolean isLocked;
-    private final Integer retentionPeriod;
+    private Boolean isLocked;
+    private Integer retentionPeriod;
 
-    @CustomType.Constructor
-    private GetBucketRetentionPolicy(
-        @CustomType.Parameter("isLocked") Boolean isLocked,
-        @CustomType.Parameter("retentionPeriod") Integer retentionPeriod) {
-        this.isLocked = isLocked;
-        this.retentionPeriod = retentionPeriod;
-    }
-
+    private GetBucketRetentionPolicy() {}
     public Boolean isLocked() {
         return this.isLocked;
     }
@@ -35,30 +28,32 @@ public final class GetBucketRetentionPolicy {
     public static Builder builder(GetBucketRetentionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean isLocked;
         private Integer retentionPeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketRetentionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isLocked = defaults.isLocked;
     	      this.retentionPeriod = defaults.retentionPeriod;
         }
 
+        @CustomType.Setter
         public Builder isLocked(Boolean isLocked) {
             this.isLocked = Objects.requireNonNull(isLocked);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionPeriod(Integer retentionPeriod) {
             this.retentionPeriod = Objects.requireNonNull(retentionPeriod);
             return this;
-        }        public GetBucketRetentionPolicy build() {
-            return new GetBucketRetentionPolicy(isLocked, retentionPeriod);
+        }
+        public GetBucketRetentionPolicy build() {
+            final var o = new GetBucketRetentionPolicy();
+            o.isLocked = isLocked;
+            o.retentionPeriod = retentionPeriod;
+            return o;
         }
     }
 }

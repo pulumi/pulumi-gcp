@@ -17,7 +17,7 @@ public final class LiteTopicRetentionConfig {
      * dropped to make room for newer ones, regardless of the value of period.
      * 
      */
-    private final String perPartitionBytes;
+    private String perPartitionBytes;
     /**
      * @return How long a published message is retained. If unset, messages will be retained as
      * long as the bytes retained for each partition is below perPartitionBytes. A
@@ -25,16 +25,9 @@ public final class LiteTopicRetentionConfig {
      * Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String period;
+    private @Nullable String period;
 
-    @CustomType.Constructor
-    private LiteTopicRetentionConfig(
-        @CustomType.Parameter("perPartitionBytes") String perPartitionBytes,
-        @CustomType.Parameter("period") @Nullable String period) {
-        this.perPartitionBytes = perPartitionBytes;
-        this.period = period;
-    }
-
+    private LiteTopicRetentionConfig() {}
     /**
      * @return The provisioned storage, in bytes, per partition. If the number of bytes stored
      * in any of the topic&#39;s partitions grows beyond this value, older messages will be
@@ -62,30 +55,32 @@ public final class LiteTopicRetentionConfig {
     public static Builder builder(LiteTopicRetentionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String perPartitionBytes;
         private @Nullable String period;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LiteTopicRetentionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.perPartitionBytes = defaults.perPartitionBytes;
     	      this.period = defaults.period;
         }
 
+        @CustomType.Setter
         public Builder perPartitionBytes(String perPartitionBytes) {
             this.perPartitionBytes = Objects.requireNonNull(perPartitionBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder period(@Nullable String period) {
             this.period = period;
             return this;
-        }        public LiteTopicRetentionConfig build() {
-            return new LiteTopicRetentionConfig(perPartitionBytes, period);
+        }
+        public LiteTopicRetentionConfig build() {
+            final var o = new LiteTopicRetentionConfig();
+            o.perPartitionBytes = perPartitionBytes;
+            o.period = period;
+            return o;
         }
     }
 }

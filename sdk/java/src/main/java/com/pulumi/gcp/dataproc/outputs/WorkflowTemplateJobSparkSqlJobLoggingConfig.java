@@ -15,13 +15,9 @@ public final class WorkflowTemplateJobSparkSqlJobLoggingConfig {
      * @return The per-package log levels for the driver. This may include &#34;root&#34; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
      */
-    private final @Nullable Map<String,String> driverLogLevels;
+    private @Nullable Map<String,String> driverLogLevels;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobSparkSqlJobLoggingConfig(@CustomType.Parameter("driverLogLevels") @Nullable Map<String,String> driverLogLevels) {
-        this.driverLogLevels = driverLogLevels;
-    }
-
+    private WorkflowTemplateJobSparkSqlJobLoggingConfig() {}
     /**
      * @return The per-package log levels for the driver. This may include &#34;root&#34; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
@@ -37,24 +33,24 @@ public final class WorkflowTemplateJobSparkSqlJobLoggingConfig {
     public static Builder builder(WorkflowTemplateJobSparkSqlJobLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> driverLogLevels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobSparkSqlJobLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.driverLogLevels = defaults.driverLogLevels;
         }
 
+        @CustomType.Setter
         public Builder driverLogLevels(@Nullable Map<String,String> driverLogLevels) {
             this.driverLogLevels = driverLogLevels;
             return this;
-        }        public WorkflowTemplateJobSparkSqlJobLoggingConfig build() {
-            return new WorkflowTemplateJobSparkSqlJobLoggingConfig(driverLogLevels);
+        }
+        public WorkflowTemplateJobSparkSqlJobLoggingConfig build() {
+            final var o = new WorkflowTemplateJobSparkSqlJobLoggingConfig();
+            o.driverLogLevels = driverLogLevels;
+            return o;
         }
     }
 }

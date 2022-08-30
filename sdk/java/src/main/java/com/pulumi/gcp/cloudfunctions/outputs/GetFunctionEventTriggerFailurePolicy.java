@@ -13,13 +13,9 @@ public final class GetFunctionEventTriggerFailurePolicy {
      * @return Whether the function should be retried on failure.
      * 
      */
-    private final Boolean retry;
+    private Boolean retry;
 
-    @CustomType.Constructor
-    private GetFunctionEventTriggerFailurePolicy(@CustomType.Parameter("retry") Boolean retry) {
-        this.retry = retry;
-    }
-
+    private GetFunctionEventTriggerFailurePolicy() {}
     /**
      * @return Whether the function should be retried on failure.
      * 
@@ -35,24 +31,24 @@ public final class GetFunctionEventTriggerFailurePolicy {
     public static Builder builder(GetFunctionEventTriggerFailurePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean retry;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionEventTriggerFailurePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retry = defaults.retry;
         }
 
+        @CustomType.Setter
         public Builder retry(Boolean retry) {
             this.retry = Objects.requireNonNull(retry);
             return this;
-        }        public GetFunctionEventTriggerFailurePolicy build() {
-            return new GetFunctionEventTriggerFailurePolicy(retry);
+        }
+        public GetFunctionEventTriggerFailurePolicy build() {
+            final var o = new GetFunctionEventTriggerFailurePolicy();
+            o.retry = retry;
+            return o;
         }
     }
 }

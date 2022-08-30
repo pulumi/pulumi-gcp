@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceSecuritySetting {
-    private final String clientTlsPolicy;
-    private final List<String> subjectAltNames;
+    private String clientTlsPolicy;
+    private List<String> subjectAltNames;
 
-    @CustomType.Constructor
-    private GetBackendServiceSecuritySetting(
-        @CustomType.Parameter("clientTlsPolicy") String clientTlsPolicy,
-        @CustomType.Parameter("subjectAltNames") List<String> subjectAltNames) {
-        this.clientTlsPolicy = clientTlsPolicy;
-        this.subjectAltNames = subjectAltNames;
-    }
-
+    private GetBackendServiceSecuritySetting() {}
     public String clientTlsPolicy() {
         return this.clientTlsPolicy;
     }
@@ -35,33 +28,35 @@ public final class GetBackendServiceSecuritySetting {
     public static Builder builder(GetBackendServiceSecuritySetting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientTlsPolicy;
         private List<String> subjectAltNames;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceSecuritySetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientTlsPolicy = defaults.clientTlsPolicy;
     	      this.subjectAltNames = defaults.subjectAltNames;
         }
 
+        @CustomType.Setter
         public Builder clientTlsPolicy(String clientTlsPolicy) {
             this.clientTlsPolicy = Objects.requireNonNull(clientTlsPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectAltNames(List<String> subjectAltNames) {
             this.subjectAltNames = Objects.requireNonNull(subjectAltNames);
             return this;
         }
         public Builder subjectAltNames(String... subjectAltNames) {
             return subjectAltNames(List.of(subjectAltNames));
-        }        public GetBackendServiceSecuritySetting build() {
-            return new GetBackendServiceSecuritySetting(clientTlsPolicy, subjectAltNames);
+        }
+        public GetBackendServiceSecuritySetting build() {
+            final var o = new GetBackendServiceSecuritySetting();
+            o.clientTlsPolicy = clientTlsPolicy;
+            o.subjectAltNames = subjectAltNames;
+            return o;
         }
     }
 }

@@ -17,65 +17,42 @@ public final class GetEngineVersionsResult {
      * @return Version of Kubernetes the service deploys by default.
      * 
      */
-    private final String defaultClusterVersion;
+    private String defaultClusterVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The latest version available in the given zone for use with master instances.
      * 
      */
-    private final String latestMasterVersion;
+    private String latestMasterVersion;
     /**
      * @return The latest version available in the given zone for use with node instances.
      * 
      */
-    private final String latestNodeVersion;
-    private final @Nullable String location;
-    private final @Nullable String project;
+    private String latestNodeVersion;
+    private @Nullable String location;
+    private @Nullable String project;
     /**
      * @return A map from a release channel name to the channel&#39;s default version.
      * 
      */
-    private final Map<String,String> releaseChannelDefaultVersion;
+    private Map<String,String> releaseChannelDefaultVersion;
     /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
-    private final List<String> validMasterVersions;
+    private List<String> validMasterVersions;
     /**
      * @return A list of versions available in the given zone for use with node instances.
      * 
      */
-    private final List<String> validNodeVersions;
-    private final @Nullable String versionPrefix;
+    private List<String> validNodeVersions;
+    private @Nullable String versionPrefix;
 
-    @CustomType.Constructor
-    private GetEngineVersionsResult(
-        @CustomType.Parameter("defaultClusterVersion") String defaultClusterVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latestMasterVersion") String latestMasterVersion,
-        @CustomType.Parameter("latestNodeVersion") String latestNodeVersion,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("releaseChannelDefaultVersion") Map<String,String> releaseChannelDefaultVersion,
-        @CustomType.Parameter("validMasterVersions") List<String> validMasterVersions,
-        @CustomType.Parameter("validNodeVersions") List<String> validNodeVersions,
-        @CustomType.Parameter("versionPrefix") @Nullable String versionPrefix) {
-        this.defaultClusterVersion = defaultClusterVersion;
-        this.id = id;
-        this.latestMasterVersion = latestMasterVersion;
-        this.latestNodeVersion = latestNodeVersion;
-        this.location = location;
-        this.project = project;
-        this.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
-        this.validMasterVersions = validMasterVersions;
-        this.validNodeVersions = validNodeVersions;
-        this.versionPrefix = versionPrefix;
-    }
-
+    private GetEngineVersionsResult() {}
     /**
      * @return Version of Kubernetes the service deploys by default.
      * 
@@ -142,7 +119,7 @@ public final class GetEngineVersionsResult {
     public static Builder builder(GetEngineVersionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultClusterVersion;
         private String id;
@@ -154,11 +131,7 @@ public final class GetEngineVersionsResult {
         private List<String> validMasterVersions;
         private List<String> validNodeVersions;
         private @Nullable String versionPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEngineVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultClusterVersion = defaults.defaultClusterVersion;
@@ -173,34 +146,42 @@ public final class GetEngineVersionsResult {
     	      this.versionPrefix = defaults.versionPrefix;
         }
 
+        @CustomType.Setter
         public Builder defaultClusterVersion(String defaultClusterVersion) {
             this.defaultClusterVersion = Objects.requireNonNull(defaultClusterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latestMasterVersion(String latestMasterVersion) {
             this.latestMasterVersion = Objects.requireNonNull(latestMasterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder latestNodeVersion(String latestNodeVersion) {
             this.latestNodeVersion = Objects.requireNonNull(latestNodeVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder releaseChannelDefaultVersion(Map<String,String> releaseChannelDefaultVersion) {
             this.releaseChannelDefaultVersion = Objects.requireNonNull(releaseChannelDefaultVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder validMasterVersions(List<String> validMasterVersions) {
             this.validMasterVersions = Objects.requireNonNull(validMasterVersions);
             return this;
@@ -208,6 +189,7 @@ public final class GetEngineVersionsResult {
         public Builder validMasterVersions(String... validMasterVersions) {
             return validMasterVersions(List.of(validMasterVersions));
         }
+        @CustomType.Setter
         public Builder validNodeVersions(List<String> validNodeVersions) {
             this.validNodeVersions = Objects.requireNonNull(validNodeVersions);
             return this;
@@ -215,11 +197,24 @@ public final class GetEngineVersionsResult {
         public Builder validNodeVersions(String... validNodeVersions) {
             return validNodeVersions(List.of(validNodeVersions));
         }
+        @CustomType.Setter
         public Builder versionPrefix(@Nullable String versionPrefix) {
             this.versionPrefix = versionPrefix;
             return this;
-        }        public GetEngineVersionsResult build() {
-            return new GetEngineVersionsResult(defaultClusterVersion, id, latestMasterVersion, latestNodeVersion, location, project, releaseChannelDefaultVersion, validMasterVersions, validNodeVersions, versionPrefix);
+        }
+        public GetEngineVersionsResult build() {
+            final var o = new GetEngineVersionsResult();
+            o.defaultClusterVersion = defaultClusterVersion;
+            o.id = id;
+            o.latestMasterVersion = latestMasterVersion;
+            o.latestNodeVersion = latestNodeVersion;
+            o.location = location;
+            o.project = project;
+            o.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
+            o.validMasterVersions = validMasterVersions;
+            o.validNodeVersions = validNodeVersions;
+            o.versionPrefix = versionPrefix;
+            return o;
         }
     }
 }

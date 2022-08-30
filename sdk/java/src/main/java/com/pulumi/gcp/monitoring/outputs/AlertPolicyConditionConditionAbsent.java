@@ -31,7 +31,7 @@ public final class AlertPolicyConditionConditionAbsent {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AlertPolicyConditionConditionAbsentAggregation> aggregations;
+    private @Nullable List<AlertPolicyConditionConditionAbsentAggregation> aggregations;
     /**
      * @return The amount of time that a time series must
      * violate the threshold to be considered
@@ -50,12 +50,12 @@ public final class AlertPolicyConditionConditionAbsent {
      * alerted on quickly.
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return A logs-based filter.
      * 
      */
-    private final @Nullable String filter;
+    private @Nullable String filter;
     /**
      * @return The number/percent of time series for which
      * the comparison must hold in order for the
@@ -68,20 +68,9 @@ public final class AlertPolicyConditionConditionAbsent {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionAbsentTrigger trigger;
+    private @Nullable AlertPolicyConditionConditionAbsentTrigger trigger;
 
-    @CustomType.Constructor
-    private AlertPolicyConditionConditionAbsent(
-        @CustomType.Parameter("aggregations") @Nullable List<AlertPolicyConditionConditionAbsentAggregation> aggregations,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("trigger") @Nullable AlertPolicyConditionConditionAbsentTrigger trigger) {
-        this.aggregations = aggregations;
-        this.duration = duration;
-        this.filter = filter;
-        this.trigger = trigger;
-    }
-
+    private AlertPolicyConditionConditionAbsent() {}
     /**
      * @return Specifies the alignment of data points in
      * individual time series as well as how to
@@ -153,17 +142,13 @@ public final class AlertPolicyConditionConditionAbsent {
     public static Builder builder(AlertPolicyConditionConditionAbsent defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AlertPolicyConditionConditionAbsentAggregation> aggregations;
         private String duration;
         private @Nullable String filter;
         private @Nullable AlertPolicyConditionConditionAbsentTrigger trigger;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyConditionConditionAbsent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregations = defaults.aggregations;
@@ -172,6 +157,7 @@ public final class AlertPolicyConditionConditionAbsent {
     	      this.trigger = defaults.trigger;
         }
 
+        @CustomType.Setter
         public Builder aggregations(@Nullable List<AlertPolicyConditionConditionAbsentAggregation> aggregations) {
             this.aggregations = aggregations;
             return this;
@@ -179,19 +165,28 @@ public final class AlertPolicyConditionConditionAbsent {
         public Builder aggregations(AlertPolicyConditionConditionAbsentAggregation... aggregations) {
             return aggregations(List.of(aggregations));
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder trigger(@Nullable AlertPolicyConditionConditionAbsentTrigger trigger) {
             this.trigger = trigger;
             return this;
-        }        public AlertPolicyConditionConditionAbsent build() {
-            return new AlertPolicyConditionConditionAbsent(aggregations, duration, filter, trigger);
+        }
+        public AlertPolicyConditionConditionAbsent build() {
+            final var o = new AlertPolicyConditionConditionAbsent();
+            o.aggregations = aggregations;
+            o.duration = duration;
+            o.filter = filter;
+            o.trigger = trigger;
+            return o;
         }
     }
 }

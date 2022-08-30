@@ -15,13 +15,9 @@ public final class DeliveryPipelineSerialPipeline {
      * @return Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
      * 
      */
-    private final @Nullable List<DeliveryPipelineSerialPipelineStage> stages;
+    private @Nullable List<DeliveryPipelineSerialPipelineStage> stages;
 
-    @CustomType.Constructor
-    private DeliveryPipelineSerialPipeline(@CustomType.Parameter("stages") @Nullable List<DeliveryPipelineSerialPipelineStage> stages) {
-        this.stages = stages;
-    }
-
+    private DeliveryPipelineSerialPipeline() {}
     /**
      * @return Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
      * 
@@ -37,27 +33,27 @@ public final class DeliveryPipelineSerialPipeline {
     public static Builder builder(DeliveryPipelineSerialPipeline defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DeliveryPipelineSerialPipelineStage> stages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeliveryPipelineSerialPipeline defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.stages = defaults.stages;
         }
 
+        @CustomType.Setter
         public Builder stages(@Nullable List<DeliveryPipelineSerialPipelineStage> stages) {
             this.stages = stages;
             return this;
         }
         public Builder stages(DeliveryPipelineSerialPipelineStage... stages) {
             return stages(List.of(stages));
-        }        public DeliveryPipelineSerialPipeline build() {
-            return new DeliveryPipelineSerialPipeline(stages);
+        }
+        public DeliveryPipelineSerialPipeline build() {
+            final var o = new DeliveryPipelineSerialPipeline();
+            o.stages = stages;
+            return o;
         }
     }
 }

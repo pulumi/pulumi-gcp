@@ -14,28 +14,19 @@ public final class MetastoreFederationBackendMetastore {
      * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
      * 
      */
-    private final String metastoreType;
+    private String metastoreType;
     /**
      * @return The relative resource name of the metastore that is being federated.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String rank;
+    private String rank;
 
-    @CustomType.Constructor
-    private MetastoreFederationBackendMetastore(
-        @CustomType.Parameter("metastoreType") String metastoreType,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("rank") String rank) {
-        this.metastoreType = metastoreType;
-        this.name = name;
-        this.rank = rank;
-    }
-
+    private MetastoreFederationBackendMetastore() {}
     /**
      * @return The type of the backend metastore.
      * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
@@ -66,16 +57,12 @@ public final class MetastoreFederationBackendMetastore {
     public static Builder builder(MetastoreFederationBackendMetastore defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String metastoreType;
         private String name;
         private String rank;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreFederationBackendMetastore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metastoreType = defaults.metastoreType;
@@ -83,19 +70,27 @@ public final class MetastoreFederationBackendMetastore {
     	      this.rank = defaults.rank;
         }
 
+        @CustomType.Setter
         public Builder metastoreType(String metastoreType) {
             this.metastoreType = Objects.requireNonNull(metastoreType);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder rank(String rank) {
             this.rank = Objects.requireNonNull(rank);
             return this;
-        }        public MetastoreFederationBackendMetastore build() {
-            return new MetastoreFederationBackendMetastore(metastoreType, name, rank);
+        }
+        public MetastoreFederationBackendMetastore build() {
+            final var o = new MetastoreFederationBackendMetastore();
+            o.metastoreType = metastoreType;
+            o.name = name;
+            o.rank = rank;
+            return o;
         }
     }
 }

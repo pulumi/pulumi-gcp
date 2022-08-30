@@ -14,13 +14,9 @@ public final class PatchDeploymentInstanceFilterGroupLabel {
      * @return Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
 
-    @CustomType.Constructor
-    private PatchDeploymentInstanceFilterGroupLabel(@CustomType.Parameter("labels") Map<String,String> labels) {
-        this.labels = labels;
-    }
-
+    private PatchDeploymentInstanceFilterGroupLabel() {}
     /**
      * @return Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
      * 
@@ -36,24 +32,24 @@ public final class PatchDeploymentInstanceFilterGroupLabel {
     public static Builder builder(PatchDeploymentInstanceFilterGroupLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentInstanceFilterGroupLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
-        }        public PatchDeploymentInstanceFilterGroupLabel build() {
-            return new PatchDeploymentInstanceFilterGroupLabel(labels);
+        }
+        public PatchDeploymentInstanceFilterGroupLabel build() {
+            final var o = new PatchDeploymentInstanceFilterGroupLabel();
+            o.labels = labels;
+            return o;
         }
     }
 }

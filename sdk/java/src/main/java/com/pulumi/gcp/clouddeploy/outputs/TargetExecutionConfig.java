@@ -16,35 +16,24 @@ public final class TargetExecutionConfig {
      * @return Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket (&#34;gs://my-bucket&#34;) or a path within a bucket (&#34;gs://my-bucket/my-dir&#34;). If unspecified, a default bucket located in the same region will be used.
      * 
      */
-    private final @Nullable String artifactStorage;
+    private @Nullable String artifactStorage;
     /**
      * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
      * 
      */
-    private final @Nullable String serviceAccount;
+    private @Nullable String serviceAccount;
     /**
      * @return Required. Usages when this configuration should be applied.
      * 
      */
-    private final List<String> usages;
+    private List<String> usages;
     /**
      * @return Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
      * 
      */
-    private final @Nullable String workerPool;
+    private @Nullable String workerPool;
 
-    @CustomType.Constructor
-    private TargetExecutionConfig(
-        @CustomType.Parameter("artifactStorage") @Nullable String artifactStorage,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount,
-        @CustomType.Parameter("usages") List<String> usages,
-        @CustomType.Parameter("workerPool") @Nullable String workerPool) {
-        this.artifactStorage = artifactStorage;
-        this.serviceAccount = serviceAccount;
-        this.usages = usages;
-        this.workerPool = workerPool;
-    }
-
+    private TargetExecutionConfig() {}
     /**
      * @return Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket (&#34;gs://my-bucket&#34;) or a path within a bucket (&#34;gs://my-bucket/my-dir&#34;). If unspecified, a default bucket located in the same region will be used.
      * 
@@ -81,17 +70,13 @@ public final class TargetExecutionConfig {
     public static Builder builder(TargetExecutionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String artifactStorage;
         private @Nullable String serviceAccount;
         private List<String> usages;
         private @Nullable String workerPool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TargetExecutionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactStorage = defaults.artifactStorage;
@@ -100,14 +85,17 @@ public final class TargetExecutionConfig {
     	      this.workerPool = defaults.workerPool;
         }
 
+        @CustomType.Setter
         public Builder artifactStorage(@Nullable String artifactStorage) {
             this.artifactStorage = artifactStorage;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder usages(List<String> usages) {
             this.usages = Objects.requireNonNull(usages);
             return this;
@@ -115,11 +103,18 @@ public final class TargetExecutionConfig {
         public Builder usages(String... usages) {
             return usages(List.of(usages));
         }
+        @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
             this.workerPool = workerPool;
             return this;
-        }        public TargetExecutionConfig build() {
-            return new TargetExecutionConfig(artifactStorage, serviceAccount, usages, workerPool);
+        }
+        public TargetExecutionConfig build() {
+            final var o = new TargetExecutionConfig();
+            o.artifactStorage = artifactStorage;
+            o.serviceAccount = serviceAccount;
+            o.usages = usages;
+            o.workerPool = workerPool;
+            return o;
         }
     }
 }

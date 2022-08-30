@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceSchedulingNodeAffinity {
-    private final String key;
-    private final String operator;
-    private final List<String> values;
+    private String key;
+    private String operator;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetInstanceSchedulingNodeAffinity(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.operator = operator;
-        this.values = values;
-    }
-
+    private GetInstanceSchedulingNodeAffinity() {}
     public String key() {
         return this.key;
     }
@@ -41,16 +32,12 @@ public final class GetInstanceSchedulingNodeAffinity {
     public static Builder builder(GetInstanceSchedulingNodeAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String operator;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceSchedulingNodeAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -58,22 +45,30 @@ public final class GetInstanceSchedulingNodeAffinity {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetInstanceSchedulingNodeAffinity build() {
-            return new GetInstanceSchedulingNodeAffinity(key, operator, values);
+        }
+        public GetInstanceSchedulingNodeAffinity build() {
+            final var o = new GetInstanceSchedulingNodeAffinity();
+            o.key = key;
+            o.operator = operator;
+            o.values = values;
+            return o;
         }
     }
 }

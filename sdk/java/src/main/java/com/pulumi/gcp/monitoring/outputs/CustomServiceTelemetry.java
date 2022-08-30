@@ -17,13 +17,9 @@ public final class CustomServiceTelemetry {
      * https://cloud.google.com/apis/design/resource_names.
      * 
      */
-    private final @Nullable String resourceName;
+    private @Nullable String resourceName;
 
-    @CustomType.Constructor
-    private CustomServiceTelemetry(@CustomType.Parameter("resourceName") @Nullable String resourceName) {
-        this.resourceName = resourceName;
-    }
-
+    private CustomServiceTelemetry() {}
     /**
      * @return The full name of the resource that defines this service.
      * Formatted as described in
@@ -41,24 +37,24 @@ public final class CustomServiceTelemetry {
     public static Builder builder(CustomServiceTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String resourceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CustomServiceTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceName = defaults.resourceName;
         }
 
+        @CustomType.Setter
         public Builder resourceName(@Nullable String resourceName) {
             this.resourceName = resourceName;
             return this;
-        }        public CustomServiceTelemetry build() {
-            return new CustomServiceTelemetry(resourceName);
+        }
+        public CustomServiceTelemetry build() {
+            final var o = new CustomServiceTelemetry();
+            o.resourceName = resourceName;
+            return o;
         }
     }
 }

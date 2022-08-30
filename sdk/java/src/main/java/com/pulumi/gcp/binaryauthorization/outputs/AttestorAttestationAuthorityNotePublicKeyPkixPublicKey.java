@@ -16,7 +16,7 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
      * `https://tools.ietf.org/html/rfc7468#section-13`
      * 
      */
-    private final @Nullable String publicKeyPem;
+    private @Nullable String publicKeyPem;
     /**
      * @return The signature algorithm used to verify a message against
      * a signature using this key. These signature algorithm must
@@ -25,16 +25,9 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
      * public key).
      * 
      */
-    private final @Nullable String signatureAlgorithm;
+    private @Nullable String signatureAlgorithm;
 
-    @CustomType.Constructor
-    private AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(
-        @CustomType.Parameter("publicKeyPem") @Nullable String publicKeyPem,
-        @CustomType.Parameter("signatureAlgorithm") @Nullable String signatureAlgorithm) {
-        this.publicKeyPem = publicKeyPem;
-        this.signatureAlgorithm = signatureAlgorithm;
-    }
-
+    private AttestorAttestationAuthorityNotePublicKeyPkixPublicKey() {}
     /**
      * @return A PEM-encoded public key, as described in
      * `https://tools.ietf.org/html/rfc7468#section-13`
@@ -62,30 +55,32 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
     public static Builder builder(AttestorAttestationAuthorityNotePublicKeyPkixPublicKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String publicKeyPem;
         private @Nullable String signatureAlgorithm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttestorAttestationAuthorityNotePublicKeyPkixPublicKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicKeyPem = defaults.publicKeyPem;
     	      this.signatureAlgorithm = defaults.signatureAlgorithm;
         }
 
+        @CustomType.Setter
         public Builder publicKeyPem(@Nullable String publicKeyPem) {
             this.publicKeyPem = publicKeyPem;
             return this;
         }
+        @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
-        }        public AttestorAttestationAuthorityNotePublicKeyPkixPublicKey build() {
-            return new AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(publicKeyPem, signatureAlgorithm);
+        }
+        public AttestorAttestationAuthorityNotePublicKeyPkixPublicKey build() {
+            final var o = new AttestorAttestationAuthorityNotePublicKeyPkixPublicKey();
+            o.publicKeyPem = publicKeyPem;
+            o.signatureAlgorithm = signatureAlgorithm;
+            return o;
         }
     }
 }

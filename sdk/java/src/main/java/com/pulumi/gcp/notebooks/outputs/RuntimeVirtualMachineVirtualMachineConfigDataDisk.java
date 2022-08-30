@@ -22,7 +22,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * detached from the instance).
      * 
      */
-    private final @Nullable Boolean autoDelete;
+    private @Nullable Boolean autoDelete;
     /**
      * @return -
      * Optional. Indicates that this is a boot disk. The virtual
@@ -30,7 +30,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * root filesystem.
      * 
      */
-    private final @Nullable Boolean boot;
+    private @Nullable Boolean boot;
     /**
      * @return -
      * Optional. Specifies a unique device name of your choice
@@ -44,7 +44,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * is only applicable for persistent disks.
      * 
      */
-    private final @Nullable String deviceName;
+    private @Nullable String deviceName;
     /**
      * @return -
      * Indicates a list of features to enable on the guest operating
@@ -54,7 +54,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * options. ``
      * 
      */
-    private final @Nullable List<String> guestOsFeatures;
+    private @Nullable List<String> guestOsFeatures;
     /**
      * @return -
      * Output only. A zero-based index to this disk, where 0 is
@@ -62,7 +62,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * to an instance, each disk would have a unique index number.
      * 
      */
-    private final @Nullable Integer index;
+    private @Nullable Integer index;
     /**
      * @return Input only. Specifies the parameters for a new disk that will
      * be created alongside the new instance. Use initialization
@@ -73,7 +73,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams initializeParams;
+    private @Nullable RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams initializeParams;
     /**
      * @return &#34;Specifies the disk interface to use for attaching this disk,
      * which is either SCSI or NVME. The default is SCSI. Persistent
@@ -83,69 +83,42 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      * over NVMe, see Local SSD performance. Valid values: * NVME * SCSI&#34;.
      * 
      */
-    private final @Nullable String interface_;
+    private @Nullable String interface_;
     /**
      * @return -
      * Type of the resource. Always compute#attachedDisk for attached
      * disks.
      * 
      */
-    private final @Nullable String kind;
+    private @Nullable String kind;
     /**
      * @return -
      * Output only. Any valid publicly visible licenses.
      * 
      */
-    private final @Nullable List<String> licenses;
+    private @Nullable List<String> licenses;
     /**
      * @return The mode in which to attach this disk, either READ_WRITE
      * or READ_ONLY. If not specified, the default is to attach
      * the disk in READ_WRITE mode.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return Specifies a valid partial or full URL to an existing
      * Persistent Disk resource.
      * 
      */
-    private final @Nullable String source;
+    private @Nullable String source;
     /**
      * @return Accelerator model. For valid values, see
      * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
      * rest/v1/projects.locations.runtimes#AcceleratorType`
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachineVirtualMachineConfigDataDisk(
-        @CustomType.Parameter("autoDelete") @Nullable Boolean autoDelete,
-        @CustomType.Parameter("boot") @Nullable Boolean boot,
-        @CustomType.Parameter("deviceName") @Nullable String deviceName,
-        @CustomType.Parameter("guestOsFeatures") @Nullable List<String> guestOsFeatures,
-        @CustomType.Parameter("index") @Nullable Integer index,
-        @CustomType.Parameter("initializeParams") @Nullable RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams initializeParams,
-        @CustomType.Parameter("interface") @Nullable String interface_,
-        @CustomType.Parameter("kind") @Nullable String kind,
-        @CustomType.Parameter("licenses") @Nullable List<String> licenses,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("source") @Nullable String source,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.autoDelete = autoDelete;
-        this.boot = boot;
-        this.deviceName = deviceName;
-        this.guestOsFeatures = guestOsFeatures;
-        this.index = index;
-        this.initializeParams = initializeParams;
-        this.interface_ = interface_;
-        this.kind = kind;
-        this.licenses = licenses;
-        this.mode = mode;
-        this.source = source;
-        this.type = type;
-    }
-
+    private RuntimeVirtualMachineVirtualMachineConfigDataDisk() {}
     /**
      * @return -
      * Optional. Specifies whether the disk will be auto-deleted
@@ -280,7 +253,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
     public static Builder builder(RuntimeVirtualMachineVirtualMachineConfigDataDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoDelete;
         private @Nullable Boolean boot;
@@ -294,11 +267,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         private @Nullable String mode;
         private @Nullable String source;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachineVirtualMachineConfigDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDelete = defaults.autoDelete;
@@ -315,18 +284,22 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
             this.autoDelete = autoDelete;
             return this;
         }
+        @CustomType.Setter
         public Builder boot(@Nullable Boolean boot) {
             this.boot = boot;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
             this.deviceName = deviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder guestOsFeatures(@Nullable List<String> guestOsFeatures) {
             this.guestOsFeatures = guestOsFeatures;
             return this;
@@ -334,22 +307,27 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         public Builder guestOsFeatures(String... guestOsFeatures) {
             return guestOsFeatures(List.of(guestOsFeatures));
         }
+        @CustomType.Setter
         public Builder index(@Nullable Integer index) {
             this.index = index;
             return this;
         }
+        @CustomType.Setter
         public Builder initializeParams(@Nullable RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams initializeParams) {
             this.initializeParams = initializeParams;
             return this;
         }
+        @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
             this.interface_ = interface_;
             return this;
         }
+        @CustomType.Setter
         public Builder kind(@Nullable String kind) {
             this.kind = kind;
             return this;
         }
+        @CustomType.Setter
         public Builder licenses(@Nullable List<String> licenses) {
             this.licenses = licenses;
             return this;
@@ -357,19 +335,36 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         public Builder licenses(String... licenses) {
             return licenses(List.of(licenses));
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public RuntimeVirtualMachineVirtualMachineConfigDataDisk build() {
-            return new RuntimeVirtualMachineVirtualMachineConfigDataDisk(autoDelete, boot, deviceName, guestOsFeatures, index, initializeParams, interface_, kind, licenses, mode, source, type);
+        }
+        public RuntimeVirtualMachineVirtualMachineConfigDataDisk build() {
+            final var o = new RuntimeVirtualMachineVirtualMachineConfigDataDisk();
+            o.autoDelete = autoDelete;
+            o.boot = boot;
+            o.deviceName = deviceName;
+            o.guestOsFeatures = guestOsFeatures;
+            o.index = index;
+            o.initializeParams = initializeParams;
+            o.interface_ = interface_;
+            o.kind = kind;
+            o.licenses = licenses;
+            o.mode = mode;
+            o.source = source;
+            o.type = type;
+            return o;
         }
     }
 }

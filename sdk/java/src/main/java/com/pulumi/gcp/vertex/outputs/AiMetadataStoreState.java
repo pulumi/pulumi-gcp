@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiMetadataStoreState {
-    private final @Nullable String diskUtilizationBytes;
+    private @Nullable String diskUtilizationBytes;
 
-    @CustomType.Constructor
-    private AiMetadataStoreState(@CustomType.Parameter("diskUtilizationBytes") @Nullable String diskUtilizationBytes) {
-        this.diskUtilizationBytes = diskUtilizationBytes;
-    }
-
+    private AiMetadataStoreState() {}
     public Optional<String> diskUtilizationBytes() {
         return Optional.ofNullable(this.diskUtilizationBytes);
     }
@@ -29,24 +25,24 @@ public final class AiMetadataStoreState {
     public static Builder builder(AiMetadataStoreState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String diskUtilizationBytes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AiMetadataStoreState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskUtilizationBytes = defaults.diskUtilizationBytes;
         }
 
+        @CustomType.Setter
         public Builder diskUtilizationBytes(@Nullable String diskUtilizationBytes) {
             this.diskUtilizationBytes = diskUtilizationBytes;
             return this;
-        }        public AiMetadataStoreState build() {
-            return new AiMetadataStoreState(diskUtilizationBytes);
+        }
+        public AiMetadataStoreState build() {
+            final var o = new AiMetadataStoreState();
+            o.diskUtilizationBytes = diskUtilizationBytes;
+            return o;
         }
     }
 }

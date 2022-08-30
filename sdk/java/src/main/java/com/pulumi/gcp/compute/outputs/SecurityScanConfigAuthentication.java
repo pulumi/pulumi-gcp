@@ -17,22 +17,15 @@ public final class SecurityScanConfigAuthentication {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SecurityScanConfigAuthenticationCustomAccount customAccount;
+    private @Nullable SecurityScanConfigAuthenticationCustomAccount customAccount;
     /**
      * @return Describes authentication configuration that uses a Google account.
      * Structure is documented below.
      * 
      */
-    private final @Nullable SecurityScanConfigAuthenticationGoogleAccount googleAccount;
+    private @Nullable SecurityScanConfigAuthenticationGoogleAccount googleAccount;
 
-    @CustomType.Constructor
-    private SecurityScanConfigAuthentication(
-        @CustomType.Parameter("customAccount") @Nullable SecurityScanConfigAuthenticationCustomAccount customAccount,
-        @CustomType.Parameter("googleAccount") @Nullable SecurityScanConfigAuthenticationGoogleAccount googleAccount) {
-        this.customAccount = customAccount;
-        this.googleAccount = googleAccount;
-    }
-
+    private SecurityScanConfigAuthentication() {}
     /**
      * @return Describes authentication configuration that uses a custom account.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class SecurityScanConfigAuthentication {
     public static Builder builder(SecurityScanConfigAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SecurityScanConfigAuthenticationCustomAccount customAccount;
         private @Nullable SecurityScanConfigAuthenticationGoogleAccount googleAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityScanConfigAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customAccount = defaults.customAccount;
     	      this.googleAccount = defaults.googleAccount;
         }
 
+        @CustomType.Setter
         public Builder customAccount(@Nullable SecurityScanConfigAuthenticationCustomAccount customAccount) {
             this.customAccount = customAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder googleAccount(@Nullable SecurityScanConfigAuthenticationGoogleAccount googleAccount) {
             this.googleAccount = googleAccount;
             return this;
-        }        public SecurityScanConfigAuthentication build() {
-            return new SecurityScanConfigAuthentication(customAccount, googleAccount);
+        }
+        public SecurityScanConfigAuthentication build() {
+            final var o = new SecurityScanConfigAuthentication();
+            o.customAccount = customAccount;
+            o.googleAccount = googleAccount;
+            return o;
         }
     }
 }

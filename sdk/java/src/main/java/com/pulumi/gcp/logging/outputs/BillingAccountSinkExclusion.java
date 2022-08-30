@@ -16,36 +16,25 @@ public final class BillingAccountSinkExclusion {
      * @return A description of this exclusion.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return If set to True, then this exclusion is disabled and it does not exclude any log entries.
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      * 
      */
-    private final String filter;
+    private String filter;
     /**
      * @return A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private BillingAccountSinkExclusion(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("filter") String filter,
-        @CustomType.Parameter("name") String name) {
-        this.description = description;
-        this.disabled = disabled;
-        this.filter = filter;
-        this.name = name;
-    }
-
+    private BillingAccountSinkExclusion() {}
     /**
      * @return A description of this exclusion.
      * 
@@ -83,17 +72,13 @@ public final class BillingAccountSinkExclusion {
     public static Builder builder(BillingAccountSinkExclusion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Boolean disabled;
         private String filter;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BillingAccountSinkExclusion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -102,23 +87,33 @@ public final class BillingAccountSinkExclusion {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder filter(String filter) {
             this.filter = Objects.requireNonNull(filter);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public BillingAccountSinkExclusion build() {
-            return new BillingAccountSinkExclusion(description, disabled, filter, name);
+        }
+        public BillingAccountSinkExclusion build() {
+            final var o = new BillingAccountSinkExclusion();
+            o.description = description;
+            o.disabled = disabled;
+            o.filter = filter;
+            o.name = name;
+            return o;
         }
     }
 }

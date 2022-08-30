@@ -15,63 +15,44 @@ public final class CertificateConfigSubjectConfigSubject {
      * @return The common name of the distinguished name.
      * 
      */
-    private final String commonName;
+    private String commonName;
     /**
      * @return The country code of the subject.
      * 
      */
-    private final @Nullable String countryCode;
+    private @Nullable String countryCode;
     /**
      * @return The locality or city of the subject.
      * 
      */
-    private final @Nullable String locality;
+    private @Nullable String locality;
     /**
      * @return The organization of the subject.
      * 
      */
-    private final String organization;
+    private String organization;
     /**
      * @return The organizational unit of the subject.
      * 
      */
-    private final @Nullable String organizationalUnit;
+    private @Nullable String organizationalUnit;
     /**
      * @return The postal code of the subject.
      * 
      */
-    private final @Nullable String postalCode;
+    private @Nullable String postalCode;
     /**
      * @return The province, territory, or regional state of the subject.
      * 
      */
-    private final @Nullable String province;
+    private @Nullable String province;
     /**
      * @return The street address of the subject.
      * 
      */
-    private final @Nullable String streetAddress;
+    private @Nullable String streetAddress;
 
-    @CustomType.Constructor
-    private CertificateConfigSubjectConfigSubject(
-        @CustomType.Parameter("commonName") String commonName,
-        @CustomType.Parameter("countryCode") @Nullable String countryCode,
-        @CustomType.Parameter("locality") @Nullable String locality,
-        @CustomType.Parameter("organization") String organization,
-        @CustomType.Parameter("organizationalUnit") @Nullable String organizationalUnit,
-        @CustomType.Parameter("postalCode") @Nullable String postalCode,
-        @CustomType.Parameter("province") @Nullable String province,
-        @CustomType.Parameter("streetAddress") @Nullable String streetAddress) {
-        this.commonName = commonName;
-        this.countryCode = countryCode;
-        this.locality = locality;
-        this.organization = organization;
-        this.organizationalUnit = organizationalUnit;
-        this.postalCode = postalCode;
-        this.province = province;
-        this.streetAddress = streetAddress;
-    }
-
+    private CertificateConfigSubjectConfigSubject() {}
     /**
      * @return The common name of the distinguished name.
      * 
@@ -136,7 +117,7 @@ public final class CertificateConfigSubjectConfigSubject {
     public static Builder builder(CertificateConfigSubjectConfigSubject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String commonName;
         private @Nullable String countryCode;
@@ -146,11 +127,7 @@ public final class CertificateConfigSubjectConfigSubject {
         private @Nullable String postalCode;
         private @Nullable String province;
         private @Nullable String streetAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfigSubjectConfigSubject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commonName = defaults.commonName;
@@ -163,39 +140,57 @@ public final class CertificateConfigSubjectConfigSubject {
     	      this.streetAddress = defaults.streetAddress;
         }
 
+        @CustomType.Setter
         public Builder commonName(String commonName) {
             this.commonName = Objects.requireNonNull(commonName);
             return this;
         }
+        @CustomType.Setter
         public Builder countryCode(@Nullable String countryCode) {
             this.countryCode = countryCode;
             return this;
         }
+        @CustomType.Setter
         public Builder locality(@Nullable String locality) {
             this.locality = locality;
             return this;
         }
+        @CustomType.Setter
         public Builder organization(String organization) {
             this.organization = Objects.requireNonNull(organization);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationalUnit(@Nullable String organizationalUnit) {
             this.organizationalUnit = organizationalUnit;
             return this;
         }
+        @CustomType.Setter
         public Builder postalCode(@Nullable String postalCode) {
             this.postalCode = postalCode;
             return this;
         }
+        @CustomType.Setter
         public Builder province(@Nullable String province) {
             this.province = province;
             return this;
         }
+        @CustomType.Setter
         public Builder streetAddress(@Nullable String streetAddress) {
             this.streetAddress = streetAddress;
             return this;
-        }        public CertificateConfigSubjectConfigSubject build() {
-            return new CertificateConfigSubjectConfigSubject(commonName, countryCode, locality, organization, organizationalUnit, postalCode, province, streetAddress);
+        }
+        public CertificateConfigSubjectConfigSubject build() {
+            final var o = new CertificateConfigSubjectConfigSubject();
+            o.commonName = commonName;
+            o.countryCode = countryCode;
+            o.locality = locality;
+            o.organization = organization;
+            o.organizationalUnit = organizationalUnit;
+            o.postalCode = postalCode;
+            o.province = province;
+            o.streetAddress = streetAddress;
+            return o;
         }
     }
 }

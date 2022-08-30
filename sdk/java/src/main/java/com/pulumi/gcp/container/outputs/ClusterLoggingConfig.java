@@ -14,13 +14,9 @@ public final class ClusterLoggingConfig {
      * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
      * 
      */
-    private final List<String> enableComponents;
+    private List<String> enableComponents;
 
-    @CustomType.Constructor
-    private ClusterLoggingConfig(@CustomType.Parameter("enableComponents") List<String> enableComponents) {
-        this.enableComponents = enableComponents;
-    }
-
+    private ClusterLoggingConfig() {}
     /**
      * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
      * 
@@ -36,27 +32,27 @@ public final class ClusterLoggingConfig {
     public static Builder builder(ClusterLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> enableComponents;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableComponents = defaults.enableComponents;
         }
 
+        @CustomType.Setter
         public Builder enableComponents(List<String> enableComponents) {
             this.enableComponents = Objects.requireNonNull(enableComponents);
             return this;
         }
         public Builder enableComponents(String... enableComponents) {
             return enableComponents(List.of(enableComponents));
-        }        public ClusterLoggingConfig build() {
-            return new ClusterLoggingConfig(enableComponents);
+        }
+        public ClusterLoggingConfig build() {
+            final var o = new ClusterLoggingConfig();
+            o.enableComponents = enableComponents;
+            return o;
         }
     }
 }

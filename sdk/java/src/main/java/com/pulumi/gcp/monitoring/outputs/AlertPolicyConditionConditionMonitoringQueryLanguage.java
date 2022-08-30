@@ -30,7 +30,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      * alerted on quickly.
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
@@ -38,12 +38,12 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
-    private final @Nullable String evaluationMissingData;
+    private @Nullable String evaluationMissingData;
     /**
      * @return Monitoring Query Language query that outputs a boolean stream.
      * 
      */
-    private final String query;
+    private String query;
     /**
      * @return The number/percent of time series for which
      * the comparison must hold in order for the
@@ -56,20 +56,9 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger;
+    private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger;
 
-    @CustomType.Constructor
-    private AlertPolicyConditionConditionMonitoringQueryLanguage(
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("evaluationMissingData") @Nullable String evaluationMissingData,
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("trigger") @Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger) {
-        this.duration = duration;
-        this.evaluationMissingData = evaluationMissingData;
-        this.query = query;
-        this.trigger = trigger;
-    }
-
+    private AlertPolicyConditionConditionMonitoringQueryLanguage() {}
     /**
      * @return The amount of time that a time series must
      * violate the threshold to be considered
@@ -131,17 +120,13 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
     public static Builder builder(AlertPolicyConditionConditionMonitoringQueryLanguage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String duration;
         private @Nullable String evaluationMissingData;
         private String query;
         private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyConditionConditionMonitoringQueryLanguage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.duration = defaults.duration;
@@ -150,23 +135,33 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
     	      this.trigger = defaults.trigger;
         }
 
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder evaluationMissingData(@Nullable String evaluationMissingData) {
             this.evaluationMissingData = evaluationMissingData;
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder trigger(@Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger) {
             this.trigger = trigger;
             return this;
-        }        public AlertPolicyConditionConditionMonitoringQueryLanguage build() {
-            return new AlertPolicyConditionConditionMonitoringQueryLanguage(duration, evaluationMissingData, query, trigger);
+        }
+        public AlertPolicyConditionConditionMonitoringQueryLanguage build() {
+            final var o = new AlertPolicyConditionConditionMonitoringQueryLanguage();
+            o.duration = duration;
+            o.evaluationMissingData = evaluationMissingData;
+            o.query = query;
+            o.trigger = trigger;
+            return o;
         }
     }
 }

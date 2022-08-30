@@ -15,28 +15,19 @@ public final class RulesetSourceFile {
      * @return Textual Content.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return Fingerprint (e.g. github sha) associated with the `File`.
      * 
      */
-    private final @Nullable String fingerprint;
+    private @Nullable String fingerprint;
     /**
      * @return File name.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private RulesetSourceFile(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("fingerprint") @Nullable String fingerprint,
-        @CustomType.Parameter("name") String name) {
-        this.content = content;
-        this.fingerprint = fingerprint;
-        this.name = name;
-    }
-
+    private RulesetSourceFile() {}
     /**
      * @return Textual Content.
      * 
@@ -66,16 +57,12 @@ public final class RulesetSourceFile {
     public static Builder builder(RulesetSourceFile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private @Nullable String fingerprint;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RulesetSourceFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -83,19 +70,27 @@ public final class RulesetSourceFile {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder fingerprint(@Nullable String fingerprint) {
             this.fingerprint = fingerprint;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public RulesetSourceFile build() {
-            return new RulesetSourceFile(content, fingerprint, name);
+        }
+        public RulesetSourceFile build() {
+            final var o = new RulesetSourceFile();
+            o.content = content;
+            o.fingerprint = fingerprint;
+            o.name = name;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
      * phrase and every phrase must contain at least 2 characters that are letters or digits.
      * 
      */
-    private final List<String> words;
+    private List<String> words;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(@CustomType.Parameter("words") List<String> words) {
-        this.words = words;
-    }
-
+    private PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList() {}
     /**
      * @return Words or phrases defining the dictionary. The dictionary must contain at least one
      * phrase and every phrase must contain at least 2 characters that are letters or digits.
@@ -38,27 +34,27 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
     public static Builder builder(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> words;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.words = defaults.words;
         }
 
+        @CustomType.Setter
         public Builder words(List<String> words) {
             this.words = Objects.requireNonNull(words);
             return this;
         }
         public Builder words(String... words) {
             return words(List.of(words));
-        }        public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList build() {
-            return new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList(words);
+        }
+        public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList build() {
+            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList();
+            o.words = words;
+            return o;
         }
     }
 }

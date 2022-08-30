@@ -19,19 +19,19 @@ public final class ReservationSpecificReservationInstanceProperties {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ReservationSpecificReservationInstancePropertiesGuestAccelerator> guestAccelerators;
+    private @Nullable List<ReservationSpecificReservationInstancePropertiesGuestAccelerator> guestAccelerators;
     /**
      * @return The amount of local ssd to reserve with each instance. This
      * reserves disks of type `local-ssd`.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ReservationSpecificReservationInstancePropertiesLocalSsd> localSsds;
+    private @Nullable List<ReservationSpecificReservationInstancePropertiesLocalSsd> localSsds;
     /**
      * @return The name of the machine type to reserve.
      * 
      */
-    private final String machineType;
+    private String machineType;
     /**
      * @return The minimum CPU platform for the reservation. For example,
      * `&#34;Intel Skylake&#34;`. See
@@ -39,20 +39,9 @@ public final class ReservationSpecificReservationInstanceProperties {
      * for information on available CPU platforms.
      * 
      */
-    private final @Nullable String minCpuPlatform;
+    private @Nullable String minCpuPlatform;
 
-    @CustomType.Constructor
-    private ReservationSpecificReservationInstanceProperties(
-        @CustomType.Parameter("guestAccelerators") @Nullable List<ReservationSpecificReservationInstancePropertiesGuestAccelerator> guestAccelerators,
-        @CustomType.Parameter("localSsds") @Nullable List<ReservationSpecificReservationInstancePropertiesLocalSsd> localSsds,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform) {
-        this.guestAccelerators = guestAccelerators;
-        this.localSsds = localSsds;
-        this.machineType = machineType;
-        this.minCpuPlatform = minCpuPlatform;
-    }
-
+    private ReservationSpecificReservationInstanceProperties() {}
     /**
      * @return Guest accelerator type and count.
      * Structure is documented below.
@@ -95,17 +84,13 @@ public final class ReservationSpecificReservationInstanceProperties {
     public static Builder builder(ReservationSpecificReservationInstanceProperties defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ReservationSpecificReservationInstancePropertiesGuestAccelerator> guestAccelerators;
         private @Nullable List<ReservationSpecificReservationInstancePropertiesLocalSsd> localSsds;
         private String machineType;
         private @Nullable String minCpuPlatform;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservationSpecificReservationInstanceProperties defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.guestAccelerators = defaults.guestAccelerators;
@@ -114,6 +99,7 @@ public final class ReservationSpecificReservationInstanceProperties {
     	      this.minCpuPlatform = defaults.minCpuPlatform;
         }
 
+        @CustomType.Setter
         public Builder guestAccelerators(@Nullable List<ReservationSpecificReservationInstancePropertiesGuestAccelerator> guestAccelerators) {
             this.guestAccelerators = guestAccelerators;
             return this;
@@ -121,6 +107,7 @@ public final class ReservationSpecificReservationInstanceProperties {
         public Builder guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAccelerator... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
+        @CustomType.Setter
         public Builder localSsds(@Nullable List<ReservationSpecificReservationInstancePropertiesLocalSsd> localSsds) {
             this.localSsds = localSsds;
             return this;
@@ -128,15 +115,23 @@ public final class ReservationSpecificReservationInstanceProperties {
         public Builder localSsds(ReservationSpecificReservationInstancePropertiesLocalSsd... localSsds) {
             return localSsds(List.of(localSsds));
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
-        }        public ReservationSpecificReservationInstanceProperties build() {
-            return new ReservationSpecificReservationInstanceProperties(guestAccelerators, localSsds, machineType, minCpuPlatform);
+        }
+        public ReservationSpecificReservationInstanceProperties build() {
+            final var o = new ReservationSpecificReservationInstanceProperties();
+            o.guestAccelerators = guestAccelerators;
+            o.localSsds = localSsds;
+            o.machineType = machineType;
+            o.minCpuPlatform = minCpuPlatform;
+            return o;
         }
     }
 }

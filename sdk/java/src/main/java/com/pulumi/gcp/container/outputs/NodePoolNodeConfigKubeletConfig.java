@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigKubeletConfig {
-    private final @Nullable Boolean cpuCfsQuota;
-    private final @Nullable String cpuCfsQuotaPeriod;
-    private final String cpuManagerPolicy;
+    private @Nullable Boolean cpuCfsQuota;
+    private @Nullable String cpuCfsQuotaPeriod;
+    private String cpuManagerPolicy;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigKubeletConfig(
-        @CustomType.Parameter("cpuCfsQuota") @Nullable Boolean cpuCfsQuota,
-        @CustomType.Parameter("cpuCfsQuotaPeriod") @Nullable String cpuCfsQuotaPeriod,
-        @CustomType.Parameter("cpuManagerPolicy") String cpuManagerPolicy) {
-        this.cpuCfsQuota = cpuCfsQuota;
-        this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
-        this.cpuManagerPolicy = cpuManagerPolicy;
-    }
-
+    private NodePoolNodeConfigKubeletConfig() {}
     public Optional<Boolean> cpuCfsQuota() {
         return Optional.ofNullable(this.cpuCfsQuota);
     }
@@ -43,16 +34,12 @@ public final class NodePoolNodeConfigKubeletConfig {
     public static Builder builder(NodePoolNodeConfigKubeletConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
@@ -60,19 +47,27 @@ public final class NodePoolNodeConfigKubeletConfig {
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
         }
 
+        @CustomType.Setter
         public Builder cpuCfsQuota(@Nullable Boolean cpuCfsQuota) {
             this.cpuCfsQuota = cpuCfsQuota;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuCfsQuotaPeriod(@Nullable String cpuCfsQuotaPeriod) {
             this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
             return this;
-        }        public NodePoolNodeConfigKubeletConfig build() {
-            return new NodePoolNodeConfigKubeletConfig(cpuCfsQuota, cpuCfsQuotaPeriod, cpuManagerPolicy);
+        }
+        public NodePoolNodeConfigKubeletConfig build() {
+            final var o = new NodePoolNodeConfigKubeletConfig();
+            o.cpuCfsQuota = cpuCfsQuota;
+            o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
+            o.cpuManagerPolicy = cpuManagerPolicy;
+            return o;
         }
     }
 }

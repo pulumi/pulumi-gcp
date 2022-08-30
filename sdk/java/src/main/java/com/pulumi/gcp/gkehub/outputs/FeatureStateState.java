@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureStateState {
-    private final @Nullable String code;
-    private final @Nullable String description;
-    private final @Nullable String updateTime;
+    private @Nullable String code;
+    private @Nullable String description;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private FeatureStateState(
-        @CustomType.Parameter("code") @Nullable String code,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.code = code;
-        this.description = description;
-        this.updateTime = updateTime;
-    }
-
+    private FeatureStateState() {}
     public Optional<String> code() {
         return Optional.ofNullable(this.code);
     }
@@ -42,16 +33,12 @@ public final class FeatureStateState {
     public static Builder builder(FeatureStateState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String code;
         private @Nullable String description;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureStateState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -59,19 +46,27 @@ public final class FeatureStateState {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder code(@Nullable String code) {
             this.code = code;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public FeatureStateState build() {
-            return new FeatureStateState(code, description, updateTime);
+        }
+        public FeatureStateState build() {
+            final var o = new FeatureStateState();
+            o.code = code;
+            o.description = description;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

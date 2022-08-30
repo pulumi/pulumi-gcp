@@ -19,26 +19,26 @@ public final class ClusterClusterConfigMasterConfig {
      * @return The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
      * 
      */
-    private final @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators;
+    private @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators;
     /**
      * @return Disk Config
      * 
      */
-    private final @Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig;
+    private @Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig;
     /**
      * @return The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
      * for more information.
      * 
      */
-    private final @Nullable String imageUri;
-    private final @Nullable List<String> instanceNames;
+    private @Nullable String imageUri;
+    private @Nullable List<String> instanceNames;
     /**
      * @return The name of a Google Compute Engine machine type
      * to create for the worker nodes. If not specified, GCP will default to a predetermined
      * computed value (currently `n1-standard-4`).
      * 
      */
-    private final @Nullable String machineType;
+    private @Nullable String machineType;
     /**
      * @return The name of a minimum generation of CPU family
      * for the master. If not specified, GCP will default to a predetermined computed value
@@ -46,32 +46,15 @@ public final class ClusterClusterConfigMasterConfig {
      * for details about which CPU families are available (and defaulted) for each zone.
      * 
      */
-    private final @Nullable String minCpuPlatform;
+    private @Nullable String minCpuPlatform;
     /**
      * @return Specifies the number of preemptible nodes to create.
      * Defaults to 0.
      * 
      */
-    private final @Nullable Integer numInstances;
+    private @Nullable Integer numInstances;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigMasterConfig(
-        @CustomType.Parameter("accelerators") @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators,
-        @CustomType.Parameter("diskConfig") @Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig,
-        @CustomType.Parameter("imageUri") @Nullable String imageUri,
-        @CustomType.Parameter("instanceNames") @Nullable List<String> instanceNames,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform,
-        @CustomType.Parameter("numInstances") @Nullable Integer numInstances) {
-        this.accelerators = accelerators;
-        this.diskConfig = diskConfig;
-        this.imageUri = imageUri;
-        this.instanceNames = instanceNames;
-        this.machineType = machineType;
-        this.minCpuPlatform = minCpuPlatform;
-        this.numInstances = numInstances;
-    }
-
+    private ClusterClusterConfigMasterConfig() {}
     /**
      * @return The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
      * 
@@ -132,7 +115,7 @@ public final class ClusterClusterConfigMasterConfig {
     public static Builder builder(ClusterClusterConfigMasterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators;
         private @Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig;
@@ -141,11 +124,7 @@ public final class ClusterClusterConfigMasterConfig {
         private @Nullable String machineType;
         private @Nullable String minCpuPlatform;
         private @Nullable Integer numInstances;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigMasterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerators = defaults.accelerators;
@@ -157,6 +136,7 @@ public final class ClusterClusterConfigMasterConfig {
     	      this.numInstances = defaults.numInstances;
         }
 
+        @CustomType.Setter
         public Builder accelerators(@Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators) {
             this.accelerators = accelerators;
             return this;
@@ -164,14 +144,17 @@ public final class ClusterClusterConfigMasterConfig {
         public Builder accelerators(ClusterClusterConfigMasterConfigAccelerator... accelerators) {
             return accelerators(List.of(accelerators));
         }
+        @CustomType.Setter
         public Builder diskConfig(@Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig) {
             this.diskConfig = diskConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder imageUri(@Nullable String imageUri) {
             this.imageUri = imageUri;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceNames(@Nullable List<String> instanceNames) {
             this.instanceNames = instanceNames;
             return this;
@@ -179,19 +162,31 @@ public final class ClusterClusterConfigMasterConfig {
         public Builder instanceNames(String... instanceNames) {
             return instanceNames(List.of(instanceNames));
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
+        @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
             this.numInstances = numInstances;
             return this;
-        }        public ClusterClusterConfigMasterConfig build() {
-            return new ClusterClusterConfigMasterConfig(accelerators, diskConfig, imageUri, instanceNames, machineType, minCpuPlatform, numInstances);
+        }
+        public ClusterClusterConfigMasterConfig build() {
+            final var o = new ClusterClusterConfigMasterConfig();
+            o.accelerators = accelerators;
+            o.diskConfig = diskConfig;
+            o.imageUri = imageUri;
+            o.instanceNames = instanceNames;
+            o.machineType = machineType;
+            o.minCpuPlatform = minCpuPlatform;
+            o.numInstances = numInstances;
+            return o;
         }
     }
 }

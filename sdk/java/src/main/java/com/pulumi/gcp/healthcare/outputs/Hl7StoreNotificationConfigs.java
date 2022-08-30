@@ -23,7 +23,7 @@ public final class Hl7StoreNotificationConfigs {
      * * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels.&#34;priority&#34;=&#34;high&#34;. The operator :* can be used to assert the existence of a label. For example, labels.&#34;priority&#34;:*.
      * 
      */
-    private final @Nullable String filter;
+    private @Nullable String filter;
     /**
      * @return The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
      * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -33,16 +33,9 @@ public final class Hl7StoreNotificationConfigs {
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
      * 
      */
-    private final String pubsubTopic;
+    private String pubsubTopic;
 
-    @CustomType.Constructor
-    private Hl7StoreNotificationConfigs(
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("pubsubTopic") String pubsubTopic) {
-        this.filter = filter;
-        this.pubsubTopic = pubsubTopic;
-    }
-
+    private Hl7StoreNotificationConfigs() {}
     /**
      * @return Restricts notifications sent for messages matching a filter. If this is empty, all messages
      * are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -78,30 +71,32 @@ public final class Hl7StoreNotificationConfigs {
     public static Builder builder(Hl7StoreNotificationConfigs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String filter;
         private String pubsubTopic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(Hl7StoreNotificationConfigs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
     	      this.pubsubTopic = defaults.pubsubTopic;
         }
 
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder pubsubTopic(String pubsubTopic) {
             this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
             return this;
-        }        public Hl7StoreNotificationConfigs build() {
-            return new Hl7StoreNotificationConfigs(filter, pubsubTopic);
+        }
+        public Hl7StoreNotificationConfigs build() {
+            final var o = new Hl7StoreNotificationConfigs();
+            o.filter = filter;
+            o.pubsubTopic = pubsubTopic;
+            return o;
         }
     }
 }

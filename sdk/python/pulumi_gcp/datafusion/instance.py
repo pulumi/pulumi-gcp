@@ -675,6 +675,9 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_instance = gcp.datafusion.Instance("basicInstance",
+            options={
+                "prober_test_run": "true",
+            },
             region="us-central1",
             type="BASIC")
         ```
@@ -700,7 +703,10 @@ class Instance(pulumi.CustomResource):
                 ip_allocation="10.89.48.0/22",
             ),
             version="6.3.0",
-            dataproc_service_account=default.email)
+            dataproc_service_account=default.email,
+            options={
+                "prober_test_run": "true",
+            })
         ```
 
         ## Import
@@ -777,6 +783,9 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_instance = gcp.datafusion.Instance("basicInstance",
+            options={
+                "prober_test_run": "true",
+            },
             region="us-central1",
             type="BASIC")
         ```
@@ -802,7 +811,10 @@ class Instance(pulumi.CustomResource):
                 ip_allocation="10.89.48.0/22",
             ),
             version="6.3.0",
-            dataproc_service_account=default.email)
+            dataproc_service_account=default.email,
+            options={
+                "prober_test_run": "true",
+            })
         ```
 
         ## Import

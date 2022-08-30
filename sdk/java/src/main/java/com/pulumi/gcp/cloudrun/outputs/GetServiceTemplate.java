@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplate {
-    private final List<GetServiceTemplateMetadata> metadatas;
-    private final List<GetServiceTemplateSpec> specs;
+    private List<GetServiceTemplateMetadata> metadatas;
+    private List<GetServiceTemplateSpec> specs;
 
-    @CustomType.Constructor
-    private GetServiceTemplate(
-        @CustomType.Parameter("metadatas") List<GetServiceTemplateMetadata> metadatas,
-        @CustomType.Parameter("specs") List<GetServiceTemplateSpec> specs) {
-        this.metadatas = metadatas;
-        this.specs = specs;
-    }
-
+    private GetServiceTemplate() {}
     public List<GetServiceTemplateMetadata> metadatas() {
         return this.metadatas;
     }
@@ -36,21 +29,18 @@ public final class GetServiceTemplate {
     public static Builder builder(GetServiceTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceTemplateMetadata> metadatas;
         private List<GetServiceTemplateSpec> specs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metadatas = defaults.metadatas;
     	      this.specs = defaults.specs;
         }
 
+        @CustomType.Setter
         public Builder metadatas(List<GetServiceTemplateMetadata> metadatas) {
             this.metadatas = Objects.requireNonNull(metadatas);
             return this;
@@ -58,14 +48,19 @@ public final class GetServiceTemplate {
         public Builder metadatas(GetServiceTemplateMetadata... metadatas) {
             return metadatas(List.of(metadatas));
         }
+        @CustomType.Setter
         public Builder specs(List<GetServiceTemplateSpec> specs) {
             this.specs = Objects.requireNonNull(specs);
             return this;
         }
         public Builder specs(GetServiceTemplateSpec... specs) {
             return specs(List.of(specs));
-        }        public GetServiceTemplate build() {
-            return new GetServiceTemplate(metadatas, specs);
+        }
+        public GetServiceTemplate build() {
+            final var o = new GetServiceTemplate();
+            o.metadatas = metadatas;
+            o.specs = specs;
+            return o;
         }
     }
 }

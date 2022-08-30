@@ -15,31 +15,22 @@ public final class BackendServiceIap {
      * @return OAuth2 Client ID for IAP
      * 
      */
-    private final String oauth2ClientId;
+    private String oauth2ClientId;
     /**
      * @return OAuth2 Client Secret for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String oauth2ClientSecret;
+    private String oauth2ClientSecret;
     /**
      * @return -
      * OAuth2 Client Secret SHA-256 for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final @Nullable String oauth2ClientSecretSha256;
+    private @Nullable String oauth2ClientSecretSha256;
 
-    @CustomType.Constructor
-    private BackendServiceIap(
-        @CustomType.Parameter("oauth2ClientId") String oauth2ClientId,
-        @CustomType.Parameter("oauth2ClientSecret") String oauth2ClientSecret,
-        @CustomType.Parameter("oauth2ClientSecretSha256") @Nullable String oauth2ClientSecretSha256) {
-        this.oauth2ClientId = oauth2ClientId;
-        this.oauth2ClientSecret = oauth2ClientSecret;
-        this.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
-    }
-
+    private BackendServiceIap() {}
     /**
      * @return OAuth2 Client ID for IAP
      * 
@@ -72,16 +63,12 @@ public final class BackendServiceIap {
     public static Builder builder(BackendServiceIap defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String oauth2ClientId;
         private String oauth2ClientSecret;
         private @Nullable String oauth2ClientSecretSha256;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServiceIap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.oauth2ClientId = defaults.oauth2ClientId;
@@ -89,19 +76,27 @@ public final class BackendServiceIap {
     	      this.oauth2ClientSecretSha256 = defaults.oauth2ClientSecretSha256;
         }
 
+        @CustomType.Setter
         public Builder oauth2ClientId(String oauth2ClientId) {
             this.oauth2ClientId = Objects.requireNonNull(oauth2ClientId);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2ClientSecret(String oauth2ClientSecret) {
             this.oauth2ClientSecret = Objects.requireNonNull(oauth2ClientSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2ClientSecretSha256(@Nullable String oauth2ClientSecretSha256) {
             this.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
             return this;
-        }        public BackendServiceIap build() {
-            return new BackendServiceIap(oauth2ClientId, oauth2ClientSecret, oauth2ClientSecretSha256);
+        }
+        public BackendServiceIap build() {
+            final var o = new BackendServiceIap();
+            o.oauth2ClientId = oauth2ClientId;
+            o.oauth2ClientSecret = oauth2ClientSecret;
+            o.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            return o;
         }
     }
 }

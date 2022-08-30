@@ -21,7 +21,7 @@ public final class TriggerBuildStep {
      * remainder will be used as arguments.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return Working directory to use when running this step&#39;s container.
      * If this value is a relative path, it is relative to the build&#39;s working
@@ -34,14 +34,14 @@ public final class TriggerBuildStep {
      * for the step&#39;s execution.
      * 
      */
-    private final @Nullable String dir;
+    private @Nullable String dir;
     /**
      * @return Entrypoint to be used instead of the build step image&#39;s
      * default entrypoint.
      * If unset, the image&#39;s default entrypoint is used
      * 
      */
-    private final @Nullable String entrypoint;
+    private @Nullable String entrypoint;
     /**
      * @return A list of global environment variable definitions that will exist for all build steps
      * in this build. If a variable is defined in both globally and in a build step,
@@ -49,27 +49,27 @@ public final class TriggerBuildStep {
      * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
      * 
      */
-    private final @Nullable List<String> envs;
+    private @Nullable List<String> envs;
     /**
      * @return Unique identifier for this build step, used in `wait_for` to
      * reference this build step as a dependency.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
      * Each named volume must be used by at least two build steps.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return A list of global environment variables, which are encrypted using a Cloud Key Management
      * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
      * will be available to all build steps in this build.
      * 
      */
-    private final @Nullable List<String> secretEnvs;
+    private @Nullable List<String> secretEnvs;
     /**
      * @return Time limit for executing this build step. If not defined,
      * the step has no
@@ -77,14 +77,14 @@ public final class TriggerBuildStep {
      * completes or the build itself times out.
      * 
      */
-    private final @Nullable String timeout;
+    private @Nullable String timeout;
     /**
      * @return -
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
      */
-    private final @Nullable String timing;
+    private @Nullable String timing;
     /**
      * @return Global list of volumes to mount for ALL build steps
      * Each volume is created as an empty volume prior to starting the build process.
@@ -95,7 +95,7 @@ public final class TriggerBuildStep {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<TriggerBuildStepVolume> volumes;
+    private @Nullable List<TriggerBuildStepVolume> volumes;
     /**
      * @return The ID(s) of the step(s) that this build step depends on.
      * This build step will not start until all the build steps in `wait_for`
@@ -104,34 +104,9 @@ public final class TriggerBuildStep {
      * have completed successfully.
      * 
      */
-    private final @Nullable List<String> waitFors;
+    private @Nullable List<String> waitFors;
 
-    @CustomType.Constructor
-    private TriggerBuildStep(
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("dir") @Nullable String dir,
-        @CustomType.Parameter("entrypoint") @Nullable String entrypoint,
-        @CustomType.Parameter("envs") @Nullable List<String> envs,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("secretEnvs") @Nullable List<String> secretEnvs,
-        @CustomType.Parameter("timeout") @Nullable String timeout,
-        @CustomType.Parameter("timing") @Nullable String timing,
-        @CustomType.Parameter("volumes") @Nullable List<TriggerBuildStepVolume> volumes,
-        @CustomType.Parameter("waitFors") @Nullable List<String> waitFors) {
-        this.args = args;
-        this.dir = dir;
-        this.entrypoint = entrypoint;
-        this.envs = envs;
-        this.id = id;
-        this.name = name;
-        this.secretEnvs = secretEnvs;
-        this.timeout = timeout;
-        this.timing = timing;
-        this.volumes = volumes;
-        this.waitFors = waitFors;
-    }
-
+    private TriggerBuildStep() {}
     /**
      * @return A list of arguments that will be presented to the step when it is started.
      * If the image used to run the step&#39;s container has an entrypoint, the args
@@ -254,7 +229,7 @@ public final class TriggerBuildStep {
     public static Builder builder(TriggerBuildStep defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable String dir;
@@ -267,11 +242,7 @@ public final class TriggerBuildStep {
         private @Nullable String timing;
         private @Nullable List<TriggerBuildStepVolume> volumes;
         private @Nullable List<String> waitFors;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildStep defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -287,6 +258,7 @@ public final class TriggerBuildStep {
     	      this.waitFors = defaults.waitFors;
         }
 
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -294,14 +266,17 @@ public final class TriggerBuildStep {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder dir(@Nullable String dir) {
             this.dir = dir;
             return this;
         }
+        @CustomType.Setter
         public Builder entrypoint(@Nullable String entrypoint) {
             this.entrypoint = entrypoint;
             return this;
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<String> envs) {
             this.envs = envs;
             return this;
@@ -309,14 +284,17 @@ public final class TriggerBuildStep {
         public Builder envs(String... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder secretEnvs(@Nullable List<String> secretEnvs) {
             this.secretEnvs = secretEnvs;
             return this;
@@ -324,14 +302,17 @@ public final class TriggerBuildStep {
         public Builder secretEnvs(String... secretEnvs) {
             return secretEnvs(List.of(secretEnvs));
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
             this.timeout = timeout;
             return this;
         }
+        @CustomType.Setter
         public Builder timing(@Nullable String timing) {
             this.timing = timing;
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(@Nullable List<TriggerBuildStepVolume> volumes) {
             this.volumes = volumes;
             return this;
@@ -339,14 +320,28 @@ public final class TriggerBuildStep {
         public Builder volumes(TriggerBuildStepVolume... volumes) {
             return volumes(List.of(volumes));
         }
+        @CustomType.Setter
         public Builder waitFors(@Nullable List<String> waitFors) {
             this.waitFors = waitFors;
             return this;
         }
         public Builder waitFors(String... waitFors) {
             return waitFors(List.of(waitFors));
-        }        public TriggerBuildStep build() {
-            return new TriggerBuildStep(args, dir, entrypoint, envs, id, name, secretEnvs, timeout, timing, volumes, waitFors);
+        }
+        public TriggerBuildStep build() {
+            final var o = new TriggerBuildStep();
+            o.args = args;
+            o.dir = dir;
+            o.entrypoint = entrypoint;
+            o.envs = envs;
+            o.id = id;
+            o.name = name;
+            o.secretEnvs = secretEnvs;
+            o.timeout = timeout;
+            o.timing = timing;
+            o.volumes = volumes;
+            o.waitFors = waitFors;
+            return o;
         }
     }
 }

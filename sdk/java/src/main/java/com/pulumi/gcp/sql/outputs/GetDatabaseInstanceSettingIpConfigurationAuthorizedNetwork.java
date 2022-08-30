@@ -9,24 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
-    private final String expirationTime;
+    private String expirationTime;
     /**
      * @return The name of the instance.
      * 
      */
-    private final String name;
-    private final String value;
+    private String name;
+    private String value;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork(
-        @CustomType.Parameter("expirationTime") String expirationTime,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.expirationTime = expirationTime;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork() {}
     public String expirationTime() {
         return this.expirationTime;
     }
@@ -48,16 +39,12 @@ public final class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
     public static Builder builder(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String expirationTime;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationTime = defaults.expirationTime;
@@ -65,19 +52,27 @@ public final class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder expirationTime(String expirationTime) {
             this.expirationTime = Objects.requireNonNull(expirationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork build() {
-            return new GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork(expirationTime, name, value);
+        }
+        public GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork build() {
+            final var o = new GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork();
+            o.expirationTime = expirationTime;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -18,23 +18,16 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom ingressFrom;
+    private @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom ingressFrom;
     /**
      * @return Defines the conditions on the `ApiOperation` and request destination that cause
      * this `IngressPolicy` to apply.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo ingressTo;
+    private @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo ingressTo;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeterStatusIngressPolicy(
-        @CustomType.Parameter("ingressFrom") @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom ingressFrom,
-        @CustomType.Parameter("ingressTo") @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo ingressTo) {
-        this.ingressFrom = ingressFrom;
-        this.ingressTo = ingressTo;
-    }
-
+    private ServicePerimetersServicePerimeterStatusIngressPolicy() {}
     /**
      * @return Defines the conditions on the source of a request causing this `IngressPolicy`
      * to apply.
@@ -61,30 +54,32 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicy {
     public static Builder builder(ServicePerimetersServicePerimeterStatusIngressPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom ingressFrom;
         private @Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo ingressTo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeterStatusIngressPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ingressFrom = defaults.ingressFrom;
     	      this.ingressTo = defaults.ingressTo;
         }
 
+        @CustomType.Setter
         public Builder ingressFrom(@Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom ingressFrom) {
             this.ingressFrom = ingressFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder ingressTo(@Nullable ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo ingressTo) {
             this.ingressTo = ingressTo;
             return this;
-        }        public ServicePerimetersServicePerimeterStatusIngressPolicy build() {
-            return new ServicePerimetersServicePerimeterStatusIngressPolicy(ingressFrom, ingressTo);
+        }
+        public ServicePerimetersServicePerimeterStatusIngressPolicy build() {
+            final var o = new ServicePerimetersServicePerimeterStatusIngressPolicy();
+            o.ingressFrom = ingressFrom;
+            o.ingressTo = ingressTo;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class ServiceTemplateSpecContainerVolumeMount {
      * not contain &#39;:&#39;.
      * 
      */
-    private final String mountPath;
+    private String mountPath;
     /**
      * @return Volume&#39;s name.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerVolumeMount(
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("name") String name) {
-        this.mountPath = mountPath;
-        this.name = name;
-    }
-
+    private ServiceTemplateSpecContainerVolumeMount() {}
     /**
      * @return Path within the container at which the volume should be mounted.  Must
      * not contain &#39;:&#39;.
@@ -52,30 +45,32 @@ public final class ServiceTemplateSpecContainerVolumeMount {
     public static Builder builder(ServiceTemplateSpecContainerVolumeMount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mountPath;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public ServiceTemplateSpecContainerVolumeMount build() {
-            return new ServiceTemplateSpecContainerVolumeMount(mountPath, name);
+        }
+        public ServiceTemplateSpecContainerVolumeMount build() {
+            final var o = new ServiceTemplateSpecContainerVolumeMount();
+            o.mountPath = mountPath;
+            o.name = name;
+            return o;
         }
     }
 }

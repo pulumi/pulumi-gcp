@@ -18,46 +18,33 @@ public final class PatchDeploymentInstanceFilter {
      * @return Target all VM instances in the project. If true, no other criteria is permitted.
      * 
      */
-    private final @Nullable Boolean all;
+    private @Nullable Boolean all;
     /**
      * @return Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PatchDeploymentInstanceFilterGroupLabel> groupLabels;
+    private @Nullable List<PatchDeploymentInstanceFilterGroupLabel> groupLabels;
     /**
      * @return Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
      * VMs when targeting configs, for example prefix=&#34;prod-&#34;.
      * 
      */
-    private final @Nullable List<String> instanceNamePrefixes;
+    private @Nullable List<String> instanceNamePrefixes;
     /**
      * @return Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
      * `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
      * `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
      * 
      */
-    private final @Nullable List<String> instances;
+    private @Nullable List<String> instances;
     /**
      * @return Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
      * 
      */
-    private final @Nullable List<String> zones;
+    private @Nullable List<String> zones;
 
-    @CustomType.Constructor
-    private PatchDeploymentInstanceFilter(
-        @CustomType.Parameter("all") @Nullable Boolean all,
-        @CustomType.Parameter("groupLabels") @Nullable List<PatchDeploymentInstanceFilterGroupLabel> groupLabels,
-        @CustomType.Parameter("instanceNamePrefixes") @Nullable List<String> instanceNamePrefixes,
-        @CustomType.Parameter("instances") @Nullable List<String> instances,
-        @CustomType.Parameter("zones") @Nullable List<String> zones) {
-        this.all = all;
-        this.groupLabels = groupLabels;
-        this.instanceNamePrefixes = instanceNamePrefixes;
-        this.instances = instances;
-        this.zones = zones;
-    }
-
+    private PatchDeploymentInstanceFilter() {}
     /**
      * @return Target all VM instances in the project. If true, no other criteria is permitted.
      * 
@@ -105,18 +92,14 @@ public final class PatchDeploymentInstanceFilter {
     public static Builder builder(PatchDeploymentInstanceFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean all;
         private @Nullable List<PatchDeploymentInstanceFilterGroupLabel> groupLabels;
         private @Nullable List<String> instanceNamePrefixes;
         private @Nullable List<String> instances;
         private @Nullable List<String> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentInstanceFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
@@ -126,10 +109,12 @@ public final class PatchDeploymentInstanceFilter {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
             this.all = all;
             return this;
         }
+        @CustomType.Setter
         public Builder groupLabels(@Nullable List<PatchDeploymentInstanceFilterGroupLabel> groupLabels) {
             this.groupLabels = groupLabels;
             return this;
@@ -137,6 +122,7 @@ public final class PatchDeploymentInstanceFilter {
         public Builder groupLabels(PatchDeploymentInstanceFilterGroupLabel... groupLabels) {
             return groupLabels(List.of(groupLabels));
         }
+        @CustomType.Setter
         public Builder instanceNamePrefixes(@Nullable List<String> instanceNamePrefixes) {
             this.instanceNamePrefixes = instanceNamePrefixes;
             return this;
@@ -144,6 +130,7 @@ public final class PatchDeploymentInstanceFilter {
         public Builder instanceNamePrefixes(String... instanceNamePrefixes) {
             return instanceNamePrefixes(List.of(instanceNamePrefixes));
         }
+        @CustomType.Setter
         public Builder instances(@Nullable List<String> instances) {
             this.instances = instances;
             return this;
@@ -151,14 +138,22 @@ public final class PatchDeploymentInstanceFilter {
         public Builder instances(String... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder zones(@Nullable List<String> zones) {
             this.zones = zones;
             return this;
         }
         public Builder zones(String... zones) {
             return zones(List.of(zones));
-        }        public PatchDeploymentInstanceFilter build() {
-            return new PatchDeploymentInstanceFilter(all, groupLabels, instanceNamePrefixes, instances, zones);
+        }
+        public PatchDeploymentInstanceFilter build() {
+            final var o = new PatchDeploymentInstanceFilter();
+            o.all = all;
+            o.groupLabels = groupLabels;
+            o.instanceNamePrefixes = instanceNamePrefixes;
+            o.instances = instances;
+            o.zones = zones;
+            return o;
         }
     }
 }

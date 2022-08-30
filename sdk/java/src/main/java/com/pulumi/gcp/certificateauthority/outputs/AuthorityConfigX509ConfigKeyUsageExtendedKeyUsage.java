@@ -15,49 +15,34 @@ public final class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as &#34;TLS WWW client authentication&#34;, though regularly used for non-WWW TLS.
      * 
      */
-    private final @Nullable Boolean clientAuth;
+    private @Nullable Boolean clientAuth;
     /**
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as &#34;Signing of downloadable executable code client authentication&#34;.
      * 
      */
-    private final @Nullable Boolean codeSigning;
+    private @Nullable Boolean codeSigning;
     /**
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as &#34;Email protection&#34;.
      * 
      */
-    private final @Nullable Boolean emailProtection;
+    private @Nullable Boolean emailProtection;
     /**
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as &#34;Signing OCSP responses&#34;.
      * 
      */
-    private final @Nullable Boolean ocspSigning;
+    private @Nullable Boolean ocspSigning;
     /**
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as &#34;TLS WWW server authentication&#34;, though regularly used for non-WWW TLS.
      * 
      */
-    private final @Nullable Boolean serverAuth;
+    private @Nullable Boolean serverAuth;
     /**
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as &#34;Binding the hash of an object to a time&#34;.
      * 
      */
-    private final @Nullable Boolean timeStamping;
+    private @Nullable Boolean timeStamping;
 
-    @CustomType.Constructor
-    private AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(
-        @CustomType.Parameter("clientAuth") @Nullable Boolean clientAuth,
-        @CustomType.Parameter("codeSigning") @Nullable Boolean codeSigning,
-        @CustomType.Parameter("emailProtection") @Nullable Boolean emailProtection,
-        @CustomType.Parameter("ocspSigning") @Nullable Boolean ocspSigning,
-        @CustomType.Parameter("serverAuth") @Nullable Boolean serverAuth,
-        @CustomType.Parameter("timeStamping") @Nullable Boolean timeStamping) {
-        this.clientAuth = clientAuth;
-        this.codeSigning = codeSigning;
-        this.emailProtection = emailProtection;
-        this.ocspSigning = ocspSigning;
-        this.serverAuth = serverAuth;
-        this.timeStamping = timeStamping;
-    }
-
+    private AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage() {}
     /**
      * @return Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as &#34;TLS WWW client authentication&#34;, though regularly used for non-WWW TLS.
      * 
@@ -108,7 +93,7 @@ public final class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
     public static Builder builder(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean clientAuth;
         private @Nullable Boolean codeSigning;
@@ -116,11 +101,7 @@ public final class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
         private @Nullable Boolean ocspSigning;
         private @Nullable Boolean serverAuth;
         private @Nullable Boolean timeStamping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientAuth = defaults.clientAuth;
@@ -131,31 +112,45 @@ public final class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
     	      this.timeStamping = defaults.timeStamping;
         }
 
+        @CustomType.Setter
         public Builder clientAuth(@Nullable Boolean clientAuth) {
             this.clientAuth = clientAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder codeSigning(@Nullable Boolean codeSigning) {
             this.codeSigning = codeSigning;
             return this;
         }
+        @CustomType.Setter
         public Builder emailProtection(@Nullable Boolean emailProtection) {
             this.emailProtection = emailProtection;
             return this;
         }
+        @CustomType.Setter
         public Builder ocspSigning(@Nullable Boolean ocspSigning) {
             this.ocspSigning = ocspSigning;
             return this;
         }
+        @CustomType.Setter
         public Builder serverAuth(@Nullable Boolean serverAuth) {
             this.serverAuth = serverAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder timeStamping(@Nullable Boolean timeStamping) {
             this.timeStamping = timeStamping;
             return this;
-        }        public AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage build() {
-            return new AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(clientAuth, codeSigning, emailProtection, ocspSigning, serverAuth, timeStamping);
+        }
+        public AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage build() {
+            final var o = new AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage();
+            o.clientAuth = clientAuth;
+            o.codeSigning = codeSigning;
+            o.emailProtection = emailProtection;
+            o.ocspSigning = ocspSigning;
+            o.serverAuth = serverAuth;
+            o.timeStamping = timeStamping;
+            return o;
         }
     }
 }

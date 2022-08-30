@@ -18,49 +18,34 @@ public final class WorkflowTemplateJobSparkRJob {
      * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
-    private final @Nullable List<String> archiveUris;
+    private @Nullable List<String> archiveUris;
     /**
      * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
-    private final @Nullable List<String> fileUris;
+    private @Nullable List<String> fileUris;
     /**
      * @return Optional. The runtime log config for job execution.
      * 
      */
-    private final @Nullable WorkflowTemplateJobSparkRJobLoggingConfig loggingConfig;
+    private @Nullable WorkflowTemplateJobSparkRJobLoggingConfig loggingConfig;
     /**
      * @return Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
      * 
      */
-    private final String mainRFileUri;
+    private String mainRFileUri;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobSparkRJob(
-        @CustomType.Parameter("archiveUris") @Nullable List<String> archiveUris,
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("fileUris") @Nullable List<String> fileUris,
-        @CustomType.Parameter("loggingConfig") @Nullable WorkflowTemplateJobSparkRJobLoggingConfig loggingConfig,
-        @CustomType.Parameter("mainRFileUri") String mainRFileUri,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties) {
-        this.archiveUris = archiveUris;
-        this.args = args;
-        this.fileUris = fileUris;
-        this.loggingConfig = loggingConfig;
-        this.mainRFileUri = mainRFileUri;
-        this.properties = properties;
-    }
-
+    private WorkflowTemplateJobSparkRJob() {}
     /**
      * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
@@ -111,7 +96,7 @@ public final class WorkflowTemplateJobSparkRJob {
     public static Builder builder(WorkflowTemplateJobSparkRJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> archiveUris;
         private @Nullable List<String> args;
@@ -119,11 +104,7 @@ public final class WorkflowTemplateJobSparkRJob {
         private @Nullable WorkflowTemplateJobSparkRJobLoggingConfig loggingConfig;
         private String mainRFileUri;
         private @Nullable Map<String,String> properties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobSparkRJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveUris = defaults.archiveUris;
@@ -134,6 +115,7 @@ public final class WorkflowTemplateJobSparkRJob {
     	      this.properties = defaults.properties;
         }
 
+        @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
             this.archiveUris = archiveUris;
             return this;
@@ -141,6 +123,7 @@ public final class WorkflowTemplateJobSparkRJob {
         public Builder archiveUris(String... archiveUris) {
             return archiveUris(List.of(archiveUris));
         }
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -148,6 +131,7 @@ public final class WorkflowTemplateJobSparkRJob {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
             this.fileUris = fileUris;
             return this;
@@ -155,19 +139,30 @@ public final class WorkflowTemplateJobSparkRJob {
         public Builder fileUris(String... fileUris) {
             return fileUris(List.of(fileUris));
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobSparkRJobLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder mainRFileUri(String mainRFileUri) {
             this.mainRFileUri = Objects.requireNonNull(mainRFileUri);
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
-        }        public WorkflowTemplateJobSparkRJob build() {
-            return new WorkflowTemplateJobSparkRJob(archiveUris, args, fileUris, loggingConfig, mainRFileUri, properties);
+        }
+        public WorkflowTemplateJobSparkRJob build() {
+            final var o = new WorkflowTemplateJobSparkRJob();
+            o.archiveUris = archiveUris;
+            o.args = args;
+            o.fileUris = fileUris;
+            o.loggingConfig = loggingConfig;
+            o.mainRFileUri = mainRFileUri;
+            o.properties = properties;
+            return o;
         }
     }
 }

@@ -16,28 +16,19 @@ public final class InstanceGroupManagerVersion {
      * @return - The full URL to an instance template from which all new instances of this version will be created.
      * 
      */
-    private final String instanceTemplate;
+    private String instanceTemplate;
     /**
      * @return - Version name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
      */
-    private final @Nullable InstanceGroupManagerVersionTargetSize targetSize;
+    private @Nullable InstanceGroupManagerVersionTargetSize targetSize;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerVersion(
-        @CustomType.Parameter("instanceTemplate") String instanceTemplate,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("targetSize") @Nullable InstanceGroupManagerVersionTargetSize targetSize) {
-        this.instanceTemplate = instanceTemplate;
-        this.name = name;
-        this.targetSize = targetSize;
-    }
-
+    private InstanceGroupManagerVersion() {}
     /**
      * @return - The full URL to an instance template from which all new instances of this version will be created.
      * 
@@ -67,16 +58,12 @@ public final class InstanceGroupManagerVersion {
     public static Builder builder(InstanceGroupManagerVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instanceTemplate;
         private @Nullable String name;
         private @Nullable InstanceGroupManagerVersionTargetSize targetSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceTemplate = defaults.instanceTemplate;
@@ -84,19 +71,27 @@ public final class InstanceGroupManagerVersion {
     	      this.targetSize = defaults.targetSize;
         }
 
+        @CustomType.Setter
         public Builder instanceTemplate(String instanceTemplate) {
             this.instanceTemplate = Objects.requireNonNull(instanceTemplate);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder targetSize(@Nullable InstanceGroupManagerVersionTargetSize targetSize) {
             this.targetSize = targetSize;
             return this;
-        }        public InstanceGroupManagerVersion build() {
-            return new InstanceGroupManagerVersion(instanceTemplate, name, targetSize);
+        }
+        public InstanceGroupManagerVersion build() {
+            final var o = new InstanceGroupManagerVersion();
+            o.instanceTemplate = instanceTemplate;
+            o.name = name;
+            o.targetSize = targetSize;
+            return o;
         }
     }
 }

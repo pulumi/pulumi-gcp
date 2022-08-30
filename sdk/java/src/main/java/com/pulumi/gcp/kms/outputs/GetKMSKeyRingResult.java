@@ -15,23 +15,12 @@ public final class GetKMSKeyRingResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String location;
-    private final String name;
-    private final @Nullable String project;
+    private String id;
+    private String location;
+    private String name;
+    private @Nullable String project;
 
-    @CustomType.Constructor
-    private GetKMSKeyRingResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project) {
-        this.id = id;
-        this.location = location;
-        this.name = name;
-        this.project = project;
-    }
-
+    private GetKMSKeyRingResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -56,17 +45,13 @@ public final class GetKMSKeyRingResult {
     public static Builder builder(GetKMSKeyRingResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String location;
         private String name;
         private @Nullable String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSKeyRingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -75,23 +60,33 @@ public final class GetKMSKeyRingResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }        public GetKMSKeyRingResult build() {
-            return new GetKMSKeyRingResult(id, location, name, project);
+        }
+        public GetKMSKeyRingResult build() {
+            final var o = new GetKMSKeyRingResult();
+            o.id = id;
+            o.location = location;
+            o.name = name;
+            o.project = project;
+            return o;
         }
     }
 }

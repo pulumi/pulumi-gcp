@@ -20,7 +20,7 @@ public final class RouterBgp {
      * Possible values are `DEFAULT` and `CUSTOM`.
      * 
      */
-    private final @Nullable String advertiseMode;
+    private @Nullable String advertiseMode;
     /**
      * @return User-specified list of prefix groups to advertise in custom mode.
      * This field can only be populated if advertiseMode is CUSTOM and
@@ -30,7 +30,7 @@ public final class RouterBgp {
      * This enum field has the one valid value: ALL_SUBNETS
      * 
      */
-    private final @Nullable List<String> advertisedGroups;
+    private @Nullable List<String> advertisedGroups;
     /**
      * @return User-specified list of individual IP ranges to advertise in
      * custom mode. This field can only be populated if advertiseMode
@@ -40,7 +40,7 @@ public final class RouterBgp {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RouterBgpAdvertisedIpRange> advertisedIpRanges;
+    private @Nullable List<RouterBgpAdvertisedIpRange> advertisedIpRanges;
     /**
      * @return Local BGP Autonomous System Number (ASN). Must be an RFC6996
      * private ASN, either 16-bit or 32-bit. The value will be fixed for
@@ -48,7 +48,7 @@ public final class RouterBgp {
      * will have the same local ASN.
      * 
      */
-    private final Integer asn;
+    private Integer asn;
     /**
      * @return The interval in seconds between BGP keepalive messages that are sent to the peer.
      * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
@@ -57,22 +57,9 @@ public final class RouterBgp {
      * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
      * 
      */
-    private final @Nullable Integer keepaliveInterval;
+    private @Nullable Integer keepaliveInterval;
 
-    @CustomType.Constructor
-    private RouterBgp(
-        @CustomType.Parameter("advertiseMode") @Nullable String advertiseMode,
-        @CustomType.Parameter("advertisedGroups") @Nullable List<String> advertisedGroups,
-        @CustomType.Parameter("advertisedIpRanges") @Nullable List<RouterBgpAdvertisedIpRange> advertisedIpRanges,
-        @CustomType.Parameter("asn") Integer asn,
-        @CustomType.Parameter("keepaliveInterval") @Nullable Integer keepaliveInterval) {
-        this.advertiseMode = advertiseMode;
-        this.advertisedGroups = advertisedGroups;
-        this.advertisedIpRanges = advertisedIpRanges;
-        this.asn = asn;
-        this.keepaliveInterval = keepaliveInterval;
-    }
-
+    private RouterBgp() {}
     /**
      * @return User-specified flag to indicate which mode to use for advertisement.
      * Default value is `DEFAULT`.
@@ -135,18 +122,14 @@ public final class RouterBgp {
     public static Builder builder(RouterBgp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String advertiseMode;
         private @Nullable List<String> advertisedGroups;
         private @Nullable List<RouterBgpAdvertisedIpRange> advertisedIpRanges;
         private Integer asn;
         private @Nullable Integer keepaliveInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterBgp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advertiseMode = defaults.advertiseMode;
@@ -156,10 +139,12 @@ public final class RouterBgp {
     	      this.keepaliveInterval = defaults.keepaliveInterval;
         }
 
+        @CustomType.Setter
         public Builder advertiseMode(@Nullable String advertiseMode) {
             this.advertiseMode = advertiseMode;
             return this;
         }
+        @CustomType.Setter
         public Builder advertisedGroups(@Nullable List<String> advertisedGroups) {
             this.advertisedGroups = advertisedGroups;
             return this;
@@ -167,6 +152,7 @@ public final class RouterBgp {
         public Builder advertisedGroups(String... advertisedGroups) {
             return advertisedGroups(List.of(advertisedGroups));
         }
+        @CustomType.Setter
         public Builder advertisedIpRanges(@Nullable List<RouterBgpAdvertisedIpRange> advertisedIpRanges) {
             this.advertisedIpRanges = advertisedIpRanges;
             return this;
@@ -174,15 +160,24 @@ public final class RouterBgp {
         public Builder advertisedIpRanges(RouterBgpAdvertisedIpRange... advertisedIpRanges) {
             return advertisedIpRanges(List.of(advertisedIpRanges));
         }
+        @CustomType.Setter
         public Builder asn(Integer asn) {
             this.asn = Objects.requireNonNull(asn);
             return this;
         }
+        @CustomType.Setter
         public Builder keepaliveInterval(@Nullable Integer keepaliveInterval) {
             this.keepaliveInterval = keepaliveInterval;
             return this;
-        }        public RouterBgp build() {
-            return new RouterBgp(advertiseMode, advertisedGroups, advertisedIpRanges, asn, keepaliveInterval);
+        }
+        public RouterBgp build() {
+            final var o = new RouterBgp();
+            o.advertiseMode = advertiseMode;
+            o.advertisedGroups = advertisedGroups;
+            o.advertisedIpRanges = advertisedIpRanges;
+            o.asn = asn;
+            o.keepaliveInterval = keepaliveInterval;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class GetKeysKeySigningKeyDigest {
      * @return The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
      * 
      */
-    private final @Nullable String digest;
+    private @Nullable String digest;
     /**
      * @return Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetKeysKeySigningKeyDigest(
-        @CustomType.Parameter("digest") @Nullable String digest,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.digest = digest;
-        this.type = type;
-    }
-
+    private GetKeysKeySigningKeyDigest() {}
     /**
      * @return The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
      * 
@@ -52,30 +45,32 @@ public final class GetKeysKeySigningKeyDigest {
     public static Builder builder(GetKeysKeySigningKeyDigest defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String digest;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeysKeySigningKeyDigest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.digest = defaults.digest;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder digest(@Nullable String digest) {
             this.digest = digest;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetKeysKeySigningKeyDigest build() {
-            return new GetKeysKeySigningKeyDigest(digest, type);
+        }
+        public GetKeysKeySigningKeyDigest build() {
+            final var o = new GetKeysKeySigningKeyDigest();
+            o.digest = digest;
+            o.type = type;
+            return o;
         }
     }
 }

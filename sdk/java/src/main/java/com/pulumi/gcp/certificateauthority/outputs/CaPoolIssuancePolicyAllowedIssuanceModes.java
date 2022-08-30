@@ -13,21 +13,14 @@ public final class CaPoolIssuancePolicyAllowedIssuanceModes {
      * @return When true, allows callers to create Certificates by specifying a CertificateConfig.
      * 
      */
-    private final Boolean allowConfigBasedIssuance;
+    private Boolean allowConfigBasedIssuance;
     /**
      * @return When true, allows callers to create Certificates by specifying a CSR.
      * 
      */
-    private final Boolean allowCsrBasedIssuance;
+    private Boolean allowCsrBasedIssuance;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyAllowedIssuanceModes(
-        @CustomType.Parameter("allowConfigBasedIssuance") Boolean allowConfigBasedIssuance,
-        @CustomType.Parameter("allowCsrBasedIssuance") Boolean allowCsrBasedIssuance) {
-        this.allowConfigBasedIssuance = allowConfigBasedIssuance;
-        this.allowCsrBasedIssuance = allowCsrBasedIssuance;
-    }
-
+    private CaPoolIssuancePolicyAllowedIssuanceModes() {}
     /**
      * @return When true, allows callers to create Certificates by specifying a CertificateConfig.
      * 
@@ -50,30 +43,32 @@ public final class CaPoolIssuancePolicyAllowedIssuanceModes {
     public static Builder builder(CaPoolIssuancePolicyAllowedIssuanceModes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowConfigBasedIssuance;
         private Boolean allowCsrBasedIssuance;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyAllowedIssuanceModes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowConfigBasedIssuance = defaults.allowConfigBasedIssuance;
     	      this.allowCsrBasedIssuance = defaults.allowCsrBasedIssuance;
         }
 
+        @CustomType.Setter
         public Builder allowConfigBasedIssuance(Boolean allowConfigBasedIssuance) {
             this.allowConfigBasedIssuance = Objects.requireNonNull(allowConfigBasedIssuance);
             return this;
         }
+        @CustomType.Setter
         public Builder allowCsrBasedIssuance(Boolean allowCsrBasedIssuance) {
             this.allowCsrBasedIssuance = Objects.requireNonNull(allowCsrBasedIssuance);
             return this;
-        }        public CaPoolIssuancePolicyAllowedIssuanceModes build() {
-            return new CaPoolIssuancePolicyAllowedIssuanceModes(allowConfigBasedIssuance, allowCsrBasedIssuance);
+        }
+        public CaPoolIssuancePolicyAllowedIssuanceModes build() {
+            final var o = new CaPoolIssuancePolicyAllowedIssuanceModes();
+            o.allowConfigBasedIssuance = allowConfigBasedIssuance;
+            o.allowCsrBasedIssuance = allowCsrBasedIssuance;
+            return o;
         }
     }
 }

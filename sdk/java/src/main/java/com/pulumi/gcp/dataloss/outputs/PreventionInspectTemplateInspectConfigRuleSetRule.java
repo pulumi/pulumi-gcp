@@ -17,22 +17,15 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule exclusionRule;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule exclusionRule;
     /**
      * @return Hotword-based detection rule.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule hotwordRule;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule hotwordRule;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRule(
-        @CustomType.Parameter("exclusionRule") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule exclusionRule,
-        @CustomType.Parameter("hotwordRule") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule hotwordRule) {
-        this.exclusionRule = exclusionRule;
-        this.hotwordRule = hotwordRule;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRule() {}
     /**
      * @return The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRule {
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule exclusionRule;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule hotwordRule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exclusionRule = defaults.exclusionRule;
     	      this.hotwordRule = defaults.hotwordRule;
         }
 
+        @CustomType.Setter
         public Builder exclusionRule(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule exclusionRule) {
             this.exclusionRule = exclusionRule;
             return this;
         }
+        @CustomType.Setter
         public Builder hotwordRule(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule hotwordRule) {
             this.hotwordRule = hotwordRule;
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRule build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRule(exclusionRule, hotwordRule);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRule build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRule();
+            o.exclusionRule = exclusionRule;
+            o.hotwordRule = hotwordRule;
+            return o;
         }
     }
 }

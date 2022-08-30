@@ -13,13 +13,9 @@ public final class InstanceTemplateNetworkPerformanceConfig {
      * @return The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
      * 
      */
-    private final String totalEgressBandwidthTier;
+    private String totalEgressBandwidthTier;
 
-    @CustomType.Constructor
-    private InstanceTemplateNetworkPerformanceConfig(@CustomType.Parameter("totalEgressBandwidthTier") String totalEgressBandwidthTier) {
-        this.totalEgressBandwidthTier = totalEgressBandwidthTier;
-    }
-
+    private InstanceTemplateNetworkPerformanceConfig() {}
     /**
      * @return The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
      * 
@@ -35,24 +31,24 @@ public final class InstanceTemplateNetworkPerformanceConfig {
     public static Builder builder(InstanceTemplateNetworkPerformanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String totalEgressBandwidthTier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceTemplateNetworkPerformanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.totalEgressBandwidthTier = defaults.totalEgressBandwidthTier;
         }
 
+        @CustomType.Setter
         public Builder totalEgressBandwidthTier(String totalEgressBandwidthTier) {
             this.totalEgressBandwidthTier = Objects.requireNonNull(totalEgressBandwidthTier);
             return this;
-        }        public InstanceTemplateNetworkPerformanceConfig build() {
-            return new InstanceTemplateNetworkPerformanceConfig(totalEgressBandwidthTier);
+        }
+        public InstanceTemplateNetworkPerformanceConfig build() {
+            final var o = new InstanceTemplateNetworkPerformanceConfig();
+            o.totalEgressBandwidthTier = totalEgressBandwidthTier;
+            return o;
         }
     }
 }

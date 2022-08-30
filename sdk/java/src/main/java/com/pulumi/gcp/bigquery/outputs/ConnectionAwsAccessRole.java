@@ -15,22 +15,15 @@ public final class ConnectionAwsAccessRole {
      * @return The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
      * 
      */
-    private final String iamRoleId;
+    private String iamRoleId;
     /**
      * @return -
      * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
      * 
      */
-    private final @Nullable String identity;
+    private @Nullable String identity;
 
-    @CustomType.Constructor
-    private ConnectionAwsAccessRole(
-        @CustomType.Parameter("iamRoleId") String iamRoleId,
-        @CustomType.Parameter("identity") @Nullable String identity) {
-        this.iamRoleId = iamRoleId;
-        this.identity = identity;
-    }
-
+    private ConnectionAwsAccessRole() {}
     /**
      * @return The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
      * 
@@ -54,30 +47,32 @@ public final class ConnectionAwsAccessRole {
     public static Builder builder(ConnectionAwsAccessRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String iamRoleId;
         private @Nullable String identity;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionAwsAccessRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iamRoleId = defaults.iamRoleId;
     	      this.identity = defaults.identity;
         }
 
+        @CustomType.Setter
         public Builder iamRoleId(String iamRoleId) {
             this.iamRoleId = Objects.requireNonNull(iamRoleId);
             return this;
         }
+        @CustomType.Setter
         public Builder identity(@Nullable String identity) {
             this.identity = identity;
             return this;
-        }        public ConnectionAwsAccessRole build() {
-            return new ConnectionAwsAccessRole(iamRoleId, identity);
+        }
+        public ConnectionAwsAccessRole build() {
+            final var o = new ConnectionAwsAccessRole();
+            o.iamRoleId = iamRoleId;
+            o.identity = identity;
+            return o;
         }
     }
 }

@@ -14,33 +14,18 @@ public final class GetInstanceSerialPortResult {
      * @return The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
      * 
      */
-    private final String contents;
+    private String contents;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String instance;
-    private final Integer port;
-    private final String project;
-    private final String zone;
+    private String id;
+    private String instance;
+    private Integer port;
+    private String project;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetInstanceSerialPortResult(
-        @CustomType.Parameter("contents") String contents,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instance") String instance,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("zone") String zone) {
-        this.contents = contents;
-        this.id = id;
-        this.instance = instance;
-        this.port = port;
-        this.project = project;
-        this.zone = zone;
-    }
-
+    private GetInstanceSerialPortResult() {}
     /**
      * @return The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
      * 
@@ -75,7 +60,7 @@ public final class GetInstanceSerialPortResult {
     public static Builder builder(GetInstanceSerialPortResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String contents;
         private String id;
@@ -83,11 +68,7 @@ public final class GetInstanceSerialPortResult {
         private Integer port;
         private String project;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceSerialPortResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contents = defaults.contents;
@@ -98,31 +79,45 @@ public final class GetInstanceSerialPortResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder contents(String contents) {
             this.contents = Objects.requireNonNull(contents);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instance(String instance) {
             this.instance = Objects.requireNonNull(instance);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetInstanceSerialPortResult build() {
-            return new GetInstanceSerialPortResult(contents, id, instance, port, project, zone);
+        }
+        public GetInstanceSerialPortResult build() {
+            final var o = new GetInstanceSerialPortResult();
+            o.contents = contents;
+            o.id = id;
+            o.instance = instance;
+            o.port = port;
+            o.project = project;
+            o.zone = zone;
+            return o;
         }
     }
 }

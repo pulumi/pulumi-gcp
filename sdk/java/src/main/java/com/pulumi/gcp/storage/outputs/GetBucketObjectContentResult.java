@@ -15,85 +15,38 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBucketObjectContentResult {
-    private final String bucket;
-    private final String cacheControl;
+    private String bucket;
+    private String cacheControl;
     /**
      * @return (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
      * 
      */
-    private final @Nullable String content;
-    private final String contentDisposition;
-    private final String contentEncoding;
-    private final String contentLanguage;
-    private final String contentType;
-    private final String crc32c;
-    private final List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
-    private final String detectMd5hash;
-    private final Boolean eventBasedHold;
+    private @Nullable String content;
+    private String contentDisposition;
+    private String contentEncoding;
+    private String contentLanguage;
+    private String contentType;
+    private String crc32c;
+    private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
+    private String detectMd5hash;
+    private Boolean eventBasedHold;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String kmsKeyName;
-    private final String md5hash;
-    private final String mediaLink;
-    private final Map<String,String> metadata;
-    private final String name;
-    private final String outputName;
-    private final String selfLink;
-    private final String source;
-    private final String storageClass;
-    private final Boolean temporaryHold;
+    private String id;
+    private String kmsKeyName;
+    private String md5hash;
+    private String mediaLink;
+    private Map<String,String> metadata;
+    private String name;
+    private String outputName;
+    private String selfLink;
+    private String source;
+    private String storageClass;
+    private Boolean temporaryHold;
 
-    @CustomType.Constructor
-    private GetBucketObjectContentResult(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("cacheControl") String cacheControl,
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("contentDisposition") String contentDisposition,
-        @CustomType.Parameter("contentEncoding") String contentEncoding,
-        @CustomType.Parameter("contentLanguage") String contentLanguage,
-        @CustomType.Parameter("contentType") String contentType,
-        @CustomType.Parameter("crc32c") String crc32c,
-        @CustomType.Parameter("customerEncryptions") List<GetBucketObjectContentCustomerEncryption> customerEncryptions,
-        @CustomType.Parameter("detectMd5hash") String detectMd5hash,
-        @CustomType.Parameter("eventBasedHold") Boolean eventBasedHold,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kmsKeyName") String kmsKeyName,
-        @CustomType.Parameter("md5hash") String md5hash,
-        @CustomType.Parameter("mediaLink") String mediaLink,
-        @CustomType.Parameter("metadata") Map<String,String> metadata,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("outputName") String outputName,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("source") String source,
-        @CustomType.Parameter("storageClass") String storageClass,
-        @CustomType.Parameter("temporaryHold") Boolean temporaryHold) {
-        this.bucket = bucket;
-        this.cacheControl = cacheControl;
-        this.content = content;
-        this.contentDisposition = contentDisposition;
-        this.contentEncoding = contentEncoding;
-        this.contentLanguage = contentLanguage;
-        this.contentType = contentType;
-        this.crc32c = crc32c;
-        this.customerEncryptions = customerEncryptions;
-        this.detectMd5hash = detectMd5hash;
-        this.eventBasedHold = eventBasedHold;
-        this.id = id;
-        this.kmsKeyName = kmsKeyName;
-        this.md5hash = md5hash;
-        this.mediaLink = mediaLink;
-        this.metadata = metadata;
-        this.name = name;
-        this.outputName = outputName;
-        this.selfLink = selfLink;
-        this.source = source;
-        this.storageClass = storageClass;
-        this.temporaryHold = temporaryHold;
-    }
-
+    private GetBucketObjectContentResult() {}
     public String bucket() {
         return this.bucket;
     }
@@ -176,7 +129,7 @@ public final class GetBucketObjectContentResult {
     public static Builder builder(GetBucketObjectContentResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private String cacheControl;
@@ -200,11 +153,7 @@ public final class GetBucketObjectContentResult {
         private String source;
         private String storageClass;
         private Boolean temporaryHold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketObjectContentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -231,38 +180,47 @@ public final class GetBucketObjectContentResult {
     	      this.temporaryHold = defaults.temporaryHold;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheControl(String cacheControl) {
             this.cacheControl = Objects.requireNonNull(cacheControl);
             return this;
         }
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder contentDisposition(String contentDisposition) {
             this.contentDisposition = Objects.requireNonNull(contentDisposition);
             return this;
         }
+        @CustomType.Setter
         public Builder contentEncoding(String contentEncoding) {
             this.contentEncoding = Objects.requireNonNull(contentEncoding);
             return this;
         }
+        @CustomType.Setter
         public Builder contentLanguage(String contentLanguage) {
             this.contentLanguage = Objects.requireNonNull(contentLanguage);
             return this;
         }
+        @CustomType.Setter
         public Builder contentType(String contentType) {
             this.contentType = Objects.requireNonNull(contentType);
             return this;
         }
+        @CustomType.Setter
         public Builder crc32c(String crc32c) {
             this.crc32c = Objects.requireNonNull(crc32c);
             return this;
         }
+        @CustomType.Setter
         public Builder customerEncryptions(List<GetBucketObjectContentCustomerEncryption> customerEncryptions) {
             this.customerEncryptions = Objects.requireNonNull(customerEncryptions);
             return this;
@@ -270,59 +228,96 @@ public final class GetBucketObjectContentResult {
         public Builder customerEncryptions(GetBucketObjectContentCustomerEncryption... customerEncryptions) {
             return customerEncryptions(List.of(customerEncryptions));
         }
+        @CustomType.Setter
         public Builder detectMd5hash(String detectMd5hash) {
             this.detectMd5hash = Objects.requireNonNull(detectMd5hash);
             return this;
         }
+        @CustomType.Setter
         public Builder eventBasedHold(Boolean eventBasedHold) {
             this.eventBasedHold = Objects.requireNonNull(eventBasedHold);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder md5hash(String md5hash) {
             this.md5hash = Objects.requireNonNull(md5hash);
             return this;
         }
+        @CustomType.Setter
         public Builder mediaLink(String mediaLink) {
             this.mediaLink = Objects.requireNonNull(mediaLink);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder outputName(String outputName) {
             this.outputName = Objects.requireNonNull(outputName);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
         }
+        @CustomType.Setter
         public Builder temporaryHold(Boolean temporaryHold) {
             this.temporaryHold = Objects.requireNonNull(temporaryHold);
             return this;
-        }        public GetBucketObjectContentResult build() {
-            return new GetBucketObjectContentResult(bucket, cacheControl, content, contentDisposition, contentEncoding, contentLanguage, contentType, crc32c, customerEncryptions, detectMd5hash, eventBasedHold, id, kmsKeyName, md5hash, mediaLink, metadata, name, outputName, selfLink, source, storageClass, temporaryHold);
+        }
+        public GetBucketObjectContentResult build() {
+            final var o = new GetBucketObjectContentResult();
+            o.bucket = bucket;
+            o.cacheControl = cacheControl;
+            o.content = content;
+            o.contentDisposition = contentDisposition;
+            o.contentEncoding = contentEncoding;
+            o.contentLanguage = contentLanguage;
+            o.contentType = contentType;
+            o.crc32c = crc32c;
+            o.customerEncryptions = customerEncryptions;
+            o.detectMd5hash = detectMd5hash;
+            o.eventBasedHold = eventBasedHold;
+            o.id = id;
+            o.kmsKeyName = kmsKeyName;
+            o.md5hash = md5hash;
+            o.mediaLink = mediaLink;
+            o.metadata = metadata;
+            o.name = name;
+            o.outputName = outputName;
+            o.selfLink = selfLink;
+            o.source = source;
+            o.storageClass = storageClass;
+            o.temporaryHold = temporaryHold;
+            return o;
         }
     }
 }

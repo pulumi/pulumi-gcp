@@ -13,39 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHcVpnGatewayResult {
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String network;
-    private final @Nullable String project;
-    private final @Nullable String region;
-    private final String selfLink;
-    private final List<GetHcVpnGatewayVpnInterface> vpnInterfaces;
+    private String id;
+    private String name;
+    private String network;
+    private @Nullable String project;
+    private @Nullable String region;
+    private String selfLink;
+    private List<GetHcVpnGatewayVpnInterface> vpnInterfaces;
 
-    @CustomType.Constructor
-    private GetHcVpnGatewayResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("vpnInterfaces") List<GetHcVpnGatewayVpnInterface> vpnInterfaces) {
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.network = network;
-        this.project = project;
-        this.region = region;
-        this.selfLink = selfLink;
-        this.vpnInterfaces = vpnInterfaces;
-    }
-
+    private GetHcVpnGatewayResult() {}
     public String description() {
         return this.description;
     }
@@ -82,7 +63,7 @@ public final class GetHcVpnGatewayResult {
     public static Builder builder(GetHcVpnGatewayResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -92,11 +73,7 @@ public final class GetHcVpnGatewayResult {
         private @Nullable String region;
         private String selfLink;
         private List<GetHcVpnGatewayVpnInterface> vpnInterfaces;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHcVpnGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -109,42 +86,60 @@ public final class GetHcVpnGatewayResult {
     	      this.vpnInterfaces = defaults.vpnInterfaces;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder vpnInterfaces(List<GetHcVpnGatewayVpnInterface> vpnInterfaces) {
             this.vpnInterfaces = Objects.requireNonNull(vpnInterfaces);
             return this;
         }
         public Builder vpnInterfaces(GetHcVpnGatewayVpnInterface... vpnInterfaces) {
             return vpnInterfaces(List.of(vpnInterfaces));
-        }        public GetHcVpnGatewayResult build() {
-            return new GetHcVpnGatewayResult(description, id, name, network, project, region, selfLink, vpnInterfaces);
+        }
+        public GetHcVpnGatewayResult build() {
+            final var o = new GetHcVpnGatewayResult();
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.network = network;
+            o.project = project;
+            o.region = region;
+            o.selfLink = selfLink;
+            o.vpnInterfaces = vpnInterfaces;
+            return o;
         }
     }
 }

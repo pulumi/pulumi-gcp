@@ -101,7 +101,7 @@ class DenyPolicyRuleDenyRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 denial_condition: 'outputs.DenyPolicyRuleDenyRuleDenialCondition',
+                 denial_condition: Optional['outputs.DenyPolicyRuleDenyRuleDenialCondition'] = None,
                  denied_permissions: Optional[Sequence[str]] = None,
                  denied_principals: Optional[Sequence[str]] = None,
                  exception_permissions: Optional[Sequence[str]] = None,
@@ -118,7 +118,8 @@ class DenyPolicyRuleDenyRule(dict):
         :param Sequence[str] exception_principals: The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
                For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
         """
-        pulumi.set(__self__, "denial_condition", denial_condition)
+        if denial_condition is not None:
+            pulumi.set(__self__, "denial_condition", denial_condition)
         if denied_permissions is not None:
             pulumi.set(__self__, "denied_permissions", denied_permissions)
         if denied_principals is not None:
@@ -130,7 +131,7 @@ class DenyPolicyRuleDenyRule(dict):
 
     @property
     @pulumi.getter(name="denialCondition")
-    def denial_condition(self) -> 'outputs.DenyPolicyRuleDenyRuleDenialCondition':
+    def denial_condition(self) -> Optional['outputs.DenyPolicyRuleDenyRuleDenialCondition']:
         """
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         Structure is documented below.

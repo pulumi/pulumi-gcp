@@ -15,36 +15,25 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
      * @return Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * 
      */
-    private final @Nullable String autoDeleteTime;
+    private @Nullable String autoDeleteTime;
     /**
      * @return Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * 
      */
-    private final @Nullable String autoDeleteTtl;
+    private @Nullable String autoDeleteTtl;
     /**
      * @return Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
      * 
      */
-    private final @Nullable String idleDeleteTtl;
+    private @Nullable String idleDeleteTtl;
     /**
      * @return -
      * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * 
      */
-    private final @Nullable String idleStartTime;
+    private @Nullable String idleStartTime;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(
-        @CustomType.Parameter("autoDeleteTime") @Nullable String autoDeleteTime,
-        @CustomType.Parameter("autoDeleteTtl") @Nullable String autoDeleteTtl,
-        @CustomType.Parameter("idleDeleteTtl") @Nullable String idleDeleteTtl,
-        @CustomType.Parameter("idleStartTime") @Nullable String idleStartTime) {
-        this.autoDeleteTime = autoDeleteTime;
-        this.autoDeleteTtl = autoDeleteTtl;
-        this.idleDeleteTtl = idleDeleteTtl;
-        this.idleStartTime = idleStartTime;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig() {}
     /**
      * @return Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * 
@@ -82,17 +71,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoDeleteTime;
         private @Nullable String autoDeleteTtl;
         private @Nullable String idleDeleteTtl;
         private @Nullable String idleStartTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDeleteTime = defaults.autoDeleteTime;
@@ -101,23 +86,33 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
     	      this.idleStartTime = defaults.idleStartTime;
         }
 
+        @CustomType.Setter
         public Builder autoDeleteTime(@Nullable String autoDeleteTime) {
             this.autoDeleteTime = autoDeleteTime;
             return this;
         }
+        @CustomType.Setter
         public Builder autoDeleteTtl(@Nullable String autoDeleteTtl) {
             this.autoDeleteTtl = autoDeleteTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder idleDeleteTtl(@Nullable String idleDeleteTtl) {
             this.idleDeleteTtl = idleDeleteTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder idleStartTime(@Nullable String idleStartTime) {
             this.idleStartTime = idleStartTime;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(autoDeleteTime, autoDeleteTtl, idleDeleteTtl, idleStartTime);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig();
+            o.autoDeleteTime = autoDeleteTime;
+            o.autoDeleteTtl = autoDeleteTtl;
+            o.idleDeleteTtl = idleDeleteTtl;
+            o.idleStartTime = idleStartTime;
+            return o;
         }
     }
 }

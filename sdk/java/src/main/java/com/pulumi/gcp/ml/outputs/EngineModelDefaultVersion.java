@@ -13,13 +13,9 @@ public final class EngineModelDefaultVersion {
      * @return The name specified for the version when it was created.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private EngineModelDefaultVersion(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private EngineModelDefaultVersion() {}
     /**
      * @return The name specified for the version when it was created.
      * 
@@ -35,24 +31,24 @@ public final class EngineModelDefaultVersion {
     public static Builder builder(EngineModelDefaultVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EngineModelDefaultVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public EngineModelDefaultVersion build() {
-            return new EngineModelDefaultVersion(name);
+        }
+        public EngineModelDefaultVersion build() {
+            final var o = new EngineModelDefaultVersion();
+            o.name = name;
+            return o;
         }
     }
 }

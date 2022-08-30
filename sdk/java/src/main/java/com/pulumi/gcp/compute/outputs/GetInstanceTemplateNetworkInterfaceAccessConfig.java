@@ -14,26 +14,17 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
      * network ip. If not given, one will be generated.
      * 
      */
-    private final String natIp;
+    private String natIp;
     /**
      * @return The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM or
      * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
      * 
      */
-    private final String networkTier;
-    private final String publicPtrDomainName;
+    private String networkTier;
+    private String publicPtrDomainName;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateNetworkInterfaceAccessConfig(
-        @CustomType.Parameter("natIp") String natIp,
-        @CustomType.Parameter("networkTier") String networkTier,
-        @CustomType.Parameter("publicPtrDomainName") String publicPtrDomainName) {
-        this.natIp = natIp;
-        this.networkTier = networkTier;
-        this.publicPtrDomainName = publicPtrDomainName;
-    }
-
+    private GetInstanceTemplateNetworkInterfaceAccessConfig() {}
     /**
      * @return The IP address that will be 1:1 mapped to the instance&#39;s
      * network ip. If not given, one will be generated.
@@ -62,16 +53,12 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
     public static Builder builder(GetInstanceTemplateNetworkInterfaceAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String natIp;
         private String networkTier;
         private String publicPtrDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
@@ -79,19 +66,27 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
 
+        @CustomType.Setter
         public Builder natIp(String natIp) {
             this.natIp = Objects.requireNonNull(natIp);
             return this;
         }
+        @CustomType.Setter
         public Builder networkTier(String networkTier) {
             this.networkTier = Objects.requireNonNull(networkTier);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
             return this;
-        }        public GetInstanceTemplateNetworkInterfaceAccessConfig build() {
-            return new GetInstanceTemplateNetworkInterfaceAccessConfig(natIp, networkTier, publicPtrDomainName);
+        }
+        public GetInstanceTemplateNetworkInterfaceAccessConfig build() {
+            final var o = new GetInstanceTemplateNetworkInterfaceAccessConfig();
+            o.natIp = natIp;
+            o.networkTier = networkTier;
+            o.publicPtrDomainName = publicPtrDomainName;
+            return o;
         }
     }
 }

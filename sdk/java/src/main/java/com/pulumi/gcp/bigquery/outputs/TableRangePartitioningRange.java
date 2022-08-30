@@ -13,28 +13,19 @@ public final class TableRangePartitioningRange {
      * @return End of the range partitioning, exclusive.
      * 
      */
-    private final Integer end;
+    private Integer end;
     /**
      * @return The width of each range within the partition.
      * 
      */
-    private final Integer interval;
+    private Integer interval;
     /**
      * @return Start of the range partitioning, inclusive.
      * 
      */
-    private final Integer start;
+    private Integer start;
 
-    @CustomType.Constructor
-    private TableRangePartitioningRange(
-        @CustomType.Parameter("end") Integer end,
-        @CustomType.Parameter("interval") Integer interval,
-        @CustomType.Parameter("start") Integer start) {
-        this.end = end;
-        this.interval = interval;
-        this.start = start;
-    }
-
+    private TableRangePartitioningRange() {}
     /**
      * @return End of the range partitioning, exclusive.
      * 
@@ -64,16 +55,12 @@ public final class TableRangePartitioningRange {
     public static Builder builder(TableRangePartitioningRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer end;
         private Integer interval;
         private Integer start;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableRangePartitioningRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.end = defaults.end;
@@ -81,19 +68,27 @@ public final class TableRangePartitioningRange {
     	      this.start = defaults.start;
         }
 
+        @CustomType.Setter
         public Builder end(Integer end) {
             this.end = Objects.requireNonNull(end);
             return this;
         }
+        @CustomType.Setter
         public Builder interval(Integer interval) {
             this.interval = Objects.requireNonNull(interval);
             return this;
         }
+        @CustomType.Setter
         public Builder start(Integer start) {
             this.start = Objects.requireNonNull(start);
             return this;
-        }        public TableRangePartitioningRange build() {
-            return new TableRangePartitioningRange(end, interval, start);
+        }
+        public TableRangePartitioningRange build() {
+            final var o = new TableRangePartitioningRange();
+            o.end = end;
+            o.interval = interval;
+            o.start = start;
+            return o;
         }
     }
 }

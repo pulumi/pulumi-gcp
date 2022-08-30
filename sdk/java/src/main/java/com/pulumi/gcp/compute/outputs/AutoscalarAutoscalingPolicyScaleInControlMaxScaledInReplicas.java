@@ -16,22 +16,15 @@ public final class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas 
      * integer.
      * 
      */
-    private final @Nullable Integer fixed;
+    private @Nullable Integer fixed;
     /**
      * @return Specifies a percentage of instances between 0 to 100%, inclusive.
      * For example, specify 80 for 80%.
      * 
      */
-    private final @Nullable Integer percent;
+    private @Nullable Integer percent;
 
-    @CustomType.Constructor
-    private AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas(
-        @CustomType.Parameter("fixed") @Nullable Integer fixed,
-        @CustomType.Parameter("percent") @Nullable Integer percent) {
-        this.fixed = fixed;
-        this.percent = percent;
-    }
-
+    private AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas() {}
     /**
      * @return Specifies a fixed number of VM instances. This must be a positive
      * integer.
@@ -56,30 +49,32 @@ public final class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas 
     public static Builder builder(AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer fixed;
         private @Nullable Integer percent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixed = defaults.fixed;
     	      this.percent = defaults.percent;
         }
 
+        @CustomType.Setter
         public Builder fixed(@Nullable Integer fixed) {
             this.fixed = fixed;
             return this;
         }
+        @CustomType.Setter
         public Builder percent(@Nullable Integer percent) {
             this.percent = percent;
             return this;
-        }        public AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas build() {
-            return new AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas(fixed, percent);
+        }
+        public AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas build() {
+            final var o = new AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas();
+            o.fixed = fixed;
+            o.percent = percent;
+            return o;
         }
     }
 }

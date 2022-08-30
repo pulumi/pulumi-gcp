@@ -18,35 +18,24 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
      * @return An Apt Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt;
     /**
      * @return A Goo Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo;
     /**
      * @return A Yum Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum;
     /**
      * @return A Zypper Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(
-        @CustomType.Parameter("apt") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt,
-        @CustomType.Parameter("goo") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo,
-        @CustomType.Parameter("yum") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum,
-        @CustomType.Parameter("zypper") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper) {
-        this.apt = apt;
-        this.goo = goo;
-        this.yum = yum;
-        this.zypper = zypper;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceRepository() {}
     /**
      * @return An Apt Repository.
      * 
@@ -83,17 +72,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceRepository defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceRepository defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apt = defaults.apt;
@@ -102,23 +87,33 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
     	      this.zypper = defaults.zypper;
         }
 
+        @CustomType.Setter
         public Builder apt(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt) {
             this.apt = apt;
             return this;
         }
+        @CustomType.Setter
         public Builder goo(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo) {
             this.goo = goo;
             return this;
         }
+        @CustomType.Setter
         public Builder yum(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum) {
             this.yum = yum;
             return this;
         }
+        @CustomType.Setter
         public Builder zypper(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper) {
             this.zypper = zypper;
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceRepository build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(apt, goo, yum, zypper);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceRepository build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepository();
+            o.apt = apt;
+            o.goo = goo;
+            o.yum = yum;
+            o.zypper = zypper;
+            return o;
         }
     }
 }

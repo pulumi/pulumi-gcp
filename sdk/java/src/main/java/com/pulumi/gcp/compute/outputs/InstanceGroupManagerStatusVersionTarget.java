@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceGroupManagerStatusVersionTarget {
-    private final @Nullable Boolean isReached;
+    private @Nullable Boolean isReached;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerStatusVersionTarget(@CustomType.Parameter("isReached") @Nullable Boolean isReached) {
-        this.isReached = isReached;
-    }
-
+    private InstanceGroupManagerStatusVersionTarget() {}
     public Optional<Boolean> isReached() {
         return Optional.ofNullable(this.isReached);
     }
@@ -29,24 +25,24 @@ public final class InstanceGroupManagerStatusVersionTarget {
     public static Builder builder(InstanceGroupManagerStatusVersionTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isReached;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerStatusVersionTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isReached = defaults.isReached;
         }
 
+        @CustomType.Setter
         public Builder isReached(@Nullable Boolean isReached) {
             this.isReached = isReached;
             return this;
-        }        public InstanceGroupManagerStatusVersionTarget build() {
-            return new InstanceGroupManagerStatusVersionTarget(isReached);
+        }
+        public InstanceGroupManagerStatusVersionTarget build() {
+            final var o = new InstanceGroupManagerStatusVersionTarget();
+            o.isReached = isReached;
+            return o;
         }
     }
 }

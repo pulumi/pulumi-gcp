@@ -30,7 +30,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
      * 
      */
-    private final @Nullable String connectionPersistenceOnUnhealthyBackends;
+    private @Nullable String connectionPersistenceOnUnhealthyBackends;
     /**
      * @return Specifies how long to keep a Connection Tracking entry while there is
      * no matching traffic (in seconds).
@@ -38,7 +38,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
      * 
      */
-    private final @Nullable Integer idleTimeoutSec;
+    private @Nullable Integer idleTimeoutSec;
     /**
      * @return Specifies the key used for connection tracking. There are two options:
      * `PER_CONNECTION`: The Connection Tracking is performed as per the
@@ -49,18 +49,9 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * Possible values are `PER_CONNECTION` and `PER_SESSION`.
      * 
      */
-    private final @Nullable String trackingMode;
+    private @Nullable String trackingMode;
 
-    @CustomType.Constructor
-    private RegionBackendServiceConnectionTrackingPolicy(
-        @CustomType.Parameter("connectionPersistenceOnUnhealthyBackends") @Nullable String connectionPersistenceOnUnhealthyBackends,
-        @CustomType.Parameter("idleTimeoutSec") @Nullable Integer idleTimeoutSec,
-        @CustomType.Parameter("trackingMode") @Nullable String trackingMode) {
-        this.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
-        this.idleTimeoutSec = idleTimeoutSec;
-        this.trackingMode = trackingMode;
-    }
-
+    private RegionBackendServiceConnectionTrackingPolicy() {}
     /**
      * @return Specifies connection persistence when backends are unhealthy.
      * If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
@@ -113,16 +104,12 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
     public static Builder builder(RegionBackendServiceConnectionTrackingPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionPersistenceOnUnhealthyBackends;
         private @Nullable Integer idleTimeoutSec;
         private @Nullable String trackingMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceConnectionTrackingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionPersistenceOnUnhealthyBackends = defaults.connectionPersistenceOnUnhealthyBackends;
@@ -130,19 +117,27 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
     	      this.trackingMode = defaults.trackingMode;
         }
 
+        @CustomType.Setter
         public Builder connectionPersistenceOnUnhealthyBackends(@Nullable String connectionPersistenceOnUnhealthyBackends) {
             this.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
             return this;
         }
+        @CustomType.Setter
         public Builder idleTimeoutSec(@Nullable Integer idleTimeoutSec) {
             this.idleTimeoutSec = idleTimeoutSec;
             return this;
         }
+        @CustomType.Setter
         public Builder trackingMode(@Nullable String trackingMode) {
             this.trackingMode = trackingMode;
             return this;
-        }        public RegionBackendServiceConnectionTrackingPolicy build() {
-            return new RegionBackendServiceConnectionTrackingPolicy(connectionPersistenceOnUnhealthyBackends, idleTimeoutSec, trackingMode);
+        }
+        public RegionBackendServiceConnectionTrackingPolicy build() {
+            final var o = new RegionBackendServiceConnectionTrackingPolicy();
+            o.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
+            o.idleTimeoutSec = idleTimeoutSec;
+            o.trackingMode = trackingMode;
+            return o;
         }
     }
 }

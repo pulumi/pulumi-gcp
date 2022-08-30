@@ -13,13 +13,9 @@ public final class AiFeatureStoreOnlineServingConfig {
      * @return The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
      * 
      */
-    private final Integer fixedNodeCount;
+    private Integer fixedNodeCount;
 
-    @CustomType.Constructor
-    private AiFeatureStoreOnlineServingConfig(@CustomType.Parameter("fixedNodeCount") Integer fixedNodeCount) {
-        this.fixedNodeCount = fixedNodeCount;
-    }
-
+    private AiFeatureStoreOnlineServingConfig() {}
     /**
      * @return The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
      * 
@@ -35,24 +31,24 @@ public final class AiFeatureStoreOnlineServingConfig {
     public static Builder builder(AiFeatureStoreOnlineServingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer fixedNodeCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AiFeatureStoreOnlineServingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedNodeCount = defaults.fixedNodeCount;
         }
 
+        @CustomType.Setter
         public Builder fixedNodeCount(Integer fixedNodeCount) {
             this.fixedNodeCount = Objects.requireNonNull(fixedNodeCount);
             return this;
-        }        public AiFeatureStoreOnlineServingConfig build() {
-            return new AiFeatureStoreOnlineServingConfig(fixedNodeCount);
+        }
+        public AiFeatureStoreOnlineServingConfig build() {
+            final var o = new AiFeatureStoreOnlineServingConfig();
+            o.fixedNodeCount = fixedNodeCount;
+            return o;
         }
     }
 }

@@ -17,23 +17,16 @@ public final class GetInstanceTemplateNetworkInterfaceAliasIpRange {
      * error.
      * 
      */
-    private final String ipCidrRange;
+    private String ipCidrRange;
     /**
      * @return The subnetwork secondary range name specifying
      * the secondary range from which to allocate the IP CIDR range for this alias IP
      * range. If left unspecified, the primary range of the subnetwork will be used.
      * 
      */
-    private final String subnetworkRangeName;
+    private String subnetworkRangeName;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateNetworkInterfaceAliasIpRange(
-        @CustomType.Parameter("ipCidrRange") String ipCidrRange,
-        @CustomType.Parameter("subnetworkRangeName") String subnetworkRangeName) {
-        this.ipCidrRange = ipCidrRange;
-        this.subnetworkRangeName = subnetworkRangeName;
-    }
-
+    private GetInstanceTemplateNetworkInterfaceAliasIpRange() {}
     /**
      * @return The IP CIDR range represented by this alias IP range. This IP CIDR range
      * must belong to the specified subnetwork and cannot contain IP addresses reserved by
@@ -62,30 +55,32 @@ public final class GetInstanceTemplateNetworkInterfaceAliasIpRange {
     public static Builder builder(GetInstanceTemplateNetworkInterfaceAliasIpRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipCidrRange;
         private String subnetworkRangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateNetworkInterfaceAliasIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.subnetworkRangeName = defaults.subnetworkRangeName;
         }
 
+        @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
             this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworkRangeName(String subnetworkRangeName) {
             this.subnetworkRangeName = Objects.requireNonNull(subnetworkRangeName);
             return this;
-        }        public GetInstanceTemplateNetworkInterfaceAliasIpRange build() {
-            return new GetInstanceTemplateNetworkInterfaceAliasIpRange(ipCidrRange, subnetworkRangeName);
+        }
+        public GetInstanceTemplateNetworkInterfaceAliasIpRange build() {
+            final var o = new GetInstanceTemplateNetworkInterfaceAliasIpRange();
+            o.ipCidrRange = ipCidrRange;
+            o.subnetworkRangeName = subnetworkRangeName;
+            return o;
         }
     }
 }

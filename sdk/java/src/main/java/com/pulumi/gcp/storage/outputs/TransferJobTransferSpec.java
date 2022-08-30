@@ -23,70 +23,49 @@ public final class TransferJobTransferSpec {
      * @return An AWS S3 data source. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource;
+    private @Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource;
     /**
      * @return An Azure Blob Storage data source. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource;
+    private @Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource;
     /**
      * @return A Google Cloud Storage data sink. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecGcsDataSink gcsDataSink;
+    private @Nullable TransferJobTransferSpecGcsDataSink gcsDataSink;
     /**
      * @return A Google Cloud Storage data source. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecGcsDataSource gcsDataSource;
+    private @Nullable TransferJobTransferSpecGcsDataSource gcsDataSource;
     /**
      * @return A HTTP URL data source. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecHttpDataSource httpDataSource;
+    private @Nullable TransferJobTransferSpecHttpDataSource httpDataSource;
     /**
      * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecObjectConditions objectConditions;
+    private @Nullable TransferJobTransferSpecObjectConditions objectConditions;
     /**
      * @return A POSIX data sink. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecPosixDataSink posixDataSink;
+    private @Nullable TransferJobTransferSpecPosixDataSink posixDataSink;
     /**
      * @return A POSIX filesystem data source. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecPosixDataSource posixDataSource;
+    private @Nullable TransferJobTransferSpecPosixDataSource posixDataSource;
     /**
      * @return Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
-    private final @Nullable TransferJobTransferSpecTransferOptions transferOptions;
+    private @Nullable TransferJobTransferSpecTransferOptions transferOptions;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpec(
-        @CustomType.Parameter("awsS3DataSource") @Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource,
-        @CustomType.Parameter("azureBlobStorageDataSource") @Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource,
-        @CustomType.Parameter("gcsDataSink") @Nullable TransferJobTransferSpecGcsDataSink gcsDataSink,
-        @CustomType.Parameter("gcsDataSource") @Nullable TransferJobTransferSpecGcsDataSource gcsDataSource,
-        @CustomType.Parameter("httpDataSource") @Nullable TransferJobTransferSpecHttpDataSource httpDataSource,
-        @CustomType.Parameter("objectConditions") @Nullable TransferJobTransferSpecObjectConditions objectConditions,
-        @CustomType.Parameter("posixDataSink") @Nullable TransferJobTransferSpecPosixDataSink posixDataSink,
-        @CustomType.Parameter("posixDataSource") @Nullable TransferJobTransferSpecPosixDataSource posixDataSource,
-        @CustomType.Parameter("transferOptions") @Nullable TransferJobTransferSpecTransferOptions transferOptions) {
-        this.awsS3DataSource = awsS3DataSource;
-        this.azureBlobStorageDataSource = azureBlobStorageDataSource;
-        this.gcsDataSink = gcsDataSink;
-        this.gcsDataSource = gcsDataSource;
-        this.httpDataSource = httpDataSource;
-        this.objectConditions = objectConditions;
-        this.posixDataSink = posixDataSink;
-        this.posixDataSource = posixDataSource;
-        this.transferOptions = transferOptions;
-    }
-
+    private TransferJobTransferSpec() {}
     /**
      * @return An AWS S3 data source. Structure documented below.
      * 
@@ -158,7 +137,7 @@ public final class TransferJobTransferSpec {
     public static Builder builder(TransferJobTransferSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource;
         private @Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource;
@@ -169,11 +148,7 @@ public final class TransferJobTransferSpec {
         private @Nullable TransferJobTransferSpecPosixDataSink posixDataSink;
         private @Nullable TransferJobTransferSpecPosixDataSource posixDataSource;
         private @Nullable TransferJobTransferSpecTransferOptions transferOptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsS3DataSource = defaults.awsS3DataSource;
@@ -187,43 +162,63 @@ public final class TransferJobTransferSpec {
     	      this.transferOptions = defaults.transferOptions;
         }
 
+        @CustomType.Setter
         public Builder awsS3DataSource(@Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource) {
             this.awsS3DataSource = awsS3DataSource;
             return this;
         }
+        @CustomType.Setter
         public Builder azureBlobStorageDataSource(@Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource) {
             this.azureBlobStorageDataSource = azureBlobStorageDataSource;
             return this;
         }
+        @CustomType.Setter
         public Builder gcsDataSink(@Nullable TransferJobTransferSpecGcsDataSink gcsDataSink) {
             this.gcsDataSink = gcsDataSink;
             return this;
         }
+        @CustomType.Setter
         public Builder gcsDataSource(@Nullable TransferJobTransferSpecGcsDataSource gcsDataSource) {
             this.gcsDataSource = gcsDataSource;
             return this;
         }
+        @CustomType.Setter
         public Builder httpDataSource(@Nullable TransferJobTransferSpecHttpDataSource httpDataSource) {
             this.httpDataSource = httpDataSource;
             return this;
         }
+        @CustomType.Setter
         public Builder objectConditions(@Nullable TransferJobTransferSpecObjectConditions objectConditions) {
             this.objectConditions = objectConditions;
             return this;
         }
+        @CustomType.Setter
         public Builder posixDataSink(@Nullable TransferJobTransferSpecPosixDataSink posixDataSink) {
             this.posixDataSink = posixDataSink;
             return this;
         }
+        @CustomType.Setter
         public Builder posixDataSource(@Nullable TransferJobTransferSpecPosixDataSource posixDataSource) {
             this.posixDataSource = posixDataSource;
             return this;
         }
+        @CustomType.Setter
         public Builder transferOptions(@Nullable TransferJobTransferSpecTransferOptions transferOptions) {
             this.transferOptions = transferOptions;
             return this;
-        }        public TransferJobTransferSpec build() {
-            return new TransferJobTransferSpec(awsS3DataSource, azureBlobStorageDataSource, gcsDataSink, gcsDataSource, httpDataSource, objectConditions, posixDataSink, posixDataSource, transferOptions);
+        }
+        public TransferJobTransferSpec build() {
+            final var o = new TransferJobTransferSpec();
+            o.awsS3DataSource = awsS3DataSource;
+            o.azureBlobStorageDataSource = azureBlobStorageDataSource;
+            o.gcsDataSink = gcsDataSink;
+            o.gcsDataSource = gcsDataSource;
+            o.httpDataSource = httpDataSource;
+            o.objectConditions = objectConditions;
+            o.posixDataSink = posixDataSink;
+            o.posixDataSource = posixDataSource;
+            o.transferOptions = transferOptions;
+            return o;
         }
     }
 }

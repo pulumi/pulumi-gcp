@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryTableSpecViewSpec {
-    private final @Nullable String viewQuery;
+    private @Nullable String viewQuery;
 
-    @CustomType.Constructor
-    private EntryBigqueryTableSpecViewSpec(@CustomType.Parameter("viewQuery") @Nullable String viewQuery) {
-        this.viewQuery = viewQuery;
-    }
-
+    private EntryBigqueryTableSpecViewSpec() {}
     public Optional<String> viewQuery() {
         return Optional.ofNullable(this.viewQuery);
     }
@@ -29,24 +25,24 @@ public final class EntryBigqueryTableSpecViewSpec {
     public static Builder builder(EntryBigqueryTableSpecViewSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String viewQuery;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntryBigqueryTableSpecViewSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.viewQuery = defaults.viewQuery;
         }
 
+        @CustomType.Setter
         public Builder viewQuery(@Nullable String viewQuery) {
             this.viewQuery = viewQuery;
             return this;
-        }        public EntryBigqueryTableSpecViewSpec build() {
-            return new EntryBigqueryTableSpecViewSpec(viewQuery);
+        }
+        public EntryBigqueryTableSpecViewSpec build() {
+            final var o = new EntryBigqueryTableSpecViewSpec();
+            o.viewQuery = viewQuery;
+            return o;
         }
     }
 }

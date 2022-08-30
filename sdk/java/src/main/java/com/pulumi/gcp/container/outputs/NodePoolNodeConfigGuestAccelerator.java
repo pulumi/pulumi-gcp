@@ -12,26 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigGuestAccelerator {
-    private final Integer count;
-    private final @Nullable String gpuPartitionSize;
+    private Integer count;
+    private @Nullable String gpuPartitionSize;
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
      * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
      * physical proximity in order to reduce network latency between nodes.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigGuestAccelerator(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("gpuPartitionSize") @Nullable String gpuPartitionSize,
-        @CustomType.Parameter("type") String type) {
-        this.count = count;
-        this.gpuPartitionSize = gpuPartitionSize;
-        this.type = type;
-    }
-
+    private NodePoolNodeConfigGuestAccelerator() {}
     public Integer count() {
         return this.count;
     }
@@ -55,16 +46,12 @@ public final class NodePoolNodeConfigGuestAccelerator {
     public static Builder builder(NodePoolNodeConfigGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private @Nullable String gpuPartitionSize;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -72,19 +59,27 @@ public final class NodePoolNodeConfigGuestAccelerator {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder gpuPartitionSize(@Nullable String gpuPartitionSize) {
             this.gpuPartitionSize = gpuPartitionSize;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public NodePoolNodeConfigGuestAccelerator build() {
-            return new NodePoolNodeConfigGuestAccelerator(count, gpuPartitionSize, type);
+        }
+        public NodePoolNodeConfigGuestAccelerator build() {
+            final var o = new NodePoolNodeConfigGuestAccelerator();
+            o.count = count;
+            o.gpuPartitionSize = gpuPartitionSize;
+            o.type = type;
+            return o;
         }
     }
 }

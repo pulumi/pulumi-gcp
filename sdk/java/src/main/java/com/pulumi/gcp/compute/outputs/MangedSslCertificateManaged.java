@@ -15,13 +15,9 @@ public final class MangedSslCertificateManaged {
      * there can be up to 100 domains in this list.
      * 
      */
-    private final List<String> domains;
+    private List<String> domains;
 
-    @CustomType.Constructor
-    private MangedSslCertificateManaged(@CustomType.Parameter("domains") List<String> domains) {
-        this.domains = domains;
-    }
-
+    private MangedSslCertificateManaged() {}
     /**
      * @return Domains for which a managed SSL certificate will be valid.  Currently,
      * there can be up to 100 domains in this list.
@@ -38,27 +34,27 @@ public final class MangedSslCertificateManaged {
     public static Builder builder(MangedSslCertificateManaged defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> domains;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MangedSslCertificateManaged defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
         }
 
+        @CustomType.Setter
         public Builder domains(List<String> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
         }
         public Builder domains(String... domains) {
             return domains(List.of(domains));
-        }        public MangedSslCertificateManaged build() {
-            return new MangedSslCertificateManaged(domains);
+        }
+        public MangedSslCertificateManaged build() {
+            final var o = new MangedSslCertificateManaged();
+            o.domains = domains;
+            return o;
         }
     }
 }

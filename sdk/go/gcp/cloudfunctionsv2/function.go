@@ -76,13 +76,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
+//			invoking, err := projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/run.invoker"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gcs_pubsub_publishing,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -92,7 +94,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				invoking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -102,7 +106,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				event_receiving,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -205,7 +211,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
+//			invoking, err := projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/run.invoker"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -221,7 +227,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				invoking,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -231,7 +239,9 @@ import (
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				event_receiving,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -15,13 +15,9 @@ public final class InstanceGroupManagerStatusStatefulPerInstanceConfig {
      * @return A bit indicating if all of the group&#39;s per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
      * 
      */
-    private final @Nullable Boolean allEffective;
+    private @Nullable Boolean allEffective;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerStatusStatefulPerInstanceConfig(@CustomType.Parameter("allEffective") @Nullable Boolean allEffective) {
-        this.allEffective = allEffective;
-    }
-
+    private InstanceGroupManagerStatusStatefulPerInstanceConfig() {}
     /**
      * @return A bit indicating if all of the group&#39;s per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
      * 
@@ -37,24 +33,24 @@ public final class InstanceGroupManagerStatusStatefulPerInstanceConfig {
     public static Builder builder(InstanceGroupManagerStatusStatefulPerInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allEffective;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerStatusStatefulPerInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allEffective = defaults.allEffective;
         }
 
+        @CustomType.Setter
         public Builder allEffective(@Nullable Boolean allEffective) {
             this.allEffective = allEffective;
             return this;
-        }        public InstanceGroupManagerStatusStatefulPerInstanceConfig build() {
-            return new InstanceGroupManagerStatusStatefulPerInstanceConfig(allEffective);
+        }
+        public InstanceGroupManagerStatusStatefulPerInstanceConfig build() {
+            final var o = new InstanceGroupManagerStatusStatefulPerInstanceConfig();
+            o.allEffective = allEffective;
+            return o;
         }
     }
 }

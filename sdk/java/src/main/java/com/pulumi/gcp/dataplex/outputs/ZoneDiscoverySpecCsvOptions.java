@@ -17,35 +17,24 @@ public final class ZoneDiscoverySpecCsvOptions {
      * @return Optional. The delimiter being used to separate values. This defaults to &#39;,&#39;.
      * 
      */
-    private final @Nullable String delimiter;
+    private @Nullable String delimiter;
     /**
      * @return Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
      * 
      */
-    private final @Nullable Boolean disableTypeInference;
+    private @Nullable Boolean disableTypeInference;
     /**
      * @return Optional. The character encoding of the data. The default is UTF-8.
      * 
      */
-    private final @Nullable String encoding;
+    private @Nullable String encoding;
     /**
      * @return Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
      * 
      */
-    private final @Nullable Integer headerRows;
+    private @Nullable Integer headerRows;
 
-    @CustomType.Constructor
-    private ZoneDiscoverySpecCsvOptions(
-        @CustomType.Parameter("delimiter") @Nullable String delimiter,
-        @CustomType.Parameter("disableTypeInference") @Nullable Boolean disableTypeInference,
-        @CustomType.Parameter("encoding") @Nullable String encoding,
-        @CustomType.Parameter("headerRows") @Nullable Integer headerRows) {
-        this.delimiter = delimiter;
-        this.disableTypeInference = disableTypeInference;
-        this.encoding = encoding;
-        this.headerRows = headerRows;
-    }
-
+    private ZoneDiscoverySpecCsvOptions() {}
     /**
      * @return Optional. The delimiter being used to separate values. This defaults to &#39;,&#39;.
      * 
@@ -82,17 +71,13 @@ public final class ZoneDiscoverySpecCsvOptions {
     public static Builder builder(ZoneDiscoverySpecCsvOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String delimiter;
         private @Nullable Boolean disableTypeInference;
         private @Nullable String encoding;
         private @Nullable Integer headerRows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ZoneDiscoverySpecCsvOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delimiter = defaults.delimiter;
@@ -101,23 +86,33 @@ public final class ZoneDiscoverySpecCsvOptions {
     	      this.headerRows = defaults.headerRows;
         }
 
+        @CustomType.Setter
         public Builder delimiter(@Nullable String delimiter) {
             this.delimiter = delimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder disableTypeInference(@Nullable Boolean disableTypeInference) {
             this.disableTypeInference = disableTypeInference;
             return this;
         }
+        @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
             this.encoding = encoding;
             return this;
         }
+        @CustomType.Setter
         public Builder headerRows(@Nullable Integer headerRows) {
             this.headerRows = headerRows;
             return this;
-        }        public ZoneDiscoverySpecCsvOptions build() {
-            return new ZoneDiscoverySpecCsvOptions(delimiter, disableTypeInference, encoding, headerRows);
+        }
+        public ZoneDiscoverySpecCsvOptions build() {
+            final var o = new ZoneDiscoverySpecCsvOptions();
+            o.delimiter = delimiter;
+            o.disableTypeInference = disableTypeInference;
+            o.encoding = encoding;
+            o.headerRows = headerRows;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class DatabaseEncryptionConfig {
      * in the same location as the Spanner Database.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
 
-    @CustomType.Constructor
-    private DatabaseEncryptionConfig(@CustomType.Parameter("kmsKeyName") String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private DatabaseEncryptionConfig() {}
     /**
      * @return Fully qualified name of the KMS key to use to encrypt this database. This key must exist
      * in the same location as the Spanner Database.
@@ -37,24 +33,24 @@ public final class DatabaseEncryptionConfig {
     public static Builder builder(DatabaseEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
-        }        public DatabaseEncryptionConfig build() {
-            return new DatabaseEncryptionConfig(kmsKeyName);
+        }
+        public DatabaseEncryptionConfig build() {
+            final var o = new DatabaseEncryptionConfig();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

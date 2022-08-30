@@ -16,23 +16,16 @@ public final class SnapshotSourceDiskEncryptionKey {
      * If absent, the Compute Engine Service Agent service account is used.
      * 
      */
-    private final @Nullable String kmsKeyServiceAccount;
+    private @Nullable String kmsKeyServiceAccount;
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final @Nullable String rawKey;
+    private @Nullable String rawKey;
 
-    @CustomType.Constructor
-    private SnapshotSourceDiskEncryptionKey(
-        @CustomType.Parameter("kmsKeyServiceAccount") @Nullable String kmsKeyServiceAccount,
-        @CustomType.Parameter("rawKey") @Nullable String rawKey) {
-        this.kmsKeyServiceAccount = kmsKeyServiceAccount;
-        this.rawKey = rawKey;
-    }
-
+    private SnapshotSourceDiskEncryptionKey() {}
     /**
      * @return The service account used for the encryption request for the given KMS key.
      * If absent, the Compute Engine Service Agent service account is used.
@@ -58,30 +51,32 @@ public final class SnapshotSourceDiskEncryptionKey {
     public static Builder builder(SnapshotSourceDiskEncryptionKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kmsKeyServiceAccount;
         private @Nullable String rawKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SnapshotSourceDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder rawKey(@Nullable String rawKey) {
             this.rawKey = rawKey;
             return this;
-        }        public SnapshotSourceDiskEncryptionKey build() {
-            return new SnapshotSourceDiskEncryptionKey(kmsKeyServiceAccount, rawKey);
+        }
+        public SnapshotSourceDiskEncryptionKey build() {
+            final var o = new SnapshotSourceDiskEncryptionKey();
+            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            o.rawKey = rawKey;
+            return o;
         }
     }
 }

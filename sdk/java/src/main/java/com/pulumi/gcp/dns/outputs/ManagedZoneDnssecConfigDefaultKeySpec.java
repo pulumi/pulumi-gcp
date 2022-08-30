@@ -17,12 +17,12 @@ public final class ManagedZoneDnssecConfigDefaultKeySpec {
      * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
      * 
      */
-    private final @Nullable String algorithm;
+    private @Nullable String algorithm;
     /**
      * @return Length of the keys in bits
      * 
      */
-    private final @Nullable Integer keyLength;
+    private @Nullable Integer keyLength;
     /**
      * @return Specifies whether this is a key signing key (KSK) or a zone
      * signing key (ZSK). Key signing keys have the Secure Entry
@@ -33,25 +33,14 @@ public final class ManagedZoneDnssecConfigDefaultKeySpec {
      * Possible values are `keySigning` and `zoneSigning`.
      * 
      */
-    private final @Nullable String keyType;
+    private @Nullable String keyType;
     /**
      * @return Identifies what kind of resource this is
      * 
      */
-    private final @Nullable String kind;
+    private @Nullable String kind;
 
-    @CustomType.Constructor
-    private ManagedZoneDnssecConfigDefaultKeySpec(
-        @CustomType.Parameter("algorithm") @Nullable String algorithm,
-        @CustomType.Parameter("keyLength") @Nullable Integer keyLength,
-        @CustomType.Parameter("keyType") @Nullable String keyType,
-        @CustomType.Parameter("kind") @Nullable String kind) {
-        this.algorithm = algorithm;
-        this.keyLength = keyLength;
-        this.keyType = keyType;
-        this.kind = kind;
-    }
-
+    private ManagedZoneDnssecConfigDefaultKeySpec() {}
     /**
      * @return String mnemonic specifying the DNSSEC algorithm of this key
      * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
@@ -95,17 +84,13 @@ public final class ManagedZoneDnssecConfigDefaultKeySpec {
     public static Builder builder(ManagedZoneDnssecConfigDefaultKeySpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String algorithm;
         private @Nullable Integer keyLength;
         private @Nullable String keyType;
         private @Nullable String kind;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZoneDnssecConfigDefaultKeySpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -114,23 +99,33 @@ public final class ManagedZoneDnssecConfigDefaultKeySpec {
     	      this.kind = defaults.kind;
         }
 
+        @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
             this.algorithm = algorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder keyLength(@Nullable Integer keyLength) {
             this.keyLength = keyLength;
             return this;
         }
+        @CustomType.Setter
         public Builder keyType(@Nullable String keyType) {
             this.keyType = keyType;
             return this;
         }
+        @CustomType.Setter
         public Builder kind(@Nullable String kind) {
             this.kind = kind;
             return this;
-        }        public ManagedZoneDnssecConfigDefaultKeySpec build() {
-            return new ManagedZoneDnssecConfigDefaultKeySpec(algorithm, keyLength, keyType, kind);
+        }
+        public ManagedZoneDnssecConfigDefaultKeySpec build() {
+            final var o = new ManagedZoneDnssecConfigDefaultKeySpec();
+            o.algorithm = algorithm;
+            o.keyLength = keyLength;
+            o.keyType = keyType;
+            o.kind = kind;
+            return o;
         }
     }
 }

@@ -19,7 +19,7 @@ public final class GuestPoliciesAssignment {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<GuestPoliciesAssignmentGroupLabel> groupLabels;
+    private @Nullable List<GuestPoliciesAssignmentGroupLabel> groupLabels;
     /**
      * @return Targets VM instances whose name starts with one of these prefixes.
      * Like labels, this is another way to group VM instances when targeting configs,
@@ -27,7 +27,7 @@ public final class GuestPoliciesAssignment {
      * Only supported for project-level policies.
      * 
      */
-    private final @Nullable List<String> instanceNamePrefixes;
+    private @Nullable List<String> instanceNamePrefixes;
     /**
      * @return Targets any of the instances specified. Instances are specified by their URI in the form
      * zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -36,35 +36,22 @@ public final class GuestPoliciesAssignment {
      * Only supported for project-level policies and must reference instances within this project.
      * 
      */
-    private final @Nullable List<String> instances;
+    private @Nullable List<String> instances;
     /**
      * @return Targets VM instances matching at least one of the following OS types.
      * VM instances must match all supplied criteria for a given OsType to be included.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<GuestPoliciesAssignmentOsType> osTypes;
+    private @Nullable List<GuestPoliciesAssignmentOsType> osTypes;
     /**
      * @return Targets instances in any of these zones. Leave empty to target instances in any zone.
      * Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
      * 
      */
-    private final @Nullable List<String> zones;
+    private @Nullable List<String> zones;
 
-    @CustomType.Constructor
-    private GuestPoliciesAssignment(
-        @CustomType.Parameter("groupLabels") @Nullable List<GuestPoliciesAssignmentGroupLabel> groupLabels,
-        @CustomType.Parameter("instanceNamePrefixes") @Nullable List<String> instanceNamePrefixes,
-        @CustomType.Parameter("instances") @Nullable List<String> instances,
-        @CustomType.Parameter("osTypes") @Nullable List<GuestPoliciesAssignmentOsType> osTypes,
-        @CustomType.Parameter("zones") @Nullable List<String> zones) {
-        this.groupLabels = groupLabels;
-        this.instanceNamePrefixes = instanceNamePrefixes;
-        this.instances = instances;
-        this.osTypes = osTypes;
-        this.zones = zones;
-    }
-
+    private GuestPoliciesAssignment() {}
     /**
      * @return Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
      * for example &#34;env=prod or env=staging&#34;.
@@ -120,18 +107,14 @@ public final class GuestPoliciesAssignment {
     public static Builder builder(GuestPoliciesAssignment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GuestPoliciesAssignmentGroupLabel> groupLabels;
         private @Nullable List<String> instanceNamePrefixes;
         private @Nullable List<String> instances;
         private @Nullable List<GuestPoliciesAssignmentOsType> osTypes;
         private @Nullable List<String> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesAssignment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupLabels = defaults.groupLabels;
@@ -141,6 +124,7 @@ public final class GuestPoliciesAssignment {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder groupLabels(@Nullable List<GuestPoliciesAssignmentGroupLabel> groupLabels) {
             this.groupLabels = groupLabels;
             return this;
@@ -148,6 +132,7 @@ public final class GuestPoliciesAssignment {
         public Builder groupLabels(GuestPoliciesAssignmentGroupLabel... groupLabels) {
             return groupLabels(List.of(groupLabels));
         }
+        @CustomType.Setter
         public Builder instanceNamePrefixes(@Nullable List<String> instanceNamePrefixes) {
             this.instanceNamePrefixes = instanceNamePrefixes;
             return this;
@@ -155,6 +140,7 @@ public final class GuestPoliciesAssignment {
         public Builder instanceNamePrefixes(String... instanceNamePrefixes) {
             return instanceNamePrefixes(List.of(instanceNamePrefixes));
         }
+        @CustomType.Setter
         public Builder instances(@Nullable List<String> instances) {
             this.instances = instances;
             return this;
@@ -162,6 +148,7 @@ public final class GuestPoliciesAssignment {
         public Builder instances(String... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder osTypes(@Nullable List<GuestPoliciesAssignmentOsType> osTypes) {
             this.osTypes = osTypes;
             return this;
@@ -169,14 +156,22 @@ public final class GuestPoliciesAssignment {
         public Builder osTypes(GuestPoliciesAssignmentOsType... osTypes) {
             return osTypes(List.of(osTypes));
         }
+        @CustomType.Setter
         public Builder zones(@Nullable List<String> zones) {
             this.zones = zones;
             return this;
         }
         public Builder zones(String... zones) {
             return zones(List.of(zones));
-        }        public GuestPoliciesAssignment build() {
-            return new GuestPoliciesAssignment(groupLabels, instanceNamePrefixes, instances, osTypes, zones);
+        }
+        public GuestPoliciesAssignment build() {
+            final var o = new GuestPoliciesAssignment();
+            o.groupLabels = groupLabels;
+            o.instanceNamePrefixes = instanceNamePrefixes;
+            o.instances = instances;
+            o.osTypes = osTypes;
+            o.zones = zones;
+            return o;
         }
     }
 }

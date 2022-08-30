@@ -18,88 +18,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAuthorityResult {
-    private final List<GetAuthorityAccessUrl> accessUrls;
-    private final @Nullable String certificateAuthorityId;
-    private final List<GetAuthorityConfig> configs;
-    private final String createTime;
-    private final Boolean deletionProtection;
-    private final String desiredState;
-    private final String gcsBucket;
+    private List<GetAuthorityAccessUrl> accessUrls;
+    private @Nullable String certificateAuthorityId;
+    private List<GetAuthorityConfig> configs;
+    private String createTime;
+    private Boolean deletionProtection;
+    private String desiredState;
+    private String gcsBucket;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Boolean ignoreActiveCertificatesOnDeletion;
-    private final List<GetAuthorityKeySpec> keySpecs;
-    private final Map<String,String> labels;
-    private final String lifetime;
-    private final @Nullable String location;
-    private final String name;
-    private final String pemCaCertificate;
-    private final List<String> pemCaCertificates;
+    private String id;
+    private Boolean ignoreActiveCertificatesOnDeletion;
+    private List<GetAuthorityKeySpec> keySpecs;
+    private Map<String,String> labels;
+    private String lifetime;
+    private @Nullable String location;
+    private String name;
+    private String pemCaCertificate;
+    private List<String> pemCaCertificates;
     /**
      * @return The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
      * 
      */
-    private final String pemCsr;
-    private final @Nullable String pool;
-    private final @Nullable String project;
-    private final String state;
-    private final List<GetAuthoritySubordinateConfig> subordinateConfigs;
-    private final String type;
-    private final String updateTime;
+    private String pemCsr;
+    private @Nullable String pool;
+    private @Nullable String project;
+    private String state;
+    private List<GetAuthoritySubordinateConfig> subordinateConfigs;
+    private String type;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetAuthorityResult(
-        @CustomType.Parameter("accessUrls") List<GetAuthorityAccessUrl> accessUrls,
-        @CustomType.Parameter("certificateAuthorityId") @Nullable String certificateAuthorityId,
-        @CustomType.Parameter("configs") List<GetAuthorityConfig> configs,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
-        @CustomType.Parameter("desiredState") String desiredState,
-        @CustomType.Parameter("gcsBucket") String gcsBucket,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ignoreActiveCertificatesOnDeletion") Boolean ignoreActiveCertificatesOnDeletion,
-        @CustomType.Parameter("keySpecs") List<GetAuthorityKeySpec> keySpecs,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("lifetime") String lifetime,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("pemCaCertificate") String pemCaCertificate,
-        @CustomType.Parameter("pemCaCertificates") List<String> pemCaCertificates,
-        @CustomType.Parameter("pemCsr") String pemCsr,
-        @CustomType.Parameter("pool") @Nullable String pool,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("subordinateConfigs") List<GetAuthoritySubordinateConfig> subordinateConfigs,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.accessUrls = accessUrls;
-        this.certificateAuthorityId = certificateAuthorityId;
-        this.configs = configs;
-        this.createTime = createTime;
-        this.deletionProtection = deletionProtection;
-        this.desiredState = desiredState;
-        this.gcsBucket = gcsBucket;
-        this.id = id;
-        this.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
-        this.keySpecs = keySpecs;
-        this.labels = labels;
-        this.lifetime = lifetime;
-        this.location = location;
-        this.name = name;
-        this.pemCaCertificate = pemCaCertificate;
-        this.pemCaCertificates = pemCaCertificates;
-        this.pemCsr = pemCsr;
-        this.pool = pool;
-        this.project = project;
-        this.state = state;
-        this.subordinateConfigs = subordinateConfigs;
-        this.type = type;
-        this.updateTime = updateTime;
-    }
-
+    private GetAuthorityResult() {}
     public List<GetAuthorityAccessUrl> accessUrls() {
         return this.accessUrls;
     }
@@ -185,7 +136,7 @@ public final class GetAuthorityResult {
     public static Builder builder(GetAuthorityResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAuthorityAccessUrl> accessUrls;
         private @Nullable String certificateAuthorityId;
@@ -210,11 +161,7 @@ public final class GetAuthorityResult {
         private List<GetAuthoritySubordinateConfig> subordinateConfigs;
         private String type;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessUrls = defaults.accessUrls;
@@ -242,6 +189,7 @@ public final class GetAuthorityResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder accessUrls(List<GetAuthorityAccessUrl> accessUrls) {
             this.accessUrls = Objects.requireNonNull(accessUrls);
             return this;
@@ -249,10 +197,12 @@ public final class GetAuthorityResult {
         public Builder accessUrls(GetAuthorityAccessUrl... accessUrls) {
             return accessUrls(List.of(accessUrls));
         }
+        @CustomType.Setter
         public Builder certificateAuthorityId(@Nullable String certificateAuthorityId) {
             this.certificateAuthorityId = certificateAuthorityId;
             return this;
         }
+        @CustomType.Setter
         public Builder configs(List<GetAuthorityConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -260,30 +210,37 @@ public final class GetAuthorityResult {
         public Builder configs(GetAuthorityConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder desiredState(String desiredState) {
             this.desiredState = Objects.requireNonNull(desiredState);
             return this;
         }
+        @CustomType.Setter
         public Builder gcsBucket(String gcsBucket) {
             this.gcsBucket = Objects.requireNonNull(gcsBucket);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreActiveCertificatesOnDeletion(Boolean ignoreActiveCertificatesOnDeletion) {
             this.ignoreActiveCertificatesOnDeletion = Objects.requireNonNull(ignoreActiveCertificatesOnDeletion);
             return this;
         }
+        @CustomType.Setter
         public Builder keySpecs(List<GetAuthorityKeySpec> keySpecs) {
             this.keySpecs = Objects.requireNonNull(keySpecs);
             return this;
@@ -291,26 +248,32 @@ public final class GetAuthorityResult {
         public Builder keySpecs(GetAuthorityKeySpec... keySpecs) {
             return keySpecs(List.of(keySpecs));
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder lifetime(String lifetime) {
             this.lifetime = Objects.requireNonNull(lifetime);
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder pemCaCertificate(String pemCaCertificate) {
             this.pemCaCertificate = Objects.requireNonNull(pemCaCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder pemCaCertificates(List<String> pemCaCertificates) {
             this.pemCaCertificates = Objects.requireNonNull(pemCaCertificates);
             return this;
@@ -318,22 +281,27 @@ public final class GetAuthorityResult {
         public Builder pemCaCertificates(String... pemCaCertificates) {
             return pemCaCertificates(List.of(pemCaCertificates));
         }
+        @CustomType.Setter
         public Builder pemCsr(String pemCsr) {
             this.pemCsr = Objects.requireNonNull(pemCsr);
             return this;
         }
+        @CustomType.Setter
         public Builder pool(@Nullable String pool) {
             this.pool = pool;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder subordinateConfigs(List<GetAuthoritySubordinateConfig> subordinateConfigs) {
             this.subordinateConfigs = Objects.requireNonNull(subordinateConfigs);
             return this;
@@ -341,15 +309,42 @@ public final class GetAuthorityResult {
         public Builder subordinateConfigs(GetAuthoritySubordinateConfig... subordinateConfigs) {
             return subordinateConfigs(List.of(subordinateConfigs));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetAuthorityResult build() {
-            return new GetAuthorityResult(accessUrls, certificateAuthorityId, configs, createTime, deletionProtection, desiredState, gcsBucket, id, ignoreActiveCertificatesOnDeletion, keySpecs, labels, lifetime, location, name, pemCaCertificate, pemCaCertificates, pemCsr, pool, project, state, subordinateConfigs, type, updateTime);
+        }
+        public GetAuthorityResult build() {
+            final var o = new GetAuthorityResult();
+            o.accessUrls = accessUrls;
+            o.certificateAuthorityId = certificateAuthorityId;
+            o.configs = configs;
+            o.createTime = createTime;
+            o.deletionProtection = deletionProtection;
+            o.desiredState = desiredState;
+            o.gcsBucket = gcsBucket;
+            o.id = id;
+            o.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
+            o.keySpecs = keySpecs;
+            o.labels = labels;
+            o.lifetime = lifetime;
+            o.location = location;
+            o.name = name;
+            o.pemCaCertificate = pemCaCertificate;
+            o.pemCaCertificates = pemCaCertificates;
+            o.pemCsr = pemCsr;
+            o.pool = pool;
+            o.project = project;
+            o.state = state;
+            o.subordinateConfigs = subordinateConfigs;
+            o.type = type;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

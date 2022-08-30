@@ -15,28 +15,19 @@ public final class DatabaseInstanceClone {
      * @return The name of the allocated ip range for the private ip CloudSQL instance. For example: &#34;google-managed-services-default&#34;. If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
      * 
      */
-    private final @Nullable String allocatedIpRange;
+    private @Nullable String allocatedIpRange;
     /**
      * @return The timestamp of the point in time that should be restored.
      * 
      */
-    private final @Nullable String pointInTime;
+    private @Nullable String pointInTime;
     /**
      * @return Name of the source instance which will be cloned.
      * 
      */
-    private final String sourceInstanceName;
+    private String sourceInstanceName;
 
-    @CustomType.Constructor
-    private DatabaseInstanceClone(
-        @CustomType.Parameter("allocatedIpRange") @Nullable String allocatedIpRange,
-        @CustomType.Parameter("pointInTime") @Nullable String pointInTime,
-        @CustomType.Parameter("sourceInstanceName") String sourceInstanceName) {
-        this.allocatedIpRange = allocatedIpRange;
-        this.pointInTime = pointInTime;
-        this.sourceInstanceName = sourceInstanceName;
-    }
-
+    private DatabaseInstanceClone() {}
     /**
      * @return The name of the allocated ip range for the private ip CloudSQL instance. For example: &#34;google-managed-services-default&#34;. If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
      * 
@@ -66,16 +57,12 @@ public final class DatabaseInstanceClone {
     public static Builder builder(DatabaseInstanceClone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allocatedIpRange;
         private @Nullable String pointInTime;
         private String sourceInstanceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceClone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
@@ -83,19 +70,27 @@ public final class DatabaseInstanceClone {
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
 
+        @CustomType.Setter
         public Builder allocatedIpRange(@Nullable String allocatedIpRange) {
             this.allocatedIpRange = allocatedIpRange;
             return this;
         }
+        @CustomType.Setter
         public Builder pointInTime(@Nullable String pointInTime) {
             this.pointInTime = pointInTime;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
             this.sourceInstanceName = Objects.requireNonNull(sourceInstanceName);
             return this;
-        }        public DatabaseInstanceClone build() {
-            return new DatabaseInstanceClone(allocatedIpRange, pointInTime, sourceInstanceName);
+        }
+        public DatabaseInstanceClone build() {
+            final var o = new DatabaseInstanceClone();
+            o.allocatedIpRange = allocatedIpRange;
+            o.pointInTime = pointInTime;
+            o.sourceInstanceName = sourceInstanceName;
+            return o;
         }
     }
 }

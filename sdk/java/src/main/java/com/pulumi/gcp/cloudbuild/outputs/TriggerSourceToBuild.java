@@ -13,30 +13,21 @@ public final class TriggerSourceToBuild {
      * @return The branch or tag to use. Must start with &#34;refs/&#34; (required).
      * 
      */
-    private final String ref;
+    private String ref;
     /**
      * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
      * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
      * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
      * 
      */
-    private final String repoType;
+    private String repoType;
     /**
      * @return The URI of the repo (required).
      * 
      */
-    private final String uri;
+    private String uri;
 
-    @CustomType.Constructor
-    private TriggerSourceToBuild(
-        @CustomType.Parameter("ref") String ref,
-        @CustomType.Parameter("repoType") String repoType,
-        @CustomType.Parameter("uri") String uri) {
-        this.ref = ref;
-        this.repoType = repoType;
-        this.uri = uri;
-    }
-
+    private TriggerSourceToBuild() {}
     /**
      * @return The branch or tag to use. Must start with &#34;refs/&#34; (required).
      * 
@@ -68,16 +59,12 @@ public final class TriggerSourceToBuild {
     public static Builder builder(TriggerSourceToBuild defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ref;
         private String repoType;
         private String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerSourceToBuild defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ref = defaults.ref;
@@ -85,19 +72,27 @@ public final class TriggerSourceToBuild {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder ref(String ref) {
             this.ref = Objects.requireNonNull(ref);
             return this;
         }
+        @CustomType.Setter
         public Builder repoType(String repoType) {
             this.repoType = Objects.requireNonNull(repoType);
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
-        }        public TriggerSourceToBuild build() {
-            return new TriggerSourceToBuild(ref, repoType, uri);
+        }
+        public TriggerSourceToBuild build() {
+            final var o = new TriggerSourceToBuild();
+            o.ref = ref;
+            o.repoType = repoType;
+            o.uri = uri;
+            return o;
         }
     }
 }

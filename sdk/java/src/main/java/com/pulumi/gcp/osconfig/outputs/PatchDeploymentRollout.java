@@ -19,22 +19,15 @@ public final class PatchDeploymentRollout {
      * Structure is documented below.
      * 
      */
-    private final PatchDeploymentRolloutDisruptionBudget disruptionBudget;
+    private PatchDeploymentRolloutDisruptionBudget disruptionBudget;
     /**
      * @return Mode of the patch rollout.
      * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
      * 
      */
-    private final String mode;
+    private String mode;
 
-    @CustomType.Constructor
-    private PatchDeploymentRollout(
-        @CustomType.Parameter("disruptionBudget") PatchDeploymentRolloutDisruptionBudget disruptionBudget,
-        @CustomType.Parameter("mode") String mode) {
-        this.disruptionBudget = disruptionBudget;
-        this.mode = mode;
-    }
-
+    private PatchDeploymentRollout() {}
     /**
      * @return The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
      * During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
@@ -63,30 +56,32 @@ public final class PatchDeploymentRollout {
     public static Builder builder(PatchDeploymentRollout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PatchDeploymentRolloutDisruptionBudget disruptionBudget;
         private String mode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentRollout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disruptionBudget = defaults.disruptionBudget;
     	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
         public Builder disruptionBudget(PatchDeploymentRolloutDisruptionBudget disruptionBudget) {
             this.disruptionBudget = Objects.requireNonNull(disruptionBudget);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
-        }        public PatchDeploymentRollout build() {
-            return new PatchDeploymentRollout(disruptionBudget, mode);
+        }
+        public PatchDeploymentRollout build() {
+            final var o = new PatchDeploymentRollout();
+            o.disruptionBudget = disruptionBudget;
+            o.mode = mode;
+            return o;
         }
     }
 }

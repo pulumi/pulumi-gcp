@@ -23,91 +23,64 @@ public final class AwsNodePoolConfig {
      * @return The ARN of the AWS KMS key used to encrypt node pool configuration.
      * 
      */
-    private final AwsNodePoolConfigConfigEncryption configEncryption;
+    private AwsNodePoolConfigConfigEncryption configEncryption;
     /**
      * @return The name of the AWS IAM role assigned to nodes in the pool.
      * 
      */
-    private final String iamInstanceProfile;
+    private String iamInstanceProfile;
     /**
      * @return (Beta only) The OS image type to use on node pool instances.
      * 
      */
-    private final @Nullable String imageType;
+    private @Nullable String imageType;
     /**
      * @return (Beta only) Details of placement information for an instance.
      * 
      */
-    private final @Nullable AwsNodePoolConfigInstancePlacement instancePlacement;
+    private @Nullable AwsNodePoolConfigInstancePlacement instancePlacement;
     /**
      * @return Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
      * 
      */
-    private final @Nullable String instanceType;
+    private @Nullable String instanceType;
     /**
-     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Proxy configuration for outbound HTTP(S) traffic.
      * 
      */
-    private final @Nullable AwsNodePoolConfigProxyConfig proxyConfig;
+    private @Nullable AwsNodePoolConfigProxyConfig proxyConfig;
     /**
      * @return Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
      * 
      */
-    private final @Nullable AwsNodePoolConfigRootVolume rootVolume;
+    private @Nullable AwsNodePoolConfigRootVolume rootVolume;
     /**
      * @return Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
      * 
      */
-    private final @Nullable List<String> securityGroupIds;
+    private @Nullable List<String> securityGroupIds;
     /**
      * @return Optional. The SSH configuration.
      * 
      */
-    private final @Nullable AwsNodePoolConfigSshConfig sshConfig;
+    private @Nullable AwsNodePoolConfigSshConfig sshConfig;
     /**
      * @return Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
      * 
      */
-    private final @Nullable Map<String,String> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return Optional. The initial taints assigned to nodes of this node pool.
      * 
      */
-    private final @Nullable List<AwsNodePoolConfigTaint> taints;
+    private @Nullable List<AwsNodePoolConfigTaint> taints;
 
-    @CustomType.Constructor
-    private AwsNodePoolConfig(
-        @CustomType.Parameter("configEncryption") AwsNodePoolConfigConfigEncryption configEncryption,
-        @CustomType.Parameter("iamInstanceProfile") String iamInstanceProfile,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("instancePlacement") @Nullable AwsNodePoolConfigInstancePlacement instancePlacement,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("proxyConfig") @Nullable AwsNodePoolConfigProxyConfig proxyConfig,
-        @CustomType.Parameter("rootVolume") @Nullable AwsNodePoolConfigRootVolume rootVolume,
-        @CustomType.Parameter("securityGroupIds") @Nullable List<String> securityGroupIds,
-        @CustomType.Parameter("sshConfig") @Nullable AwsNodePoolConfigSshConfig sshConfig,
-        @CustomType.Parameter("tags") @Nullable Map<String,String> tags,
-        @CustomType.Parameter("taints") @Nullable List<AwsNodePoolConfigTaint> taints) {
-        this.configEncryption = configEncryption;
-        this.iamInstanceProfile = iamInstanceProfile;
-        this.imageType = imageType;
-        this.instancePlacement = instancePlacement;
-        this.instanceType = instanceType;
-        this.labels = labels;
-        this.proxyConfig = proxyConfig;
-        this.rootVolume = rootVolume;
-        this.securityGroupIds = securityGroupIds;
-        this.sshConfig = sshConfig;
-        this.tags = tags;
-        this.taints = taints;
-    }
-
+    private AwsNodePoolConfig() {}
     /**
      * @return The ARN of the AWS KMS key used to encrypt node pool configuration.
      * 
@@ -144,7 +117,7 @@ public final class AwsNodePoolConfig {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Map<String,String> labels() {
@@ -200,7 +173,7 @@ public final class AwsNodePoolConfig {
     public static Builder builder(AwsNodePoolConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private AwsNodePoolConfigConfigEncryption configEncryption;
         private String iamInstanceProfile;
@@ -214,11 +187,7 @@ public final class AwsNodePoolConfig {
         private @Nullable AwsNodePoolConfigSshConfig sshConfig;
         private @Nullable Map<String,String> tags;
         private @Nullable List<AwsNodePoolConfigTaint> taints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configEncryption = defaults.configEncryption;
@@ -235,38 +204,47 @@ public final class AwsNodePoolConfig {
     	      this.taints = defaults.taints;
         }
 
+        @CustomType.Setter
         public Builder configEncryption(AwsNodePoolConfigConfigEncryption configEncryption) {
             this.configEncryption = Objects.requireNonNull(configEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder iamInstanceProfile(String iamInstanceProfile) {
             this.iamInstanceProfile = Objects.requireNonNull(iamInstanceProfile);
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder instancePlacement(@Nullable AwsNodePoolConfigInstancePlacement instancePlacement) {
             this.instancePlacement = instancePlacement;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyConfig(@Nullable AwsNodePoolConfigProxyConfig proxyConfig) {
             this.proxyConfig = proxyConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder rootVolume(@Nullable AwsNodePoolConfigRootVolume rootVolume) {
             this.rootVolume = rootVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
             this.securityGroupIds = securityGroupIds;
             return this;
@@ -274,22 +252,39 @@ public final class AwsNodePoolConfig {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
+        @CustomType.Setter
         public Builder sshConfig(@Nullable AwsNodePoolConfigSshConfig sshConfig) {
             this.sshConfig = sshConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<AwsNodePoolConfigTaint> taints) {
             this.taints = taints;
             return this;
         }
         public Builder taints(AwsNodePoolConfigTaint... taints) {
             return taints(List.of(taints));
-        }        public AwsNodePoolConfig build() {
-            return new AwsNodePoolConfig(configEncryption, iamInstanceProfile, imageType, instancePlacement, instanceType, labels, proxyConfig, rootVolume, securityGroupIds, sshConfig, tags, taints);
+        }
+        public AwsNodePoolConfig build() {
+            final var o = new AwsNodePoolConfig();
+            o.configEncryption = configEncryption;
+            o.iamInstanceProfile = iamInstanceProfile;
+            o.imageType = imageType;
+            o.instancePlacement = instancePlacement;
+            o.instanceType = instanceType;
+            o.labels = labels;
+            o.proxyConfig = proxyConfig;
+            o.rootVolume = rootVolume;
+            o.securityGroupIds = securityGroupIds;
+            o.sshConfig = sshConfig;
+            o.tags = tags;
+            o.taints = taints;
+            return o;
         }
     }
 }

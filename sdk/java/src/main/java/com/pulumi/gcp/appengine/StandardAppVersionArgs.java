@@ -27,6 +27,21 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
     public static final StandardAppVersionArgs Empty = new StandardAppVersionArgs();
 
     /**
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * 
+     */
+    @Import(name="appEngineApis")
+    private @Nullable Output<Boolean> appEngineApis;
+
+    /**
+     * @return Allows App Engine second generation runtimes to access the legacy bundled services.
+     * 
+     */
+    public Optional<Output<Boolean>> appEngineApis() {
+        return Optional.ofNullable(this.appEngineApis);
+    }
+
+    /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      * 
@@ -346,6 +361,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
     private StandardAppVersionArgs() {}
 
     private StandardAppVersionArgs(StandardAppVersionArgs $) {
+        this.appEngineApis = $.appEngineApis;
         this.automaticScaling = $.automaticScaling;
         this.basicScaling = $.basicScaling;
         this.deleteServiceOnDestroy = $.deleteServiceOnDestroy;
@@ -383,6 +399,27 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         public Builder(StandardAppVersionArgs defaults) {
             $ = new StandardAppVersionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param appEngineApis Allows App Engine second generation runtimes to access the legacy bundled services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineApis(@Nullable Output<Boolean> appEngineApis) {
+            $.appEngineApis = appEngineApis;
+            return this;
+        }
+
+        /**
+         * @param appEngineApis Allows App Engine second generation runtimes to access the legacy bundled services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineApis(Boolean appEngineApis) {
+            return appEngineApis(Output.of(appEngineApis));
         }
 
         /**

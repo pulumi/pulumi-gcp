@@ -31,13 +31,9 @@ public final class NotificationConfigStreamingConfig {
      *   for information on how to write a filter.
      * 
      */
-    private final String filter;
+    private String filter;
 
-    @CustomType.Constructor
-    private NotificationConfigStreamingConfig(@CustomType.Parameter("filter") String filter) {
-        this.filter = filter;
-    }
-
+    private NotificationConfigStreamingConfig() {}
     /**
      * @return Expression that defines the filter to apply across create/update
      * events of assets or findings as specified by the event type. The
@@ -71,24 +67,24 @@ public final class NotificationConfigStreamingConfig {
     public static Builder builder(NotificationConfigStreamingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String filter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotificationConfigStreamingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
         }
 
+        @CustomType.Setter
         public Builder filter(String filter) {
             this.filter = Objects.requireNonNull(filter);
             return this;
-        }        public NotificationConfigStreamingConfig build() {
-            return new NotificationConfigStreamingConfig(filter);
+        }
+        public NotificationConfigStreamingConfig build() {
+            final var o = new NotificationConfigStreamingConfig();
+            o.filter = filter;
+            return o;
         }
     }
 }

@@ -15,29 +15,20 @@ public final class TransferJobTransferSpecTransferOptions {
      * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
      * 
      */
-    private final @Nullable Boolean deleteObjectsFromSourceAfterTransfer;
+    private @Nullable Boolean deleteObjectsFromSourceAfterTransfer;
     /**
      * @return Whether objects that exist only in the sink should be deleted. Note that this option and
      * `delete_objects_from_source_after_transfer` are mutually exclusive.
      * 
      */
-    private final @Nullable Boolean deleteObjectsUniqueInSink;
+    private @Nullable Boolean deleteObjectsUniqueInSink;
     /**
      * @return Whether overwriting objects that already exist in the sink is allowed.
      * 
      */
-    private final @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
+    private @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecTransferOptions(
-        @CustomType.Parameter("deleteObjectsFromSourceAfterTransfer") @Nullable Boolean deleteObjectsFromSourceAfterTransfer,
-        @CustomType.Parameter("deleteObjectsUniqueInSink") @Nullable Boolean deleteObjectsUniqueInSink,
-        @CustomType.Parameter("overwriteObjectsAlreadyExistingInSink") @Nullable Boolean overwriteObjectsAlreadyExistingInSink) {
-        this.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
-        this.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
-        this.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
-    }
-
+    private TransferJobTransferSpecTransferOptions() {}
     /**
      * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
      * 
@@ -68,16 +59,12 @@ public final class TransferJobTransferSpecTransferOptions {
     public static Builder builder(TransferJobTransferSpecTransferOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteObjectsFromSourceAfterTransfer;
         private @Nullable Boolean deleteObjectsUniqueInSink;
         private @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecTransferOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteObjectsFromSourceAfterTransfer = defaults.deleteObjectsFromSourceAfterTransfer;
@@ -85,19 +72,27 @@ public final class TransferJobTransferSpecTransferOptions {
     	      this.overwriteObjectsAlreadyExistingInSink = defaults.overwriteObjectsAlreadyExistingInSink;
         }
 
+        @CustomType.Setter
         public Builder deleteObjectsFromSourceAfterTransfer(@Nullable Boolean deleteObjectsFromSourceAfterTransfer) {
             this.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             return this;
         }
+        @CustomType.Setter
         public Builder deleteObjectsUniqueInSink(@Nullable Boolean deleteObjectsUniqueInSink) {
             this.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
             return this;
         }
+        @CustomType.Setter
         public Builder overwriteObjectsAlreadyExistingInSink(@Nullable Boolean overwriteObjectsAlreadyExistingInSink) {
             this.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
             return this;
-        }        public TransferJobTransferSpecTransferOptions build() {
-            return new TransferJobTransferSpecTransferOptions(deleteObjectsFromSourceAfterTransfer, deleteObjectsUniqueInSink, overwriteObjectsAlreadyExistingInSink);
+        }
+        public TransferJobTransferSpecTransferOptions build() {
+            final var o = new TransferJobTransferSpecTransferOptions();
+            o.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
+            o.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
+            o.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
+            return o;
         }
     }
 }

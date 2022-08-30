@@ -17,23 +17,16 @@ public final class TriggerBuildArtifactsObjectsTiming {
      * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return Start of time span.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
      * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private TriggerBuildArtifactsObjectsTiming(
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.endTime = endTime;
-        this.startTime = startTime;
-    }
-
+    private TriggerBuildArtifactsObjectsTiming() {}
     /**
      * @return End of time span.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
@@ -60,30 +53,32 @@ public final class TriggerBuildArtifactsObjectsTiming {
     public static Builder builder(TriggerBuildArtifactsObjectsTiming defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endTime;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildArtifactsObjectsTiming defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public TriggerBuildArtifactsObjectsTiming build() {
-            return new TriggerBuildArtifactsObjectsTiming(endTime, startTime);
+        }
+        public TriggerBuildArtifactsObjectsTiming build() {
+            final var o = new TriggerBuildArtifactsObjectsTiming();
+            o.endTime = endTime;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

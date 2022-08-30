@@ -26,7 +26,7 @@ public final class AttestorAttestationAuthorityNote {
      * different naming pattern.
      * 
      */
-    private final @Nullable String delegationServiceAccountEmail;
+    private @Nullable String delegationServiceAccountEmail;
     /**
      * @return The resource name of a ATTESTATION_AUTHORITY Note, created by the
      * user. If the Note is in a different project from the Attestor, it
@@ -37,7 +37,7 @@ public final class AttestorAttestationAuthorityNote {
      * and that links to this Note.
      * 
      */
-    private final String noteReference;
+    private String noteReference;
     /**
      * @return Public keys that verify attestations signed by this attestor. This
      * field may be updated.
@@ -49,18 +49,9 @@ public final class AttestorAttestationAuthorityNote {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AttestorAttestationAuthorityNotePublicKey> publicKeys;
+    private @Nullable List<AttestorAttestationAuthorityNotePublicKey> publicKeys;
 
-    @CustomType.Constructor
-    private AttestorAttestationAuthorityNote(
-        @CustomType.Parameter("delegationServiceAccountEmail") @Nullable String delegationServiceAccountEmail,
-        @CustomType.Parameter("noteReference") String noteReference,
-        @CustomType.Parameter("publicKeys") @Nullable List<AttestorAttestationAuthorityNotePublicKey> publicKeys) {
-        this.delegationServiceAccountEmail = delegationServiceAccountEmail;
-        this.noteReference = noteReference;
-        this.publicKeys = publicKeys;
-    }
-
+    private AttestorAttestationAuthorityNote() {}
     /**
      * @return -
      * This field will contain the service account email address that
@@ -112,16 +103,12 @@ public final class AttestorAttestationAuthorityNote {
     public static Builder builder(AttestorAttestationAuthorityNote defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String delegationServiceAccountEmail;
         private String noteReference;
         private @Nullable List<AttestorAttestationAuthorityNotePublicKey> publicKeys;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttestorAttestationAuthorityNote defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegationServiceAccountEmail = defaults.delegationServiceAccountEmail;
@@ -129,22 +116,30 @@ public final class AttestorAttestationAuthorityNote {
     	      this.publicKeys = defaults.publicKeys;
         }
 
+        @CustomType.Setter
         public Builder delegationServiceAccountEmail(@Nullable String delegationServiceAccountEmail) {
             this.delegationServiceAccountEmail = delegationServiceAccountEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder noteReference(String noteReference) {
             this.noteReference = Objects.requireNonNull(noteReference);
             return this;
         }
+        @CustomType.Setter
         public Builder publicKeys(@Nullable List<AttestorAttestationAuthorityNotePublicKey> publicKeys) {
             this.publicKeys = publicKeys;
             return this;
         }
         public Builder publicKeys(AttestorAttestationAuthorityNotePublicKey... publicKeys) {
             return publicKeys(List.of(publicKeys));
-        }        public AttestorAttestationAuthorityNote build() {
-            return new AttestorAttestationAuthorityNote(delegationServiceAccountEmail, noteReference, publicKeys);
+        }
+        public AttestorAttestationAuthorityNote build() {
+            final var o = new AttestorAttestationAuthorityNote();
+            o.delegationServiceAccountEmail = delegationServiceAccountEmail;
+            o.noteReference = noteReference;
+            o.publicKeys = publicKeys;
+            return o;
         }
     }
 }

@@ -16,7 +16,7 @@ public final class HaVpnGatewayVpnInterface {
      * @return The numeric ID of this VPN gateway interface.
      * 
      */
-    private final @Nullable Integer id;
+    private @Nullable Integer id;
     /**
      * @return URL of the interconnect attachment resource. When the value
      * of this field is present, the VPN Gateway will be used for
@@ -26,24 +26,15 @@ public final class HaVpnGatewayVpnInterface {
      * Not currently available publicly.
      * 
      */
-    private final @Nullable String interconnectAttachment;
+    private @Nullable String interconnectAttachment;
     /**
      * @return -
      * The external IP address for this VPN gateway interface.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
 
-    @CustomType.Constructor
-    private HaVpnGatewayVpnInterface(
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("interconnectAttachment") @Nullable String interconnectAttachment,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress) {
-        this.id = id;
-        this.interconnectAttachment = interconnectAttachment;
-        this.ipAddress = ipAddress;
-    }
-
+    private HaVpnGatewayVpnInterface() {}
     /**
      * @return The numeric ID of this VPN gateway interface.
      * 
@@ -79,16 +70,12 @@ public final class HaVpnGatewayVpnInterface {
     public static Builder builder(HaVpnGatewayVpnInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer id;
         private @Nullable String interconnectAttachment;
         private @Nullable String ipAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HaVpnGatewayVpnInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -96,19 +83,27 @@ public final class HaVpnGatewayVpnInterface {
     	      this.ipAddress = defaults.ipAddress;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder interconnectAttachment(@Nullable String interconnectAttachment) {
             this.interconnectAttachment = interconnectAttachment;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
-        }        public HaVpnGatewayVpnInterface build() {
-            return new HaVpnGatewayVpnInterface(id, interconnectAttachment, ipAddress);
+        }
+        public HaVpnGatewayVpnInterface build() {
+            final var o = new HaVpnGatewayVpnInterface();
+            o.id = id;
+            o.interconnectAttachment = interconnectAttachment;
+            o.ipAddress = ipAddress;
+            return o;
         }
     }
 }

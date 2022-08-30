@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketVersioning {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetBucketVersioning(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetBucketVersioning() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetBucketVersioning {
     public static Builder builder(GetBucketVersioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetBucketVersioning build() {
-            return new GetBucketVersioning(enabled);
+        }
+        public GetBucketVersioning build() {
+            final var o = new GetBucketVersioning();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

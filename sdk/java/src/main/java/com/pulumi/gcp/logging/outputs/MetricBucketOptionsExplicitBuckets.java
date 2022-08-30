@@ -14,13 +14,9 @@ public final class MetricBucketOptionsExplicitBuckets {
      * @return The values must be monotonically increasing.
      * 
      */
-    private final List<Double> bounds;
+    private List<Double> bounds;
 
-    @CustomType.Constructor
-    private MetricBucketOptionsExplicitBuckets(@CustomType.Parameter("bounds") List<Double> bounds) {
-        this.bounds = bounds;
-    }
-
+    private MetricBucketOptionsExplicitBuckets() {}
     /**
      * @return The values must be monotonically increasing.
      * 
@@ -36,27 +32,27 @@ public final class MetricBucketOptionsExplicitBuckets {
     public static Builder builder(MetricBucketOptionsExplicitBuckets defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Double> bounds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricBucketOptionsExplicitBuckets defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bounds = defaults.bounds;
         }
 
+        @CustomType.Setter
         public Builder bounds(List<Double> bounds) {
             this.bounds = Objects.requireNonNull(bounds);
             return this;
         }
         public Builder bounds(Double... bounds) {
             return bounds(List.of(bounds));
-        }        public MetricBucketOptionsExplicitBuckets build() {
-            return new MetricBucketOptionsExplicitBuckets(bounds);
+        }
+        public MetricBucketOptionsExplicitBuckets build() {
+            final var o = new MetricBucketOptionsExplicitBuckets();
+            o.bounds = bounds;
+            return o;
         }
     }
 }

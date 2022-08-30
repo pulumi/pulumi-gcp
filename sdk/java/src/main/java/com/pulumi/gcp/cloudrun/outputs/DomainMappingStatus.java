@@ -15,23 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainMappingStatus {
-    private final @Nullable List<DomainMappingStatusCondition> conditions;
-    private final @Nullable String mappedRouteName;
-    private final @Nullable Integer observedGeneration;
-    private final @Nullable List<DomainMappingStatusResourceRecord> resourceRecords;
+    private @Nullable List<DomainMappingStatusCondition> conditions;
+    private @Nullable String mappedRouteName;
+    private @Nullable Integer observedGeneration;
+    private @Nullable List<DomainMappingStatusResourceRecord> resourceRecords;
 
-    @CustomType.Constructor
-    private DomainMappingStatus(
-        @CustomType.Parameter("conditions") @Nullable List<DomainMappingStatusCondition> conditions,
-        @CustomType.Parameter("mappedRouteName") @Nullable String mappedRouteName,
-        @CustomType.Parameter("observedGeneration") @Nullable Integer observedGeneration,
-        @CustomType.Parameter("resourceRecords") @Nullable List<DomainMappingStatusResourceRecord> resourceRecords) {
-        this.conditions = conditions;
-        this.mappedRouteName = mappedRouteName;
-        this.observedGeneration = observedGeneration;
-        this.resourceRecords = resourceRecords;
-    }
-
+    private DomainMappingStatus() {}
     public List<DomainMappingStatusCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
     }
@@ -52,17 +41,13 @@ public final class DomainMappingStatus {
     public static Builder builder(DomainMappingStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DomainMappingStatusCondition> conditions;
         private @Nullable String mappedRouteName;
         private @Nullable Integer observedGeneration;
         private @Nullable List<DomainMappingStatusResourceRecord> resourceRecords;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainMappingStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditions = defaults.conditions;
@@ -71,6 +56,7 @@ public final class DomainMappingStatus {
     	      this.resourceRecords = defaults.resourceRecords;
         }
 
+        @CustomType.Setter
         public Builder conditions(@Nullable List<DomainMappingStatusCondition> conditions) {
             this.conditions = conditions;
             return this;
@@ -78,22 +64,31 @@ public final class DomainMappingStatus {
         public Builder conditions(DomainMappingStatusCondition... conditions) {
             return conditions(List.of(conditions));
         }
+        @CustomType.Setter
         public Builder mappedRouteName(@Nullable String mappedRouteName) {
             this.mappedRouteName = mappedRouteName;
             return this;
         }
+        @CustomType.Setter
         public Builder observedGeneration(@Nullable Integer observedGeneration) {
             this.observedGeneration = observedGeneration;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceRecords(@Nullable List<DomainMappingStatusResourceRecord> resourceRecords) {
             this.resourceRecords = resourceRecords;
             return this;
         }
         public Builder resourceRecords(DomainMappingStatusResourceRecord... resourceRecords) {
             return resourceRecords(List.of(resourceRecords));
-        }        public DomainMappingStatus build() {
-            return new DomainMappingStatus(conditions, mappedRouteName, observedGeneration, resourceRecords);
+        }
+        public DomainMappingStatus build() {
+            final var o = new DomainMappingStatus();
+            o.conditions = conditions;
+            o.mappedRouteName = mappedRouteName;
+            o.observedGeneration = observedGeneration;
+            o.resourceRecords = resourceRecords;
+            return o;
         }
     }
 }

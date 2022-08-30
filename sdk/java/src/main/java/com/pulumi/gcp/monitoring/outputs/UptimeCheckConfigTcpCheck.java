@@ -13,13 +13,9 @@ public final class UptimeCheckConfigTcpCheck {
      * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
      * 
      */
-    private final Integer port;
+    private Integer port;
 
-    @CustomType.Constructor
-    private UptimeCheckConfigTcpCheck(@CustomType.Parameter("port") Integer port) {
-        this.port = port;
-    }
-
+    private UptimeCheckConfigTcpCheck() {}
     /**
      * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
      * 
@@ -35,24 +31,24 @@ public final class UptimeCheckConfigTcpCheck {
     public static Builder builder(UptimeCheckConfigTcpCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UptimeCheckConfigTcpCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public UptimeCheckConfigTcpCheck build() {
-            return new UptimeCheckConfigTcpCheck(port);
+        }
+        public UptimeCheckConfigTcpCheck build() {
+            final var o = new UptimeCheckConfigTcpCheck();
+            o.port = port;
+            return o;
         }
     }
 }

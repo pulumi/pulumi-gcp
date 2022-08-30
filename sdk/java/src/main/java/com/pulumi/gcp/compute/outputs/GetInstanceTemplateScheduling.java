@@ -19,13 +19,13 @@ public final class GetInstanceTemplateScheduling {
      * terminated by a user). This defaults to true.
      * 
      */
-    private final Boolean automaticRestart;
+    private Boolean automaticRestart;
     /**
      * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
-    private final String instanceTerminationAction;
-    private final Integer minNodeCpus;
+    private String instanceTerminationAction;
+    private Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
      * to determine which sole-tenant nodes your instances and managed instance
@@ -34,44 +34,27 @@ public final class GetInstanceTemplateScheduling {
      * Structure documented below.
      * 
      */
-    private final List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities;
+    private List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities;
     /**
      * @return Defines the maintenance behavior for this
      * instance.
      * 
      */
-    private final String onHostMaintenance;
+    private String onHostMaintenance;
     /**
      * @return Allows instance to be preempted. This defaults to
      * false. Read more on this
      * [here](https://cloud.google.com/compute/docs/instances/preemptible).
      * 
      */
-    private final Boolean preemptible;
+    private Boolean preemptible;
     /**
      * @return Describe the type of preemptible VM.
      * 
      */
-    private final String provisioningModel;
+    private String provisioningModel;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateScheduling(
-        @CustomType.Parameter("automaticRestart") Boolean automaticRestart,
-        @CustomType.Parameter("instanceTerminationAction") String instanceTerminationAction,
-        @CustomType.Parameter("minNodeCpus") Integer minNodeCpus,
-        @CustomType.Parameter("nodeAffinities") List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities,
-        @CustomType.Parameter("onHostMaintenance") String onHostMaintenance,
-        @CustomType.Parameter("preemptible") Boolean preemptible,
-        @CustomType.Parameter("provisioningModel") String provisioningModel) {
-        this.automaticRestart = automaticRestart;
-        this.instanceTerminationAction = instanceTerminationAction;
-        this.minNodeCpus = minNodeCpus;
-        this.nodeAffinities = nodeAffinities;
-        this.onHostMaintenance = onHostMaintenance;
-        this.preemptible = preemptible;
-        this.provisioningModel = provisioningModel;
-    }
-
+    private GetInstanceTemplateScheduling() {}
     /**
      * @return Specifies whether the instance should be
      * automatically restarted if it is terminated by Compute Engine (not
@@ -134,7 +117,7 @@ public final class GetInstanceTemplateScheduling {
     public static Builder builder(GetInstanceTemplateScheduling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean automaticRestart;
         private String instanceTerminationAction;
@@ -143,11 +126,7 @@ public final class GetInstanceTemplateScheduling {
         private String onHostMaintenance;
         private Boolean preemptible;
         private String provisioningModel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
@@ -159,18 +138,22 @@ public final class GetInstanceTemplateScheduling {
     	      this.provisioningModel = defaults.provisioningModel;
         }
 
+        @CustomType.Setter
         public Builder automaticRestart(Boolean automaticRestart) {
             this.automaticRestart = Objects.requireNonNull(automaticRestart);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCpus(Integer minNodeCpus) {
             this.minNodeCpus = Objects.requireNonNull(minNodeCpus);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeAffinities(List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities) {
             this.nodeAffinities = Objects.requireNonNull(nodeAffinities);
             return this;
@@ -178,19 +161,31 @@ public final class GetInstanceTemplateScheduling {
         public Builder nodeAffinities(GetInstanceTemplateSchedulingNodeAffinity... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }
+        @CustomType.Setter
         public Builder onHostMaintenance(String onHostMaintenance) {
             this.onHostMaintenance = Objects.requireNonNull(onHostMaintenance);
             return this;
         }
+        @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
             this.preemptible = Objects.requireNonNull(preemptible);
             return this;
         }
+        @CustomType.Setter
         public Builder provisioningModel(String provisioningModel) {
             this.provisioningModel = Objects.requireNonNull(provisioningModel);
             return this;
-        }        public GetInstanceTemplateScheduling build() {
-            return new GetInstanceTemplateScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+        }
+        public GetInstanceTemplateScheduling build() {
+            final var o = new GetInstanceTemplateScheduling();
+            o.automaticRestart = automaticRestart;
+            o.instanceTerminationAction = instanceTerminationAction;
+            o.minNodeCpus = minNodeCpus;
+            o.nodeAffinities = nodeAffinities;
+            o.onHostMaintenance = onHostMaintenance;
+            o.preemptible = preemptible;
+            o.provisioningModel = provisioningModel;
+            return o;
         }
     }
 }

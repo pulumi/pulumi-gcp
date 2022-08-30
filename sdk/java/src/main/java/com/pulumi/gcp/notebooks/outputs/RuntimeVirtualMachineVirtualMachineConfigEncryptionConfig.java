@@ -19,13 +19,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
      * {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
      * 
      */
-    private final @Nullable String kmsKey;
+    private @Nullable String kmsKey;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(@CustomType.Parameter("kmsKey") @Nullable String kmsKey) {
-        this.kmsKey = kmsKey;
-    }
-
+    private RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig() {}
     /**
      * @return The Cloud KMS resource identifier of the customer-managed
      * encryption key used to protect a resource, such as a disks.
@@ -45,24 +41,24 @@ public final class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
     public static Builder builder(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kmsKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKey = defaults.kmsKey;
         }
 
+        @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
             this.kmsKey = kmsKey;
             return this;
-        }        public RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig build() {
-            return new RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig(kmsKey);
+        }
+        public RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig build() {
+            final var o = new RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig();
+            o.kmsKey = kmsKey;
+            return o;
         }
     }
 }

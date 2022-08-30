@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceAttachmentConnectedEndpoint {
-    private final @Nullable String endpoint;
-    private final @Nullable String status;
+    private @Nullable String endpoint;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private ServiceAttachmentConnectedEndpoint(
-        @CustomType.Parameter("endpoint") @Nullable String endpoint,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.endpoint = endpoint;
-        this.status = status;
-    }
-
+    private ServiceAttachmentConnectedEndpoint() {}
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
@@ -36,30 +29,32 @@ public final class ServiceAttachmentConnectedEndpoint {
     public static Builder builder(ServiceAttachmentConnectedEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endpoint;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceAttachmentConnectedEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoint = defaults.endpoint;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public ServiceAttachmentConnectedEndpoint build() {
-            return new ServiceAttachmentConnectedEndpoint(endpoint, status);
+        }
+        public ServiceAttachmentConnectedEndpoint build() {
+            final var o = new ServiceAttachmentConnectedEndpoint();
+            o.endpoint = endpoint;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -14,26 +14,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509Config {
-    private final List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions;
-    private final List<String> aiaOcspServers;
-    private final List<GetAuthorityConfigX509ConfigCaOption> caOptions;
-    private final List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages;
-    private final List<GetAuthorityConfigX509ConfigPolicyId> policyIds;
+    private List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions;
+    private List<String> aiaOcspServers;
+    private List<GetAuthorityConfigX509ConfigCaOption> caOptions;
+    private List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages;
+    private List<GetAuthorityConfigX509ConfigPolicyId> policyIds;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509Config(
-        @CustomType.Parameter("additionalExtensions") List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions,
-        @CustomType.Parameter("aiaOcspServers") List<String> aiaOcspServers,
-        @CustomType.Parameter("caOptions") List<GetAuthorityConfigX509ConfigCaOption> caOptions,
-        @CustomType.Parameter("keyUsages") List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages,
-        @CustomType.Parameter("policyIds") List<GetAuthorityConfigX509ConfigPolicyId> policyIds) {
-        this.additionalExtensions = additionalExtensions;
-        this.aiaOcspServers = aiaOcspServers;
-        this.caOptions = caOptions;
-        this.keyUsages = keyUsages;
-        this.policyIds = policyIds;
-    }
-
+    private GetAuthorityConfigX509Config() {}
     public List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions() {
         return this.additionalExtensions;
     }
@@ -57,18 +44,14 @@ public final class GetAuthorityConfigX509Config {
     public static Builder builder(GetAuthorityConfigX509Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions;
         private List<String> aiaOcspServers;
         private List<GetAuthorityConfigX509ConfigCaOption> caOptions;
         private List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages;
         private List<GetAuthorityConfigX509ConfigPolicyId> policyIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalExtensions = defaults.additionalExtensions;
@@ -78,6 +61,7 @@ public final class GetAuthorityConfigX509Config {
     	      this.policyIds = defaults.policyIds;
         }
 
+        @CustomType.Setter
         public Builder additionalExtensions(List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions) {
             this.additionalExtensions = Objects.requireNonNull(additionalExtensions);
             return this;
@@ -85,6 +69,7 @@ public final class GetAuthorityConfigX509Config {
         public Builder additionalExtensions(GetAuthorityConfigX509ConfigAdditionalExtension... additionalExtensions) {
             return additionalExtensions(List.of(additionalExtensions));
         }
+        @CustomType.Setter
         public Builder aiaOcspServers(List<String> aiaOcspServers) {
             this.aiaOcspServers = Objects.requireNonNull(aiaOcspServers);
             return this;
@@ -92,6 +77,7 @@ public final class GetAuthorityConfigX509Config {
         public Builder aiaOcspServers(String... aiaOcspServers) {
             return aiaOcspServers(List.of(aiaOcspServers));
         }
+        @CustomType.Setter
         public Builder caOptions(List<GetAuthorityConfigX509ConfigCaOption> caOptions) {
             this.caOptions = Objects.requireNonNull(caOptions);
             return this;
@@ -99,6 +85,7 @@ public final class GetAuthorityConfigX509Config {
         public Builder caOptions(GetAuthorityConfigX509ConfigCaOption... caOptions) {
             return caOptions(List.of(caOptions));
         }
+        @CustomType.Setter
         public Builder keyUsages(List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages) {
             this.keyUsages = Objects.requireNonNull(keyUsages);
             return this;
@@ -106,14 +93,22 @@ public final class GetAuthorityConfigX509Config {
         public Builder keyUsages(GetAuthorityConfigX509ConfigKeyUsage... keyUsages) {
             return keyUsages(List.of(keyUsages));
         }
+        @CustomType.Setter
         public Builder policyIds(List<GetAuthorityConfigX509ConfigPolicyId> policyIds) {
             this.policyIds = Objects.requireNonNull(policyIds);
             return this;
         }
         public Builder policyIds(GetAuthorityConfigX509ConfigPolicyId... policyIds) {
             return policyIds(List.of(policyIds));
-        }        public GetAuthorityConfigX509Config build() {
-            return new GetAuthorityConfigX509Config(additionalExtensions, aiaOcspServers, caOptions, keyUsages, policyIds);
+        }
+        public GetAuthorityConfigX509Config build() {
+            final var o = new GetAuthorityConfigX509Config();
+            o.additionalExtensions = additionalExtensions;
+            o.aiaOcspServers = aiaOcspServers;
+            o.caOptions = caOptions;
+            o.keyUsages = keyUsages;
+            o.policyIds = policyIds;
+            return o;
         }
     }
 }

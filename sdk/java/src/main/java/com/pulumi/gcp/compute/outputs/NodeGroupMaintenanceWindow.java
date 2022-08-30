@@ -13,13 +13,9 @@ public final class NodeGroupMaintenanceWindow {
      * @return instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
      * 
      */
-    private final String startTime;
+    private String startTime;
 
-    @CustomType.Constructor
-    private NodeGroupMaintenanceWindow(@CustomType.Parameter("startTime") String startTime) {
-        this.startTime = startTime;
-    }
-
+    private NodeGroupMaintenanceWindow() {}
     /**
      * @return instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
      * 
@@ -35,24 +31,24 @@ public final class NodeGroupMaintenanceWindow {
     public static Builder builder(NodeGroupMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeGroupMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public NodeGroupMaintenanceWindow build() {
-            return new NodeGroupMaintenanceWindow(startTime);
+        }
+        public NodeGroupMaintenanceWindow build() {
+            final var o = new NodeGroupMaintenanceWindow();
+            o.startTime = startTime;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetRegionInstanceGroupInstanceNamedPort {
      * @return The name of the instance group.  One of `name` or `self_link` must be provided.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Integer port number
      * 
      */
-    private final Integer port;
+    private Integer port;
 
-    @CustomType.Constructor
-    private GetRegionInstanceGroupInstanceNamedPort(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") Integer port) {
-        this.name = name;
-        this.port = port;
-    }
-
+    private GetRegionInstanceGroupInstanceNamedPort() {}
     /**
      * @return The name of the instance group.  One of `name` or `self_link` must be provided.
      * 
@@ -51,30 +44,32 @@ public final class GetRegionInstanceGroupInstanceNamedPort {
     public static Builder builder(GetRegionInstanceGroupInstanceNamedPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionInstanceGroupInstanceNamedPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public GetRegionInstanceGroupInstanceNamedPort build() {
-            return new GetRegionInstanceGroupInstanceNamedPort(name, port);
+        }
+        public GetRegionInstanceGroupInstanceNamedPort build() {
+            final var o = new GetRegionInstanceGroupInstanceNamedPort();
+            o.name = name;
+            o.port = port;
+            return o;
         }
     }
 }

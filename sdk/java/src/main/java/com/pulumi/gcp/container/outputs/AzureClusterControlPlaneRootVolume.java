@@ -15,13 +15,9 @@ public final class AzureClusterControlPlaneRootVolume {
      * @return Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
      * 
      */
-    private final @Nullable Integer sizeGib;
+    private @Nullable Integer sizeGib;
 
-    @CustomType.Constructor
-    private AzureClusterControlPlaneRootVolume(@CustomType.Parameter("sizeGib") @Nullable Integer sizeGib) {
-        this.sizeGib = sizeGib;
-    }
-
+    private AzureClusterControlPlaneRootVolume() {}
     /**
      * @return Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
      * 
@@ -37,24 +33,24 @@ public final class AzureClusterControlPlaneRootVolume {
     public static Builder builder(AzureClusterControlPlaneRootVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer sizeGib;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterControlPlaneRootVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sizeGib = defaults.sizeGib;
         }
 
+        @CustomType.Setter
         public Builder sizeGib(@Nullable Integer sizeGib) {
             this.sizeGib = sizeGib;
             return this;
-        }        public AzureClusterControlPlaneRootVolume build() {
-            return new AzureClusterControlPlaneRootVolume(sizeGib);
+        }
+        public AzureClusterControlPlaneRootVolume build() {
+            final var o = new AzureClusterControlPlaneRootVolume();
+            o.sizeGib = sizeGib;
+            return o;
         }
     }
 }

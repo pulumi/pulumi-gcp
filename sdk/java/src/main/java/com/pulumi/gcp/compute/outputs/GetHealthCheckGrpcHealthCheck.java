@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHealthCheckGrpcHealthCheck {
-    private final String grpcServiceName;
-    private final Integer port;
-    private final String portName;
-    private final String portSpecification;
+    private String grpcServiceName;
+    private Integer port;
+    private String portName;
+    private String portSpecification;
 
-    @CustomType.Constructor
-    private GetHealthCheckGrpcHealthCheck(
-        @CustomType.Parameter("grpcServiceName") String grpcServiceName,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("portName") String portName,
-        @CustomType.Parameter("portSpecification") String portSpecification) {
-        this.grpcServiceName = grpcServiceName;
-        this.port = port;
-        this.portName = portName;
-        this.portSpecification = portSpecification;
-    }
-
+    private GetHealthCheckGrpcHealthCheck() {}
     public String grpcServiceName() {
         return this.grpcServiceName;
     }
@@ -47,17 +36,13 @@ public final class GetHealthCheckGrpcHealthCheck {
     public static Builder builder(GetHealthCheckGrpcHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String grpcServiceName;
         private Integer port;
         private String portName;
         private String portSpecification;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHealthCheckGrpcHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.grpcServiceName = defaults.grpcServiceName;
@@ -66,23 +51,33 @@ public final class GetHealthCheckGrpcHealthCheck {
     	      this.portSpecification = defaults.portSpecification;
         }
 
+        @CustomType.Setter
         public Builder grpcServiceName(String grpcServiceName) {
             this.grpcServiceName = Objects.requireNonNull(grpcServiceName);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder portName(String portName) {
             this.portName = Objects.requireNonNull(portName);
             return this;
         }
+        @CustomType.Setter
         public Builder portSpecification(String portSpecification) {
             this.portSpecification = Objects.requireNonNull(portSpecification);
             return this;
-        }        public GetHealthCheckGrpcHealthCheck build() {
-            return new GetHealthCheckGrpcHealthCheck(grpcServiceName, port, portName, portSpecification);
+        }
+        public GetHealthCheckGrpcHealthCheck build() {
+            final var o = new GetHealthCheckGrpcHealthCheck();
+            o.grpcServiceName = grpcServiceName;
+            o.port = port;
+            o.portName = portName;
+            o.portSpecification = portSpecification;
+            return o;
         }
     }
 }

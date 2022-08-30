@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNotificationChannelSensitiveLabel {
-    private final String authToken;
-    private final String password;
-    private final String serviceKey;
+    private String authToken;
+    private String password;
+    private String serviceKey;
 
-    @CustomType.Constructor
-    private GetNotificationChannelSensitiveLabel(
-        @CustomType.Parameter("authToken") String authToken,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("serviceKey") String serviceKey) {
-        this.authToken = authToken;
-        this.password = password;
-        this.serviceKey = serviceKey;
-    }
-
+    private GetNotificationChannelSensitiveLabel() {}
     public String authToken() {
         return this.authToken;
     }
@@ -40,16 +31,12 @@ public final class GetNotificationChannelSensitiveLabel {
     public static Builder builder(GetNotificationChannelSensitiveLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authToken;
         private String password;
         private String serviceKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotificationChannelSensitiveLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authToken = defaults.authToken;
@@ -57,19 +44,27 @@ public final class GetNotificationChannelSensitiveLabel {
     	      this.serviceKey = defaults.serviceKey;
         }
 
+        @CustomType.Setter
         public Builder authToken(String authToken) {
             this.authToken = Objects.requireNonNull(authToken);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceKey(String serviceKey) {
             this.serviceKey = Objects.requireNonNull(serviceKey);
             return this;
-        }        public GetNotificationChannelSensitiveLabel build() {
-            return new GetNotificationChannelSensitiveLabel(authToken, password, serviceKey);
+        }
+        public GetNotificationChannelSensitiveLabel build() {
+            final var o = new GetNotificationChannelSensitiveLabel();
+            o.authToken = authToken;
+            o.password = password;
+            o.serviceKey = serviceKey;
+            return o;
         }
     }
 }

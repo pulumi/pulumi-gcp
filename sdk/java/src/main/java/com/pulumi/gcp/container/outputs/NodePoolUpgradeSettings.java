@@ -15,23 +15,16 @@ public final class NodePoolUpgradeSettings {
      * Can be set to 0 or greater.
      * 
      */
-    private final Integer maxSurge;
+    private Integer maxSurge;
     /**
      * @return The number of nodes that can be simultaneously unavailable during
      * an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
      * parallel. Can be set to 0 or greater.
      * 
      */
-    private final Integer maxUnavailable;
+    private Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private NodePoolUpgradeSettings(
-        @CustomType.Parameter("maxSurge") Integer maxSurge,
-        @CustomType.Parameter("maxUnavailable") Integer maxUnavailable) {
-        this.maxSurge = maxSurge;
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private NodePoolUpgradeSettings() {}
     /**
      * @return The number of additional nodes that can be added to the node pool during
      * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
@@ -58,30 +51,32 @@ public final class NodePoolUpgradeSettings {
     public static Builder builder(NodePoolUpgradeSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxSurge;
         private Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolUpgradeSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxSurge(Integer maxSurge) {
             this.maxSurge = Objects.requireNonNull(maxSurge);
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailable(Integer maxUnavailable) {
             this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
             return this;
-        }        public NodePoolUpgradeSettings build() {
-            return new NodePoolUpgradeSettings(maxSurge, maxUnavailable);
+        }
+        public NodePoolUpgradeSettings build() {
+            final var o = new NodePoolUpgradeSettings();
+            o.maxSurge = maxSurge;
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

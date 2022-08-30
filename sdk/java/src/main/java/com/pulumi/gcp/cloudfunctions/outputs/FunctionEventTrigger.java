@@ -18,29 +18,20 @@ public final class FunctionEventTrigger {
      * full reference of accepted triggers.
      * 
      */
-    private final String eventType;
+    private String eventType;
     /**
      * @return Specifies policy for failed executions. Structure is documented below.
      * 
      */
-    private final @Nullable FunctionEventTriggerFailurePolicy failurePolicy;
+    private @Nullable FunctionEventTriggerFailurePolicy failurePolicy;
     /**
      * @return Required. The name or partial URI of the resource from
      * which to observe events. For example, `&#34;myBucket&#34;` or `&#34;projects/my-project/topics/my-topic&#34;`
      * 
      */
-    private final String resource;
+    private String resource;
 
-    @CustomType.Constructor
-    private FunctionEventTrigger(
-        @CustomType.Parameter("eventType") String eventType,
-        @CustomType.Parameter("failurePolicy") @Nullable FunctionEventTriggerFailurePolicy failurePolicy,
-        @CustomType.Parameter("resource") String resource) {
-        this.eventType = eventType;
-        this.failurePolicy = failurePolicy;
-        this.resource = resource;
-    }
-
+    private FunctionEventTrigger() {}
     /**
      * @return The type of event to observe. For example: `&#34;google.storage.object.finalize&#34;`.
      * See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
@@ -73,16 +64,12 @@ public final class FunctionEventTrigger {
     public static Builder builder(FunctionEventTrigger defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String eventType;
         private @Nullable FunctionEventTriggerFailurePolicy failurePolicy;
         private String resource;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionEventTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventType = defaults.eventType;
@@ -90,19 +77,27 @@ public final class FunctionEventTrigger {
     	      this.resource = defaults.resource;
         }
 
+        @CustomType.Setter
         public Builder eventType(String eventType) {
             this.eventType = Objects.requireNonNull(eventType);
             return this;
         }
+        @CustomType.Setter
         public Builder failurePolicy(@Nullable FunctionEventTriggerFailurePolicy failurePolicy) {
             this.failurePolicy = failurePolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder resource(String resource) {
             this.resource = Objects.requireNonNull(resource);
             return this;
-        }        public FunctionEventTrigger build() {
-            return new FunctionEventTrigger(eventType, failurePolicy, resource);
+        }
+        public FunctionEventTrigger build() {
+            final var o = new FunctionEventTrigger();
+            o.eventType = eventType;
+            o.failurePolicy = failurePolicy;
+            o.resource = resource;
+            return o;
         }
     }
 }

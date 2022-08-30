@@ -9,21 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerVolumeMount {
-    private final String mountPath;
+    private String mountPath;
     /**
      * @return The name of the Cloud Run Service.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerVolumeMount(
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("name") String name) {
-        this.mountPath = mountPath;
-        this.name = name;
-    }
-
+    private GetServiceTemplateSpecContainerVolumeMount() {}
     public String mountPath() {
         return this.mountPath;
     }
@@ -42,30 +35,32 @@ public final class GetServiceTemplateSpecContainerVolumeMount {
     public static Builder builder(GetServiceTemplateSpecContainerVolumeMount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mountPath;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetServiceTemplateSpecContainerVolumeMount build() {
-            return new GetServiceTemplateSpecContainerVolumeMount(mountPath, name);
+        }
+        public GetServiceTemplateSpecContainerVolumeMount build() {
+            final var o = new GetServiceTemplateSpecContainerVolumeMount();
+            o.mountPath = mountPath;
+            o.name = name;
+            return o;
         }
     }
 }

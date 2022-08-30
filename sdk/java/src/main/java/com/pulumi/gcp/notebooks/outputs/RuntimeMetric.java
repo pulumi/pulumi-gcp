@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuntimeMetric {
-    private final @Nullable Map<String,String> systemMetrics;
+    private @Nullable Map<String,String> systemMetrics;
 
-    @CustomType.Constructor
-    private RuntimeMetric(@CustomType.Parameter("systemMetrics") @Nullable Map<String,String> systemMetrics) {
-        this.systemMetrics = systemMetrics;
-    }
-
+    private RuntimeMetric() {}
     public Map<String,String> systemMetrics() {
         return this.systemMetrics == null ? Map.of() : this.systemMetrics;
     }
@@ -29,24 +25,24 @@ public final class RuntimeMetric {
     public static Builder builder(RuntimeMetric defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> systemMetrics;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.systemMetrics = defaults.systemMetrics;
         }
 
+        @CustomType.Setter
         public Builder systemMetrics(@Nullable Map<String,String> systemMetrics) {
             this.systemMetrics = systemMetrics;
             return this;
-        }        public RuntimeMetric build() {
-            return new RuntimeMetric(systemMetrics);
+        }
+        public RuntimeMetric build() {
+            final var o = new RuntimeMetric();
+            o.systemMetrics = systemMetrics;
+            return o;
         }
     }
 }

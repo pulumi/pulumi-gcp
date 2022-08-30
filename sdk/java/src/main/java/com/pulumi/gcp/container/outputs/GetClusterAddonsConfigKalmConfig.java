@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfigKalmConfig {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfigKalmConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClusterAddonsConfigKalmConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterAddonsConfigKalmConfig {
     public static Builder builder(GetClusterAddonsConfigKalmConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfigKalmConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClusterAddonsConfigKalmConfig build() {
-            return new GetClusterAddonsConfigKalmConfig(enabled);
+        }
+        public GetClusterAddonsConfigKalmConfig build() {
+            final var o = new GetClusterAddonsConfigKalmConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

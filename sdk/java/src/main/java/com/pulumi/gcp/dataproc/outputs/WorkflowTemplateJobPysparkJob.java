@@ -18,63 +18,44 @@ public final class WorkflowTemplateJobPysparkJob {
      * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
-    private final @Nullable List<String> archiveUris;
+    private @Nullable List<String> archiveUris;
     /**
      * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
-    private final @Nullable List<String> fileUris;
+    private @Nullable List<String> fileUris;
     /**
      * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
-    private final @Nullable List<String> jarFileUris;
+    private @Nullable List<String> jarFileUris;
     /**
      * @return Optional. The runtime log config for job execution.
      * 
      */
-    private final @Nullable WorkflowTemplateJobPysparkJobLoggingConfig loggingConfig;
+    private @Nullable WorkflowTemplateJobPysparkJobLoggingConfig loggingConfig;
     /**
      * @return Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
      * 
      */
-    private final String mainPythonFileUri;
+    private String mainPythonFileUri;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
      * 
      */
-    private final @Nullable List<String> pythonFileUris;
+    private @Nullable List<String> pythonFileUris;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobPysparkJob(
-        @CustomType.Parameter("archiveUris") @Nullable List<String> archiveUris,
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("fileUris") @Nullable List<String> fileUris,
-        @CustomType.Parameter("jarFileUris") @Nullable List<String> jarFileUris,
-        @CustomType.Parameter("loggingConfig") @Nullable WorkflowTemplateJobPysparkJobLoggingConfig loggingConfig,
-        @CustomType.Parameter("mainPythonFileUri") String mainPythonFileUri,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("pythonFileUris") @Nullable List<String> pythonFileUris) {
-        this.archiveUris = archiveUris;
-        this.args = args;
-        this.fileUris = fileUris;
-        this.jarFileUris = jarFileUris;
-        this.loggingConfig = loggingConfig;
-        this.mainPythonFileUri = mainPythonFileUri;
-        this.properties = properties;
-        this.pythonFileUris = pythonFileUris;
-    }
-
+    private WorkflowTemplateJobPysparkJob() {}
     /**
      * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
@@ -139,7 +120,7 @@ public final class WorkflowTemplateJobPysparkJob {
     public static Builder builder(WorkflowTemplateJobPysparkJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> archiveUris;
         private @Nullable List<String> args;
@@ -149,11 +130,7 @@ public final class WorkflowTemplateJobPysparkJob {
         private String mainPythonFileUri;
         private @Nullable Map<String,String> properties;
         private @Nullable List<String> pythonFileUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobPysparkJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveUris = defaults.archiveUris;
@@ -166,6 +143,7 @@ public final class WorkflowTemplateJobPysparkJob {
     	      this.pythonFileUris = defaults.pythonFileUris;
         }
 
+        @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
             this.archiveUris = archiveUris;
             return this;
@@ -173,6 +151,7 @@ public final class WorkflowTemplateJobPysparkJob {
         public Builder archiveUris(String... archiveUris) {
             return archiveUris(List.of(archiveUris));
         }
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -180,6 +159,7 @@ public final class WorkflowTemplateJobPysparkJob {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
             this.fileUris = fileUris;
             return this;
@@ -187,6 +167,7 @@ public final class WorkflowTemplateJobPysparkJob {
         public Builder fileUris(String... fileUris) {
             return fileUris(List.of(fileUris));
         }
+        @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
             this.jarFileUris = jarFileUris;
             return this;
@@ -194,26 +175,40 @@ public final class WorkflowTemplateJobPysparkJob {
         public Builder jarFileUris(String... jarFileUris) {
             return jarFileUris(List.of(jarFileUris));
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobPysparkJobLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder mainPythonFileUri(String mainPythonFileUri) {
             this.mainPythonFileUri = Objects.requireNonNull(mainPythonFileUri);
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder pythonFileUris(@Nullable List<String> pythonFileUris) {
             this.pythonFileUris = pythonFileUris;
             return this;
         }
         public Builder pythonFileUris(String... pythonFileUris) {
             return pythonFileUris(List.of(pythonFileUris));
-        }        public WorkflowTemplateJobPysparkJob build() {
-            return new WorkflowTemplateJobPysparkJob(archiveUris, args, fileUris, jarFileUris, loggingConfig, mainPythonFileUri, properties, pythonFileUris);
+        }
+        public WorkflowTemplateJobPysparkJob build() {
+            final var o = new WorkflowTemplateJobPysparkJob();
+            o.archiveUris = archiveUris;
+            o.args = args;
+            o.fileUris = fileUris;
+            o.jarFileUris = jarFileUris;
+            o.loggingConfig = loggingConfig;
+            o.mainPythonFileUri = mainPythonFileUri;
+            o.properties = properties;
+            o.pythonFileUris = pythonFileUris;
+            return o;
         }
     }
 }

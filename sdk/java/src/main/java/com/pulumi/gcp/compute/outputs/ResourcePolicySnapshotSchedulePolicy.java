@@ -18,29 +18,20 @@ public final class ResourcePolicySnapshotSchedulePolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy;
+    private @Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy;
     /**
      * @return Specifies the frequency for the operation, using the unix-cron format.
      * 
      */
-    private final ResourcePolicySnapshotSchedulePolicySchedule schedule;
+    private ResourcePolicySnapshotSchedulePolicySchedule schedule;
     /**
      * @return Properties with which the snapshots are created, such as labels.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties;
+    private @Nullable ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicy(
-        @CustomType.Parameter("retentionPolicy") @Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy,
-        @CustomType.Parameter("schedule") ResourcePolicySnapshotSchedulePolicySchedule schedule,
-        @CustomType.Parameter("snapshotProperties") @Nullable ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties) {
-        this.retentionPolicy = retentionPolicy;
-        this.schedule = schedule;
-        this.snapshotProperties = snapshotProperties;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicy() {}
     /**
      * @return Retention policy applied to snapshots created by this resource policy.
      * Structure is documented below.
@@ -72,16 +63,12 @@ public final class ResourcePolicySnapshotSchedulePolicy {
     public static Builder builder(ResourcePolicySnapshotSchedulePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy;
         private ResourcePolicySnapshotSchedulePolicySchedule schedule;
         private @Nullable ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retentionPolicy = defaults.retentionPolicy;
@@ -89,19 +76,27 @@ public final class ResourcePolicySnapshotSchedulePolicy {
     	      this.snapshotProperties = defaults.snapshotProperties;
         }
 
+        @CustomType.Setter
         public Builder retentionPolicy(@Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy) {
             this.retentionPolicy = retentionPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(ResourcePolicySnapshotSchedulePolicySchedule schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotProperties(@Nullable ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties) {
             this.snapshotProperties = snapshotProperties;
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicy build() {
-            return new ResourcePolicySnapshotSchedulePolicy(retentionPolicy, schedule, snapshotProperties);
+        }
+        public ResourcePolicySnapshotSchedulePolicy build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicy();
+            o.retentionPolicy = retentionPolicy;
+            o.schedule = schedule;
+            o.snapshotProperties = snapshotProperties;
+            return o;
         }
     }
 }

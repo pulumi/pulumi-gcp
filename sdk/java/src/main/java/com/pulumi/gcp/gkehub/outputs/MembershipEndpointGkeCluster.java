@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MembershipEndpointGkeCluster {
-    private final String resourceLink;
+    private String resourceLink;
 
-    @CustomType.Constructor
-    private MembershipEndpointGkeCluster(@CustomType.Parameter("resourceLink") String resourceLink) {
-        this.resourceLink = resourceLink;
-    }
-
+    private MembershipEndpointGkeCluster() {}
     public String resourceLink() {
         return this.resourceLink;
     }
@@ -27,24 +23,24 @@ public final class MembershipEndpointGkeCluster {
     public static Builder builder(MembershipEndpointGkeCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MembershipEndpointGkeCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceLink = defaults.resourceLink;
         }
 
+        @CustomType.Setter
         public Builder resourceLink(String resourceLink) {
             this.resourceLink = Objects.requireNonNull(resourceLink);
             return this;
-        }        public MembershipEndpointGkeCluster build() {
-            return new MembershipEndpointGkeCluster(resourceLink);
+        }
+        public MembershipEndpointGkeCluster build() {
+            final var o = new MembershipEndpointGkeCluster();
+            o.resourceLink = resourceLink;
+            return o;
         }
     }
 }

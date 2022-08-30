@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DefaultObjectAccessControlProjectTeam {
-    private final @Nullable String projectNumber;
-    private final @Nullable String team;
+    private @Nullable String projectNumber;
+    private @Nullable String team;
 
-    @CustomType.Constructor
-    private DefaultObjectAccessControlProjectTeam(
-        @CustomType.Parameter("projectNumber") @Nullable String projectNumber,
-        @CustomType.Parameter("team") @Nullable String team) {
-        this.projectNumber = projectNumber;
-        this.team = team;
-    }
-
+    private DefaultObjectAccessControlProjectTeam() {}
     public Optional<String> projectNumber() {
         return Optional.ofNullable(this.projectNumber);
     }
@@ -36,30 +29,32 @@ public final class DefaultObjectAccessControlProjectTeam {
     public static Builder builder(DefaultObjectAccessControlProjectTeam defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String projectNumber;
         private @Nullable String team;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DefaultObjectAccessControlProjectTeam defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.projectNumber = defaults.projectNumber;
     	      this.team = defaults.team;
         }
 
+        @CustomType.Setter
         public Builder projectNumber(@Nullable String projectNumber) {
             this.projectNumber = projectNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder team(@Nullable String team) {
             this.team = team;
             return this;
-        }        public DefaultObjectAccessControlProjectTeam build() {
-            return new DefaultObjectAccessControlProjectTeam(projectNumber, team);
+        }
+        public DefaultObjectAccessControlProjectTeam build() {
+            final var o = new DefaultObjectAccessControlProjectTeam();
+            o.projectNumber = projectNumber;
+            o.team = team;
+            return o;
         }
     }
 }

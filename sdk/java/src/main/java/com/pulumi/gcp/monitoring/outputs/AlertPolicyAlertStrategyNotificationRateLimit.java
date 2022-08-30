@@ -15,13 +15,9 @@ public final class AlertPolicyAlertStrategyNotificationRateLimit {
      * @return Not more than one notification per period.
      * 
      */
-    private final @Nullable String period;
+    private @Nullable String period;
 
-    @CustomType.Constructor
-    private AlertPolicyAlertStrategyNotificationRateLimit(@CustomType.Parameter("period") @Nullable String period) {
-        this.period = period;
-    }
-
+    private AlertPolicyAlertStrategyNotificationRateLimit() {}
     /**
      * @return Not more than one notification per period.
      * 
@@ -37,24 +33,24 @@ public final class AlertPolicyAlertStrategyNotificationRateLimit {
     public static Builder builder(AlertPolicyAlertStrategyNotificationRateLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String period;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyAlertStrategyNotificationRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.period = defaults.period;
         }
 
+        @CustomType.Setter
         public Builder period(@Nullable String period) {
             this.period = period;
             return this;
-        }        public AlertPolicyAlertStrategyNotificationRateLimit build() {
-            return new AlertPolicyAlertStrategyNotificationRateLimit(period);
+        }
+        public AlertPolicyAlertStrategyNotificationRateLimit build() {
+            final var o = new AlertPolicyAlertStrategyNotificationRateLimit();
+            o.period = period;
+            return o;
         }
     }
 }

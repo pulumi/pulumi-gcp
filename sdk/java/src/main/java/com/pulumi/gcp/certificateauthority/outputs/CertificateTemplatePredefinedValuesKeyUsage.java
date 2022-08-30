@@ -18,28 +18,19 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
      * @return Describes high-level ways in which a key may be used.
      * 
      */
-    private final @Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage;
+    private @Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage;
     /**
      * @return Detailed scenarios in which a key may be used.
      * 
      */
-    private final @Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
+    private @Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
     /**
      * @return Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
      * 
      */
-    private final @Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
+    private @Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
 
-    @CustomType.Constructor
-    private CertificateTemplatePredefinedValuesKeyUsage(
-        @CustomType.Parameter("baseKeyUsage") @Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage,
-        @CustomType.Parameter("extendedKeyUsage") @Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage,
-        @CustomType.Parameter("unknownExtendedKeyUsages") @Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
-        this.baseKeyUsage = baseKeyUsage;
-        this.extendedKeyUsage = extendedKeyUsage;
-        this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-    }
-
+    private CertificateTemplatePredefinedValuesKeyUsage() {}
     /**
      * @return Describes high-level ways in which a key may be used.
      * 
@@ -69,16 +60,12 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
     public static Builder builder(CertificateTemplatePredefinedValuesKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage;
         private @Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
         private @Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePredefinedValuesKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseKeyUsage = defaults.baseKeyUsage;
@@ -86,22 +73,30 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
     	      this.unknownExtendedKeyUsages = defaults.unknownExtendedKeyUsages;
         }
 
+        @CustomType.Setter
         public Builder baseKeyUsage(@Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage) {
             this.baseKeyUsage = baseKeyUsage;
             return this;
         }
+        @CustomType.Setter
         public Builder extendedKeyUsage(@Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage) {
             this.extendedKeyUsage = extendedKeyUsage;
             return this;
         }
+        @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }
         public Builder unknownExtendedKeyUsages(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage... unknownExtendedKeyUsages) {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
-        }        public CertificateTemplatePredefinedValuesKeyUsage build() {
-            return new CertificateTemplatePredefinedValuesKeyUsage(baseKeyUsage, extendedKeyUsage, unknownExtendedKeyUsages);
+        }
+        public CertificateTemplatePredefinedValuesKeyUsage build() {
+            final var o = new CertificateTemplatePredefinedValuesKeyUsage();
+            o.baseKeyUsage = baseKeyUsage;
+            o.extendedKeyUsage = extendedKeyUsage;
+            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return o;
         }
     }
 }

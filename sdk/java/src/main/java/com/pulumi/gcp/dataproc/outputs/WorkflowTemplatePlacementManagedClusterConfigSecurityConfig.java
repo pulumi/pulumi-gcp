@@ -15,13 +15,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
      * @return Kerberos related configuration.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig kerberosConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig kerberosConfig;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(@CustomType.Parameter("kerberosConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig kerberosConfig) {
-        this.kerberosConfig = kerberosConfig;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigSecurityConfig() {}
     /**
      * @return Kerberos related configuration.
      * 
@@ -37,24 +33,24 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigSecurityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig kerberosConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigSecurityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kerberosConfig = defaults.kerberosConfig;
         }
 
+        @CustomType.Setter
         public Builder kerberosConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig kerberosConfig) {
             this.kerberosConfig = kerberosConfig;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigSecurityConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigSecurityConfig(kerberosConfig);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigSecurityConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecurityConfig();
+            o.kerberosConfig = kerberosConfig;
+            return o;
         }
     }
 }

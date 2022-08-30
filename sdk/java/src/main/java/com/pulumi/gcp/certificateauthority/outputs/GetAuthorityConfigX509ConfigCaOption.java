@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigCaOption {
-    private final Boolean isCa;
-    private final Integer maxIssuerPathLength;
-    private final Boolean nonCa;
-    private final Boolean zeroMaxIssuerPathLength;
+    private Boolean isCa;
+    private Integer maxIssuerPathLength;
+    private Boolean nonCa;
+    private Boolean zeroMaxIssuerPathLength;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigCaOption(
-        @CustomType.Parameter("isCa") Boolean isCa,
-        @CustomType.Parameter("maxIssuerPathLength") Integer maxIssuerPathLength,
-        @CustomType.Parameter("nonCa") Boolean nonCa,
-        @CustomType.Parameter("zeroMaxIssuerPathLength") Boolean zeroMaxIssuerPathLength) {
-        this.isCa = isCa;
-        this.maxIssuerPathLength = maxIssuerPathLength;
-        this.nonCa = nonCa;
-        this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
-    }
-
+    private GetAuthorityConfigX509ConfigCaOption() {}
     public Boolean isCa() {
         return this.isCa;
     }
@@ -47,17 +36,13 @@ public final class GetAuthorityConfigX509ConfigCaOption {
     public static Builder builder(GetAuthorityConfigX509ConfigCaOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean isCa;
         private Integer maxIssuerPathLength;
         private Boolean nonCa;
         private Boolean zeroMaxIssuerPathLength;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigCaOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isCa = defaults.isCa;
@@ -66,23 +51,33 @@ public final class GetAuthorityConfigX509ConfigCaOption {
     	      this.zeroMaxIssuerPathLength = defaults.zeroMaxIssuerPathLength;
         }
 
+        @CustomType.Setter
         public Builder isCa(Boolean isCa) {
             this.isCa = Objects.requireNonNull(isCa);
             return this;
         }
+        @CustomType.Setter
         public Builder maxIssuerPathLength(Integer maxIssuerPathLength) {
             this.maxIssuerPathLength = Objects.requireNonNull(maxIssuerPathLength);
             return this;
         }
+        @CustomType.Setter
         public Builder nonCa(Boolean nonCa) {
             this.nonCa = Objects.requireNonNull(nonCa);
             return this;
         }
+        @CustomType.Setter
         public Builder zeroMaxIssuerPathLength(Boolean zeroMaxIssuerPathLength) {
             this.zeroMaxIssuerPathLength = Objects.requireNonNull(zeroMaxIssuerPathLength);
             return this;
-        }        public GetAuthorityConfigX509ConfigCaOption build() {
-            return new GetAuthorityConfigX509ConfigCaOption(isCa, maxIssuerPathLength, nonCa, zeroMaxIssuerPathLength);
+        }
+        public GetAuthorityConfigX509ConfigCaOption build() {
+            final var o = new GetAuthorityConfigX509ConfigCaOption();
+            o.isCa = isCa;
+            o.maxIssuerPathLength = maxIssuerPathLength;
+            o.nonCa = nonCa;
+            o.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return o;
         }
     }
 }

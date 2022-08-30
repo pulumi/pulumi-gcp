@@ -15,13 +15,9 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessage {
      * @return A collection of text responses.
      * 
      */
-    private final @Nullable CxPageTransitionRouteTriggerFulfillmentMessageText text;
+    private @Nullable CxPageTransitionRouteTriggerFulfillmentMessageText text;
 
-    @CustomType.Constructor
-    private CxPageTransitionRouteTriggerFulfillmentMessage(@CustomType.Parameter("text") @Nullable CxPageTransitionRouteTriggerFulfillmentMessageText text) {
-        this.text = text;
-    }
-
+    private CxPageTransitionRouteTriggerFulfillmentMessage() {}
     /**
      * @return A collection of text responses.
      * 
@@ -37,24 +33,24 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessage {
     public static Builder builder(CxPageTransitionRouteTriggerFulfillmentMessage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CxPageTransitionRouteTriggerFulfillmentMessageText text;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageTransitionRouteTriggerFulfillmentMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.text = defaults.text;
         }
 
+        @CustomType.Setter
         public Builder text(@Nullable CxPageTransitionRouteTriggerFulfillmentMessageText text) {
             this.text = text;
             return this;
-        }        public CxPageTransitionRouteTriggerFulfillmentMessage build() {
-            return new CxPageTransitionRouteTriggerFulfillmentMessage(text);
+        }
+        public CxPageTransitionRouteTriggerFulfillmentMessage build() {
+            final var o = new CxPageTransitionRouteTriggerFulfillmentMessage();
+            o.text = text;
+            return o;
         }
     }
 }

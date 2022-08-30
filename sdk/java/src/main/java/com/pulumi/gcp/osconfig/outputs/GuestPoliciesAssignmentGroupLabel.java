@@ -14,13 +14,9 @@ public final class GuestPoliciesAssignmentGroupLabel {
      * @return Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
 
-    @CustomType.Constructor
-    private GuestPoliciesAssignmentGroupLabel(@CustomType.Parameter("labels") Map<String,String> labels) {
-        this.labels = labels;
-    }
-
+    private GuestPoliciesAssignmentGroupLabel() {}
     /**
      * @return Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
      * 
@@ -36,24 +32,24 @@ public final class GuestPoliciesAssignmentGroupLabel {
     public static Builder builder(GuestPoliciesAssignmentGroupLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesAssignmentGroupLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
-        }        public GuestPoliciesAssignmentGroupLabel build() {
-            return new GuestPoliciesAssignmentGroupLabel(labels);
+        }
+        public GuestPoliciesAssignmentGroupLabel build() {
+            final var o = new GuestPoliciesAssignmentGroupLabel();
+            o.labels = labels;
+            return o;
         }
     }
 }

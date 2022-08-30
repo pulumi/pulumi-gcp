@@ -13,21 +13,14 @@ public final class ApiConfigManagedServiceConfig {
      * @return Base64 encoded content of the file.
      * 
      */
-    private final String contents;
+    private String contents;
     /**
      * @return The file path (full or relative path). This is typically the path of the file when it is uploaded.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private ApiConfigManagedServiceConfig(
-        @CustomType.Parameter("contents") String contents,
-        @CustomType.Parameter("path") String path) {
-        this.contents = contents;
-        this.path = path;
-    }
-
+    private ApiConfigManagedServiceConfig() {}
     /**
      * @return Base64 encoded content of the file.
      * 
@@ -50,30 +43,32 @@ public final class ApiConfigManagedServiceConfig {
     public static Builder builder(ApiConfigManagedServiceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String contents;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiConfigManagedServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contents = defaults.contents;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder contents(String contents) {
             this.contents = Objects.requireNonNull(contents);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public ApiConfigManagedServiceConfig build() {
-            return new ApiConfigManagedServiceConfig(contents, path);
+        }
+        public ApiConfigManagedServiceConfig build() {
+            final var o = new ApiConfigManagedServiceConfig();
+            o.contents = contents;
+            o.path = path;
+            return o;
         }
     }
 }

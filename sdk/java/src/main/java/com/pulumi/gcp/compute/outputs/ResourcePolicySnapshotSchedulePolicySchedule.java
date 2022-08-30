@@ -18,30 +18,21 @@ public final class ResourcePolicySnapshotSchedulePolicySchedule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule dailySchedule;
+    private @Nullable ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule dailySchedule;
     /**
      * @return The policy will execute every nth hour starting at the specified time.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule hourlySchedule;
+    private @Nullable ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule hourlySchedule;
     /**
      * @return Allows specifying a snapshot time for each day of the week.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule weeklySchedule;
+    private @Nullable ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule weeklySchedule;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicySchedule(
-        @CustomType.Parameter("dailySchedule") @Nullable ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule dailySchedule,
-        @CustomType.Parameter("hourlySchedule") @Nullable ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule hourlySchedule,
-        @CustomType.Parameter("weeklySchedule") @Nullable ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule weeklySchedule) {
-        this.dailySchedule = dailySchedule;
-        this.hourlySchedule = hourlySchedule;
-        this.weeklySchedule = weeklySchedule;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicySchedule() {}
     /**
      * @return The policy will execute every nth day at the specified time.
      * Structure is documented below.
@@ -74,16 +65,12 @@ public final class ResourcePolicySnapshotSchedulePolicySchedule {
     public static Builder builder(ResourcePolicySnapshotSchedulePolicySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule dailySchedule;
         private @Nullable ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule hourlySchedule;
         private @Nullable ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule weeklySchedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dailySchedule = defaults.dailySchedule;
@@ -91,19 +78,27 @@ public final class ResourcePolicySnapshotSchedulePolicySchedule {
     	      this.weeklySchedule = defaults.weeklySchedule;
         }
 
+        @CustomType.Setter
         public Builder dailySchedule(@Nullable ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule dailySchedule) {
             this.dailySchedule = dailySchedule;
             return this;
         }
+        @CustomType.Setter
         public Builder hourlySchedule(@Nullable ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule hourlySchedule) {
             this.hourlySchedule = hourlySchedule;
             return this;
         }
+        @CustomType.Setter
         public Builder weeklySchedule(@Nullable ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule weeklySchedule) {
             this.weeklySchedule = weeklySchedule;
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicySchedule build() {
-            return new ResourcePolicySnapshotSchedulePolicySchedule(dailySchedule, hourlySchedule, weeklySchedule);
+        }
+        public ResourcePolicySnapshotSchedulePolicySchedule build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicySchedule();
+            o.dailySchedule = dailySchedule;
+            o.hourlySchedule = hourlySchedule;
+            o.weeklySchedule = weeklySchedule;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateServiceAccount {
-    private final @Nullable String email;
-    private final List<String> scopes;
+    private @Nullable String email;
+    private List<String> scopes;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateServiceAccount(
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("scopes") List<String> scopes) {
-        this.email = email;
-        this.scopes = scopes;
-    }
-
+    private InstanceFromTemplateServiceAccount() {}
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
@@ -37,33 +30,35 @@ public final class InstanceFromTemplateServiceAccount {
     public static Builder builder(InstanceFromTemplateServiceAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String email;
         private List<String> scopes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateServiceAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
         }
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
-        }        public InstanceFromTemplateServiceAccount build() {
-            return new InstanceFromTemplateServiceAccount(email, scopes);
+        }
+        public InstanceFromTemplateServiceAccount build() {
+            final var o = new InstanceFromTemplateServiceAccount();
+            o.email = email;
+            o.scopes = scopes;
+            return o;
         }
     }
 }

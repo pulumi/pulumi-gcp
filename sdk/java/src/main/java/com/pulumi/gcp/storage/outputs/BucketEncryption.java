@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class BucketEncryption {
-    private final String defaultKmsKeyName;
+    private String defaultKmsKeyName;
 
-    @CustomType.Constructor
-    private BucketEncryption(@CustomType.Parameter("defaultKmsKeyName") String defaultKmsKeyName) {
-        this.defaultKmsKeyName = defaultKmsKeyName;
-    }
-
+    private BucketEncryption() {}
     public String defaultKmsKeyName() {
         return this.defaultKmsKeyName;
     }
@@ -27,24 +23,24 @@ public final class BucketEncryption {
     public static Builder builder(BucketEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultKmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultKmsKeyName = defaults.defaultKmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder defaultKmsKeyName(String defaultKmsKeyName) {
             this.defaultKmsKeyName = Objects.requireNonNull(defaultKmsKeyName);
             return this;
-        }        public BucketEncryption build() {
-            return new BucketEncryption(defaultKmsKeyName);
+        }
+        public BucketEncryption build() {
+            final var o = new BucketEncryption();
+            o.defaultKmsKeyName = defaultKmsKeyName;
+            return o;
         }
     }
 }

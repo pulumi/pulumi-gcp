@@ -22,63 +22,44 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
      * @return An Apt Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt;
     /**
      * @return A deb package file.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb;
     /**
      * @return Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
      * 
      */
-    private final String desiredState;
+    private String desiredState;
     /**
      * @return A package managed by GooGet.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget googet;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget googet;
     /**
      * @return An MSI package.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi msi;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi msi;
     /**
      * @return An rpm package file.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm;
     /**
      * @return A Yum Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum;
     /**
      * @return A Zypper Repository.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(
-        @CustomType.Parameter("apt") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt,
-        @CustomType.Parameter("deb") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb,
-        @CustomType.Parameter("desiredState") String desiredState,
-        @CustomType.Parameter("googet") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget googet,
-        @CustomType.Parameter("msi") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi msi,
-        @CustomType.Parameter("rpm") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm,
-        @CustomType.Parameter("yum") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum,
-        @CustomType.Parameter("zypper") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper) {
-        this.apt = apt;
-        this.deb = deb;
-        this.desiredState = desiredState;
-        this.googet = googet;
-        this.msi = msi;
-        this.rpm = rpm;
-        this.yum = yum;
-        this.zypper = zypper;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkg() {}
     /**
      * @return An Apt Repository.
      * 
@@ -143,7 +124,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkg defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb;
@@ -153,11 +134,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkg defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apt = defaults.apt;
@@ -170,39 +147,57 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
     	      this.zypper = defaults.zypper;
         }
 
+        @CustomType.Setter
         public Builder apt(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt) {
             this.apt = apt;
             return this;
         }
+        @CustomType.Setter
         public Builder deb(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb) {
             this.deb = deb;
             return this;
         }
+        @CustomType.Setter
         public Builder desiredState(String desiredState) {
             this.desiredState = Objects.requireNonNull(desiredState);
             return this;
         }
+        @CustomType.Setter
         public Builder googet(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget googet) {
             this.googet = googet;
             return this;
         }
+        @CustomType.Setter
         public Builder msi(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi msi) {
             this.msi = msi;
             return this;
         }
+        @CustomType.Setter
         public Builder rpm(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm) {
             this.rpm = rpm;
             return this;
         }
+        @CustomType.Setter
         public Builder yum(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum) {
             this.yum = yum;
             return this;
         }
+        @CustomType.Setter
         public Builder zypper(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper) {
             this.zypper = zypper;
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkg build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourcePkg(apt, deb, desiredState, googet, msi, rpm, yum, zypper);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkg build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkg();
+            o.apt = apt;
+            o.deb = deb;
+            o.desiredState = desiredState;
+            o.googet = googet;
+            o.msi = msi;
+            o.rpm = rpm;
+            o.yum = yum;
+            o.zypper = zypper;
+            return o;
         }
     }
 }

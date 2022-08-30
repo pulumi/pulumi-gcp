@@ -15,21 +15,14 @@ public final class JobQueryDefaultDataset {
      * @return The ID of the dataset containing this model.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The ID of the project containing this model.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
 
-    @CustomType.Constructor
-    private JobQueryDefaultDataset(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("projectId") @Nullable String projectId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-    }
-
+    private JobQueryDefaultDataset() {}
     /**
      * @return The ID of the dataset containing this model.
      * 
@@ -52,30 +45,32 @@ public final class JobQueryDefaultDataset {
     public static Builder builder(JobQueryDefaultDataset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private @Nullable String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobQueryDefaultDataset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
-        }        public JobQueryDefaultDataset build() {
-            return new JobQueryDefaultDataset(datasetId, projectId);
+        }
+        public JobQueryDefaultDataset build() {
+            final var o = new JobQueryDefaultDataset();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

@@ -20,6 +20,7 @@ class StandardAppVersionArgs:
                  entrypoint: pulumi.Input['StandardAppVersionEntrypointArgs'],
                  runtime: pulumi.Input[str],
                  service: pulumi.Input[str],
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -43,6 +44,7 @@ class StandardAppVersionArgs:
                Structure is documented below.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -77,6 +79,8 @@ class StandardAppVersionArgs:
         pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "runtime", runtime)
         pulumi.set(__self__, "service", service)
+        if app_engine_apis is not None:
+            pulumi.set(__self__, "app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:
             pulumi.set(__self__, "automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
@@ -157,6 +161,18 @@ class StandardAppVersionArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="appEngineApis")
+    def app_engine_apis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows App Engine second generation runtimes to access the legacy bundled services.
+        """
+        return pulumi.get(self, "app_engine_apis")
+
+    @app_engine_apis.setter
+    def app_engine_apis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "app_engine_apis", value)
 
     @property
     @pulumi.getter(name="automaticScaling")
@@ -356,6 +372,7 @@ class StandardAppVersionArgs:
 @pulumi.input_type
 class _StandardAppVersionState:
     def __init__(__self__, *,
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -378,6 +395,7 @@ class _StandardAppVersionState:
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
         """
         Input properties used for looking up and filtering StandardAppVersion resources.
+        :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -415,6 +433,8 @@ class _StandardAppVersionState:
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
                Structure is documented below.
         """
+        if app_engine_apis is not None:
+            pulumi.set(__self__, "app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:
             pulumi.set(__self__, "automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
@@ -455,6 +475,18 @@ class _StandardAppVersionState:
             pulumi.set(__self__, "version_id", version_id)
         if vpc_access_connector is not None:
             pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+
+    @property
+    @pulumi.getter(name="appEngineApis")
+    def app_engine_apis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows App Engine second generation runtimes to access the legacy bundled services.
+        """
+        return pulumi.get(self, "app_engine_apis")
+
+    @app_engine_apis.setter
+    def app_engine_apis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "app_engine_apis", value)
 
     @property
     @pulumi.getter(name="automaticScaling")
@@ -718,6 +750,7 @@ class StandardAppVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionAutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionBasicScalingArgs']]] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -794,6 +827,7 @@ class StandardAppVersion(pulumi.CustomResource):
             version_id="v2",
             service="myapp",
             runtime="nodejs10",
+            app_engine_apis=True,
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
@@ -829,6 +863,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionAutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionBasicScalingArgs']] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -927,6 +962,7 @@ class StandardAppVersion(pulumi.CustomResource):
             version_id="v2",
             service="myapp",
             runtime="nodejs10",
+            app_engine_apis=True,
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
                 shell="node ./app.js",
             ),
@@ -975,6 +1011,7 @@ class StandardAppVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionAutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionBasicScalingArgs']]] = None,
                  delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1003,6 +1040,7 @@ class StandardAppVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StandardAppVersionArgs.__new__(StandardAppVersionArgs)
 
+            __props__.__dict__["app_engine_apis"] = app_engine_apis
             __props__.__dict__["automatic_scaling"] = automatic_scaling
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
@@ -1041,6 +1079,7 @@ class StandardAppVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            app_engine_apis: Optional[pulumi.Input[bool]] = None,
             automatic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionAutomaticScalingArgs']]] = None,
             basic_scaling: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionBasicScalingArgs']]] = None,
             delete_service_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -1068,6 +1107,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionAutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionBasicScalingArgs']] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -1109,6 +1149,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
         __props__ = _StandardAppVersionState.__new__(_StandardAppVersionState)
 
+        __props__.__dict__["app_engine_apis"] = app_engine_apis
         __props__.__dict__["automatic_scaling"] = automatic_scaling
         __props__.__dict__["basic_scaling"] = basic_scaling
         __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
@@ -1130,6 +1171,14 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         __props__.__dict__["vpc_access_connector"] = vpc_access_connector
         return StandardAppVersion(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appEngineApis")
+    def app_engine_apis(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allows App Engine second generation runtimes to access the legacy bundled services.
+        """
+        return pulumi.get(self, "app_engine_apis")
 
     @property
     @pulumi.getter(name="automaticScaling")

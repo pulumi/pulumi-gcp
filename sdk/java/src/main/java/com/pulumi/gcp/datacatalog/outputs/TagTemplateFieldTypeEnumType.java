@@ -19,13 +19,9 @@ public final class TagTemplateFieldTypeEnumType {
      * Structure is documented below.
      * 
      */
-    private final List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues;
+    private List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues;
 
-    @CustomType.Constructor
-    private TagTemplateFieldTypeEnumType(@CustomType.Parameter("allowedValues") List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues) {
-        this.allowedValues = allowedValues;
-    }
-
+    private TagTemplateFieldTypeEnumType() {}
     /**
      * @return The set of allowed values for this enum. The display names of the
      * values must be case-insensitively unique within this set. Currently,
@@ -46,27 +42,27 @@ public final class TagTemplateFieldTypeEnumType {
     public static Builder builder(TagTemplateFieldTypeEnumType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TagTemplateFieldTypeEnumType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedValues = defaults.allowedValues;
         }
 
+        @CustomType.Setter
         public Builder allowedValues(List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues) {
             this.allowedValues = Objects.requireNonNull(allowedValues);
             return this;
         }
         public Builder allowedValues(TagTemplateFieldTypeEnumTypeAllowedValue... allowedValues) {
             return allowedValues(List.of(allowedValues));
-        }        public TagTemplateFieldTypeEnumType build() {
-            return new TagTemplateFieldTypeEnumType(allowedValues);
+        }
+        public TagTemplateFieldTypeEnumType build() {
+            final var o = new TagTemplateFieldTypeEnumType();
+            o.allowedValues = allowedValues;
+            return o;
         }
     }
 }

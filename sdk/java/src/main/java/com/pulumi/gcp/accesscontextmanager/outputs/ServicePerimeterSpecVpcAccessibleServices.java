@@ -18,22 +18,15 @@ public final class ServicePerimeterSpecVpcAccessibleServices {
      * Must be empty unless `enableRestriction` is True.
      * 
      */
-    private final @Nullable List<String> allowedServices;
+    private @Nullable List<String> allowedServices;
     /**
      * @return Whether to restrict API calls within the Service Perimeter to the
      * list of APIs specified in &#39;allowedServices&#39;.
      * 
      */
-    private final @Nullable Boolean enableRestriction;
+    private @Nullable Boolean enableRestriction;
 
-    @CustomType.Constructor
-    private ServicePerimeterSpecVpcAccessibleServices(
-        @CustomType.Parameter("allowedServices") @Nullable List<String> allowedServices,
-        @CustomType.Parameter("enableRestriction") @Nullable Boolean enableRestriction) {
-        this.allowedServices = allowedServices;
-        this.enableRestriction = enableRestriction;
-    }
-
+    private ServicePerimeterSpecVpcAccessibleServices() {}
     /**
      * @return The list of APIs usable within the Service Perimeter.
      * Must be empty unless `enableRestriction` is True.
@@ -58,21 +51,18 @@ public final class ServicePerimeterSpecVpcAccessibleServices {
     public static Builder builder(ServicePerimeterSpecVpcAccessibleServices defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedServices;
         private @Nullable Boolean enableRestriction;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimeterSpecVpcAccessibleServices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedServices = defaults.allowedServices;
     	      this.enableRestriction = defaults.enableRestriction;
         }
 
+        @CustomType.Setter
         public Builder allowedServices(@Nullable List<String> allowedServices) {
             this.allowedServices = allowedServices;
             return this;
@@ -80,11 +70,16 @@ public final class ServicePerimeterSpecVpcAccessibleServices {
         public Builder allowedServices(String... allowedServices) {
             return allowedServices(List.of(allowedServices));
         }
+        @CustomType.Setter
         public Builder enableRestriction(@Nullable Boolean enableRestriction) {
             this.enableRestriction = enableRestriction;
             return this;
-        }        public ServicePerimeterSpecVpcAccessibleServices build() {
-            return new ServicePerimeterSpecVpcAccessibleServices(allowedServices, enableRestriction);
+        }
+        public ServicePerimeterSpecVpcAccessibleServices build() {
+            final var o = new ServicePerimeterSpecVpcAccessibleServices();
+            o.allowedServices = allowedServices;
+            o.enableRestriction = enableRestriction;
+            return o;
         }
     }
 }

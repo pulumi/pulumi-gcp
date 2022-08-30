@@ -13,21 +13,14 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
      * @return The package name of the application.
      * 
      */
-    private final String packageName;
+    private String packageName;
     /**
      * @return The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
      * 
      */
-    private final String sha1Fingerprint;
+    private String sha1Fingerprint;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication(
-        @CustomType.Parameter("packageName") String packageName,
-        @CustomType.Parameter("sha1Fingerprint") String sha1Fingerprint) {
-        this.packageName = packageName;
-        this.sha1Fingerprint = sha1Fingerprint;
-    }
-
+    private ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication() {}
     /**
      * @return The package name of the application.
      * 
@@ -50,30 +43,32 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
     public static Builder builder(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String packageName;
         private String sha1Fingerprint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.packageName = defaults.packageName;
     	      this.sha1Fingerprint = defaults.sha1Fingerprint;
         }
 
+        @CustomType.Setter
         public Builder packageName(String packageName) {
             this.packageName = Objects.requireNonNull(packageName);
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Fingerprint(String sha1Fingerprint) {
             this.sha1Fingerprint = Objects.requireNonNull(sha1Fingerprint);
             return this;
-        }        public ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication build() {
-            return new ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication(packageName, sha1Fingerprint);
+        }
+        public ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication build() {
+            final var o = new ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication();
+            o.packageName = packageName;
+            o.sha1Fingerprint = sha1Fingerprint;
+            return o;
         }
     }
 }

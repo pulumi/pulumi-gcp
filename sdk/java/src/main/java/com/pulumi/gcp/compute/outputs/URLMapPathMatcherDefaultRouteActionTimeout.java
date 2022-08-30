@@ -17,22 +17,15 @@ public final class URLMapPathMatcherDefaultRouteActionTimeout {
      * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
      * 
      */
-    private final @Nullable Integer nanos;
+    private @Nullable Integer nanos;
     /**
      * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
      * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
      * 
      */
-    private final @Nullable String seconds;
+    private @Nullable String seconds;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherDefaultRouteActionTimeout(
-        @CustomType.Parameter("nanos") @Nullable Integer nanos,
-        @CustomType.Parameter("seconds") @Nullable String seconds) {
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private URLMapPathMatcherDefaultRouteActionTimeout() {}
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
      * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
@@ -57,30 +50,32 @@ public final class URLMapPathMatcherDefaultRouteActionTimeout {
     public static Builder builder(URLMapPathMatcherDefaultRouteActionTimeout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer nanos;
         private @Nullable String seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherDefaultRouteActionTimeout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nanos = defaults.nanos;
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
             this.nanos = nanos;
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(@Nullable String seconds) {
             this.seconds = seconds;
             return this;
-        }        public URLMapPathMatcherDefaultRouteActionTimeout build() {
-            return new URLMapPathMatcherDefaultRouteActionTimeout(nanos, seconds);
+        }
+        public URLMapPathMatcherDefaultRouteActionTimeout build() {
+            final var o = new URLMapPathMatcherDefaultRouteActionTimeout();
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

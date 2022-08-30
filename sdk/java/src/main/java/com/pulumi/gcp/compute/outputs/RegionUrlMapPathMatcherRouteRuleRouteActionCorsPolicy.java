@@ -20,67 +20,48 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
      * Control-Allow-Credentials header. Defaults to false.
      * 
      */
-    private final @Nullable Boolean allowCredentials;
+    private @Nullable Boolean allowCredentials;
     /**
      * @return Specifies the content for the Access-Control-Allow-Headers header.
      * 
      */
-    private final @Nullable List<String> allowHeaders;
+    private @Nullable List<String> allowHeaders;
     /**
      * @return Specifies the content for the Access-Control-Allow-Methods header.
      * 
      */
-    private final @Nullable List<String> allowMethods;
+    private @Nullable List<String> allowMethods;
     /**
      * @return Specifies the regular expression patterns that match allowed origins. For
      * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
      * An origin is allowed if it matches either allow_origins or allow_origin_regex.
      * 
      */
-    private final @Nullable List<String> allowOriginRegexes;
+    private @Nullable List<String> allowOriginRegexes;
     /**
      * @return Specifies the list of origins that will be allowed to do CORS requests. An
      * origin is allowed if it matches either allow_origins or allow_origin_regex.
      * 
      */
-    private final @Nullable List<String> allowOrigins;
+    private @Nullable List<String> allowOrigins;
     /**
      * @return If true, specifies the CORS policy is disabled.
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return Specifies the content for the Access-Control-Expose-Headers header.
      * 
      */
-    private final @Nullable List<String> exposeHeaders;
+    private @Nullable List<String> exposeHeaders;
     /**
      * @return Specifies how long the results of a preflight request can be cached. This
      * translates to the content for the Access-Control-Max-Age header.
      * 
      */
-    private final @Nullable Integer maxAge;
+    private @Nullable Integer maxAge;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(
-        @CustomType.Parameter("allowCredentials") @Nullable Boolean allowCredentials,
-        @CustomType.Parameter("allowHeaders") @Nullable List<String> allowHeaders,
-        @CustomType.Parameter("allowMethods") @Nullable List<String> allowMethods,
-        @CustomType.Parameter("allowOriginRegexes") @Nullable List<String> allowOriginRegexes,
-        @CustomType.Parameter("allowOrigins") @Nullable List<String> allowOrigins,
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("exposeHeaders") @Nullable List<String> exposeHeaders,
-        @CustomType.Parameter("maxAge") @Nullable Integer maxAge) {
-        this.allowCredentials = allowCredentials;
-        this.allowHeaders = allowHeaders;
-        this.allowMethods = allowMethods;
-        this.allowOriginRegexes = allowOriginRegexes;
-        this.allowOrigins = allowOrigins;
-        this.disabled = disabled;
-        this.exposeHeaders = exposeHeaders;
-        this.maxAge = maxAge;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy() {}
     /**
      * @return In response to a preflight request, setting this to true indicates that the
      * actual request can include user credentials. This translates to the Access-
@@ -151,7 +132,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowCredentials;
         private @Nullable List<String> allowHeaders;
@@ -161,11 +142,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         private @Nullable Boolean disabled;
         private @Nullable List<String> exposeHeaders;
         private @Nullable Integer maxAge;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowCredentials = defaults.allowCredentials;
@@ -178,10 +155,12 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
     	      this.maxAge = defaults.maxAge;
         }
 
+        @CustomType.Setter
         public Builder allowCredentials(@Nullable Boolean allowCredentials) {
             this.allowCredentials = allowCredentials;
             return this;
         }
+        @CustomType.Setter
         public Builder allowHeaders(@Nullable List<String> allowHeaders) {
             this.allowHeaders = allowHeaders;
             return this;
@@ -189,6 +168,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         public Builder allowHeaders(String... allowHeaders) {
             return allowHeaders(List.of(allowHeaders));
         }
+        @CustomType.Setter
         public Builder allowMethods(@Nullable List<String> allowMethods) {
             this.allowMethods = allowMethods;
             return this;
@@ -196,6 +176,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         public Builder allowMethods(String... allowMethods) {
             return allowMethods(List.of(allowMethods));
         }
+        @CustomType.Setter
         public Builder allowOriginRegexes(@Nullable List<String> allowOriginRegexes) {
             this.allowOriginRegexes = allowOriginRegexes;
             return this;
@@ -203,6 +184,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         public Builder allowOriginRegexes(String... allowOriginRegexes) {
             return allowOriginRegexes(List.of(allowOriginRegexes));
         }
+        @CustomType.Setter
         public Builder allowOrigins(@Nullable List<String> allowOrigins) {
             this.allowOrigins = allowOrigins;
             return this;
@@ -210,10 +192,12 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         public Builder allowOrigins(String... allowOrigins) {
             return allowOrigins(List.of(allowOrigins));
         }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder exposeHeaders(@Nullable List<String> exposeHeaders) {
             this.exposeHeaders = exposeHeaders;
             return this;
@@ -221,11 +205,22 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         public Builder exposeHeaders(String... exposeHeaders) {
             return exposeHeaders(List.of(exposeHeaders));
         }
+        @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
             this.maxAge = maxAge;
             return this;
-        }        public RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy build() {
-            return new RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(allowCredentials, allowHeaders, allowMethods, allowOriginRegexes, allowOrigins, disabled, exposeHeaders, maxAge);
+        }
+        public RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy();
+            o.allowCredentials = allowCredentials;
+            o.allowHeaders = allowHeaders;
+            o.allowMethods = allowMethods;
+            o.allowOriginRegexes = allowOriginRegexes;
+            o.allowOrigins = allowOrigins;
+            o.disabled = disabled;
+            o.exposeHeaders = exposeHeaders;
+            o.maxAge = maxAge;
+            return o;
         }
     }
 }

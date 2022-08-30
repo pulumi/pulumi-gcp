@@ -14,13 +14,9 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictions {
      * @return A list of Android applications that are allowed to make API calls with this key.
      * 
      */
-    private final List<ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication> allowedApplications;
+    private List<ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication> allowedApplications;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictionsAndroidKeyRestrictions(@CustomType.Parameter("allowedApplications") List<ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication> allowedApplications) {
-        this.allowedApplications = allowedApplications;
-    }
-
+    private ApiKeyRestrictionsAndroidKeyRestrictions() {}
     /**
      * @return A list of Android applications that are allowed to make API calls with this key.
      * 
@@ -36,27 +32,27 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictions {
     public static Builder builder(ApiKeyRestrictionsAndroidKeyRestrictions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication> allowedApplications;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictionsAndroidKeyRestrictions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedApplications = defaults.allowedApplications;
         }
 
+        @CustomType.Setter
         public Builder allowedApplications(List<ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication> allowedApplications) {
             this.allowedApplications = Objects.requireNonNull(allowedApplications);
             return this;
         }
         public Builder allowedApplications(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication... allowedApplications) {
             return allowedApplications(List.of(allowedApplications));
-        }        public ApiKeyRestrictionsAndroidKeyRestrictions build() {
-            return new ApiKeyRestrictionsAndroidKeyRestrictions(allowedApplications);
+        }
+        public ApiKeyRestrictionsAndroidKeyRestrictions build() {
+            final var o = new ApiKeyRestrictionsAndroidKeyRestrictions();
+            o.allowedApplications = allowedApplications;
+            return o;
         }
     }
 }

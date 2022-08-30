@@ -16,28 +16,19 @@ public final class WorkflowTemplatePlacementManagedCluster {
      * @return Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
      * 
      */
-    private final String clusterName;
+    private String clusterName;
     /**
      * @return Required. The cluster configuration.
      * 
      */
-    private final WorkflowTemplatePlacementManagedClusterConfig config;
+    private WorkflowTemplatePlacementManagedClusterConfig config;
     /**
      * @return Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedCluster(
-        @CustomType.Parameter("clusterName") String clusterName,
-        @CustomType.Parameter("config") WorkflowTemplatePlacementManagedClusterConfig config,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels) {
-        this.clusterName = clusterName;
-        this.config = config;
-        this.labels = labels;
-    }
-
+    private WorkflowTemplatePlacementManagedCluster() {}
     /**
      * @return Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
      * 
@@ -67,16 +58,12 @@ public final class WorkflowTemplatePlacementManagedCluster {
     public static Builder builder(WorkflowTemplatePlacementManagedCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterName;
         private WorkflowTemplatePlacementManagedClusterConfig config;
         private @Nullable Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterName = defaults.clusterName;
@@ -84,19 +71,27 @@ public final class WorkflowTemplatePlacementManagedCluster {
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
+        @CustomType.Setter
         public Builder config(WorkflowTemplatePlacementManagedClusterConfig config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
-        }        public WorkflowTemplatePlacementManagedCluster build() {
-            return new WorkflowTemplatePlacementManagedCluster(clusterName, config, labels);
+        }
+        public WorkflowTemplatePlacementManagedCluster build() {
+            final var o = new WorkflowTemplatePlacementManagedCluster();
+            o.clusterName = clusterName;
+            o.config = config;
+            o.labels = labels;
+            return o;
         }
     }
 }

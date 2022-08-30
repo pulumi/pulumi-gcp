@@ -19,7 +19,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
      * headerActions specified as part of this backendServiceWeight.
      * 
      */
-    private final String backendService;
+    private String backendService;
     /**
      * @return Specifies changes to request and response headers that need to take effect for
      * the selected backendService. headerAction specified here take effect before
@@ -27,7 +27,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction headerAction;
+    private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction headerAction;
     /**
      * @return Specifies the fraction of traffic sent to backendService, computed as weight /
      * (sum of all weightedBackendService weights in routeAction) . The selection of a
@@ -37,18 +37,9 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
      * The value must be between 0 and 1000
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(
-        @CustomType.Parameter("backendService") String backendService,
-        @CustomType.Parameter("headerAction") @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction headerAction,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.backendService = backendService;
-        this.headerAction = headerAction;
-        this.weight = weight;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService() {}
     /**
      * @return The default RegionBackendService resource. Before
      * forwarding the request to backendService, the loadbalancer applies any relevant
@@ -88,16 +79,12 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendService;
         private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction headerAction;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
@@ -105,19 +92,27 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder backendService(String backendService) {
             this.backendService = Objects.requireNonNull(backendService);
             return this;
         }
+        @CustomType.Setter
         public Builder headerAction(@Nullable RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction headerAction) {
             this.headerAction = headerAction;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService build() {
-            return new RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(backendService, headerAction, weight);
+        }
+        public RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService();
+            o.backendService = backendService;
+            o.headerAction = headerAction;
+            o.weight = weight;
+            return o;
         }
     }
 }

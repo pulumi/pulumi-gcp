@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthorityAccessUrl {
-    private final @Nullable String caCertificateAccessUrl;
-    private final @Nullable List<String> crlAccessUrls;
+    private @Nullable String caCertificateAccessUrl;
+    private @Nullable List<String> crlAccessUrls;
 
-    @CustomType.Constructor
-    private AuthorityAccessUrl(
-        @CustomType.Parameter("caCertificateAccessUrl") @Nullable String caCertificateAccessUrl,
-        @CustomType.Parameter("crlAccessUrls") @Nullable List<String> crlAccessUrls) {
-        this.caCertificateAccessUrl = caCertificateAccessUrl;
-        this.crlAccessUrls = crlAccessUrls;
-    }
-
+    private AuthorityAccessUrl() {}
     public Optional<String> caCertificateAccessUrl() {
         return Optional.ofNullable(this.caCertificateAccessUrl);
     }
@@ -37,33 +30,35 @@ public final class AuthorityAccessUrl {
     public static Builder builder(AuthorityAccessUrl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String caCertificateAccessUrl;
         private @Nullable List<String> crlAccessUrls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthorityAccessUrl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificateAccessUrl = defaults.caCertificateAccessUrl;
     	      this.crlAccessUrls = defaults.crlAccessUrls;
         }
 
+        @CustomType.Setter
         public Builder caCertificateAccessUrl(@Nullable String caCertificateAccessUrl) {
             this.caCertificateAccessUrl = caCertificateAccessUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder crlAccessUrls(@Nullable List<String> crlAccessUrls) {
             this.crlAccessUrls = crlAccessUrls;
             return this;
         }
         public Builder crlAccessUrls(String... crlAccessUrls) {
             return crlAccessUrls(List.of(crlAccessUrls));
-        }        public AuthorityAccessUrl build() {
-            return new AuthorityAccessUrl(caCertificateAccessUrl, crlAccessUrls);
+        }
+        public AuthorityAccessUrl build() {
+            final var o = new AuthorityAccessUrl();
+            o.caCertificateAccessUrl = caCertificateAccessUrl;
+            o.crlAccessUrls = crlAccessUrls;
+            return o;
         }
     }
 }

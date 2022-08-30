@@ -24,7 +24,7 @@ public final class SubscriptionDeadLetterPolicy {
      * since messages published to a topic with no subscriptions are lost.
      * 
      */
-    private final @Nullable String deadLetterTopic;
+    private @Nullable String deadLetterTopic;
     /**
      * @return The maximum number of delivery attempts for any message. The value must be
      * between 5 and 100.
@@ -36,16 +36,9 @@ public final class SubscriptionDeadLetterPolicy {
      * If this parameter is 0, a default value of 5 is used.
      * 
      */
-    private final @Nullable Integer maxDeliveryAttempts;
+    private @Nullable Integer maxDeliveryAttempts;
 
-    @CustomType.Constructor
-    private SubscriptionDeadLetterPolicy(
-        @CustomType.Parameter("deadLetterTopic") @Nullable String deadLetterTopic,
-        @CustomType.Parameter("maxDeliveryAttempts") @Nullable Integer maxDeliveryAttempts) {
-        this.deadLetterTopic = deadLetterTopic;
-        this.maxDeliveryAttempts = maxDeliveryAttempts;
-    }
-
+    private SubscriptionDeadLetterPolicy() {}
     /**
      * @return The name of the topic to which dead letter messages should be published.
      * Format is `projects/{project}/topics/{topic}`.
@@ -83,30 +76,32 @@ public final class SubscriptionDeadLetterPolicy {
     public static Builder builder(SubscriptionDeadLetterPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String deadLetterTopic;
         private @Nullable Integer maxDeliveryAttempts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubscriptionDeadLetterPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deadLetterTopic = defaults.deadLetterTopic;
     	      this.maxDeliveryAttempts = defaults.maxDeliveryAttempts;
         }
 
+        @CustomType.Setter
         public Builder deadLetterTopic(@Nullable String deadLetterTopic) {
             this.deadLetterTopic = deadLetterTopic;
             return this;
         }
+        @CustomType.Setter
         public Builder maxDeliveryAttempts(@Nullable Integer maxDeliveryAttempts) {
             this.maxDeliveryAttempts = maxDeliveryAttempts;
             return this;
-        }        public SubscriptionDeadLetterPolicy build() {
-            return new SubscriptionDeadLetterPolicy(deadLetterTopic, maxDeliveryAttempts);
+        }
+        public SubscriptionDeadLetterPolicy build() {
+            final var o = new SubscriptionDeadLetterPolicy();
+            o.deadLetterTopic = deadLetterTopic;
+            o.maxDeliveryAttempts = maxDeliveryAttempts;
+            return o;
         }
     }
 }

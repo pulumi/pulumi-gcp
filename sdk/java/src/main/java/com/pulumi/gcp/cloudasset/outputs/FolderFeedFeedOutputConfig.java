@@ -14,13 +14,9 @@ public final class FolderFeedFeedOutputConfig {
      * Structure is documented below.
      * 
      */
-    private final FolderFeedFeedOutputConfigPubsubDestination pubsubDestination;
+    private FolderFeedFeedOutputConfigPubsubDestination pubsubDestination;
 
-    @CustomType.Constructor
-    private FolderFeedFeedOutputConfig(@CustomType.Parameter("pubsubDestination") FolderFeedFeedOutputConfigPubsubDestination pubsubDestination) {
-        this.pubsubDestination = pubsubDestination;
-    }
-
+    private FolderFeedFeedOutputConfig() {}
     /**
      * @return Destination on Cloud Pubsub.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class FolderFeedFeedOutputConfig {
     public static Builder builder(FolderFeedFeedOutputConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private FolderFeedFeedOutputConfigPubsubDestination pubsubDestination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FolderFeedFeedOutputConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubDestination = defaults.pubsubDestination;
         }
 
+        @CustomType.Setter
         public Builder pubsubDestination(FolderFeedFeedOutputConfigPubsubDestination pubsubDestination) {
             this.pubsubDestination = Objects.requireNonNull(pubsubDestination);
             return this;
-        }        public FolderFeedFeedOutputConfig build() {
-            return new FolderFeedFeedOutputConfig(pubsubDestination);
+        }
+        public FolderFeedFeedOutputConfig build() {
+            final var o = new FolderFeedFeedOutputConfig();
+            o.pubsubDestination = pubsubDestination;
+            return o;
         }
     }
 }

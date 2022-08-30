@@ -15,21 +15,14 @@ public final class WorkflowTemplateJobScheduling {
      * @return Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
      * 
      */
-    private final @Nullable Integer maxFailuresPerHour;
+    private @Nullable Integer maxFailuresPerHour;
     /**
      * @return Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
      * 
      */
-    private final @Nullable Integer maxFailuresTotal;
+    private @Nullable Integer maxFailuresTotal;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobScheduling(
-        @CustomType.Parameter("maxFailuresPerHour") @Nullable Integer maxFailuresPerHour,
-        @CustomType.Parameter("maxFailuresTotal") @Nullable Integer maxFailuresTotal) {
-        this.maxFailuresPerHour = maxFailuresPerHour;
-        this.maxFailuresTotal = maxFailuresTotal;
-    }
-
+    private WorkflowTemplateJobScheduling() {}
     /**
      * @return Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
      * 
@@ -52,30 +45,32 @@ public final class WorkflowTemplateJobScheduling {
     public static Builder builder(WorkflowTemplateJobScheduling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxFailuresPerHour;
         private @Nullable Integer maxFailuresTotal;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxFailuresPerHour = defaults.maxFailuresPerHour;
     	      this.maxFailuresTotal = defaults.maxFailuresTotal;
         }
 
+        @CustomType.Setter
         public Builder maxFailuresPerHour(@Nullable Integer maxFailuresPerHour) {
             this.maxFailuresPerHour = maxFailuresPerHour;
             return this;
         }
+        @CustomType.Setter
         public Builder maxFailuresTotal(@Nullable Integer maxFailuresTotal) {
             this.maxFailuresTotal = maxFailuresTotal;
             return this;
-        }        public WorkflowTemplateJobScheduling build() {
-            return new WorkflowTemplateJobScheduling(maxFailuresPerHour, maxFailuresTotal);
+        }
+        public WorkflowTemplateJobScheduling build() {
+            final var o = new WorkflowTemplateJobScheduling();
+            o.maxFailuresPerHour = maxFailuresPerHour;
+            o.maxFailuresTotal = maxFailuresTotal;
+            return o;
         }
     }
 }

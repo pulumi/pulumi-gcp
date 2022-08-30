@@ -18,35 +18,24 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
      * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
      * 
      */
-    private final @Nullable Boolean allowInsecure;
+    private @Nullable Boolean allowInsecure;
     /**
      * @return A Cloud Storage object.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs gcs;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs gcs;
     /**
      * @return A local path within the VM to use.
      * 
      */
-    private final @Nullable String localPath;
+    private @Nullable String localPath;
     /**
      * @return A generic remote file.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote remote;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote remote;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(
-        @CustomType.Parameter("allowInsecure") @Nullable Boolean allowInsecure,
-        @CustomType.Parameter("gcs") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs gcs,
-        @CustomType.Parameter("localPath") @Nullable String localPath,
-        @CustomType.Parameter("remote") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote remote) {
-        this.allowInsecure = allowInsecure;
-        this.gcs = gcs;
-        this.localPath = localPath;
-        this.remote = remote;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile() {}
     /**
      * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
      * 
@@ -83,17 +72,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowInsecure;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs gcs;
         private @Nullable String localPath;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote remote;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowInsecure = defaults.allowInsecure;
@@ -102,23 +87,33 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
     	      this.remote = defaults.remote;
         }
 
+        @CustomType.Setter
         public Builder allowInsecure(@Nullable Boolean allowInsecure) {
             this.allowInsecure = allowInsecure;
             return this;
         }
+        @CustomType.Setter
         public Builder gcs(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs gcs) {
             this.gcs = gcs;
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
             this.localPath = localPath;
             return this;
         }
+        @CustomType.Setter
         public Builder remote(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote remote) {
             this.remote = remote;
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(allowInsecure, gcs, localPath, remote);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile();
+            o.allowInsecure = allowInsecure;
+            o.gcs = gcs;
+            o.localPath = localPath;
+            o.remote = remote;
+            return o;
         }
     }
 }

@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigAdditionalExtension {
-    private final Boolean critical;
-    private final List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds;
-    private final String value;
+    private Boolean critical;
+    private List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds;
+    private String value;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigAdditionalExtension(
-        @CustomType.Parameter("critical") Boolean critical,
-        @CustomType.Parameter("objectIds") List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds,
-        @CustomType.Parameter("value") String value) {
-        this.critical = critical;
-        this.objectIds = objectIds;
-        this.value = value;
-    }
-
+    private GetAuthorityConfigX509ConfigAdditionalExtension() {}
     public Boolean critical() {
         return this.critical;
     }
@@ -43,16 +34,12 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtension {
     public static Builder builder(GetAuthorityConfigX509ConfigAdditionalExtension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean critical;
         private List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigAdditionalExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -60,10 +47,12 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtension {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder critical(Boolean critical) {
             this.critical = Objects.requireNonNull(critical);
             return this;
         }
+        @CustomType.Setter
         public Builder objectIds(List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds) {
             this.objectIds = Objects.requireNonNull(objectIds);
             return this;
@@ -71,11 +60,17 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtension {
         public Builder objectIds(GetAuthorityConfigX509ConfigAdditionalExtensionObjectId... objectIds) {
             return objectIds(List.of(objectIds));
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetAuthorityConfigX509ConfigAdditionalExtension build() {
-            return new GetAuthorityConfigX509ConfigAdditionalExtension(critical, objectIds, value);
+        }
+        public GetAuthorityConfigX509ConfigAdditionalExtension build() {
+            final var o = new GetAuthorityConfigX509ConfigAdditionalExtension();
+            o.critical = critical;
+            o.objectIds = objectIds;
+            o.value = value;
+            return o;
         }
     }
 }

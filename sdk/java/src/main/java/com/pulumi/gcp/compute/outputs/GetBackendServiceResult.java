@@ -22,143 +22,84 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackendServiceResult {
-    private final Integer affinityCookieTtlSec;
+    private Integer affinityCookieTtlSec;
     /**
      * @return The set of backends that serve this Backend Service.
      * 
      */
-    private final List<GetBackendServiceBackend> backends;
-    private final List<GetBackendServiceCdnPolicy> cdnPolicies;
-    private final List<GetBackendServiceCircuitBreaker> circuitBreakers;
+    private List<GetBackendServiceBackend> backends;
+    private List<GetBackendServiceCdnPolicy> cdnPolicies;
+    private List<GetBackendServiceCircuitBreaker> circuitBreakers;
     /**
      * @return Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      * 
      */
-    private final Integer connectionDrainingTimeoutSec;
-    private final List<GetBackendServiceConsistentHash> consistentHash;
-    private final String creationTimestamp;
-    private final List<String> customRequestHeaders;
-    private final List<String> customResponseHeaders;
+    private Integer connectionDrainingTimeoutSec;
+    private List<GetBackendServiceConsistentHash> consistentHash;
+    private String creationTimestamp;
+    private List<String> customRequestHeaders;
+    private List<String> customResponseHeaders;
     /**
      * @return Textual description for the Backend Service.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Whether or not Cloud CDN is enabled on the Backend Service.
      * 
      */
-    private final Boolean enableCdn;
+    private Boolean enableCdn;
     /**
      * @return The fingerprint of the Backend Service.
      * 
      */
-    private final String fingerprint;
+    private String fingerprint;
     /**
      * @return The set of HTTP/HTTPS health checks used by the Backend Service.
      * 
      */
-    private final List<String> healthChecks;
-    private final List<GetBackendServiceIap> iaps;
+    private List<String> healthChecks;
+    private List<GetBackendServiceIap> iaps;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String loadBalancingScheme;
-    private final String localityLbPolicy;
-    private final List<GetBackendServiceLogConfig> logConfigs;
-    private final String name;
-    private final List<GetBackendServiceOutlierDetection> outlierDetections;
+    private String id;
+    private String loadBalancingScheme;
+    private String localityLbPolicy;
+    private List<GetBackendServiceLogConfig> logConfigs;
+    private String name;
+    private List<GetBackendServiceOutlierDetection> outlierDetections;
     /**
      * @return The name of a service that has been added to an instance group in this backend.
      * 
      */
-    private final String portName;
-    private final @Nullable String project;
+    private String portName;
+    private @Nullable String project;
     /**
      * @return The protocol for incoming requests.
      * 
      */
-    private final String protocol;
-    private final String securityPolicy;
-    private final List<GetBackendServiceSecuritySetting> securitySettings;
+    private String protocol;
+    private String securityPolicy;
+    private List<GetBackendServiceSecuritySetting> securitySettings;
     /**
      * @return The URI of the Backend Service.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
     /**
      * @return The Backend Service session stickiness configuration.
      * 
      */
-    private final String sessionAffinity;
+    private String sessionAffinity;
     /**
      * @return The number of seconds to wait for a backend to respond to a request before considering the request failed.
      * 
      */
-    private final Integer timeoutSec;
+    private Integer timeoutSec;
 
-    @CustomType.Constructor
-    private GetBackendServiceResult(
-        @CustomType.Parameter("affinityCookieTtlSec") Integer affinityCookieTtlSec,
-        @CustomType.Parameter("backends") List<GetBackendServiceBackend> backends,
-        @CustomType.Parameter("cdnPolicies") List<GetBackendServiceCdnPolicy> cdnPolicies,
-        @CustomType.Parameter("circuitBreakers") List<GetBackendServiceCircuitBreaker> circuitBreakers,
-        @CustomType.Parameter("connectionDrainingTimeoutSec") Integer connectionDrainingTimeoutSec,
-        @CustomType.Parameter("consistentHash") List<GetBackendServiceConsistentHash> consistentHash,
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("customRequestHeaders") List<String> customRequestHeaders,
-        @CustomType.Parameter("customResponseHeaders") List<String> customResponseHeaders,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableCdn") Boolean enableCdn,
-        @CustomType.Parameter("fingerprint") String fingerprint,
-        @CustomType.Parameter("healthChecks") List<String> healthChecks,
-        @CustomType.Parameter("iaps") List<GetBackendServiceIap> iaps,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("loadBalancingScheme") String loadBalancingScheme,
-        @CustomType.Parameter("localityLbPolicy") String localityLbPolicy,
-        @CustomType.Parameter("logConfigs") List<GetBackendServiceLogConfig> logConfigs,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("outlierDetections") List<GetBackendServiceOutlierDetection> outlierDetections,
-        @CustomType.Parameter("portName") String portName,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("securityPolicy") String securityPolicy,
-        @CustomType.Parameter("securitySettings") List<GetBackendServiceSecuritySetting> securitySettings,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("sessionAffinity") String sessionAffinity,
-        @CustomType.Parameter("timeoutSec") Integer timeoutSec) {
-        this.affinityCookieTtlSec = affinityCookieTtlSec;
-        this.backends = backends;
-        this.cdnPolicies = cdnPolicies;
-        this.circuitBreakers = circuitBreakers;
-        this.connectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
-        this.consistentHash = consistentHash;
-        this.creationTimestamp = creationTimestamp;
-        this.customRequestHeaders = customRequestHeaders;
-        this.customResponseHeaders = customResponseHeaders;
-        this.description = description;
-        this.enableCdn = enableCdn;
-        this.fingerprint = fingerprint;
-        this.healthChecks = healthChecks;
-        this.iaps = iaps;
-        this.id = id;
-        this.loadBalancingScheme = loadBalancingScheme;
-        this.localityLbPolicy = localityLbPolicy;
-        this.logConfigs = logConfigs;
-        this.name = name;
-        this.outlierDetections = outlierDetections;
-        this.portName = portName;
-        this.project = project;
-        this.protocol = protocol;
-        this.securityPolicy = securityPolicy;
-        this.securitySettings = securitySettings;
-        this.selfLink = selfLink;
-        this.sessionAffinity = sessionAffinity;
-        this.timeoutSec = timeoutSec;
-    }
-
+    private GetBackendServiceResult() {}
     public Integer affinityCookieTtlSec() {
         return this.affinityCookieTtlSec;
     }
@@ -299,7 +240,7 @@ public final class GetBackendServiceResult {
     public static Builder builder(GetBackendServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer affinityCookieTtlSec;
         private List<GetBackendServiceBackend> backends;
@@ -329,11 +270,7 @@ public final class GetBackendServiceResult {
         private String selfLink;
         private String sessionAffinity;
         private Integer timeoutSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.affinityCookieTtlSec = defaults.affinityCookieTtlSec;
@@ -366,10 +303,12 @@ public final class GetBackendServiceResult {
     	      this.timeoutSec = defaults.timeoutSec;
         }
 
+        @CustomType.Setter
         public Builder affinityCookieTtlSec(Integer affinityCookieTtlSec) {
             this.affinityCookieTtlSec = Objects.requireNonNull(affinityCookieTtlSec);
             return this;
         }
+        @CustomType.Setter
         public Builder backends(List<GetBackendServiceBackend> backends) {
             this.backends = Objects.requireNonNull(backends);
             return this;
@@ -377,6 +316,7 @@ public final class GetBackendServiceResult {
         public Builder backends(GetBackendServiceBackend... backends) {
             return backends(List.of(backends));
         }
+        @CustomType.Setter
         public Builder cdnPolicies(List<GetBackendServiceCdnPolicy> cdnPolicies) {
             this.cdnPolicies = Objects.requireNonNull(cdnPolicies);
             return this;
@@ -384,6 +324,7 @@ public final class GetBackendServiceResult {
         public Builder cdnPolicies(GetBackendServiceCdnPolicy... cdnPolicies) {
             return cdnPolicies(List.of(cdnPolicies));
         }
+        @CustomType.Setter
         public Builder circuitBreakers(List<GetBackendServiceCircuitBreaker> circuitBreakers) {
             this.circuitBreakers = Objects.requireNonNull(circuitBreakers);
             return this;
@@ -391,10 +332,12 @@ public final class GetBackendServiceResult {
         public Builder circuitBreakers(GetBackendServiceCircuitBreaker... circuitBreakers) {
             return circuitBreakers(List.of(circuitBreakers));
         }
+        @CustomType.Setter
         public Builder connectionDrainingTimeoutSec(Integer connectionDrainingTimeoutSec) {
             this.connectionDrainingTimeoutSec = Objects.requireNonNull(connectionDrainingTimeoutSec);
             return this;
         }
+        @CustomType.Setter
         public Builder consistentHash(List<GetBackendServiceConsistentHash> consistentHash) {
             this.consistentHash = Objects.requireNonNull(consistentHash);
             return this;
@@ -402,10 +345,12 @@ public final class GetBackendServiceResult {
         public Builder consistentHash(GetBackendServiceConsistentHash... consistentHash) {
             return consistentHash(List.of(consistentHash));
         }
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder customRequestHeaders(List<String> customRequestHeaders) {
             this.customRequestHeaders = Objects.requireNonNull(customRequestHeaders);
             return this;
@@ -413,6 +358,7 @@ public final class GetBackendServiceResult {
         public Builder customRequestHeaders(String... customRequestHeaders) {
             return customRequestHeaders(List.of(customRequestHeaders));
         }
+        @CustomType.Setter
         public Builder customResponseHeaders(List<String> customResponseHeaders) {
             this.customResponseHeaders = Objects.requireNonNull(customResponseHeaders);
             return this;
@@ -420,18 +366,22 @@ public final class GetBackendServiceResult {
         public Builder customResponseHeaders(String... customResponseHeaders) {
             return customResponseHeaders(List.of(customResponseHeaders));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCdn(Boolean enableCdn) {
             this.enableCdn = Objects.requireNonNull(enableCdn);
             return this;
         }
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder healthChecks(List<String> healthChecks) {
             this.healthChecks = Objects.requireNonNull(healthChecks);
             return this;
@@ -439,6 +389,7 @@ public final class GetBackendServiceResult {
         public Builder healthChecks(String... healthChecks) {
             return healthChecks(List.of(healthChecks));
         }
+        @CustomType.Setter
         public Builder iaps(List<GetBackendServiceIap> iaps) {
             this.iaps = Objects.requireNonNull(iaps);
             return this;
@@ -446,18 +397,22 @@ public final class GetBackendServiceResult {
         public Builder iaps(GetBackendServiceIap... iaps) {
             return iaps(List.of(iaps));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancingScheme(String loadBalancingScheme) {
             this.loadBalancingScheme = Objects.requireNonNull(loadBalancingScheme);
             return this;
         }
+        @CustomType.Setter
         public Builder localityLbPolicy(String localityLbPolicy) {
             this.localityLbPolicy = Objects.requireNonNull(localityLbPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder logConfigs(List<GetBackendServiceLogConfig> logConfigs) {
             this.logConfigs = Objects.requireNonNull(logConfigs);
             return this;
@@ -465,10 +420,12 @@ public final class GetBackendServiceResult {
         public Builder logConfigs(GetBackendServiceLogConfig... logConfigs) {
             return logConfigs(List.of(logConfigs));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder outlierDetections(List<GetBackendServiceOutlierDetection> outlierDetections) {
             this.outlierDetections = Objects.requireNonNull(outlierDetections);
             return this;
@@ -476,22 +433,27 @@ public final class GetBackendServiceResult {
         public Builder outlierDetections(GetBackendServiceOutlierDetection... outlierDetections) {
             return outlierDetections(List.of(outlierDetections));
         }
+        @CustomType.Setter
         public Builder portName(String portName) {
             this.portName = Objects.requireNonNull(portName);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder securityPolicy(String securityPolicy) {
             this.securityPolicy = Objects.requireNonNull(securityPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder securitySettings(List<GetBackendServiceSecuritySetting> securitySettings) {
             this.securitySettings = Objects.requireNonNull(securitySettings);
             return this;
@@ -499,19 +461,52 @@ public final class GetBackendServiceResult {
         public Builder securitySettings(GetBackendServiceSecuritySetting... securitySettings) {
             return securitySettings(List.of(securitySettings));
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder sessionAffinity(String sessionAffinity) {
             this.sessionAffinity = Objects.requireNonNull(sessionAffinity);
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSec(Integer timeoutSec) {
             this.timeoutSec = Objects.requireNonNull(timeoutSec);
             return this;
-        }        public GetBackendServiceResult build() {
-            return new GetBackendServiceResult(affinityCookieTtlSec, backends, cdnPolicies, circuitBreakers, connectionDrainingTimeoutSec, consistentHash, creationTimestamp, customRequestHeaders, customResponseHeaders, description, enableCdn, fingerprint, healthChecks, iaps, id, loadBalancingScheme, localityLbPolicy, logConfigs, name, outlierDetections, portName, project, protocol, securityPolicy, securitySettings, selfLink, sessionAffinity, timeoutSec);
+        }
+        public GetBackendServiceResult build() {
+            final var o = new GetBackendServiceResult();
+            o.affinityCookieTtlSec = affinityCookieTtlSec;
+            o.backends = backends;
+            o.cdnPolicies = cdnPolicies;
+            o.circuitBreakers = circuitBreakers;
+            o.connectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
+            o.consistentHash = consistentHash;
+            o.creationTimestamp = creationTimestamp;
+            o.customRequestHeaders = customRequestHeaders;
+            o.customResponseHeaders = customResponseHeaders;
+            o.description = description;
+            o.enableCdn = enableCdn;
+            o.fingerprint = fingerprint;
+            o.healthChecks = healthChecks;
+            o.iaps = iaps;
+            o.id = id;
+            o.loadBalancingScheme = loadBalancingScheme;
+            o.localityLbPolicy = localityLbPolicy;
+            o.logConfigs = logConfigs;
+            o.name = name;
+            o.outlierDetections = outlierDetections;
+            o.portName = portName;
+            o.project = project;
+            o.protocol = protocol;
+            o.securityPolicy = securityPolicy;
+            o.securitySettings = securitySettings;
+            o.selfLink = selfLink;
+            o.sessionAffinity = sessionAffinity;
+            o.timeoutSec = timeoutSec;
+            return o;
         }
     }
 }

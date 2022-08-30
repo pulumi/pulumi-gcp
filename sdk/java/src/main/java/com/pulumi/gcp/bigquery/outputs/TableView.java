@@ -16,22 +16,15 @@ public final class TableView {
      * @return A query whose result is persisted.
      * 
      */
-    private final String query;
+    private String query;
     /**
      * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view.
      * The default value is true. If set to false, the view will use BigQuery&#39;s standard SQL.
      * 
      */
-    private final @Nullable Boolean useLegacySql;
+    private @Nullable Boolean useLegacySql;
 
-    @CustomType.Constructor
-    private TableView(
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("useLegacySql") @Nullable Boolean useLegacySql) {
-        this.query = query;
-        this.useLegacySql = useLegacySql;
-    }
-
+    private TableView() {}
     /**
      * @return A query whose result is persisted.
      * 
@@ -55,30 +48,32 @@ public final class TableView {
     public static Builder builder(TableView defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String query;
         private @Nullable Boolean useLegacySql;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableView defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.query = defaults.query;
     	      this.useLegacySql = defaults.useLegacySql;
         }
 
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder useLegacySql(@Nullable Boolean useLegacySql) {
             this.useLegacySql = useLegacySql;
             return this;
-        }        public TableView build() {
-            return new TableView(query, useLegacySql);
+        }
+        public TableView build() {
+            final var o = new TableView();
+            o.query = query;
+            o.useLegacySql = useLegacySql;
+            return o;
         }
     }
 }

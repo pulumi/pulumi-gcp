@@ -22,14 +22,14 @@ public final class BudgetBudgetFilter {
      * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
-    private final @Nullable String calendarPeriod;
+    private @Nullable String calendarPeriod;
     /**
      * @return Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
      * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
      * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
      * 
      */
-    private final @Nullable List<String> creditTypes;
+    private @Nullable List<String> creditTypes;
     /**
      * @return Specifies how credits should be treated when determining spend
      * for threshold calculations.
@@ -37,7 +37,7 @@ public final class BudgetBudgetFilter {
      * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
      * 
      */
-    private final @Nullable String creditTypesTreatment;
+    private @Nullable String creditTypesTreatment;
     /**
      * @return Specifies to track usage from any start date (required) to any end date (optional).
      * This time period is static, it does not recur.
@@ -45,13 +45,13 @@ public final class BudgetBudgetFilter {
      * Structure is documented below.
      * 
      */
-    private final @Nullable BudgetBudgetFilterCustomPeriod customPeriod;
+    private @Nullable BudgetBudgetFilterCustomPeriod customPeriod;
     /**
      * @return A single label and value pair specifying that usage from only
      * this set of labeled resources should be included in the budget.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return A set of projects of the form projects/{project_number},
      * specifying that usage from only this set of projects should be
@@ -60,7 +60,7 @@ public final class BudgetBudgetFilter {
      * the usage occurred on.
      * 
      */
-    private final @Nullable List<String> projects;
+    private @Nullable List<String> projects;
     /**
      * @return A set of services of the form services/{service_id},
      * specifying that usage from only this set of services should be
@@ -70,7 +70,7 @@ public final class BudgetBudgetFilter {
      * https://cloud.google.com/billing/v1/how-tos/catalog-api.
      * 
      */
-    private final @Nullable List<String> services;
+    private @Nullable List<String> services;
     /**
      * @return A set of subaccounts of the form billingAccounts/{account_id},
      * specifying that usage from only this set of subaccounts should
@@ -80,28 +80,9 @@ public final class BudgetBudgetFilter {
      * account and all subaccounts, if they exist.
      * 
      */
-    private final @Nullable List<String> subaccounts;
+    private @Nullable List<String> subaccounts;
 
-    @CustomType.Constructor
-    private BudgetBudgetFilter(
-        @CustomType.Parameter("calendarPeriod") @Nullable String calendarPeriod,
-        @CustomType.Parameter("creditTypes") @Nullable List<String> creditTypes,
-        @CustomType.Parameter("creditTypesTreatment") @Nullable String creditTypesTreatment,
-        @CustomType.Parameter("customPeriod") @Nullable BudgetBudgetFilterCustomPeriod customPeriod,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("projects") @Nullable List<String> projects,
-        @CustomType.Parameter("services") @Nullable List<String> services,
-        @CustomType.Parameter("subaccounts") @Nullable List<String> subaccounts) {
-        this.calendarPeriod = calendarPeriod;
-        this.creditTypes = creditTypes;
-        this.creditTypesTreatment = creditTypesTreatment;
-        this.customPeriod = customPeriod;
-        this.labels = labels;
-        this.projects = projects;
-        this.services = services;
-        this.subaccounts = subaccounts;
-    }
-
+    private BudgetBudgetFilter() {}
     /**
      * @return A CalendarPeriod represents the abstract concept of a recurring time period that has a
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
@@ -193,7 +174,7 @@ public final class BudgetBudgetFilter {
     public static Builder builder(BudgetBudgetFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String calendarPeriod;
         private @Nullable List<String> creditTypes;
@@ -203,11 +184,7 @@ public final class BudgetBudgetFilter {
         private @Nullable List<String> projects;
         private @Nullable List<String> services;
         private @Nullable List<String> subaccounts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BudgetBudgetFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.calendarPeriod = defaults.calendarPeriod;
@@ -220,10 +197,12 @@ public final class BudgetBudgetFilter {
     	      this.subaccounts = defaults.subaccounts;
         }
 
+        @CustomType.Setter
         public Builder calendarPeriod(@Nullable String calendarPeriod) {
             this.calendarPeriod = calendarPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder creditTypes(@Nullable List<String> creditTypes) {
             this.creditTypes = creditTypes;
             return this;
@@ -231,18 +210,22 @@ public final class BudgetBudgetFilter {
         public Builder creditTypes(String... creditTypes) {
             return creditTypes(List.of(creditTypes));
         }
+        @CustomType.Setter
         public Builder creditTypesTreatment(@Nullable String creditTypesTreatment) {
             this.creditTypesTreatment = creditTypesTreatment;
             return this;
         }
+        @CustomType.Setter
         public Builder customPeriod(@Nullable BudgetBudgetFilterCustomPeriod customPeriod) {
             this.customPeriod = customPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder projects(@Nullable List<String> projects) {
             this.projects = projects;
             return this;
@@ -250,6 +233,7 @@ public final class BudgetBudgetFilter {
         public Builder projects(String... projects) {
             return projects(List.of(projects));
         }
+        @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
             this.services = services;
             return this;
@@ -257,14 +241,25 @@ public final class BudgetBudgetFilter {
         public Builder services(String... services) {
             return services(List.of(services));
         }
+        @CustomType.Setter
         public Builder subaccounts(@Nullable List<String> subaccounts) {
             this.subaccounts = subaccounts;
             return this;
         }
         public Builder subaccounts(String... subaccounts) {
             return subaccounts(List.of(subaccounts));
-        }        public BudgetBudgetFilter build() {
-            return new BudgetBudgetFilter(calendarPeriod, creditTypes, creditTypesTreatment, customPeriod, labels, projects, services, subaccounts);
+        }
+        public BudgetBudgetFilter build() {
+            final var o = new BudgetBudgetFilter();
+            o.calendarPeriod = calendarPeriod;
+            o.creditTypes = creditTypes;
+            o.creditTypesTreatment = creditTypesTreatment;
+            o.customPeriod = customPeriod;
+            o.labels = labels;
+            o.projects = projects;
+            o.services = services;
+            o.subaccounts = subaccounts;
+            return o;
         }
     }
 }

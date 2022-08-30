@@ -18,51 +18,36 @@ public final class JobHiveConfig {
      * @return Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
      */
-    private final @Nullable Boolean continueOnFailure;
+    private @Nullable Boolean continueOnFailure;
     /**
      * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
-    private final @Nullable List<String> jarFileUris;
+    private @Nullable List<String> jarFileUris;
     /**
      * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return The HCFS URI of the script that contains SQL queries.
      * Conflicts with `query_list`
      * 
      */
-    private final @Nullable String queryFileUri;
+    private @Nullable String queryFileUri;
     /**
      * @return The list of SQL queries or statements to execute as part of the job.
      * Conflicts with `query_file_uri`
      * 
      */
-    private final @Nullable List<String> queryLists;
+    private @Nullable List<String> queryLists;
     /**
      * @return Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
      * 
      */
-    private final @Nullable Map<String,String> scriptVariables;
+    private @Nullable Map<String,String> scriptVariables;
 
-    @CustomType.Constructor
-    private JobHiveConfig(
-        @CustomType.Parameter("continueOnFailure") @Nullable Boolean continueOnFailure,
-        @CustomType.Parameter("jarFileUris") @Nullable List<String> jarFileUris,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("queryFileUri") @Nullable String queryFileUri,
-        @CustomType.Parameter("queryLists") @Nullable List<String> queryLists,
-        @CustomType.Parameter("scriptVariables") @Nullable Map<String,String> scriptVariables) {
-        this.continueOnFailure = continueOnFailure;
-        this.jarFileUris = jarFileUris;
-        this.properties = properties;
-        this.queryFileUri = queryFileUri;
-        this.queryLists = queryLists;
-        this.scriptVariables = scriptVariables;
-    }
-
+    private JobHiveConfig() {}
     /**
      * @return Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
@@ -115,7 +100,7 @@ public final class JobHiveConfig {
     public static Builder builder(JobHiveConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean continueOnFailure;
         private @Nullable List<String> jarFileUris;
@@ -123,11 +108,7 @@ public final class JobHiveConfig {
         private @Nullable String queryFileUri;
         private @Nullable List<String> queryLists;
         private @Nullable Map<String,String> scriptVariables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobHiveConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continueOnFailure = defaults.continueOnFailure;
@@ -138,10 +119,12 @@ public final class JobHiveConfig {
     	      this.scriptVariables = defaults.scriptVariables;
         }
 
+        @CustomType.Setter
         public Builder continueOnFailure(@Nullable Boolean continueOnFailure) {
             this.continueOnFailure = continueOnFailure;
             return this;
         }
+        @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
             this.jarFileUris = jarFileUris;
             return this;
@@ -149,14 +132,17 @@ public final class JobHiveConfig {
         public Builder jarFileUris(String... jarFileUris) {
             return jarFileUris(List.of(jarFileUris));
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
             this.queryFileUri = queryFileUri;
             return this;
         }
+        @CustomType.Setter
         public Builder queryLists(@Nullable List<String> queryLists) {
             this.queryLists = queryLists;
             return this;
@@ -164,11 +150,20 @@ public final class JobHiveConfig {
         public Builder queryLists(String... queryLists) {
             return queryLists(List.of(queryLists));
         }
+        @CustomType.Setter
         public Builder scriptVariables(@Nullable Map<String,String> scriptVariables) {
             this.scriptVariables = scriptVariables;
             return this;
-        }        public JobHiveConfig build() {
-            return new JobHiveConfig(continueOnFailure, jarFileUris, properties, queryFileUri, queryLists, scriptVariables);
+        }
+        public JobHiveConfig build() {
+            final var o = new JobHiveConfig();
+            o.continueOnFailure = continueOnFailure;
+            o.jarFileUris = jarFileUris;
+            o.properties = properties;
+            o.queryFileUri = queryFileUri;
+            o.queryLists = queryLists;
+            o.scriptVariables = scriptVariables;
+            return o;
         }
     }
 }

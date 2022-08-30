@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterIpAllocationPolicy {
-    private final String clusterIpv4CidrBlock;
-    private final String clusterSecondaryRangeName;
-    private final String servicesIpv4CidrBlock;
-    private final String servicesSecondaryRangeName;
+    private String clusterIpv4CidrBlock;
+    private String clusterSecondaryRangeName;
+    private String servicesIpv4CidrBlock;
+    private String servicesSecondaryRangeName;
 
-    @CustomType.Constructor
-    private GetClusterIpAllocationPolicy(
-        @CustomType.Parameter("clusterIpv4CidrBlock") String clusterIpv4CidrBlock,
-        @CustomType.Parameter("clusterSecondaryRangeName") String clusterSecondaryRangeName,
-        @CustomType.Parameter("servicesIpv4CidrBlock") String servicesIpv4CidrBlock,
-        @CustomType.Parameter("servicesSecondaryRangeName") String servicesSecondaryRangeName) {
-        this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-        this.clusterSecondaryRangeName = clusterSecondaryRangeName;
-        this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-        this.servicesSecondaryRangeName = servicesSecondaryRangeName;
-    }
-
+    private GetClusterIpAllocationPolicy() {}
     public String clusterIpv4CidrBlock() {
         return this.clusterIpv4CidrBlock;
     }
@@ -46,17 +35,13 @@ public final class GetClusterIpAllocationPolicy {
     public static Builder builder(GetClusterIpAllocationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterIpv4CidrBlock;
         private String clusterSecondaryRangeName;
         private String servicesIpv4CidrBlock;
         private String servicesSecondaryRangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
@@ -65,23 +50,33 @@ public final class GetClusterIpAllocationPolicy {
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
         }
 
+        @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
             this.clusterSecondaryRangeName = Objects.requireNonNull(clusterSecondaryRangeName);
             return this;
         }
+        @CustomType.Setter
         public Builder servicesIpv4CidrBlock(String servicesIpv4CidrBlock) {
             this.servicesIpv4CidrBlock = Objects.requireNonNull(servicesIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder servicesSecondaryRangeName(String servicesSecondaryRangeName) {
             this.servicesSecondaryRangeName = Objects.requireNonNull(servicesSecondaryRangeName);
             return this;
-        }        public GetClusterIpAllocationPolicy build() {
-            return new GetClusterIpAllocationPolicy(clusterIpv4CidrBlock, clusterSecondaryRangeName, servicesIpv4CidrBlock, servicesSecondaryRangeName);
+        }
+        public GetClusterIpAllocationPolicy build() {
+            final var o = new GetClusterIpAllocationPolicy();
+            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            return o;
         }
     }
 }

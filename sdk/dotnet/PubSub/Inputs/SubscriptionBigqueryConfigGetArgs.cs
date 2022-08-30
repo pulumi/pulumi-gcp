@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<bool>? DropUnknownFields { get; set; }
 
         /// <summary>
-        /// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+        /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
         /// </summary>
         [Input("table", required: true)]
         public Input<string> Table { get; set; } = null!;

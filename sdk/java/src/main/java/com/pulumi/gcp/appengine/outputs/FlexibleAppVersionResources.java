@@ -18,36 +18,25 @@ public final class FlexibleAppVersionResources {
      * @return Number of CPU cores needed.
      * 
      */
-    private final @Nullable Integer cpu;
+    private @Nullable Integer cpu;
     /**
      * @return Disk size (GB) needed.
      * 
      */
-    private final @Nullable Integer diskGb;
+    private @Nullable Integer diskGb;
     /**
      * @return Memory (GB) needed.
      * 
      */
-    private final @Nullable Double memoryGb;
+    private @Nullable Double memoryGb;
     /**
      * @return List of ports, or port pairs, to forward from the virtual machine to the application container.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<FlexibleAppVersionResourcesVolume> volumes;
+    private @Nullable List<FlexibleAppVersionResourcesVolume> volumes;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionResources(
-        @CustomType.Parameter("cpu") @Nullable Integer cpu,
-        @CustomType.Parameter("diskGb") @Nullable Integer diskGb,
-        @CustomType.Parameter("memoryGb") @Nullable Double memoryGb,
-        @CustomType.Parameter("volumes") @Nullable List<FlexibleAppVersionResourcesVolume> volumes) {
-        this.cpu = cpu;
-        this.diskGb = diskGb;
-        this.memoryGb = memoryGb;
-        this.volumes = volumes;
-    }
-
+    private FlexibleAppVersionResources() {}
     /**
      * @return Number of CPU cores needed.
      * 
@@ -85,17 +74,13 @@ public final class FlexibleAppVersionResources {
     public static Builder builder(FlexibleAppVersionResources defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer cpu;
         private @Nullable Integer diskGb;
         private @Nullable Double memoryGb;
         private @Nullable List<FlexibleAppVersionResourcesVolume> volumes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionResources defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -104,26 +89,36 @@ public final class FlexibleAppVersionResources {
     	      this.volumes = defaults.volumes;
         }
 
+        @CustomType.Setter
         public Builder cpu(@Nullable Integer cpu) {
             this.cpu = cpu;
             return this;
         }
+        @CustomType.Setter
         public Builder diskGb(@Nullable Integer diskGb) {
             this.diskGb = diskGb;
             return this;
         }
+        @CustomType.Setter
         public Builder memoryGb(@Nullable Double memoryGb) {
             this.memoryGb = memoryGb;
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(@Nullable List<FlexibleAppVersionResourcesVolume> volumes) {
             this.volumes = volumes;
             return this;
         }
         public Builder volumes(FlexibleAppVersionResourcesVolume... volumes) {
             return volumes(List.of(volumes));
-        }        public FlexibleAppVersionResources build() {
-            return new FlexibleAppVersionResources(cpu, diskGb, memoryGb, volumes);
+        }
+        public FlexibleAppVersionResources build() {
+            final var o = new FlexibleAppVersionResources();
+            o.cpu = cpu;
+            o.diskGb = diskGb;
+            o.memoryGb = memoryGb;
+            o.volumes = volumes;
+            return o;
         }
     }
 }

@@ -27,7 +27,7 @@ public final class ServicePerimetersServicePerimeterSpec {
      * Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
      * 
      */
-    private final @Nullable List<String> accessLevels;
+    private @Nullable List<String> accessLevels;
     /**
      * @return List of EgressPolicies to apply to the perimeter. A perimeter may
      * have multiple EgressPolicies, each of which is evaluated separately.
@@ -36,7 +36,7 @@ public final class ServicePerimetersServicePerimeterSpec {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicy> egressPolicies;
+    private @Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicy> egressPolicies;
     /**
      * @return List of `IngressPolicies` to apply to the perimeter. A perimeter may
      * have multiple `IngressPolicies`, each of which is evaluated
@@ -45,7 +45,7 @@ public final class ServicePerimetersServicePerimeterSpec {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicy> ingressPolicies;
+    private @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicy> ingressPolicies;
     /**
      * @return A list of resources, currently only projects in the form
      * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
@@ -54,7 +54,7 @@ public final class ServicePerimetersServicePerimeterSpec {
      * the perimeter.
      * 
      */
-    private final @Nullable List<String> resources;
+    private @Nullable List<String> resources;
     /**
      * @return GCP services that are subject to the Service Perimeter
      * restrictions. Must contain a list of services. For example, if
@@ -63,31 +63,16 @@ public final class ServicePerimetersServicePerimeterSpec {
      * restrictions.
      * 
      */
-    private final @Nullable List<String> restrictedServices;
+    private @Nullable List<String> restrictedServices;
     /**
      * @return Specifies how APIs are allowed to communicate within the Service
      * Perimeter.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServicePerimetersServicePerimeterSpecVpcAccessibleServices vpcAccessibleServices;
+    private @Nullable ServicePerimetersServicePerimeterSpecVpcAccessibleServices vpcAccessibleServices;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeterSpec(
-        @CustomType.Parameter("accessLevels") @Nullable List<String> accessLevels,
-        @CustomType.Parameter("egressPolicies") @Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicy> egressPolicies,
-        @CustomType.Parameter("ingressPolicies") @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicy> ingressPolicies,
-        @CustomType.Parameter("resources") @Nullable List<String> resources,
-        @CustomType.Parameter("restrictedServices") @Nullable List<String> restrictedServices,
-        @CustomType.Parameter("vpcAccessibleServices") @Nullable ServicePerimetersServicePerimeterSpecVpcAccessibleServices vpcAccessibleServices) {
-        this.accessLevels = accessLevels;
-        this.egressPolicies = egressPolicies;
-        this.ingressPolicies = ingressPolicies;
-        this.resources = resources;
-        this.restrictedServices = restrictedServices;
-        this.vpcAccessibleServices = vpcAccessibleServices;
-    }
-
+    private ServicePerimetersServicePerimeterSpec() {}
     /**
      * @return A list of AccessLevel resource names that allow resources within
      * the ServicePerimeter to be accessed from the internet.
@@ -164,7 +149,7 @@ public final class ServicePerimetersServicePerimeterSpec {
     public static Builder builder(ServicePerimetersServicePerimeterSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> accessLevels;
         private @Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicy> egressPolicies;
@@ -172,11 +157,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         private @Nullable List<String> resources;
         private @Nullable List<String> restrictedServices;
         private @Nullable ServicePerimetersServicePerimeterSpecVpcAccessibleServices vpcAccessibleServices;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeterSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevels = defaults.accessLevels;
@@ -187,6 +168,7 @@ public final class ServicePerimetersServicePerimeterSpec {
     	      this.vpcAccessibleServices = defaults.vpcAccessibleServices;
         }
 
+        @CustomType.Setter
         public Builder accessLevels(@Nullable List<String> accessLevels) {
             this.accessLevels = accessLevels;
             return this;
@@ -194,6 +176,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         public Builder accessLevels(String... accessLevels) {
             return accessLevels(List.of(accessLevels));
         }
+        @CustomType.Setter
         public Builder egressPolicies(@Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicy> egressPolicies) {
             this.egressPolicies = egressPolicies;
             return this;
@@ -201,6 +184,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         public Builder egressPolicies(ServicePerimetersServicePerimeterSpecEgressPolicy... egressPolicies) {
             return egressPolicies(List.of(egressPolicies));
         }
+        @CustomType.Setter
         public Builder ingressPolicies(@Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicy> ingressPolicies) {
             this.ingressPolicies = ingressPolicies;
             return this;
@@ -208,6 +192,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         public Builder ingressPolicies(ServicePerimetersServicePerimeterSpecIngressPolicy... ingressPolicies) {
             return ingressPolicies(List.of(ingressPolicies));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
@@ -215,6 +200,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
         public Builder restrictedServices(@Nullable List<String> restrictedServices) {
             this.restrictedServices = restrictedServices;
             return this;
@@ -222,11 +208,20 @@ public final class ServicePerimetersServicePerimeterSpec {
         public Builder restrictedServices(String... restrictedServices) {
             return restrictedServices(List.of(restrictedServices));
         }
+        @CustomType.Setter
         public Builder vpcAccessibleServices(@Nullable ServicePerimetersServicePerimeterSpecVpcAccessibleServices vpcAccessibleServices) {
             this.vpcAccessibleServices = vpcAccessibleServices;
             return this;
-        }        public ServicePerimetersServicePerimeterSpec build() {
-            return new ServicePerimetersServicePerimeterSpec(accessLevels, egressPolicies, ingressPolicies, resources, restrictedServices, vpcAccessibleServices);
+        }
+        public ServicePerimetersServicePerimeterSpec build() {
+            final var o = new ServicePerimetersServicePerimeterSpec();
+            o.accessLevels = accessLevels;
+            o.egressPolicies = egressPolicies;
+            o.ingressPolicies = ingressPolicies;
+            o.resources = resources;
+            o.restrictedServices = restrictedServices;
+            o.vpcAccessibleServices = vpcAccessibleServices;
+            return o;
         }
     }
 }

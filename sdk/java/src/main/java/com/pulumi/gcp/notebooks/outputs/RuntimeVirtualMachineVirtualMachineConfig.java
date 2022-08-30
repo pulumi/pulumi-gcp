@@ -24,25 +24,25 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig acceleratorConfig;
+    private @Nullable RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig acceleratorConfig;
     /**
      * @return Use a list of container images to start the notebook instance.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RuntimeVirtualMachineVirtualMachineConfigContainerImage> containerImages;
+    private @Nullable List<RuntimeVirtualMachineVirtualMachineConfigContainerImage> containerImages;
     /**
      * @return Data disk option configuration settings.
      * Structure is documented below.
      * 
      */
-    private final RuntimeVirtualMachineVirtualMachineConfigDataDisk dataDisk;
+    private RuntimeVirtualMachineVirtualMachineConfigDataDisk dataDisk;
     /**
      * @return Encryption settings for virtual machine data disk.
      * Structure is documented below.
      * 
      */
-    private final @Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig;
+    private @Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig;
     /**
      * @return -
      * The Compute Engine guest attributes. (see [Project and instance
@@ -50,7 +50,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * storing-retrieving-metadata#guest_attributes)).
      * 
      */
-    private final @Nullable Map<String,String> guestAttributes;
+    private @Nullable Map<String,String> guestAttributes;
     /**
      * @return If true, runtime will only have internal IP addresses. By default,
      * runtimes are not restricted to internal IP addresses, and will
@@ -60,19 +60,19 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * accessible without external IP addresses.
      * 
      */
-    private final @Nullable Boolean internalIpOnly;
+    private @Nullable Boolean internalIpOnly;
     /**
      * @return Labels to apply to this disk. These can be later modified
      * by the disks.setLabels method. This field is only
      * applicable for persistent disks.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return The Compute Engine machine type used for runtimes.
      * 
      */
-    private final String machineType;
+    private String machineType;
     /**
      * @return The Compute Engine metadata entries to add to virtual machine.
      * (see [Project and instance metadata](https://cloud.google.com
@@ -80,7 +80,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * _metadata)).
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
     /**
      * @return The Compute Engine network to be used for machine communications.
      * Cannot be specified with subnetwork. If neither `network` nor
@@ -98,26 +98,26 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      *   configuring Private Service Access.
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return The type of vNIC to be used on this interface. This may be gVNIC
      * or VirtioNet.
      * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
      * 
      */
-    private final @Nullable String nicType;
+    private @Nullable String nicType;
     /**
      * @return Reserved IP Range name is used for VPC Peering. The
      * subnetwork allocation will use the range *name* if it&#39;s assigned.
      * 
      */
-    private final @Nullable String reservedIpRange;
+    private @Nullable String reservedIpRange;
     /**
      * @return Shielded VM Instance configuration settings.
      * Structure is documented below.
      * 
      */
-    private final @Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig;
+    private @Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
      * @return The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network. A full URL or
@@ -127,57 +127,22 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * 
      */
-    private final @Nullable String subnet;
+    private @Nullable String subnet;
     /**
      * @return The Compute Engine tags to add to runtime (see [Tagging instances]
      * (https://cloud.google.com/compute/docs/
      * label-or-tag-resources#tags)).
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return -
      * The zone where the virtual machine is located.
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachineVirtualMachineConfig(
-        @CustomType.Parameter("acceleratorConfig") @Nullable RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig acceleratorConfig,
-        @CustomType.Parameter("containerImages") @Nullable List<RuntimeVirtualMachineVirtualMachineConfigContainerImage> containerImages,
-        @CustomType.Parameter("dataDisk") RuntimeVirtualMachineVirtualMachineConfigDataDisk dataDisk,
-        @CustomType.Parameter("encryptionConfig") @Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig,
-        @CustomType.Parameter("guestAttributes") @Nullable Map<String,String> guestAttributes,
-        @CustomType.Parameter("internalIpOnly") @Nullable Boolean internalIpOnly,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("nicType") @Nullable String nicType,
-        @CustomType.Parameter("reservedIpRange") @Nullable String reservedIpRange,
-        @CustomType.Parameter("shieldedInstanceConfig") @Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig,
-        @CustomType.Parameter("subnet") @Nullable String subnet,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.acceleratorConfig = acceleratorConfig;
-        this.containerImages = containerImages;
-        this.dataDisk = dataDisk;
-        this.encryptionConfig = encryptionConfig;
-        this.guestAttributes = guestAttributes;
-        this.internalIpOnly = internalIpOnly;
-        this.labels = labels;
-        this.machineType = machineType;
-        this.metadata = metadata;
-        this.network = network;
-        this.nicType = nicType;
-        this.reservedIpRange = reservedIpRange;
-        this.shieldedInstanceConfig = shieldedInstanceConfig;
-        this.subnet = subnet;
-        this.tags = tags;
-        this.zone = zone;
-    }
-
+    private RuntimeVirtualMachineVirtualMachineConfig() {}
     /**
      * @return The Compute Engine accelerator configuration for this runtime.
      * Structure is documented below.
@@ -340,7 +305,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     public static Builder builder(RuntimeVirtualMachineVirtualMachineConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig acceleratorConfig;
         private @Nullable List<RuntimeVirtualMachineVirtualMachineConfigContainerImage> containerImages;
@@ -358,11 +323,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         private @Nullable String subnet;
         private @Nullable List<String> tags;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachineVirtualMachineConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorConfig = defaults.acceleratorConfig;
@@ -383,10 +344,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder acceleratorConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig acceleratorConfig) {
             this.acceleratorConfig = acceleratorConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder containerImages(@Nullable List<RuntimeVirtualMachineVirtualMachineConfigContainerImage> containerImages) {
             this.containerImages = containerImages;
             return this;
@@ -394,54 +357,67 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         public Builder containerImages(RuntimeVirtualMachineVirtualMachineConfigContainerImage... containerImages) {
             return containerImages(List.of(containerImages));
         }
+        @CustomType.Setter
         public Builder dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDisk dataDisk) {
             this.dataDisk = Objects.requireNonNull(dataDisk);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig) {
             this.encryptionConfig = encryptionConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder guestAttributes(@Nullable Map<String,String> guestAttributes) {
             this.guestAttributes = guestAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder internalIpOnly(@Nullable Boolean internalIpOnly) {
             this.internalIpOnly = internalIpOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
             this.nicType = nicType;
             return this;
         }
+        @CustomType.Setter
         public Builder reservedIpRange(@Nullable String reservedIpRange) {
             this.reservedIpRange = reservedIpRange;
             return this;
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig) {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
             this.subnet = subnet;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -449,11 +425,30 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public RuntimeVirtualMachineVirtualMachineConfig build() {
-            return new RuntimeVirtualMachineVirtualMachineConfig(acceleratorConfig, containerImages, dataDisk, encryptionConfig, guestAttributes, internalIpOnly, labels, machineType, metadata, network, nicType, reservedIpRange, shieldedInstanceConfig, subnet, tags, zone);
+        }
+        public RuntimeVirtualMachineVirtualMachineConfig build() {
+            final var o = new RuntimeVirtualMachineVirtualMachineConfig();
+            o.acceleratorConfig = acceleratorConfig;
+            o.containerImages = containerImages;
+            o.dataDisk = dataDisk;
+            o.encryptionConfig = encryptionConfig;
+            o.guestAttributes = guestAttributes;
+            o.internalIpOnly = internalIpOnly;
+            o.labels = labels;
+            o.machineType = machineType;
+            o.metadata = metadata;
+            o.network = network;
+            o.nicType = nicType;
+            o.reservedIpRange = reservedIpRange;
+            o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.subnet = subnet;
+            o.tags = tags;
+            o.zone = zone;
+            return o;
         }
     }
 }

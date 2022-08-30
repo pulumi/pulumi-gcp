@@ -2760,7 +2760,7 @@ type AwsNodePoolConfig struct {
 	InstancePlacement *AwsNodePoolConfigInstancePlacement `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
-	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// Proxy configuration for outbound HTTP(S) traffic.
 	ProxyConfig *AwsNodePoolConfigProxyConfig `pulumi:"proxyConfig"`
@@ -2798,7 +2798,7 @@ type AwsNodePoolConfigArgs struct {
 	InstancePlacement AwsNodePoolConfigInstancePlacementPtrInput `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Proxy configuration for outbound HTTP(S) traffic.
 	ProxyConfig AwsNodePoolConfigProxyConfigPtrInput `pulumi:"proxyConfig"`
@@ -2916,7 +2916,7 @@ func (o AwsNodePoolConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o AwsNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -3025,7 +3025,7 @@ func (o AwsNodePoolConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o AwsNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) map[string]string {
 		if v == nil {
@@ -13301,8 +13301,10 @@ type ClusterNodeConfig struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible   *bool                           `pulumi:"preemptible"`
-	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	Preemptible *bool `pulumi:"preemptible"`
+	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+	ReservationAffinity *ClusterNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
+	SandboxConfig       *ClusterNodeConfigSandboxConfig       `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -13312,8 +13314,7 @@ type ClusterNodeConfig struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot *bool `pulumi:"spot"`
-	// The list of instance tags applied to all nodes. Tags are used to identify
-	// valid sources or targets for network firewalls.
+	// ) - List of network tags applied to auto-provisioned node pools.
 	Tags []string `pulumi:"tags"`
 	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 	// to apply to nodes. GKE's API can only set this field on cluster creation.
@@ -13407,8 +13408,10 @@ type ClusterNodeConfigArgs struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible   pulumi.BoolPtrInput                    `pulumi:"preemptible"`
-	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+	ReservationAffinity ClusterNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	SandboxConfig       ClusterNodeConfigSandboxConfigPtrInput       `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -13418,8 +13421,7 @@ type ClusterNodeConfigArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
-	// The list of instance tags applied to all nodes. Tags are used to identify
-	// valid sources or targets for network firewalls.
+	// ) - List of network tags applied to auto-provisioned node pools.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 	// to apply to nodes. GKE's API can only set this field on cluster creation.
@@ -13633,6 +13635,11 @@ func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
+// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+func (o ClusterNodeConfigOutput) ReservationAffinity() ClusterNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigReservationAffinity { return v.ReservationAffinity }).(ClusterNodeConfigReservationAffinityPtrOutput)
+}
+
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
@@ -13655,8 +13662,7 @@ func (o ClusterNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
-// The list of instance tags applied to all nodes. Tags are used to identify
-// valid sources or targets for network firewalls.
+// ) - List of network tags applied to auto-provisioned node pools.
 func (o ClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -13914,6 +13920,16 @@ func (o ClusterNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) ReservationAffinity() ClusterNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(ClusterNodeConfigReservationAffinityPtrOutput)
+}
+
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSandboxConfig {
 		if v == nil {
@@ -13956,8 +13972,7 @@ func (o ClusterNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The list of instance tags applied to all nodes. Tags are used to identify
-// valid sources or targets for network firewalls.
+// ) - List of network tags applied to auto-provisioned node pools.
 func (o ClusterNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []string {
 		if v == nil {
@@ -14873,6 +14888,185 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
+type ClusterNodeConfigReservationAffinity struct {
+	// The type of reservation consumption
+	// Accepted values are:
+	ConsumeReservationType string `pulumi:"consumeReservationType"`
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+	Key *string `pulumi:"key"`
+	// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+	Values []string `pulumi:"values"`
+}
+
+// ClusterNodeConfigReservationAffinityInput is an input type that accepts ClusterNodeConfigReservationAffinityArgs and ClusterNodeConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigReservationAffinityInput` via:
+//
+//	ClusterNodeConfigReservationAffinityArgs{...}
+type ClusterNodeConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigReservationAffinityOutput() ClusterNodeConfigReservationAffinityOutput
+	ToClusterNodeConfigReservationAffinityOutputWithContext(context.Context) ClusterNodeConfigReservationAffinityOutput
+}
+
+type ClusterNodeConfigReservationAffinityArgs struct {
+	// The type of reservation consumption
+	// Accepted values are:
+	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ClusterNodeConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigReservationAffinityArgs) ToClusterNodeConfigReservationAffinityOutput() ClusterNodeConfigReservationAffinityOutput {
+	return i.ToClusterNodeConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigReservationAffinityArgs) ToClusterNodeConfigReservationAffinityOutputWithContext(ctx context.Context) ClusterNodeConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigReservationAffinityOutput)
+}
+
+func (i ClusterNodeConfigReservationAffinityArgs) ToClusterNodeConfigReservationAffinityPtrOutput() ClusterNodeConfigReservationAffinityPtrOutput {
+	return i.ToClusterNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigReservationAffinityArgs) ToClusterNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodeConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigReservationAffinityOutput).ToClusterNodeConfigReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigReservationAffinityPtrInput is an input type that accepts ClusterNodeConfigReservationAffinityArgs, ClusterNodeConfigReservationAffinityPtr and ClusterNodeConfigReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigReservationAffinityPtrInput` via:
+//
+//	        ClusterNodeConfigReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigReservationAffinityPtrOutput() ClusterNodeConfigReservationAffinityPtrOutput
+	ToClusterNodeConfigReservationAffinityPtrOutputWithContext(context.Context) ClusterNodeConfigReservationAffinityPtrOutput
+}
+
+type clusterNodeConfigReservationAffinityPtrType ClusterNodeConfigReservationAffinityArgs
+
+func ClusterNodeConfigReservationAffinityPtr(v *ClusterNodeConfigReservationAffinityArgs) ClusterNodeConfigReservationAffinityPtrInput {
+	return (*clusterNodeConfigReservationAffinityPtrType)(v)
+}
+
+func (*clusterNodeConfigReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigReservationAffinityPtrType) ToClusterNodeConfigReservationAffinityPtrOutput() ClusterNodeConfigReservationAffinityPtrOutput {
+	return i.ToClusterNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigReservationAffinityPtrType) ToClusterNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodeConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigReservationAffinityPtrOutput)
+}
+
+type ClusterNodeConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigReservationAffinityOutput) ToClusterNodeConfigReservationAffinityOutput() ClusterNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o ClusterNodeConfigReservationAffinityOutput) ToClusterNodeConfigReservationAffinityOutputWithContext(ctx context.Context) ClusterNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o ClusterNodeConfigReservationAffinityOutput) ToClusterNodeConfigReservationAffinityPtrOutput() ClusterNodeConfigReservationAffinityPtrOutput {
+	return o.ToClusterNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigReservationAffinityOutput) ToClusterNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigReservationAffinity) *ClusterNodeConfigReservationAffinity {
+		return &v
+	}).(ClusterNodeConfigReservationAffinityPtrOutput)
+}
+
+// The type of reservation consumption
+// Accepted values are:
+func (o ClusterNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+func (o ClusterNodeConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+func (o ClusterNodeConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodeConfigReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigReservationAffinityPtrOutput) ToClusterNodeConfigReservationAffinityPtrOutput() ClusterNodeConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigReservationAffinityPtrOutput) ToClusterNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodeConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigReservationAffinityPtrOutput) Elem() ClusterNodeConfigReservationAffinityOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigReservationAffinity) ClusterNodeConfigReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigReservationAffinity
+		return ret
+	}).(ClusterNodeConfigReservationAffinityOutput)
+}
+
+// The type of reservation consumption
+// Accepted values are:
+func (o ClusterNodeConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+func (o ClusterNodeConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+func (o ClusterNodeConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClusterNodeConfigSandboxConfig struct {
 	// Which sandbox to use for pods in the node pool.
 	// Accepted values are:
@@ -15173,7 +15367,7 @@ func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pul
 type ClusterNodeConfigTaint struct {
 	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect string `pulumi:"effect"`
-	// Key for taint.
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key string `pulumi:"key"`
 	// Value for taint.
 	Value string `pulumi:"value"`
@@ -15193,7 +15387,7 @@ type ClusterNodeConfigTaintInput interface {
 type ClusterNodeConfigTaintArgs struct {
 	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// Key for taint.
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Value for taint.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -15255,7 +15449,7 @@ func (o ClusterNodeConfigTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// Key for taint.
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 func (o ClusterNodeConfigTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -15671,6 +15865,280 @@ func (o ClusterNodePoolArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePool {
 		return vs[0].([]ClusterNodePool)[vs[1].(int)]
 	}).(ClusterNodePoolOutput)
+}
+
+type ClusterNodePoolAutoConfig struct {
+	// ) - The network tag config for the cluster's automatically provisioned node pools.
+	NetworkTags *ClusterNodePoolAutoConfigNetworkTags `pulumi:"networkTags"`
+}
+
+// ClusterNodePoolAutoConfigInput is an input type that accepts ClusterNodePoolAutoConfigArgs and ClusterNodePoolAutoConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigInput` via:
+//
+//	ClusterNodePoolAutoConfigArgs{...}
+type ClusterNodePoolAutoConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigOutput() ClusterNodePoolAutoConfigOutput
+	ToClusterNodePoolAutoConfigOutputWithContext(context.Context) ClusterNodePoolAutoConfigOutput
+}
+
+type ClusterNodePoolAutoConfigArgs struct {
+	// ) - The network tag config for the cluster's automatically provisioned node pools.
+	NetworkTags ClusterNodePoolAutoConfigNetworkTagsPtrInput `pulumi:"networkTags"`
+}
+
+func (ClusterNodePoolAutoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolAutoConfigArgs) ToClusterNodePoolAutoConfigOutput() ClusterNodePoolAutoConfigOutput {
+	return i.ToClusterNodePoolAutoConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigArgs) ToClusterNodePoolAutoConfigOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigOutput)
+}
+
+func (i ClusterNodePoolAutoConfigArgs) ToClusterNodePoolAutoConfigPtrOutput() ClusterNodePoolAutoConfigPtrOutput {
+	return i.ToClusterNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigArgs) ToClusterNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigOutput).ToClusterNodePoolAutoConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolAutoConfigPtrInput is an input type that accepts ClusterNodePoolAutoConfigArgs, ClusterNodePoolAutoConfigPtr and ClusterNodePoolAutoConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigPtrInput` via:
+//
+//	        ClusterNodePoolAutoConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolAutoConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigPtrOutput() ClusterNodePoolAutoConfigPtrOutput
+	ToClusterNodePoolAutoConfigPtrOutputWithContext(context.Context) ClusterNodePoolAutoConfigPtrOutput
+}
+
+type clusterNodePoolAutoConfigPtrType ClusterNodePoolAutoConfigArgs
+
+func ClusterNodePoolAutoConfigPtr(v *ClusterNodePoolAutoConfigArgs) ClusterNodePoolAutoConfigPtrInput {
+	return (*clusterNodePoolAutoConfigPtrType)(v)
+}
+
+func (*clusterNodePoolAutoConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolAutoConfigPtrType) ToClusterNodePoolAutoConfigPtrOutput() ClusterNodePoolAutoConfigPtrOutput {
+	return i.ToClusterNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolAutoConfigPtrType) ToClusterNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigOutput) ToClusterNodePoolAutoConfigOutput() ClusterNodePoolAutoConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigOutput) ToClusterNodePoolAutoConfigOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigOutput) ToClusterNodePoolAutoConfigPtrOutput() ClusterNodePoolAutoConfigPtrOutput {
+	return o.ToClusterNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolAutoConfigOutput) ToClusterNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfig {
+		return &v
+	}).(ClusterNodePoolAutoConfigPtrOutput)
+}
+
+// ) - The network tag config for the cluster's automatically provisioned node pools.
+func (o ClusterNodePoolAutoConfigOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags { return v.NetworkTags }).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigPtrOutput) ToClusterNodePoolAutoConfigPtrOutput() ClusterNodePoolAutoConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigPtrOutput) ToClusterNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigPtrOutput) Elem() ClusterNodePoolAutoConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) ClusterNodePoolAutoConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolAutoConfig
+		return ret
+	}).(ClusterNodePoolAutoConfigOutput)
+}
+
+// ) - The network tag config for the cluster's automatically provisioned node pools.
+func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigNetworkTags struct {
+	// ) - List of network tags applied to auto-provisioned node pools.
+	Tags []string `pulumi:"tags"`
+}
+
+// ClusterNodePoolAutoConfigNetworkTagsInput is an input type that accepts ClusterNodePoolAutoConfigNetworkTagsArgs and ClusterNodePoolAutoConfigNetworkTagsOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigNetworkTagsInput` via:
+//
+//	ClusterNodePoolAutoConfigNetworkTagsArgs{...}
+type ClusterNodePoolAutoConfigNetworkTagsInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigNetworkTagsOutput() ClusterNodePoolAutoConfigNetworkTagsOutput
+	ToClusterNodePoolAutoConfigNetworkTagsOutputWithContext(context.Context) ClusterNodePoolAutoConfigNetworkTagsOutput
+}
+
+type ClusterNodePoolAutoConfigNetworkTagsArgs struct {
+	// ) - List of network tags applied to auto-provisioned node pools.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (ClusterNodePoolAutoConfigNetworkTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTags)(nil)).Elem()
+}
+
+func (i ClusterNodePoolAutoConfigNetworkTagsArgs) ToClusterNodePoolAutoConfigNetworkTagsOutput() ClusterNodePoolAutoConfigNetworkTagsOutput {
+	return i.ToClusterNodePoolAutoConfigNetworkTagsOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigNetworkTagsArgs) ToClusterNodePoolAutoConfigNetworkTagsOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNetworkTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigNetworkTagsOutput)
+}
+
+func (i ClusterNodePoolAutoConfigNetworkTagsArgs) ToClusterNodePoolAutoConfigNetworkTagsPtrOutput() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return i.ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigNetworkTagsArgs) ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigNetworkTagsOutput).ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolAutoConfigNetworkTagsPtrInput is an input type that accepts ClusterNodePoolAutoConfigNetworkTagsArgs, ClusterNodePoolAutoConfigNetworkTagsPtr and ClusterNodePoolAutoConfigNetworkTagsPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigNetworkTagsPtrInput` via:
+//
+//	        ClusterNodePoolAutoConfigNetworkTagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolAutoConfigNetworkTagsPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigNetworkTagsPtrOutput() ClusterNodePoolAutoConfigNetworkTagsPtrOutput
+	ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(context.Context) ClusterNodePoolAutoConfigNetworkTagsPtrOutput
+}
+
+type clusterNodePoolAutoConfigNetworkTagsPtrType ClusterNodePoolAutoConfigNetworkTagsArgs
+
+func ClusterNodePoolAutoConfigNetworkTagsPtr(v *ClusterNodePoolAutoConfigNetworkTagsArgs) ClusterNodePoolAutoConfigNetworkTagsPtrInput {
+	return (*clusterNodePoolAutoConfigNetworkTagsPtrType)(v)
+}
+
+func (*clusterNodePoolAutoConfigNetworkTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfigNetworkTags)(nil)).Elem()
+}
+
+func (i *clusterNodePoolAutoConfigNetworkTagsPtrType) ToClusterNodePoolAutoConfigNetworkTagsPtrOutput() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return i.ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolAutoConfigNetworkTagsPtrType) ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigNetworkTagsOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigNetworkTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTags)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToClusterNodePoolAutoConfigNetworkTagsOutput() ClusterNodePoolAutoConfigNetworkTagsOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToClusterNodePoolAutoConfigNetworkTagsOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNetworkTagsOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToClusterNodePoolAutoConfigNetworkTagsPtrOutput() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return o.ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolAutoConfigNetworkTags) *ClusterNodePoolAutoConfigNetworkTags {
+		return &v
+	}).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+// ) - List of network tags applied to auto-provisioned node pools.
+func (o ClusterNodePoolAutoConfigNetworkTagsOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfigNetworkTags) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodePoolAutoConfigNetworkTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigNetworkTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfigNetworkTags)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) ToClusterNodePoolAutoConfigNetworkTagsPtrOutput() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) ToClusterNodePoolAutoConfigNetworkTagsPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Elem() ClusterNodePoolAutoConfigNetworkTagsOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfigNetworkTags) ClusterNodePoolAutoConfigNetworkTags {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolAutoConfigNetworkTags
+		return ret
+	}).(ClusterNodePoolAutoConfigNetworkTagsOutput)
+}
+
+// ) - List of network tags applied to auto-provisioned node pools.
+func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfigNetworkTags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
 }
 
 type ClusterNodePoolAutoscaling struct {
@@ -16211,8 +16679,10 @@ type ClusterNodePoolNodeConfig struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible   *bool                                   `pulumi:"preemptible"`
-	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	Preemptible *bool `pulumi:"preemptible"`
+	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+	ReservationAffinity *ClusterNodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
+	SandboxConfig       *ClusterNodePoolNodeConfigSandboxConfig       `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -16222,8 +16692,7 @@ type ClusterNodePoolNodeConfig struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot *bool `pulumi:"spot"`
-	// The list of instance tags applied to all nodes. Tags are used to identify
-	// valid sources or targets for network firewalls.
+	// ) - List of network tags applied to auto-provisioned node pools.
 	Tags []string `pulumi:"tags"`
 	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 	// to apply to nodes. GKE's API can only set this field on cluster creation.
@@ -16317,8 +16786,10 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible   pulumi.BoolPtrInput                            `pulumi:"preemptible"`
-	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+	ReservationAffinity ClusterNodePoolNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	SandboxConfig       ClusterNodePoolNodeConfigSandboxConfigPtrInput       `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -16328,8 +16799,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
-	// The list of instance tags applied to all nodes. Tags are used to identify
-	// valid sources or targets for network firewalls.
+	// ) - List of network tags applied to auto-provisioned node pools.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 	// to apply to nodes. GKE's API can only set this field on cluster creation.
@@ -16547,6 +17017,13 @@ func (o ClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
+// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) ReservationAffinity() ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigReservationAffinity {
+		return v.ReservationAffinity
+	}).(ClusterNodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
@@ -16571,8 +17048,7 @@ func (o ClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
-// The list of instance tags applied to all nodes. Tags are used to identify
-// valid sources or targets for network firewalls.
+// ) - List of network tags applied to auto-provisioned node pools.
 func (o ClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -16832,6 +17308,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) ReservationAffinity() ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(ClusterNodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig {
 		if v == nil {
@@ -16874,8 +17360,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The list of instance tags applied to all nodes. Tags are used to identify
-// valid sources or targets for network firewalls.
+// ) - List of network tags applied to auto-provisioned node pools.
 func (o ClusterNodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []string {
 		if v == nil {
@@ -17791,6 +18276,185 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.Stri
 	}).(pulumi.StringMapOutput)
 }
 
+type ClusterNodePoolNodeConfigReservationAffinity struct {
+	// The type of reservation consumption
+	// Accepted values are:
+	ConsumeReservationType string `pulumi:"consumeReservationType"`
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+	Key *string `pulumi:"key"`
+	// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+	Values []string `pulumi:"values"`
+}
+
+// ClusterNodePoolNodeConfigReservationAffinityInput is an input type that accepts ClusterNodePoolNodeConfigReservationAffinityArgs and ClusterNodePoolNodeConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigReservationAffinityInput` via:
+//
+//	ClusterNodePoolNodeConfigReservationAffinityArgs{...}
+type ClusterNodePoolNodeConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigReservationAffinityOutput() ClusterNodePoolNodeConfigReservationAffinityOutput
+	ToClusterNodePoolNodeConfigReservationAffinityOutputWithContext(context.Context) ClusterNodePoolNodeConfigReservationAffinityOutput
+}
+
+type ClusterNodePoolNodeConfigReservationAffinityArgs struct {
+	// The type of reservation consumption
+	// Accepted values are:
+	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ClusterNodePoolNodeConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigReservationAffinityArgs) ToClusterNodePoolNodeConfigReservationAffinityOutput() ClusterNodePoolNodeConfigReservationAffinityOutput {
+	return i.ToClusterNodePoolNodeConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigReservationAffinityArgs) ToClusterNodePoolNodeConfigReservationAffinityOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigReservationAffinityOutput)
+}
+
+func (i ClusterNodePoolNodeConfigReservationAffinityArgs) ToClusterNodePoolNodeConfigReservationAffinityPtrOutput() ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return i.ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigReservationAffinityArgs) ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigReservationAffinityOutput).ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigReservationAffinityPtrInput is an input type that accepts ClusterNodePoolNodeConfigReservationAffinityArgs, ClusterNodePoolNodeConfigReservationAffinityPtr and ClusterNodePoolNodeConfigReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigReservationAffinityPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigReservationAffinityPtrOutput() ClusterNodePoolNodeConfigReservationAffinityPtrOutput
+	ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigReservationAffinityPtrOutput
+}
+
+type clusterNodePoolNodeConfigReservationAffinityPtrType ClusterNodePoolNodeConfigReservationAffinityArgs
+
+func ClusterNodePoolNodeConfigReservationAffinityPtr(v *ClusterNodePoolNodeConfigReservationAffinityArgs) ClusterNodePoolNodeConfigReservationAffinityPtrInput {
+	return (*clusterNodePoolNodeConfigReservationAffinityPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigReservationAffinityPtrType) ToClusterNodePoolNodeConfigReservationAffinityPtrOutput() ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return i.ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigReservationAffinityPtrType) ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ToClusterNodePoolNodeConfigReservationAffinityOutput() ClusterNodePoolNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ToClusterNodePoolNodeConfigReservationAffinityOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ToClusterNodePoolNodeConfigReservationAffinityPtrOutput() ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigReservationAffinity) *ClusterNodePoolNodeConfigReservationAffinity {
+		return &v
+	}).(ClusterNodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+// The type of reservation consumption
+// Accepted values are:
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+func (o ClusterNodePoolNodeConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) ToClusterNodePoolNodeConfigReservationAffinityPtrOutput() ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) ToClusterNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) Elem() ClusterNodePoolNodeConfigReservationAffinityOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigReservationAffinity) ClusterNodePoolNodeConfigReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigReservationAffinity
+		return ret
+	}).(ClusterNodePoolNodeConfigReservationAffinityOutput)
+}
+
+// The type of reservation consumption
+// Accepted values are:
+func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClusterNodePoolNodeConfigSandboxConfig struct {
 	// Which sandbox to use for pods in the node pool.
 	// Accepted values are:
@@ -18091,7 +18755,7 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBo
 type ClusterNodePoolNodeConfigTaint struct {
 	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect string `pulumi:"effect"`
-	// Key for taint.
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key string `pulumi:"key"`
 	// Value for taint.
 	Value string `pulumi:"value"`
@@ -18111,7 +18775,7 @@ type ClusterNodePoolNodeConfigTaintInput interface {
 type ClusterNodePoolNodeConfigTaintArgs struct {
 	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// Key for taint.
+	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Value for taint.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -18173,7 +18837,7 @@ func (o ClusterNodePoolNodeConfigTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// Key for taint.
+// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 func (o ClusterNodePoolNodeConfigTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -20963,6 +21627,7 @@ type NodePoolNodeConfig struct {
 	NodeGroup              *string                                   `pulumi:"nodeGroup"`
 	OauthScopes            []string                                  `pulumi:"oauthScopes"`
 	Preemptible            *bool                                     `pulumi:"preemptible"`
+	ReservationAffinity    *NodePoolNodeConfigReservationAffinity    `pulumi:"reservationAffinity"`
 	SandboxConfig          *NodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
 	ServiceAccount         *string                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig *NodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -21002,6 +21667,7 @@ type NodePoolNodeConfigArgs struct {
 	NodeGroup              pulumi.StringPtrInput                            `pulumi:"nodeGroup"`
 	OauthScopes            pulumi.StringArrayInput                          `pulumi:"oauthScopes"`
 	Preemptible            pulumi.BoolPtrInput                              `pulumi:"preemptible"`
+	ReservationAffinity    NodePoolNodeConfigReservationAffinityPtrInput    `pulumi:"reservationAffinity"`
 	SandboxConfig          NodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
 	ServiceAccount         pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig NodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -21158,6 +21824,10 @@ func (o NodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 
 func (o NodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity { return v.ReservationAffinity }).(NodePoolNodeConfigReservationAffinityPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
@@ -21372,6 +22042,15 @@ func (o NodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 		}
 		return v.Preemptible
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(NodePoolNodeConfigReservationAffinityPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
@@ -22245,6 +22924,169 @@ func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOu
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type NodePoolNodeConfigReservationAffinity struct {
+	ConsumeReservationType string   `pulumi:"consumeReservationType"`
+	Key                    *string  `pulumi:"key"`
+	Values                 []string `pulumi:"values"`
+}
+
+// NodePoolNodeConfigReservationAffinityInput is an input type that accepts NodePoolNodeConfigReservationAffinityArgs and NodePoolNodeConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigReservationAffinityInput` via:
+//
+//	NodePoolNodeConfigReservationAffinityArgs{...}
+type NodePoolNodeConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigReservationAffinityOutput() NodePoolNodeConfigReservationAffinityOutput
+	ToNodePoolNodeConfigReservationAffinityOutputWithContext(context.Context) NodePoolNodeConfigReservationAffinityOutput
+}
+
+type NodePoolNodeConfigReservationAffinityArgs struct {
+	ConsumeReservationType pulumi.StringInput      `pulumi:"consumeReservationType"`
+	Key                    pulumi.StringPtrInput   `pulumi:"key"`
+	Values                 pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (NodePoolNodeConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigReservationAffinityArgs) ToNodePoolNodeConfigReservationAffinityOutput() NodePoolNodeConfigReservationAffinityOutput {
+	return i.ToNodePoolNodeConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigReservationAffinityArgs) ToNodePoolNodeConfigReservationAffinityOutputWithContext(ctx context.Context) NodePoolNodeConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigReservationAffinityOutput)
+}
+
+func (i NodePoolNodeConfigReservationAffinityArgs) ToNodePoolNodeConfigReservationAffinityPtrOutput() NodePoolNodeConfigReservationAffinityPtrOutput {
+	return i.ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigReservationAffinityArgs) ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigReservationAffinityOutput).ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigReservationAffinityPtrInput is an input type that accepts NodePoolNodeConfigReservationAffinityArgs, NodePoolNodeConfigReservationAffinityPtr and NodePoolNodeConfigReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigReservationAffinityPtrInput` via:
+//
+//	        NodePoolNodeConfigReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigReservationAffinityPtrOutput() NodePoolNodeConfigReservationAffinityPtrOutput
+	ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Context) NodePoolNodeConfigReservationAffinityPtrOutput
+}
+
+type nodePoolNodeConfigReservationAffinityPtrType NodePoolNodeConfigReservationAffinityArgs
+
+func NodePoolNodeConfigReservationAffinityPtr(v *NodePoolNodeConfigReservationAffinityArgs) NodePoolNodeConfigReservationAffinityPtrInput {
+	return (*nodePoolNodeConfigReservationAffinityPtrType)(v)
+}
+
+func (*nodePoolNodeConfigReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigReservationAffinityPtrType) ToNodePoolNodeConfigReservationAffinityPtrOutput() NodePoolNodeConfigReservationAffinityPtrOutput {
+	return i.ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigReservationAffinityPtrType) ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+type NodePoolNodeConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) ToNodePoolNodeConfigReservationAffinityOutput() NodePoolNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) ToNodePoolNodeConfigReservationAffinityOutputWithContext(ctx context.Context) NodePoolNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) ToNodePoolNodeConfigReservationAffinityPtrOutput() NodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigReservationAffinity) *NodePoolNodeConfigReservationAffinity {
+		return &v
+	}).(NodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type NodePoolNodeConfigReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigReservationAffinityPtrOutput) ToNodePoolNodeConfigReservationAffinityPtrOutput() NodePoolNodeConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigReservationAffinityPtrOutput) ToNodePoolNodeConfigReservationAffinityPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigReservationAffinityPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigReservationAffinityPtrOutput) Elem() NodePoolNodeConfigReservationAffinityOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) NodePoolNodeConfigReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigReservationAffinity
+		return ret
+	}).(NodePoolNodeConfigReservationAffinityOutput)
+}
+
+func (o NodePoolNodeConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type NodePoolNodeConfigSandboxConfig struct {
@@ -26957,6 +27799,7 @@ type GetClusterNodeConfig struct {
 	NodeGroup               string                                       `pulumi:"nodeGroup"`
 	OauthScopes             []string                                     `pulumi:"oauthScopes"`
 	Preemptible             bool                                         `pulumi:"preemptible"`
+	ReservationAffinities   []GetClusterNodeConfigReservationAffinity    `pulumi:"reservationAffinities"`
 	SandboxConfigs          []GetClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
 	ServiceAccount          string                                       `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
@@ -26996,6 +27839,7 @@ type GetClusterNodeConfigArgs struct {
 	NodeGroup               pulumi.StringInput                                   `pulumi:"nodeGroup"`
 	OauthScopes             pulumi.StringArrayInput                              `pulumi:"oauthScopes"`
 	Preemptible             pulumi.BoolInput                                     `pulumi:"preemptible"`
+	ReservationAffinities   GetClusterNodeConfigReservationAffinityArrayInput    `pulumi:"reservationAffinities"`
 	SandboxConfigs          GetClusterNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
 	ServiceAccount          pulumi.StringInput                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
@@ -27128,6 +27972,10 @@ func (o GetClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 
 func (o GetClusterNodeConfigOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNodeConfigOutput) ReservationAffinities() GetClusterNodeConfigReservationAffinityArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigReservationAffinity { return v.ReservationAffinities }).(GetClusterNodeConfigReservationAffinityArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) SandboxConfigs() GetClusterNodeConfigSandboxConfigArrayOutput {
@@ -27770,6 +28618,112 @@ func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetClusterNodeConfigLinuxNodeConfigOutput)
 }
 
+type GetClusterNodeConfigReservationAffinity struct {
+	ConsumeReservationType string   `pulumi:"consumeReservationType"`
+	Key                    string   `pulumi:"key"`
+	Values                 []string `pulumi:"values"`
+}
+
+// GetClusterNodeConfigReservationAffinityInput is an input type that accepts GetClusterNodeConfigReservationAffinityArgs and GetClusterNodeConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigReservationAffinityInput` via:
+//
+//	GetClusterNodeConfigReservationAffinityArgs{...}
+type GetClusterNodeConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigReservationAffinityOutput() GetClusterNodeConfigReservationAffinityOutput
+	ToGetClusterNodeConfigReservationAffinityOutputWithContext(context.Context) GetClusterNodeConfigReservationAffinityOutput
+}
+
+type GetClusterNodeConfigReservationAffinityArgs struct {
+	ConsumeReservationType pulumi.StringInput      `pulumi:"consumeReservationType"`
+	Key                    pulumi.StringInput      `pulumi:"key"`
+	Values                 pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetClusterNodeConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigReservationAffinityArgs) ToGetClusterNodeConfigReservationAffinityOutput() GetClusterNodeConfigReservationAffinityOutput {
+	return i.ToGetClusterNodeConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigReservationAffinityArgs) ToGetClusterNodeConfigReservationAffinityOutputWithContext(ctx context.Context) GetClusterNodeConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigReservationAffinityOutput)
+}
+
+// GetClusterNodeConfigReservationAffinityArrayInput is an input type that accepts GetClusterNodeConfigReservationAffinityArray and GetClusterNodeConfigReservationAffinityArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigReservationAffinityArrayInput` via:
+//
+//	GetClusterNodeConfigReservationAffinityArray{ GetClusterNodeConfigReservationAffinityArgs{...} }
+type GetClusterNodeConfigReservationAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigReservationAffinityArrayOutput() GetClusterNodeConfigReservationAffinityArrayOutput
+	ToGetClusterNodeConfigReservationAffinityArrayOutputWithContext(context.Context) GetClusterNodeConfigReservationAffinityArrayOutput
+}
+
+type GetClusterNodeConfigReservationAffinityArray []GetClusterNodeConfigReservationAffinityInput
+
+func (GetClusterNodeConfigReservationAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigReservationAffinityArray) ToGetClusterNodeConfigReservationAffinityArrayOutput() GetClusterNodeConfigReservationAffinityArrayOutput {
+	return i.ToGetClusterNodeConfigReservationAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigReservationAffinityArray) ToGetClusterNodeConfigReservationAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigReservationAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigReservationAffinityArrayOutput)
+}
+
+type GetClusterNodeConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigReservationAffinityOutput) ToGetClusterNodeConfigReservationAffinityOutput() GetClusterNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigReservationAffinityOutput) ToGetClusterNodeConfigReservationAffinityOutputWithContext(ctx context.Context) GetClusterNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigReservationAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigReservationAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodeConfigReservationAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigReservationAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigReservationAffinityArrayOutput) ToGetClusterNodeConfigReservationAffinityArrayOutput() GetClusterNodeConfigReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigReservationAffinityArrayOutput) ToGetClusterNodeConfigReservationAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigReservationAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigReservationAffinity {
+		return vs[0].([]GetClusterNodeConfigReservationAffinity)[vs[1].(int)]
+	}).(GetClusterNodeConfigReservationAffinityOutput)
+}
+
 type GetClusterNodeConfigSandboxConfig struct {
 	SandboxType string `pulumi:"sandboxType"`
 }
@@ -28345,6 +29299,194 @@ func (o GetClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetClusterNodePo
 	}).(GetClusterNodePoolOutput)
 }
 
+type GetClusterNodePoolAutoConfig struct {
+	NetworkTags []GetClusterNodePoolAutoConfigNetworkTag `pulumi:"networkTags"`
+}
+
+// GetClusterNodePoolAutoConfigInput is an input type that accepts GetClusterNodePoolAutoConfigArgs and GetClusterNodePoolAutoConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigInput` via:
+//
+//	GetClusterNodePoolAutoConfigArgs{...}
+type GetClusterNodePoolAutoConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigOutput() GetClusterNodePoolAutoConfigOutput
+	ToGetClusterNodePoolAutoConfigOutputWithContext(context.Context) GetClusterNodePoolAutoConfigOutput
+}
+
+type GetClusterNodePoolAutoConfigArgs struct {
+	NetworkTags GetClusterNodePoolAutoConfigNetworkTagArrayInput `pulumi:"networkTags"`
+}
+
+func (GetClusterNodePoolAutoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigArgs) ToGetClusterNodePoolAutoConfigOutput() GetClusterNodePoolAutoConfigOutput {
+	return i.ToGetClusterNodePoolAutoConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigArgs) ToGetClusterNodePoolAutoConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigOutput)
+}
+
+// GetClusterNodePoolAutoConfigArrayInput is an input type that accepts GetClusterNodePoolAutoConfigArray and GetClusterNodePoolAutoConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigArrayInput` via:
+//
+//	GetClusterNodePoolAutoConfigArray{ GetClusterNodePoolAutoConfigArgs{...} }
+type GetClusterNodePoolAutoConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigArrayOutput() GetClusterNodePoolAutoConfigArrayOutput
+	ToGetClusterNodePoolAutoConfigArrayOutputWithContext(context.Context) GetClusterNodePoolAutoConfigArrayOutput
+}
+
+type GetClusterNodePoolAutoConfigArray []GetClusterNodePoolAutoConfigInput
+
+func (GetClusterNodePoolAutoConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigArray) ToGetClusterNodePoolAutoConfigArrayOutput() GetClusterNodePoolAutoConfigArrayOutput {
+	return i.ToGetClusterNodePoolAutoConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigArray) ToGetClusterNodePoolAutoConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigOutput) ToGetClusterNodePoolAutoConfigOutput() GetClusterNodePoolAutoConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigOutput) ToGetClusterNodePoolAutoConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigOutput) NetworkTags() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) []GetClusterNodePoolAutoConfigNetworkTag { return v.NetworkTags }).(GetClusterNodePoolAutoConfigNetworkTagArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigArrayOutput) ToGetClusterNodePoolAutoConfigArrayOutput() GetClusterNodePoolAutoConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigArrayOutput) ToGetClusterNodePoolAutoConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfig {
+		return vs[0].([]GetClusterNodePoolAutoConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoConfigOutput)
+}
+
+type GetClusterNodePoolAutoConfigNetworkTag struct {
+	Tags []string `pulumi:"tags"`
+}
+
+// GetClusterNodePoolAutoConfigNetworkTagInput is an input type that accepts GetClusterNodePoolAutoConfigNetworkTagArgs and GetClusterNodePoolAutoConfigNetworkTagOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNetworkTagInput` via:
+//
+//	GetClusterNodePoolAutoConfigNetworkTagArgs{...}
+type GetClusterNodePoolAutoConfigNetworkTagInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNetworkTagOutput() GetClusterNodePoolAutoConfigNetworkTagOutput
+	ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNetworkTagOutput
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagArgs struct {
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetClusterNodePoolAutoConfigNetworkTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArgs) ToGetClusterNodePoolAutoConfigNetworkTagOutput() GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return i.ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArgs) ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNetworkTagOutput)
+}
+
+// GetClusterNodePoolAutoConfigNetworkTagArrayInput is an input type that accepts GetClusterNodePoolAutoConfigNetworkTagArray and GetClusterNodePoolAutoConfigNetworkTagArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNetworkTagArrayInput` via:
+//
+//	GetClusterNodePoolAutoConfigNetworkTagArray{ GetClusterNodePoolAutoConfigNetworkTagArgs{...} }
+type GetClusterNodePoolAutoConfigNetworkTagArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNetworkTagArrayOutput() GetClusterNodePoolAutoConfigNetworkTagArrayOutput
+	ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNetworkTagArrayOutput
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagArray []GetClusterNodePoolAutoConfigNetworkTagInput
+
+func (GetClusterNodePoolAutoConfigNetworkTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArray) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutput() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return i.ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNetworkTagArray) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNetworkTagArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNetworkTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagOutput) ToGetClusterNodePoolAutoConfigNetworkTagOutput() GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagOutput) ToGetClusterNodePoolAutoConfigNetworkTagOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfigNetworkTag) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigNetworkTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNetworkTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNetworkTag)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutput() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) ToGetClusterNodePoolAutoConfigNetworkTagArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoConfigNetworkTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfigNetworkTag {
+		return vs[0].([]GetClusterNodePoolAutoConfigNetworkTag)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoConfigNetworkTagOutput)
+}
+
 type GetClusterNodePoolAutoscaling struct {
 	MaxNodeCount int `pulumi:"maxNodeCount"`
 	MinNodeCount int `pulumi:"minNodeCount"`
@@ -28670,6 +29812,7 @@ type GetClusterNodePoolNodeConfig struct {
 	NodeGroup               string                                               `pulumi:"nodeGroup"`
 	OauthScopes             []string                                             `pulumi:"oauthScopes"`
 	Preemptible             bool                                                 `pulumi:"preemptible"`
+	ReservationAffinities   []GetClusterNodePoolNodeConfigReservationAffinity    `pulumi:"reservationAffinities"`
 	SandboxConfigs          []GetClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
 	ServiceAccount          string                                               `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
@@ -28709,6 +29852,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	NodeGroup               pulumi.StringInput                                           `pulumi:"nodeGroup"`
 	OauthScopes             pulumi.StringArrayInput                                      `pulumi:"oauthScopes"`
 	Preemptible             pulumi.BoolInput                                             `pulumi:"preemptible"`
+	ReservationAffinities   GetClusterNodePoolNodeConfigReservationAffinityArrayInput    `pulumi:"reservationAffinities"`
 	SandboxConfigs          GetClusterNodePoolNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
 	ServiceAccount          pulumi.StringInput                                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
@@ -28847,6 +29991,12 @@ func (o GetClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutp
 
 func (o GetClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) ReservationAffinities() GetClusterNodePoolNodeConfigReservationAffinityArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigReservationAffinity {
+		return v.ReservationAffinities
+	}).(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) SandboxConfigs() GetClusterNodePoolNodeConfigSandboxConfigArrayOutput {
@@ -29489,6 +30639,112 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigReservationAffinity struct {
+	ConsumeReservationType string   `pulumi:"consumeReservationType"`
+	Key                    string   `pulumi:"key"`
+	Values                 []string `pulumi:"values"`
+}
+
+// GetClusterNodePoolNodeConfigReservationAffinityInput is an input type that accepts GetClusterNodePoolNodeConfigReservationAffinityArgs and GetClusterNodePoolNodeConfigReservationAffinityOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigReservationAffinityInput` via:
+//
+//	GetClusterNodePoolNodeConfigReservationAffinityArgs{...}
+type GetClusterNodePoolNodeConfigReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigReservationAffinityOutput() GetClusterNodePoolNodeConfigReservationAffinityOutput
+	ToGetClusterNodePoolNodeConfigReservationAffinityOutputWithContext(context.Context) GetClusterNodePoolNodeConfigReservationAffinityOutput
+}
+
+type GetClusterNodePoolNodeConfigReservationAffinityArgs struct {
+	ConsumeReservationType pulumi.StringInput      `pulumi:"consumeReservationType"`
+	Key                    pulumi.StringInput      `pulumi:"key"`
+	Values                 pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetClusterNodePoolNodeConfigReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigReservationAffinityArgs) ToGetClusterNodePoolNodeConfigReservationAffinityOutput() GetClusterNodePoolNodeConfigReservationAffinityOutput {
+	return i.ToGetClusterNodePoolNodeConfigReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigReservationAffinityArgs) ToGetClusterNodePoolNodeConfigReservationAffinityOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigReservationAffinityOutput)
+}
+
+// GetClusterNodePoolNodeConfigReservationAffinityArrayInput is an input type that accepts GetClusterNodePoolNodeConfigReservationAffinityArray and GetClusterNodePoolNodeConfigReservationAffinityArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigReservationAffinityArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigReservationAffinityArray{ GetClusterNodePoolNodeConfigReservationAffinityArgs{...} }
+type GetClusterNodePoolNodeConfigReservationAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutput() GetClusterNodePoolNodeConfigReservationAffinityArrayOutput
+	ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigReservationAffinityArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigReservationAffinityArray []GetClusterNodePoolNodeConfigReservationAffinityInput
+
+func (GetClusterNodePoolNodeConfigReservationAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigReservationAffinityArray) ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutput() GetClusterNodePoolNodeConfigReservationAffinityArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigReservationAffinityArray) ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigReservationAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityOutput) ToGetClusterNodePoolNodeConfigReservationAffinityOutput() GetClusterNodePoolNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityOutput) ToGetClusterNodePoolNodeConfigReservationAffinityOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigReservationAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigReservationAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigReservationAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigReservationAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigReservationAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityArrayOutput) ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutput() GetClusterNodePoolNodeConfigReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityArrayOutput) ToGetClusterNodePoolNodeConfigReservationAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigReservationAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigReservationAffinity {
+		return vs[0].([]GetClusterNodePoolNodeConfigReservationAffinity)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigReservationAffinityOutput)
 }
 
 type GetClusterNodePoolNodeConfigSandboxConfig struct {
@@ -31364,6 +32620,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigReservationAffinityInput)(nil)).Elem(), ClusterNodeConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSandboxConfigInput)(nil)).Elem(), ClusterNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSandboxConfigPtrInput)(nil)).Elem(), ClusterNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterNodeConfigShieldedInstanceConfigArgs{})
@@ -31374,6 +32632,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), ClusterNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolInput)(nil)).Elem(), ClusterNodePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolArrayInput)(nil)).Elem(), ClusterNodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigInput)(nil)).Elem(), ClusterNodePoolAutoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingPtrInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolManagementInput)(nil)).Elem(), ClusterNodePoolManagementArgs{})
@@ -31394,6 +32656,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), ClusterNodePoolNodeConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
@@ -31448,6 +32712,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), NodePoolNodeConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigReservationAffinityPtrInput)(nil)).Elem(), NodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), NodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSandboxConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), NodePoolNodeConfigShieldedInstanceConfigArgs{})
@@ -31550,6 +32816,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodeConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigReservationAffinityArrayInput)(nil)).Elem(), GetClusterNodeConfigReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSandboxConfigInput)(nil)).Elem(), GetClusterNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSandboxConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigSandboxConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), GetClusterNodeConfigShieldedInstanceConfigArgs{})
@@ -31560,6 +32828,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigWorkloadMetadataConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolInput)(nil)).Elem(), GetClusterNodePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolArrayInput)(nil)).Elem(), GetClusterNodePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingArrayInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementInput)(nil)).Elem(), GetClusterNodePoolManagementArgs{})
@@ -31580,6 +32852,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSandboxConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
@@ -31794,6 +33068,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigShieldedInstanceConfigOutput{})
@@ -31804,6 +33080,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolManagementOutput{})
@@ -31824,6 +33104,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})
@@ -31878,6 +33160,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigShieldedInstanceConfigOutput{})
@@ -31980,6 +33264,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigShieldedInstanceConfigOutput{})
@@ -31990,6 +33276,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigWorkloadMetadataConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementOutput{})
@@ -32010,6 +33300,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})

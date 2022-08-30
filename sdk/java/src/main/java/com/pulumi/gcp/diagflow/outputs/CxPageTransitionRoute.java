@@ -17,54 +17,39 @@ public final class CxPageTransitionRoute {
      * At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
      * 
      */
-    private final @Nullable String condition;
+    private @Nullable String condition;
     /**
      * @return The unique identifier of an Intent.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
      * 
      */
-    private final @Nullable String intent;
+    private @Nullable String intent;
     /**
      * @return -
      * The unique identifier of this event handler.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The target flow to transition to.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
-    private final @Nullable String targetFlow;
+    private @Nullable String targetFlow;
     /**
      * @return The target page to transition to.
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
-    private final @Nullable String targetPage;
+    private @Nullable String targetPage;
     /**
      * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
      * Structure is documented below.
      * 
      */
-    private final @Nullable CxPageTransitionRouteTriggerFulfillment triggerFulfillment;
+    private @Nullable CxPageTransitionRouteTriggerFulfillment triggerFulfillment;
 
-    @CustomType.Constructor
-    private CxPageTransitionRoute(
-        @CustomType.Parameter("condition") @Nullable String condition,
-        @CustomType.Parameter("intent") @Nullable String intent,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("targetFlow") @Nullable String targetFlow,
-        @CustomType.Parameter("targetPage") @Nullable String targetPage,
-        @CustomType.Parameter("triggerFulfillment") @Nullable CxPageTransitionRouteTriggerFulfillment triggerFulfillment) {
-        this.condition = condition;
-        this.intent = intent;
-        this.name = name;
-        this.targetFlow = targetFlow;
-        this.targetPage = targetPage;
-        this.triggerFulfillment = triggerFulfillment;
-    }
-
+    private CxPageTransitionRoute() {}
     /**
      * @return The condition to evaluate against form parameters or session parameters.
      * At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
@@ -121,7 +106,7 @@ public final class CxPageTransitionRoute {
     public static Builder builder(CxPageTransitionRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String condition;
         private @Nullable String intent;
@@ -129,11 +114,7 @@ public final class CxPageTransitionRoute {
         private @Nullable String targetFlow;
         private @Nullable String targetPage;
         private @Nullable CxPageTransitionRouteTriggerFulfillment triggerFulfillment;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageTransitionRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -144,31 +125,45 @@ public final class CxPageTransitionRoute {
     	      this.triggerFulfillment = defaults.triggerFulfillment;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable String condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder intent(@Nullable String intent) {
             this.intent = intent;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder targetFlow(@Nullable String targetFlow) {
             this.targetFlow = targetFlow;
             return this;
         }
+        @CustomType.Setter
         public Builder targetPage(@Nullable String targetPage) {
             this.targetPage = targetPage;
             return this;
         }
+        @CustomType.Setter
         public Builder triggerFulfillment(@Nullable CxPageTransitionRouteTriggerFulfillment triggerFulfillment) {
             this.triggerFulfillment = triggerFulfillment;
             return this;
-        }        public CxPageTransitionRoute build() {
-            return new CxPageTransitionRoute(condition, intent, name, targetFlow, targetPage, triggerFulfillment);
+        }
+        public CxPageTransitionRoute build() {
+            final var o = new CxPageTransitionRoute();
+            o.condition = condition;
+            o.intent = intent;
+            o.name = name;
+            o.targetFlow = targetFlow;
+            o.targetPage = targetPage;
+            o.triggerFulfillment = triggerFulfillment;
+            return o;
         }
     }
 }

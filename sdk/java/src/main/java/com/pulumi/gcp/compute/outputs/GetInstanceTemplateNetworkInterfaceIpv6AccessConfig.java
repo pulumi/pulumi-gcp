@@ -9,29 +9,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
-    private final String externalIpv6;
-    private final String externalIpv6PrefixLength;
+    private String externalIpv6;
+    private String externalIpv6PrefixLength;
     /**
      * @return The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM or
      * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
      * 
      */
-    private final String networkTier;
-    private final String publicPtrDomainName;
+    private String networkTier;
+    private String publicPtrDomainName;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateNetworkInterfaceIpv6AccessConfig(
-        @CustomType.Parameter("externalIpv6") String externalIpv6,
-        @CustomType.Parameter("externalIpv6PrefixLength") String externalIpv6PrefixLength,
-        @CustomType.Parameter("networkTier") String networkTier,
-        @CustomType.Parameter("publicPtrDomainName") String publicPtrDomainName) {
-        this.externalIpv6 = externalIpv6;
-        this.externalIpv6PrefixLength = externalIpv6PrefixLength;
-        this.networkTier = networkTier;
-        this.publicPtrDomainName = publicPtrDomainName;
-    }
-
+    private GetInstanceTemplateNetworkInterfaceIpv6AccessConfig() {}
     public String externalIpv6() {
         return this.externalIpv6;
     }
@@ -58,17 +47,13 @@ public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     public static Builder builder(GetInstanceTemplateNetworkInterfaceIpv6AccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String externalIpv6;
         private String externalIpv6PrefixLength;
         private String networkTier;
         private String publicPtrDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateNetworkInterfaceIpv6AccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalIpv6 = defaults.externalIpv6;
@@ -77,23 +62,33 @@ public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
 
+        @CustomType.Setter
         public Builder externalIpv6(String externalIpv6) {
             this.externalIpv6 = Objects.requireNonNull(externalIpv6);
             return this;
         }
+        @CustomType.Setter
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             this.externalIpv6PrefixLength = Objects.requireNonNull(externalIpv6PrefixLength);
             return this;
         }
+        @CustomType.Setter
         public Builder networkTier(String networkTier) {
             this.networkTier = Objects.requireNonNull(networkTier);
             return this;
         }
+        @CustomType.Setter
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
             return this;
-        }        public GetInstanceTemplateNetworkInterfaceIpv6AccessConfig build() {
-            return new GetInstanceTemplateNetworkInterfaceIpv6AccessConfig(externalIpv6, externalIpv6PrefixLength, networkTier, publicPtrDomainName);
+        }
+        public GetInstanceTemplateNetworkInterfaceIpv6AccessConfig build() {
+            final var o = new GetInstanceTemplateNetworkInterfaceIpv6AccessConfig();
+            o.externalIpv6 = externalIpv6;
+            o.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            o.networkTier = networkTier;
+            o.publicPtrDomainName = publicPtrDomainName;
+            return o;
         }
     }
 }

@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabaseInstanceIpAddress {
-    private final @Nullable String ipAddress;
-    private final @Nullable String timeToRetire;
-    private final @Nullable String type;
+    private @Nullable String ipAddress;
+    private @Nullable String timeToRetire;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private DatabaseInstanceIpAddress(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("timeToRetire") @Nullable String timeToRetire,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.ipAddress = ipAddress;
-        this.timeToRetire = timeToRetire;
-        this.type = type;
-    }
-
+    private DatabaseInstanceIpAddress() {}
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -42,16 +33,12 @@ public final class DatabaseInstanceIpAddress {
     public static Builder builder(DatabaseInstanceIpAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private @Nullable String timeToRetire;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceIpAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
@@ -59,19 +46,27 @@ public final class DatabaseInstanceIpAddress {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder timeToRetire(@Nullable String timeToRetire) {
             this.timeToRetire = timeToRetire;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public DatabaseInstanceIpAddress build() {
-            return new DatabaseInstanceIpAddress(ipAddress, timeToRetire, type);
+        }
+        public DatabaseInstanceIpAddress build() {
+            final var o = new DatabaseInstanceIpAddress();
+            o.ipAddress = ipAddress;
+            o.timeToRetire = timeToRetire;
+            o.type = type;
+            return o;
         }
     }
 }

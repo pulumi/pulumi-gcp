@@ -128,7 +128,7 @@ import * as utilities from "../utilities";
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
  *     topic: exampleTopic.name,
  *     bigqueryConfig: {
- *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
+ *         table: pulumi.interpolate`${testTable.project}:${testTable.datasetId}.${testTable.tableId}`,
  *     },
  * }, {
  *     dependsOn: [

@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
-    private final Boolean guestFlush;
-    private final Map<String,String> labels;
-    private final List<String> storageLocations;
+    private Boolean guestFlush;
+    private Map<String,String> labels;
+    private List<String> storageLocations;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicySnapshotProperty(
-        @CustomType.Parameter("guestFlush") Boolean guestFlush,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("storageLocations") List<String> storageLocations) {
-        this.guestFlush = guestFlush;
-        this.labels = labels;
-        this.storageLocations = storageLocations;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicySnapshotProperty() {}
     public Boolean guestFlush() {
         return this.guestFlush;
     }
@@ -43,16 +34,12 @@ public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicySnapshotProperty defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean guestFlush;
         private Map<String,String> labels;
         private List<String> storageLocations;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicySnapshotProperty defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.guestFlush = defaults.guestFlush;
@@ -60,22 +47,30 @@ public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
     	      this.storageLocations = defaults.storageLocations;
         }
 
+        @CustomType.Setter
         public Builder guestFlush(Boolean guestFlush) {
             this.guestFlush = Objects.requireNonNull(guestFlush);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder storageLocations(List<String> storageLocations) {
             this.storageLocations = Objects.requireNonNull(storageLocations);
             return this;
         }
         public Builder storageLocations(String... storageLocations) {
             return storageLocations(List.of(storageLocations));
-        }        public GetResourcePolicySnapshotSchedulePolicySnapshotProperty build() {
-            return new GetResourcePolicySnapshotSchedulePolicySnapshotProperty(guestFlush, labels, storageLocations);
+        }
+        public GetResourcePolicySnapshotSchedulePolicySnapshotProperty build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicySnapshotProperty();
+            o.guestFlush = guestFlush;
+            o.labels = labels;
+            o.storageLocations = storageLocations;
+            return o;
         }
     }
 }

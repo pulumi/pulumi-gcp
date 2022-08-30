@@ -20,38 +20,27 @@ public final class GuestPoliciesRecipeArtifact {
      * GCS: An object generation number must be specified.
      * 
      */
-    private final @Nullable Boolean allowInsecure;
+    private @Nullable Boolean allowInsecure;
     /**
      * @return A Google Cloud Storage artifact.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeArtifactGcs gcs;
+    private @Nullable GuestPoliciesRecipeArtifactGcs gcs;
     /**
      * @return Id of the artifact, which the installation and update steps of this recipe can reference.
      * Artifacts in a recipe cannot have the same id.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A generic remote artifact.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeArtifactRemote remote;
+    private @Nullable GuestPoliciesRecipeArtifactRemote remote;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeArtifact(
-        @CustomType.Parameter("allowInsecure") @Nullable Boolean allowInsecure,
-        @CustomType.Parameter("gcs") @Nullable GuestPoliciesRecipeArtifactGcs gcs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("remote") @Nullable GuestPoliciesRecipeArtifactRemote remote) {
-        this.allowInsecure = allowInsecure;
-        this.gcs = gcs;
-        this.id = id;
-        this.remote = remote;
-    }
-
+    private GuestPoliciesRecipeArtifact() {}
     /**
      * @return Defaults to false. When false, recipes are subject to validations based on the artifact type:
      * Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
@@ -93,17 +82,13 @@ public final class GuestPoliciesRecipeArtifact {
     public static Builder builder(GuestPoliciesRecipeArtifact defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowInsecure;
         private @Nullable GuestPoliciesRecipeArtifactGcs gcs;
         private String id;
         private @Nullable GuestPoliciesRecipeArtifactRemote remote;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeArtifact defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowInsecure = defaults.allowInsecure;
@@ -112,23 +97,33 @@ public final class GuestPoliciesRecipeArtifact {
     	      this.remote = defaults.remote;
         }
 
+        @CustomType.Setter
         public Builder allowInsecure(@Nullable Boolean allowInsecure) {
             this.allowInsecure = allowInsecure;
             return this;
         }
+        @CustomType.Setter
         public Builder gcs(@Nullable GuestPoliciesRecipeArtifactGcs gcs) {
             this.gcs = gcs;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder remote(@Nullable GuestPoliciesRecipeArtifactRemote remote) {
             this.remote = remote;
             return this;
-        }        public GuestPoliciesRecipeArtifact build() {
-            return new GuestPoliciesRecipeArtifact(allowInsecure, gcs, id, remote);
+        }
+        public GuestPoliciesRecipeArtifact build() {
+            final var o = new GuestPoliciesRecipeArtifact();
+            o.allowInsecure = allowInsecure;
+            o.gcs = gcs;
+            o.id = id;
+            o.remote = remote;
+            return o;
         }
     }
 }

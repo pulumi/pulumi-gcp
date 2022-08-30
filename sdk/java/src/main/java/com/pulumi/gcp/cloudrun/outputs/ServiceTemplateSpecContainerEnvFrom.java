@@ -18,29 +18,20 @@ public final class ServiceTemplateSpecContainerEnvFrom {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRef configMapRef;
+    private @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRef configMapRef;
     /**
      * @return An optional identifier to prepend to each key in the ConfigMap.
      * 
      */
-    private final @Nullable String prefix;
+    private @Nullable String prefix;
     /**
      * @return The Secret to select from.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateSpecContainerEnvFromSecretRef secretRef;
+    private @Nullable ServiceTemplateSpecContainerEnvFromSecretRef secretRef;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnvFrom(
-        @CustomType.Parameter("configMapRef") @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRef configMapRef,
-        @CustomType.Parameter("prefix") @Nullable String prefix,
-        @CustomType.Parameter("secretRef") @Nullable ServiceTemplateSpecContainerEnvFromSecretRef secretRef) {
-        this.configMapRef = configMapRef;
-        this.prefix = prefix;
-        this.secretRef = secretRef;
-    }
-
+    private ServiceTemplateSpecContainerEnvFrom() {}
     /**
      * @return The ConfigMap to select from.
      * Structure is documented below.
@@ -72,16 +63,12 @@ public final class ServiceTemplateSpecContainerEnvFrom {
     public static Builder builder(ServiceTemplateSpecContainerEnvFrom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRef configMapRef;
         private @Nullable String prefix;
         private @Nullable ServiceTemplateSpecContainerEnvFromSecretRef secretRef;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnvFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configMapRef = defaults.configMapRef;
@@ -89,19 +76,27 @@ public final class ServiceTemplateSpecContainerEnvFrom {
     	      this.secretRef = defaults.secretRef;
         }
 
+        @CustomType.Setter
         public Builder configMapRef(@Nullable ServiceTemplateSpecContainerEnvFromConfigMapRef configMapRef) {
             this.configMapRef = configMapRef;
             return this;
         }
+        @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
             this.prefix = prefix;
             return this;
         }
+        @CustomType.Setter
         public Builder secretRef(@Nullable ServiceTemplateSpecContainerEnvFromSecretRef secretRef) {
             this.secretRef = secretRef;
             return this;
-        }        public ServiceTemplateSpecContainerEnvFrom build() {
-            return new ServiceTemplateSpecContainerEnvFrom(configMapRef, prefix, secretRef);
+        }
+        public ServiceTemplateSpecContainerEnvFrom build() {
+            final var o = new ServiceTemplateSpecContainerEnvFrom();
+            o.configMapRef = configMapRef;
+            o.prefix = prefix;
+            o.secretRef = secretRef;
+            return o;
         }
     }
 }

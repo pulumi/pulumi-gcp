@@ -26,23 +26,16 @@ public final class EntryGcsFilesetSpec {
      * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
      * 
      */
-    private final List<String> filePatterns;
+    private List<String> filePatterns;
     /**
      * @return -
      * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<EntryGcsFilesetSpecSampleGcsFileSpec> sampleGcsFileSpecs;
+    private @Nullable List<EntryGcsFilesetSpecSampleGcsFileSpec> sampleGcsFileSpecs;
 
-    @CustomType.Constructor
-    private EntryGcsFilesetSpec(
-        @CustomType.Parameter("filePatterns") List<String> filePatterns,
-        @CustomType.Parameter("sampleGcsFileSpecs") @Nullable List<EntryGcsFilesetSpecSampleGcsFileSpec> sampleGcsFileSpecs) {
-        this.filePatterns = filePatterns;
-        this.sampleGcsFileSpecs = sampleGcsFileSpecs;
-    }
-
+    private EntryGcsFilesetSpec() {}
     /**
      * @return Patterns to identify a set of files in Google Cloud Storage.
      * See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
@@ -77,21 +70,18 @@ public final class EntryGcsFilesetSpec {
     public static Builder builder(EntryGcsFilesetSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> filePatterns;
         private @Nullable List<EntryGcsFilesetSpecSampleGcsFileSpec> sampleGcsFileSpecs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntryGcsFilesetSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filePatterns = defaults.filePatterns;
     	      this.sampleGcsFileSpecs = defaults.sampleGcsFileSpecs;
         }
 
+        @CustomType.Setter
         public Builder filePatterns(List<String> filePatterns) {
             this.filePatterns = Objects.requireNonNull(filePatterns);
             return this;
@@ -99,14 +89,19 @@ public final class EntryGcsFilesetSpec {
         public Builder filePatterns(String... filePatterns) {
             return filePatterns(List.of(filePatterns));
         }
+        @CustomType.Setter
         public Builder sampleGcsFileSpecs(@Nullable List<EntryGcsFilesetSpecSampleGcsFileSpec> sampleGcsFileSpecs) {
             this.sampleGcsFileSpecs = sampleGcsFileSpecs;
             return this;
         }
         public Builder sampleGcsFileSpecs(EntryGcsFilesetSpecSampleGcsFileSpec... sampleGcsFileSpecs) {
             return sampleGcsFileSpecs(List.of(sampleGcsFileSpecs));
-        }        public EntryGcsFilesetSpec build() {
-            return new EntryGcsFilesetSpec(filePatterns, sampleGcsFileSpecs);
+        }
+        public EntryGcsFilesetSpec build() {
+            final var o = new EntryGcsFilesetSpec();
+            o.filePatterns = filePatterns;
+            o.sampleGcsFileSpecs = sampleGcsFileSpecs;
+            return o;
         }
     }
 }

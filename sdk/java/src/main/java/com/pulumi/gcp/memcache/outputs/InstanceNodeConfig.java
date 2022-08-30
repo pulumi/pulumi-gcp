@@ -13,21 +13,14 @@ public final class InstanceNodeConfig {
      * @return Number of CPUs per node.
      * 
      */
-    private final Integer cpuCount;
+    private Integer cpuCount;
     /**
      * @return Memory size in Mebibytes for each memcache node.
      * 
      */
-    private final Integer memorySizeMb;
+    private Integer memorySizeMb;
 
-    @CustomType.Constructor
-    private InstanceNodeConfig(
-        @CustomType.Parameter("cpuCount") Integer cpuCount,
-        @CustomType.Parameter("memorySizeMb") Integer memorySizeMb) {
-        this.cpuCount = cpuCount;
-        this.memorySizeMb = memorySizeMb;
-    }
-
+    private InstanceNodeConfig() {}
     /**
      * @return Number of CPUs per node.
      * 
@@ -50,30 +43,32 @@ public final class InstanceNodeConfig {
     public static Builder builder(InstanceNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer cpuCount;
         private Integer memorySizeMb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
     	      this.memorySizeMb = defaults.memorySizeMb;
         }
 
+        @CustomType.Setter
         public Builder cpuCount(Integer cpuCount) {
             this.cpuCount = Objects.requireNonNull(cpuCount);
             return this;
         }
+        @CustomType.Setter
         public Builder memorySizeMb(Integer memorySizeMb) {
             this.memorySizeMb = Objects.requireNonNull(memorySizeMb);
             return this;
-        }        public InstanceNodeConfig build() {
-            return new InstanceNodeConfig(cpuCount, memorySizeMb);
+        }
+        public InstanceNodeConfig build() {
+            final var o = new InstanceNodeConfig();
+            o.cpuCount = cpuCount;
+            o.memorySizeMb = memorySizeMb;
+            return o;
         }
     }
 }

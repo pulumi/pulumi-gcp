@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTopicSchemaSetting {
-    private final String encoding;
-    private final String schema;
+    private String encoding;
+    private String schema;
 
-    @CustomType.Constructor
-    private GetTopicSchemaSetting(
-        @CustomType.Parameter("encoding") String encoding,
-        @CustomType.Parameter("schema") String schema) {
-        this.encoding = encoding;
-        this.schema = schema;
-    }
-
+    private GetTopicSchemaSetting() {}
     public String encoding() {
         return this.encoding;
     }
@@ -34,30 +27,32 @@ public final class GetTopicSchemaSetting {
     public static Builder builder(GetTopicSchemaSetting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String encoding;
         private String schema;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTopicSchemaSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encoding = defaults.encoding;
     	      this.schema = defaults.schema;
         }
 
+        @CustomType.Setter
         public Builder encoding(String encoding) {
             this.encoding = Objects.requireNonNull(encoding);
             return this;
         }
+        @CustomType.Setter
         public Builder schema(String schema) {
             this.schema = Objects.requireNonNull(schema);
             return this;
-        }        public GetTopicSchemaSetting build() {
-            return new GetTopicSchemaSetting(encoding, schema);
+        }
+        public GetTopicSchemaSetting build() {
+            final var o = new GetTopicSchemaSetting();
+            o.encoding = encoding;
+            o.schema = schema;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class NodeSchedulingConfig {
      * @return Defines whether the TPU instance is preemptible.
      * 
      */
-    private final Boolean preemptible;
+    private Boolean preemptible;
 
-    @CustomType.Constructor
-    private NodeSchedulingConfig(@CustomType.Parameter("preemptible") Boolean preemptible) {
-        this.preemptible = preemptible;
-    }
-
+    private NodeSchedulingConfig() {}
     /**
      * @return Defines whether the TPU instance is preemptible.
      * 
@@ -35,24 +31,24 @@ public final class NodeSchedulingConfig {
     public static Builder builder(NodeSchedulingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean preemptible;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeSchedulingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.preemptible = defaults.preemptible;
         }
 
+        @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
             this.preemptible = Objects.requireNonNull(preemptible);
             return this;
-        }        public NodeSchedulingConfig build() {
-            return new NodeSchedulingConfig(preemptible);
+        }
+        public NodeSchedulingConfig build() {
+            final var o = new NodeSchedulingConfig();
+            o.preemptible = preemptible;
+            return o;
         }
     }
 }

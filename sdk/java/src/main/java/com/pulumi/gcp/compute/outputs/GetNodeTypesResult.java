@@ -14,27 +14,16 @@ public final class GetNodeTypesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of node types available in the given zone and project.
      * 
      */
-    private final List<String> names;
-    private final String project;
-    private final String zone;
+    private List<String> names;
+    private String project;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetNodeTypesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("zone") String zone) {
-        this.id = id;
-        this.names = names;
-        this.project = project;
-        this.zone = zone;
-    }
-
+    private GetNodeTypesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,17 +52,13 @@ public final class GetNodeTypesResult {
     public static Builder builder(GetNodeTypesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> names;
         private String project;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -82,10 +67,12 @@ public final class GetNodeTypesResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -93,15 +80,23 @@ public final class GetNodeTypesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetNodeTypesResult build() {
-            return new GetNodeTypesResult(id, names, project, zone);
+        }
+        public GetNodeTypesResult build() {
+            final var o = new GetNodeTypesResult();
+            o.id = id;
+            o.names = names;
+            o.project = project;
+            o.zone = zone;
+            return o;
         }
     }
 }

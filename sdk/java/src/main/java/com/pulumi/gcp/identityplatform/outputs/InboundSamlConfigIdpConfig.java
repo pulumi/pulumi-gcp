@@ -19,35 +19,24 @@ public final class InboundSamlConfigIdpConfig {
      * Structure is documented below.
      * 
      */
-    private final List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates;
+    private List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates;
     /**
      * @return Unique identifier for all SAML entities
      * 
      */
-    private final String idpEntityId;
+    private String idpEntityId;
     /**
      * @return Indicates if outbounding SAMLRequest should be signed.
      * 
      */
-    private final @Nullable Boolean signRequest;
+    private @Nullable Boolean signRequest;
     /**
      * @return URL to send Authentication request to.
      * 
      */
-    private final String ssoUrl;
+    private String ssoUrl;
 
-    @CustomType.Constructor
-    private InboundSamlConfigIdpConfig(
-        @CustomType.Parameter("idpCertificates") List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates,
-        @CustomType.Parameter("idpEntityId") String idpEntityId,
-        @CustomType.Parameter("signRequest") @Nullable Boolean signRequest,
-        @CustomType.Parameter("ssoUrl") String ssoUrl) {
-        this.idpCertificates = idpCertificates;
-        this.idpEntityId = idpEntityId;
-        this.signRequest = signRequest;
-        this.ssoUrl = ssoUrl;
-    }
-
+    private InboundSamlConfigIdpConfig() {}
     /**
      * @return The IdP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
@@ -85,17 +74,13 @@ public final class InboundSamlConfigIdpConfig {
     public static Builder builder(InboundSamlConfigIdpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates;
         private String idpEntityId;
         private @Nullable Boolean signRequest;
         private String ssoUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InboundSamlConfigIdpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.idpCertificates = defaults.idpCertificates;
@@ -104,6 +89,7 @@ public final class InboundSamlConfigIdpConfig {
     	      this.ssoUrl = defaults.ssoUrl;
         }
 
+        @CustomType.Setter
         public Builder idpCertificates(List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates) {
             this.idpCertificates = Objects.requireNonNull(idpCertificates);
             return this;
@@ -111,19 +97,28 @@ public final class InboundSamlConfigIdpConfig {
         public Builder idpCertificates(InboundSamlConfigIdpConfigIdpCertificate... idpCertificates) {
             return idpCertificates(List.of(idpCertificates));
         }
+        @CustomType.Setter
         public Builder idpEntityId(String idpEntityId) {
             this.idpEntityId = Objects.requireNonNull(idpEntityId);
             return this;
         }
+        @CustomType.Setter
         public Builder signRequest(@Nullable Boolean signRequest) {
             this.signRequest = signRequest;
             return this;
         }
+        @CustomType.Setter
         public Builder ssoUrl(String ssoUrl) {
             this.ssoUrl = Objects.requireNonNull(ssoUrl);
             return this;
-        }        public InboundSamlConfigIdpConfig build() {
-            return new InboundSamlConfigIdpConfig(idpCertificates, idpEntityId, signRequest, ssoUrl);
+        }
+        public InboundSamlConfigIdpConfig build() {
+            final var o = new InboundSamlConfigIdpConfig();
+            o.idpCertificates = idpCertificates;
+            o.idpEntityId = idpEntityId;
+            o.signRequest = signRequest;
+            o.ssoUrl = ssoUrl;
+            return o;
         }
     }
 }

@@ -18,39 +18,28 @@ public final class TableTimePartitioning {
      * storage for a partition.
      * 
      */
-    private final @Nullable Integer expirationMs;
+    private @Nullable Integer expirationMs;
     /**
      * @return The field used to determine how to create a range-based
      * partition.
      * 
      */
-    private final @Nullable String field;
+    private @Nullable String field;
     /**
      * @return If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
      * specified.
      * 
      */
-    private final @Nullable Boolean requirePartitionFilter;
+    private @Nullable Boolean requirePartitionFilter;
     /**
      * @return The supported types are DAY, HOUR, MONTH, and YEAR,
      * which will generate one partition per day, hour, month, and year, respectively.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private TableTimePartitioning(
-        @CustomType.Parameter("expirationMs") @Nullable Integer expirationMs,
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("requirePartitionFilter") @Nullable Boolean requirePartitionFilter,
-        @CustomType.Parameter("type") String type) {
-        this.expirationMs = expirationMs;
-        this.field = field;
-        this.requirePartitionFilter = requirePartitionFilter;
-        this.type = type;
-    }
-
+    private TableTimePartitioning() {}
     /**
      * @return Number of milliseconds for which to keep the
      * storage for a partition.
@@ -92,17 +81,13 @@ public final class TableTimePartitioning {
     public static Builder builder(TableTimePartitioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer expirationMs;
         private @Nullable String field;
         private @Nullable Boolean requirePartitionFilter;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableTimePartitioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationMs = defaults.expirationMs;
@@ -111,23 +96,33 @@ public final class TableTimePartitioning {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder expirationMs(@Nullable Integer expirationMs) {
             this.expirationMs = expirationMs;
             return this;
         }
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder requirePartitionFilter(@Nullable Boolean requirePartitionFilter) {
             this.requirePartitionFilter = requirePartitionFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public TableTimePartitioning build() {
-            return new TableTimePartitioning(expirationMs, field, requirePartitionFilter, type);
+        }
+        public TableTimePartitioning build() {
+            final var o = new TableTimePartitioning();
+            o.expirationMs = expirationMs;
+            o.field = field;
+            o.requirePartitionFilter = requirePartitionFilter;
+            o.type = type;
+            return o;
         }
     }
 }

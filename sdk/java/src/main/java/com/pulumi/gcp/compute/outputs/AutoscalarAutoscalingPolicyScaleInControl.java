@@ -17,22 +17,15 @@ public final class AutoscalarAutoscalingPolicyScaleInControl {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas maxScaledInReplicas;
+    private @Nullable AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas maxScaledInReplicas;
     /**
      * @return How long back autoscaling should look when computing recommendations
      * to include directives regarding slower scale down, as described above.
      * 
      */
-    private final @Nullable Integer timeWindowSec;
+    private @Nullable Integer timeWindowSec;
 
-    @CustomType.Constructor
-    private AutoscalarAutoscalingPolicyScaleInControl(
-        @CustomType.Parameter("maxScaledInReplicas") @Nullable AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas maxScaledInReplicas,
-        @CustomType.Parameter("timeWindowSec") @Nullable Integer timeWindowSec) {
-        this.maxScaledInReplicas = maxScaledInReplicas;
-        this.timeWindowSec = timeWindowSec;
-    }
-
+    private AutoscalarAutoscalingPolicyScaleInControl() {}
     /**
      * @return A nested object resource
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class AutoscalarAutoscalingPolicyScaleInControl {
     public static Builder builder(AutoscalarAutoscalingPolicyScaleInControl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas maxScaledInReplicas;
         private @Nullable Integer timeWindowSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalarAutoscalingPolicyScaleInControl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxScaledInReplicas = defaults.maxScaledInReplicas;
     	      this.timeWindowSec = defaults.timeWindowSec;
         }
 
+        @CustomType.Setter
         public Builder maxScaledInReplicas(@Nullable AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas maxScaledInReplicas) {
             this.maxScaledInReplicas = maxScaledInReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder timeWindowSec(@Nullable Integer timeWindowSec) {
             this.timeWindowSec = timeWindowSec;
             return this;
-        }        public AutoscalarAutoscalingPolicyScaleInControl build() {
-            return new AutoscalarAutoscalingPolicyScaleInControl(maxScaledInReplicas, timeWindowSec);
+        }
+        public AutoscalarAutoscalingPolicyScaleInControl build() {
+            final var o = new AutoscalarAutoscalingPolicyScaleInControl();
+            o.maxScaledInReplicas = maxScaledInReplicas;
+            o.timeWindowSec = timeWindowSec;
+            return o;
         }
     }
 }

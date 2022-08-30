@@ -20,14 +20,14 @@ public final class InstanceMaintenancePolicy {
      * resolution and up to nine fractional digits
      * 
      */
-    private final @Nullable String createTime;
+    private @Nullable String createTime;
     /**
      * @return Optional. Description of what this policy is for.
      * Create/Update methods return INVALID_ARGUMENT if the
      * length is greater than 512.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return -
      * Output only. The time when the policy was updated.
@@ -35,7 +35,7 @@ public final class InstanceMaintenancePolicy {
      * resolution and up to nine fractional digits.
      * 
      */
-    private final @Nullable String updateTime;
+    private @Nullable String updateTime;
     /**
      * @return Required. Maintenance window that is applied to resources covered by this policy.
      * Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
@@ -43,20 +43,9 @@ public final class InstanceMaintenancePolicy {
      * Structure is documented below.
      * 
      */
-    private final List<InstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
+    private List<InstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
 
-    @CustomType.Constructor
-    private InstanceMaintenancePolicy(
-        @CustomType.Parameter("createTime") @Nullable String createTime,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime,
-        @CustomType.Parameter("weeklyMaintenanceWindows") List<InstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows) {
-        this.createTime = createTime;
-        this.description = description;
-        this.updateTime = updateTime;
-        this.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
-    }
-
+    private InstanceMaintenancePolicy() {}
     /**
      * @return -
      * Output only. The time when the policy was created.
@@ -104,17 +93,13 @@ public final class InstanceMaintenancePolicy {
     public static Builder builder(InstanceMaintenancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createTime;
         private @Nullable String description;
         private @Nullable String updateTime;
         private List<InstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -123,26 +108,36 @@ public final class InstanceMaintenancePolicy {
     	      this.weeklyMaintenanceWindows = defaults.weeklyMaintenanceWindows;
         }
 
+        @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
             this.createTime = createTime;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
         }
+        @CustomType.Setter
         public Builder weeklyMaintenanceWindows(List<InstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows) {
             this.weeklyMaintenanceWindows = Objects.requireNonNull(weeklyMaintenanceWindows);
             return this;
         }
         public Builder weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindow... weeklyMaintenanceWindows) {
             return weeklyMaintenanceWindows(List.of(weeklyMaintenanceWindows));
-        }        public InstanceMaintenancePolicy build() {
-            return new InstanceMaintenancePolicy(createTime, description, updateTime, weeklyMaintenanceWindows);
+        }
+        public InstanceMaintenancePolicy build() {
+            final var o = new InstanceMaintenancePolicy();
+            o.createTime = createTime;
+            o.description = description;
+            o.updateTime = updateTime;
+            o.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
+            return o;
         }
     }
 }

@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateMapGclbTarget {
-    private final @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs;
-    private final @Nullable String targetHttpsProxy;
-    private final @Nullable String targetSslProxy;
+    private @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs;
+    private @Nullable String targetHttpsProxy;
+    private @Nullable String targetSslProxy;
 
-    @CustomType.Constructor
-    private CertificateMapGclbTarget(
-        @CustomType.Parameter("ipConfigs") @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs,
-        @CustomType.Parameter("targetHttpsProxy") @Nullable String targetHttpsProxy,
-        @CustomType.Parameter("targetSslProxy") @Nullable String targetSslProxy) {
-        this.ipConfigs = ipConfigs;
-        this.targetHttpsProxy = targetHttpsProxy;
-        this.targetSslProxy = targetSslProxy;
-    }
-
+    private CertificateMapGclbTarget() {}
     public List<CertificateMapGclbTargetIpConfig> ipConfigs() {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
     }
@@ -44,16 +35,12 @@ public final class CertificateMapGclbTarget {
     public static Builder builder(CertificateMapGclbTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs;
         private @Nullable String targetHttpsProxy;
         private @Nullable String targetSslProxy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateMapGclbTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipConfigs = defaults.ipConfigs;
@@ -61,6 +48,7 @@ public final class CertificateMapGclbTarget {
     	      this.targetSslProxy = defaults.targetSslProxy;
         }
 
+        @CustomType.Setter
         public Builder ipConfigs(@Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs) {
             this.ipConfigs = ipConfigs;
             return this;
@@ -68,15 +56,22 @@ public final class CertificateMapGclbTarget {
         public Builder ipConfigs(CertificateMapGclbTargetIpConfig... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
         }
+        @CustomType.Setter
         public Builder targetHttpsProxy(@Nullable String targetHttpsProxy) {
             this.targetHttpsProxy = targetHttpsProxy;
             return this;
         }
+        @CustomType.Setter
         public Builder targetSslProxy(@Nullable String targetSslProxy) {
             this.targetSslProxy = targetSslProxy;
             return this;
-        }        public CertificateMapGclbTarget build() {
-            return new CertificateMapGclbTarget(ipConfigs, targetHttpsProxy, targetSslProxy);
+        }
+        public CertificateMapGclbTarget build() {
+            final var o = new CertificateMapGclbTarget();
+            o.ipConfigs = ipConfigs;
+            o.targetHttpsProxy = targetHttpsProxy;
+            o.targetSslProxy = targetSslProxy;
+            return o;
         }
     }
 }

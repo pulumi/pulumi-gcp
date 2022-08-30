@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionCertFingerprint {
-    private final @Nullable String sha256Hash;
+    private @Nullable String sha256Hash;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionCertFingerprint(@CustomType.Parameter("sha256Hash") @Nullable String sha256Hash) {
-        this.sha256Hash = sha256Hash;
-    }
-
+    private CertificateCertificateDescriptionCertFingerprint() {}
     public Optional<String> sha256Hash() {
         return Optional.ofNullable(this.sha256Hash);
     }
@@ -29,24 +25,24 @@ public final class CertificateCertificateDescriptionCertFingerprint {
     public static Builder builder(CertificateCertificateDescriptionCertFingerprint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String sha256Hash;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionCertFingerprint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sha256Hash = defaults.sha256Hash;
         }
 
+        @CustomType.Setter
         public Builder sha256Hash(@Nullable String sha256Hash) {
             this.sha256Hash = sha256Hash;
             return this;
-        }        public CertificateCertificateDescriptionCertFingerprint build() {
-            return new CertificateCertificateDescriptionCertFingerprint(sha256Hash);
+        }
+        public CertificateCertificateDescriptionCertFingerprint build() {
+            final var o = new CertificateCertificateDescriptionCertFingerprint();
+            o.sha256Hash = sha256Hash;
+            return o;
         }
     }
 }

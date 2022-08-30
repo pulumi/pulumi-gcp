@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfig {
-    private final List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
-    private final List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
-    private final List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
+    private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
+    private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
+    private List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigWorkloadsConfig(
-        @CustomType.Parameter("schedulers") List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers,
-        @CustomType.Parameter("webServers") List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers,
-        @CustomType.Parameter("workers") List<GetEnvironmentConfigWorkloadsConfigWorker> workers) {
-        this.schedulers = schedulers;
-        this.webServers = webServers;
-        this.workers = workers;
-    }
-
+    private GetEnvironmentConfigWorkloadsConfig() {}
     public List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers() {
         return this.schedulers;
     }
@@ -43,16 +34,12 @@ public final class GetEnvironmentConfigWorkloadsConfig {
     public static Builder builder(GetEnvironmentConfigWorkloadsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
         private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
         private List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.schedulers = defaults.schedulers;
@@ -60,6 +47,7 @@ public final class GetEnvironmentConfigWorkloadsConfig {
     	      this.workers = defaults.workers;
         }
 
+        @CustomType.Setter
         public Builder schedulers(List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers) {
             this.schedulers = Objects.requireNonNull(schedulers);
             return this;
@@ -67,6 +55,7 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         public Builder schedulers(GetEnvironmentConfigWorkloadsConfigScheduler... schedulers) {
             return schedulers(List.of(schedulers));
         }
+        @CustomType.Setter
         public Builder webServers(List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers) {
             this.webServers = Objects.requireNonNull(webServers);
             return this;
@@ -74,14 +63,20 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         public Builder webServers(GetEnvironmentConfigWorkloadsConfigWebServer... webServers) {
             return webServers(List.of(webServers));
         }
+        @CustomType.Setter
         public Builder workers(List<GetEnvironmentConfigWorkloadsConfigWorker> workers) {
             this.workers = Objects.requireNonNull(workers);
             return this;
         }
         public Builder workers(GetEnvironmentConfigWorkloadsConfigWorker... workers) {
             return workers(List.of(workers));
-        }        public GetEnvironmentConfigWorkloadsConfig build() {
-            return new GetEnvironmentConfigWorkloadsConfig(schedulers, webServers, workers);
+        }
+        public GetEnvironmentConfigWorkloadsConfig build() {
+            final var o = new GetEnvironmentConfigWorkloadsConfig();
+            o.schedulers = schedulers;
+            o.webServers = webServers;
+            o.workers = workers;
+            return o;
         }
     }
 }

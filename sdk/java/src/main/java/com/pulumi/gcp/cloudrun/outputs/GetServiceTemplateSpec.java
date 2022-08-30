@@ -13,29 +13,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpec {
-    private final Integer containerConcurrency;
-    private final List<GetServiceTemplateSpecContainer> containers;
-    private final String serviceAccountName;
-    private final String servingState;
-    private final Integer timeoutSeconds;
-    private final List<GetServiceTemplateSpecVolume> volumes;
+    private Integer containerConcurrency;
+    private List<GetServiceTemplateSpecContainer> containers;
+    private String serviceAccountName;
+    private String servingState;
+    private Integer timeoutSeconds;
+    private List<GetServiceTemplateSpecVolume> volumes;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpec(
-        @CustomType.Parameter("containerConcurrency") Integer containerConcurrency,
-        @CustomType.Parameter("containers") List<GetServiceTemplateSpecContainer> containers,
-        @CustomType.Parameter("serviceAccountName") String serviceAccountName,
-        @CustomType.Parameter("servingState") String servingState,
-        @CustomType.Parameter("timeoutSeconds") Integer timeoutSeconds,
-        @CustomType.Parameter("volumes") List<GetServiceTemplateSpecVolume> volumes) {
-        this.containerConcurrency = containerConcurrency;
-        this.containers = containers;
-        this.serviceAccountName = serviceAccountName;
-        this.servingState = servingState;
-        this.timeoutSeconds = timeoutSeconds;
-        this.volumes = volumes;
-    }
-
+    private GetServiceTemplateSpec() {}
     public Integer containerConcurrency() {
         return this.containerConcurrency;
     }
@@ -62,7 +47,7 @@ public final class GetServiceTemplateSpec {
     public static Builder builder(GetServiceTemplateSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer containerConcurrency;
         private List<GetServiceTemplateSpecContainer> containers;
@@ -70,11 +55,7 @@ public final class GetServiceTemplateSpec {
         private String servingState;
         private Integer timeoutSeconds;
         private List<GetServiceTemplateSpecVolume> volumes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerConcurrency = defaults.containerConcurrency;
@@ -85,10 +66,12 @@ public final class GetServiceTemplateSpec {
     	      this.volumes = defaults.volumes;
         }
 
+        @CustomType.Setter
         public Builder containerConcurrency(Integer containerConcurrency) {
             this.containerConcurrency = Objects.requireNonNull(containerConcurrency);
             return this;
         }
+        @CustomType.Setter
         public Builder containers(List<GetServiceTemplateSpecContainer> containers) {
             this.containers = Objects.requireNonNull(containers);
             return this;
@@ -96,26 +79,38 @@ public final class GetServiceTemplateSpec {
         public Builder containers(GetServiceTemplateSpecContainer... containers) {
             return containers(List.of(containers));
         }
+        @CustomType.Setter
         public Builder serviceAccountName(String serviceAccountName) {
             this.serviceAccountName = Objects.requireNonNull(serviceAccountName);
             return this;
         }
+        @CustomType.Setter
         public Builder servingState(String servingState) {
             this.servingState = Objects.requireNonNull(servingState);
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             this.timeoutSeconds = Objects.requireNonNull(timeoutSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(List<GetServiceTemplateSpecVolume> volumes) {
             this.volumes = Objects.requireNonNull(volumes);
             return this;
         }
         public Builder volumes(GetServiceTemplateSpecVolume... volumes) {
             return volumes(List.of(volumes));
-        }        public GetServiceTemplateSpec build() {
-            return new GetServiceTemplateSpec(containerConcurrency, containers, serviceAccountName, servingState, timeoutSeconds, volumes);
+        }
+        public GetServiceTemplateSpec build() {
+            final var o = new GetServiceTemplateSpec();
+            o.containerConcurrency = containerConcurrency;
+            o.containers = containers;
+            o.serviceAccountName = serviceAccountName;
+            o.servingState = servingState;
+            o.timeoutSeconds = timeoutSeconds;
+            o.volumes = volumes;
+            return o;
         }
     }
 }

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTopicMessageStoragePolicy {
-    private final List<String> allowedPersistenceRegions;
+    private List<String> allowedPersistenceRegions;
 
-    @CustomType.Constructor
-    private GetTopicMessageStoragePolicy(@CustomType.Parameter("allowedPersistenceRegions") List<String> allowedPersistenceRegions) {
-        this.allowedPersistenceRegions = allowedPersistenceRegions;
-    }
-
+    private GetTopicMessageStoragePolicy() {}
     public List<String> allowedPersistenceRegions() {
         return this.allowedPersistenceRegions;
     }
@@ -28,27 +24,27 @@ public final class GetTopicMessageStoragePolicy {
     public static Builder builder(GetTopicMessageStoragePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedPersistenceRegions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTopicMessageStoragePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedPersistenceRegions = defaults.allowedPersistenceRegions;
         }
 
+        @CustomType.Setter
         public Builder allowedPersistenceRegions(List<String> allowedPersistenceRegions) {
             this.allowedPersistenceRegions = Objects.requireNonNull(allowedPersistenceRegions);
             return this;
         }
         public Builder allowedPersistenceRegions(String... allowedPersistenceRegions) {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
-        }        public GetTopicMessageStoragePolicy build() {
-            return new GetTopicMessageStoragePolicy(allowedPersistenceRegions);
+        }
+        public GetTopicMessageStoragePolicy build() {
+            final var o = new GetTopicMessageStoragePolicy();
+            o.allowedPersistenceRegions = allowedPersistenceRegions;
+            return o;
         }
     }
 }

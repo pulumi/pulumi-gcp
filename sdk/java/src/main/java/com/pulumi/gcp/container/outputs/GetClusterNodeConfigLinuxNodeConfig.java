@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigLinuxNodeConfig {
-    private final Map<String,String> sysctls;
+    private Map<String,String> sysctls;
 
-    @CustomType.Constructor
-    private GetClusterNodeConfigLinuxNodeConfig(@CustomType.Parameter("sysctls") Map<String,String> sysctls) {
-        this.sysctls = sysctls;
-    }
-
+    private GetClusterNodeConfigLinuxNodeConfig() {}
     public Map<String,String> sysctls() {
         return this.sysctls;
     }
@@ -28,24 +24,24 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     public static Builder builder(GetClusterNodeConfigLinuxNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> sysctls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sysctls = defaults.sysctls;
         }
 
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             this.sysctls = Objects.requireNonNull(sysctls);
             return this;
-        }        public GetClusterNodeConfigLinuxNodeConfig build() {
-            return new GetClusterNodeConfigLinuxNodeConfig(sysctls);
+        }
+        public GetClusterNodeConfigLinuxNodeConfig build() {
+            final var o = new GetClusterNodeConfigLinuxNodeConfig();
+            o.sysctls = sysctls;
+            return o;
         }
     }
 }

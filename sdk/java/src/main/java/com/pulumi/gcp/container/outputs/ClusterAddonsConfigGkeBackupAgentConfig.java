@@ -14,13 +14,9 @@ public final class ClusterAddonsConfigGkeBackupAgentConfig {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterAddonsConfigGkeBackupAgentConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClusterAddonsConfigGkeBackupAgentConfig() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -37,24 +33,24 @@ public final class ClusterAddonsConfigGkeBackupAgentConfig {
     public static Builder builder(ClusterAddonsConfigGkeBackupAgentConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAddonsConfigGkeBackupAgentConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public ClusterAddonsConfigGkeBackupAgentConfig build() {
-            return new ClusterAddonsConfigGkeBackupAgentConfig(enabled);
+        }
+        public ClusterAddonsConfigGkeBackupAgentConfig build() {
+            final var o = new ClusterAddonsConfigGkeBackupAgentConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

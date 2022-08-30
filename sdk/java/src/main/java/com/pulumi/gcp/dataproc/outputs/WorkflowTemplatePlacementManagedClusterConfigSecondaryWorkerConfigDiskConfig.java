@@ -16,28 +16,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      * @return Optional. Size in GB of the boot disk (default is 500GB).
      * 
      */
-    private final @Nullable Integer bootDiskSizeGb;
+    private @Nullable Integer bootDiskSizeGb;
     /**
      * @return Optional. Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
      * 
      */
-    private final @Nullable String bootDiskType;
+    private @Nullable String bootDiskType;
     /**
      * @return Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
-    private final @Nullable Integer numLocalSsds;
+    private @Nullable Integer numLocalSsds;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig(
-        @CustomType.Parameter("bootDiskSizeGb") @Nullable Integer bootDiskSizeGb,
-        @CustomType.Parameter("bootDiskType") @Nullable String bootDiskType,
-        @CustomType.Parameter("numLocalSsds") @Nullable Integer numLocalSsds) {
-        this.bootDiskSizeGb = bootDiskSizeGb;
-        this.bootDiskType = bootDiskType;
-        this.numLocalSsds = numLocalSsds;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig() {}
     /**
      * @return Optional. Size in GB of the boot disk (default is 500GB).
      * 
@@ -67,16 +58,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer bootDiskSizeGb;
         private @Nullable String bootDiskType;
         private @Nullable Integer numLocalSsds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
@@ -84,19 +71,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
+        @CustomType.Setter
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
             this.bootDiskSizeGb = bootDiskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder bootDiskType(@Nullable String bootDiskType) {
             this.bootDiskType = bootDiskType;
             return this;
         }
+        @CustomType.Setter
         public Builder numLocalSsds(@Nullable Integer numLocalSsds) {
             this.numLocalSsds = numLocalSsds;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig(bootDiskSizeGb, bootDiskType, numLocalSsds);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig();
+            o.bootDiskSizeGb = bootDiskSizeGb;
+            o.bootDiskType = bootDiskType;
+            o.numLocalSsds = numLocalSsds;
+            return o;
         }
     }
 }

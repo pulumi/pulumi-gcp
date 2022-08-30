@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretTopic {
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetSecretTopic(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private GetSecretTopic() {}
     public String name() {
         return this.name;
     }
@@ -27,24 +23,24 @@ public final class GetSecretTopic {
     public static Builder builder(GetSecretTopic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretTopic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetSecretTopic build() {
-            return new GetSecretTopic(name);
+        }
+        public GetSecretTopic build() {
+            final var o = new GetSecretTopic();
+            o.name = name;
+            return o;
         }
     }
 }

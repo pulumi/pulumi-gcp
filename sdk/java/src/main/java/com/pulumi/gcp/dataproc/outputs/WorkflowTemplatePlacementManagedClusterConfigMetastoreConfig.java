@@ -13,13 +13,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig 
      * @return Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
      * 
      */
-    private final String dataprocMetastoreService;
+    private String dataprocMetastoreService;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(@CustomType.Parameter("dataprocMetastoreService") String dataprocMetastoreService) {
-        this.dataprocMetastoreService = dataprocMetastoreService;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig() {}
     /**
      * @return Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
      * 
@@ -35,24 +31,24 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig 
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dataprocMetastoreService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataprocMetastoreService = defaults.dataprocMetastoreService;
         }
 
+        @CustomType.Setter
         public Builder dataprocMetastoreService(String dataprocMetastoreService) {
             this.dataprocMetastoreService = Objects.requireNonNull(dataprocMetastoreService);
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(dataprocMetastoreService);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig();
+            o.dataprocMetastoreService = dataprocMetastoreService;
+            return o;
         }
     }
 }

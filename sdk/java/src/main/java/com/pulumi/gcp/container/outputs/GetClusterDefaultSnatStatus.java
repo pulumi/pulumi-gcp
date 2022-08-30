@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterDefaultSnatStatus {
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private GetClusterDefaultSnatStatus(@CustomType.Parameter("disabled") Boolean disabled) {
-        this.disabled = disabled;
-    }
-
+    private GetClusterDefaultSnatStatus() {}
     public Boolean disabled() {
         return this.disabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterDefaultSnatStatus {
     public static Builder builder(GetClusterDefaultSnatStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterDefaultSnatStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public GetClusterDefaultSnatStatus build() {
-            return new GetClusterDefaultSnatStatus(disabled);
+        }
+        public GetClusterDefaultSnatStatus build() {
+            final var o = new GetClusterDefaultSnatStatus();
+            o.disabled = disabled;
+            return o;
         }
     }
 }

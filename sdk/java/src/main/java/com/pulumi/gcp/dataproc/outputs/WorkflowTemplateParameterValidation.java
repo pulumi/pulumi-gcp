@@ -16,21 +16,14 @@ public final class WorkflowTemplateParameterValidation {
      * @return Validation based on regular expressions.
      * 
      */
-    private final @Nullable WorkflowTemplateParameterValidationRegex regex;
+    private @Nullable WorkflowTemplateParameterValidationRegex regex;
     /**
      * @return Optional. Corresponds to the label values of reservation resource.
      * 
      */
-    private final @Nullable WorkflowTemplateParameterValidationValues values;
+    private @Nullable WorkflowTemplateParameterValidationValues values;
 
-    @CustomType.Constructor
-    private WorkflowTemplateParameterValidation(
-        @CustomType.Parameter("regex") @Nullable WorkflowTemplateParameterValidationRegex regex,
-        @CustomType.Parameter("values") @Nullable WorkflowTemplateParameterValidationValues values) {
-        this.regex = regex;
-        this.values = values;
-    }
-
+    private WorkflowTemplateParameterValidation() {}
     /**
      * @return Validation based on regular expressions.
      * 
@@ -53,30 +46,32 @@ public final class WorkflowTemplateParameterValidation {
     public static Builder builder(WorkflowTemplateParameterValidation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable WorkflowTemplateParameterValidationRegex regex;
         private @Nullable WorkflowTemplateParameterValidationValues values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateParameterValidation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regex = defaults.regex;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder regex(@Nullable WorkflowTemplateParameterValidationRegex regex) {
             this.regex = regex;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable WorkflowTemplateParameterValidationValues values) {
             this.values = values;
             return this;
-        }        public WorkflowTemplateParameterValidation build() {
-            return new WorkflowTemplateParameterValidation(regex, values);
+        }
+        public WorkflowTemplateParameterValidation build() {
+            final var o = new WorkflowTemplateParameterValidation();
+            o.regex = regex;
+            o.values = values;
+            return o;
         }
     }
 }

@@ -18,13 +18,13 @@ public final class InstanceBootDisk {
      * is deleted. Defaults to true.
      * 
      */
-    private final @Nullable Boolean autoDelete;
+    private @Nullable Boolean autoDelete;
     /**
      * @return Name with which the attached disk will be accessible
      * under `/dev/disk/by-id/google-*`
      * 
      */
-    private final @Nullable String deviceName;
+    private @Nullable String deviceName;
     /**
      * @return A 256-bit [customer-supplied encryption key]
      * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
@@ -32,22 +32,22 @@ public final class InstanceBootDisk {
      * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
      * 
      */
-    private final @Nullable String diskEncryptionKeyRaw;
-    private final @Nullable String diskEncryptionKeySha256;
+    private @Nullable String diskEncryptionKeyRaw;
+    private @Nullable String diskEncryptionKeySha256;
     /**
      * @return Parameters for a new disk that will be created
      * alongside the new instance. Either `initialize_params` or `source` must be set.
      * Structure is documented below.
      * 
      */
-    private final @Nullable InstanceBootDiskInitializeParams initializeParams;
+    private @Nullable InstanceBootDiskInitializeParams initializeParams;
     /**
      * @return The self_link of the encryption key that is
      * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
      * and `disk_encryption_key_raw` may be set.
      * 
      */
-    private final @Nullable String kmsKeySelfLink;
+    private @Nullable String kmsKeySelfLink;
     /**
      * @return Either &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;, defaults to &#34;READ_WRITE&#34;
      * If you have a persistent disk with data that you want to share
@@ -55,33 +55,14 @@ public final class InstanceBootDisk {
      * attach it to one or more instances in read-only mode.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return The name or self_link of the disk to attach to this instance.
      * 
      */
-    private final @Nullable String source;
+    private @Nullable String source;
 
-    @CustomType.Constructor
-    private InstanceBootDisk(
-        @CustomType.Parameter("autoDelete") @Nullable Boolean autoDelete,
-        @CustomType.Parameter("deviceName") @Nullable String deviceName,
-        @CustomType.Parameter("diskEncryptionKeyRaw") @Nullable String diskEncryptionKeyRaw,
-        @CustomType.Parameter("diskEncryptionKeySha256") @Nullable String diskEncryptionKeySha256,
-        @CustomType.Parameter("initializeParams") @Nullable InstanceBootDiskInitializeParams initializeParams,
-        @CustomType.Parameter("kmsKeySelfLink") @Nullable String kmsKeySelfLink,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("source") @Nullable String source) {
-        this.autoDelete = autoDelete;
-        this.deviceName = deviceName;
-        this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-        this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-        this.initializeParams = initializeParams;
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.mode = mode;
-        this.source = source;
-    }
-
+    private InstanceBootDisk() {}
     /**
      * @return Whether the disk will be auto-deleted when the instance
      * is deleted. Defaults to true.
@@ -154,7 +135,7 @@ public final class InstanceBootDisk {
     public static Builder builder(InstanceBootDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoDelete;
         private @Nullable String deviceName;
@@ -164,11 +145,7 @@ public final class InstanceBootDisk {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String mode;
         private @Nullable String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceBootDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDelete = defaults.autoDelete;
@@ -181,39 +158,57 @@ public final class InstanceBootDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
             this.autoDelete = autoDelete;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
             this.deviceName = deviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeyRaw(@Nullable String diskEncryptionKeyRaw) {
             this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
+        @CustomType.Setter
         public Builder initializeParams(@Nullable InstanceBootDiskInitializeParams initializeParams) {
             this.initializeParams = initializeParams;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
-        }        public InstanceBootDisk build() {
-            return new InstanceBootDisk(autoDelete, deviceName, diskEncryptionKeyRaw, diskEncryptionKeySha256, initializeParams, kmsKeySelfLink, mode, source);
+        }
+        public InstanceBootDisk build() {
+            final var o = new InstanceBootDisk();
+            o.autoDelete = autoDelete;
+            o.deviceName = deviceName;
+            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            o.initializeParams = initializeParams;
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.mode = mode;
+            o.source = source;
+            return o;
         }
     }
 }

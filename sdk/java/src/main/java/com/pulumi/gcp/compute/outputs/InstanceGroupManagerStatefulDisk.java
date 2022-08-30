@@ -15,21 +15,14 @@ public final class InstanceGroupManagerStatefulDisk {
      * @return , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
      * 
      */
-    private final @Nullable String deleteRule;
+    private @Nullable String deleteRule;
     /**
      * @return , The device name of the disk to be attached.
      * 
      */
-    private final String deviceName;
+    private String deviceName;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerStatefulDisk(
-        @CustomType.Parameter("deleteRule") @Nullable String deleteRule,
-        @CustomType.Parameter("deviceName") String deviceName) {
-        this.deleteRule = deleteRule;
-        this.deviceName = deviceName;
-    }
-
+    private InstanceGroupManagerStatefulDisk() {}
     /**
      * @return , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
      * 
@@ -52,30 +45,32 @@ public final class InstanceGroupManagerStatefulDisk {
     public static Builder builder(InstanceGroupManagerStatefulDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String deleteRule;
         private String deviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerStatefulDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteRule = defaults.deleteRule;
     	      this.deviceName = defaults.deviceName;
         }
 
+        @CustomType.Setter
         public Builder deleteRule(@Nullable String deleteRule) {
             this.deleteRule = deleteRule;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(String deviceName) {
             this.deviceName = Objects.requireNonNull(deviceName);
             return this;
-        }        public InstanceGroupManagerStatefulDisk build() {
-            return new InstanceGroupManagerStatefulDisk(deleteRule, deviceName);
+        }
+        public InstanceGroupManagerStatefulDisk build() {
+            final var o = new InstanceGroupManagerStatefulDisk();
+            o.deleteRule = deleteRule;
+            o.deviceName = deviceName;
+            return o;
         }
     }
 }

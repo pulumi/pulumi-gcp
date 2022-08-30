@@ -14,13 +14,9 @@ public final class ClusterClusterConfigEncryptionConfig {
      * all instances in the cluster.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigEncryptionConfig(@CustomType.Parameter("kmsKeyName") String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private ClusterClusterConfigEncryptionConfig() {}
     /**
      * @return The Cloud KMS key name to use for PD disk encryption for
      * all instances in the cluster.
@@ -37,24 +33,24 @@ public final class ClusterClusterConfigEncryptionConfig {
     public static Builder builder(ClusterClusterConfigEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
-        }        public ClusterClusterConfigEncryptionConfig build() {
-            return new ClusterClusterConfigEncryptionConfig(kmsKeyName);
+        }
+        public ClusterClusterConfigEncryptionConfig build() {
+            final var o = new ClusterClusterConfigEncryptionConfig();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

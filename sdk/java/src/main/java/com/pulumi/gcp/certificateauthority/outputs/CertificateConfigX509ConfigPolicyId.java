@@ -14,13 +14,9 @@ public final class CertificateConfigX509ConfigPolicyId {
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateConfigX509ConfigPolicyId(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateConfigX509ConfigPolicyId() {}
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
@@ -36,27 +32,27 @@ public final class CertificateConfigX509ConfigPolicyId {
     public static Builder builder(CertificateConfigX509ConfigPolicyId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfigX509ConfigPolicyId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateConfigX509ConfigPolicyId build() {
-            return new CertificateConfigX509ConfigPolicyId(objectIdPaths);
+        }
+        public CertificateConfigX509ConfigPolicyId build() {
+            final var o = new CertificateConfigX509ConfigPolicyId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

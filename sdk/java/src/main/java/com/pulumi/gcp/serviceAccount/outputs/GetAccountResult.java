@@ -11,54 +11,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountResult {
-    private final String accountId;
+    private String accountId;
     /**
      * @return The display name for the service account.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The e-mail address of the service account. This value
      * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The fully-qualified name of the service account.
      * 
      */
-    private final String name;
-    private final @Nullable String project;
+    private String name;
+    private @Nullable String project;
     /**
      * @return The unique id of the service account.
      * 
      */
-    private final String uniqueId;
+    private String uniqueId;
 
-    @CustomType.Constructor
-    private GetAccountResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("uniqueId") String uniqueId) {
-        this.accountId = accountId;
-        this.displayName = displayName;
-        this.email = email;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.uniqueId = uniqueId;
-    }
-
+    private GetAccountResult() {}
     public String accountId() {
         return this.accountId;
     }
@@ -110,7 +93,7 @@ public final class GetAccountResult {
     public static Builder builder(GetAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String displayName;
@@ -119,11 +102,7 @@ public final class GetAccountResult {
         private String name;
         private @Nullable String project;
         private String uniqueId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -135,35 +114,51 @@ public final class GetAccountResult {
     	      this.uniqueId = defaults.uniqueId;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder uniqueId(String uniqueId) {
             this.uniqueId = Objects.requireNonNull(uniqueId);
             return this;
-        }        public GetAccountResult build() {
-            return new GetAccountResult(accountId, displayName, email, id, name, project, uniqueId);
+        }
+        public GetAccountResult build() {
+            final var o = new GetAccountResult();
+            o.accountId = accountId;
+            o.displayName = displayName;
+            o.email = email;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.uniqueId = uniqueId;
+            return o;
         }
     }
 }

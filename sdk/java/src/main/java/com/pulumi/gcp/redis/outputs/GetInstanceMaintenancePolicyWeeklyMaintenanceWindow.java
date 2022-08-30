@@ -11,20 +11,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
-    private final String day;
-    private final String duration;
-    private final List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes;
+    private String day;
+    private String duration;
+    private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes;
 
-    @CustomType.Constructor
-    private GetInstanceMaintenancePolicyWeeklyMaintenanceWindow(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("startTimes") List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes) {
-        this.day = day;
-        this.duration = duration;
-        this.startTimes = startTimes;
-    }
-
+    private GetInstanceMaintenancePolicyWeeklyMaintenanceWindow() {}
     public String day() {
         return this.day;
     }
@@ -42,16 +33,12 @@ public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
     public static Builder builder(GetInstanceMaintenancePolicyWeeklyMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String duration;
         private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceMaintenancePolicyWeeklyMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -59,22 +46,30 @@ public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
     	      this.startTimes = defaults.startTimes;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder startTimes(List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes) {
             this.startTimes = Objects.requireNonNull(startTimes);
             return this;
         }
         public Builder startTimes(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime... startTimes) {
             return startTimes(List.of(startTimes));
-        }        public GetInstanceMaintenancePolicyWeeklyMaintenanceWindow build() {
-            return new GetInstanceMaintenancePolicyWeeklyMaintenanceWindow(day, duration, startTimes);
+        }
+        public GetInstanceMaintenancePolicyWeeklyMaintenanceWindow build() {
+            final var o = new GetInstanceMaintenancePolicyWeeklyMaintenanceWindow();
+            o.day = day;
+            o.duration = duration;
+            o.startTimes = startTimes;
+            return o;
         }
     }
 }

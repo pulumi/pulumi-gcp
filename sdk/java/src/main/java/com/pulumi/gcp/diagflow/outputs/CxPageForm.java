@@ -16,13 +16,9 @@ public final class CxPageForm {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CxPageFormParameter> parameters;
+    private @Nullable List<CxPageFormParameter> parameters;
 
-    @CustomType.Constructor
-    private CxPageForm(@CustomType.Parameter("parameters") @Nullable List<CxPageFormParameter> parameters) {
-        this.parameters = parameters;
-    }
-
+    private CxPageForm() {}
     /**
      * @return Parameters to collect from the user.
      * Structure is documented below.
@@ -39,27 +35,27 @@ public final class CxPageForm {
     public static Builder builder(CxPageForm defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CxPageFormParameter> parameters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageForm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameters = defaults.parameters;
         }
 
+        @CustomType.Setter
         public Builder parameters(@Nullable List<CxPageFormParameter> parameters) {
             this.parameters = parameters;
             return this;
         }
         public Builder parameters(CxPageFormParameter... parameters) {
             return parameters(List.of(parameters));
-        }        public CxPageForm build() {
-            return new CxPageForm(parameters);
+        }
+        public CxPageForm build() {
+            final var o = new CxPageForm();
+            o.parameters = parameters;
+            return o;
         }
     }
 }

@@ -15,7 +15,7 @@ public final class RegistryEventNotificationConfigItem {
      * @return PubSub topic name to publish device events.
      * 
      */
-    private final String pubsubTopicName;
+    private String pubsubTopicName;
     /**
      * @return If the subfolder name matches this string exactly, this
      * configuration will be used. The string must not include the
@@ -24,16 +24,9 @@ public final class RegistryEventNotificationConfigItem {
      * item.
      * 
      */
-    private final @Nullable String subfolderMatches;
+    private @Nullable String subfolderMatches;
 
-    @CustomType.Constructor
-    private RegistryEventNotificationConfigItem(
-        @CustomType.Parameter("pubsubTopicName") String pubsubTopicName,
-        @CustomType.Parameter("subfolderMatches") @Nullable String subfolderMatches) {
-        this.pubsubTopicName = pubsubTopicName;
-        this.subfolderMatches = subfolderMatches;
-    }
-
+    private RegistryEventNotificationConfigItem() {}
     /**
      * @return PubSub topic name to publish device events.
      * 
@@ -60,30 +53,32 @@ public final class RegistryEventNotificationConfigItem {
     public static Builder builder(RegistryEventNotificationConfigItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String pubsubTopicName;
         private @Nullable String subfolderMatches;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegistryEventNotificationConfigItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubTopicName = defaults.pubsubTopicName;
     	      this.subfolderMatches = defaults.subfolderMatches;
         }
 
+        @CustomType.Setter
         public Builder pubsubTopicName(String pubsubTopicName) {
             this.pubsubTopicName = Objects.requireNonNull(pubsubTopicName);
             return this;
         }
+        @CustomType.Setter
         public Builder subfolderMatches(@Nullable String subfolderMatches) {
             this.subfolderMatches = subfolderMatches;
             return this;
-        }        public RegistryEventNotificationConfigItem build() {
-            return new RegistryEventNotificationConfigItem(pubsubTopicName, subfolderMatches);
+        }
+        public RegistryEventNotificationConfigItem build() {
+            final var o = new RegistryEventNotificationConfigItem();
+            o.pubsubTopicName = pubsubTopicName;
+            o.subfolderMatches = subfolderMatches;
+            return o;
         }
     }
 }

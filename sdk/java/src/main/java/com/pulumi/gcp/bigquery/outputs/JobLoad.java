@@ -23,18 +23,18 @@ public final class JobLoad {
      * an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
      * 
      */
-    private final @Nullable Boolean allowJaggedRows;
+    private @Nullable Boolean allowJaggedRows;
     /**
      * @return Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
      * The default value is false.
      * 
      */
-    private final @Nullable Boolean allowQuotedNewlines;
+    private @Nullable Boolean allowQuotedNewlines;
     /**
      * @return Indicates if we should automatically infer the options and schema for CSV and JSON sources.
      * 
      */
-    private final @Nullable Boolean autodetect;
+    private @Nullable Boolean autodetect;
     /**
      * @return Specifies whether the job is allowed to create new tables. The following values are supported:
      * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -44,32 +44,32 @@ public final class JobLoad {
      * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
      * 
      */
-    private final @Nullable String createDisposition;
+    private @Nullable String createDisposition;
     /**
      * @return Custom encryption configuration (e.g., Cloud KMS keys)
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobLoadDestinationEncryptionConfiguration destinationEncryptionConfiguration;
+    private @Nullable JobLoadDestinationEncryptionConfiguration destinationEncryptionConfiguration;
     /**
      * @return The destination table.
      * Structure is documented below.
      * 
      */
-    private final JobLoadDestinationTable destinationTable;
+    private JobLoadDestinationTable destinationTable;
     /**
      * @return The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
      * The default value is UTF-8. BigQuery decodes the data after the raw, binary data
      * has been split using the values of the quote and fieldDelimiter properties.
      * 
      */
-    private final @Nullable String encoding;
+    private @Nullable String encoding;
     /**
      * @return When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
      * Default is &#39;,&#39;
      * 
      */
-    private final @Nullable String fieldDelimiter;
+    private @Nullable String fieldDelimiter;
     /**
      * @return Indicates if BigQuery should allow extra values that are not represented in the table schema.
      * If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -79,13 +79,13 @@ public final class JobLoad {
      * JSON: Named values that don&#39;t match any column names
      * 
      */
-    private final @Nullable Boolean ignoreUnknownValues;
+    private @Nullable Boolean ignoreUnknownValues;
     /**
      * @return The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
      * an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
      * 
      */
-    private final @Nullable Integer maxBadRecords;
+    private @Nullable Integer maxBadRecords;
     /**
      * @return Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
      * property to a custom value, BigQuery throws an error if an
@@ -93,14 +93,14 @@ public final class JobLoad {
      * an empty value.
      * 
      */
-    private final @Nullable String nullMarker;
+    private @Nullable String nullMarker;
     /**
      * @return If sourceFormat is set to &#34;DATASTORE_BACKUP&#34;, indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
      * Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
      * If any named property isn&#39;t found in the Cloud Datastore backup, an invalid error is returned in the job result.
      * 
      */
-    private final @Nullable List<String> projectionFields;
+    private @Nullable List<String> projectionFields;
     /**
      * @return The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
      * and then uses the first byte of the encoded string to split the data in its raw, binary state.
@@ -108,7 +108,7 @@ public final class JobLoad {
      * If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
      * 
      */
-    private final @Nullable String quote;
+    private @Nullable String quote;
     /**
      * @return Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
      * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -118,7 +118,7 @@ public final class JobLoad {
      * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
      * 
      */
-    private final @Nullable List<String> schemaUpdateOptions;
+    private @Nullable List<String> schemaUpdateOptions;
     /**
      * @return The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
      * The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -130,7 +130,7 @@ public final class JobLoad {
      * row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
      * 
      */
-    private final @Nullable Integer skipLeadingRows;
+    private @Nullable Integer skipLeadingRows;
     /**
      * @return The format of the data files. For CSV files, specify &#34;CSV&#34;. For datastore backups, specify &#34;DATASTORE_BACKUP&#34;.
      * For newline-delimited JSON, specify &#34;NEWLINE_DELIMITED_JSON&#34;. For Avro, specify &#34;AVRO&#34;. For parquet, specify &#34;PARQUET&#34;.
@@ -138,7 +138,7 @@ public final class JobLoad {
      * The default value is CSV.
      * 
      */
-    private final @Nullable String sourceFormat;
+    private @Nullable String sourceFormat;
     /**
      * @return The fully-qualified URIs that point to your data in Google Cloud.
      * For Google Cloud Storage URIs: Each URI can contain one &#39;*&#39; wildcard character
@@ -148,13 +148,13 @@ public final class JobLoad {
      * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;*&#39; wildcard character is not allowed.
      * 
      */
-    private final List<String> sourceUris;
+    private List<String> sourceUris;
     /**
      * @return Time-based partitioning specification for the destination table.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobLoadTimePartitioning timePartitioning;
+    private @Nullable JobLoadTimePartitioning timePartitioning;
     /**
      * @return Specifies the action that occurs if the destination table already exists. The following values are supported:
      * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -166,50 +166,9 @@ public final class JobLoad {
      * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
      * 
      */
-    private final @Nullable String writeDisposition;
+    private @Nullable String writeDisposition;
 
-    @CustomType.Constructor
-    private JobLoad(
-        @CustomType.Parameter("allowJaggedRows") @Nullable Boolean allowJaggedRows,
-        @CustomType.Parameter("allowQuotedNewlines") @Nullable Boolean allowQuotedNewlines,
-        @CustomType.Parameter("autodetect") @Nullable Boolean autodetect,
-        @CustomType.Parameter("createDisposition") @Nullable String createDisposition,
-        @CustomType.Parameter("destinationEncryptionConfiguration") @Nullable JobLoadDestinationEncryptionConfiguration destinationEncryptionConfiguration,
-        @CustomType.Parameter("destinationTable") JobLoadDestinationTable destinationTable,
-        @CustomType.Parameter("encoding") @Nullable String encoding,
-        @CustomType.Parameter("fieldDelimiter") @Nullable String fieldDelimiter,
-        @CustomType.Parameter("ignoreUnknownValues") @Nullable Boolean ignoreUnknownValues,
-        @CustomType.Parameter("maxBadRecords") @Nullable Integer maxBadRecords,
-        @CustomType.Parameter("nullMarker") @Nullable String nullMarker,
-        @CustomType.Parameter("projectionFields") @Nullable List<String> projectionFields,
-        @CustomType.Parameter("quote") @Nullable String quote,
-        @CustomType.Parameter("schemaUpdateOptions") @Nullable List<String> schemaUpdateOptions,
-        @CustomType.Parameter("skipLeadingRows") @Nullable Integer skipLeadingRows,
-        @CustomType.Parameter("sourceFormat") @Nullable String sourceFormat,
-        @CustomType.Parameter("sourceUris") List<String> sourceUris,
-        @CustomType.Parameter("timePartitioning") @Nullable JobLoadTimePartitioning timePartitioning,
-        @CustomType.Parameter("writeDisposition") @Nullable String writeDisposition) {
-        this.allowJaggedRows = allowJaggedRows;
-        this.allowQuotedNewlines = allowQuotedNewlines;
-        this.autodetect = autodetect;
-        this.createDisposition = createDisposition;
-        this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
-        this.destinationTable = destinationTable;
-        this.encoding = encoding;
-        this.fieldDelimiter = fieldDelimiter;
-        this.ignoreUnknownValues = ignoreUnknownValues;
-        this.maxBadRecords = maxBadRecords;
-        this.nullMarker = nullMarker;
-        this.projectionFields = projectionFields;
-        this.quote = quote;
-        this.schemaUpdateOptions = schemaUpdateOptions;
-        this.skipLeadingRows = skipLeadingRows;
-        this.sourceFormat = sourceFormat;
-        this.sourceUris = sourceUris;
-        this.timePartitioning = timePartitioning;
-        this.writeDisposition = writeDisposition;
-    }
-
+    private JobLoad() {}
     /**
      * @return Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
      * If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
@@ -406,7 +365,7 @@ public final class JobLoad {
     public static Builder builder(JobLoad defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowJaggedRows;
         private @Nullable Boolean allowQuotedNewlines;
@@ -427,11 +386,7 @@ public final class JobLoad {
         private List<String> sourceUris;
         private @Nullable JobLoadTimePartitioning timePartitioning;
         private @Nullable String writeDisposition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobLoad defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowJaggedRows = defaults.allowJaggedRows;
@@ -455,50 +410,62 @@ public final class JobLoad {
     	      this.writeDisposition = defaults.writeDisposition;
         }
 
+        @CustomType.Setter
         public Builder allowJaggedRows(@Nullable Boolean allowJaggedRows) {
             this.allowJaggedRows = allowJaggedRows;
             return this;
         }
+        @CustomType.Setter
         public Builder allowQuotedNewlines(@Nullable Boolean allowQuotedNewlines) {
             this.allowQuotedNewlines = allowQuotedNewlines;
             return this;
         }
+        @CustomType.Setter
         public Builder autodetect(@Nullable Boolean autodetect) {
             this.autodetect = autodetect;
             return this;
         }
+        @CustomType.Setter
         public Builder createDisposition(@Nullable String createDisposition) {
             this.createDisposition = createDisposition;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEncryptionConfiguration(@Nullable JobLoadDestinationEncryptionConfiguration destinationEncryptionConfiguration) {
             this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationTable(JobLoadDestinationTable destinationTable) {
             this.destinationTable = Objects.requireNonNull(destinationTable);
             return this;
         }
+        @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
             this.encoding = encoding;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldDelimiter(@Nullable String fieldDelimiter) {
             this.fieldDelimiter = fieldDelimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreUnknownValues(@Nullable Boolean ignoreUnknownValues) {
             this.ignoreUnknownValues = ignoreUnknownValues;
             return this;
         }
+        @CustomType.Setter
         public Builder maxBadRecords(@Nullable Integer maxBadRecords) {
             this.maxBadRecords = maxBadRecords;
             return this;
         }
+        @CustomType.Setter
         public Builder nullMarker(@Nullable String nullMarker) {
             this.nullMarker = nullMarker;
             return this;
         }
+        @CustomType.Setter
         public Builder projectionFields(@Nullable List<String> projectionFields) {
             this.projectionFields = projectionFields;
             return this;
@@ -506,10 +473,12 @@ public final class JobLoad {
         public Builder projectionFields(String... projectionFields) {
             return projectionFields(List.of(projectionFields));
         }
+        @CustomType.Setter
         public Builder quote(@Nullable String quote) {
             this.quote = quote;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaUpdateOptions(@Nullable List<String> schemaUpdateOptions) {
             this.schemaUpdateOptions = schemaUpdateOptions;
             return this;
@@ -517,14 +486,17 @@ public final class JobLoad {
         public Builder schemaUpdateOptions(String... schemaUpdateOptions) {
             return schemaUpdateOptions(List.of(schemaUpdateOptions));
         }
+        @CustomType.Setter
         public Builder skipLeadingRows(@Nullable Integer skipLeadingRows) {
             this.skipLeadingRows = skipLeadingRows;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
             this.sourceFormat = sourceFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceUris(List<String> sourceUris) {
             this.sourceUris = Objects.requireNonNull(sourceUris);
             return this;
@@ -532,15 +504,38 @@ public final class JobLoad {
         public Builder sourceUris(String... sourceUris) {
             return sourceUris(List.of(sourceUris));
         }
+        @CustomType.Setter
         public Builder timePartitioning(@Nullable JobLoadTimePartitioning timePartitioning) {
             this.timePartitioning = timePartitioning;
             return this;
         }
+        @CustomType.Setter
         public Builder writeDisposition(@Nullable String writeDisposition) {
             this.writeDisposition = writeDisposition;
             return this;
-        }        public JobLoad build() {
-            return new JobLoad(allowJaggedRows, allowQuotedNewlines, autodetect, createDisposition, destinationEncryptionConfiguration, destinationTable, encoding, fieldDelimiter, ignoreUnknownValues, maxBadRecords, nullMarker, projectionFields, quote, schemaUpdateOptions, skipLeadingRows, sourceFormat, sourceUris, timePartitioning, writeDisposition);
+        }
+        public JobLoad build() {
+            final var o = new JobLoad();
+            o.allowJaggedRows = allowJaggedRows;
+            o.allowQuotedNewlines = allowQuotedNewlines;
+            o.autodetect = autodetect;
+            o.createDisposition = createDisposition;
+            o.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
+            o.destinationTable = destinationTable;
+            o.encoding = encoding;
+            o.fieldDelimiter = fieldDelimiter;
+            o.ignoreUnknownValues = ignoreUnknownValues;
+            o.maxBadRecords = maxBadRecords;
+            o.nullMarker = nullMarker;
+            o.projectionFields = projectionFields;
+            o.quote = quote;
+            o.schemaUpdateOptions = schemaUpdateOptions;
+            o.skipLeadingRows = skipLeadingRows;
+            o.sourceFormat = sourceFormat;
+            o.sourceUris = sourceUris;
+            o.timePartitioning = timePartitioning;
+            o.writeDisposition = writeDisposition;
+            return o;
         }
     }
 }

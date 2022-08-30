@@ -15,28 +15,19 @@ public final class SubnetworkIAMMemberCondition {
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Textual representation of an expression in Common Expression Language syntax.
      * 
      */
-    private final String expression;
+    private String expression;
     /**
      * @return A title for the expression, i.e. a short string describing its purpose.
      * 
      */
-    private final String title;
+    private String title;
 
-    @CustomType.Constructor
-    private SubnetworkIAMMemberCondition(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("title") String title) {
-        this.description = description;
-        this.expression = expression;
-        this.title = title;
-    }
-
+    private SubnetworkIAMMemberCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -66,16 +57,12 @@ public final class SubnetworkIAMMemberCondition {
     public static Builder builder(SubnetworkIAMMemberCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String expression;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubnetworkIAMMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -83,19 +70,27 @@ public final class SubnetworkIAMMemberCondition {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public SubnetworkIAMMemberCondition build() {
-            return new SubnetworkIAMMemberCondition(description, expression, title);
+        }
+        public SubnetworkIAMMemberCondition build() {
+            final var o = new SubnetworkIAMMemberCondition();
+            o.description = description;
+            o.expression = expression;
+            o.title = title;
+            return o;
         }
     }
 }

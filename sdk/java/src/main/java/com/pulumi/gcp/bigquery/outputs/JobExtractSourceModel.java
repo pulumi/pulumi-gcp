@@ -13,28 +13,19 @@ public final class JobExtractSourceModel {
      * @return The ID of the dataset containing this model.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The ID of the model.
      * 
      */
-    private final String modelId;
+    private String modelId;
     /**
      * @return The ID of the project containing this model.
      * 
      */
-    private final String projectId;
+    private String projectId;
 
-    @CustomType.Constructor
-    private JobExtractSourceModel(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("modelId") String modelId,
-        @CustomType.Parameter("projectId") String projectId) {
-        this.datasetId = datasetId;
-        this.modelId = modelId;
-        this.projectId = projectId;
-    }
-
+    private JobExtractSourceModel() {}
     /**
      * @return The ID of the dataset containing this model.
      * 
@@ -64,16 +55,12 @@ public final class JobExtractSourceModel {
     public static Builder builder(JobExtractSourceModel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private String modelId;
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobExtractSourceModel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
@@ -81,19 +68,27 @@ public final class JobExtractSourceModel {
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder modelId(String modelId) {
             this.modelId = Objects.requireNonNull(modelId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public JobExtractSourceModel build() {
-            return new JobExtractSourceModel(datasetId, modelId, projectId);
+        }
+        public JobExtractSourceModel build() {
+            final var o = new JobExtractSourceModel();
+            o.datasetId = datasetId;
+            o.modelId = modelId;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

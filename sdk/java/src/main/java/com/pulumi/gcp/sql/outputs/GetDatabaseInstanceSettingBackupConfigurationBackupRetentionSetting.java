@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
-    private final Integer retainedBackups;
-    private final String retentionUnit;
+    private Integer retainedBackups;
+    private String retentionUnit;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting(
-        @CustomType.Parameter("retainedBackups") Integer retainedBackups,
-        @CustomType.Parameter("retentionUnit") String retentionUnit) {
-        this.retainedBackups = retainedBackups;
-        this.retentionUnit = retentionUnit;
-    }
-
+    private GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting() {}
     public Integer retainedBackups() {
         return this.retainedBackups;
     }
@@ -35,30 +28,32 @@ public final class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionS
     public static Builder builder(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer retainedBackups;
         private String retentionUnit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retainedBackups = defaults.retainedBackups;
     	      this.retentionUnit = defaults.retentionUnit;
         }
 
+        @CustomType.Setter
         public Builder retainedBackups(Integer retainedBackups) {
             this.retainedBackups = Objects.requireNonNull(retainedBackups);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionUnit(String retentionUnit) {
             this.retentionUnit = Objects.requireNonNull(retentionUnit);
             return this;
-        }        public GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting build() {
-            return new GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting(retainedBackups, retentionUnit);
+        }
+        public GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting build() {
+            final var o = new GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting();
+            o.retainedBackups = retainedBackups;
+            o.retentionUnit = retentionUnit;
+            return o;
         }
     }
 }

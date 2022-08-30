@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HubRoutingVpc {
-    private final @Nullable String uri;
+    private @Nullable String uri;
 
-    @CustomType.Constructor
-    private HubRoutingVpc(@CustomType.Parameter("uri") @Nullable String uri) {
-        this.uri = uri;
-    }
-
+    private HubRoutingVpc() {}
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }
@@ -29,24 +25,24 @@ public final class HubRoutingVpc {
     public static Builder builder(HubRoutingVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HubRoutingVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder uri(@Nullable String uri) {
             this.uri = uri;
             return this;
-        }        public HubRoutingVpc build() {
-            return new HubRoutingVpc(uri);
+        }
+        public HubRoutingVpc build() {
+            final var o = new HubRoutingVpc();
+            o.uri = uri;
+            return o;
         }
     }
 }

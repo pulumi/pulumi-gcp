@@ -13,13 +13,9 @@ public final class AwsNodePoolConfigSshConfig {
      * @return The name of the EC2 key pair used to login into cluster machines.
      * 
      */
-    private final String ec2KeyPair;
+    private String ec2KeyPair;
 
-    @CustomType.Constructor
-    private AwsNodePoolConfigSshConfig(@CustomType.Parameter("ec2KeyPair") String ec2KeyPair) {
-        this.ec2KeyPair = ec2KeyPair;
-    }
-
+    private AwsNodePoolConfigSshConfig() {}
     /**
      * @return The name of the EC2 key pair used to login into cluster machines.
      * 
@@ -35,24 +31,24 @@ public final class AwsNodePoolConfigSshConfig {
     public static Builder builder(AwsNodePoolConfigSshConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ec2KeyPair;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolConfigSshConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ec2KeyPair = defaults.ec2KeyPair;
         }
 
+        @CustomType.Setter
         public Builder ec2KeyPair(String ec2KeyPair) {
             this.ec2KeyPair = Objects.requireNonNull(ec2KeyPair);
             return this;
-        }        public AwsNodePoolConfigSshConfig build() {
-            return new AwsNodePoolConfigSshConfig(ec2KeyPair);
+        }
+        public AwsNodePoolConfigSshConfig build() {
+            final var o = new AwsNodePoolConfigSshConfig();
+            o.ec2KeyPair = ec2KeyPair;
+            return o;
         }
     }
 }

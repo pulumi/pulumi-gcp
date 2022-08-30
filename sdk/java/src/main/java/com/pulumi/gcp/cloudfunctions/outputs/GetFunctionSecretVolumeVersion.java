@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionSecretVolumeVersion {
-    private final String path;
-    private final String version;
+    private String path;
+    private String version;
 
-    @CustomType.Constructor
-    private GetFunctionSecretVolumeVersion(
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("version") String version) {
-        this.path = path;
-        this.version = version;
-    }
-
+    private GetFunctionSecretVolumeVersion() {}
     public String path() {
         return this.path;
     }
@@ -34,30 +27,32 @@ public final class GetFunctionSecretVolumeVersion {
     public static Builder builder(GetFunctionSecretVolumeVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionSecretVolumeVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetFunctionSecretVolumeVersion build() {
-            return new GetFunctionSecretVolumeVersion(path, version);
+        }
+        public GetFunctionSecretVolumeVersion build() {
+            final var o = new GetFunctionSecretVolumeVersion();
+            o.path = path;
+            o.version = version;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigInitializationAc
      * @return Required. Cloud Storage URI of executable file.
      * 
      */
-    private final @Nullable String executableFile;
+    private @Nullable String executableFile;
     /**
      * @return Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
      * 
      */
-    private final @Nullable String executionTimeout;
+    private @Nullable String executionTimeout;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigInitializationAction(
-        @CustomType.Parameter("executableFile") @Nullable String executableFile,
-        @CustomType.Parameter("executionTimeout") @Nullable String executionTimeout) {
-        this.executableFile = executableFile;
-        this.executionTimeout = executionTimeout;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigInitializationAction() {}
     /**
      * @return Required. Cloud Storage URI of executable file.
      * 
@@ -52,30 +45,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigInitializationAc
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigInitializationAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String executableFile;
         private @Nullable String executionTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigInitializationAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executableFile = defaults.executableFile;
     	      this.executionTimeout = defaults.executionTimeout;
         }
 
+        @CustomType.Setter
         public Builder executableFile(@Nullable String executableFile) {
             this.executableFile = executableFile;
             return this;
         }
+        @CustomType.Setter
         public Builder executionTimeout(@Nullable String executionTimeout) {
             this.executionTimeout = executionTimeout;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigInitializationAction build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigInitializationAction(executableFile, executionTimeout);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigInitializationAction build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigInitializationAction();
+            o.executableFile = executableFile;
+            o.executionTimeout = executionTimeout;
+            return o;
         }
     }
 }

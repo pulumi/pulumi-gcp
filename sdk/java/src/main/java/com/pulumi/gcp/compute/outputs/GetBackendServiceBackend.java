@@ -11,48 +11,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceBackend {
-    private final String balancingMode;
-    private final Double capacityScaler;
+    private String balancingMode;
+    private Double capacityScaler;
     /**
      * @return Textual description for the Backend Service.
      * 
      */
-    private final String description;
-    private final String group;
-    private final Integer maxConnections;
-    private final Integer maxConnectionsPerEndpoint;
-    private final Integer maxConnectionsPerInstance;
-    private final Integer maxRate;
-    private final Double maxRatePerEndpoint;
-    private final Double maxRatePerInstance;
-    private final Double maxUtilization;
+    private String description;
+    private String group;
+    private Integer maxConnections;
+    private Integer maxConnectionsPerEndpoint;
+    private Integer maxConnectionsPerInstance;
+    private Integer maxRate;
+    private Double maxRatePerEndpoint;
+    private Double maxRatePerInstance;
+    private Double maxUtilization;
 
-    @CustomType.Constructor
-    private GetBackendServiceBackend(
-        @CustomType.Parameter("balancingMode") String balancingMode,
-        @CustomType.Parameter("capacityScaler") Double capacityScaler,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("maxConnections") Integer maxConnections,
-        @CustomType.Parameter("maxConnectionsPerEndpoint") Integer maxConnectionsPerEndpoint,
-        @CustomType.Parameter("maxConnectionsPerInstance") Integer maxConnectionsPerInstance,
-        @CustomType.Parameter("maxRate") Integer maxRate,
-        @CustomType.Parameter("maxRatePerEndpoint") Double maxRatePerEndpoint,
-        @CustomType.Parameter("maxRatePerInstance") Double maxRatePerInstance,
-        @CustomType.Parameter("maxUtilization") Double maxUtilization) {
-        this.balancingMode = balancingMode;
-        this.capacityScaler = capacityScaler;
-        this.description = description;
-        this.group = group;
-        this.maxConnections = maxConnections;
-        this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-        this.maxConnectionsPerInstance = maxConnectionsPerInstance;
-        this.maxRate = maxRate;
-        this.maxRatePerEndpoint = maxRatePerEndpoint;
-        this.maxRatePerInstance = maxRatePerInstance;
-        this.maxUtilization = maxUtilization;
-    }
-
+    private GetBackendServiceBackend() {}
     public String balancingMode() {
         return this.balancingMode;
     }
@@ -98,7 +73,7 @@ public final class GetBackendServiceBackend {
     public static Builder builder(GetBackendServiceBackend defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String balancingMode;
         private Double capacityScaler;
@@ -111,11 +86,7 @@ public final class GetBackendServiceBackend {
         private Double maxRatePerEndpoint;
         private Double maxRatePerInstance;
         private Double maxUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.balancingMode = defaults.balancingMode;
@@ -131,51 +102,75 @@ public final class GetBackendServiceBackend {
     	      this.maxUtilization = defaults.maxUtilization;
         }
 
+        @CustomType.Setter
         public Builder balancingMode(String balancingMode) {
             this.balancingMode = Objects.requireNonNull(balancingMode);
             return this;
         }
+        @CustomType.Setter
         public Builder capacityScaler(Double capacityScaler) {
             this.capacityScaler = Objects.requireNonNull(capacityScaler);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionsPerEndpoint(Integer maxConnectionsPerEndpoint) {
             this.maxConnectionsPerEndpoint = Objects.requireNonNull(maxConnectionsPerEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionsPerInstance(Integer maxConnectionsPerInstance) {
             this.maxConnectionsPerInstance = Objects.requireNonNull(maxConnectionsPerInstance);
             return this;
         }
+        @CustomType.Setter
         public Builder maxRate(Integer maxRate) {
             this.maxRate = Objects.requireNonNull(maxRate);
             return this;
         }
+        @CustomType.Setter
         public Builder maxRatePerEndpoint(Double maxRatePerEndpoint) {
             this.maxRatePerEndpoint = Objects.requireNonNull(maxRatePerEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder maxRatePerInstance(Double maxRatePerInstance) {
             this.maxRatePerInstance = Objects.requireNonNull(maxRatePerInstance);
             return this;
         }
+        @CustomType.Setter
         public Builder maxUtilization(Double maxUtilization) {
             this.maxUtilization = Objects.requireNonNull(maxUtilization);
             return this;
-        }        public GetBackendServiceBackend build() {
-            return new GetBackendServiceBackend(balancingMode, capacityScaler, description, group, maxConnections, maxConnectionsPerEndpoint, maxConnectionsPerInstance, maxRate, maxRatePerEndpoint, maxRatePerInstance, maxUtilization);
+        }
+        public GetBackendServiceBackend build() {
+            final var o = new GetBackendServiceBackend();
+            o.balancingMode = balancingMode;
+            o.capacityScaler = capacityScaler;
+            o.description = description;
+            o.group = group;
+            o.maxConnections = maxConnections;
+            o.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
+            o.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            o.maxRate = maxRate;
+            o.maxRatePerEndpoint = maxRatePerEndpoint;
+            o.maxRatePerInstance = maxRatePerInstance;
+            o.maxUtilization = maxUtilization;
+            return o;
         }
     }
 }

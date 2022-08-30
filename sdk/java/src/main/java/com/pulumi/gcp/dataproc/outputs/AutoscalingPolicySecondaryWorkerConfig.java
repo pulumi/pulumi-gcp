@@ -17,12 +17,12 @@ public final class AutoscalingPolicySecondaryWorkerConfig {
      * Bounds: [minInstances, ). Defaults to 0.
      * 
      */
-    private final @Nullable Integer maxInstances;
+    private @Nullable Integer maxInstances;
     /**
      * @return Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
      * 
      */
-    private final @Nullable Integer minInstances;
+    private @Nullable Integer minInstances;
     /**
      * @return Weight for the instance group, which is used to determine the fraction of total workers
      * in the cluster from this instance group. For example, if primary workers have weight 2,
@@ -38,18 +38,9 @@ public final class AutoscalingPolicySecondaryWorkerConfig {
      * only on primary workers, the cluster will use primary workers only and no secondary workers.
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private AutoscalingPolicySecondaryWorkerConfig(
-        @CustomType.Parameter("maxInstances") @Nullable Integer maxInstances,
-        @CustomType.Parameter("minInstances") @Nullable Integer minInstances,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.maxInstances = maxInstances;
-        this.minInstances = minInstances;
-        this.weight = weight;
-    }
-
+    private AutoscalingPolicySecondaryWorkerConfig() {}
     /**
      * @return Maximum number of instances for this group. Note that by default, clusters will not use
      * secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -92,16 +83,12 @@ public final class AutoscalingPolicySecondaryWorkerConfig {
     public static Builder builder(AutoscalingPolicySecondaryWorkerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxInstances;
         private @Nullable Integer minInstances;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalingPolicySecondaryWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxInstances = defaults.maxInstances;
@@ -109,19 +96,27 @@ public final class AutoscalingPolicySecondaryWorkerConfig {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder maxInstances(@Nullable Integer maxInstances) {
             this.maxInstances = maxInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder minInstances(@Nullable Integer minInstances) {
             this.minInstances = minInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public AutoscalingPolicySecondaryWorkerConfig build() {
-            return new AutoscalingPolicySecondaryWorkerConfig(maxInstances, minInstances, weight);
+        }
+        public AutoscalingPolicySecondaryWorkerConfig build() {
+            final var o = new AutoscalingPolicySecondaryWorkerConfig();
+            o.maxInstances = maxInstances;
+            o.minInstances = minInstances;
+            o.weight = weight;
+            return o;
         }
     }
 }

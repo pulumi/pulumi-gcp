@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWorkloadIdentityPoolProviderAw {
-    private final String accountId;
+    private String accountId;
 
-    @CustomType.Constructor
-    private GetWorkloadIdentityPoolProviderAw(@CustomType.Parameter("accountId") String accountId) {
-        this.accountId = accountId;
-    }
-
+    private GetWorkloadIdentityPoolProviderAw() {}
     public String accountId() {
         return this.accountId;
     }
@@ -27,24 +23,24 @@ public final class GetWorkloadIdentityPoolProviderAw {
     public static Builder builder(GetWorkloadIdentityPoolProviderAw defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWorkloadIdentityPoolProviderAw defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
-        }        public GetWorkloadIdentityPoolProviderAw build() {
-            return new GetWorkloadIdentityPoolProviderAw(accountId);
+        }
+        public GetWorkloadIdentityPoolProviderAw build() {
+            final var o = new GetWorkloadIdentityPoolProviderAw();
+            o.accountId = accountId;
+            return o;
         }
     }
 }

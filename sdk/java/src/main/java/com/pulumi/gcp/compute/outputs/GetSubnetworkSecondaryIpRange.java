@@ -14,22 +14,15 @@ public final class GetSubnetworkSecondaryIpRange {
      * secondary range.
      * 
      */
-    private final String ipCidrRange;
+    private String ipCidrRange;
     /**
      * @return The name associated with this subnetwork secondary range, used
      * when adding an alias IP range to a VM instance.
      * 
      */
-    private final String rangeName;
+    private String rangeName;
 
-    @CustomType.Constructor
-    private GetSubnetworkSecondaryIpRange(
-        @CustomType.Parameter("ipCidrRange") String ipCidrRange,
-        @CustomType.Parameter("rangeName") String rangeName) {
-        this.ipCidrRange = ipCidrRange;
-        this.rangeName = rangeName;
-    }
-
+    private GetSubnetworkSecondaryIpRange() {}
     /**
      * @return The range of IP addresses belonging to this subnetwork
      * secondary range.
@@ -54,30 +47,32 @@ public final class GetSubnetworkSecondaryIpRange {
     public static Builder builder(GetSubnetworkSecondaryIpRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipCidrRange;
         private String rangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubnetworkSecondaryIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.rangeName = defaults.rangeName;
         }
 
+        @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
             this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
             return this;
         }
+        @CustomType.Setter
         public Builder rangeName(String rangeName) {
             this.rangeName = Objects.requireNonNull(rangeName);
             return this;
-        }        public GetSubnetworkSecondaryIpRange build() {
-            return new GetSubnetworkSecondaryIpRange(ipCidrRange, rangeName);
+        }
+        public GetSubnetworkSecondaryIpRange build() {
+            final var o = new GetSubnetworkSecondaryIpRange();
+            o.ipCidrRange = ipCidrRange;
+            o.rangeName = rangeName;
+            return o;
         }
     }
 }

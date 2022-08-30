@@ -19,61 +19,44 @@ public final class FlexibleAppVersionHandlerStaticFiles {
      * uploads are charged against both your code and static data storage resource quotas.
      * 
      */
-    private final @Nullable Boolean applicationReadable;
+    private @Nullable Boolean applicationReadable;
     /**
      * @return Time a static file served by this handler should be cached by web proxies and browsers.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;3.5s&#34;.
      * Default is &#39;0s&#39;
      * 
      */
-    private final @Nullable String expiration;
+    private @Nullable String expiration;
     /**
      * @return HTTP headers to use for all responses from these URLs.
      * An object containing a list of &#34;key:value&#34; value pairs.&#34;.
      * 
      */
-    private final @Nullable Map<String,String> httpHeaders;
+    private @Nullable Map<String,String> httpHeaders;
     /**
      * @return MIME type used to serve all files served by this handler.
      * Defaults to file-specific MIME types, which are derived from each file&#39;s filename extension.
      * 
      */
-    private final @Nullable String mimeType;
+    private @Nullable String mimeType;
     /**
      * @return Path to the static files matched by the URL pattern, from the application root directory.
      * The path can refer to text matched in groupings in the URL pattern.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return Whether this handler should match the request if the file referenced by the handler does not exist.
      * 
      */
-    private final @Nullable Boolean requireMatchingFile;
+    private @Nullable Boolean requireMatchingFile;
     /**
      * @return Regular expression that matches the file paths for all files that should be referenced by this handler.
      * 
      */
-    private final @Nullable String uploadPathRegex;
+    private @Nullable String uploadPathRegex;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionHandlerStaticFiles(
-        @CustomType.Parameter("applicationReadable") @Nullable Boolean applicationReadable,
-        @CustomType.Parameter("expiration") @Nullable String expiration,
-        @CustomType.Parameter("httpHeaders") @Nullable Map<String,String> httpHeaders,
-        @CustomType.Parameter("mimeType") @Nullable String mimeType,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("requireMatchingFile") @Nullable Boolean requireMatchingFile,
-        @CustomType.Parameter("uploadPathRegex") @Nullable String uploadPathRegex) {
-        this.applicationReadable = applicationReadable;
-        this.expiration = expiration;
-        this.httpHeaders = httpHeaders;
-        this.mimeType = mimeType;
-        this.path = path;
-        this.requireMatchingFile = requireMatchingFile;
-        this.uploadPathRegex = uploadPathRegex;
-    }
-
+    private FlexibleAppVersionHandlerStaticFiles() {}
     /**
      * @return Whether files should also be uploaded as code data. By default, files declared in static file handlers are
      * uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
@@ -138,7 +121,7 @@ public final class FlexibleAppVersionHandlerStaticFiles {
     public static Builder builder(FlexibleAppVersionHandlerStaticFiles defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean applicationReadable;
         private @Nullable String expiration;
@@ -147,11 +130,7 @@ public final class FlexibleAppVersionHandlerStaticFiles {
         private @Nullable String path;
         private @Nullable Boolean requireMatchingFile;
         private @Nullable String uploadPathRegex;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionHandlerStaticFiles defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationReadable = defaults.applicationReadable;
@@ -163,35 +142,51 @@ public final class FlexibleAppVersionHandlerStaticFiles {
     	      this.uploadPathRegex = defaults.uploadPathRegex;
         }
 
+        @CustomType.Setter
         public Builder applicationReadable(@Nullable Boolean applicationReadable) {
             this.applicationReadable = applicationReadable;
             return this;
         }
+        @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
             this.expiration = expiration;
             return this;
         }
+        @CustomType.Setter
         public Builder httpHeaders(@Nullable Map<String,String> httpHeaders) {
             this.httpHeaders = httpHeaders;
             return this;
         }
+        @CustomType.Setter
         public Builder mimeType(@Nullable String mimeType) {
             this.mimeType = mimeType;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder requireMatchingFile(@Nullable Boolean requireMatchingFile) {
             this.requireMatchingFile = requireMatchingFile;
             return this;
         }
+        @CustomType.Setter
         public Builder uploadPathRegex(@Nullable String uploadPathRegex) {
             this.uploadPathRegex = uploadPathRegex;
             return this;
-        }        public FlexibleAppVersionHandlerStaticFiles build() {
-            return new FlexibleAppVersionHandlerStaticFiles(applicationReadable, expiration, httpHeaders, mimeType, path, requireMatchingFile, uploadPathRegex);
+        }
+        public FlexibleAppVersionHandlerStaticFiles build() {
+            final var o = new FlexibleAppVersionHandlerStaticFiles();
+            o.applicationReadable = applicationReadable;
+            o.expiration = expiration;
+            o.httpHeaders = httpHeaders;
+            o.mimeType = mimeType;
+            o.path = path;
+            o.requireMatchingFile = requireMatchingFile;
+            o.uploadPathRegex = uploadPathRegex;
+            return o;
         }
     }
 }

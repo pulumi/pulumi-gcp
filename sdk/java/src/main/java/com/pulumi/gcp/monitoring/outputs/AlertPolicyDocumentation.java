@@ -18,22 +18,15 @@ public final class AlertPolicyDocumentation {
      * whichever is smaller.
      * 
      */
-    private final @Nullable String content;
+    private @Nullable String content;
     /**
      * @return The format of the content field. Presently, only the value
      * &#34;text/markdown&#34; is supported.
      * 
      */
-    private final @Nullable String mimeType;
+    private @Nullable String mimeType;
 
-    @CustomType.Constructor
-    private AlertPolicyDocumentation(
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("mimeType") @Nullable String mimeType) {
-        this.content = content;
-        this.mimeType = mimeType;
-    }
-
+    private AlertPolicyDocumentation() {}
     /**
      * @return The text of the documentation, interpreted according to mimeType.
      * The content may not exceed 8,192 Unicode characters and may not
@@ -60,30 +53,32 @@ public final class AlertPolicyDocumentation {
     public static Builder builder(AlertPolicyDocumentation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
         private @Nullable String mimeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyDocumentation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.mimeType = defaults.mimeType;
         }
 
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder mimeType(@Nullable String mimeType) {
             this.mimeType = mimeType;
             return this;
-        }        public AlertPolicyDocumentation build() {
-            return new AlertPolicyDocumentation(content, mimeType);
+        }
+        public AlertPolicyDocumentation build() {
+            final var o = new AlertPolicyDocumentation();
+            o.content = content;
+            o.mimeType = mimeType;
+            return o;
         }
     }
 }

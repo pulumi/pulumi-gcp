@@ -24,13 +24,9 @@ public final class NodeTemplateServerBinding {
      * Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private NodeTemplateServerBinding(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private NodeTemplateServerBinding() {}
     /**
      * @return Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
      * nodes using this template will restart on any physical server
@@ -57,24 +53,24 @@ public final class NodeTemplateServerBinding {
     public static Builder builder(NodeTemplateServerBinding defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateServerBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public NodeTemplateServerBinding build() {
-            return new NodeTemplateServerBinding(type);
+        }
+        public NodeTemplateServerBinding build() {
+            final var o = new NodeTemplateServerBinding();
+            o.type = type;
+            return o;
         }
     }
 }

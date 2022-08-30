@@ -17,22 +17,15 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort abort;
+    private @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort abort;
     /**
      * @return The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay delay;
+    private @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay delay;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy(
-        @CustomType.Parameter("abort") @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort abort,
-        @CustomType.Parameter("delay") @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay delay) {
-        this.abort = abort;
-        this.delay = delay;
-    }
-
+    private URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy() {}
     /**
      * @return The specification for how client requests are aborted as part of fault injection.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
     public static Builder builder(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort abort;
         private @Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay delay;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abort = defaults.abort;
     	      this.delay = defaults.delay;
         }
 
+        @CustomType.Setter
         public Builder abort(@Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort abort) {
             this.abort = abort;
             return this;
         }
+        @CustomType.Setter
         public Builder delay(@Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay delay) {
             this.delay = delay;
             return this;
-        }        public URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy build() {
-            return new URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy(abort, delay);
+        }
+        public URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy build() {
+            final var o = new URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy();
+            o.abort = abort;
+            o.delay = delay;
+            return o;
         }
     }
 }

@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
-    private final String cidrBlock;
-    private final @Nullable String displayName;
+    private String cidrBlock;
+    private @Nullable String displayName;
 
-    @CustomType.Constructor
-    private EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("displayName") @Nullable String displayName) {
-        this.cidrBlock = cidrBlock;
-        this.displayName = displayName;
-    }
-
+    private EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock() {}
     public String cidrBlock() {
         return this.cidrBlock;
     }
@@ -36,30 +29,32 @@ public final class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
     public static Builder builder(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private @Nullable String displayName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
     	      this.displayName = defaults.displayName;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
-        }        public EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock build() {
-            return new EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(cidrBlock, displayName);
+        }
+        public EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock build() {
+            final var o = new EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock();
+            o.cidrBlock = cidrBlock;
+            o.displayName = displayName;
+            return o;
         }
     }
 }

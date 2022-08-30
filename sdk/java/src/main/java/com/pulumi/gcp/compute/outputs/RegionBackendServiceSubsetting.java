@@ -14,13 +14,9 @@ public final class RegionBackendServiceSubsetting {
      * Possible values are `CONSISTENT_HASH_SUBSETTING`.
      * 
      */
-    private final String policy;
+    private String policy;
 
-    @CustomType.Constructor
-    private RegionBackendServiceSubsetting(@CustomType.Parameter("policy") String policy) {
-        this.policy = policy;
-    }
-
+    private RegionBackendServiceSubsetting() {}
     /**
      * @return The algorithm used for subsetting.
      * Possible values are `CONSISTENT_HASH_SUBSETTING`.
@@ -37,24 +33,24 @@ public final class RegionBackendServiceSubsetting {
     public static Builder builder(RegionBackendServiceSubsetting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String policy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceSubsetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.policy = defaults.policy;
         }
 
+        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
-        }        public RegionBackendServiceSubsetting build() {
-            return new RegionBackendServiceSubsetting(policy);
+        }
+        public RegionBackendServiceSubsetting build() {
+            final var o = new RegionBackendServiceSubsetting();
+            o.policy = policy;
+            return o;
         }
     }
 }

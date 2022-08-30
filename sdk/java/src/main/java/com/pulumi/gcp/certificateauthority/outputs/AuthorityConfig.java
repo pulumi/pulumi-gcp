@@ -15,22 +15,15 @@ public final class AuthorityConfig {
      * Structure is documented below.
      * 
      */
-    private final AuthorityConfigSubjectConfig subjectConfig;
+    private AuthorityConfigSubjectConfig subjectConfig;
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
-    private final AuthorityConfigX509Config x509Config;
+    private AuthorityConfigX509Config x509Config;
 
-    @CustomType.Constructor
-    private AuthorityConfig(
-        @CustomType.Parameter("subjectConfig") AuthorityConfigSubjectConfig subjectConfig,
-        @CustomType.Parameter("x509Config") AuthorityConfigX509Config x509Config) {
-        this.subjectConfig = subjectConfig;
-        this.x509Config = x509Config;
-    }
-
+    private AuthorityConfig() {}
     /**
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
@@ -55,30 +48,32 @@ public final class AuthorityConfig {
     public static Builder builder(AuthorityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private AuthorityConfigSubjectConfig subjectConfig;
         private AuthorityConfigX509Config x509Config;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthorityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subjectConfig = defaults.subjectConfig;
     	      this.x509Config = defaults.x509Config;
         }
 
+        @CustomType.Setter
         public Builder subjectConfig(AuthorityConfigSubjectConfig subjectConfig) {
             this.subjectConfig = Objects.requireNonNull(subjectConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder x509Config(AuthorityConfigX509Config x509Config) {
             this.x509Config = Objects.requireNonNull(x509Config);
             return this;
-        }        public AuthorityConfig build() {
-            return new AuthorityConfig(subjectConfig, x509Config);
+        }
+        public AuthorityConfig build() {
+            final var o = new AuthorityConfig();
+            o.subjectConfig = subjectConfig;
+            o.x509Config = x509Config;
+            return o;
         }
     }
 }

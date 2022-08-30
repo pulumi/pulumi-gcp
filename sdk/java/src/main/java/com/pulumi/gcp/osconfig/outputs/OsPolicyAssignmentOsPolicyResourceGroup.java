@@ -16,21 +16,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroup {
      * @return List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
      * 
      */
-    private final @Nullable List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter> inventoryFilters;
+    private @Nullable List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter> inventoryFilters;
     /**
      * @return Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
      * 
      */
-    private final List<OsPolicyAssignmentOsPolicyResourceGroupResource> resources;
+    private List<OsPolicyAssignmentOsPolicyResourceGroupResource> resources;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroup(
-        @CustomType.Parameter("inventoryFilters") @Nullable List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter> inventoryFilters,
-        @CustomType.Parameter("resources") List<OsPolicyAssignmentOsPolicyResourceGroupResource> resources) {
-        this.inventoryFilters = inventoryFilters;
-        this.resources = resources;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroup() {}
     /**
      * @return List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
      * 
@@ -53,21 +46,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroup {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter> inventoryFilters;
         private List<OsPolicyAssignmentOsPolicyResourceGroupResource> resources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.inventoryFilters = defaults.inventoryFilters;
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
         public Builder inventoryFilters(@Nullable List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter> inventoryFilters) {
             this.inventoryFilters = inventoryFilters;
             return this;
@@ -75,14 +65,19 @@ public final class OsPolicyAssignmentOsPolicyResourceGroup {
         public Builder inventoryFilters(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter... inventoryFilters) {
             return inventoryFilters(List.of(inventoryFilters));
         }
+        @CustomType.Setter
         public Builder resources(List<OsPolicyAssignmentOsPolicyResourceGroupResource> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
         }
         public Builder resources(OsPolicyAssignmentOsPolicyResourceGroupResource... resources) {
             return resources(List.of(resources));
-        }        public OsPolicyAssignmentOsPolicyResourceGroup build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroup(inventoryFilters, resources);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroup build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroup();
+            o.inventoryFilters = inventoryFilters;
+            o.resources = resources;
+            return o;
         }
     }
 }

@@ -17,13 +17,9 @@ public final class ServiceNetworkSettingsNetworkSettings {
      * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
      * 
      */
-    private final @Nullable String ingressTrafficAllowed;
+    private @Nullable String ingressTrafficAllowed;
 
-    @CustomType.Constructor
-    private ServiceNetworkSettingsNetworkSettings(@CustomType.Parameter("ingressTrafficAllowed") @Nullable String ingressTrafficAllowed) {
-        this.ingressTrafficAllowed = ingressTrafficAllowed;
-    }
-
+    private ServiceNetworkSettingsNetworkSettings() {}
     /**
      * @return The ingress settings for version or service.
      * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
@@ -41,24 +37,24 @@ public final class ServiceNetworkSettingsNetworkSettings {
     public static Builder builder(ServiceNetworkSettingsNetworkSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ingressTrafficAllowed;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceNetworkSettingsNetworkSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ingressTrafficAllowed = defaults.ingressTrafficAllowed;
         }
 
+        @CustomType.Setter
         public Builder ingressTrafficAllowed(@Nullable String ingressTrafficAllowed) {
             this.ingressTrafficAllowed = ingressTrafficAllowed;
             return this;
-        }        public ServiceNetworkSettingsNetworkSettings build() {
-            return new ServiceNetworkSettingsNetworkSettings(ingressTrafficAllowed);
+        }
+        public ServiceNetworkSettingsNetworkSettings build() {
+            final var o = new ServiceNetworkSettingsNetworkSettings();
+            o.ingressTrafficAllowed = ingressTrafficAllowed;
+            return o;
         }
     }
 }

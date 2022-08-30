@@ -20,42 +20,29 @@ public final class CertificateTemplatePredefinedValues {
      * @return Optional. Describes custom X.509 extensions.
      * 
      */
-    private final @Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions;
+    private @Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions;
     /**
      * @return Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
-    private final @Nullable List<String> aiaOcspServers;
+    private @Nullable List<String> aiaOcspServers;
     /**
      * @return Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
      * 
      */
-    private final @Nullable CertificateTemplatePredefinedValuesCaOptions caOptions;
+    private @Nullable CertificateTemplatePredefinedValuesCaOptions caOptions;
     /**
      * @return Optional. Indicates the intended use for keys that correspond to a certificate.
      * 
      */
-    private final @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
+    private @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
     /**
      * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * 
      */
-    private final @Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds;
+    private @Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds;
 
-    @CustomType.Constructor
-    private CertificateTemplatePredefinedValues(
-        @CustomType.Parameter("additionalExtensions") @Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions,
-        @CustomType.Parameter("aiaOcspServers") @Nullable List<String> aiaOcspServers,
-        @CustomType.Parameter("caOptions") @Nullable CertificateTemplatePredefinedValuesCaOptions caOptions,
-        @CustomType.Parameter("keyUsage") @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage,
-        @CustomType.Parameter("policyIds") @Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds) {
-        this.additionalExtensions = additionalExtensions;
-        this.aiaOcspServers = aiaOcspServers;
-        this.caOptions = caOptions;
-        this.keyUsage = keyUsage;
-        this.policyIds = policyIds;
-    }
-
+    private CertificateTemplatePredefinedValues() {}
     /**
      * @return Optional. Describes custom X.509 extensions.
      * 
@@ -99,18 +86,14 @@ public final class CertificateTemplatePredefinedValues {
     public static Builder builder(CertificateTemplatePredefinedValues defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions;
         private @Nullable List<String> aiaOcspServers;
         private @Nullable CertificateTemplatePredefinedValuesCaOptions caOptions;
         private @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
         private @Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePredefinedValues defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalExtensions = defaults.additionalExtensions;
@@ -120,6 +103,7 @@ public final class CertificateTemplatePredefinedValues {
     	      this.policyIds = defaults.policyIds;
         }
 
+        @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions) {
             this.additionalExtensions = additionalExtensions;
             return this;
@@ -127,6 +111,7 @@ public final class CertificateTemplatePredefinedValues {
         public Builder additionalExtensions(CertificateTemplatePredefinedValuesAdditionalExtension... additionalExtensions) {
             return additionalExtensions(List.of(additionalExtensions));
         }
+        @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
             this.aiaOcspServers = aiaOcspServers;
             return this;
@@ -134,22 +119,32 @@ public final class CertificateTemplatePredefinedValues {
         public Builder aiaOcspServers(String... aiaOcspServers) {
             return aiaOcspServers(List.of(aiaOcspServers));
         }
+        @CustomType.Setter
         public Builder caOptions(@Nullable CertificateTemplatePredefinedValuesCaOptions caOptions) {
             this.caOptions = caOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder keyUsage(@Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage) {
             this.keyUsage = keyUsage;
             return this;
         }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
         }
         public Builder policyIds(CertificateTemplatePredefinedValuesPolicyId... policyIds) {
             return policyIds(List.of(policyIds));
-        }        public CertificateTemplatePredefinedValues build() {
-            return new CertificateTemplatePredefinedValues(additionalExtensions, aiaOcspServers, caOptions, keyUsage, policyIds);
+        }
+        public CertificateTemplatePredefinedValues build() {
+            final var o = new CertificateTemplatePredefinedValues();
+            o.additionalExtensions = additionalExtensions;
+            o.aiaOcspServers = aiaOcspServers;
+            o.caOptions = caOptions;
+            o.keyUsage = keyUsage;
+            o.policyIds = policyIds;
+            return o;
         }
     }
 }

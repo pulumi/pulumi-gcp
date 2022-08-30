@@ -16,21 +16,14 @@ public final class BucketRetentionPolicy {
      * @return If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket&#39;s retention policy.  Caution: Locking a bucket is an irreversible action.
      * 
      */
-    private final @Nullable Boolean isLocked;
+    private @Nullable Boolean isLocked;
     /**
      * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
      * 
      */
-    private final Integer retentionPeriod;
+    private Integer retentionPeriod;
 
-    @CustomType.Constructor
-    private BucketRetentionPolicy(
-        @CustomType.Parameter("isLocked") @Nullable Boolean isLocked,
-        @CustomType.Parameter("retentionPeriod") Integer retentionPeriod) {
-        this.isLocked = isLocked;
-        this.retentionPeriod = retentionPeriod;
-    }
-
+    private BucketRetentionPolicy() {}
     /**
      * @return If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket&#39;s retention policy.  Caution: Locking a bucket is an irreversible action.
      * 
@@ -53,30 +46,32 @@ public final class BucketRetentionPolicy {
     public static Builder builder(BucketRetentionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isLocked;
         private Integer retentionPeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketRetentionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isLocked = defaults.isLocked;
     	      this.retentionPeriod = defaults.retentionPeriod;
         }
 
+        @CustomType.Setter
         public Builder isLocked(@Nullable Boolean isLocked) {
             this.isLocked = isLocked;
             return this;
         }
+        @CustomType.Setter
         public Builder retentionPeriod(Integer retentionPeriod) {
             this.retentionPeriod = Objects.requireNonNull(retentionPeriod);
             return this;
-        }        public BucketRetentionPolicy build() {
-            return new BucketRetentionPolicy(isLocked, retentionPeriod);
+        }
+        public BucketRetentionPolicy build() {
+            final var o = new BucketRetentionPolicy();
+            o.isLocked = isLocked;
+            o.retentionPeriod = retentionPeriod;
+            return o;
         }
     }
 }

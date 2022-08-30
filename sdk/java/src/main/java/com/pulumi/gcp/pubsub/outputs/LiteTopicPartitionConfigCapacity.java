@@ -13,21 +13,14 @@ public final class LiteTopicPartitionConfigCapacity {
      * @return Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
      * 
      */
-    private final Integer publishMibPerSec;
+    private Integer publishMibPerSec;
     /**
      * @return Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
      * 
      */
-    private final Integer subscribeMibPerSec;
+    private Integer subscribeMibPerSec;
 
-    @CustomType.Constructor
-    private LiteTopicPartitionConfigCapacity(
-        @CustomType.Parameter("publishMibPerSec") Integer publishMibPerSec,
-        @CustomType.Parameter("subscribeMibPerSec") Integer subscribeMibPerSec) {
-        this.publishMibPerSec = publishMibPerSec;
-        this.subscribeMibPerSec = subscribeMibPerSec;
-    }
-
+    private LiteTopicPartitionConfigCapacity() {}
     /**
      * @return Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
      * 
@@ -50,30 +43,32 @@ public final class LiteTopicPartitionConfigCapacity {
     public static Builder builder(LiteTopicPartitionConfigCapacity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer publishMibPerSec;
         private Integer subscribeMibPerSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LiteTopicPartitionConfigCapacity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publishMibPerSec = defaults.publishMibPerSec;
     	      this.subscribeMibPerSec = defaults.subscribeMibPerSec;
         }
 
+        @CustomType.Setter
         public Builder publishMibPerSec(Integer publishMibPerSec) {
             this.publishMibPerSec = Objects.requireNonNull(publishMibPerSec);
             return this;
         }
+        @CustomType.Setter
         public Builder subscribeMibPerSec(Integer subscribeMibPerSec) {
             this.subscribeMibPerSec = Objects.requireNonNull(subscribeMibPerSec);
             return this;
-        }        public LiteTopicPartitionConfigCapacity build() {
-            return new LiteTopicPartitionConfigCapacity(publishMibPerSec, subscribeMibPerSec);
+        }
+        public LiteTopicPartitionConfigCapacity build() {
+            final var o = new LiteTopicPartitionConfigCapacity();
+            o.publishMibPerSec = publishMibPerSec;
+            o.subscribeMibPerSec = subscribeMibPerSec;
+            return o;
         }
     }
 }

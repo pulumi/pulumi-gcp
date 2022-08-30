@@ -17,23 +17,16 @@ public final class ClusterClusterConfigInitializationAction {
      * The script must be a GCS file with a gs:// prefix.
      * 
      */
-    private final String script;
+    private String script;
     /**
      * @return The maximum duration (in seconds) which `script` is
      * allowed to take to execute its action. GCP will default to a predetermined
      * computed value if not set (currently 300).
      * 
      */
-    private final @Nullable Integer timeoutSec;
+    private @Nullable Integer timeoutSec;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigInitializationAction(
-        @CustomType.Parameter("script") String script,
-        @CustomType.Parameter("timeoutSec") @Nullable Integer timeoutSec) {
-        this.script = script;
-        this.timeoutSec = timeoutSec;
-    }
-
+    private ClusterClusterConfigInitializationAction() {}
     /**
      * @return The script to be executed during initialization of the cluster.
      * The script must be a GCS file with a gs:// prefix.
@@ -59,30 +52,32 @@ public final class ClusterClusterConfigInitializationAction {
     public static Builder builder(ClusterClusterConfigInitializationAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String script;
         private @Nullable Integer timeoutSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigInitializationAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.script = defaults.script;
     	      this.timeoutSec = defaults.timeoutSec;
         }
 
+        @CustomType.Setter
         public Builder script(String script) {
             this.script = Objects.requireNonNull(script);
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSec(@Nullable Integer timeoutSec) {
             this.timeoutSec = timeoutSec;
             return this;
-        }        public ClusterClusterConfigInitializationAction build() {
-            return new ClusterClusterConfigInitializationAction(script, timeoutSec);
+        }
+        public ClusterClusterConfigInitializationAction build() {
+            final var o = new ClusterClusterConfigInitializationAction();
+            o.script = script;
+            o.timeoutSec = timeoutSec;
+            return o;
         }
     }
 }

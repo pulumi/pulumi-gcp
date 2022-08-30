@@ -14,29 +14,20 @@ public final class URLMapPathMatcherHeaderActionRequestHeadersToAdd {
      * @return The name of the header to add.
      * 
      */
-    private final String headerName;
+    private String headerName;
     /**
      * @return The value of the header to add.
      * 
      */
-    private final String headerValue;
+    private String headerValue;
     /**
      * @return If false, headerValue is appended to any values that already exist for the header.
      * If true, headerValue is set for the header, discarding any values that were set for that header.
      * 
      */
-    private final Boolean replace;
+    private Boolean replace;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherHeaderActionRequestHeadersToAdd(
-        @CustomType.Parameter("headerName") String headerName,
-        @CustomType.Parameter("headerValue") String headerValue,
-        @CustomType.Parameter("replace") Boolean replace) {
-        this.headerName = headerName;
-        this.headerValue = headerValue;
-        this.replace = replace;
-    }
-
+    private URLMapPathMatcherHeaderActionRequestHeadersToAdd() {}
     /**
      * @return The name of the header to add.
      * 
@@ -67,16 +58,12 @@ public final class URLMapPathMatcherHeaderActionRequestHeadersToAdd {
     public static Builder builder(URLMapPathMatcherHeaderActionRequestHeadersToAdd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String headerName;
         private String headerValue;
         private Boolean replace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherHeaderActionRequestHeadersToAdd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerName = defaults.headerName;
@@ -84,19 +71,27 @@ public final class URLMapPathMatcherHeaderActionRequestHeadersToAdd {
     	      this.replace = defaults.replace;
         }
 
+        @CustomType.Setter
         public Builder headerName(String headerName) {
             this.headerName = Objects.requireNonNull(headerName);
             return this;
         }
+        @CustomType.Setter
         public Builder headerValue(String headerValue) {
             this.headerValue = Objects.requireNonNull(headerValue);
             return this;
         }
+        @CustomType.Setter
         public Builder replace(Boolean replace) {
             this.replace = Objects.requireNonNull(replace);
             return this;
-        }        public URLMapPathMatcherHeaderActionRequestHeadersToAdd build() {
-            return new URLMapPathMatcherHeaderActionRequestHeadersToAdd(headerName, headerValue, replace);
+        }
+        public URLMapPathMatcherHeaderActionRequestHeadersToAdd build() {
+            final var o = new URLMapPathMatcherHeaderActionRequestHeadersToAdd();
+            o.headerName = headerName;
+            o.headerValue = headerValue;
+            o.replace = replace;
+            return o;
         }
     }
 }

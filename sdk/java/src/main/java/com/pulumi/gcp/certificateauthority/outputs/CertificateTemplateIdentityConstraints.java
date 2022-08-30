@@ -16,28 +16,19 @@ public final class CertificateTemplateIdentityConstraints {
      * @return Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
      * 
      */
-    private final Boolean allowSubjectAltNamesPassthrough;
+    private Boolean allowSubjectAltNamesPassthrough;
     /**
      * @return Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
      * 
      */
-    private final Boolean allowSubjectPassthrough;
+    private Boolean allowSubjectPassthrough;
     /**
      * @return Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
      * 
      */
-    private final @Nullable CertificateTemplateIdentityConstraintsCelExpression celExpression;
+    private @Nullable CertificateTemplateIdentityConstraintsCelExpression celExpression;
 
-    @CustomType.Constructor
-    private CertificateTemplateIdentityConstraints(
-        @CustomType.Parameter("allowSubjectAltNamesPassthrough") Boolean allowSubjectAltNamesPassthrough,
-        @CustomType.Parameter("allowSubjectPassthrough") Boolean allowSubjectPassthrough,
-        @CustomType.Parameter("celExpression") @Nullable CertificateTemplateIdentityConstraintsCelExpression celExpression) {
-        this.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
-        this.allowSubjectPassthrough = allowSubjectPassthrough;
-        this.celExpression = celExpression;
-    }
-
+    private CertificateTemplateIdentityConstraints() {}
     /**
      * @return Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
      * 
@@ -67,16 +58,12 @@ public final class CertificateTemplateIdentityConstraints {
     public static Builder builder(CertificateTemplateIdentityConstraints defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowSubjectAltNamesPassthrough;
         private Boolean allowSubjectPassthrough;
         private @Nullable CertificateTemplateIdentityConstraintsCelExpression celExpression;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplateIdentityConstraints defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSubjectAltNamesPassthrough = defaults.allowSubjectAltNamesPassthrough;
@@ -84,19 +71,27 @@ public final class CertificateTemplateIdentityConstraints {
     	      this.celExpression = defaults.celExpression;
         }
 
+        @CustomType.Setter
         public Builder allowSubjectAltNamesPassthrough(Boolean allowSubjectAltNamesPassthrough) {
             this.allowSubjectAltNamesPassthrough = Objects.requireNonNull(allowSubjectAltNamesPassthrough);
             return this;
         }
+        @CustomType.Setter
         public Builder allowSubjectPassthrough(Boolean allowSubjectPassthrough) {
             this.allowSubjectPassthrough = Objects.requireNonNull(allowSubjectPassthrough);
             return this;
         }
+        @CustomType.Setter
         public Builder celExpression(@Nullable CertificateTemplateIdentityConstraintsCelExpression celExpression) {
             this.celExpression = celExpression;
             return this;
-        }        public CertificateTemplateIdentityConstraints build() {
-            return new CertificateTemplateIdentityConstraints(allowSubjectAltNamesPassthrough, allowSubjectPassthrough, celExpression);
+        }
+        public CertificateTemplateIdentityConstraints build() {
+            final var o = new CertificateTemplateIdentityConstraints();
+            o.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
+            o.allowSubjectPassthrough = allowSubjectPassthrough;
+            o.celExpression = celExpression;
+            return o;
         }
     }
 }

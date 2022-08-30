@@ -18,7 +18,7 @@ public final class InstanceServiceAccount {
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
-    private final @Nullable String email;
+    private @Nullable String email;
     /**
      * @return A list of service scopes. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
@@ -26,16 +26,9 @@ public final class InstanceServiceAccount {
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
-    private final List<String> scopes;
+    private List<String> scopes;
 
-    @CustomType.Constructor
-    private InstanceServiceAccount(
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("scopes") List<String> scopes) {
-        this.email = email;
-        this.scopes = scopes;
-    }
-
+    private InstanceServiceAccount() {}
     /**
      * @return The service account e-mail address. If not given, the
      * default Google Compute Engine service account is used.
@@ -63,33 +56,35 @@ public final class InstanceServiceAccount {
     public static Builder builder(InstanceServiceAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String email;
         private List<String> scopes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceServiceAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
         }
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
-        }        public InstanceServiceAccount build() {
-            return new InstanceServiceAccount(email, scopes);
+        }
+        public InstanceServiceAccount build() {
+            final var o = new InstanceServiceAccount();
+            o.email = email;
+            o.scopes = scopes;
+            return o;
         }
     }
 }

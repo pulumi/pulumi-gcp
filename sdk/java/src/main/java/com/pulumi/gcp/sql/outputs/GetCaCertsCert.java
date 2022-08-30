@@ -13,42 +13,29 @@ public final class GetCaCertsCert {
      * @return The CA certificate used to connect to the SQL instance via SSL.
      * 
      */
-    private final String cert;
+    private String cert;
     /**
      * @return The CN valid for the CA cert.
      * 
      */
-    private final String commonName;
+    private String commonName;
     /**
      * @return Creation time of the CA cert.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Expiration time of the CA cert.
      * 
      */
-    private final String expirationTime;
+    private String expirationTime;
     /**
      * @return SHA1 fingerprint of the CA cert.
      * 
      */
-    private final String sha1Fingerprint;
+    private String sha1Fingerprint;
 
-    @CustomType.Constructor
-    private GetCaCertsCert(
-        @CustomType.Parameter("cert") String cert,
-        @CustomType.Parameter("commonName") String commonName,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("expirationTime") String expirationTime,
-        @CustomType.Parameter("sha1Fingerprint") String sha1Fingerprint) {
-        this.cert = cert;
-        this.commonName = commonName;
-        this.createTime = createTime;
-        this.expirationTime = expirationTime;
-        this.sha1Fingerprint = sha1Fingerprint;
-    }
-
+    private GetCaCertsCert() {}
     /**
      * @return The CA certificate used to connect to the SQL instance via SSL.
      * 
@@ -92,18 +79,14 @@ public final class GetCaCertsCert {
     public static Builder builder(GetCaCertsCert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cert;
         private String commonName;
         private String createTime;
         private String expirationTime;
         private String sha1Fingerprint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCaCertsCert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cert = defaults.cert;
@@ -113,27 +96,39 @@ public final class GetCaCertsCert {
     	      this.sha1Fingerprint = defaults.sha1Fingerprint;
         }
 
+        @CustomType.Setter
         public Builder cert(String cert) {
             this.cert = Objects.requireNonNull(cert);
             return this;
         }
+        @CustomType.Setter
         public Builder commonName(String commonName) {
             this.commonName = Objects.requireNonNull(commonName);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expirationTime(String expirationTime) {
             this.expirationTime = Objects.requireNonNull(expirationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Fingerprint(String sha1Fingerprint) {
             this.sha1Fingerprint = Objects.requireNonNull(sha1Fingerprint);
             return this;
-        }        public GetCaCertsCert build() {
-            return new GetCaCertsCert(cert, commonName, createTime, expirationTime, sha1Fingerprint);
+        }
+        public GetCaCertsCert build() {
+            final var o = new GetCaCertsCert();
+            o.cert = cert;
+            o.commonName = commonName;
+            o.createTime = createTime;
+            o.expirationTime = expirationTime;
+            o.sha1Fingerprint = sha1Fingerprint;
+            return o;
         }
     }
 }

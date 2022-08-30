@@ -9,26 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceServerCaCert {
-    private final String cert;
-    private final String createTime;
-    private final String expireTime;
-    private final String serialNumber;
-    private final String sha1Fingerprint;
+    private String cert;
+    private String createTime;
+    private String expireTime;
+    private String serialNumber;
+    private String sha1Fingerprint;
 
-    @CustomType.Constructor
-    private GetInstanceServerCaCert(
-        @CustomType.Parameter("cert") String cert,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("serialNumber") String serialNumber,
-        @CustomType.Parameter("sha1Fingerprint") String sha1Fingerprint) {
-        this.cert = cert;
-        this.createTime = createTime;
-        this.expireTime = expireTime;
-        this.serialNumber = serialNumber;
-        this.sha1Fingerprint = sha1Fingerprint;
-    }
-
+    private GetInstanceServerCaCert() {}
     public String cert() {
         return this.cert;
     }
@@ -52,18 +39,14 @@ public final class GetInstanceServerCaCert {
     public static Builder builder(GetInstanceServerCaCert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cert;
         private String createTime;
         private String expireTime;
         private String serialNumber;
         private String sha1Fingerprint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceServerCaCert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cert = defaults.cert;
@@ -73,27 +56,39 @@ public final class GetInstanceServerCaCert {
     	      this.sha1Fingerprint = defaults.sha1Fingerprint;
         }
 
+        @CustomType.Setter
         public Builder cert(String cert) {
             this.cert = Objects.requireNonNull(cert);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder serialNumber(String serialNumber) {
             this.serialNumber = Objects.requireNonNull(serialNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Fingerprint(String sha1Fingerprint) {
             this.sha1Fingerprint = Objects.requireNonNull(sha1Fingerprint);
             return this;
-        }        public GetInstanceServerCaCert build() {
-            return new GetInstanceServerCaCert(cert, createTime, expireTime, serialNumber, sha1Fingerprint);
+        }
+        public GetInstanceServerCaCert build() {
+            final var o = new GetInstanceServerCaCert();
+            o.cert = cert;
+            o.createTime = createTime;
+            o.expireTime = expireTime;
+            o.serialNumber = serialNumber;
+            o.sha1Fingerprint = sha1Fingerprint;
+            return o;
         }
     }
 }

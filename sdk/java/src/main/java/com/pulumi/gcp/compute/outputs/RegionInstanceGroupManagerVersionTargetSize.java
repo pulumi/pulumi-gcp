@@ -15,23 +15,16 @@ public final class RegionInstanceGroupManagerVersionTargetSize {
      * @return , The number of instances which are managed for this version. Conflicts with `percent`.
      * 
      */
-    private final @Nullable Integer fixed;
+    private @Nullable Integer fixed;
     /**
      * @return , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
      * Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
      * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
      * 
      */
-    private final @Nullable Integer percent;
+    private @Nullable Integer percent;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerVersionTargetSize(
-        @CustomType.Parameter("fixed") @Nullable Integer fixed,
-        @CustomType.Parameter("percent") @Nullable Integer percent) {
-        this.fixed = fixed;
-        this.percent = percent;
-    }
-
+    private RegionInstanceGroupManagerVersionTargetSize() {}
     /**
      * @return , The number of instances which are managed for this version. Conflicts with `percent`.
      * 
@@ -56,30 +49,32 @@ public final class RegionInstanceGroupManagerVersionTargetSize {
     public static Builder builder(RegionInstanceGroupManagerVersionTargetSize defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer fixed;
         private @Nullable Integer percent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerVersionTargetSize defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixed = defaults.fixed;
     	      this.percent = defaults.percent;
         }
 
+        @CustomType.Setter
         public Builder fixed(@Nullable Integer fixed) {
             this.fixed = fixed;
             return this;
         }
+        @CustomType.Setter
         public Builder percent(@Nullable Integer percent) {
             this.percent = percent;
             return this;
-        }        public RegionInstanceGroupManagerVersionTargetSize build() {
-            return new RegionInstanceGroupManagerVersionTargetSize(fixed, percent);
+        }
+        public RegionInstanceGroupManagerVersionTargetSize build() {
+            final var o = new RegionInstanceGroupManagerVersionTargetSize();
+            o.fixed = fixed;
+            o.percent = percent;
+            return o;
         }
     }
 }

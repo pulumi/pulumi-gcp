@@ -17,30 +17,21 @@ public final class PacketMirroringFilter {
      * destination (egress) IP in the IP header. Only IPv4 is supported.
      * 
      */
-    private final @Nullable List<String> cidrRanges;
+    private @Nullable List<String> cidrRanges;
     /**
      * @return Direction of traffic to mirror.
      * Default value is `BOTH`.
      * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
      * 
      */
-    private final @Nullable String direction;
+    private @Nullable String direction;
     /**
      * @return Possible IP protocols including tcp, udp, icmp and esp
      * 
      */
-    private final @Nullable List<String> ipProtocols;
+    private @Nullable List<String> ipProtocols;
 
-    @CustomType.Constructor
-    private PacketMirroringFilter(
-        @CustomType.Parameter("cidrRanges") @Nullable List<String> cidrRanges,
-        @CustomType.Parameter("direction") @Nullable String direction,
-        @CustomType.Parameter("ipProtocols") @Nullable List<String> ipProtocols) {
-        this.cidrRanges = cidrRanges;
-        this.direction = direction;
-        this.ipProtocols = ipProtocols;
-    }
-
+    private PacketMirroringFilter() {}
     /**
      * @return IP CIDR ranges that apply as a filter on the source (ingress) or
      * destination (egress) IP in the IP header. Only IPv4 is supported.
@@ -73,16 +64,12 @@ public final class PacketMirroringFilter {
     public static Builder builder(PacketMirroringFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> cidrRanges;
         private @Nullable String direction;
         private @Nullable List<String> ipProtocols;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PacketMirroringFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrRanges = defaults.cidrRanges;
@@ -90,6 +77,7 @@ public final class PacketMirroringFilter {
     	      this.ipProtocols = defaults.ipProtocols;
         }
 
+        @CustomType.Setter
         public Builder cidrRanges(@Nullable List<String> cidrRanges) {
             this.cidrRanges = cidrRanges;
             return this;
@@ -97,18 +85,25 @@ public final class PacketMirroringFilter {
         public Builder cidrRanges(String... cidrRanges) {
             return cidrRanges(List.of(cidrRanges));
         }
+        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
         public Builder ipProtocols(@Nullable List<String> ipProtocols) {
             this.ipProtocols = ipProtocols;
             return this;
         }
         public Builder ipProtocols(String... ipProtocols) {
             return ipProtocols(List.of(ipProtocols));
-        }        public PacketMirroringFilter build() {
-            return new PacketMirroringFilter(cidrRanges, direction, ipProtocols);
+        }
+        public PacketMirroringFilter build() {
+            final var o = new PacketMirroringFilter();
+            o.cidrRanges = cidrRanges;
+            o.direction = direction;
+            o.ipProtocols = ipProtocols;
+            return o;
         }
     }
 }

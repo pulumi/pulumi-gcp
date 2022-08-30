@@ -16,29 +16,20 @@ public final class FunctionBuildConfigSourceStorageSource {
      * @return Google Cloud Storage bucket containing the source
      * 
      */
-    private final @Nullable String bucket;
+    private @Nullable String bucket;
     /**
      * @return Google Cloud Storage generation for the object. If the generation
      * is omitted, the latest generation will be used.
      * 
      */
-    private final @Nullable Integer generation;
+    private @Nullable Integer generation;
     /**
      * @return Google Cloud Storage object containing the source.
      * 
      */
-    private final @Nullable String object;
+    private @Nullable String object;
 
-    @CustomType.Constructor
-    private FunctionBuildConfigSourceStorageSource(
-        @CustomType.Parameter("bucket") @Nullable String bucket,
-        @CustomType.Parameter("generation") @Nullable Integer generation,
-        @CustomType.Parameter("object") @Nullable String object) {
-        this.bucket = bucket;
-        this.generation = generation;
-        this.object = object;
-    }
-
+    private FunctionBuildConfigSourceStorageSource() {}
     /**
      * @return Google Cloud Storage bucket containing the source
      * 
@@ -69,16 +60,12 @@ public final class FunctionBuildConfigSourceStorageSource {
     public static Builder builder(FunctionBuildConfigSourceStorageSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucket;
         private @Nullable Integer generation;
         private @Nullable String object;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionBuildConfigSourceStorageSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -86,19 +73,27 @@ public final class FunctionBuildConfigSourceStorageSource {
     	      this.object = defaults.object;
         }
 
+        @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
             this.bucket = bucket;
             return this;
         }
+        @CustomType.Setter
         public Builder generation(@Nullable Integer generation) {
             this.generation = generation;
             return this;
         }
+        @CustomType.Setter
         public Builder object(@Nullable String object) {
             this.object = object;
             return this;
-        }        public FunctionBuildConfigSourceStorageSource build() {
-            return new FunctionBuildConfigSourceStorageSource(bucket, generation, object);
+        }
+        public FunctionBuildConfigSourceStorageSource build() {
+            final var o = new FunctionBuildConfigSourceStorageSource();
+            o.bucket = bucket;
+            o.generation = generation;
+            o.object = object;
+            return o;
         }
     }
 }

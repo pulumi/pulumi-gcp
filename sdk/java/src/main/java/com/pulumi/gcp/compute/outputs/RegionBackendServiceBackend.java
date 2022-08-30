@@ -22,7 +22,7 @@ public final class RegionBackendServiceBackend {
      * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
      * 
      */
-    private final @Nullable String balancingMode;
+    private @Nullable String balancingMode;
     /**
      * @return A multiplier applied to the group&#39;s maximum servicing capacity
      * (based on UTILIZATION, RATE or CONNECTION).
@@ -34,19 +34,19 @@ public final class RegionBackendServiceBackend {
      * 0% of its available Capacity. Valid range is [0.0,1.0].
      * 
      */
-    private final @Nullable Double capacityScaler;
+    private @Nullable Double capacityScaler;
     /**
      * @return An optional description of this resource.
      * Provide this property when you create the resource.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return This field designates whether this is a failover backend. More
      * than one failover backend can be configured for a given RegionBackendService.
      * 
      */
-    private final @Nullable Boolean failover;
+    private @Nullable Boolean failover;
     /**
      * @return The fully-qualified URL of an Instance Group or Network Endpoint
      * Group resource. In case of instance group this defines the list
@@ -66,13 +66,13 @@ public final class RegionBackendServiceBackend {
      * partial URL.
      * 
      */
-    private final String group;
+    private String group;
     /**
      * @return The maximum number of connections to the backend cluster.
      * Defaults to 1024.
      * 
      */
-    private final @Nullable Integer maxConnections;
+    private @Nullable Integer maxConnections;
     /**
      * @return The max number of simultaneous connections that a single backend
      * network endpoint can handle. Cannot be set
@@ -83,7 +83,7 @@ public final class RegionBackendServiceBackend {
      * maxConnectionsPerEndpoint must be set.
      * 
      */
-    private final @Nullable Integer maxConnectionsPerEndpoint;
+    private @Nullable Integer maxConnectionsPerEndpoint;
     /**
      * @return The max number of simultaneous connections that a single
      * backend instance can handle. Cannot be set for INTERNAL backend
@@ -94,7 +94,7 @@ public final class RegionBackendServiceBackend {
      * maxConnectionsPerInstance must be set.
      * 
      */
-    private final @Nullable Integer maxConnectionsPerInstance;
+    private @Nullable Integer maxConnectionsPerInstance;
     /**
      * @return The max requests per second (RPS) of the group. Cannot be set
      * for INTERNAL backend services.
@@ -104,7 +104,7 @@ public final class RegionBackendServiceBackend {
      * group type, must be set.
      * 
      */
-    private final @Nullable Integer maxRate;
+    private @Nullable Integer maxRate;
     /**
      * @return The max requests per second (RPS) that a single backend network
      * endpoint can handle. This is used to calculate the capacity of
@@ -113,7 +113,7 @@ public final class RegionBackendServiceBackend {
      * for INTERNAL backend services.
      * 
      */
-    private final @Nullable Double maxRatePerEndpoint;
+    private @Nullable Double maxRatePerEndpoint;
     /**
      * @return The max requests per second (RPS) that a single backend
      * instance can handle. This is used to calculate the capacity of
@@ -122,43 +122,16 @@ public final class RegionBackendServiceBackend {
      * for INTERNAL backend services.
      * 
      */
-    private final @Nullable Double maxRatePerInstance;
+    private @Nullable Double maxRatePerInstance;
     /**
      * @return Used when balancingMode is UTILIZATION. This ratio defines the
      * CPU utilization target for the group. Valid range is [0.0, 1.0].
      * Cannot be set for INTERNAL backend services.
      * 
      */
-    private final @Nullable Double maxUtilization;
+    private @Nullable Double maxUtilization;
 
-    @CustomType.Constructor
-    private RegionBackendServiceBackend(
-        @CustomType.Parameter("balancingMode") @Nullable String balancingMode,
-        @CustomType.Parameter("capacityScaler") @Nullable Double capacityScaler,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("failover") @Nullable Boolean failover,
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("maxConnections") @Nullable Integer maxConnections,
-        @CustomType.Parameter("maxConnectionsPerEndpoint") @Nullable Integer maxConnectionsPerEndpoint,
-        @CustomType.Parameter("maxConnectionsPerInstance") @Nullable Integer maxConnectionsPerInstance,
-        @CustomType.Parameter("maxRate") @Nullable Integer maxRate,
-        @CustomType.Parameter("maxRatePerEndpoint") @Nullable Double maxRatePerEndpoint,
-        @CustomType.Parameter("maxRatePerInstance") @Nullable Double maxRatePerInstance,
-        @CustomType.Parameter("maxUtilization") @Nullable Double maxUtilization) {
-        this.balancingMode = balancingMode;
-        this.capacityScaler = capacityScaler;
-        this.description = description;
-        this.failover = failover;
-        this.group = group;
-        this.maxConnections = maxConnections;
-        this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-        this.maxConnectionsPerInstance = maxConnectionsPerInstance;
-        this.maxRate = maxRate;
-        this.maxRatePerEndpoint = maxRatePerEndpoint;
-        this.maxRatePerInstance = maxRatePerInstance;
-        this.maxUtilization = maxUtilization;
-    }
-
+    private RegionBackendServiceBackend() {}
     /**
      * @return Specifies the balancing mode for this backend.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
@@ -307,7 +280,7 @@ public final class RegionBackendServiceBackend {
     public static Builder builder(RegionBackendServiceBackend defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String balancingMode;
         private @Nullable Double capacityScaler;
@@ -321,11 +294,7 @@ public final class RegionBackendServiceBackend {
         private @Nullable Double maxRatePerEndpoint;
         private @Nullable Double maxRatePerInstance;
         private @Nullable Double maxUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.balancingMode = defaults.balancingMode;
@@ -342,55 +311,81 @@ public final class RegionBackendServiceBackend {
     	      this.maxUtilization = defaults.maxUtilization;
         }
 
+        @CustomType.Setter
         public Builder balancingMode(@Nullable String balancingMode) {
             this.balancingMode = balancingMode;
             return this;
         }
+        @CustomType.Setter
         public Builder capacityScaler(@Nullable Double capacityScaler) {
             this.capacityScaler = capacityScaler;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder failover(@Nullable Boolean failover) {
             this.failover = failover;
             return this;
         }
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
             this.maxConnections = maxConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionsPerEndpoint(@Nullable Integer maxConnectionsPerEndpoint) {
             this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionsPerInstance(@Nullable Integer maxConnectionsPerInstance) {
             this.maxConnectionsPerInstance = maxConnectionsPerInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRate(@Nullable Integer maxRate) {
             this.maxRate = maxRate;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRatePerEndpoint(@Nullable Double maxRatePerEndpoint) {
             this.maxRatePerEndpoint = maxRatePerEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRatePerInstance(@Nullable Double maxRatePerInstance) {
             this.maxRatePerInstance = maxRatePerInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUtilization(@Nullable Double maxUtilization) {
             this.maxUtilization = maxUtilization;
             return this;
-        }        public RegionBackendServiceBackend build() {
-            return new RegionBackendServiceBackend(balancingMode, capacityScaler, description, failover, group, maxConnections, maxConnectionsPerEndpoint, maxConnectionsPerInstance, maxRate, maxRatePerEndpoint, maxRatePerInstance, maxUtilization);
+        }
+        public RegionBackendServiceBackend build() {
+            final var o = new RegionBackendServiceBackend();
+            o.balancingMode = balancingMode;
+            o.capacityScaler = capacityScaler;
+            o.description = description;
+            o.failover = failover;
+            o.group = group;
+            o.maxConnections = maxConnections;
+            o.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
+            o.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            o.maxRate = maxRate;
+            o.maxRatePerEndpoint = maxRatePerEndpoint;
+            o.maxRatePerInstance = maxRatePerInstance;
+            o.maxUtilization = maxUtilization;
+            return o;
         }
     }
 }

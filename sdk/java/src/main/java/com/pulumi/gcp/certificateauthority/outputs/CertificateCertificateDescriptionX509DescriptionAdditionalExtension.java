@@ -19,29 +19,20 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
      * handle this extension, the client should consider this to be an error).
      * 
      */
-    private final @Nullable Boolean critical;
+    private @Nullable Boolean critical;
     /**
      * @return Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId> objectIds;
+    private @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId> objectIds;
     /**
      * @return The value of this X.509 extension. A base64-encoded string.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionX509DescriptionAdditionalExtension(
-        @CustomType.Parameter("critical") @Nullable Boolean critical,
-        @CustomType.Parameter("objectIds") @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId> objectIds,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.critical = critical;
-        this.objectIds = objectIds;
-        this.value = value;
-    }
-
+    private CertificateCertificateDescriptionX509DescriptionAdditionalExtension() {}
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
@@ -73,16 +64,12 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
     public static Builder builder(CertificateCertificateDescriptionX509DescriptionAdditionalExtension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean critical;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId> objectIds;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionX509DescriptionAdditionalExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -90,10 +77,12 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable Boolean critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder objectIds(@Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId> objectIds) {
             this.objectIds = objectIds;
             return this;
@@ -101,11 +90,17 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
         public Builder objectIds(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId... objectIds) {
             return objectIds(List.of(objectIds));
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public CertificateCertificateDescriptionX509DescriptionAdditionalExtension build() {
-            return new CertificateCertificateDescriptionX509DescriptionAdditionalExtension(critical, objectIds, value);
+        }
+        public CertificateCertificateDescriptionX509DescriptionAdditionalExtension build() {
+            final var o = new CertificateCertificateDescriptionX509DescriptionAdditionalExtension();
+            o.critical = critical;
+            o.objectIds = objectIds;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
      * @return Volume&#39;s name.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference() {}
     /**
      * @return Volume&#39;s name.
      * 
@@ -35,24 +31,24 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
     public static Builder builder(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference build() {
-            return new ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(name);
+        }
+        public ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference build() {
+            final var o = new ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference();
+            o.name = name;
+            return o;
         }
     }
 }

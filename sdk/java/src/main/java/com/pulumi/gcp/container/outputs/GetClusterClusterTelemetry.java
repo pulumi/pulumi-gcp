@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterTelemetry {
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetClusterClusterTelemetry(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private GetClusterClusterTelemetry() {}
     public String type() {
         return this.type;
     }
@@ -27,24 +23,24 @@ public final class GetClusterClusterTelemetry {
     public static Builder builder(GetClusterClusterTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetClusterClusterTelemetry build() {
-            return new GetClusterClusterTelemetry(type);
+        }
+        public GetClusterClusterTelemetry build() {
+            final var o = new GetClusterClusterTelemetry();
+            o.type = type;
+            return o;
         }
     }
 }

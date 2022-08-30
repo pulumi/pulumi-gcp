@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePool {
-    private final @Nullable ClusterNodePoolAutoscaling autoscaling;
+    private @Nullable ClusterNodePoolAutoscaling autoscaling;
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
@@ -29,24 +29,24 @@ public final class ClusterNodePool {
      * `remove_default_node_pool` to `true`.
      * 
      */
-    private final @Nullable Integer initialNodeCount;
-    private final @Nullable List<String> instanceGroupUrls;
-    private final @Nullable List<String> managedInstanceGroupUrls;
-    private final @Nullable ClusterNodePoolManagement management;
-    private final @Nullable Integer maxPodsPerNode;
+    private @Nullable Integer initialNodeCount;
+    private @Nullable List<String> instanceGroupUrls;
+    private @Nullable List<String> managedInstanceGroupUrls;
+    private @Nullable ClusterNodePoolManagement management;
+    private @Nullable Integer maxPodsPerNode;
     /**
      * @return The name of the cluster, unique within the project and
      * location.
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable String namePrefix;
+    private @Nullable String name;
+    private @Nullable String namePrefix;
     /**
      * @return Configuration for
      * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
      * 
      */
-    private final @Nullable ClusterNodePoolNetworkConfig networkConfig;
+    private @Nullable ClusterNodePoolNetworkConfig networkConfig;
     /**
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
@@ -55,8 +55,8 @@ public final class ClusterNodePool {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfig nodeConfig;
-    private final @Nullable Integer nodeCount;
+    private @Nullable ClusterNodePoolNodeConfig nodeConfig;
+    private @Nullable Integer nodeCount;
     /**
      * @return The list of zones in which the cluster&#39;s nodes
      * are located. Nodes must be in the region of their regional cluster or in the
@@ -64,45 +64,12 @@ public final class ClusterNodePool {
      * a zonal cluster, omit the cluster&#39;s zone.
      * 
      */
-    private final @Nullable List<String> nodeLocations;
-    private final @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
-    private final @Nullable ClusterNodePoolUpgradeSettings upgradeSettings;
-    private final @Nullable String version;
+    private @Nullable List<String> nodeLocations;
+    private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
+    private @Nullable ClusterNodePoolUpgradeSettings upgradeSettings;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private ClusterNodePool(
-        @CustomType.Parameter("autoscaling") @Nullable ClusterNodePoolAutoscaling autoscaling,
-        @CustomType.Parameter("initialNodeCount") @Nullable Integer initialNodeCount,
-        @CustomType.Parameter("instanceGroupUrls") @Nullable List<String> instanceGroupUrls,
-        @CustomType.Parameter("managedInstanceGroupUrls") @Nullable List<String> managedInstanceGroupUrls,
-        @CustomType.Parameter("management") @Nullable ClusterNodePoolManagement management,
-        @CustomType.Parameter("maxPodsPerNode") @Nullable Integer maxPodsPerNode,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("namePrefix") @Nullable String namePrefix,
-        @CustomType.Parameter("networkConfig") @Nullable ClusterNodePoolNetworkConfig networkConfig,
-        @CustomType.Parameter("nodeConfig") @Nullable ClusterNodePoolNodeConfig nodeConfig,
-        @CustomType.Parameter("nodeCount") @Nullable Integer nodeCount,
-        @CustomType.Parameter("nodeLocations") @Nullable List<String> nodeLocations,
-        @CustomType.Parameter("placementPolicy") @Nullable ClusterNodePoolPlacementPolicy placementPolicy,
-        @CustomType.Parameter("upgradeSettings") @Nullable ClusterNodePoolUpgradeSettings upgradeSettings,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.autoscaling = autoscaling;
-        this.initialNodeCount = initialNodeCount;
-        this.instanceGroupUrls = instanceGroupUrls;
-        this.managedInstanceGroupUrls = managedInstanceGroupUrls;
-        this.management = management;
-        this.maxPodsPerNode = maxPodsPerNode;
-        this.name = name;
-        this.namePrefix = namePrefix;
-        this.networkConfig = networkConfig;
-        this.nodeConfig = nodeConfig;
-        this.nodeCount = nodeCount;
-        this.nodeLocations = nodeLocations;
-        this.placementPolicy = placementPolicy;
-        this.upgradeSettings = upgradeSettings;
-        this.version = version;
-    }
-
+    private ClusterNodePool() {}
     public Optional<ClusterNodePoolAutoscaling> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
     }
@@ -190,7 +157,7 @@ public final class ClusterNodePool {
     public static Builder builder(ClusterNodePool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolAutoscaling autoscaling;
         private @Nullable Integer initialNodeCount;
@@ -207,11 +174,7 @@ public final class ClusterNodePool {
         private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
         private @Nullable ClusterNodePoolUpgradeSettings upgradeSettings;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaling = defaults.autoscaling;
@@ -231,14 +194,17 @@ public final class ClusterNodePool {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder autoscaling(@Nullable ClusterNodePoolAutoscaling autoscaling) {
             this.autoscaling = autoscaling;
             return this;
         }
+        @CustomType.Setter
         public Builder initialNodeCount(@Nullable Integer initialNodeCount) {
             this.initialNodeCount = initialNodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceGroupUrls(@Nullable List<String> instanceGroupUrls) {
             this.instanceGroupUrls = instanceGroupUrls;
             return this;
@@ -246,6 +212,7 @@ public final class ClusterNodePool {
         public Builder instanceGroupUrls(String... instanceGroupUrls) {
             return instanceGroupUrls(List.of(instanceGroupUrls));
         }
+        @CustomType.Setter
         public Builder managedInstanceGroupUrls(@Nullable List<String> managedInstanceGroupUrls) {
             this.managedInstanceGroupUrls = managedInstanceGroupUrls;
             return this;
@@ -253,34 +220,42 @@ public final class ClusterNodePool {
         public Builder managedInstanceGroupUrls(String... managedInstanceGroupUrls) {
             return managedInstanceGroupUrls(List.of(managedInstanceGroupUrls));
         }
+        @CustomType.Setter
         public Builder management(@Nullable ClusterNodePoolManagement management) {
             this.management = management;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPodsPerNode(@Nullable Integer maxPodsPerNode) {
             this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
             this.namePrefix = namePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder networkConfig(@Nullable ClusterNodePoolNetworkConfig networkConfig) {
             this.networkConfig = networkConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeConfig(@Nullable ClusterNodePoolNodeConfig nodeConfig) {
             this.nodeConfig = nodeConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
             this.nodeCount = nodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeLocations(@Nullable List<String> nodeLocations) {
             this.nodeLocations = nodeLocations;
             return this;
@@ -288,19 +263,39 @@ public final class ClusterNodePool {
         public Builder nodeLocations(String... nodeLocations) {
             return nodeLocations(List.of(nodeLocations));
         }
+        @CustomType.Setter
         public Builder placementPolicy(@Nullable ClusterNodePoolPlacementPolicy placementPolicy) {
             this.placementPolicy = placementPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder upgradeSettings(@Nullable ClusterNodePoolUpgradeSettings upgradeSettings) {
             this.upgradeSettings = upgradeSettings;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public ClusterNodePool build() {
-            return new ClusterNodePool(autoscaling, initialNodeCount, instanceGroupUrls, managedInstanceGroupUrls, management, maxPodsPerNode, name, namePrefix, networkConfig, nodeConfig, nodeCount, nodeLocations, placementPolicy, upgradeSettings, version);
+        }
+        public ClusterNodePool build() {
+            final var o = new ClusterNodePool();
+            o.autoscaling = autoscaling;
+            o.initialNodeCount = initialNodeCount;
+            o.instanceGroupUrls = instanceGroupUrls;
+            o.managedInstanceGroupUrls = managedInstanceGroupUrls;
+            o.management = management;
+            o.maxPodsPerNode = maxPodsPerNode;
+            o.name = name;
+            o.namePrefix = namePrefix;
+            o.networkConfig = networkConfig;
+            o.nodeConfig = nodeConfig;
+            o.nodeCount = nodeCount;
+            o.nodeLocations = nodeLocations;
+            o.placementPolicy = placementPolicy;
+            o.upgradeSettings = upgradeSettings;
+            o.version = version;
+            return o;
         }
     }
 }

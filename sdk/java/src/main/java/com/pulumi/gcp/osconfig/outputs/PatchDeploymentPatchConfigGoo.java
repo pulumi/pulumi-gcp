@@ -13,13 +13,9 @@ public final class PatchDeploymentPatchConfigGoo {
      * @return goo update settings. Use this setting to override the default goo patch rules.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigGoo(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private PatchDeploymentPatchConfigGoo() {}
     /**
      * @return goo update settings. Use this setting to override the default goo patch rules.
      * 
@@ -35,24 +31,24 @@ public final class PatchDeploymentPatchConfigGoo {
     public static Builder builder(PatchDeploymentPatchConfigGoo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigGoo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public PatchDeploymentPatchConfigGoo build() {
-            return new PatchDeploymentPatchConfigGoo(enabled);
+        }
+        public PatchDeploymentPatchConfigGoo build() {
+            final var o = new PatchDeploymentPatchConfigGoo();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

@@ -19,21 +19,14 @@ public final class TableEncryptionConfiguration {
      * `gcp.kms.CryptoKeyIAMBinding` resource.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
     /**
      * @return The self link or full name of the kms key version used to encrypt this table.
      * 
      */
-    private final @Nullable String kmsKeyVersion;
+    private @Nullable String kmsKeyVersion;
 
-    @CustomType.Constructor
-    private TableEncryptionConfiguration(
-        @CustomType.Parameter("kmsKeyName") String kmsKeyName,
-        @CustomType.Parameter("kmsKeyVersion") @Nullable String kmsKeyVersion) {
-        this.kmsKeyName = kmsKeyName;
-        this.kmsKeyVersion = kmsKeyVersion;
-    }
-
+    private TableEncryptionConfiguration() {}
     /**
      * @return The self link or full name of a key which should be used to
      * encrypt this table.  Note that the default bigquery service account will need to have
@@ -60,30 +53,32 @@ public final class TableEncryptionConfiguration {
     public static Builder builder(TableEncryptionConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
         private @Nullable String kmsKeyVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableEncryptionConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.kmsKeyVersion = defaults.kmsKeyVersion;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyVersion(@Nullable String kmsKeyVersion) {
             this.kmsKeyVersion = kmsKeyVersion;
             return this;
-        }        public TableEncryptionConfiguration build() {
-            return new TableEncryptionConfiguration(kmsKeyName, kmsKeyVersion);
+        }
+        public TableEncryptionConfiguration build() {
+            final var o = new TableEncryptionConfiguration();
+            o.kmsKeyName = kmsKeyName;
+            o.kmsKeyVersion = kmsKeyVersion;
+            return o;
         }
     }
 }

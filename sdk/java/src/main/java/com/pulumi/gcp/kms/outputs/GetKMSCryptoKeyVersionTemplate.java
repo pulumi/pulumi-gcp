@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKMSCryptoKeyVersionTemplate {
-    private final String algorithm;
-    private final String protectionLevel;
+    private String algorithm;
+    private String protectionLevel;
 
-    @CustomType.Constructor
-    private GetKMSCryptoKeyVersionTemplate(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("protectionLevel") String protectionLevel) {
-        this.algorithm = algorithm;
-        this.protectionLevel = protectionLevel;
-    }
-
+    private GetKMSCryptoKeyVersionTemplate() {}
     public String algorithm() {
         return this.algorithm;
     }
@@ -34,30 +27,32 @@ public final class GetKMSCryptoKeyVersionTemplate {
     public static Builder builder(GetKMSCryptoKeyVersionTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private String protectionLevel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSCryptoKeyVersionTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.protectionLevel = defaults.protectionLevel;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder protectionLevel(String protectionLevel) {
             this.protectionLevel = Objects.requireNonNull(protectionLevel);
             return this;
-        }        public GetKMSCryptoKeyVersionTemplate build() {
-            return new GetKMSCryptoKeyVersionTemplate(algorithm, protectionLevel);
+        }
+        public GetKMSCryptoKeyVersionTemplate build() {
+            final var o = new GetKMSCryptoKeyVersionTemplate();
+            o.algorithm = algorithm;
+            o.protectionLevel = protectionLevel;
+            return o;
         }
     }
 }

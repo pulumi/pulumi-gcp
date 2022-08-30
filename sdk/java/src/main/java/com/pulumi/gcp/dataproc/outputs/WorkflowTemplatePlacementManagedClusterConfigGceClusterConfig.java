@@ -20,84 +20,59 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      * @return Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
      * 
      */
-    private final @Nullable Boolean internalIpOnly;
+    private @Nullable Boolean internalIpOnly;
     /**
      * @return The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
     /**
      * @return Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return Optional. Node Group Affinity for sole-tenant clusters.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
     /**
      * @return Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
      * 
      */
-    private final @Nullable String privateIpv6GoogleAccess;
+    private @Nullable String privateIpv6GoogleAccess;
     /**
      * @return Optional. Reservation Affinity for consuming Zonal reservation.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
     /**
      * @return Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      * 
      */
-    private final @Nullable String serviceAccount;
+    private @Nullable String serviceAccount;
     /**
      * @return Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
      * 
      */
-    private final @Nullable List<String> serviceAccountScopes;
+    private @Nullable List<String> serviceAccountScopes;
     /**
      * @return Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
      * 
      */
-    private final @Nullable String subnetwork;
+    private @Nullable String subnetwork;
     /**
      * @return The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the &#34;global&#34; region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(
-        @CustomType.Parameter("internalIpOnly") @Nullable Boolean internalIpOnly,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("nodeGroupAffinity") @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity,
-        @CustomType.Parameter("privateIpv6GoogleAccess") @Nullable String privateIpv6GoogleAccess,
-        @CustomType.Parameter("reservationAffinity") @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount,
-        @CustomType.Parameter("serviceAccountScopes") @Nullable List<String> serviceAccountScopes,
-        @CustomType.Parameter("subnetwork") @Nullable String subnetwork,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.internalIpOnly = internalIpOnly;
-        this.metadata = metadata;
-        this.network = network;
-        this.nodeGroupAffinity = nodeGroupAffinity;
-        this.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
-        this.reservationAffinity = reservationAffinity;
-        this.serviceAccount = serviceAccount;
-        this.serviceAccountScopes = serviceAccountScopes;
-        this.subnetwork = subnetwork;
-        this.tags = tags;
-        this.zone = zone;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig() {}
     /**
      * @return Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
      * 
@@ -183,7 +158,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean internalIpOnly;
         private @Nullable Map<String,String> metadata;
@@ -196,11 +171,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         private @Nullable String subnetwork;
         private @Nullable List<String> tags;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.internalIpOnly = defaults.internalIpOnly;
@@ -216,34 +187,42 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder internalIpOnly(@Nullable Boolean internalIpOnly) {
             this.internalIpOnly = internalIpOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroupAffinity(@Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity) {
             this.nodeGroupAffinity = nodeGroupAffinity;
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpv6GoogleAccess(@Nullable String privateIpv6GoogleAccess) {
             this.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder reservationAffinity(@Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity) {
             this.reservationAffinity = reservationAffinity;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountScopes(@Nullable List<String> serviceAccountScopes) {
             this.serviceAccountScopes = serviceAccountScopes;
             return this;
@@ -251,10 +230,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         public Builder serviceAccountScopes(String... serviceAccountScopes) {
             return serviceAccountScopes(List.of(serviceAccountScopes));
         }
+        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
             this.subnetwork = subnetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -262,11 +243,25 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(internalIpOnly, metadata, network, nodeGroupAffinity, privateIpv6GoogleAccess, reservationAffinity, serviceAccount, serviceAccountScopes, subnetwork, tags, zone);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig();
+            o.internalIpOnly = internalIpOnly;
+            o.metadata = metadata;
+            o.network = network;
+            o.nodeGroupAffinity = nodeGroupAffinity;
+            o.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
+            o.reservationAffinity = reservationAffinity;
+            o.serviceAccount = serviceAccount;
+            o.serviceAccountScopes = serviceAccountScopes;
+            o.subnetwork = subnetwork;
+            o.tags = tags;
+            o.zone = zone;
+            return o;
         }
     }
 }

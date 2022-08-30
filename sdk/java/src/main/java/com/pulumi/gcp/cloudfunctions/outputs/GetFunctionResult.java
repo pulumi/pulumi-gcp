@@ -24,173 +24,110 @@ public final class GetFunctionResult {
      * @return Available memory (in MB) to the function.
      * 
      */
-    private final Integer availableMemoryMb;
-    private final Map<String,Object> buildEnvironmentVariables;
+    private Integer availableMemoryMb;
+    private Map<String,Object> buildEnvironmentVariables;
     /**
      * @return Description of the function.
      * 
      */
-    private final String description;
-    private final String dockerRegistry;
-    private final String dockerRepository;
+    private String description;
+    private String dockerRegistry;
+    private String dockerRepository;
     /**
      * @return Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      * 
      */
-    private final String entryPoint;
-    private final Map<String,Object> environmentVariables;
+    private String entryPoint;
+    private Map<String,Object> environmentVariables;
     /**
      * @return A source that fires events in response to a condition in another service. Structure is documented below.
      * 
      */
-    private final List<GetFunctionEventTrigger> eventTriggers;
-    private final String httpsTriggerSecurityLevel;
+    private List<GetFunctionEventTrigger> eventTriggers;
+    private String httpsTriggerSecurityLevel;
     /**
      * @return If function is triggered by HTTP, trigger URL is set here.
      * 
      */
-    private final String httpsTriggerUrl;
+    private String httpsTriggerUrl;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Controls what traffic can reach the function.
      * 
      */
-    private final String ingressSettings;
-    private final String kmsKeyName;
+    private String ingressSettings;
+    private String kmsKeyName;
     /**
      * @return A map of labels applied to this function.
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return The limit on the maximum number of function instances that may coexist at a given time.
      * 
      */
-    private final Integer maxInstances;
-    private final Integer minInstances;
+    private Integer maxInstances;
+    private Integer minInstances;
     /**
      * @return The name of the Cloud Function.
      * 
      */
-    private final String name;
-    private final @Nullable String project;
-    private final @Nullable String region;
+    private String name;
+    private @Nullable String project;
+    private @Nullable String region;
     /**
      * @return The runtime in which the function is running.
      * 
      */
-    private final String runtime;
-    private final List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables;
-    private final List<GetFunctionSecretVolume> secretVolumes;
+    private String runtime;
+    private List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables;
+    private List<GetFunctionSecretVolume> secretVolumes;
     /**
      * @return The service account email to be assumed by the cloud function.
      * 
      */
-    private final String serviceAccountEmail;
+    private String serviceAccountEmail;
     /**
      * @return The GCS bucket containing the zip archive which contains the function.
      * 
      */
-    private final String sourceArchiveBucket;
+    private String sourceArchiveBucket;
     /**
      * @return The source archive object (file) in archive bucket.
      * 
      */
-    private final String sourceArchiveObject;
+    private String sourceArchiveObject;
     /**
      * @return The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
      * 
      */
-    private final List<GetFunctionSourceRepository> sourceRepositories;
+    private List<GetFunctionSourceRepository> sourceRepositories;
     /**
      * @return Function execution timeout (in seconds).
      * 
      */
-    private final Integer timeout;
+    private Integer timeout;
     /**
      * @return If function is triggered by HTTP, this boolean is set.
      * 
      */
-    private final Boolean triggerHttp;
+    private Boolean triggerHttp;
     /**
      * @return The VPC Network Connector that this cloud function can connect to.
      * 
      */
-    private final String vpcConnector;
+    private String vpcConnector;
     /**
      * @return The egress settings for the connector, controlling what traffic is diverted through it.
      * 
      */
-    private final String vpcConnectorEgressSettings;
+    private String vpcConnectorEgressSettings;
 
-    @CustomType.Constructor
-    private GetFunctionResult(
-        @CustomType.Parameter("availableMemoryMb") Integer availableMemoryMb,
-        @CustomType.Parameter("buildEnvironmentVariables") Map<String,Object> buildEnvironmentVariables,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dockerRegistry") String dockerRegistry,
-        @CustomType.Parameter("dockerRepository") String dockerRepository,
-        @CustomType.Parameter("entryPoint") String entryPoint,
-        @CustomType.Parameter("environmentVariables") Map<String,Object> environmentVariables,
-        @CustomType.Parameter("eventTriggers") List<GetFunctionEventTrigger> eventTriggers,
-        @CustomType.Parameter("httpsTriggerSecurityLevel") String httpsTriggerSecurityLevel,
-        @CustomType.Parameter("httpsTriggerUrl") String httpsTriggerUrl,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ingressSettings") String ingressSettings,
-        @CustomType.Parameter("kmsKeyName") String kmsKeyName,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("maxInstances") Integer maxInstances,
-        @CustomType.Parameter("minInstances") Integer minInstances,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("runtime") String runtime,
-        @CustomType.Parameter("secretEnvironmentVariables") List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables,
-        @CustomType.Parameter("secretVolumes") List<GetFunctionSecretVolume> secretVolumes,
-        @CustomType.Parameter("serviceAccountEmail") String serviceAccountEmail,
-        @CustomType.Parameter("sourceArchiveBucket") String sourceArchiveBucket,
-        @CustomType.Parameter("sourceArchiveObject") String sourceArchiveObject,
-        @CustomType.Parameter("sourceRepositories") List<GetFunctionSourceRepository> sourceRepositories,
-        @CustomType.Parameter("timeout") Integer timeout,
-        @CustomType.Parameter("triggerHttp") Boolean triggerHttp,
-        @CustomType.Parameter("vpcConnector") String vpcConnector,
-        @CustomType.Parameter("vpcConnectorEgressSettings") String vpcConnectorEgressSettings) {
-        this.availableMemoryMb = availableMemoryMb;
-        this.buildEnvironmentVariables = buildEnvironmentVariables;
-        this.description = description;
-        this.dockerRegistry = dockerRegistry;
-        this.dockerRepository = dockerRepository;
-        this.entryPoint = entryPoint;
-        this.environmentVariables = environmentVariables;
-        this.eventTriggers = eventTriggers;
-        this.httpsTriggerSecurityLevel = httpsTriggerSecurityLevel;
-        this.httpsTriggerUrl = httpsTriggerUrl;
-        this.id = id;
-        this.ingressSettings = ingressSettings;
-        this.kmsKeyName = kmsKeyName;
-        this.labels = labels;
-        this.maxInstances = maxInstances;
-        this.minInstances = minInstances;
-        this.name = name;
-        this.project = project;
-        this.region = region;
-        this.runtime = runtime;
-        this.secretEnvironmentVariables = secretEnvironmentVariables;
-        this.secretVolumes = secretVolumes;
-        this.serviceAccountEmail = serviceAccountEmail;
-        this.sourceArchiveBucket = sourceArchiveBucket;
-        this.sourceArchiveObject = sourceArchiveObject;
-        this.sourceRepositories = sourceRepositories;
-        this.timeout = timeout;
-        this.triggerHttp = triggerHttp;
-        this.vpcConnector = vpcConnector;
-        this.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
-    }
-
+    private GetFunctionResult() {}
     /**
      * @return Available memory (in MB) to the function.
      * 
@@ -365,7 +302,7 @@ public final class GetFunctionResult {
     public static Builder builder(GetFunctionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer availableMemoryMb;
         private Map<String,Object> buildEnvironmentVariables;
@@ -397,11 +334,7 @@ public final class GetFunctionResult {
         private Boolean triggerHttp;
         private String vpcConnector;
         private String vpcConnectorEgressSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableMemoryMb = defaults.availableMemoryMb;
@@ -436,34 +369,42 @@ public final class GetFunctionResult {
     	      this.vpcConnectorEgressSettings = defaults.vpcConnectorEgressSettings;
         }
 
+        @CustomType.Setter
         public Builder availableMemoryMb(Integer availableMemoryMb) {
             this.availableMemoryMb = Objects.requireNonNull(availableMemoryMb);
             return this;
         }
+        @CustomType.Setter
         public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
             this.buildEnvironmentVariables = Objects.requireNonNull(buildEnvironmentVariables);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerRegistry(String dockerRegistry) {
             this.dockerRegistry = Objects.requireNonNull(dockerRegistry);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerRepository(String dockerRepository) {
             this.dockerRepository = Objects.requireNonNull(dockerRepository);
             return this;
         }
+        @CustomType.Setter
         public Builder entryPoint(String entryPoint) {
             this.entryPoint = Objects.requireNonNull(entryPoint);
             return this;
         }
+        @CustomType.Setter
         public Builder environmentVariables(Map<String,Object> environmentVariables) {
             this.environmentVariables = Objects.requireNonNull(environmentVariables);
             return this;
         }
+        @CustomType.Setter
         public Builder eventTriggers(List<GetFunctionEventTrigger> eventTriggers) {
             this.eventTriggers = Objects.requireNonNull(eventTriggers);
             return this;
@@ -471,54 +412,67 @@ public final class GetFunctionResult {
         public Builder eventTriggers(GetFunctionEventTrigger... eventTriggers) {
             return eventTriggers(List.of(eventTriggers));
         }
+        @CustomType.Setter
         public Builder httpsTriggerSecurityLevel(String httpsTriggerSecurityLevel) {
             this.httpsTriggerSecurityLevel = Objects.requireNonNull(httpsTriggerSecurityLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder httpsTriggerUrl(String httpsTriggerUrl) {
             this.httpsTriggerUrl = Objects.requireNonNull(httpsTriggerUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ingressSettings(String ingressSettings) {
             this.ingressSettings = Objects.requireNonNull(ingressSettings);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
             this.maxInstances = Objects.requireNonNull(maxInstances);
             return this;
         }
+        @CustomType.Setter
         public Builder minInstances(Integer minInstances) {
             this.minInstances = Objects.requireNonNull(minInstances);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder runtime(String runtime) {
             this.runtime = Objects.requireNonNull(runtime);
             return this;
         }
+        @CustomType.Setter
         public Builder secretEnvironmentVariables(List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables) {
             this.secretEnvironmentVariables = Objects.requireNonNull(secretEnvironmentVariables);
             return this;
@@ -526,6 +480,7 @@ public final class GetFunctionResult {
         public Builder secretEnvironmentVariables(GetFunctionSecretEnvironmentVariable... secretEnvironmentVariables) {
             return secretEnvironmentVariables(List.of(secretEnvironmentVariables));
         }
+        @CustomType.Setter
         public Builder secretVolumes(List<GetFunctionSecretVolume> secretVolumes) {
             this.secretVolumes = Objects.requireNonNull(secretVolumes);
             return this;
@@ -533,18 +488,22 @@ public final class GetFunctionResult {
         public Builder secretVolumes(GetFunctionSecretVolume... secretVolumes) {
             return secretVolumes(List.of(secretVolumes));
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
             this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceArchiveBucket(String sourceArchiveBucket) {
             this.sourceArchiveBucket = Objects.requireNonNull(sourceArchiveBucket);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceArchiveObject(String sourceArchiveObject) {
             this.sourceArchiveObject = Objects.requireNonNull(sourceArchiveObject);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceRepositories(List<GetFunctionSourceRepository> sourceRepositories) {
             this.sourceRepositories = Objects.requireNonNull(sourceRepositories);
             return this;
@@ -552,23 +511,59 @@ public final class GetFunctionResult {
         public Builder sourceRepositories(GetFunctionSourceRepository... sourceRepositories) {
             return sourceRepositories(List.of(sourceRepositories));
         }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
         }
+        @CustomType.Setter
         public Builder triggerHttp(Boolean triggerHttp) {
             this.triggerHttp = Objects.requireNonNull(triggerHttp);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcConnector(String vpcConnector) {
             this.vpcConnector = Objects.requireNonNull(vpcConnector);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcConnectorEgressSettings(String vpcConnectorEgressSettings) {
             this.vpcConnectorEgressSettings = Objects.requireNonNull(vpcConnectorEgressSettings);
             return this;
-        }        public GetFunctionResult build() {
-            return new GetFunctionResult(availableMemoryMb, buildEnvironmentVariables, description, dockerRegistry, dockerRepository, entryPoint, environmentVariables, eventTriggers, httpsTriggerSecurityLevel, httpsTriggerUrl, id, ingressSettings, kmsKeyName, labels, maxInstances, minInstances, name, project, region, runtime, secretEnvironmentVariables, secretVolumes, serviceAccountEmail, sourceArchiveBucket, sourceArchiveObject, sourceRepositories, timeout, triggerHttp, vpcConnector, vpcConnectorEgressSettings);
+        }
+        public GetFunctionResult build() {
+            final var o = new GetFunctionResult();
+            o.availableMemoryMb = availableMemoryMb;
+            o.buildEnvironmentVariables = buildEnvironmentVariables;
+            o.description = description;
+            o.dockerRegistry = dockerRegistry;
+            o.dockerRepository = dockerRepository;
+            o.entryPoint = entryPoint;
+            o.environmentVariables = environmentVariables;
+            o.eventTriggers = eventTriggers;
+            o.httpsTriggerSecurityLevel = httpsTriggerSecurityLevel;
+            o.httpsTriggerUrl = httpsTriggerUrl;
+            o.id = id;
+            o.ingressSettings = ingressSettings;
+            o.kmsKeyName = kmsKeyName;
+            o.labels = labels;
+            o.maxInstances = maxInstances;
+            o.minInstances = minInstances;
+            o.name = name;
+            o.project = project;
+            o.region = region;
+            o.runtime = runtime;
+            o.secretEnvironmentVariables = secretEnvironmentVariables;
+            o.secretVolumes = secretVolumes;
+            o.serviceAccountEmail = serviceAccountEmail;
+            o.sourceArchiveBucket = sourceArchiveBucket;
+            o.sourceArchiveObject = sourceArchiveObject;
+            o.sourceRepositories = sourceRepositories;
+            o.timeout = timeout;
+            o.triggerHttp = triggerHttp;
+            o.vpcConnector = vpcConnector;
+            o.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
+            return o;
         }
     }
 }

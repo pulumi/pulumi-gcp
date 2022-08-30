@@ -11,29 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigSoftwareConfig {
-    private final Map<String,String> airflowConfigOverrides;
-    private final Map<String,String> envVariables;
-    private final String imageVersion;
-    private final Map<String,String> pypiPackages;
-    private final String pythonVersion;
-    private final Integer schedulerCount;
+    private Map<String,String> airflowConfigOverrides;
+    private Map<String,String> envVariables;
+    private String imageVersion;
+    private Map<String,String> pypiPackages;
+    private String pythonVersion;
+    private Integer schedulerCount;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigSoftwareConfig(
-        @CustomType.Parameter("airflowConfigOverrides") Map<String,String> airflowConfigOverrides,
-        @CustomType.Parameter("envVariables") Map<String,String> envVariables,
-        @CustomType.Parameter("imageVersion") String imageVersion,
-        @CustomType.Parameter("pypiPackages") Map<String,String> pypiPackages,
-        @CustomType.Parameter("pythonVersion") String pythonVersion,
-        @CustomType.Parameter("schedulerCount") Integer schedulerCount) {
-        this.airflowConfigOverrides = airflowConfigOverrides;
-        this.envVariables = envVariables;
-        this.imageVersion = imageVersion;
-        this.pypiPackages = pypiPackages;
-        this.pythonVersion = pythonVersion;
-        this.schedulerCount = schedulerCount;
-    }
-
+    private GetEnvironmentConfigSoftwareConfig() {}
     public Map<String,String> airflowConfigOverrides() {
         return this.airflowConfigOverrides;
     }
@@ -60,7 +45,7 @@ public final class GetEnvironmentConfigSoftwareConfig {
     public static Builder builder(GetEnvironmentConfigSoftwareConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> airflowConfigOverrides;
         private Map<String,String> envVariables;
@@ -68,11 +53,7 @@ public final class GetEnvironmentConfigSoftwareConfig {
         private Map<String,String> pypiPackages;
         private String pythonVersion;
         private Integer schedulerCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.airflowConfigOverrides = defaults.airflowConfigOverrides;
@@ -83,31 +64,45 @@ public final class GetEnvironmentConfigSoftwareConfig {
     	      this.schedulerCount = defaults.schedulerCount;
         }
 
+        @CustomType.Setter
         public Builder airflowConfigOverrides(Map<String,String> airflowConfigOverrides) {
             this.airflowConfigOverrides = Objects.requireNonNull(airflowConfigOverrides);
             return this;
         }
+        @CustomType.Setter
         public Builder envVariables(Map<String,String> envVariables) {
             this.envVariables = Objects.requireNonNull(envVariables);
             return this;
         }
+        @CustomType.Setter
         public Builder imageVersion(String imageVersion) {
             this.imageVersion = Objects.requireNonNull(imageVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder pypiPackages(Map<String,String> pypiPackages) {
             this.pypiPackages = Objects.requireNonNull(pypiPackages);
             return this;
         }
+        @CustomType.Setter
         public Builder pythonVersion(String pythonVersion) {
             this.pythonVersion = Objects.requireNonNull(pythonVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder schedulerCount(Integer schedulerCount) {
             this.schedulerCount = Objects.requireNonNull(schedulerCount);
             return this;
-        }        public GetEnvironmentConfigSoftwareConfig build() {
-            return new GetEnvironmentConfigSoftwareConfig(airflowConfigOverrides, envVariables, imageVersion, pypiPackages, pythonVersion, schedulerCount);
+        }
+        public GetEnvironmentConfigSoftwareConfig build() {
+            final var o = new GetEnvironmentConfigSoftwareConfig();
+            o.airflowConfigOverrides = airflowConfigOverrides;
+            o.envVariables = envVariables;
+            o.imageVersion = imageVersion;
+            o.pypiPackages = pypiPackages;
+            o.pythonVersion = pythonVersion;
+            o.schedulerCount = schedulerCount;
+            return o;
         }
     }
 }

@@ -15,35 +15,24 @@ public final class FunctionSecretEnvironmentVariable {
      * @return Name of the environment variable.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function&#39;s project, assuming that the secret exists in the same project as of the function.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return ID of the secret in secret manager (not the full resource name).
      * 
      */
-    private final String secret;
+    private String secret;
     /**
      * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private FunctionSecretEnvironmentVariable(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("secret") String secret,
-        @CustomType.Parameter("version") String version) {
-        this.key = key;
-        this.projectId = projectId;
-        this.secret = secret;
-        this.version = version;
-    }
-
+    private FunctionSecretEnvironmentVariable() {}
     /**
      * @return Name of the environment variable.
      * 
@@ -80,17 +69,13 @@ public final class FunctionSecretEnvironmentVariable {
     public static Builder builder(FunctionSecretEnvironmentVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private @Nullable String projectId;
         private String secret;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionSecretEnvironmentVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -99,23 +84,33 @@ public final class FunctionSecretEnvironmentVariable {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public FunctionSecretEnvironmentVariable build() {
-            return new FunctionSecretEnvironmentVariable(key, projectId, secret, version);
+        }
+        public FunctionSecretEnvironmentVariable build() {
+            final var o = new FunctionSecretEnvironmentVariable();
+            o.key = key;
+            o.projectId = projectId;
+            o.secret = secret;
+            o.version = version;
+            return o;
         }
     }
 }

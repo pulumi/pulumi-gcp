@@ -13,13 +13,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      * @return Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
      * 
      */
-    private final String nodeGroup;
+    private String nodeGroup;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity(@CustomType.Parameter("nodeGroup") String nodeGroup) {
-        this.nodeGroup = nodeGroup;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity() {}
     /**
      * @return Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
      * 
@@ -35,24 +31,24 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String nodeGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeGroup = defaults.nodeGroup;
         }
 
+        @CustomType.Setter
         public Builder nodeGroup(String nodeGroup) {
             this.nodeGroup = Objects.requireNonNull(nodeGroup);
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity(nodeGroup);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity();
+            o.nodeGroup = nodeGroup;
+            return o;
         }
     }
 }

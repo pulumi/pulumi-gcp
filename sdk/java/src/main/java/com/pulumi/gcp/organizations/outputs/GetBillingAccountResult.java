@@ -13,41 +13,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBillingAccountResult {
-    private final @Nullable String billingAccount;
-    private final String displayName;
+    private @Nullable String billingAccount;
+    private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      * 
      */
-    private final String name;
-    private final Boolean open;
+    private String name;
+    private Boolean open;
     /**
      * @return The IDs of any projects associated with the billing account.
      * 
      */
-    private final List<String> projectIds;
+    private List<String> projectIds;
 
-    @CustomType.Constructor
-    private GetBillingAccountResult(
-        @CustomType.Parameter("billingAccount") @Nullable String billingAccount,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("open") Boolean open,
-        @CustomType.Parameter("projectIds") List<String> projectIds) {
-        this.billingAccount = billingAccount;
-        this.displayName = displayName;
-        this.id = id;
-        this.name = name;
-        this.open = open;
-        this.projectIds = projectIds;
-    }
-
+    private GetBillingAccountResult() {}
     public Optional<String> billingAccount() {
         return Optional.ofNullable(this.billingAccount);
     }
@@ -86,7 +71,7 @@ public final class GetBillingAccountResult {
     public static Builder builder(GetBillingAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String billingAccount;
         private String displayName;
@@ -94,11 +79,7 @@ public final class GetBillingAccountResult {
         private String name;
         private Boolean open;
         private List<String> projectIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBillingAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.billingAccount = defaults.billingAccount;
@@ -109,34 +90,48 @@ public final class GetBillingAccountResult {
     	      this.projectIds = defaults.projectIds;
         }
 
+        @CustomType.Setter
         public Builder billingAccount(@Nullable String billingAccount) {
             this.billingAccount = billingAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder open(Boolean open) {
             this.open = Objects.requireNonNull(open);
             return this;
         }
+        @CustomType.Setter
         public Builder projectIds(List<String> projectIds) {
             this.projectIds = Objects.requireNonNull(projectIds);
             return this;
         }
         public Builder projectIds(String... projectIds) {
             return projectIds(List.of(projectIds));
-        }        public GetBillingAccountResult build() {
-            return new GetBillingAccountResult(billingAccount, displayName, id, name, open, projectIds);
+        }
+        public GetBillingAccountResult build() {
+            final var o = new GetBillingAccountResult();
+            o.billingAccount = billingAccount;
+            o.displayName = displayName;
+            o.id = id;
+            o.name = name;
+            o.open = open;
+            o.projectIds = projectIds;
+            return o;
         }
     }
 }

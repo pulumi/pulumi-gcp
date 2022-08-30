@@ -11,23 +11,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionSecretVolume {
-    private final String mountPath;
-    private final String projectId;
-    private final String secret;
-    private final List<GetFunctionSecretVolumeVersion> versions;
+    private String mountPath;
+    private String projectId;
+    private String secret;
+    private List<GetFunctionSecretVolumeVersion> versions;
 
-    @CustomType.Constructor
-    private GetFunctionSecretVolume(
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("secret") String secret,
-        @CustomType.Parameter("versions") List<GetFunctionSecretVolumeVersion> versions) {
-        this.mountPath = mountPath;
-        this.projectId = projectId;
-        this.secret = secret;
-        this.versions = versions;
-    }
-
+    private GetFunctionSecretVolume() {}
     public String mountPath() {
         return this.mountPath;
     }
@@ -48,17 +37,13 @@ public final class GetFunctionSecretVolume {
     public static Builder builder(GetFunctionSecretVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mountPath;
         private String projectId;
         private String secret;
         private List<GetFunctionSecretVolumeVersion> versions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionSecretVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
@@ -67,26 +52,36 @@ public final class GetFunctionSecretVolume {
     	      this.versions = defaults.versions;
         }
 
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
         }
+        @CustomType.Setter
         public Builder versions(List<GetFunctionSecretVolumeVersion> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
         }
         public Builder versions(GetFunctionSecretVolumeVersion... versions) {
             return versions(List.of(versions));
-        }        public GetFunctionSecretVolume build() {
-            return new GetFunctionSecretVolume(mountPath, projectId, secret, versions);
+        }
+        public GetFunctionSecretVolume build() {
+            final var o = new GetFunctionSecretVolume();
+            o.mountPath = mountPath;
+            o.projectId = projectId;
+            o.secret = secret;
+            o.versions = versions;
+            return o;
         }
     }
 }

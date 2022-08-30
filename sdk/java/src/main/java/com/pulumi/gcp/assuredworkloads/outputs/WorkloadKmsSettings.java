@@ -13,21 +13,14 @@ public final class WorkloadKmsSettings {
      * @return Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
      * 
      */
-    private final String nextRotationTime;
+    private String nextRotationTime;
     /**
      * @return Required. Input only. Immutable. will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
      * 
      */
-    private final String rotationPeriod;
+    private String rotationPeriod;
 
-    @CustomType.Constructor
-    private WorkloadKmsSettings(
-        @CustomType.Parameter("nextRotationTime") String nextRotationTime,
-        @CustomType.Parameter("rotationPeriod") String rotationPeriod) {
-        this.nextRotationTime = nextRotationTime;
-        this.rotationPeriod = rotationPeriod;
-    }
-
+    private WorkloadKmsSettings() {}
     /**
      * @return Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
      * 
@@ -50,30 +43,32 @@ public final class WorkloadKmsSettings {
     public static Builder builder(WorkloadKmsSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String nextRotationTime;
         private String rotationPeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkloadKmsSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nextRotationTime = defaults.nextRotationTime;
     	      this.rotationPeriod = defaults.rotationPeriod;
         }
 
+        @CustomType.Setter
         public Builder nextRotationTime(String nextRotationTime) {
             this.nextRotationTime = Objects.requireNonNull(nextRotationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder rotationPeriod(String rotationPeriod) {
             this.rotationPeriod = Objects.requireNonNull(rotationPeriod);
             return this;
-        }        public WorkloadKmsSettings build() {
-            return new WorkloadKmsSettings(nextRotationTime, rotationPeriod);
+        }
+        public WorkloadKmsSettings build() {
+            final var o = new WorkloadKmsSettings();
+            o.nextRotationTime = nextRotationTime;
+            o.rotationPeriod = rotationPeriod;
+            return o;
         }
     }
 }

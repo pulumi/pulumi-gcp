@@ -14,13 +14,9 @@ public final class MetastoreServiceMetadataIntegration {
      * Structure is documented below.
      * 
      */
-    private final MetastoreServiceMetadataIntegrationDataCatalogConfig dataCatalogConfig;
+    private MetastoreServiceMetadataIntegrationDataCatalogConfig dataCatalogConfig;
 
-    @CustomType.Constructor
-    private MetastoreServiceMetadataIntegration(@CustomType.Parameter("dataCatalogConfig") MetastoreServiceMetadataIntegrationDataCatalogConfig dataCatalogConfig) {
-        this.dataCatalogConfig = dataCatalogConfig;
-    }
-
+    private MetastoreServiceMetadataIntegration() {}
     /**
      * @return The integration config for the Data Catalog service.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class MetastoreServiceMetadataIntegration {
     public static Builder builder(MetastoreServiceMetadataIntegration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private MetastoreServiceMetadataIntegrationDataCatalogConfig dataCatalogConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceMetadataIntegration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataCatalogConfig = defaults.dataCatalogConfig;
         }
 
+        @CustomType.Setter
         public Builder dataCatalogConfig(MetastoreServiceMetadataIntegrationDataCatalogConfig dataCatalogConfig) {
             this.dataCatalogConfig = Objects.requireNonNull(dataCatalogConfig);
             return this;
-        }        public MetastoreServiceMetadataIntegration build() {
-            return new MetastoreServiceMetadataIntegration(dataCatalogConfig);
+        }
+        public MetastoreServiceMetadataIntegration build() {
+            final var o = new MetastoreServiceMetadataIntegration();
+            o.dataCatalogConfig = dataCatalogConfig;
+            return o;
         }
     }
 }

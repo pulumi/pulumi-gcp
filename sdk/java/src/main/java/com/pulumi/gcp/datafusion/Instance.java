@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicInstance = new Instance(&#34;basicInstance&#34;, InstanceArgs.builder()        
+ *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;BASIC&#34;)
  *             .build());
@@ -98,6 +99,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .version(&#34;6.3.0&#34;)
  *             .dataprocServiceAccount(default_.email())
+ *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
  *             .build());
  * 
  *     }

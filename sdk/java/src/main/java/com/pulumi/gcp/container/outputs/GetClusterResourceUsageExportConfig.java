@@ -11,20 +11,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterResourceUsageExportConfig {
-    private final List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations;
-    private final Boolean enableNetworkEgressMetering;
-    private final Boolean enableResourceConsumptionMetering;
+    private List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations;
+    private Boolean enableNetworkEgressMetering;
+    private Boolean enableResourceConsumptionMetering;
 
-    @CustomType.Constructor
-    private GetClusterResourceUsageExportConfig(
-        @CustomType.Parameter("bigqueryDestinations") List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations,
-        @CustomType.Parameter("enableNetworkEgressMetering") Boolean enableNetworkEgressMetering,
-        @CustomType.Parameter("enableResourceConsumptionMetering") Boolean enableResourceConsumptionMetering) {
-        this.bigqueryDestinations = bigqueryDestinations;
-        this.enableNetworkEgressMetering = enableNetworkEgressMetering;
-        this.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
-    }
-
+    private GetClusterResourceUsageExportConfig() {}
     public List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations() {
         return this.bigqueryDestinations;
     }
@@ -42,16 +33,12 @@ public final class GetClusterResourceUsageExportConfig {
     public static Builder builder(GetClusterResourceUsageExportConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations;
         private Boolean enableNetworkEgressMetering;
         private Boolean enableResourceConsumptionMetering;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterResourceUsageExportConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigqueryDestinations = defaults.bigqueryDestinations;
@@ -59,6 +46,7 @@ public final class GetClusterResourceUsageExportConfig {
     	      this.enableResourceConsumptionMetering = defaults.enableResourceConsumptionMetering;
         }
 
+        @CustomType.Setter
         public Builder bigqueryDestinations(List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations) {
             this.bigqueryDestinations = Objects.requireNonNull(bigqueryDestinations);
             return this;
@@ -66,15 +54,22 @@ public final class GetClusterResourceUsageExportConfig {
         public Builder bigqueryDestinations(GetClusterResourceUsageExportConfigBigqueryDestination... bigqueryDestinations) {
             return bigqueryDestinations(List.of(bigqueryDestinations));
         }
+        @CustomType.Setter
         public Builder enableNetworkEgressMetering(Boolean enableNetworkEgressMetering) {
             this.enableNetworkEgressMetering = Objects.requireNonNull(enableNetworkEgressMetering);
             return this;
         }
+        @CustomType.Setter
         public Builder enableResourceConsumptionMetering(Boolean enableResourceConsumptionMetering) {
             this.enableResourceConsumptionMetering = Objects.requireNonNull(enableResourceConsumptionMetering);
             return this;
-        }        public GetClusterResourceUsageExportConfig build() {
-            return new GetClusterResourceUsageExportConfig(bigqueryDestinations, enableNetworkEgressMetering, enableResourceConsumptionMetering);
+        }
+        public GetClusterResourceUsageExportConfig build() {
+            final var o = new GetClusterResourceUsageExportConfig();
+            o.bigqueryDestinations = bigqueryDestinations;
+            o.enableNetworkEgressMetering = enableNetworkEgressMetering;
+            o.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
+            return o;
         }
     }
 }

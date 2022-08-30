@@ -14,22 +14,15 @@ public final class InstanceGroupManagerNamedPort {
      * @return - Version name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The port number.
      * ***
      * 
      */
-    private final Integer port;
+    private Integer port;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerNamedPort(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") Integer port) {
-        this.name = name;
-        this.port = port;
-    }
-
+    private InstanceGroupManagerNamedPort() {}
     /**
      * @return - Version name.
      * 
@@ -53,30 +46,32 @@ public final class InstanceGroupManagerNamedPort {
     public static Builder builder(InstanceGroupManagerNamedPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerNamedPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public InstanceGroupManagerNamedPort build() {
-            return new InstanceGroupManagerNamedPort(name, port);
+        }
+        public InstanceGroupManagerNamedPort build() {
+            final var o = new InstanceGroupManagerNamedPort();
+            o.name = name;
+            o.port = port;
+            return o;
         }
     }
 }

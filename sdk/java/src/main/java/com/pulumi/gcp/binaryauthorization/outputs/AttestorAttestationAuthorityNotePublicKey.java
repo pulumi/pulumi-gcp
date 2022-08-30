@@ -24,12 +24,12 @@ public final class AttestorAttestationAuthorityNotePublicKey {
      * be overwritten by the API-calculated ID.
      * 
      */
-    private final @Nullable String asciiArmoredPgpPublicKey;
+    private @Nullable String asciiArmoredPgpPublicKey;
     /**
      * @return A descriptive comment. This field may be updated.
      * 
      */
-    private final @Nullable String comment;
+    private @Nullable String comment;
     /**
      * @return The ID of this public key. Signatures verified by BinAuthz
      * must include the ID of the public key that can be used to
@@ -39,7 +39,7 @@ public final class AttestorAttestationAuthorityNotePublicKey {
      * See the documentation on publicKey cases below for details.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return A raw PKIX SubjectPublicKeyInfo format public key.
      * NOTE: id may be explicitly provided by the caller when using this
@@ -49,20 +49,9 @@ public final class AttestorAttestationAuthorityNotePublicKey {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AttestorAttestationAuthorityNotePublicKeyPkixPublicKey pkixPublicKey;
+    private @Nullable AttestorAttestationAuthorityNotePublicKeyPkixPublicKey pkixPublicKey;
 
-    @CustomType.Constructor
-    private AttestorAttestationAuthorityNotePublicKey(
-        @CustomType.Parameter("asciiArmoredPgpPublicKey") @Nullable String asciiArmoredPgpPublicKey,
-        @CustomType.Parameter("comment") @Nullable String comment,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("pkixPublicKey") @Nullable AttestorAttestationAuthorityNotePublicKeyPkixPublicKey pkixPublicKey) {
-        this.asciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
-        this.comment = comment;
-        this.id = id;
-        this.pkixPublicKey = pkixPublicKey;
-    }
-
+    private AttestorAttestationAuthorityNotePublicKey() {}
     /**
      * @return ASCII-armored representation of a PGP public key, as the
      * entire output by the command
@@ -117,17 +106,13 @@ public final class AttestorAttestationAuthorityNotePublicKey {
     public static Builder builder(AttestorAttestationAuthorityNotePublicKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String asciiArmoredPgpPublicKey;
         private @Nullable String comment;
         private @Nullable String id;
         private @Nullable AttestorAttestationAuthorityNotePublicKeyPkixPublicKey pkixPublicKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttestorAttestationAuthorityNotePublicKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asciiArmoredPgpPublicKey = defaults.asciiArmoredPgpPublicKey;
@@ -136,23 +121,33 @@ public final class AttestorAttestationAuthorityNotePublicKey {
     	      this.pkixPublicKey = defaults.pkixPublicKey;
         }
 
+        @CustomType.Setter
         public Builder asciiArmoredPgpPublicKey(@Nullable String asciiArmoredPgpPublicKey) {
             this.asciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
             return this;
         }
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder pkixPublicKey(@Nullable AttestorAttestationAuthorityNotePublicKeyPkixPublicKey pkixPublicKey) {
             this.pkixPublicKey = pkixPublicKey;
             return this;
-        }        public AttestorAttestationAuthorityNotePublicKey build() {
-            return new AttestorAttestationAuthorityNotePublicKey(asciiArmoredPgpPublicKey, comment, id, pkixPublicKey);
+        }
+        public AttestorAttestationAuthorityNotePublicKey build() {
+            final var o = new AttestorAttestationAuthorityNotePublicKey();
+            o.asciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
+            o.comment = comment;
+            o.id = id;
+            o.pkixPublicKey = pkixPublicKey;
+            return o;
         }
     }
 }

@@ -14,24 +14,15 @@ public final class GetLocationsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The list of Cloud Run locations available for the given project.
      * 
      */
-    private final List<String> locations;
-    private final String project;
+    private List<String> locations;
+    private String project;
 
-    @CustomType.Constructor
-    private GetLocationsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("locations") List<String> locations,
-        @CustomType.Parameter("project") String project) {
-        this.id = id;
-        this.locations = locations;
-        this.project = project;
-    }
-
+    private GetLocationsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -57,16 +48,12 @@ public final class GetLocationsResult {
     public static Builder builder(GetLocationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> locations;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLocationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -74,10 +61,12 @@ public final class GetLocationsResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder locations(List<String> locations) {
             this.locations = Objects.requireNonNull(locations);
             return this;
@@ -85,11 +74,17 @@ public final class GetLocationsResult {
         public Builder locations(String... locations) {
             return locations(List.of(locations));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public GetLocationsResult build() {
-            return new GetLocationsResult(id, locations, project);
+        }
+        public GetLocationsResult build() {
+            final var o = new GetLocationsResult();
+            o.id = id;
+            o.locations = locations;
+            o.project = project;
+            return o;
         }
     }
 }

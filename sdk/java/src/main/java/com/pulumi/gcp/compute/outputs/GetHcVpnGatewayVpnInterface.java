@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHcVpnGatewayVpnInterface {
-    private final Integer id;
-    private final String interconnectAttachment;
-    private final String ipAddress;
+    private Integer id;
+    private String interconnectAttachment;
+    private String ipAddress;
 
-    @CustomType.Constructor
-    private GetHcVpnGatewayVpnInterface(
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("interconnectAttachment") String interconnectAttachment,
-        @CustomType.Parameter("ipAddress") String ipAddress) {
-        this.id = id;
-        this.interconnectAttachment = interconnectAttachment;
-        this.ipAddress = ipAddress;
-    }
-
+    private GetHcVpnGatewayVpnInterface() {}
     public Integer id() {
         return this.id;
     }
@@ -41,16 +32,12 @@ public final class GetHcVpnGatewayVpnInterface {
     public static Builder builder(GetHcVpnGatewayVpnInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer id;
         private String interconnectAttachment;
         private String ipAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHcVpnGatewayVpnInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -58,19 +45,27 @@ public final class GetHcVpnGatewayVpnInterface {
     	      this.ipAddress = defaults.ipAddress;
         }
 
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder interconnectAttachment(String interconnectAttachment) {
             this.interconnectAttachment = Objects.requireNonNull(interconnectAttachment);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
-        }        public GetHcVpnGatewayVpnInterface build() {
-            return new GetHcVpnGatewayVpnInterface(id, interconnectAttachment, ipAddress);
+        }
+        public GetHcVpnGatewayVpnInterface build() {
+            final var o = new GetHcVpnGatewayVpnInterface();
+            o.id = id;
+            o.interconnectAttachment = interconnectAttachment;
+            o.ipAddress = ipAddress;
+            return o;
         }
     }
 }

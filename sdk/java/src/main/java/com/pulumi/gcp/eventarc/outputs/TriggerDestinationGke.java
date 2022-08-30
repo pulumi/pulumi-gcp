@@ -15,42 +15,29 @@ public final class TriggerDestinationGke {
      * @return Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
      * 
      */
-    private final String cluster;
+    private String cluster;
     /**
      * @return Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
      * 
      */
-    private final String location;
+    private String location;
     /**
      * @return Required. The namespace the GKE service is running in.
      * 
      */
-    private final String namespace;
+    private String namespace;
     /**
      * @return Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return Required. Name of the GKE service.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private TriggerDestinationGke(
-        @CustomType.Parameter("cluster") String cluster,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("service") String service) {
-        this.cluster = cluster;
-        this.location = location;
-        this.namespace = namespace;
-        this.path = path;
-        this.service = service;
-    }
-
+    private TriggerDestinationGke() {}
     /**
      * @return Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
      * 
@@ -94,18 +81,14 @@ public final class TriggerDestinationGke {
     public static Builder builder(TriggerDestinationGke defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cluster;
         private String location;
         private String namespace;
         private @Nullable String path;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerDestinationGke defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
@@ -115,27 +98,39 @@ public final class TriggerDestinationGke {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder cluster(String cluster) {
             this.cluster = Objects.requireNonNull(cluster);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public TriggerDestinationGke build() {
-            return new TriggerDestinationGke(cluster, location, namespace, path, service);
+        }
+        public TriggerDestinationGke build() {
+            final var o = new TriggerDestinationGke();
+            o.cluster = cluster;
+            o.location = location;
+            o.namespace = namespace;
+            o.path = path;
+            o.service = service;
+            return o;
         }
     }
 }

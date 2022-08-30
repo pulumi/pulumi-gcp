@@ -13,13 +13,9 @@ public final class ClusterNodePoolNodeConfigEphemeralStorageConfig {
      * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
      * 
      */
-    private final Integer localSsdCount;
+    private Integer localSsdCount;
 
-    @CustomType.Constructor
-    private ClusterNodePoolNodeConfigEphemeralStorageConfig(@CustomType.Parameter("localSsdCount") Integer localSsdCount) {
-        this.localSsdCount = localSsdCount;
-    }
-
+    private ClusterNodePoolNodeConfigEphemeralStorageConfig() {}
     /**
      * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
      * 
@@ -35,24 +31,24 @@ public final class ClusterNodePoolNodeConfigEphemeralStorageConfig {
     public static Builder builder(ClusterNodePoolNodeConfigEphemeralStorageConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer localSsdCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolNodeConfigEphemeralStorageConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localSsdCount = defaults.localSsdCount;
         }
 
+        @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
             this.localSsdCount = Objects.requireNonNull(localSsdCount);
             return this;
-        }        public ClusterNodePoolNodeConfigEphemeralStorageConfig build() {
-            return new ClusterNodePoolNodeConfigEphemeralStorageConfig(localSsdCount);
+        }
+        public ClusterNodePoolNodeConfigEphemeralStorageConfig build() {
+            final var o = new ClusterNodePoolNodeConfigEphemeralStorageConfig();
+            o.localSsdCount = localSsdCount;
+            return o;
         }
     }
 }

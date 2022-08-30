@@ -13,30 +13,21 @@ public final class SecurityScanConfigAuthenticationCustomAccount {
      * @return The login form URL of the website.
      * 
      */
-    private final String loginUrl;
+    private String loginUrl;
     /**
      * @return The password of the custom account. The credential is stored encrypted
      * in GCP.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return The user name of the custom account.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private SecurityScanConfigAuthenticationCustomAccount(
-        @CustomType.Parameter("loginUrl") String loginUrl,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("username") String username) {
-        this.loginUrl = loginUrl;
-        this.password = password;
-        this.username = username;
-    }
-
+    private SecurityScanConfigAuthenticationCustomAccount() {}
     /**
      * @return The login form URL of the website.
      * 
@@ -68,16 +59,12 @@ public final class SecurityScanConfigAuthenticationCustomAccount {
     public static Builder builder(SecurityScanConfigAuthenticationCustomAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String loginUrl;
         private String password;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityScanConfigAuthenticationCustomAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.loginUrl = defaults.loginUrl;
@@ -85,19 +72,27 @@ public final class SecurityScanConfigAuthenticationCustomAccount {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder loginUrl(String loginUrl) {
             this.loginUrl = Objects.requireNonNull(loginUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public SecurityScanConfigAuthenticationCustomAccount build() {
-            return new SecurityScanConfigAuthenticationCustomAccount(loginUrl, password, username);
+        }
+        public SecurityScanConfigAuthenticationCustomAccount build() {
+            final var o = new SecurityScanConfigAuthenticationCustomAccount();
+            o.loginUrl = loginUrl;
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

@@ -16,29 +16,20 @@ public final class CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
      * handle this extension, the client should consider this to be an error).
      * 
      */
-    private final Boolean critical;
+    private Boolean critical;
     /**
      * @return Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
-    private final CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId objectId;
+    private CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId objectId;
     /**
      * @return The value of this X.509 extension. A base64-encoded string.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyBaselineValuesAdditionalExtension(
-        @CustomType.Parameter("critical") Boolean critical,
-        @CustomType.Parameter("objectId") CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId objectId,
-        @CustomType.Parameter("value") String value) {
-        this.critical = critical;
-        this.objectId = objectId;
-        this.value = value;
-    }
-
+    private CaPoolIssuancePolicyBaselineValuesAdditionalExtension() {}
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
@@ -70,16 +61,12 @@ public final class CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
     public static Builder builder(CaPoolIssuancePolicyBaselineValuesAdditionalExtension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean critical;
         private CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId objectId;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyBaselineValuesAdditionalExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -87,19 +74,27 @@ public final class CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder critical(Boolean critical) {
             this.critical = Objects.requireNonNull(critical);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public CaPoolIssuancePolicyBaselineValuesAdditionalExtension build() {
-            return new CaPoolIssuancePolicyBaselineValuesAdditionalExtension(critical, objectId, value);
+        }
+        public CaPoolIssuancePolicyBaselineValuesAdditionalExtension build() {
+            final var o = new CaPoolIssuancePolicyBaselineValuesAdditionalExtension();
+            o.critical = critical;
+            o.objectId = objectId;
+            o.value = value;
+            return o;
         }
     }
 }

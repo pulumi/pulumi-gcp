@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterNodePoolUpgradeSettings {
-    private final Integer maxSurge;
-    private final Integer maxUnavailable;
+    private Integer maxSurge;
+    private Integer maxUnavailable;
 
-    @CustomType.Constructor
-    private ClusterNodePoolUpgradeSettings(
-        @CustomType.Parameter("maxSurge") Integer maxSurge,
-        @CustomType.Parameter("maxUnavailable") Integer maxUnavailable) {
-        this.maxSurge = maxSurge;
-        this.maxUnavailable = maxUnavailable;
-    }
-
+    private ClusterNodePoolUpgradeSettings() {}
     public Integer maxSurge() {
         return this.maxSurge;
     }
@@ -34,30 +27,32 @@ public final class ClusterNodePoolUpgradeSettings {
     public static Builder builder(ClusterNodePoolUpgradeSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxSurge;
         private Integer maxUnavailable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolUpgradeSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
+        @CustomType.Setter
         public Builder maxSurge(Integer maxSurge) {
             this.maxSurge = Objects.requireNonNull(maxSurge);
             return this;
         }
+        @CustomType.Setter
         public Builder maxUnavailable(Integer maxUnavailable) {
             this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
             return this;
-        }        public ClusterNodePoolUpgradeSettings build() {
-            return new ClusterNodePoolUpgradeSettings(maxSurge, maxUnavailable);
+        }
+        public ClusterNodePoolUpgradeSettings build() {
+            final var o = new ClusterNodePoolUpgradeSettings();
+            o.maxSurge = maxSurge;
+            o.maxUnavailable = maxUnavailable;
+            return o;
         }
     }
 }

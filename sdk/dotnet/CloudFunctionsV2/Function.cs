@@ -69,6 +69,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/run.invoker",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             gcs_pubsub_publishing,
+    ///         },
     ///     });
     /// 
     ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
@@ -76,6 +82,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             invoking,
+    ///         },
     ///     });
     /// 
     ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
@@ -83,6 +95,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             event_receiving,
+    ///         },
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
@@ -201,6 +219,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             invoking,
+    ///         },
     ///     });
     /// 
     ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
@@ -208,6 +232,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             event_receiving,
+    ///         },
     ///     });
     /// 
     ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()

@@ -14,31 +14,20 @@ public final class GetProjectServiceAccountResult {
      * often used to refer to the service account in order to grant IAM permissions.
      * 
      */
-    private final String accountEmail;
+    private String accountEmail;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Access Approval service account resource name. Format is &#34;projects/{project_id}/serviceAccount&#34;.
      * 
      */
-    private final String name;
-    private final String projectId;
+    private String name;
+    private String projectId;
 
-    @CustomType.Constructor
-    private GetProjectServiceAccountResult(
-        @CustomType.Parameter("accountEmail") String accountEmail,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId) {
-        this.accountEmail = accountEmail;
-        this.id = id;
-        this.name = name;
-        this.projectId = projectId;
-    }
-
+    private GetProjectServiceAccountResult() {}
     /**
      * @return The email address of the service account. This value is
      * often used to refer to the service account in order to grant IAM permissions.
@@ -72,17 +61,13 @@ public final class GetProjectServiceAccountResult {
     public static Builder builder(GetProjectServiceAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountEmail;
         private String id;
         private String name;
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEmail = defaults.accountEmail;
@@ -91,23 +76,33 @@ public final class GetProjectServiceAccountResult {
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder accountEmail(String accountEmail) {
             this.accountEmail = Objects.requireNonNull(accountEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public GetProjectServiceAccountResult build() {
-            return new GetProjectServiceAccountResult(accountEmail, id, name, projectId);
+        }
+        public GetProjectServiceAccountResult build() {
+            final var o = new GetProjectServiceAccountResult();
+            o.accountEmail = accountEmail;
+            o.id = id;
+            o.name = name;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

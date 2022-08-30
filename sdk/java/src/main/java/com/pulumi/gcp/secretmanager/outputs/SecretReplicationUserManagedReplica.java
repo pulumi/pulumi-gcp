@@ -17,21 +17,14 @@ public final class SecretReplicationUserManagedReplica {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SecretReplicationUserManagedReplicaCustomerManagedEncryption customerManagedEncryption;
+    private @Nullable SecretReplicationUserManagedReplicaCustomerManagedEncryption customerManagedEncryption;
     /**
      * @return The canonical IDs of the location to replicate data. For example: &#34;us-east1&#34;.
      * 
      */
-    private final String location;
+    private String location;
 
-    @CustomType.Constructor
-    private SecretReplicationUserManagedReplica(
-        @CustomType.Parameter("customerManagedEncryption") @Nullable SecretReplicationUserManagedReplicaCustomerManagedEncryption customerManagedEncryption,
-        @CustomType.Parameter("location") String location) {
-        this.customerManagedEncryption = customerManagedEncryption;
-        this.location = location;
-    }
-
+    private SecretReplicationUserManagedReplica() {}
     /**
      * @return Customer Managed Encryption for the secret.
      * Structure is documented below.
@@ -55,30 +48,32 @@ public final class SecretReplicationUserManagedReplica {
     public static Builder builder(SecretReplicationUserManagedReplica defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SecretReplicationUserManagedReplicaCustomerManagedEncryption customerManagedEncryption;
         private String location;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecretReplicationUserManagedReplica defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customerManagedEncryption = defaults.customerManagedEncryption;
     	      this.location = defaults.location;
         }
 
+        @CustomType.Setter
         public Builder customerManagedEncryption(@Nullable SecretReplicationUserManagedReplicaCustomerManagedEncryption customerManagedEncryption) {
             this.customerManagedEncryption = customerManagedEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
-        }        public SecretReplicationUserManagedReplica build() {
-            return new SecretReplicationUserManagedReplica(customerManagedEncryption, location);
+        }
+        public SecretReplicationUserManagedReplica build() {
+            final var o = new SecretReplicationUserManagedReplica();
+            o.customerManagedEncryption = customerManagedEncryption;
+            o.location = location;
+            return o;
         }
     }
 }

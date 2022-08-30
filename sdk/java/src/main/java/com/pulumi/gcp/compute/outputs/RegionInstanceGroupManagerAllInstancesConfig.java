@@ -15,21 +15,14 @@ public final class RegionInstanceGroupManagerAllInstancesConfig {
      * @return ), The label key-value pairs that you want to patch onto the instance.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerAllInstancesConfig(
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata) {
-        this.labels = labels;
-        this.metadata = metadata;
-    }
-
+    private RegionInstanceGroupManagerAllInstancesConfig() {}
     /**
      * @return ), The label key-value pairs that you want to patch onto the instance.
      * 
@@ -52,30 +45,32 @@ public final class RegionInstanceGroupManagerAllInstancesConfig {
     public static Builder builder(RegionInstanceGroupManagerAllInstancesConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> labels;
         private @Nullable Map<String,String> metadata;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerAllInstancesConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
     	      this.metadata = defaults.metadata;
         }
 
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
-        }        public RegionInstanceGroupManagerAllInstancesConfig build() {
-            return new RegionInstanceGroupManagerAllInstancesConfig(labels, metadata);
+        }
+        public RegionInstanceGroupManagerAllInstancesConfig build() {
+            final var o = new RegionInstanceGroupManagerAllInstancesConfig();
+            o.labels = labels;
+            o.metadata = metadata;
+            return o;
         }
     }
 }

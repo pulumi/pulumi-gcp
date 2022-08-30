@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvValueFrom {
-    private final List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves;
+    private List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnvValueFrom(@CustomType.Parameter("secretKeyReves") List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves) {
-        this.secretKeyReves = secretKeyReves;
-    }
-
+    private GetServiceTemplateSpecContainerEnvValueFrom() {}
     public List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves() {
         return this.secretKeyReves;
     }
@@ -28,27 +24,27 @@ public final class GetServiceTemplateSpecContainerEnvValueFrom {
     public static Builder builder(GetServiceTemplateSpecContainerEnvValueFrom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnvValueFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretKeyReves = defaults.secretKeyReves;
         }
 
+        @CustomType.Setter
         public Builder secretKeyReves(List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves) {
             this.secretKeyReves = Objects.requireNonNull(secretKeyReves);
             return this;
         }
         public Builder secretKeyReves(GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef... secretKeyReves) {
             return secretKeyReves(List.of(secretKeyReves));
-        }        public GetServiceTemplateSpecContainerEnvValueFrom build() {
-            return new GetServiceTemplateSpecContainerEnvValueFrom(secretKeyReves);
+        }
+        public GetServiceTemplateSpecContainerEnvValueFrom build() {
+            final var o = new GetServiceTemplateSpecContainerEnvValueFrom();
+            o.secretKeyReves = secretKeyReves;
+            return o;
         }
     }
 }

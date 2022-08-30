@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigShieldedInstanceConfig {
-    private final @Nullable Boolean enableIntegrityMonitoring;
-    private final @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableSecureBoot;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-    }
-
+    private NodePoolNodeConfigShieldedInstanceConfig() {}
     public Optional<Boolean> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
@@ -36,30 +29,32 @@ public final class NodePoolNodeConfigShieldedInstanceConfig {
     public static Builder builder(NodePoolNodeConfigShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
     	      this.enableSecureBoot = defaults.enableSecureBoot;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
-        }        public NodePoolNodeConfigShieldedInstanceConfig build() {
-            return new NodePoolNodeConfigShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot);
+        }
+        public NodePoolNodeConfigShieldedInstanceConfig build() {
+            final var o = new NodePoolNodeConfigShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            return o;
         }
     }
 }

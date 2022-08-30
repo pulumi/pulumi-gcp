@@ -17,28 +17,19 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
      * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
      * 
      */
-    private final String headerName;
+    private String headerName;
     /**
      * @return The value of the header to add.
      * 
      */
-    private final String headerValue;
+    private String headerValue;
     /**
      * @return Whether to replace all existing headers with the same name.
      * 
      */
-    private final @Nullable Boolean replace;
+    private @Nullable Boolean replace;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(
-        @CustomType.Parameter("headerName") String headerName,
-        @CustomType.Parameter("headerValue") String headerValue,
-        @CustomType.Parameter("replace") @Nullable Boolean replace) {
-        this.headerName = headerName;
-        this.headerValue = headerValue;
-        this.replace = replace;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd() {}
     /**
      * @return Headers to remove from the response prior to sending it back to the client.
      * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
@@ -69,16 +60,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String headerName;
         private String headerValue;
         private @Nullable Boolean replace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerName = defaults.headerName;
@@ -86,19 +73,27 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
     	      this.replace = defaults.replace;
         }
 
+        @CustomType.Setter
         public Builder headerName(String headerName) {
             this.headerName = Objects.requireNonNull(headerName);
             return this;
         }
+        @CustomType.Setter
         public Builder headerValue(String headerValue) {
             this.headerValue = Objects.requireNonNull(headerValue);
             return this;
         }
+        @CustomType.Setter
         public Builder replace(@Nullable Boolean replace) {
             this.replace = replace;
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(headerName, headerValue, replace);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd();
+            o.headerName = headerName;
+            o.headerValue = headerValue;
+            o.replace = replace;
+            return o;
         }
     }
 }

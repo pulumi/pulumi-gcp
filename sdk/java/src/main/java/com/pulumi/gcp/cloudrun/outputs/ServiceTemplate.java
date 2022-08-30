@@ -18,22 +18,15 @@ public final class ServiceTemplate {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateMetadata metadata;
+    private @Nullable ServiceTemplateMetadata metadata;
     /**
      * @return RevisionSpec holds the desired state of the Revision (from the client).
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateSpec spec;
+    private @Nullable ServiceTemplateSpec spec;
 
-    @CustomType.Constructor
-    private ServiceTemplate(
-        @CustomType.Parameter("metadata") @Nullable ServiceTemplateMetadata metadata,
-        @CustomType.Parameter("spec") @Nullable ServiceTemplateSpec spec) {
-        this.metadata = metadata;
-        this.spec = spec;
-    }
-
+    private ServiceTemplate() {}
     /**
      * @return Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
@@ -59,30 +52,32 @@ public final class ServiceTemplate {
     public static Builder builder(ServiceTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ServiceTemplateMetadata metadata;
         private @Nullable ServiceTemplateSpec spec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metadata = defaults.metadata;
     	      this.spec = defaults.spec;
         }
 
+        @CustomType.Setter
         public Builder metadata(@Nullable ServiceTemplateMetadata metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder spec(@Nullable ServiceTemplateSpec spec) {
             this.spec = spec;
             return this;
-        }        public ServiceTemplate build() {
-            return new ServiceTemplate(metadata, spec);
+        }
+        public ServiceTemplate build() {
+            final var o = new ServiceTemplate();
+            o.metadata = metadata;
+            o.spec = spec;
+            return o;
         }
     }
 }

@@ -18,46 +18,33 @@ public final class AccessLevelsAccessLevel {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AccessLevelsAccessLevelBasic basic;
+    private @Nullable AccessLevelsAccessLevelBasic basic;
     /**
      * @return Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
      * See CEL spec at: https://github.com/google/cel-spec.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AccessLevelsAccessLevelCustom custom;
+    private @Nullable AccessLevelsAccessLevelCustom custom;
     /**
      * @return Description of the expression
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Resource name for the Access Level. The short_name component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Title for the expression, i.e. a short string describing its purpose.
      * 
      */
-    private final String title;
+    private String title;
 
-    @CustomType.Constructor
-    private AccessLevelsAccessLevel(
-        @CustomType.Parameter("basic") @Nullable AccessLevelsAccessLevelBasic basic,
-        @CustomType.Parameter("custom") @Nullable AccessLevelsAccessLevelCustom custom,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("title") String title) {
-        this.basic = basic;
-        this.custom = custom;
-        this.description = description;
-        this.name = name;
-        this.title = title;
-    }
-
+    private AccessLevelsAccessLevel() {}
     /**
      * @return A set of predefined conditions for the access level and a combining function.
      * Structure is documented below.
@@ -106,18 +93,14 @@ public final class AccessLevelsAccessLevel {
     public static Builder builder(AccessLevelsAccessLevel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AccessLevelsAccessLevelBasic basic;
         private @Nullable AccessLevelsAccessLevelCustom custom;
         private @Nullable String description;
         private String name;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessLevelsAccessLevel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basic = defaults.basic;
@@ -127,27 +110,39 @@ public final class AccessLevelsAccessLevel {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder basic(@Nullable AccessLevelsAccessLevelBasic basic) {
             this.basic = basic;
             return this;
         }
+        @CustomType.Setter
         public Builder custom(@Nullable AccessLevelsAccessLevelCustom custom) {
             this.custom = custom;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public AccessLevelsAccessLevel build() {
-            return new AccessLevelsAccessLevel(basic, custom, description, name, title);
+        }
+        public AccessLevelsAccessLevel build() {
+            final var o = new AccessLevelsAccessLevel();
+            o.basic = basic;
+            o.custom = custom;
+            o.description = description;
+            o.name = name;
+            o.title = title;
+            return o;
         }
     }
 }

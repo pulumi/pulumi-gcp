@@ -21,7 +21,7 @@ public final class SloRequestBasedSli {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloRequestBasedSliDistributionCut distributionCut;
+    private @Nullable SloRequestBasedSliDistributionCut distributionCut;
     /**
      * @return A means to compute a ratio of `good_service` to `total_service`.
      * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -31,16 +31,9 @@ public final class SloRequestBasedSli {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloRequestBasedSliGoodTotalRatio goodTotalRatio;
+    private @Nullable SloRequestBasedSliGoodTotalRatio goodTotalRatio;
 
-    @CustomType.Constructor
-    private SloRequestBasedSli(
-        @CustomType.Parameter("distributionCut") @Nullable SloRequestBasedSliDistributionCut distributionCut,
-        @CustomType.Parameter("goodTotalRatio") @Nullable SloRequestBasedSliGoodTotalRatio goodTotalRatio) {
-        this.distributionCut = distributionCut;
-        this.goodTotalRatio = goodTotalRatio;
-    }
-
+    private SloRequestBasedSli() {}
     /**
      * @return Used when good_service is defined by a count of values aggregated in a
      * Distribution that fall into a good range. The total_service is the
@@ -73,30 +66,32 @@ public final class SloRequestBasedSli {
     public static Builder builder(SloRequestBasedSli defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SloRequestBasedSliDistributionCut distributionCut;
         private @Nullable SloRequestBasedSliGoodTotalRatio goodTotalRatio;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloRequestBasedSli defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.distributionCut = defaults.distributionCut;
     	      this.goodTotalRatio = defaults.goodTotalRatio;
         }
 
+        @CustomType.Setter
         public Builder distributionCut(@Nullable SloRequestBasedSliDistributionCut distributionCut) {
             this.distributionCut = distributionCut;
             return this;
         }
+        @CustomType.Setter
         public Builder goodTotalRatio(@Nullable SloRequestBasedSliGoodTotalRatio goodTotalRatio) {
             this.goodTotalRatio = goodTotalRatio;
             return this;
-        }        public SloRequestBasedSli build() {
-            return new SloRequestBasedSli(distributionCut, goodTotalRatio);
+        }
+        public SloRequestBasedSli build() {
+            final var o = new SloRequestBasedSli();
+            o.distributionCut = distributionCut;
+            o.goodTotalRatio = goodTotalRatio;
+            return o;
         }
     }
 }

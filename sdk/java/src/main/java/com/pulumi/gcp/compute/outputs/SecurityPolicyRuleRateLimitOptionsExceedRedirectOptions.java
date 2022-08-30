@@ -15,21 +15,14 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
      * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
      * 
      */
-    private final @Nullable String target;
+    private @Nullable String target;
     /**
      * @return Type of redirect action.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(
-        @CustomType.Parameter("target") @Nullable String target,
-        @CustomType.Parameter("type") String type) {
-        this.target = target;
-        this.type = type;
-    }
-
+    private SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions() {}
     /**
      * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
      * 
@@ -52,30 +45,32 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
     public static Builder builder(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String target;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.target = defaults.target;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder target(@Nullable String target) {
             this.target = target;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions build() {
-            return new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(target, type);
+        }
+        public SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions build() {
+            final var o = new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions();
+            o.target = target;
+            o.type = type;
+            return o;
         }
     }
 }

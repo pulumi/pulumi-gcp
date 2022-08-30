@@ -20,7 +20,7 @@ public final class ExternalVpnGatewayInterface {
      * * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
      * 
      */
-    private final @Nullable Integer id;
+    private @Nullable Integer id;
     /**
      * @return IP address of the interface in the external VPN gateway.
      * Only IPv4 is supported. This IP address can be either from
@@ -28,16 +28,9 @@ public final class ExternalVpnGatewayInterface {
      * it cannot be an IP address from Google Compute Engine.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
 
-    @CustomType.Constructor
-    private ExternalVpnGatewayInterface(
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress) {
-        this.id = id;
-        this.ipAddress = ipAddress;
-    }
-
+    private ExternalVpnGatewayInterface() {}
     /**
      * @return The numeric ID for this interface. Allowed values are based on the redundancy type
      * of this external VPN gateway
@@ -67,30 +60,32 @@ public final class ExternalVpnGatewayInterface {
     public static Builder builder(ExternalVpnGatewayInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer id;
         private @Nullable String ipAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ExternalVpnGatewayInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
-        }        public ExternalVpnGatewayInterface build() {
-            return new ExternalVpnGatewayInterface(id, ipAddress);
+        }
+        public ExternalVpnGatewayInterface build() {
+            final var o = new ExternalVpnGatewayInterface();
+            o.id = id;
+            o.ipAddress = ipAddress;
+            return o;
         }
     }
 }

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNotificationConfig {
-    private final List<GetClusterNotificationConfigPubsub> pubsubs;
+    private List<GetClusterNotificationConfigPubsub> pubsubs;
 
-    @CustomType.Constructor
-    private GetClusterNotificationConfig(@CustomType.Parameter("pubsubs") List<GetClusterNotificationConfigPubsub> pubsubs) {
-        this.pubsubs = pubsubs;
-    }
-
+    private GetClusterNotificationConfig() {}
     public List<GetClusterNotificationConfigPubsub> pubsubs() {
         return this.pubsubs;
     }
@@ -28,27 +24,27 @@ public final class GetClusterNotificationConfig {
     public static Builder builder(GetClusterNotificationConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNotificationConfigPubsub> pubsubs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNotificationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubs = defaults.pubsubs;
         }
 
+        @CustomType.Setter
         public Builder pubsubs(List<GetClusterNotificationConfigPubsub> pubsubs) {
             this.pubsubs = Objects.requireNonNull(pubsubs);
             return this;
         }
         public Builder pubsubs(GetClusterNotificationConfigPubsub... pubsubs) {
             return pubsubs(List.of(pubsubs));
-        }        public GetClusterNotificationConfig build() {
-            return new GetClusterNotificationConfig(pubsubs);
+        }
+        public GetClusterNotificationConfig build() {
+            final var o = new GetClusterNotificationConfig();
+            o.pubsubs = pubsubs;
+            return o;
         }
     }
 }

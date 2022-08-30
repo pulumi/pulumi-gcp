@@ -22,62 +22,45 @@ public final class GuestPoliciesRecipeUpdateStep {
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepArchiveExtraction archiveExtraction;
+    private @Nullable GuestPoliciesRecipeUpdateStepArchiveExtraction archiveExtraction;
     /**
      * @return Installs a deb file via dpkg.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepDpkgInstallation dpkgInstallation;
+    private @Nullable GuestPoliciesRecipeUpdateStepDpkgInstallation dpkgInstallation;
     /**
      * @return Copies a file onto the instance.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepFileCopy fileCopy;
+    private @Nullable GuestPoliciesRecipeUpdateStepFileCopy fileCopy;
     /**
      * @return Executes an artifact or local file.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepFileExec fileExec;
+    private @Nullable GuestPoliciesRecipeUpdateStepFileExec fileExec;
     /**
      * @return Installs an MSI file.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepMsiInstallation msiInstallation;
+    private @Nullable GuestPoliciesRecipeUpdateStepMsiInstallation msiInstallation;
     /**
      * @return Installs an rpm file via the rpm utility.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepRpmInstallation rpmInstallation;
+    private @Nullable GuestPoliciesRecipeUpdateStepRpmInstallation rpmInstallation;
     /**
      * @return Runs commands in a shell.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesRecipeUpdateStepScriptRun scriptRun;
+    private @Nullable GuestPoliciesRecipeUpdateStepScriptRun scriptRun;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeUpdateStep(
-        @CustomType.Parameter("archiveExtraction") @Nullable GuestPoliciesRecipeUpdateStepArchiveExtraction archiveExtraction,
-        @CustomType.Parameter("dpkgInstallation") @Nullable GuestPoliciesRecipeUpdateStepDpkgInstallation dpkgInstallation,
-        @CustomType.Parameter("fileCopy") @Nullable GuestPoliciesRecipeUpdateStepFileCopy fileCopy,
-        @CustomType.Parameter("fileExec") @Nullable GuestPoliciesRecipeUpdateStepFileExec fileExec,
-        @CustomType.Parameter("msiInstallation") @Nullable GuestPoliciesRecipeUpdateStepMsiInstallation msiInstallation,
-        @CustomType.Parameter("rpmInstallation") @Nullable GuestPoliciesRecipeUpdateStepRpmInstallation rpmInstallation,
-        @CustomType.Parameter("scriptRun") @Nullable GuestPoliciesRecipeUpdateStepScriptRun scriptRun) {
-        this.archiveExtraction = archiveExtraction;
-        this.dpkgInstallation = dpkgInstallation;
-        this.fileCopy = fileCopy;
-        this.fileExec = fileExec;
-        this.msiInstallation = msiInstallation;
-        this.rpmInstallation = rpmInstallation;
-        this.scriptRun = scriptRun;
-    }
-
+    private GuestPoliciesRecipeUpdateStep() {}
     /**
      * @return Extracts an archive into the specified directory.
      * Structure is documented below.
@@ -142,7 +125,7 @@ public final class GuestPoliciesRecipeUpdateStep {
     public static Builder builder(GuestPoliciesRecipeUpdateStep defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GuestPoliciesRecipeUpdateStepArchiveExtraction archiveExtraction;
         private @Nullable GuestPoliciesRecipeUpdateStepDpkgInstallation dpkgInstallation;
@@ -151,11 +134,7 @@ public final class GuestPoliciesRecipeUpdateStep {
         private @Nullable GuestPoliciesRecipeUpdateStepMsiInstallation msiInstallation;
         private @Nullable GuestPoliciesRecipeUpdateStepRpmInstallation rpmInstallation;
         private @Nullable GuestPoliciesRecipeUpdateStepScriptRun scriptRun;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeUpdateStep defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveExtraction = defaults.archiveExtraction;
@@ -167,35 +146,51 @@ public final class GuestPoliciesRecipeUpdateStep {
     	      this.scriptRun = defaults.scriptRun;
         }
 
+        @CustomType.Setter
         public Builder archiveExtraction(@Nullable GuestPoliciesRecipeUpdateStepArchiveExtraction archiveExtraction) {
             this.archiveExtraction = archiveExtraction;
             return this;
         }
+        @CustomType.Setter
         public Builder dpkgInstallation(@Nullable GuestPoliciesRecipeUpdateStepDpkgInstallation dpkgInstallation) {
             this.dpkgInstallation = dpkgInstallation;
             return this;
         }
+        @CustomType.Setter
         public Builder fileCopy(@Nullable GuestPoliciesRecipeUpdateStepFileCopy fileCopy) {
             this.fileCopy = fileCopy;
             return this;
         }
+        @CustomType.Setter
         public Builder fileExec(@Nullable GuestPoliciesRecipeUpdateStepFileExec fileExec) {
             this.fileExec = fileExec;
             return this;
         }
+        @CustomType.Setter
         public Builder msiInstallation(@Nullable GuestPoliciesRecipeUpdateStepMsiInstallation msiInstallation) {
             this.msiInstallation = msiInstallation;
             return this;
         }
+        @CustomType.Setter
         public Builder rpmInstallation(@Nullable GuestPoliciesRecipeUpdateStepRpmInstallation rpmInstallation) {
             this.rpmInstallation = rpmInstallation;
             return this;
         }
+        @CustomType.Setter
         public Builder scriptRun(@Nullable GuestPoliciesRecipeUpdateStepScriptRun scriptRun) {
             this.scriptRun = scriptRun;
             return this;
-        }        public GuestPoliciesRecipeUpdateStep build() {
-            return new GuestPoliciesRecipeUpdateStep(archiveExtraction, dpkgInstallation, fileCopy, fileExec, msiInstallation, rpmInstallation, scriptRun);
+        }
+        public GuestPoliciesRecipeUpdateStep build() {
+            final var o = new GuestPoliciesRecipeUpdateStep();
+            o.archiveExtraction = archiveExtraction;
+            o.dpkgInstallation = dpkgInstallation;
+            o.fileCopy = fileCopy;
+            o.fileExec = fileExec;
+            o.msiInstallation = msiInstallation;
+            o.rpmInstallation = rpmInstallation;
+            o.scriptRun = scriptRun;
+            return o;
         }
     }
 }

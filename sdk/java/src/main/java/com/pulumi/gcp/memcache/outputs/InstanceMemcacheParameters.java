@@ -17,21 +17,14 @@ public final class InstanceMemcacheParameters {
      * This is a unique ID associated with this set of parameters.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return User-defined set of parameters to use in the memcache process.
      * 
      */
-    private final @Nullable Map<String,String> params;
+    private @Nullable Map<String,String> params;
 
-    @CustomType.Constructor
-    private InstanceMemcacheParameters(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("params") @Nullable Map<String,String> params) {
-        this.id = id;
-        this.params = params;
-    }
-
+    private InstanceMemcacheParameters() {}
     /**
      * @return -
      * This is a unique ID associated with this set of parameters.
@@ -55,30 +48,32 @@ public final class InstanceMemcacheParameters {
     public static Builder builder(InstanceMemcacheParameters defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private @Nullable Map<String,String> params;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceMemcacheParameters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.params = defaults.params;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder params(@Nullable Map<String,String> params) {
             this.params = params;
             return this;
-        }        public InstanceMemcacheParameters build() {
-            return new InstanceMemcacheParameters(id, params);
+        }
+        public InstanceMemcacheParameters build() {
+            final var o = new InstanceMemcacheParameters();
+            o.id = id;
+            o.params = params;
+            return o;
         }
     }
 }

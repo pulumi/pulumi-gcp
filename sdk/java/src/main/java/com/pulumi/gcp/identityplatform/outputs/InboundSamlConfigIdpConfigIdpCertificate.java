@@ -16,13 +16,9 @@ public final class InboundSamlConfigIdpConfigIdpCertificate {
      * The x509 certificate
      * 
      */
-    private final @Nullable String x509Certificate;
+    private @Nullable String x509Certificate;
 
-    @CustomType.Constructor
-    private InboundSamlConfigIdpConfigIdpCertificate(@CustomType.Parameter("x509Certificate") @Nullable String x509Certificate) {
-        this.x509Certificate = x509Certificate;
-    }
-
+    private InboundSamlConfigIdpConfigIdpCertificate() {}
     /**
      * @return -
      * The x509 certificate
@@ -39,24 +35,24 @@ public final class InboundSamlConfigIdpConfigIdpCertificate {
     public static Builder builder(InboundSamlConfigIdpConfigIdpCertificate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String x509Certificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InboundSamlConfigIdpConfigIdpCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.x509Certificate = defaults.x509Certificate;
         }
 
+        @CustomType.Setter
         public Builder x509Certificate(@Nullable String x509Certificate) {
             this.x509Certificate = x509Certificate;
             return this;
-        }        public InboundSamlConfigIdpConfigIdpCertificate build() {
-            return new InboundSamlConfigIdpConfigIdpCertificate(x509Certificate);
+        }
+        public InboundSamlConfigIdpConfigIdpCertificate build() {
+            final var o = new InboundSamlConfigIdpConfigIdpCertificate();
+            o.x509Certificate = x509Certificate;
+            return o;
         }
     }
 }

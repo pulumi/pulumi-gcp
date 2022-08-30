@@ -14,21 +14,14 @@ public final class InstanceTemplateGuestAccelerator {
      * @return The number of the guest accelerator cards exposed to this instance.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return The type of reservation from which this instance can consume resources.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private InstanceTemplateGuestAccelerator(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("type") String type) {
-        this.count = count;
-        this.type = type;
-    }
-
+    private InstanceTemplateGuestAccelerator() {}
     /**
      * @return The number of the guest accelerator cards exposed to this instance.
      * 
@@ -51,30 +44,32 @@ public final class InstanceTemplateGuestAccelerator {
     public static Builder builder(InstanceTemplateGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceTemplateGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public InstanceTemplateGuestAccelerator build() {
-            return new InstanceTemplateGuestAccelerator(count, type);
+        }
+        public InstanceTemplateGuestAccelerator build() {
+            final var o = new InstanceTemplateGuestAccelerator();
+            o.count = count;
+            o.type = type;
+            return o;
         }
     }
 }

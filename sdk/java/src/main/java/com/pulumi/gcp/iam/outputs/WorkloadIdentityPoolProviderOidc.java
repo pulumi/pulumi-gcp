@@ -43,21 +43,14 @@ public final class WorkloadIdentityPoolProviderOidc {
      * ```
      * 
      */
-    private final @Nullable List<String> allowedAudiences;
+    private @Nullable List<String> allowedAudiences;
     /**
      * @return The OIDC issuer URL.
      * 
      */
-    private final String issuerUri;
+    private String issuerUri;
 
-    @CustomType.Constructor
-    private WorkloadIdentityPoolProviderOidc(
-        @CustomType.Parameter("allowedAudiences") @Nullable List<String> allowedAudiences,
-        @CustomType.Parameter("issuerUri") String issuerUri) {
-        this.allowedAudiences = allowedAudiences;
-        this.issuerUri = issuerUri;
-    }
-
+    private WorkloadIdentityPoolProviderOidc() {}
     /**
      * @return Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
      * requests are rejected if the token audience does not match one of the configured
@@ -108,21 +101,18 @@ public final class WorkloadIdentityPoolProviderOidc {
     public static Builder builder(WorkloadIdentityPoolProviderOidc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedAudiences;
         private String issuerUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkloadIdentityPoolProviderOidc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.issuerUri = defaults.issuerUri;
         }
 
+        @CustomType.Setter
         public Builder allowedAudiences(@Nullable List<String> allowedAudiences) {
             this.allowedAudiences = allowedAudiences;
             return this;
@@ -130,11 +120,16 @@ public final class WorkloadIdentityPoolProviderOidc {
         public Builder allowedAudiences(String... allowedAudiences) {
             return allowedAudiences(List.of(allowedAudiences));
         }
+        @CustomType.Setter
         public Builder issuerUri(String issuerUri) {
             this.issuerUri = Objects.requireNonNull(issuerUri);
             return this;
-        }        public WorkloadIdentityPoolProviderOidc build() {
-            return new WorkloadIdentityPoolProviderOidc(allowedAudiences, issuerUri);
+        }
+        public WorkloadIdentityPoolProviderOidc build() {
+            final var o = new WorkloadIdentityPoolProviderOidc();
+            o.allowedAudiences = allowedAudiences;
+            o.issuerUri = issuerUri;
+            return o;
         }
     }
 }

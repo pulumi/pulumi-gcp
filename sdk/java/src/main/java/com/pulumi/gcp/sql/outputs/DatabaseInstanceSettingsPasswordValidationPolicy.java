@@ -17,49 +17,34 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
      * @return Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
      * 
      */
-    private final @Nullable String complexity;
+    private @Nullable String complexity;
     /**
      * @return Prevents the use of the username in the password.
      * 
      */
-    private final @Nullable Boolean disallowUsernameSubstring;
+    private @Nullable Boolean disallowUsernameSubstring;
     /**
      * @return Enables or disable the password validation policy.
      * 
      */
-    private final Boolean enablePasswordPolicy;
+    private Boolean enablePasswordPolicy;
     /**
      * @return Specifies the minimum number of characters that the password must have.
      * 
      */
-    private final @Nullable Integer minLength;
+    private @Nullable Integer minLength;
     /**
      * @return Specifies the minimum duration after which you can change the password.
      * 
      */
-    private final @Nullable String passwordChangeInterval;
+    private @Nullable String passwordChangeInterval;
     /**
      * @return Specifies the number of previous passwords that you can&#39;t reuse.
      * 
      */
-    private final @Nullable Integer reuseInterval;
+    private @Nullable Integer reuseInterval;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsPasswordValidationPolicy(
-        @CustomType.Parameter("complexity") @Nullable String complexity,
-        @CustomType.Parameter("disallowUsernameSubstring") @Nullable Boolean disallowUsernameSubstring,
-        @CustomType.Parameter("enablePasswordPolicy") Boolean enablePasswordPolicy,
-        @CustomType.Parameter("minLength") @Nullable Integer minLength,
-        @CustomType.Parameter("passwordChangeInterval") @Nullable String passwordChangeInterval,
-        @CustomType.Parameter("reuseInterval") @Nullable Integer reuseInterval) {
-        this.complexity = complexity;
-        this.disallowUsernameSubstring = disallowUsernameSubstring;
-        this.enablePasswordPolicy = enablePasswordPolicy;
-        this.minLength = minLength;
-        this.passwordChangeInterval = passwordChangeInterval;
-        this.reuseInterval = reuseInterval;
-    }
-
+    private DatabaseInstanceSettingsPasswordValidationPolicy() {}
     /**
      * @return Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
      * 
@@ -110,7 +95,7 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
     public static Builder builder(DatabaseInstanceSettingsPasswordValidationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String complexity;
         private @Nullable Boolean disallowUsernameSubstring;
@@ -118,11 +103,7 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
         private @Nullable Integer minLength;
         private @Nullable String passwordChangeInterval;
         private @Nullable Integer reuseInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsPasswordValidationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.complexity = defaults.complexity;
@@ -133,31 +114,45 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
     	      this.reuseInterval = defaults.reuseInterval;
         }
 
+        @CustomType.Setter
         public Builder complexity(@Nullable String complexity) {
             this.complexity = complexity;
             return this;
         }
+        @CustomType.Setter
         public Builder disallowUsernameSubstring(@Nullable Boolean disallowUsernameSubstring) {
             this.disallowUsernameSubstring = disallowUsernameSubstring;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePasswordPolicy(Boolean enablePasswordPolicy) {
             this.enablePasswordPolicy = Objects.requireNonNull(enablePasswordPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder minLength(@Nullable Integer minLength) {
             this.minLength = minLength;
             return this;
         }
+        @CustomType.Setter
         public Builder passwordChangeInterval(@Nullable String passwordChangeInterval) {
             this.passwordChangeInterval = passwordChangeInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder reuseInterval(@Nullable Integer reuseInterval) {
             this.reuseInterval = reuseInterval;
             return this;
-        }        public DatabaseInstanceSettingsPasswordValidationPolicy build() {
-            return new DatabaseInstanceSettingsPasswordValidationPolicy(complexity, disallowUsernameSubstring, enablePasswordPolicy, minLength, passwordChangeInterval, reuseInterval);
+        }
+        public DatabaseInstanceSettingsPasswordValidationPolicy build() {
+            final var o = new DatabaseInstanceSettingsPasswordValidationPolicy();
+            o.complexity = complexity;
+            o.disallowUsernameSubstring = disallowUsernameSubstring;
+            o.enablePasswordPolicy = enablePasswordPolicy;
+            o.minLength = minLength;
+            o.passwordChangeInterval = passwordChangeInterval;
+            o.reuseInterval = reuseInterval;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class ManagedZonePrivateVisibilityConfigNetwork {
      * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
      * 
      */
-    private final String networkUrl;
+    private String networkUrl;
 
-    @CustomType.Constructor
-    private ManagedZonePrivateVisibilityConfigNetwork(@CustomType.Parameter("networkUrl") String networkUrl) {
-        this.networkUrl = networkUrl;
-    }
-
+    private ManagedZonePrivateVisibilityConfigNetwork() {}
     /**
      * @return The id or fully qualified URL of the VPC network to forward queries to.
      * This should be formatted like `projects/{project}/global/networks/{network}` or
@@ -39,24 +35,24 @@ public final class ManagedZonePrivateVisibilityConfigNetwork {
     public static Builder builder(ManagedZonePrivateVisibilityConfigNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String networkUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZonePrivateVisibilityConfigNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkUrl = defaults.networkUrl;
         }
 
+        @CustomType.Setter
         public Builder networkUrl(String networkUrl) {
             this.networkUrl = Objects.requireNonNull(networkUrl);
             return this;
-        }        public ManagedZonePrivateVisibilityConfigNetwork build() {
-            return new ManagedZonePrivateVisibilityConfigNetwork(networkUrl);
+        }
+        public ManagedZonePrivateVisibilityConfigNetwork build() {
+            final var o = new ManagedZonePrivateVisibilityConfigNetwork();
+            o.networkUrl = networkUrl;
+            return o;
         }
     }
 }

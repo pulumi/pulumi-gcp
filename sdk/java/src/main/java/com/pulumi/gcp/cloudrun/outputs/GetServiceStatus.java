@@ -12,26 +12,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceStatus {
-    private final List<GetServiceStatusCondition> conditions;
-    private final String latestCreatedRevisionName;
-    private final String latestReadyRevisionName;
-    private final Integer observedGeneration;
-    private final String url;
+    private List<GetServiceStatusCondition> conditions;
+    private String latestCreatedRevisionName;
+    private String latestReadyRevisionName;
+    private Integer observedGeneration;
+    private String url;
 
-    @CustomType.Constructor
-    private GetServiceStatus(
-        @CustomType.Parameter("conditions") List<GetServiceStatusCondition> conditions,
-        @CustomType.Parameter("latestCreatedRevisionName") String latestCreatedRevisionName,
-        @CustomType.Parameter("latestReadyRevisionName") String latestReadyRevisionName,
-        @CustomType.Parameter("observedGeneration") Integer observedGeneration,
-        @CustomType.Parameter("url") String url) {
-        this.conditions = conditions;
-        this.latestCreatedRevisionName = latestCreatedRevisionName;
-        this.latestReadyRevisionName = latestReadyRevisionName;
-        this.observedGeneration = observedGeneration;
-        this.url = url;
-    }
-
+    private GetServiceStatus() {}
     public List<GetServiceStatusCondition> conditions() {
         return this.conditions;
     }
@@ -55,18 +42,14 @@ public final class GetServiceStatus {
     public static Builder builder(GetServiceStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceStatusCondition> conditions;
         private String latestCreatedRevisionName;
         private String latestReadyRevisionName;
         private Integer observedGeneration;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditions = defaults.conditions;
@@ -76,6 +59,7 @@ public final class GetServiceStatus {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder conditions(List<GetServiceStatusCondition> conditions) {
             this.conditions = Objects.requireNonNull(conditions);
             return this;
@@ -83,23 +67,34 @@ public final class GetServiceStatus {
         public Builder conditions(GetServiceStatusCondition... conditions) {
             return conditions(List.of(conditions));
         }
+        @CustomType.Setter
         public Builder latestCreatedRevisionName(String latestCreatedRevisionName) {
             this.latestCreatedRevisionName = Objects.requireNonNull(latestCreatedRevisionName);
             return this;
         }
+        @CustomType.Setter
         public Builder latestReadyRevisionName(String latestReadyRevisionName) {
             this.latestReadyRevisionName = Objects.requireNonNull(latestReadyRevisionName);
             return this;
         }
+        @CustomType.Setter
         public Builder observedGeneration(Integer observedGeneration) {
             this.observedGeneration = Objects.requireNonNull(observedGeneration);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetServiceStatus build() {
-            return new GetServiceStatus(conditions, latestCreatedRevisionName, latestReadyRevisionName, observedGeneration, url);
+        }
+        public GetServiceStatus build() {
+            final var o = new GetServiceStatus();
+            o.conditions = conditions;
+            o.latestCreatedRevisionName = latestCreatedRevisionName;
+            o.latestReadyRevisionName = latestReadyRevisionName;
+            o.observedGeneration = observedGeneration;
+            o.url = url;
+            return o;
         }
     }
 }

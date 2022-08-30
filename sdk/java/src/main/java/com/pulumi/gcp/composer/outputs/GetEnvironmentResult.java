@@ -18,33 +18,18 @@ public final class GetEnvironmentResult {
      * @return Configuration parameters for the environment.
      * 
      */
-    private final List<GetEnvironmentConfig> configs;
+    private List<GetEnvironmentConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Map<String,String> labels;
-    private final String name;
-    private final @Nullable String project;
-    private final @Nullable String region;
+    private String id;
+    private Map<String,String> labels;
+    private String name;
+    private @Nullable String project;
+    private @Nullable String region;
 
-    @CustomType.Constructor
-    private GetEnvironmentResult(
-        @CustomType.Parameter("configs") List<GetEnvironmentConfig> configs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("region") @Nullable String region) {
-        this.configs = configs;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.project = project;
-        this.region = region;
-    }
-
+    private GetEnvironmentResult() {}
     /**
      * @return Configuration parameters for the environment.
      * 
@@ -79,7 +64,7 @@ public final class GetEnvironmentResult {
     public static Builder builder(GetEnvironmentResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfig> configs;
         private String id;
@@ -87,11 +72,7 @@ public final class GetEnvironmentResult {
         private String name;
         private @Nullable String project;
         private @Nullable String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
@@ -102,6 +83,7 @@ public final class GetEnvironmentResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder configs(List<GetEnvironmentConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -109,27 +91,40 @@ public final class GetEnvironmentResult {
         public Builder configs(GetEnvironmentConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
-        }        public GetEnvironmentResult build() {
-            return new GetEnvironmentResult(configs, id, labels, name, project, region);
+        }
+        public GetEnvironmentResult build() {
+            final var o = new GetEnvironmentResult();
+            o.configs = configs;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.project = project;
+            o.region = region;
+            return o;
         }
     }
 }

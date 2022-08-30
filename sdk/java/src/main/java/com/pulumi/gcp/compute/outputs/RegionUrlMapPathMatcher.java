@@ -21,7 +21,7 @@ public final class RegionUrlMapPathMatcher {
      * the URL&#39;s path portion.
      * 
      */
-    private final @Nullable String defaultService;
+    private @Nullable String defaultService;
     /**
      * @return When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -29,18 +29,18 @@ public final class RegionUrlMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
+    private @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
     /**
      * @return Description of this test case.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The name of the query parameter to match. The query parameter must exist in the
      * request, in the absence of which the request match fails.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The list of path rules. Use this list instead of routeRules when routing based
      * on simple path matching is all that&#39;s required. The order by which path rules
@@ -51,7 +51,7 @@ public final class RegionUrlMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RegionUrlMapPathMatcherPathRule> pathRules;
+    private @Nullable List<RegionUrlMapPathMatcherPathRule> pathRules;
     /**
      * @return The list of ordered HTTP route rules. Use this list instead of pathRules when
      * advanced route matching and routing actions are desired. The order of specifying
@@ -62,24 +62,9 @@ public final class RegionUrlMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules;
+    private @Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcher(
-        @CustomType.Parameter("defaultService") @Nullable String defaultService,
-        @CustomType.Parameter("defaultUrlRedirect") @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("pathRules") @Nullable List<RegionUrlMapPathMatcherPathRule> pathRules,
-        @CustomType.Parameter("routeRules") @Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules) {
-        this.defaultService = defaultService;
-        this.defaultUrlRedirect = defaultUrlRedirect;
-        this.description = description;
-        this.name = name;
-        this.pathRules = pathRules;
-        this.routeRules = routeRules;
-    }
-
+    private RegionUrlMapPathMatcher() {}
     /**
      * @return A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by
@@ -148,7 +133,7 @@ public final class RegionUrlMapPathMatcher {
     public static Builder builder(RegionUrlMapPathMatcher defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String defaultService;
         private @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
@@ -156,11 +141,7 @@ public final class RegionUrlMapPathMatcher {
         private String name;
         private @Nullable List<RegionUrlMapPathMatcherPathRule> pathRules;
         private @Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcher defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultService = defaults.defaultService;
@@ -171,22 +152,27 @@ public final class RegionUrlMapPathMatcher {
     	      this.routeRules = defaults.routeRules;
         }
 
+        @CustomType.Setter
         public Builder defaultService(@Nullable String defaultService) {
             this.defaultService = defaultService;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultUrlRedirect(@Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect) {
             this.defaultUrlRedirect = defaultUrlRedirect;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder pathRules(@Nullable List<RegionUrlMapPathMatcherPathRule> pathRules) {
             this.pathRules = pathRules;
             return this;
@@ -194,14 +180,23 @@ public final class RegionUrlMapPathMatcher {
         public Builder pathRules(RegionUrlMapPathMatcherPathRule... pathRules) {
             return pathRules(List.of(pathRules));
         }
+        @CustomType.Setter
         public Builder routeRules(@Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules) {
             this.routeRules = routeRules;
             return this;
         }
         public Builder routeRules(RegionUrlMapPathMatcherRouteRule... routeRules) {
             return routeRules(List.of(routeRules));
-        }        public RegionUrlMapPathMatcher build() {
-            return new RegionUrlMapPathMatcher(defaultService, defaultUrlRedirect, description, name, pathRules, routeRules);
+        }
+        public RegionUrlMapPathMatcher build() {
+            final var o = new RegionUrlMapPathMatcher();
+            o.defaultService = defaultService;
+            o.defaultUrlRedirect = defaultUrlRedirect;
+            o.description = description;
+            o.name = name;
+            o.pathRules = pathRules;
+            o.routeRules = routeRules;
+            return o;
         }
     }
 }

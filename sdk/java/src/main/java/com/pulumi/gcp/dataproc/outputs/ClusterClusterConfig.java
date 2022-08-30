@@ -31,51 +31,51 @@ public final class ClusterClusterConfig {
      * Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
-    private final @Nullable String bucket;
+    private @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
+    private @Nullable String bucket;
     /**
      * @return The Customer managed encryption keys settings for the cluster.
      * Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig;
+    private @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig;
     /**
      * @return The config settings for port access on the cluster.
      * Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigEndpointConfig endpointConfig;
+    private @Nullable ClusterClusterConfigEndpointConfig endpointConfig;
     /**
      * @return Common config settings for resources of Google Compute Engine cluster
      * instances, applicable to all instances in the cluster. Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigGceClusterConfig gceClusterConfig;
+    private @Nullable ClusterClusterConfigGceClusterConfig gceClusterConfig;
     /**
      * @return Commands to execute on each node after config is completed.
      * You can specify multiple versions of these. Structure defined below.
      * 
      */
-    private final @Nullable List<ClusterClusterConfigInitializationAction> initializationActions;
+    private @Nullable List<ClusterClusterConfigInitializationAction> initializationActions;
     /**
      * @return The settings for auto deletion cluster schedule.
      * Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigLifecycleConfig lifecycleConfig;
+    private @Nullable ClusterClusterConfigLifecycleConfig lifecycleConfig;
     /**
      * @return The Google Compute Engine config settings for the master instances
      * in a cluster. Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigMasterConfig masterConfig;
+    private @Nullable ClusterClusterConfigMasterConfig masterConfig;
     /**
      * @return The config setting for metastore service with the cluster.
      * Structure defined below.
      * ***
      * 
      */
-    private final @Nullable ClusterClusterConfigMetastoreConfig metastoreConfig;
+    private @Nullable ClusterClusterConfigMetastoreConfig metastoreConfig;
     /**
      * @return The Google Compute Engine config settings for the additional
      * instances in a cluster. Structure defined below.
@@ -84,18 +84,18 @@ public final class ClusterClusterConfig {
      *   such for legacy/compatibility reasons.
      * 
      */
-    private final @Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig;
+    private @Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig;
     /**
      * @return Security related configuration. Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigSecurityConfig securityConfig;
+    private @Nullable ClusterClusterConfigSecurityConfig securityConfig;
     /**
      * @return The config settings for software inside the cluster.
      * Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigSoftwareConfig softwareConfig;
+    private @Nullable ClusterClusterConfigSoftwareConfig softwareConfig;
     /**
      * @return The Cloud Storage staging bucket used to stage files,
      * such as Hadoop jars, between client machines and the cluster.
@@ -106,55 +106,22 @@ public final class ClusterClusterConfig {
      * option.
      * 
      */
-    private final @Nullable String stagingBucket;
+    private @Nullable String stagingBucket;
     /**
      * @return The Cloud Storage temp bucket used to store ephemeral cluster
      * and jobs data, such as Spark and MapReduce history files.
      * Note: If you don&#39;t explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
      * 
      */
-    private final @Nullable String tempBucket;
+    private @Nullable String tempBucket;
     /**
      * @return The Google Compute Engine config settings for the worker instances
      * in a cluster. Structure defined below.
      * 
      */
-    private final @Nullable ClusterClusterConfigWorkerConfig workerConfig;
+    private @Nullable ClusterClusterConfigWorkerConfig workerConfig;
 
-    @CustomType.Constructor
-    private ClusterClusterConfig(
-        @CustomType.Parameter("autoscalingConfig") @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig,
-        @CustomType.Parameter("bucket") @Nullable String bucket,
-        @CustomType.Parameter("encryptionConfig") @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig,
-        @CustomType.Parameter("endpointConfig") @Nullable ClusterClusterConfigEndpointConfig endpointConfig,
-        @CustomType.Parameter("gceClusterConfig") @Nullable ClusterClusterConfigGceClusterConfig gceClusterConfig,
-        @CustomType.Parameter("initializationActions") @Nullable List<ClusterClusterConfigInitializationAction> initializationActions,
-        @CustomType.Parameter("lifecycleConfig") @Nullable ClusterClusterConfigLifecycleConfig lifecycleConfig,
-        @CustomType.Parameter("masterConfig") @Nullable ClusterClusterConfigMasterConfig masterConfig,
-        @CustomType.Parameter("metastoreConfig") @Nullable ClusterClusterConfigMetastoreConfig metastoreConfig,
-        @CustomType.Parameter("preemptibleWorkerConfig") @Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig,
-        @CustomType.Parameter("securityConfig") @Nullable ClusterClusterConfigSecurityConfig securityConfig,
-        @CustomType.Parameter("softwareConfig") @Nullable ClusterClusterConfigSoftwareConfig softwareConfig,
-        @CustomType.Parameter("stagingBucket") @Nullable String stagingBucket,
-        @CustomType.Parameter("tempBucket") @Nullable String tempBucket,
-        @CustomType.Parameter("workerConfig") @Nullable ClusterClusterConfigWorkerConfig workerConfig) {
-        this.autoscalingConfig = autoscalingConfig;
-        this.bucket = bucket;
-        this.encryptionConfig = encryptionConfig;
-        this.endpointConfig = endpointConfig;
-        this.gceClusterConfig = gceClusterConfig;
-        this.initializationActions = initializationActions;
-        this.lifecycleConfig = lifecycleConfig;
-        this.masterConfig = masterConfig;
-        this.metastoreConfig = metastoreConfig;
-        this.preemptibleWorkerConfig = preemptibleWorkerConfig;
-        this.securityConfig = securityConfig;
-        this.softwareConfig = softwareConfig;
-        this.stagingBucket = stagingBucket;
-        this.tempBucket = tempBucket;
-        this.workerConfig = workerConfig;
-    }
-
+    private ClusterClusterConfig() {}
     /**
      * @return The autoscaling policy config associated with the cluster.
      * Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
@@ -289,7 +256,7 @@ public final class ClusterClusterConfig {
     public static Builder builder(ClusterClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
         private @Nullable String bucket;
@@ -306,11 +273,7 @@ public final class ClusterClusterConfig {
         private @Nullable String stagingBucket;
         private @Nullable String tempBucket;
         private @Nullable ClusterClusterConfigWorkerConfig workerConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingConfig = defaults.autoscalingConfig;
@@ -330,26 +293,32 @@ public final class ClusterClusterConfig {
     	      this.workerConfig = defaults.workerConfig;
         }
 
+        @CustomType.Setter
         public Builder autoscalingConfig(@Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig) {
             this.autoscalingConfig = autoscalingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
             this.bucket = bucket;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionConfig(@Nullable ClusterClusterConfigEncryptionConfig encryptionConfig) {
             this.encryptionConfig = encryptionConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder endpointConfig(@Nullable ClusterClusterConfigEndpointConfig endpointConfig) {
             this.endpointConfig = endpointConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder gceClusterConfig(@Nullable ClusterClusterConfigGceClusterConfig gceClusterConfig) {
             this.gceClusterConfig = gceClusterConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder initializationActions(@Nullable List<ClusterClusterConfigInitializationAction> initializationActions) {
             this.initializationActions = initializationActions;
             return this;
@@ -357,43 +326,69 @@ public final class ClusterClusterConfig {
         public Builder initializationActions(ClusterClusterConfigInitializationAction... initializationActions) {
             return initializationActions(List.of(initializationActions));
         }
+        @CustomType.Setter
         public Builder lifecycleConfig(@Nullable ClusterClusterConfigLifecycleConfig lifecycleConfig) {
             this.lifecycleConfig = lifecycleConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder masterConfig(@Nullable ClusterClusterConfigMasterConfig masterConfig) {
             this.masterConfig = masterConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder metastoreConfig(@Nullable ClusterClusterConfigMetastoreConfig metastoreConfig) {
             this.metastoreConfig = metastoreConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder preemptibleWorkerConfig(@Nullable ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig) {
             this.preemptibleWorkerConfig = preemptibleWorkerConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder securityConfig(@Nullable ClusterClusterConfigSecurityConfig securityConfig) {
             this.securityConfig = securityConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder softwareConfig(@Nullable ClusterClusterConfigSoftwareConfig softwareConfig) {
             this.softwareConfig = softwareConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder stagingBucket(@Nullable String stagingBucket) {
             this.stagingBucket = stagingBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder tempBucket(@Nullable String tempBucket) {
             this.tempBucket = tempBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder workerConfig(@Nullable ClusterClusterConfigWorkerConfig workerConfig) {
             this.workerConfig = workerConfig;
             return this;
-        }        public ClusterClusterConfig build() {
-            return new ClusterClusterConfig(autoscalingConfig, bucket, encryptionConfig, endpointConfig, gceClusterConfig, initializationActions, lifecycleConfig, masterConfig, metastoreConfig, preemptibleWorkerConfig, securityConfig, softwareConfig, stagingBucket, tempBucket, workerConfig);
+        }
+        public ClusterClusterConfig build() {
+            final var o = new ClusterClusterConfig();
+            o.autoscalingConfig = autoscalingConfig;
+            o.bucket = bucket;
+            o.encryptionConfig = encryptionConfig;
+            o.endpointConfig = endpointConfig;
+            o.gceClusterConfig = gceClusterConfig;
+            o.initializationActions = initializationActions;
+            o.lifecycleConfig = lifecycleConfig;
+            o.masterConfig = masterConfig;
+            o.metastoreConfig = metastoreConfig;
+            o.preemptibleWorkerConfig = preemptibleWorkerConfig;
+            o.securityConfig = securityConfig;
+            o.softwareConfig = softwareConfig;
+            o.stagingBucket = stagingBucket;
+            o.tempBucket = tempBucket;
+            o.workerConfig = workerConfig;
+            return o;
         }
     }
 }

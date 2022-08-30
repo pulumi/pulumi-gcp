@@ -17,17 +17,17 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
      * @return If true requests to different hosts will be cached separately.
      * 
      */
-    private final @Nullable Boolean includeHost;
+    private @Nullable Boolean includeHost;
     /**
      * @return Names of cookies to include in cache keys.
      * 
      */
-    private final @Nullable List<String> includeNamedCookies;
+    private @Nullable List<String> includeNamedCookies;
     /**
      * @return If true, http and https requests will be cached separately.
      * 
      */
-    private final @Nullable Boolean includeProtocol;
+    private @Nullable Boolean includeProtocol;
     /**
      * @return If true, include query string parameters in the cache key
      * according to query_string_whitelist and
@@ -37,7 +37,7 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
      * key entirely.
      * 
      */
-    private final @Nullable Boolean includeQueryString;
+    private @Nullable Boolean includeQueryString;
     /**
      * @return Names of query string parameters to exclude in cache keys.
      * All other parameters will be included. Either specify
@@ -46,7 +46,7 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
      * delimiters.
      * 
      */
-    private final @Nullable List<String> queryStringBlacklists;
+    private @Nullable List<String> queryStringBlacklists;
     /**
      * @return Names of query string parameters to include in cache keys.
      * All other parameters will be excluded. Either specify
@@ -55,24 +55,9 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
      * delimiters.
      * 
      */
-    private final @Nullable List<String> queryStringWhitelists;
+    private @Nullable List<String> queryStringWhitelists;
 
-    @CustomType.Constructor
-    private RegionBackendServiceCdnPolicyCacheKeyPolicy(
-        @CustomType.Parameter("includeHost") @Nullable Boolean includeHost,
-        @CustomType.Parameter("includeNamedCookies") @Nullable List<String> includeNamedCookies,
-        @CustomType.Parameter("includeProtocol") @Nullable Boolean includeProtocol,
-        @CustomType.Parameter("includeQueryString") @Nullable Boolean includeQueryString,
-        @CustomType.Parameter("queryStringBlacklists") @Nullable List<String> queryStringBlacklists,
-        @CustomType.Parameter("queryStringWhitelists") @Nullable List<String> queryStringWhitelists) {
-        this.includeHost = includeHost;
-        this.includeNamedCookies = includeNamedCookies;
-        this.includeProtocol = includeProtocol;
-        this.includeQueryString = includeQueryString;
-        this.queryStringBlacklists = queryStringBlacklists;
-        this.queryStringWhitelists = queryStringWhitelists;
-    }
-
+    private RegionBackendServiceCdnPolicyCacheKeyPolicy() {}
     /**
      * @return If true requests to different hosts will be cached separately.
      * 
@@ -136,7 +121,7 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
     public static Builder builder(RegionBackendServiceCdnPolicyCacheKeyPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean includeHost;
         private @Nullable List<String> includeNamedCookies;
@@ -144,11 +129,7 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
         private @Nullable Boolean includeQueryString;
         private @Nullable List<String> queryStringBlacklists;
         private @Nullable List<String> queryStringWhitelists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeHost = defaults.includeHost;
@@ -159,10 +140,12 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
     	      this.queryStringWhitelists = defaults.queryStringWhitelists;
         }
 
+        @CustomType.Setter
         public Builder includeHost(@Nullable Boolean includeHost) {
             this.includeHost = includeHost;
             return this;
         }
+        @CustomType.Setter
         public Builder includeNamedCookies(@Nullable List<String> includeNamedCookies) {
             this.includeNamedCookies = includeNamedCookies;
             return this;
@@ -170,14 +153,17 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
         public Builder includeNamedCookies(String... includeNamedCookies) {
             return includeNamedCookies(List.of(includeNamedCookies));
         }
+        @CustomType.Setter
         public Builder includeProtocol(@Nullable Boolean includeProtocol) {
             this.includeProtocol = includeProtocol;
             return this;
         }
+        @CustomType.Setter
         public Builder includeQueryString(@Nullable Boolean includeQueryString) {
             this.includeQueryString = includeQueryString;
             return this;
         }
+        @CustomType.Setter
         public Builder queryStringBlacklists(@Nullable List<String> queryStringBlacklists) {
             this.queryStringBlacklists = queryStringBlacklists;
             return this;
@@ -185,14 +171,23 @@ public final class RegionBackendServiceCdnPolicyCacheKeyPolicy {
         public Builder queryStringBlacklists(String... queryStringBlacklists) {
             return queryStringBlacklists(List.of(queryStringBlacklists));
         }
+        @CustomType.Setter
         public Builder queryStringWhitelists(@Nullable List<String> queryStringWhitelists) {
             this.queryStringWhitelists = queryStringWhitelists;
             return this;
         }
         public Builder queryStringWhitelists(String... queryStringWhitelists) {
             return queryStringWhitelists(List.of(queryStringWhitelists));
-        }        public RegionBackendServiceCdnPolicyCacheKeyPolicy build() {
-            return new RegionBackendServiceCdnPolicyCacheKeyPolicy(includeHost, includeNamedCookies, includeProtocol, includeQueryString, queryStringBlacklists, queryStringWhitelists);
+        }
+        public RegionBackendServiceCdnPolicyCacheKeyPolicy build() {
+            final var o = new RegionBackendServiceCdnPolicyCacheKeyPolicy();
+            o.includeHost = includeHost;
+            o.includeNamedCookies = includeNamedCookies;
+            o.includeProtocol = includeProtocol;
+            o.includeQueryString = includeQueryString;
+            o.queryStringBlacklists = queryStringBlacklists;
+            o.queryStringWhitelists = queryStringWhitelists;
+            return o;
         }
     }
 }

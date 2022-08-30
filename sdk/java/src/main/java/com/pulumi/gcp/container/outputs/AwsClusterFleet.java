@@ -16,21 +16,14 @@ public final class AwsClusterFleet {
      * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
      */
-    private final @Nullable String membership;
+    private @Nullable String membership;
     /**
      * @return The project for the resource
      * 
      */
-    private final @Nullable String project;
+    private @Nullable String project;
 
-    @CustomType.Constructor
-    private AwsClusterFleet(
-        @CustomType.Parameter("membership") @Nullable String membership,
-        @CustomType.Parameter("project") @Nullable String project) {
-        this.membership = membership;
-        this.project = project;
-    }
-
+    private AwsClusterFleet() {}
     /**
      * @return -
      * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
@@ -54,30 +47,32 @@ public final class AwsClusterFleet {
     public static Builder builder(AwsClusterFleet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String membership;
         private @Nullable String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterFleet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.membership = defaults.membership;
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder membership(@Nullable String membership) {
             this.membership = membership;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }        public AwsClusterFleet build() {
-            return new AwsClusterFleet(membership, project);
+        }
+        public AwsClusterFleet build() {
+            final var o = new AwsClusterFleet();
+            o.membership = membership;
+            o.project = project;
+            return o;
         }
     }
 }

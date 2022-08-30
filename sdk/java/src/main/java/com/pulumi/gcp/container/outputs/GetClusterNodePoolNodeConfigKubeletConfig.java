@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigKubeletConfig {
-    private final Boolean cpuCfsQuota;
-    private final String cpuCfsQuotaPeriod;
-    private final String cpuManagerPolicy;
+    private Boolean cpuCfsQuota;
+    private String cpuCfsQuotaPeriod;
+    private String cpuManagerPolicy;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigKubeletConfig(
-        @CustomType.Parameter("cpuCfsQuota") Boolean cpuCfsQuota,
-        @CustomType.Parameter("cpuCfsQuotaPeriod") String cpuCfsQuotaPeriod,
-        @CustomType.Parameter("cpuManagerPolicy") String cpuManagerPolicy) {
-        this.cpuCfsQuota = cpuCfsQuota;
-        this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
-        this.cpuManagerPolicy = cpuManagerPolicy;
-    }
-
+    private GetClusterNodePoolNodeConfigKubeletConfig() {}
     public Boolean cpuCfsQuota() {
         return this.cpuCfsQuota;
     }
@@ -41,16 +32,12 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     public static Builder builder(GetClusterNodePoolNodeConfigKubeletConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean cpuCfsQuota;
         private String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
@@ -58,19 +45,27 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
         }
 
+        @CustomType.Setter
         public Builder cpuCfsQuota(Boolean cpuCfsQuota) {
             this.cpuCfsQuota = Objects.requireNonNull(cpuCfsQuota);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuCfsQuotaPeriod(String cpuCfsQuotaPeriod) {
             this.cpuCfsQuotaPeriod = Objects.requireNonNull(cpuCfsQuotaPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
             return this;
-        }        public GetClusterNodePoolNodeConfigKubeletConfig build() {
-            return new GetClusterNodePoolNodeConfigKubeletConfig(cpuCfsQuota, cpuCfsQuotaPeriod, cpuManagerPolicy);
+        }
+        public GetClusterNodePoolNodeConfigKubeletConfig build() {
+            final var o = new GetClusterNodePoolNodeConfigKubeletConfig();
+            o.cpuCfsQuota = cpuCfsQuota;
+            o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
+            o.cpuManagerPolicy = cpuManagerPolicy;
+            return o;
         }
     }
 }

@@ -17,7 +17,7 @@ public final class URLMapDefaultRouteActionWeightedBackendService {
      * @return The full or partial URL to the BackendService resource being mirrored to.
      * 
      */
-    private final @Nullable String backendService;
+    private @Nullable String backendService;
     /**
      * @return Specifies changes to request and response headers that need to take effect for
      * the selected backendService.
@@ -26,7 +26,7 @@ public final class URLMapDefaultRouteActionWeightedBackendService {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapDefaultRouteActionWeightedBackendServiceHeaderAction headerAction;
+    private @Nullable URLMapDefaultRouteActionWeightedBackendServiceHeaderAction headerAction;
     /**
      * @return Specifies the fraction of traffic sent to backendService, computed as
      * weight / (sum of all weightedBackendService weights in routeAction) .
@@ -36,18 +36,9 @@ public final class URLMapDefaultRouteActionWeightedBackendService {
      * The value must be between 0 and 1000
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private URLMapDefaultRouteActionWeightedBackendService(
-        @CustomType.Parameter("backendService") @Nullable String backendService,
-        @CustomType.Parameter("headerAction") @Nullable URLMapDefaultRouteActionWeightedBackendServiceHeaderAction headerAction,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.backendService = backendService;
-        this.headerAction = headerAction;
-        this.weight = weight;
-    }
-
+    private URLMapDefaultRouteActionWeightedBackendService() {}
     /**
      * @return The full or partial URL to the BackendService resource being mirrored to.
      * 
@@ -86,16 +77,12 @@ public final class URLMapDefaultRouteActionWeightedBackendService {
     public static Builder builder(URLMapDefaultRouteActionWeightedBackendService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String backendService;
         private @Nullable URLMapDefaultRouteActionWeightedBackendServiceHeaderAction headerAction;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapDefaultRouteActionWeightedBackendService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
@@ -103,19 +90,27 @@ public final class URLMapDefaultRouteActionWeightedBackendService {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder backendService(@Nullable String backendService) {
             this.backendService = backendService;
             return this;
         }
+        @CustomType.Setter
         public Builder headerAction(@Nullable URLMapDefaultRouteActionWeightedBackendServiceHeaderAction headerAction) {
             this.headerAction = headerAction;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public URLMapDefaultRouteActionWeightedBackendService build() {
-            return new URLMapDefaultRouteActionWeightedBackendService(backendService, headerAction, weight);
+        }
+        public URLMapDefaultRouteActionWeightedBackendService build() {
+            final var o = new URLMapDefaultRouteActionWeightedBackendService();
+            o.backendService = backendService;
+            o.headerAction = headerAction;
+            o.weight = weight;
+            return o;
         }
     }
 }

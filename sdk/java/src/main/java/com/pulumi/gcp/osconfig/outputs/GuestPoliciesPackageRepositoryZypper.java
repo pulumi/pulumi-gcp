@@ -16,36 +16,25 @@ public final class GuestPoliciesPackageRepositoryZypper {
      * @return The location of the repository directory.
      * 
      */
-    private final String baseUrl;
+    private String baseUrl;
     /**
      * @return The display name of the repository.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return URIs of GPG keys.
      * 
      */
-    private final @Nullable List<String> gpgKeys;
+    private @Nullable List<String> gpgKeys;
     /**
      * @return Id of the artifact, which the installation and update steps of this recipe can reference.
      * Artifacts in a recipe cannot have the same id.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GuestPoliciesPackageRepositoryZypper(
-        @CustomType.Parameter("baseUrl") String baseUrl,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("gpgKeys") @Nullable List<String> gpgKeys,
-        @CustomType.Parameter("id") String id) {
-        this.baseUrl = baseUrl;
-        this.displayName = displayName;
-        this.gpgKeys = gpgKeys;
-        this.id = id;
-    }
-
+    private GuestPoliciesPackageRepositoryZypper() {}
     /**
      * @return The location of the repository directory.
      * 
@@ -83,17 +72,13 @@ public final class GuestPoliciesPackageRepositoryZypper {
     public static Builder builder(GuestPoliciesPackageRepositoryZypper defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String baseUrl;
         private @Nullable String displayName;
         private @Nullable List<String> gpgKeys;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesPackageRepositoryZypper defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseUrl = defaults.baseUrl;
@@ -102,14 +87,17 @@ public final class GuestPoliciesPackageRepositoryZypper {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder baseUrl(String baseUrl) {
             this.baseUrl = Objects.requireNonNull(baseUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder gpgKeys(@Nullable List<String> gpgKeys) {
             this.gpgKeys = gpgKeys;
             return this;
@@ -117,11 +105,18 @@ public final class GuestPoliciesPackageRepositoryZypper {
         public Builder gpgKeys(String... gpgKeys) {
             return gpgKeys(List.of(gpgKeys));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GuestPoliciesPackageRepositoryZypper build() {
-            return new GuestPoliciesPackageRepositoryZypper(baseUrl, displayName, gpgKeys, id);
+        }
+        public GuestPoliciesPackageRepositoryZypper build() {
+            final var o = new GuestPoliciesPackageRepositoryZypper();
+            o.baseUrl = baseUrl;
+            o.displayName = displayName;
+            o.gpgKeys = gpgKeys;
+            o.id = id;
+            return o;
         }
     }
 }

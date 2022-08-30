@@ -15,13 +15,9 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsageUnkno
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
-    private final @Nullable List<Integer> objectIdPaths;
+    private @Nullable List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage(@CustomType.Parameter("objectIdPaths") @Nullable List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage() {}
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
@@ -37,27 +33,27 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsageUnkno
     public static Builder builder(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(@Nullable List<Integer> objectIdPaths) {
             this.objectIdPaths = objectIdPaths;
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage build() {
-            return new CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage(objectIdPaths);
+        }
+        public CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage build() {
+            final var o = new CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

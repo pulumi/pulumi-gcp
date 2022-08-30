@@ -13,13 +13,9 @@ public final class ClusterNotificationConfig {
      * @return The pubsub config for the cluster&#39;s upgrade notifications.
      * 
      */
-    private final ClusterNotificationConfigPubsub pubsub;
+    private ClusterNotificationConfigPubsub pubsub;
 
-    @CustomType.Constructor
-    private ClusterNotificationConfig(@CustomType.Parameter("pubsub") ClusterNotificationConfigPubsub pubsub) {
-        this.pubsub = pubsub;
-    }
-
+    private ClusterNotificationConfig() {}
     /**
      * @return The pubsub config for the cluster&#39;s upgrade notifications.
      * 
@@ -35,24 +31,24 @@ public final class ClusterNotificationConfig {
     public static Builder builder(ClusterNotificationConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ClusterNotificationConfigPubsub pubsub;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNotificationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsub = defaults.pubsub;
         }
 
+        @CustomType.Setter
         public Builder pubsub(ClusterNotificationConfigPubsub pubsub) {
             this.pubsub = Objects.requireNonNull(pubsub);
             return this;
-        }        public ClusterNotificationConfig build() {
-            return new ClusterNotificationConfig(pubsub);
+        }
+        public ClusterNotificationConfig build() {
+            final var o = new ClusterNotificationConfig();
+            o.pubsub = pubsub;
+            return o;
         }
     }
 }

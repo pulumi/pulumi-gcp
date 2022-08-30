@@ -18,7 +18,7 @@ public final class RepositoryPubsubConfig {
      *   Possible values are `PROTOBUF` and `JSON`.
      * 
      */
-    private final String messageFormat;
+    private String messageFormat;
     /**
      * @return Email address of the service account used for publishing Cloud Pub/Sub messages.
      * This service account needs to be in the same project as the PubsubConfig. When added,
@@ -26,23 +26,14 @@ public final class RepositoryPubsubConfig {
      * If unspecified, it defaults to the compute engine default service account.
      * 
      */
-    private final @Nullable String serviceAccountEmail;
+    private @Nullable String serviceAccountEmail;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String topic;
+    private String topic;
 
-    @CustomType.Constructor
-    private RepositoryPubsubConfig(
-        @CustomType.Parameter("messageFormat") String messageFormat,
-        @CustomType.Parameter("serviceAccountEmail") @Nullable String serviceAccountEmail,
-        @CustomType.Parameter("topic") String topic) {
-        this.messageFormat = messageFormat;
-        this.serviceAccountEmail = serviceAccountEmail;
-        this.topic = topic;
-    }
-
+    private RepositoryPubsubConfig() {}
     /**
      * @return The format of the Cloud Pub/Sub messages.
      * - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
@@ -78,16 +69,12 @@ public final class RepositoryPubsubConfig {
     public static Builder builder(RepositoryPubsubConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String messageFormat;
         private @Nullable String serviceAccountEmail;
         private String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RepositoryPubsubConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.messageFormat = defaults.messageFormat;
@@ -95,19 +82,27 @@ public final class RepositoryPubsubConfig {
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder messageFormat(String messageFormat) {
             this.messageFormat = Objects.requireNonNull(messageFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }        public RepositoryPubsubConfig build() {
-            return new RepositoryPubsubConfig(messageFormat, serviceAccountEmail, topic);
+        }
+        public RepositoryPubsubConfig build() {
+            final var o = new RepositoryPubsubConfig();
+            o.messageFormat = messageFormat;
+            o.serviceAccountEmail = serviceAccountEmail;
+            o.topic = topic;
+            return o;
         }
     }
 }

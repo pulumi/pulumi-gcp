@@ -14,31 +14,20 @@ public final class GetFolderServiceAccountResult {
      * often used to refer to the service account in order to grant IAM permissions.
      * 
      */
-    private final String accountEmail;
-    private final String folderId;
+    private String accountEmail;
+    private String folderId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Access Approval service account resource name. Format is &#34;folders/{folder_id}/serviceAccount&#34;.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetFolderServiceAccountResult(
-        @CustomType.Parameter("accountEmail") String accountEmail,
-        @CustomType.Parameter("folderId") String folderId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name) {
-        this.accountEmail = accountEmail;
-        this.folderId = folderId;
-        this.id = id;
-        this.name = name;
-    }
-
+    private GetFolderServiceAccountResult() {}
     /**
      * @return The email address of the service account. This value is
      * often used to refer to the service account in order to grant IAM permissions.
@@ -72,17 +61,13 @@ public final class GetFolderServiceAccountResult {
     public static Builder builder(GetFolderServiceAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountEmail;
         private String folderId;
         private String id;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFolderServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEmail = defaults.accountEmail;
@@ -91,23 +76,33 @@ public final class GetFolderServiceAccountResult {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder accountEmail(String accountEmail) {
             this.accountEmail = Objects.requireNonNull(accountEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder folderId(String folderId) {
             this.folderId = Objects.requireNonNull(folderId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetFolderServiceAccountResult build() {
-            return new GetFolderServiceAccountResult(accountEmail, folderId, id, name);
+        }
+        public GetFolderServiceAccountResult build() {
+            final var o = new GetFolderServiceAccountResult();
+            o.accountEmail = accountEmail;
+            o.folderId = folderId;
+            o.id = id;
+            o.name = name;
+            return o;
         }
     }
 }

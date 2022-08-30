@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfig {
-    private final @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
-    private final @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
-    private final @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
+    private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
+    private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
+    private @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
 
-    @CustomType.Constructor
-    private EnvironmentConfigWorkloadsConfig(
-        @CustomType.Parameter("scheduler") @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler,
-        @CustomType.Parameter("webServer") @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer,
-        @CustomType.Parameter("worker") @Nullable EnvironmentConfigWorkloadsConfigWorker worker) {
-        this.scheduler = scheduler;
-        this.webServer = webServer;
-        this.worker = worker;
-    }
-
+    private EnvironmentConfigWorkloadsConfig() {}
     public Optional<EnvironmentConfigWorkloadsConfigScheduler> scheduler() {
         return Optional.ofNullable(this.scheduler);
     }
@@ -44,16 +35,12 @@ public final class EnvironmentConfigWorkloadsConfig {
     public static Builder builder(EnvironmentConfigWorkloadsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
         private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
         private @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigWorkloadsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scheduler = defaults.scheduler;
@@ -61,19 +48,27 @@ public final class EnvironmentConfigWorkloadsConfig {
     	      this.worker = defaults.worker;
         }
 
+        @CustomType.Setter
         public Builder scheduler(@Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler) {
             this.scheduler = scheduler;
             return this;
         }
+        @CustomType.Setter
         public Builder webServer(@Nullable EnvironmentConfigWorkloadsConfigWebServer webServer) {
             this.webServer = webServer;
             return this;
         }
+        @CustomType.Setter
         public Builder worker(@Nullable EnvironmentConfigWorkloadsConfigWorker worker) {
             this.worker = worker;
             return this;
-        }        public EnvironmentConfigWorkloadsConfig build() {
-            return new EnvironmentConfigWorkloadsConfig(scheduler, webServer, worker);
+        }
+        public EnvironmentConfigWorkloadsConfig build() {
+            final var o = new EnvironmentConfigWorkloadsConfig();
+            o.scheduler = scheduler;
+            o.webServer = webServer;
+            o.worker = worker;
+            return o;
         }
     }
 }

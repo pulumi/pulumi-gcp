@@ -12,78 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSSLPolicyResult {
-    private final String creationTimestamp;
+    private String creationTimestamp;
     /**
      * @return If the `profile` is `CUSTOM`, these are the custom encryption
      * ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
      * attribute will be empty.
      * 
      */
-    private final List<String> customFeatures;
+    private List<String> customFeatures;
     /**
      * @return Description of this SSL Policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The set of enabled encryption ciphers as a result of the policy config
      * 
      */
-    private final List<String> enabledFeatures;
+    private List<String> enabledFeatures;
     /**
      * @return Fingerprint of this resource.
      * 
      */
-    private final String fingerprint;
+    private String fingerprint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The minimum supported TLS version of this policy.
      * 
      */
-    private final String minTlsVersion;
-    private final String name;
+    private String minTlsVersion;
+    private String name;
     /**
      * @return The Google-curated or custom profile used by this policy.
      * 
      */
-    private final String profile;
-    private final @Nullable String project;
+    private String profile;
+    private @Nullable String project;
     /**
      * @return The URI of the created resource.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
 
-    @CustomType.Constructor
-    private GetSSLPolicyResult(
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("customFeatures") List<String> customFeatures,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enabledFeatures") List<String> enabledFeatures,
-        @CustomType.Parameter("fingerprint") String fingerprint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("minTlsVersion") String minTlsVersion,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("profile") String profile,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("selfLink") String selfLink) {
-        this.creationTimestamp = creationTimestamp;
-        this.customFeatures = customFeatures;
-        this.description = description;
-        this.enabledFeatures = enabledFeatures;
-        this.fingerprint = fingerprint;
-        this.id = id;
-        this.minTlsVersion = minTlsVersion;
-        this.name = name;
-        this.profile = profile;
-        this.project = project;
-        this.selfLink = selfLink;
-    }
-
+    private GetSSLPolicyResult() {}
     public String creationTimestamp() {
         return this.creationTimestamp;
     }
@@ -159,7 +134,7 @@ public final class GetSSLPolicyResult {
     public static Builder builder(GetSSLPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String creationTimestamp;
         private List<String> customFeatures;
@@ -172,11 +147,7 @@ public final class GetSSLPolicyResult {
         private String profile;
         private @Nullable String project;
         private String selfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSSLPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creationTimestamp = defaults.creationTimestamp;
@@ -192,10 +163,12 @@ public final class GetSSLPolicyResult {
     	      this.selfLink = defaults.selfLink;
         }
 
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder customFeatures(List<String> customFeatures) {
             this.customFeatures = Objects.requireNonNull(customFeatures);
             return this;
@@ -203,10 +176,12 @@ public final class GetSSLPolicyResult {
         public Builder customFeatures(String... customFeatures) {
             return customFeatures(List.of(customFeatures));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enabledFeatures(List<String> enabledFeatures) {
             this.enabledFeatures = Objects.requireNonNull(enabledFeatures);
             return this;
@@ -214,35 +189,55 @@ public final class GetSSLPolicyResult {
         public Builder enabledFeatures(String... enabledFeatures) {
             return enabledFeatures(List.of(enabledFeatures));
         }
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder minTlsVersion(String minTlsVersion) {
             this.minTlsVersion = Objects.requireNonNull(minTlsVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder profile(String profile) {
             this.profile = Objects.requireNonNull(profile);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
-        }        public GetSSLPolicyResult build() {
-            return new GetSSLPolicyResult(creationTimestamp, customFeatures, description, enabledFeatures, fingerprint, id, minTlsVersion, name, profile, project, selfLink);
+        }
+        public GetSSLPolicyResult build() {
+            final var o = new GetSSLPolicyResult();
+            o.creationTimestamp = creationTimestamp;
+            o.customFeatures = customFeatures;
+            o.description = description;
+            o.enabledFeatures = enabledFeatures;
+            o.fingerprint = fingerprint;
+            o.id = id;
+            o.minTlsVersion = minTlsVersion;
+            o.name = name;
+            o.profile = profile;
+            o.project = project;
+            o.selfLink = selfLink;
+            return o;
         }
     }
 }

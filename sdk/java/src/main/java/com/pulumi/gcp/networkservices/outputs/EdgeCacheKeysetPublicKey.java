@@ -15,23 +15,16 @@ public final class EdgeCacheKeysetPublicKey {
      * which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
      * Representations or encodings of the public key other than this will be rejected with an error.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private EdgeCacheKeysetPublicKey(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("value") String value) {
-        this.id = id;
-        this.value = value;
-    }
-
+    private EdgeCacheKeysetPublicKey() {}
     /**
      * @return The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
@@ -58,30 +51,32 @@ public final class EdgeCacheKeysetPublicKey {
     public static Builder builder(EdgeCacheKeysetPublicKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheKeysetPublicKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public EdgeCacheKeysetPublicKey build() {
-            return new EdgeCacheKeysetPublicKey(id, value);
+        }
+        public EdgeCacheKeysetPublicKey build() {
+            final var o = new EdgeCacheKeysetPublicKey();
+            o.id = id;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -17,22 +17,15 @@ public final class AutoscalerAutoscalingPolicyScaleDownControl {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas maxScaledDownReplicas;
+    private @Nullable AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas maxScaledDownReplicas;
     /**
      * @return How long back autoscaling should look when computing recommendations
      * to include directives regarding slower scale down, as described above.
      * 
      */
-    private final @Nullable Integer timeWindowSec;
+    private @Nullable Integer timeWindowSec;
 
-    @CustomType.Constructor
-    private AutoscalerAutoscalingPolicyScaleDownControl(
-        @CustomType.Parameter("maxScaledDownReplicas") @Nullable AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas maxScaledDownReplicas,
-        @CustomType.Parameter("timeWindowSec") @Nullable Integer timeWindowSec) {
-        this.maxScaledDownReplicas = maxScaledDownReplicas;
-        this.timeWindowSec = timeWindowSec;
-    }
-
+    private AutoscalerAutoscalingPolicyScaleDownControl() {}
     /**
      * @return A nested object resource
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class AutoscalerAutoscalingPolicyScaleDownControl {
     public static Builder builder(AutoscalerAutoscalingPolicyScaleDownControl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas maxScaledDownReplicas;
         private @Nullable Integer timeWindowSec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalerAutoscalingPolicyScaleDownControl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxScaledDownReplicas = defaults.maxScaledDownReplicas;
     	      this.timeWindowSec = defaults.timeWindowSec;
         }
 
+        @CustomType.Setter
         public Builder maxScaledDownReplicas(@Nullable AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas maxScaledDownReplicas) {
             this.maxScaledDownReplicas = maxScaledDownReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder timeWindowSec(@Nullable Integer timeWindowSec) {
             this.timeWindowSec = timeWindowSec;
             return this;
-        }        public AutoscalerAutoscalingPolicyScaleDownControl build() {
-            return new AutoscalerAutoscalingPolicyScaleDownControl(maxScaledDownReplicas, timeWindowSec);
+        }
+        public AutoscalerAutoscalingPolicyScaleDownControl build() {
+            final var o = new AutoscalerAutoscalingPolicyScaleDownControl();
+            o.maxScaledDownReplicas = maxScaledDownReplicas;
+            o.timeWindowSec = timeWindowSec;
+            return o;
         }
     }
 }

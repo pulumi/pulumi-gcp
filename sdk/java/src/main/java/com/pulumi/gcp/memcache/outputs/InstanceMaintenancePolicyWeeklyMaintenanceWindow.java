@@ -23,31 +23,22 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
      *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
-    private final String day;
+    private String day;
     /**
      * @return Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return Required. Start time of the window in UTC time.
      * Structure is documented below.
      * 
      */
-    private final InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
+    private InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
 
-    @CustomType.Constructor
-    private InstanceMaintenancePolicyWeeklyMaintenanceWindow(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("startTime") InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime) {
-        this.day = day;
-        this.duration = duration;
-        this.startTime = startTime;
-    }
-
+    private InstanceMaintenancePolicyWeeklyMaintenanceWindow() {}
     /**
      * @return Required. The day of week that maintenance updates occur.
      * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
@@ -89,16 +80,12 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
     public static Builder builder(InstanceMaintenancePolicyWeeklyMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String duration;
         private InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceMaintenancePolicyWeeklyMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -106,19 +93,27 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public InstanceMaintenancePolicyWeeklyMaintenanceWindow build() {
-            return new InstanceMaintenancePolicyWeeklyMaintenanceWindow(day, duration, startTime);
+        }
+        public InstanceMaintenancePolicyWeeklyMaintenanceWindow build() {
+            final var o = new InstanceMaintenancePolicyWeeklyMaintenanceWindow();
+            o.day = day;
+            o.duration = duration;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

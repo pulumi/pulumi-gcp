@@ -29,112 +29,79 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      * @return Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig autoscalingConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig autoscalingConfig;
     /**
      * @return Optional. Encryption settings for the cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig encryptionConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig encryptionConfig;
     /**
      * @return Optional. Port/endpoint configuration for this cluster
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigEndpointConfig endpointConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigEndpointConfig endpointConfig;
     /**
      * @return Optional. The shared Compute Engine config settings for all instances in a cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig;
     /**
      * @return Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig gkeClusterConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig gkeClusterConfig;
     /**
      * @return Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node&#39;s `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
      * 
      */
-    private final @Nullable List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction> initializationActions;
+    private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction> initializationActions;
     /**
      * @return Optional. Lifecycle setting for the cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig;
     /**
      * @return Optional. The Compute Engine config settings for additional worker instances in a cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig;
     /**
      * @return Optional. Metastore configuration.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig;
     /**
      * @return Optional. The Compute Engine config settings for additional worker instances in a cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig;
     /**
      * @return Optional. Security settings for the cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfig securityConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfig securityConfig;
     /**
      * @return Optional. The config settings for software inside the cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig;
     /**
      * @return Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster&#39;s staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
      * 
      */
-    private final @Nullable String stagingBucket;
+    private @Nullable String stagingBucket;
     /**
      * @return Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster&#39;s temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
      * 
      */
-    private final @Nullable String tempBucket;
+    private @Nullable String tempBucket;
     /**
      * @return Optional. The Compute Engine config settings for additional worker instances in a cluster.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfig(
-        @CustomType.Parameter("autoscalingConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig autoscalingConfig,
-        @CustomType.Parameter("encryptionConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig encryptionConfig,
-        @CustomType.Parameter("endpointConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigEndpointConfig endpointConfig,
-        @CustomType.Parameter("gceClusterConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig,
-        @CustomType.Parameter("gkeClusterConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig gkeClusterConfig,
-        @CustomType.Parameter("initializationActions") @Nullable List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction> initializationActions,
-        @CustomType.Parameter("lifecycleConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig,
-        @CustomType.Parameter("masterConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig,
-        @CustomType.Parameter("metastoreConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig,
-        @CustomType.Parameter("secondaryWorkerConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig,
-        @CustomType.Parameter("securityConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfig securityConfig,
-        @CustomType.Parameter("softwareConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig,
-        @CustomType.Parameter("stagingBucket") @Nullable String stagingBucket,
-        @CustomType.Parameter("tempBucket") @Nullable String tempBucket,
-        @CustomType.Parameter("workerConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig) {
-        this.autoscalingConfig = autoscalingConfig;
-        this.encryptionConfig = encryptionConfig;
-        this.endpointConfig = endpointConfig;
-        this.gceClusterConfig = gceClusterConfig;
-        this.gkeClusterConfig = gkeClusterConfig;
-        this.initializationActions = initializationActions;
-        this.lifecycleConfig = lifecycleConfig;
-        this.masterConfig = masterConfig;
-        this.metastoreConfig = metastoreConfig;
-        this.secondaryWorkerConfig = secondaryWorkerConfig;
-        this.securityConfig = securityConfig;
-        this.softwareConfig = softwareConfig;
-        this.stagingBucket = stagingBucket;
-        this.tempBucket = tempBucket;
-        this.workerConfig = workerConfig;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfig() {}
     /**
      * @return Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
      * 
@@ -248,7 +215,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig autoscalingConfig;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig encryptionConfig;
@@ -265,11 +232,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         private @Nullable String stagingBucket;
         private @Nullable String tempBucket;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingConfig = defaults.autoscalingConfig;
@@ -289,26 +252,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     	      this.workerConfig = defaults.workerConfig;
         }
 
+        @CustomType.Setter
         public Builder autoscalingConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig autoscalingConfig) {
             this.autoscalingConfig = autoscalingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig encryptionConfig) {
             this.encryptionConfig = encryptionConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder endpointConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigEndpointConfig endpointConfig) {
             this.endpointConfig = endpointConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder gceClusterConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig) {
             this.gceClusterConfig = gceClusterConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder gkeClusterConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig gkeClusterConfig) {
             this.gkeClusterConfig = gkeClusterConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder initializationActions(@Nullable List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction> initializationActions) {
             this.initializationActions = initializationActions;
             return this;
@@ -316,43 +285,69 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         public Builder initializationActions(WorkflowTemplatePlacementManagedClusterConfigInitializationAction... initializationActions) {
             return initializationActions(List.of(initializationActions));
         }
+        @CustomType.Setter
         public Builder lifecycleConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig) {
             this.lifecycleConfig = lifecycleConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder masterConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig) {
             this.masterConfig = masterConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder metastoreConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig) {
             this.metastoreConfig = metastoreConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder secondaryWorkerConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig) {
             this.secondaryWorkerConfig = secondaryWorkerConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder securityConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfig securityConfig) {
             this.securityConfig = securityConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder softwareConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig) {
             this.softwareConfig = softwareConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder stagingBucket(@Nullable String stagingBucket) {
             this.stagingBucket = stagingBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder tempBucket(@Nullable String tempBucket) {
             this.tempBucket = tempBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder workerConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig) {
             this.workerConfig = workerConfig;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfig(autoscalingConfig, encryptionConfig, endpointConfig, gceClusterConfig, gkeClusterConfig, initializationActions, lifecycleConfig, masterConfig, metastoreConfig, secondaryWorkerConfig, securityConfig, softwareConfig, stagingBucket, tempBucket, workerConfig);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfig();
+            o.autoscalingConfig = autoscalingConfig;
+            o.encryptionConfig = encryptionConfig;
+            o.endpointConfig = endpointConfig;
+            o.gceClusterConfig = gceClusterConfig;
+            o.gkeClusterConfig = gkeClusterConfig;
+            o.initializationActions = initializationActions;
+            o.lifecycleConfig = lifecycleConfig;
+            o.masterConfig = masterConfig;
+            o.metastoreConfig = metastoreConfig;
+            o.secondaryWorkerConfig = secondaryWorkerConfig;
+            o.securityConfig = securityConfig;
+            o.softwareConfig = softwareConfig;
+            o.stagingBucket = stagingBucket;
+            o.tempBucket = tempBucket;
+            o.workerConfig = workerConfig;
+            return o;
         }
     }
 }

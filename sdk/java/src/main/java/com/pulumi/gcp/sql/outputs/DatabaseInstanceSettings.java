@@ -29,8 +29,8 @@ public final class DatabaseInstanceSettings {
      * active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
      * 
      */
-    private final @Nullable String activationPolicy;
-    private final @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
+    private @Nullable String activationPolicy;
+    private @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
     /**
      * @return The availability type of the Cloud SQL
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
@@ -40,103 +40,60 @@ public final class DatabaseInstanceSettings {
      * is set to `true`.
      * 
      */
-    private final @Nullable String availabilityType;
-    private final @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
+    private @Nullable String availabilityType;
+    private @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
     /**
      * @return The name of server instance collation.
      * 
      */
-    private final @Nullable String collation;
-    private final @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
+    private @Nullable String collation;
+    private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
     /**
      * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
      * 
      */
-    private final @Nullable Boolean diskAutoresize;
+    private @Nullable Boolean diskAutoresize;
     /**
      * @return The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
      * 
      */
-    private final @Nullable Integer diskAutoresizeLimit;
+    private @Nullable Integer diskAutoresizeLimit;
     /**
      * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
      * 
      */
-    private final @Nullable Integer diskSize;
+    private @Nullable Integer diskSize;
     /**
      * @return The type of data disk: PD_SSD or PD_HDD.
      * 
      */
-    private final @Nullable String diskType;
-    private final @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
-    private final @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
-    private final @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
-    private final @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
-    private final @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
+    private @Nullable String diskType;
+    private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
+    private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
+    private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
+    private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
+    private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
     /**
      * @return Pricing plan for this instance, can only be `PER_USE`.
      * 
      */
-    private final @Nullable String pricingPlan;
-    private final @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
+    private @Nullable String pricingPlan;
+    private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
     /**
      * @return The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
      * for more details and supported versions. Postgres supports only shared-core machine types,
      * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
      * 
      */
-    private final String tier;
+    private String tier;
     /**
      * @return A set of key/value user label pairs to assign to the instance.
      * 
      */
-    private final @Nullable Map<String,String> userLabels;
-    private final @Nullable Integer version;
+    private @Nullable Map<String,String> userLabels;
+    private @Nullable Integer version;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettings(
-        @CustomType.Parameter("activationPolicy") @Nullable String activationPolicy,
-        @CustomType.Parameter("activeDirectoryConfig") @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig,
-        @CustomType.Parameter("availabilityType") @Nullable String availabilityType,
-        @CustomType.Parameter("backupConfiguration") @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration,
-        @CustomType.Parameter("collation") @Nullable String collation,
-        @CustomType.Parameter("databaseFlags") @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
-        @CustomType.Parameter("diskAutoresize") @Nullable Boolean diskAutoresize,
-        @CustomType.Parameter("diskAutoresizeLimit") @Nullable Integer diskAutoresizeLimit,
-        @CustomType.Parameter("diskSize") @Nullable Integer diskSize,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("insightsConfig") @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig,
-        @CustomType.Parameter("ipConfiguration") @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration,
-        @CustomType.Parameter("locationPreference") @Nullable DatabaseInstanceSettingsLocationPreference locationPreference,
-        @CustomType.Parameter("maintenanceWindow") @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow,
-        @CustomType.Parameter("passwordValidationPolicy") @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy,
-        @CustomType.Parameter("pricingPlan") @Nullable String pricingPlan,
-        @CustomType.Parameter("sqlServerAuditConfig") @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig,
-        @CustomType.Parameter("tier") String tier,
-        @CustomType.Parameter("userLabels") @Nullable Map<String,String> userLabels,
-        @CustomType.Parameter("version") @Nullable Integer version) {
-        this.activationPolicy = activationPolicy;
-        this.activeDirectoryConfig = activeDirectoryConfig;
-        this.availabilityType = availabilityType;
-        this.backupConfiguration = backupConfiguration;
-        this.collation = collation;
-        this.databaseFlags = databaseFlags;
-        this.diskAutoresize = diskAutoresize;
-        this.diskAutoresizeLimit = diskAutoresizeLimit;
-        this.diskSize = diskSize;
-        this.diskType = diskType;
-        this.insightsConfig = insightsConfig;
-        this.ipConfiguration = ipConfiguration;
-        this.locationPreference = locationPreference;
-        this.maintenanceWindow = maintenanceWindow;
-        this.passwordValidationPolicy = passwordValidationPolicy;
-        this.pricingPlan = pricingPlan;
-        this.sqlServerAuditConfig = sqlServerAuditConfig;
-        this.tier = tier;
-        this.userLabels = userLabels;
-        this.version = version;
-    }
-
+    private DatabaseInstanceSettings() {}
     /**
      * @return This specifies when the instance should be
      * active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
@@ -253,7 +210,7 @@ public final class DatabaseInstanceSettings {
     public static Builder builder(DatabaseInstanceSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String activationPolicy;
         private @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
@@ -275,11 +232,7 @@ public final class DatabaseInstanceSettings {
         private String tier;
         private @Nullable Map<String,String> userLabels;
         private @Nullable Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activationPolicy = defaults.activationPolicy;
@@ -304,26 +257,32 @@ public final class DatabaseInstanceSettings {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder activationPolicy(@Nullable String activationPolicy) {
             this.activationPolicy = activationPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder activeDirectoryConfig(@Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig) {
             this.activeDirectoryConfig = activeDirectoryConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder availabilityType(@Nullable String availabilityType) {
             this.availabilityType = availabilityType;
             return this;
         }
+        @CustomType.Setter
         public Builder backupConfiguration(@Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration) {
             this.backupConfiguration = backupConfiguration;
             return this;
         }
+        @CustomType.Setter
         public Builder collation(@Nullable String collation) {
             this.collation = collation;
             return this;
         }
+        @CustomType.Setter
         public Builder databaseFlags(@Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags) {
             this.databaseFlags = databaseFlags;
             return this;
@@ -331,63 +290,99 @@ public final class DatabaseInstanceSettings {
         public Builder databaseFlags(DatabaseInstanceSettingsDatabaseFlag... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
         }
+        @CustomType.Setter
         public Builder diskAutoresize(@Nullable Boolean diskAutoresize) {
             this.diskAutoresize = diskAutoresize;
             return this;
         }
+        @CustomType.Setter
         public Builder diskAutoresizeLimit(@Nullable Integer diskAutoresizeLimit) {
             this.diskAutoresizeLimit = diskAutoresizeLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
             this.diskSize = diskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder insightsConfig(@Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig) {
             this.insightsConfig = insightsConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder ipConfiguration(@Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration) {
             this.ipConfiguration = ipConfiguration;
             return this;
         }
+        @CustomType.Setter
         public Builder locationPreference(@Nullable DatabaseInstanceSettingsLocationPreference locationPreference) {
             this.locationPreference = locationPreference;
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceWindow(@Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow) {
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
+        @CustomType.Setter
         public Builder passwordValidationPolicy(@Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy) {
             this.passwordValidationPolicy = passwordValidationPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder pricingPlan(@Nullable String pricingPlan) {
             this.pricingPlan = pricingPlan;
             return this;
         }
+        @CustomType.Setter
         public Builder sqlServerAuditConfig(@Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig) {
             this.sqlServerAuditConfig = sqlServerAuditConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder tier(String tier) {
             this.tier = Objects.requireNonNull(tier);
             return this;
         }
+        @CustomType.Setter
         public Builder userLabels(@Nullable Map<String,String> userLabels) {
             this.userLabels = userLabels;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable Integer version) {
             this.version = version;
             return this;
-        }        public DatabaseInstanceSettings build() {
-            return new DatabaseInstanceSettings(activationPolicy, activeDirectoryConfig, availabilityType, backupConfiguration, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfig, ipConfiguration, locationPreference, maintenanceWindow, passwordValidationPolicy, pricingPlan, sqlServerAuditConfig, tier, userLabels, version);
+        }
+        public DatabaseInstanceSettings build() {
+            final var o = new DatabaseInstanceSettings();
+            o.activationPolicy = activationPolicy;
+            o.activeDirectoryConfig = activeDirectoryConfig;
+            o.availabilityType = availabilityType;
+            o.backupConfiguration = backupConfiguration;
+            o.collation = collation;
+            o.databaseFlags = databaseFlags;
+            o.diskAutoresize = diskAutoresize;
+            o.diskAutoresizeLimit = diskAutoresizeLimit;
+            o.diskSize = diskSize;
+            o.diskType = diskType;
+            o.insightsConfig = insightsConfig;
+            o.ipConfiguration = ipConfiguration;
+            o.locationPreference = locationPreference;
+            o.maintenanceWindow = maintenanceWindow;
+            o.passwordValidationPolicy = passwordValidationPolicy;
+            o.pricingPlan = pricingPlan;
+            o.sqlServerAuditConfig = sqlServerAuditConfig;
+            o.tier = tier;
+            o.userLabels = userLabels;
+            o.version = version;
+            return o;
         }
     }
 }

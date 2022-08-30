@@ -16,38 +16,25 @@ public final class GetNetblockIPRangesResult {
      * @return Retrieve list of all CIDR blocks.
      * 
      */
-    private final List<String> cidrBlocks;
+    private List<String> cidrBlocks;
     /**
      * @return Retrieve list of the IPv4 CIDR blocks
      * 
      */
-    private final List<String> cidrBlocksIpv4s;
+    private List<String> cidrBlocksIpv4s;
     /**
      * @return Retrieve list of the IPv6 CIDR blocks, if available.
      * 
      */
-    private final List<String> cidrBlocksIpv6s;
+    private List<String> cidrBlocksIpv6s;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String rangeType;
+    private String id;
+    private @Nullable String rangeType;
 
-    @CustomType.Constructor
-    private GetNetblockIPRangesResult(
-        @CustomType.Parameter("cidrBlocks") List<String> cidrBlocks,
-        @CustomType.Parameter("cidrBlocksIpv4s") List<String> cidrBlocksIpv4s,
-        @CustomType.Parameter("cidrBlocksIpv6s") List<String> cidrBlocksIpv6s,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("rangeType") @Nullable String rangeType) {
-        this.cidrBlocks = cidrBlocks;
-        this.cidrBlocksIpv4s = cidrBlocksIpv4s;
-        this.cidrBlocksIpv6s = cidrBlocksIpv6s;
-        this.id = id;
-        this.rangeType = rangeType;
-    }
-
+    private GetNetblockIPRangesResult() {}
     /**
      * @return Retrieve list of all CIDR blocks.
      * 
@@ -87,18 +74,14 @@ public final class GetNetblockIPRangesResult {
     public static Builder builder(GetNetblockIPRangesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> cidrBlocks;
         private List<String> cidrBlocksIpv4s;
         private List<String> cidrBlocksIpv6s;
         private String id;
         private @Nullable String rangeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetblockIPRangesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
@@ -108,6 +91,7 @@ public final class GetNetblockIPRangesResult {
     	      this.rangeType = defaults.rangeType;
         }
 
+        @CustomType.Setter
         public Builder cidrBlocks(List<String> cidrBlocks) {
             this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
             return this;
@@ -115,6 +99,7 @@ public final class GetNetblockIPRangesResult {
         public Builder cidrBlocks(String... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
+        @CustomType.Setter
         public Builder cidrBlocksIpv4s(List<String> cidrBlocksIpv4s) {
             this.cidrBlocksIpv4s = Objects.requireNonNull(cidrBlocksIpv4s);
             return this;
@@ -122,6 +107,7 @@ public final class GetNetblockIPRangesResult {
         public Builder cidrBlocksIpv4s(String... cidrBlocksIpv4s) {
             return cidrBlocksIpv4s(List.of(cidrBlocksIpv4s));
         }
+        @CustomType.Setter
         public Builder cidrBlocksIpv6s(List<String> cidrBlocksIpv6s) {
             this.cidrBlocksIpv6s = Objects.requireNonNull(cidrBlocksIpv6s);
             return this;
@@ -129,15 +115,24 @@ public final class GetNetblockIPRangesResult {
         public Builder cidrBlocksIpv6s(String... cidrBlocksIpv6s) {
             return cidrBlocksIpv6s(List.of(cidrBlocksIpv6s));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder rangeType(@Nullable String rangeType) {
             this.rangeType = rangeType;
             return this;
-        }        public GetNetblockIPRangesResult build() {
-            return new GetNetblockIPRangesResult(cidrBlocks, cidrBlocksIpv4s, cidrBlocksIpv6s, id, rangeType);
+        }
+        public GetNetblockIPRangesResult build() {
+            final var o = new GetNetblockIPRangesResult();
+            o.cidrBlocks = cidrBlocks;
+            o.cidrBlocksIpv4s = cidrBlocksIpv4s;
+            o.cidrBlocksIpv6s = cidrBlocksIpv6s;
+            o.id = id;
+            o.rangeType = rangeType;
+            return o;
         }
     }
 }

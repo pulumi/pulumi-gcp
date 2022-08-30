@@ -21,23 +21,16 @@ public final class FhirStoreStreamConfig {
      * Structure is documented below.
      * 
      */
-    private final FhirStoreStreamConfigBigqueryDestination bigqueryDestination;
+    private FhirStoreStreamConfigBigqueryDestination bigqueryDestination;
     /**
      * @return Supply a FHIR resource type (such as &#34;Patient&#34; or &#34;Observation&#34;). See
      * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
      * an empty list as an intent to stream all the supported resource types in this FHIR store.
      * 
      */
-    private final @Nullable List<String> resourceTypes;
+    private @Nullable List<String> resourceTypes;
 
-    @CustomType.Constructor
-    private FhirStoreStreamConfig(
-        @CustomType.Parameter("bigqueryDestination") FhirStoreStreamConfigBigqueryDestination bigqueryDestination,
-        @CustomType.Parameter("resourceTypes") @Nullable List<String> resourceTypes) {
-        this.bigqueryDestination = bigqueryDestination;
-        this.resourceTypes = resourceTypes;
-    }
-
+    private FhirStoreStreamConfig() {}
     /**
      * @return The destination BigQuery structure that contains both the dataset location and corresponding schema config.
      * The output is organized in one table per resource type. The server reuses the existing tables (if any) that
@@ -67,33 +60,35 @@ public final class FhirStoreStreamConfig {
     public static Builder builder(FhirStoreStreamConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private FhirStoreStreamConfigBigqueryDestination bigqueryDestination;
         private @Nullable List<String> resourceTypes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FhirStoreStreamConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigqueryDestination = defaults.bigqueryDestination;
     	      this.resourceTypes = defaults.resourceTypes;
         }
 
+        @CustomType.Setter
         public Builder bigqueryDestination(FhirStoreStreamConfigBigqueryDestination bigqueryDestination) {
             this.bigqueryDestination = Objects.requireNonNull(bigqueryDestination);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTypes(@Nullable List<String> resourceTypes) {
             this.resourceTypes = resourceTypes;
             return this;
         }
         public Builder resourceTypes(String... resourceTypes) {
             return resourceTypes(List.of(resourceTypes));
-        }        public FhirStoreStreamConfig build() {
-            return new FhirStoreStreamConfig(bigqueryDestination, resourceTypes);
+        }
+        public FhirStoreStreamConfig build() {
+            final var o = new FhirStoreStreamConfig();
+            o.bigqueryDestination = bigqueryDestination;
+            o.resourceTypes = resourceTypes;
+            return o;
         }
     }
 }

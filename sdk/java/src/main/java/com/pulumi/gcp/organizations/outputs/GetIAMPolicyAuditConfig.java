@@ -15,21 +15,14 @@ public final class GetIAMPolicyAuditConfig {
      * @return A nested block that defines the operations you&#39;d like to log.
      * 
      */
-    private final List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs;
+    private List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs;
     /**
      * @return Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private GetIAMPolicyAuditConfig(
-        @CustomType.Parameter("auditLogConfigs") List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs,
-        @CustomType.Parameter("service") String service) {
-        this.auditLogConfigs = auditLogConfigs;
-        this.service = service;
-    }
-
+    private GetIAMPolicyAuditConfig() {}
     /**
      * @return A nested block that defines the operations you&#39;d like to log.
      * 
@@ -52,21 +45,18 @@ public final class GetIAMPolicyAuditConfig {
     public static Builder builder(GetIAMPolicyAuditConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIAMPolicyAuditConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditLogConfigs = defaults.auditLogConfigs;
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder auditLogConfigs(List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs) {
             this.auditLogConfigs = Objects.requireNonNull(auditLogConfigs);
             return this;
@@ -74,11 +64,16 @@ public final class GetIAMPolicyAuditConfig {
         public Builder auditLogConfigs(GetIAMPolicyAuditConfigAuditLogConfig... auditLogConfigs) {
             return auditLogConfigs(List.of(auditLogConfigs));
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public GetIAMPolicyAuditConfig build() {
-            return new GetIAMPolicyAuditConfig(auditLogConfigs, service);
+        }
+        public GetIAMPolicyAuditConfig build() {
+            final var o = new GetIAMPolicyAuditConfig();
+            o.auditLogConfigs = auditLogConfigs;
+            o.service = service;
+            return o;
         }
     }
 }

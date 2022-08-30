@@ -16,13 +16,9 @@ public final class CertificateCertificateDescriptionConfigValue {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsage> keyUsages;
+    private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsage> keyUsages;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionConfigValue(@CustomType.Parameter("keyUsages") @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsage> keyUsages) {
-        this.keyUsages = keyUsages;
-    }
-
+    private CertificateCertificateDescriptionConfigValue() {}
     /**
      * @return Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
@@ -39,27 +35,27 @@ public final class CertificateCertificateDescriptionConfigValue {
     public static Builder builder(CertificateCertificateDescriptionConfigValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsage> keyUsages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionConfigValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyUsages = defaults.keyUsages;
         }
 
+        @CustomType.Setter
         public Builder keyUsages(@Nullable List<CertificateCertificateDescriptionConfigValueKeyUsage> keyUsages) {
             this.keyUsages = keyUsages;
             return this;
         }
         public Builder keyUsages(CertificateCertificateDescriptionConfigValueKeyUsage... keyUsages) {
             return keyUsages(List.of(keyUsages));
-        }        public CertificateCertificateDescriptionConfigValue build() {
-            return new CertificateCertificateDescriptionConfigValue(keyUsages);
+        }
+        public CertificateCertificateDescriptionConfigValue build() {
+            final var o = new CertificateCertificateDescriptionConfigValue();
+            o.keyUsages = keyUsages;
+            return o;
         }
     }
 }

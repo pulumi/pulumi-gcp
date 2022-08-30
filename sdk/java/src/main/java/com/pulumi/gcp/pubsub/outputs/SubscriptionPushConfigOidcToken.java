@@ -20,7 +20,7 @@ public final class SubscriptionPushConfigOidcToken {
      * Note: if not specified, the Push endpoint URL will be used.
      * 
      */
-    private final @Nullable String audience;
+    private @Nullable String audience;
     /**
      * @return Service account email to be used for generating the OIDC token.
      * The caller (for subscriptions.create, subscriptions.patch, and
@@ -28,16 +28,9 @@ public final class SubscriptionPushConfigOidcToken {
      * iam.serviceAccounts.actAs permission for the service account.
      * 
      */
-    private final String serviceAccountEmail;
+    private String serviceAccountEmail;
 
-    @CustomType.Constructor
-    private SubscriptionPushConfigOidcToken(
-        @CustomType.Parameter("audience") @Nullable String audience,
-        @CustomType.Parameter("serviceAccountEmail") String serviceAccountEmail) {
-        this.audience = audience;
-        this.serviceAccountEmail = serviceAccountEmail;
-    }
-
+    private SubscriptionPushConfigOidcToken() {}
     /**
      * @return Audience to be used when generating OIDC token. The audience claim
      * identifies the recipients that the JWT is intended for. The audience
@@ -68,30 +61,32 @@ public final class SubscriptionPushConfigOidcToken {
     public static Builder builder(SubscriptionPushConfigOidcToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String audience;
         private String serviceAccountEmail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubscriptionPushConfigOidcToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audience = defaults.audience;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
         }
 
+        @CustomType.Setter
         public Builder audience(@Nullable String audience) {
             this.audience = audience;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
             this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
             return this;
-        }        public SubscriptionPushConfigOidcToken build() {
-            return new SubscriptionPushConfigOidcToken(audience, serviceAccountEmail);
+        }
+        public SubscriptionPushConfigOidcToken build() {
+            final var o = new SubscriptionPushConfigOidcToken();
+            o.audience = audience;
+            o.serviceAccountEmail = serviceAccountEmail;
+            return o;
         }
     }
 }

@@ -14,31 +14,20 @@ public final class GetOrganizationServiceAccountResult {
      * often used to refer to the service account in order to grant IAM permissions.
      * 
      */
-    private final String accountEmail;
+    private String accountEmail;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Access Approval service account resource name. Format is &#34;organizations/{organization_id}/serviceAccount&#34;.
      * 
      */
-    private final String name;
-    private final String organizationId;
+    private String name;
+    private String organizationId;
 
-    @CustomType.Constructor
-    private GetOrganizationServiceAccountResult(
-        @CustomType.Parameter("accountEmail") String accountEmail,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("organizationId") String organizationId) {
-        this.accountEmail = accountEmail;
-        this.id = id;
-        this.name = name;
-        this.organizationId = organizationId;
-    }
-
+    private GetOrganizationServiceAccountResult() {}
     /**
      * @return The email address of the service account. This value is
      * often used to refer to the service account in order to grant IAM permissions.
@@ -72,17 +61,13 @@ public final class GetOrganizationServiceAccountResult {
     public static Builder builder(GetOrganizationServiceAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountEmail;
         private String id;
         private String name;
         private String organizationId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEmail = defaults.accountEmail;
@@ -91,23 +76,33 @@ public final class GetOrganizationServiceAccountResult {
     	      this.organizationId = defaults.organizationId;
         }
 
+        @CustomType.Setter
         public Builder accountEmail(String accountEmail) {
             this.accountEmail = Objects.requireNonNull(accountEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationId(String organizationId) {
             this.organizationId = Objects.requireNonNull(organizationId);
             return this;
-        }        public GetOrganizationServiceAccountResult build() {
-            return new GetOrganizationServiceAccountResult(accountEmail, id, name, organizationId);
+        }
+        public GetOrganizationServiceAccountResult build() {
+            final var o = new GetOrganizationServiceAccountResult();
+            o.accountEmail = accountEmail;
+            o.id = id;
+            o.name = name;
+            o.organizationId = organizationId;
+            return o;
         }
     }
 }

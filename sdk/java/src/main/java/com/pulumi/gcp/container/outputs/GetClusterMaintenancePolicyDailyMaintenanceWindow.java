@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMaintenancePolicyDailyMaintenanceWindow {
-    private final String duration;
-    private final String startTime;
+    private String duration;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetClusterMaintenancePolicyDailyMaintenanceWindow(
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.duration = duration;
-        this.startTime = startTime;
-    }
-
+    private GetClusterMaintenancePolicyDailyMaintenanceWindow() {}
     public String duration() {
         return this.duration;
     }
@@ -34,30 +27,32 @@ public final class GetClusterMaintenancePolicyDailyMaintenanceWindow {
     public static Builder builder(GetClusterMaintenancePolicyDailyMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String duration;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMaintenancePolicyDailyMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.duration = defaults.duration;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetClusterMaintenancePolicyDailyMaintenanceWindow build() {
-            return new GetClusterMaintenancePolicyDailyMaintenanceWindow(duration, startTime);
+        }
+        public GetClusterMaintenancePolicyDailyMaintenanceWindow build() {
+            final var o = new GetClusterMaintenancePolicyDailyMaintenanceWindow();
+            o.duration = duration;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

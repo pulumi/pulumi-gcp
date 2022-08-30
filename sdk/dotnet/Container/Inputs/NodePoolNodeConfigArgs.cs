@@ -86,6 +86,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        [Input("reservationAffinity")]
+        public Input<Inputs.NodePoolNodeConfigReservationAffinityArgs>? ReservationAffinity { get; set; }
+
         [Input("sandboxConfig")]
         public Input<Inputs.NodePoolNodeConfigSandboxConfigArgs>? SandboxConfig { get; set; }
 

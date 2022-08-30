@@ -16,23 +16,16 @@ public final class BackendServiceSecuritySettings {
      * configuration unless it is attached to a backend service resource.
      * 
      */
-    private final String clientTlsPolicy;
+    private String clientTlsPolicy;
     /**
      * @return A list of alternate names to verify the subject identity in the certificate.
      * If specified, the client will verify that the server certificate&#39;s subject
      * alt name matches one of the specified values.
      * 
      */
-    private final List<String> subjectAltNames;
+    private List<String> subjectAltNames;
 
-    @CustomType.Constructor
-    private BackendServiceSecuritySettings(
-        @CustomType.Parameter("clientTlsPolicy") String clientTlsPolicy,
-        @CustomType.Parameter("subjectAltNames") List<String> subjectAltNames) {
-        this.clientTlsPolicy = clientTlsPolicy;
-        this.subjectAltNames = subjectAltNames;
-    }
-
+    private BackendServiceSecuritySettings() {}
     /**
      * @return ClientTlsPolicy is a resource that specifies how a client should authenticate
      * connections to backends of a service. This resource itself does not affect
@@ -59,33 +52,35 @@ public final class BackendServiceSecuritySettings {
     public static Builder builder(BackendServiceSecuritySettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientTlsPolicy;
         private List<String> subjectAltNames;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServiceSecuritySettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientTlsPolicy = defaults.clientTlsPolicy;
     	      this.subjectAltNames = defaults.subjectAltNames;
         }
 
+        @CustomType.Setter
         public Builder clientTlsPolicy(String clientTlsPolicy) {
             this.clientTlsPolicy = Objects.requireNonNull(clientTlsPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectAltNames(List<String> subjectAltNames) {
             this.subjectAltNames = Objects.requireNonNull(subjectAltNames);
             return this;
         }
         public Builder subjectAltNames(String... subjectAltNames) {
             return subjectAltNames(List.of(subjectAltNames));
-        }        public BackendServiceSecuritySettings build() {
-            return new BackendServiceSecuritySettings(clientTlsPolicy, subjectAltNames);
+        }
+        public BackendServiceSecuritySettings build() {
+            final var o = new BackendServiceSecuritySettings();
+            o.clientTlsPolicy = clientTlsPolicy;
+            o.subjectAltNames = subjectAltNames;
+            return o;
         }
     }
 }

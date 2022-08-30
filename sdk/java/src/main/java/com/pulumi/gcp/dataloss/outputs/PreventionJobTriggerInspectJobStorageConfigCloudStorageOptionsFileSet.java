@@ -17,7 +17,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet regexFileSet;
+    private @Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet regexFileSet;
     /**
      * @return The Cloud Storage url of the file(s) to scan, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard
      * in the path is allowed.
@@ -26,16 +26,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`.
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(
-        @CustomType.Parameter("regexFileSet") @Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet regexFileSet,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.regexFileSet = regexFileSet;
-        this.url = url;
-    }
-
+    private PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet() {}
     /**
      * @return The regex-filtered set of files to scan.
      * Structure is documented below.
@@ -63,30 +56,32 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     public static Builder builder(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet regexFileSet;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regexFileSet = defaults.regexFileSet;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder regexFileSet(@Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet regexFileSet) {
             this.regexFileSet = regexFileSet;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet build() {
-            return new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(regexFileSet, url);
+        }
+        public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet build() {
+            final var o = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet();
+            o.regexFileSet = regexFileSet;
+            o.url = url;
+            return o;
         }
     }
 }

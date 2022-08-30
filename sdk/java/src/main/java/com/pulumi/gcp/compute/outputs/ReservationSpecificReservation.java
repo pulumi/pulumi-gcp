@@ -16,30 +16,21 @@ public final class ReservationSpecificReservation {
      * @return The number of resources that are allocated.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return -
      * How many instances are in use.
      * 
      */
-    private final @Nullable Integer inUseCount;
+    private @Nullable Integer inUseCount;
     /**
      * @return The instance properties for the reservation.
      * Structure is documented below.
      * 
      */
-    private final ReservationSpecificReservationInstanceProperties instanceProperties;
+    private ReservationSpecificReservationInstanceProperties instanceProperties;
 
-    @CustomType.Constructor
-    private ReservationSpecificReservation(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("inUseCount") @Nullable Integer inUseCount,
-        @CustomType.Parameter("instanceProperties") ReservationSpecificReservationInstanceProperties instanceProperties) {
-        this.count = count;
-        this.inUseCount = inUseCount;
-        this.instanceProperties = instanceProperties;
-    }
-
+    private ReservationSpecificReservation() {}
     /**
      * @return The number of resources that are allocated.
      * 
@@ -71,16 +62,12 @@ public final class ReservationSpecificReservation {
     public static Builder builder(ReservationSpecificReservation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private @Nullable Integer inUseCount;
         private ReservationSpecificReservationInstanceProperties instanceProperties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservationSpecificReservation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -88,19 +75,27 @@ public final class ReservationSpecificReservation {
     	      this.instanceProperties = defaults.instanceProperties;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder inUseCount(@Nullable Integer inUseCount) {
             this.inUseCount = inUseCount;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceProperties(ReservationSpecificReservationInstanceProperties instanceProperties) {
             this.instanceProperties = Objects.requireNonNull(instanceProperties);
             return this;
-        }        public ReservationSpecificReservation build() {
-            return new ReservationSpecificReservation(count, inUseCount, instanceProperties);
+        }
+        public ReservationSpecificReservation build() {
+            final var o = new ReservationSpecificReservation();
+            o.count = count;
+            o.inUseCount = inUseCount;
+            o.instanceProperties = instanceProperties;
+            return o;
         }
     }
 }

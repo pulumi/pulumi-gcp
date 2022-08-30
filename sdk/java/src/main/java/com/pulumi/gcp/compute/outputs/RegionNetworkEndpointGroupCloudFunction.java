@@ -17,7 +17,7 @@ public final class RegionNetworkEndpointGroupCloudFunction {
      * Example value: &#34;func1&#34;.
      * 
      */
-    private final @Nullable String function;
+    private @Nullable String function;
     /**
      * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
      * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
@@ -25,16 +25,9 @@ public final class RegionNetworkEndpointGroupCloudFunction {
      * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
      * 
      */
-    private final @Nullable String urlMask;
+    private @Nullable String urlMask;
 
-    @CustomType.Constructor
-    private RegionNetworkEndpointGroupCloudFunction(
-        @CustomType.Parameter("function") @Nullable String function,
-        @CustomType.Parameter("urlMask") @Nullable String urlMask) {
-        this.function = function;
-        this.urlMask = urlMask;
-    }
-
+    private RegionNetworkEndpointGroupCloudFunction() {}
     /**
      * @return A user-defined name of the Cloud Function.
      * The function name is case-sensitive and must be 1-63 characters long.
@@ -62,30 +55,32 @@ public final class RegionNetworkEndpointGroupCloudFunction {
     public static Builder builder(RegionNetworkEndpointGroupCloudFunction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String function;
         private @Nullable String urlMask;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionNetworkEndpointGroupCloudFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.function = defaults.function;
     	      this.urlMask = defaults.urlMask;
         }
 
+        @CustomType.Setter
         public Builder function(@Nullable String function) {
             this.function = function;
             return this;
         }
+        @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
             this.urlMask = urlMask;
             return this;
-        }        public RegionNetworkEndpointGroupCloudFunction build() {
-            return new RegionNetworkEndpointGroupCloudFunction(function, urlMask);
+        }
+        public RegionNetworkEndpointGroupCloudFunction build() {
+            final var o = new RegionNetworkEndpointGroupCloudFunction();
+            o.function = function;
+            o.urlMask = urlMask;
+            return o;
         }
     }
 }

@@ -215,6 +215,13 @@ type Organization struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+	// operation completes. During this period, the Organization may be restored to its last known state.
+	// After this period, the Organization will no longer be able to be restored.
+	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	Retention pulumi.StringPtrOutput `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
 	// If not specified, a Google-Managed encryption key will be used.
@@ -280,6 +287,13 @@ type organizationState struct {
 	Name *string `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
 	ProjectId *string `pulumi:"projectId"`
+	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+	// operation completes. During this period, the Organization may be restored to its last known state.
+	// After this period, the Organization will no longer be able to be restored.
+	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	Retention *string `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
 	// If not specified, a Google-Managed encryption key will be used.
@@ -314,6 +328,13 @@ type OrganizationState struct {
 	Name pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
 	ProjectId pulumi.StringPtrInput
+	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+	// operation completes. During this period, the Organization may be restored to its last known state.
+	// After this period, the Organization will no longer be able to be restored.
+	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	Retention pulumi.StringPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
 	// If not specified, a Google-Managed encryption key will be used.
@@ -347,6 +368,13 @@ type organizationArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The project ID associated with the Apigee organization.
 	ProjectId string `pulumi:"projectId"`
+	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+	// operation completes. During this period, the Organization may be restored to its last known state.
+	// After this period, the Organization will no longer be able to be restored.
+	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	Retention *string `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
 	// If not specified, a Google-Managed encryption key will be used.
@@ -374,6 +402,13 @@ type OrganizationArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
 	ProjectId pulumi.StringInput
+	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+	// operation completes. During this period, the Organization may be restored to its last known state.
+	// After this period, the Organization will no longer be able to be restored.
+	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	Retention pulumi.StringPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
 	// If not specified, a Google-Managed encryption key will be used.
@@ -513,6 +548,16 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 // The project ID associated with the Apigee organization.
 func (o OrganizationOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+// operation completes. During this period, the Organization may be restored to its last known state.
+// After this period, the Organization will no longer be able to be restored.
+// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+func (o OrganizationOutput) Retention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Retention }).(pulumi.StringPtrOutput)
 }
 
 // Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.

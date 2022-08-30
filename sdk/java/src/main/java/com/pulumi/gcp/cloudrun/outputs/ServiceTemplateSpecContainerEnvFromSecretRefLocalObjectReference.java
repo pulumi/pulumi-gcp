@@ -13,13 +13,9 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectRefere
      * @return Volume&#39;s name.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference() {}
     /**
      * @return Volume&#39;s name.
      * 
@@ -35,24 +31,24 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectRefere
     public static Builder builder(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference build() {
-            return new ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(name);
+        }
+        public ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference build() {
+            final var o = new ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference();
+            o.name = name;
+            return o;
         }
     }
 }

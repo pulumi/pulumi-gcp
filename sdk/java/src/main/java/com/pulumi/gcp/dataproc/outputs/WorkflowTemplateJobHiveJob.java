@@ -19,49 +19,34 @@ public final class WorkflowTemplateJobHiveJob {
      * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
-    private final @Nullable Boolean continueOnFailure;
+    private @Nullable Boolean continueOnFailure;
     /**
      * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
-    private final @Nullable List<String> jarFileUris;
+    private @Nullable List<String> jarFileUris;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return The HCFS URI of the script that contains SQL queries.
      * 
      */
-    private final @Nullable String queryFileUri;
+    private @Nullable String queryFileUri;
     /**
      * @return A list of queries.
      * 
      */
-    private final @Nullable WorkflowTemplateJobHiveJobQueryList queryList;
+    private @Nullable WorkflowTemplateJobHiveJobQueryList queryList;
     /**
      * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
      * 
      */
-    private final @Nullable Map<String,String> scriptVariables;
+    private @Nullable Map<String,String> scriptVariables;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobHiveJob(
-        @CustomType.Parameter("continueOnFailure") @Nullable Boolean continueOnFailure,
-        @CustomType.Parameter("jarFileUris") @Nullable List<String> jarFileUris,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("queryFileUri") @Nullable String queryFileUri,
-        @CustomType.Parameter("queryList") @Nullable WorkflowTemplateJobHiveJobQueryList queryList,
-        @CustomType.Parameter("scriptVariables") @Nullable Map<String,String> scriptVariables) {
-        this.continueOnFailure = continueOnFailure;
-        this.jarFileUris = jarFileUris;
-        this.properties = properties;
-        this.queryFileUri = queryFileUri;
-        this.queryList = queryList;
-        this.scriptVariables = scriptVariables;
-    }
-
+    private WorkflowTemplateJobHiveJob() {}
     /**
      * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
@@ -112,7 +97,7 @@ public final class WorkflowTemplateJobHiveJob {
     public static Builder builder(WorkflowTemplateJobHiveJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean continueOnFailure;
         private @Nullable List<String> jarFileUris;
@@ -120,11 +105,7 @@ public final class WorkflowTemplateJobHiveJob {
         private @Nullable String queryFileUri;
         private @Nullable WorkflowTemplateJobHiveJobQueryList queryList;
         private @Nullable Map<String,String> scriptVariables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobHiveJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continueOnFailure = defaults.continueOnFailure;
@@ -135,10 +116,12 @@ public final class WorkflowTemplateJobHiveJob {
     	      this.scriptVariables = defaults.scriptVariables;
         }
 
+        @CustomType.Setter
         public Builder continueOnFailure(@Nullable Boolean continueOnFailure) {
             this.continueOnFailure = continueOnFailure;
             return this;
         }
+        @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
             this.jarFileUris = jarFileUris;
             return this;
@@ -146,23 +129,35 @@ public final class WorkflowTemplateJobHiveJob {
         public Builder jarFileUris(String... jarFileUris) {
             return jarFileUris(List.of(jarFileUris));
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
             this.queryFileUri = queryFileUri;
             return this;
         }
+        @CustomType.Setter
         public Builder queryList(@Nullable WorkflowTemplateJobHiveJobQueryList queryList) {
             this.queryList = queryList;
             return this;
         }
+        @CustomType.Setter
         public Builder scriptVariables(@Nullable Map<String,String> scriptVariables) {
             this.scriptVariables = scriptVariables;
             return this;
-        }        public WorkflowTemplateJobHiveJob build() {
-            return new WorkflowTemplateJobHiveJob(continueOnFailure, jarFileUris, properties, queryFileUri, queryList, scriptVariables);
+        }
+        public WorkflowTemplateJobHiveJob build() {
+            final var o = new WorkflowTemplateJobHiveJob();
+            o.continueOnFailure = continueOnFailure;
+            o.jarFileUris = jarFileUris;
+            o.properties = properties;
+            o.queryFileUri = queryFileUri;
+            o.queryList = queryList;
+            o.scriptVariables = scriptVariables;
+            return o;
         }
     }
 }

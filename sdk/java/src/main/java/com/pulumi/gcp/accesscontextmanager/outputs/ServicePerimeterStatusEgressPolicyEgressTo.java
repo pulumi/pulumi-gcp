@@ -18,14 +18,14 @@ public final class ServicePerimeterStatusEgressPolicyEgressTo {
      * s3://bucket/path). Currently &#39;*&#39; is not allowed.
      * 
      */
-    private final @Nullable List<String> externalResources;
+    private @Nullable List<String> externalResources;
     /**
      * @return A list of `ApiOperations` that this egress rule applies to. A request matches
      * if it contains an operation/service in this list.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimeterStatusEgressPolicyEgressToOperation> operations;
+    private @Nullable List<ServicePerimeterStatusEgressPolicyEgressToOperation> operations;
     /**
      * @return A list of resources, currently only projects in the form
      * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
@@ -34,18 +34,9 @@ public final class ServicePerimeterStatusEgressPolicyEgressTo {
      * the perimeter.
      * 
      */
-    private final @Nullable List<String> resources;
+    private @Nullable List<String> resources;
 
-    @CustomType.Constructor
-    private ServicePerimeterStatusEgressPolicyEgressTo(
-        @CustomType.Parameter("externalResources") @Nullable List<String> externalResources,
-        @CustomType.Parameter("operations") @Nullable List<ServicePerimeterStatusEgressPolicyEgressToOperation> operations,
-        @CustomType.Parameter("resources") @Nullable List<String> resources) {
-        this.externalResources = externalResources;
-        this.operations = operations;
-        this.resources = resources;
-    }
-
+    private ServicePerimeterStatusEgressPolicyEgressTo() {}
     /**
      * @return A list of external resources that are allowed to be accessed. A request
      * matches if it contains an external resource in this list (Example:
@@ -83,16 +74,12 @@ public final class ServicePerimeterStatusEgressPolicyEgressTo {
     public static Builder builder(ServicePerimeterStatusEgressPolicyEgressTo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> externalResources;
         private @Nullable List<ServicePerimeterStatusEgressPolicyEgressToOperation> operations;
         private @Nullable List<String> resources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimeterStatusEgressPolicyEgressTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalResources = defaults.externalResources;
@@ -100,6 +87,7 @@ public final class ServicePerimeterStatusEgressPolicyEgressTo {
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
         public Builder externalResources(@Nullable List<String> externalResources) {
             this.externalResources = externalResources;
             return this;
@@ -107,6 +95,7 @@ public final class ServicePerimeterStatusEgressPolicyEgressTo {
         public Builder externalResources(String... externalResources) {
             return externalResources(List.of(externalResources));
         }
+        @CustomType.Setter
         public Builder operations(@Nullable List<ServicePerimeterStatusEgressPolicyEgressToOperation> operations) {
             this.operations = operations;
             return this;
@@ -114,14 +103,20 @@ public final class ServicePerimeterStatusEgressPolicyEgressTo {
         public Builder operations(ServicePerimeterStatusEgressPolicyEgressToOperation... operations) {
             return operations(List.of(operations));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
             return resources(List.of(resources));
-        }        public ServicePerimeterStatusEgressPolicyEgressTo build() {
-            return new ServicePerimeterStatusEgressPolicyEgressTo(externalResources, operations, resources);
+        }
+        public ServicePerimeterStatusEgressPolicyEgressTo build() {
+            final var o = new ServicePerimeterStatusEgressPolicyEgressTo();
+            o.externalResources = externalResources;
+            o.operations = operations;
+            o.resources = resources;
+            return o;
         }
     }
 }

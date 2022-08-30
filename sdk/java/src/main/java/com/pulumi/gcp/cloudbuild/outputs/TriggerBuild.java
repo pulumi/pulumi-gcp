@@ -24,13 +24,13 @@ public final class TriggerBuild {
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildArtifacts artifacts;
+    private @Nullable TriggerBuildArtifacts artifacts;
     /**
      * @return Secrets and secret environment variables.
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildAvailableSecrets availableSecrets;
+    private @Nullable TriggerBuildAvailableSecrets availableSecrets;
     /**
      * @return A list of images to be pushed upon the successful completion of all build steps.
      * The images will be pushed using the builder service account&#39;s credentials.
@@ -38,19 +38,19 @@ public final class TriggerBuild {
      * If any of the images fail to be pushed, the build is marked FAILURE.
      * 
      */
-    private final @Nullable List<String> images;
+    private @Nullable List<String> images;
     /**
      * @return Google Cloud Storage bucket where logs should be written.
      * Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
      * 
      */
-    private final @Nullable String logsBucket;
+    private @Nullable String logsBucket;
     /**
      * @return Special options for this build.
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildOptions options;
+    private @Nullable TriggerBuildOptions options;
     /**
      * @return TTL in queue for this build. If provided and the build is enqueued longer than this value,
      * the build will expire and the build status will be EXPIRED.
@@ -58,36 +58,36 @@ public final class TriggerBuild {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String queueTtl;
+    private @Nullable String queueTtl;
     /**
      * @return Secrets to decrypt using Cloud Key Management Service.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<TriggerBuildSecret> secrets;
+    private @Nullable List<TriggerBuildSecret> secrets;
     /**
      * @return The location of the source files to build.
      * One of `storageSource` or `repoSource` must be provided.
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildSource source;
+    private @Nullable TriggerBuildSource source;
     /**
      * @return The operations to be performed on the workspace.
      * Structure is documented below.
      * 
      */
-    private final List<TriggerBuildStep> steps;
+    private List<TriggerBuildStep> steps;
     /**
      * @return Substitutions to use in a triggered build. Should only be used with triggers.run
      * 
      */
-    private final @Nullable Map<String,String> substitutions;
+    private @Nullable Map<String,String> substitutions;
     /**
      * @return Tags for annotation of a Build. These are not docker tags.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return Time limit for executing this build step. If not defined,
      * the step has no
@@ -95,36 +95,9 @@ public final class TriggerBuild {
      * completes or the build itself times out.
      * 
      */
-    private final @Nullable String timeout;
+    private @Nullable String timeout;
 
-    @CustomType.Constructor
-    private TriggerBuild(
-        @CustomType.Parameter("artifacts") @Nullable TriggerBuildArtifacts artifacts,
-        @CustomType.Parameter("availableSecrets") @Nullable TriggerBuildAvailableSecrets availableSecrets,
-        @CustomType.Parameter("images") @Nullable List<String> images,
-        @CustomType.Parameter("logsBucket") @Nullable String logsBucket,
-        @CustomType.Parameter("options") @Nullable TriggerBuildOptions options,
-        @CustomType.Parameter("queueTtl") @Nullable String queueTtl,
-        @CustomType.Parameter("secrets") @Nullable List<TriggerBuildSecret> secrets,
-        @CustomType.Parameter("source") @Nullable TriggerBuildSource source,
-        @CustomType.Parameter("steps") List<TriggerBuildStep> steps,
-        @CustomType.Parameter("substitutions") @Nullable Map<String,String> substitutions,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("timeout") @Nullable String timeout) {
-        this.artifacts = artifacts;
-        this.availableSecrets = availableSecrets;
-        this.images = images;
-        this.logsBucket = logsBucket;
-        this.options = options;
-        this.queueTtl = queueTtl;
-        this.secrets = secrets;
-        this.source = source;
-        this.steps = steps;
-        this.substitutions = substitutions;
-        this.tags = tags;
-        this.timeout = timeout;
-    }
-
+    private TriggerBuild() {}
     /**
      * @return Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
      * Structure is documented below.
@@ -234,7 +207,7 @@ public final class TriggerBuild {
     public static Builder builder(TriggerBuild defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable TriggerBuildArtifacts artifacts;
         private @Nullable TriggerBuildAvailableSecrets availableSecrets;
@@ -248,11 +221,7 @@ public final class TriggerBuild {
         private @Nullable Map<String,String> substitutions;
         private @Nullable List<String> tags;
         private @Nullable String timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuild defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifacts = defaults.artifacts;
@@ -269,14 +238,17 @@ public final class TriggerBuild {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder artifacts(@Nullable TriggerBuildArtifacts artifacts) {
             this.artifacts = artifacts;
             return this;
         }
+        @CustomType.Setter
         public Builder availableSecrets(@Nullable TriggerBuildAvailableSecrets availableSecrets) {
             this.availableSecrets = availableSecrets;
             return this;
         }
+        @CustomType.Setter
         public Builder images(@Nullable List<String> images) {
             this.images = images;
             return this;
@@ -284,18 +256,22 @@ public final class TriggerBuild {
         public Builder images(String... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder logsBucket(@Nullable String logsBucket) {
             this.logsBucket = logsBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder options(@Nullable TriggerBuildOptions options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder queueTtl(@Nullable String queueTtl) {
             this.queueTtl = queueTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder secrets(@Nullable List<TriggerBuildSecret> secrets) {
             this.secrets = secrets;
             return this;
@@ -303,10 +279,12 @@ public final class TriggerBuild {
         public Builder secrets(TriggerBuildSecret... secrets) {
             return secrets(List.of(secrets));
         }
+        @CustomType.Setter
         public Builder source(@Nullable TriggerBuildSource source) {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
         public Builder steps(List<TriggerBuildStep> steps) {
             this.steps = Objects.requireNonNull(steps);
             return this;
@@ -314,10 +292,12 @@ public final class TriggerBuild {
         public Builder steps(TriggerBuildStep... steps) {
             return steps(List.of(steps));
         }
+        @CustomType.Setter
         public Builder substitutions(@Nullable Map<String,String> substitutions) {
             this.substitutions = substitutions;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -325,11 +305,26 @@ public final class TriggerBuild {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
             this.timeout = timeout;
             return this;
-        }        public TriggerBuild build() {
-            return new TriggerBuild(artifacts, availableSecrets, images, logsBucket, options, queueTtl, secrets, source, steps, substitutions, tags, timeout);
+        }
+        public TriggerBuild build() {
+            final var o = new TriggerBuild();
+            o.artifacts = artifacts;
+            o.availableSecrets = availableSecrets;
+            o.images = images;
+            o.logsBucket = logsBucket;
+            o.options = options;
+            o.queueTtl = queueTtl;
+            o.secrets = secrets;
+            o.source = source;
+            o.steps = steps;
+            o.substitutions = substitutions;
+            o.tags = tags;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

@@ -20,47 +20,34 @@ public final class InstanceNetwork {
      * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
      * 
      */
-    private final @Nullable String connectMode;
+    private @Nullable String connectMode;
     /**
      * @return -
      * A list of IPv4 or IPv6 addresses.
      * 
      */
-    private final @Nullable List<String> ipAddresses;
+    private @Nullable List<String> ipAddresses;
     /**
      * @return IP versions for which the instance has
      * IP addresses assigned.
      * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
      * 
      */
-    private final List<String> modes;
+    private List<String> modes;
     /**
      * @return The name of the GCE VPC network to which the
      * instance is connected.
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return A /29 CIDR block that identifies the range of IP
      * addresses reserved for this instance.
      * 
      */
-    private final @Nullable String reservedIpRange;
+    private @Nullable String reservedIpRange;
 
-    @CustomType.Constructor
-    private InstanceNetwork(
-        @CustomType.Parameter("connectMode") @Nullable String connectMode,
-        @CustomType.Parameter("ipAddresses") @Nullable List<String> ipAddresses,
-        @CustomType.Parameter("modes") List<String> modes,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("reservedIpRange") @Nullable String reservedIpRange) {
-        this.connectMode = connectMode;
-        this.ipAddresses = ipAddresses;
-        this.modes = modes;
-        this.network = network;
-        this.reservedIpRange = reservedIpRange;
-    }
-
+    private InstanceNetwork() {}
     /**
      * @return The network connect mode of the Filestore instance.
      * If not provided, the connect mode defaults to
@@ -113,18 +100,14 @@ public final class InstanceNetwork {
     public static Builder builder(InstanceNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectMode;
         private @Nullable List<String> ipAddresses;
         private List<String> modes;
         private String network;
         private @Nullable String reservedIpRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectMode = defaults.connectMode;
@@ -134,10 +117,12 @@ public final class InstanceNetwork {
     	      this.reservedIpRange = defaults.reservedIpRange;
         }
 
+        @CustomType.Setter
         public Builder connectMode(@Nullable String connectMode) {
             this.connectMode = connectMode;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddresses(@Nullable List<String> ipAddresses) {
             this.ipAddresses = ipAddresses;
             return this;
@@ -145,6 +130,7 @@ public final class InstanceNetwork {
         public Builder ipAddresses(String... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
         }
+        @CustomType.Setter
         public Builder modes(List<String> modes) {
             this.modes = Objects.requireNonNull(modes);
             return this;
@@ -152,15 +138,24 @@ public final class InstanceNetwork {
         public Builder modes(String... modes) {
             return modes(List.of(modes));
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder reservedIpRange(@Nullable String reservedIpRange) {
             this.reservedIpRange = reservedIpRange;
             return this;
-        }        public InstanceNetwork build() {
-            return new InstanceNetwork(connectMode, ipAddresses, modes, network, reservedIpRange);
+        }
+        public InstanceNetwork build() {
+            final var o = new InstanceNetwork();
+            o.connectMode = connectMode;
+            o.ipAddresses = ipAddresses;
+            o.modes = modes;
+            o.network = network;
+            o.reservedIpRange = reservedIpRange;
+            return o;
         }
     }
 }

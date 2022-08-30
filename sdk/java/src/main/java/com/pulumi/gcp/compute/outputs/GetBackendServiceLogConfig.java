@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceLogConfig {
-    private final Boolean enable;
-    private final Double sampleRate;
+    private Boolean enable;
+    private Double sampleRate;
 
-    @CustomType.Constructor
-    private GetBackendServiceLogConfig(
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("sampleRate") Double sampleRate) {
-        this.enable = enable;
-        this.sampleRate = sampleRate;
-    }
-
+    private GetBackendServiceLogConfig() {}
     public Boolean enable() {
         return this.enable;
     }
@@ -35,30 +28,32 @@ public final class GetBackendServiceLogConfig {
     public static Builder builder(GetBackendServiceLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enable;
         private Double sampleRate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.sampleRate = defaults.sampleRate;
         }
 
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder sampleRate(Double sampleRate) {
             this.sampleRate = Objects.requireNonNull(sampleRate);
             return this;
-        }        public GetBackendServiceLogConfig build() {
-            return new GetBackendServiceLogConfig(enable, sampleRate);
+        }
+        public GetBackendServiceLogConfig build() {
+            final var o = new GetBackendServiceLogConfig();
+            o.enable = enable;
+            o.sampleRate = sampleRate;
+            return o;
         }
     }
 }

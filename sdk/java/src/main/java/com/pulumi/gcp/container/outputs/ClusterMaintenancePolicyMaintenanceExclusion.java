@@ -12,27 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicyMaintenanceExclusion {
-    private final String endTime;
-    private final String exclusionName;
+    private String endTime;
+    private String exclusionName;
     /**
      * @return MaintenanceExclusionOptions provides maintenance exclusion related options.
      * 
      */
-    private final @Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions;
-    private final String startTime;
+    private @Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions;
+    private String startTime;
 
-    @CustomType.Constructor
-    private ClusterMaintenancePolicyMaintenanceExclusion(
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("exclusionName") String exclusionName,
-        @CustomType.Parameter("exclusionOptions") @Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.endTime = endTime;
-        this.exclusionName = exclusionName;
-        this.exclusionOptions = exclusionOptions;
-        this.startTime = startTime;
-    }
-
+    private ClusterMaintenancePolicyMaintenanceExclusion() {}
     public String endTime() {
         return this.endTime;
     }
@@ -57,17 +46,13 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
     public static Builder builder(ClusterMaintenancePolicyMaintenanceExclusion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endTime;
         private String exclusionName;
         private @Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMaintenancePolicyMaintenanceExclusion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
@@ -76,23 +61,33 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusionName(String exclusionName) {
             this.exclusionName = Objects.requireNonNull(exclusionName);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusionOptions(@Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions) {
             this.exclusionOptions = exclusionOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public ClusterMaintenancePolicyMaintenanceExclusion build() {
-            return new ClusterMaintenancePolicyMaintenanceExclusion(endTime, exclusionName, exclusionOptions, startTime);
+        }
+        public ClusterMaintenancePolicyMaintenanceExclusion build() {
+            final var o = new ClusterMaintenancePolicyMaintenanceExclusion();
+            o.endTime = endTime;
+            o.exclusionName = exclusionName;
+            o.exclusionOptions = exclusionOptions;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

@@ -15,40 +15,29 @@ public final class SnapshotSnapshotEncryptionKey {
      * @return The name of the encryption key that is stored in Google Cloud KMS.
      * 
      */
-    private final @Nullable String kmsKeySelfLink;
+    private @Nullable String kmsKeySelfLink;
     /**
      * @return The service account used for the encryption request for the given KMS key.
      * If absent, the Compute Engine Service Agent service account is used.
      * 
      */
-    private final @Nullable String kmsKeyServiceAccount;
+    private @Nullable String kmsKeyServiceAccount;
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final @Nullable String rawKey;
+    private @Nullable String rawKey;
     /**
      * @return -
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
-    private final @Nullable String sha256;
+    private @Nullable String sha256;
 
-    @CustomType.Constructor
-    private SnapshotSnapshotEncryptionKey(
-        @CustomType.Parameter("kmsKeySelfLink") @Nullable String kmsKeySelfLink,
-        @CustomType.Parameter("kmsKeyServiceAccount") @Nullable String kmsKeyServiceAccount,
-        @CustomType.Parameter("rawKey") @Nullable String rawKey,
-        @CustomType.Parameter("sha256") @Nullable String sha256) {
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.kmsKeyServiceAccount = kmsKeyServiceAccount;
-        this.rawKey = rawKey;
-        this.sha256 = sha256;
-    }
-
+    private SnapshotSnapshotEncryptionKey() {}
     /**
      * @return The name of the encryption key that is stored in Google Cloud KMS.
      * 
@@ -90,17 +79,13 @@ public final class SnapshotSnapshotEncryptionKey {
     public static Builder builder(SnapshotSnapshotEncryptionKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
         private @Nullable String rawKey;
         private @Nullable String sha256;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SnapshotSnapshotEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
@@ -109,23 +94,33 @@ public final class SnapshotSnapshotEncryptionKey {
     	      this.sha256 = defaults.sha256;
         }
 
+        @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder rawKey(@Nullable String rawKey) {
             this.rawKey = rawKey;
             return this;
         }
+        @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
             this.sha256 = sha256;
             return this;
-        }        public SnapshotSnapshotEncryptionKey build() {
-            return new SnapshotSnapshotEncryptionKey(kmsKeySelfLink, kmsKeyServiceAccount, rawKey, sha256);
+        }
+        public SnapshotSnapshotEncryptionKey build() {
+            final var o = new SnapshotSnapshotEncryptionKey();
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            o.rawKey = rawKey;
+            o.sha256 = sha256;
+            return o;
         }
     }
 }

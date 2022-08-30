@@ -14,66 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalForwardingRuleResult {
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String ipAddress;
-    private final String ipProtocol;
-    private final String ipVersion;
-    private final String labelFingerprint;
-    private final Map<String,String> labels;
-    private final String loadBalancingScheme;
-    private final List<GetGlobalForwardingRuleMetadataFilter> metadataFilters;
-    private final String name;
-    private final String network;
-    private final String portRange;
-    private final @Nullable String project;
-    private final String pscConnectionId;
-    private final String pscConnectionStatus;
-    private final String selfLink;
-    private final String target;
+    private String id;
+    private String ipAddress;
+    private String ipProtocol;
+    private String ipVersion;
+    private String labelFingerprint;
+    private Map<String,String> labels;
+    private String loadBalancingScheme;
+    private List<GetGlobalForwardingRuleMetadataFilter> metadataFilters;
+    private String name;
+    private String network;
+    private String portRange;
+    private @Nullable String project;
+    private String pscConnectionId;
+    private String pscConnectionStatus;
+    private String selfLink;
+    private String target;
 
-    @CustomType.Constructor
-    private GetGlobalForwardingRuleResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("ipProtocol") String ipProtocol,
-        @CustomType.Parameter("ipVersion") String ipVersion,
-        @CustomType.Parameter("labelFingerprint") String labelFingerprint,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("loadBalancingScheme") String loadBalancingScheme,
-        @CustomType.Parameter("metadataFilters") List<GetGlobalForwardingRuleMetadataFilter> metadataFilters,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("portRange") String portRange,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("pscConnectionId") String pscConnectionId,
-        @CustomType.Parameter("pscConnectionStatus") String pscConnectionStatus,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("target") String target) {
-        this.description = description;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.ipProtocol = ipProtocol;
-        this.ipVersion = ipVersion;
-        this.labelFingerprint = labelFingerprint;
-        this.labels = labels;
-        this.loadBalancingScheme = loadBalancingScheme;
-        this.metadataFilters = metadataFilters;
-        this.name = name;
-        this.network = network;
-        this.portRange = portRange;
-        this.project = project;
-        this.pscConnectionId = pscConnectionId;
-        this.pscConnectionStatus = pscConnectionStatus;
-        this.selfLink = selfLink;
-        this.target = target;
-    }
-
+    private GetGlobalForwardingRuleResult() {}
     public String description() {
         return this.description;
     }
@@ -137,7 +100,7 @@ public final class GetGlobalForwardingRuleResult {
     public static Builder builder(GetGlobalForwardingRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -156,11 +119,7 @@ public final class GetGlobalForwardingRuleResult {
         private String pscConnectionStatus;
         private String selfLink;
         private String target;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalForwardingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -182,38 +141,47 @@ public final class GetGlobalForwardingRuleResult {
     	      this.target = defaults.target;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
             this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancingScheme(String loadBalancingScheme) {
             this.loadBalancingScheme = Objects.requireNonNull(loadBalancingScheme);
             return this;
         }
+        @CustomType.Setter
         public Builder metadataFilters(List<GetGlobalForwardingRuleMetadataFilter> metadataFilters) {
             this.metadataFilters = Objects.requireNonNull(metadataFilters);
             return this;
@@ -221,39 +189,66 @@ public final class GetGlobalForwardingRuleResult {
         public Builder metadataFilters(GetGlobalForwardingRuleMetadataFilter... metadataFilters) {
             return metadataFilters(List.of(metadataFilters));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder pscConnectionId(String pscConnectionId) {
             this.pscConnectionId = Objects.requireNonNull(pscConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder pscConnectionStatus(String pscConnectionStatus) {
             this.pscConnectionStatus = Objects.requireNonNull(pscConnectionStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
-        }        public GetGlobalForwardingRuleResult build() {
-            return new GetGlobalForwardingRuleResult(description, id, ipAddress, ipProtocol, ipVersion, labelFingerprint, labels, loadBalancingScheme, metadataFilters, name, network, portRange, project, pscConnectionId, pscConnectionStatus, selfLink, target);
+        }
+        public GetGlobalForwardingRuleResult build() {
+            final var o = new GetGlobalForwardingRuleResult();
+            o.description = description;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.ipProtocol = ipProtocol;
+            o.ipVersion = ipVersion;
+            o.labelFingerprint = labelFingerprint;
+            o.labels = labels;
+            o.loadBalancingScheme = loadBalancingScheme;
+            o.metadataFilters = metadataFilters;
+            o.name = name;
+            o.network = network;
+            o.portRange = portRange;
+            o.project = project;
+            o.pscConnectionId = pscConnectionId;
+            o.pscConnectionStatus = pscConnectionStatus;
+            o.selfLink = selfLink;
+            o.target = target;
+            return o;
         }
     }
 }

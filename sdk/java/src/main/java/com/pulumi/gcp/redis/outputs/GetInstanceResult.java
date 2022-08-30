@@ -19,114 +19,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
-    private final String alternativeLocationId;
-    private final Boolean authEnabled;
-    private final String authString;
-    private final String authorizedNetwork;
-    private final String connectMode;
-    private final String createTime;
-    private final String currentLocationId;
-    private final String customerManagedKey;
-    private final String displayName;
-    private final String host;
+    private String alternativeLocationId;
+    private Boolean authEnabled;
+    private String authString;
+    private String authorizedNetwork;
+    private String connectMode;
+    private String createTime;
+    private String currentLocationId;
+    private String customerManagedKey;
+    private String displayName;
+    private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Map<String,String> labels;
-    private final String locationId;
-    private final List<GetInstanceMaintenancePolicy> maintenancePolicies;
-    private final List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
-    private final Integer memorySizeGb;
-    private final String name;
-    private final List<GetInstanceNode> nodes;
-    private final String persistenceIamIdentity;
-    private final Integer port;
-    private final @Nullable String project;
-    private final String readEndpoint;
-    private final Integer readEndpointPort;
-    private final String readReplicasMode;
-    private final Map<String,String> redisConfigs;
-    private final String redisVersion;
-    private final @Nullable String region;
-    private final Integer replicaCount;
-    private final String reservedIpRange;
-    private final String secondaryIpRange;
-    private final List<GetInstanceServerCaCert> serverCaCerts;
-    private final String tier;
-    private final String transitEncryptionMode;
+    private String id;
+    private Map<String,String> labels;
+    private String locationId;
+    private List<GetInstanceMaintenancePolicy> maintenancePolicies;
+    private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+    private Integer memorySizeGb;
+    private String name;
+    private List<GetInstanceNode> nodes;
+    private String persistenceIamIdentity;
+    private Integer port;
+    private @Nullable String project;
+    private String readEndpoint;
+    private Integer readEndpointPort;
+    private String readReplicasMode;
+    private Map<String,String> redisConfigs;
+    private String redisVersion;
+    private @Nullable String region;
+    private Integer replicaCount;
+    private String reservedIpRange;
+    private String secondaryIpRange;
+    private List<GetInstanceServerCaCert> serverCaCerts;
+    private String tier;
+    private String transitEncryptionMode;
 
-    @CustomType.Constructor
-    private GetInstanceResult(
-        @CustomType.Parameter("alternativeLocationId") String alternativeLocationId,
-        @CustomType.Parameter("authEnabled") Boolean authEnabled,
-        @CustomType.Parameter("authString") String authString,
-        @CustomType.Parameter("authorizedNetwork") String authorizedNetwork,
-        @CustomType.Parameter("connectMode") String connectMode,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("currentLocationId") String currentLocationId,
-        @CustomType.Parameter("customerManagedKey") String customerManagedKey,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("locationId") String locationId,
-        @CustomType.Parameter("maintenancePolicies") List<GetInstanceMaintenancePolicy> maintenancePolicies,
-        @CustomType.Parameter("maintenanceSchedules") List<GetInstanceMaintenanceSchedule> maintenanceSchedules,
-        @CustomType.Parameter("memorySizeGb") Integer memorySizeGb,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodes") List<GetInstanceNode> nodes,
-        @CustomType.Parameter("persistenceIamIdentity") String persistenceIamIdentity,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("readEndpoint") String readEndpoint,
-        @CustomType.Parameter("readEndpointPort") Integer readEndpointPort,
-        @CustomType.Parameter("readReplicasMode") String readReplicasMode,
-        @CustomType.Parameter("redisConfigs") Map<String,String> redisConfigs,
-        @CustomType.Parameter("redisVersion") String redisVersion,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("replicaCount") Integer replicaCount,
-        @CustomType.Parameter("reservedIpRange") String reservedIpRange,
-        @CustomType.Parameter("secondaryIpRange") String secondaryIpRange,
-        @CustomType.Parameter("serverCaCerts") List<GetInstanceServerCaCert> serverCaCerts,
-        @CustomType.Parameter("tier") String tier,
-        @CustomType.Parameter("transitEncryptionMode") String transitEncryptionMode) {
-        this.alternativeLocationId = alternativeLocationId;
-        this.authEnabled = authEnabled;
-        this.authString = authString;
-        this.authorizedNetwork = authorizedNetwork;
-        this.connectMode = connectMode;
-        this.createTime = createTime;
-        this.currentLocationId = currentLocationId;
-        this.customerManagedKey = customerManagedKey;
-        this.displayName = displayName;
-        this.host = host;
-        this.id = id;
-        this.labels = labels;
-        this.locationId = locationId;
-        this.maintenancePolicies = maintenancePolicies;
-        this.maintenanceSchedules = maintenanceSchedules;
-        this.memorySizeGb = memorySizeGb;
-        this.name = name;
-        this.nodes = nodes;
-        this.persistenceIamIdentity = persistenceIamIdentity;
-        this.port = port;
-        this.project = project;
-        this.readEndpoint = readEndpoint;
-        this.readEndpointPort = readEndpointPort;
-        this.readReplicasMode = readReplicasMode;
-        this.redisConfigs = redisConfigs;
-        this.redisVersion = redisVersion;
-        this.region = region;
-        this.replicaCount = replicaCount;
-        this.reservedIpRange = reservedIpRange;
-        this.secondaryIpRange = secondaryIpRange;
-        this.serverCaCerts = serverCaCerts;
-        this.tier = tier;
-        this.transitEncryptionMode = transitEncryptionMode;
-    }
-
+    private GetInstanceResult() {}
     public String alternativeLocationId() {
         return this.alternativeLocationId;
     }
@@ -238,7 +169,7 @@ public final class GetInstanceResult {
     public static Builder builder(GetInstanceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alternativeLocationId;
         private Boolean authEnabled;
@@ -273,11 +204,7 @@ public final class GetInstanceResult {
         private List<GetInstanceServerCaCert> serverCaCerts;
         private String tier;
         private String transitEncryptionMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alternativeLocationId = defaults.alternativeLocationId;
@@ -315,58 +242,72 @@ public final class GetInstanceResult {
     	      this.transitEncryptionMode = defaults.transitEncryptionMode;
         }
 
+        @CustomType.Setter
         public Builder alternativeLocationId(String alternativeLocationId) {
             this.alternativeLocationId = Objects.requireNonNull(alternativeLocationId);
             return this;
         }
+        @CustomType.Setter
         public Builder authEnabled(Boolean authEnabled) {
             this.authEnabled = Objects.requireNonNull(authEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder authString(String authString) {
             this.authString = Objects.requireNonNull(authString);
             return this;
         }
+        @CustomType.Setter
         public Builder authorizedNetwork(String authorizedNetwork) {
             this.authorizedNetwork = Objects.requireNonNull(authorizedNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder connectMode(String connectMode) {
             this.connectMode = Objects.requireNonNull(connectMode);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder currentLocationId(String currentLocationId) {
             this.currentLocationId = Objects.requireNonNull(currentLocationId);
             return this;
         }
+        @CustomType.Setter
         public Builder customerManagedKey(String customerManagedKey) {
             this.customerManagedKey = Objects.requireNonNull(customerManagedKey);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder locationId(String locationId) {
             this.locationId = Objects.requireNonNull(locationId);
             return this;
         }
+        @CustomType.Setter
         public Builder maintenancePolicies(List<GetInstanceMaintenancePolicy> maintenancePolicies) {
             this.maintenancePolicies = Objects.requireNonNull(maintenancePolicies);
             return this;
@@ -374,6 +315,7 @@ public final class GetInstanceResult {
         public Builder maintenancePolicies(GetInstanceMaintenancePolicy... maintenancePolicies) {
             return maintenancePolicies(List.of(maintenancePolicies));
         }
+        @CustomType.Setter
         public Builder maintenanceSchedules(List<GetInstanceMaintenanceSchedule> maintenanceSchedules) {
             this.maintenanceSchedules = Objects.requireNonNull(maintenanceSchedules);
             return this;
@@ -381,14 +323,17 @@ public final class GetInstanceResult {
         public Builder maintenanceSchedules(GetInstanceMaintenanceSchedule... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
         }
+        @CustomType.Setter
         public Builder memorySizeGb(Integer memorySizeGb) {
             this.memorySizeGb = Objects.requireNonNull(memorySizeGb);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(List<GetInstanceNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -396,54 +341,67 @@ public final class GetInstanceResult {
         public Builder nodes(GetInstanceNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder persistenceIamIdentity(String persistenceIamIdentity) {
             this.persistenceIamIdentity = Objects.requireNonNull(persistenceIamIdentity);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder readEndpoint(String readEndpoint) {
             this.readEndpoint = Objects.requireNonNull(readEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder readEndpointPort(Integer readEndpointPort) {
             this.readEndpointPort = Objects.requireNonNull(readEndpointPort);
             return this;
         }
+        @CustomType.Setter
         public Builder readReplicasMode(String readReplicasMode) {
             this.readReplicasMode = Objects.requireNonNull(readReplicasMode);
             return this;
         }
+        @CustomType.Setter
         public Builder redisConfigs(Map<String,String> redisConfigs) {
             this.redisConfigs = Objects.requireNonNull(redisConfigs);
             return this;
         }
+        @CustomType.Setter
         public Builder redisVersion(String redisVersion) {
             this.redisVersion = Objects.requireNonNull(redisVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder replicaCount(Integer replicaCount) {
             this.replicaCount = Objects.requireNonNull(replicaCount);
             return this;
         }
+        @CustomType.Setter
         public Builder reservedIpRange(String reservedIpRange) {
             this.reservedIpRange = Objects.requireNonNull(reservedIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder secondaryIpRange(String secondaryIpRange) {
             this.secondaryIpRange = Objects.requireNonNull(secondaryIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder serverCaCerts(List<GetInstanceServerCaCert> serverCaCerts) {
             this.serverCaCerts = Objects.requireNonNull(serverCaCerts);
             return this;
@@ -451,15 +409,52 @@ public final class GetInstanceResult {
         public Builder serverCaCerts(GetInstanceServerCaCert... serverCaCerts) {
             return serverCaCerts(List.of(serverCaCerts));
         }
+        @CustomType.Setter
         public Builder tier(String tier) {
             this.tier = Objects.requireNonNull(tier);
             return this;
         }
+        @CustomType.Setter
         public Builder transitEncryptionMode(String transitEncryptionMode) {
             this.transitEncryptionMode = Objects.requireNonNull(transitEncryptionMode);
             return this;
-        }        public GetInstanceResult build() {
-            return new GetInstanceResult(alternativeLocationId, authEnabled, authString, authorizedNetwork, connectMode, createTime, currentLocationId, customerManagedKey, displayName, host, id, labels, locationId, maintenancePolicies, maintenanceSchedules, memorySizeGb, name, nodes, persistenceIamIdentity, port, project, readEndpoint, readEndpointPort, readReplicasMode, redisConfigs, redisVersion, region, replicaCount, reservedIpRange, secondaryIpRange, serverCaCerts, tier, transitEncryptionMode);
+        }
+        public GetInstanceResult build() {
+            final var o = new GetInstanceResult();
+            o.alternativeLocationId = alternativeLocationId;
+            o.authEnabled = authEnabled;
+            o.authString = authString;
+            o.authorizedNetwork = authorizedNetwork;
+            o.connectMode = connectMode;
+            o.createTime = createTime;
+            o.currentLocationId = currentLocationId;
+            o.customerManagedKey = customerManagedKey;
+            o.displayName = displayName;
+            o.host = host;
+            o.id = id;
+            o.labels = labels;
+            o.locationId = locationId;
+            o.maintenancePolicies = maintenancePolicies;
+            o.maintenanceSchedules = maintenanceSchedules;
+            o.memorySizeGb = memorySizeGb;
+            o.name = name;
+            o.nodes = nodes;
+            o.persistenceIamIdentity = persistenceIamIdentity;
+            o.port = port;
+            o.project = project;
+            o.readEndpoint = readEndpoint;
+            o.readEndpointPort = readEndpointPort;
+            o.readReplicasMode = readReplicasMode;
+            o.redisConfigs = redisConfigs;
+            o.redisVersion = redisVersion;
+            o.region = region;
+            o.replicaCount = replicaCount;
+            o.reservedIpRange = reservedIpRange;
+            o.secondaryIpRange = secondaryIpRange;
+            o.serverCaCerts = serverCaCerts;
+            o.tier = tier;
+            o.transitEncryptionMode = transitEncryptionMode;
+            return o;
         }
     }
 }

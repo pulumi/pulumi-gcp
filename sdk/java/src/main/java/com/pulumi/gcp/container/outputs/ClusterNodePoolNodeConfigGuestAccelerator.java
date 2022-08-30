@@ -16,28 +16,19 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
      * @return The number of the guest accelerator cards exposed to this instance.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
      * 
      */
-    private final @Nullable String gpuPartitionSize;
+    private @Nullable String gpuPartitionSize;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ClusterNodePoolNodeConfigGuestAccelerator(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("gpuPartitionSize") @Nullable String gpuPartitionSize,
-        @CustomType.Parameter("type") String type) {
-        this.count = count;
-        this.gpuPartitionSize = gpuPartitionSize;
-        this.type = type;
-    }
-
+    private ClusterNodePoolNodeConfigGuestAccelerator() {}
     /**
      * @return The number of the guest accelerator cards exposed to this instance.
      * 
@@ -67,16 +58,12 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
     public static Builder builder(ClusterNodePoolNodeConfigGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private @Nullable String gpuPartitionSize;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -84,19 +71,27 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder gpuPartitionSize(@Nullable String gpuPartitionSize) {
             this.gpuPartitionSize = gpuPartitionSize;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ClusterNodePoolNodeConfigGuestAccelerator build() {
-            return new ClusterNodePoolNodeConfigGuestAccelerator(count, gpuPartitionSize, type);
+        }
+        public ClusterNodePoolNodeConfigGuestAccelerator build() {
+            final var o = new ClusterNodePoolNodeConfigGuestAccelerator();
+            o.count = count;
+            o.gpuPartitionSize = gpuPartitionSize;
+            o.type = type;
+            return o;
         }
     }
 }

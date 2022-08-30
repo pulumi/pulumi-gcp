@@ -13,13 +13,9 @@ public final class TransferJobTransferSpecHttpDataSource {
      * @return The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
      * 
      */
-    private final String listUrl;
+    private String listUrl;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecHttpDataSource(@CustomType.Parameter("listUrl") String listUrl) {
-        this.listUrl = listUrl;
-    }
-
+    private TransferJobTransferSpecHttpDataSource() {}
     /**
      * @return The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
      * 
@@ -35,24 +31,24 @@ public final class TransferJobTransferSpecHttpDataSource {
     public static Builder builder(TransferJobTransferSpecHttpDataSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String listUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecHttpDataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.listUrl = defaults.listUrl;
         }
 
+        @CustomType.Setter
         public Builder listUrl(String listUrl) {
             this.listUrl = Objects.requireNonNull(listUrl);
             return this;
-        }        public TransferJobTransferSpecHttpDataSource build() {
-            return new TransferJobTransferSpecHttpDataSource(listUrl);
+        }
+        public TransferJobTransferSpecHttpDataSource build() {
+            final var o = new TransferJobTransferSpecHttpDataSource();
+            o.listUrl = listUrl;
+            return o;
         }
     }
 }

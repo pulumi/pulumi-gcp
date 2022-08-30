@@ -15,13 +15,9 @@ public final class SecretReplicationUserManaged {
      * Structure is documented below.
      * 
      */
-    private final List<SecretReplicationUserManagedReplica> replicas;
+    private List<SecretReplicationUserManagedReplica> replicas;
 
-    @CustomType.Constructor
-    private SecretReplicationUserManaged(@CustomType.Parameter("replicas") List<SecretReplicationUserManagedReplica> replicas) {
-        this.replicas = replicas;
-    }
-
+    private SecretReplicationUserManaged() {}
     /**
      * @return The list of Replicas for this Secret. Cannot be empty.
      * Structure is documented below.
@@ -38,27 +34,27 @@ public final class SecretReplicationUserManaged {
     public static Builder builder(SecretReplicationUserManaged defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<SecretReplicationUserManagedReplica> replicas;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecretReplicationUserManaged defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.replicas = defaults.replicas;
         }
 
+        @CustomType.Setter
         public Builder replicas(List<SecretReplicationUserManagedReplica> replicas) {
             this.replicas = Objects.requireNonNull(replicas);
             return this;
         }
         public Builder replicas(SecretReplicationUserManagedReplica... replicas) {
             return replicas(List.of(replicas));
-        }        public SecretReplicationUserManaged build() {
-            return new SecretReplicationUserManaged(replicas);
+        }
+        public SecretReplicationUserManaged build() {
+            final var o = new SecretReplicationUserManaged();
+            o.replicas = replicas;
+            return o;
         }
     }
 }

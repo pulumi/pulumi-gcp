@@ -24,25 +24,25 @@ public final class JobCopy {
      * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
      * 
      */
-    private final @Nullable String createDisposition;
+    private @Nullable String createDisposition;
     /**
      * @return Custom encryption configuration (e.g., Cloud KMS keys)
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobCopyDestinationEncryptionConfiguration destinationEncryptionConfiguration;
+    private @Nullable JobCopyDestinationEncryptionConfiguration destinationEncryptionConfiguration;
     /**
      * @return The destination table.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobCopyDestinationTable destinationTable;
+    private @Nullable JobCopyDestinationTable destinationTable;
     /**
      * @return Source tables to copy.
      * Structure is documented below.
      * 
      */
-    private final List<JobCopySourceTable> sourceTables;
+    private List<JobCopySourceTable> sourceTables;
     /**
      * @return Specifies the action that occurs if the destination table already exists. The following values are supported:
      * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -54,22 +54,9 @@ public final class JobCopy {
      * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
      * 
      */
-    private final @Nullable String writeDisposition;
+    private @Nullable String writeDisposition;
 
-    @CustomType.Constructor
-    private JobCopy(
-        @CustomType.Parameter("createDisposition") @Nullable String createDisposition,
-        @CustomType.Parameter("destinationEncryptionConfiguration") @Nullable JobCopyDestinationEncryptionConfiguration destinationEncryptionConfiguration,
-        @CustomType.Parameter("destinationTable") @Nullable JobCopyDestinationTable destinationTable,
-        @CustomType.Parameter("sourceTables") List<JobCopySourceTable> sourceTables,
-        @CustomType.Parameter("writeDisposition") @Nullable String writeDisposition) {
-        this.createDisposition = createDisposition;
-        this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
-        this.destinationTable = destinationTable;
-        this.sourceTables = sourceTables;
-        this.writeDisposition = writeDisposition;
-    }
-
+    private JobCopy() {}
     /**
      * @return Specifies whether the job is allowed to create new tables. The following values are supported:
      * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -128,18 +115,14 @@ public final class JobCopy {
     public static Builder builder(JobCopy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createDisposition;
         private @Nullable JobCopyDestinationEncryptionConfiguration destinationEncryptionConfiguration;
         private @Nullable JobCopyDestinationTable destinationTable;
         private List<JobCopySourceTable> sourceTables;
         private @Nullable String writeDisposition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobCopy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createDisposition = defaults.createDisposition;
@@ -149,18 +132,22 @@ public final class JobCopy {
     	      this.writeDisposition = defaults.writeDisposition;
         }
 
+        @CustomType.Setter
         public Builder createDisposition(@Nullable String createDisposition) {
             this.createDisposition = createDisposition;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationEncryptionConfiguration(@Nullable JobCopyDestinationEncryptionConfiguration destinationEncryptionConfiguration) {
             this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationTable(@Nullable JobCopyDestinationTable destinationTable) {
             this.destinationTable = destinationTable;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceTables(List<JobCopySourceTable> sourceTables) {
             this.sourceTables = Objects.requireNonNull(sourceTables);
             return this;
@@ -168,11 +155,19 @@ public final class JobCopy {
         public Builder sourceTables(JobCopySourceTable... sourceTables) {
             return sourceTables(List.of(sourceTables));
         }
+        @CustomType.Setter
         public Builder writeDisposition(@Nullable String writeDisposition) {
             this.writeDisposition = writeDisposition;
             return this;
-        }        public JobCopy build() {
-            return new JobCopy(createDisposition, destinationEncryptionConfiguration, destinationTable, sourceTables, writeDisposition);
+        }
+        public JobCopy build() {
+            final var o = new JobCopy();
+            o.createDisposition = createDisposition;
+            o.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
+            o.destinationTable = destinationTable;
+            o.sourceTables = sourceTables;
+            o.writeDisposition = writeDisposition;
+            return o;
         }
     }
 }

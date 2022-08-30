@@ -15,21 +15,14 @@ public final class RecordSetRoutingPolicyWrr {
      * @return Same as `rrdatas` above.
      * 
      */
-    private final List<String> rrdatas;
+    private List<String> rrdatas;
     /**
      * @return The ratio of traffic routed to the target.
      * 
      */
-    private final Double weight;
+    private Double weight;
 
-    @CustomType.Constructor
-    private RecordSetRoutingPolicyWrr(
-        @CustomType.Parameter("rrdatas") List<String> rrdatas,
-        @CustomType.Parameter("weight") Double weight) {
-        this.rrdatas = rrdatas;
-        this.weight = weight;
-    }
-
+    private RecordSetRoutingPolicyWrr() {}
     /**
      * @return Same as `rrdatas` above.
      * 
@@ -52,21 +45,18 @@ public final class RecordSetRoutingPolicyWrr {
     public static Builder builder(RecordSetRoutingPolicyWrr defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> rrdatas;
         private Double weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RecordSetRoutingPolicyWrr defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rrdatas = defaults.rrdatas;
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder rrdatas(List<String> rrdatas) {
             this.rrdatas = Objects.requireNonNull(rrdatas);
             return this;
@@ -74,11 +64,16 @@ public final class RecordSetRoutingPolicyWrr {
         public Builder rrdatas(String... rrdatas) {
             return rrdatas(List.of(rrdatas));
         }
+        @CustomType.Setter
         public Builder weight(Double weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public RecordSetRoutingPolicyWrr build() {
-            return new RecordSetRoutingPolicyWrr(rrdatas, weight);
+        }
+        public RecordSetRoutingPolicyWrr build() {
+            final var o = new RecordSetRoutingPolicyWrr();
+            o.rrdatas = rrdatas;
+            o.weight = weight;
+            return o;
         }
     }
 }

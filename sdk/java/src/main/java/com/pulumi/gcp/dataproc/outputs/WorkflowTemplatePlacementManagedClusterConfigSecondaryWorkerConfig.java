@@ -21,80 +21,57 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      * @return Optional. The Compute Engine accelerator configuration for these instances.
      * 
      */
-    private final @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> accelerators;
+    private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> accelerators;
     /**
      * @return Optional. Disk option config settings.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig diskConfig;
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig diskConfig;
     /**
      * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return -
      * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
      * 
      */
-    private final @Nullable List<String> instanceNames;
+    private @Nullable List<String> instanceNames;
     /**
      * @return -
      * Output only. Specifies that this instance group contains preemptible instances.
      * 
      */
-    private final @Nullable Boolean isPreemptible;
+    private @Nullable Boolean isPreemptible;
     /**
      * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
      * 
      */
-    private final @Nullable String machineType;
+    private @Nullable String machineType;
     /**
      * @return -
      * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
      * 
      */
-    private final @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs;
+    private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs;
     /**
      * @return Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
      * 
      */
-    private final @Nullable String minCpuPlatform;
+    private @Nullable String minCpuPlatform;
     /**
      * @return Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
      * 
      */
-    private final @Nullable Integer numInstances;
+    private @Nullable Integer numInstances;
     /**
      * @return Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
      * 
      */
-    private final @Nullable String preemptibility;
+    private @Nullable String preemptibility;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(
-        @CustomType.Parameter("accelerators") @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> accelerators,
-        @CustomType.Parameter("diskConfig") @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig diskConfig,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("instanceNames") @Nullable List<String> instanceNames,
-        @CustomType.Parameter("isPreemptible") @Nullable Boolean isPreemptible,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("managedGroupConfigs") @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs,
-        @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform,
-        @CustomType.Parameter("numInstances") @Nullable Integer numInstances,
-        @CustomType.Parameter("preemptibility") @Nullable String preemptibility) {
-        this.accelerators = accelerators;
-        this.diskConfig = diskConfig;
-        this.image = image;
-        this.instanceNames = instanceNames;
-        this.isPreemptible = isPreemptible;
-        this.machineType = machineType;
-        this.managedGroupConfigs = managedGroupConfigs;
-        this.minCpuPlatform = minCpuPlatform;
-        this.numInstances = numInstances;
-        this.preemptibility = preemptibility;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig() {}
     /**
      * @return Optional. The Compute Engine accelerator configuration for these instances.
      * 
@@ -176,7 +153,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> accelerators;
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig diskConfig;
@@ -188,11 +165,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         private @Nullable String minCpuPlatform;
         private @Nullable Integer numInstances;
         private @Nullable String preemptibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerators = defaults.accelerators;
@@ -207,6 +180,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     	      this.preemptibility = defaults.preemptibility;
         }
 
+        @CustomType.Setter
         public Builder accelerators(@Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> accelerators) {
             this.accelerators = accelerators;
             return this;
@@ -214,14 +188,17 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         public Builder accelerators(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator... accelerators) {
             return accelerators(List.of(accelerators));
         }
+        @CustomType.Setter
         public Builder diskConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig diskConfig) {
             this.diskConfig = diskConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceNames(@Nullable List<String> instanceNames) {
             this.instanceNames = instanceNames;
             return this;
@@ -229,14 +206,17 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         public Builder instanceNames(String... instanceNames) {
             return instanceNames(List.of(instanceNames));
         }
+        @CustomType.Setter
         public Builder isPreemptible(@Nullable Boolean isPreemptible) {
             this.isPreemptible = isPreemptible;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder managedGroupConfigs(@Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs) {
             this.managedGroupConfigs = managedGroupConfigs;
             return this;
@@ -244,19 +224,34 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         public Builder managedGroupConfigs(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig... managedGroupConfigs) {
             return managedGroupConfigs(List.of(managedGroupConfigs));
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
+        @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
             this.numInstances = numInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder preemptibility(@Nullable String preemptibility) {
             this.preemptibility = preemptibility;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(accelerators, diskConfig, image, instanceNames, isPreemptible, machineType, managedGroupConfigs, minCpuPlatform, numInstances, preemptibility);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig();
+            o.accelerators = accelerators;
+            o.diskConfig = diskConfig;
+            o.image = image;
+            o.instanceNames = instanceNames;
+            o.isPreemptible = isPreemptible;
+            o.machineType = machineType;
+            o.managedGroupConfigs = managedGroupConfigs;
+            o.minCpuPlatform = minCpuPlatform;
+            o.numInstances = numInstances;
+            o.preemptibility = preemptibility;
+            return o;
         }
     }
 }

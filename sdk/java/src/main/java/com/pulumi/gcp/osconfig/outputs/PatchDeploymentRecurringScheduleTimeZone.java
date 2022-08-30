@@ -15,21 +15,14 @@ public final class PatchDeploymentRecurringScheduleTimeZone {
      * @return IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private PatchDeploymentRecurringScheduleTimeZone(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.id = id;
-        this.version = version;
-    }
-
+    private PatchDeploymentRecurringScheduleTimeZone() {}
     /**
      * @return IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
      * 
@@ -52,30 +45,32 @@ public final class PatchDeploymentRecurringScheduleTimeZone {
     public static Builder builder(PatchDeploymentRecurringScheduleTimeZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentRecurringScheduleTimeZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public PatchDeploymentRecurringScheduleTimeZone build() {
-            return new PatchDeploymentRecurringScheduleTimeZone(id, version);
+        }
+        public PatchDeploymentRecurringScheduleTimeZone build() {
+            final var o = new PatchDeploymentRecurringScheduleTimeZone();
+            o.id = id;
+            o.version = version;
+            return o;
         }
     }
 }

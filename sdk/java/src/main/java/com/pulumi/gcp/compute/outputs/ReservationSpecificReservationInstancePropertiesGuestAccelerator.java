@@ -15,7 +15,7 @@ public final class ReservationSpecificReservationInstancePropertiesGuestAccelera
      * this instance.
      * 
      */
-    private final Integer acceleratorCount;
+    private Integer acceleratorCount;
     /**
      * @return The full or partial URL of the accelerator type to
      * attach to this instance. For example:
@@ -23,16 +23,9 @@ public final class ReservationSpecificReservationInstancePropertiesGuestAccelera
      * If you are creating an instance template, specify only the accelerator name.
      * 
      */
-    private final String acceleratorType;
+    private String acceleratorType;
 
-    @CustomType.Constructor
-    private ReservationSpecificReservationInstancePropertiesGuestAccelerator(
-        @CustomType.Parameter("acceleratorCount") Integer acceleratorCount,
-        @CustomType.Parameter("acceleratorType") String acceleratorType) {
-        this.acceleratorCount = acceleratorCount;
-        this.acceleratorType = acceleratorType;
-    }
-
+    private ReservationSpecificReservationInstancePropertiesGuestAccelerator() {}
     /**
      * @return The number of the guest accelerator cards exposed to
      * this instance.
@@ -59,30 +52,32 @@ public final class ReservationSpecificReservationInstancePropertiesGuestAccelera
     public static Builder builder(ReservationSpecificReservationInstancePropertiesGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer acceleratorCount;
         private String acceleratorType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservationSpecificReservationInstancePropertiesGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorCount = defaults.acceleratorCount;
     	      this.acceleratorType = defaults.acceleratorType;
         }
 
+        @CustomType.Setter
         public Builder acceleratorCount(Integer acceleratorCount) {
             this.acceleratorCount = Objects.requireNonNull(acceleratorCount);
             return this;
         }
+        @CustomType.Setter
         public Builder acceleratorType(String acceleratorType) {
             this.acceleratorType = Objects.requireNonNull(acceleratorType);
             return this;
-        }        public ReservationSpecificReservationInstancePropertiesGuestAccelerator build() {
-            return new ReservationSpecificReservationInstancePropertiesGuestAccelerator(acceleratorCount, acceleratorType);
+        }
+        public ReservationSpecificReservationInstancePropertiesGuestAccelerator build() {
+            final var o = new ReservationSpecificReservationInstancePropertiesGuestAccelerator();
+            o.acceleratorCount = acceleratorCount;
+            o.acceleratorType = acceleratorType;
+            return o;
         }
     }
 }

@@ -17,29 +17,20 @@ public final class EdgeCacheServiceRoutingPathMatcher {
      * @return A human-readable description of the resource.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
      * Structure is documented below.
      * 
      */
-    private final List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules;
+    private List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcher(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("routeRules") List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules) {
-        this.description = description;
-        this.name = name;
-        this.routeRules = routeRules;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcher() {}
     /**
      * @return A human-readable description of the resource.
      * 
@@ -70,16 +61,12 @@ public final class EdgeCacheServiceRoutingPathMatcher {
     public static Builder builder(EdgeCacheServiceRoutingPathMatcher defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String name;
         private List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcher defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -87,22 +74,30 @@ public final class EdgeCacheServiceRoutingPathMatcher {
     	      this.routeRules = defaults.routeRules;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder routeRules(List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules) {
             this.routeRules = Objects.requireNonNull(routeRules);
             return this;
         }
         public Builder routeRules(EdgeCacheServiceRoutingPathMatcherRouteRule... routeRules) {
             return routeRules(List.of(routeRules));
-        }        public EdgeCacheServiceRoutingPathMatcher build() {
-            return new EdgeCacheServiceRoutingPathMatcher(description, name, routeRules);
+        }
+        public EdgeCacheServiceRoutingPathMatcher build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcher();
+            o.description = description;
+            o.name = name;
+            o.routeRules = routeRules;
+            return o;
         }
     }
 }

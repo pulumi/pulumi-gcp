@@ -15,13 +15,9 @@ public final class CxPageEntryFulfillmentMessage {
      * @return A collection of text responses.
      * 
      */
-    private final @Nullable CxPageEntryFulfillmentMessageText text;
+    private @Nullable CxPageEntryFulfillmentMessageText text;
 
-    @CustomType.Constructor
-    private CxPageEntryFulfillmentMessage(@CustomType.Parameter("text") @Nullable CxPageEntryFulfillmentMessageText text) {
-        this.text = text;
-    }
-
+    private CxPageEntryFulfillmentMessage() {}
     /**
      * @return A collection of text responses.
      * 
@@ -37,24 +33,24 @@ public final class CxPageEntryFulfillmentMessage {
     public static Builder builder(CxPageEntryFulfillmentMessage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CxPageEntryFulfillmentMessageText text;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageEntryFulfillmentMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.text = defaults.text;
         }
 
+        @CustomType.Setter
         public Builder text(@Nullable CxPageEntryFulfillmentMessageText text) {
             this.text = text;
             return this;
-        }        public CxPageEntryFulfillmentMessage build() {
-            return new CxPageEntryFulfillmentMessage(text);
+        }
+        public CxPageEntryFulfillmentMessage build() {
+            final var o = new CxPageEntryFulfillmentMessage();
+            o.text = text;
+            return o;
         }
     }
 }

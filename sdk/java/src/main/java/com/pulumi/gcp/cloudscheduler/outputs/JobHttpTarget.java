@@ -21,54 +21,39 @@ public final class JobHttpTarget {
      * A base64-encoded string.
      * 
      */
-    private final @Nullable String body;
+    private @Nullable String body;
     /**
      * @return This map contains the header field names and values.
      * Repeated headers are not supported, but a header value can contain commas.
      * 
      */
-    private final @Nullable Map<String,String> headers;
+    private @Nullable Map<String,String> headers;
     /**
      * @return Which HTTP method to use for the request.
      * 
      */
-    private final @Nullable String httpMethod;
+    private @Nullable String httpMethod;
     /**
      * @return Contains information needed for generating an OAuth token.
      * This type of authorization should be used when sending requests to a GCP endpoint.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobHttpTargetOauthToken oauthToken;
+    private @Nullable JobHttpTargetOauthToken oauthToken;
     /**
      * @return Contains information needed for generating an OpenID Connect token.
      * This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobHttpTargetOidcToken oidcToken;
+    private @Nullable JobHttpTargetOidcToken oidcToken;
     /**
      * @return The full URI path that the request will be sent to.
      * 
      */
-    private final String uri;
+    private String uri;
 
-    @CustomType.Constructor
-    private JobHttpTarget(
-        @CustomType.Parameter("body") @Nullable String body,
-        @CustomType.Parameter("headers") @Nullable Map<String,String> headers,
-        @CustomType.Parameter("httpMethod") @Nullable String httpMethod,
-        @CustomType.Parameter("oauthToken") @Nullable JobHttpTargetOauthToken oauthToken,
-        @CustomType.Parameter("oidcToken") @Nullable JobHttpTargetOidcToken oidcToken,
-        @CustomType.Parameter("uri") String uri) {
-        this.body = body;
-        this.headers = headers;
-        this.httpMethod = httpMethod;
-        this.oauthToken = oauthToken;
-        this.oidcToken = oidcToken;
-        this.uri = uri;
-    }
-
+    private JobHttpTarget() {}
     /**
      * @return HTTP request body.
      * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
@@ -127,7 +112,7 @@ public final class JobHttpTarget {
     public static Builder builder(JobHttpTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String body;
         private @Nullable Map<String,String> headers;
@@ -135,11 +120,7 @@ public final class JobHttpTarget {
         private @Nullable JobHttpTargetOauthToken oauthToken;
         private @Nullable JobHttpTargetOidcToken oidcToken;
         private String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobHttpTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.body = defaults.body;
@@ -150,31 +131,45 @@ public final class JobHttpTarget {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder body(@Nullable String body) {
             this.body = body;
             return this;
         }
+        @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
             this.headers = headers;
             return this;
         }
+        @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
             this.httpMethod = httpMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder oauthToken(@Nullable JobHttpTargetOauthToken oauthToken) {
             this.oauthToken = oauthToken;
             return this;
         }
+        @CustomType.Setter
         public Builder oidcToken(@Nullable JobHttpTargetOidcToken oidcToken) {
             this.oidcToken = oidcToken;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
-        }        public JobHttpTarget build() {
-            return new JobHttpTarget(body, headers, httpMethod, oauthToken, oidcToken, uri);
+        }
+        public JobHttpTarget build() {
+            final var o = new JobHttpTarget();
+            o.body = body;
+            o.headers = headers;
+            o.httpMethod = httpMethod;
+            o.oauthToken = oauthToken;
+            o.oidcToken = oidcToken;
+            o.uri = uri;
+            return o;
         }
     }
 }

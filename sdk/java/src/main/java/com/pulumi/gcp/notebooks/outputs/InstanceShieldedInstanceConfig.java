@@ -18,7 +18,7 @@ public final class InstanceShieldedInstanceConfig {
      * Enabled by default.
      * 
      */
-    private final @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableIntegrityMonitoring;
     /**
      * @return Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
      * authentic software by verifying the digital signature of all boot components, and halting the boot process
@@ -26,24 +26,15 @@ public final class InstanceShieldedInstanceConfig {
      * Disabled by default.
      * 
      */
-    private final @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableSecureBoot;
     /**
      * @return Defines whether the instance has the vTPM enabled.
      * Enabled by default.
      * 
      */
-    private final @Nullable Boolean enableVtpm;
+    private @Nullable Boolean enableVtpm;
 
-    @CustomType.Constructor
-    private InstanceShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot,
-        @CustomType.Parameter("enableVtpm") @Nullable Boolean enableVtpm) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-        this.enableVtpm = enableVtpm;
-    }
-
+    private InstanceShieldedInstanceConfig() {}
     /**
      * @return Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
      * boot integrity of the instance. The attestation is performed against the integrity policy baseline.
@@ -80,16 +71,12 @@ public final class InstanceShieldedInstanceConfig {
     public static Builder builder(InstanceShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
         private @Nullable Boolean enableVtpm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
@@ -97,19 +84,27 @@ public final class InstanceShieldedInstanceConfig {
     	      this.enableVtpm = defaults.enableVtpm;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }
+        @CustomType.Setter
         public Builder enableVtpm(@Nullable Boolean enableVtpm) {
             this.enableVtpm = enableVtpm;
             return this;
-        }        public InstanceShieldedInstanceConfig build() {
-            return new InstanceShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot, enableVtpm);
+        }
+        public InstanceShieldedInstanceConfig build() {
+            final var o = new InstanceShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            o.enableVtpm = enableVtpm;
+            return o;
         }
     }
 }

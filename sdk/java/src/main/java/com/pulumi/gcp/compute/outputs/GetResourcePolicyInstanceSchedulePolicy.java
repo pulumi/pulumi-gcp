@@ -12,26 +12,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyInstanceSchedulePolicy {
-    private final String expirationTime;
-    private final String startTime;
-    private final String timeZone;
-    private final List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules;
-    private final List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules;
+    private String expirationTime;
+    private String startTime;
+    private String timeZone;
+    private List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules;
+    private List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules;
 
-    @CustomType.Constructor
-    private GetResourcePolicyInstanceSchedulePolicy(
-        @CustomType.Parameter("expirationTime") String expirationTime,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("timeZone") String timeZone,
-        @CustomType.Parameter("vmStartSchedules") List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules,
-        @CustomType.Parameter("vmStopSchedules") List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules) {
-        this.expirationTime = expirationTime;
-        this.startTime = startTime;
-        this.timeZone = timeZone;
-        this.vmStartSchedules = vmStartSchedules;
-        this.vmStopSchedules = vmStopSchedules;
-    }
-
+    private GetResourcePolicyInstanceSchedulePolicy() {}
     public String expirationTime() {
         return this.expirationTime;
     }
@@ -55,18 +42,14 @@ public final class GetResourcePolicyInstanceSchedulePolicy {
     public static Builder builder(GetResourcePolicyInstanceSchedulePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String expirationTime;
         private String startTime;
         private String timeZone;
         private List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules;
         private List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicyInstanceSchedulePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationTime = defaults.expirationTime;
@@ -76,18 +59,22 @@ public final class GetResourcePolicyInstanceSchedulePolicy {
     	      this.vmStopSchedules = defaults.vmStopSchedules;
         }
 
+        @CustomType.Setter
         public Builder expirationTime(String expirationTime) {
             this.expirationTime = Objects.requireNonNull(expirationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder timeZone(String timeZone) {
             this.timeZone = Objects.requireNonNull(timeZone);
             return this;
         }
+        @CustomType.Setter
         public Builder vmStartSchedules(List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules) {
             this.vmStartSchedules = Objects.requireNonNull(vmStartSchedules);
             return this;
@@ -95,14 +82,22 @@ public final class GetResourcePolicyInstanceSchedulePolicy {
         public Builder vmStartSchedules(GetResourcePolicyInstanceSchedulePolicyVmStartSchedule... vmStartSchedules) {
             return vmStartSchedules(List.of(vmStartSchedules));
         }
+        @CustomType.Setter
         public Builder vmStopSchedules(List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules) {
             this.vmStopSchedules = Objects.requireNonNull(vmStopSchedules);
             return this;
         }
         public Builder vmStopSchedules(GetResourcePolicyInstanceSchedulePolicyVmStopSchedule... vmStopSchedules) {
             return vmStopSchedules(List.of(vmStopSchedules));
-        }        public GetResourcePolicyInstanceSchedulePolicy build() {
-            return new GetResourcePolicyInstanceSchedulePolicy(expirationTime, startTime, timeZone, vmStartSchedules, vmStopSchedules);
+        }
+        public GetResourcePolicyInstanceSchedulePolicy build() {
+            final var o = new GetResourcePolicyInstanceSchedulePolicy();
+            o.expirationTime = expirationTime;
+            o.startTime = startTime;
+            o.timeZone = timeZone;
+            o.vmStartSchedules = vmStartSchedules;
+            o.vmStopSchedules = vmStopSchedules;
+            return o;
         }
     }
 }

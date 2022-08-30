@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecVolumeSecretItem {
-    private final String key;
-    private final Integer mode;
-    private final String path;
+    private String key;
+    private Integer mode;
+    private String path;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecVolumeSecretItem(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("mode") Integer mode,
-        @CustomType.Parameter("path") String path) {
-        this.key = key;
-        this.mode = mode;
-        this.path = path;
-    }
-
+    private GetServiceTemplateSpecVolumeSecretItem() {}
     public String key() {
         return this.key;
     }
@@ -41,16 +32,12 @@ public final class GetServiceTemplateSpecVolumeSecretItem {
     public static Builder builder(GetServiceTemplateSpecVolumeSecretItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private Integer mode;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecVolumeSecretItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -58,19 +45,27 @@ public final class GetServiceTemplateSpecVolumeSecretItem {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(Integer mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public GetServiceTemplateSpecVolumeSecretItem build() {
-            return new GetServiceTemplateSpecVolumeSecretItem(key, mode, path);
+        }
+        public GetServiceTemplateSpecVolumeSecretItem build() {
+            final var o = new GetServiceTemplateSpecVolumeSecretItem();
+            o.key = key;
+            o.mode = mode;
+            o.path = path;
+            return o;
         }
     }
 }

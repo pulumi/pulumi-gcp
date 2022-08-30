@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicyCacheKeyPolicy {
-    private final List<String> includeHttpHeaders;
-    private final List<String> queryStringWhitelists;
+    private List<String> includeHttpHeaders;
+    private List<String> queryStringWhitelists;
 
-    @CustomType.Constructor
-    private GetBackendBucketCdnPolicyCacheKeyPolicy(
-        @CustomType.Parameter("includeHttpHeaders") List<String> includeHttpHeaders,
-        @CustomType.Parameter("queryStringWhitelists") List<String> queryStringWhitelists) {
-        this.includeHttpHeaders = includeHttpHeaders;
-        this.queryStringWhitelists = queryStringWhitelists;
-    }
-
+    private GetBackendBucketCdnPolicyCacheKeyPolicy() {}
     public List<String> includeHttpHeaders() {
         return this.includeHttpHeaders;
     }
@@ -35,21 +28,18 @@ public final class GetBackendBucketCdnPolicyCacheKeyPolicy {
     public static Builder builder(GetBackendBucketCdnPolicyCacheKeyPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> includeHttpHeaders;
         private List<String> queryStringWhitelists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendBucketCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeHttpHeaders = defaults.includeHttpHeaders;
     	      this.queryStringWhitelists = defaults.queryStringWhitelists;
         }
 
+        @CustomType.Setter
         public Builder includeHttpHeaders(List<String> includeHttpHeaders) {
             this.includeHttpHeaders = Objects.requireNonNull(includeHttpHeaders);
             return this;
@@ -57,14 +47,19 @@ public final class GetBackendBucketCdnPolicyCacheKeyPolicy {
         public Builder includeHttpHeaders(String... includeHttpHeaders) {
             return includeHttpHeaders(List.of(includeHttpHeaders));
         }
+        @CustomType.Setter
         public Builder queryStringWhitelists(List<String> queryStringWhitelists) {
             this.queryStringWhitelists = Objects.requireNonNull(queryStringWhitelists);
             return this;
         }
         public Builder queryStringWhitelists(String... queryStringWhitelists) {
             return queryStringWhitelists(List.of(queryStringWhitelists));
-        }        public GetBackendBucketCdnPolicyCacheKeyPolicy build() {
-            return new GetBackendBucketCdnPolicyCacheKeyPolicy(includeHttpHeaders, queryStringWhitelists);
+        }
+        public GetBackendBucketCdnPolicyCacheKeyPolicy build() {
+            final var o = new GetBackendBucketCdnPolicyCacheKeyPolicy();
+            o.includeHttpHeaders = includeHttpHeaders;
+            o.queryStringWhitelists = queryStringWhitelists;
+            return o;
         }
     }
 }

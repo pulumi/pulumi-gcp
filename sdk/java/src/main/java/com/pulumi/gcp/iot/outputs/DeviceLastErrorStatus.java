@@ -15,20 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceLastErrorStatus {
-    private final @Nullable List<Map<String,Object>> details;
-    private final @Nullable String message;
-    private final @Nullable Integer number;
+    private @Nullable List<Map<String,Object>> details;
+    private @Nullable String message;
+    private @Nullable Integer number;
 
-    @CustomType.Constructor
-    private DeviceLastErrorStatus(
-        @CustomType.Parameter("details") @Nullable List<Map<String,Object>> details,
-        @CustomType.Parameter("message") @Nullable String message,
-        @CustomType.Parameter("number") @Nullable Integer number) {
-        this.details = details;
-        this.message = message;
-        this.number = number;
-    }
-
+    private DeviceLastErrorStatus() {}
     public List<Map<String,Object>> details() {
         return this.details == null ? List.of() : this.details;
     }
@@ -46,16 +37,12 @@ public final class DeviceLastErrorStatus {
     public static Builder builder(DeviceLastErrorStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Map<String,Object>> details;
         private @Nullable String message;
         private @Nullable Integer number;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeviceLastErrorStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.details = defaults.details;
@@ -63,19 +50,27 @@ public final class DeviceLastErrorStatus {
     	      this.number = defaults.number;
         }
 
+        @CustomType.Setter
         public Builder details(@Nullable List<Map<String,Object>> details) {
             this.details = details;
             return this;
         }
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
         public Builder number(@Nullable Integer number) {
             this.number = number;
             return this;
-        }        public DeviceLastErrorStatus build() {
-            return new DeviceLastErrorStatus(details, message, number);
+        }
+        public DeviceLastErrorStatus build() {
+            final var o = new DeviceLastErrorStatus();
+            o.details = details;
+            o.message = message;
+            o.number = number;
+            return o;
         }
     }
 }

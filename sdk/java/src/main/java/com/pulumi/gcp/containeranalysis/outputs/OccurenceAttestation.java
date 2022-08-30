@@ -16,7 +16,7 @@ public final class OccurenceAttestation {
      * more signatures. A base64-encoded string.
      * 
      */
-    private final String serializedPayload;
+    private String serializedPayload;
     /**
      * @return One or more signatures over serializedPayload.
      * Verifier implementations should consider this attestation
@@ -26,16 +26,9 @@ public final class OccurenceAttestation {
      * Structure is documented below.
      * 
      */
-    private final List<OccurenceAttestationSignature> signatures;
+    private List<OccurenceAttestationSignature> signatures;
 
-    @CustomType.Constructor
-    private OccurenceAttestation(
-        @CustomType.Parameter("serializedPayload") String serializedPayload,
-        @CustomType.Parameter("signatures") List<OccurenceAttestationSignature> signatures) {
-        this.serializedPayload = serializedPayload;
-        this.signatures = signatures;
-    }
-
+    private OccurenceAttestation() {}
     /**
      * @return The serialized payload that is verified by one or
      * more signatures. A base64-encoded string.
@@ -64,33 +57,35 @@ public final class OccurenceAttestation {
     public static Builder builder(OccurenceAttestation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String serializedPayload;
         private List<OccurenceAttestationSignature> signatures;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OccurenceAttestation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serializedPayload = defaults.serializedPayload;
     	      this.signatures = defaults.signatures;
         }
 
+        @CustomType.Setter
         public Builder serializedPayload(String serializedPayload) {
             this.serializedPayload = Objects.requireNonNull(serializedPayload);
             return this;
         }
+        @CustomType.Setter
         public Builder signatures(List<OccurenceAttestationSignature> signatures) {
             this.signatures = Objects.requireNonNull(signatures);
             return this;
         }
         public Builder signatures(OccurenceAttestationSignature... signatures) {
             return signatures(List.of(signatures));
-        }        public OccurenceAttestation build() {
-            return new OccurenceAttestation(serializedPayload, signatures);
+        }
+        public OccurenceAttestation build() {
+            final var o = new OccurenceAttestation();
+            o.serializedPayload = serializedPayload;
+            o.signatures = signatures;
+            return o;
         }
     }
 }

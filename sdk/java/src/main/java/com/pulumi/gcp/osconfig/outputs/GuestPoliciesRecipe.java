@@ -20,7 +20,7 @@ public final class GuestPoliciesRecipe {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<GuestPoliciesRecipeArtifact> artifacts;
+    private @Nullable List<GuestPoliciesRecipeArtifact> artifacts;
     /**
      * @return Default is INSTALLED. The desired state the agent should maintain for this recipe.
      * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
@@ -31,14 +31,14 @@ public final class GuestPoliciesRecipe {
      * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
      * 
      */
-    private final @Nullable String desiredState;
+    private @Nullable String desiredState;
     /**
      * @return Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
      * Any steps taken (including partially completed steps) are not rolled back.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<GuestPoliciesRecipeInstallStep> installSteps;
+    private @Nullable List<GuestPoliciesRecipeInstallStep> installSteps;
     /**
      * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -46,36 +46,21 @@ public final class GuestPoliciesRecipe {
      * could potentially have conflicting assignments.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
      * Any steps taken (including partially completed steps) are not rolled back.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<GuestPoliciesRecipeUpdateStep> updateSteps;
+    private @Nullable List<GuestPoliciesRecipeUpdateStep> updateSteps;
     /**
      * @return The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipe(
-        @CustomType.Parameter("artifacts") @Nullable List<GuestPoliciesRecipeArtifact> artifacts,
-        @CustomType.Parameter("desiredState") @Nullable String desiredState,
-        @CustomType.Parameter("installSteps") @Nullable List<GuestPoliciesRecipeInstallStep> installSteps,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("updateSteps") @Nullable List<GuestPoliciesRecipeUpdateStep> updateSteps,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.artifacts = artifacts;
-        this.desiredState = desiredState;
-        this.installSteps = installSteps;
-        this.name = name;
-        this.updateSteps = updateSteps;
-        this.version = version;
-    }
-
+    private GuestPoliciesRecipe() {}
     /**
      * @return Resources available to be used in the steps in the recipe.
      * Structure is documented below.
@@ -140,7 +125,7 @@ public final class GuestPoliciesRecipe {
     public static Builder builder(GuestPoliciesRecipe defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GuestPoliciesRecipeArtifact> artifacts;
         private @Nullable String desiredState;
@@ -148,11 +133,7 @@ public final class GuestPoliciesRecipe {
         private String name;
         private @Nullable List<GuestPoliciesRecipeUpdateStep> updateSteps;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifacts = defaults.artifacts;
@@ -163,6 +144,7 @@ public final class GuestPoliciesRecipe {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder artifacts(@Nullable List<GuestPoliciesRecipeArtifact> artifacts) {
             this.artifacts = artifacts;
             return this;
@@ -170,10 +152,12 @@ public final class GuestPoliciesRecipe {
         public Builder artifacts(GuestPoliciesRecipeArtifact... artifacts) {
             return artifacts(List.of(artifacts));
         }
+        @CustomType.Setter
         public Builder desiredState(@Nullable String desiredState) {
             this.desiredState = desiredState;
             return this;
         }
+        @CustomType.Setter
         public Builder installSteps(@Nullable List<GuestPoliciesRecipeInstallStep> installSteps) {
             this.installSteps = installSteps;
             return this;
@@ -181,10 +165,12 @@ public final class GuestPoliciesRecipe {
         public Builder installSteps(GuestPoliciesRecipeInstallStep... installSteps) {
             return installSteps(List.of(installSteps));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder updateSteps(@Nullable List<GuestPoliciesRecipeUpdateStep> updateSteps) {
             this.updateSteps = updateSteps;
             return this;
@@ -192,11 +178,20 @@ public final class GuestPoliciesRecipe {
         public Builder updateSteps(GuestPoliciesRecipeUpdateStep... updateSteps) {
             return updateSteps(List.of(updateSteps));
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public GuestPoliciesRecipe build() {
-            return new GuestPoliciesRecipe(artifacts, desiredState, installSteps, name, updateSteps, version);
+        }
+        public GuestPoliciesRecipe build() {
+            final var o = new GuestPoliciesRecipe();
+            o.artifacts = artifacts;
+            o.desiredState = desiredState;
+            o.installSteps = installSteps;
+            o.name = name;
+            o.updateSteps = updateSteps;
+            o.version = version;
+            return o;
         }
     }
 }

@@ -16,22 +16,15 @@ public final class CertificateCertificateDescriptionX509DescriptionCaOption {
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
      */
-    private final @Nullable Boolean isCa;
+    private @Nullable Boolean isCa;
     /**
      * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
      * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
      * 
      */
-    private final @Nullable Integer maxIssuerPathLength;
+    private @Nullable Integer maxIssuerPathLength;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionX509DescriptionCaOption(
-        @CustomType.Parameter("isCa") @Nullable Boolean isCa,
-        @CustomType.Parameter("maxIssuerPathLength") @Nullable Integer maxIssuerPathLength) {
-        this.isCa = isCa;
-        this.maxIssuerPathLength = maxIssuerPathLength;
-    }
-
+    private CertificateCertificateDescriptionX509DescriptionCaOption() {}
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
@@ -55,30 +48,32 @@ public final class CertificateCertificateDescriptionX509DescriptionCaOption {
     public static Builder builder(CertificateCertificateDescriptionX509DescriptionCaOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isCa;
         private @Nullable Integer maxIssuerPathLength;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionX509DescriptionCaOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isCa = defaults.isCa;
     	      this.maxIssuerPathLength = defaults.maxIssuerPathLength;
         }
 
+        @CustomType.Setter
         public Builder isCa(@Nullable Boolean isCa) {
             this.isCa = isCa;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIssuerPathLength(@Nullable Integer maxIssuerPathLength) {
             this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
-        }        public CertificateCertificateDescriptionX509DescriptionCaOption build() {
-            return new CertificateCertificateDescriptionX509DescriptionCaOption(isCa, maxIssuerPathLength);
+        }
+        public CertificateCertificateDescriptionX509DescriptionCaOption build() {
+            final var o = new CertificateCertificateDescriptionX509DescriptionCaOption();
+            o.isCa = isCa;
+            o.maxIssuerPathLength = maxIssuerPathLength;
+            return o;
         }
     }
 }

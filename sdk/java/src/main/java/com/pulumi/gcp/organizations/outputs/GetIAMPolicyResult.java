@@ -13,32 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIAMPolicyResult {
-    private final @Nullable List<GetIAMPolicyAuditConfig> auditConfigs;
-    private final @Nullable List<GetIAMPolicyBinding> bindings;
+    private @Nullable List<GetIAMPolicyAuditConfig> auditConfigs;
+    private @Nullable List<GetIAMPolicyBinding> bindings;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The above bindings serialized in a format suitable for
      * referencing from a resource that supports IAM.
      * 
      */
-    private final String policyData;
+    private String policyData;
 
-    @CustomType.Constructor
-    private GetIAMPolicyResult(
-        @CustomType.Parameter("auditConfigs") @Nullable List<GetIAMPolicyAuditConfig> auditConfigs,
-        @CustomType.Parameter("bindings") @Nullable List<GetIAMPolicyBinding> bindings,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("policyData") String policyData) {
-        this.auditConfigs = auditConfigs;
-        this.bindings = bindings;
-        this.id = id;
-        this.policyData = policyData;
-    }
-
+    private GetIAMPolicyResult() {}
     public List<GetIAMPolicyAuditConfig> auditConfigs() {
         return this.auditConfigs == null ? List.of() : this.auditConfigs;
     }
@@ -68,17 +57,13 @@ public final class GetIAMPolicyResult {
     public static Builder builder(GetIAMPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetIAMPolicyAuditConfig> auditConfigs;
         private @Nullable List<GetIAMPolicyBinding> bindings;
         private String id;
         private String policyData;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIAMPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditConfigs = defaults.auditConfigs;
@@ -87,6 +72,7 @@ public final class GetIAMPolicyResult {
     	      this.policyData = defaults.policyData;
         }
 
+        @CustomType.Setter
         public Builder auditConfigs(@Nullable List<GetIAMPolicyAuditConfig> auditConfigs) {
             this.auditConfigs = auditConfigs;
             return this;
@@ -94,6 +80,7 @@ public final class GetIAMPolicyResult {
         public Builder auditConfigs(GetIAMPolicyAuditConfig... auditConfigs) {
             return auditConfigs(List.of(auditConfigs));
         }
+        @CustomType.Setter
         public Builder bindings(@Nullable List<GetIAMPolicyBinding> bindings) {
             this.bindings = bindings;
             return this;
@@ -101,15 +88,23 @@ public final class GetIAMPolicyResult {
         public Builder bindings(GetIAMPolicyBinding... bindings) {
             return bindings(List.of(bindings));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder policyData(String policyData) {
             this.policyData = Objects.requireNonNull(policyData);
             return this;
-        }        public GetIAMPolicyResult build() {
-            return new GetIAMPolicyResult(auditConfigs, bindings, id, policyData);
+        }
+        public GetIAMPolicyResult build() {
+            final var o = new GetIAMPolicyResult();
+            o.auditConfigs = auditConfigs;
+            o.bindings = bindings;
+            o.id = id;
+            o.policyData = policyData;
+            return o;
         }
     }
 }

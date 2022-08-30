@@ -13,48 +13,31 @@ public final class GetVPNGatewayResult {
      * @return Description of this VPN gateway.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
+    private String id;
+    private String name;
     /**
      * @return The network of this VPN gateway.
      * 
      */
-    private final String network;
-    private final String project;
+    private String network;
+    private String project;
     /**
      * @return Region of this VPN gateway.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The URI of the resource.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
 
-    @CustomType.Constructor
-    private GetVPNGatewayResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("selfLink") String selfLink) {
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.network = network;
-        this.project = project;
-        this.region = region;
-        this.selfLink = selfLink;
-    }
-
+    private GetVPNGatewayResult() {}
     /**
      * @return Description of this VPN gateway.
      * 
@@ -104,7 +87,7 @@ public final class GetVPNGatewayResult {
     public static Builder builder(GetVPNGatewayResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -113,11 +96,7 @@ public final class GetVPNGatewayResult {
         private String project;
         private String region;
         private String selfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVPNGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -129,35 +108,51 @@ public final class GetVPNGatewayResult {
     	      this.selfLink = defaults.selfLink;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
-        }        public GetVPNGatewayResult build() {
-            return new GetVPNGatewayResult(description, id, name, network, project, region, selfLink);
+        }
+        public GetVPNGatewayResult build() {
+            final var o = new GetVPNGatewayResult();
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.network = network;
+            o.project = project;
+            o.region = region;
+            o.selfLink = selfLink;
+            return o;
         }
     }
 }

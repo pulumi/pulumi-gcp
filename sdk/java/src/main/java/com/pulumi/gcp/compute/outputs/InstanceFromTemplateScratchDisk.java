@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromTemplateScratchDisk {
-    private final String interface_;
+    private String interface_;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateScratchDisk(@CustomType.Parameter("interface") String interface_) {
-        this.interface_ = interface_;
-    }
-
+    private InstanceFromTemplateScratchDisk() {}
     public String interface_() {
         return this.interface_;
     }
@@ -27,24 +23,24 @@ public final class InstanceFromTemplateScratchDisk {
     public static Builder builder(InstanceFromTemplateScratchDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String interface_;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interface_ = defaults.interface_;
         }
 
+        @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
-        }        public InstanceFromTemplateScratchDisk build() {
-            return new InstanceFromTemplateScratchDisk(interface_);
+        }
+        public InstanceFromTemplateScratchDisk build() {
+            final var o = new InstanceFromTemplateScratchDisk();
+            o.interface_ = interface_;
+            return o;
         }
     }
 }

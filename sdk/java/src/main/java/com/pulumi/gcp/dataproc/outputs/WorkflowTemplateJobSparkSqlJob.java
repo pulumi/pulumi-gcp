@@ -19,49 +19,34 @@ public final class WorkflowTemplateJobSparkSqlJob {
      * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
-    private final @Nullable List<String> jarFileUris;
+    private @Nullable List<String> jarFileUris;
     /**
      * @return Optional. The runtime log config for job execution.
      * 
      */
-    private final @Nullable WorkflowTemplateJobSparkSqlJobLoggingConfig loggingConfig;
+    private @Nullable WorkflowTemplateJobSparkSqlJobLoggingConfig loggingConfig;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return The HCFS URI of the script that contains SQL queries.
      * 
      */
-    private final @Nullable String queryFileUri;
+    private @Nullable String queryFileUri;
     /**
      * @return A list of queries.
      * 
      */
-    private final @Nullable WorkflowTemplateJobSparkSqlJobQueryList queryList;
+    private @Nullable WorkflowTemplateJobSparkSqlJobQueryList queryList;
     /**
      * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
      * 
      */
-    private final @Nullable Map<String,String> scriptVariables;
+    private @Nullable Map<String,String> scriptVariables;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobSparkSqlJob(
-        @CustomType.Parameter("jarFileUris") @Nullable List<String> jarFileUris,
-        @CustomType.Parameter("loggingConfig") @Nullable WorkflowTemplateJobSparkSqlJobLoggingConfig loggingConfig,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("queryFileUri") @Nullable String queryFileUri,
-        @CustomType.Parameter("queryList") @Nullable WorkflowTemplateJobSparkSqlJobQueryList queryList,
-        @CustomType.Parameter("scriptVariables") @Nullable Map<String,String> scriptVariables) {
-        this.jarFileUris = jarFileUris;
-        this.loggingConfig = loggingConfig;
-        this.properties = properties;
-        this.queryFileUri = queryFileUri;
-        this.queryList = queryList;
-        this.scriptVariables = scriptVariables;
-    }
-
+    private WorkflowTemplateJobSparkSqlJob() {}
     /**
      * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
@@ -112,7 +97,7 @@ public final class WorkflowTemplateJobSparkSqlJob {
     public static Builder builder(WorkflowTemplateJobSparkSqlJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> jarFileUris;
         private @Nullable WorkflowTemplateJobSparkSqlJobLoggingConfig loggingConfig;
@@ -120,11 +105,7 @@ public final class WorkflowTemplateJobSparkSqlJob {
         private @Nullable String queryFileUri;
         private @Nullable WorkflowTemplateJobSparkSqlJobQueryList queryList;
         private @Nullable Map<String,String> scriptVariables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobSparkSqlJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jarFileUris = defaults.jarFileUris;
@@ -135,6 +116,7 @@ public final class WorkflowTemplateJobSparkSqlJob {
     	      this.scriptVariables = defaults.scriptVariables;
         }
 
+        @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
             this.jarFileUris = jarFileUris;
             return this;
@@ -142,27 +124,40 @@ public final class WorkflowTemplateJobSparkSqlJob {
         public Builder jarFileUris(String... jarFileUris) {
             return jarFileUris(List.of(jarFileUris));
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobSparkSqlJobLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
             this.queryFileUri = queryFileUri;
             return this;
         }
+        @CustomType.Setter
         public Builder queryList(@Nullable WorkflowTemplateJobSparkSqlJobQueryList queryList) {
             this.queryList = queryList;
             return this;
         }
+        @CustomType.Setter
         public Builder scriptVariables(@Nullable Map<String,String> scriptVariables) {
             this.scriptVariables = scriptVariables;
             return this;
-        }        public WorkflowTemplateJobSparkSqlJob build() {
-            return new WorkflowTemplateJobSparkSqlJob(jarFileUris, loggingConfig, properties, queryFileUri, queryList, scriptVariables);
+        }
+        public WorkflowTemplateJobSparkSqlJob build() {
+            final var o = new WorkflowTemplateJobSparkSqlJob();
+            o.jarFileUris = jarFileUris;
+            o.loggingConfig = loggingConfig;
+            o.properties = properties;
+            o.queryFileUri = queryFileUri;
+            o.queryList = queryList;
+            o.scriptVariables = scriptVariables;
+            return o;
         }
     }
 }

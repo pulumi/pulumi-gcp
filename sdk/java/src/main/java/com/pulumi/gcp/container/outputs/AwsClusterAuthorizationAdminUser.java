@@ -13,13 +13,9 @@ public final class AwsClusterAuthorizationAdminUser {
      * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private AwsClusterAuthorizationAdminUser(@CustomType.Parameter("username") String username) {
-        this.username = username;
-    }
-
+    private AwsClusterAuthorizationAdminUser() {}
     /**
      * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
      * 
@@ -35,24 +31,24 @@ public final class AwsClusterAuthorizationAdminUser {
     public static Builder builder(AwsClusterAuthorizationAdminUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterAuthorizationAdminUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public AwsClusterAuthorizationAdminUser build() {
-            return new AwsClusterAuthorizationAdminUser(username);
+        }
+        public AwsClusterAuthorizationAdminUser build() {
+            final var o = new AwsClusterAuthorizationAdminUser();
+            o.username = username;
+            return o;
         }
     }
 }

@@ -11,44 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketLifecycleRuleCondition {
-    private final Integer age;
-    private final String createdBefore;
-    private final String customTimeBefore;
-    private final Integer daysSinceCustomTime;
-    private final Integer daysSinceNoncurrentTime;
-    private final List<String> matchesPrefixes;
-    private final List<String> matchesStorageClasses;
-    private final List<String> matchesSuffixes;
-    private final String noncurrentTimeBefore;
-    private final Integer numNewerVersions;
-    private final String withState;
+    private Integer age;
+    private String createdBefore;
+    private String customTimeBefore;
+    private Integer daysSinceCustomTime;
+    private Integer daysSinceNoncurrentTime;
+    private List<String> matchesPrefixes;
+    private List<String> matchesStorageClasses;
+    private List<String> matchesSuffixes;
+    private String noncurrentTimeBefore;
+    private Integer numNewerVersions;
+    private String withState;
 
-    @CustomType.Constructor
-    private GetBucketLifecycleRuleCondition(
-        @CustomType.Parameter("age") Integer age,
-        @CustomType.Parameter("createdBefore") String createdBefore,
-        @CustomType.Parameter("customTimeBefore") String customTimeBefore,
-        @CustomType.Parameter("daysSinceCustomTime") Integer daysSinceCustomTime,
-        @CustomType.Parameter("daysSinceNoncurrentTime") Integer daysSinceNoncurrentTime,
-        @CustomType.Parameter("matchesPrefixes") List<String> matchesPrefixes,
-        @CustomType.Parameter("matchesStorageClasses") List<String> matchesStorageClasses,
-        @CustomType.Parameter("matchesSuffixes") List<String> matchesSuffixes,
-        @CustomType.Parameter("noncurrentTimeBefore") String noncurrentTimeBefore,
-        @CustomType.Parameter("numNewerVersions") Integer numNewerVersions,
-        @CustomType.Parameter("withState") String withState) {
-        this.age = age;
-        this.createdBefore = createdBefore;
-        this.customTimeBefore = customTimeBefore;
-        this.daysSinceCustomTime = daysSinceCustomTime;
-        this.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
-        this.matchesPrefixes = matchesPrefixes;
-        this.matchesStorageClasses = matchesStorageClasses;
-        this.matchesSuffixes = matchesSuffixes;
-        this.noncurrentTimeBefore = noncurrentTimeBefore;
-        this.numNewerVersions = numNewerVersions;
-        this.withState = withState;
-    }
-
+    private GetBucketLifecycleRuleCondition() {}
     public Integer age() {
         return this.age;
     }
@@ -90,7 +65,7 @@ public final class GetBucketLifecycleRuleCondition {
     public static Builder builder(GetBucketLifecycleRuleCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer age;
         private String createdBefore;
@@ -103,11 +78,7 @@ public final class GetBucketLifecycleRuleCondition {
         private String noncurrentTimeBefore;
         private Integer numNewerVersions;
         private String withState;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketLifecycleRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.age = defaults.age;
@@ -123,26 +94,32 @@ public final class GetBucketLifecycleRuleCondition {
     	      this.withState = defaults.withState;
         }
 
+        @CustomType.Setter
         public Builder age(Integer age) {
             this.age = Objects.requireNonNull(age);
             return this;
         }
+        @CustomType.Setter
         public Builder createdBefore(String createdBefore) {
             this.createdBefore = Objects.requireNonNull(createdBefore);
             return this;
         }
+        @CustomType.Setter
         public Builder customTimeBefore(String customTimeBefore) {
             this.customTimeBefore = Objects.requireNonNull(customTimeBefore);
             return this;
         }
+        @CustomType.Setter
         public Builder daysSinceCustomTime(Integer daysSinceCustomTime) {
             this.daysSinceCustomTime = Objects.requireNonNull(daysSinceCustomTime);
             return this;
         }
+        @CustomType.Setter
         public Builder daysSinceNoncurrentTime(Integer daysSinceNoncurrentTime) {
             this.daysSinceNoncurrentTime = Objects.requireNonNull(daysSinceNoncurrentTime);
             return this;
         }
+        @CustomType.Setter
         public Builder matchesPrefixes(List<String> matchesPrefixes) {
             this.matchesPrefixes = Objects.requireNonNull(matchesPrefixes);
             return this;
@@ -150,6 +127,7 @@ public final class GetBucketLifecycleRuleCondition {
         public Builder matchesPrefixes(String... matchesPrefixes) {
             return matchesPrefixes(List.of(matchesPrefixes));
         }
+        @CustomType.Setter
         public Builder matchesStorageClasses(List<String> matchesStorageClasses) {
             this.matchesStorageClasses = Objects.requireNonNull(matchesStorageClasses);
             return this;
@@ -157,6 +135,7 @@ public final class GetBucketLifecycleRuleCondition {
         public Builder matchesStorageClasses(String... matchesStorageClasses) {
             return matchesStorageClasses(List.of(matchesStorageClasses));
         }
+        @CustomType.Setter
         public Builder matchesSuffixes(List<String> matchesSuffixes) {
             this.matchesSuffixes = Objects.requireNonNull(matchesSuffixes);
             return this;
@@ -164,19 +143,35 @@ public final class GetBucketLifecycleRuleCondition {
         public Builder matchesSuffixes(String... matchesSuffixes) {
             return matchesSuffixes(List.of(matchesSuffixes));
         }
+        @CustomType.Setter
         public Builder noncurrentTimeBefore(String noncurrentTimeBefore) {
             this.noncurrentTimeBefore = Objects.requireNonNull(noncurrentTimeBefore);
             return this;
         }
+        @CustomType.Setter
         public Builder numNewerVersions(Integer numNewerVersions) {
             this.numNewerVersions = Objects.requireNonNull(numNewerVersions);
             return this;
         }
+        @CustomType.Setter
         public Builder withState(String withState) {
             this.withState = Objects.requireNonNull(withState);
             return this;
-        }        public GetBucketLifecycleRuleCondition build() {
-            return new GetBucketLifecycleRuleCondition(age, createdBefore, customTimeBefore, daysSinceCustomTime, daysSinceNoncurrentTime, matchesPrefixes, matchesStorageClasses, matchesSuffixes, noncurrentTimeBefore, numNewerVersions, withState);
+        }
+        public GetBucketLifecycleRuleCondition build() {
+            final var o = new GetBucketLifecycleRuleCondition();
+            o.age = age;
+            o.createdBefore = createdBefore;
+            o.customTimeBefore = customTimeBefore;
+            o.daysSinceCustomTime = daysSinceCustomTime;
+            o.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
+            o.matchesPrefixes = matchesPrefixes;
+            o.matchesStorageClasses = matchesStorageClasses;
+            o.matchesSuffixes = matchesSuffixes;
+            o.noncurrentTimeBefore = noncurrentTimeBefore;
+            o.numNewerVersions = numNewerVersions;
+            o.withState = withState;
+            return o;
         }
     }
 }

@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyListPolicyAllow {
-    private final Boolean all;
-    private final List<String> values;
+    private Boolean all;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetOrganizationPolicyListPolicyAllow(
-        @CustomType.Parameter("all") Boolean all,
-        @CustomType.Parameter("values") List<String> values) {
-        this.all = all;
-        this.values = values;
-    }
-
+    private GetOrganizationPolicyListPolicyAllow() {}
     public Boolean all() {
         return this.all;
     }
@@ -36,33 +29,35 @@ public final class GetOrganizationPolicyListPolicyAllow {
     public static Builder builder(GetOrganizationPolicyListPolicyAllow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean all;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationPolicyListPolicyAllow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder all(Boolean all) {
             this.all = Objects.requireNonNull(all);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetOrganizationPolicyListPolicyAllow build() {
-            return new GetOrganizationPolicyListPolicyAllow(all, values);
+        }
+        public GetOrganizationPolicyListPolicyAllow build() {
+            final var o = new GetOrganizationPolicyListPolicyAllow();
+            o.all = all;
+            o.values = values;
+            return o;
         }
     }
 }

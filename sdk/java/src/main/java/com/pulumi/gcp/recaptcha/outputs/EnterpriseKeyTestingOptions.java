@@ -16,21 +16,14 @@ public final class EnterpriseKeyTestingOptions {
      * @return For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
      * 
      */
-    private final @Nullable String testingChallenge;
+    private @Nullable String testingChallenge;
     /**
      * @return All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
      * 
      */
-    private final @Nullable Double testingScore;
+    private @Nullable Double testingScore;
 
-    @CustomType.Constructor
-    private EnterpriseKeyTestingOptions(
-        @CustomType.Parameter("testingChallenge") @Nullable String testingChallenge,
-        @CustomType.Parameter("testingScore") @Nullable Double testingScore) {
-        this.testingChallenge = testingChallenge;
-        this.testingScore = testingScore;
-    }
-
+    private EnterpriseKeyTestingOptions() {}
     /**
      * @return For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
      * 
@@ -53,30 +46,32 @@ public final class EnterpriseKeyTestingOptions {
     public static Builder builder(EnterpriseKeyTestingOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String testingChallenge;
         private @Nullable Double testingScore;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnterpriseKeyTestingOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.testingChallenge = defaults.testingChallenge;
     	      this.testingScore = defaults.testingScore;
         }
 
+        @CustomType.Setter
         public Builder testingChallenge(@Nullable String testingChallenge) {
             this.testingChallenge = testingChallenge;
             return this;
         }
+        @CustomType.Setter
         public Builder testingScore(@Nullable Double testingScore) {
             this.testingScore = testingScore;
             return this;
-        }        public EnterpriseKeyTestingOptions build() {
-            return new EnterpriseKeyTestingOptions(testingChallenge, testingScore);
+        }
+        public EnterpriseKeyTestingOptions build() {
+            final var o = new EnterpriseKeyTestingOptions();
+            o.testingChallenge = testingChallenge;
+            o.testingScore = testingScore;
+            return o;
         }
     }
 }

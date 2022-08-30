@@ -18,109 +18,80 @@ public final class FunctionServiceConfig {
      * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
      * 
      */
-    private final @Nullable Boolean allTrafficOnLatestRevision;
+    private @Nullable Boolean allTrafficOnLatestRevision;
     /**
      * @return The amount of memory available for a function.
      * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
      * supplied the value is interpreted as bytes.
      * 
      */
-    private final @Nullable String availableMemory;
+    private @Nullable String availableMemory;
     /**
      * @return Environment variables that shall be available during function execution.
      * 
      */
-    private final @Nullable Map<String,String> environmentVariables;
+    private @Nullable Map<String,String> environmentVariables;
     /**
      * @return -
      * URIs of the Service deployed
      * 
      */
-    private final @Nullable String gcfUri;
+    private @Nullable String gcfUri;
     /**
      * @return Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
      * Default value is `ALLOW_ALL`.
      * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
      * 
      */
-    private final @Nullable String ingressSettings;
+    private @Nullable String ingressSettings;
     /**
      * @return The limit on the maximum number of function instances that may coexist at a
      * given time.
      * 
      */
-    private final @Nullable Integer maxInstanceCount;
+    private @Nullable Integer maxInstanceCount;
     /**
      * @return The limit on the minimum number of function instances that may coexist at a
      * given time.
      * 
      */
-    private final @Nullable Integer minInstanceCount;
+    private @Nullable Integer minInstanceCount;
     /**
      * @return Name of the service associated with a Function.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return The email of the service account for this function.
      * 
      */
-    private final @Nullable String serviceAccountEmail;
+    private @Nullable String serviceAccountEmail;
     /**
      * @return The function execution timeout. Execution is considered failed and
      * can be terminated if the function is not completed at the end of the
      * timeout period. Defaults to 60 seconds.
      * 
      */
-    private final @Nullable Integer timeoutSeconds;
+    private @Nullable Integer timeoutSeconds;
     /**
      * @return -
      * URI of the Service deployed.
      * 
      */
-    private final @Nullable String uri;
+    private @Nullable String uri;
     /**
      * @return The Serverless VPC Access connector that this cloud function can connect to.
      * 
      */
-    private final @Nullable String vpcConnector;
+    private @Nullable String vpcConnector;
     /**
      * @return Available egress settings.
      * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
      * 
      */
-    private final @Nullable String vpcConnectorEgressSettings;
+    private @Nullable String vpcConnectorEgressSettings;
 
-    @CustomType.Constructor
-    private FunctionServiceConfig(
-        @CustomType.Parameter("allTrafficOnLatestRevision") @Nullable Boolean allTrafficOnLatestRevision,
-        @CustomType.Parameter("availableMemory") @Nullable String availableMemory,
-        @CustomType.Parameter("environmentVariables") @Nullable Map<String,String> environmentVariables,
-        @CustomType.Parameter("gcfUri") @Nullable String gcfUri,
-        @CustomType.Parameter("ingressSettings") @Nullable String ingressSettings,
-        @CustomType.Parameter("maxInstanceCount") @Nullable Integer maxInstanceCount,
-        @CustomType.Parameter("minInstanceCount") @Nullable Integer minInstanceCount,
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("serviceAccountEmail") @Nullable String serviceAccountEmail,
-        @CustomType.Parameter("timeoutSeconds") @Nullable Integer timeoutSeconds,
-        @CustomType.Parameter("uri") @Nullable String uri,
-        @CustomType.Parameter("vpcConnector") @Nullable String vpcConnector,
-        @CustomType.Parameter("vpcConnectorEgressSettings") @Nullable String vpcConnectorEgressSettings) {
-        this.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
-        this.availableMemory = availableMemory;
-        this.environmentVariables = environmentVariables;
-        this.gcfUri = gcfUri;
-        this.ingressSettings = ingressSettings;
-        this.maxInstanceCount = maxInstanceCount;
-        this.minInstanceCount = minInstanceCount;
-        this.service = service;
-        this.serviceAccountEmail = serviceAccountEmail;
-        this.timeoutSeconds = timeoutSeconds;
-        this.uri = uri;
-        this.vpcConnector = vpcConnector;
-        this.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
-    }
-
+    private FunctionServiceConfig() {}
     /**
      * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
      * 
@@ -231,7 +202,7 @@ public final class FunctionServiceConfig {
     public static Builder builder(FunctionServiceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allTrafficOnLatestRevision;
         private @Nullable String availableMemory;
@@ -246,11 +217,7 @@ public final class FunctionServiceConfig {
         private @Nullable String uri;
         private @Nullable String vpcConnector;
         private @Nullable String vpcConnectorEgressSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allTrafficOnLatestRevision = defaults.allTrafficOnLatestRevision;
@@ -268,59 +235,87 @@ public final class FunctionServiceConfig {
     	      this.vpcConnectorEgressSettings = defaults.vpcConnectorEgressSettings;
         }
 
+        @CustomType.Setter
         public Builder allTrafficOnLatestRevision(@Nullable Boolean allTrafficOnLatestRevision) {
             this.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
             return this;
         }
+        @CustomType.Setter
         public Builder availableMemory(@Nullable String availableMemory) {
             this.availableMemory = availableMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
             this.environmentVariables = environmentVariables;
             return this;
         }
+        @CustomType.Setter
         public Builder gcfUri(@Nullable String gcfUri) {
             this.gcfUri = gcfUri;
             return this;
         }
+        @CustomType.Setter
         public Builder ingressSettings(@Nullable String ingressSettings) {
             this.ingressSettings = ingressSettings;
             return this;
         }
+        @CustomType.Setter
         public Builder maxInstanceCount(@Nullable Integer maxInstanceCount) {
             this.maxInstanceCount = maxInstanceCount;
             return this;
         }
+        @CustomType.Setter
         public Builder minInstanceCount(@Nullable Integer minInstanceCount) {
             this.minInstanceCount = minInstanceCount;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(@Nullable String uri) {
             this.uri = uri;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcConnector(@Nullable String vpcConnector) {
             this.vpcConnector = vpcConnector;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcConnectorEgressSettings(@Nullable String vpcConnectorEgressSettings) {
             this.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
             return this;
-        }        public FunctionServiceConfig build() {
-            return new FunctionServiceConfig(allTrafficOnLatestRevision, availableMemory, environmentVariables, gcfUri, ingressSettings, maxInstanceCount, minInstanceCount, service, serviceAccountEmail, timeoutSeconds, uri, vpcConnector, vpcConnectorEgressSettings);
+        }
+        public FunctionServiceConfig build() {
+            final var o = new FunctionServiceConfig();
+            o.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            o.availableMemory = availableMemory;
+            o.environmentVariables = environmentVariables;
+            o.gcfUri = gcfUri;
+            o.ingressSettings = ingressSettings;
+            o.maxInstanceCount = maxInstanceCount;
+            o.minInstanceCount = minInstanceCount;
+            o.service = service;
+            o.serviceAccountEmail = serviceAccountEmail;
+            o.timeoutSeconds = timeoutSeconds;
+            o.uri = uri;
+            o.vpcConnector = vpcConnector;
+            o.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
+            return o;
         }
     }
 }

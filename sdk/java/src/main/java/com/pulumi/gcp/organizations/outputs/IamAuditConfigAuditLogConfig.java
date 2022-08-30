@@ -20,21 +20,14 @@ public final class IamAuditConfigAuditLogConfig {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    private final @Nullable List<String> exemptedMembers;
+    private @Nullable List<String> exemptedMembers;
     /**
      * @return Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
      * 
      */
-    private final String logType;
+    private String logType;
 
-    @CustomType.Constructor
-    private IamAuditConfigAuditLogConfig(
-        @CustomType.Parameter("exemptedMembers") @Nullable List<String> exemptedMembers,
-        @CustomType.Parameter("logType") String logType) {
-        this.exemptedMembers = exemptedMembers;
-        this.logType = logType;
-    }
-
+    private IamAuditConfigAuditLogConfig() {}
     /**
      * @return Identities that do not cause logging for this type of permission.
      * Each entry can have one of the following values:
@@ -62,21 +55,18 @@ public final class IamAuditConfigAuditLogConfig {
     public static Builder builder(IamAuditConfigAuditLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> exemptedMembers;
         private String logType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IamAuditConfigAuditLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exemptedMembers = defaults.exemptedMembers;
     	      this.logType = defaults.logType;
         }
 
+        @CustomType.Setter
         public Builder exemptedMembers(@Nullable List<String> exemptedMembers) {
             this.exemptedMembers = exemptedMembers;
             return this;
@@ -84,11 +74,16 @@ public final class IamAuditConfigAuditLogConfig {
         public Builder exemptedMembers(String... exemptedMembers) {
             return exemptedMembers(List.of(exemptedMembers));
         }
+        @CustomType.Setter
         public Builder logType(String logType) {
             this.logType = Objects.requireNonNull(logType);
             return this;
-        }        public IamAuditConfigAuditLogConfig build() {
-            return new IamAuditConfigAuditLogConfig(exemptedMembers, logType);
+        }
+        public IamAuditConfigAuditLogConfig build() {
+            final var o = new IamAuditConfigAuditLogConfig();
+            o.exemptedMembers = exemptedMembers;
+            o.logType = logType;
+            return o;
         }
     }
 }

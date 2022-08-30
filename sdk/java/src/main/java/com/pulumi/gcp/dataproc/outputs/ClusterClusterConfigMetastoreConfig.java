@@ -13,13 +13,9 @@ public final class ClusterClusterConfigMetastoreConfig {
      * @return Resource name of an existing Dataproc Metastore service.
      * 
      */
-    private final String dataprocMetastoreService;
+    private String dataprocMetastoreService;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigMetastoreConfig(@CustomType.Parameter("dataprocMetastoreService") String dataprocMetastoreService) {
-        this.dataprocMetastoreService = dataprocMetastoreService;
-    }
-
+    private ClusterClusterConfigMetastoreConfig() {}
     /**
      * @return Resource name of an existing Dataproc Metastore service.
      * 
@@ -35,24 +31,24 @@ public final class ClusterClusterConfigMetastoreConfig {
     public static Builder builder(ClusterClusterConfigMetastoreConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dataprocMetastoreService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigMetastoreConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataprocMetastoreService = defaults.dataprocMetastoreService;
         }
 
+        @CustomType.Setter
         public Builder dataprocMetastoreService(String dataprocMetastoreService) {
             this.dataprocMetastoreService = Objects.requireNonNull(dataprocMetastoreService);
             return this;
-        }        public ClusterClusterConfigMetastoreConfig build() {
-            return new ClusterClusterConfigMetastoreConfig(dataprocMetastoreService);
+        }
+        public ClusterClusterConfigMetastoreConfig build() {
+            final var o = new ClusterClusterConfigMetastoreConfig();
+            o.dataprocMetastoreService = dataprocMetastoreService;
+            return o;
         }
     }
 }

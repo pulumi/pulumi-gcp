@@ -15,55 +15,36 @@ public final class GetOrganizationResult {
      * @return Timestamp when the Organization was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The Google for Work customer ID of the Organization.
      * 
      */
-    private final String directoryCustomerId;
-    private final String domain;
+    private String directoryCustomerId;
+    private String domain;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Organization&#39;s current lifecycle state.
      * 
      */
-    private final String lifecycleState;
+    private String lifecycleState;
     /**
      * @return The resource name of the Organization in the form `organizations/{organization_id}`.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The Organization ID.
      * 
      */
-    private final String orgId;
-    private final @Nullable String organization;
+    private String orgId;
+    private @Nullable String organization;
 
-    @CustomType.Constructor
-    private GetOrganizationResult(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("directoryCustomerId") String directoryCustomerId,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lifecycleState") String lifecycleState,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("orgId") String orgId,
-        @CustomType.Parameter("organization") @Nullable String organization) {
-        this.createTime = createTime;
-        this.directoryCustomerId = directoryCustomerId;
-        this.domain = domain;
-        this.id = id;
-        this.lifecycleState = lifecycleState;
-        this.name = name;
-        this.orgId = orgId;
-        this.organization = organization;
-    }
-
+    private GetOrganizationResult() {}
     /**
      * @return Timestamp when the Organization was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -120,7 +101,7 @@ public final class GetOrganizationResult {
     public static Builder builder(GetOrganizationResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String directoryCustomerId;
@@ -130,11 +111,7 @@ public final class GetOrganizationResult {
         private String name;
         private String orgId;
         private @Nullable String organization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -147,39 +124,57 @@ public final class GetOrganizationResult {
     	      this.organization = defaults.organization;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryCustomerId(String directoryCustomerId) {
             this.directoryCustomerId = Objects.requireNonNull(directoryCustomerId);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
             this.lifecycleState = Objects.requireNonNull(lifecycleState);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder orgId(String orgId) {
             this.orgId = Objects.requireNonNull(orgId);
             return this;
         }
+        @CustomType.Setter
         public Builder organization(@Nullable String organization) {
             this.organization = organization;
             return this;
-        }        public GetOrganizationResult build() {
-            return new GetOrganizationResult(createTime, directoryCustomerId, domain, id, lifecycleState, name, orgId, organization);
+        }
+        public GetOrganizationResult build() {
+            final var o = new GetOrganizationResult();
+            o.createTime = createTime;
+            o.directoryCustomerId = directoryCustomerId;
+            o.domain = domain;
+            o.id = id;
+            o.lifecycleState = lifecycleState;
+            o.name = name;
+            o.orgId = orgId;
+            o.organization = organization;
+            return o;
         }
     }
 }

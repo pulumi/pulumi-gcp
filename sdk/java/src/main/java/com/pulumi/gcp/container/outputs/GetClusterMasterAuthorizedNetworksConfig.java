@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMasterAuthorizedNetworksConfig {
-    private final List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
 
-    @CustomType.Constructor
-    private GetClusterMasterAuthorizedNetworksConfig(@CustomType.Parameter("cidrBlocks") List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
-        this.cidrBlocks = cidrBlocks;
-    }
-
+    private GetClusterMasterAuthorizedNetworksConfig() {}
     public List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
     }
@@ -28,27 +24,27 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
     public static Builder builder(GetClusterMasterAuthorizedNetworksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
         }
 
+        @CustomType.Setter
         public Builder cidrBlocks(List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
             this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
             return this;
         }
         public Builder cidrBlocks(GetClusterMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
-        }        public GetClusterMasterAuthorizedNetworksConfig build() {
-            return new GetClusterMasterAuthorizedNetworksConfig(cidrBlocks);
+        }
+        public GetClusterMasterAuthorizedNetworksConfig build() {
+            final var o = new GetClusterMasterAuthorizedNetworksConfig();
+            o.cidrBlocks = cidrBlocks;
+            return o;
         }
     }
 }

@@ -19,22 +19,15 @@ public final class StandardAppVersionDeployment {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<StandardAppVersionDeploymentFile> files;
+    private @Nullable List<StandardAppVersionDeploymentFile> files;
     /**
      * @return Zip File
      * Structure is documented below.
      * 
      */
-    private final @Nullable StandardAppVersionDeploymentZip zip;
+    private @Nullable StandardAppVersionDeploymentZip zip;
 
-    @CustomType.Constructor
-    private StandardAppVersionDeployment(
-        @CustomType.Parameter("files") @Nullable List<StandardAppVersionDeploymentFile> files,
-        @CustomType.Parameter("zip") @Nullable StandardAppVersionDeploymentZip zip) {
-        this.files = files;
-        this.zip = zip;
-    }
-
+    private StandardAppVersionDeployment() {}
     /**
      * @return Manifest of the files stored in Google Cloud Storage that are included as part of this version.
      * All files must be readable using the credentials supplied with this call.
@@ -60,21 +53,18 @@ public final class StandardAppVersionDeployment {
     public static Builder builder(StandardAppVersionDeployment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<StandardAppVersionDeploymentFile> files;
         private @Nullable StandardAppVersionDeploymentZip zip;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionDeployment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.files = defaults.files;
     	      this.zip = defaults.zip;
         }
 
+        @CustomType.Setter
         public Builder files(@Nullable List<StandardAppVersionDeploymentFile> files) {
             this.files = files;
             return this;
@@ -82,11 +72,16 @@ public final class StandardAppVersionDeployment {
         public Builder files(StandardAppVersionDeploymentFile... files) {
             return files(List.of(files));
         }
+        @CustomType.Setter
         public Builder zip(@Nullable StandardAppVersionDeploymentZip zip) {
             this.zip = zip;
             return this;
-        }        public StandardAppVersionDeployment build() {
-            return new StandardAppVersionDeployment(files, zip);
+        }
+        public StandardAppVersionDeployment build() {
+            final var o = new StandardAppVersionDeployment();
+            o.files = files;
+            o.zip = zip;
+            return o;
         }
     }
 }

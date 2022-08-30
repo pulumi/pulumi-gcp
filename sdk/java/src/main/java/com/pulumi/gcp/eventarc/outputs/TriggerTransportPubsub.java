@@ -16,21 +16,14 @@ public final class TriggerTransportPubsub {
      * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
      * 
      */
-    private final @Nullable String subscription;
+    private @Nullable String subscription;
     /**
      * @return Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
      * 
      */
-    private final @Nullable String topic;
+    private @Nullable String topic;
 
-    @CustomType.Constructor
-    private TriggerTransportPubsub(
-        @CustomType.Parameter("subscription") @Nullable String subscription,
-        @CustomType.Parameter("topic") @Nullable String topic) {
-        this.subscription = subscription;
-        this.topic = topic;
-    }
-
+    private TriggerTransportPubsub() {}
     /**
      * @return -
      * Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
@@ -54,30 +47,32 @@ public final class TriggerTransportPubsub {
     public static Builder builder(TriggerTransportPubsub defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String subscription;
         private @Nullable String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerTransportPubsub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subscription = defaults.subscription;
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder subscription(@Nullable String subscription) {
             this.subscription = subscription;
             return this;
         }
+        @CustomType.Setter
         public Builder topic(@Nullable String topic) {
             this.topic = topic;
             return this;
-        }        public TriggerTransportPubsub build() {
-            return new TriggerTransportPubsub(subscription, topic);
+        }
+        public TriggerTransportPubsub build() {
+            final var o = new TriggerTransportPubsub();
+            o.subscription = subscription;
+            o.topic = topic;
+            return o;
         }
     }
 }

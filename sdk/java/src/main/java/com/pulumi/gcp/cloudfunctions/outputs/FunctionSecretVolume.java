@@ -17,35 +17,24 @@ public final class FunctionSecretVolume {
      * @return The path within the container to mount the secret volume. For example, setting the mount_path as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
      * 
      */
-    private final String mountPath;
+    private String mountPath;
     /**
      * @return Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function&#39;s project, assuming that the secret exists in the same project as of the function.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return ID of the secret in secret manager (not the full resource name).
      * 
      */
-    private final String secret;
+    private String secret;
     /**
      * @return List of secret versions to mount for this secret. If empty, the &#34;latest&#34; version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
      * 
      */
-    private final @Nullable List<FunctionSecretVolumeVersion> versions;
+    private @Nullable List<FunctionSecretVolumeVersion> versions;
 
-    @CustomType.Constructor
-    private FunctionSecretVolume(
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("secret") String secret,
-        @CustomType.Parameter("versions") @Nullable List<FunctionSecretVolumeVersion> versions) {
-        this.mountPath = mountPath;
-        this.projectId = projectId;
-        this.secret = secret;
-        this.versions = versions;
-    }
-
+    private FunctionSecretVolume() {}
     /**
      * @return The path within the container to mount the secret volume. For example, setting the mount_path as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
      * 
@@ -82,17 +71,13 @@ public final class FunctionSecretVolume {
     public static Builder builder(FunctionSecretVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mountPath;
         private @Nullable String projectId;
         private String secret;
         private @Nullable List<FunctionSecretVolumeVersion> versions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionSecretVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
@@ -101,26 +86,36 @@ public final class FunctionSecretVolume {
     	      this.versions = defaults.versions;
         }
 
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
         }
+        @CustomType.Setter
         public Builder versions(@Nullable List<FunctionSecretVolumeVersion> versions) {
             this.versions = versions;
             return this;
         }
         public Builder versions(FunctionSecretVolumeVersion... versions) {
             return versions(List.of(versions));
-        }        public FunctionSecretVolume build() {
-            return new FunctionSecretVolume(mountPath, projectId, secret, versions);
+        }
+        public FunctionSecretVolume build() {
+            final var o = new FunctionSecretVolume();
+            o.mountPath = mountPath;
+            o.projectId = projectId;
+            o.secret = secret;
+            o.versions = versions;
+            return o;
         }
     }
 }

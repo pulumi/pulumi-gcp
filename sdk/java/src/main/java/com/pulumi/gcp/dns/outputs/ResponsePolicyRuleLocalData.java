@@ -15,13 +15,9 @@ public final class ResponsePolicyRuleLocalData {
      * Structure is documented below.
      * 
      */
-    private final List<ResponsePolicyRuleLocalDataLocalData> localDatas;
+    private List<ResponsePolicyRuleLocalDataLocalData> localDatas;
 
-    @CustomType.Constructor
-    private ResponsePolicyRuleLocalData(@CustomType.Parameter("localDatas") List<ResponsePolicyRuleLocalDataLocalData> localDatas) {
-        this.localDatas = localDatas;
-    }
-
+    private ResponsePolicyRuleLocalData() {}
     /**
      * @return All resource record sets for this selector, one per resource record type. The name must match the dns_name.
      * Structure is documented below.
@@ -38,27 +34,27 @@ public final class ResponsePolicyRuleLocalData {
     public static Builder builder(ResponsePolicyRuleLocalData defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ResponsePolicyRuleLocalDataLocalData> localDatas;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResponsePolicyRuleLocalData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localDatas = defaults.localDatas;
         }
 
+        @CustomType.Setter
         public Builder localDatas(List<ResponsePolicyRuleLocalDataLocalData> localDatas) {
             this.localDatas = Objects.requireNonNull(localDatas);
             return this;
         }
         public Builder localDatas(ResponsePolicyRuleLocalDataLocalData... localDatas) {
             return localDatas(List.of(localDatas));
-        }        public ResponsePolicyRuleLocalData build() {
-            return new ResponsePolicyRuleLocalData(localDatas);
+        }
+        public ResponsePolicyRuleLocalData build() {
+            final var o = new ResponsePolicyRuleLocalData();
+            o.localDatas = localDatas;
+            return o;
         }
     }
 }

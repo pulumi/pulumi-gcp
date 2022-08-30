@@ -17,54 +17,35 @@ public final class GetManagedZoneResult {
      * @return A textual description field.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The fully qualified DNS name of this zone, e.g. `example.io.`.
      * 
      */
-    private final String dnsName;
+    private String dnsName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Integer managedZoneId;
-    private final String name;
+    private String id;
+    private Integer managedZoneId;
+    private String name;
     /**
      * @return The list of nameservers that will be authoritative for this
      * domain. Use NS records to redirect from your DNS provider to these names,
      * thus making Google Cloud DNS authoritative for this zone.
      * 
      */
-    private final List<String> nameServers;
-    private final @Nullable String project;
+    private List<String> nameServers;
+    private @Nullable String project;
     /**
      * @return The zone&#39;s visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
      * 
      */
-    private final String visibility;
+    private String visibility;
 
-    @CustomType.Constructor
-    private GetManagedZoneResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dnsName") String dnsName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("managedZoneId") Integer managedZoneId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nameServers") List<String> nameServers,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("visibility") String visibility) {
-        this.description = description;
-        this.dnsName = dnsName;
-        this.id = id;
-        this.managedZoneId = managedZoneId;
-        this.name = name;
-        this.nameServers = nameServers;
-        this.project = project;
-        this.visibility = visibility;
-    }
-
+    private GetManagedZoneResult() {}
     /**
      * @return A textual description field.
      * 
@@ -120,7 +101,7 @@ public final class GetManagedZoneResult {
     public static Builder builder(GetManagedZoneResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String dnsName;
@@ -130,11 +111,7 @@ public final class GetManagedZoneResult {
         private List<String> nameServers;
         private @Nullable String project;
         private String visibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetManagedZoneResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -147,26 +124,32 @@ public final class GetManagedZoneResult {
     	      this.visibility = defaults.visibility;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsName(String dnsName) {
             this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder managedZoneId(Integer managedZoneId) {
             this.managedZoneId = Objects.requireNonNull(managedZoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nameServers(List<String> nameServers) {
             this.nameServers = Objects.requireNonNull(nameServers);
             return this;
@@ -174,15 +157,27 @@ public final class GetManagedZoneResult {
         public Builder nameServers(String... nameServers) {
             return nameServers(List.of(nameServers));
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder visibility(String visibility) {
             this.visibility = Objects.requireNonNull(visibility);
             return this;
-        }        public GetManagedZoneResult build() {
-            return new GetManagedZoneResult(description, dnsName, id, managedZoneId, name, nameServers, project, visibility);
+        }
+        public GetManagedZoneResult build() {
+            final var o = new GetManagedZoneResult();
+            o.description = description;
+            o.dnsName = dnsName;
+            o.id = id;
+            o.managedZoneId = managedZoneId;
+            o.name = name;
+            o.nameServers = nameServers;
+            o.project = project;
+            o.visibility = visibility;
+            return o;
         }
     }
 }

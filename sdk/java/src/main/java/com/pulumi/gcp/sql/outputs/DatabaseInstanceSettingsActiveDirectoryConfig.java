@@ -14,13 +14,9 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfig {
      * Can only be used with SQL Server.
      * 
      */
-    private final String domain;
+    private String domain;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsActiveDirectoryConfig(@CustomType.Parameter("domain") String domain) {
-        this.domain = domain;
-    }
-
+    private DatabaseInstanceSettingsActiveDirectoryConfig() {}
     /**
      * @return The domain name for the active directory (e.g., mydomain.com).
      * Can only be used with SQL Server.
@@ -37,24 +33,24 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfig {
     public static Builder builder(DatabaseInstanceSettingsActiveDirectoryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domain;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsActiveDirectoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
         }
 
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
-        }        public DatabaseInstanceSettingsActiveDirectoryConfig build() {
-            return new DatabaseInstanceSettingsActiveDirectoryConfig(domain);
+        }
+        public DatabaseInstanceSettingsActiveDirectoryConfig build() {
+            final var o = new DatabaseInstanceSettingsActiveDirectoryConfig();
+            o.domain = domain;
+            return o;
         }
     }
 }

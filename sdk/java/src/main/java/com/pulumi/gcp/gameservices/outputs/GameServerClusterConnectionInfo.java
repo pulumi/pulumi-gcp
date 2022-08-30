@@ -15,23 +15,16 @@ public final class GameServerClusterConnectionInfo {
      * Structure is documented below.
      * 
      */
-    private final GameServerClusterConnectionInfoGkeClusterReference gkeClusterReference;
+    private GameServerClusterConnectionInfoGkeClusterReference gkeClusterReference;
     /**
      * @return Namespace designated on the game server cluster where the game server
      * instances will be created. The namespace existence will be validated
      * during creation.
      * 
      */
-    private final String namespace;
+    private String namespace;
 
-    @CustomType.Constructor
-    private GameServerClusterConnectionInfo(
-        @CustomType.Parameter("gkeClusterReference") GameServerClusterConnectionInfoGkeClusterReference gkeClusterReference,
-        @CustomType.Parameter("namespace") String namespace) {
-        this.gkeClusterReference = gkeClusterReference;
-        this.namespace = namespace;
-    }
-
+    private GameServerClusterConnectionInfo() {}
     /**
      * @return Reference of the GKE cluster where the game servers are installed.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class GameServerClusterConnectionInfo {
     public static Builder builder(GameServerClusterConnectionInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GameServerClusterConnectionInfoGkeClusterReference gkeClusterReference;
         private String namespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerClusterConnectionInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gkeClusterReference = defaults.gkeClusterReference;
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
         public Builder gkeClusterReference(GameServerClusterConnectionInfoGkeClusterReference gkeClusterReference) {
             this.gkeClusterReference = Objects.requireNonNull(gkeClusterReference);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
-        }        public GameServerClusterConnectionInfo build() {
-            return new GameServerClusterConnectionInfo(gkeClusterReference, namespace);
+        }
+        public GameServerClusterConnectionInfo build() {
+            final var o = new GameServerClusterConnectionInfo();
+            o.gkeClusterReference = gkeClusterReference;
+            o.namespace = namespace;
+            return o;
         }
     }
 }

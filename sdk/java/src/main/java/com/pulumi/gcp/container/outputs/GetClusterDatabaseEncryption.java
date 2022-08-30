@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterDatabaseEncryption {
-    private final String keyName;
-    private final String state;
+    private String keyName;
+    private String state;
 
-    @CustomType.Constructor
-    private GetClusterDatabaseEncryption(
-        @CustomType.Parameter("keyName") String keyName,
-        @CustomType.Parameter("state") String state) {
-        this.keyName = keyName;
-        this.state = state;
-    }
-
+    private GetClusterDatabaseEncryption() {}
     public String keyName() {
         return this.keyName;
     }
@@ -34,30 +27,32 @@ public final class GetClusterDatabaseEncryption {
     public static Builder builder(GetClusterDatabaseEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String keyName;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterDatabaseEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyName = defaults.keyName;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder keyName(String keyName) {
             this.keyName = Objects.requireNonNull(keyName);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public GetClusterDatabaseEncryption build() {
-            return new GetClusterDatabaseEncryption(keyName, state);
+        }
+        public GetClusterDatabaseEncryption build() {
+            final var o = new GetClusterDatabaseEncryption();
+            o.keyName = keyName;
+            o.state = state;
+            return o;
         }
     }
 }

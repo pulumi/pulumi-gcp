@@ -15,21 +15,14 @@ public final class FirewallPolicyRuleMatchLayer4Config {
      * @return The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
      * 
      */
-    private final String ipProtocol;
+    private String ipProtocol;
     /**
      * @return An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
      * 
      */
-    private final @Nullable List<String> ports;
+    private @Nullable List<String> ports;
 
-    @CustomType.Constructor
-    private FirewallPolicyRuleMatchLayer4Config(
-        @CustomType.Parameter("ipProtocol") String ipProtocol,
-        @CustomType.Parameter("ports") @Nullable List<String> ports) {
-        this.ipProtocol = ipProtocol;
-        this.ports = ports;
-    }
-
+    private FirewallPolicyRuleMatchLayer4Config() {}
     /**
      * @return The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
      * 
@@ -52,33 +45,35 @@ public final class FirewallPolicyRuleMatchLayer4Config {
     public static Builder builder(FirewallPolicyRuleMatchLayer4Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipProtocol;
         private @Nullable List<String> ports;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallPolicyRuleMatchLayer4Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipProtocol = defaults.ipProtocol;
     	      this.ports = defaults.ports;
         }
 
+        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder ports(@Nullable List<String> ports) {
             this.ports = ports;
             return this;
         }
         public Builder ports(String... ports) {
             return ports(List.of(ports));
-        }        public FirewallPolicyRuleMatchLayer4Config build() {
-            return new FirewallPolicyRuleMatchLayer4Config(ipProtocol, ports);
+        }
+        public FirewallPolicyRuleMatchLayer4Config build() {
+            final var o = new FirewallPolicyRuleMatchLayer4Config();
+            o.ipProtocol = ipProtocol;
+            o.ports = ports;
+            return o;
         }
     }
 }

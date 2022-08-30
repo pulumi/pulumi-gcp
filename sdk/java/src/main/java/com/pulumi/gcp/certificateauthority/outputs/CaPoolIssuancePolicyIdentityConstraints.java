@@ -17,13 +17,13 @@ public final class CaPoolIssuancePolicyIdentityConstraints {
      * Otherwise, the requested SubjectAltNames will be discarded.
      * 
      */
-    private final Boolean allowSubjectAltNamesPassthrough;
+    private Boolean allowSubjectAltNamesPassthrough;
     /**
      * @return If this is set, the Subject field may be copied from a certificate request into the signed certificate.
      * Otherwise, the requested Subject will be discarded.
      * 
      */
-    private final Boolean allowSubjectPassthrough;
+    private Boolean allowSubjectPassthrough;
     /**
      * @return A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
      * certificate is signed. To see the full allowed syntax and some examples,
@@ -31,18 +31,9 @@ public final class CaPoolIssuancePolicyIdentityConstraints {
      * Structure is documented below.
      * 
      */
-    private final @Nullable CaPoolIssuancePolicyIdentityConstraintsCelExpression celExpression;
+    private @Nullable CaPoolIssuancePolicyIdentityConstraintsCelExpression celExpression;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyIdentityConstraints(
-        @CustomType.Parameter("allowSubjectAltNamesPassthrough") Boolean allowSubjectAltNamesPassthrough,
-        @CustomType.Parameter("allowSubjectPassthrough") Boolean allowSubjectPassthrough,
-        @CustomType.Parameter("celExpression") @Nullable CaPoolIssuancePolicyIdentityConstraintsCelExpression celExpression) {
-        this.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
-        this.allowSubjectPassthrough = allowSubjectPassthrough;
-        this.celExpression = celExpression;
-    }
-
+    private CaPoolIssuancePolicyIdentityConstraints() {}
     /**
      * @return If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
      * Otherwise, the requested SubjectAltNames will be discarded.
@@ -77,16 +68,12 @@ public final class CaPoolIssuancePolicyIdentityConstraints {
     public static Builder builder(CaPoolIssuancePolicyIdentityConstraints defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowSubjectAltNamesPassthrough;
         private Boolean allowSubjectPassthrough;
         private @Nullable CaPoolIssuancePolicyIdentityConstraintsCelExpression celExpression;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyIdentityConstraints defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSubjectAltNamesPassthrough = defaults.allowSubjectAltNamesPassthrough;
@@ -94,19 +81,27 @@ public final class CaPoolIssuancePolicyIdentityConstraints {
     	      this.celExpression = defaults.celExpression;
         }
 
+        @CustomType.Setter
         public Builder allowSubjectAltNamesPassthrough(Boolean allowSubjectAltNamesPassthrough) {
             this.allowSubjectAltNamesPassthrough = Objects.requireNonNull(allowSubjectAltNamesPassthrough);
             return this;
         }
+        @CustomType.Setter
         public Builder allowSubjectPassthrough(Boolean allowSubjectPassthrough) {
             this.allowSubjectPassthrough = Objects.requireNonNull(allowSubjectPassthrough);
             return this;
         }
+        @CustomType.Setter
         public Builder celExpression(@Nullable CaPoolIssuancePolicyIdentityConstraintsCelExpression celExpression) {
             this.celExpression = celExpression;
             return this;
-        }        public CaPoolIssuancePolicyIdentityConstraints build() {
-            return new CaPoolIssuancePolicyIdentityConstraints(allowSubjectAltNamesPassthrough, allowSubjectPassthrough, celExpression);
+        }
+        public CaPoolIssuancePolicyIdentityConstraints build() {
+            final var o = new CaPoolIssuancePolicyIdentityConstraints();
+            o.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
+            o.allowSubjectPassthrough = allowSubjectPassthrough;
+            o.celExpression = celExpression;
+            return o;
         }
     }
 }

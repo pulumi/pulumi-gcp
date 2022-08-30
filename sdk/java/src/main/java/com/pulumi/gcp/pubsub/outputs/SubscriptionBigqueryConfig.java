@@ -17,36 +17,25 @@ public final class SubscriptionBigqueryConfig {
      * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
      */
-    private final @Nullable Boolean dropUnknownFields;
+    private @Nullable Boolean dropUnknownFields;
     /**
-     * @return The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
      * 
      */
-    private final String table;
+    private String table;
     /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
      * 
      */
-    private final @Nullable Boolean useTopicSchema;
+    private @Nullable Boolean useTopicSchema;
     /**
      * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
      * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
      * 
      */
-    private final @Nullable Boolean writeMetadata;
+    private @Nullable Boolean writeMetadata;
 
-    @CustomType.Constructor
-    private SubscriptionBigqueryConfig(
-        @CustomType.Parameter("dropUnknownFields") @Nullable Boolean dropUnknownFields,
-        @CustomType.Parameter("table") String table,
-        @CustomType.Parameter("useTopicSchema") @Nullable Boolean useTopicSchema,
-        @CustomType.Parameter("writeMetadata") @Nullable Boolean writeMetadata) {
-        this.dropUnknownFields = dropUnknownFields;
-        this.table = table;
-        this.useTopicSchema = useTopicSchema;
-        this.writeMetadata = writeMetadata;
-    }
-
+    private SubscriptionBigqueryConfig() {}
     /**
      * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
      * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
@@ -56,7 +45,7 @@ public final class SubscriptionBigqueryConfig {
         return Optional.ofNullable(this.dropUnknownFields);
     }
     /**
-     * @return The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
      * 
      */
     public String table() {
@@ -85,17 +74,13 @@ public final class SubscriptionBigqueryConfig {
     public static Builder builder(SubscriptionBigqueryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean dropUnknownFields;
         private String table;
         private @Nullable Boolean useTopicSchema;
         private @Nullable Boolean writeMetadata;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubscriptionBigqueryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dropUnknownFields = defaults.dropUnknownFields;
@@ -104,23 +89,33 @@ public final class SubscriptionBigqueryConfig {
     	      this.writeMetadata = defaults.writeMetadata;
         }
 
+        @CustomType.Setter
         public Builder dropUnknownFields(@Nullable Boolean dropUnknownFields) {
             this.dropUnknownFields = dropUnknownFields;
             return this;
         }
+        @CustomType.Setter
         public Builder table(String table) {
             this.table = Objects.requireNonNull(table);
             return this;
         }
+        @CustomType.Setter
         public Builder useTopicSchema(@Nullable Boolean useTopicSchema) {
             this.useTopicSchema = useTopicSchema;
             return this;
         }
+        @CustomType.Setter
         public Builder writeMetadata(@Nullable Boolean writeMetadata) {
             this.writeMetadata = writeMetadata;
             return this;
-        }        public SubscriptionBigqueryConfig build() {
-            return new SubscriptionBigqueryConfig(dropUnknownFields, table, useTopicSchema, writeMetadata);
+        }
+        public SubscriptionBigqueryConfig build() {
+            final var o = new SubscriptionBigqueryConfig();
+            o.dropUnknownFields = dropUnknownFields;
+            o.table = table;
+            o.useTopicSchema = useTopicSchema;
+            o.writeMetadata = writeMetadata;
+            return o;
         }
     }
 }

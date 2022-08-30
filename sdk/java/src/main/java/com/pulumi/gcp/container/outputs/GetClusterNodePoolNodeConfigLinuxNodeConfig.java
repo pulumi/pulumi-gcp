@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
-    private final Map<String,String> sysctls;
+    private Map<String,String> sysctls;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigLinuxNodeConfig(@CustomType.Parameter("sysctls") Map<String,String> sysctls) {
-        this.sysctls = sysctls;
-    }
-
+    private GetClusterNodePoolNodeConfigLinuxNodeConfig() {}
     public Map<String,String> sysctls() {
         return this.sysctls;
     }
@@ -28,24 +24,24 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     public static Builder builder(GetClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> sysctls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sysctls = defaults.sysctls;
         }
 
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             this.sysctls = Objects.requireNonNull(sysctls);
             return this;
-        }        public GetClusterNodePoolNodeConfigLinuxNodeConfig build() {
-            return new GetClusterNodePoolNodeConfigLinuxNodeConfig(sysctls);
+        }
+        public GetClusterNodePoolNodeConfigLinuxNodeConfig build() {
+            final var o = new GetClusterNodePoolNodeConfigLinuxNodeConfig();
+            o.sysctls = sysctls;
+            return o;
         }
     }
 }

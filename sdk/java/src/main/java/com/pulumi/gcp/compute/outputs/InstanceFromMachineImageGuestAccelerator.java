@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromMachineImageGuestAccelerator {
-    private final Integer count;
-    private final String type;
+    private Integer count;
+    private String type;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageGuestAccelerator(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("type") String type) {
-        this.count = count;
-        this.type = type;
-    }
-
+    private InstanceFromMachineImageGuestAccelerator() {}
     public Integer count() {
         return this.count;
     }
@@ -35,30 +28,32 @@ public final class InstanceFromMachineImageGuestAccelerator {
     public static Builder builder(InstanceFromMachineImageGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public InstanceFromMachineImageGuestAccelerator build() {
-            return new InstanceFromMachineImageGuestAccelerator(count, type);
+        }
+        public InstanceFromMachineImageGuestAccelerator build() {
+            final var o = new InstanceFromMachineImageGuestAccelerator();
+            o.count = count;
+            o.type = type;
+            return o;
         }
     }
 }

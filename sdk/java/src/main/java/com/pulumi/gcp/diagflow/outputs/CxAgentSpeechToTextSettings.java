@@ -15,13 +15,9 @@ public final class CxAgentSpeechToTextSettings {
      * @return Whether to use speech adaptation for speech recognition.
      * 
      */
-    private final @Nullable Boolean enableSpeechAdaptation;
+    private @Nullable Boolean enableSpeechAdaptation;
 
-    @CustomType.Constructor
-    private CxAgentSpeechToTextSettings(@CustomType.Parameter("enableSpeechAdaptation") @Nullable Boolean enableSpeechAdaptation) {
-        this.enableSpeechAdaptation = enableSpeechAdaptation;
-    }
-
+    private CxAgentSpeechToTextSettings() {}
     /**
      * @return Whether to use speech adaptation for speech recognition.
      * 
@@ -37,24 +33,24 @@ public final class CxAgentSpeechToTextSettings {
     public static Builder builder(CxAgentSpeechToTextSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableSpeechAdaptation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxAgentSpeechToTextSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableSpeechAdaptation = defaults.enableSpeechAdaptation;
         }
 
+        @CustomType.Setter
         public Builder enableSpeechAdaptation(@Nullable Boolean enableSpeechAdaptation) {
             this.enableSpeechAdaptation = enableSpeechAdaptation;
             return this;
-        }        public CxAgentSpeechToTextSettings build() {
-            return new CxAgentSpeechToTextSettings(enableSpeechAdaptation);
+        }
+        public CxAgentSpeechToTextSettings build() {
+            final var o = new CxAgentSpeechToTextSettings();
+            o.enableSpeechAdaptation = enableSpeechAdaptation;
+            return o;
         }
     }
 }

@@ -18,23 +18,16 @@ public final class TagTemplateFieldType {
      * Structure is documented below.
      * 
      */
-    private final @Nullable TagTemplateFieldTypeEnumType enumType;
+    private @Nullable TagTemplateFieldTypeEnumType enumType;
     /**
      * @return Represents primitive types - string, bool etc.
      * Exactly one of `primitive_type` or `enum_type` must be set
      * Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
      * 
      */
-    private final @Nullable String primitiveType;
+    private @Nullable String primitiveType;
 
-    @CustomType.Constructor
-    private TagTemplateFieldType(
-        @CustomType.Parameter("enumType") @Nullable TagTemplateFieldTypeEnumType enumType,
-        @CustomType.Parameter("primitiveType") @Nullable String primitiveType) {
-        this.enumType = enumType;
-        this.primitiveType = primitiveType;
-    }
-
+    private TagTemplateFieldType() {}
     /**
      * @return Represents an enum type.
      * Exactly one of `primitive_type` or `enum_type` must be set
@@ -61,30 +54,32 @@ public final class TagTemplateFieldType {
     public static Builder builder(TagTemplateFieldType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable TagTemplateFieldTypeEnumType enumType;
         private @Nullable String primitiveType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TagTemplateFieldType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enumType = defaults.enumType;
     	      this.primitiveType = defaults.primitiveType;
         }
 
+        @CustomType.Setter
         public Builder enumType(@Nullable TagTemplateFieldTypeEnumType enumType) {
             this.enumType = enumType;
             return this;
         }
+        @CustomType.Setter
         public Builder primitiveType(@Nullable String primitiveType) {
             this.primitiveType = primitiveType;
             return this;
-        }        public TagTemplateFieldType build() {
-            return new TagTemplateFieldType(enumType, primitiveType);
+        }
+        public TagTemplateFieldType build() {
+            final var o = new TagTemplateFieldType();
+            o.enumType = enumType;
+            o.primitiveType = primitiveType;
+            return o;
         }
     }
 }

@@ -16,23 +16,16 @@ public final class SecurityScanConfigSchedule {
      * @return The duration of time between executions in days
      * 
      */
-    private final Integer intervalDurationDays;
+    private Integer intervalDurationDays;
     /**
      * @return A timestamp indicates when the next run will be scheduled. The value is refreshed
      * by the server after each run. If unspecified, it will default to current server time,
      * which means the scan will be scheduled to start immediately.
      * 
      */
-    private final @Nullable String scheduleTime;
+    private @Nullable String scheduleTime;
 
-    @CustomType.Constructor
-    private SecurityScanConfigSchedule(
-        @CustomType.Parameter("intervalDurationDays") Integer intervalDurationDays,
-        @CustomType.Parameter("scheduleTime") @Nullable String scheduleTime) {
-        this.intervalDurationDays = intervalDurationDays;
-        this.scheduleTime = scheduleTime;
-    }
-
+    private SecurityScanConfigSchedule() {}
     /**
      * @return The duration of time between executions in days
      * 
@@ -57,30 +50,32 @@ public final class SecurityScanConfigSchedule {
     public static Builder builder(SecurityScanConfigSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer intervalDurationDays;
         private @Nullable String scheduleTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityScanConfigSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.intervalDurationDays = defaults.intervalDurationDays;
     	      this.scheduleTime = defaults.scheduleTime;
         }
 
+        @CustomType.Setter
         public Builder intervalDurationDays(Integer intervalDurationDays) {
             this.intervalDurationDays = Objects.requireNonNull(intervalDurationDays);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleTime(@Nullable String scheduleTime) {
             this.scheduleTime = scheduleTime;
             return this;
-        }        public SecurityScanConfigSchedule build() {
-            return new SecurityScanConfigSchedule(intervalDurationDays, scheduleTime);
+        }
+        public SecurityScanConfigSchedule build() {
+            final var o = new SecurityScanConfigSchedule();
+            o.intervalDurationDays = intervalDurationDays;
+            o.scheduleTime = scheduleTime;
+            return o;
         }
     }
 }

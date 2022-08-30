@@ -19,39 +19,28 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd> requestHeaderToAdds;
+    private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd> requestHeaderToAdds;
     /**
      * @return A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove> requestHeaderToRemoves;
+    private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove> requestHeaderToRemoves;
     /**
      * @return Headers to add to the response prior to sending it back to the client.
      * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd> responseHeaderToAdds;
+    private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd> responseHeaderToAdds;
     /**
      * @return A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove> responseHeaderToRemoves;
+    private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove> responseHeaderToRemoves;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(
-        @CustomType.Parameter("requestHeaderToAdds") @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd> requestHeaderToAdds,
-        @CustomType.Parameter("requestHeaderToRemoves") @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove> requestHeaderToRemoves,
-        @CustomType.Parameter("responseHeaderToAdds") @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd> responseHeaderToAdds,
-        @CustomType.Parameter("responseHeaderToRemoves") @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove> responseHeaderToRemoves) {
-        this.requestHeaderToAdds = requestHeaderToAdds;
-        this.requestHeaderToRemoves = requestHeaderToRemoves;
-        this.responseHeaderToAdds = responseHeaderToAdds;
-        this.responseHeaderToRemoves = responseHeaderToRemoves;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction() {}
     /**
      * @return Describes a header to add.
      * Structure is documented below.
@@ -93,17 +82,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd> requestHeaderToAdds;
         private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove> requestHeaderToRemoves;
         private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd> responseHeaderToAdds;
         private @Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove> responseHeaderToRemoves;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.requestHeaderToAdds = defaults.requestHeaderToAdds;
@@ -112,6 +97,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
     	      this.responseHeaderToRemoves = defaults.responseHeaderToRemoves;
         }
 
+        @CustomType.Setter
         public Builder requestHeaderToAdds(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd> requestHeaderToAdds) {
             this.requestHeaderToAdds = requestHeaderToAdds;
             return this;
@@ -119,6 +105,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
         public Builder requestHeaderToAdds(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd... requestHeaderToAdds) {
             return requestHeaderToAdds(List.of(requestHeaderToAdds));
         }
+        @CustomType.Setter
         public Builder requestHeaderToRemoves(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove> requestHeaderToRemoves) {
             this.requestHeaderToRemoves = requestHeaderToRemoves;
             return this;
@@ -126,6 +113,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
         public Builder requestHeaderToRemoves(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove... requestHeaderToRemoves) {
             return requestHeaderToRemoves(List.of(requestHeaderToRemoves));
         }
+        @CustomType.Setter
         public Builder responseHeaderToAdds(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd> responseHeaderToAdds) {
             this.responseHeaderToAdds = responseHeaderToAdds;
             return this;
@@ -133,14 +121,21 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
         public Builder responseHeaderToAdds(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd... responseHeaderToAdds) {
             return responseHeaderToAdds(List.of(responseHeaderToAdds));
         }
+        @CustomType.Setter
         public Builder responseHeaderToRemoves(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove> responseHeaderToRemoves) {
             this.responseHeaderToRemoves = responseHeaderToRemoves;
             return this;
         }
         public Builder responseHeaderToRemoves(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove... responseHeaderToRemoves) {
             return responseHeaderToRemoves(List.of(responseHeaderToRemoves));
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(requestHeaderToAdds, requestHeaderToRemoves, responseHeaderToAdds, responseHeaderToRemoves);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction();
+            o.requestHeaderToAdds = requestHeaderToAdds;
+            o.requestHeaderToRemoves = requestHeaderToRemoves;
+            o.responseHeaderToAdds = responseHeaderToAdds;
+            o.responseHeaderToRemoves = responseHeaderToRemoves;
+            return o;
         }
     }
 }

@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceStatusCondition {
-    private final @Nullable String message;
-    private final @Nullable String reason;
-    private final @Nullable String status;
-    private final @Nullable String type;
+    private @Nullable String message;
+    private @Nullable String reason;
+    private @Nullable String status;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private ServiceStatusCondition(
-        @CustomType.Parameter("message") @Nullable String message,
-        @CustomType.Parameter("reason") @Nullable String reason,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.message = message;
-        this.reason = reason;
-        this.status = status;
-        this.type = type;
-    }
-
+    private ServiceStatusCondition() {}
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -48,17 +37,13 @@ public final class ServiceStatusCondition {
     public static Builder builder(ServiceStatusCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String message;
         private @Nullable String reason;
         private @Nullable String status;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceStatusCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.message = defaults.message;
@@ -67,23 +52,33 @@ public final class ServiceStatusCondition {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
         public Builder reason(@Nullable String reason) {
             this.reason = reason;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public ServiceStatusCondition build() {
-            return new ServiceStatusCondition(message, reason, status, type);
+        }
+        public ServiceStatusCondition build() {
+            final var o = new ServiceStatusCondition();
+            o.message = message;
+            o.reason = reason;
+            o.status = status;
+            o.type = type;
+            return o;
         }
     }
 }

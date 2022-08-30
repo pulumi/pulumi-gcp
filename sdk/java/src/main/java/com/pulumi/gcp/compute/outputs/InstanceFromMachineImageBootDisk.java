@@ -13,35 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageBootDisk {
-    private final @Nullable Boolean autoDelete;
-    private final @Nullable String deviceName;
-    private final @Nullable String diskEncryptionKeyRaw;
-    private final @Nullable String diskEncryptionKeySha256;
-    private final @Nullable InstanceFromMachineImageBootDiskInitializeParams initializeParams;
-    private final @Nullable String kmsKeySelfLink;
-    private final @Nullable String mode;
-    private final @Nullable String source;
+    private @Nullable Boolean autoDelete;
+    private @Nullable String deviceName;
+    private @Nullable String diskEncryptionKeyRaw;
+    private @Nullable String diskEncryptionKeySha256;
+    private @Nullable InstanceFromMachineImageBootDiskInitializeParams initializeParams;
+    private @Nullable String kmsKeySelfLink;
+    private @Nullable String mode;
+    private @Nullable String source;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageBootDisk(
-        @CustomType.Parameter("autoDelete") @Nullable Boolean autoDelete,
-        @CustomType.Parameter("deviceName") @Nullable String deviceName,
-        @CustomType.Parameter("diskEncryptionKeyRaw") @Nullable String diskEncryptionKeyRaw,
-        @CustomType.Parameter("diskEncryptionKeySha256") @Nullable String diskEncryptionKeySha256,
-        @CustomType.Parameter("initializeParams") @Nullable InstanceFromMachineImageBootDiskInitializeParams initializeParams,
-        @CustomType.Parameter("kmsKeySelfLink") @Nullable String kmsKeySelfLink,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("source") @Nullable String source) {
-        this.autoDelete = autoDelete;
-        this.deviceName = deviceName;
-        this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-        this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-        this.initializeParams = initializeParams;
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.mode = mode;
-        this.source = source;
-    }
-
+    private InstanceFromMachineImageBootDisk() {}
     public Optional<Boolean> autoDelete() {
         return Optional.ofNullable(this.autoDelete);
     }
@@ -74,7 +55,7 @@ public final class InstanceFromMachineImageBootDisk {
     public static Builder builder(InstanceFromMachineImageBootDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoDelete;
         private @Nullable String deviceName;
@@ -84,11 +65,7 @@ public final class InstanceFromMachineImageBootDisk {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String mode;
         private @Nullable String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageBootDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDelete = defaults.autoDelete;
@@ -101,39 +78,57 @@ public final class InstanceFromMachineImageBootDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
             this.autoDelete = autoDelete;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
             this.deviceName = deviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeyRaw(@Nullable String diskEncryptionKeyRaw) {
             this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
+        @CustomType.Setter
         public Builder initializeParams(@Nullable InstanceFromMachineImageBootDiskInitializeParams initializeParams) {
             this.initializeParams = initializeParams;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
-        }        public InstanceFromMachineImageBootDisk build() {
-            return new InstanceFromMachineImageBootDisk(autoDelete, deviceName, diskEncryptionKeyRaw, diskEncryptionKeySha256, initializeParams, kmsKeySelfLink, mode, source);
+        }
+        public InstanceFromMachineImageBootDisk build() {
+            final var o = new InstanceFromMachineImageBootDisk();
+            o.autoDelete = autoDelete;
+            o.deviceName = deviceName;
+            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            o.initializeParams = initializeParams;
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.mode = mode;
+            o.source = source;
+            return o;
         }
     }
 }

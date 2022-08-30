@@ -16,27 +16,16 @@ public final class GetProjectServiceAccountResult {
      * in order to grant IAM permissions.
      * 
      */
-    private final String emailAddress;
+    private String emailAddress;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String project;
-    private final @Nullable String userProject;
+    private String id;
+    private String project;
+    private @Nullable String userProject;
 
-    @CustomType.Constructor
-    private GetProjectServiceAccountResult(
-        @CustomType.Parameter("emailAddress") String emailAddress,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("userProject") @Nullable String userProject) {
-        this.emailAddress = emailAddress;
-        this.id = id;
-        this.project = project;
-        this.userProject = userProject;
-    }
-
+    private GetProjectServiceAccountResult() {}
     /**
      * @return The email address of the service account. This value is often used to refer to the service account
      * in order to grant IAM permissions.
@@ -66,17 +55,13 @@ public final class GetProjectServiceAccountResult {
     public static Builder builder(GetProjectServiceAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String emailAddress;
         private String id;
         private String project;
         private @Nullable String userProject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.emailAddress = defaults.emailAddress;
@@ -85,23 +70,33 @@ public final class GetProjectServiceAccountResult {
     	      this.userProject = defaults.userProject;
         }
 
+        @CustomType.Setter
         public Builder emailAddress(String emailAddress) {
             this.emailAddress = Objects.requireNonNull(emailAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder userProject(@Nullable String userProject) {
             this.userProject = userProject;
             return this;
-        }        public GetProjectServiceAccountResult build() {
-            return new GetProjectServiceAccountResult(emailAddress, id, project, userProject);
+        }
+        public GetProjectServiceAccountResult build() {
+            final var o = new GetProjectServiceAccountResult();
+            o.emailAddress = emailAddress;
+            o.id = id;
+            o.project = project;
+            o.userProject = userProject;
+            return o;
         }
     }
 }

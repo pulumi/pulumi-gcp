@@ -21,23 +21,16 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOp
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector> methodSelectors;
+    private @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector> methodSelectors;
     /**
      * @return The name of the API whose methods or permissions the `IngressPolicy` or
      * `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
      * field set to `*` will allow all methods AND permissions for all services.
      * 
      */
-    private final @Nullable String serviceName;
+    private @Nullable String serviceName;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(
-        @CustomType.Parameter("methodSelectors") @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector> methodSelectors,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName) {
-        this.methodSelectors = methodSelectors;
-        this.serviceName = serviceName;
-    }
-
+    private ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation() {}
     /**
      * @return API methods or permissions to allow. Method or permission must belong
      * to the service specified by `serviceName` field. A single MethodSelector
@@ -66,21 +59,18 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOp
     public static Builder builder(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector> methodSelectors;
         private @Nullable String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.methodSelectors = defaults.methodSelectors;
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder methodSelectors(@Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector> methodSelectors) {
             this.methodSelectors = methodSelectors;
             return this;
@@ -88,11 +78,16 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOp
         public Builder methodSelectors(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector... methodSelectors) {
             return methodSelectors(List.of(methodSelectors));
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
-        }        public ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation build() {
-            return new ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation(methodSelectors, serviceName);
+        }
+        public ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation build() {
+            final var o = new ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation();
+            o.methodSelectors = methodSelectors;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

@@ -17,22 +17,15 @@ public final class DenyPolicyRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable DenyPolicyRuleDenyRule denyRule;
+    private @Nullable DenyPolicyRuleDenyRule denyRule;
     /**
      * @return Description of the expression. This is a longer text which describes the expression,
      * e.g. when hovered over it in a UI.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
 
-    @CustomType.Constructor
-    private DenyPolicyRule(
-        @CustomType.Parameter("denyRule") @Nullable DenyPolicyRuleDenyRule denyRule,
-        @CustomType.Parameter("description") @Nullable String description) {
-        this.denyRule = denyRule;
-        this.description = description;
-    }
-
+    private DenyPolicyRule() {}
     /**
      * @return A deny rule in an IAM deny policy.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class DenyPolicyRule {
     public static Builder builder(DenyPolicyRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DenyPolicyRuleDenyRule denyRule;
         private @Nullable String description;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DenyPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.denyRule = defaults.denyRule;
     	      this.description = defaults.description;
         }
 
+        @CustomType.Setter
         public Builder denyRule(@Nullable DenyPolicyRuleDenyRule denyRule) {
             this.denyRule = denyRule;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
-        }        public DenyPolicyRule build() {
-            return new DenyPolicyRule(denyRule, description);
+        }
+        public DenyPolicyRule build() {
+            final var o = new DenyPolicyRule();
+            o.denyRule = denyRule;
+            o.description = description;
+            return o;
         }
     }
 }

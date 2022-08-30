@@ -21,13 +21,13 @@ public final class RegionBackendServiceConsistentHash {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionBackendServiceConsistentHashHttpCookie httpCookie;
+    private @Nullable RegionBackendServiceConsistentHashHttpCookie httpCookie;
     /**
      * @return The hash based on the value of the specified header field.
      * This field is applicable if the sessionAffinity is set to HEADER_FIELD.
      * 
      */
-    private final @Nullable String httpHeaderName;
+    private @Nullable String httpHeaderName;
     /**
      * @return The minimum number of virtual nodes to use for the hash ring.
      * Larger ring sizes result in more granular load
@@ -37,18 +37,9 @@ public final class RegionBackendServiceConsistentHash {
      * Defaults to 1024.
      * 
      */
-    private final @Nullable Integer minimumRingSize;
+    private @Nullable Integer minimumRingSize;
 
-    @CustomType.Constructor
-    private RegionBackendServiceConsistentHash(
-        @CustomType.Parameter("httpCookie") @Nullable RegionBackendServiceConsistentHashHttpCookie httpCookie,
-        @CustomType.Parameter("httpHeaderName") @Nullable String httpHeaderName,
-        @CustomType.Parameter("minimumRingSize") @Nullable Integer minimumRingSize) {
-        this.httpCookie = httpCookie;
-        this.httpHeaderName = httpHeaderName;
-        this.minimumRingSize = minimumRingSize;
-    }
-
+    private RegionBackendServiceConsistentHash() {}
     /**
      * @return Hash is based on HTTP Cookie. This field describes a HTTP cookie
      * that will be used as the hash key for the consistent hash load
@@ -88,16 +79,12 @@ public final class RegionBackendServiceConsistentHash {
     public static Builder builder(RegionBackendServiceConsistentHash defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RegionBackendServiceConsistentHashHttpCookie httpCookie;
         private @Nullable String httpHeaderName;
         private @Nullable Integer minimumRingSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceConsistentHash defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpCookie = defaults.httpCookie;
@@ -105,19 +92,27 @@ public final class RegionBackendServiceConsistentHash {
     	      this.minimumRingSize = defaults.minimumRingSize;
         }
 
+        @CustomType.Setter
         public Builder httpCookie(@Nullable RegionBackendServiceConsistentHashHttpCookie httpCookie) {
             this.httpCookie = httpCookie;
             return this;
         }
+        @CustomType.Setter
         public Builder httpHeaderName(@Nullable String httpHeaderName) {
             this.httpHeaderName = httpHeaderName;
             return this;
         }
+        @CustomType.Setter
         public Builder minimumRingSize(@Nullable Integer minimumRingSize) {
             this.minimumRingSize = minimumRingSize;
             return this;
-        }        public RegionBackendServiceConsistentHash build() {
-            return new RegionBackendServiceConsistentHash(httpCookie, httpHeaderName, minimumRingSize);
+        }
+        public RegionBackendServiceConsistentHash build() {
+            final var o = new RegionBackendServiceConsistentHash();
+            o.httpCookie = httpCookie;
+            o.httpHeaderName = httpHeaderName;
+            o.minimumRingSize = minimumRingSize;
+            return o;
         }
     }
 }

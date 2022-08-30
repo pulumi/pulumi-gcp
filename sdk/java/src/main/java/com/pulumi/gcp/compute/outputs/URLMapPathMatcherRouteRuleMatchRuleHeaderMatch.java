@@ -19,33 +19,33 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
      * must be set.
      * 
      */
-    private final @Nullable String exactMatch;
+    private @Nullable String exactMatch;
     /**
      * @return The name of the header to add.
      * 
      */
-    private final String headerName;
+    private String headerName;
     /**
      * @return If set to false, the headerMatch is considered a match if the match criteria
      * above are met. If set to true, the headerMatch is considered a match if the
      * match criteria above are NOT met. Defaults to false.
      * 
      */
-    private final @Nullable Boolean invertMatch;
+    private @Nullable Boolean invertMatch;
     /**
      * @return The value of the header must start with the contents of prefixMatch. Only one of
      * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
      * must be set.
      * 
      */
-    private final @Nullable String prefixMatch;
+    private @Nullable String prefixMatch;
     /**
      * @return Specifies that the queryParameterMatch matches if the request contains the query
      * parameter, irrespective of whether the parameter has a value or not. Only one of
      * presentMatch, exactMatch and regexMatch must be set.
      * 
      */
-    private final @Nullable Boolean presentMatch;
+    private @Nullable Boolean presentMatch;
     /**
      * @return The header value must be an integer and its value must be in the range specified
      * in rangeMatch. If the header does not contain an integer, number or is empty,
@@ -56,7 +56,7 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch rangeMatch;
+    private @Nullable URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch rangeMatch;
     /**
      * @return The queryParameterMatch matches if the value of the parameter matches the
      * regular expression specified by regexMatch. For the regular expression grammar,
@@ -64,35 +64,16 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
      * exactMatch and regexMatch must be set.
      * 
      */
-    private final @Nullable String regexMatch;
+    private @Nullable String regexMatch;
     /**
      * @return The value of the header must end with the contents of suffixMatch. Only one of
      * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
      * must be set.
      * 
      */
-    private final @Nullable String suffixMatch;
+    private @Nullable String suffixMatch;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(
-        @CustomType.Parameter("exactMatch") @Nullable String exactMatch,
-        @CustomType.Parameter("headerName") String headerName,
-        @CustomType.Parameter("invertMatch") @Nullable Boolean invertMatch,
-        @CustomType.Parameter("prefixMatch") @Nullable String prefixMatch,
-        @CustomType.Parameter("presentMatch") @Nullable Boolean presentMatch,
-        @CustomType.Parameter("rangeMatch") @Nullable URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch rangeMatch,
-        @CustomType.Parameter("regexMatch") @Nullable String regexMatch,
-        @CustomType.Parameter("suffixMatch") @Nullable String suffixMatch) {
-        this.exactMatch = exactMatch;
-        this.headerName = headerName;
-        this.invertMatch = invertMatch;
-        this.prefixMatch = prefixMatch;
-        this.presentMatch = presentMatch;
-        this.rangeMatch = rangeMatch;
-        this.regexMatch = regexMatch;
-        this.suffixMatch = suffixMatch;
-    }
-
+    private URLMapPathMatcherRouteRuleMatchRuleHeaderMatch() {}
     /**
      * @return The queryParameterMatch matches if the value of the parameter exactly matches
      * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
@@ -176,7 +157,7 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
     public static Builder builder(URLMapPathMatcherRouteRuleMatchRuleHeaderMatch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String exactMatch;
         private String headerName;
@@ -186,11 +167,7 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
         private @Nullable URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch rangeMatch;
         private @Nullable String regexMatch;
         private @Nullable String suffixMatch;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherRouteRuleMatchRuleHeaderMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exactMatch = defaults.exactMatch;
@@ -203,39 +180,57 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
     	      this.suffixMatch = defaults.suffixMatch;
         }
 
+        @CustomType.Setter
         public Builder exactMatch(@Nullable String exactMatch) {
             this.exactMatch = exactMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder headerName(String headerName) {
             this.headerName = Objects.requireNonNull(headerName);
             return this;
         }
+        @CustomType.Setter
         public Builder invertMatch(@Nullable Boolean invertMatch) {
             this.invertMatch = invertMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
             this.prefixMatch = prefixMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder presentMatch(@Nullable Boolean presentMatch) {
             this.presentMatch = presentMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder rangeMatch(@Nullable URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch rangeMatch) {
             this.rangeMatch = rangeMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder regexMatch(@Nullable String regexMatch) {
             this.regexMatch = regexMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder suffixMatch(@Nullable String suffixMatch) {
             this.suffixMatch = suffixMatch;
             return this;
-        }        public URLMapPathMatcherRouteRuleMatchRuleHeaderMatch build() {
-            return new URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(exactMatch, headerName, invertMatch, prefixMatch, presentMatch, rangeMatch, regexMatch, suffixMatch);
+        }
+        public URLMapPathMatcherRouteRuleMatchRuleHeaderMatch build() {
+            final var o = new URLMapPathMatcherRouteRuleMatchRuleHeaderMatch();
+            o.exactMatch = exactMatch;
+            o.headerName = headerName;
+            o.invertMatch = invertMatch;
+            o.prefixMatch = prefixMatch;
+            o.presentMatch = presentMatch;
+            o.rangeMatch = rangeMatch;
+            o.regexMatch = regexMatch;
+            o.suffixMatch = suffixMatch;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class CxEnvironmentVersionConfig {
      * @return Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private CxEnvironmentVersionConfig(@CustomType.Parameter("version") String version) {
-        this.version = version;
-    }
-
+    private CxEnvironmentVersionConfig() {}
     /**
      * @return Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
      * 
@@ -35,24 +31,24 @@ public final class CxEnvironmentVersionConfig {
     public static Builder builder(CxEnvironmentVersionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxEnvironmentVersionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public CxEnvironmentVersionConfig build() {
-            return new CxEnvironmentVersionConfig(version);
+        }
+        public CxEnvironmentVersionConfig build() {
+            final var o = new CxEnvironmentVersionConfig();
+            o.version = version;
+            return o;
         }
     }
 }

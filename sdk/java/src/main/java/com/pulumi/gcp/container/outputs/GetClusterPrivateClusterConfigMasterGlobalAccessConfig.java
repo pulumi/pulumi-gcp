@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterPrivateClusterConfigMasterGlobalAccessConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClusterPrivateClusterConfigMasterGlobalAccessConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
     public static Builder builder(GetClusterPrivateClusterConfigMasterGlobalAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterPrivateClusterConfigMasterGlobalAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClusterPrivateClusterConfigMasterGlobalAccessConfig build() {
-            return new GetClusterPrivateClusterConfigMasterGlobalAccessConfig(enabled);
+        }
+        public GetClusterPrivateClusterConfigMasterGlobalAccessConfig build() {
+            final var o = new GetClusterPrivateClusterConfigMasterGlobalAccessConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

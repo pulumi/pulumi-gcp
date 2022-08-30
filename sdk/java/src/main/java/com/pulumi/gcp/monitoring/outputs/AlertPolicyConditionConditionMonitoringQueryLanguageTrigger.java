@@ -18,23 +18,16 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
      * condition to be triggered.
      * 
      */
-    private final @Nullable Integer count;
+    private @Nullable Integer count;
     /**
      * @return The percentage of time series that
      * must fail the predicate for the
      * condition to be triggered.
      * 
      */
-    private final @Nullable Double percent;
+    private @Nullable Double percent;
 
-    @CustomType.Constructor
-    private AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(
-        @CustomType.Parameter("count") @Nullable Integer count,
-        @CustomType.Parameter("percent") @Nullable Double percent) {
-        this.count = count;
-        this.percent = percent;
-    }
-
+    private AlertPolicyConditionConditionMonitoringQueryLanguageTrigger() {}
     /**
      * @return The absolute number of time series
      * that must fail the predicate for the
@@ -61,30 +54,32 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
     public static Builder builder(AlertPolicyConditionConditionMonitoringQueryLanguageTrigger defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer count;
         private @Nullable Double percent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyConditionConditionMonitoringQueryLanguageTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.percent = defaults.percent;
         }
 
+        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
         }
+        @CustomType.Setter
         public Builder percent(@Nullable Double percent) {
             this.percent = percent;
             return this;
-        }        public AlertPolicyConditionConditionMonitoringQueryLanguageTrigger build() {
-            return new AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(count, percent);
+        }
+        public AlertPolicyConditionConditionMonitoringQueryLanguageTrigger build() {
+            final var o = new AlertPolicyConditionConditionMonitoringQueryLanguageTrigger();
+            o.count = count;
+            o.percent = percent;
+            return o;
         }
     }
 }

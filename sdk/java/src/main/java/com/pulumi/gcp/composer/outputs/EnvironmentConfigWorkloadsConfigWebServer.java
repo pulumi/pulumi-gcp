@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigWebServer {
-    private final @Nullable Double cpu;
-    private final @Nullable Double memoryGb;
-    private final @Nullable Double storageGb;
+    private @Nullable Double cpu;
+    private @Nullable Double memoryGb;
+    private @Nullable Double storageGb;
 
-    @CustomType.Constructor
-    private EnvironmentConfigWorkloadsConfigWebServer(
-        @CustomType.Parameter("cpu") @Nullable Double cpu,
-        @CustomType.Parameter("memoryGb") @Nullable Double memoryGb,
-        @CustomType.Parameter("storageGb") @Nullable Double storageGb) {
-        this.cpu = cpu;
-        this.memoryGb = memoryGb;
-        this.storageGb = storageGb;
-    }
-
+    private EnvironmentConfigWorkloadsConfigWebServer() {}
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
@@ -42,16 +33,12 @@ public final class EnvironmentConfigWorkloadsConfigWebServer {
     public static Builder builder(EnvironmentConfigWorkloadsConfigWebServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double cpu;
         private @Nullable Double memoryGb;
         private @Nullable Double storageGb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigWorkloadsConfigWebServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -59,19 +46,27 @@ public final class EnvironmentConfigWorkloadsConfigWebServer {
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
             this.cpu = cpu;
             return this;
         }
+        @CustomType.Setter
         public Builder memoryGb(@Nullable Double memoryGb) {
             this.memoryGb = memoryGb;
             return this;
         }
+        @CustomType.Setter
         public Builder storageGb(@Nullable Double storageGb) {
             this.storageGb = storageGb;
             return this;
-        }        public EnvironmentConfigWorkloadsConfigWebServer build() {
-            return new EnvironmentConfigWorkloadsConfigWebServer(cpu, memoryGb, storageGb);
+        }
+        public EnvironmentConfigWorkloadsConfigWebServer build() {
+            final var o = new EnvironmentConfigWorkloadsConfigWebServer();
+            o.cpu = cpu;
+            o.memoryGb = memoryGb;
+            o.storageGb = storageGb;
+            return o;
         }
     }
 }

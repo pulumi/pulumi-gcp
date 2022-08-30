@@ -14,10 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceStatus {
-    private final @Nullable List<ServiceStatusCondition> conditions;
-    private final @Nullable String latestCreatedRevisionName;
-    private final @Nullable String latestReadyRevisionName;
-    private final @Nullable Integer observedGeneration;
+    private @Nullable List<ServiceStatusCondition> conditions;
+    private @Nullable String latestCreatedRevisionName;
+    private @Nullable String latestReadyRevisionName;
+    private @Nullable Integer observedGeneration;
     /**
      * @return -
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
@@ -25,22 +25,9 @@ public final class ServiceStatus {
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ServiceStatus(
-        @CustomType.Parameter("conditions") @Nullable List<ServiceStatusCondition> conditions,
-        @CustomType.Parameter("latestCreatedRevisionName") @Nullable String latestCreatedRevisionName,
-        @CustomType.Parameter("latestReadyRevisionName") @Nullable String latestReadyRevisionName,
-        @CustomType.Parameter("observedGeneration") @Nullable Integer observedGeneration,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.conditions = conditions;
-        this.latestCreatedRevisionName = latestCreatedRevisionName;
-        this.latestReadyRevisionName = latestReadyRevisionName;
-        this.observedGeneration = observedGeneration;
-        this.url = url;
-    }
-
+    private ServiceStatus() {}
     public List<ServiceStatusCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
     }
@@ -71,18 +58,14 @@ public final class ServiceStatus {
     public static Builder builder(ServiceStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ServiceStatusCondition> conditions;
         private @Nullable String latestCreatedRevisionName;
         private @Nullable String latestReadyRevisionName;
         private @Nullable Integer observedGeneration;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditions = defaults.conditions;
@@ -92,6 +75,7 @@ public final class ServiceStatus {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder conditions(@Nullable List<ServiceStatusCondition> conditions) {
             this.conditions = conditions;
             return this;
@@ -99,23 +83,34 @@ public final class ServiceStatus {
         public Builder conditions(ServiceStatusCondition... conditions) {
             return conditions(List.of(conditions));
         }
+        @CustomType.Setter
         public Builder latestCreatedRevisionName(@Nullable String latestCreatedRevisionName) {
             this.latestCreatedRevisionName = latestCreatedRevisionName;
             return this;
         }
+        @CustomType.Setter
         public Builder latestReadyRevisionName(@Nullable String latestReadyRevisionName) {
             this.latestReadyRevisionName = latestReadyRevisionName;
             return this;
         }
+        @CustomType.Setter
         public Builder observedGeneration(@Nullable Integer observedGeneration) {
             this.observedGeneration = observedGeneration;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ServiceStatus build() {
-            return new ServiceStatus(conditions, latestCreatedRevisionName, latestReadyRevisionName, observedGeneration, url);
+        }
+        public ServiceStatus build() {
+            final var o = new ServiceStatus();
+            o.conditions = conditions;
+            o.latestCreatedRevisionName = latestCreatedRevisionName;
+            o.latestReadyRevisionName = latestReadyRevisionName;
+            o.observedGeneration = observedGeneration;
+            o.url = url;
+            return o;
         }
     }
 }

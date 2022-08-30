@@ -22,7 +22,7 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
      * If * is specified, then all IngressSources will be allowed.
      * 
      */
-    private final @Nullable String accessLevel;
+    private @Nullable String accessLevel;
     /**
      * @return A Google Cloud resource that is allowed to ingress the perimeter.
      * Requests from these resources will be allowed to access perimeter data.
@@ -32,16 +32,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
      * of allowing all Google Cloud resources only is not supported.
      * 
      */
-    private final @Nullable String resource;
+    private @Nullable String resource;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(
-        @CustomType.Parameter("accessLevel") @Nullable String accessLevel,
-        @CustomType.Parameter("resource") @Nullable String resource) {
-        this.accessLevel = accessLevel;
-        this.resource = resource;
-    }
-
+    private ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource() {}
     /**
      * @return An `AccessLevel` resource name that allow resources within the
      * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
@@ -76,30 +69,32 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
     public static Builder builder(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessLevel;
         private @Nullable String resource;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
     	      this.resource = defaults.resource;
         }
 
+        @CustomType.Setter
         public Builder accessLevel(@Nullable String accessLevel) {
             this.accessLevel = accessLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder resource(@Nullable String resource) {
             this.resource = resource;
             return this;
-        }        public ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource build() {
-            return new ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(accessLevel, resource);
+        }
+        public ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource build() {
+            final var o = new ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource();
+            o.accessLevel = accessLevel;
+            o.resource = resource;
+            return o;
         }
     }
 }

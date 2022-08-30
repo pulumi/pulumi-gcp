@@ -18,13 +18,9 @@ public final class PreventionJobTriggerTriggerSchedule {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String recurrencePeriodDuration;
+    private @Nullable String recurrencePeriodDuration;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerTriggerSchedule(@CustomType.Parameter("recurrencePeriodDuration") @Nullable String recurrencePeriodDuration) {
-        this.recurrencePeriodDuration = recurrencePeriodDuration;
-    }
-
+    private PreventionJobTriggerTriggerSchedule() {}
     /**
      * @return With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
      * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
@@ -43,24 +39,24 @@ public final class PreventionJobTriggerTriggerSchedule {
     public static Builder builder(PreventionJobTriggerTriggerSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String recurrencePeriodDuration;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerTriggerSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.recurrencePeriodDuration = defaults.recurrencePeriodDuration;
         }
 
+        @CustomType.Setter
         public Builder recurrencePeriodDuration(@Nullable String recurrencePeriodDuration) {
             this.recurrencePeriodDuration = recurrencePeriodDuration;
             return this;
-        }        public PreventionJobTriggerTriggerSchedule build() {
-            return new PreventionJobTriggerTriggerSchedule(recurrencePeriodDuration);
+        }
+        public PreventionJobTriggerTriggerSchedule build() {
+            final var o = new PreventionJobTriggerTriggerSchedule();
+            o.recurrencePeriodDuration = recurrencePeriodDuration;
+            return o;
         }
     }
 }

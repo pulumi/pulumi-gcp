@@ -17,22 +17,15 @@ public final class CaPoolIssuancePolicyAllowedKeyType {
      * Structure is documented below.
      * 
      */
-    private final @Nullable CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve ellipticCurve;
+    private @Nullable CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve ellipticCurve;
     /**
      * @return Describes an RSA key that may be used in a Certificate issued from a CaPool.
      * Structure is documented below.
      * 
      */
-    private final @Nullable CaPoolIssuancePolicyAllowedKeyTypeRsa rsa;
+    private @Nullable CaPoolIssuancePolicyAllowedKeyTypeRsa rsa;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyAllowedKeyType(
-        @CustomType.Parameter("ellipticCurve") @Nullable CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve ellipticCurve,
-        @CustomType.Parameter("rsa") @Nullable CaPoolIssuancePolicyAllowedKeyTypeRsa rsa) {
-        this.ellipticCurve = ellipticCurve;
-        this.rsa = rsa;
-    }
-
+    private CaPoolIssuancePolicyAllowedKeyType() {}
     /**
      * @return Represents an allowed Elliptic Curve key type.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class CaPoolIssuancePolicyAllowedKeyType {
     public static Builder builder(CaPoolIssuancePolicyAllowedKeyType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve ellipticCurve;
         private @Nullable CaPoolIssuancePolicyAllowedKeyTypeRsa rsa;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyAllowedKeyType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ellipticCurve = defaults.ellipticCurve;
     	      this.rsa = defaults.rsa;
         }
 
+        @CustomType.Setter
         public Builder ellipticCurve(@Nullable CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve ellipticCurve) {
             this.ellipticCurve = ellipticCurve;
             return this;
         }
+        @CustomType.Setter
         public Builder rsa(@Nullable CaPoolIssuancePolicyAllowedKeyTypeRsa rsa) {
             this.rsa = rsa;
             return this;
-        }        public CaPoolIssuancePolicyAllowedKeyType build() {
-            return new CaPoolIssuancePolicyAllowedKeyType(ellipticCurve, rsa);
+        }
+        public CaPoolIssuancePolicyAllowedKeyType build() {
+            final var o = new CaPoolIssuancePolicyAllowedKeyType();
+            o.ellipticCurve = ellipticCurve;
+            o.rsa = rsa;
+            return o;
         }
     }
 }

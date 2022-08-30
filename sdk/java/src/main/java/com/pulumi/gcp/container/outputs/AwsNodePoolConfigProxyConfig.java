@@ -13,21 +13,14 @@ public final class AwsNodePoolConfigProxyConfig {
      * @return The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
      * 
      */
-    private final String secretArn;
+    private String secretArn;
     /**
      * @return The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
      * 
      */
-    private final String secretVersion;
+    private String secretVersion;
 
-    @CustomType.Constructor
-    private AwsNodePoolConfigProxyConfig(
-        @CustomType.Parameter("secretArn") String secretArn,
-        @CustomType.Parameter("secretVersion") String secretVersion) {
-        this.secretArn = secretArn;
-        this.secretVersion = secretVersion;
-    }
-
+    private AwsNodePoolConfigProxyConfig() {}
     /**
      * @return The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
      * 
@@ -50,30 +43,32 @@ public final class AwsNodePoolConfigProxyConfig {
     public static Builder builder(AwsNodePoolConfigProxyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String secretArn;
         private String secretVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolConfigProxyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretArn = defaults.secretArn;
     	      this.secretVersion = defaults.secretVersion;
         }
 
+        @CustomType.Setter
         public Builder secretArn(String secretArn) {
             this.secretArn = Objects.requireNonNull(secretArn);
             return this;
         }
+        @CustomType.Setter
         public Builder secretVersion(String secretVersion) {
             this.secretVersion = Objects.requireNonNull(secretVersion);
             return this;
-        }        public AwsNodePoolConfigProxyConfig build() {
-            return new AwsNodePoolConfigProxyConfig(secretArn, secretVersion);
+        }
+        public AwsNodePoolConfigProxyConfig build() {
+            final var o = new AwsNodePoolConfigProxyConfig();
+            o.secretArn = secretArn;
+            o.secretVersion = secretVersion;
+            return o;
         }
     }
 }

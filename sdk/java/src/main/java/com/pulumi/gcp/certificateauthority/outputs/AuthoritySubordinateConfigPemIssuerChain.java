@@ -15,13 +15,9 @@ public final class AuthoritySubordinateConfigPemIssuerChain {
      * @return Expected to be in leaf-to-root order according to RFC 5246.
      * 
      */
-    private final @Nullable List<String> pemCertificates;
+    private @Nullable List<String> pemCertificates;
 
-    @CustomType.Constructor
-    private AuthoritySubordinateConfigPemIssuerChain(@CustomType.Parameter("pemCertificates") @Nullable List<String> pemCertificates) {
-        this.pemCertificates = pemCertificates;
-    }
-
+    private AuthoritySubordinateConfigPemIssuerChain() {}
     /**
      * @return Expected to be in leaf-to-root order according to RFC 5246.
      * 
@@ -37,27 +33,27 @@ public final class AuthoritySubordinateConfigPemIssuerChain {
     public static Builder builder(AuthoritySubordinateConfigPemIssuerChain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> pemCertificates;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthoritySubordinateConfigPemIssuerChain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pemCertificates = defaults.pemCertificates;
         }
 
+        @CustomType.Setter
         public Builder pemCertificates(@Nullable List<String> pemCertificates) {
             this.pemCertificates = pemCertificates;
             return this;
         }
         public Builder pemCertificates(String... pemCertificates) {
             return pemCertificates(List.of(pemCertificates));
-        }        public AuthoritySubordinateConfigPemIssuerChain build() {
-            return new AuthoritySubordinateConfigPemIssuerChain(pemCertificates);
+        }
+        public AuthoritySubordinateConfigPemIssuerChain build() {
+            final var o = new AuthoritySubordinateConfigPemIssuerChain();
+            o.pemCertificates = pemCertificates;
+            return o;
         }
     }
 }

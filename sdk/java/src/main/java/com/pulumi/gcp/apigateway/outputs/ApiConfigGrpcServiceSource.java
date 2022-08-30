@@ -13,21 +13,14 @@ public final class ApiConfigGrpcServiceSource {
      * @return Base64 encoded content of the file.
      * 
      */
-    private final String contents;
+    private String contents;
     /**
      * @return The file path (full or relative path). This is typically the path of the file when it is uploaded.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private ApiConfigGrpcServiceSource(
-        @CustomType.Parameter("contents") String contents,
-        @CustomType.Parameter("path") String path) {
-        this.contents = contents;
-        this.path = path;
-    }
-
+    private ApiConfigGrpcServiceSource() {}
     /**
      * @return Base64 encoded content of the file.
      * 
@@ -50,30 +43,32 @@ public final class ApiConfigGrpcServiceSource {
     public static Builder builder(ApiConfigGrpcServiceSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String contents;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiConfigGrpcServiceSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contents = defaults.contents;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder contents(String contents) {
             this.contents = Objects.requireNonNull(contents);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public ApiConfigGrpcServiceSource build() {
-            return new ApiConfigGrpcServiceSource(contents, path);
+        }
+        public ApiConfigGrpcServiceSource build() {
+            final var o = new ApiConfigGrpcServiceSource();
+            o.contents = contents;
+            o.path = path;
+            return o;
         }
     }
 }

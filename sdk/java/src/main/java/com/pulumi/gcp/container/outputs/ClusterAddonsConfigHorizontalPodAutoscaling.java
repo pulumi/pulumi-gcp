@@ -14,13 +14,9 @@ public final class ClusterAddonsConfigHorizontalPodAutoscaling {
      * cluster. It is disabled by default. Set `disabled = false` to enable.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private ClusterAddonsConfigHorizontalPodAutoscaling(@CustomType.Parameter("disabled") Boolean disabled) {
-        this.disabled = disabled;
-    }
-
+    private ClusterAddonsConfigHorizontalPodAutoscaling() {}
     /**
      * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
      * cluster. It is disabled by default. Set `disabled = false` to enable.
@@ -37,24 +33,24 @@ public final class ClusterAddonsConfigHorizontalPodAutoscaling {
     public static Builder builder(ClusterAddonsConfigHorizontalPodAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAddonsConfigHorizontalPodAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public ClusterAddonsConfigHorizontalPodAutoscaling build() {
-            return new ClusterAddonsConfigHorizontalPodAutoscaling(disabled);
+        }
+        public ClusterAddonsConfigHorizontalPodAutoscaling build() {
+            final var o = new ClusterAddonsConfigHorizontalPodAutoscaling();
+            o.disabled = disabled;
+            return o;
         }
     }
 }

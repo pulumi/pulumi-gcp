@@ -17,7 +17,7 @@ public final class ServiceTemplateSpecContainerResources {
      * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
      * 
      */
-    private final @Nullable Map<String,String> limits;
+    private @Nullable Map<String,String> limits;
     /**
      * @return Requests describes the minimum amount of compute resources required.
      * If Requests is omitted for a container, it defaults to Limits if that is
@@ -26,16 +26,9 @@ public final class ServiceTemplateSpecContainerResources {
      * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
      * 
      */
-    private final @Nullable Map<String,String> requests;
+    private @Nullable Map<String,String> requests;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerResources(
-        @CustomType.Parameter("limits") @Nullable Map<String,String> limits,
-        @CustomType.Parameter("requests") @Nullable Map<String,String> requests) {
-        this.limits = limits;
-        this.requests = requests;
-    }
-
+    private ServiceTemplateSpecContainerResources() {}
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
@@ -64,30 +57,32 @@ public final class ServiceTemplateSpecContainerResources {
     public static Builder builder(ServiceTemplateSpecContainerResources defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> limits;
         private @Nullable Map<String,String> requests;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerResources defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limits = defaults.limits;
     	      this.requests = defaults.requests;
         }
 
+        @CustomType.Setter
         public Builder limits(@Nullable Map<String,String> limits) {
             this.limits = limits;
             return this;
         }
+        @CustomType.Setter
         public Builder requests(@Nullable Map<String,String> requests) {
             this.requests = requests;
             return this;
-        }        public ServiceTemplateSpecContainerResources build() {
-            return new ServiceTemplateSpecContainerResources(limits, requests);
+        }
+        public ServiceTemplateSpecContainerResources build() {
+            final var o = new ServiceTemplateSpecContainerResources();
+            o.limits = limits;
+            o.requests = requests;
+            return o;
         }
     }
 }

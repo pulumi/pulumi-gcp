@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRouterResult {
-    private final List<GetRouterBgp> bgps;
-    private final String creationTimestamp;
-    private final String description;
-    private final Boolean encryptedInterconnectRouter;
+    private List<GetRouterBgp> bgps;
+    private String creationTimestamp;
+    private String description;
+    private Boolean encryptedInterconnectRouter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String network;
-    private final @Nullable String project;
-    private final @Nullable String region;
-    private final String selfLink;
+    private String id;
+    private String name;
+    private String network;
+    private @Nullable String project;
+    private @Nullable String region;
+    private String selfLink;
 
-    @CustomType.Constructor
-    private GetRouterResult(
-        @CustomType.Parameter("bgps") List<GetRouterBgp> bgps,
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("encryptedInterconnectRouter") Boolean encryptedInterconnectRouter,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("selfLink") String selfLink) {
-        this.bgps = bgps;
-        this.creationTimestamp = creationTimestamp;
-        this.description = description;
-        this.encryptedInterconnectRouter = encryptedInterconnectRouter;
-        this.id = id;
-        this.name = name;
-        this.network = network;
-        this.project = project;
-        this.region = region;
-        this.selfLink = selfLink;
-    }
-
+    private GetRouterResult() {}
     public List<GetRouterBgp> bgps() {
         return this.bgps;
     }
@@ -95,7 +72,7 @@ public final class GetRouterResult {
     public static Builder builder(GetRouterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetRouterBgp> bgps;
         private String creationTimestamp;
@@ -107,11 +84,7 @@ public final class GetRouterResult {
         private @Nullable String project;
         private @Nullable String region;
         private String selfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bgps = defaults.bgps;
@@ -126,6 +99,7 @@ public final class GetRouterResult {
     	      this.selfLink = defaults.selfLink;
         }
 
+        @CustomType.Setter
         public Builder bgps(List<GetRouterBgp> bgps) {
             this.bgps = Objects.requireNonNull(bgps);
             return this;
@@ -133,43 +107,64 @@ public final class GetRouterResult {
         public Builder bgps(GetRouterBgp... bgps) {
             return bgps(List.of(bgps));
         }
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptedInterconnectRouter(Boolean encryptedInterconnectRouter) {
             this.encryptedInterconnectRouter = Objects.requireNonNull(encryptedInterconnectRouter);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
-        }        public GetRouterResult build() {
-            return new GetRouterResult(bgps, creationTimestamp, description, encryptedInterconnectRouter, id, name, network, project, region, selfLink);
+        }
+        public GetRouterResult build() {
+            final var o = new GetRouterResult();
+            o.bgps = bgps;
+            o.creationTimestamp = creationTimestamp;
+            o.description = description;
+            o.encryptedInterconnectRouter = encryptedInterconnectRouter;
+            o.id = id;
+            o.name = name;
+            o.network = network;
+            o.project = project;
+            o.region = region;
+            o.selfLink = selfLink;
+            return o;
         }
     }
 }

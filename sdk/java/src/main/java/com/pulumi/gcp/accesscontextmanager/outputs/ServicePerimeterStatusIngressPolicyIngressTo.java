@@ -18,7 +18,7 @@ public final class ServicePerimeterStatusIngressPolicyIngressTo {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimeterStatusIngressPolicyIngressToOperation> operations;
+    private @Nullable List<ServicePerimeterStatusIngressPolicyIngressToOperation> operations;
     /**
      * @return A list of resources, currently only projects in the form
      * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
@@ -27,16 +27,9 @@ public final class ServicePerimeterStatusIngressPolicyIngressTo {
      * the perimeter.
      * 
      */
-    private final @Nullable List<String> resources;
+    private @Nullable List<String> resources;
 
-    @CustomType.Constructor
-    private ServicePerimeterStatusIngressPolicyIngressTo(
-        @CustomType.Parameter("operations") @Nullable List<ServicePerimeterStatusIngressPolicyIngressToOperation> operations,
-        @CustomType.Parameter("resources") @Nullable List<String> resources) {
-        this.operations = operations;
-        this.resources = resources;
-    }
-
+    private ServicePerimeterStatusIngressPolicyIngressTo() {}
     /**
      * @return A list of `ApiOperations` that this egress rule applies to. A request matches
      * if it contains an operation/service in this list.
@@ -65,21 +58,18 @@ public final class ServicePerimeterStatusIngressPolicyIngressTo {
     public static Builder builder(ServicePerimeterStatusIngressPolicyIngressTo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ServicePerimeterStatusIngressPolicyIngressToOperation> operations;
         private @Nullable List<String> resources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimeterStatusIngressPolicyIngressTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operations = defaults.operations;
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
         public Builder operations(@Nullable List<ServicePerimeterStatusIngressPolicyIngressToOperation> operations) {
             this.operations = operations;
             return this;
@@ -87,14 +77,19 @@ public final class ServicePerimeterStatusIngressPolicyIngressTo {
         public Builder operations(ServicePerimeterStatusIngressPolicyIngressToOperation... operations) {
             return operations(List.of(operations));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
             return resources(List.of(resources));
-        }        public ServicePerimeterStatusIngressPolicyIngressTo build() {
-            return new ServicePerimeterStatusIngressPolicyIngressTo(operations, resources);
+        }
+        public ServicePerimeterStatusIngressPolicyIngressTo build() {
+            final var o = new ServicePerimeterStatusIngressPolicyIngressTo();
+            o.operations = operations;
+            o.resources = resources;
+            return o;
         }
     }
 }

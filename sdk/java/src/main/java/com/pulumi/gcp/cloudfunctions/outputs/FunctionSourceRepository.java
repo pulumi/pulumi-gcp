@@ -11,21 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionSourceRepository {
-    private final @Nullable String deployedUrl;
+    private @Nullable String deployedUrl;
     /**
      * @return The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private FunctionSourceRepository(
-        @CustomType.Parameter("deployedUrl") @Nullable String deployedUrl,
-        @CustomType.Parameter("url") String url) {
-        this.deployedUrl = deployedUrl;
-        this.url = url;
-    }
-
+    private FunctionSourceRepository() {}
     public Optional<String> deployedUrl() {
         return Optional.ofNullable(this.deployedUrl);
     }
@@ -44,30 +37,32 @@ public final class FunctionSourceRepository {
     public static Builder builder(FunctionSourceRepository defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String deployedUrl;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionSourceRepository defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployedUrl = defaults.deployedUrl;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder deployedUrl(@Nullable String deployedUrl) {
             this.deployedUrl = deployedUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public FunctionSourceRepository build() {
-            return new FunctionSourceRepository(deployedUrl, url);
+        }
+        public FunctionSourceRepository build() {
+            final var o = new FunctionSourceRepository();
+            o.deployedUrl = deployedUrl;
+            o.url = url;
+            return o;
         }
     }
 }

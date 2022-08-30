@@ -18,7 +18,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
      * 
      */
-    private final @Nullable Boolean excludeHost;
+    private @Nullable Boolean excludeHost;
     /**
      * @return If true, exclude query string parameters from the cache key
      * If false (the default), include the query string parameters in
@@ -28,18 +28,18 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * included.
      * 
      */
-    private final @Nullable Boolean excludeQueryString;
+    private @Nullable Boolean excludeQueryString;
     /**
      * @return Names of query string parameters to exclude from cache keys. All other parameters will be included.
      * Either specify includedQueryParameters or excludedQueryParameters, not both. &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as delimiters.
      * 
      */
-    private final @Nullable List<String> excludedQueryParameters;
+    private @Nullable List<String> excludedQueryParameters;
     /**
      * @return If true, http and https requests will be cached separately.
      * 
      */
-    private final @Nullable Boolean includeProtocol;
+    private @Nullable Boolean includeProtocol;
     /**
      * @return Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
      * Cookie names:
@@ -50,7 +50,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   You may specify up to three cookie names.
      * 
      */
-    private final @Nullable List<String> includedCookieNames;
+    private @Nullable List<String> includedCookieNames;
     /**
      * @return Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
      * - Header names must be valid HTTP RFC 7230 header field values.
@@ -59,32 +59,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
      * 
      */
-    private final @Nullable List<String> includedHeaderNames;
+    private @Nullable List<String> includedHeaderNames;
     /**
      * @return Names of query string parameters to include in cache keys. All other parameters will be excluded.
      * Either specify includedQueryParameters or excludedQueryParameters, not both. &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as delimiters.
      * 
      */
-    private final @Nullable List<String> includedQueryParameters;
+    private @Nullable List<String> includedQueryParameters;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy(
-        @CustomType.Parameter("excludeHost") @Nullable Boolean excludeHost,
-        @CustomType.Parameter("excludeQueryString") @Nullable Boolean excludeQueryString,
-        @CustomType.Parameter("excludedQueryParameters") @Nullable List<String> excludedQueryParameters,
-        @CustomType.Parameter("includeProtocol") @Nullable Boolean includeProtocol,
-        @CustomType.Parameter("includedCookieNames") @Nullable List<String> includedCookieNames,
-        @CustomType.Parameter("includedHeaderNames") @Nullable List<String> includedHeaderNames,
-        @CustomType.Parameter("includedQueryParameters") @Nullable List<String> includedQueryParameters) {
-        this.excludeHost = excludeHost;
-        this.excludeQueryString = excludeQueryString;
-        this.excludedQueryParameters = excludedQueryParameters;
-        this.includeProtocol = includeProtocol;
-        this.includedCookieNames = includedCookieNames;
-        this.includedHeaderNames = includedHeaderNames;
-        this.includedQueryParameters = includedQueryParameters;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy() {}
     /**
      * @return If true, requests to different hosts will be cached separately.
      * Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
@@ -160,7 +143,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean excludeHost;
         private @Nullable Boolean excludeQueryString;
@@ -169,11 +152,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         private @Nullable List<String> includedCookieNames;
         private @Nullable List<String> includedHeaderNames;
         private @Nullable List<String> includedQueryParameters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludeHost = defaults.excludeHost;
@@ -185,14 +164,17 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     	      this.includedQueryParameters = defaults.includedQueryParameters;
         }
 
+        @CustomType.Setter
         public Builder excludeHost(@Nullable Boolean excludeHost) {
             this.excludeHost = excludeHost;
             return this;
         }
+        @CustomType.Setter
         public Builder excludeQueryString(@Nullable Boolean excludeQueryString) {
             this.excludeQueryString = excludeQueryString;
             return this;
         }
+        @CustomType.Setter
         public Builder excludedQueryParameters(@Nullable List<String> excludedQueryParameters) {
             this.excludedQueryParameters = excludedQueryParameters;
             return this;
@@ -200,10 +182,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         public Builder excludedQueryParameters(String... excludedQueryParameters) {
             return excludedQueryParameters(List.of(excludedQueryParameters));
         }
+        @CustomType.Setter
         public Builder includeProtocol(@Nullable Boolean includeProtocol) {
             this.includeProtocol = includeProtocol;
             return this;
         }
+        @CustomType.Setter
         public Builder includedCookieNames(@Nullable List<String> includedCookieNames) {
             this.includedCookieNames = includedCookieNames;
             return this;
@@ -211,6 +195,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         public Builder includedCookieNames(String... includedCookieNames) {
             return includedCookieNames(List.of(includedCookieNames));
         }
+        @CustomType.Setter
         public Builder includedHeaderNames(@Nullable List<String> includedHeaderNames) {
             this.includedHeaderNames = includedHeaderNames;
             return this;
@@ -218,14 +203,24 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         public Builder includedHeaderNames(String... includedHeaderNames) {
             return includedHeaderNames(List.of(includedHeaderNames));
         }
+        @CustomType.Setter
         public Builder includedQueryParameters(@Nullable List<String> includedQueryParameters) {
             this.includedQueryParameters = includedQueryParameters;
             return this;
         }
         public Builder includedQueryParameters(String... includedQueryParameters) {
             return includedQueryParameters(List.of(includedQueryParameters));
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy(excludeHost, excludeQueryString, excludedQueryParameters, includeProtocol, includedCookieNames, includedHeaderNames, includedQueryParameters);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy();
+            o.excludeHost = excludeHost;
+            o.excludeQueryString = excludeQueryString;
+            o.excludedQueryParameters = excludedQueryParameters;
+            o.includeProtocol = includeProtocol;
+            o.includedCookieNames = includedCookieNames;
+            o.includedHeaderNames = includedHeaderNames;
+            o.includedQueryParameters = includedQueryParameters;
+            return o;
         }
     }
 }

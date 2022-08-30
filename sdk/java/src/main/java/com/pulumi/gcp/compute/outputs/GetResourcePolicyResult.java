@@ -19,46 +19,25 @@ public final class GetResourcePolicyResult {
      * @return Description of this Resource Policy.
      * 
      */
-    private final String description;
-    private final List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies;
+    private String description;
+    private List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetResourcePolicyInstanceSchedulePolicy> instanceSchedulePolicies;
-    private final String name;
-    private final @Nullable String project;
-    private final @Nullable String region;
+    private String id;
+    private List<GetResourcePolicyInstanceSchedulePolicy> instanceSchedulePolicies;
+    private String name;
+    private @Nullable String project;
+    private @Nullable String region;
     /**
      * @return The URI of the resource.
      * 
      */
-    private final String selfLink;
-    private final List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies;
+    private String selfLink;
+    private List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies;
 
-    @CustomType.Constructor
-    private GetResourcePolicyResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("groupPlacementPolicies") List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceSchedulePolicies") List<GetResourcePolicyInstanceSchedulePolicy> instanceSchedulePolicies,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("snapshotSchedulePolicies") List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies) {
-        this.description = description;
-        this.groupPlacementPolicies = groupPlacementPolicies;
-        this.id = id;
-        this.instanceSchedulePolicies = instanceSchedulePolicies;
-        this.name = name;
-        this.project = project;
-        this.region = region;
-        this.selfLink = selfLink;
-        this.snapshotSchedulePolicies = snapshotSchedulePolicies;
-    }
-
+    private GetResourcePolicyResult() {}
     /**
      * @return Description of this Resource Policy.
      * 
@@ -106,7 +85,7 @@ public final class GetResourcePolicyResult {
     public static Builder builder(GetResourcePolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies;
@@ -117,11 +96,7 @@ public final class GetResourcePolicyResult {
         private @Nullable String region;
         private String selfLink;
         private List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -135,10 +110,12 @@ public final class GetResourcePolicyResult {
     	      this.snapshotSchedulePolicies = defaults.snapshotSchedulePolicies;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder groupPlacementPolicies(List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies) {
             this.groupPlacementPolicies = Objects.requireNonNull(groupPlacementPolicies);
             return this;
@@ -146,10 +123,12 @@ public final class GetResourcePolicyResult {
         public Builder groupPlacementPolicies(GetResourcePolicyGroupPlacementPolicy... groupPlacementPolicies) {
             return groupPlacementPolicies(List.of(groupPlacementPolicies));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceSchedulePolicies(List<GetResourcePolicyInstanceSchedulePolicy> instanceSchedulePolicies) {
             this.instanceSchedulePolicies = Objects.requireNonNull(instanceSchedulePolicies);
             return this;
@@ -157,30 +136,46 @@ public final class GetResourcePolicyResult {
         public Builder instanceSchedulePolicies(GetResourcePolicyInstanceSchedulePolicy... instanceSchedulePolicies) {
             return instanceSchedulePolicies(List.of(instanceSchedulePolicies));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotSchedulePolicies(List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies) {
             this.snapshotSchedulePolicies = Objects.requireNonNull(snapshotSchedulePolicies);
             return this;
         }
         public Builder snapshotSchedulePolicies(GetResourcePolicySnapshotSchedulePolicy... snapshotSchedulePolicies) {
             return snapshotSchedulePolicies(List.of(snapshotSchedulePolicies));
-        }        public GetResourcePolicyResult build() {
-            return new GetResourcePolicyResult(description, groupPlacementPolicies, id, instanceSchedulePolicies, name, project, region, selfLink, snapshotSchedulePolicies);
+        }
+        public GetResourcePolicyResult build() {
+            final var o = new GetResourcePolicyResult();
+            o.description = description;
+            o.groupPlacementPolicies = groupPlacementPolicies;
+            o.id = id;
+            o.instanceSchedulePolicies = instanceSchedulePolicies;
+            o.name = name;
+            o.project = project;
+            o.region = region;
+            o.selfLink = selfLink;
+            o.snapshotSchedulePolicies = snapshotSchedulePolicies;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class GroupMembershipRole {
      * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GroupMembershipRole(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private GroupMembershipRole() {}
     /**
      * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -37,24 +33,24 @@ public final class GroupMembershipRole {
     public static Builder builder(GroupMembershipRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GroupMembershipRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GroupMembershipRole build() {
-            return new GroupMembershipRole(name);
+        }
+        public GroupMembershipRole build() {
+            final var o = new GroupMembershipRole();
+            o.name = name;
+            return o;
         }
     }
 }

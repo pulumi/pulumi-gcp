@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigSandboxConfig {
-    private final String sandboxType;
+    private String sandboxType;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigSandboxConfig(@CustomType.Parameter("sandboxType") String sandboxType) {
-        this.sandboxType = sandboxType;
-    }
-
+    private NodePoolNodeConfigSandboxConfig() {}
     public String sandboxType() {
         return this.sandboxType;
     }
@@ -27,24 +23,24 @@ public final class NodePoolNodeConfigSandboxConfig {
     public static Builder builder(NodePoolNodeConfigSandboxConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String sandboxType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigSandboxConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sandboxType = defaults.sandboxType;
         }
 
+        @CustomType.Setter
         public Builder sandboxType(String sandboxType) {
             this.sandboxType = Objects.requireNonNull(sandboxType);
             return this;
-        }        public NodePoolNodeConfigSandboxConfig build() {
-            return new NodePoolNodeConfigSandboxConfig(sandboxType);
+        }
+        public NodePoolNodeConfigSandboxConfig build() {
+            final var o = new NodePoolNodeConfigSandboxConfig();
+            o.sandboxType = sandboxType;
+            return o;
         }
     }
 }

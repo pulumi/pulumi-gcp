@@ -13,28 +13,19 @@ public final class InstanceClusterAutoscalingConfig {
      * @return The CPU utilization target in percentage. Must be between 10 and 80.
      * 
      */
-    private final Integer cpuTarget;
+    private Integer cpuTarget;
     /**
      * @return The maximum number of nodes for autoscaling.
      * 
      */
-    private final Integer maxNodes;
+    private Integer maxNodes;
     /**
      * @return The minimum number of nodes for autoscaling.
      * 
      */
-    private final Integer minNodes;
+    private Integer minNodes;
 
-    @CustomType.Constructor
-    private InstanceClusterAutoscalingConfig(
-        @CustomType.Parameter("cpuTarget") Integer cpuTarget,
-        @CustomType.Parameter("maxNodes") Integer maxNodes,
-        @CustomType.Parameter("minNodes") Integer minNodes) {
-        this.cpuTarget = cpuTarget;
-        this.maxNodes = maxNodes;
-        this.minNodes = minNodes;
-    }
-
+    private InstanceClusterAutoscalingConfig() {}
     /**
      * @return The CPU utilization target in percentage. Must be between 10 and 80.
      * 
@@ -64,16 +55,12 @@ public final class InstanceClusterAutoscalingConfig {
     public static Builder builder(InstanceClusterAutoscalingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer cpuTarget;
         private Integer maxNodes;
         private Integer minNodes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceClusterAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuTarget = defaults.cpuTarget;
@@ -81,19 +68,27 @@ public final class InstanceClusterAutoscalingConfig {
     	      this.minNodes = defaults.minNodes;
         }
 
+        @CustomType.Setter
         public Builder cpuTarget(Integer cpuTarget) {
             this.cpuTarget = Objects.requireNonNull(cpuTarget);
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodes(Integer maxNodes) {
             this.maxNodes = Objects.requireNonNull(maxNodes);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
             this.minNodes = Objects.requireNonNull(minNodes);
             return this;
-        }        public InstanceClusterAutoscalingConfig build() {
-            return new InstanceClusterAutoscalingConfig(cpuTarget, maxNodes, minNodes);
+        }
+        public InstanceClusterAutoscalingConfig build() {
+            final var o = new InstanceClusterAutoscalingConfig();
+            o.cpuTarget = cpuTarget;
+            o.maxNodes = maxNodes;
+            o.minNodes = minNodes;
+            return o;
         }
     }
 }

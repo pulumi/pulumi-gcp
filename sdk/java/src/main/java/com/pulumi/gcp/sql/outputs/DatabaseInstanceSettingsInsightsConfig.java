@@ -16,35 +16,24 @@ public final class DatabaseInstanceSettingsInsightsConfig {
      * @return True if Query Insights feature is enabled.
      * 
      */
-    private final @Nullable Boolean queryInsightsEnabled;
+    private @Nullable Boolean queryInsightsEnabled;
     /**
      * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
      * 
      */
-    private final @Nullable Integer queryStringLength;
+    private @Nullable Integer queryStringLength;
     /**
      * @return True if Query Insights will record application tags from query when enabled.
      * 
      */
-    private final @Nullable Boolean recordApplicationTags;
+    private @Nullable Boolean recordApplicationTags;
     /**
      * @return True if Query Insights will record client address when enabled.
      * 
      */
-    private final @Nullable Boolean recordClientAddress;
+    private @Nullable Boolean recordClientAddress;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsInsightsConfig(
-        @CustomType.Parameter("queryInsightsEnabled") @Nullable Boolean queryInsightsEnabled,
-        @CustomType.Parameter("queryStringLength") @Nullable Integer queryStringLength,
-        @CustomType.Parameter("recordApplicationTags") @Nullable Boolean recordApplicationTags,
-        @CustomType.Parameter("recordClientAddress") @Nullable Boolean recordClientAddress) {
-        this.queryInsightsEnabled = queryInsightsEnabled;
-        this.queryStringLength = queryStringLength;
-        this.recordApplicationTags = recordApplicationTags;
-        this.recordClientAddress = recordClientAddress;
-    }
-
+    private DatabaseInstanceSettingsInsightsConfig() {}
     /**
      * @return True if Query Insights feature is enabled.
      * 
@@ -81,17 +70,13 @@ public final class DatabaseInstanceSettingsInsightsConfig {
     public static Builder builder(DatabaseInstanceSettingsInsightsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean queryInsightsEnabled;
         private @Nullable Integer queryStringLength;
         private @Nullable Boolean recordApplicationTags;
         private @Nullable Boolean recordClientAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsInsightsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryInsightsEnabled = defaults.queryInsightsEnabled;
@@ -100,23 +85,33 @@ public final class DatabaseInstanceSettingsInsightsConfig {
     	      this.recordClientAddress = defaults.recordClientAddress;
         }
 
+        @CustomType.Setter
         public Builder queryInsightsEnabled(@Nullable Boolean queryInsightsEnabled) {
             this.queryInsightsEnabled = queryInsightsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder queryStringLength(@Nullable Integer queryStringLength) {
             this.queryStringLength = queryStringLength;
             return this;
         }
+        @CustomType.Setter
         public Builder recordApplicationTags(@Nullable Boolean recordApplicationTags) {
             this.recordApplicationTags = recordApplicationTags;
             return this;
         }
+        @CustomType.Setter
         public Builder recordClientAddress(@Nullable Boolean recordClientAddress) {
             this.recordClientAddress = recordClientAddress;
             return this;
-        }        public DatabaseInstanceSettingsInsightsConfig build() {
-            return new DatabaseInstanceSettingsInsightsConfig(queryInsightsEnabled, queryStringLength, recordApplicationTags, recordClientAddress);
+        }
+        public DatabaseInstanceSettingsInsightsConfig build() {
+            final var o = new DatabaseInstanceSettingsInsightsConfig();
+            o.queryInsightsEnabled = queryInsightsEnabled;
+            o.queryStringLength = queryStringLength;
+            o.recordApplicationTags = recordApplicationTags;
+            o.recordClientAddress = recordClientAddress;
+            return o;
         }
     }
 }

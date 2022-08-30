@@ -125,7 +125,7 @@ func (o DenyPolicyRuleArrayOutput) Index(i pulumi.IntInput) DenyPolicyRuleOutput
 type DenyPolicyRuleDenyRule struct {
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 	// Structure is documented below.
-	DenialCondition DenyPolicyRuleDenyRuleDenialCondition `pulumi:"denialCondition"`
+	DenialCondition *DenyPolicyRuleDenyRuleDenialCondition `pulumi:"denialCondition"`
 	// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
 	// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
 	DeniedPermissions []string `pulumi:"deniedPermissions"`
@@ -154,7 +154,7 @@ type DenyPolicyRuleDenyRuleInput interface {
 type DenyPolicyRuleDenyRuleArgs struct {
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 	// Structure is documented below.
-	DenialCondition DenyPolicyRuleDenyRuleDenialConditionInput `pulumi:"denialCondition"`
+	DenialCondition DenyPolicyRuleDenyRuleDenialConditionPtrInput `pulumi:"denialCondition"`
 	// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
 	// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
 	DeniedPermissions pulumi.StringArrayInput `pulumi:"deniedPermissions"`
@@ -248,8 +248,8 @@ func (o DenyPolicyRuleDenyRuleOutput) ToDenyPolicyRuleDenyRulePtrOutputWithConte
 
 // User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 // Structure is documented below.
-func (o DenyPolicyRuleDenyRuleOutput) DenialCondition() DenyPolicyRuleDenyRuleDenialConditionOutput {
-	return o.ApplyT(func(v DenyPolicyRuleDenyRule) DenyPolicyRuleDenyRuleDenialCondition { return v.DenialCondition }).(DenyPolicyRuleDenyRuleDenialConditionOutput)
+func (o DenyPolicyRuleDenyRuleOutput) DenialCondition() DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRule) *DenyPolicyRuleDenyRuleDenialCondition { return v.DenialCondition }).(DenyPolicyRuleDenyRuleDenialConditionPtrOutput)
 }
 
 // The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
@@ -307,7 +307,7 @@ func (o DenyPolicyRuleDenyRulePtrOutput) DenialCondition() DenyPolicyRuleDenyRul
 		if v == nil {
 			return nil
 		}
-		return &v.DenialCondition
+		return v.DenialCondition
 	}).(DenyPolicyRuleDenyRuleDenialConditionPtrOutput)
 }
 

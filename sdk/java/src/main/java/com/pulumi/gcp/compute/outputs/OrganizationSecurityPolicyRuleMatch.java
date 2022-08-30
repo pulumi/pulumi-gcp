@@ -17,12 +17,12 @@ public final class OrganizationSecurityPolicyRuleMatch {
      * Structure is documented below.
      * 
      */
-    private final OrganizationSecurityPolicyRuleMatchConfig config;
+    private OrganizationSecurityPolicyRuleMatchConfig config;
     /**
      * @return A description of the rule.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Preconfigured versioned expression. For organization security policy rules,
      * the only supported type is &#34;FIREWALL&#34;.
@@ -30,18 +30,9 @@ public final class OrganizationSecurityPolicyRuleMatch {
      * Possible values are `FIREWALL`.
      * 
      */
-    private final @Nullable String versionedExpr;
+    private @Nullable String versionedExpr;
 
-    @CustomType.Constructor
-    private OrganizationSecurityPolicyRuleMatch(
-        @CustomType.Parameter("config") OrganizationSecurityPolicyRuleMatchConfig config,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("versionedExpr") @Nullable String versionedExpr) {
-        this.config = config;
-        this.description = description;
-        this.versionedExpr = versionedExpr;
-    }
-
+    private OrganizationSecurityPolicyRuleMatch() {}
     /**
      * @return The configuration options for matching the rule.
      * Structure is documented below.
@@ -75,16 +66,12 @@ public final class OrganizationSecurityPolicyRuleMatch {
     public static Builder builder(OrganizationSecurityPolicyRuleMatch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private OrganizationSecurityPolicyRuleMatchConfig config;
         private @Nullable String description;
         private @Nullable String versionedExpr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationSecurityPolicyRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -92,19 +79,27 @@ public final class OrganizationSecurityPolicyRuleMatch {
     	      this.versionedExpr = defaults.versionedExpr;
         }
 
+        @CustomType.Setter
         public Builder config(OrganizationSecurityPolicyRuleMatchConfig config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder versionedExpr(@Nullable String versionedExpr) {
             this.versionedExpr = versionedExpr;
             return this;
-        }        public OrganizationSecurityPolicyRuleMatch build() {
-            return new OrganizationSecurityPolicyRuleMatch(config, description, versionedExpr);
+        }
+        public OrganizationSecurityPolicyRuleMatch build() {
+            final var o = new OrganizationSecurityPolicyRuleMatch();
+            o.config = config;
+            o.description = description;
+            o.versionedExpr = versionedExpr;
+            return o;
         }
     }
 }

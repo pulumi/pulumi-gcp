@@ -12,27 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMasterAuth {
-    private final @Nullable String clientCertificate;
+    private @Nullable String clientCertificate;
     /**
      * @return Whether client certificate authorization is enabled for this cluster.  For example:
      * 
      */
-    private final ClusterMasterAuthClientCertificateConfig clientCertificateConfig;
-    private final @Nullable String clientKey;
-    private final @Nullable String clusterCaCertificate;
+    private ClusterMasterAuthClientCertificateConfig clientCertificateConfig;
+    private @Nullable String clientKey;
+    private @Nullable String clusterCaCertificate;
 
-    @CustomType.Constructor
-    private ClusterMasterAuth(
-        @CustomType.Parameter("clientCertificate") @Nullable String clientCertificate,
-        @CustomType.Parameter("clientCertificateConfig") ClusterMasterAuthClientCertificateConfig clientCertificateConfig,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("clusterCaCertificate") @Nullable String clusterCaCertificate) {
-        this.clientCertificate = clientCertificate;
-        this.clientCertificateConfig = clientCertificateConfig;
-        this.clientKey = clientKey;
-        this.clusterCaCertificate = clusterCaCertificate;
-    }
-
+    private ClusterMasterAuth() {}
     public Optional<String> clientCertificate() {
         return Optional.ofNullable(this.clientCertificate);
     }
@@ -57,17 +46,13 @@ public final class ClusterMasterAuth {
     public static Builder builder(ClusterMasterAuth defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clientCertificate;
         private ClusterMasterAuthClientCertificateConfig clientCertificateConfig;
         private @Nullable String clientKey;
         private @Nullable String clusterCaCertificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMasterAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientCertificate = defaults.clientCertificate;
@@ -76,23 +61,33 @@ public final class ClusterMasterAuth {
     	      this.clusterCaCertificate = defaults.clusterCaCertificate;
         }
 
+        @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
             this.clientCertificate = clientCertificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCertificateConfig(ClusterMasterAuthClientCertificateConfig clientCertificateConfig) {
             this.clientCertificateConfig = Objects.requireNonNull(clientCertificateConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterCaCertificate(@Nullable String clusterCaCertificate) {
             this.clusterCaCertificate = clusterCaCertificate;
             return this;
-        }        public ClusterMasterAuth build() {
-            return new ClusterMasterAuth(clientCertificate, clientCertificateConfig, clientKey, clusterCaCertificate);
+        }
+        public ClusterMasterAuth build() {
+            final var o = new ClusterMasterAuth();
+            o.clientCertificate = clientCertificate;
+            o.clientCertificateConfig = clientCertificateConfig;
+            o.clientKey = clientKey;
+            o.clusterCaCertificate = clusterCaCertificate;
+            return o;
         }
     }
 }

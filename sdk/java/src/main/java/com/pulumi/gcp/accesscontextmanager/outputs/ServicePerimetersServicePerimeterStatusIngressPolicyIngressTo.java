@@ -18,7 +18,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation> operations;
+    private @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation> operations;
     /**
      * @return A list of resources, currently only projects in the form
      * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
@@ -27,16 +27,9 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
      * the perimeter.
      * 
      */
-    private final @Nullable List<String> resources;
+    private @Nullable List<String> resources;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(
-        @CustomType.Parameter("operations") @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation> operations,
-        @CustomType.Parameter("resources") @Nullable List<String> resources) {
-        this.operations = operations;
-        this.resources = resources;
-    }
-
+    private ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo() {}
     /**
      * @return A list of `ApiOperations` that this egress rule applies to. A request matches
      * if it contains an operation/service in this list.
@@ -65,21 +58,18 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
     public static Builder builder(ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation> operations;
         private @Nullable List<String> resources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operations = defaults.operations;
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
         public Builder operations(@Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation> operations) {
             this.operations = operations;
             return this;
@@ -87,14 +77,19 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
         public Builder operations(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation... operations) {
             return operations(List.of(operations));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
             return resources(List.of(resources));
-        }        public ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo build() {
-            return new ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo(operations, resources);
+        }
+        public ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo build() {
+            final var o = new ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo();
+            o.operations = operations;
+            o.resources = resources;
+            return o;
         }
     }
 }

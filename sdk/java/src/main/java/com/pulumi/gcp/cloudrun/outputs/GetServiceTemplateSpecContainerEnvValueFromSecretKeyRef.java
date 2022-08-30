@@ -9,21 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
-    private final String key;
+    private String key;
     /**
      * @return The name of the Cloud Run Service.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("name") String name) {
-        this.key = key;
-        this.name = name;
-    }
-
+    private GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef() {}
     public String key() {
         return this.key;
     }
@@ -42,30 +35,32 @@ public final class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
     public static Builder builder(GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef build() {
-            return new GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef(key, name);
+        }
+        public GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef build() {
+            final var o = new GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef();
+            o.key = key;
+            o.name = name;
+            return o;
         }
     }
 }

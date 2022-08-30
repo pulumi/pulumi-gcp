@@ -18,38 +18,27 @@ public final class CertificateManagedAuthorizationAttemptInfo {
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
      * 
      */
-    private final @Nullable String details;
+    private @Nullable String details;
     /**
      * @return -
      * Domain name of the authorization attempt.
      * 
      */
-    private final @Nullable String domain;
+    private @Nullable String domain;
     /**
      * @return -
      * Reason for failure of the authorization attempt for the domain.
      * 
      */
-    private final @Nullable String failureReason;
+    private @Nullable String failureReason;
     /**
      * @return -
      * State of the domain for managed certificate issuance.
      * 
      */
-    private final @Nullable String state;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private CertificateManagedAuthorizationAttemptInfo(
-        @CustomType.Parameter("details") @Nullable String details,
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("failureReason") @Nullable String failureReason,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.details = details;
-        this.domain = domain;
-        this.failureReason = failureReason;
-        this.state = state;
-    }
-
+    private CertificateManagedAuthorizationAttemptInfo() {}
     /**
      * @return -
      * Human readable explanation for reaching the state. Provided to help
@@ -92,17 +81,13 @@ public final class CertificateManagedAuthorizationAttemptInfo {
     public static Builder builder(CertificateManagedAuthorizationAttemptInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String details;
         private @Nullable String domain;
         private @Nullable String failureReason;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateManagedAuthorizationAttemptInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.details = defaults.details;
@@ -111,23 +96,33 @@ public final class CertificateManagedAuthorizationAttemptInfo {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder details(@Nullable String details) {
             this.details = details;
             return this;
         }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder failureReason(@Nullable String failureReason) {
             this.failureReason = failureReason;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public CertificateManagedAuthorizationAttemptInfo build() {
-            return new CertificateManagedAuthorizationAttemptInfo(details, domain, failureReason, state);
+        }
+        public CertificateManagedAuthorizationAttemptInfo build() {
+            final var o = new CertificateManagedAuthorizationAttemptInfo();
+            o.details = details;
+            o.domain = domain;
+            o.failureReason = failureReason;
+            o.state = state;
+            return o;
         }
     }
 }

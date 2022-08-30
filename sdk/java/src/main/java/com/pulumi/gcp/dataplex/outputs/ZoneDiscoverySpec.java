@@ -19,49 +19,34 @@ public final class ZoneDiscoverySpec {
      * @return Optional. Configuration for CSV data.
      * 
      */
-    private final @Nullable ZoneDiscoverySpecCsvOptions csvOptions;
+    private @Nullable ZoneDiscoverySpecCsvOptions csvOptions;
     /**
      * @return Required. Whether discovery is enabled.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
      * 
      */
-    private final @Nullable List<String> excludePatterns;
+    private @Nullable List<String> excludePatterns;
     /**
      * @return Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
      * 
      */
-    private final @Nullable List<String> includePatterns;
+    private @Nullable List<String> includePatterns;
     /**
      * @return Optional. Configuration for Json data.
      * 
      */
-    private final @Nullable ZoneDiscoverySpecJsonOptions jsonOptions;
+    private @Nullable ZoneDiscoverySpecJsonOptions jsonOptions;
     /**
      * @return Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or TZ=${IANA_TIME_ZONE}&#34;. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, &#34;CRON_TZ=America/New_York 1 * * * *&#34;, or &#34;TZ=America/New_York 1 * * * *&#34;.
      * 
      */
-    private final @Nullable String schedule;
+    private @Nullable String schedule;
 
-    @CustomType.Constructor
-    private ZoneDiscoverySpec(
-        @CustomType.Parameter("csvOptions") @Nullable ZoneDiscoverySpecCsvOptions csvOptions,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("excludePatterns") @Nullable List<String> excludePatterns,
-        @CustomType.Parameter("includePatterns") @Nullable List<String> includePatterns,
-        @CustomType.Parameter("jsonOptions") @Nullable ZoneDiscoverySpecJsonOptions jsonOptions,
-        @CustomType.Parameter("schedule") @Nullable String schedule) {
-        this.csvOptions = csvOptions;
-        this.enabled = enabled;
-        this.excludePatterns = excludePatterns;
-        this.includePatterns = includePatterns;
-        this.jsonOptions = jsonOptions;
-        this.schedule = schedule;
-    }
-
+    private ZoneDiscoverySpec() {}
     /**
      * @return Optional. Configuration for CSV data.
      * 
@@ -112,7 +97,7 @@ public final class ZoneDiscoverySpec {
     public static Builder builder(ZoneDiscoverySpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ZoneDiscoverySpecCsvOptions csvOptions;
         private Boolean enabled;
@@ -120,11 +105,7 @@ public final class ZoneDiscoverySpec {
         private @Nullable List<String> includePatterns;
         private @Nullable ZoneDiscoverySpecJsonOptions jsonOptions;
         private @Nullable String schedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ZoneDiscoverySpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.csvOptions = defaults.csvOptions;
@@ -135,14 +116,17 @@ public final class ZoneDiscoverySpec {
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
         public Builder csvOptions(@Nullable ZoneDiscoverySpecCsvOptions csvOptions) {
             this.csvOptions = csvOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder excludePatterns(@Nullable List<String> excludePatterns) {
             this.excludePatterns = excludePatterns;
             return this;
@@ -150,6 +134,7 @@ public final class ZoneDiscoverySpec {
         public Builder excludePatterns(String... excludePatterns) {
             return excludePatterns(List.of(excludePatterns));
         }
+        @CustomType.Setter
         public Builder includePatterns(@Nullable List<String> includePatterns) {
             this.includePatterns = includePatterns;
             return this;
@@ -157,15 +142,25 @@ public final class ZoneDiscoverySpec {
         public Builder includePatterns(String... includePatterns) {
             return includePatterns(List.of(includePatterns));
         }
+        @CustomType.Setter
         public Builder jsonOptions(@Nullable ZoneDiscoverySpecJsonOptions jsonOptions) {
             this.jsonOptions = jsonOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(@Nullable String schedule) {
             this.schedule = schedule;
             return this;
-        }        public ZoneDiscoverySpec build() {
-            return new ZoneDiscoverySpec(csvOptions, enabled, excludePatterns, includePatterns, jsonOptions, schedule);
+        }
+        public ZoneDiscoverySpec build() {
+            final var o = new ZoneDiscoverySpec();
+            o.csvOptions = csvOptions;
+            o.enabled = enabled;
+            o.excludePatterns = excludePatterns;
+            o.includePatterns = includePatterns;
+            o.jsonOptions = jsonOptions;
+            o.schedule = schedule;
+            return o;
         }
     }
 }

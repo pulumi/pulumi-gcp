@@ -16,7 +16,7 @@ public final class BackendServiceLogConfig {
      * @return Whether to enable logging for the load balancer traffic served by this backend service.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
@@ -24,16 +24,9 @@ public final class BackendServiceLogConfig {
      * The default value is 1.0.
      * 
      */
-    private final @Nullable Double sampleRate;
+    private @Nullable Double sampleRate;
 
-    @CustomType.Constructor
-    private BackendServiceLogConfig(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("sampleRate") @Nullable Double sampleRate) {
-        this.enable = enable;
-        this.sampleRate = sampleRate;
-    }
-
+    private BackendServiceLogConfig() {}
     /**
      * @return Whether to enable logging for the load balancer traffic served by this backend service.
      * 
@@ -59,30 +52,32 @@ public final class BackendServiceLogConfig {
     public static Builder builder(BackendServiceLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable Double sampleRate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.sampleRate = defaults.sampleRate;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder sampleRate(@Nullable Double sampleRate) {
             this.sampleRate = sampleRate;
             return this;
-        }        public BackendServiceLogConfig build() {
-            return new BackendServiceLogConfig(enable, sampleRate);
+        }
+        public BackendServiceLogConfig build() {
+            final var o = new BackendServiceLogConfig();
+            o.enable = enable;
+            o.sampleRate = sampleRate;
+            return o;
         }
     }
 }

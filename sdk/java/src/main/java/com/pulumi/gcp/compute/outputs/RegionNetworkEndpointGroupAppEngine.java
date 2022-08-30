@@ -17,7 +17,7 @@ public final class RegionNetworkEndpointGroupAppEngine {
      * Example value: &#34;default&#34;, &#34;my-service&#34;.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
      * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
@@ -25,24 +25,15 @@ public final class RegionNetworkEndpointGroupAppEngine {
      * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
      * 
      */
-    private final @Nullable String urlMask;
+    private @Nullable String urlMask;
     /**
      * @return The optional resource version. The version identified by this value is platform-specific and is follows:
      * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private RegionNetworkEndpointGroupAppEngine(
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("urlMask") @Nullable String urlMask,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.service = service;
-        this.urlMask = urlMask;
-        this.version = version;
-    }
-
+    private RegionNetworkEndpointGroupAppEngine() {}
     /**
      * @return Optional serving service.
      * The service name must be 1-63 characters long, and comply with RFC1035.
@@ -78,16 +69,12 @@ public final class RegionNetworkEndpointGroupAppEngine {
     public static Builder builder(RegionNetworkEndpointGroupAppEngine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String service;
         private @Nullable String urlMask;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionNetworkEndpointGroupAppEngine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.service = defaults.service;
@@ -95,19 +82,27 @@ public final class RegionNetworkEndpointGroupAppEngine {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
             this.urlMask = urlMask;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public RegionNetworkEndpointGroupAppEngine build() {
-            return new RegionNetworkEndpointGroupAppEngine(service, urlMask, version);
+        }
+        public RegionNetworkEndpointGroupAppEngine build() {
+            final var o = new RegionNetworkEndpointGroupAppEngine();
+            o.service = service;
+            o.urlMask = urlMask;
+            o.version = version;
+            return o;
         }
     }
 }

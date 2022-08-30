@@ -9,38 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
-    private final Boolean certSign;
-    private final Boolean contentCommitment;
-    private final Boolean crlSign;
-    private final Boolean dataEncipherment;
-    private final Boolean decipherOnly;
-    private final Boolean digitalSignature;
-    private final Boolean encipherOnly;
-    private final Boolean keyAgreement;
-    private final Boolean keyEncipherment;
+    private Boolean certSign;
+    private Boolean contentCommitment;
+    private Boolean crlSign;
+    private Boolean dataEncipherment;
+    private Boolean decipherOnly;
+    private Boolean digitalSignature;
+    private Boolean encipherOnly;
+    private Boolean keyAgreement;
+    private Boolean keyEncipherment;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage(
-        @CustomType.Parameter("certSign") Boolean certSign,
-        @CustomType.Parameter("contentCommitment") Boolean contentCommitment,
-        @CustomType.Parameter("crlSign") Boolean crlSign,
-        @CustomType.Parameter("dataEncipherment") Boolean dataEncipherment,
-        @CustomType.Parameter("decipherOnly") Boolean decipherOnly,
-        @CustomType.Parameter("digitalSignature") Boolean digitalSignature,
-        @CustomType.Parameter("encipherOnly") Boolean encipherOnly,
-        @CustomType.Parameter("keyAgreement") Boolean keyAgreement,
-        @CustomType.Parameter("keyEncipherment") Boolean keyEncipherment) {
-        this.certSign = certSign;
-        this.contentCommitment = contentCommitment;
-        this.crlSign = crlSign;
-        this.dataEncipherment = dataEncipherment;
-        this.decipherOnly = decipherOnly;
-        this.digitalSignature = digitalSignature;
-        this.encipherOnly = encipherOnly;
-        this.keyAgreement = keyAgreement;
-        this.keyEncipherment = keyEncipherment;
-    }
-
+    private GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage() {}
     public Boolean certSign() {
         return this.certSign;
     }
@@ -76,7 +55,7 @@ public final class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     public static Builder builder(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean certSign;
         private Boolean contentCommitment;
@@ -87,11 +66,7 @@ public final class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
         private Boolean encipherOnly;
         private Boolean keyAgreement;
         private Boolean keyEncipherment;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certSign = defaults.certSign;
@@ -105,43 +80,63 @@ public final class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     	      this.keyEncipherment = defaults.keyEncipherment;
         }
 
+        @CustomType.Setter
         public Builder certSign(Boolean certSign) {
             this.certSign = Objects.requireNonNull(certSign);
             return this;
         }
+        @CustomType.Setter
         public Builder contentCommitment(Boolean contentCommitment) {
             this.contentCommitment = Objects.requireNonNull(contentCommitment);
             return this;
         }
+        @CustomType.Setter
         public Builder crlSign(Boolean crlSign) {
             this.crlSign = Objects.requireNonNull(crlSign);
             return this;
         }
+        @CustomType.Setter
         public Builder dataEncipherment(Boolean dataEncipherment) {
             this.dataEncipherment = Objects.requireNonNull(dataEncipherment);
             return this;
         }
+        @CustomType.Setter
         public Builder decipherOnly(Boolean decipherOnly) {
             this.decipherOnly = Objects.requireNonNull(decipherOnly);
             return this;
         }
+        @CustomType.Setter
         public Builder digitalSignature(Boolean digitalSignature) {
             this.digitalSignature = Objects.requireNonNull(digitalSignature);
             return this;
         }
+        @CustomType.Setter
         public Builder encipherOnly(Boolean encipherOnly) {
             this.encipherOnly = Objects.requireNonNull(encipherOnly);
             return this;
         }
+        @CustomType.Setter
         public Builder keyAgreement(Boolean keyAgreement) {
             this.keyAgreement = Objects.requireNonNull(keyAgreement);
             return this;
         }
+        @CustomType.Setter
         public Builder keyEncipherment(Boolean keyEncipherment) {
             this.keyEncipherment = Objects.requireNonNull(keyEncipherment);
             return this;
-        }        public GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage build() {
-            return new GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage(certSign, contentCommitment, crlSign, dataEncipherment, decipherOnly, digitalSignature, encipherOnly, keyAgreement, keyEncipherment);
+        }
+        public GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage build() {
+            final var o = new GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage();
+            o.certSign = certSign;
+            o.contentCommitment = contentCommitment;
+            o.crlSign = crlSign;
+            o.dataEncipherment = dataEncipherment;
+            o.decipherOnly = decipherOnly;
+            o.digitalSignature = digitalSignature;
+            o.encipherOnly = encipherOnly;
+            o.keyAgreement = keyAgreement;
+            o.keyEncipherment = keyEncipherment;
+            return o;
         }
     }
 }

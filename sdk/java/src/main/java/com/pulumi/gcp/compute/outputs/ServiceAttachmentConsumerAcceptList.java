@@ -15,21 +15,14 @@ public final class ServiceAttachmentConsumerAcceptList {
      * create.
      * 
      */
-    private final Integer connectionLimit;
+    private Integer connectionLimit;
     /**
      * @return A project that is allowed to connect to this service attachment.
      * 
      */
-    private final String projectIdOrNum;
+    private String projectIdOrNum;
 
-    @CustomType.Constructor
-    private ServiceAttachmentConsumerAcceptList(
-        @CustomType.Parameter("connectionLimit") Integer connectionLimit,
-        @CustomType.Parameter("projectIdOrNum") String projectIdOrNum) {
-        this.connectionLimit = connectionLimit;
-        this.projectIdOrNum = projectIdOrNum;
-    }
-
+    private ServiceAttachmentConsumerAcceptList() {}
     /**
      * @return The number of consumer forwarding rules the consumer project can
      * create.
@@ -53,30 +46,32 @@ public final class ServiceAttachmentConsumerAcceptList {
     public static Builder builder(ServiceAttachmentConsumerAcceptList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer connectionLimit;
         private String projectIdOrNum;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceAttachmentConsumerAcceptList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionLimit = defaults.connectionLimit;
     	      this.projectIdOrNum = defaults.projectIdOrNum;
         }
 
+        @CustomType.Setter
         public Builder connectionLimit(Integer connectionLimit) {
             this.connectionLimit = Objects.requireNonNull(connectionLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder projectIdOrNum(String projectIdOrNum) {
             this.projectIdOrNum = Objects.requireNonNull(projectIdOrNum);
             return this;
-        }        public ServiceAttachmentConsumerAcceptList build() {
-            return new ServiceAttachmentConsumerAcceptList(connectionLimit, projectIdOrNum);
+        }
+        public ServiceAttachmentConsumerAcceptList build() {
+            final var o = new ServiceAttachmentConsumerAcceptList();
+            o.connectionLimit = connectionLimit;
+            o.projectIdOrNum = projectIdOrNum;
+            return o;
         }
     }
 }

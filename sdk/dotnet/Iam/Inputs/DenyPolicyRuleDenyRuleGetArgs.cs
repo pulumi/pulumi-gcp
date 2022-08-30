@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         /// Structure is documented below.
         /// </summary>
-        [Input("denialCondition", required: true)]
-        public Input<Inputs.DenyPolicyRuleDenyRuleDenialConditionGetArgs> DenialCondition { get; set; } = null!;
+        [Input("denialCondition")]
+        public Input<Inputs.DenyPolicyRuleDenyRuleDenialConditionGetArgs>? DenialCondition { get; set; }
 
         [Input("deniedPermissions")]
         private InputList<string>? _deniedPermissions;

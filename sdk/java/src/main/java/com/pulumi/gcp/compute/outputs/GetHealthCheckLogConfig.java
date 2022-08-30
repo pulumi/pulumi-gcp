@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHealthCheckLogConfig {
-    private final Boolean enable;
+    private Boolean enable;
 
-    @CustomType.Constructor
-    private GetHealthCheckLogConfig(@CustomType.Parameter("enable") Boolean enable) {
-        this.enable = enable;
-    }
-
+    private GetHealthCheckLogConfig() {}
     public Boolean enable() {
         return this.enable;
     }
@@ -27,24 +23,24 @@ public final class GetHealthCheckLogConfig {
     public static Builder builder(GetHealthCheckLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHealthCheckLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
         }
 
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
-        }        public GetHealthCheckLogConfig build() {
-            return new GetHealthCheckLogConfig(enable);
+        }
+        public GetHealthCheckLogConfig build() {
+            final var o = new GetHealthCheckLogConfig();
+            o.enable = enable;
+            return o;
         }
     }
 }

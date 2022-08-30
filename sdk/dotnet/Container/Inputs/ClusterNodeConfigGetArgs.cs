@@ -175,6 +175,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        /// <summary>
+        /// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.ClusterNodeConfigReservationAffinityGetArgs>? ReservationAffinity { get; set; }
+
         [Input("sandboxConfig")]
         public Input<Inputs.ClusterNodeConfigSandboxConfigGetArgs>? SandboxConfig { get; set; }
 
@@ -203,8 +209,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The list of instance tags applied to all nodes. Tags are used to identify
-        /// valid sources or targets for network firewalls.
+        /// ) - List of network tags applied to auto-provisioned node pools.
         /// </summary>
         public InputList<string> Tags
         {

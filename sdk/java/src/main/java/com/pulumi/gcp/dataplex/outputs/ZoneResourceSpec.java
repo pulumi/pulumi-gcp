@@ -13,13 +13,9 @@ public final class ZoneResourceSpec {
      * @return Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
      * 
      */
-    private final String locationType;
+    private String locationType;
 
-    @CustomType.Constructor
-    private ZoneResourceSpec(@CustomType.Parameter("locationType") String locationType) {
-        this.locationType = locationType;
-    }
-
+    private ZoneResourceSpec() {}
     /**
      * @return Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
      * 
@@ -35,24 +31,24 @@ public final class ZoneResourceSpec {
     public static Builder builder(ZoneResourceSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String locationType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ZoneResourceSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.locationType = defaults.locationType;
         }
 
+        @CustomType.Setter
         public Builder locationType(String locationType) {
             this.locationType = Objects.requireNonNull(locationType);
             return this;
-        }        public ZoneResourceSpec build() {
-            return new ZoneResourceSpec(locationType);
+        }
+        public ZoneResourceSpec build() {
+            final var o = new ZoneResourceSpec();
+            o.locationType = locationType;
+            return o;
         }
     }
 }

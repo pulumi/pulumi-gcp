@@ -14,13 +14,9 @@ public final class ApiConfigGatewayConfigBackendConfig {
      * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
      * 
      */
-    private final String googleServiceAccount;
+    private String googleServiceAccount;
 
-    @CustomType.Constructor
-    private ApiConfigGatewayConfigBackendConfig(@CustomType.Parameter("googleServiceAccount") String googleServiceAccount) {
-        this.googleServiceAccount = googleServiceAccount;
-    }
-
+    private ApiConfigGatewayConfigBackendConfig() {}
     /**
      * @return Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
      * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
@@ -37,24 +33,24 @@ public final class ApiConfigGatewayConfigBackendConfig {
     public static Builder builder(ApiConfigGatewayConfigBackendConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String googleServiceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiConfigGatewayConfigBackendConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.googleServiceAccount = defaults.googleServiceAccount;
         }
 
+        @CustomType.Setter
         public Builder googleServiceAccount(String googleServiceAccount) {
             this.googleServiceAccount = Objects.requireNonNull(googleServiceAccount);
             return this;
-        }        public ApiConfigGatewayConfigBackendConfig build() {
-            return new ApiConfigGatewayConfigBackendConfig(googleServiceAccount);
+        }
+        public ApiConfigGatewayConfigBackendConfig build() {
+            final var o = new ApiConfigGatewayConfigBackendConfig();
+            o.googleServiceAccount = googleServiceAccount;
+            return o;
         }
     }
 }

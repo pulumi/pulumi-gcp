@@ -17,22 +17,15 @@ public final class PatchDeploymentPatchConfigPostStep {
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigPostStepLinuxExecStepConfig linuxExecStepConfig;
+    private @Nullable PatchDeploymentPatchConfigPostStepLinuxExecStepConfig linuxExecStepConfig;
     /**
      * @return The ExecStepConfig for all Windows VMs targeted by the PatchJob.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigPostStepWindowsExecStepConfig windowsExecStepConfig;
+    private @Nullable PatchDeploymentPatchConfigPostStepWindowsExecStepConfig windowsExecStepConfig;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigPostStep(
-        @CustomType.Parameter("linuxExecStepConfig") @Nullable PatchDeploymentPatchConfigPostStepLinuxExecStepConfig linuxExecStepConfig,
-        @CustomType.Parameter("windowsExecStepConfig") @Nullable PatchDeploymentPatchConfigPostStepWindowsExecStepConfig windowsExecStepConfig) {
-        this.linuxExecStepConfig = linuxExecStepConfig;
-        this.windowsExecStepConfig = windowsExecStepConfig;
-    }
-
+    private PatchDeploymentPatchConfigPostStep() {}
     /**
      * @return The ExecStepConfig for all Linux VMs targeted by the PatchJob.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class PatchDeploymentPatchConfigPostStep {
     public static Builder builder(PatchDeploymentPatchConfigPostStep defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PatchDeploymentPatchConfigPostStepLinuxExecStepConfig linuxExecStepConfig;
         private @Nullable PatchDeploymentPatchConfigPostStepWindowsExecStepConfig windowsExecStepConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigPostStep defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.linuxExecStepConfig = defaults.linuxExecStepConfig;
     	      this.windowsExecStepConfig = defaults.windowsExecStepConfig;
         }
 
+        @CustomType.Setter
         public Builder linuxExecStepConfig(@Nullable PatchDeploymentPatchConfigPostStepLinuxExecStepConfig linuxExecStepConfig) {
             this.linuxExecStepConfig = linuxExecStepConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder windowsExecStepConfig(@Nullable PatchDeploymentPatchConfigPostStepWindowsExecStepConfig windowsExecStepConfig) {
             this.windowsExecStepConfig = windowsExecStepConfig;
             return this;
-        }        public PatchDeploymentPatchConfigPostStep build() {
-            return new PatchDeploymentPatchConfigPostStep(linuxExecStepConfig, windowsExecStepConfig);
+        }
+        public PatchDeploymentPatchConfigPostStep build() {
+            final var o = new PatchDeploymentPatchConfigPostStep();
+            o.linuxExecStepConfig = linuxExecStepConfig;
+            o.windowsExecStepConfig = windowsExecStepConfig;
+            return o;
         }
     }
 }

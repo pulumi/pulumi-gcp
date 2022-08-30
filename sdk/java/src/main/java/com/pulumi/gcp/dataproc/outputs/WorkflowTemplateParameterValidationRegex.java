@@ -14,13 +14,9 @@ public final class WorkflowTemplateParameterValidationRegex {
      * @return Required. RE2 regular expressions used to validate the parameter&#39;s value. The value must match the regex in its entirety (substring matches are not sufficient).
      * 
      */
-    private final List<String> regexes;
+    private List<String> regexes;
 
-    @CustomType.Constructor
-    private WorkflowTemplateParameterValidationRegex(@CustomType.Parameter("regexes") List<String> regexes) {
-        this.regexes = regexes;
-    }
-
+    private WorkflowTemplateParameterValidationRegex() {}
     /**
      * @return Required. RE2 regular expressions used to validate the parameter&#39;s value. The value must match the regex in its entirety (substring matches are not sufficient).
      * 
@@ -36,27 +32,27 @@ public final class WorkflowTemplateParameterValidationRegex {
     public static Builder builder(WorkflowTemplateParameterValidationRegex defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> regexes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateParameterValidationRegex defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regexes = defaults.regexes;
         }
 
+        @CustomType.Setter
         public Builder regexes(List<String> regexes) {
             this.regexes = Objects.requireNonNull(regexes);
             return this;
         }
         public Builder regexes(String... regexes) {
             return regexes(List.of(regexes));
-        }        public WorkflowTemplateParameterValidationRegex build() {
-            return new WorkflowTemplateParameterValidationRegex(regexes);
+        }
+        public WorkflowTemplateParameterValidationRegex build() {
+            final var o = new WorkflowTemplateParameterValidationRegex();
+            o.regexes = regexes;
+            return o;
         }
     }
 }

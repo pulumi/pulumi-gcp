@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGvnicArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigTaintArgs;
@@ -361,6 +362,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.preemptible);
     }
 
+    /**
+     * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+     * 
+     */
+    @Import(name="reservationAffinity")
+    private @Nullable Output<ClusterNodeConfigReservationAffinityArgs> reservationAffinity;
+
+    /**
+     * @return The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigReservationAffinityArgs>> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+
     @Import(name="sandboxConfig")
     private @Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig;
 
@@ -420,16 +436,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The list of instance tags applied to all nodes. Tags are used to identify
-     * valid sources or targets for network firewalls.
+     * ) - List of network tags applied to auto-provisioned node pools.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The list of instance tags applied to all nodes. Tags are used to identify
-     * valid sources or targets for network firewalls.
+     * @return ) - List of network tags applied to auto-provisioned node pools.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -503,6 +517,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.nodeGroup = $.nodeGroup;
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
+        this.reservationAffinity = $.reservationAffinity;
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -993,6 +1008,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return preemptible(Output.of(preemptible));
         }
 
+        /**
+         * @param reservationAffinity The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(@Nullable Output<ClusterNodeConfigReservationAffinityArgs> reservationAffinity) {
+            $.reservationAffinity = reservationAffinity;
+            return this;
+        }
+
+        /**
+         * @param reservationAffinity The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(ClusterNodeConfigReservationAffinityArgs reservationAffinity) {
+            return reservationAffinity(Output.of(reservationAffinity));
+        }
+
         public Builder sandboxConfig(@Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig) {
             $.sandboxConfig = sandboxConfig;
             return this;
@@ -1072,8 +1108,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * @param tags ) - List of network tags applied to auto-provisioned node pools.
          * 
          * @return builder
          * 
@@ -1084,8 +1119,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * @param tags ) - List of network tags applied to auto-provisioned node pools.
          * 
          * @return builder
          * 
@@ -1095,8 +1129,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * @param tags ) - List of network tags applied to auto-provisioned node pools.
          * 
          * @return builder
          * 

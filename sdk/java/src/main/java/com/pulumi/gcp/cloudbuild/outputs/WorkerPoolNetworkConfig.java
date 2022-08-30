@@ -13,13 +13,9 @@ public final class WorkerPoolNetworkConfig {
      * @return Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
      * 
      */
-    private final String peeredNetwork;
+    private String peeredNetwork;
 
-    @CustomType.Constructor
-    private WorkerPoolNetworkConfig(@CustomType.Parameter("peeredNetwork") String peeredNetwork) {
-        this.peeredNetwork = peeredNetwork;
-    }
-
+    private WorkerPoolNetworkConfig() {}
     /**
      * @return Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
      * 
@@ -35,24 +31,24 @@ public final class WorkerPoolNetworkConfig {
     public static Builder builder(WorkerPoolNetworkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String peeredNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkerPoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.peeredNetwork = defaults.peeredNetwork;
         }
 
+        @CustomType.Setter
         public Builder peeredNetwork(String peeredNetwork) {
             this.peeredNetwork = Objects.requireNonNull(peeredNetwork);
             return this;
-        }        public WorkerPoolNetworkConfig build() {
-            return new WorkerPoolNetworkConfig(peeredNetwork);
+        }
+        public WorkerPoolNetworkConfig build() {
+            final var o = new WorkerPoolNetworkConfig();
+            o.peeredNetwork = peeredNetwork;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class TransferJobTransferSpecGcsDataSink {
      * @return S3 Bucket name.
      * 
      */
-    private final String bucketName;
+    private String bucketName;
     /**
      * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecGcsDataSink(
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.bucketName = bucketName;
-        this.path = path;
-    }
-
+    private TransferJobTransferSpecGcsDataSink() {}
     /**
      * @return S3 Bucket name.
      * 
@@ -52,30 +45,32 @@ public final class TransferJobTransferSpecGcsDataSink {
     public static Builder builder(TransferJobTransferSpecGcsDataSink defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucketName;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecGcsDataSink defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public TransferJobTransferSpecGcsDataSink build() {
-            return new TransferJobTransferSpecGcsDataSink(bucketName, path);
+        }
+        public TransferJobTransferSpecGcsDataSink build() {
+            final var o = new TransferJobTransferSpecGcsDataSink();
+            o.bucketName = bucketName;
+            o.path = path;
+            return o;
         }
     }
 }

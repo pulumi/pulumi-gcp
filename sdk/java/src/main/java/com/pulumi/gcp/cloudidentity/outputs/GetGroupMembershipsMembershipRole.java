@@ -13,13 +13,9 @@ public final class GetGroupMembershipsMembershipRole {
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetGroupMembershipsMembershipRole(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private GetGroupMembershipsMembershipRole() {}
     /**
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
@@ -35,24 +31,24 @@ public final class GetGroupMembershipsMembershipRole {
     public static Builder builder(GetGroupMembershipsMembershipRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMembershipsMembershipRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetGroupMembershipsMembershipRole build() {
-            return new GetGroupMembershipsMembershipRole(name);
+        }
+        public GetGroupMembershipsMembershipRole build() {
+            final var o = new GetGroupMembershipsMembershipRole();
+            o.name = name;
+            return o;
         }
     }
 }

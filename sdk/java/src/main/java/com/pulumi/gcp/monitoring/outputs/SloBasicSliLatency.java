@@ -15,13 +15,9 @@ public final class SloBasicSliLatency {
      * this service that return in no more than threshold.
      * 
      */
-    private final String threshold;
+    private String threshold;
 
-    @CustomType.Constructor
-    private SloBasicSliLatency(@CustomType.Parameter("threshold") String threshold) {
-        this.threshold = threshold;
-    }
-
+    private SloBasicSliLatency() {}
     /**
      * @return A duration string, e.g. 10s.
      * Good service is defined to be the count of requests made to
@@ -39,24 +35,24 @@ public final class SloBasicSliLatency {
     public static Builder builder(SloBasicSliLatency defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String threshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloBasicSliLatency defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.threshold = defaults.threshold;
         }
 
+        @CustomType.Setter
         public Builder threshold(String threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
-        }        public SloBasicSliLatency build() {
-            return new SloBasicSliLatency(threshold);
+        }
+        public SloBasicSliLatency build() {
+            final var o = new SloBasicSliLatency();
+            o.threshold = threshold;
+            return o;
         }
     }
 }

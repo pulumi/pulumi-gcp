@@ -17,23 +17,16 @@ public final class SloWindowsBasedSliMetricSumInRangeRange {
      * &#34;&gt;= range.min&#34;
      * 
      */
-    private final @Nullable Double max;
+    private @Nullable Double max;
     /**
      * @return Min value for the range (inclusive). If not given,
      * will be set to &#34;-infinity&#34;, defining an open range
      * &#34;&lt; range.max&#34;
      * 
      */
-    private final @Nullable Double min;
+    private @Nullable Double min;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliMetricSumInRangeRange(
-        @CustomType.Parameter("max") @Nullable Double max,
-        @CustomType.Parameter("min") @Nullable Double min) {
-        this.max = max;
-        this.min = min;
-    }
-
+    private SloWindowsBasedSliMetricSumInRangeRange() {}
     /**
      * @return max value for the range (inclusive). If not given,
      * will be set to &#34;infinity&#34;, defining an open range
@@ -60,30 +53,32 @@ public final class SloWindowsBasedSliMetricSumInRangeRange {
     public static Builder builder(SloWindowsBasedSliMetricSumInRangeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double max;
         private @Nullable Double min;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliMetricSumInRangeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
         public Builder max(@Nullable Double max) {
             this.max = max;
             return this;
         }
+        @CustomType.Setter
         public Builder min(@Nullable Double min) {
             this.min = min;
             return this;
-        }        public SloWindowsBasedSliMetricSumInRangeRange build() {
-            return new SloWindowsBasedSliMetricSumInRangeRange(max, min);
+        }
+        public SloWindowsBasedSliMetricSumInRangeRange build() {
+            final var o = new SloWindowsBasedSliMetricSumInRangeRange();
+            o.max = max;
+            o.min = min;
+            return o;
         }
     }
 }

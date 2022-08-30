@@ -14,20 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobStatus {
-    private final @Nullable List<JobStatusErrorResult> errorResults;
-    private final @Nullable List<JobStatusError> errors;
-    private final @Nullable String state;
+    private @Nullable List<JobStatusErrorResult> errorResults;
+    private @Nullable List<JobStatusError> errors;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private JobStatus(
-        @CustomType.Parameter("errorResults") @Nullable List<JobStatusErrorResult> errorResults,
-        @CustomType.Parameter("errors") @Nullable List<JobStatusError> errors,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.errorResults = errorResults;
-        this.errors = errors;
-        this.state = state;
-    }
-
+    private JobStatus() {}
     public List<JobStatusErrorResult> errorResults() {
         return this.errorResults == null ? List.of() : this.errorResults;
     }
@@ -45,16 +36,12 @@ public final class JobStatus {
     public static Builder builder(JobStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<JobStatusErrorResult> errorResults;
         private @Nullable List<JobStatusError> errors;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.errorResults = defaults.errorResults;
@@ -62,6 +49,7 @@ public final class JobStatus {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder errorResults(@Nullable List<JobStatusErrorResult> errorResults) {
             this.errorResults = errorResults;
             return this;
@@ -69,6 +57,7 @@ public final class JobStatus {
         public Builder errorResults(JobStatusErrorResult... errorResults) {
             return errorResults(List.of(errorResults));
         }
+        @CustomType.Setter
         public Builder errors(@Nullable List<JobStatusError> errors) {
             this.errors = errors;
             return this;
@@ -76,11 +65,17 @@ public final class JobStatus {
         public Builder errors(JobStatusError... errors) {
             return errors(List.of(errors));
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public JobStatus build() {
-            return new JobStatus(errorResults, errors, state);
+        }
+        public JobStatus build() {
+            final var o = new JobStatus();
+            o.errorResults = errorResults;
+            o.errors = errors;
+            o.state = state;
+            return o;
         }
     }
 }

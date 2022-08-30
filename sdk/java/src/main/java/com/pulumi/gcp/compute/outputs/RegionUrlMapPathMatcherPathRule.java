@@ -21,7 +21,7 @@ public final class RegionUrlMapPathMatcherPathRule {
      * allowed here.
      * 
      */
-    private final List<String> paths;
+    private List<String> paths;
     /**
      * @return In response to a matching path, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -32,12 +32,12 @@ public final class RegionUrlMapPathMatcherPathRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleRouteAction routeAction;
+    private @Nullable RegionUrlMapPathMatcherPathRuleRouteAction routeAction;
     /**
      * @return A reference to expected RegionBackendService resource the given URL should be mapped to.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return When a path pattern is matched, the request is redirected to a URL specified
      * by urlRedirect. If urlRedirect is specified, service or routeAction must not
@@ -45,20 +45,9 @@ public final class RegionUrlMapPathMatcherPathRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherPathRuleUrlRedirect urlRedirect;
+    private @Nullable RegionUrlMapPathMatcherPathRuleUrlRedirect urlRedirect;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRule(
-        @CustomType.Parameter("paths") List<String> paths,
-        @CustomType.Parameter("routeAction") @Nullable RegionUrlMapPathMatcherPathRuleRouteAction routeAction,
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("urlRedirect") @Nullable RegionUrlMapPathMatcherPathRuleUrlRedirect urlRedirect) {
-        this.paths = paths;
-        this.routeAction = routeAction;
-        this.service = service;
-        this.urlRedirect = urlRedirect;
-    }
-
+    private RegionUrlMapPathMatcherPathRule() {}
     /**
      * @return The list of path patterns to match. Each must start with / and the only place a
      * \* is allowed is at the end following a /. The string fed to the path matcher
@@ -107,17 +96,13 @@ public final class RegionUrlMapPathMatcherPathRule {
     public static Builder builder(RegionUrlMapPathMatcherPathRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> paths;
         private @Nullable RegionUrlMapPathMatcherPathRuleRouteAction routeAction;
         private @Nullable String service;
         private @Nullable RegionUrlMapPathMatcherPathRuleUrlRedirect urlRedirect;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.paths = defaults.paths;
@@ -126,6 +111,7 @@ public final class RegionUrlMapPathMatcherPathRule {
     	      this.urlRedirect = defaults.urlRedirect;
         }
 
+        @CustomType.Setter
         public Builder paths(List<String> paths) {
             this.paths = Objects.requireNonNull(paths);
             return this;
@@ -133,19 +119,28 @@ public final class RegionUrlMapPathMatcherPathRule {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
+        @CustomType.Setter
         public Builder routeAction(@Nullable RegionUrlMapPathMatcherPathRuleRouteAction routeAction) {
             this.routeAction = routeAction;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRedirect(@Nullable RegionUrlMapPathMatcherPathRuleUrlRedirect urlRedirect) {
             this.urlRedirect = urlRedirect;
             return this;
-        }        public RegionUrlMapPathMatcherPathRule build() {
-            return new RegionUrlMapPathMatcherPathRule(paths, routeAction, service, urlRedirect);
+        }
+        public RegionUrlMapPathMatcherPathRule build() {
+            final var o = new RegionUrlMapPathMatcherPathRule();
+            o.paths = paths;
+            o.routeAction = routeAction;
+            o.service = service;
+            o.urlRedirect = urlRedirect;
+            return o;
         }
     }
 }

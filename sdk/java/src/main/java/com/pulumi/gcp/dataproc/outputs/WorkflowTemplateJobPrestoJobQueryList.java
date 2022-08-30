@@ -14,13 +14,9 @@ public final class WorkflowTemplateJobPrestoJobQueryList {
      * @return Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: &#34;hiveJob&#34;: { &#34;queryList&#34;: { &#34;queries&#34;: } }
      * 
      */
-    private final List<String> queries;
+    private List<String> queries;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobPrestoJobQueryList(@CustomType.Parameter("queries") List<String> queries) {
-        this.queries = queries;
-    }
-
+    private WorkflowTemplateJobPrestoJobQueryList() {}
     /**
      * @return Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: &#34;hiveJob&#34;: { &#34;queryList&#34;: { &#34;queries&#34;: } }
      * 
@@ -36,27 +32,27 @@ public final class WorkflowTemplateJobPrestoJobQueryList {
     public static Builder builder(WorkflowTemplateJobPrestoJobQueryList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> queries;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobPrestoJobQueryList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queries = defaults.queries;
         }
 
+        @CustomType.Setter
         public Builder queries(List<String> queries) {
             this.queries = Objects.requireNonNull(queries);
             return this;
         }
         public Builder queries(String... queries) {
             return queries(List.of(queries));
-        }        public WorkflowTemplateJobPrestoJobQueryList build() {
-            return new WorkflowTemplateJobPrestoJobQueryList(queries);
+        }
+        public WorkflowTemplateJobPrestoJobQueryList build() {
+            final var o = new WorkflowTemplateJobPrestoJobQueryList();
+            o.queries = queries;
+            return o;
         }
     }
 }

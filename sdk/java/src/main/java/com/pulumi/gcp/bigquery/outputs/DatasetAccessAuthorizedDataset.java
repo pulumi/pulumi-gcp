@@ -16,22 +16,15 @@ public final class DatasetAccessAuthorizedDataset {
      * Structure is documented below.
      * 
      */
-    private final DatasetAccessAuthorizedDatasetDataset dataset;
+    private DatasetAccessAuthorizedDatasetDataset dataset;
     /**
      * @return Which resources in the dataset this entry applies to. Currently, only views are supported,
      * but additional target types may be added in the future. Possible values: VIEWS
      * 
      */
-    private final List<String> targetTypes;
+    private List<String> targetTypes;
 
-    @CustomType.Constructor
-    private DatasetAccessAuthorizedDataset(
-        @CustomType.Parameter("dataset") DatasetAccessAuthorizedDatasetDataset dataset,
-        @CustomType.Parameter("targetTypes") List<String> targetTypes) {
-        this.dataset = dataset;
-        this.targetTypes = targetTypes;
-    }
-
+    private DatasetAccessAuthorizedDataset() {}
     /**
      * @return The dataset this entry applies to
      * Structure is documented below.
@@ -56,33 +49,35 @@ public final class DatasetAccessAuthorizedDataset {
     public static Builder builder(DatasetAccessAuthorizedDataset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private DatasetAccessAuthorizedDatasetDataset dataset;
         private List<String> targetTypes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatasetAccessAuthorizedDataset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataset = defaults.dataset;
     	      this.targetTypes = defaults.targetTypes;
         }
 
+        @CustomType.Setter
         public Builder dataset(DatasetAccessAuthorizedDatasetDataset dataset) {
             this.dataset = Objects.requireNonNull(dataset);
             return this;
         }
+        @CustomType.Setter
         public Builder targetTypes(List<String> targetTypes) {
             this.targetTypes = Objects.requireNonNull(targetTypes);
             return this;
         }
         public Builder targetTypes(String... targetTypes) {
             return targetTypes(List.of(targetTypes));
-        }        public DatasetAccessAuthorizedDataset build() {
-            return new DatasetAccessAuthorizedDataset(dataset, targetTypes);
+        }
+        public DatasetAccessAuthorizedDataset build() {
+            final var o = new DatasetAccessAuthorizedDataset();
+            o.dataset = dataset;
+            o.targetTypes = targetTypes;
+            return o;
         }
     }
 }

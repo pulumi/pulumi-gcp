@@ -15,7 +15,7 @@ public final class GetGroupMembershipsMembershipPreferredMemberKey {
      * to the Identity Source&#39;s requirements.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The namespace in which the entity exists.
      * If not populated, the EntityKey represents a Google-managed entity
@@ -23,16 +23,9 @@ public final class GetGroupMembershipsMembershipPreferredMemberKey {
      * If populated, the EntityKey represents an external-identity-mapped group.
      * 
      */
-    private final String namespace;
+    private String namespace;
 
-    @CustomType.Constructor
-    private GetGroupMembershipsMembershipPreferredMemberKey(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namespace") String namespace) {
-        this.id = id;
-        this.namespace = namespace;
-    }
-
+    private GetGroupMembershipsMembershipPreferredMemberKey() {}
     /**
      * @return The ID of the entity. For Google-managed entities, the id is the email address of an existing
      * group or user. For external-identity-mapped entities, the id is a string conforming
@@ -60,30 +53,32 @@ public final class GetGroupMembershipsMembershipPreferredMemberKey {
     public static Builder builder(GetGroupMembershipsMembershipPreferredMemberKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String namespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMembershipsMembershipPreferredMemberKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
-        }        public GetGroupMembershipsMembershipPreferredMemberKey build() {
-            return new GetGroupMembershipsMembershipPreferredMemberKey(id, namespace);
+        }
+        public GetGroupMembershipsMembershipPreferredMemberKey build() {
+            final var o = new GetGroupMembershipsMembershipPreferredMemberKey();
+            o.id = id;
+            o.namespace = namespace;
+            return o;
         }
     }
 }

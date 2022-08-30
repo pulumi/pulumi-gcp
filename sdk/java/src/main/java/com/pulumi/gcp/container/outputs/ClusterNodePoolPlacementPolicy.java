@@ -13,13 +13,9 @@ public final class ClusterNodePoolPlacementPolicy {
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ClusterNodePoolPlacementPolicy(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private ClusterNodePoolPlacementPolicy() {}
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
@@ -35,24 +31,24 @@ public final class ClusterNodePoolPlacementPolicy {
     public static Builder builder(ClusterNodePoolPlacementPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ClusterNodePoolPlacementPolicy build() {
-            return new ClusterNodePoolPlacementPolicy(type);
+        }
+        public ClusterNodePoolPlacementPolicy build() {
+            final var o = new ClusterNodePoolPlacementPolicy();
+            o.type = type;
+            return o;
         }
     }
 }

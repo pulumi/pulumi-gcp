@@ -17,22 +17,15 @@ public final class ClusterAddonsConfigCloudrunConfig {
      * cluster. It is disabled by default. Set `disabled = false` to enable.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
     /**
      * @return The load balancer type of CloudRun ingress service. It is external load balancer by default.
      * Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
      * 
      */
-    private final @Nullable String loadBalancerType;
+    private @Nullable String loadBalancerType;
 
-    @CustomType.Constructor
-    private ClusterAddonsConfigCloudrunConfig(
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("loadBalancerType") @Nullable String loadBalancerType) {
-        this.disabled = disabled;
-        this.loadBalancerType = loadBalancerType;
-    }
-
+    private ClusterAddonsConfigCloudrunConfig() {}
     /**
      * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
      * cluster. It is disabled by default. Set `disabled = false` to enable.
@@ -57,30 +50,32 @@ public final class ClusterAddonsConfigCloudrunConfig {
     public static Builder builder(ClusterAddonsConfigCloudrunConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
         private @Nullable String loadBalancerType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAddonsConfigCloudrunConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
     	      this.loadBalancerType = defaults.loadBalancerType;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerType(@Nullable String loadBalancerType) {
             this.loadBalancerType = loadBalancerType;
             return this;
-        }        public ClusterAddonsConfigCloudrunConfig build() {
-            return new ClusterAddonsConfigCloudrunConfig(disabled, loadBalancerType);
+        }
+        public ClusterAddonsConfigCloudrunConfig build() {
+            final var o = new ClusterAddonsConfigCloudrunConfig();
+            o.disabled = disabled;
+            o.loadBalancerType = loadBalancerType;
+            return o;
         }
     }
 }

@@ -16,28 +16,19 @@ public final class ServiceTemplateSpecContainerPort {
      * @return Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
      * 
      */
-    private final @Nullable Integer containerPort;
+    private @Nullable Integer containerPort;
     /**
      * @return Volume&#39;s name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Protocol for port. Must be &#34;TCP&#34;. Defaults to &#34;TCP&#34;.
      * 
      */
-    private final @Nullable String protocol;
+    private @Nullable String protocol;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerPort(
-        @CustomType.Parameter("containerPort") @Nullable Integer containerPort,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("protocol") @Nullable String protocol) {
-        this.containerPort = containerPort;
-        this.name = name;
-        this.protocol = protocol;
-    }
-
+    private ServiceTemplateSpecContainerPort() {}
     /**
      * @return Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
      * 
@@ -67,16 +58,12 @@ public final class ServiceTemplateSpecContainerPort {
     public static Builder builder(ServiceTemplateSpecContainerPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer containerPort;
         private @Nullable String name;
         private @Nullable String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerPort = defaults.containerPort;
@@ -84,19 +71,27 @@ public final class ServiceTemplateSpecContainerPort {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder containerPort(@Nullable Integer containerPort) {
             this.containerPort = containerPort;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
-        }        public ServiceTemplateSpecContainerPort build() {
-            return new ServiceTemplateSpecContainerPort(containerPort, name, protocol);
+        }
+        public ServiceTemplateSpecContainerPort build() {
+            final var o = new ServiceTemplateSpecContainerPort();
+            o.containerPort = containerPort;
+            o.name = name;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

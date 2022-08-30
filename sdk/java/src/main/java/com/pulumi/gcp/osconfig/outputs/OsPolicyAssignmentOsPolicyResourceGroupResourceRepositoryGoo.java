@@ -13,21 +13,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo 
      * @return Required. The name of the repository.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Required. The url of the repository.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("url") String url) {
-        this.name = name;
-        this.url = url;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo() {}
     /**
      * @return Required. The name of the repository.
      * 
@@ -50,30 +43,32 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo 
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo(name, url);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo();
+            o.name = name;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateAttachedDisk {
-    private final @Nullable String deviceName;
-    private final @Nullable String diskEncryptionKeyRaw;
-    private final @Nullable String diskEncryptionKeySha256;
-    private final @Nullable String kmsKeySelfLink;
-    private final @Nullable String mode;
-    private final String source;
+    private @Nullable String deviceName;
+    private @Nullable String diskEncryptionKeyRaw;
+    private @Nullable String diskEncryptionKeySha256;
+    private @Nullable String kmsKeySelfLink;
+    private @Nullable String mode;
+    private String source;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateAttachedDisk(
-        @CustomType.Parameter("deviceName") @Nullable String deviceName,
-        @CustomType.Parameter("diskEncryptionKeyRaw") @Nullable String diskEncryptionKeyRaw,
-        @CustomType.Parameter("diskEncryptionKeySha256") @Nullable String diskEncryptionKeySha256,
-        @CustomType.Parameter("kmsKeySelfLink") @Nullable String kmsKeySelfLink,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("source") String source) {
-        this.deviceName = deviceName;
-        this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-        this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.mode = mode;
-        this.source = source;
-    }
-
+    private InstanceFromTemplateAttachedDisk() {}
     public Optional<String> deviceName() {
         return Optional.ofNullable(this.deviceName);
     }
@@ -60,7 +45,7 @@ public final class InstanceFromTemplateAttachedDisk {
     public static Builder builder(InstanceFromTemplateAttachedDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String deviceName;
         private @Nullable String diskEncryptionKeyRaw;
@@ -68,11 +53,7 @@ public final class InstanceFromTemplateAttachedDisk {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String mode;
         private String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateAttachedDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceName = defaults.deviceName;
@@ -83,31 +64,45 @@ public final class InstanceFromTemplateAttachedDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
             this.deviceName = deviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeyRaw(@Nullable String diskEncryptionKeyRaw) {
             this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public InstanceFromTemplateAttachedDisk build() {
-            return new InstanceFromTemplateAttachedDisk(deviceName, diskEncryptionKeyRaw, diskEncryptionKeySha256, kmsKeySelfLink, mode, source);
+        }
+        public InstanceFromTemplateAttachedDisk build() {
+            final var o = new InstanceFromTemplateAttachedDisk();
+            o.deviceName = deviceName;
+            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.mode = mode;
+            o.source = source;
+            return o;
         }
     }
 }

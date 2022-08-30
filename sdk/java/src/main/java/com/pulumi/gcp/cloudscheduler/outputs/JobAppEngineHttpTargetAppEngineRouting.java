@@ -16,30 +16,21 @@ public final class JobAppEngineHttpTargetAppEngineRouting {
      * By default, the job is sent to an instance which is available when the job is attempted.
      * 
      */
-    private final @Nullable String instance;
+    private @Nullable String instance;
     /**
      * @return App service.
      * By default, the job is sent to the service which is the default service when the job is attempted.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return App version.
      * By default, the job is sent to the version which is the default version when the job is attempted.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private JobAppEngineHttpTargetAppEngineRouting(
-        @CustomType.Parameter("instance") @Nullable String instance,
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.instance = instance;
-        this.service = service;
-        this.version = version;
-    }
-
+    private JobAppEngineHttpTargetAppEngineRouting() {}
     /**
      * @return App instance.
      * By default, the job is sent to an instance which is available when the job is attempted.
@@ -72,16 +63,12 @@ public final class JobAppEngineHttpTargetAppEngineRouting {
     public static Builder builder(JobAppEngineHttpTargetAppEngineRouting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instance;
         private @Nullable String service;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobAppEngineHttpTargetAppEngineRouting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instance = defaults.instance;
@@ -89,19 +76,27 @@ public final class JobAppEngineHttpTargetAppEngineRouting {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder instance(@Nullable String instance) {
             this.instance = instance;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public JobAppEngineHttpTargetAppEngineRouting build() {
-            return new JobAppEngineHttpTargetAppEngineRouting(instance, service, version);
+        }
+        public JobAppEngineHttpTargetAppEngineRouting build() {
+            final var o = new JobAppEngineHttpTargetAppEngineRouting();
+            o.instance = instance;
+            o.service = service;
+            o.version = version;
+            return o;
         }
     }
 }

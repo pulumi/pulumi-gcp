@@ -15,28 +15,19 @@ public final class ClusterDnsConfig {
      * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
      * 
      */
-    private final @Nullable String clusterDns;
+    private @Nullable String clusterDns;
     /**
      * @return The suffix used for all cluster service records.
      * 
      */
-    private final @Nullable String clusterDnsDomain;
+    private @Nullable String clusterDnsDomain;
     /**
      * @return The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
      * 
      */
-    private final @Nullable String clusterDnsScope;
+    private @Nullable String clusterDnsScope;
 
-    @CustomType.Constructor
-    private ClusterDnsConfig(
-        @CustomType.Parameter("clusterDns") @Nullable String clusterDns,
-        @CustomType.Parameter("clusterDnsDomain") @Nullable String clusterDnsDomain,
-        @CustomType.Parameter("clusterDnsScope") @Nullable String clusterDnsScope) {
-        this.clusterDns = clusterDns;
-        this.clusterDnsDomain = clusterDnsDomain;
-        this.clusterDnsScope = clusterDnsScope;
-    }
-
+    private ClusterDnsConfig() {}
     /**
      * @return Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS`.
      * 
@@ -66,16 +57,12 @@ public final class ClusterDnsConfig {
     public static Builder builder(ClusterDnsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterDns;
         private @Nullable String clusterDnsDomain;
         private @Nullable String clusterDnsScope;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterDnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterDns = defaults.clusterDns;
@@ -83,19 +70,27 @@ public final class ClusterDnsConfig {
     	      this.clusterDnsScope = defaults.clusterDnsScope;
         }
 
+        @CustomType.Setter
         public Builder clusterDns(@Nullable String clusterDns) {
             this.clusterDns = clusterDns;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterDnsDomain(@Nullable String clusterDnsDomain) {
             this.clusterDnsDomain = clusterDnsDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterDnsScope(@Nullable String clusterDnsScope) {
             this.clusterDnsScope = clusterDnsScope;
             return this;
-        }        public ClusterDnsConfig build() {
-            return new ClusterDnsConfig(clusterDns, clusterDnsDomain, clusterDnsScope);
+        }
+        public ClusterDnsConfig build() {
+            final var o = new ClusterDnsConfig();
+            o.clusterDns = clusterDns;
+            o.clusterDnsDomain = clusterDnsDomain;
+            o.clusterDnsScope = clusterDnsScope;
+            return o;
         }
     }
 }

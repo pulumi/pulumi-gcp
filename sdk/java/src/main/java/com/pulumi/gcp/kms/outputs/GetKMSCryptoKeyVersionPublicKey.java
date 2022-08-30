@@ -13,21 +13,14 @@ public final class GetKMSCryptoKeyVersionPublicKey {
      * @return The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      * 
      */
-    private final String algorithm;
+    private String algorithm;
     /**
      * @return The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
      * 
      */
-    private final String pem;
+    private String pem;
 
-    @CustomType.Constructor
-    private GetKMSCryptoKeyVersionPublicKey(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("pem") String pem) {
-        this.algorithm = algorithm;
-        this.pem = pem;
-    }
-
+    private GetKMSCryptoKeyVersionPublicKey() {}
     /**
      * @return The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      * 
@@ -50,30 +43,32 @@ public final class GetKMSCryptoKeyVersionPublicKey {
     public static Builder builder(GetKMSCryptoKeyVersionPublicKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private String pem;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSCryptoKeyVersionPublicKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.pem = defaults.pem;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder pem(String pem) {
             this.pem = Objects.requireNonNull(pem);
             return this;
-        }        public GetKMSCryptoKeyVersionPublicKey build() {
-            return new GetKMSCryptoKeyVersionPublicKey(algorithm, pem);
+        }
+        public GetKMSCryptoKeyVersionPublicKey build() {
+            final var o = new GetKMSCryptoKeyVersionPublicKey();
+            o.algorithm = algorithm;
+            o.pem = pem;
+            return o;
         }
     }
 }

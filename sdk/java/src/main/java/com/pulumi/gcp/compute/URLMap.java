@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
  * 
  * ## Example Usage
- * ### Url Map Basic
+ * ### Url Map Bucket And Service
  * 
  * ```java
  * package generated_program;
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .tests(URLMapTestArgs.builder()
  *                 .service(staticBackendBucket.id())
- *                 .host(&#34;hi.com&#34;)
+ *                 .host(&#34;example.com&#34;)
  *                 .path(&#34;/home&#34;)
  *                 .build())
  *             .build());

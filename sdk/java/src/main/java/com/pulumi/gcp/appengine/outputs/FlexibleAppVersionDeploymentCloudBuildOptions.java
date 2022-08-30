@@ -15,22 +15,15 @@ public final class FlexibleAppVersionDeploymentCloudBuildOptions {
      * @return Path to the yaml file used in deployment, used to determine runtime configuration details.
      * 
      */
-    private final String appYamlPath;
+    private String appYamlPath;
     /**
      * @return The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String cloudBuildTimeout;
+    private @Nullable String cloudBuildTimeout;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionDeploymentCloudBuildOptions(
-        @CustomType.Parameter("appYamlPath") String appYamlPath,
-        @CustomType.Parameter("cloudBuildTimeout") @Nullable String cloudBuildTimeout) {
-        this.appYamlPath = appYamlPath;
-        this.cloudBuildTimeout = cloudBuildTimeout;
-    }
-
+    private FlexibleAppVersionDeploymentCloudBuildOptions() {}
     /**
      * @return Path to the yaml file used in deployment, used to determine runtime configuration details.
      * 
@@ -54,30 +47,32 @@ public final class FlexibleAppVersionDeploymentCloudBuildOptions {
     public static Builder builder(FlexibleAppVersionDeploymentCloudBuildOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appYamlPath;
         private @Nullable String cloudBuildTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionDeploymentCloudBuildOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appYamlPath = defaults.appYamlPath;
     	      this.cloudBuildTimeout = defaults.cloudBuildTimeout;
         }
 
+        @CustomType.Setter
         public Builder appYamlPath(String appYamlPath) {
             this.appYamlPath = Objects.requireNonNull(appYamlPath);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudBuildTimeout(@Nullable String cloudBuildTimeout) {
             this.cloudBuildTimeout = cloudBuildTimeout;
             return this;
-        }        public FlexibleAppVersionDeploymentCloudBuildOptions build() {
-            return new FlexibleAppVersionDeploymentCloudBuildOptions(appYamlPath, cloudBuildTimeout);
+        }
+        public FlexibleAppVersionDeploymentCloudBuildOptions build() {
+            final var o = new FlexibleAppVersionDeploymentCloudBuildOptions();
+            o.appYamlPath = appYamlPath;
+            o.cloudBuildTimeout = cloudBuildTimeout;
+            return o;
         }
     }
 }

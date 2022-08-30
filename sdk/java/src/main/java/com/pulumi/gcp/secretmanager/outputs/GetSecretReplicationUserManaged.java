@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationUserManaged {
-    private final List<GetSecretReplicationUserManagedReplica> replicas;
+    private List<GetSecretReplicationUserManagedReplica> replicas;
 
-    @CustomType.Constructor
-    private GetSecretReplicationUserManaged(@CustomType.Parameter("replicas") List<GetSecretReplicationUserManagedReplica> replicas) {
-        this.replicas = replicas;
-    }
-
+    private GetSecretReplicationUserManaged() {}
     public List<GetSecretReplicationUserManagedReplica> replicas() {
         return this.replicas;
     }
@@ -28,27 +24,27 @@ public final class GetSecretReplicationUserManaged {
     public static Builder builder(GetSecretReplicationUserManaged defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetSecretReplicationUserManagedReplica> replicas;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretReplicationUserManaged defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.replicas = defaults.replicas;
         }
 
+        @CustomType.Setter
         public Builder replicas(List<GetSecretReplicationUserManagedReplica> replicas) {
             this.replicas = Objects.requireNonNull(replicas);
             return this;
         }
         public Builder replicas(GetSecretReplicationUserManagedReplica... replicas) {
             return replicas(List.of(replicas));
-        }        public GetSecretReplicationUserManaged build() {
-            return new GetSecretReplicationUserManaged(replicas);
+        }
+        public GetSecretReplicationUserManaged build() {
+            final var o = new GetSecretReplicationUserManaged();
+            o.replicas = replicas;
+            return o;
         }
     }
 }

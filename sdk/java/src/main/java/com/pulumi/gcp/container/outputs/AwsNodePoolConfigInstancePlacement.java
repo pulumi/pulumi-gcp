@@ -15,13 +15,9 @@ public final class AwsNodePoolConfigInstancePlacement {
      * @return The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
      * 
      */
-    private final @Nullable String tenancy;
+    private @Nullable String tenancy;
 
-    @CustomType.Constructor
-    private AwsNodePoolConfigInstancePlacement(@CustomType.Parameter("tenancy") @Nullable String tenancy) {
-        this.tenancy = tenancy;
-    }
-
+    private AwsNodePoolConfigInstancePlacement() {}
     /**
      * @return The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
      * 
@@ -37,24 +33,24 @@ public final class AwsNodePoolConfigInstancePlacement {
     public static Builder builder(AwsNodePoolConfigInstancePlacement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String tenancy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolConfigInstancePlacement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tenancy = defaults.tenancy;
         }
 
+        @CustomType.Setter
         public Builder tenancy(@Nullable String tenancy) {
             this.tenancy = tenancy;
             return this;
-        }        public AwsNodePoolConfigInstancePlacement build() {
-            return new AwsNodePoolConfigInstancePlacement(tenancy);
+        }
+        public AwsNodePoolConfigInstancePlacement build() {
+            final var o = new AwsNodePoolConfigInstancePlacement();
+            o.tenancy = tenancy;
+            return o;
         }
     }
 }

@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTpuConfig {
-    private final Boolean enabled;
-    private final String ipv4CidrBlock;
-    private final Boolean useServiceNetworking;
+    private Boolean enabled;
+    private String ipv4CidrBlock;
+    private Boolean useServiceNetworking;
 
-    @CustomType.Constructor
-    private GetClusterTpuConfig(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("ipv4CidrBlock") String ipv4CidrBlock,
-        @CustomType.Parameter("useServiceNetworking") Boolean useServiceNetworking) {
-        this.enabled = enabled;
-        this.ipv4CidrBlock = ipv4CidrBlock;
-        this.useServiceNetworking = useServiceNetworking;
-    }
-
+    private GetClusterTpuConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -41,16 +32,12 @@ public final class GetClusterTpuConfig {
     public static Builder builder(GetClusterTpuConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String ipv4CidrBlock;
         private Boolean useServiceNetworking;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTpuConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -58,19 +45,27 @@ public final class GetClusterTpuConfig {
     	      this.useServiceNetworking = defaults.useServiceNetworking;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4CidrBlock(String ipv4CidrBlock) {
             this.ipv4CidrBlock = Objects.requireNonNull(ipv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder useServiceNetworking(Boolean useServiceNetworking) {
             this.useServiceNetworking = Objects.requireNonNull(useServiceNetworking);
             return this;
-        }        public GetClusterTpuConfig build() {
-            return new GetClusterTpuConfig(enabled, ipv4CidrBlock, useServiceNetworking);
+        }
+        public GetClusterTpuConfig build() {
+            final var o = new GetClusterTpuConfig();
+            o.enabled = enabled;
+            o.ipv4CidrBlock = ipv4CidrBlock;
+            o.useServiceNetworking = useServiceNetworking;
+            return o;
         }
     }
 }

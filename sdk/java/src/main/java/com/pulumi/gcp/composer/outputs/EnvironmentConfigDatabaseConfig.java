@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class EnvironmentConfigDatabaseConfig {
-    private final String machineType;
+    private String machineType;
 
-    @CustomType.Constructor
-    private EnvironmentConfigDatabaseConfig(@CustomType.Parameter("machineType") String machineType) {
-        this.machineType = machineType;
-    }
-
+    private EnvironmentConfigDatabaseConfig() {}
     public String machineType() {
         return this.machineType;
     }
@@ -27,24 +23,24 @@ public final class EnvironmentConfigDatabaseConfig {
     public static Builder builder(EnvironmentConfigDatabaseConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String machineType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigDatabaseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.machineType = defaults.machineType;
         }
 
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
-        }        public EnvironmentConfigDatabaseConfig build() {
-            return new EnvironmentConfigDatabaseConfig(machineType);
+        }
+        public EnvironmentConfigDatabaseConfig build() {
+            final var o = new EnvironmentConfigDatabaseConfig();
+            o.machineType = machineType;
+            return o;
         }
     }
 }

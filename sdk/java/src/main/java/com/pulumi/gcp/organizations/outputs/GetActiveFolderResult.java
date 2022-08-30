@@ -9,31 +9,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetActiveFolderResult {
-    private final String displayName;
+    private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The resource name of the Folder. This uniquely identifies the folder.
      * 
      */
-    private final String name;
-    private final String parent;
+    private String name;
+    private String parent;
 
-    @CustomType.Constructor
-    private GetActiveFolderResult(
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("parent") String parent) {
-        this.displayName = displayName;
-        this.id = id;
-        this.name = name;
-        this.parent = parent;
-    }
-
+    private GetActiveFolderResult() {}
     public String displayName() {
         return this.displayName;
     }
@@ -62,17 +51,13 @@ public final class GetActiveFolderResult {
     public static Builder builder(GetActiveFolderResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayName;
         private String id;
         private String name;
         private String parent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetActiveFolderResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -81,23 +66,33 @@ public final class GetActiveFolderResult {
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
-        }        public GetActiveFolderResult build() {
-            return new GetActiveFolderResult(displayName, id, name, parent);
+        }
+        public GetActiveFolderResult build() {
+            final var o = new GetActiveFolderResult();
+            o.displayName = displayName;
+            o.id = id;
+            o.name = name;
+            o.parent = parent;
+            return o;
         }
     }
 }

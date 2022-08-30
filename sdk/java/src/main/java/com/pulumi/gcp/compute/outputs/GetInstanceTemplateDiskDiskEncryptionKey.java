@@ -13,13 +13,9 @@ public final class GetInstanceTemplateDiskDiskEncryptionKey {
      * @return The self link of the encryption key that is stored in Google Cloud KMS
      * 
      */
-    private final String kmsKeySelfLink;
+    private String kmsKeySelfLink;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateDiskDiskEncryptionKey(@CustomType.Parameter("kmsKeySelfLink") String kmsKeySelfLink) {
-        this.kmsKeySelfLink = kmsKeySelfLink;
-    }
-
+    private GetInstanceTemplateDiskDiskEncryptionKey() {}
     /**
      * @return The self link of the encryption key that is stored in Google Cloud KMS
      * 
@@ -35,24 +31,24 @@ public final class GetInstanceTemplateDiskDiskEncryptionKey {
     public static Builder builder(GetInstanceTemplateDiskDiskEncryptionKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeySelfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateDiskDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
         }
 
+        @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
             this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
             return this;
-        }        public GetInstanceTemplateDiskDiskEncryptionKey build() {
-            return new GetInstanceTemplateDiskDiskEncryptionKey(kmsKeySelfLink);
+        }
+        public GetInstanceTemplateDiskDiskEncryptionKey build() {
+            final var o = new GetInstanceTemplateDiskDiskEncryptionKey();
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            return o;
         }
     }
 }

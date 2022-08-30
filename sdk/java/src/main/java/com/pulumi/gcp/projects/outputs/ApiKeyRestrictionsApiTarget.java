@@ -15,21 +15,14 @@ public final class ApiKeyRestrictionsApiTarget {
      * @return Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
      * 
      */
-    private final @Nullable List<String> methods;
+    private @Nullable List<String> methods;
     /**
      * @return The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictionsApiTarget(
-        @CustomType.Parameter("methods") @Nullable List<String> methods,
-        @CustomType.Parameter("service") String service) {
-        this.methods = methods;
-        this.service = service;
-    }
-
+    private ApiKeyRestrictionsApiTarget() {}
     /**
      * @return Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
      * 
@@ -52,21 +45,18 @@ public final class ApiKeyRestrictionsApiTarget {
     public static Builder builder(ApiKeyRestrictionsApiTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> methods;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictionsApiTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.methods = defaults.methods;
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
             this.methods = methods;
             return this;
@@ -74,11 +64,16 @@ public final class ApiKeyRestrictionsApiTarget {
         public Builder methods(String... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public ApiKeyRestrictionsApiTarget build() {
-            return new ApiKeyRestrictionsApiTarget(methods, service);
+        }
+        public ApiKeyRestrictionsApiTarget build() {
+            final var o = new ApiKeyRestrictionsApiTarget();
+            o.methods = methods;
+            o.service = service;
+            return o;
         }
     }
 }

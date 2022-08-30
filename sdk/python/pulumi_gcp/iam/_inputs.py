@@ -63,7 +63,7 @@ class DenyPolicyRuleArgs:
 @pulumi.input_type
 class DenyPolicyRuleDenyRuleArgs:
     def __init__(__self__, *,
-                 denial_condition: pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs'],
+                 denial_condition: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']] = None,
                  denied_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  denied_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  exception_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -80,7 +80,8 @@ class DenyPolicyRuleDenyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exception_principals: The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
                For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
         """
-        pulumi.set(__self__, "denial_condition", denial_condition)
+        if denial_condition is not None:
+            pulumi.set(__self__, "denial_condition", denial_condition)
         if denied_permissions is not None:
             pulumi.set(__self__, "denied_permissions", denied_permissions)
         if denied_principals is not None:
@@ -92,7 +93,7 @@ class DenyPolicyRuleDenyRuleArgs:
 
     @property
     @pulumi.getter(name="denialCondition")
-    def denial_condition(self) -> pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']:
+    def denial_condition(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']]:
         """
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         Structure is documented below.
@@ -100,7 +101,7 @@ class DenyPolicyRuleDenyRuleArgs:
         return pulumi.get(self, "denial_condition")
 
     @denial_condition.setter
-    def denial_condition(self, value: pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']):
+    def denial_condition(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']]):
         pulumi.set(self, "denial_condition", value)
 
     @property

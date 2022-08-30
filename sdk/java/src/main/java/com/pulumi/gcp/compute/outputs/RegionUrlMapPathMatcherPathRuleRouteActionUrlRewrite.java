@@ -17,23 +17,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
      * 255 characters.
      * 
      */
-    private final @Nullable String hostRewrite;
+    private @Nullable String hostRewrite;
     /**
      * @return Prior to forwarding the request to the selected backend service, the matching
      * portion of the request&#39;s path is replaced by pathPrefixRewrite. The value must
      * be between 1 and 1024 characters.
      * 
      */
-    private final @Nullable String pathPrefixRewrite;
+    private @Nullable String pathPrefixRewrite;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(
-        @CustomType.Parameter("hostRewrite") @Nullable String hostRewrite,
-        @CustomType.Parameter("pathPrefixRewrite") @Nullable String pathPrefixRewrite) {
-        this.hostRewrite = hostRewrite;
-        this.pathPrefixRewrite = pathPrefixRewrite;
-    }
-
+    private RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite() {}
     /**
      * @return Prior to forwarding the request to the selected service, the request&#39;s host
      * header is replaced with contents of hostRewrite. The value must be between 1 and
@@ -60,30 +53,32 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
     public static Builder builder(RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostRewrite;
         private @Nullable String pathPrefixRewrite;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRewrite = defaults.hostRewrite;
     	      this.pathPrefixRewrite = defaults.pathPrefixRewrite;
         }
 
+        @CustomType.Setter
         public Builder hostRewrite(@Nullable String hostRewrite) {
             this.hostRewrite = hostRewrite;
             return this;
         }
+        @CustomType.Setter
         public Builder pathPrefixRewrite(@Nullable String pathPrefixRewrite) {
             this.pathPrefixRewrite = pathPrefixRewrite;
             return this;
-        }        public RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite build() {
-            return new RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(hostRewrite, pathPrefixRewrite);
+        }
+        public RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite build() {
+            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite();
+            o.hostRewrite = hostRewrite;
+            o.pathPrefixRewrite = pathPrefixRewrite;
+            return o;
         }
     }
 }

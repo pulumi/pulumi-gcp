@@ -17,29 +17,20 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
      * @return Whether to perform a &#39;guest aware&#39; snapshot.
      * 
      */
-    private final @Nullable Boolean guestFlush;
+    private @Nullable Boolean guestFlush;
     /**
      * @return A set of key-value pairs.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Cloud Storage bucket location to store the auto snapshot
      * (regional or multi-regional)
      * 
      */
-    private final @Nullable String storageLocations;
+    private @Nullable String storageLocations;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicySnapshotProperties(
-        @CustomType.Parameter("guestFlush") @Nullable Boolean guestFlush,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("storageLocations") @Nullable String storageLocations) {
-        this.guestFlush = guestFlush;
-        this.labels = labels;
-        this.storageLocations = storageLocations;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicySnapshotProperties() {}
     /**
      * @return Whether to perform a &#39;guest aware&#39; snapshot.
      * 
@@ -70,16 +61,12 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
     public static Builder builder(ResourcePolicySnapshotSchedulePolicySnapshotProperties defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean guestFlush;
         private @Nullable Map<String,String> labels;
         private @Nullable String storageLocations;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicySnapshotProperties defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.guestFlush = defaults.guestFlush;
@@ -87,19 +74,27 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
     	      this.storageLocations = defaults.storageLocations;
         }
 
+        @CustomType.Setter
         public Builder guestFlush(@Nullable Boolean guestFlush) {
             this.guestFlush = guestFlush;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder storageLocations(@Nullable String storageLocations) {
             this.storageLocations = storageLocations;
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicySnapshotProperties build() {
-            return new ResourcePolicySnapshotSchedulePolicySnapshotProperties(guestFlush, labels, storageLocations);
+        }
+        public ResourcePolicySnapshotSchedulePolicySnapshotProperties build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicySnapshotProperties();
+            o.guestFlush = guestFlush;
+            o.labels = labels;
+            o.storageLocations = storageLocations;
+            return o;
         }
     }
 }

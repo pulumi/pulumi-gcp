@@ -16,22 +16,15 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeRsa {
      * service will not enforce an explicit upper bound on RSA modulus sizes.
      * 
      */
-    private final @Nullable String maxModulusSize;
+    private @Nullable String maxModulusSize;
     /**
      * @return The minimum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
      * service-level min RSA modulus size will continue to apply.
      * 
      */
-    private final @Nullable String minModulusSize;
+    private @Nullable String minModulusSize;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyAllowedKeyTypeRsa(
-        @CustomType.Parameter("maxModulusSize") @Nullable String maxModulusSize,
-        @CustomType.Parameter("minModulusSize") @Nullable String minModulusSize) {
-        this.maxModulusSize = maxModulusSize;
-        this.minModulusSize = minModulusSize;
-    }
-
+    private CaPoolIssuancePolicyAllowedKeyTypeRsa() {}
     /**
      * @return The maximum allowed RSA modulus size, in bits. If this is not set, or if set to zero, the
      * service will not enforce an explicit upper bound on RSA modulus sizes.
@@ -56,30 +49,32 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeRsa {
     public static Builder builder(CaPoolIssuancePolicyAllowedKeyTypeRsa defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maxModulusSize;
         private @Nullable String minModulusSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyAllowedKeyTypeRsa defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxModulusSize = defaults.maxModulusSize;
     	      this.minModulusSize = defaults.minModulusSize;
         }
 
+        @CustomType.Setter
         public Builder maxModulusSize(@Nullable String maxModulusSize) {
             this.maxModulusSize = maxModulusSize;
             return this;
         }
+        @CustomType.Setter
         public Builder minModulusSize(@Nullable String minModulusSize) {
             this.minModulusSize = minModulusSize;
             return this;
-        }        public CaPoolIssuancePolicyAllowedKeyTypeRsa build() {
-            return new CaPoolIssuancePolicyAllowedKeyTypeRsa(maxModulusSize, minModulusSize);
+        }
+        public CaPoolIssuancePolicyAllowedKeyTypeRsa build() {
+            final var o = new CaPoolIssuancePolicyAllowedKeyTypeRsa();
+            o.maxModulusSize = maxModulusSize;
+            o.minModulusSize = minModulusSize;
+            return o;
         }
     }
 }

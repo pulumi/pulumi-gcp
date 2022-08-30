@@ -16,21 +16,14 @@ public final class ClusterMasterAuthorizedNetworksConfigCidrBlock {
      * Must be specified in CIDR notation.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return Field for users to identify CIDR blocks.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
 
-    @CustomType.Constructor
-    private ClusterMasterAuthorizedNetworksConfigCidrBlock(
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("displayName") @Nullable String displayName) {
-        this.cidrBlock = cidrBlock;
-        this.displayName = displayName;
-    }
-
+    private ClusterMasterAuthorizedNetworksConfigCidrBlock() {}
     /**
      * @return External network that can access Kubernetes master through HTTPS.
      * Must be specified in CIDR notation.
@@ -54,30 +47,32 @@ public final class ClusterMasterAuthorizedNetworksConfigCidrBlock {
     public static Builder builder(ClusterMasterAuthorizedNetworksConfigCidrBlock defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrBlock;
         private @Nullable String displayName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMasterAuthorizedNetworksConfigCidrBlock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
     	      this.displayName = defaults.displayName;
         }
 
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
-        }        public ClusterMasterAuthorizedNetworksConfigCidrBlock build() {
-            return new ClusterMasterAuthorizedNetworksConfigCidrBlock(cidrBlock, displayName);
+        }
+        public ClusterMasterAuthorizedNetworksConfigCidrBlock build() {
+            final var o = new ClusterMasterAuthorizedNetworksConfigCidrBlock();
+            o.cidrBlock = cidrBlock;
+            o.displayName = displayName;
+            return o;
         }
     }
 }

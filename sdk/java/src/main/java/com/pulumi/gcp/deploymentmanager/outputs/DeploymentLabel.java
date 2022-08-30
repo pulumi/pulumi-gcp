@@ -15,21 +15,14 @@ public final class DeploymentLabel {
      * @return Key for label.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return Value of label.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private DeploymentLabel(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private DeploymentLabel() {}
     /**
      * @return Key for label.
      * 
@@ -52,30 +45,32 @@ public final class DeploymentLabel {
     public static Builder builder(DeploymentLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeploymentLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public DeploymentLabel build() {
-            return new DeploymentLabel(key, value);
+        }
+        public DeploymentLabel build() {
+            final var o = new DeploymentLabel();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

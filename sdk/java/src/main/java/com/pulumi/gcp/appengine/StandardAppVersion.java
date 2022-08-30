@@ -117,6 +117,7 @@ import javax.annotation.Nullable;
  *             .versionId(&#34;v2&#34;)
  *             .service(&#34;myapp&#34;)
  *             .runtime(&#34;nodejs10&#34;)
+ *             .appEngineApis(true)
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
  *                 .shell(&#34;node ./app.js&#34;)
  *                 .build())
@@ -159,6 +160,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:appengine/standardAppVersion:StandardAppVersion")
 public class StandardAppVersion extends com.pulumi.resources.CustomResource {
+    /**
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * 
+     */
+    @Export(name="appEngineApis", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> appEngineApis;
+
+    /**
+     * @return Allows App Engine second generation runtimes to access the legacy bundled services.
+     * 
+     */
+    public Output<Optional<Boolean>> appEngineApis() {
+        return Codegen.optional(this.appEngineApis);
+    }
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.

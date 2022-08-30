@@ -13,13 +13,9 @@ public final class InstanceScratchDisk {
      * @return The disk interface to use for attaching this disk; either SCSI or NVME.
      * 
      */
-    private final String interface_;
+    private String interface_;
 
-    @CustomType.Constructor
-    private InstanceScratchDisk(@CustomType.Parameter("interface") String interface_) {
-        this.interface_ = interface_;
-    }
-
+    private InstanceScratchDisk() {}
     /**
      * @return The disk interface to use for attaching this disk; either SCSI or NVME.
      * 
@@ -35,24 +31,24 @@ public final class InstanceScratchDisk {
     public static Builder builder(InstanceScratchDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String interface_;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interface_ = defaults.interface_;
         }
 
+        @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
-        }        public InstanceScratchDisk build() {
-            return new InstanceScratchDisk(interface_);
+        }
+        public InstanceScratchDisk build() {
+            final var o = new InstanceScratchDisk();
+            o.interface_ = interface_;
+            return o;
         }
     }
 }

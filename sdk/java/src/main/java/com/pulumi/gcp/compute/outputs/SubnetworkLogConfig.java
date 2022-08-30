@@ -22,14 +22,14 @@ public final class SubnetworkLogConfig {
      * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
      * 
      */
-    private final @Nullable String aggregationInterval;
+    private @Nullable String aggregationInterval;
     /**
      * @return Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
      * https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
      * The default value is &#39;true&#39;, which evaluates to include everything.
      * 
      */
-    private final @Nullable String filterExpr;
+    private @Nullable String filterExpr;
     /**
      * @return Can only be specified if VPC flow logging for this subnetwork is enabled.
      * The value of the field must be in [0, 1]. Set the sampling rate of VPC
@@ -38,7 +38,7 @@ public final class SubnetworkLogConfig {
      * half of all collected logs are reported.
      * 
      */
-    private final @Nullable Double flowSampling;
+    private @Nullable Double flowSampling;
     /**
      * @return Can only be specified if VPC flow logging for this subnetwork is enabled.
      * Configures whether metadata fields should be added to the reported VPC
@@ -47,28 +47,15 @@ public final class SubnetworkLogConfig {
      * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
      * 
      */
-    private final @Nullable String metadata;
+    private @Nullable String metadata;
     /**
      * @return List of metadata fields that should be added to reported logs.
      * Can only be specified if VPC flow logs for this subnetwork is enabled and &#34;metadata&#34; is set to CUSTOM_METADATA.
      * 
      */
-    private final @Nullable List<String> metadataFields;
+    private @Nullable List<String> metadataFields;
 
-    @CustomType.Constructor
-    private SubnetworkLogConfig(
-        @CustomType.Parameter("aggregationInterval") @Nullable String aggregationInterval,
-        @CustomType.Parameter("filterExpr") @Nullable String filterExpr,
-        @CustomType.Parameter("flowSampling") @Nullable Double flowSampling,
-        @CustomType.Parameter("metadata") @Nullable String metadata,
-        @CustomType.Parameter("metadataFields") @Nullable List<String> metadataFields) {
-        this.aggregationInterval = aggregationInterval;
-        this.filterExpr = filterExpr;
-        this.flowSampling = flowSampling;
-        this.metadata = metadata;
-        this.metadataFields = metadataFields;
-    }
-
+    private SubnetworkLogConfig() {}
     /**
      * @return Can only be specified if VPC flow logging for this subnetwork is enabled.
      * Toggles the aggregation interval for collecting flow logs. Increasing the
@@ -128,18 +115,14 @@ public final class SubnetworkLogConfig {
     public static Builder builder(SubnetworkLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aggregationInterval;
         private @Nullable String filterExpr;
         private @Nullable Double flowSampling;
         private @Nullable String metadata;
         private @Nullable List<String> metadataFields;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubnetworkLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationInterval = defaults.aggregationInterval;
@@ -149,30 +132,42 @@ public final class SubnetworkLogConfig {
     	      this.metadataFields = defaults.metadataFields;
         }
 
+        @CustomType.Setter
         public Builder aggregationInterval(@Nullable String aggregationInterval) {
             this.aggregationInterval = aggregationInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder filterExpr(@Nullable String filterExpr) {
             this.filterExpr = filterExpr;
             return this;
         }
+        @CustomType.Setter
         public Builder flowSampling(@Nullable Double flowSampling) {
             this.flowSampling = flowSampling;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable String metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder metadataFields(@Nullable List<String> metadataFields) {
             this.metadataFields = metadataFields;
             return this;
         }
         public Builder metadataFields(String... metadataFields) {
             return metadataFields(List.of(metadataFields));
-        }        public SubnetworkLogConfig build() {
-            return new SubnetworkLogConfig(aggregationInterval, filterExpr, flowSampling, metadata, metadataFields);
+        }
+        public SubnetworkLogConfig build() {
+            final var o = new SubnetworkLogConfig();
+            o.aggregationInterval = aggregationInterval;
+            o.filterExpr = filterExpr;
+            o.flowSampling = flowSampling;
+            o.metadata = metadata;
+            o.metadataFields = metadataFields;
+            return o;
         }
     }
 }

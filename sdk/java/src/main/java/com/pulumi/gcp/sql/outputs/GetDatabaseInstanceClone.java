@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceClone {
-    private final String allocatedIpRange;
-    private final String pointInTime;
-    private final String sourceInstanceName;
+    private String allocatedIpRange;
+    private String pointInTime;
+    private String sourceInstanceName;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceClone(
-        @CustomType.Parameter("allocatedIpRange") String allocatedIpRange,
-        @CustomType.Parameter("pointInTime") String pointInTime,
-        @CustomType.Parameter("sourceInstanceName") String sourceInstanceName) {
-        this.allocatedIpRange = allocatedIpRange;
-        this.pointInTime = pointInTime;
-        this.sourceInstanceName = sourceInstanceName;
-    }
-
+    private GetDatabaseInstanceClone() {}
     public String allocatedIpRange() {
         return this.allocatedIpRange;
     }
@@ -40,16 +31,12 @@ public final class GetDatabaseInstanceClone {
     public static Builder builder(GetDatabaseInstanceClone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String allocatedIpRange;
         private String pointInTime;
         private String sourceInstanceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceClone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
@@ -57,19 +44,27 @@ public final class GetDatabaseInstanceClone {
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
 
+        @CustomType.Setter
         public Builder allocatedIpRange(String allocatedIpRange) {
             this.allocatedIpRange = Objects.requireNonNull(allocatedIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder pointInTime(String pointInTime) {
             this.pointInTime = Objects.requireNonNull(pointInTime);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
             this.sourceInstanceName = Objects.requireNonNull(sourceInstanceName);
             return this;
-        }        public GetDatabaseInstanceClone build() {
-            return new GetDatabaseInstanceClone(allocatedIpRange, pointInTime, sourceInstanceName);
+        }
+        public GetDatabaseInstanceClone build() {
+            final var o = new GetDatabaseInstanceClone();
+            o.allocatedIpRange = allocatedIpRange;
+            o.pointInTime = pointInTime;
+            o.sourceInstanceName = sourceInstanceName;
+            return o;
         }
     }
 }

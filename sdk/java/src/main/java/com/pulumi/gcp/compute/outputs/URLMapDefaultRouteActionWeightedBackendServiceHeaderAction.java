@@ -18,38 +18,27 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
+    private @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
     /**
      * @return A list of header names for headers that need to be removed from the request prior to
      * forwarding the request to the backendService.
      * 
      */
-    private final @Nullable List<String> requestHeadersToRemoves;
+    private @Nullable List<String> requestHeadersToRemoves;
     /**
      * @return Headers to add the response prior to sending the response back to the client.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> responseHeadersToAdds;
+    private @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> responseHeadersToAdds;
     /**
      * @return A list of header names for headers that need to be removed from the response prior to sending the
      * response back to the client.
      * 
      */
-    private final @Nullable List<String> responseHeadersToRemoves;
+    private @Nullable List<String> responseHeadersToRemoves;
 
-    @CustomType.Constructor
-    private URLMapDefaultRouteActionWeightedBackendServiceHeaderAction(
-        @CustomType.Parameter("requestHeadersToAdds") @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> requestHeadersToAdds,
-        @CustomType.Parameter("requestHeadersToRemoves") @Nullable List<String> requestHeadersToRemoves,
-        @CustomType.Parameter("responseHeadersToAdds") @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> responseHeadersToAdds,
-        @CustomType.Parameter("responseHeadersToRemoves") @Nullable List<String> responseHeadersToRemoves) {
-        this.requestHeadersToAdds = requestHeadersToAdds;
-        this.requestHeadersToRemoves = requestHeadersToRemoves;
-        this.responseHeadersToAdds = responseHeadersToAdds;
-        this.responseHeadersToRemoves = responseHeadersToRemoves;
-    }
-
+    private URLMapDefaultRouteActionWeightedBackendServiceHeaderAction() {}
     /**
      * @return Headers to add to a matching request prior to forwarding the request to the backendService.
      * Structure is documented below.
@@ -90,17 +79,13 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
     public static Builder builder(URLMapDefaultRouteActionWeightedBackendServiceHeaderAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
         private @Nullable List<String> requestHeadersToRemoves;
         private @Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> responseHeadersToAdds;
         private @Nullable List<String> responseHeadersToRemoves;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapDefaultRouteActionWeightedBackendServiceHeaderAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.requestHeadersToAdds = defaults.requestHeadersToAdds;
@@ -109,6 +94,7 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
     	      this.responseHeadersToRemoves = defaults.responseHeadersToRemoves;
         }
 
+        @CustomType.Setter
         public Builder requestHeadersToAdds(@Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> requestHeadersToAdds) {
             this.requestHeadersToAdds = requestHeadersToAdds;
             return this;
@@ -116,6 +102,7 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
         public Builder requestHeadersToAdds(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd... requestHeadersToAdds) {
             return requestHeadersToAdds(List.of(requestHeadersToAdds));
         }
+        @CustomType.Setter
         public Builder requestHeadersToRemoves(@Nullable List<String> requestHeadersToRemoves) {
             this.requestHeadersToRemoves = requestHeadersToRemoves;
             return this;
@@ -123,6 +110,7 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
         public Builder requestHeadersToRemoves(String... requestHeadersToRemoves) {
             return requestHeadersToRemoves(List.of(requestHeadersToRemoves));
         }
+        @CustomType.Setter
         public Builder responseHeadersToAdds(@Nullable List<URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> responseHeadersToAdds) {
             this.responseHeadersToAdds = responseHeadersToAdds;
             return this;
@@ -130,14 +118,21 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
         public Builder responseHeadersToAdds(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd... responseHeadersToAdds) {
             return responseHeadersToAdds(List.of(responseHeadersToAdds));
         }
+        @CustomType.Setter
         public Builder responseHeadersToRemoves(@Nullable List<String> responseHeadersToRemoves) {
             this.responseHeadersToRemoves = responseHeadersToRemoves;
             return this;
         }
         public Builder responseHeadersToRemoves(String... responseHeadersToRemoves) {
             return responseHeadersToRemoves(List.of(responseHeadersToRemoves));
-        }        public URLMapDefaultRouteActionWeightedBackendServiceHeaderAction build() {
-            return new URLMapDefaultRouteActionWeightedBackendServiceHeaderAction(requestHeadersToAdds, requestHeadersToRemoves, responseHeadersToAdds, responseHeadersToRemoves);
+        }
+        public URLMapDefaultRouteActionWeightedBackendServiceHeaderAction build() {
+            final var o = new URLMapDefaultRouteActionWeightedBackendServiceHeaderAction();
+            o.requestHeadersToAdds = requestHeadersToAdds;
+            o.requestHeadersToRemoves = requestHeadersToRemoves;
+            o.responseHeadersToAdds = responseHeadersToAdds;
+            o.responseHeadersToRemoves = responseHeadersToRemoves;
+            return o;
         }
     }
 }

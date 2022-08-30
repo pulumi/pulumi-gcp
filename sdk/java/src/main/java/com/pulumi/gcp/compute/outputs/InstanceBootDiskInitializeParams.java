@@ -26,36 +26,25 @@ public final class InstanceBootDiskInitializeParams {
      * These images can be referred by family name here.
      * 
      */
-    private final @Nullable String image;
+    private @Nullable String image;
     /**
      * @return A map of key/value label pairs to assign to the instance.
      * 
      */
-    private final @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> labels;
     /**
      * @return The size of the image in gigabytes. If not specified, it
      * will inherit the size of its base image.
      * 
      */
-    private final @Nullable Integer size;
+    private @Nullable Integer size;
     /**
      * @return The type of reservation from which this instance can consume resources.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private InstanceBootDiskInitializeParams(
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("size") @Nullable Integer size,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.image = image;
-        this.labels = labels;
-        this.size = size;
-        this.type = type;
-    }
-
+    private InstanceBootDiskInitializeParams() {}
     /**
      * @return The image from which to initialize this disk. This can be
      * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
@@ -101,17 +90,13 @@ public final class InstanceBootDiskInitializeParams {
     public static Builder builder(InstanceBootDiskInitializeParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
         private @Nullable Integer size;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceBootDiskInitializeParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.image = defaults.image;
@@ -120,23 +105,33 @@ public final class InstanceBootDiskInitializeParams {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public InstanceBootDiskInitializeParams build() {
-            return new InstanceBootDiskInitializeParams(image, labels, size, type);
+        }
+        public InstanceBootDiskInitializeParams build() {
+            final var o = new InstanceBootDiskInitializeParams();
+            o.image = image;
+            o.labels = labels;
+            o.size = size;
+            o.type = type;
+            return o;
         }
     }
 }

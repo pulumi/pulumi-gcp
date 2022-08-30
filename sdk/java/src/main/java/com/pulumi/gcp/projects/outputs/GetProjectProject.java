@@ -14,56 +14,39 @@ public final class GetProjectProject {
      * @return Creation time in RFC3339 UTC &#34;Zulu&#34; format.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return A set of key/value label pairs assigned on a project.
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return The Project lifecycle state.
      * 
      */
-    private final String lifecycleState;
+    private String lifecycleState;
     /**
      * @return The optional user-assigned display name of the project.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The numeric identifier of the project.
      * 
      */
-    private final String number;
+    private String number;
     /**
      * @return An optional reference to a parent resource.
      * 
      */
-    private final Map<String,String> parent;
+    private Map<String,String> parent;
     /**
      * @return The project id of the project.
      * 
      */
-    private final String projectId;
+    private String projectId;
 
-    @CustomType.Constructor
-    private GetProjectProject(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("lifecycleState") String lifecycleState,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("number") String number,
-        @CustomType.Parameter("parent") Map<String,String> parent,
-        @CustomType.Parameter("projectId") String projectId) {
-        this.createTime = createTime;
-        this.labels = labels;
-        this.lifecycleState = lifecycleState;
-        this.name = name;
-        this.number = number;
-        this.parent = parent;
-        this.projectId = projectId;
-    }
-
+    private GetProjectProject() {}
     /**
      * @return Creation time in RFC3339 UTC &#34;Zulu&#34; format.
      * 
@@ -121,7 +104,7 @@ public final class GetProjectProject {
     public static Builder builder(GetProjectProject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private Map<String,String> labels;
@@ -130,11 +113,7 @@ public final class GetProjectProject {
         private String number;
         private Map<String,String> parent;
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectProject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -146,35 +125,51 @@ public final class GetProjectProject {
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
             this.lifecycleState = Objects.requireNonNull(lifecycleState);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder number(String number) {
             this.number = Objects.requireNonNull(number);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(Map<String,String> parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public GetProjectProject build() {
-            return new GetProjectProject(createTime, labels, lifecycleState, name, number, parent, projectId);
+        }
+        public GetProjectProject build() {
+            final var o = new GetProjectProject();
+            o.createTime = createTime;
+            o.labels = labels;
+            o.lifecycleState = lifecycleState;
+            o.name = name;
+            o.number = number;
+            o.parent = parent;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

@@ -19,39 +19,28 @@ public final class DiskSourceImageEncryptionKey {
      * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
      * 
      */
-    private final @Nullable String kmsKeySelfLink;
+    private @Nullable String kmsKeySelfLink;
     /**
      * @return The service account used for the encryption request for the given KMS key.
      * If absent, the Compute Engine Service Agent service account is used.
      * 
      */
-    private final @Nullable String kmsKeyServiceAccount;
+    private @Nullable String kmsKeyServiceAccount;
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
      * 
      */
-    private final @Nullable String rawKey;
+    private @Nullable String rawKey;
     /**
      * @return -
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
-    private final @Nullable String sha256;
+    private @Nullable String sha256;
 
-    @CustomType.Constructor
-    private DiskSourceImageEncryptionKey(
-        @CustomType.Parameter("kmsKeySelfLink") @Nullable String kmsKeySelfLink,
-        @CustomType.Parameter("kmsKeyServiceAccount") @Nullable String kmsKeyServiceAccount,
-        @CustomType.Parameter("rawKey") @Nullable String rawKey,
-        @CustomType.Parameter("sha256") @Nullable String sha256) {
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.kmsKeyServiceAccount = kmsKeyServiceAccount;
-        this.rawKey = rawKey;
-        this.sha256 = sha256;
-    }
-
+    private DiskSourceImageEncryptionKey() {}
     /**
      * @return The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
      * in the cloud console. Your project&#39;s Compute Engine System service account
@@ -96,17 +85,13 @@ public final class DiskSourceImageEncryptionKey {
     public static Builder builder(DiskSourceImageEncryptionKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
         private @Nullable String rawKey;
         private @Nullable String sha256;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DiskSourceImageEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
@@ -115,23 +100,33 @@ public final class DiskSourceImageEncryptionKey {
     	      this.sha256 = defaults.sha256;
         }
 
+        @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder rawKey(@Nullable String rawKey) {
             this.rawKey = rawKey;
             return this;
         }
+        @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
             this.sha256 = sha256;
             return this;
-        }        public DiskSourceImageEncryptionKey build() {
-            return new DiskSourceImageEncryptionKey(kmsKeySelfLink, kmsKeyServiceAccount, rawKey, sha256);
+        }
+        public DiskSourceImageEncryptionKey build() {
+            final var o = new DiskSourceImageEncryptionKey();
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            o.rawKey = rawKey;
+            o.sha256 = sha256;
+            return o;
         }
     }
 }

@@ -23,22 +23,15 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
      * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
      * 
      */
-    private final @Nullable String outputSchema;
+    private @Nullable String outputSchema;
     /**
      * @return Information on the location of the target BigQuery Table.
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
+    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(
-        @CustomType.Parameter("outputSchema") @Nullable String outputSchema,
-        @CustomType.Parameter("table") PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table) {
-        this.outputSchema = outputSchema;
-        this.table = table;
-    }
-
+    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig() {}
     /**
      * @return Schema used for writing the findings for Inspect jobs. This field is only used for
      * Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
@@ -69,30 +62,32 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
     public static Builder builder(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String outputSchema;
         private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.outputSchema = defaults.outputSchema;
     	      this.table = defaults.table;
         }
 
+        @CustomType.Setter
         public Builder outputSchema(@Nullable String outputSchema) {
             this.outputSchema = outputSchema;
             return this;
         }
+        @CustomType.Setter
         public Builder table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table) {
             this.table = Objects.requireNonNull(table);
             return this;
-        }        public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig build() {
-            return new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(outputSchema, table);
+        }
+        public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig build() {
+            final var o = new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig();
+            o.outputSchema = outputSchema;
+            o.table = table;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class AzureClusterAuthorizationAdminUser {
      * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private AzureClusterAuthorizationAdminUser(@CustomType.Parameter("username") String username) {
-        this.username = username;
-    }
-
+    private AzureClusterAuthorizationAdminUser() {}
     /**
      * @return The name of the user, e.g. `my-gcp-id@gmail.com`.
      * 
@@ -35,24 +31,24 @@ public final class AzureClusterAuthorizationAdminUser {
     public static Builder builder(AzureClusterAuthorizationAdminUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterAuthorizationAdminUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public AzureClusterAuthorizationAdminUser build() {
-            return new AzureClusterAuthorizationAdminUser(username);
+        }
+        public AzureClusterAuthorizationAdminUser build() {
+            final var o = new AzureClusterAuthorizationAdminUser();
+            o.username = username;
+            return o;
         }
     }
 }

@@ -25,13 +25,13 @@ public final class URLMapPathMatcherRouteRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
+    private @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
     /**
      * @return The rules for determining a match.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules;
+    private @Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules;
     /**
      * @return For routeRules within a given pathMatcher, priority determines the order
      * in which load balancer will interpret routeRules. RouteRules are evaluated
@@ -48,7 +48,7 @@ public final class URLMapPathMatcherRouteRule {
      * future without any impact on existing rules.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return In response to a matching matchRule, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -59,12 +59,12 @@ public final class URLMapPathMatcherRouteRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherRouteRuleRouteAction routeAction;
+    private @Nullable URLMapPathMatcherRouteRuleRouteAction routeAction;
     /**
      * @return The backend service or backend bucket link that should be matched by this test.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return When this rule is matched, the request is redirected to a URL specified by
      * urlRedirect. If urlRedirect is specified, service or routeAction must not be
@@ -72,24 +72,9 @@ public final class URLMapPathMatcherRouteRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect;
+    private @Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherRouteRule(
-        @CustomType.Parameter("headerAction") @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction,
-        @CustomType.Parameter("matchRules") @Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("routeAction") @Nullable URLMapPathMatcherRouteRuleRouteAction routeAction,
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("urlRedirect") @Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect) {
-        this.headerAction = headerAction;
-        this.matchRules = matchRules;
-        this.priority = priority;
-        this.routeAction = routeAction;
-        this.service = service;
-        this.urlRedirect = urlRedirect;
-    }
-
+    private URLMapPathMatcherRouteRule() {}
     /**
      * @return Specifies changes to request and response headers that need to take effect for
      * the selected backendService.
@@ -166,7 +151,7 @@ public final class URLMapPathMatcherRouteRule {
     public static Builder builder(URLMapPathMatcherRouteRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules;
@@ -174,11 +159,7 @@ public final class URLMapPathMatcherRouteRule {
         private @Nullable URLMapPathMatcherRouteRuleRouteAction routeAction;
         private @Nullable String service;
         private @Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherRouteRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerAction = defaults.headerAction;
@@ -189,10 +170,12 @@ public final class URLMapPathMatcherRouteRule {
     	      this.urlRedirect = defaults.urlRedirect;
         }
 
+        @CustomType.Setter
         public Builder headerAction(@Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction) {
             this.headerAction = headerAction;
             return this;
         }
+        @CustomType.Setter
         public Builder matchRules(@Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules) {
             this.matchRules = matchRules;
             return this;
@@ -200,23 +183,35 @@ public final class URLMapPathMatcherRouteRule {
         public Builder matchRules(URLMapPathMatcherRouteRuleMatchRule... matchRules) {
             return matchRules(List.of(matchRules));
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder routeAction(@Nullable URLMapPathMatcherRouteRuleRouteAction routeAction) {
             this.routeAction = routeAction;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRedirect(@Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect) {
             this.urlRedirect = urlRedirect;
             return this;
-        }        public URLMapPathMatcherRouteRule build() {
-            return new URLMapPathMatcherRouteRule(headerAction, matchRules, priority, routeAction, service, urlRedirect);
+        }
+        public URLMapPathMatcherRouteRule build() {
+            final var o = new URLMapPathMatcherRouteRule();
+            o.headerAction = headerAction;
+            o.matchRules = matchRules;
+            o.priority = priority;
+            o.routeAction = routeAction;
+            o.service = service;
+            o.urlRedirect = urlRedirect;
+            return o;
         }
     }
 }

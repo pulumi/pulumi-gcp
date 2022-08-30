@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateConfidentialInstanceConfig {
-    private final Boolean enableConfidentialCompute;
+    private Boolean enableConfidentialCompute;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateConfidentialInstanceConfig(@CustomType.Parameter("enableConfidentialCompute") Boolean enableConfidentialCompute) {
-        this.enableConfidentialCompute = enableConfidentialCompute;
-    }
-
+    private GetInstanceTemplateConfidentialInstanceConfig() {}
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }
@@ -27,24 +23,24 @@ public final class GetInstanceTemplateConfidentialInstanceConfig {
     public static Builder builder(GetInstanceTemplateConfidentialInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableConfidentialCompute;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateConfidentialInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
         }
 
+        @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
             return this;
-        }        public GetInstanceTemplateConfidentialInstanceConfig build() {
-            return new GetInstanceTemplateConfidentialInstanceConfig(enableConfidentialCompute);
+        }
+        public GetInstanceTemplateConfidentialInstanceConfig build() {
+            final var o = new GetInstanceTemplateConfidentialInstanceConfig();
+            o.enableConfidentialCompute = enableConfidentialCompute;
+            return o;
         }
     }
 }

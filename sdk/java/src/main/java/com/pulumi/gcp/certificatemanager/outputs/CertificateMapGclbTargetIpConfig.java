@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateMapGclbTargetIpConfig {
-    private final @Nullable String ipAddress;
-    private final @Nullable List<Integer> ports;
+    private @Nullable String ipAddress;
+    private @Nullable List<Integer> ports;
 
-    @CustomType.Constructor
-    private CertificateMapGclbTargetIpConfig(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("ports") @Nullable List<Integer> ports) {
-        this.ipAddress = ipAddress;
-        this.ports = ports;
-    }
-
+    private CertificateMapGclbTargetIpConfig() {}
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -38,33 +31,35 @@ public final class CertificateMapGclbTargetIpConfig {
     public static Builder builder(CertificateMapGclbTargetIpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private @Nullable List<Integer> ports;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateMapGclbTargetIpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.ports = defaults.ports;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder ports(@Nullable List<Integer> ports) {
             this.ports = ports;
             return this;
         }
         public Builder ports(Integer... ports) {
             return ports(List.of(ports));
-        }        public CertificateMapGclbTargetIpConfig build() {
-            return new CertificateMapGclbTargetIpConfig(ipAddress, ports);
+        }
+        public CertificateMapGclbTargetIpConfig build() {
+            final var o = new CertificateMapGclbTargetIpConfig();
+            o.ipAddress = ipAddress;
+            o.ports = ports;
+            return o;
         }
     }
 }

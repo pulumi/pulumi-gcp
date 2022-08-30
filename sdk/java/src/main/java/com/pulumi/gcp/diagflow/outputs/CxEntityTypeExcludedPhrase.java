@@ -15,13 +15,9 @@ public final class CxEntityTypeExcludedPhrase {
      * @return The word or phrase to be excluded.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private CxEntityTypeExcludedPhrase(@CustomType.Parameter("value") @Nullable String value) {
-        this.value = value;
-    }
-
+    private CxEntityTypeExcludedPhrase() {}
     /**
      * @return The word or phrase to be excluded.
      * 
@@ -37,24 +33,24 @@ public final class CxEntityTypeExcludedPhrase {
     public static Builder builder(CxEntityTypeExcludedPhrase defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxEntityTypeExcludedPhrase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public CxEntityTypeExcludedPhrase build() {
-            return new CxEntityTypeExcludedPhrase(value);
+        }
+        public CxEntityTypeExcludedPhrase build() {
+            final var o = new CxEntityTypeExcludedPhrase();
+            o.value = value;
+            return o;
         }
     }
 }

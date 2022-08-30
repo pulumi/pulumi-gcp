@@ -14,13 +14,9 @@ public final class MetastoreServiceEncryptionConfig {
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      * 
      */
-    private final String kmsKey;
+    private String kmsKey;
 
-    @CustomType.Constructor
-    private MetastoreServiceEncryptionConfig(@CustomType.Parameter("kmsKey") String kmsKey) {
-        this.kmsKey = kmsKey;
-    }
-
+    private MetastoreServiceEncryptionConfig() {}
     /**
      * @return The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -37,24 +33,24 @@ public final class MetastoreServiceEncryptionConfig {
     public static Builder builder(MetastoreServiceEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKey = defaults.kmsKey;
         }
 
+        @CustomType.Setter
         public Builder kmsKey(String kmsKey) {
             this.kmsKey = Objects.requireNonNull(kmsKey);
             return this;
-        }        public MetastoreServiceEncryptionConfig build() {
-            return new MetastoreServiceEncryptionConfig(kmsKey);
+        }
+        public MetastoreServiceEncryptionConfig build() {
+            final var o = new MetastoreServiceEncryptionConfig();
+            o.kmsKey = kmsKey;
+            return o;
         }
     }
 }

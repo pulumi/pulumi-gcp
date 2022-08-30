@@ -13,13 +13,9 @@ public final class PacketMirroringMirroredResourcesSubnetwork {
      * @return The URL of the instances where this rule should be active.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private PacketMirroringMirroredResourcesSubnetwork(@CustomType.Parameter("url") String url) {
-        this.url = url;
-    }
-
+    private PacketMirroringMirroredResourcesSubnetwork() {}
     /**
      * @return The URL of the instances where this rule should be active.
      * 
@@ -35,24 +31,24 @@ public final class PacketMirroringMirroredResourcesSubnetwork {
     public static Builder builder(PacketMirroringMirroredResourcesSubnetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PacketMirroringMirroredResourcesSubnetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public PacketMirroringMirroredResourcesSubnetwork build() {
-            return new PacketMirroringMirroredResourcesSubnetwork(url);
+        }
+        public PacketMirroringMirroredResourcesSubnetwork build() {
+            final var o = new PacketMirroringMirroredResourcesSubnetwork();
+            o.url = url;
+            return o;
         }
     }
 }

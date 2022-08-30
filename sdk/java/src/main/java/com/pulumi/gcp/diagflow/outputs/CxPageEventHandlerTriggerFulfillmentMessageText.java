@@ -18,21 +18,14 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageText {
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
-    private final @Nullable Boolean allowPlaybackInterruption;
+    private @Nullable Boolean allowPlaybackInterruption;
     /**
      * @return A collection of text responses.
      * 
      */
-    private final @Nullable List<String> texts;
+    private @Nullable List<String> texts;
 
-    @CustomType.Constructor
-    private CxPageEventHandlerTriggerFulfillmentMessageText(
-        @CustomType.Parameter("allowPlaybackInterruption") @Nullable Boolean allowPlaybackInterruption,
-        @CustomType.Parameter("texts") @Nullable List<String> texts) {
-        this.allowPlaybackInterruption = allowPlaybackInterruption;
-        this.texts = texts;
-    }
-
+    private CxPageEventHandlerTriggerFulfillmentMessageText() {}
     /**
      * @return -
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
@@ -56,33 +49,35 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageText {
     public static Builder builder(CxPageEventHandlerTriggerFulfillmentMessageText defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowPlaybackInterruption;
         private @Nullable List<String> texts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageEventHandlerTriggerFulfillmentMessageText defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowPlaybackInterruption = defaults.allowPlaybackInterruption;
     	      this.texts = defaults.texts;
         }
 
+        @CustomType.Setter
         public Builder allowPlaybackInterruption(@Nullable Boolean allowPlaybackInterruption) {
             this.allowPlaybackInterruption = allowPlaybackInterruption;
             return this;
         }
+        @CustomType.Setter
         public Builder texts(@Nullable List<String> texts) {
             this.texts = texts;
             return this;
         }
         public Builder texts(String... texts) {
             return texts(List.of(texts));
-        }        public CxPageEventHandlerTriggerFulfillmentMessageText build() {
-            return new CxPageEventHandlerTriggerFulfillmentMessageText(allowPlaybackInterruption, texts);
+        }
+        public CxPageEventHandlerTriggerFulfillmentMessageText build() {
+            final var o = new CxPageEventHandlerTriggerFulfillmentMessageText();
+            o.allowPlaybackInterruption = allowPlaybackInterruption;
+            o.texts = texts;
+            return o;
         }
     }
 }

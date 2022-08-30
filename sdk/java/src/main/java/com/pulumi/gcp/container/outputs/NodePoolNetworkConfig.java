@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNetworkConfig {
-    private final @Nullable Boolean createPodRange;
-    private final @Nullable String podIpv4CidrBlock;
-    private final String podRange;
+    private @Nullable Boolean createPodRange;
+    private @Nullable String podIpv4CidrBlock;
+    private String podRange;
 
-    @CustomType.Constructor
-    private NodePoolNetworkConfig(
-        @CustomType.Parameter("createPodRange") @Nullable Boolean createPodRange,
-        @CustomType.Parameter("podIpv4CidrBlock") @Nullable String podIpv4CidrBlock,
-        @CustomType.Parameter("podRange") String podRange) {
-        this.createPodRange = createPodRange;
-        this.podIpv4CidrBlock = podIpv4CidrBlock;
-        this.podRange = podRange;
-    }
-
+    private NodePoolNetworkConfig() {}
     public Optional<Boolean> createPodRange() {
         return Optional.ofNullable(this.createPodRange);
     }
@@ -43,16 +34,12 @@ public final class NodePoolNetworkConfig {
     public static Builder builder(NodePoolNetworkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean createPodRange;
         private @Nullable String podIpv4CidrBlock;
         private String podRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
@@ -60,19 +47,27 @@ public final class NodePoolNetworkConfig {
     	      this.podRange = defaults.podRange;
         }
 
+        @CustomType.Setter
         public Builder createPodRange(@Nullable Boolean createPodRange) {
             this.createPodRange = createPodRange;
             return this;
         }
+        @CustomType.Setter
         public Builder podIpv4CidrBlock(@Nullable String podIpv4CidrBlock) {
             this.podIpv4CidrBlock = podIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder podRange(String podRange) {
             this.podRange = Objects.requireNonNull(podRange);
             return this;
-        }        public NodePoolNetworkConfig build() {
-            return new NodePoolNetworkConfig(createPodRange, podIpv4CidrBlock, podRange);
+        }
+        public NodePoolNetworkConfig build() {
+            final var o = new NodePoolNetworkConfig();
+            o.createPodRange = createPodRange;
+            o.podIpv4CidrBlock = podIpv4CidrBlock;
+            o.podRange = podRange;
+            return o;
         }
     }
 }

@@ -15,29 +15,20 @@ public final class InstanceVmImage {
      * @return Use this VM image family to find the image; the newest image in this family will be used.
      * 
      */
-    private final @Nullable String imageFamily;
+    private @Nullable String imageFamily;
     /**
      * @return Use VM image name to find the image.
      * 
      */
-    private final @Nullable String imageName;
+    private @Nullable String imageName;
     /**
      * @return The name of the Google Cloud project that this VM image belongs to.
      * Format: projects/{project_id}
      * 
      */
-    private final String project;
+    private String project;
 
-    @CustomType.Constructor
-    private InstanceVmImage(
-        @CustomType.Parameter("imageFamily") @Nullable String imageFamily,
-        @CustomType.Parameter("imageName") @Nullable String imageName,
-        @CustomType.Parameter("project") String project) {
-        this.imageFamily = imageFamily;
-        this.imageName = imageName;
-        this.project = project;
-    }
-
+    private InstanceVmImage() {}
     /**
      * @return Use this VM image family to find the image; the newest image in this family will be used.
      * 
@@ -68,16 +59,12 @@ public final class InstanceVmImage {
     public static Builder builder(InstanceVmImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String imageFamily;
         private @Nullable String imageName;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceVmImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageFamily = defaults.imageFamily;
@@ -85,19 +72,27 @@ public final class InstanceVmImage {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder imageFamily(@Nullable String imageFamily) {
             this.imageFamily = imageFamily;
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
             this.imageName = imageName;
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public InstanceVmImage build() {
-            return new InstanceVmImage(imageFamily, imageName, project);
+        }
+        public InstanceVmImage build() {
+            final var o = new InstanceVmImage();
+            o.imageFamily = imageFamily;
+            o.imageName = imageName;
+            o.project = project;
+            return o;
         }
     }
 }
